@@ -37,6 +37,12 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Install PDF rendering dependency (LibreOffice)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libreoffice-writer
+          command -v soffice || command -v libreoffice
+
       - name: Install semantic qualification dependencies
         run: python3 -m pip install --disable-pip-version-check jsonschema lxml "mistune>=3,<4"
 
