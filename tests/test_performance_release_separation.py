@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
 """CI performance telemetry must never determine whether GA is published."""
 from __future__ import annotations
 import importlib.util
