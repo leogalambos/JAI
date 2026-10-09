@@ -1,0 +1,4 @@
+# Reference performance measurements are local or CI-run artifacts,
+# never authoritative source data for an AI IT House release.
+performance-baseline*.json
+performance-report*.json

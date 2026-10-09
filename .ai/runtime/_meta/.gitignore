@@ -1,0 +1,3 @@
+# Volatile, environment-dependent benchmark output (not release evidence).
+performance-report*.json
+performance-baseline*.json

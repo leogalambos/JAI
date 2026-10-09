@@ -16,7 +16,7 @@ python3 .ai/runtime/tools/release_ga.py qualify
 The independent release gates are:
 
 - **A — Structural:** Native JAI enforcement, schemas, v3 artifact
-  contracts, generated documentation, policy and performance.
+  contracts, generated documentation and policy.
 - **B — Semantic:** SABSA, scoped EA projection, ArchiMate
   interoperability and repository consistency.
 - **C — Governance:** authorities/workflows, v3 governance contracts,

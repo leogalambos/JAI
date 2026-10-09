@@ -197,20 +197,6 @@ def gate_a():
             [PY, str(RUNTIME / "scripts/check_agent_policy.py"), "--fast", str(PACKAGE)],
             timeout=240,
         ),
-        command(
-            "performance budget",
-            [
-                PY,
-                str(TOOLS / "performance_budget.py"),
-                "--profile",
-                "fast",
-                "--samples",
-                "9",
-                "--out",
-                str(RUNTIME / "_meta/performance-report.json"),
-            ],
-            timeout=240,
-        ),
     ]
 
 

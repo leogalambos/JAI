@@ -26,3 +26,11 @@ The workflows never claim a fully locked environment without such a file.
 
 No reviewer approvals are added to release. A valid matching tag triggers
 normal A–H gates and automatic publication if qualification succeeds.
+
+## Optional performance measurements
+
+Performance measurements are not a release prerequisite. A–H gates check
+correctness, contracts, functional tests, and supply-chain integrity. The
+benchmarking utility is opt-in and writes no baseline to the repository;
+see `.ai/runtime/ci/PERFORMANCE-POLICY.md`. Historical developer hardware
+or runtime fingerprints must not be committed as a qualification baseline.
