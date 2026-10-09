@@ -1,0 +1,42 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
+# One qualification environment for source validation and automatic production releases.
+name: Set up JAI qualification environment
+description: Installs the canonical Python and system dependencies; fails fast on missing renderers.
+runs:
+  using: composite
+  steps:
+    - name: Configure Python 3.12
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.12'
+        cache: pip
+        cache-dependency-path: |
+          requirements.txt
+          requirements-ci.txt
+    - name: Install system renderers and PDF rasteriser
+      shell: bash
+      run: |
+        set -euo pipefail
+        mapfile -t packages < <(sed -E '/^\s*(#|$)/d; s/\s+#.*$//' ci/system-packages.txt)
+        if (( ${#packages[@]} == 0 )); then
+          echo '::error::ci/system-packages.txt is empty'
+          exit 1
+        fi
+        export DEBIAN_FRONTEND=noninteractive
+        timeout 180 sudo apt-get -o Acquire::Retries=3 update
+        timeout 300 sudo -E apt-get -o Acquire::Retries=3 install \
+          --yes --no-install-recommends "${packages[@]}"
+    - name: Install canonical CI Python dependencies
+      shell: bash
+      run: |
+        set -euo pipefail
+        python3 -m pip install --disable-pip-version-check -r requirements-ci.txt
+        python3 -m pip check
+    - name: Validate renderer and Python environment before qualification
+      shell: bash
+      run: |
+        set -euo pipefail
+        python3 scripts/check_ci_environment.py --report "$RUNNER_TEMP/jai-ci-environment.json"
+        python3 -m pip freeze --all > "$RUNNER_TEMP/jai-ci-python-freeze.txt"

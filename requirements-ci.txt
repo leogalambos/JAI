@@ -1,0 +1,12 @@
+# JAI enterprise qualification Python environment (Python 3.12).
+# Shared by validate-library and release; never add package names directly to workflows.
+# Documentation dependencies are inherited from the production site requirements.
+-r requirements.txt
+
+# First-class qualification/test dependencies. Pin the direct versions to avoid
+# a test environment changing unexpectedly between release tags.
+jsonschema==4.26.0
+lxml==6.1.3
+Pillow==12.3.0
+CairoSVG==2.8.2
+mistune==3.3.4

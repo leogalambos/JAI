@@ -1,0 +1,9 @@
+# Ubuntu 24.04 system dependencies for the JAI enterprise qualification suite.
+# Shared by validate-library.yml and release.yml through setup-qualification.
+# Keep one package per line. This is a source-controlled build-environment contract.
+libreoffice-writer
+libreoffice-calc
+libreoffice-impress
+poppler-utils
+libcairo2
+fonts-dejavu-core

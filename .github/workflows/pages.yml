@@ -11,6 +11,7 @@ on:
       - 'overrides/**'
       - 'mkdocs.yml'
       - 'requirements.txt'
+      - 'requirements-ci.txt'
       - '.github/workflows/pages.yml'
       - '.ai/commands/**'
       - '.ai/runtime/tools/docs_contract.py'
@@ -31,6 +32,7 @@ on:
       - 'overrides/**'
       - 'mkdocs.yml'
       - 'requirements.txt'
+      - 'requirements-ci.txt'
       - '.github/workflows/pages.yml'
       - '.ai/commands/**'
       - '.ai/runtime/tools/docs_contract.py'
@@ -50,7 +52,7 @@ concurrency:
   cancel-in-progress: false
 jobs:
   build:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       contents: read
     steps:
@@ -59,8 +61,11 @@ jobs:
         with:
           python-version: '3.12'
           cache: pip
+          cache-dependency-path: |
+            requirements.txt
+            requirements-ci.txt
       - name: Install documentation dependencies
-        run: python -m pip install -r requirements.txt
+        run: python -m pip install --disable-pip-version-check -r requirements-ci.txt
       - name: Validate canonical Markdown and native command documentation
         run: |
           python scripts/versioning.py check --root .

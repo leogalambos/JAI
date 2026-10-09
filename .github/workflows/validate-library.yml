@@ -17,6 +17,8 @@ on:
       - 'tests/**'
       - 'mkdocs.yml'
       - 'requirements.txt'
+      - 'requirements-ci.txt'
+      - 'ci/**'
       - 'README.md'
       - 'CHANGELOG.md'
       - 'VERSION'
@@ -30,21 +32,11 @@ permissions:
 
 jobs:
   policy:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.12"
-
-      - name: Install PDF rendering dependency (LibreOffice)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y --no-install-recommends libreoffice-writer
-          command -v soffice || command -v libreoffice
-
-      - name: Install semantic qualification dependencies
-        run: python3 -m pip install --disable-pip-version-check jsonschema lxml "mistune>=3,<4"
+      - name: Prepare canonical qualification environment
+        uses: ./.github/actions/setup-qualification
 
       - name: Regression tests for source homepage links and release tags
         run: python3 -m unittest discover -s tests -v
@@ -106,6 +98,17 @@ jobs:
             echo '::error::An incomplete gate set was incorrectly accepted'
             exit 1
           fi
+
+      - name: Upload CI environment evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jai-ci-environment-validation
+          path: |
+            ${{ runner.temp }}/jai-ci-environment.json
+            ${{ runner.temp }}/jai-ci-python-freeze.txt
+          retention-days: 14
+          if-no-files-found: ignore
 
       - name: Reject a self-approved change
         if: github.event_name == 'pull_request'
