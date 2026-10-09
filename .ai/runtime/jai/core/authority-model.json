@@ -1,0 +1,10 @@
+{
+  "version": "1.0.0",
+  "l0": {
+    "id": 0,
+    "name": "Human Authority",
+    "external_to_jai": true,
+    "description": "External authority boundary; not a seventh JAI layer."
+  },
+  "rule": "L0 decisions are external authority acts; JAI agents may prepare, review, recommend and record but cannot synthesize L0 authority."
+}

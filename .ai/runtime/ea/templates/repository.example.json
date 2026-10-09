@@ -1,0 +1,31 @@
+{
+  "schema_version": "26.10",
+  "repository": {
+    "id": "enterprise-architecture",
+    "name": "Enterprise Architecture Repository",
+    "version": "1.0",
+    "created_at": "2026-10-05T00:00:00Z",
+    "updated_at": "2026-10-05T00:00:00Z",
+    "default_language": "en",
+    "revision_hash": "recalculated-by-repository.py"
+  },
+  "projects": [
+    {
+      "id": "P1",
+      "name": "Example Programme",
+      "owner": "Business Owner",
+      "status": "delivery",
+      "benefits": [
+        {"id": "B1", "name": "Example benefit", "owner": "Benefit Owner", "measure": "Unit", "baseline": "100", "target": "80", "status": "baselined"}
+      ],
+      "artifacts": []
+    }
+  ],
+  "elements": [
+    {"id": "e-app", "type": "ApplicationComponent", "name": "Example Application", "project_id": "P1", "owner": "Application Owner", "lifecycle_state": "active", "horizon": "target", "benefit_refs": ["B1"], "artifact_refs": [], "source_refs": []}
+  ],
+  "relationships": [],
+  "views": [],
+  "portfolio_links": [],
+  "exceptions": []
+}

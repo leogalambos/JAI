@@ -1,0 +1,65 @@
+{
+  "id": "detailed-design-lld",
+  "version": "2.0.0",
+  "audience": [
+    "engineering",
+    "operations"
+  ],
+  "max_detail": "engineering",
+  "mandatory_sections": [
+    "Context",
+    "Detailed components",
+    "Interfaces and protocols",
+    "Configuration",
+    "Security controls",
+    "Observability",
+    "Deployment",
+    "Rollback",
+    "Verification"
+  ],
+  "mandatory_semantic_fields": [
+    "claims",
+    "decisions",
+    "evidence",
+    "risks",
+    "traceability"
+  ],
+  "formats": [
+    "docx",
+    "html"
+  ],
+  "supported_diagrams": [
+    "architecture",
+    "flow",
+    "roadmap",
+    "risk",
+    "dependency"
+  ],
+  "table_types": [
+    "decision",
+    "risk",
+    "traceability",
+    "action",
+    "inventory"
+  ],
+  "executive_summary": {
+    "required": true,
+    "max_words": 300
+  },
+  "document_control": {
+    "required": true
+  },
+  "classification": {
+    "required": true
+  },
+  "approval_block": {
+    "required": true
+  },
+  "branding": {
+    "theme": "enterprise-default"
+  },
+  "accessibility": {
+    "min_font_pt": 10,
+    "require_alt_text_for_meaningful_images": true
+  }
+}

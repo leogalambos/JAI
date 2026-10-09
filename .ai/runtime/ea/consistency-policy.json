@@ -1,0 +1,21 @@
+{
+  "schema_version": "26.10",
+  "active_dependency_states": [
+    "planned",
+    "active",
+    "transition",
+    "deprecated",
+    "retiring"
+  ],
+  "rules": {
+    "unique_identifiers": "error",
+    "missing_references": "error",
+    "retired_target_with_active_dependency": "error",
+    "unknown_archimate_type": "warning",
+    "element_not_in_governed_view": "warning",
+    "cross_project_relationship_without_owner": "warning",
+    "cross_project_relationship_without_portfolio_link": "warning",
+    "retired_element_without_valid_to": "warning",
+    "benefit_without_measure_or_owner": "warning"
+  }
+}

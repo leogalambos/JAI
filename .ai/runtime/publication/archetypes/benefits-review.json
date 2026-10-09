@@ -1,0 +1,62 @@
+{
+  "id": "benefits-review",
+  "version": "2.0.0",
+  "audience": [
+    "sponsor",
+    "portfolio"
+  ],
+  "max_detail": "decision",
+  "mandatory_sections": [
+    "Expected benefits",
+    "Measured outcomes",
+    "Variance",
+    "Lessons",
+    "Actions"
+  ],
+  "mandatory_semantic_fields": [
+    "claims",
+    "evidence",
+    "decisions",
+    "owner"
+  ],
+  "formats": [
+    "docx",
+    "pptx",
+    "xlsx",
+    "html"
+  ],
+  "supported_diagrams": [
+    "architecture",
+    "flow",
+    "roadmap",
+    "risk",
+    "dependency"
+  ],
+  "table_types": [
+    "decision",
+    "risk",
+    "traceability",
+    "action",
+    "inventory"
+  ],
+  "executive_summary": {
+    "required": true,
+    "max_words": 300
+  },
+  "document_control": {
+    "required": true
+  },
+  "classification": {
+    "required": true
+  },
+  "approval_block": {
+    "required": true
+  },
+  "branding": {
+    "theme": "enterprise-default"
+  },
+  "accessibility": {
+    "min_font_pt": 10,
+    "require_alt_text_for_meaningful_images": true
+  }
+}

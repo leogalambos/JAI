@@ -1,0 +1,103 @@
+{
+  "id": "saas-onboarding",
+  "scenario": "SaaS onboarding",
+  "description": "Golden enterprise scenario for saas onboarding with cross-role enterprise delivery expectations.",
+  "tags": [
+    "procurement",
+    "security",
+    "privacy",
+    "architecture"
+  ],
+  "inputs": {
+    "case_prompt": "Assess and deliver an enterprise-grade saas onboarding outcome. Preserve evidence, authority, traceability and publication quality.",
+    "constraints": [
+      "Use authoritative enterprise facts; do not invent missing evidence",
+      "Respect role decision rights and segregation of duties",
+      "Produce receiving-role acceptance and residual-risk ownership"
+    ]
+  },
+  "expected": {
+    "workflow_routes": [
+      "source-to-contract-to-service",
+      "new-service-onboarding"
+    ],
+    "roles": [
+      "it-procurement-specialist",
+      "vendor-manager",
+      "third-party-risk-manager",
+      "enterprise-applications-architect",
+      "privacy-architect",
+      "service-transition-and-operational-readiness-manager"
+    ],
+    "critical_requirements": [
+      {
+        "id": "REQ-02-1",
+        "text": "Business capability and requirements are explicit before product selection"
+      },
+      {
+        "id": "REQ-02-2",
+        "text": "Supplier security/privacy/resilience evidence is assessed"
+      },
+      {
+        "id": "REQ-02-3",
+        "text": "Contract clauses make mandatory controls measurable and enforceable"
+      },
+      {
+        "id": "REQ-02-4",
+        "text": "Service acceptance includes support, ownership, monitoring and exit"
+      }
+    ],
+    "critical_evidence": [
+      "EV-02-1",
+      "EV-02-2",
+      "EV-02-3",
+      "EV-02-4"
+    ],
+    "mandatory_artifacts": [
+      "Supplier assessment",
+      "Architecture-fit decision",
+      "Contract control schedule",
+      "Service acceptance"
+    ],
+    "traceability_links": [
+      "TR-02-1",
+      "TR-02-2",
+      "TR-02-3",
+      "TR-02-4"
+    ],
+    "decision_rationale": {
+      "alternatives_min": 2,
+      "required_fields": [
+        "chosen_option",
+        "alternatives",
+        "trade_offs",
+        "rationale",
+        "residual_risk",
+        "decision_owner"
+      ]
+    },
+    "seeded_reviewer_defects": [
+      "DEF-02-1",
+      "DEF-02-2",
+      "DEF-02-3",
+      "DEF-02-4"
+    ]
+  },
+  "metrics": [
+    "role_routing_accuracy",
+    "workflow_routing_accuracy",
+    "critical_requirement_coverage",
+    "evidence_linkage",
+    "unsupported_critical_claims",
+    "decision_rationale_quality",
+    "traceability_completeness",
+    "critical_reviewer_defect_recall",
+    "reviewer_false_positive_rate",
+    "sod_violations",
+    "mandatory_publication_coverage",
+    "broken_artifact_production",
+    "visual_quality",
+    "cross_agent_consistency"
+  ],
+  "threshold_profile": "release-26.10"
+}

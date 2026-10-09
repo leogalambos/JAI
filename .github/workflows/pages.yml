@@ -1,0 +1,93 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# Website of the Egothor team: https://www.egothor.org
+name: Build and publish documentation
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'hooks/**'
+      - 'overrides/**'
+      - 'mkdocs.yml'
+      - 'requirements.txt'
+      - '.github/workflows/pages.yml'
+      - '.ai/commands/**'
+      - '.ai/runtime/tools/docs_contract.py'
+      - '.ai/runtime/tools/generate_docs.py'
+      - 'VERSION'
+      - '.ai/runtime/roles.json'
+      - '.ai/runtime/workflows.json'
+      - '.ai/runtime/artifacts/schema/artifact-types.json'
+      - '.ai/runtime/schema/schema-registry.json'
+      - '.ai/agents/**'
+      - '.ai/skills/**'
+      - '.ai/adapters/**'
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'docs/**'
+      - 'hooks/**'
+      - 'overrides/**'
+      - 'mkdocs.yml'
+      - 'requirements.txt'
+      - '.github/workflows/pages.yml'
+      - '.ai/commands/**'
+      - '.ai/runtime/tools/docs_contract.py'
+      - '.ai/runtime/tools/generate_docs.py'
+      - '.ai/runtime/roles.json'
+      - '.ai/runtime/workflows.json'
+      - '.ai/runtime/artifacts/schema/artifact-types.json'
+      - '.ai/runtime/schema/schema-registry.json'
+      - '.ai/agents/**'
+      - '.ai/skills/**'
+      - '.ai/adapters/**'
+      - 'VERSION'
+permissions:
+  contents: read
+concurrency:
+  group: documentation-pages
+  cancel-in-progress: false
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+      - name: Install documentation dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Validate canonical Markdown and native command documentation
+        run: |
+          python scripts/versioning.py check --root .
+          python .ai/runtime/tools/docs_contract.py --root .
+          python .ai/runtime/tools/generate_docs.py --check --root .
+      - name: Validate and build documentation
+        run: python -m mkdocs build --strict
+      - name: Configure GitHub Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/configure-pages@v5
+      - name: Publish build artifact
+        uses: actions/upload-pages-artifact@v4
+        if: github.event_name != 'pull_request'
+        with:
+          path: site
+  deploy:
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/main'
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

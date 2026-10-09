@@ -1,0 +1,189 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# Website of the Egothor team: https://www.egothor.org
+site_name: AI IT House Universal
+site_description: Enterprise IS/IT, security, governance and justifiable delivery documentation.
+site_author: Leo Galambos and Egothor Project Team
+copyright: Copyright &copy; 2026 Leo Galambos and Egothor Project Team
+
+theme:
+  name: material
+  custom_dir: overrides
+  logo: assets/images/logo-mark.svg
+  favicon: assets/images/logo-mark.svg
+  language: en
+  palette:
+    - scheme: default
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-night
+        name: Switch to dark mode
+    - scheme: slate
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/weather-sunny
+        name: Switch to light mode
+  font: false
+  features:
+    - navigation.instant
+    - navigation.instant.prefetch
+    - navigation.tracking
+    - navigation.sections
+    - navigation.indexes
+    - navigation.top
+    - content.code.copy
+    - content.tabs.link
+    - search.highlight
+    - search.suggest
+    - toc.follow
+
+plugins:
+  - search
+
+# Resolve only the two explicit homepage CTA hrefs at MkDocs build time.
+# The buttons themselves remain in version-controlled docs/index.md.
+hooks:
+  - hooks/jai_repository_links.py
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+
+extra_css:
+  - assets/stylesheets/enterprise.css
+
+extra_javascript:
+  - https://unpkg.com/mermaid@11/dist/mermaid.min.js
+  - assets/javascripts/mermaid.js
+  - assets/javascripts/home-footer.js
+  - assets/javascripts/sidebar-behaviour.js
+
+extra:
+  generator: false
+  social:
+    - icon: fontawesome/solid/book-open
+      link: https://doi.org/10.13140/RG.2.2.29244.19843
+      name: Towards Justifiable AI Systems
+    - icon: fontawesome/solid/globe
+      link: https://www.egothor.org
+      name: Egothor Project
+
+# Promote the two classes of documentation defects that caused the 26.10.4
+# corrective repack to warnings so `mkdocs build --strict` blocks recurrence.
+validation:
+  omitted_files: warn
+  unrecognized_links: warn
+
+nav:
+  - Home: index.md
+  - Executive overview:
+      - Product overview: overview/product-overview.md
+      - What's new in 26.10.4: overview/release-26-10-4.md
+      - Coverage matrix: overview/coverage-matrix.md
+      - Delivery model: overview/delivery-model.md
+  - Getting started:
+      - Installation: getting-started/install.md
+      - Update & uninstall: getting-started/update-uninstall.md
+      - 20-minute quick start: getting-started/quick-start.md
+      - Deployment notes: getting-started/deployment-notes.md
+  - Configuration:
+      - System architecture: configuration/system-architecture.md
+      - Providers, models & reasoning effort: configuration/models.md
+      - Runtime paths & environment variables: configuration/runtime.md
+      - Governance, policy & approvals: configuration/policy.md
+      - Publication stack: configuration/publication-stack.md
+  - Using the system:
+      - Interaction patterns: using/interaction-model.md
+      - Layered justifiable engagement: using/layered-engagement.md
+      - Commands and direct tools: using/commands.md
+      - Roles and disciplines: using/roles.md
+      - Enterprise workflows: using/workflows.md
+      - Working with deliverables: using/deliverables.md
+      - Learning with the demo estate: using/demo-estate.md
+  - Workflow library:
+      - Idea to production: workflow-library/idea-to-production.md
+      - New service onboarding: workflow-library/new-service-onboarding.md
+      - Production change: workflow-library/production-change.md
+      - Incident to permanent fix: workflow-library/incident-to-problem.md
+      - Vulnerability to remediation: workflow-library/vulnerability-to-remediation.md
+      - Inherited codebase takeover: workflow-library/codebase-takeover.md
+      - Access request to periodic review: workflow-library/access-request-to-review.md
+      - Data product delivery: workflow-library/data-product-delivery.md
+      - AI system from idea to approved production use: workflow-library/ai-system-approval.md
+      - Supplier onboarding to exit: workflow-library/supplier-onboarding.md
+      - Business case to realised benefits: workflow-library/business-case-to-benefits.md
+      - Design to operational readiness: workflow-library/design-to-operational-readiness.md
+      - Migration and cutover: workflow-library/migration-and-cutover.md
+      - Organisational change and adoption: workflow-library/organisational-change-and-adoption.md
+      - Semantic artefact to enterprise publication: workflow-library/semantic-to-enterprise-publication.md
+      - Architecture model to repository governance: workflow-library/architecture-model-to-repository-governance.md
+      - Service retirement and decommission: workflow-library/service-retirement-and-decommission.md
+      - Cyber incident / breach to recovery: workflow-library/cyber-incident-breach-to-recovery.md
+      - Resilience validation: workflow-library/resilience-validation.md
+      - Demand to portfolio to funding: workflow-library/demand-to-portfolio-to-funding.md
+      - Source to contract to service: workflow-library/source-to-contract-to-service.md
+      - SIAM / multi-supplier service integration: workflow-library/siam-multi-supplier.md
+      - Enterprise release orchestration: workflow-library/enterprise-release-orchestration.md
+      - Regulatory change to assurance: workflow-library/regulatory-change-to-assurance.md
+  - Capabilities:
+      - SABSA and enterprise architecture: capabilities/sabsa-ea.md
+      - Publication and visual QA: capabilities/artifacts-publication.md
+      - Justifiable Fabric: capabilities/justifiable-fabric.md
+      - Layered runtime and assurance: capabilities/layered-runtime.md
+      - Research and defect analysis: capabilities/research-defect.md
+  - Examples:
+      - Regulated cloud migration: examples/cloud-migration.md
+      - Architecture Review Board pack: examples/architecture-board.md
+      - Cyber incident to recovery: examples/cyber-incident.md
+      - Intermittent production defect: examples/incident-diagnosis.md
+      - Supplier onboarding: examples/supplier-onboarding.md
+      - Justifiable consequential decision: examples/justifiable-decision.md
+      - Regulatory change to assurance: examples/regulatory-change.md
+      - Service introduction: examples/service-onboarding.md
+  - Operate and govern:
+      - Validation and release controls: operations/validation.md
+      - Human authority and escalation: operations/human-authority.md
+      - Operating controls: operations/operating-controls.md
+      - Troubleshooting: operations/troubleshooting.md
+      - Maintaining local policy: operations/local-policy.md
+  - Reference:
+      - Release inventory: reference/inventory.md
+      - Workflow catalogue: reference/workflows.md
+      - Full role catalogue: reference/roles.md
+      - Command reference: reference/commands.md
+      - Complete installed CLI guide: reference/installed-cli-guide.md
+      - Documentation authority and installed CLI help: runtime-reference/current-help.md
+      - Product version and release tags: reference/versioning.md
+      - Concepts and demonstration tour: using/concepts-and-tour.md
+      - Extended command walkthroughs: reference/command-walkthroughs.md
+      - Detailed tool CLI reference: reference/runtime-tools-detailed.md
+      - Paths and environment variables: reference/paths-env.md
+      - Compatibility matrix: reference/compatibility.md
+      - 26.10.4 release and migration: reference/release-migration.md
+      - Boundaries and limitations: reference/limitations.md
+      - Glossary: reference/glossary.md
+  - About:
+      - Justifiable AI: about/justifiable-ai.md
+      - Licensing and attribution: about/license-attribution.md

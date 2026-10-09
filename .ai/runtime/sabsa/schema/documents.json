@@ -1,0 +1,24 @@
+{
+  "schema_version": "3.2",
+  "views": {
+    "architecture": {"purpose": "Complete SABSA architecture with matrix and annexes", "audience": "architecture governance"},
+    "executive-summary": {"purpose": "Business-facing architecture summary", "audience": "executive stakeholders"},
+    "risk-treatment-plan": {"purpose": "Risks/opportunities, objectives, exceptions and transition actions", "audience": "risk owners"},
+    "policy-architecture": {"purpose": "Strategy, policy, standards and policy traceability", "audience": "governance and policy owners"},
+    "trust-model": {"purpose": "Security domains and trust relationships", "audience": "architecture and domain authorities"},
+    "information-access-model": {"purpose": "Entities, privilege profiles and information flows", "audience": "IAM and information-security design"},
+    "security-service-catalogue": {"purpose": "Logical security services and their business/control justification", "audience": "service owners and architects"},
+    "component-realisation": {"purpose": "Mechanism/component realisation and standards", "audience": "solution builders and component owners"},
+    "assurance-plan": {"purpose": "Business attributes, measures and evidence", "audience": "assurance and service management"},
+    "governance-register": {"purpose": "Decisions, policies, trust and exceptions", "audience": "architecture governance"},
+    "current-state": {"purpose": "Current architecture baseline", "audience": "architecture stakeholders"},
+    "target-state": {"purpose": "Target architecture", "audience": "architecture stakeholders"},
+    "transition-architecture": {"purpose": "Current-to-target mappings and roadmap transitions", "audience": "transformation governance"},
+    "transition-roadmap": {"purpose": "Roadmap item register and business traceability", "audience": "programme management"},
+    "lifecycle-register": {"purpose": "Architecture horizon and lifecycle state register", "audience": "architecture governance"},
+    "framework-mapping": {"purpose": "External framework requirement-to-architecture mapping", "audience": "compliance and assurance"},
+    "compliance-gap-analysis": {"purpose": "Partial/gap mappings with roadmap/exception treatment", "audience": "risk and compliance"},
+    "reuse-register": {"purpose": "Cross-library dependencies and reused elements", "audience": "architecture repository governance"},
+    "client-questions": {"purpose": "Open assumptions requiring confirmation", "audience": "client workshops"}
+  }
+}

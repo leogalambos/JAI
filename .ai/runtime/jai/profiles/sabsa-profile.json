@@ -1,0 +1,13 @@
+{
+  "profile": "sabsa",
+  "version": "1.0.0",
+  "authoritative_for": "sabsa-method-classification",
+  "orthogonal_coordinates": [
+    "sabsa.layer",
+    "sabsa.question",
+    "sabsa.element_type"
+  ],
+  "rule": "SABSA coordinates are never derived from a JAI layer. A SABSA object may participate in multiple JAI processing stages without changing SABSA classification.",
+  "jai_default_binding": 2,
+  "release": "26.10.4"
+}

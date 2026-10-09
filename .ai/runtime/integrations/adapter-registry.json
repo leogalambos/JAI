@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0.0",
+  "release": "26.10.4",
+  "generated_from": "integrations/adapters/*.json",
+  "default_mode": "read-only/dry-run",
+  "adapters": [
+    {
+      "priority": 1,
+      "category": "itsm-cmdb",
+      "contract": "adapters/itsm-cmdb.json",
+      "operations": [
+        "discover",
+        "read",
+        "query",
+        "create-draft",
+        "validate",
+        "propose-change",
+        "execute-approved-change",
+        "verify",
+        "rollback"
+      ],
+      "authority": "read-only-default"
+    },
+    {
+      "priority": 2,
+      "category": "backlog-project",
+      "contract": "adapters/backlog-project.json",
+      "operations": [
+        "discover",
+        "read",
+        "query",
+        "create-draft",
+        "validate",
+        "propose-change",
+        "execute-approved-change",
+        "verify",
+        "rollback"
+      ],
+      "authority": "read-only-default"
+    },
+    {
+      "priority": 3,
+      "category": "grc",
+      "contract": "adapters/grc.json",
+      "operations": [
+        "discover",
+        "read",
+        "query",
+        "create-draft",
+        "validate",
+        "propose-change",
+        "execute-approved-change",
+        "verify",
+        "rollback"
+      ],
+      "authority": "read-only-default"
+    },
+    {
+      "priority": 4,
+      "category": "ea-repository",
+      "contract": "adapters/ea-repository.json",
+      "operations": [
+        "discover",
+        "read",
+        "query",
+        "create-draft",
+        "validate",
+        "propose-change",
+        "execute-approved-change",
+        "verify",
+        "rollback"
+      ],
+      "authority": "read-only-default"
+    },
+    {
+      "priority": 5,
+      "category": "ci-cd",
+      "contract": "adapters/ci-cd.json",
+      "operations": [
+        "discover",
+        "read",
+        "query",
+        "create-draft",
+        "validate",
+        "propose-change",
+        "execute-approved-change",
+        "verify",
+        "rollback"
+      ],
+      "authority": "read-only-default"
+    },
+    {
+      "priority": 6,
+      "category": "identity",
+      "contract": "adapters/identity.json",
+      "operations": [
+        "discover",
+        "read",
+        "query",
+        "create-draft",
+        "validate",
+        "propose-change",
+        "execute-approved-change",
+        "verify",
+        "rollback"
+      ],
+      "authority": "read-only-default"
+    },
+    {
+      "priority": 7,
+      "category": "observability",
+      "contract": "adapters/observability.json",
+      "operations": [
+        "discover",
+        "read",
+        "query",
+        "create-draft",
+        "validate",
+        "propose-change",
+        "execute-approved-change",
+        "verify",
+        "rollback"
+      ],
+      "authority": "read-only-default"
+    },
+    {
+      "priority": 8,
+      "category": "financial-tbm",
+      "contract": "adapters/financial-tbm.json",
+      "operations": [
+        "discover",
+        "read",
+        "query",
+        "create-draft",
+        "validate",
+        "propose-change",
+        "execute-approved-change",
+        "verify",
+        "rollback"
+      ],
+      "authority": "read-only-default"
+    }
+  ]
+}

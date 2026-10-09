@@ -1,0 +1,48 @@
+{
+  "release": "26.10.4",
+  "type": "corrective-repack",
+  "issue": "stale release identity references inherited from 26.10.3 after Unified Lifecycle GA rebuild",
+  "classification": "release-metadata-and-current-owned-reference-regression",
+  "corrected": [
+    {
+      "path": ".ai/runtime/roles.json",
+      "field": "version",
+      "from": "26.10.3",
+      "to": "26.10.4"
+    },
+    {
+      "path": ".ai/runtime/workflows.json",
+      "field": "version",
+      "from": "26.10.3",
+      "to": "26.10.4"
+    },
+    {
+      "path": ".ai/agents/architecture-repository-engineer.md",
+      "field": "release wording",
+      "from": "26.10.3",
+      "to": "26.10.4"
+    },
+    {
+      "path": ".ai/commands/repository.md",
+      "field": "release wording",
+      "from": "26.10.3",
+      "to": "26.10.4"
+    },
+    {
+      "path": ".ai/runtime/schema/26.10.4/ea-element.schema.json",
+      "field": "title",
+      "from": "26.10.3",
+      "to": "26.10.4"
+    }
+  ],
+  "intentionally_preserved_26.10.3_references": [
+    "schema/26.10.3 historical namespace and its $id/title metadata",
+    "migrate-26.10.3.py and migration test fixtures",
+    "compatibility read lists for 26.10.3/ArtifactContract-v3",
+    "EA legacy schema version allowlist for read/migrate",
+    "26.10.3 carry-over audit and changelog history",
+    "SBOM file names for historical 26.10.3 files"
+  ],
+  "versioning_decision": "The corrected distribution remains 26.10.4. This is a corrective repack of the same release identity, not a new functional release.",
+  "release_rule": "Current release-owned catalog metadata, operator-facing current-state descriptions and current schema titles must resolve to VERSION. Historical, migration and backward-compatibility references may retain prior releases."
+}

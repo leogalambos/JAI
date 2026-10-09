@@ -1,0 +1,122 @@
+{
+  "case_id": "critical-service-redesign",
+  "roles": [
+    "it-service-owner",
+    "solution-architect",
+    "operational-and-technology-resilience-architect",
+    "siam-manager",
+    "site-reliability-engineer",
+    "service-transition-and-operational-readiness-manager"
+  ],
+  "workflows": [
+    "resilience-validation",
+    "design-to-operational-readiness",
+    "siam-multi-supplier"
+  ],
+  "requirements_covered": [
+    "REQ-10-1",
+    "REQ-10-2",
+    "REQ-10-3",
+    "REQ-10-4"
+  ],
+  "evidence_links": [
+    "EV-10-1",
+    "EV-10-2",
+    "EV-10-3",
+    "EV-10-4"
+  ],
+  "claims": [
+    {
+      "id": "CLAIM-1",
+      "critical": true,
+      "evidence": [
+        "EV-10-1"
+      ]
+    },
+    {
+      "id": "CLAIM-2",
+      "critical": true,
+      "evidence": [
+        "EV-10-2"
+      ]
+    },
+    {
+      "id": "CLAIM-3",
+      "critical": true,
+      "evidence": [
+        "EV-10-3"
+      ]
+    },
+    {
+      "id": "CLAIM-4",
+      "critical": true,
+      "evidence": [
+        "EV-10-4"
+      ]
+    }
+  ],
+  "decision_rationale": {
+    "chosen_option": "Option A",
+    "alternatives": [
+      "Option A",
+      "Option B"
+    ],
+    "trade_offs": [
+      "cost vs risk",
+      "speed vs control"
+    ],
+    "rationale": "Evidence-backed choice within stated constraints",
+    "residual_risk": "Owned residual risk remains",
+    "decision_owner": "Named authority"
+  },
+  "traceability_links": [
+    "TR-10-1",
+    "TR-10-2",
+    "TR-10-3",
+    "TR-10-4"
+  ],
+  "reviewer_findings": [
+    "DEF-10-1",
+    "DEF-10-2",
+    "DEF-10-3",
+    "DEF-10-4"
+  ],
+  "sod_violations": [],
+  "publications": [
+    "Service design",
+    "Resilience design",
+    "Exercise evidence",
+    "Operational handover",
+    "Shared service acceptance"
+  ],
+  "artifact_status": [
+    {
+      "name": "Service design",
+      "ok": true
+    },
+    {
+      "name": "Resilience design",
+      "ok": true
+    },
+    {
+      "name": "Exercise evidence",
+      "ok": true
+    },
+    {
+      "name": "Operational handover",
+      "ok": true
+    },
+    {
+      "name": "Shared service acceptance",
+      "ok": true
+    }
+  ],
+  "visual_qa": {
+    "score": 1.0,
+    "critical_defects": 0
+  },
+  "cross_agent": {
+    "checks": 6,
+    "conflicts": 0
+  }
+}

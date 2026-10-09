@@ -1,0 +1,56 @@
+{
+  "views": {
+    "realisation": {
+      "title": "Business-to-component realisation",
+      "start_type": "component",
+      "columns": ["component","mechanism","service","objective","attribute","driver"],
+      "path": [
+        {"from":"component","field":"mechanisms","to":"mechanism"},
+        {"from":"mechanism","field":"services","to":"service"},
+        {"from":"service","field":"objectives","to":"objective"},
+        {"from":"objective","field":"attributes","to":"attribute"},
+        {"from":"attribute","field":"drivers","to":"driver"}
+      ]
+    },
+    "assurance": {
+      "title": "Evidence-to-business assurance",
+      "start_type": "evidence",
+      "columns": ["evidence","measure","attribute","driver"],
+      "path": [
+        {"from":"evidence","field":"measures","to":"measure"},
+        {"from":"measure","field":"attributes","to":"attribute"},
+        {"from":"attribute","field":"drivers","to":"driver"}
+      ]
+    },
+    "policy": {
+      "title": "Policy-to-business justification",
+      "start_type": "policy",
+      "columns": ["policy","objective","attribute","driver"],
+      "path": [
+        {"from":"policy","field":"objectives","to":"objective"},
+        {"from":"objective","field":"attributes","to":"attribute"},
+        {"from":"attribute","field":"drivers","to":"driver"}
+      ]
+    },
+    "trust": {
+      "title": "Trust-to-business justification",
+      "start_type": "trust",
+      "columns": ["trust","objective","attribute","driver"],
+      "path": [
+        {"from":"trust","field":"objectives","to":"objective"},
+        {"from":"objective","field":"attributes","to":"attribute"},
+        {"from":"attribute","field":"drivers","to":"driver"}
+      ]
+    },
+    "roadmap": {
+      "title": "Roadmap-to-business justification",
+      "start_type": "roadmap",
+      "columns": ["roadmap","objective","attribute","driver"],
+      "path": [
+        {"from":"roadmap","field":"objectives","to":"objective"},
+        {"from":"objective","field":"attributes","to":"attribute"},
+        {"from":"attribute","field":"drivers","to":"driver"}
+      ]
+    }
+  }
+}

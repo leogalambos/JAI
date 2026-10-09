@@ -1,0 +1,1258 @@
+{
+  "schema_version": "3.4",
+  "element_types": {
+    "driver": {
+      "prefix": "BD",
+      "collection": "drivers",
+      "dir": "01-contextual/drivers",
+      "layer": "Contextual",
+      "aspect": "what",
+      "fields": [
+        "title",
+        "statement",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "statement",
+        "owner"
+      ],
+      "links": {},
+      "business_parent": []
+    },
+    "risk": {
+      "prefix": "RO",
+      "collection": "risks",
+      "dir": "01-contextual/risks",
+      "legacy": "02-conceptual/risks",
+      "layer": "Contextual",
+      "aspect": "why",
+      "fields": [
+        "title",
+        "kind",
+        "statement",
+        "likelihood",
+        "impact",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "kind",
+        "statement"
+      ],
+      "enums": {
+        "kind": [
+          "threat",
+          "opportunity"
+        ]
+      },
+      "links": {
+        "attributes": {
+          "target": "attribute",
+          "required": true
+        }
+      },
+      "business_parent": [
+        "attributes"
+      ]
+    },
+    "attribute": {
+      "prefix": "BA",
+      "collection": "attributes",
+      "dir": "02-conceptual/attributes",
+      "legacy": "01-contextual/attributes",
+      "layer": "Conceptual",
+      "aspect": "what",
+      "fields": [
+        "title",
+        "category",
+        "definition",
+        "metric",
+        "measurement",
+        "target",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "definition",
+        "metric",
+        "measurement",
+        "target",
+        "owner"
+      ],
+      "links": {
+        "drivers": {
+          "target": "driver",
+          "required": true
+        }
+      },
+      "business_parent": [
+        "drivers"
+      ]
+    },
+    "strategy": {
+      "prefix": "SG",
+      "collection": "strategies",
+      "dir": "02-conceptual/strategies",
+      "layer": "Conceptual",
+      "aspect": "how",
+      "fields": [
+        "title",
+        "statement",
+        "rationale",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "statement",
+        "rationale",
+        "owner"
+      ],
+      "links": {
+        "attributes": {
+          "target": "attribute",
+          "required": true
+        },
+        "objectives": {
+          "target": "objective",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "attributes"
+      ]
+    },
+    "objective": {
+      "prefix": "CO",
+      "collection": "objectives",
+      "dir": "02-conceptual/control-objectives",
+      "layer": "Conceptual",
+      "aspect": "why",
+      "fields": [
+        "title",
+        "statement",
+        "owner",
+        "verification"
+      ],
+      "required": [
+        "title",
+        "statement"
+      ],
+      "links": {
+        "attributes": {
+          "target": "attribute",
+          "required": true
+        },
+        "risks": {
+          "target": "risk",
+          "required": true
+        }
+      },
+      "business_parent": [
+        "attributes",
+        "risks"
+      ]
+    },
+    "domain": {
+      "prefix": "DM",
+      "collection": "domains",
+      "dir": "02-conceptual/domains",
+      "layer": "Conceptual",
+      "aspect": "where",
+      "fields": [
+        "title",
+        "scope",
+        "authority",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "scope",
+        "authority"
+      ],
+      "links": {
+        "objectives": {
+          "target": "objective",
+          "required": true
+        },
+        "trusts": {
+          "target": "domain",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "objectives"
+      ]
+    },
+    "trust": {
+      "prefix": "TR",
+      "collection": "trusts",
+      "dir": "02-conceptual/trust-relationships",
+      "layer": "Conceptual",
+      "aspect": "who",
+      "fields": [
+        "title",
+        "purpose",
+        "trust_basis",
+        "assurance_requirement",
+        "owner",
+        "expiry"
+      ],
+      "required": [
+        "title",
+        "purpose",
+        "trust_basis",
+        "owner"
+      ],
+      "links": {
+        "source_domain": {
+          "target": "domain",
+          "required": true
+        },
+        "target_domain": {
+          "target": "domain",
+          "required": true
+        },
+        "objectives": {
+          "target": "objective",
+          "required": true
+        }
+      },
+      "business_parent": [
+        "objectives"
+      ]
+    },
+    "decision": {
+      "prefix": "AD",
+      "collection": "decisions",
+      "dir": "02-conceptual/decisions",
+      "layer": "Conceptual",
+      "aspect": "why",
+      "fields": [
+        "title",
+        "decision",
+        "rationale",
+        "owner",
+        "decision_date"
+      ],
+      "required": [
+        "title",
+        "decision",
+        "rationale",
+        "owner"
+      ],
+      "links": {
+        "objectives": {
+          "target": "objective",
+          "required": true
+        }
+      },
+      "business_parent": [
+        "objectives"
+      ]
+    },
+    "policy": {
+      "prefix": "PL",
+      "collection": "policies",
+      "dir": "03-logical/policies",
+      "layer": "Logical",
+      "aspect": "why",
+      "fields": [
+        "title",
+        "statement",
+        "owner",
+        "effective_date",
+        "review_date"
+      ],
+      "required": [
+        "title",
+        "statement",
+        "owner"
+      ],
+      "links": {
+        "objectives": {
+          "target": "objective",
+          "required": true
+        },
+        "services": {
+          "target": "service",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "objectives"
+      ]
+    },
+    "entity": {
+      "prefix": "ET",
+      "collection": "entities",
+      "dir": "03-logical/entities",
+      "layer": "Logical",
+      "aspect": "who",
+      "fields": [
+        "title",
+        "population",
+        "owner",
+        "lifecycle"
+      ],
+      "required": [
+        "title",
+        "population",
+        "owner"
+      ],
+      "links": {
+        "objectives": {
+          "target": "objective",
+          "required": true
+        },
+        "domains": {
+          "target": "domain",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "objectives"
+      ]
+    },
+    "privilege": {
+      "prefix": "PV",
+      "collection": "privileges",
+      "dir": "03-logical/privilege-profiles",
+      "layer": "Logical",
+      "aspect": "who",
+      "fields": [
+        "title",
+        "privileges",
+        "conditions",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "privileges",
+        "owner"
+      ],
+      "links": {
+        "entities": {
+          "target": "entity",
+          "required": true
+        },
+        "policies": {
+          "target": "policy",
+          "required": true
+        },
+        "objectives": {
+          "target": "objective",
+          "required": true
+        }
+      },
+      "business_parent": [
+        "objectives"
+      ]
+    },
+    "information-flow": {
+      "prefix": "IF",
+      "collection": "information_flows",
+      "dir": "03-logical/information-flows",
+      "layer": "Logical",
+      "aspect": "what",
+      "fields": [
+        "title",
+        "information",
+        "classification",
+        "protection",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "information",
+        "protection",
+        "owner"
+      ],
+      "links": {
+        "source_entity": {
+          "target": "entity",
+          "required": true
+        },
+        "target_entity": {
+          "target": "entity",
+          "required": true
+        },
+        "objectives": {
+          "target": "objective",
+          "required": true
+        },
+        "services": {
+          "target": "service",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "objectives"
+      ]
+    },
+    "service": {
+      "prefix": "SS",
+      "collection": "services",
+      "dir": "03-logical/services",
+      "layer": "Logical",
+      "aspect": "how",
+      "fields": [
+        "title",
+        "description",
+        "policy",
+        "owner",
+        "service_level"
+      ],
+      "required": [
+        "title",
+        "description"
+      ],
+      "links": {
+        "objectives": {
+          "target": "objective",
+          "required": true
+        },
+        "domain": {
+          "target": "domain",
+          "required": false
+        },
+        "policies": {
+          "target": "policy",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "objectives"
+      ]
+    },
+    "mechanism": {
+      "prefix": "SM",
+      "collection": "mechanisms",
+      "dir": "04-physical/mechanisms",
+      "layer": "Physical",
+      "aspect": "how",
+      "fields": [
+        "title",
+        "description",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "description"
+      ],
+      "links": {
+        "services": {
+          "target": "service",
+          "required": true
+        }
+      },
+      "business_parent": [
+        "services"
+      ]
+    },
+    "standard": {
+      "prefix": "ST",
+      "collection": "standards",
+      "dir": "05-component/standards",
+      "layer": "Component",
+      "aspect": "why",
+      "fields": [
+        "title",
+        "authority",
+        "version",
+        "requirement",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "authority",
+        "requirement"
+      ],
+      "links": {
+        "policies": {
+          "target": "policy",
+          "required": true
+        },
+        "mechanisms": {
+          "target": "mechanism",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "policies"
+      ]
+    },
+    "component": {
+      "prefix": "SC",
+      "collection": "components",
+      "dir": "05-component/components",
+      "layer": "Component",
+      "aspect": "how",
+      "fields": [
+        "title",
+        "product",
+        "configuration",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "product"
+      ],
+      "links": {
+        "mechanisms": {
+          "target": "mechanism",
+          "required": true
+        },
+        "standards": {
+          "target": "standard",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "mechanisms"
+      ]
+    },
+    "measure": {
+      "prefix": "ME",
+      "collection": "measures",
+      "dir": "06-service-management/measures",
+      "layer": "Service Management",
+      "aspect": "how",
+      "fields": [
+        "title",
+        "metric",
+        "calculation",
+        "unit",
+        "data_source",
+        "frequency",
+        "target",
+        "warning_threshold",
+        "breach_threshold",
+        "threshold_action",
+        "owner",
+        "evidence_retention"
+      ],
+      "required": [
+        "title",
+        "metric",
+        "data_source",
+        "frequency",
+        "target",
+        "threshold_action",
+        "owner"
+      ],
+      "links": {
+        "attributes": {
+          "target": "attribute",
+          "required": true
+        },
+        "services": {
+          "target": "service",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "attributes"
+      ]
+    },
+    "evidence": {
+      "prefix": "EV",
+      "collection": "evidence",
+      "dir": "06-service-management/evidence",
+      "layer": "Service Management",
+      "aspect": "what",
+      "fields": [
+        "title",
+        "evidence_type",
+        "location",
+        "collector",
+        "collected_at",
+        "result",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "evidence_type",
+        "location",
+        "collector"
+      ],
+      "links": {
+        "measures": {
+          "target": "measure",
+          "required": true
+        }
+      },
+      "business_parent": [
+        "measures"
+      ]
+    },
+    "operation": {
+      "prefix": "SO",
+      "collection": "operations",
+      "dir": "06-service-management/operations",
+      "layer": "Service Management",
+      "aspect": "how",
+      "fields": [
+        "title",
+        "metric",
+        "frequency",
+        "owner",
+        "threshold_action"
+      ],
+      "required": [
+        "title",
+        "metric",
+        "frequency",
+        "owner",
+        "threshold_action"
+      ],
+      "links": {
+        "attributes": {
+          "target": "attribute",
+          "required": true
+        },
+        "services": {
+          "target": "service",
+          "required": false
+        },
+        "measures": {
+          "target": "measure",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "attributes"
+      ]
+    },
+    "exception": {
+      "prefix": "EX",
+      "collection": "exceptions",
+      "dir": "06-service-management/exceptions",
+      "layer": "Service Management",
+      "aspect": "why",
+      "fields": [
+        "title",
+        "rationale",
+        "risk_acceptance",
+        "owner",
+        "expires",
+        "review_date"
+      ],
+      "required": [
+        "title",
+        "rationale",
+        "risk_acceptance",
+        "owner",
+        "expires"
+      ],
+      "links": {
+        "objectives": {
+          "target": "objective",
+          "required": true
+        },
+        "policies": {
+          "target": "policy",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "objectives"
+      ]
+    },
+    "roadmap": {
+      "prefix": "RM",
+      "collection": "roadmap",
+      "dir": "06-service-management/roadmap",
+      "layer": "Service Management",
+      "aspect": "when",
+      "fields": [
+        "title",
+        "current_state",
+        "target_state",
+        "owner",
+        "target_date",
+        "acceptance_evidence"
+      ],
+      "required": [
+        "title",
+        "current_state",
+        "target_state",
+        "owner",
+        "target_date",
+        "acceptance_evidence"
+      ],
+      "links": {
+        "objectives": {
+          "target": "objective",
+          "required": true
+        },
+        "components": {
+          "target": "component",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "objectives"
+      ]
+    },
+    "business-process": {
+      "prefix": "BP",
+      "collection": "business_processes",
+      "dir": "01-contextual/business-processes",
+      "layer": "Contextual",
+      "aspect": "how",
+      "fields": [
+        "title",
+        "description",
+        "criticality",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "description",
+        "owner"
+      ],
+      "links": {
+        "drivers": {
+          "target": "driver",
+          "required": true
+        }
+      },
+      "business_parent": [
+        "drivers"
+      ]
+    },
+    "business-actor": {
+      "prefix": "AC",
+      "collection": "business_actors",
+      "dir": "01-contextual/business-actors",
+      "layer": "Contextual",
+      "aspect": "who",
+      "fields": [
+        "title",
+        "actor_type",
+        "accountability",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "actor_type",
+        "accountability"
+      ],
+      "links": {
+        "drivers": {
+          "target": "driver",
+          "required": true
+        },
+        "processes": {
+          "target": "business-process",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "drivers"
+      ]
+    },
+    "business-location": {
+      "prefix": "BL",
+      "collection": "business_locations",
+      "dir": "01-contextual/business-locations",
+      "layer": "Contextual",
+      "aspect": "where",
+      "fields": [
+        "title",
+        "location",
+        "jurisdiction",
+        "constraints",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "location",
+        "jurisdiction"
+      ],
+      "links": {
+        "drivers": {
+          "target": "driver",
+          "required": true
+        }
+      },
+      "business_parent": [
+        "drivers"
+      ]
+    },
+    "business-time-dependency": {
+      "prefix": "BT",
+      "collection": "business_time_dependencies",
+      "dir": "01-contextual/business-time-dependencies",
+      "layer": "Contextual",
+      "aspect": "when",
+      "fields": [
+        "title",
+        "event",
+        "deadline",
+        "tolerance",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "event",
+        "tolerance"
+      ],
+      "links": {
+        "drivers": {
+          "target": "driver",
+          "required": true
+        },
+        "processes": {
+          "target": "business-process",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "drivers"
+      ]
+    },
+    "security-lifetime": {
+      "prefix": "LT",
+      "collection": "security_lifetimes",
+      "dir": "02-conceptual/security-lifetimes",
+      "layer": "Conceptual",
+      "aspect": "when",
+      "fields": [
+        "title",
+        "subject",
+        "lifetime",
+        "renewal",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "subject",
+        "lifetime"
+      ],
+      "links": {
+        "attributes": {
+          "target": "attribute",
+          "required": true
+        },
+        "objectives": {
+          "target": "objective",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "attributes"
+      ]
+    },
+    "domain-association": {
+      "prefix": "DA",
+      "collection": "domain_associations",
+      "dir": "03-logical/domain-associations",
+      "layer": "Logical",
+      "aspect": "where",
+      "fields": [
+        "title",
+        "relationship",
+        "boundary",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "relationship",
+        "boundary"
+      ],
+      "links": {
+        "source_domain": {
+          "target": "domain",
+          "required": true
+        },
+        "target_domain": {
+          "target": "domain",
+          "required": true
+        },
+        "services": {
+          "target": "service",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "source_domain",
+        "target_domain"
+      ]
+    },
+    "processing-cycle": {
+      "prefix": "PC",
+      "collection": "processing_cycles",
+      "dir": "03-logical/processing-cycles",
+      "layer": "Logical",
+      "aspect": "when",
+      "fields": [
+        "title",
+        "trigger",
+        "sequence",
+        "review_cycle",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "trigger",
+        "sequence"
+      ],
+      "links": {
+        "services": {
+          "target": "service",
+          "required": true
+        }
+      },
+      "business_parent": [
+        "services"
+      ]
+    },
+    "data-store": {
+      "prefix": "DS",
+      "collection": "data_stores",
+      "dir": "04-physical/data-stores",
+      "layer": "Physical",
+      "aspect": "what",
+      "fields": [
+        "title",
+        "technology",
+        "data_classes",
+        "retention",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "technology",
+        "data_classes"
+      ],
+      "links": {
+        "information_flows": {
+          "target": "information-flow",
+          "required": true
+        },
+        "mechanisms": {
+          "target": "mechanism",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "information_flows"
+      ]
+    },
+    "security-procedure": {
+      "prefix": "PR",
+      "collection": "security_procedures",
+      "dir": "04-physical/security-procedures",
+      "layer": "Physical",
+      "aspect": "why",
+      "fields": [
+        "title",
+        "procedure",
+        "trigger",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "procedure",
+        "owner"
+      ],
+      "links": {
+        "policies": {
+          "target": "policy",
+          "required": true
+        },
+        "mechanisms": {
+          "target": "mechanism",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "policies"
+      ]
+    },
+    "interaction-endpoint": {
+      "prefix": "IN",
+      "collection": "interaction_endpoints",
+      "dir": "04-physical/interaction-endpoints",
+      "layer": "Physical",
+      "aspect": "who",
+      "fields": [
+        "title",
+        "endpoint_type",
+        "interface",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "endpoint_type",
+        "interface"
+      ],
+      "links": {
+        "entities": {
+          "target": "entity",
+          "required": true
+        },
+        "services": {
+          "target": "service",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "entities"
+      ]
+    },
+    "platform-zone": {
+      "prefix": "PZ",
+      "collection": "platform_zones",
+      "dir": "04-physical/platform-zones",
+      "layer": "Physical",
+      "aspect": "where",
+      "fields": [
+        "title",
+        "platform",
+        "network_zone",
+        "location",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "platform",
+        "network_zone"
+      ],
+      "links": {
+        "mechanisms": {
+          "target": "mechanism",
+          "required": true
+        },
+        "domains": {
+          "target": "domain",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "mechanisms"
+      ]
+    },
+    "control-sequence": {
+      "prefix": "CQ",
+      "collection": "control_sequences",
+      "dir": "04-physical/control-sequences",
+      "layer": "Physical",
+      "aspect": "when",
+      "fields": [
+        "title",
+        "sequence",
+        "timing",
+        "failure_action",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "sequence",
+        "timing"
+      ],
+      "links": {
+        "mechanisms": {
+          "target": "mechanism",
+          "required": true
+        }
+      },
+      "business_parent": [
+        "mechanisms"
+      ]
+    },
+    "data-format": {
+      "prefix": "DF",
+      "collection": "data_formats",
+      "dir": "05-component/data-formats",
+      "layer": "Component",
+      "aspect": "what",
+      "fields": [
+        "title",
+        "schema",
+        "encoding",
+        "validation",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "schema",
+        "encoding"
+      ],
+      "links": {
+        "data_stores": {
+          "target": "data-store",
+          "required": true
+        }
+      },
+      "business_parent": [
+        "data_stores"
+      ]
+    },
+    "identity-entitlement": {
+      "prefix": "IE",
+      "collection": "identity_entitlements",
+      "dir": "05-component/identity-entitlements",
+      "layer": "Component",
+      "aspect": "who",
+      "fields": [
+        "title",
+        "principal",
+        "entitlement",
+        "conditions",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "principal",
+        "entitlement",
+        "owner"
+      ],
+      "links": {
+        "privileges": {
+          "target": "privilege",
+          "required": true
+        },
+        "components": {
+          "target": "component",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "privileges"
+      ]
+    },
+    "endpoint-protocol": {
+      "prefix": "EP",
+      "collection": "endpoint_protocols",
+      "dir": "05-component/endpoint-protocols",
+      "layer": "Component",
+      "aspect": "where",
+      "fields": [
+        "title",
+        "endpoint",
+        "address",
+        "port",
+        "protocol",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "endpoint",
+        "protocol"
+      ],
+      "links": {
+        "components": {
+          "target": "component",
+          "required": true
+        },
+        "platform_zones": {
+          "target": "platform-zone",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "components"
+      ]
+    },
+    "component-timing": {
+      "prefix": "CT",
+      "collection": "component_timings",
+      "dir": "05-component/component-timings",
+      "layer": "Component",
+      "aspect": "when",
+      "fields": [
+        "title",
+        "timeout",
+        "schedule",
+        "rotation_interval",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "schedule"
+      ],
+      "links": {
+        "components": {
+          "target": "component",
+          "required": true
+        },
+        "control_sequences": {
+          "target": "control-sequence",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "components"
+      ]
+    },
+    "support-model": {
+      "prefix": "SU",
+      "collection": "support_models",
+      "dir": "06-service-management/support-models",
+      "layer": "Service Management",
+      "aspect": "who",
+      "fields": [
+        "title",
+        "support_scope",
+        "support_hours",
+        "escalation_path",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "support_scope",
+        "support_hours",
+        "owner"
+      ],
+      "links": {
+        "services": {
+          "target": "service",
+          "required": true
+        },
+        "operations": {
+          "target": "operation",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "services"
+      ]
+    },
+    "operational-location": {
+      "prefix": "OL",
+      "collection": "operational_locations",
+      "dir": "06-service-management/operational-locations",
+      "layer": "Service Management",
+      "aspect": "where",
+      "fields": [
+        "title",
+        "location",
+        "operational_controls",
+        "maintenance_owner",
+        "owner"
+      ],
+      "required": [
+        "title",
+        "location",
+        "operational_controls",
+        "owner"
+      ],
+      "links": {
+        "platform_zones": {
+          "target": "platform-zone",
+          "required": true
+        },
+        "operations": {
+          "target": "operation",
+          "required": false
+        }
+      },
+      "business_parent": [
+        "platform_zones"
+      ]
+    }
+  }
+}

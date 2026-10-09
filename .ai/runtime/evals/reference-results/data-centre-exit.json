@@ -1,0 +1,117 @@
+{
+  "case_id": "data-centre-exit",
+  "roles": [
+    "operational-and-technology-resilience-architect",
+    "cloud-architect",
+    "data-migration-and-cutover-lead",
+    "enterprise-release-manager",
+    "technology-lifecycle-and-decommission-manager",
+    "disaster-recovery-coordinator"
+  ],
+  "workflows": [
+    "resilience-validation",
+    "migration-and-cutover",
+    "service-retirement-and-decommission"
+  ],
+  "requirements_covered": [
+    "REQ-09-1",
+    "REQ-09-2",
+    "REQ-09-3",
+    "REQ-09-4"
+  ],
+  "evidence_links": [
+    "EV-09-1",
+    "EV-09-2",
+    "EV-09-3",
+    "EV-09-4"
+  ],
+  "claims": [
+    {
+      "id": "CLAIM-1",
+      "critical": true,
+      "evidence": [
+        "EV-09-1"
+      ]
+    },
+    {
+      "id": "CLAIM-2",
+      "critical": true,
+      "evidence": [
+        "EV-09-2"
+      ]
+    },
+    {
+      "id": "CLAIM-3",
+      "critical": true,
+      "evidence": [
+        "EV-09-3"
+      ]
+    },
+    {
+      "id": "CLAIM-4",
+      "critical": true,
+      "evidence": [
+        "EV-09-4"
+      ]
+    }
+  ],
+  "decision_rationale": {
+    "chosen_option": "Option A",
+    "alternatives": [
+      "Option A",
+      "Option B"
+    ],
+    "trade_offs": [
+      "cost vs risk",
+      "speed vs control"
+    ],
+    "rationale": "Evidence-backed choice within stated constraints",
+    "residual_risk": "Owned residual risk remains",
+    "decision_owner": "Named authority"
+  },
+  "traceability_links": [
+    "TR-09-1",
+    "TR-09-2",
+    "TR-09-3",
+    "TR-09-4"
+  ],
+  "reviewer_findings": [
+    "DEF-09-1",
+    "DEF-09-2",
+    "DEF-09-3",
+    "DEF-09-4"
+  ],
+  "sod_violations": [],
+  "publications": [
+    "Dependency/failure-domain model",
+    "Migration roadmap",
+    "Cutover readiness",
+    "Decommission evidence record"
+  ],
+  "artifact_status": [
+    {
+      "name": "Dependency/failure-domain model",
+      "ok": true
+    },
+    {
+      "name": "Migration roadmap",
+      "ok": true
+    },
+    {
+      "name": "Cutover readiness",
+      "ok": true
+    },
+    {
+      "name": "Decommission evidence record",
+      "ok": true
+    }
+  ],
+  "visual_qa": {
+    "score": 1.0,
+    "critical_defects": 0
+  },
+  "cross_agent": {
+    "checks": 6,
+    "conflicts": 0
+  }
+}

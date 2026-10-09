@@ -1,0 +1,102 @@
+{
+  "id": "data-platform",
+  "scenario": "Data platform",
+  "description": "Golden enterprise scenario for data platform with cross-role enterprise delivery expectations.",
+  "tags": [
+    "governance",
+    "architecture",
+    "privacy"
+  ],
+  "inputs": {
+    "case_prompt": "Assess and deliver an enterprise-grade data platform outcome. Preserve evidence, authority, traceability and publication quality.",
+    "constraints": [
+      "Use authoritative enterprise facts; do not invent missing evidence",
+      "Respect role decision rights and segregation of duties",
+      "Produce receiving-role acceptance and residual-risk ownership"
+    ]
+  },
+  "expected": {
+    "workflow_routes": [
+      "data-product-delivery",
+      "design-to-operational-readiness"
+    ],
+    "roles": [
+      "data-architect",
+      "data-governance-lead",
+      "data-engineer",
+      "privacy-architect",
+      "platform-engineer",
+      "service-transition-and-operational-readiness-manager"
+    ],
+    "critical_requirements": [
+      {
+        "id": "REQ-08-1",
+        "text": "Authoritative data domains, ownership and quality contracts are defined"
+      },
+      {
+        "id": "REQ-08-2",
+        "text": "Platform architecture separates ingestion/storage/serving/security boundaries"
+      },
+      {
+        "id": "REQ-08-3",
+        "text": "Privacy classification, retention and access rules are enforceable"
+      },
+      {
+        "id": "REQ-08-4",
+        "text": "Operations include SLOs, lineage, observability, support and recovery"
+      }
+    ],
+    "critical_evidence": [
+      "EV-08-1",
+      "EV-08-2",
+      "EV-08-3",
+      "EV-08-4"
+    ],
+    "mandatory_artifacts": [
+      "Data platform architecture",
+      "Data governance/control design",
+      "Data product contract",
+      "Operational handover"
+    ],
+    "traceability_links": [
+      "TR-08-1",
+      "TR-08-2",
+      "TR-08-3",
+      "TR-08-4"
+    ],
+    "decision_rationale": {
+      "alternatives_min": 2,
+      "required_fields": [
+        "chosen_option",
+        "alternatives",
+        "trade_offs",
+        "rationale",
+        "residual_risk",
+        "decision_owner"
+      ]
+    },
+    "seeded_reviewer_defects": [
+      "DEF-08-1",
+      "DEF-08-2",
+      "DEF-08-3",
+      "DEF-08-4"
+    ]
+  },
+  "metrics": [
+    "role_routing_accuracy",
+    "workflow_routing_accuracy",
+    "critical_requirement_coverage",
+    "evidence_linkage",
+    "unsupported_critical_claims",
+    "decision_rationale_quality",
+    "traceability_completeness",
+    "critical_reviewer_defect_recall",
+    "reviewer_false_positive_rate",
+    "sod_violations",
+    "mandatory_publication_coverage",
+    "broken_artifact_production",
+    "visual_quality",
+    "cross_agent_consistency"
+  ],
+  "threshold_profile": "release-26.10"
+}

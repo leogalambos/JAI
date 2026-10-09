@@ -1,0 +1,105 @@
+{
+  "id": "regulated-cloud-migration",
+  "scenario": "Regulated cloud migration",
+  "description": "Golden enterprise scenario for regulated cloud migration with cross-role enterprise delivery expectations.",
+  "tags": [
+    "SABSA",
+    "cloud",
+    "risk",
+    "privacy",
+    "IAM"
+  ],
+  "inputs": {
+    "case_prompt": "Assess and deliver an enterprise-grade regulated cloud migration outcome. Preserve evidence, authority, traceability and publication quality.",
+    "constraints": [
+      "Use authoritative enterprise facts; do not invent missing evidence",
+      "Respect role decision rights and segregation of duties",
+      "Produce receiving-role acceptance and residual-risk ownership"
+    ]
+  },
+  "expected": {
+    "workflow_routes": [
+      "migration-and-cutover",
+      "design-to-operational-readiness",
+      "regulatory-change-to-assurance"
+    ],
+    "roles": [
+      "cloud-architect",
+      "security-architect",
+      "privacy-architect",
+      "identity-and-access-management-architect",
+      "operational-and-technology-resilience-architect",
+      "data-migration-and-cutover-lead"
+    ],
+    "critical_requirements": [
+      {
+        "id": "REQ-01-1",
+        "text": "Residency and regulatory obligations are mapped to architecture decisions"
+      },
+      {
+        "id": "REQ-01-2",
+        "text": "Identity federation/PAM and least-privilege model is defined"
+      },
+      {
+        "id": "REQ-01-3",
+        "text": "RTO/RPO and supplier/cloud failure assumptions are validated"
+      },
+      {
+        "id": "REQ-01-4",
+        "text": "Cutover and rollback preserve control/evidence continuity"
+      }
+    ],
+    "critical_evidence": [
+      "EV-01-1",
+      "EV-01-2",
+      "EV-01-3",
+      "EV-01-4"
+    ],
+    "mandatory_artifacts": [
+      "Cloud target architecture",
+      "Privacy/security risk assessment",
+      "Migration and cutover pack",
+      "Operational readiness assessment"
+    ],
+    "traceability_links": [
+      "TR-01-1",
+      "TR-01-2",
+      "TR-01-3",
+      "TR-01-4"
+    ],
+    "decision_rationale": {
+      "alternatives_min": 2,
+      "required_fields": [
+        "chosen_option",
+        "alternatives",
+        "trade_offs",
+        "rationale",
+        "residual_risk",
+        "decision_owner"
+      ]
+    },
+    "seeded_reviewer_defects": [
+      "DEF-01-1",
+      "DEF-01-2",
+      "DEF-01-3",
+      "DEF-01-4"
+    ]
+  },
+  "metrics": [
+    "role_routing_accuracy",
+    "workflow_routing_accuracy",
+    "critical_requirement_coverage",
+    "evidence_linkage",
+    "unsupported_critical_claims",
+    "decision_rationale_quality",
+    "traceability_completeness",
+    "critical_reviewer_defect_recall",
+    "reviewer_false_positive_rate",
+    "sod_violations",
+    "mandatory_publication_coverage",
+    "broken_artifact_production",
+    "visual_quality",
+    "cross_agent_consistency"
+  ],
+  "threshold_profile": "release-26.10"
+}

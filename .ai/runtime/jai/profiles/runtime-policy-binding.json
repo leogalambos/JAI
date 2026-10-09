@@ -1,0 +1,13 @@
+{
+  "version": "1.0.0",
+  "release": "26.10.4",
+  "policy_ref": "policy:managed-policy",
+  "jai": {
+    "L1": "organisation/environment",
+    "L2": "data classification and semantic scope",
+    "L3": "enforcement order, approvals and denied operations",
+    "L4": "control design",
+    "L5": "filesystem/commands/network/providers/MCP",
+    "L6": "logging and execution evidence"
+  }
+}

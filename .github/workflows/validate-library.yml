@@ -1,0 +1,124 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
+# Source-tree approval gate for AI IT House.
+# Branch protection + a required check puts author/approver separation somewhere no prompt can reach.
+name: validate-library
+
+on:
+  pull_request:
+    paths:
+      - '.ai/**'
+      - '.github/workflows/**'
+      - 'docs/**'
+      - 'overrides/**'
+      - 'hooks/**'
+      - 'scripts/**'
+      - 'tests/**'
+      - 'mkdocs.yml'
+      - 'requirements.txt'
+      - 'README.md'
+      - 'CHANGELOG.md'
+      - 'VERSION'
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pull-requests: read
+
+jobs:
+  policy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install semantic qualification dependencies
+        run: python3 -m pip install --disable-pip-version-check jsonschema lxml "mistune>=3,<4"
+
+      - name: Regression tests for source homepage links and release tags
+        run: python3 -m unittest discover -s tests -v
+
+      - name: Product version and stable artifact contract identity
+        run: python3 scripts/versioning.py check --root .
+
+      - name: Permission model and structural policy
+        run: python3 .ai/runtime/scripts/check_agent_policy.py --fast .
+
+      - name: Artifact Contract v3/JAI and typed taxonomy
+        run: |
+          python3 .ai/runtime/tools/artifacts.py check --root .
+          python3 .ai/runtime/tools/artifacts.py golden-test --root .
+
+      - name: Full semantic schemas
+        run: python3 .ai/runtime/tools/schema_check.py self-test --root .
+
+      - name: SABSA to canonical EA bridge
+        run: python3 .ai/runtime/tools/sabsa_ea.py self-test
+
+      - name: EA repository and interoperability conformance
+        run: |
+          python3 .ai/runtime/tools/repository.py self-test
+          python3 .ai/runtime/tools/ea_conformance.py self-test
+
+      - name: Publication Projection Contract and integrity
+        run: |
+          python3 .ai/runtime/tools/projection.py self-test
+          python3 .ai/runtime/tools/publication.py self-test
+
+      - name: Render-based Visual QA v2
+        run: python3 .ai/runtime/tools/visual_qa.py self-test
+
+      - name: Native agent enforcement and provider parity
+        run: |
+          python3 .ai/runtime/tools/agent_runtime.py self-test
+          PYTHONPATH=.ai/runtime/tools python3 .ai/runtime/tools/provider_parity.py
+
+      - name: GA regression gate
+        run: python3 .ai/runtime/tools/qualification_regression.py
+
+      - name: Canonical documentation and generated CLI guide drift
+        run: |
+          python3 .ai/runtime/tools/generate_docs.py --check --root .
+          python3 .ai/runtime/tools/docs_contract.py --root .
+          git diff --exit-code -- README.md .ai/runtime/README.md .ai/runtime/_meta/release-manifest.json .ai/runtime/GUIDE.md VALIDATION.md
+
+      - name: Gate checker positive and negative regression
+        run: |
+          printf 'G1: pass\nG2: pass\nG3: pass\nG4: pass\nG5: pass\n' > /tmp/gc-pass.txt
+          python3 .ai/skills/it-roles-architecture/scripts/check_gates.py \
+            --skill .ai/skills/it-roles-architecture/references/solution-architect.md \
+            /tmp/gc-pass.txt
+          printf 'G1: pass\n' > /tmp/gc-incomplete.txt
+          if python3 .ai/skills/it-roles-architecture/scripts/check_gates.py \
+            --skill .ai/skills/it-roles-architecture/references/solution-architect.md \
+            /tmp/gc-incomplete.txt; then
+            echo '::error::An incomplete gate set was incorrectly accepted'
+            exit 1
+          fi
+
+      - name: Reject a self-approved change
+        if: github.event_name == 'pull_request'
+        run: |
+          set -eu
+          AUTHOR="${{ github.event.pull_request.user.login }}"
+          PR_NUMBER="${{ github.event.pull_request.number }}"
+          # Fail closed if reviews cannot be queried; an empty successful result
+          # means no approvals yet, not proof that another user approved.
+          if ! APPROVERS="$(gh pr view "$PR_NUMBER" --json reviews \
+              --jq '.reviews[]|select(.state=="APPROVED").author.login' 2>&1)"; then
+            echo "::error::Unable to verify independent approval: $APPROVERS"
+            exit 1
+          fi
+          for R in $APPROVERS; do
+            if [ "$R" = "$AUTHOR" ]; then
+              echo "::error::$AUTHOR both authored and approved this change"
+              exit 1
+            fi
+          done
+        env:
+          GH_TOKEN: ${{ github.token }}

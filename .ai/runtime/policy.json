@@ -1,0 +1,397 @@
+{
+  "version": "2.2.0",
+  "tiers": {
+    "advise": "Read, Grep, Glob, WebSearch",
+    "inspect": "Read, Grep, Glob, WebSearch, Bash",
+    "author": "Read, Grep, Glob, WebSearch, Write, Edit",
+    "execute": "Read, Grep, Glob, WebSearch, Write, Edit, Bash",
+    "route": "Read, Grep, Glob",
+    "orchestrate": "Read, Grep, Glob, Bash, Task, Agent",
+    "research": "Read, Grep, Glob, WebSearch, WebFetch"
+  },
+  "agent_tier": {
+    "role-router": "route",
+    "role-advisor": "advise",
+    "role-author": "author",
+    "role-engineer": "execute",
+    "gate-auditor": "inspect",
+    "codebase-reviewer": "inspect",
+    "sod-reviewer": "route",
+    "engagement-authorisation-guard": "route",
+    "library-author": "author",
+    "library-approver": "inspect",
+    "library-release": "execute",
+    "docs-author": "author",
+    "source-docs-engineer": "execute",
+    "l1-intent": "route",
+    "l2-meaning": "advise",
+    "l3-policy": "advise",
+    "l4-design": "advise",
+    "l5-realisation": "author",
+    "l6-evidence": "inspect",
+    "fabric-auditor": "inspect",
+    "authority-liaison": "route",
+    "document-reviewer": "inspect",
+    "artefact-governor": "inspect",
+    "research-analyst": "research",
+    "experiment-engineer": "execute",
+    "sabsa-architect": "author",
+    "sabsa-reviewer": "inspect",
+    "defect-analyst": "inspect",
+    "evidence-rationale-reviewer": "inspect",
+    "enterprise-publication-editor": "execute",
+    "visual-quality-reviewer": "inspect",
+    "architecture-repository-engineer": "execute",
+    "model-consistency-reviewer": "inspect"
+  },
+  "layers": {
+    "1": {
+      "name": "Intent and Context",
+      "agent": "l1-intent",
+      "tier": "route",
+      "model_class": "heavy"
+    },
+    "2": {
+      "name": "Meaning and Domain Model",
+      "agent": "l2-meaning",
+      "tier": "advise",
+      "model_class": "standard"
+    },
+    "3": {
+      "name": "Reasoning, Policy and Control",
+      "agent": "l3-policy",
+      "tier": "advise",
+      "model_class": "heavy"
+    },
+    "4": {
+      "name": "Solution Design",
+      "agent": "l4-design",
+      "tier": "advise",
+      "model_class": "standard"
+    },
+    "5": {
+      "name": "Realisation and Tooling",
+      "agent": "l5-realisation",
+      "tier": "author",
+      "model_class": "heavy"
+    },
+    "6": {
+      "name": "Execution and Evidence",
+      "agent": "l6-evidence",
+      "tier": "inspect",
+      "model_class": "standard"
+    }
+  },
+  "operator_for_tier": {
+    "advise": "role-advisor",
+    "inspect": "codebase-reviewer",
+    "author": "role-author",
+    "execute": "role-engineer"
+  },
+  "write_scope": {
+    "role-router": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
+    },
+    "role-advisor": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
+    },
+    "codebase-reviewer": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
+    },
+    "gate-auditor": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
+    },
+    "sod-reviewer": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
+    },
+    "engagement-authorisation-guard": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
+    },
+    "library-approver": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
+    },
+    "role-author": {
+      "allow": [
+        "<workspace>/**"
+      ],
+      "deny": [
+        "~/.claude/**"
+      ]
+    },
+    "role-engineer": {
+      "allow": [
+        "<workspace>/**"
+      ],
+      "deny": [
+        "~/.claude/**"
+      ]
+    },
+    "docs-author": {
+      "allow": [
+        "<workspace>/docs/**",
+        "<workspace>/site/**",
+        "<workspace>/content/**",
+        "<workspace>/wiki/**",
+        "**/*.md",
+        "**/*.mdx",
+        "**/*.rst",
+        "**/*.adoc"
+      ],
+      "deny": [
+        "~/.claude/**",
+        "**/*.java",
+        "**/*.py",
+        "**/*.ts",
+        "**/*.js",
+        "**/*.go",
+        "**/*.cs",
+        "**/*.rb",
+        "**/*.kt"
+      ]
+    },
+    "source-docs-engineer": {
+      "allow": [
+        "<workspace>/**"
+      ],
+      "deny": [
+        "~/.claude/**",
+        "**/generated/**"
+      ]
+    },
+    "library-author": {
+      "allow": [
+        "~/.ai/it-role-house/staging/**"
+      ],
+      "deny": [
+        "~/.ai/it-role-house/skills/**",
+        "~/.ai/it-role-house/agents/**"
+      ]
+    },
+    "library-release": {
+      "allow": [
+        "~/.claude/**"
+      ],
+      "deny": []
+    },
+    "l1-intent": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
+    },
+    "l2-meaning": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
+    },
+    "l3-policy": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
+    },
+    "l4-design": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
+    },
+    "l5-realisation": {
+      "allow": [
+        "<workspace>/**"
+      ],
+      "deny": [
+        "~/.claude/**",
+        "**/.fabric/**"
+      ]
+    },
+    "l6-evidence": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
+    },
+    "fabric-auditor": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
+    },
+    "authority-liaison": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
+    },
+    "document-reviewer": {
+      "allow": [
+        "<workspace>/.findings/** via findings.py"
+      ],
+      "deny": [
+        "**"
+      ]
+    },
+    "artefact-governor": {
+      "allow": [
+        "<workspace>/.findings/** via findings.py"
+      ],
+      "deny": [
+        "**"
+      ]
+    },
+    "sabsa-reviewer": {
+      "allow": [
+        "<workspace>/.findings/** via findings.py"
+      ],
+      "deny": [
+        "**"
+      ]
+    },
+    "defect-analyst": {
+      "allow": [
+        "<workspace>/.findings/** via findings.py",
+        "temporary worktrees via defect.py"
+      ],
+      "deny": [
+        "**"
+      ]
+    },
+    "research-analyst": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
+    },
+    "experiment-engineer": {
+      "allow": [
+        "<workspace>/experiments/**"
+      ],
+      "deny": [
+        "~/.claude/**",
+        "**/.fabric/**",
+        "**/.findings/**"
+      ]
+    },
+    "sabsa-architect": {
+      "allow": [
+        "<sabsa-library>/**"
+      ],
+      "deny": [
+        "~/.claude/**",
+        "**/.fabric/**",
+        "**/.findings/**"
+      ]
+    },
+    "evidence-rationale-reviewer": {
+      "allow": [
+        "<workspace>/.findings/** via findings.py"
+      ],
+      "deny": [
+        "**"
+      ]
+    },
+    "enterprise-publication-editor": {
+      "allow": [
+        "<workspace>/**"
+      ],
+      "deny": [
+        "~/.claude/**",
+        "~/.ai/it-role-house/**"
+      ]
+    },
+    "visual-quality-reviewer": {
+      "allow": [
+        "<workspace>/.findings/** via findings.py"
+      ],
+      "deny": [
+        "**"
+      ]
+    },
+    "architecture-repository-engineer": {
+      "allow": [
+        "<workspace>/**"
+      ],
+      "deny": [
+        "~/.claude/**",
+        "~/.ai/it-role-house/**"
+      ]
+    },
+    "model-consistency-reviewer": {
+      "allow": [
+        "<workspace>/.findings/** via findings.py"
+      ],
+      "deny": [
+        "**"
+      ]
+    }
+  },
+  "enforcement": {
+    "tool_types": "agent frontmatter `tools`",
+    "paths": "guard_library_write.py, from the install manifest, for the package's own files; settings.json Edit/Read deny rules for records, the key and settings.json itself",
+    "approval": "hooks/guard_library_write.py + scripts/approve_change.py",
+    "primary": "git branch protection with check_agent_policy.py as a required CI check",
+    "caveat": "write_scope above is declarative. Tool permissions constrain types, not targets, so scope is enforced by the hooks and deny rules, not by the agent definition."
+  },
+  "separation_of_duties": {
+    "library": [
+      "library-author drafts into staging",
+      "library-approver reviews and holds no Write",
+      "a human records approval outside the agent layer",
+      "library-release applies and consumes the record"
+    ],
+    "documentation": [
+      "docs-author writes the documentation tree only",
+      "source-docs-engineer edits source files and is bound by code review, not by permissions"
+    ],
+    "publication": [
+      "owning specialist produces or approves the semantic source",
+      "evidence-rationale-reviewer verifies claims, evidence, assumptions and rationale and holds no general Write",
+      "enterprise-publication-editor may transform presentation but must preserve the semantic hash and may not invent claims or decisions",
+      "visual-quality-reviewer reviews rendered outputs and holds no general Write",
+      "named business/architecture/risk authority approves release where required"
+    ]
+  },
+  "guarded_categories": [
+    "it-roles-offensive-security-and-adversarial-testing"
+  ],
+  "skill_tier_counts": {
+    "advise": 59,
+    "author": 110,
+    "execute": 93,
+    "inspect": 3
+  },
+  "invariants": [
+    "Every skill declares allowed-tools; nothing inherits the full tool surface.",
+    "An agent's tools must be a subset of the tier it is bound to.",
+    "An advise-tier skill must never be operated by an agent holding Write, Edit or Bash.",
+    "Every skill in a guarded category must be route or advise tier and cleared by engagement-authorisation-guard.",
+    "No agent both drafts and approves a library change.",
+    "Writes into the live library require a current, scoped, human-recorded approval.",
+    "docs-author may not write source files; source-docs-engineer may not change behaviour.",
+    "No role is ever operated by an agent wider than the narrower of its own tier and its layer agent's.",
+    "Adjacent layer agents use different models, so no reviewer shares its producer's model (T6).",
+    "The traceability fabric is written only by fabric.py; authority decisions only by a human at a terminal."
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "registry_version": "1.1.0",
+  "release": "26.10.4",
+  "fallback_class": "standard",
+  "configuration": {
+    "override_file_default": "~/.config/ai-it-house/models.json",
+    "override_environment": "AI_HOUSE_MODEL_CONFIG",
+    "principle": "Canonical agents select workload classes. Provider adapters resolve those classes to provider-specific model and reasoning settings; provider-native controls are applied only at the execution boundary."
+  },
+  "workload_classes": {
+    "light": {
+      "complexity_order": 10,
+      "description": "Fast routing, classification, inventory and low-risk bounded tasks.",
+      "reasoning_profile": "low"
+    },
+    "standard": {
+      "complexity_order": 20,
+      "description": "Normal enterprise authoring, review and structured analysis.",
+      "reasoning_profile": "medium"
+    },
+    "heavy": {
+      "complexity_order": 30,
+      "description": "Complex architecture, diagnosis, policy and consequential synthesis.",
+      "reasoning_profile": "high"
+    },
+    "research": {
+      "complexity_order": 40,
+      "description": "Extreme-complexity, research, novel-method and high-uncertainty work.",
+      "reasoning_profile": "maximum-supported"
+    }
+  },
+  "providers": {
+    "claude": {
+      "display_name": "Anthropic Claude / Claude Code",
+      "adapter": "claude",
+      "selection_strategy": "explicit-per-agent",
+      "classes": {
+        "light": {
+          "model_selector": "haiku"
+        },
+        "standard": {
+          "model_selector": "sonnet"
+        },
+        "heavy": {
+          "model_selector": "opus"
+        },
+        "research": {
+          "model_selector": "opus"
+        }
+      },
+      "strategy_scope": "project-internal"
+    },
+    "codex": {
+      "display_name": "OpenAI Codex / ChatGPT model family",
+      "adapter": "codex",
+      "selection_strategy": "project-managed-explicit-class-routing",
+      "native_controls": {
+        "model": "Codex CLI --model / config model",
+        "reasoning_effort": "Codex CLI model_reasoning_effort",
+        "availability": "provider model catalogue / host session"
+      },
+      "classes": {
+        "light": {
+          "model_selector": "gpt-6-luna",
+          "reasoning_effort": "low",
+          "fallbacks": [
+            {
+              "model_selector": "gpt-5.6-luna",
+              "reasoning_effort": "low"
+            },
+            {
+              "model_selector": "inherit"
+            }
+          ]
+        },
+        "standard": {
+          "model_selector": "gpt-6.1-sol",
+          "reasoning_effort": "medium",
+          "fallbacks": [
+            {
+              "model_selector": "gpt-5.6-sol",
+              "reasoning_effort": "medium"
+            },
+            {
+              "model_selector": "inherit"
+            }
+          ]
+        },
+        "heavy": {
+          "model_selector": "gpt-6-astra",
+          "reasoning_effort": "high",
+          "fallbacks": [
+            {
+              "model_selector": "gpt-6.1-sol",
+              "reasoning_effort": "high"
+            },
+            {
+              "model_selector": "gpt-5.6-sol",
+              "reasoning_effort": "high"
+            },
+            {
+              "model_selector": "inherit"
+            }
+          ]
+        },
+        "research": {
+          "model_selector": "gpt-6-astra",
+          "reasoning_effort": "xhigh",
+          "fallbacks": [
+            {
+              "model_selector": "gpt-6.1-sol",
+              "reasoning_effort": "xhigh"
+            },
+            {
+              "model_selector": "gpt-5.6-sol",
+              "reasoning_effort": "xhigh"
+            },
+            {
+              "model_selector": "inherit"
+            }
+          ]
+        }
+      },
+      "strategy_scope": "project-internal"
+    }
+  }
+}

@@ -1,0 +1,71 @@
+{
+  "organisation": "default-enterprise",
+  "environment": "production",
+  "enforcement_order": [
+    "enterprise_policy",
+    "sandbox",
+    "agent_permission_set",
+    "tool_allowlist",
+    "managed_hooks",
+    "prompt_instructions"
+  ],
+  "filesystem": {
+    "default": "deny",
+    "workspace": "contract",
+    "library": "approval-required"
+  },
+  "commands": {
+    "default": "deny",
+    "allow": "contract-only"
+  },
+  "network": {
+    "default": "deny",
+    "allow": "provider/contract allowlist"
+  },
+  "providers": [
+    "claude",
+    "codex"
+  ],
+  "mcp_servers": [],
+  "approval_rules": [
+    {
+      "operation": "policy-change",
+      "approval": "human"
+    },
+    {
+      "operation": "release-approval",
+      "approval": "independent-human"
+    }
+  ],
+  "denied_operations": [
+    "reviewer-write",
+    "self-approval",
+    "policy-mutation-without-approval",
+    "restricted-mcp-via-shell"
+  ],
+  "data_classification": {
+    "default": "Internal",
+    "restricted_network_for": [
+      "Confidential",
+      "Restricted"
+    ]
+  },
+  "logging": {
+    "decision_events": true,
+    "denials": true,
+    "approvals": true
+  },
+  "exception_process": "Explicit exception record approved by an authorised human; exceptions are scoped, expiring and auditable.",
+  "jai_profile": {
+    "profile": "runtime",
+    "layers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "binding_ref": "jai/profiles/runtime-policy-binding.json"
+  }
+}

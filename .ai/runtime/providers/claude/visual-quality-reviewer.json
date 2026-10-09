@@ -1,0 +1,26 @@
+{
+  "name": "visual-quality-reviewer",
+  "provider": "claude",
+  "workload_class": "standard",
+  "selection_strategy": "explicit-per-agent",
+  "strategy_scope": "project-internal",
+  "model_selector": "sonnet",
+  "tools": [
+    "Read",
+    "Grep",
+    "Glob"
+  ],
+  "deny": [
+    "Write",
+    "Edit"
+  ],
+  "sandbox": {
+    "mode": "read-only",
+    "workspace_write": false,
+    "network": "provider-managed"
+  },
+  "approval_required_for": [
+    "policy-change",
+    "release-approval"
+  ]
+}

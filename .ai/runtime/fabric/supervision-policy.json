@@ -1,0 +1,43 @@
+{
+  "schema": 1,
+  "name": "layered-justifiable-supervision",
+  "description": "Finite deterministic transition policy replacing the paper's restricted Prolog next_step core when a Prolog interpreter is unavailable.",
+  "failure_classes": {
+    "retryable": ["failed", "unavailable", "timeout", "ambiguous", "insufficient"],
+    "contradictory": ["contradicted", "conflicting"]
+  },
+  "rules": [
+    {
+      "id": "R1-local-repair",
+      "when": "retryable AND rework_remaining > 0 AND shared_budget_remaining > 0",
+      "action": "rework_same_requirement",
+      "human": false
+    },
+    {
+      "id": "R2-local-exhausted",
+      "when": "retryable AND (rework_remaining = 0 OR shared_budget_remaining = 0)",
+      "action": "escalate_exhausted_or_budget",
+      "human": false
+    },
+    {
+      "id": "R3-contradiction",
+      "when": "contradictory",
+      "action": "escalate_contradiction",
+      "human": false
+    },
+    {
+      "id": "R4-operator-boundary",
+      "when": "escalation reaches L1 and cannot be reformulated, or authority matter, or round budget exhausted",
+      "action": "operator_decision_with_dossier",
+      "human": true
+    }
+  ],
+  "invariants": [
+    "rework preserves what, why, evidence and escalate_if",
+    "reformulation is owned by the layer that issued the requirement",
+    "all continuation-capable transitions consume one shared episode budget",
+    "budget exhaustion never blocks escalation to the human authority",
+    "failed attempts remain explicit records and are never omitted from the dossier",
+    "context_digest binds each agent result to its rendered context packet"
+  ]
+}

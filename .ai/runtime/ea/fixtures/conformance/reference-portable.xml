@@ -1,0 +1,151 @@
+<?xml version='1.0' encoding='utf-8'?>
+<model xmlns="http://www.opengroup.org/xsd/archimate/3.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" identifier="fixture-repo" version="3.2">
+  <name xml:lang="en">Reference Portable Fixture</name>
+  <documentation xml:lang="en">AI IT House 26.10.0 repository exchange; revision 6a0de93976cf59bc1671b9b749e1a1696a92a46672408ea4bc30246522eedbab</documentation>
+  <elements>
+    <element identifier="e-a" xsi:type="BusinessActor">
+      <name xml:lang="en">Customer</name>
+      <documentation xml:lang="en">Actor</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-9a30b86ca2ab9903">
+          <value xml:lang="en">current</value>
+        </property>
+        <property propertyDefinitionRef="pd-db4442b881312247">
+          <value xml:lang="en">active</value>
+        </property>
+        <property propertyDefinitionRef="pd-81e8f02614597cc7">
+          <value xml:lang="en">Business Owner</value>
+        </property>
+        <property propertyDefinitionRef="pd-21f70217b870cc64">
+          <value xml:lang="en">P1</value>
+        </property>
+        <property propertyDefinitionRef="pd-79088f0f3326ce2f">
+          <value xml:lang="en">{"ea_type":"element","archimate_type":"BusinessActor","specialization":"SABSA Business Actor","mapping_version":"26.10.0","source_hash":"0000000000000000000000000000000000000000000000000000000000000000","bridge":"sabsa-ea-26.10"}</value>
+        </property>
+        <property propertyDefinitionRef="pd-a359a434af9141d3">
+          <value xml:lang="en">e-a</value>
+        </property>
+        <property propertyDefinitionRef="pd-90c0863f7404e48a">
+          <value xml:lang="en">{"model":"SABSA","stable_id":"AC-001","sabsa_layer":"Contextual","sabsa_question":"who","sabsa_element_type":"business-actor","source_path":"01-contextual/business-actors/AC-001.md","origin_library":"reference"}</value>
+        </property>
+        <property propertyDefinitionRef="pd-3d75508ee4c871ed">
+          <value xml:lang="en">["SABSA:AC-001"]</value>
+        </property>
+      </properties>
+    </element>
+    <element identifier="e-p" xsi:type="BusinessProcess">
+      <name xml:lang="en">Purchase</name>
+      <documentation xml:lang="en">Process</documentation>
+      <properties>
+        <property propertyDefinitionRef="pd-9a30b86ca2ab9903">
+          <value xml:lang="en">current</value>
+        </property>
+        <property propertyDefinitionRef="pd-db4442b881312247">
+          <value xml:lang="en">active</value>
+        </property>
+        <property propertyDefinitionRef="pd-81e8f02614597cc7">
+          <value xml:lang="en">Process Owner</value>
+        </property>
+        <property propertyDefinitionRef="pd-21f70217b870cc64">
+          <value xml:lang="en">P1</value>
+        </property>
+        <property propertyDefinitionRef="pd-79088f0f3326ce2f">
+          <value xml:lang="en">{"ea_type":"element","archimate_type":"BusinessProcess","specialization":"SABSA Business Process","mapping_version":"26.10.0","source_hash":"1111111111111111111111111111111111111111111111111111111111111111","bridge":"sabsa-ea-26.10"}</value>
+        </property>
+        <property propertyDefinitionRef="pd-a359a434af9141d3">
+          <value xml:lang="en">e-p</value>
+        </property>
+        <property propertyDefinitionRef="pd-90c0863f7404e48a">
+          <value xml:lang="en">{"model":"SABSA","stable_id":"BP-001","sabsa_layer":"Contextual","sabsa_question":"how","sabsa_element_type":"business-process","source_path":"01-contextual/business-processes/BP-001.md","origin_library":"reference"}</value>
+        </property>
+        <property propertyDefinitionRef="pd-3d75508ee4c871ed">
+          <value xml:lang="en">["SABSA:BP-001"]</value>
+        </property>
+      </properties>
+    </element>
+  </elements>
+  <relationships>
+    <relationship identifier="r-1" source="e-a" target="e-p" xsi:type="Assignment">
+      <name xml:lang="en">performs</name>
+      <properties>
+        <property propertyDefinitionRef="pd-db4442b881312247">
+          <value xml:lang="en">active</value>
+        </property>
+        <property propertyDefinitionRef="pd-81e8f02614597cc7">
+          <value xml:lang="en">EA Owner</value>
+        </property>
+        <property propertyDefinitionRef="pd-21f70217b870cc64">
+          <value xml:lang="en">P1</value>
+        </property>
+        <property propertyDefinitionRef="pd-a359a434af9141d3">
+          <value xml:lang="en">r-1</value>
+        </property>
+      </properties>
+    </relationship>
+  </relationships>
+  <propertyDefinitions>
+    <propertyDefinition identifier="pd-b487ce6f8f2f0035" type="string">
+      <name xml:lang="en">AIITHouse.Audience</name>
+    </propertyDefinition>
+    <propertyDefinition identifier="pd-9a30b86ca2ab9903" type="string">
+      <name xml:lang="en">AIITHouse.Horizon</name>
+    </propertyDefinition>
+    <propertyDefinition identifier="pd-9ce2eed8e1106000" type="string">
+      <name xml:lang="en">AIITHouse.IncludeRetired</name>
+    </propertyDefinition>
+    <propertyDefinition identifier="pd-db4442b881312247" type="string">
+      <name xml:lang="en">AIITHouse.Lifecycle</name>
+    </propertyDefinition>
+    <propertyDefinition identifier="pd-81e8f02614597cc7" type="string">
+      <name xml:lang="en">AIITHouse.Owner</name>
+    </propertyDefinition>
+    <propertyDefinition identifier="pd-21f70217b870cc64" type="string">
+      <name xml:lang="en">AIITHouse.Project</name>
+    </propertyDefinition>
+    <propertyDefinition identifier="pd-79088f0f3326ce2f" type="string">
+      <name xml:lang="en">AIITHouse.Projection</name>
+    </propertyDefinition>
+    <propertyDefinition identifier="pd-26e181128b01bcee" type="string">
+      <name xml:lang="en">AIITHouse.Projects</name>
+    </propertyDefinition>
+    <propertyDefinition identifier="pd-ec22627f8abc0ce7" type="string">
+      <name xml:lang="en">AIITHouse.Purpose</name>
+    </propertyDefinition>
+    <propertyDefinition identifier="pd-a359a434af9141d3" type="string">
+      <name xml:lang="en">AIITHouse.RepositoryId</name>
+    </propertyDefinition>
+    <propertyDefinition identifier="pd-90c0863f7404e48a" type="string">
+      <name xml:lang="en">AIITHouse.Source</name>
+    </propertyDefinition>
+    <propertyDefinition identifier="pd-3d75508ee4c871ed" type="string">
+      <name xml:lang="en">AIITHouse.SourceRefs</name>
+    </propertyDefinition>
+  </propertyDefinitions>
+  <views>
+    <diagrams>
+      <view identifier="v-1" xsi:type="Diagram" viewpoint="Organization">
+        <name xml:lang="en">Reference view</name>
+        <node identifier="node-v-1-e-a" elementRef="e-a" xsi:type="Element" x="60" y="80" w="180" h="60" />
+        <node identifier="node-v-1-e-p" elementRef="e-p" xsi:type="Element" x="280" y="80" w="180" h="60" />
+        <connection identifier="conn-v-1-r-1" relationshipRef="r-1" xsi:type="Relationship" source="node-v-1-e-a" target="node-v-1-e-p" />
+        <properties>
+          <property propertyDefinitionRef="pd-b487ce6f8f2f0035">
+            <value xml:lang="en">["Architecture"]</value>
+          </property>
+          <property propertyDefinitionRef="pd-9ce2eed8e1106000">
+            <value xml:lang="en">False</value>
+          </property>
+          <property propertyDefinitionRef="pd-26e181128b01bcee">
+            <value xml:lang="en">["P1"]</value>
+          </property>
+          <property propertyDefinitionRef="pd-ec22627f8abc0ce7">
+            <value xml:lang="en">Conformance fixture</value>
+          </property>
+          <property propertyDefinitionRef="pd-a359a434af9141d3">
+            <value xml:lang="en">v-1</value>
+          </property>
+        </properties>
+      </view>
+    </diagrams>
+  </views>
+</model>

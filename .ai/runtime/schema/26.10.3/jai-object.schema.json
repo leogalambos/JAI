@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10.3/jai-object.schema.json",
+  "title": "JAIObject",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "object_type",
+    "version",
+    "jai"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "object_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "canonical_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "jai": {
+      "$ref": "jai-layer-binding.schema.json"
+    },
+    "payload": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,116 @@
+{
+  "case_id": "ai-solution-approval",
+  "roles": [
+    "ai-governance-officer",
+    "machine-learning-engineer",
+    "data-architect",
+    "privacy-architect",
+    "it-risk-manager",
+    "solution-architect"
+  ],
+  "workflows": [
+    "ai-system-approval",
+    "design-to-operational-readiness"
+  ],
+  "requirements_covered": [
+    "REQ-07-1",
+    "REQ-07-2",
+    "REQ-07-3",
+    "REQ-07-4"
+  ],
+  "evidence_links": [
+    "EV-07-1",
+    "EV-07-2",
+    "EV-07-3",
+    "EV-07-4"
+  ],
+  "claims": [
+    {
+      "id": "CLAIM-1",
+      "critical": true,
+      "evidence": [
+        "EV-07-1"
+      ]
+    },
+    {
+      "id": "CLAIM-2",
+      "critical": true,
+      "evidence": [
+        "EV-07-2"
+      ]
+    },
+    {
+      "id": "CLAIM-3",
+      "critical": true,
+      "evidence": [
+        "EV-07-3"
+      ]
+    },
+    {
+      "id": "CLAIM-4",
+      "critical": true,
+      "evidence": [
+        "EV-07-4"
+      ]
+    }
+  ],
+  "decision_rationale": {
+    "chosen_option": "Option A",
+    "alternatives": [
+      "Option A",
+      "Option B"
+    ],
+    "trade_offs": [
+      "cost vs risk",
+      "speed vs control"
+    ],
+    "rationale": "Evidence-backed choice within stated constraints",
+    "residual_risk": "Owned residual risk remains",
+    "decision_owner": "Named authority"
+  },
+  "traceability_links": [
+    "TR-07-1",
+    "TR-07-2",
+    "TR-07-3",
+    "TR-07-4"
+  ],
+  "reviewer_findings": [
+    "DEF-07-1",
+    "DEF-07-2",
+    "DEF-07-3",
+    "DEF-07-4"
+  ],
+  "sod_violations": [],
+  "publications": [
+    "AI use-case decision",
+    "Risk assessment",
+    "Evaluation/test report",
+    "Operational readiness assessment"
+  ],
+  "artifact_status": [
+    {
+      "name": "AI use-case decision",
+      "ok": true
+    },
+    {
+      "name": "Risk assessment",
+      "ok": true
+    },
+    {
+      "name": "Evaluation/test report",
+      "ok": true
+    },
+    {
+      "name": "Operational readiness assessment",
+      "ok": true
+    }
+  ],
+  "visual_qa": {
+    "score": 1.0,
+    "critical_defects": 0
+  },
+  "cross_agent": {
+    "checks": 6,
+    "conflicts": 0
+  }
+}

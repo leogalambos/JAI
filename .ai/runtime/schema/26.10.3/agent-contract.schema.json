@@ -1,0 +1,162 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10.3/agent-contract.schema.json",
+  "title": "AgentContract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "purpose",
+    "provider",
+    "authority_boundary",
+    "workload_class",
+    "skills",
+    "permissions",
+    "allowed_tools",
+    "denied_tools",
+    "sandbox",
+    "mutation_allowed",
+    "audit_level"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "purpose": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provider": {
+      "enum": [
+        "provider-neutral",
+        "claude",
+        "codex"
+      ]
+    },
+    "authority_boundary": {
+      "enum": [
+        "read-only-review",
+        "write-authoring",
+        "orchestration",
+        "release"
+      ]
+    },
+    "skills": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "permissions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "filesystem",
+        "shell",
+        "network",
+        "git",
+        "mcp"
+      ],
+      "properties": {
+        "filesystem": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "shell": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "network": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "git": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "mcp": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "allowed_tools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "denied_tools": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "sandbox": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "mode",
+        "workspace_write"
+      ],
+      "properties": {
+        "mode": {
+          "enum": [
+            "read-only",
+            "workspace-write",
+            "isolated-write"
+          ]
+        },
+        "workspace_write": {
+          "type": "boolean"
+        },
+        "network": {
+          "enum": [
+            "deny",
+            "allowlisted",
+            "provider-managed"
+          ]
+        }
+      }
+    },
+    "mutation_allowed": {
+      "type": "boolean"
+    },
+    "escalation": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "approval_required_for": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "audit_level": {
+      "enum": [
+        "standard",
+        "high",
+        "immutable"
+      ]
+    },
+    "workload_class": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

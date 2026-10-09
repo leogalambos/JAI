@@ -1,0 +1,105 @@
+{
+  "id": "critical-service-redesign",
+  "scenario": "Critical service redesign",
+  "description": "Golden enterprise scenario for critical service redesign with cross-role enterprise delivery expectations.",
+  "tags": [
+    "service",
+    "architecture",
+    "DR",
+    "operations"
+  ],
+  "inputs": {
+    "case_prompt": "Assess and deliver an enterprise-grade critical service redesign outcome. Preserve evidence, authority, traceability and publication quality.",
+    "constraints": [
+      "Use authoritative enterprise facts; do not invent missing evidence",
+      "Respect role decision rights and segregation of duties",
+      "Produce receiving-role acceptance and residual-risk ownership"
+    ]
+  },
+  "expected": {
+    "workflow_routes": [
+      "resilience-validation",
+      "design-to-operational-readiness",
+      "siam-multi-supplier"
+    ],
+    "roles": [
+      "it-service-owner",
+      "solution-architect",
+      "operational-and-technology-resilience-architect",
+      "siam-manager",
+      "site-reliability-engineer",
+      "service-transition-and-operational-readiness-manager"
+    ],
+    "critical_requirements": [
+      {
+        "id": "REQ-10-1",
+        "text": "Business impact tolerance drives architecture and service objectives"
+      },
+      {
+        "id": "REQ-10-2",
+        "text": "Shared/supplier failure domains and end-to-end SLAs/OLAs are explicit"
+      },
+      {
+        "id": "REQ-10-3",
+        "text": "Resilience claims are exercised and failed claims remediated/retested"
+      },
+      {
+        "id": "REQ-10-4",
+        "text": "Operational handover names on-call, monitoring, CMDB, DR and supplier escalation"
+      }
+    ],
+    "critical_evidence": [
+      "EV-10-1",
+      "EV-10-2",
+      "EV-10-3",
+      "EV-10-4"
+    ],
+    "mandatory_artifacts": [
+      "Service design",
+      "Resilience design",
+      "Exercise evidence",
+      "Operational handover",
+      "Shared service acceptance"
+    ],
+    "traceability_links": [
+      "TR-10-1",
+      "TR-10-2",
+      "TR-10-3",
+      "TR-10-4"
+    ],
+    "decision_rationale": {
+      "alternatives_min": 2,
+      "required_fields": [
+        "chosen_option",
+        "alternatives",
+        "trade_offs",
+        "rationale",
+        "residual_risk",
+        "decision_owner"
+      ]
+    },
+    "seeded_reviewer_defects": [
+      "DEF-10-1",
+      "DEF-10-2",
+      "DEF-10-3",
+      "DEF-10-4"
+    ]
+  },
+  "metrics": [
+    "role_routing_accuracy",
+    "workflow_routing_accuracy",
+    "critical_requirement_coverage",
+    "evidence_linkage",
+    "unsupported_critical_claims",
+    "decision_rationale_quality",
+    "traceability_completeness",
+    "critical_reviewer_defect_recall",
+    "reviewer_false_positive_rate",
+    "sod_violations",
+    "mandatory_publication_coverage",
+    "broken_artifact_production",
+    "visual_quality",
+    "cross_agent_consistency"
+  ],
+  "threshold_profile": "release-26.10"
+}

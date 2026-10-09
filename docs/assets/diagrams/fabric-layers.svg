@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" role="img" aria-label="Justifiable Fabric layers">
+<defs><linearGradient id="lg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#0d2f4c"/><stop offset="1" stop-color="#146a97"/></linearGradient><marker id="up" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0,8 L4,0 L8,8" fill="none" stroke="#46bce6" stroke-width="2"/></marker></defs>
+<rect width="100%" height="100%" rx="22" fill="#f6fafc" stroke="#d6e6ee"/>
+<text x="50" y="42" font-family="Inter,Arial" font-size="24" font-weight="700" fill="#0b1f33">Justifiable Fabric layers</text>
+<rect x="135" y="70" width="630" height="62" rx="12" fill="url(#lg)"/>
+<text x="450.0" y="102.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial" font-size="16" font-weight="650" fill="#fff">L0 · Human authority</text>
+<path d="M 450.0 132 L 450.0 146" stroke="#46bce6" stroke-width="3"/>
+<rect x="129" y="150" width="642" height="62" rx="12" fill="url(#lg)"/>
+<text x="450.0" y="182.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial" font-size="16" font-weight="650" fill="#fff">L1 · Intent and context</text>
+<path d="M 450.0 212 L 450.0 226" stroke="#46bce6" stroke-width="3"/>
+<rect x="123" y="230" width="654" height="62" rx="12" fill="url(#lg)"/>
+<text x="450.0" y="262.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial" font-size="16" font-weight="650" fill="#fff">L2 · Meaning and domain model</text>
+<path d="M 450.0 292 L 450.0 306" stroke="#46bce6" stroke-width="3"/>
+<rect x="117" y="310" width="666" height="62" rx="12" fill="url(#lg)"/>
+<text x="450.0" y="342.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial" font-size="16" font-weight="650" fill="#fff">L3 · Reasoning, policy and control</text>
+<path d="M 450.0 372 L 450.0 386" stroke="#46bce6" stroke-width="3"/>
+<rect x="111" y="390" width="678" height="62" rx="12" fill="url(#lg)"/>
+<text x="450.0" y="422.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial" font-size="16" font-weight="650" fill="#fff">L4 · Solution design</text>
+<path d="M 450.0 452 L 450.0 466" stroke="#46bce6" stroke-width="3"/>
+<rect x="105" y="470" width="690" height="62" rx="12" fill="url(#lg)"/>
+<text x="450.0" y="502.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial" font-size="16" font-weight="650" fill="#fff">L5 · Realisation and tooling</text>
+<path d="M 450.0 532 L 450.0 546" stroke="#46bce6" stroke-width="3"/>
+<rect x="99" y="550" width="702" height="62" rx="12" fill="url(#lg)"/>
+<text x="450.0" y="582.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial" font-size="16" font-weight="650" fill="#fff">L6 · Execution and evidence</text>
+</svg>

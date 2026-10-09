@@ -1,0 +1,116 @@
+{
+  "schema_version": "1.0.0",
+  "cases": [
+    {
+      "id": "benefits-realisation-manager:4",
+      "expected_artifact_type": "benefits-review"
+    },
+    {
+      "id": "implementation-consultant:4",
+      "expected_artifact_type": "decision-paper"
+    },
+    {
+      "id": "epic-owner:2",
+      "expected_artifact_type": "business-case"
+    },
+    {
+      "id": "data-migration-and-cutover-lead:1",
+      "expected_artifact_type": "migration-plan"
+    },
+    {
+      "id": "service-transition-and-operational-readiness-manager:4",
+      "expected_artifact_type": "operational-readiness-assessment"
+    },
+    {
+      "id": "enterprise-architect:1",
+      "expected_artifact_type": "model"
+    },
+    {
+      "id": "technical-lead:1",
+      "expected_artifact_type": "architecture-decision"
+    },
+    {
+      "id": "chief-information-officer:3",
+      "expected_artifact_type": "diagram"
+    },
+    {
+      "id": "application-security-engineer:2",
+      "expected_artifact_type": "prototype"
+    },
+    {
+      "id": "ux-designer:1",
+      "expected_artifact_type": "prototype"
+    },
+    {
+      "id": "enterprise-applications-architect:1",
+      "expected_artifact_type": "model",
+      "reason": "26.10.0 enterprise authority golden classification"
+    },
+    {
+      "id": "enterprise-applications-architect:2",
+      "expected_artifact_type": "decision-paper",
+      "reason": "26.10.0 enterprise authority golden classification"
+    },
+    {
+      "id": "secure-delivery-devsecops-architect:1",
+      "expected_artifact_type": "architecture-definition",
+      "reason": "26.10.0 enterprise authority golden classification"
+    },
+    {
+      "id": "secure-delivery-devsecops-architect:2",
+      "expected_artifact_type": "control-design",
+      "reason": "26.10.0 enterprise authority golden classification"
+    },
+    {
+      "id": "siam-manager:1",
+      "expected_artifact_type": "service-design",
+      "reason": "26.10.0 enterprise authority golden classification"
+    },
+    {
+      "id": "siam-manager:2",
+      "expected_artifact_type": "register",
+      "reason": "26.10.0 enterprise authority golden classification"
+    },
+    {
+      "id": "enterprise-release-manager:1",
+      "expected_artifact_type": "roadmap",
+      "reason": "26.10.0 enterprise authority golden classification"
+    },
+    {
+      "id": "enterprise-release-manager:2",
+      "expected_artifact_type": "operational-readiness-assessment",
+      "reason": "26.10.0 enterprise authority golden classification"
+    },
+    {
+      "id": "it-financial-management-tbm-manager:1",
+      "expected_artifact_type": "dataset",
+      "reason": "26.10.0 enterprise authority golden classification"
+    },
+    {
+      "id": "it-financial-management-tbm-manager:2",
+      "expected_artifact_type": "business-case",
+      "reason": "26.10.0 enterprise authority golden classification"
+    },
+    {
+      "id": "demand-and-intake-manager:1",
+      "expected_artifact_type": "register",
+      "reason": "26.10.0 enterprise authority golden classification"
+    },
+    {
+      "id": "demand-and-intake-manager:2",
+      "expected_artifact_type": "decision-paper",
+      "reason": "26.10.0 enterprise authority golden classification"
+    },
+    {
+      "id": "application-portfolio-manager:1",
+      "expected_artifact_type": "model",
+      "reason": "26.10.0 enterprise authority golden classification"
+    },
+    {
+      "id": "application-portfolio-manager:2",
+      "expected_artifact_type": "decision-paper",
+      "reason": "26.10.0 enterprise authority golden classification"
+    }
+  ],
+  "release": "26.10.0"
+}

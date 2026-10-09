@@ -1,0 +1,116 @@
+{
+  "case_id": "zero-trust-iam",
+  "roles": [
+    "identity-and-access-management-architect",
+    "security-architect",
+    "network-architect",
+    "identity-governance-specialist",
+    "privileged-access-management-administrator",
+    "security-engineer"
+  ],
+  "workflows": [
+    "access-request-to-review",
+    "idea-to-production"
+  ],
+  "requirements_covered": [
+    "REQ-04-1",
+    "REQ-04-2",
+    "REQ-04-3",
+    "REQ-04-4"
+  ],
+  "evidence_links": [
+    "EV-04-1",
+    "EV-04-2",
+    "EV-04-3",
+    "EV-04-4"
+  ],
+  "claims": [
+    {
+      "id": "CLAIM-1",
+      "critical": true,
+      "evidence": [
+        "EV-04-1"
+      ]
+    },
+    {
+      "id": "CLAIM-2",
+      "critical": true,
+      "evidence": [
+        "EV-04-2"
+      ]
+    },
+    {
+      "id": "CLAIM-3",
+      "critical": true,
+      "evidence": [
+        "EV-04-3"
+      ]
+    },
+    {
+      "id": "CLAIM-4",
+      "critical": true,
+      "evidence": [
+        "EV-04-4"
+      ]
+    }
+  ],
+  "decision_rationale": {
+    "chosen_option": "Option A",
+    "alternatives": [
+      "Option A",
+      "Option B"
+    ],
+    "trade_offs": [
+      "cost vs risk",
+      "speed vs control"
+    ],
+    "rationale": "Evidence-backed choice within stated constraints",
+    "residual_risk": "Owned residual risk remains",
+    "decision_owner": "Named authority"
+  },
+  "traceability_links": [
+    "TR-04-1",
+    "TR-04-2",
+    "TR-04-3",
+    "TR-04-4"
+  ],
+  "reviewer_findings": [
+    "DEF-04-1",
+    "DEF-04-2",
+    "DEF-04-3",
+    "DEF-04-4"
+  ],
+  "sod_violations": [],
+  "publications": [
+    "Identity security architecture",
+    "Policy/control design",
+    "Access governance model",
+    "Transition roadmap"
+  ],
+  "artifact_status": [
+    {
+      "name": "Identity security architecture",
+      "ok": true
+    },
+    {
+      "name": "Policy/control design",
+      "ok": true
+    },
+    {
+      "name": "Access governance model",
+      "ok": true
+    },
+    {
+      "name": "Transition roadmap",
+      "ok": true
+    }
+  ],
+  "visual_qa": {
+    "score": 1.0,
+    "critical_defects": 0
+  },
+  "cross_agent": {
+    "checks": 6,
+    "conflicts": 0
+  }
+}

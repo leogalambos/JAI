@@ -1,0 +1,22 @@
+{
+  "profile": "ea",
+  "version": "1.1.0",
+  "release": "26.10.4",
+  "authoritative_for": "ea-domain-projection",
+  "global_source_of_truth": false,
+  "semantic_identity_authority": "JAI",
+  "write_schema_version": "26.10.4",
+  "legacy_read_schema_versions": [
+    "26.10",
+    "26.10.1",
+    "26.10.2",
+    "26.10.3"
+  ],
+  "projection_flow": [
+    "JAI semantic identity",
+    "EA domain projection",
+    "view",
+    "ArchiMate Open Exchange",
+    "external EA repository"
+  ]
+}

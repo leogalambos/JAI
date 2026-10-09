@@ -1,0 +1,431 @@
+{
+  "schema_version": "1.0.0",
+  "mapping_version": "26.10.0",
+  "source_model": "SABSA",
+  "target_model": "AI IT House Canonical EA / ArchiMate Open Exchange",
+  "rules": {
+    "driver": {
+      "ea_type": "element",
+      "archimate_type": "Driver",
+      "specialization": "SABSA Business Driver",
+      "sabsa_layer": "Contextual",
+      "sabsa_question": "what",
+      "relationship_rules": {}
+    },
+    "risk": {
+      "ea_type": "element",
+      "archimate_type": "Assessment",
+      "specialization": "SABSA Risk / Opportunity",
+      "sabsa_layer": "Contextual",
+      "sabsa_question": "why",
+      "relationship_rules": {
+        "attributes": "Influence"
+      }
+    },
+    "attribute": {
+      "ea_type": "element",
+      "archimate_type": "Requirement",
+      "specialization": "SABSA Business Attribute",
+      "sabsa_layer": "Conceptual",
+      "sabsa_question": "what",
+      "relationship_rules": {
+        "drivers": "Influence"
+      }
+    },
+    "strategy": {
+      "ea_type": "element",
+      "archimate_type": "CourseOfAction",
+      "specialization": "SABSA Security Strategy",
+      "sabsa_layer": "Conceptual",
+      "sabsa_question": "how",
+      "relationship_rules": {
+        "attributes": "Influence",
+        "objectives": "Influence"
+      }
+    },
+    "objective": {
+      "ea_type": "element",
+      "archimate_type": "Goal",
+      "specialization": "SABSA Control Objective",
+      "sabsa_layer": "Conceptual",
+      "sabsa_question": "why",
+      "relationship_rules": {
+        "attributes": "Influence",
+        "risks": "Influence"
+      }
+    },
+    "domain": {
+      "ea_type": "element",
+      "archimate_type": "Grouping",
+      "specialization": "SABSA Security Domain",
+      "sabsa_layer": "Conceptual",
+      "sabsa_question": "where",
+      "relationship_rules": {
+        "objectives": "Influence",
+        "trusts": "Association"
+      }
+    },
+    "trust": {
+      "ea_type": "element",
+      "archimate_type": "Assessment",
+      "specialization": "SABSA Trust Relationship",
+      "sabsa_layer": "Conceptual",
+      "sabsa_question": "who",
+      "relationship_rules": {
+        "source_domain": "Association",
+        "target_domain": "Association",
+        "objectives": "Influence"
+      }
+    },
+    "decision": {
+      "ea_type": "element",
+      "archimate_type": "Assessment",
+      "specialization": "SABSA Architecture Decision",
+      "sabsa_layer": "Conceptual",
+      "sabsa_question": "why",
+      "relationship_rules": {
+        "objectives": "Influence"
+      }
+    },
+    "policy": {
+      "ea_type": "element",
+      "archimate_type": "Requirement",
+      "specialization": "SABSA Security Policy",
+      "sabsa_layer": "Logical",
+      "sabsa_question": "why",
+      "relationship_rules": {
+        "objectives": "Influence",
+        "services": "Realization"
+      }
+    },
+    "entity": {
+      "ea_type": "element",
+      "archimate_type": "BusinessActor",
+      "specialization": "SABSA Entity",
+      "sabsa_layer": "Logical",
+      "sabsa_question": "who",
+      "relationship_rules": {
+        "objectives": "Influence",
+        "domains": "Association"
+      }
+    },
+    "privilege": {
+      "ea_type": "element",
+      "archimate_type": "Requirement",
+      "specialization": "SABSA Privilege Profile",
+      "sabsa_layer": "Logical",
+      "sabsa_question": "who",
+      "relationship_rules": {
+        "entities": "Assignment",
+        "policies": "Realization",
+        "objectives": "Influence"
+      }
+    },
+    "information-flow": {
+      "ea_type": "element",
+      "archimate_type": "DataObject",
+      "specialization": "SABSA Information Flow",
+      "sabsa_layer": "Logical",
+      "sabsa_question": "what",
+      "relationship_rules": {
+        "source_entity": "Association",
+        "target_entity": "Association",
+        "objectives": "Influence",
+        "services": "Realization"
+      }
+    },
+    "service": {
+      "ea_type": "element",
+      "archimate_type": "TechnologyService",
+      "specialization": "SABSA Security Service",
+      "sabsa_layer": "Logical",
+      "sabsa_question": "how",
+      "relationship_rules": {
+        "objectives": "Influence",
+        "domain": "Association",
+        "policies": "Realization"
+      }
+    },
+    "mechanism": {
+      "ea_type": "element",
+      "archimate_type": "TechnologyFunction",
+      "specialization": "SABSA Security Mechanism",
+      "sabsa_layer": "Physical",
+      "sabsa_question": "how",
+      "relationship_rules": {
+        "services": "Realization"
+      }
+    },
+    "standard": {
+      "ea_type": "element",
+      "archimate_type": "Requirement",
+      "specialization": "SABSA Standard",
+      "sabsa_layer": "Component",
+      "sabsa_question": "why",
+      "relationship_rules": {
+        "policies": "Realization",
+        "mechanisms": "Realization"
+      }
+    },
+    "component": {
+      "ea_type": "element",
+      "archimate_type": "SystemSoftware",
+      "specialization": "SABSA Security Component",
+      "sabsa_layer": "Component",
+      "sabsa_question": "how",
+      "relationship_rules": {
+        "mechanisms": "Realization",
+        "standards": "Realization"
+      }
+    },
+    "measure": {
+      "ea_type": "element",
+      "archimate_type": "Outcome",
+      "specialization": "SABSA Measure",
+      "sabsa_layer": "Service Management",
+      "sabsa_question": "how",
+      "relationship_rules": {
+        "attributes": "Influence",
+        "services": "Realization"
+      }
+    },
+    "evidence": {
+      "ea_type": "element",
+      "archimate_type": "Artifact",
+      "specialization": "SABSA Evidence",
+      "sabsa_layer": "Service Management",
+      "sabsa_question": "what",
+      "relationship_rules": {
+        "measures": "Realization"
+      }
+    },
+    "operation": {
+      "ea_type": "element",
+      "archimate_type": "TechnologyProcess",
+      "specialization": "SABSA Security Operation",
+      "sabsa_layer": "Service Management",
+      "sabsa_question": "how",
+      "relationship_rules": {
+        "attributes": "Influence",
+        "services": "Realization",
+        "measures": "Realization"
+      }
+    },
+    "exception": {
+      "ea_type": "element",
+      "archimate_type": "Assessment",
+      "specialization": "SABSA Exception",
+      "sabsa_layer": "Service Management",
+      "sabsa_question": "why",
+      "relationship_rules": {
+        "objectives": "Influence",
+        "policies": "Realization"
+      }
+    },
+    "roadmap": {
+      "ea_type": "element",
+      "archimate_type": "WorkPackage",
+      "specialization": "SABSA Roadmap Item",
+      "sabsa_layer": "Service Management",
+      "sabsa_question": "when",
+      "relationship_rules": {
+        "objectives": "Influence",
+        "components": "Realization"
+      }
+    },
+    "business-process": {
+      "ea_type": "element",
+      "archimate_type": "BusinessProcess",
+      "specialization": "SABSA Business Process",
+      "sabsa_layer": "Contextual",
+      "sabsa_question": "how",
+      "relationship_rules": {
+        "drivers": "Influence"
+      }
+    },
+    "business-actor": {
+      "ea_type": "element",
+      "archimate_type": "BusinessActor",
+      "specialization": "SABSA Business Actor",
+      "sabsa_layer": "Contextual",
+      "sabsa_question": "who",
+      "relationship_rules": {
+        "drivers": "Influence",
+        "processes": "Assignment"
+      }
+    },
+    "business-location": {
+      "ea_type": "element",
+      "archimate_type": "Location",
+      "specialization": "SABSA Business Location",
+      "sabsa_layer": "Contextual",
+      "sabsa_question": "where",
+      "relationship_rules": {
+        "drivers": "Influence"
+      }
+    },
+    "business-time-dependency": {
+      "ea_type": "element",
+      "archimate_type": "BusinessEvent",
+      "specialization": "SABSA Business Time Dependency",
+      "sabsa_layer": "Contextual",
+      "sabsa_question": "when",
+      "relationship_rules": {
+        "drivers": "Influence",
+        "processes": "Assignment"
+      }
+    },
+    "security-lifetime": {
+      "ea_type": "element",
+      "archimate_type": "Constraint",
+      "specialization": "SABSA Security Lifetime",
+      "sabsa_layer": "Conceptual",
+      "sabsa_question": "when",
+      "relationship_rules": {
+        "attributes": "Influence",
+        "objectives": "Influence"
+      }
+    },
+    "domain-association": {
+      "ea_type": "element",
+      "archimate_type": "BusinessCollaboration",
+      "specialization": "SABSA Domain Association",
+      "sabsa_layer": "Logical",
+      "sabsa_question": "where",
+      "relationship_rules": {
+        "source_domain": "Association",
+        "target_domain": "Association",
+        "services": "Realization"
+      }
+    },
+    "processing-cycle": {
+      "ea_type": "element",
+      "archimate_type": "TechnologyProcess",
+      "specialization": "SABSA Security Processing Cycle",
+      "sabsa_layer": "Logical",
+      "sabsa_question": "when",
+      "relationship_rules": {
+        "services": "Realization"
+      }
+    },
+    "data-store": {
+      "ea_type": "element",
+      "archimate_type": "Artifact",
+      "specialization": "SABSA Data Store",
+      "sabsa_layer": "Physical",
+      "sabsa_question": "what",
+      "relationship_rules": {
+        "information_flows": "Access",
+        "mechanisms": "Realization"
+      }
+    },
+    "security-procedure": {
+      "ea_type": "element",
+      "archimate_type": "TechnologyProcess",
+      "specialization": "SABSA Security Procedure",
+      "sabsa_layer": "Physical",
+      "sabsa_question": "why",
+      "relationship_rules": {
+        "policies": "Realization",
+        "mechanisms": "Realization"
+      }
+    },
+    "interaction-endpoint": {
+      "ea_type": "element",
+      "archimate_type": "TechnologyInterface",
+      "specialization": "SABSA Interaction Endpoint",
+      "sabsa_layer": "Physical",
+      "sabsa_question": "who",
+      "relationship_rules": {
+        "entities": "Assignment",
+        "services": "Realization"
+      }
+    },
+    "platform-zone": {
+      "ea_type": "element",
+      "archimate_type": "Node",
+      "specialization": "SABSA Platform Zone",
+      "sabsa_layer": "Physical",
+      "sabsa_question": "where",
+      "relationship_rules": {
+        "mechanisms": "Realization",
+        "domains": "Association"
+      }
+    },
+    "control-sequence": {
+      "ea_type": "element",
+      "archimate_type": "TechnologyProcess",
+      "specialization": "SABSA Control Sequence",
+      "sabsa_layer": "Physical",
+      "sabsa_question": "when",
+      "relationship_rules": {
+        "mechanisms": "Realization"
+      }
+    },
+    "data-format": {
+      "ea_type": "element",
+      "archimate_type": "Artifact",
+      "specialization": "SABSA Data Format",
+      "sabsa_layer": "Component",
+      "sabsa_question": "what",
+      "relationship_rules": {
+        "data_stores": "Access"
+      }
+    },
+    "identity-entitlement": {
+      "ea_type": "element",
+      "archimate_type": "Requirement",
+      "specialization": "SABSA Identity Entitlement",
+      "sabsa_layer": "Component",
+      "sabsa_question": "who",
+      "relationship_rules": {
+        "privileges": "Assignment",
+        "components": "Realization"
+      }
+    },
+    "endpoint-protocol": {
+      "ea_type": "element",
+      "archimate_type": "TechnologyInterface",
+      "specialization": "SABSA Endpoint / Protocol",
+      "sabsa_layer": "Component",
+      "sabsa_question": "where",
+      "relationship_rules": {
+        "components": "Realization",
+        "platform_zones": "Association"
+      }
+    },
+    "component-timing": {
+      "ea_type": "element",
+      "archimate_type": "Constraint",
+      "specialization": "SABSA Component Timing",
+      "sabsa_layer": "Component",
+      "sabsa_question": "when",
+      "relationship_rules": {
+        "components": "Realization",
+        "control_sequences": "Triggering"
+      }
+    },
+    "support-model": {
+      "ea_type": "element",
+      "archimate_type": "BusinessService",
+      "specialization": "SABSA Support Model",
+      "sabsa_layer": "Service Management",
+      "sabsa_question": "who",
+      "relationship_rules": {
+        "services": "Realization",
+        "operations": "Serving"
+      }
+    },
+    "operational-location": {
+      "ea_type": "element",
+      "archimate_type": "Facility",
+      "specialization": "SABSA Operational Location",
+      "sabsa_layer": "Service Management",
+      "sabsa_question": "where",
+      "relationship_rules": {
+        "platform_zones": "Association",
+        "operations": "Serving"
+      }
+    }
+  }
+}

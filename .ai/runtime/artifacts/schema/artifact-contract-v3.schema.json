@@ -1,0 +1,127 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10.1/artifact-contract.schema.json",
+  "title": "AI IT House Artifact Contract v3",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "version",
+    "role_slug",
+    "deliverable_number",
+    "source_fingerprint",
+    "jai",
+    "lifecycle",
+    "traceability",
+    "compatibility"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "version": {
+      "const": "3.0.0"
+    },
+    "role_slug": {
+      "type": "string"
+    },
+    "deliverable_number": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "source_fingerprint": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "jai": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "core_version",
+        "intent",
+        "semantics",
+        "justification",
+        "design",
+        "realisation",
+        "evidence"
+      ],
+      "properties": {
+        "core_version": {
+          "const": "1.0.0"
+        },
+        "intent": {
+          "type": "object",
+          "required": [
+            "purpose",
+            "audience",
+            "decision_supported",
+            "owner_role",
+            "classification"
+          ]
+        },
+        "semantics": {
+          "type": "object",
+          "required": [
+            "artifact_type",
+            "schema_ref",
+            "required_inputs",
+            "required_relations"
+          ]
+        },
+        "justification": {
+          "type": "object",
+          "required": [
+            "required_evidence",
+            "acceptance_profile",
+            "evidence_profile",
+            "reviewers",
+            "approver",
+            "semantic_policy",
+            "repository_policy"
+          ]
+        },
+        "design": {
+          "type": "object",
+          "required": [
+            "mandatory_sections",
+            "publication_profile"
+          ]
+        },
+        "realisation": {
+          "type": "object",
+          "required": [
+            "producer",
+            "renderer",
+            "output_formats",
+            "system_of_record",
+            "external_handoff_adapter",
+            "production_mode"
+          ]
+        },
+        "evidence": {
+          "type": "object",
+          "required": [
+            "obligations",
+            "publication_gate",
+            "portfolio_traceability"
+          ]
+        }
+      }
+    },
+    "lifecycle": {
+      "type": "object"
+    },
+    "traceability": {
+      "type": "object"
+    },
+    "compatibility": {
+      "type": "object",
+      "required": [
+        "reads",
+        "writes",
+        "migration",
+        "classification_source"
+      ]
+    }
+  }
+}

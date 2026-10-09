@@ -1,0 +1,87 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10.2/policy-contract.schema.json",
+  "title": "PolicyContract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "organisation",
+    "environment",
+    "enforcement_order",
+    "filesystem",
+    "commands",
+    "network",
+    "providers",
+    "mcp_servers",
+    "approval_rules",
+    "denied_operations",
+    "data_classification",
+    "logging",
+    "exception_process"
+  ],
+  "properties": {
+    "organisation": {
+      "type": "string",
+      "minLength": 1
+    },
+    "environment": {
+      "type": "string",
+      "minLength": 1
+    },
+    "enforcement_order": {
+      "type": "array",
+      "const": [
+        "enterprise_policy",
+        "sandbox",
+        "agent_permission_set",
+        "tool_allowlist",
+        "managed_hooks",
+        "prompt_instructions"
+      ]
+    },
+    "filesystem": {
+      "type": "object"
+    },
+    "commands": {
+      "type": "object"
+    },
+    "network": {
+      "type": "object"
+    },
+    "providers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mcp_servers": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "approval_rules": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "denied_operations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "data_classification": {
+      "type": "object"
+    },
+    "logging": {
+      "type": "object"
+    },
+    "exception_process": {
+      "type": "string",
+      "minLength": 1
+    }
+  }
+}

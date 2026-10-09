@@ -1,0 +1,21 @@
+{
+  "name": "enterprise-default",
+  "font_family": "Arial",
+  "heading_font_family": "Arial",
+  "page_size": "A4",
+  "slide_ratio": "16:9",
+  "max_slide_words": 85,
+  "max_table_columns": 8,
+  "max_table_rows_per_view": 30,
+  "diagram": {
+    "node_width": 210,
+    "node_height": 72,
+    "h_gap": 70,
+    "v_gap": 55
+  },
+  "document_control": {
+    "show_classification": true,
+    "show_owner": true,
+    "show_version": true
+  }
+}

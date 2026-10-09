@@ -1,0 +1,203 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10.2/ea-element.schema.json",
+  "title": "EAElement 26.10.1 JAI-profiled architecture projection",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "type",
+    "name",
+    "project_id",
+    "owner",
+    "lifecycle_state",
+    "horizon"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1
+    },
+    "lifecycle_state": {
+      "type": "string",
+      "minLength": 1
+    },
+    "horizon": {
+      "type": "string",
+      "minLength": 1
+    },
+    "description": {
+      "type": "string"
+    },
+    "properties": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "artifact_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "benefit_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "source_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "valid_from": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "valid_to": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "review_due": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "model",
+        "stable_id",
+        "sabsa_layer",
+        "sabsa_question",
+        "sabsa_element_type"
+      ],
+      "properties": {
+        "model": {
+          "const": "SABSA"
+        },
+        "stable_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sabsa_layer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sabsa_question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sabsa_element_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_path": {
+          "type": "string"
+        },
+        "origin_library": {
+          "type": "string"
+        }
+      }
+    },
+    "projection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ea_type",
+        "archimate_type",
+        "specialization",
+        "mapping_version",
+        "source_hash",
+        "bridge"
+      ],
+      "properties": {
+        "ea_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "archimate_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "specialization": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mapping_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "source_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "bridge": {
+          "const": "sabsa-ea-26.10"
+        }
+      }
+    },
+    "canonical_ref": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "hash"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "hash": {
+          "type": "string",
+          "pattern": "^(sha256:)?[0-9a-f]{64}$"
+        }
+      }
+    },
+    "jai": {
+      "$ref": "jai-layer-binding.schema.json"
+    },
+    "source_specialisations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "profile",
+          "ref"
+        ],
+        "properties": {
+          "profile": {
+            "type": "string"
+          },
+          "ref": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

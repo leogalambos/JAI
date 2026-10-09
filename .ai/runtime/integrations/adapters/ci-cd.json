@@ -1,0 +1,33 @@
+{
+  "schema_version": "1.0.0",
+  "id": "ci-cd-adapter",
+  "category": "ci-cd",
+  "authority": "read-only-default",
+  "operations": [
+    "discover",
+    "read",
+    "query",
+    "create-draft",
+    "validate",
+    "propose-change",
+    "execute-approved-change",
+    "verify",
+    "rollback"
+  ],
+  "audit": {
+    "execution_record_required": true,
+    "external_call_record_required": true
+  },
+  "mutation_policy": {
+    "default": "deny",
+    "requires": [
+      "explicit-approval",
+      "scope-match",
+      "change-digest-match"
+    ],
+    "postconditions": [
+      "verification",
+      "immutable-audit-event"
+    ]
+  }
+}

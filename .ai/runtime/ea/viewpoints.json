@@ -1,0 +1,41 @@
+{
+  "schema_version": "26.10",
+  "presets": {
+    "business": {
+      "viewpoint": "Organization",
+      "purpose": "Business structure and behaviour"
+    },
+    "application": {
+      "viewpoint": "Application Cooperation",
+      "purpose": "Application cooperation and service relationships"
+    },
+    "technology": {
+      "viewpoint": "Technology",
+      "purpose": "Technology platform, infrastructure and deployment"
+    },
+    "data": {
+      "viewpoint": "Information Structure",
+      "purpose": "Information and data structure"
+    },
+    "security": {
+      "viewpoint": "Custom",
+      "purpose": "Security-relevant architecture selected from governed model facts"
+    },
+    "motivation": {
+      "viewpoint": "Motivation",
+      "purpose": "Stakeholders, drivers, outcomes, principles and requirements"
+    },
+    "migration": {
+      "viewpoint": "Implementation and Migration",
+      "purpose": "Work packages, plateaus, gaps and migration events"
+    },
+    "portfolio": {
+      "viewpoint": "Custom",
+      "purpose": "Cross-project dependencies and shared architecture"
+    },
+    "lifecycle": {
+      "viewpoint": "Custom",
+      "purpose": "Transition, retirement and decommission impact"
+    }
+  }
+}

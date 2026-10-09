@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10/execution-record.schema.json",
+  "title": "ExecutionRecord",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","id","timestamp","provider","model","agent","skills","input_refs","source_hashes","policies","approvals","tools_used","external_system_calls","outputs","semantic_hash","projection_hash","render_hash","findings","exceptions","previous_record_hash","record_hash"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "id": {"type": "string", "minLength": 1},
+    "timestamp": {"type": "string", "format": "date-time"},
+    "provider": {"type": "string"}, "model": {"type": "string"}, "agent": {"type": "string"},
+    "skills": {"type": "array", "items": {"type": "string"}},
+    "input_refs": {"type": "array", "items": {"type": "string"}},
+    "source_hashes": {"type": "object", "additionalProperties": {"type": "string"}},
+    "policies": {"type": "array", "items": {"type": "string"}},
+    "approvals": {"type": "array", "items": {"type": "string"}},
+    "tools_used": {"type": "array", "items": {"type": "string"}},
+    "external_system_calls": {"type": "array", "items": {"type": "object"}},
+    "outputs": {"type": "array", "items": {"type": "string"}},
+    "semantic_hash": {"type": ["string","null"]}, "projection_hash": {"type": ["string","null"]}, "render_hash": {"type": ["string","null"]},
+    "findings": {"type": "array", "items": {"type": "string"}}, "exceptions": {"type": "array", "items": {"type": "string"}},
+    "previous_record_hash": {"type": ["string","null"]},
+    "record_hash": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+  }
+}

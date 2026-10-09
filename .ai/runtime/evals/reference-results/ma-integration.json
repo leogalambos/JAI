@@ -1,0 +1,116 @@
+{
+  "case_id": "ma-integration",
+  "roles": [
+    "enterprise-architect",
+    "application-portfolio-manager",
+    "enterprise-applications-architect",
+    "data-architect",
+    "identity-and-access-management-architect",
+    "technology-lifecycle-and-decommission-manager"
+  ],
+  "workflows": [
+    "architecture-model-to-repository-governance",
+    "migration-and-cutover"
+  ],
+  "requirements_covered": [
+    "REQ-06-1",
+    "REQ-06-2",
+    "REQ-06-3",
+    "REQ-06-4"
+  ],
+  "evidence_links": [
+    "EV-06-1",
+    "EV-06-2",
+    "EV-06-3",
+    "EV-06-4"
+  ],
+  "claims": [
+    {
+      "id": "CLAIM-1",
+      "critical": true,
+      "evidence": [
+        "EV-06-1"
+      ]
+    },
+    {
+      "id": "CLAIM-2",
+      "critical": true,
+      "evidence": [
+        "EV-06-2"
+      ]
+    },
+    {
+      "id": "CLAIM-3",
+      "critical": true,
+      "evidence": [
+        "EV-06-3"
+      ]
+    },
+    {
+      "id": "CLAIM-4",
+      "critical": true,
+      "evidence": [
+        "EV-06-4"
+      ]
+    }
+  ],
+  "decision_rationale": {
+    "chosen_option": "Option A",
+    "alternatives": [
+      "Option A",
+      "Option B"
+    ],
+    "trade_offs": [
+      "cost vs risk",
+      "speed vs control"
+    ],
+    "rationale": "Evidence-backed choice within stated constraints",
+    "residual_risk": "Owned residual risk remains",
+    "decision_owner": "Named authority"
+  },
+  "traceability_links": [
+    "TR-06-1",
+    "TR-06-2",
+    "TR-06-3",
+    "TR-06-4"
+  ],
+  "reviewer_findings": [
+    "DEF-06-1",
+    "DEF-06-2",
+    "DEF-06-3",
+    "DEF-06-4"
+  ],
+  "sod_violations": [],
+  "publications": [
+    "Merged portfolio model",
+    "Application rationalisation decision",
+    "Integration/migration roadmap",
+    "Decommission dependency plan"
+  ],
+  "artifact_status": [
+    {
+      "name": "Merged portfolio model",
+      "ok": true
+    },
+    {
+      "name": "Application rationalisation decision",
+      "ok": true
+    },
+    {
+      "name": "Integration/migration roadmap",
+      "ok": true
+    },
+    {
+      "name": "Decommission dependency plan",
+      "ok": true
+    }
+  ],
+  "visual_qa": {
+    "score": 1.0,
+    "critical_defects": 0
+  },
+  "cross_agent": {
+    "checks": 6,
+    "conflicts": 0
+  }
+}

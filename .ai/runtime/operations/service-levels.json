@@ -1,0 +1,89 @@
+{
+  "service_levels_version": "1.0.0",
+  "release": "26.10.4",
+  "product_mode": "locally-installed enterprise delivery platform",
+  "scope": "Reference operational objectives for the packaged runtime and its release process. Deploying organisations may tighten them in policy without editing canonical role content.",
+  "slos": [
+    {
+      "id": "SLO-REL-001",
+      "name": "GA release qualification",
+      "target": "100%",
+      "measurement": "All enterprise gates A-H pass for the exact release tree.",
+      "gate": "A-H"
+    },
+    {
+      "id": "SLO-REL-002",
+      "name": "Automated release integrity and publication",
+      "target": "100%",
+      "measurement": "A-H qualification, distribution SHA-256 and embedded SBOM/provenance verification must pass before CI publishes; GitHub OIDC attestation is emitted when supported for the repository.",
+      "gate": "H"
+    },
+    {
+      "id": "SLO-SEM-001",
+      "name": "Critical requirement coverage",
+      "target": "100%",
+      "measurement": "Golden enterprise scenarios retain complete critical requirement coverage.",
+      "gate": "G"
+    },
+    {
+      "id": "SLO-SEM-002",
+      "name": "Unsupported critical claims",
+      "target": "0",
+      "measurement": "Behavioral qualification reports zero unsupported critical claims.",
+      "gate": "G"
+    },
+    {
+      "id": "SLO-EVD-001",
+      "name": "Evidence linkage",
+      "target": ">=95%",
+      "measurement": "Behavioral qualification evidence-linkage metric.",
+      "gate": "G"
+    },
+    {
+      "id": "SLO-VIS-001",
+      "name": "Critical visual defect recall",
+      "target": ">=95%",
+      "measurement": "Render-based seeded-defect acceptance corpus.",
+      "gate": "F"
+    },
+    {
+      "id": "SLO-PRV-001",
+      "name": "Supported-provider parity",
+      "target": "100%",
+      "measurement": "Authority, mutation, approval and workload-class routing parity checks pass for every supported provider adapter.",
+      "gate": "D"
+    },
+    {
+      "id": "SLO-PERF-001",
+      "name": "Qualification performance regression",
+      "target": "<=20%",
+      "measurement": "No significant qualification stage exceeds the approved median baseline by more than 20% without a recorded waiver.",
+      "gate": "A"
+    }
+  ],
+  "reference_sla": {
+    "contractual": false,
+    "statement": "The package is not a hosted service and therefore ships no vendor availability SLA. Organisations operating it should bind these reference response targets into their own support agreement.",
+    "response_targets": [
+      {
+        "priority": "P0",
+        "condition": "release-integrity, security-boundary or data-corruption defect",
+        "acknowledgement": "1 business day",
+        "containment_or_plan": "3 business days"
+      },
+      {
+        "priority": "P1",
+        "condition": "GA-blocking functional or interoperability defect",
+        "acknowledgement": "2 business days",
+        "containment_or_plan": "5 business days"
+      },
+      {
+        "priority": "P2",
+        "condition": "non-blocking defect or documentation issue",
+        "acknowledgement": "5 business days",
+        "containment_or_plan": "next planned maintenance release"
+      }
+    ]
+  },
+  "error_budget_policy": "A missed release, security, semantic or visual critical SLO blocks GA publication. Performance-only misses require an explicit, expiring waiver recorded in release evidence."
+}

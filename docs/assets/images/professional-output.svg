@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 260" role="img" aria-label="Professional reporting and analytics">
+<rect width="720" height="260" rx="18" fill="#eef5f9"/>
+<rect x="36" y="28" width="648" height="204" rx="12" fill="#fff" stroke="#d4e4ec"/>
+<text x="64" y="64" font-family="Arial,sans-serif" font-size="20" font-weight="700" fill="#0b2843">Architecture &amp; Assurance Dashboard</text>
+<line x1="64" y1="94" x2="650" y2="94" stroke="#dbe8ef"/>
+<g fill="#238fc7"><rect x="70" y="165" width="34" height="42" rx="4"/><rect x="116" y="139" width="34" height="68" rx="4"/><rect x="162" y="119" width="34" height="88" rx="4"/><rect x="208" y="145" width="34" height="62" rx="4"/><rect x="254" y="105" width="34" height="102" rx="4"/></g>
+<path d="M340 188 C390 128 430 156 472 114 S558 140 624 92" fill="none" stroke="#0d5c8d" stroke-width="7" stroke-linecap="round"/>
+<g fill="#0d5c8d"><circle cx="340" cy="188" r="6"/><circle cx="472" cy="114" r="6"/><circle cx="624" cy="92" r="6"/></g>
+<circle cx="582" cy="176" r="31" fill="none" stroke="#e9b949" stroke-width="15" stroke-dasharray="125 70" transform="rotate(-80 582 176)"/>
+</svg>

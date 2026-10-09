@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10.2/native-write-policy.schema.json",
+  "title": "NativeWritePolicy",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "version",
+    "release",
+    "unified_model",
+    "native_write",
+    "legacy_read_only",
+    "rules"
+  ],
+  "properties": {
+    "version": {
+      "const": "1.0.0"
+    },
+    "release": {
+      "const": "26.10.2"
+    },
+    "unified_model": {
+      "const": "JAI-six-layer-core"
+    },
+    "native_write": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      },
+      "minProperties": 1
+    },
+    "legacy_read_only": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "sha256",
+          "purpose"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1
+          },
+          "sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "purpose": {
+            "enum": [
+              "read",
+              "migration-fixture",
+              "compatibility-fixture"
+            ]
+          }
+        }
+      }
+    },
+    "rules": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "production_write_requires_jai",
+        "legacy_write_forbidden",
+        "migration_outputs_native",
+        "generated_registries_native"
+      ],
+      "properties": {
+        "production_write_requires_jai": {
+          "const": true
+        },
+        "legacy_write_forbidden": {
+          "const": true
+        },
+        "migration_outputs_native": {
+          "const": true
+        },
+        "generated_registries_native": {
+          "const": true
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "$comment": [
+    "Merged into Claude settings.json by the installer and removed by the uninstaller.",
+    "Shared implementation lives under ~/.ai/it-role-house; provider-facing skills/agents/commands are generated outputs.",
+    "Hooks protect package content, authority records and source-code documentation/testing gates."
+  ],
+  "permissions": {
+    "deny": [
+      "Edit(~/.claude/settings.json)",
+      "Edit(**/.fabric/**)",
+      "Edit(**/.findings/**)",
+      "Read(~/.config/justifiable-fabric/**)",
+      "Edit(~/.config/justifiable-fabric/**)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 {AI_HOUSE}/hooks/guard_library_write.py"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash|PowerShell|Read|Write|Edit|MultiEdit|NotebookEdit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 {AI_HOUSE}/hooks/guard_authority.py --provider claude"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|MultiEdit|Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 {AI_HOUSE}/hooks/code_gate.py"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 {AI_HOUSE}/hooks/code_gate.py"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 {AI_HOUSE}/hooks/code_gate.py"
+          }
+        ]
+      }
+    ],
+    "PostToolUseFailure": [
+      {
+        "matcher": "Bash|PowerShell",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 {AI_HOUSE}/hooks/code_gate.py"
+          }
+        ]
+      }
+    ]
+  }
+}

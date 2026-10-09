@@ -1,0 +1,95 @@
+{
+  "title": "Architecture Review Pack",
+  "subtitle": "Publication model example",
+  "artifact_id": "ARCH-001",
+  "audience": [
+    "Architecture Review Board"
+  ],
+  "owner": "Solution Architect",
+  "approver": "Architecture Review Board",
+  "classification": "Internal",
+  "version": "1.0",
+  "decision_supported": "Approve the proposed target architecture",
+  "sources": [
+    "requirements baseline",
+    "risk register"
+  ],
+  "claims": [
+    {
+      "id": "C-001",
+      "statement": "The target design satisfies the stated availability requirement.",
+      "basis": "stated",
+      "evidence": [
+        "NFR-AVAIL-01",
+        "test-plan:availability"
+      ]
+    }
+  ],
+  "sections": [
+    {
+      "heading": "Executive summary",
+      "body": "The target architecture is recommended subject to the stated conditions.",
+      "bullets": [
+        "Decision required: approve target state",
+        "Residual risks are explicitly recorded"
+      ]
+    },
+    {
+      "heading": "Target architecture",
+      "diagram": {
+        "title": "Target architecture",
+        "kind": "architecture",
+        "nodes": [
+          {
+            "id": "client",
+            "label": "Client"
+          },
+          {
+            "id": "api",
+            "label": "API service"
+          },
+          {
+            "id": "db",
+            "label": "Data store"
+          }
+        ],
+        "edges": [
+          {
+            "from": "client",
+            "to": "api",
+            "label": "HTTPS"
+          },
+          {
+            "from": "api",
+            "to": "db",
+            "label": "TLS"
+          }
+        ]
+      }
+    },
+    {
+      "heading": "Decision log",
+      "table": {
+        "headers": [
+          "ID",
+          "Decision",
+          "Rationale"
+        ],
+        "rows": [
+          [
+            "D-001",
+            "Use managed database",
+            "Reduces operational burden"
+          ]
+        ]
+      }
+    }
+  ],
+  "open_items": [
+    "Confirm production RTO with service owner"
+  ],
+  "acceptance_gates": [
+    "Semantic Gate: PASS",
+    "Publication Gate: PASS"
+  ]
+}

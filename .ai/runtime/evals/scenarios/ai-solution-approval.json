@@ -1,0 +1,103 @@
+{
+  "id": "ai-solution-approval",
+  "scenario": "AI solution approval",
+  "description": "Golden enterprise scenario for ai solution approval with cross-role enterprise delivery expectations.",
+  "tags": [
+    "AI governance",
+    "data",
+    "risk",
+    "architecture"
+  ],
+  "inputs": {
+    "case_prompt": "Assess and deliver an enterprise-grade ai solution approval outcome. Preserve evidence, authority, traceability and publication quality.",
+    "constraints": [
+      "Use authoritative enterprise facts; do not invent missing evidence",
+      "Respect role decision rights and segregation of duties",
+      "Produce receiving-role acceptance and residual-risk ownership"
+    ]
+  },
+  "expected": {
+    "workflow_routes": [
+      "ai-system-approval",
+      "design-to-operational-readiness"
+    ],
+    "roles": [
+      "ai-governance-officer",
+      "machine-learning-engineer",
+      "data-architect",
+      "privacy-architect",
+      "it-risk-manager",
+      "solution-architect"
+    ],
+    "critical_requirements": [
+      {
+        "id": "REQ-07-1",
+        "text": "Intended use, prohibited use and human accountability are explicit"
+      },
+      {
+        "id": "REQ-07-2",
+        "text": "Training/inference data provenance and privacy basis are known"
+      },
+      {
+        "id": "REQ-07-3",
+        "text": "Model/system risks and evaluation evidence match deployment criticality"
+      },
+      {
+        "id": "REQ-07-4",
+        "text": "Operational monitoring, rollback and incident ownership exist before approval"
+      }
+    ],
+    "critical_evidence": [
+      "EV-07-1",
+      "EV-07-2",
+      "EV-07-3",
+      "EV-07-4"
+    ],
+    "mandatory_artifacts": [
+      "AI use-case decision",
+      "Risk assessment",
+      "Evaluation/test report",
+      "Operational readiness assessment"
+    ],
+    "traceability_links": [
+      "TR-07-1",
+      "TR-07-2",
+      "TR-07-3",
+      "TR-07-4"
+    ],
+    "decision_rationale": {
+      "alternatives_min": 2,
+      "required_fields": [
+        "chosen_option",
+        "alternatives",
+        "trade_offs",
+        "rationale",
+        "residual_risk",
+        "decision_owner"
+      ]
+    },
+    "seeded_reviewer_defects": [
+      "DEF-07-1",
+      "DEF-07-2",
+      "DEF-07-3",
+      "DEF-07-4"
+    ]
+  },
+  "metrics": [
+    "role_routing_accuracy",
+    "workflow_routing_accuracy",
+    "critical_requirement_coverage",
+    "evidence_linkage",
+    "unsupported_critical_claims",
+    "decision_rationale_quality",
+    "traceability_completeness",
+    "critical_reviewer_defect_recall",
+    "reviewer_false_positive_rate",
+    "sod_violations",
+    "mandatory_publication_coverage",
+    "broken_artifact_production",
+    "visual_quality",
+    "cross_agent_consistency"
+  ],
+  "threshold_profile": "release-26.10"
+}

@@ -1,0 +1,49 @@
+{
+  "core_version": "1.0.0",
+  "release": "26.10.4",
+  "normative": true,
+  "authority_boundary": {
+    "id": 0,
+    "name": "Human Authority",
+    "external_to_jai": true,
+    "description": "External authority boundary; not a seventh JAI layer."
+  },
+  "layers": [
+    {
+      "id": 1,
+      "name": "Intent and Context",
+      "agent": "l1-intent",
+      "acceptance_question": "Is the intended outcome, accountable authority, scope and material context explicit?"
+    },
+    {
+      "id": 2,
+      "name": "Meaning and Domain Model",
+      "agent": "l2-meaning",
+      "acceptance_question": "Do all parties mean the same thing and is uncertainty represented?"
+    },
+    {
+      "id": 3,
+      "name": "Reasoning, Policy and Control",
+      "agent": "l3-policy",
+      "acceptance_question": "Are decisions, policy constraints, evidence obligations, trade-offs and escalation rules justified?"
+    },
+    {
+      "id": 4,
+      "name": "Solution Design",
+      "agent": "l4-design",
+      "acceptance_question": "Does the design satisfy the accepted semantics and controls without inventing new facts?"
+    },
+    {
+      "id": 5,
+      "name": "Realisation and Tooling",
+      "agent": "l5-realisation",
+      "acceptance_question": "Is the design implemented through permitted tools and bounded execution mechanisms?"
+    },
+    {
+      "id": 6,
+      "name": "Execution and Evidence",
+      "agent": "l6-evidence",
+      "acceptance_question": "Is the observable result evidenced, attributable, reproducible and suitable for authority review?"
+    }
+  ]
+}

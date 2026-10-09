@@ -1,0 +1,105 @@
+{
+  "id": "erp-replacement",
+  "scenario": "ERP replacement",
+  "description": "Golden enterprise scenario for erp replacement with cross-role enterprise delivery expectations.",
+  "tags": [
+    "business",
+    "applications",
+    "integration",
+    "data",
+    "cutover"
+  ],
+  "inputs": {
+    "case_prompt": "Assess and deliver an enterprise-grade erp replacement outcome. Preserve evidence, authority, traceability and publication quality.",
+    "constraints": [
+      "Use authoritative enterprise facts; do not invent missing evidence",
+      "Respect role decision rights and segregation of duties",
+      "Produce receiving-role acceptance and residual-risk ownership"
+    ]
+  },
+  "expected": {
+    "workflow_routes": [
+      "demand-to-portfolio-to-funding",
+      "migration-and-cutover",
+      "enterprise-release-orchestration"
+    ],
+    "roles": [
+      "enterprise-applications-architect",
+      "data-architect",
+      "integration-architect",
+      "data-migration-and-cutover-lead",
+      "enterprise-release-manager",
+      "organisational-change-and-adoption-manager"
+    ],
+    "critical_requirements": [
+      {
+        "id": "REQ-03-1",
+        "text": "Capability fit and customisation boundaries are decision-backed"
+      },
+      {
+        "id": "REQ-03-2",
+        "text": "Data migration reconciliation and cutover abort criteria are defined"
+      },
+      {
+        "id": "REQ-03-3",
+        "text": "Cross-system dependencies and coexistence states are modelled"
+      },
+      {
+        "id": "REQ-03-4",
+        "text": "Business adoption and operational readiness are release gates"
+      }
+    ],
+    "critical_evidence": [
+      "EV-03-1",
+      "EV-03-2",
+      "EV-03-3",
+      "EV-03-4"
+    ],
+    "mandatory_artifacts": [
+      "Application capability-fit decision",
+      "Target solution design",
+      "Migration and cutover pack",
+      "Go/no-go decision"
+    ],
+    "traceability_links": [
+      "TR-03-1",
+      "TR-03-2",
+      "TR-03-3",
+      "TR-03-4"
+    ],
+    "decision_rationale": {
+      "alternatives_min": 2,
+      "required_fields": [
+        "chosen_option",
+        "alternatives",
+        "trade_offs",
+        "rationale",
+        "residual_risk",
+        "decision_owner"
+      ]
+    },
+    "seeded_reviewer_defects": [
+      "DEF-03-1",
+      "DEF-03-2",
+      "DEF-03-3",
+      "DEF-03-4"
+    ]
+  },
+  "metrics": [
+    "role_routing_accuracy",
+    "workflow_routing_accuracy",
+    "critical_requirement_coverage",
+    "evidence_linkage",
+    "unsupported_critical_claims",
+    "decision_rationale_quality",
+    "traceability_completeness",
+    "critical_reviewer_defect_recall",
+    "reviewer_false_positive_rate",
+    "sod_violations",
+    "mandatory_publication_coverage",
+    "broken_artifact_production",
+    "visual_quality",
+    "cross_agent_consistency"
+  ],
+  "threshold_profile": "release-26.10"
+}

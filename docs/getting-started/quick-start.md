@@ -1,0 +1,117 @@
+# 20-minute quick start
+
+This tour is intentionally practical. It shows how the system behaves in realistic work rather than only describing features.
+
+**Run the examples inside your Claude Code or Codex CLI session** in the demo workspace; do not paste these into a system shell. Except where shown explicitly, examples below use the **Claude** `/command` notation; Codex uses the corresponding **`$workflow-command`** skill with the same intent. The provider agent is responsible for calling the internal Python helpers. Manual shell work is normally limited to installation/maintenance and the special Codex **L0 human-authority** action; see [the interaction model](../using/interaction-model.md).
+
+| User intent | Claude command | Codex skill |
+| --- | --- | --- |
+| Analyse a repository | `/analyse invoice-service` | `$workflow-analyse invoice-service` |
+| Fix review criteria | `/criteria invoice-service` | `$workflow-criteria invoice-service` |
+| Review the result | `/review invoice-service` | `$workflow-review invoice-service` |
+| Diagnose a defect | `/diagnose <symptom>` | `$workflow-diagnose <symptom>` |
+| Manage SABSA | `/sabsa ...` | `$workflow-sabsa ...` |
+| Open consequential engagement | `/layered <intent>` | `$workflow-layered <intent>` |
+| Request an independent trace | `/fabric-report` | `$workflow-fabric-report` |
+
+
+## 1. Create the demo estate
+
+Claude:
+
+```text
+/demo setup
+```
+
+Codex:
+
+```text
+$workflow-demo setup
+```
+
+This creates three practice workspaces under `~/it-role-demo/`.
+
+| Demo | Purpose | Useful commands |
+| --- | --- | --- |
+| `invoice-service` | Small Python billing service with deliberate defects. | `/analyse`, `/criteria`, `/review`, `/rework`, `/diagnose`, `/develop`, `/layered` |
+| `policy-docs` | Security policy library with deliberate content and governance defects. | `/analyse`, `/review`, `/rework`, `/govern` |
+| `acme-pay` | Fictional client notes and RFP material for SABSA and solution work. | `/sabsa`, `/publish`, `/layered` |
+
+## 2. Analyse before judging
+
+```text
+/analyse invoice-service
+```
+
+### Expected shape of the answer
+
+```text
+Repository profile
+- Python billing service
+- modules: API, invoice logic, persistence, payments
+- external dependencies: SQLite, payment gateway
+- tests present but incomplete
+- notable hotspots: API authorisation, payment timing, money correctness
+
+Recommended next step
+- establish review criteria before issuing findings
+```
+
+A good result first explains what the system is and where complexity lies.
+
+## 3. Establish criteria, then review
+
+```text
+/criteria invoice-service
+/review invoice-service
+```
+
+### What to expect
+
+- explicit criteria categories;
+- a review boundary separate from code changes;
+- findings recorded into `.findings/`;
+- severity and remediation guidance;
+- a clear route to `/rework`.
+
+## 4. Diagnose an intermittent defect
+
+```text
+/diagnose test_charge_is_approved in tests/test_payments.py fails now and then.
+```
+
+The defect workflow must compare the last known good state, a working analogue and timing/order effects. That is materially stronger than a shallow “guess a fix” answer.
+
+## 5. Build and inspect a SABSA library
+
+```text
+/sabsa prepare acme-pay/sabsa -- source material is in acme-pay/client-material
+/sabsa create acme-pay/sabsa
+/sabsa questions acme-pay/sabsa
+```
+
+### What to expect
+
+- traceability from business drivers to operations;
+- explicit coverage of all 36 SABSA matrix cells;
+- open questions identified separately from settled architecture elements.
+
+## 6. Run a consequential decision
+
+```text
+/layered Decide whether invoice-service is ready to be exposed to external partners. It must be secure enough for partner traffic and its money calculations must be exact.
+```
+
+Then request an independent report **in the same provider conversation** (not a Fabric shell invocation):
+
+```text
+/fabric-report
+```
+
+This is the fastest way to experience what makes the Justifiable Fabric different from a normal AI-generated recommendation. In Codex the corresponding call is `$workflow-fabric-report`. The report should cite actual engagement IDs, evidence and blockers; if a risk/authority escalation reaches L0, Codex cannot perform the guarded approval for you. A trusted human action may be required before the result becomes releasable.
+<!-- AI-PAGE-NAV -->
+<div class="ai-page-nav">
+  <a class="ai-prev" href="../update-uninstall/"><small>← Previous · Getting started</small><strong>Update & uninstall</strong></a>
+  <a class="ai-next" href="../deployment-notes/"><small>Next · Getting started →</small><strong>Deployment notes</strong></a>
+</div>
+<!-- /AI-PAGE-NAV -->

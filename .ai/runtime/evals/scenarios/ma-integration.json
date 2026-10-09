@@ -1,0 +1,103 @@
+{
+  "id": "ma-integration",
+  "scenario": "M&A integration",
+  "description": "Golden enterprise scenario for m&a integration with cross-role enterprise delivery expectations.",
+  "tags": [
+    "portfolio",
+    "applications",
+    "data",
+    "identity"
+  ],
+  "inputs": {
+    "case_prompt": "Assess and deliver an enterprise-grade m&a integration outcome. Preserve evidence, authority, traceability and publication quality.",
+    "constraints": [
+      "Use authoritative enterprise facts; do not invent missing evidence",
+      "Respect role decision rights and segregation of duties",
+      "Produce receiving-role acceptance and residual-risk ownership"
+    ]
+  },
+  "expected": {
+    "workflow_routes": [
+      "architecture-model-to-repository-governance",
+      "migration-and-cutover"
+    ],
+    "roles": [
+      "enterprise-architect",
+      "application-portfolio-manager",
+      "enterprise-applications-architect",
+      "data-architect",
+      "identity-and-access-management-architect",
+      "technology-lifecycle-and-decommission-manager"
+    ],
+    "critical_requirements": [
+      {
+        "id": "REQ-06-1",
+        "text": "Overlapping application capabilities receive explicit disposition"
+      },
+      {
+        "id": "REQ-06-2",
+        "text": "Identity/domain trust and joiner/mover access risks are modelled"
+      },
+      {
+        "id": "REQ-06-3",
+        "text": "Data ownership/residency/retention constraints are preserved"
+      },
+      {
+        "id": "REQ-06-4",
+        "text": "Transition and decommission dependencies retain stable repository traceability"
+      }
+    ],
+    "critical_evidence": [
+      "EV-06-1",
+      "EV-06-2",
+      "EV-06-3",
+      "EV-06-4"
+    ],
+    "mandatory_artifacts": [
+      "Merged portfolio model",
+      "Application rationalisation decision",
+      "Integration/migration roadmap",
+      "Decommission dependency plan"
+    ],
+    "traceability_links": [
+      "TR-06-1",
+      "TR-06-2",
+      "TR-06-3",
+      "TR-06-4"
+    ],
+    "decision_rationale": {
+      "alternatives_min": 2,
+      "required_fields": [
+        "chosen_option",
+        "alternatives",
+        "trade_offs",
+        "rationale",
+        "residual_risk",
+        "decision_owner"
+      ]
+    },
+    "seeded_reviewer_defects": [
+      "DEF-06-1",
+      "DEF-06-2",
+      "DEF-06-3",
+      "DEF-06-4"
+    ]
+  },
+  "metrics": [
+    "role_routing_accuracy",
+    "workflow_routing_accuracy",
+    "critical_requirement_coverage",
+    "evidence_linkage",
+    "unsupported_critical_claims",
+    "decision_rationale_quality",
+    "traceability_completeness",
+    "critical_reviewer_defect_recall",
+    "reviewer_false_positive_rate",
+    "sod_violations",
+    "mandatory_publication_coverage",
+    "broken_artifact_production",
+    "visual_quality",
+    "cross_agent_consistency"
+  ],
+  "threshold_profile": "release-26.10"
+}

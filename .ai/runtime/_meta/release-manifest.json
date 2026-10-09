@@ -1,0 +1,179 @@
+{
+  "manifest_version": "1.0.0",
+  "release": "26.10.4",
+  "counts": {
+    "roles": 281,
+    "agents": 33,
+    "skills": 23,
+    "workflows": 24,
+    "artifact_types": 28,
+    "schemas": 32,
+    "renderers": 4,
+    "tests": 32,
+    "provider_adapters": 2
+  },
+  "roles_source": "runtime/roles.json",
+  "workflows_source": "runtime/workflows.json",
+  "artifact_taxonomy_source": "runtime/artifacts/schema/artifact-types.json",
+  "schema_registry_source": "runtime/schema/schema-registry.json",
+  "agents": [
+    "architecture-repository-engineer",
+    "artefact-governor",
+    "authority-liaison",
+    "codebase-reviewer",
+    "defect-analyst",
+    "docs-author",
+    "document-reviewer",
+    "engagement-authorisation-guard",
+    "enterprise-publication-editor",
+    "evidence-rationale-reviewer",
+    "experiment-engineer",
+    "fabric-auditor",
+    "gate-auditor",
+    "l1-intent",
+    "l2-meaning",
+    "l3-policy",
+    "l4-design",
+    "l5-realisation",
+    "l6-evidence",
+    "library-approver",
+    "library-author",
+    "library-release",
+    "model-consistency-reviewer",
+    "research-analyst",
+    "role-advisor",
+    "role-author",
+    "role-engineer",
+    "role-router",
+    "sabsa-architect",
+    "sabsa-reviewer",
+    "sod-reviewer",
+    "source-docs-engineer",
+    "visual-quality-reviewer"
+  ],
+  "skills": [
+    "defect-analysis",
+    "it-role-workflows",
+    "it-roles-analysis",
+    "it-roles-architecture",
+    "it-roles-commercial-sourcing-and-enablement",
+    "it-roles-data-analytics-and-ai",
+    "it-roles-design-and-user-experience",
+    "it-roles-executive-and-leadership",
+    "it-roles-governance-risk-compliance-audit-and-privacy",
+    "it-roles-infrastructure-cloud-and-operations",
+    "it-roles-network-and-telecommunications",
+    "it-roles-offensive-security-and-adversarial-testing",
+    "it-roles-product-delivery-and-agile",
+    "it-roles-quality-and-testing",
+    "it-roles-research-innovation-and-specialist-engineering",
+    "it-roles-sabsa-security-architecture",
+    "it-roles-security-operations-and-defensive-security",
+    "it-roles-service-management-and-support",
+    "it-roles-software-development-and-engineering",
+    "layered-justifiable-delivery",
+    "library-lifecycle",
+    "research-and-development",
+    "sabsa-library"
+  ],
+  "provider_adapters": [
+    "claude",
+    "codex"
+  ],
+  "renderers": [
+    "external:configuration-system",
+    "external:engineering-toolchain",
+    "tools/publication.py",
+    "tools/repository.py generate-views"
+  ],
+  "tests": [
+    "fabric/fabric.py self-test",
+    "tools/publication.py self-test",
+    "tools/projection.py self-test",
+    "tools/publication_integrity.py self-test",
+    "tools/visual_qa.py self-test",
+    "tools/agent_runtime.py self-test",
+    "tools/repository.py self-test",
+    "tools/sabsa_ea.py self-test",
+    "tools/ea_conformance.py self-test",
+    "tools/schema_check.py self-test",
+    "tools/behavioral_eval.py self-test",
+    "tools/integration_adapters.py self-test",
+    "tools/execution_record.py self-test",
+    "tools/supply_chain.py self-test",
+    "tools/model_router.py self-test",
+    "tools/service_levels.py self-test",
+    "tools/release_policy.py self-test",
+    "tools/provider_parity.py",
+    "tools/docs_contract.py --root .",
+    "tools/schema_resolver.py self-test",
+    "tools/architecture_claim_lint.py",
+    "tools/native_enforcement_26103.py",
+    "tools/artifacts.py check",
+    "tools/artifacts.py golden-test",
+    "tools/license_check.py",
+    "tools/human_text_width.py --root .",
+    "tools/performance_budget.py --profile fast",
+    "tools/qualification_regression.py regression",
+    "tools/qualification_core.py A-G qualification",
+    "tools/release_ga.py qualify",
+    "tools/release_bundle.py build",
+    "tools/generate_docs.py --check"
+  ],
+  "compatibility": [
+    {
+      "component": "Claude Code",
+      "minimum": "provider-supported",
+      "tested": "adapter contract",
+      "supported": "yes"
+    },
+    {
+      "component": "Codex CLI",
+      "minimum": "provider-supported",
+      "tested": "adapter contract",
+      "supported": "yes"
+    },
+    {
+      "component": "Python",
+      "minimum": "3.10",
+      "tested": "3.12 release CI target",
+      "supported": "yes"
+    },
+    {
+      "component": "Pandoc",
+      "minimum": "optional",
+      "tested": "publication tool detects at runtime",
+      "supported": "optional"
+    },
+    {
+      "component": "LibreOffice",
+      "minimum": "optional",
+      "tested": "publication tool detects at runtime",
+      "supported": "publication"
+    },
+    {
+      "component": "lxml",
+      "minimum": "5.x",
+      "tested": "XSD conformance suite",
+      "supported": "EA conformance"
+    },
+    {
+      "component": "jsonschema",
+      "minimum": "4.x",
+      "tested": "Draft 2020-12",
+      "supported": "semantic schemas"
+    },
+    {
+      "component": "Pillow",
+      "minimum": "runtime-supported",
+      "tested": "visual QA fixture rendering",
+      "supported": "visual QA"
+    },
+    {
+      "component": "GitHub Actions",
+      "minimum": "release workflow",
+      "tested": "tag, A-H gates, ZIP SHA-256, CI publication",
+      "supported": "automatic release publication"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "overlay_schema": 1,
+  "framework": {
+    "id": "FRAMEWORK-ID",
+    "title": "Framework title",
+    "version": "version/revision",
+    "source": "authoritative URL or document reference"
+  },
+  "evidence_required": false,
+  "mappings": [
+    {
+      "requirement": "external requirement identifier",
+      "title": "optional short local label; do not copy licensed text without rights",
+      "status": "covered",
+      "elements": "CO-001, PL-001",
+      "evidence": "EV-001",
+      "roadmap": "",
+      "exceptions": "",
+      "rationale": "why this mapping is valid",
+      "owner": "control/compliance owner"
+    }
+  ]
+}

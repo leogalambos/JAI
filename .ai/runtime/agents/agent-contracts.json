@@ -1,0 +1,909 @@
+{
+  "version": "2.1.0",
+  "contracts": [
+    {
+      "id": "codebase-reviewer",
+      "purpose": "codebase-reviewer authority boundary",
+      "provider": "provider-neutral",
+      "authority_boundary": "read-only-review",
+      "skills": [],
+      "permissions": {
+        "filesystem": [
+          "read:workspace"
+        ],
+        "shell": [
+          "read-only"
+        ],
+        "network": [
+          "provider-managed"
+        ],
+        "git": [
+          "read"
+        ],
+        "mcp": [
+          "allowlisted"
+        ]
+      },
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Bash"
+      ],
+      "denied_tools": [
+        "Write",
+        "Edit"
+      ],
+      "sandbox": {
+        "mode": "read-only",
+        "workspace_write": false,
+        "network": "provider-managed"
+      },
+      "mutation_allowed": false,
+      "escalation": "human approval",
+      "approval_required_for": [
+        "policy-change",
+        "release-approval"
+      ],
+      "audit_level": "high",
+      "workload_class": "standard",
+      "jai": {
+        "core_version": "1.0.0",
+        "layer": 3,
+        "layer_name": "Reasoning, Policy and Control",
+        "profile": "runtime",
+        "responsibility": "codebase-reviewer authority boundary",
+        "input_refs": [
+          "policy:managed-policy"
+        ],
+        "output_refs": [
+          "execution:agent:codebase-reviewer"
+        ],
+        "authority_ref": "human-authority:read-only-review",
+        "acceptance_question": "Are decisions, policy constraints, evidence obligations, trade-offs and escalation rules justified?",
+        "evidence_obligations": [
+          "ExecutionRecord"
+        ]
+      }
+    },
+    {
+      "id": "architecture-reviewer",
+      "purpose": "architecture-reviewer authority boundary",
+      "provider": "provider-neutral",
+      "authority_boundary": "read-only-review",
+      "skills": [],
+      "permissions": {
+        "filesystem": [
+          "read:workspace"
+        ],
+        "shell": [
+          "read-only"
+        ],
+        "network": [
+          "provider-managed"
+        ],
+        "git": [
+          "read"
+        ],
+        "mcp": [
+          "allowlisted"
+        ]
+      },
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "denied_tools": [
+        "Write",
+        "Edit"
+      ],
+      "sandbox": {
+        "mode": "read-only",
+        "workspace_write": false,
+        "network": "provider-managed"
+      },
+      "mutation_allowed": false,
+      "escalation": "human approval",
+      "approval_required_for": [
+        "policy-change",
+        "release-approval"
+      ],
+      "audit_level": "high",
+      "workload_class": "standard",
+      "jai": {
+        "core_version": "1.0.0",
+        "layer": 3,
+        "layer_name": "Reasoning, Policy and Control",
+        "profile": "runtime",
+        "responsibility": "architecture-reviewer authority boundary",
+        "input_refs": [
+          "policy:managed-policy"
+        ],
+        "output_refs": [
+          "execution:agent:architecture-reviewer"
+        ],
+        "authority_ref": "human-authority:read-only-review",
+        "acceptance_question": "Are decisions, policy constraints, evidence obligations, trade-offs and escalation rules justified?",
+        "evidence_obligations": [
+          "ExecutionRecord"
+        ]
+      }
+    },
+    {
+      "id": "gate-auditor",
+      "purpose": "gate-auditor authority boundary",
+      "provider": "provider-neutral",
+      "authority_boundary": "read-only-review",
+      "skills": [],
+      "permissions": {
+        "filesystem": [
+          "read:workspace"
+        ],
+        "shell": [
+          "read-only"
+        ],
+        "network": [
+          "provider-managed"
+        ],
+        "git": [
+          "read"
+        ],
+        "mcp": [
+          "allowlisted"
+        ]
+      },
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "denied_tools": [
+        "Write",
+        "Edit"
+      ],
+      "sandbox": {
+        "mode": "read-only",
+        "workspace_write": false,
+        "network": "provider-managed"
+      },
+      "mutation_allowed": false,
+      "escalation": "human approval",
+      "approval_required_for": [
+        "policy-change",
+        "release-approval"
+      ],
+      "audit_level": "high",
+      "workload_class": "standard",
+      "jai": {
+        "core_version": "1.0.0",
+        "layer": 3,
+        "layer_name": "Reasoning, Policy and Control",
+        "profile": "runtime",
+        "responsibility": "gate-auditor authority boundary",
+        "input_refs": [
+          "policy:managed-policy"
+        ],
+        "output_refs": [
+          "execution:agent:gate-auditor"
+        ],
+        "authority_ref": "human-authority:read-only-review",
+        "acceptance_question": "Are decisions, policy constraints, evidence obligations, trade-offs and escalation rules justified?",
+        "evidence_obligations": [
+          "ExecutionRecord"
+        ]
+      }
+    },
+    {
+      "id": "sod-reviewer",
+      "purpose": "sod-reviewer authority boundary",
+      "provider": "provider-neutral",
+      "authority_boundary": "read-only-review",
+      "skills": [],
+      "permissions": {
+        "filesystem": [
+          "read:workspace"
+        ],
+        "shell": [
+          "read-only"
+        ],
+        "network": [
+          "provider-managed"
+        ],
+        "git": [
+          "read"
+        ],
+        "mcp": [
+          "allowlisted"
+        ]
+      },
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "denied_tools": [
+        "Write",
+        "Edit"
+      ],
+      "sandbox": {
+        "mode": "read-only",
+        "workspace_write": false,
+        "network": "provider-managed"
+      },
+      "mutation_allowed": false,
+      "escalation": "human approval",
+      "approval_required_for": [
+        "policy-change",
+        "release-approval"
+      ],
+      "audit_level": "high",
+      "workload_class": "standard",
+      "jai": {
+        "core_version": "1.0.0",
+        "layer": 3,
+        "layer_name": "Reasoning, Policy and Control",
+        "profile": "runtime",
+        "responsibility": "sod-reviewer authority boundary",
+        "input_refs": [
+          "policy:managed-policy"
+        ],
+        "output_refs": [
+          "execution:agent:sod-reviewer"
+        ],
+        "authority_ref": "human-authority:read-only-review",
+        "acceptance_question": "Are decisions, policy constraints, evidence obligations, trade-offs and escalation rules justified?",
+        "evidence_obligations": [
+          "ExecutionRecord"
+        ]
+      }
+    },
+    {
+      "id": "sabsa-reviewer",
+      "purpose": "sabsa-reviewer authority boundary",
+      "provider": "provider-neutral",
+      "authority_boundary": "read-only-review",
+      "skills": [],
+      "permissions": {
+        "filesystem": [
+          "read:workspace"
+        ],
+        "shell": [
+          "read-only"
+        ],
+        "network": [
+          "provider-managed"
+        ],
+        "git": [
+          "read"
+        ],
+        "mcp": [
+          "allowlisted"
+        ]
+      },
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "denied_tools": [
+        "Write",
+        "Edit"
+      ],
+      "sandbox": {
+        "mode": "read-only",
+        "workspace_write": false,
+        "network": "provider-managed"
+      },
+      "mutation_allowed": false,
+      "escalation": "human approval",
+      "approval_required_for": [
+        "policy-change",
+        "release-approval"
+      ],
+      "audit_level": "high",
+      "workload_class": "standard",
+      "jai": {
+        "core_version": "1.0.0",
+        "layer": 3,
+        "layer_name": "Reasoning, Policy and Control",
+        "profile": "runtime",
+        "responsibility": "sabsa-reviewer authority boundary",
+        "input_refs": [
+          "policy:managed-policy"
+        ],
+        "output_refs": [
+          "execution:agent:sabsa-reviewer"
+        ],
+        "authority_ref": "human-authority:read-only-review",
+        "acceptance_question": "Are decisions, policy constraints, evidence obligations, trade-offs and escalation rules justified?",
+        "evidence_obligations": [
+          "ExecutionRecord"
+        ]
+      }
+    },
+    {
+      "id": "visual-quality-reviewer",
+      "purpose": "visual-quality-reviewer authority boundary",
+      "provider": "provider-neutral",
+      "authority_boundary": "read-only-review",
+      "skills": [],
+      "permissions": {
+        "filesystem": [
+          "read:workspace"
+        ],
+        "shell": [
+          "read-only"
+        ],
+        "network": [
+          "provider-managed"
+        ],
+        "git": [
+          "read"
+        ],
+        "mcp": [
+          "allowlisted"
+        ]
+      },
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "denied_tools": [
+        "Write",
+        "Edit"
+      ],
+      "sandbox": {
+        "mode": "read-only",
+        "workspace_write": false,
+        "network": "provider-managed"
+      },
+      "mutation_allowed": false,
+      "escalation": "human approval",
+      "approval_required_for": [
+        "policy-change",
+        "release-approval"
+      ],
+      "audit_level": "high",
+      "workload_class": "standard",
+      "jai": {
+        "core_version": "1.0.0",
+        "layer": 3,
+        "layer_name": "Reasoning, Policy and Control",
+        "profile": "runtime",
+        "responsibility": "visual-quality-reviewer authority boundary",
+        "input_refs": [
+          "policy:managed-policy"
+        ],
+        "output_refs": [
+          "execution:agent:visual-quality-reviewer"
+        ],
+        "authority_ref": "human-authority:read-only-review",
+        "acceptance_question": "Are decisions, policy constraints, evidence obligations, trade-offs and escalation rules justified?",
+        "evidence_obligations": [
+          "ExecutionRecord"
+        ]
+      }
+    },
+    {
+      "id": "evidence-rationale-reviewer",
+      "purpose": "evidence-rationale-reviewer authority boundary",
+      "provider": "provider-neutral",
+      "authority_boundary": "read-only-review",
+      "skills": [],
+      "permissions": {
+        "filesystem": [
+          "read:workspace"
+        ],
+        "shell": [
+          "read-only"
+        ],
+        "network": [
+          "provider-managed"
+        ],
+        "git": [
+          "read"
+        ],
+        "mcp": [
+          "allowlisted"
+        ]
+      },
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob"
+      ],
+      "denied_tools": [
+        "Write",
+        "Edit"
+      ],
+      "sandbox": {
+        "mode": "read-only",
+        "workspace_write": false,
+        "network": "provider-managed"
+      },
+      "mutation_allowed": false,
+      "escalation": "human approval",
+      "approval_required_for": [
+        "policy-change",
+        "release-approval"
+      ],
+      "audit_level": "high",
+      "workload_class": "standard",
+      "jai": {
+        "core_version": "1.0.0",
+        "layer": 3,
+        "layer_name": "Reasoning, Policy and Control",
+        "profile": "runtime",
+        "responsibility": "evidence-rationale-reviewer authority boundary",
+        "input_refs": [
+          "policy:managed-policy"
+        ],
+        "output_refs": [
+          "execution:agent:evidence-rationale-reviewer"
+        ],
+        "authority_ref": "human-authority:read-only-review",
+        "acceptance_question": "Are decisions, policy constraints, evidence obligations, trade-offs and escalation rules justified?",
+        "evidence_obligations": [
+          "ExecutionRecord"
+        ]
+      }
+    },
+    {
+      "id": "role-author",
+      "purpose": "role-author authority boundary",
+      "provider": "provider-neutral",
+      "authority_boundary": "write-authoring",
+      "skills": [],
+      "permissions": {
+        "filesystem": [
+          "read:workspace",
+          "write:workspace"
+        ],
+        "shell": [],
+        "network": [
+          "provider-managed"
+        ],
+        "git": [
+          "read"
+        ],
+        "mcp": [
+          "allowlisted"
+        ]
+      },
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Write",
+        "Edit"
+      ],
+      "denied_tools": [
+        "policy-mutation",
+        "approval-self-grant"
+      ],
+      "sandbox": {
+        "mode": "workspace-write",
+        "workspace_write": true,
+        "network": "provider-managed"
+      },
+      "mutation_allowed": true,
+      "escalation": "human approval",
+      "approval_required_for": [
+        "policy-change",
+        "release-approval"
+      ],
+      "audit_level": "standard",
+      "workload_class": "standard",
+      "jai": {
+        "core_version": "1.0.0",
+        "layer": 5,
+        "layer_name": "Realisation and Tooling",
+        "profile": "runtime",
+        "responsibility": "role-author authority boundary",
+        "input_refs": [
+          "policy:managed-policy"
+        ],
+        "output_refs": [
+          "execution:agent:role-author"
+        ],
+        "authority_ref": "human-authority:write-authoring",
+        "acceptance_question": "Is the design implemented through permitted tools and bounded execution mechanisms?",
+        "evidence_obligations": [
+          "ExecutionRecord"
+        ]
+      }
+    },
+    {
+      "id": "artefact-governor",
+      "purpose": "artefact-governor authority boundary",
+      "provider": "provider-neutral",
+      "authority_boundary": "write-authoring",
+      "skills": [],
+      "permissions": {
+        "filesystem": [
+          "read:workspace",
+          "write:workspace"
+        ],
+        "shell": [],
+        "network": [
+          "provider-managed"
+        ],
+        "git": [
+          "read"
+        ],
+        "mcp": [
+          "allowlisted"
+        ]
+      },
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Write",
+        "Edit"
+      ],
+      "denied_tools": [
+        "policy-mutation",
+        "approval-self-grant"
+      ],
+      "sandbox": {
+        "mode": "workspace-write",
+        "workspace_write": true,
+        "network": "provider-managed"
+      },
+      "mutation_allowed": true,
+      "escalation": "human approval",
+      "approval_required_for": [
+        "policy-change",
+        "release-approval"
+      ],
+      "audit_level": "standard",
+      "workload_class": "standard",
+      "jai": {
+        "core_version": "1.0.0",
+        "layer": 5,
+        "layer_name": "Realisation and Tooling",
+        "profile": "runtime",
+        "responsibility": "artefact-governor authority boundary",
+        "input_refs": [
+          "policy:managed-policy"
+        ],
+        "output_refs": [
+          "execution:agent:artefact-governor"
+        ],
+        "authority_ref": "human-authority:write-authoring",
+        "acceptance_question": "Is the design implemented through permitted tools and bounded execution mechanisms?",
+        "evidence_obligations": [
+          "ExecutionRecord"
+        ]
+      }
+    },
+    {
+      "id": "architecture-repository-engineer",
+      "purpose": "architecture-repository-engineer authority boundary",
+      "provider": "provider-neutral",
+      "authority_boundary": "write-authoring",
+      "skills": [],
+      "permissions": {
+        "filesystem": [
+          "read:workspace",
+          "write:workspace"
+        ],
+        "shell": [],
+        "network": [
+          "provider-managed"
+        ],
+        "git": [
+          "read"
+        ],
+        "mcp": [
+          "allowlisted"
+        ]
+      },
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Write",
+        "Edit"
+      ],
+      "denied_tools": [
+        "policy-mutation",
+        "approval-self-grant"
+      ],
+      "sandbox": {
+        "mode": "workspace-write",
+        "workspace_write": true,
+        "network": "provider-managed"
+      },
+      "mutation_allowed": true,
+      "escalation": "human approval",
+      "approval_required_for": [
+        "policy-change",
+        "release-approval"
+      ],
+      "audit_level": "standard",
+      "workload_class": "standard",
+      "jai": {
+        "core_version": "1.0.0",
+        "layer": 5,
+        "layer_name": "Realisation and Tooling",
+        "profile": "runtime",
+        "responsibility": "architecture-repository-engineer authority boundary",
+        "input_refs": [
+          "policy:managed-policy"
+        ],
+        "output_refs": [
+          "execution:agent:architecture-repository-engineer"
+        ],
+        "authority_ref": "human-authority:write-authoring",
+        "acceptance_question": "Is the design implemented through permitted tools and bounded execution mechanisms?",
+        "evidence_obligations": [
+          "ExecutionRecord"
+        ]
+      }
+    },
+    {
+      "id": "enterprise-publication-editor",
+      "purpose": "enterprise-publication-editor authority boundary",
+      "provider": "provider-neutral",
+      "authority_boundary": "write-authoring",
+      "skills": [],
+      "permissions": {
+        "filesystem": [
+          "read:workspace",
+          "write:workspace"
+        ],
+        "shell": [],
+        "network": [
+          "provider-managed"
+        ],
+        "git": [
+          "read"
+        ],
+        "mcp": [
+          "allowlisted"
+        ]
+      },
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Write",
+        "Edit"
+      ],
+      "denied_tools": [
+        "policy-mutation",
+        "approval-self-grant"
+      ],
+      "sandbox": {
+        "mode": "workspace-write",
+        "workspace_write": true,
+        "network": "provider-managed"
+      },
+      "mutation_allowed": true,
+      "escalation": "human approval",
+      "approval_required_for": [
+        "policy-change",
+        "release-approval"
+      ],
+      "audit_level": "standard",
+      "workload_class": "standard",
+      "jai": {
+        "core_version": "1.0.0",
+        "layer": 5,
+        "layer_name": "Realisation and Tooling",
+        "profile": "runtime",
+        "responsibility": "enterprise-publication-editor authority boundary",
+        "input_refs": [
+          "policy:managed-policy"
+        ],
+        "output_refs": [
+          "execution:agent:enterprise-publication-editor"
+        ],
+        "authority_ref": "human-authority:write-authoring",
+        "acceptance_question": "Is the design implemented through permitted tools and bounded execution mechanisms?",
+        "evidence_obligations": [
+          "ExecutionRecord"
+        ]
+      }
+    },
+    {
+      "id": "artifact-author",
+      "purpose": "artifact-author authority boundary",
+      "provider": "provider-neutral",
+      "authority_boundary": "write-authoring",
+      "skills": [],
+      "permissions": {
+        "filesystem": [
+          "read:workspace",
+          "write:workspace"
+        ],
+        "shell": [],
+        "network": [
+          "provider-managed"
+        ],
+        "git": [
+          "read"
+        ],
+        "mcp": [
+          "allowlisted"
+        ]
+      },
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Write",
+        "Edit"
+      ],
+      "denied_tools": [
+        "policy-mutation",
+        "approval-self-grant"
+      ],
+      "sandbox": {
+        "mode": "workspace-write",
+        "workspace_write": true,
+        "network": "provider-managed"
+      },
+      "mutation_allowed": true,
+      "escalation": "human approval",
+      "approval_required_for": [
+        "policy-change",
+        "release-approval"
+      ],
+      "audit_level": "standard",
+      "workload_class": "standard",
+      "jai": {
+        "core_version": "1.0.0",
+        "layer": 5,
+        "layer_name": "Realisation and Tooling",
+        "profile": "runtime",
+        "responsibility": "artifact-author authority boundary",
+        "input_refs": [
+          "policy:managed-policy"
+        ],
+        "output_refs": [
+          "execution:agent:artifact-author"
+        ],
+        "authority_ref": "human-authority:write-authoring",
+        "acceptance_question": "Is the design implemented through permitted tools and bounded execution mechanisms?",
+        "evidence_obligations": [
+          "ExecutionRecord"
+        ]
+      }
+    },
+    {
+      "id": "workflow-author",
+      "purpose": "workflow-author authority boundary",
+      "provider": "provider-neutral",
+      "authority_boundary": "write-authoring",
+      "skills": [],
+      "permissions": {
+        "filesystem": [
+          "read:workspace",
+          "write:workspace"
+        ],
+        "shell": [],
+        "network": [
+          "provider-managed"
+        ],
+        "git": [
+          "read"
+        ],
+        "mcp": [
+          "allowlisted"
+        ]
+      },
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Write",
+        "Edit"
+      ],
+      "denied_tools": [
+        "policy-mutation",
+        "approval-self-grant"
+      ],
+      "sandbox": {
+        "mode": "workspace-write",
+        "workspace_write": true,
+        "network": "provider-managed"
+      },
+      "mutation_allowed": true,
+      "escalation": "human approval",
+      "approval_required_for": [
+        "policy-change",
+        "release-approval"
+      ],
+      "audit_level": "standard",
+      "workload_class": "standard",
+      "jai": {
+        "core_version": "1.0.0",
+        "layer": 5,
+        "layer_name": "Realisation and Tooling",
+        "profile": "runtime",
+        "responsibility": "workflow-author authority boundary",
+        "input_refs": [
+          "policy:managed-policy"
+        ],
+        "output_refs": [
+          "execution:agent:workflow-author"
+        ],
+        "authority_ref": "human-authority:write-authoring",
+        "acceptance_question": "Is the design implemented through permitted tools and bounded execution mechanisms?",
+        "evidence_obligations": [
+          "ExecutionRecord"
+        ]
+      }
+    },
+    {
+      "id": "migration-author",
+      "purpose": "migration-author authority boundary",
+      "provider": "provider-neutral",
+      "authority_boundary": "write-authoring",
+      "skills": [],
+      "permissions": {
+        "filesystem": [
+          "read:workspace",
+          "write:workspace"
+        ],
+        "shell": [],
+        "network": [
+          "provider-managed"
+        ],
+        "git": [
+          "read"
+        ],
+        "mcp": [
+          "allowlisted"
+        ]
+      },
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Write",
+        "Edit"
+      ],
+      "denied_tools": [
+        "policy-mutation",
+        "approval-self-grant"
+      ],
+      "sandbox": {
+        "mode": "workspace-write",
+        "workspace_write": true,
+        "network": "provider-managed"
+      },
+      "mutation_allowed": true,
+      "escalation": "human approval",
+      "approval_required_for": [
+        "policy-change",
+        "release-approval"
+      ],
+      "audit_level": "standard",
+      "workload_class": "standard",
+      "jai": {
+        "core_version": "1.0.0",
+        "layer": 5,
+        "layer_name": "Realisation and Tooling",
+        "profile": "runtime",
+        "responsibility": "migration-author authority boundary",
+        "input_refs": [
+          "policy:managed-policy"
+        ],
+        "output_refs": [
+          "execution:agent:migration-author"
+        ],
+        "authority_ref": "human-authority:write-authoring",
+        "acceptance_question": "Is the design implemented through permitted tools and bounded execution mechanisms?",
+        "evidence_obligations": [
+          "ExecutionRecord"
+        ]
+      }
+    }
+  ]
+}

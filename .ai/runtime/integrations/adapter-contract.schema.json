@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10/adapter-contract.schema.json",
+  "title": "EnterpriseAdapterContract",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version","id","category","authority","operations","audit","mutation_policy"],
+  "properties": {
+    "schema_version": {"const": "1.0.0"},
+    "id": {"type": "string", "pattern": "^[a-z0-9-]+$"},
+    "category": {"enum": ["itsm-cmdb","backlog-project","grc","ea-repository","ci-cd","identity","observability","financial-tbm"]},
+    "authority": {"enum": ["read-only-default","dry-run-default"]},
+    "operations": {"type": "array", "const": ["discover","read","query","create-draft","validate","propose-change","execute-approved-change","verify","rollback"]},
+    "audit": {"type": "object", "additionalProperties": false, "required": ["execution_record_required","external_call_record_required"], "properties": {"execution_record_required":{"const":true},"external_call_record_required":{"const":true}}},
+    "mutation_policy": {"type": "object", "additionalProperties": false, "required": ["default","requires","postconditions"], "properties": {"default":{"const":"deny"},"requires":{"type":"array","const":["explicit-approval","scope-match","change-digest-match"]},"postconditions":{"type":"array","const":["verification","immutable-audit-event"]}}}
+  }
+}

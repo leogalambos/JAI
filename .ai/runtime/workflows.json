@@ -1,0 +1,2648 @@
+{
+  "version": "26.10.4",
+  "count": 24,
+  "workflows": [
+    {
+      "key": "idea-to-production",
+      "title": "Idea to production",
+      "trigger": "A business need, opportunity or customer problem arrives with no agreed solution.",
+      "outcome": "A change running in production with a measured benefit and a named owner.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "Business Relationship Manager",
+          "slug": "business-relationship-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "captures the demand with a business outcome and an owner",
+          "hands_over": "demand record with outcome and owner",
+          "gate": "Demand with no named business outcome does not enter the pipeline"
+        },
+        {
+          "step": 2,
+          "role": "Product Manager",
+          "slug": "product-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "decides whether and why to pursue it, against evidence",
+          "hands_over": "roadmap item with problem statement and success measure",
+          "gate": "The customer problem and its evidence are stated"
+        },
+        {
+          "step": 3,
+          "role": "Business Analyst",
+          "slug": "business-analyst",
+          "skill": "it-roles-analysis",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "elicits and specifies the need with testable acceptance criteria",
+          "hands_over": "requirements baseline with traceability",
+          "gate": "Every requirement is atomic, testable and traced to a source"
+        },
+        {
+          "step": 4,
+          "role": "Solution Architect",
+          "slug": "solution-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "designs the solution end to end and records the decisions",
+          "hands_over": "solution architecture and ADRs",
+          "gate": "Reviewed by someone who will operate it; failure modes documented"
+        },
+        {
+          "step": 5,
+          "role": "Security Architect",
+          "slug": "security-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "designs the controls the solution needs",
+          "hands_over": "security requirements and threat model",
+          "gate": "Every control traces to a threat and a business risk"
+        },
+        {
+          "step": 6,
+          "role": "Technical Lead",
+          "slug": "technical-lead",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "breaks the work down and sets the technical approach",
+          "hands_over": "technical breakdown and readiness-checked items",
+          "gate": "Acceptance criteria and dependencies exist before start"
+        },
+        {
+          "step": 7,
+          "role": "Software Engineer",
+          "slug": "software-engineer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "implements with tests and telemetry",
+          "hands_over": "reviewed, merged change with rollback path",
+          "gate": "Peer reviewed; no secrets in source; telemetry present"
+        },
+        {
+          "step": 8,
+          "role": "Test Analyst",
+          "slug": "test-analyst",
+          "skill": "it-roles-quality-and-testing",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "verifies against the claims and reports residual risk",
+          "hands_over": "test evidence and residual risk statement",
+          "gate": "Exit criteria agreed before execution and met or waived"
+        },
+        {
+          "step": 9,
+          "role": "Release Engineer",
+          "slug": "release-engineer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "assembles the release and proves the rollback",
+          "hands_over": "release manifest and tested rollback",
+          "gate": "Manifest states exactly which artefact versions ship where"
+        },
+        {
+          "step": 10,
+          "role": "Change Manager",
+          "slug": "change-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "authorises the production change proportionate to its risk",
+          "hands_over": "change authorisation",
+          "gate": "Risk class matched to approval path; emergency changes logged within the window"
+        },
+        {
+          "step": 11,
+          "role": "GitOps and Continuous Delivery Engineer",
+          "slug": "gitops-and-continuous-delivery-engineer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "promotes the artefact and runs the progressive rollout",
+          "hands_over": "deployed change with health gate",
+          "gate": "Health gate and automatic rollback defined and exercised"
+        },
+        {
+          "step": 12,
+          "role": "Site Reliability Engineer",
+          "slug": "site-reliability-engineer",
+          "skill": "it-roles-infrastructure-cloud-and-operations",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "observes against the service objective and owns the run",
+          "hands_over": "service operating within SLO, or an error-budget decision",
+          "gate": "Error budget policy actually enforced"
+        },
+        {
+          "step": 13,
+          "role": "Product Analyst",
+          "slug": "product-analyst",
+          "skill": "it-roles-analysis",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "measures whether the stated benefit arrived",
+          "hands_over": "benefit measurement against the success measure",
+          "gate": "Result reported with effect size, not just direction"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/idea-to-production.md"
+    },
+    {
+      "key": "new-service-onboarding",
+      "title": "New service onboarding",
+      "trigger": "A new service or component needs to exist, be deployable and be operable.",
+      "outcome": "A service with codified infrastructure, a pipeline, environments, observability and an on-call owner.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "Cloud Architect",
+          "slug": "cloud-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "sets the landing zone, resilience and residency constraints",
+          "hands_over": "target platform design",
+          "gate": "Resilience claims substantiated by a tested failure scenario"
+        },
+        {
+          "step": 2,
+          "role": "Infrastructure as Code Engineer",
+          "slug": "infrastructure-as-code-engineer",
+          "skill": "it-roles-infrastructure-cloud-and-operations",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "codifies the infrastructure and its guardrails",
+          "hands_over": "versioned modules, remote locked state, policy-as-code",
+          "gate": "Applies idempotently from clean; plan reviewed before apply"
+        },
+        {
+          "step": 3,
+          "role": "Container Platform Engineer",
+          "slug": "container-platform-engineer",
+          "skill": "it-roles-infrastructure-cloud-and-operations",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "establishes the image build chain and base image lineage",
+          "hands_over": "signed images with SBOM, immutable tags",
+          "gate": "Non-root, no build secrets, pinned digests"
+        },
+        {
+          "step": 4,
+          "role": "CI/CD Platform Engineer",
+          "slug": "ci-cd-platform-engineer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "wires the service onto the shared pipeline platform",
+          "hands_over": "pipeline with federated identity and signed provenance",
+          "gate": "No static cloud credentials in the CI system"
+        },
+        {
+          "step": 5,
+          "role": "Secrets and Configuration Management Engineer",
+          "slug": "secrets-and-configuration-management-engineer",
+          "skill": "it-roles-security-operations-and-defensive-security",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "issues the service's credentials with a lifecycle",
+          "hands_over": "dynamic short-lived credentials and a tested revocation path",
+          "gate": "Static credentials only as a time-bound exception"
+        },
+        {
+          "step": 6,
+          "role": "Environment Manager",
+          "slug": "environment-manager",
+          "skill": "it-roles-infrastructure-cloud-and-operations",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "provisions the non-production environments and their data",
+          "hands_over": "environments with owners, refresh cadence and masked data",
+          "gate": "No unmasked production personal data anywhere"
+        },
+        {
+          "step": 7,
+          "role": "GitOps and Continuous Delivery Engineer",
+          "slug": "gitops-and-continuous-delivery-engineer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "defines promotion and rollback across environments",
+          "hands_over": "desired-state repositories and promotion model",
+          "gate": "The same immutable artefact is promoted, never rebuilt"
+        },
+        {
+          "step": 8,
+          "role": "Observability Engineer",
+          "slug": "observability-engineer",
+          "skill": "it-roles-infrastructure-cloud-and-operations",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "instruments the service against its objectives",
+          "hands_over": "dashboards and owned, actionable alerts",
+          "gate": "Every alert has an owner, an action and a runbook"
+        },
+        {
+          "step": 9,
+          "role": "Site Reliability Engineer",
+          "slug": "site-reliability-engineer",
+          "skill": "it-roles-infrastructure-cloud-and-operations",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "agrees the service objective and the error budget policy",
+          "hands_over": "SLOs and error budget policy",
+          "gate": "Exhausting the budget changes something, or the SLO is decorative"
+        },
+        {
+          "step": 10,
+          "role": "Application Support Analyst",
+          "slug": "application-support-analyst",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "accepts the service into support with a runbook",
+          "hands_over": "runbook and known-error entries",
+          "gate": "A competent on-call engineer who has never seen it can follow it"
+        },
+        {
+          "step": 11,
+          "role": "Configuration Manager",
+          "slug": "configuration-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "records the service, its relationships and its owner",
+          "hands_over": "configuration items with verified relationships",
+          "gate": "Owner, lifecycle status and verified-by date present"
+        },
+        {
+          "step": 12,
+          "role": "IT Service Owner",
+          "slug": "it-service-owner",
+          "skill": "it-roles-executive-and-leadership",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "takes end-to-end ownership of value, cost and risk",
+          "hands_over": "service definition and service level agreement",
+          "gate": "Named business contact and an agreed SLA exist"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/new-service-onboarding.md"
+    },
+    {
+      "key": "production-change",
+      "title": "Production change",
+      "trigger": "A change must reach production: a feature, a fix, an infrastructure change or a configuration change.",
+      "outcome": "The change in production, recorded, with a proven way back.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "Software Engineer",
+          "slug": "software-engineer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "produces the change with its rollback path designed first",
+          "hands_over": "reviewed change and rollback plan",
+          "gate": "Small enough to review in one pass"
+        },
+        {
+          "step": 2,
+          "role": "Infrastructure as Code Engineer",
+          "slug": "infrastructure-as-code-engineer",
+          "skill": "it-roles-infrastructure-cloud-and-operations",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "produces any infrastructure change as a reviewed plan",
+          "hands_over": "reviewed plan; destructive operations flagged",
+          "gate": "The applied plan is the reviewed plan"
+        },
+        {
+          "step": 3,
+          "role": "Test Analyst",
+          "slug": "test-analyst",
+          "skill": "it-roles-quality-and-testing",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "verifies and states what is not covered",
+          "hands_over": "test evidence with coverage and residual risk",
+          "gate": "Residual risk accepted by a named person"
+        },
+        {
+          "step": 4,
+          "role": "Release Engineer",
+          "slug": "release-engineer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "packages the release and verifies provenance",
+          "hands_over": "release manifest with signed provenance",
+          "gate": "Every artefact traceable to a source commit"
+        },
+        {
+          "step": 5,
+          "role": "Change Manager",
+          "slug": "change-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "authorises at the level the risk class requires",
+          "hands_over": "change record and schedule slot",
+          "gate": "Standard changes pre-authorised and measured, not queued for ceremony"
+        },
+        {
+          "step": 6,
+          "role": "GitOps and Continuous Delivery Engineer",
+          "slug": "gitops-and-continuous-delivery-engineer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "deploys progressively behind a health gate",
+          "hands_over": "rollout with automatic reversal armed",
+          "gate": "Rollback exercised, not merely documented"
+        },
+        {
+          "step": 7,
+          "role": "Site Reliability Engineer",
+          "slug": "site-reliability-engineer",
+          "skill": "it-roles-infrastructure-cloud-and-operations",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "watches the agreed signals for the agreed window",
+          "hands_over": "post-release confirmation or a reversal decision",
+          "gate": "Reversal executed on trigger, not on debate"
+        },
+        {
+          "step": 8,
+          "role": "Configuration Manager",
+          "slug": "configuration-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "updates the record of what now exists",
+          "hands_over": "updated configuration items",
+          "gate": "Record updated the same day the change lands"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/production-change.md"
+    },
+    {
+      "key": "incident-to-problem",
+      "title": "Incident to permanent fix",
+      "trigger": "A service degrades or fails.",
+      "outcome": "Service restored, cause removed, and a control changed so the class of failure does not recur.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "Service Desk Analyst",
+          "slug": "service-desk-analyst",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "captures impact and what the user was trying to do",
+          "hands_over": "incident record with impact and urgency",
+          "gate": "Symptom-only records are returned for clarification"
+        },
+        {
+          "step": 2,
+          "role": "Incident Manager",
+          "slug": "incident-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "classifies by business effect and drives restoration",
+          "hands_over": "priority, working hypothesis, comms cadence",
+          "gate": "Priority from business impact, not technical severity"
+        },
+        {
+          "step": 3,
+          "role": "Site Reliability Engineer",
+          "slug": "site-reliability-engineer",
+          "skill": "it-roles-infrastructure-cloud-and-operations",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "restores service while preserving evidence",
+          "hands_over": "service restored; evidence preserved",
+          "gate": "Evidence kept before destructive recovery"
+        },
+        {
+          "step": 4,
+          "role": "Major Incident Manager",
+          "slug": "major-incident-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "takes command when impact exceeds normal handling",
+          "hands_over": "command log, stakeholder comms, notification assessment",
+          "gate": "Comms on a fixed clock; regulatory clocks assessed"
+        },
+        {
+          "step": 5,
+          "role": "Problem Manager",
+          "slug": "problem-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "establishes the systemic cause",
+          "hands_over": "problem record with root cause and known error",
+          "gate": "\"Human error\" alone rejected as a root cause"
+        },
+        {
+          "step": 6,
+          "role": "Technical Lead",
+          "slug": "technical-lead",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "designs the permanent fix",
+          "hands_over": "fix approach and effort",
+          "gate": "The fix addresses the cause, not the latest symptom"
+        },
+        {
+          "step": 7,
+          "role": "Change Manager",
+          "slug": "change-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "authorises the fix through the normal path",
+          "hands_over": "change authorisation",
+          "gate": "Emergency path used only where justified, and logged"
+        },
+        {
+          "step": 8,
+          "role": "Detection Engineer",
+          "slug": "detection-engineer",
+          "skill": "it-roles-security-operations-and-defensive-security",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "or Observability Engineer closes the detection gap the incident exposed",
+          "hands_over": "new or tuned alert with a runbook",
+          "gate": "The alert would have fired earlier for this failure"
+        },
+        {
+          "step": 9,
+          "role": "Continual Improvement Manager",
+          "slug": "continual-improvement-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "confirms the improvement happened and held",
+          "hands_over": "measured recurrence rate",
+          "gate": "Baseline measured before the change, not asserted after"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/incident-to-problem.md"
+    },
+    {
+      "key": "vulnerability-to-remediation",
+      "title": "Vulnerability to remediation",
+      "trigger": "A vulnerability is reported, discovered by scanning, or published by a vendor.",
+      "outcome": "The exposure removed or consciously accepted, with evidence either way.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "Vulnerability Management Analyst",
+          "slug": "vulnerability-management-analyst",
+          "skill": "it-roles-security-operations-and-defensive-security",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "establishes exposure and prioritises by exploitability",
+          "hands_over": "prioritised findings with owners and targets",
+          "gate": "Prioritised on exploitability and exposure, not severity score alone"
+        },
+        {
+          "step": 2,
+          "role": "Threat Intelligence Analyst",
+          "slug": "threat-intelligence-analyst",
+          "skill": "it-roles-security-operations-and-defensive-security",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "supplies exploitation context and actor interest",
+          "hands_over": "exploitability and targeting assessment",
+          "gate": "Source reliability and analytic confidence stated"
+        },
+        {
+          "step": 3,
+          "role": "Application Security Engineer",
+          "slug": "application-security-engineer",
+          "skill": "it-roles-security-operations-and-defensive-security",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "or Security Engineer triages the technical remediation route",
+          "hands_over": "remediation guidance per finding",
+          "gate": "Scanner noise tuned rather than forwarded"
+        },
+        {
+          "step": 4,
+          "role": "Container Platform Engineer",
+          "slug": "container-platform-engineer",
+          "skill": "it-roles-infrastructure-cloud-and-operations",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "rebuilds affected images from patched bases where the finding is inherited",
+          "hands_over": "rebuilt signed images",
+          "gate": "Base image owner and cadence identified"
+        },
+        {
+          "step": 5,
+          "role": "Software Engineer",
+          "slug": "software-engineer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "or Linux Systems Administrator applies the fix",
+          "hands_over": "patched system or dependency",
+          "gate": "Fix verified, not assumed from a version number"
+        },
+        {
+          "step": 6,
+          "role": "Change Manager",
+          "slug": "change-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "authorises the remediation window",
+          "hands_over": "change authorisation",
+          "gate": "Risk of patching weighed against risk of waiting, explicitly"
+        },
+        {
+          "step": 7,
+          "role": "Penetration Tester (Network and Infrastructure)",
+          "slug": "penetration-tester-network-and-infrastructure",
+          "skill": "it-roles-offensive-security-and-adversarial-testing",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "retests on request to confirm closure",
+          "hands_over": "retest verification",
+          "gate": "Only within a current signed authorisation"
+        },
+        {
+          "step": 8,
+          "role": "IT Risk Manager",
+          "slug": "it-risk-manager",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "records acceptance where remediation will not happen",
+          "hands_over": "time-bound risk acceptance with a compensating control",
+          "gate": "Accepted by the owner carrying the risk"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/vulnerability-to-remediation.md"
+    },
+    {
+      "key": "codebase-takeover",
+      "title": "Inherited codebase takeover",
+      "trigger": "The organisation acquires, inherits or repatriates a system nobody present built.",
+      "outcome": "A reviewed, measured, supportable system with a sequenced improvement plan.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "Codebase Reviewer",
+          "slug": "codebase-reviewer",
+          "skill": "it-roles-quality-and-testing",
+          "tool_tier": "inspect",
+          "operator_agent": "codebase-reviewer",
+          "does": "audits against fixed criteria and reports prioritised findings",
+          "hands_over": "review report with located, measured findings",
+          "gate": "Criteria fixed before any code is read"
+        },
+        {
+          "step": 2,
+          "role": "Application Architect",
+          "slug": "application-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "assesses structure and defines module boundaries",
+          "hands_over": "boundary definition and refactoring roadmap",
+          "gate": "Boundaries enforced by automated checks, not prose"
+        },
+        {
+          "step": 3,
+          "role": "Test Architect",
+          "slug": "test-architect",
+          "skill": "it-roles-quality-and-testing",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "establishes how the system can be verified at all",
+          "hands_over": "test and environment strategy",
+          "gate": "Production-like data obtained lawfully"
+        },
+        {
+          "step": 4,
+          "role": "Software Modernisation Engineer",
+          "slug": "software-modernisation-engineer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "captures existing behaviour before changing it",
+          "hands_over": "characterisation test suite",
+          "gate": "Undocumented behaviour treated as a requirement until proven otherwise"
+        },
+        {
+          "step": 5,
+          "role": "Infrastructure as Code Engineer",
+          "slug": "infrastructure-as-code-engineer",
+          "skill": "it-roles-infrastructure-cloud-and-operations",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "codifies whatever it currently runs on",
+          "hands_over": "reproducible environment definition",
+          "gate": "Applies from clean; drift detectable"
+        },
+        {
+          "step": 6,
+          "role": "Observability Engineer",
+          "slug": "observability-engineer",
+          "skill": "it-roles-infrastructure-cloud-and-operations",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "makes its behaviour visible before changing it",
+          "hands_over": "instrumentation and baseline signals",
+          "gate": "Baseline captured before the first change"
+        },
+        {
+          "step": 7,
+          "role": "Technical Lead",
+          "slug": "technical-lead",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "sequences the work so each slice ships independently",
+          "hands_over": "incremental delivery plan",
+          "gate": "No step requires a simultaneous big-bang cutover"
+        },
+        {
+          "step": 8,
+          "role": "IT Service Owner",
+          "slug": "it-service-owner",
+          "skill": "it-roles-executive-and-leadership",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "accepts ownership with a cost and risk position",
+          "hands_over": "service definition, SLA, risk profile",
+          "gate": "A service with no owner is reported as ungoverned"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/codebase-takeover.md"
+    },
+    {
+      "key": "access-request-to-review",
+      "title": "Access request to periodic review",
+      "trigger": "Someone needs access, changes role, or leaves.",
+      "outcome": "Access that is appropriate, evidenced, and removed when no longer needed.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "Service Desk Analyst",
+          "slug": "service-desk-analyst",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "records the request against a catalogue entitlement",
+          "hands_over": "request with entitlement and approval path",
+          "gate": "Entitlement and approval path defined for the request type"
+        },
+        {
+          "step": 2,
+          "role": "Data Owner",
+          "slug": "data-owner",
+          "skill": "it-roles-data-analytics-and-ai",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "or application owner decides whether the purpose justifies access",
+          "hands_over": "access decision recorded with its purpose",
+          "gate": "Purpose-free access grants refused"
+        },
+        {
+          "step": 3,
+          "role": "Identity and Access Management Engineer",
+          "slug": "identity-and-access-management-engineer",
+          "skill": "it-roles-security-operations-and-defensive-security",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "provisions through the identity platform",
+          "hands_over": "provisioned access, automated where integrated",
+          "gate": "Leaver revocation evidenced automatically, not attested"
+        },
+        {
+          "step": 4,
+          "role": "Privileged Access Management Administrator",
+          "slug": "privileged-access-management-administrator",
+          "skill": "it-roles-security-operations-and-defensive-security",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "vaults and monitors anything privileged",
+          "hands_over": "vaulted account with session monitoring",
+          "gate": "Break-glass tested on a schedule; every use reviewed"
+        },
+        {
+          "step": 5,
+          "role": "Identity Governance Specialist",
+          "slug": "identity-governance-specialist",
+          "skill": "it-roles-security-operations-and-defensive-security",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "certifies periodically that access is still appropriate",
+          "hands_over": "certification campaign results",
+          "gate": "Reviewers have actual knowledge of the access"
+        },
+        {
+          "step": 6,
+          "role": "Internal IT Auditor",
+          "slug": "internal-it-auditor",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "tests the control independently",
+          "hands_over": "audit finding or assurance",
+          "gate": "Auditor never operated the control"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/access-request-to-review.md"
+    },
+    {
+      "key": "data-product-delivery",
+      "title": "Data product delivery",
+      "trigger": "A business area needs a trusted dataset, metric or report.",
+      "outcome": "A governed, documented, monitored data product with an owner.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "Data Governance Lead",
+          "slug": "data-governance-lead",
+          "skill": "it-roles-data-analytics-and-ai",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "confirms the critical data elements, owners and tolerances",
+          "hands_over": "governed element definitions",
+          "gate": "Owner, steward, definition and quality tolerance exist"
+        },
+        {
+          "step": 2,
+          "role": "Data Protection Officer",
+          "slug": "data-protection-officer",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "advises on lawful basis and minimisation",
+          "hands_over": "privacy position and DPIA where required",
+          "gate": "DPIA completed before processing begins"
+        },
+        {
+          "step": 3,
+          "role": "Data Architect",
+          "slug": "data-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "designs the structures and the flows, including trust boundaries",
+          "hands_over": "data model and flow design",
+          "gate": "Every flow crossing a trust or jurisdiction boundary has a control"
+        },
+        {
+          "step": 4,
+          "role": "Data Engineer",
+          "slug": "data-engineer",
+          "skill": "it-roles-data-analytics-and-ai",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "builds the pipelines with declared quality expectations",
+          "hands_over": "pipelines with freshness and completeness checks",
+          "gate": "Checks fail loudly rather than degrading silently"
+        },
+        {
+          "step": 5,
+          "role": "Analytics Engineer",
+          "slug": "analytics-engineer",
+          "skill": "it-roles-data-analytics-and-ai",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "models and tests the consumable datasets",
+          "hands_over": "tested, documented models with lineage",
+          "gate": "Uniqueness, referential integrity and freshness tested"
+        },
+        {
+          "step": 6,
+          "role": "Data Quality Analyst",
+          "slug": "data-quality-analyst",
+          "skill": "it-roles-data-analytics-and-ai",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "measures fitness against the stated purpose",
+          "hands_over": "quality measurement against tolerance",
+          "gate": "No bare percentage without a fitness-for-purpose statement"
+        },
+        {
+          "step": 7,
+          "role": "Business Intelligence Analyst",
+          "slug": "business-intelligence-analyst",
+          "skill": "it-roles-analysis",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "publishes the reporting product on agreed definitions",
+          "hands_over": "dashboards on a single agreed metric definition",
+          "gate": "Two dashboards may not disagree silently"
+        },
+        {
+          "step": 8,
+          "role": "Data Steward",
+          "slug": "data-steward",
+          "skill": "it-roles-data-analytics-and-ai",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "runs it day to day and arbitrates definition disputes",
+          "hands_over": "stewardship decisions and issue log",
+          "gate": "Competing definitions escalated, not averaged"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/data-product-delivery.md"
+    },
+    {
+      "key": "ai-system-approval",
+      "title": "AI system from idea to approved production use",
+      "trigger": "A business area wants to deploy a model or an AI-assisted workflow.",
+      "outcome": "An AI system classified, assessed, monitored, and accountable to a named human.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "AI Governance Officer",
+          "slug": "ai-governance-officer",
+          "skill": "it-roles-data-analytics-and-ai",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "registers the use case and classifies its risk",
+          "hands_over": "risk classification and inventory entry",
+          "gate": "No production AI without a classification and an accountable human"
+        },
+        {
+          "step": 2,
+          "role": "Data Protection Officer",
+          "slug": "data-protection-officer",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "assesses lawfulness of the data and the decisioning",
+          "hands_over": "privacy and fairness position",
+          "gate": "Impact assessment before processing, not retrospectively"
+        },
+        {
+          "step": 3,
+          "role": "Data Scientist",
+          "slug": "data-scientist",
+          "skill": "it-roles-data-analytics-and-ai",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "builds and honestly characterises the model",
+          "hands_over": "model with held-out performance and stated limits",
+          "gate": "Failure modes and the population it must not be applied to are stated"
+        },
+        {
+          "step": 4,
+          "role": "AI and ML Architect",
+          "slug": "ai-and-ml-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "designs serving, monitoring and the human override path",
+          "hands_over": "serving and monitoring architecture",
+          "gate": "Drift, degradation and harmful-output monitoring designed in"
+        },
+        {
+          "step": 5,
+          "role": "AI Safety and Model Red Team Specialist",
+          "slug": "ai-safety-and-model-red-team-specialist",
+          "skill": "it-roles-data-analytics-and-ai",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "probes the deployment configuration for harm and misuse",
+          "hands_over": "adversarial findings with severity and owners",
+          "gate": "Tested against the configuration users will actually get"
+        },
+        {
+          "step": 6,
+          "role": "Machine Learning Engineer",
+          "slug": "machine-learning-engineer",
+          "skill": "it-roles-data-analytics-and-ai",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "productionises with full lineage",
+          "hands_over": "reproducible training and traceable deployed version",
+          "gate": "Every deployed version traceable to its training run"
+        },
+        {
+          "step": 7,
+          "role": "MLOps Engineer",
+          "slug": "mlops-engineer",
+          "skill": "it-roles-data-analytics-and-ai",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "operates the lifecycle with rollback",
+          "hands_over": "monitored model with defined thresholds and rollback",
+          "gate": "Automatic or documented rollback route exists"
+        },
+        {
+          "step": 8,
+          "role": "AI Governance Officer",
+          "slug": "ai-governance-officer",
+          "skill": "it-roles-data-analytics-and-ai",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "approves, and re-tests at the review date",
+          "hands_over": "approval record and review date",
+          "gate": "Route to challenge the system's decisions is published"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/ai-system-approval.md"
+    },
+    {
+      "key": "supplier-onboarding",
+      "title": "Supplier onboarding to exit",
+      "trigger": "A technology supplier or SaaS product is being considered.",
+      "outcome": "A contracted supplier with assurance, monitored performance and a tested way out.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "IT Procurement Specialist",
+          "slug": "it-procurement-specialist",
+          "skill": "it-roles-commercial-sourcing-and-enablement",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "runs the selection with the right requirements in the tender",
+          "hands_over": "tender, evaluation and recommendation",
+          "gate": "Security, privacy, exit and continuity requirements in the tender, not added after"
+        },
+        {
+          "step": 2,
+          "role": "Third-Party Risk Manager",
+          "slug": "third-party-risk-manager",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "assesses and tiers the supplier risk",
+          "hands_over": "risk assessment and tier",
+          "gate": "Critical suppliers have a tested exit or substitution plan"
+        },
+        {
+          "step": 3,
+          "role": "Security Architect",
+          "slug": "security-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "sets the control requirements the supplier must meet",
+          "hands_over": "supplier control requirements",
+          "gate": "Requirements traced to threats, not copied from a questionnaire"
+        },
+        {
+          "step": 4,
+          "role": "Contract Manager",
+          "slug": "contract-manager",
+          "skill": "it-roles-commercial-sourcing-and-enablement",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "extracts obligations into a tracked register",
+          "hands_over": "contract and obligation register",
+          "gate": "Obligations on both sides tracked with owners"
+        },
+        {
+          "step": 5,
+          "role": "Vendor Manager",
+          "slug": "vendor-manager",
+          "skill": "it-roles-commercial-sourcing-and-enablement",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "manages performance and the relationship after signature",
+          "hands_over": "scorecards and governance cadence",
+          "gate": "Renewal started early enough for a real alternative to exist"
+        },
+        {
+          "step": 6,
+          "role": "Service Level Manager",
+          "slug": "service-level-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "aligns supplier commitments with what was promised internally",
+          "hands_over": "aligned SLAs and OLAs",
+          "gate": "No internal commitment exceeding what the supply chain can deliver"
+        },
+        {
+          "step": 7,
+          "role": "Business Continuity Manager",
+          "slug": "business-continuity-manager",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "proves the organisation survives the supplier failing",
+          "hands_over": "exercised continuity and exit plan",
+          "gate": "Exit tested, not described"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/supplier-onboarding.md"
+    },
+    {
+      "key": "business-case-to-benefits",
+      "title": "Business case to realised benefits",
+      "trigger": "An investment has a proposed business case and needs measurable benefits governed through and beyond delivery.",
+      "outcome": "Benefits are baselined, owned, measured after go-live and used for continue/correct/close decisions.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "Portfolio Manager",
+          "slug": "portfolio-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "qualifies the investment against strategy, capacity and funding constraints",
+          "hands_over": "investment decision context and thresholds",
+          "gate": "The initiative has an accountable sponsor and an explicit decision threshold"
+        },
+        {
+          "step": 2,
+          "role": "Business Analyst",
+          "slug": "business-analyst",
+          "skill": "it-roles-analysis",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "makes the problem, scope, assumptions and outcome measures testable",
+          "hands_over": "requirements and outcome baseline",
+          "gate": "Outcome statements are measurable and sourced"
+        },
+        {
+          "step": 3,
+          "role": "Benefits Realisation Manager",
+          "slug": "benefits-realisation-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "turns the case into owned benefits with baselines, targets and dependencies",
+          "hands_over": "benefits map, register and realisation plan",
+          "gate": "No benefit without owner, baseline, target, source and timing"
+        },
+        {
+          "step": 4,
+          "role": "Product Manager",
+          "slug": "product-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "aligns product outcomes and roadmap to the benefit hypotheses",
+          "hands_over": "roadmap with success measures",
+          "gate": "Roadmap outcomes trace to registered benefits rather than feature volume"
+        },
+        {
+          "step": 5,
+          "role": "Organisational Change and Adoption Manager",
+          "slug": "organisational-change-and-adoption-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "defines adoption dependencies and measures behavioural readiness",
+          "hands_over": "adoption plan and readiness measures",
+          "gate": "Benefit dependencies on behaviour have explicit owners and measures"
+        },
+        {
+          "step": 6,
+          "role": "Product Analyst",
+          "slug": "product-analyst",
+          "skill": "it-roles-analysis",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "measures post-go-live outcomes from the agreed sources",
+          "hands_over": "observed benefit results and confidence",
+          "gate": "Results use the pre-agreed method and disclose uncertainty"
+        },
+        {
+          "step": 7,
+          "role": "Benefits Realisation Manager",
+          "slug": "benefits-realisation-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "compares actuals to the approved case and recommends action",
+          "hands_over": "post-implementation benefits review",
+          "gate": "Variance, disbenefits and corrective actions are owned and decision-ready"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/business-case-to-benefits.md"
+    },
+    {
+      "key": "design-to-operational-readiness",
+      "title": "Design to operational readiness",
+      "trigger": "A solution design is becoming build/release ready and must prove it can be operated safely before go-live.",
+      "outcome": "The receiving service organisation explicitly accepts an evidenced, supportable and recoverable service.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "Solution Architect",
+          "slug": "solution-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "defines the target architecture, NFRs, dependencies and failure modes",
+          "hands_over": "solution architecture and decision records",
+          "gate": "Quality attributes and failure modes are explicit and testable"
+        },
+        {
+          "step": 2,
+          "role": "Security Architect",
+          "slug": "security-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "defines security controls and residual security risks",
+          "hands_over": "security architecture and control requirements",
+          "gate": "Controls trace to risks and objectives"
+        },
+        {
+          "step": 3,
+          "role": "Operational and Technology Resilience Architect",
+          "slug": "operational-and-technology-resilience-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "tests the design against failure domains, impact tolerances and recovery paths",
+          "hands_over": "resilience architecture and validation scenarios",
+          "gate": "Resilience claims identify dependencies, failure domains and validation method"
+        },
+        {
+          "step": 4,
+          "role": "Site Reliability Engineer",
+          "slug": "site-reliability-engineer",
+          "skill": "it-roles-infrastructure-cloud-and-operations",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "defines SLOs, observability, alerting and operability signals",
+          "hands_over": "SLO/monitoring design and runbook requirements",
+          "gate": "Alerts are actionable and every SLO has a data source"
+        },
+        {
+          "step": 5,
+          "role": "Service Transition and Operational Readiness Manager",
+          "slug": "service-transition-and-operational-readiness-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "assembles and assesses operational acceptance evidence",
+          "hands_over": "operational readiness assessment and evidence pack",
+          "gate": "Every readiness criterion is pass/fail/waived with evidence and owner"
+        },
+        {
+          "step": 6,
+          "role": "Change Manager",
+          "slug": "change-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "checks the production change path and risk-class approval",
+          "hands_over": "change authorisation decision",
+          "gate": "Change risk and readiness evidence match the approval route"
+        },
+        {
+          "step": 7,
+          "role": "IT Service Owner",
+          "slug": "it-service-owner",
+          "skill": "it-roles-executive-and-leadership",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "accepts service ownership and residual operational risk",
+          "hands_over": "service acceptance",
+          "gate": "Support ownership, SLOs and residual risks are explicitly accepted"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/design-to-operational-readiness.md"
+    },
+    {
+      "key": "migration-and-cutover",
+      "title": "Migration and cutover",
+      "trigger": "A project must move data/services from a current state to a target state through a controlled production cutover.",
+      "outcome": "Migration completes with reconciled data, controlled rollback boundaries, operational acceptance and owned residual defects.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "Data Architect",
+          "slug": "data-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "defines source/target models, authoritative ownership and data constraints",
+          "hands_over": "migration data model and ownership boundaries",
+          "gate": "Every migrated domain has an accountable data owner and target definition"
+        },
+        {
+          "step": 2,
+          "role": "Data Migration and Cutover Lead",
+          "slug": "data-migration-and-cutover-lead",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "builds migration strategy, reconciliation rules and integrated cutover sequence",
+          "hands_over": "migration plan, cutover runbook and rollback plan",
+          "gate": "Every object has mapping, acceptance and rollback/restore semantics"
+        },
+        {
+          "step": 3,
+          "role": "Data Engineer",
+          "slug": "data-engineer",
+          "skill": "it-roles-data-analytics-and-ai",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "implements and rehearses migration pipelines against production-like volume",
+          "hands_over": "migration execution evidence and exceptions",
+          "gate": "Rehearsal proves throughput, error handling and repeatability"
+        },
+        {
+          "step": 4,
+          "role": "Test Manager",
+          "slug": "test-manager",
+          "skill": "it-roles-quality-and-testing",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "independently assesses migration, reconciliation and business acceptance evidence",
+          "hands_over": "test and residual-risk report",
+          "gate": "Exit criteria were defined before execution and are met or explicitly waived"
+        },
+        {
+          "step": 5,
+          "role": "Service Transition and Operational Readiness Manager",
+          "slug": "service-transition-and-operational-readiness-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "confirms monitoring, support, recovery and receiving-team readiness",
+          "hands_over": "operational cutover constraints and acceptance evidence",
+          "gate": "No critical operational readiness gap is unowned"
+        },
+        {
+          "step": 6,
+          "role": "Release Engineer",
+          "slug": "release-engineer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "integrates deployment artefacts with the cutover critical path",
+          "hands_over": "release manifest and deployment/rollback evidence",
+          "gate": "Exact artefact versions and rollback steps are known"
+        },
+        {
+          "step": 7,
+          "role": "Change Manager",
+          "slug": "change-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "authorises the production window and stop/go governance",
+          "hands_over": "production change authorisation",
+          "gate": "Rehearsal, reconciliation and operational evidence are available to the decision"
+        },
+        {
+          "step": 8,
+          "role": "IT Service Owner",
+          "slug": "it-service-owner",
+          "skill": "it-roles-executive-and-leadership",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "accepts the migrated service after stability and reconciliation checks",
+          "hands_over": "service acceptance and residual issues",
+          "gate": "Service, data and ownership acceptance are explicit before legacy retirement"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/migration-and-cutover.md"
+    },
+    {
+      "key": "organisational-change-and-adoption",
+      "title": "Organisational change and adoption",
+      "trigger": "Technology or process change requires people to work differently for the intended outcome to materialise.",
+      "outcome": "Affected cohorts are ready, adopt the new behaviour and produce evidence that supports the intended business benefit.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "Business Relationship Manager",
+          "slug": "business-relationship-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "anchors the change in a business outcome, sponsor and affected relationship context",
+          "hands_over": "business outcome and stakeholder context",
+          "gate": "There is a named sponsor and business outcome"
+        },
+        {
+          "step": 2,
+          "role": "Organisational Change and Adoption Manager",
+          "slug": "organisational-change-and-adoption-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "assesses stakeholder impacts, readiness and adoption barriers",
+          "hands_over": "change impact assessment and adoption strategy",
+          "gate": "Every material cohort has impact, readiness and owner"
+        },
+        {
+          "step": 3,
+          "role": "IT Trainer",
+          "slug": "it-trainer",
+          "skill": "it-roles-commercial-sourcing-and-enablement",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "turns role impacts into role-based learning and performance support",
+          "hands_over": "training assets and proficiency checks",
+          "gate": "Training maps to changed tasks and has proficiency evidence"
+        },
+        {
+          "step": 4,
+          "role": "Product Manager",
+          "slug": "product-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "coordinates release timing and product communications with adoption readiness",
+          "hands_over": "release/adoption alignment",
+          "gate": "No cohort is asked to adopt functionality unavailable or unstable in its wave"
+        },
+        {
+          "step": 5,
+          "role": "Product Analyst",
+          "slug": "product-analyst",
+          "skill": "it-roles-analysis",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "measures actual usage and behavioural outcomes",
+          "hands_over": "adoption observations and segmentation",
+          "gate": "Adoption is measured by behaviour/outcome, not attendance alone"
+        },
+        {
+          "step": 6,
+          "role": "Benefits Realisation Manager",
+          "slug": "benefits-realisation-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "connects adoption evidence to benefit realisation and corrective decisions",
+          "hands_over": "benefit/adoption review",
+          "gate": "Below-target adoption or benefits have owned reinforcement or reforecast actions"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/organisational-change-and-adoption.md"
+    },
+    {
+      "key": "semantic-to-enterprise-publication",
+      "title": "Semantic artefact to enterprise publication",
+      "trigger": "A specialist artefact is substantively complete and requires enterprise-grade publication.",
+      "outcome": "A released audience-specific publication whose semantic content is traceable to the approved source and has passed semantic and publication gates.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "Owning specialist",
+          "slug": "owning-specialist",
+          "skill": "dynamic",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "finalises claims, decisions, assumptions, evidence and acceptance criteria",
+          "hands_over": "semantic publication model",
+          "gate": "Semantic source is complete enough to review; unresolved items are explicit"
+        },
+        {
+          "step": 2,
+          "role": "Evidence & Rationale Reviewer",
+          "slug": "evidence-rationale-reviewer",
+          "skill": "agent",
+          "tool_tier": "inspect",
+          "operator_agent": "evidence-rationale-reviewer",
+          "does": "checks evidence strength, assumptions, alternatives, rationale and residual risk",
+          "hands_over": "semantic gate result and located findings",
+          "gate": "Semantic Gate PASS or explicit waiver by named authority"
+        },
+        {
+          "step": 3,
+          "role": "Enterprise Publication Editor",
+          "slug": "enterprise-publication-editor",
+          "skill": "agent",
+          "tool_tier": "execute",
+          "operator_agent": "enterprise-publication-editor",
+          "does": "selects publication archetype and renders audience-specific DOCX/PPTX/XLSX/HTML/SVG outputs",
+          "hands_over": "rendered publication set with semantic hash",
+          "gate": "All outputs carry the same semantic SHA-256 and required document control"
+        },
+        {
+          "step": 4,
+          "role": "Visual Quality Reviewer",
+          "slug": "visual-quality-reviewer",
+          "skill": "agent",
+          "tool_tier": "inspect",
+          "operator_agent": "visual-quality-reviewer",
+          "does": "checks density, hierarchy, legibility, tables, diagrams, document control and package integrity",
+          "hands_over": "publication gate result and findings",
+          "gate": "Publication Gate PASS; material defects are resolved or explicitly waived"
+        },
+        {
+          "step": 5,
+          "role": "Named authority",
+          "slug": "named-authority",
+          "skill": "external",
+          "tool_tier": "advise",
+          "operator_agent": "authority-liaison",
+          "does": "approves consequential publication for release",
+          "hands_over": "release approval",
+          "gate": "Approval is by an authority independent of the publication editor where governance requires it"
+        }
+      ]
+    },
+    {
+      "key": "architecture-model-to-repository-governance",
+      "title": "Architecture model to repository governance",
+      "trigger": "A project/domain architecture needs to become a governed enterprise repository model and published view set.",
+      "outcome": "Canonical model facts, cross-project dependencies, Open Exchange interchange and published views are consistent, reviewable and traceable to named owners.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "Solution Architect",
+          "slug": "solution-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "finalises project model facts, decisions and project ownership boundaries",
+          "hands_over": "project architecture model and source artefacts",
+          "gate": "Elements/relationships have stable identities and evidence basis"
+        },
+        {
+          "step": 2,
+          "role": "Architecture Repository and Modelling Lead",
+          "slug": "architecture-repository-and-modelling-lead",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "maps model facts into the canonical repository/metamodel and repository conventions",
+          "hands_over": "canonical project model",
+          "gate": "No model fact is silently reinterpreted to fit a tool"
+        },
+        {
+          "step": 3,
+          "role": "Architecture Repository Engineer",
+          "slug": "architecture-repository-engineer",
+          "skill": "agent",
+          "tool_tier": "execute",
+          "operator_agent": "architecture-repository-engineer",
+          "does": "imports/updates the canonical repository, preserving IDs, lifecycle and provenance",
+          "hands_over": "repository revision plus interchange artefacts",
+          "gate": "Repository structural validation passes"
+        },
+        {
+          "step": 4,
+          "role": "Model Consistency Reviewer",
+          "slug": "model-consistency-reviewer",
+          "skill": "agent",
+          "tool_tier": "inspect",
+          "operator_agent": "model-consistency-reviewer",
+          "does": "checks references, orphans, cross-project ownership, lifecycle conflicts and view drift",
+          "hands_over": "consistency findings/gate",
+          "gate": "No blocking integrity error remains"
+        },
+        {
+          "step": 5,
+          "role": "Enterprise Architect",
+          "slug": "enterprise-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "resolves enterprise/domain overlap, shared elements and portfolio dependencies",
+          "hands_over": "accepted enterprise model/repository decisions",
+          "gate": "Cross-project dependencies and reusable/reference elements have owners"
+        },
+        {
+          "step": 6,
+          "role": "Technical Design Authority Member",
+          "slug": "technical-design-authority-member",
+          "skill": "it-roles-architecture",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "applies architecture governance to material conformance/exception decisions",
+          "hands_over": "approved/rejected repository release",
+          "gate": "Exceptions and residual risks have named authority and expiry/review"
+        }
+      ]
+    },
+    {
+      "key": "service-retirement-and-decommission",
+      "title": "Service retirement and decommission",
+      "trigger": "A service, application, platform or technology component is approved for retirement, replacement or exit.",
+      "outcome": "The component is retired without hidden dependencies, unmanaged data/access, stale records or unowned residual obligations, and the retirement benefit is measured.",
+      "steps": [
+        {
+          "step": 1,
+          "role": "IT Service Owner",
+          "slug": "it-service-owner",
+          "skill": "it-roles-executive-and-leadership",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "confirms retirement scope, accountable owner and business/service decision",
+          "hands_over": "retirement mandate and target date",
+          "gate": "Scope and authority are explicit"
+        },
+        {
+          "step": 2,
+          "role": "Technology Lifecycle and Decommission Manager",
+          "slug": "technology-lifecycle-and-decommission-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "runs repository impact analysis and builds the retirement/disposition plan",
+          "hands_over": "dependency impact and retirement plan",
+          "gate": "Every material dependency has an owned disposition or named waiver"
+        },
+        {
+          "step": 3,
+          "role": "Data Protection Officer",
+          "slug": "data-protection-officer",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "advises on retention, archive, destruction and privacy obligations where applicable",
+          "hands_over": "data disposition position",
+          "gate": "Regulated/personal data disposition is authorised before irreversible action"
+        },
+        {
+          "step": 4,
+          "role": "Identity and Access Management Engineer",
+          "slug": "identity-and-access-management-engineer",
+          "skill": "it-roles-security-operations-and-defensive-security",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "removes/transfers identities, privileged access, secrets/certificates as assigned",
+          "hands_over": "access/credential closure evidence",
+          "gate": "No active credential remains without owner and purpose"
+        },
+        {
+          "step": 5,
+          "role": "Change Manager",
+          "slug": "change-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "applies the authorised production-change path and rollback boundary",
+          "hands_over": "approved execution window/decision",
+          "gate": "Destructive steps are within approved change authority"
+        },
+        {
+          "step": 6,
+          "role": "IT Asset Manager",
+          "slug": "it-asset-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "reconciles CMDB/assets and coordinates licence/supplier closure evidence",
+          "hands_over": "asset/configuration closure",
+          "gate": "Systems of record match the retired technical state"
+        },
+        {
+          "step": 7,
+          "role": "Architecture Repository and Modelling Lead",
+          "slug": "architecture-repository-and-modelling-lead",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "updates repository lifecycle state, removes/retains views appropriately and records residual dependencies",
+          "hands_over": "repository retirement revision",
+          "gate": "Repository has no unowned active dependency into the retired element"
+        },
+        {
+          "step": 8,
+          "role": "Benefits Realisation Manager",
+          "slug": "benefits-realisation-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "measures retirement cost/risk/complexity benefit and records variance",
+          "hands_over": "benefits closure result",
+          "gate": "Benefit or disbenefit variance has an accountable owner"
+        }
+      ]
+    },
+    {
+      "key": "cyber-incident-breach-to-recovery",
+      "title": "Cyber incident / breach to recovery",
+      "trigger": "A suspected or confirmed cyber incident may affect systems, data, customers, regulatory obligations or business operations.",
+      "outcome": "The incident is contained and eradicated, evidence is preserved, recovery is accepted by the business, notification decisions are traceable, and control remediation is closed or owned.",
+      "mandatory_artifacts": [
+        "Incident record",
+        "Evidence register",
+        "Incident timeline",
+        "Impact assessment",
+        "Breach / notification decision",
+        "Recovery acceptance",
+        "Lessons learned",
+        "Control remediation plan"
+      ],
+      "steps": [
+        {
+          "step": 1,
+          "role": "Security Analyst Tier 1",
+          "slug": "security-analyst-tier-1",
+          "skill": "it-roles-security-operations-and-defensive-security",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "detects and records the alert/incident with initial facts and provenance",
+          "hands_over": "incident record with source/time/scope",
+          "gate": "A real event or explicit false-positive rationale is recorded",
+          "mandatory_artifact": "Incident record"
+        },
+        {
+          "step": 2,
+          "role": "Incident Responder",
+          "slug": "incident-responder",
+          "skill": "it-roles-security-operations-and-defensive-security",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "triages severity, scope, likely attack path and immediate priorities",
+          "hands_over": "triage decision and containment objectives",
+          "gate": "Severity/scope have evidence and an accountable incident lead",
+          "mandatory_artifact": "Incident record"
+        },
+        {
+          "step": 3,
+          "role": "Incident Responder",
+          "slug": "incident-responder",
+          "skill": "it-roles-security-operations-and-defensive-security",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "contains affected assets/accounts while preserving reversibility and evidence",
+          "hands_over": "containment actions and status",
+          "gate": "Containment does not destroy material evidence without authority",
+          "mandatory_artifact": "Incident timeline"
+        },
+        {
+          "step": 4,
+          "role": "Digital Forensics Examiner",
+          "slug": "digital-forensics-examiner",
+          "skill": "it-roles-security-operations-and-defensive-security",
+          "tool_tier": "inspect",
+          "operator_agent": "codebase-reviewer",
+          "does": "preserves and validates forensic evidence, chain of custody and timeline facts",
+          "hands_over": "evidence register and forensic timeline",
+          "gate": "Evidence integrity, time source and custody are documented",
+          "mandatory_artifact": "Evidence register"
+        },
+        {
+          "step": 5,
+          "role": "IT Risk Manager",
+          "slug": "it-risk-manager",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "assesses business, service, security and regulatory impact using verified facts",
+          "hands_over": "impact assessment with uncertainty and affected obligations",
+          "gate": "Critical impact claims distinguish confirmed fact from inference",
+          "mandatory_artifact": "Impact assessment"
+        },
+        {
+          "step": 6,
+          "role": "Data Protection Officer",
+          "slug": "data-protection-officer",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "performs privacy/breach assessment and coordinates legal/regulatory decision inputs",
+          "hands_over": "breach/notification decision basis",
+          "gate": "Notification/non-notification has correct authority, clock and evidence",
+          "mandatory_artifact": "Breach / notification decision"
+        },
+        {
+          "step": 7,
+          "role": "Incident Responder",
+          "slug": "incident-responder",
+          "skill": "it-roles-security-operations-and-defensive-security",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "eradicates malicious persistence/root causes and verifies the environment",
+          "hands_over": "eradication evidence and residual technical risks",
+          "gate": "Known persistence and exploited control gaps are addressed or explicitly owned",
+          "mandatory_artifact": "Control remediation plan"
+        },
+        {
+          "step": 8,
+          "role": "Disaster Recovery Coordinator",
+          "slug": "disaster-recovery-coordinator",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "coordinates recovery sequencing, integrity validation and rollback/fallback readiness",
+          "hands_over": "recovery evidence and service restoration status",
+          "gate": "Recovery uses trusted state/data and respects RTO/RPO/business priorities",
+          "mandatory_artifact": "Recovery acceptance"
+        },
+        {
+          "step": 9,
+          "role": "IT Service Owner",
+          "slug": "it-service-owner",
+          "skill": "it-roles-executive-and-leadership",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "validates business/service recovery and accepts restored operating state",
+          "hands_over": "business recovery acceptance",
+          "gate": "Service owner confirms agreed validation signals and residual limitations",
+          "mandatory_artifact": "Recovery acceptance"
+        },
+        {
+          "step": 10,
+          "role": "Crisis Manager",
+          "slug": "crisis-manager",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "coordinates customer/regulator/executive communications decision and timing where required",
+          "hands_over": "communication/regulatory action record",
+          "gate": "Communications are authorised, consistent and evidence-based",
+          "mandatory_artifact": "Breach / notification decision"
+        },
+        {
+          "step": 11,
+          "role": "Problem Manager",
+          "slug": "problem-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "runs lessons learned/root-cause analysis across people/process/technology",
+          "hands_over": "lessons learned and systemic findings",
+          "gate": "Findings address causes and failed controls, not only symptoms",
+          "mandatory_artifact": "Lessons learned"
+        },
+        {
+          "step": 12,
+          "role": "Control Owner",
+          "slug": "control-owner",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "owns control remediation, target dates and evidence of completion",
+          "hands_over": "control remediation plan",
+          "gate": "Every material finding has a control owner, due date and verification method",
+          "mandatory_artifact": "Control remediation plan"
+        },
+        {
+          "step": 13,
+          "role": "Internal IT Auditor",
+          "slug": "internal-it-auditor",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "independently verifies closure evidence for material incidents where governance requires",
+          "hands_over": "closure assurance result",
+          "gate": "No open critical finding is silently closed or self-assured",
+          "mandatory_artifact": "Control remediation plan"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/cyber-incident-breach-to-recovery.md"
+    },
+    {
+      "key": "resilience-validation",
+      "title": "Resilience validation",
+      "trigger": "A critical service or architecture needs evidence that resilience, RTO/RPO and dependency assumptions work under realistic failure.",
+      "outcome": "Business criticality, dependencies and recovery objectives are validated through exercised failure scenarios, findings are remediated and retested, and residual resilience risk is accepted by the correct authority.",
+      "mandatory_artifacts": [
+        "Business criticality baseline",
+        "Dependency/failure-domain model",
+        "Validated RTO/RPO register",
+        "Resilience design",
+        "Exercise plan",
+        "Exercise evidence",
+        "Findings register",
+        "Remediation plan",
+        "Retest result",
+        "Resilience acceptance"
+      ],
+      "steps": [
+        {
+          "step": 1,
+          "role": "Business Continuity Manager",
+          "slug": "business-continuity-manager",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "confirms business criticality, impact tolerances and priority services/processes",
+          "hands_over": "business criticality baseline",
+          "gate": "Criticality and tolerances have business ownership",
+          "mandatory_artifact": "Business criticality baseline"
+        },
+        {
+          "step": 2,
+          "role": "Operational and Technology Resilience Architect",
+          "slug": "operational-and-technology-resilience-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "maps technical/supplier/data dependencies and correlated failure domains",
+          "hands_over": "dependency/failure-domain model",
+          "gate": "No critical path has an unknown/unowned dependency",
+          "mandatory_artifact": "Dependency/failure-domain model"
+        },
+        {
+          "step": 3,
+          "role": "Disaster Recovery Coordinator",
+          "slug": "disaster-recovery-coordinator",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "validates RTO/RPO and recovery sequencing against dependency reality",
+          "hands_over": "validated recovery objectives",
+          "gate": "Objectives are feasible end to end, not only per component",
+          "mandatory_artifact": "Validated RTO/RPO register"
+        },
+        {
+          "step": 4,
+          "role": "Operational and Technology Resilience Architect",
+          "slug": "operational-and-technology-resilience-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "defines resilience/recovery architecture and degradation patterns",
+          "hands_over": "resilience design with failure assumptions",
+          "gate": "Design addresses single/shared failure modes and measurable outcomes",
+          "mandatory_artifact": "Resilience design"
+        },
+        {
+          "step": 5,
+          "role": "Test Manager",
+          "slug": "test-manager",
+          "skill": "it-roles-quality-and-testing",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "builds the exercise plan, entry/exit criteria, injects and evidence capture method",
+          "hands_over": "approved exercise plan",
+          "gate": "Test design can falsify the resilience claims and protects production safety",
+          "mandatory_artifact": "Exercise plan"
+        },
+        {
+          "step": 6,
+          "role": "Chaos and Resilience Engineer",
+          "slug": "chaos-and-resilience-engineer",
+          "skill": "it-roles-quality-and-testing",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "executes authorised failure experiments/exercises and captures telemetry",
+          "hands_over": "exercise evidence",
+          "gate": "Execution matches approved scope and evidence is attributable",
+          "mandatory_artifact": "Exercise evidence"
+        },
+        {
+          "step": 7,
+          "role": "Control Tester",
+          "slug": "control-tester",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "independently evaluates evidence and records control/resilience findings",
+          "hands_over": "findings register",
+          "gate": "Findings distinguish observation, criterion, impact and evidence",
+          "mandatory_artifact": "Findings register"
+        },
+        {
+          "step": 8,
+          "role": "Operational and Technology Resilience Architect",
+          "slug": "operational-and-technology-resilience-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "coordinates owned remediation across architecture, operations and suppliers",
+          "hands_over": "remediation plan",
+          "gate": "Every material finding has owner/date/design response",
+          "mandatory_artifact": "Remediation plan"
+        },
+        {
+          "step": 9,
+          "role": "Test Manager",
+          "slug": "test-manager",
+          "skill": "it-roles-quality-and-testing",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "retests failed claims after remediation using comparable criteria",
+          "hands_over": "retest result",
+          "gate": "Critical findings are demonstrated fixed, not administratively closed",
+          "mandatory_artifact": "Retest result"
+        },
+        {
+          "step": 10,
+          "role": "IT Service Owner",
+          "slug": "it-service-owner",
+          "skill": "it-roles-executive-and-leadership",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "accepts demonstrated resilience or explicitly accepts residual risk within authority",
+          "hands_over": "resilience acceptance",
+          "gate": "Acceptance states evidence, residual risk and next validation date",
+          "mandatory_artifact": "Resilience acceptance"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/resilience-validation.md"
+    },
+    {
+      "key": "demand-to-portfolio-to-funding",
+      "title": "Demand to portfolio to funding",
+      "trigger": "A new business/technology demand needs to be qualified, compared with alternatives and either rejected, redirected or committed into a funded portfolio.",
+      "outcome": "Demand is traceable from intake through capability/architecture/risk/value assessment, sizing/capacity and prioritisation to an explicit funding/portfolio commitment decision.",
+      "mandatory_artifacts": [
+        "Demand record",
+        "Qualification assessment",
+        "Capability-fit assessment",
+        "Application portfolio impact assessment",
+        "Architecture impact assessment",
+        "Risk/value assessment",
+        "Estimate and capacity view",
+        "Prioritisation decision",
+        "Funding decision",
+        "Portfolio commitment"
+      ],
+      "steps": [
+        {
+          "step": 1,
+          "role": "Demand & Intake Manager",
+          "slug": "demand-and-intake-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "captures demand with owner, problem/outcome, urgency and evidence status",
+          "hands_over": "demand record",
+          "gate": "No anonymous or outcome-free demand enters prioritisation",
+          "mandatory_artifact": "Demand record"
+        },
+        {
+          "step": 2,
+          "role": "Demand & Intake Manager",
+          "slug": "demand-and-intake-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "qualifies completeness, duplicates, mandatory obligations and routing",
+          "hands_over": "qualification assessment",
+          "gate": "Disposition is explicit: reject, redirect, discover or assess",
+          "mandatory_artifact": "Qualification assessment"
+        },
+        {
+          "step": 3,
+          "role": "Enterprise Architect",
+          "slug": "enterprise-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "checks business capability fit, reuse and enterprise target-state alignment",
+          "hands_over": "capability-fit assessment",
+          "gate": "Existing capability/service reuse and strategic conflicts are explicit",
+          "mandatory_artifact": "Capability-fit assessment"
+        },
+        {
+          "step": 4,
+          "role": "Application Portfolio Manager",
+          "slug": "application-portfolio-manager",
+          "skill": "it-roles-architecture",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "assesses affected application portfolio, lifecycle posture, duplication and invest/tolerate/migrate/retire consequences",
+          "hands_over": "application portfolio impact assessment",
+          "gate": "Impacted applications have an explicit lifecycle posture, duplication/dependency view and accountable owner",
+          "mandatory_artifact": "Application portfolio impact assessment"
+        },
+        {
+          "step": 5,
+          "role": "Solution Architect",
+          "slug": "solution-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "assesses architecture/integration/data/security/operational impact at decision-appropriate depth",
+          "hands_over": "architecture impact assessment",
+          "gate": "Material cross-domain dependencies and constraints are identified",
+          "mandatory_artifact": "Architecture impact assessment"
+        },
+        {
+          "step": 6,
+          "role": "IT Risk Manager",
+          "slug": "it-risk-manager",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "frames risk/opportunity, compliance urgency and value-at-risk alongside benefit evidence",
+          "hands_over": "risk/value assessment",
+          "gate": "Regulatory/risk urgency is evidence-based and not double-counted as value",
+          "mandatory_artifact": "Risk/value assessment"
+        },
+        {
+          "step": 7,
+          "role": "Resource Manager",
+          "slug": "resource-manager",
+          "skill": "it-roles-commercial-sourcing-and-enablement",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "coordinates indicative sizing and scarce-capability/capacity demand",
+          "hands_over": "estimate and capacity view",
+          "gate": "Uncertainty ranges and constrained skills/capacity are explicit",
+          "mandatory_artifact": "Estimate and capacity view"
+        },
+        {
+          "step": 8,
+          "role": "Portfolio Manager",
+          "slug": "portfolio-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "applies transparent prioritisation criteria across value, risk, strategy, capacity and dependencies",
+          "hands_over": "prioritisation decision",
+          "gate": "Prioritisation can be reconstructed from declared criteria and exceptions",
+          "mandatory_artifact": "Prioritisation decision"
+        },
+        {
+          "step": 9,
+          "role": "IT Financial Management / TBM Manager",
+          "slug": "it-financial-management-tbm-manager",
+          "skill": "it-roles-commercial-sourcing-and-enablement",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "validates TCO/funding profile and financial comparability",
+          "hands_over": "funding economics and cost profile",
+          "gate": "Cost boundaries, CAPEX/OPEX and transition costs reconcile to the cost model",
+          "mandatory_artifact": "Funding decision"
+        },
+        {
+          "step": 10,
+          "role": "Portfolio Manager",
+          "slug": "portfolio-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "makes or routes the delegated funding/portfolio commitment decision",
+          "hands_over": "portfolio commitment",
+          "gate": "Commitment has authority, funding/capacity basis and review condition",
+          "mandatory_artifact": "Portfolio commitment"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/demand-to-portfolio-to-funding.md"
+    },
+    {
+      "key": "source-to-contract-to-service",
+      "title": "Source to contract to service",
+      "trigger": "A capability may be sourced externally and must move from requirement/RFI/RFP through supplier selection and contract controls to implementation and accepted service.",
+      "outcome": "The selected supplier/service has evidence-backed fit, enforceable contract obligations, approved implementation and operational acceptance, with ongoing vendor governance.",
+      "mandatory_artifacts": [
+        "Sourcing requirement baseline",
+        "RFI/RFP pack",
+        "Supplier assessment",
+        "Security/privacy assessment",
+        "Architecture-fit decision",
+        "Selection decision",
+        "Contract control schedule",
+        "Implementation plan",
+        "Service acceptance",
+        "Vendor governance baseline"
+      ],
+      "steps": [
+        {
+          "step": 1,
+          "role": "Business Analyst",
+          "slug": "business-analyst",
+          "skill": "it-roles-analysis",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "turns business/service need into outcome, requirement and acceptance baseline",
+          "hands_over": "sourcing requirement baseline",
+          "gate": "Requirements are testable and distinguish need from preferred solution",
+          "mandatory_artifact": "Sourcing requirement baseline"
+        },
+        {
+          "step": 2,
+          "role": "IT Procurement Specialist",
+          "slug": "it-procurement-specialist",
+          "skill": "it-roles-commercial-sourcing-and-enablement",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "creates and runs RFI/RFP process with comparable response structure",
+          "hands_over": "RFI/RFP pack and response evidence",
+          "gate": "Supplier responses are comparable and procurement rules are followed",
+          "mandatory_artifact": "RFI/RFP pack"
+        },
+        {
+          "step": 3,
+          "role": "Vendor Manager",
+          "slug": "vendor-manager",
+          "skill": "it-roles-commercial-sourcing-and-enablement",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "assesses supplier capability, viability, support and governance fit",
+          "hands_over": "supplier assessment",
+          "gate": "Material supplier assumptions and dependency risks are evidenced",
+          "mandatory_artifact": "Supplier assessment"
+        },
+        {
+          "step": 4,
+          "role": "Third-Party Risk Manager",
+          "slug": "third-party-risk-manager",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "coordinates security/privacy/resilience risk assessment with specialist authorities",
+          "hands_over": "security/privacy/supplier risk assessment",
+          "gate": "Critical risks/obligations are resolved, mitigated or accepted by correct authority",
+          "mandatory_artifact": "Security/privacy assessment"
+        },
+        {
+          "step": 5,
+          "role": "Enterprise Applications Architect",
+          "slug": "enterprise-applications-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "assesses architecture/capability/integration fit and lock-in/exit implications",
+          "hands_over": "architecture-fit decision",
+          "gate": "Selection does not create hidden target-state or integration contradictions",
+          "mandatory_artifact": "Architecture-fit decision"
+        },
+        {
+          "step": 6,
+          "role": "IT Procurement Specialist",
+          "slug": "it-procurement-specialist",
+          "skill": "it-roles-commercial-sourcing-and-enablement",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "runs weighted selection and records rationale/conflicts",
+          "hands_over": "selection decision",
+          "gate": "Decision is traceable to declared criteria, evidence and authority",
+          "mandatory_artifact": "Selection decision"
+        },
+        {
+          "step": 7,
+          "role": "Contract Manager",
+          "slug": "contract-manager",
+          "skill": "it-roles-commercial-sourcing-and-enablement",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "translates agreed service/security/privacy/resilience/exit controls into enforceable clauses/schedules",
+          "hands_over": "contract control schedule",
+          "gate": "Every mandatory control has enforceable wording, evidence/measurement and remedy/exit path",
+          "mandatory_artifact": "Contract control schedule"
+        },
+        {
+          "step": 8,
+          "role": "Implementation Consultant",
+          "slug": "implementation-consultant",
+          "skill": "it-roles-commercial-sourcing-and-enablement",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "coordinates implementation against contract/design acceptance criteria",
+          "hands_over": "implementation plan and evidence",
+          "gate": "Implementation deviations are approved, not silently normalised",
+          "mandatory_artifact": "Implementation plan"
+        },
+        {
+          "step": 9,
+          "role": "Service Transition and Operational Readiness Manager",
+          "slug": "service-transition-and-operational-readiness-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "validates support, monitoring, CMDB, DR, security, ownership and service acceptance",
+          "hands_over": "service acceptance",
+          "gate": "No production acceptance with missing critical operational ownership/evidence",
+          "mandatory_artifact": "Service acceptance"
+        },
+        {
+          "step": 10,
+          "role": "Vendor Manager",
+          "slug": "vendor-manager",
+          "skill": "it-roles-commercial-sourcing-and-enablement",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "establishes ongoing performance, risk, improvement, renewal and exit governance",
+          "hands_over": "vendor governance baseline",
+          "gate": "Contractual obligations map to measured service/vendor governance",
+          "mandatory_artifact": "Vendor governance baseline"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/source-to-contract-to-service.md"
+    },
+    {
+      "key": "siam-multi-supplier",
+      "title": "SIAM / multi-supplier service integration",
+      "trigger": "A service depends on multiple suppliers/teams and end-to-end accountability, OLAs, incidents, problems, changes or acceptance are fragmented across boundaries.",
+      "outcome": "One governed service-integration model joins supplier responsibilities into end-to-end service outcomes with measurable SLAs/OLAs, clear process ownership and cross-supplier escalation.",
+      "mandatory_artifacts": [
+        "SIAM operating model",
+        "SLA/OLA matrix",
+        "Dependency register",
+        "Cross-supplier incident model",
+        "Cross-supplier problem model",
+        "Integrated change calendar",
+        "Escalation matrix",
+        "Shared service acceptance"
+      ],
+      "steps": [
+        {
+          "step": 1,
+          "role": "SIAM Manager",
+          "slug": "siam-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "defines end-to-end service scope, integrator authority and supplier responsibility model",
+          "hands_over": "SIAM operating model",
+          "gate": "No customer outcome or integration process is ownerless",
+          "mandatory_artifact": "SIAM operating model"
+        },
+        {
+          "step": 2,
+          "role": "Service Level Manager",
+          "slug": "service-level-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "decomposes customer SLA into measurable OLAs/underpinning supplier obligations",
+          "hands_over": "SLA/OLA matrix",
+          "gate": "Every SLA has sufficient underpinning measures/owners",
+          "mandatory_artifact": "SLA/OLA matrix"
+        },
+        {
+          "step": 3,
+          "role": "Architecture Repository and Modelling Lead",
+          "slug": "architecture-repository-and-modelling-lead",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "maintains cross-supplier service/technology/dependency model",
+          "hands_over": "shared dependency register/view set",
+          "gate": "Material supplier/service dependencies have stable IDs and owners",
+          "mandatory_artifact": "Dependency register"
+        },
+        {
+          "step": 4,
+          "role": "Incident Manager",
+          "slug": "incident-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "defines cross-supplier incident ownership, bridge, evidence and handoff rules",
+          "hands_over": "cross-supplier incident model",
+          "gate": "Severity and service restoration ownership cannot bounce between suppliers",
+          "mandatory_artifact": "Cross-supplier incident model"
+        },
+        {
+          "step": 5,
+          "role": "Problem Manager",
+          "slug": "problem-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "owns systemic problem process across supplier boundaries",
+          "hands_over": "cross-supplier problem model",
+          "gate": "Root causes crossing contracts still receive one end-to-end owner",
+          "mandatory_artifact": "Cross-supplier problem model"
+        },
+        {
+          "step": 6,
+          "role": "Enterprise Release Manager",
+          "slug": "enterprise-release-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "integrates supplier change/release windows, collisions and readiness",
+          "hands_over": "integrated change/release calendar",
+          "gate": "Cross-supplier change collisions and blackout constraints are governed",
+          "mandatory_artifact": "Integrated change calendar"
+        },
+        {
+          "step": 7,
+          "role": "SIAM Manager",
+          "slug": "siam-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "defines dispute/escalation clocks, evidence standard and decision authority",
+          "hands_over": "supplier escalation matrix",
+          "gate": "Escalation cannot be blocked by contractual ownership ambiguity",
+          "mandatory_artifact": "Escalation matrix"
+        },
+        {
+          "step": 8,
+          "role": "IT Service Owner",
+          "slug": "it-service-owner",
+          "skill": "it-roles-executive-and-leadership",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "accepts the integrated service and residual multi-supplier risks",
+          "hands_over": "shared service acceptance",
+          "gate": "Service acceptance is end-to-end, not a collection of supplier self-attestations",
+          "mandatory_artifact": "Shared service acceptance"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/siam-multi-supplier.md"
+    },
+    {
+      "key": "enterprise-release-orchestration",
+      "title": "Enterprise release orchestration",
+      "trigger": "Multiple products/platforms/suppliers must release into a shared business/technology environment and need one dependency, readiness and go/no-go process.",
+      "outcome": "The integrated release is sequenced, independently readiness-checked, authorised, executed by technical owners, validated and closed with measurable release performance.",
+      "mandatory_artifacts": [
+        "Integrated release calendar",
+        "Dependency register",
+        "Business readiness",
+        "Cutover readiness",
+        "Supplier readiness",
+        "Rollback readiness",
+        "Secure delivery readiness evidence",
+        "Go/no-go decision",
+        "Post-release validation"
+      ],
+      "steps": [
+        {
+          "step": 1,
+          "role": "Enterprise Release Manager",
+          "slug": "enterprise-release-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "builds integrated release scope/calendar and identifies cross-system dependencies/blackouts",
+          "hands_over": "integrated release calendar",
+          "gate": "All material releases and blackout/business constraints are represented",
+          "mandatory_artifact": "Integrated release calendar"
+        },
+        {
+          "step": 2,
+          "role": "Architecture Repository and Modelling Lead",
+          "slug": "architecture-repository-and-modelling-lead",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "validates technical/service dependency graph and critical sequencing constraints",
+          "hands_over": "release dependency register",
+          "gate": "No critical dependency is missing an owner or sequence",
+          "mandatory_artifact": "Dependency register"
+        },
+        {
+          "step": 3,
+          "role": "Organisational Change and Adoption Manager",
+          "slug": "organisational-change-and-adoption-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "validates communications/training/adoption/business readiness for affected cohorts",
+          "hands_over": "business readiness",
+          "gate": "Affected business cohorts have executable readiness actions/evidence",
+          "mandatory_artifact": "Business readiness"
+        },
+        {
+          "step": 4,
+          "role": "Data Migration and Cutover Lead",
+          "slug": "data-migration-and-cutover-lead",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "validates cutover sequence, data reconciliation, checkpoints and abort criteria",
+          "hands_over": "cutover readiness",
+          "gate": "Cutover and data reconciliation are rehearsed/evidenced for critical transitions",
+          "mandatory_artifact": "Cutover readiness"
+        },
+        {
+          "step": 5,
+          "role": "SIAM Manager",
+          "slug": "siam-manager",
+          "skill": "it-roles-service-management-and-support",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "validates supplier staffing, dependencies, handoffs and escalation readiness",
+          "hands_over": "supplier readiness",
+          "gate": "No critical supplier dependency is relying on informal availability",
+          "mandatory_artifact": "Supplier readiness"
+        },
+        {
+          "step": 6,
+          "role": "Release Engineer",
+          "slug": "release-engineer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "validates technical release artefacts, provenance and executable rollback",
+          "hands_over": "technical/rollback readiness",
+          "gate": "Release artefacts are traceable and rollback is exercised/feasible",
+          "mandatory_artifact": "Rollback readiness"
+        },
+        {
+          "step": 7,
+          "role": "Secure Delivery / DevSecOps Architect",
+          "slug": "secure-delivery-devsecops-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "checks that release provenance, pipeline controls, policy-as-code and software supply-chain evidence conform to the approved secure-delivery architecture",
+          "hands_over": "secure delivery readiness evidence",
+          "gate": "Critical secure-delivery controls and provenance are evidenced; deviations are owned, time-bound and visible to independent release assurance",
+          "mandatory_artifact": "Secure delivery readiness evidence"
+        },
+        {
+          "step": 8,
+          "role": "Release Quality Gatekeeper",
+          "slug": "release-quality-gatekeeper",
+          "skill": "it-roles-quality-and-testing",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "independently checks mandatory release criteria and evidence",
+          "hands_over": "release gate assurance",
+          "gate": "Producer cannot waive its own failed critical gate",
+          "mandatory_artifact": "Go/no-go decision"
+        },
+        {
+          "step": 9,
+          "role": "Enterprise Release Manager",
+          "slug": "enterprise-release-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "issues delegated integrated go/no-go or routes decision to higher authority",
+          "hands_over": "go/no-go decision",
+          "gate": "Decision cites evidence, waivers, residual risk and abort triggers",
+          "mandatory_artifact": "Go/no-go decision"
+        },
+        {
+          "step": 10,
+          "role": "Release Engineer",
+          "slug": "release-engineer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "executes the authorised technical release through controlled pipelines",
+          "hands_over": "release execution evidence",
+          "gate": "Executed artefacts/plan match what was approved",
+          "mandatory_artifact": "Post-release validation"
+        },
+        {
+          "step": 11,
+          "role": "Site Reliability Engineer",
+          "slug": "site-reliability-engineer",
+          "skill": "it-roles-infrastructure-cloud-and-operations",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "monitors agreed technical/service signals and triggers reversal if thresholds breach",
+          "hands_over": "technical post-release validation",
+          "gate": "Rollback/reversal triggers are acted on, not debated after breach",
+          "mandatory_artifact": "Post-release validation"
+        },
+        {
+          "step": 12,
+          "role": "IT Service Owner",
+          "slug": "it-service-owner",
+          "skill": "it-roles-executive-and-leadership",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "confirms business/service outcome and closes or escalates residual issues",
+          "hands_over": "release acceptance",
+          "gate": "Closure states outcome, impact, residual issues and owners",
+          "mandatory_artifact": "Post-release validation"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/enterprise-release-orchestration.md"
+    },
+    {
+      "key": "regulatory-change-to-assurance",
+      "title": "Regulatory change to assurance",
+      "trigger": "A new or changed law, regulation, supervisory expectation or contractual compliance obligation may affect IS/IT services, controls or architecture.",
+      "outcome": "Applicability and obligations are translated into traceable requirements/controls, architecture and remediation changes are implemented, evidence is independently assured, and closure is authorised.",
+      "mandatory_artifacts": [
+        "Regulatory change record",
+        "Applicability decision",
+        "Obligations register",
+        "Requirements baseline",
+        "Control mapping",
+        "Architecture impact assessment",
+        "Remediation roadmap",
+        "Evidence pack",
+        "Assurance report",
+        "Closure decision"
+      ],
+      "steps": [
+        {
+          "step": 1,
+          "role": "Compliance Officer (Technology)",
+          "slug": "compliance-officer-technology",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "records authoritative regulatory change source, effective dates and scope hypotheses",
+          "hands_over": "regulatory change record",
+          "gate": "Source, jurisdiction, dates and version are attributable",
+          "mandatory_artifact": "Regulatory change record"
+        },
+        {
+          "step": 2,
+          "role": "Compliance Officer (Technology)",
+          "slug": "compliance-officer-technology",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "determines technology applicability with legal/business input where needed",
+          "hands_over": "applicability decision",
+          "gate": "In/out-of-scope rationale and authority are explicit",
+          "mandatory_artifact": "Applicability decision"
+        },
+        {
+          "step": 3,
+          "role": "GRC Analyst",
+          "slug": "grc-analyst",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "decomposes applicable obligations into traceable obligation records",
+          "hands_over": "obligations register",
+          "gate": "Each obligation retains source citation/context and applicability owner",
+          "mandatory_artifact": "Obligations register"
+        },
+        {
+          "step": 4,
+          "role": "Business Analyst",
+          "slug": "business-analyst",
+          "skill": "it-roles-analysis",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "translates obligations into atomic/testable business/technology requirements",
+          "hands_over": "requirements baseline",
+          "gate": "Requirements preserve obligation intent and are testable",
+          "mandatory_artifact": "Requirements baseline"
+        },
+        {
+          "step": 5,
+          "role": "Control Owner",
+          "slug": "control-owner",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "maps requirements to existing/new controls and identifies gaps",
+          "hands_over": "control mapping and gap register",
+          "gate": "Every requirement maps to effective control evidence or an owned gap",
+          "mandatory_artifact": "Control mapping"
+        },
+        {
+          "step": 6,
+          "role": "Enterprise Architect",
+          "slug": "enterprise-architect",
+          "skill": "it-roles-architecture",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "assesses architecture/process/data/service impact and target-state changes",
+          "hands_over": "architecture impact assessment",
+          "gate": "Cross-domain impacts and affected governed models are explicit",
+          "mandatory_artifact": "Architecture impact assessment"
+        },
+        {
+          "step": 7,
+          "role": "Portfolio Manager",
+          "slug": "portfolio-manager",
+          "skill": "it-roles-product-delivery-and-agile",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "prioritises/funds time-bound remediation according to effective dates and risk",
+          "hands_over": "remediation roadmap",
+          "gate": "Mandatory deadlines and dependencies are funded/owned or escalated",
+          "mandatory_artifact": "Remediation roadmap"
+        },
+        {
+          "step": 8,
+          "role": "Control Owner",
+          "slug": "control-owner",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "coordinates implementation evidence and control operating proof",
+          "hands_over": "evidence pack",
+          "gate": "Evidence is attributable to implemented control version and period",
+          "mandatory_artifact": "Evidence pack"
+        },
+        {
+          "step": 9,
+          "role": "Internal IT Auditor",
+          "slug": "internal-it-auditor",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "independently tests design/operating evidence against obligation/control criteria",
+          "hands_over": "assurance report",
+          "gate": "Assurance is independent and reports exceptions/limitations",
+          "mandatory_artifact": "Assurance report"
+        },
+        {
+          "step": 10,
+          "role": "Compliance Officer (Technology)",
+          "slug": "compliance-officer-technology",
+          "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+          "tool_tier": "advise",
+          "operator_agent": "role-advisor",
+          "does": "authorises or routes closure based on assurance and residual exceptions",
+          "hands_over": "closure decision",
+          "gate": "Closure states remaining exceptions, authority and future review triggers",
+          "mandatory_artifact": "Closure decision"
+        }
+      ],
+      "path": "skills/it-role-workflows/references/regulatory-change-to-assurance.md"
+    }
+  ]
+}

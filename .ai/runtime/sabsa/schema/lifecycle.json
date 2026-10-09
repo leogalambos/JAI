@@ -1,0 +1,14 @@
+{
+  "schema_version": "3.2",
+  "horizons": ["current", "transition", "target", "reference"],
+  "lifecycle_states": ["proposed", "reviewed", "approved", "implemented", "operational", "deprecated", "retired"],
+  "transitions": {
+    "proposed": ["reviewed", "retired"],
+    "reviewed": ["approved", "proposed", "retired"],
+    "approved": ["implemented", "reviewed", "retired"],
+    "implemented": ["operational", "approved", "deprecated", "retired"],
+    "operational": ["deprecated", "retired"],
+    "deprecated": ["operational", "retired"],
+    "retired": []
+  }
+}

@@ -1,0 +1,301 @@
+{
+  "version": "1.0.0",
+  "release": "26.10.4",
+  "bindings": {
+    "codebase-reviewer": {
+      "primary_layer": 3,
+      "profile": "runtime",
+      "purpose_ref": "agent:codebase-reviewer",
+      "authority_boundary": "read-only-review",
+      "l5_enforcement": {
+        "provider": "provider-neutral",
+        "sandbox": {
+          "mode": "read-only",
+          "workspace_write": false,
+          "network": "provider-managed"
+        },
+        "allowed_tools": [
+          "Read",
+          "Grep",
+          "Glob",
+          "Bash"
+        ]
+      },
+      "l6_evidence": "ExecutionRecord"
+    },
+    "architecture-reviewer": {
+      "primary_layer": 3,
+      "profile": "runtime",
+      "purpose_ref": "agent:architecture-reviewer",
+      "authority_boundary": "read-only-review",
+      "l5_enforcement": {
+        "provider": "provider-neutral",
+        "sandbox": {
+          "mode": "read-only",
+          "workspace_write": false,
+          "network": "provider-managed"
+        },
+        "allowed_tools": [
+          "Read",
+          "Grep",
+          "Glob"
+        ]
+      },
+      "l6_evidence": "ExecutionRecord"
+    },
+    "gate-auditor": {
+      "primary_layer": 3,
+      "profile": "runtime",
+      "purpose_ref": "agent:gate-auditor",
+      "authority_boundary": "read-only-review",
+      "l5_enforcement": {
+        "provider": "provider-neutral",
+        "sandbox": {
+          "mode": "read-only",
+          "workspace_write": false,
+          "network": "provider-managed"
+        },
+        "allowed_tools": [
+          "Read",
+          "Grep",
+          "Glob"
+        ]
+      },
+      "l6_evidence": "ExecutionRecord"
+    },
+    "sod-reviewer": {
+      "primary_layer": 3,
+      "profile": "runtime",
+      "purpose_ref": "agent:sod-reviewer",
+      "authority_boundary": "read-only-review",
+      "l5_enforcement": {
+        "provider": "provider-neutral",
+        "sandbox": {
+          "mode": "read-only",
+          "workspace_write": false,
+          "network": "provider-managed"
+        },
+        "allowed_tools": [
+          "Read",
+          "Grep",
+          "Glob"
+        ]
+      },
+      "l6_evidence": "ExecutionRecord"
+    },
+    "sabsa-reviewer": {
+      "primary_layer": 3,
+      "profile": "runtime",
+      "purpose_ref": "agent:sabsa-reviewer",
+      "authority_boundary": "read-only-review",
+      "l5_enforcement": {
+        "provider": "provider-neutral",
+        "sandbox": {
+          "mode": "read-only",
+          "workspace_write": false,
+          "network": "provider-managed"
+        },
+        "allowed_tools": [
+          "Read",
+          "Grep",
+          "Glob"
+        ]
+      },
+      "l6_evidence": "ExecutionRecord"
+    },
+    "visual-quality-reviewer": {
+      "primary_layer": 3,
+      "profile": "runtime",
+      "purpose_ref": "agent:visual-quality-reviewer",
+      "authority_boundary": "read-only-review",
+      "l5_enforcement": {
+        "provider": "provider-neutral",
+        "sandbox": {
+          "mode": "read-only",
+          "workspace_write": false,
+          "network": "provider-managed"
+        },
+        "allowed_tools": [
+          "Read",
+          "Grep",
+          "Glob"
+        ]
+      },
+      "l6_evidence": "ExecutionRecord"
+    },
+    "evidence-rationale-reviewer": {
+      "primary_layer": 3,
+      "profile": "runtime",
+      "purpose_ref": "agent:evidence-rationale-reviewer",
+      "authority_boundary": "read-only-review",
+      "l5_enforcement": {
+        "provider": "provider-neutral",
+        "sandbox": {
+          "mode": "read-only",
+          "workspace_write": false,
+          "network": "provider-managed"
+        },
+        "allowed_tools": [
+          "Read",
+          "Grep",
+          "Glob"
+        ]
+      },
+      "l6_evidence": "ExecutionRecord"
+    },
+    "role-author": {
+      "primary_layer": 5,
+      "profile": "runtime",
+      "purpose_ref": "agent:role-author",
+      "authority_boundary": "write-authoring",
+      "l5_enforcement": {
+        "provider": "provider-neutral",
+        "sandbox": {
+          "mode": "workspace-write",
+          "workspace_write": true,
+          "network": "provider-managed"
+        },
+        "allowed_tools": [
+          "Read",
+          "Grep",
+          "Glob",
+          "Write",
+          "Edit"
+        ]
+      },
+      "l6_evidence": "ExecutionRecord"
+    },
+    "artefact-governor": {
+      "primary_layer": 5,
+      "profile": "runtime",
+      "purpose_ref": "agent:artefact-governor",
+      "authority_boundary": "write-authoring",
+      "l5_enforcement": {
+        "provider": "provider-neutral",
+        "sandbox": {
+          "mode": "workspace-write",
+          "workspace_write": true,
+          "network": "provider-managed"
+        },
+        "allowed_tools": [
+          "Read",
+          "Grep",
+          "Glob",
+          "Write",
+          "Edit"
+        ]
+      },
+      "l6_evidence": "ExecutionRecord"
+    },
+    "architecture-repository-engineer": {
+      "primary_layer": 5,
+      "profile": "runtime",
+      "purpose_ref": "agent:architecture-repository-engineer",
+      "authority_boundary": "write-authoring",
+      "l5_enforcement": {
+        "provider": "provider-neutral",
+        "sandbox": {
+          "mode": "workspace-write",
+          "workspace_write": true,
+          "network": "provider-managed"
+        },
+        "allowed_tools": [
+          "Read",
+          "Grep",
+          "Glob",
+          "Write",
+          "Edit"
+        ]
+      },
+      "l6_evidence": "ExecutionRecord"
+    },
+    "enterprise-publication-editor": {
+      "primary_layer": 5,
+      "profile": "runtime",
+      "purpose_ref": "agent:enterprise-publication-editor",
+      "authority_boundary": "write-authoring",
+      "l5_enforcement": {
+        "provider": "provider-neutral",
+        "sandbox": {
+          "mode": "workspace-write",
+          "workspace_write": true,
+          "network": "provider-managed"
+        },
+        "allowed_tools": [
+          "Read",
+          "Grep",
+          "Glob",
+          "Write",
+          "Edit"
+        ]
+      },
+      "l6_evidence": "ExecutionRecord"
+    },
+    "artifact-author": {
+      "primary_layer": 5,
+      "profile": "runtime",
+      "purpose_ref": "agent:artifact-author",
+      "authority_boundary": "write-authoring",
+      "l5_enforcement": {
+        "provider": "provider-neutral",
+        "sandbox": {
+          "mode": "workspace-write",
+          "workspace_write": true,
+          "network": "provider-managed"
+        },
+        "allowed_tools": [
+          "Read",
+          "Grep",
+          "Glob",
+          "Write",
+          "Edit"
+        ]
+      },
+      "l6_evidence": "ExecutionRecord"
+    },
+    "workflow-author": {
+      "primary_layer": 5,
+      "profile": "runtime",
+      "purpose_ref": "agent:workflow-author",
+      "authority_boundary": "write-authoring",
+      "l5_enforcement": {
+        "provider": "provider-neutral",
+        "sandbox": {
+          "mode": "workspace-write",
+          "workspace_write": true,
+          "network": "provider-managed"
+        },
+        "allowed_tools": [
+          "Read",
+          "Grep",
+          "Glob",
+          "Write",
+          "Edit"
+        ]
+      },
+      "l6_evidence": "ExecutionRecord"
+    },
+    "migration-author": {
+      "primary_layer": 5,
+      "profile": "runtime",
+      "purpose_ref": "agent:migration-author",
+      "authority_boundary": "write-authoring",
+      "l5_enforcement": {
+        "provider": "provider-neutral",
+        "sandbox": {
+          "mode": "workspace-write",
+          "workspace_write": true,
+          "network": "provider-managed"
+        },
+        "allowed_tools": [
+          "Read",
+          "Grep",
+          "Glob",
+          "Write",
+          "Edit"
+        ]
+      },
+      "l6_evidence": "ExecutionRecord"
+    }
+  }
+}

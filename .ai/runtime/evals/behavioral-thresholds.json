@@ -1,0 +1,25 @@
+{
+  "schema_version": "1.0.0",
+  "profile": "release-26.10",
+  "aggregation": "micro for coverage/count metrics; exact per-case gate for critical invariants",
+  "thresholds": {
+    "role_routing_accuracy": {"operator": ">=", "value": 0.98},
+    "workflow_routing_accuracy": {"operator": ">=", "value": 0.98},
+    "critical_requirement_coverage": {"operator": "==", "value": 1.0},
+    "evidence_linkage": {"operator": ">=", "value": 0.95},
+    "unsupported_critical_claims": {"operator": "==", "value": 0},
+    "critical_reviewer_defect_recall": {"operator": ">=", "value": 0.95},
+    "reviewer_false_positive_rate": {"operator": "<=", "value": 0.10},
+    "sod_violations": {"operator": "==", "value": 0},
+    "mandatory_publication_coverage": {"operator": "==", "value": 1.0},
+    "broken_artifact_production": {"operator": "==", "value": 0},
+    "decision_rationale_quality": {"operator": ">=", "value": 0.90},
+    "traceability_completeness": {"operator": ">=", "value": 0.95},
+    "cross_agent_consistency": {"operator": ">=", "value": 0.95},
+    "visual_quality": {"operator": ">=", "value": 0.95}
+  },
+  "judge_policy": {
+    "single_llm_judge_forbidden": true,
+    "required_methods": ["deterministic-rules", "reference-expected-result", "independent-reviewer", "structured-rubric"]
+  }
+}

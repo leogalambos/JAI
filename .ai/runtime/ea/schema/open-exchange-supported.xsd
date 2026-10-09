@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           targetNamespace="http://www.opengroup.org/xsd/archimate/3.0/"
+           xmlns:a="http://www.opengroup.org/xsd/archimate/3.0/"
+           elementFormDefault="qualified" attributeFormDefault="unqualified">
+  <!-- AI IT House 26.10.0 supported Open Exchange envelope. Deep semantic constraints are enforced at L2. -->
+  <xs:complexType name="TextType" mixed="true">
+    <xs:anyAttribute processContents="lax"/>
+  </xs:complexType>
+  <xs:complexType name="ContainerType">
+    <xs:sequence>
+      <xs:any minOccurs="0" maxOccurs="unbounded" processContents="skip"/>
+    </xs:sequence>
+    <xs:anyAttribute processContents="lax"/>
+  </xs:complexType>
+  <xs:element name="model">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="name" type="a:TextType" minOccurs="1" maxOccurs="unbounded"/>
+        <xs:element name="documentation" type="a:TextType" minOccurs="0" maxOccurs="unbounded"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element name="elements" type="a:ContainerType"/>
+          <xs:element name="relationships" type="a:ContainerType"/>
+          <xs:element name="views" type="a:ContainerType"/>
+          <xs:element name="organizations" type="a:ContainerType"/>
+          <xs:element name="propertyDefinitions" type="a:ContainerType"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="identifier" type="xs:ID" use="required"/>
+      <xs:attribute name="version" type="xs:string" use="required"/>
+      <xs:anyAttribute processContents="lax"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,102 @@
+{
+  "id": "zero-trust-iam",
+  "scenario": "Zero Trust / IAM",
+  "description": "Golden enterprise scenario for zero trust / iam with cross-role enterprise delivery expectations.",
+  "tags": [
+    "identity",
+    "security",
+    "infrastructure"
+  ],
+  "inputs": {
+    "case_prompt": "Assess and deliver an enterprise-grade zero trust / iam outcome. Preserve evidence, authority, traceability and publication quality.",
+    "constraints": [
+      "Use authoritative enterprise facts; do not invent missing evidence",
+      "Respect role decision rights and segregation of duties",
+      "Produce receiving-role acceptance and residual-risk ownership"
+    ]
+  },
+  "expected": {
+    "workflow_routes": [
+      "access-request-to-review",
+      "idea-to-production"
+    ],
+    "roles": [
+      "identity-and-access-management-architect",
+      "security-architect",
+      "network-architect",
+      "identity-governance-specialist",
+      "privileged-access-management-administrator",
+      "security-engineer"
+    ],
+    "critical_requirements": [
+      {
+        "id": "REQ-04-1",
+        "text": "Identity is the primary policy subject with explicit trust signals"
+      },
+      {
+        "id": "REQ-04-2",
+        "text": "Authentication and authorization decisions have policy/evidence basis"
+      },
+      {
+        "id": "REQ-04-3",
+        "text": "Privileged access has stronger lifecycle and session controls"
+      },
+      {
+        "id": "REQ-04-4",
+        "text": "Legacy/network trust assumptions and migration dependencies are explicit"
+      }
+    ],
+    "critical_evidence": [
+      "EV-04-1",
+      "EV-04-2",
+      "EV-04-3",
+      "EV-04-4"
+    ],
+    "mandatory_artifacts": [
+      "Identity security architecture",
+      "Policy/control design",
+      "Access governance model",
+      "Transition roadmap"
+    ],
+    "traceability_links": [
+      "TR-04-1",
+      "TR-04-2",
+      "TR-04-3",
+      "TR-04-4"
+    ],
+    "decision_rationale": {
+      "alternatives_min": 2,
+      "required_fields": [
+        "chosen_option",
+        "alternatives",
+        "trade_offs",
+        "rationale",
+        "residual_risk",
+        "decision_owner"
+      ]
+    },
+    "seeded_reviewer_defects": [
+      "DEF-04-1",
+      "DEF-04-2",
+      "DEF-04-3",
+      "DEF-04-4"
+    ]
+  },
+  "metrics": [
+    "role_routing_accuracy",
+    "workflow_routing_accuracy",
+    "critical_requirement_coverage",
+    "evidence_linkage",
+    "unsupported_critical_claims",
+    "decision_rationale_quality",
+    "traceability_completeness",
+    "critical_reviewer_defect_recall",
+    "reviewer_false_positive_rate",
+    "sod_violations",
+    "mandatory_publication_coverage",
+    "broken_artifact_production",
+    "visual_quality",
+    "cross_agent_consistency"
+  ],
+  "threshold_profile": "release-26.10"
+}

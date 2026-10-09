@@ -1,0 +1,66 @@
+{
+  "release": "26.10.4",
+  "baseline": "26.10.3",
+  "target": "Unified Lifecycle GA (formerly planned as 26.11.0)",
+  "versioning_decision": "Released as 26.10.4 under mandatory YY.MM.VV scheme",
+  "findings": [
+    {
+      "id": "C04-01",
+      "area": "behavioral-qualification",
+      "baseline": "Gate G used reference-results as the default qualification input although the eval README stated they were evaluator fixtures only.",
+      "risk": "A fixture PASS could be misread as live provider/model behavioral evidence.",
+      "remediation": "Reference fixtures require explicit --fixture-mode; live qualification requires a typed BehavioralQualificationEvidence manifest and captured-result hashes.",
+      "status": "closed"
+    },
+    {
+      "id": "C04-02",
+      "area": "SABSA-profile-native-write",
+      "baseline": "SABSA-to-EA projection was JAI-native, but direct SABSA Markdown authoring did not persist canonical JAI identity/profile metadata.",
+      "risk": "SABSA source objects remained a partially parallel write representation.",
+      "remediation": "New/modified/migrated local SABSA elements now persist canonical_ref, jai_profile, jai_layer and jai_release; the library declares JAI semantic identity authority.",
+      "status": "closed"
+    },
+    {
+      "id": "C04-03",
+      "area": "runtime-profile-native-write",
+      "baseline": "Runtime agent/policy JAI bindings existed as side registries and ExecutionRecord did not itself carry JAI L6 binding.",
+      "risk": "Runtime evidence could be structurally valid without proving its JAI responsibility boundary.",
+      "remediation": "Agent contracts embed and runtime-enforce JAI bindings, managed policy declares its runtime profile, and ExecutionRecord is a typed JAI L6 record.",
+      "status": "closed"
+    },
+    {
+      "id": "C04-04",
+      "area": "publication-profile-native-write",
+      "baseline": "ProjectionManifest v3 carried lineage, but publication.py render could be called directly without a manifest.",
+      "risk": "A production-looking render could bypass projection completeness and lineage controls.",
+      "remediation": "Production render now requires a matching ProjectionManifest v3 and emits render-evidence.json with output hashes and QA results.",
+      "status": "closed"
+    },
+    {
+      "id": "C04-05",
+      "area": "release-namespace-migration",
+      "baseline": "26.10.3 was the sole native write namespace and had no forward migration into the new GA release.",
+      "risk": "Renumbered Unified Lifecycle GA could create compatibility drift.",
+      "remediation": "26.10.4 schema namespace and deterministic 26.10.3->26.10.4 migration added; 26.10.0-26.10.3 remain read/migrate compatible.",
+      "status": "closed"
+    },
+    {
+      "id": "C04-06",
+      "area": "EA-legacy-read-compatibility",
+      "baseline": "EA writes were profile-native, but repository.py only accepted legacy schema_version 26.10 in addition to the current 26.10.3 value.",
+      "risk": "A repository persisted by 26.10.3 would be rejected after advancing the package version instead of upgrading on write.",
+      "remediation": "26.10.4 accepts 26.10, 26.10.1, 26.10.2 and 26.10.3 repository schema versions for read/migrate and writes only 26.10.4. The EA repository-model schema now references the 26.10.4 release namespace.",
+      "status": "closed"
+    }
+  ],
+  "preserved_from_26.10.3": [
+    "Artifact Contract v3 authority",
+    "EA scoped authority and Open Exchange interoperability",
+    "A-H gate taxonomy",
+    "281 roles",
+    "24 workflows",
+    "28 artifact types",
+    "provider parity",
+    "SBOM/provenance/external signing model"
+  ]
+}

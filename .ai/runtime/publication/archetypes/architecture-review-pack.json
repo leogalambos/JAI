@@ -1,0 +1,64 @@
+{
+  "id": "architecture-review-pack",
+  "version": "2.0.0",
+  "audience": [
+    "TDA",
+    "ARB"
+  ],
+  "max_detail": "architecture",
+  "mandatory_sections": [
+    "Executive summary",
+    "Scope and drivers",
+    "Current and target state",
+    "Key decisions",
+    "Risks and controls",
+    "Roadmap",
+    "Decisions requested"
+  ],
+  "mandatory_semantic_fields": [
+    "claims",
+    "decisions",
+    "risks",
+    "evidence",
+    "traceability"
+  ],
+  "formats": [
+    "pptx",
+    "html",
+    "pdf"
+  ],
+  "supported_diagrams": [
+    "architecture",
+    "flow",
+    "roadmap",
+    "risk",
+    "dependency"
+  ],
+  "table_types": [
+    "decision",
+    "risk",
+    "traceability",
+    "action",
+    "inventory"
+  ],
+  "executive_summary": {
+    "required": true,
+    "max_words": 300
+  },
+  "document_control": {
+    "required": true
+  },
+  "classification": {
+    "required": true
+  },
+  "approval_block": {
+    "required": true
+  },
+  "branding": {
+    "theme": "enterprise-default"
+  },
+  "accessibility": {
+    "min_font_pt": 10,
+    "require_alt_text_for_meaningful_images": true
+  }
+}

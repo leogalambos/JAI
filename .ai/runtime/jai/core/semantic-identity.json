@@ -1,0 +1,27 @@
+{
+  "version": "1.0.0",
+  "release": "26.10.4",
+  "namespaces": [
+    "intent",
+    "semantic",
+    "claim",
+    "decision",
+    "evidence",
+    "risk",
+    "approval",
+    "sabsa",
+    "ea",
+    "artifact",
+    "publication",
+    "agent",
+    "policy",
+    "execution",
+    "fabric"
+  ],
+  "rules": [
+    "one canonical identity per semantic object",
+    "profile objects reference canonical identity",
+    "assurance records bind object_ref and object_hash",
+    "profile-local identifiers must declare canonical_ref when representing an existing semantic object"
+  ]
+}

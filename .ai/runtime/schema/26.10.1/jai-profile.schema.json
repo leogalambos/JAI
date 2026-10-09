@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10.1/jai-profile.schema.json",
+  "title": "JAIProfile",
+  "type": "object",
+  "required": [
+    "profile",
+    "version",
+    "authoritative_for"
+  ],
+  "properties": {
+    "profile": {
+      "type": "string"
+    },
+    "version": {
+      "type": "string"
+    },
+    "authoritative_for": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": false
+}

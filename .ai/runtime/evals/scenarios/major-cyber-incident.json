@@ -1,0 +1,103 @@
+{
+  "id": "major-cyber-incident",
+  "scenario": "Major cyber incident",
+  "description": "Golden enterprise scenario for major cyber incident with cross-role enterprise delivery expectations.",
+  "tags": [
+    "IR",
+    "legal",
+    "privacy",
+    "operations"
+  ],
+  "inputs": {
+    "case_prompt": "Assess and deliver an enterprise-grade major cyber incident outcome. Preserve evidence, authority, traceability and publication quality.",
+    "constraints": [
+      "Use authoritative enterprise facts; do not invent missing evidence",
+      "Respect role decision rights and segregation of duties",
+      "Produce receiving-role acceptance and residual-risk ownership"
+    ]
+  },
+  "expected": {
+    "workflow_routes": [
+      "cyber-incident-breach-to-recovery"
+    ],
+    "roles": [
+      "incident-responder",
+      "digital-forensics-examiner",
+      "data-protection-officer",
+      "crisis-manager",
+      "problem-manager",
+      "control-owner"
+    ],
+    "critical_requirements": [
+      {
+        "id": "REQ-05-1",
+        "text": "Evidence preservation and chain of custody precede destructive remediation where material"
+      },
+      {
+        "id": "REQ-05-2",
+        "text": "Business/privacy/regulatory impact separates confirmed facts from inference"
+      },
+      {
+        "id": "REQ-05-3",
+        "text": "Recovery acceptance verifies trusted state and service outcome"
+      },
+      {
+        "id": "REQ-05-4",
+        "text": "Lessons learned produce owned control remediation and independent closure where required"
+      }
+    ],
+    "critical_evidence": [
+      "EV-05-1",
+      "EV-05-2",
+      "EV-05-3",
+      "EV-05-4"
+    ],
+    "mandatory_artifacts": [
+      "Evidence register",
+      "Impact assessment",
+      "Breach / notification decision",
+      "Recovery acceptance",
+      "Control remediation plan"
+    ],
+    "traceability_links": [
+      "TR-05-1",
+      "TR-05-2",
+      "TR-05-3",
+      "TR-05-4"
+    ],
+    "decision_rationale": {
+      "alternatives_min": 2,
+      "required_fields": [
+        "chosen_option",
+        "alternatives",
+        "trade_offs",
+        "rationale",
+        "residual_risk",
+        "decision_owner"
+      ]
+    },
+    "seeded_reviewer_defects": [
+      "DEF-05-1",
+      "DEF-05-2",
+      "DEF-05-3",
+      "DEF-05-4"
+    ]
+  },
+  "metrics": [
+    "role_routing_accuracy",
+    "workflow_routing_accuracy",
+    "critical_requirement_coverage",
+    "evidence_linkage",
+    "unsupported_critical_claims",
+    "decision_rationale_quality",
+    "traceability_completeness",
+    "critical_reviewer_defect_recall",
+    "reviewer_false_positive_rate",
+    "sod_violations",
+    "mandatory_publication_coverage",
+    "broken_artifact_production",
+    "visual_quality",
+    "cross_agent_consistency"
+  ],
+  "threshold_profile": "release-26.10"
+}

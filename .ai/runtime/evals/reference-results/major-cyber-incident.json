@@ -1,0 +1,120 @@
+{
+  "case_id": "major-cyber-incident",
+  "roles": [
+    "incident-responder",
+    "digital-forensics-examiner",
+    "data-protection-officer",
+    "crisis-manager",
+    "problem-manager",
+    "control-owner"
+  ],
+  "workflows": [
+    "cyber-incident-breach-to-recovery"
+  ],
+  "requirements_covered": [
+    "REQ-05-1",
+    "REQ-05-2",
+    "REQ-05-3",
+    "REQ-05-4"
+  ],
+  "evidence_links": [
+    "EV-05-1",
+    "EV-05-2",
+    "EV-05-3",
+    "EV-05-4"
+  ],
+  "claims": [
+    {
+      "id": "CLAIM-1",
+      "critical": true,
+      "evidence": [
+        "EV-05-1"
+      ]
+    },
+    {
+      "id": "CLAIM-2",
+      "critical": true,
+      "evidence": [
+        "EV-05-2"
+      ]
+    },
+    {
+      "id": "CLAIM-3",
+      "critical": true,
+      "evidence": [
+        "EV-05-3"
+      ]
+    },
+    {
+      "id": "CLAIM-4",
+      "critical": true,
+      "evidence": [
+        "EV-05-4"
+      ]
+    }
+  ],
+  "decision_rationale": {
+    "chosen_option": "Option A",
+    "alternatives": [
+      "Option A",
+      "Option B"
+    ],
+    "trade_offs": [
+      "cost vs risk",
+      "speed vs control"
+    ],
+    "rationale": "Evidence-backed choice within stated constraints",
+    "residual_risk": "Owned residual risk remains",
+    "decision_owner": "Named authority"
+  },
+  "traceability_links": [
+    "TR-05-1",
+    "TR-05-2",
+    "TR-05-3",
+    "TR-05-4"
+  ],
+  "reviewer_findings": [
+    "DEF-05-1",
+    "DEF-05-2",
+    "DEF-05-3",
+    "DEF-05-4"
+  ],
+  "sod_violations": [],
+  "publications": [
+    "Evidence register",
+    "Impact assessment",
+    "Breach / notification decision",
+    "Recovery acceptance",
+    "Control remediation plan"
+  ],
+  "artifact_status": [
+    {
+      "name": "Evidence register",
+      "ok": true
+    },
+    {
+      "name": "Impact assessment",
+      "ok": true
+    },
+    {
+      "name": "Breach / notification decision",
+      "ok": true
+    },
+    {
+      "name": "Recovery acceptance",
+      "ok": true
+    },
+    {
+      "name": "Control remediation plan",
+      "ok": true
+    }
+  ],
+  "visual_qa": {
+    "score": 1.0,
+    "critical_defects": 0
+  },
+  "cross_agent": {
+    "checks": 6,
+    "conflicts": 0
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": "1.0.0",
+  "regression_limit_percent": 20,
+  "profiles": {
+    "fast": [
+      {"name":"artifact-contract-lint","command":["python3",".ai/runtime/tools/artifacts.py","check","--root","."],"timeout_seconds":30},
+      {"name":"behavioral-harness","command":["python3",".ai/runtime/tools/behavioral_eval.py","self-test"],"timeout_seconds":30},
+      {"name":"adapter-policy","command":["python3",".ai/runtime/tools/integration_adapters.py","self-test"],"timeout_seconds":20},
+      {"name":"license-policy","command":["python3",".ai/runtime/tools/license_check.py","."],"timeout_seconds":20}
+    ],
+    "full": [
+      {"name":"visual-qa","command":["python3",".ai/runtime/tools/visual_qa.py","self-test"],"timeout_seconds":90},
+      {"name":"repository","command":["python3",".ai/runtime/tools/repository.py","self-test"],"timeout_seconds":90},
+      {"name":"schema","command":["python3",".ai/runtime/tools/schema_check.py","self-test","--root","."],"timeout_seconds":60}
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "version": "1.0.0",
+  "release": "26.10.4",
+  "unified_model": "JAI-six-layer-core",
+  "native_write": {
+    "artifact_contract": "ArtifactContract-v3",
+    "sabsa_profile": "SABSAProfile/JAI-L2",
+    "ea_profile": "EAProfile/JAI-L2-projection",
+    "publication_profile": "PublicationProfile-v3/JAI-L1-L6",
+    "projection_manifest": "ProjectionManifest-v3",
+    "product_fragment": "ProductFragment",
+    "agent_runtime": "AgentContract-v2/JAI-RuntimeProfile",
+    "policy_runtime": "PolicyContract-v2/JAI-RuntimeProfile",
+    "execution_evidence": "ExecutionRecord/JAI-L6"
+  },
+  "legacy_read_only": [
+    {
+      "path": "artifacts/contracts/role-deliverables.v2.json",
+      "sha256": "28e980761e1d7e5b6ffdbe4881005dced8a0ff53a0268dcf156d5821577c3052",
+      "purpose": "migration-fixture"
+    }
+  ],
+  "rules": {
+    "production_write_requires_jai": true,
+    "legacy_write_forbidden": true,
+    "migration_outputs_native": true,
+    "generated_registries_native": true,
+    "profile_native_domain_writes": true,
+    "behavioral_fixture_claims_forbidden": true
+  }
+}

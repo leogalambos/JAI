@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 620" role="img" aria-labelledby="t d">
+<defs><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3ba9d6"/></marker><marker id="w" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#d69b2d"/></marker></defs>
+<title id="t">Layered engagement decision states</title><desc id="d">A contract becomes a candidate, is reviewed, and either progresses, is reworked, reformulated, escalated, or blocked. Human authority can accept, permit an exception, revise, reject, or terminate. Release requires strict justifiability and current evidence.</desc>
+<rect width="100%" height="100%" rx="24" fill="#f6fafc" stroke="#d6e6ee"/>
+<text x="42" y="42" font-family="Inter,Arial" font-size="24" font-weight="700" fill="#0b1f33">Layered engagement state machine</text>
+<g font-family="Inter,Arial" font-size="14" font-weight="700" text-anchor="middle">
+<rect x="50" y="110" width="160" height="70" rx="12" fill="#0e3859"/><text x="130" y="145" fill="#fff">Typed contract</text>
+<rect x="270" y="110" width="160" height="70" rx="12" fill="#0e4c70"/><text x="350" y="145" fill="#fff">Candidate / evidence</text>
+<rect x="490" y="110" width="160" height="70" rx="12" fill="#0b6b9a"/><text x="570" y="145" fill="#fff">Review</text>
+<rect x="710" y="110" width="160" height="70" rx="12" fill="#145f7e"/><text x="790" y="137" fill="#fff">Accepted</text><text x="790" y="156" fill="#fff">upward</text>
+<rect x="900" y="110" width="150" height="70" rx="12" fill="#163d5c"/><text x="975" y="137" fill="#fff">Strict release</text><text x="975" y="156" fill="#fff">gate</text>
+</g>
+<g stroke="#3ba9d6" stroke-width="3" fill="none" marker-end="url(#a)"><path d="M210 145 L265 145"/><path d="M430 145 L485 145"/><path d="M650 145 L705 145"/><path d="M870 145 L895 145"/></g>
+
+<g font-family="Inter,Arial" font-size="13" text-anchor="middle">
+<rect x="235" y="300" width="190" height="65" rx="12" fill="#fff" stroke="#b9d8e8"/><text x="330" y="326" font-weight="700" fill="#0b1f33">Rework</text><text x="330" y="346" fill="#45647a">same requirement</text>
+<rect x="460" y="300" width="190" height="65" rx="12" fill="#fff" stroke="#b9d8e8"/><text x="555" y="326" font-weight="700" fill="#0b1f33">Reformulate</text><text x="555" y="346" fill="#45647a">owner changes requirement</text>
+<rect x="685" y="300" width="190" height="65" rx="12" fill="#fff" stroke="#d8c28c"/><text x="780" y="326" font-weight="700" fill="#0b1f33">Escalate</text><text x="780" y="346" fill="#45647a">one layer upward</text>
+<rect x="685" y="445" width="190" height="80" rx="12" fill="#fff" stroke="#d8c28c"/><text x="780" y="470" font-weight="700" fill="#0b1f33">L0 Human authority</text><text x="780" y="491" fill="#45647a">accept / exception / revise</text><text x="780" y="510" fill="#45647a">reject / terminate</text>
+</g>
+<g stroke="#d69b2d" stroke-width="3" fill="none" marker-end="url(#w)">
+<path d="M550 180 C550 225 330 235 330 295"/>
+<path d="M570 180 C570 230 555 245 555 295"/>
+<path d="M590 180 C610 230 780 245 780 295"/>
+<path d="M780 365 L780 440"/>
+<path d="M685 485 C560 485 380 440 330 370"/>
+</g>
+<text x="320" y="405" font-family="Inter,Arial" font-size="12" fill="#45647a">revise creates a new L1 generation and a new round</text>
+<rect x="50" y="445" width="480" height="80" rx="12" fill="#fff" stroke="#cbdde6"/>
+<text x="290" y="470" text-anchor="middle" font-family="Inter,Arial" font-size="14" font-weight="700" fill="#0b1f33">First-class failure states</text>
+<text x="290" y="494" text-anchor="middle" font-family="Inter,Arial" font-size="12" fill="#45647a">failed · unavailable · timeout · ambiguous · insufficient</text>
+<text x="290" y="513" text-anchor="middle" font-family="Inter,Arial" font-size="12" fill="#45647a">contradicted · conflicting · explicit budget exhaustion</text>
+</svg>

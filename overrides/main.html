@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% set ai_hide_header = false %}
+{% set ai_hide_footer = false %}
+{% if page is defined and page and page.meta is defined and page.meta %}
+  {% set ai_hide_header = page.meta.get('hide_header', false) %}
+  {% set ai_hide_footer = page.meta.get('hide_footer', false) %}
+{% endif %}
+{% block header %}
+  {% if not ai_hide_header %}{{ super() }}{% endif %}
+{% endblock %}
+{% block tabs %}
+  {% if not ai_hide_header %}{{ super() }}{% endif %}
+{% endblock %}
+{% block footer %}
+  {% if not ai_hide_footer %}{{ super() }}{% endif %}
+{% endblock %}

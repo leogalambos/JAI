@@ -1,0 +1,107 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10.4/repository-model.json",
+  "title": "AI IT House 26.10.4 EA Domain Projection Repository",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "repository",
+    "projects",
+    "elements",
+    "relationships",
+    "views",
+    "portfolio_links"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "26.10.4"
+    },
+    "repository": {
+      "type": "object",
+      "required": [
+        "id",
+        "name",
+        "revision_hash"
+      ],
+      "properties": {
+        "id": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "version": {
+          "type": "string"
+        },
+        "created_at": {
+          "type": "string"
+        },
+        "updated_at": {
+          "type": "string"
+        },
+        "default_language": {
+          "type": "string"
+        },
+        "revision_hash": {
+          "type": "string"
+        },
+        "authoritative_for": {
+          "const": "ea-domain-projection"
+        },
+        "global_source_of_truth": {
+          "const": false
+        },
+        "jai_profile": {
+          "const": "ea"
+        },
+        "semantic_identity_authority": {
+          "const": "JAI"
+        }
+      },
+      "additionalProperties": true
+    },
+    "projects": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "elements": {
+      "type": "array",
+      "items": {
+        "$ref": "../../schema/26.10.4/ea-element.schema.json"
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "items": {
+        "$ref": "../../schema/26.10.4/relationship.schema.json"
+      }
+    },
+    "views": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "portfolio_links": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "projection_manifests": {
+      "type": "array",
+      "items": {
+        "$ref": "../../schema/26.10.4/projection-manifest.schema.json"
+      }
+    },
+    "exceptions": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  },
+  "additionalProperties": false
+}

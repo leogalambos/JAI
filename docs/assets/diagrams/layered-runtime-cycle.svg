@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 940" role="img" aria-labelledby="title desc">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f7fbfe"/>
+      <stop offset="100%" stop-color="#eef5f9"/>
+    </linearGradient>
+    <linearGradient id="layerGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0f4b72"/>
+      <stop offset="100%" stop-color="#0d8ac6"/>
+    </linearGradient>
+    <linearGradient id="authorityGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#173b5a"/>
+      <stop offset="100%" stop-color="#123b66"/>
+    </linearGradient>
+    <linearGradient id="goldGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#f3c24f"/>
+      <stop offset="100%" stop-color="#d9971f"/>
+    </linearGradient>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="5" stdDeviation="8" flood-color="#b9c8d4" flood-opacity="0.28"/>
+    </filter>
+    <marker id="blueArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#36b2e7"/>
+    </marker>
+    <marker id="goldArrow" markerWidth="12" markerHeight="12" refX="10" refY="6" orient="auto">
+      <path d="M0,0 L12,6 L0,12 z" fill="#e2a62b"/>
+    </marker>
+    <style>
+      .title{font:700 34px Inter,Arial,sans-serif;fill:#11263e}
+      .subtitle{font:400 16px Inter,Arial,sans-serif;fill:#5a7288}
+      .layerText{font:700 23px Inter,Arial,sans-serif;fill:white}
+      .panelTitle{font:700 18px Inter,Arial,sans-serif;fill:#12385d}
+      .panelBody{font:400 13px Inter,Arial,sans-serif;fill:#50708a}
+      .small{font:400 12px Inter,Arial,sans-serif;fill:#5b758c}
+      .decisionTitle{font:700 18px Inter,Arial,sans-serif;fill:#142e4a}
+      .decisionBody{font:400 13px Inter,Arial,sans-serif;fill:#4f6a84}
+      .vertLabel{font:700 17px Inter,Arial,sans-serif}
+      .labelBlue{fill:#156f9d}
+      .labelGold{fill:#a36a0b}
+    </style>
+  </defs>
+
+  <title id="title">Layered justifiable runtime</title>
+  <desc id="desc">Improved runtime layering diagram with corrected text layout, better spacing, and visually balanced side annotations for contracts, evidence, rework, reformulation, escalation and human decision.</desc>
+
+  <rect x="1" y="1" width="1398" height="938" rx="28" fill="url(#bg)" stroke="#d4e3ed" stroke-width="2"/>
+
+  <text x="46" y="58" class="title">Layered justifiable runtime</text>
+  <text x="46" y="88" class="subtitle">Downward contracts · upward evidence/review · bounded recovery · human authority</text>
+
+  <!-- Left contracts lane -->
+  <g>
+    <path d="M190 715 L190 145" fill="none" stroke="#35afe2" stroke-width="6" marker-end="url(#blueArrow)"/>
+    <g transform="translate(168 430) rotate(-90)">
+      <text text-anchor="middle" class="vertLabel labelBlue">Requirements and typed contracts descend</text>
+    </g>
+  </g>
+
+  <!-- Right evidence lane -->
+  <g>
+    <path d="M1220 245 L1220 845" fill="none" stroke="#e2a62b" stroke-width="6" marker-end="url(#goldArrow)"/>
+    <g transform="translate(1252 545) rotate(90)">
+      <text text-anchor="middle" class="vertLabel labelGold">Evidence, review, dissent and escalation ascend</text>
+    </g>
+  </g>
+
+  <!-- Human decision -->
+  <g filter="url(#shadow)">
+    <rect x="1075" y="125" width="260" height="106" rx="18" fill="#fffdf8" stroke="#d8a847" stroke-width="2"/>
+  </g>
+  <text x="1205" y="160" text-anchor="middle" class="decisionTitle">Human decision</text>
+  <text x="1205" y="190" text-anchor="middle" class="decisionBody">accept · exception · revise</text>
+  <text x="1205" y="214" text-anchor="middle" class="decisionBody">reject · terminate</text>
+
+  <!-- Recovery ladder boxes -->
+  <g filter="url(#shadow)">
+    <rect x="44" y="610" width="280" height="84" rx="16" fill="#fbfeff" stroke="#86c8e8" stroke-width="2"/>
+    <rect x="44" y="708" width="280" height="84" rx="16" fill="#fbfeff" stroke="#86c8e8" stroke-width="2"/>
+    <rect x="44" y="806" width="280" height="84" rx="16" fill="#fbfeff" stroke="#86c8e8" stroke-width="2"/>
+  </g>
+  <path d="M190 695 L190 707" stroke="#6fc0e5" stroke-width="5"/>
+  <path d="M190 793 L190 805" stroke="#6fc0e5" stroke-width="5"/>
+
+  <text x="184" y="640" text-anchor="middle" class="panelTitle">Rework</text>
+  <text x="184" y="664" text-anchor="middle" class="panelBody">same requirement</text>
+  <text x="184" y="683" text-anchor="middle" class="panelBody">max 3 lineage attempts</text>
+
+  <text x="184" y="738" text-anchor="middle" class="panelTitle">Reformulation</text>
+  <text x="184" y="762" text-anchor="middle" class="panelBody">owner restates requirement</text>
+  <text x="184" y="781" text-anchor="middle" class="panelBody">max 2 per layer / round</text>
+
+  <text x="184" y="836" text-anchor="middle" class="panelTitle">Escalation</text>
+  <text x="184" y="860" text-anchor="middle" class="panelBody">one layer upward</text>
+  <text x="184" y="879" text-anchor="middle" class="panelBody">authority matters stay sticky</text>
+
+  <!-- Layers -->
+  <g filter="url(#shadow)">
+    <rect x="380" y="132" width="640" height="78" rx="20" fill="url(#authorityGrad)"/>
+    <rect x="380" y="248" width="640" height="74" rx="18" fill="url(#layerGrad)"/>
+    <rect x="380" y="360" width="640" height="74" rx="18" fill="url(#layerGrad)"/>
+    <rect x="380" y="472" width="640" height="74" rx="18" fill="url(#layerGrad)"/>
+    <rect x="380" y="584" width="640" height="74" rx="18" fill="url(#layerGrad)"/>
+    <rect x="380" y="696" width="640" height="74" rx="18" fill="url(#layerGrad)"/>
+    <rect x="380" y="808" width="640" height="74" rx="18" fill="url(#layerGrad)"/>
+  </g>
+
+  <text x="700" y="181" text-anchor="middle" class="layerText" style="font-size:25px">L0 · Human authority</text>
+  <text x="700" y="294" text-anchor="middle" class="layerText">L1 · Intent and Context</text>
+  <text x="700" y="406" text-anchor="middle" class="layerText">L2 · Meaning and Domain Model</text>
+  <text x="700" y="518" text-anchor="middle" class="layerText">L3 · Reasoning, Policy and Control</text>
+  <text x="700" y="630" text-anchor="middle" class="layerText">L4 · Solution Design</text>
+  <text x="700" y="742" text-anchor="middle" class="layerText">L5 · Realisation and Tooling</text>
+  <text x="700" y="854" text-anchor="middle" class="layerText">L6 · Execution and Evidence</text>
+
+  <!-- Inter-layer directional triangles -->
+  <g>
+    <!-- blue down triangles -->
+    <path d="M585 210 L610 250 L560 250 Z" fill="#33afe6"/>
+    <path d="M585 322 L610 362 L560 362 Z" fill="#33afe6"/>
+    <path d="M585 434 L610 474 L560 474 Z" fill="#33afe6"/>
+    <path d="M585 546 L610 586 L560 586 Z" fill="#33afe6"/>
+    <path d="M585 658 L610 698 L560 698 Z" fill="#33afe6"/>
+    <path d="M585 770 L610 810 L560 810 Z" fill="#33afe6"/>
+
+    <!-- gold up triangles -->
+    <path d="M795 250 L820 210 L770 210 Z" fill="url(#goldGrad)"/>
+    <path d="M795 362 L820 322 L770 322 Z" fill="url(#goldGrad)"/>
+    <path d="M795 474 L820 434 L770 434 Z" fill="url(#goldGrad)"/>
+    <path d="M795 586 L820 546 L770 546 Z" fill="url(#goldGrad)"/>
+    <path d="M795 698 L820 658 L770 658 Z" fill="url(#goldGrad)"/>
+    <path d="M795 810 L820 770 L770 770 Z" fill="url(#goldGrad)"/>
+  </g>
+</svg>

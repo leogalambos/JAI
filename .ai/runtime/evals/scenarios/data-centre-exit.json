@@ -1,0 +1,103 @@
+{
+  "id": "data-centre-exit",
+  "scenario": "Data-centre exit",
+  "description": "Golden enterprise scenario for data-centre exit with cross-role enterprise delivery expectations.",
+  "tags": [
+    "infrastructure",
+    "migration",
+    "resilience"
+  ],
+  "inputs": {
+    "case_prompt": "Assess and deliver an enterprise-grade data-centre exit outcome. Preserve evidence, authority, traceability and publication quality.",
+    "constraints": [
+      "Use authoritative enterprise facts; do not invent missing evidence",
+      "Respect role decision rights and segregation of duties",
+      "Produce receiving-role acceptance and residual-risk ownership"
+    ]
+  },
+  "expected": {
+    "workflow_routes": [
+      "resilience-validation",
+      "migration-and-cutover",
+      "service-retirement-and-decommission"
+    ],
+    "roles": [
+      "operational-and-technology-resilience-architect",
+      "cloud-architect",
+      "data-migration-and-cutover-lead",
+      "enterprise-release-manager",
+      "technology-lifecycle-and-decommission-manager",
+      "disaster-recovery-coordinator"
+    ],
+    "critical_requirements": [
+      {
+        "id": "REQ-09-1",
+        "text": "Every hosted service/dependency has a migrate/retire/retain disposition"
+      },
+      {
+        "id": "REQ-09-2",
+        "text": "Migration waves preserve service criticality and recovery objectives"
+      },
+      {
+        "id": "REQ-09-3",
+        "text": "Cutover/rollback and connectivity/data dependencies are rehearsed"
+      },
+      {
+        "id": "REQ-09-4",
+        "text": "Decommission closes assets, data, access, contracts and repository/CMDB state"
+      }
+    ],
+    "critical_evidence": [
+      "EV-09-1",
+      "EV-09-2",
+      "EV-09-3",
+      "EV-09-4"
+    ],
+    "mandatory_artifacts": [
+      "Dependency/failure-domain model",
+      "Migration roadmap",
+      "Cutover readiness",
+      "Decommission evidence record"
+    ],
+    "traceability_links": [
+      "TR-09-1",
+      "TR-09-2",
+      "TR-09-3",
+      "TR-09-4"
+    ],
+    "decision_rationale": {
+      "alternatives_min": 2,
+      "required_fields": [
+        "chosen_option",
+        "alternatives",
+        "trade_offs",
+        "rationale",
+        "residual_risk",
+        "decision_owner"
+      ]
+    },
+    "seeded_reviewer_defects": [
+      "DEF-09-1",
+      "DEF-09-2",
+      "DEF-09-3",
+      "DEF-09-4"
+    ]
+  },
+  "metrics": [
+    "role_routing_accuracy",
+    "workflow_routing_accuracy",
+    "critical_requirement_coverage",
+    "evidence_linkage",
+    "unsupported_critical_claims",
+    "decision_rationale_quality",
+    "traceability_completeness",
+    "critical_reviewer_defect_recall",
+    "reviewer_false_positive_rate",
+    "sod_violations",
+    "mandatory_publication_coverage",
+    "broken_artifact_production",
+    "visual_quality",
+    "cross_agent_consistency"
+  ],
+  "threshold_profile": "release-26.10"
+}

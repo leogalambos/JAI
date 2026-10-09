@@ -1,0 +1,20 @@
+{
+  "profile": "artifact",
+  "version": "3.0.0",
+  "authoritative_for": "artifact-composition",
+  "jai_mapping": {
+    "L1": "intent",
+    "L2": "semantics",
+    "L3": "justification",
+    "L4": "design",
+    "L5": "realisation",
+    "L6": "evidence"
+  },
+  "legacy_read": [
+    "ArtifactContract-v2@26.10.0",
+    "ArtifactContract-v3@26.10.1",
+    "ArtifactContract-v3@26.10.2"
+  ],
+  "native_write": "ArtifactContract-v3",
+  "release": "26.10.4"
+}

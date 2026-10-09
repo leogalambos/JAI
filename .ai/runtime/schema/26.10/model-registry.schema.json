@@ -1,0 +1,175 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10/model-registry.schema.json",
+  "title": "ModelRegistry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "registry_version",
+    "release",
+    "fallback_class",
+    "configuration",
+    "workload_classes",
+    "providers"
+  ],
+  "properties": {
+    "registry_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "release": {
+      "type": "string",
+      "minLength": 1
+    },
+    "fallback_class": {
+      "type": "string",
+      "minLength": 1
+    },
+    "configuration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "override_file_default",
+        "override_environment",
+        "principle"
+      ],
+      "properties": {
+        "override_file_default": {
+          "type": "string",
+          "minLength": 1
+        },
+        "override_environment": {
+          "type": "string",
+          "minLength": 1
+        },
+        "principle": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "workload_classes": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "complexity_order",
+          "description",
+          "reasoning_profile"
+        ],
+        "properties": {
+          "complexity_order": {
+            "type": "integer",
+            "minimum": 0
+          },
+          "description": {
+            "type": "string",
+            "minLength": 1
+          },
+          "reasoning_profile": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "providers": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "display_name",
+          "adapter",
+          "selection_strategy",
+          "classes",
+          "strategy_scope"
+        ],
+        "properties": {
+          "display_name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "adapter": {
+            "type": "string",
+            "minLength": 1
+          },
+          "selection_strategy": {
+            "type": "string",
+            "minLength": 1
+          },
+          "classes": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "model_selector"
+              ],
+              "properties": {
+                "model_selector": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reasoning_effort": {
+                  "enum": [
+                    "none",
+                    "minimal",
+                    "low",
+                    "medium",
+                    "high",
+                    "xhigh",
+                    "max"
+                  ]
+                },
+                "fallbacks": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": [
+                      "model_selector"
+                    ],
+                    "properties": {
+                      "model_selector": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "reasoning_effort": {
+                        "enum": [
+                          "none",
+                          "minimal",
+                          "low",
+                          "medium",
+                          "high",
+                          "xhigh",
+                          "max"
+                        ]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "native_controls": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "strategy_scope": {
+            "enum": [
+              "project-internal"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

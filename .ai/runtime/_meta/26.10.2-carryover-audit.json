@@ -1,0 +1,44 @@
+{
+  "release": "26.10.4",
+  "source_release": "26.10.2",
+  "audit": "independent-plan-and-runtime-conformance",
+  "findings": [
+    {
+      "id": "C03-01",
+      "severity": "P0",
+      "finding": "Static documentation still declared Artifact Contract v2 or unscoped EA repository source-of-truth authority.",
+      "remediation": "Corrected claims and added release-blocking architecture_claim_lint."
+    },
+    {
+      "id": "C03-02",
+      "severity": "P0",
+      "finding": "Active integration, audit and behavioral runtimes loaded duplicate legacy schema files outside the current release registry.",
+      "remediation": "Added schema_resolver and moved active validation to the current release namespace."
+    },
+    {
+      "id": "C03-03",
+      "severity": "P1",
+      "finding": "EA repository writes still emitted schema_version 26.10 and lacked explicit JAI scope metadata.",
+      "remediation": "Current writes use release schema version and scoped EA-domain projection authority; legacy 26.10 remains read-compatible and upgrades on save."
+    },
+    {
+      "id": "C03-04",
+      "severity": "P1",
+      "finding": "SABSA-to-EA projection did not populate existing canonical_ref/JAI/source_specialisations fields.",
+      "remediation": "Projection now preserves JAI semantic identity, L2 binding and SABSA specialization while accepting the legacy bridge on reads."
+    },
+    {
+      "id": "C03-05",
+      "severity": "P1",
+      "finding": "Aggregate Gate D regression duplicated cross-gate tests and could exceed bounded qualification runtime.",
+      "remediation": "Cross-gate mode retains unique schema/negative-policy checks; authoritative duplicated checks remain in their own A/B/E/F gates."
+    },
+    {
+      "id": "C03-06",
+      "severity": "P2",
+      "finding": "Role/workflow catalogue release metadata lagged the package release.",
+      "remediation": "Normalized catalogue version metadata to 26.10.3 without changing catalog content."
+    }
+  ],
+  "policy": "No source-release audit history is rewritten; compatibility artifacts remain read-only/migration inputs."
+}

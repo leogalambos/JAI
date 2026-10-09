@@ -1,0 +1,40 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10.3/product-fragment.schema.json",
+  "title": "ProductFragment",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "jai_layer",
+    "object_ref",
+    "object_hash",
+    "contract_ref",
+    "context_digest"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "jai_layer": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 6
+    },
+    "object_ref": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*:.+"
+    },
+    "object_hash": {
+      "type": "string",
+      "pattern": "^(sha256:)?[0-9a-f]{64}$"
+    },
+    "contract_ref": {
+      "type": "string"
+    },
+    "context_digest": {
+      "type": "string",
+      "pattern": "^(sha256:)?[0-9a-f]{64}$"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "profile": "runtime",
+  "version": "1.0.0",
+  "authoritative_for": "agent-policy-execution-specialisation",
+  "jai_mapping": {
+    "L1": "purpose/authority/accountable role",
+    "L2": "accessible semantic context",
+    "L3": "permissions/approvals/escalation/policy",
+    "L4": "execution/control design",
+    "L5": "provider/tools/filesystem/MCP/sandbox/network",
+    "L6": "ExecutionRecord and observed tool/effect evidence"
+  },
+  "release": "26.10.4"
+}

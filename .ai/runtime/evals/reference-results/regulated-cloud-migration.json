@@ -1,0 +1,117 @@
+{
+  "case_id": "regulated-cloud-migration",
+  "roles": [
+    "cloud-architect",
+    "security-architect",
+    "privacy-architect",
+    "identity-and-access-management-architect",
+    "operational-and-technology-resilience-architect",
+    "data-migration-and-cutover-lead"
+  ],
+  "workflows": [
+    "migration-and-cutover",
+    "design-to-operational-readiness",
+    "regulatory-change-to-assurance"
+  ],
+  "requirements_covered": [
+    "REQ-01-1",
+    "REQ-01-2",
+    "REQ-01-3",
+    "REQ-01-4"
+  ],
+  "evidence_links": [
+    "EV-01-1",
+    "EV-01-2",
+    "EV-01-3",
+    "EV-01-4"
+  ],
+  "claims": [
+    {
+      "id": "CLAIM-1",
+      "critical": true,
+      "evidence": [
+        "EV-01-1"
+      ]
+    },
+    {
+      "id": "CLAIM-2",
+      "critical": true,
+      "evidence": [
+        "EV-01-2"
+      ]
+    },
+    {
+      "id": "CLAIM-3",
+      "critical": true,
+      "evidence": [
+        "EV-01-3"
+      ]
+    },
+    {
+      "id": "CLAIM-4",
+      "critical": true,
+      "evidence": [
+        "EV-01-4"
+      ]
+    }
+  ],
+  "decision_rationale": {
+    "chosen_option": "Option A",
+    "alternatives": [
+      "Option A",
+      "Option B"
+    ],
+    "trade_offs": [
+      "cost vs risk",
+      "speed vs control"
+    ],
+    "rationale": "Evidence-backed choice within stated constraints",
+    "residual_risk": "Owned residual risk remains",
+    "decision_owner": "Named authority"
+  },
+  "traceability_links": [
+    "TR-01-1",
+    "TR-01-2",
+    "TR-01-3",
+    "TR-01-4"
+  ],
+  "reviewer_findings": [
+    "DEF-01-1",
+    "DEF-01-2",
+    "DEF-01-3",
+    "DEF-01-4"
+  ],
+  "sod_violations": [],
+  "publications": [
+    "Cloud target architecture",
+    "Privacy/security risk assessment",
+    "Migration and cutover pack",
+    "Operational readiness assessment"
+  ],
+  "artifact_status": [
+    {
+      "name": "Cloud target architecture",
+      "ok": true
+    },
+    {
+      "name": "Privacy/security risk assessment",
+      "ok": true
+    },
+    {
+      "name": "Migration and cutover pack",
+      "ok": true
+    },
+    {
+      "name": "Operational readiness assessment",
+      "ok": true
+    }
+  ],
+  "visual_qa": {
+    "score": 1.0,
+    "critical_defects": 0
+  },
+  "cross_agent": {
+    "checks": 6,
+    "conflicts": 0
+  }
+}

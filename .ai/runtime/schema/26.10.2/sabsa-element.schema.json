@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10.2/sabsa-element.schema.json",
+  "title": "SABSAElement 26.10.1 JAI-profiled",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "element_type",
+    "layer",
+    "question",
+    "title",
+    "payload"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "element_type": {
+      "type": "string",
+      "minLength": 1
+    },
+    "layer": {
+      "enum": [
+        "Contextual",
+        "Conceptual",
+        "Logical",
+        "Physical",
+        "Component",
+        "Service Management"
+      ]
+    },
+    "question": {
+      "enum": [
+        "what",
+        "why",
+        "how",
+        "who",
+        "where",
+        "when"
+      ]
+    },
+    "title": {
+      "type": "string",
+      "minLength": 1
+    },
+    "payload": {
+      "type": "object",
+      "additionalProperties": true
+    },
+    "links": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "array",
+        "items": {
+          "type": "string"
+        }
+      }
+    },
+    "lifecycle_state": {
+      "type": "string"
+    },
+    "horizon": {
+      "type": "string"
+    },
+    "source_path": {
+      "type": "string"
+    },
+    "jai": {
+      "$ref": "jai-layer-binding.schema.json"
+    },
+    "profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "type",
+        "sabsa"
+      ],
+      "properties": {
+        "type": {
+          "const": "sabsa"
+        },
+        "sabsa": {
+          "type": "object",
+          "required": [
+            "layer",
+            "question",
+            "element_type"
+          ],
+          "properties": {
+            "layer": {
+              "type": "string"
+            },
+            "question": {
+              "type": "string"
+            },
+            "element_type": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

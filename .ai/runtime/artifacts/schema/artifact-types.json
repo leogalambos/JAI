@@ -1,0 +1,698 @@
+{
+  "schema_version": "2.0.0",
+  "taxonomy_version": "26.10.0",
+  "artifact_types": {
+    "architecture-definition": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "enterprise-publication",
+      "evidence_profile": "material-claims-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "architecture-decision": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "decision-defensible",
+      "evidence_profile": "decision-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "solution-design": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "enterprise-publication",
+      "evidence_profile": "material-claims-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "decision-paper": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "decision-defensible",
+      "evidence_profile": "decision-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "business-case": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "decision-defensible",
+      "evidence_profile": "decision-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "risk-assessment": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "evidence-assured",
+      "evidence_profile": "assurance-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "assurance-report": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "evidence-assured",
+      "evidence_profile": "assurance-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "control-design": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "enterprise-publication",
+      "evidence_profile": "material-claims-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "implementation-specification": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "enterprise-publication",
+      "evidence_profile": "material-claims-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "migration-plan": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "enterprise-publication",
+      "evidence_profile": "material-claims-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "cutover-plan": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "enterprise-publication",
+      "evidence_profile": "material-claims-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "operational-readiness-assessment": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "evidence-assured",
+      "evidence_profile": "assurance-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "service-design": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "enterprise-publication",
+      "evidence_profile": "material-claims-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "runbook": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "enterprise-publication",
+      "evidence_profile": "material-claims-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "test-strategy": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "enterprise-publication",
+      "evidence_profile": "material-claims-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "test-report": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "evidence-assured",
+      "evidence_profile": "assurance-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "benefits-review": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "decision-defensible",
+      "evidence_profile": "decision-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "roadmap": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "enterprise-publication",
+      "evidence_profile": "material-claims-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "register": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "xlsx",
+        "docx"
+      ],
+      "acceptance_profile": "enterprise-publication",
+      "evidence_profile": "material-claims-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "dashboard": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "enterprise-publication",
+      "evidence_profile": "material-claims-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "presentation": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "pptx",
+        "html"
+      ],
+      "acceptance_profile": "enterprise-publication",
+      "evidence_profile": "material-claims-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "dataset": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "xlsx",
+        "docx"
+      ],
+      "acceptance_profile": "enterprise-publication",
+      "evidence_profile": "material-claims-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "catalogue": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "enterprise-publication",
+      "evidence_profile": "material-claims-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "document": {
+      "schema_ref": "publication/schema/publication-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "html",
+        "docx",
+        "pptx",
+        "xlsx"
+      ],
+      "acceptance_profile": "enterprise-publication",
+      "evidence_profile": "material-claims-evidence",
+      "allowed_audiences": [
+        "executive",
+        "governance",
+        "architecture",
+        "engineering",
+        "operations",
+        "assurance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "diagram": {
+      "schema_ref": "publication/schema/diagram-model.json",
+      "producer": "tools/publication.py",
+      "validator": "tools/publication.py validate",
+      "renderer": "tools/publication.py",
+      "production_mode": "internal",
+      "render_targets": [
+        "svg",
+        "html",
+        "docx",
+        "pptx"
+      ],
+      "acceptance_profile": "model-conformance",
+      "evidence_profile": "model-evidence",
+      "allowed_audiences": [
+        "architecture",
+        "engineering",
+        "operations",
+        "governance",
+        "business",
+        "cross-functional"
+      ]
+    },
+    "model": {
+      "schema_ref": "ea/schema/repository-model.json",
+      "producer": "tools/repository.py",
+      "validator": "tools/repository.py validate",
+      "renderer": "tools/repository.py generate-views",
+      "production_mode": "internal",
+      "render_targets": [
+        "open-exchange",
+        "json",
+        "svg"
+      ],
+      "acceptance_profile": "model-conformance",
+      "evidence_profile": "model-evidence",
+      "allowed_audiences": [
+        "architecture",
+        "engineering",
+        "governance",
+        "operations",
+        "cross-functional"
+      ]
+    },
+    "prototype": {
+      "schema_ref": "external",
+      "producer": "external:engineering-toolchain",
+      "validator": "tools/artifacts.py check-handoff",
+      "renderer": "external:engineering-toolchain",
+      "production_mode": "external_handoff",
+      "render_targets": [],
+      "acceptance_profile": "engineering-handoff",
+      "evidence_profile": "implementation-evidence",
+      "allowed_audiences": [
+        "engineering",
+        "product",
+        "architecture",
+        "cross-functional"
+      ],
+      "handoff_adapter": "engineering-toolchain"
+    },
+    "configuration-baseline": {
+      "schema_ref": "external",
+      "producer": "external:configuration-system",
+      "validator": "tools/artifacts.py check-handoff",
+      "renderer": "external:configuration-system",
+      "production_mode": "external_handoff",
+      "render_targets": [],
+      "acceptance_profile": "configuration-handoff",
+      "evidence_profile": "implementation-evidence",
+      "allowed_audiences": [
+        "engineering",
+        "operations",
+        "security",
+        "architecture",
+        "cross-functional"
+      ],
+      "handoff_adapter": "configuration-system"
+    }
+  },
+  "legacy_aliases": {
+    "document": "document",
+    "specification": "implementation-specification",
+    "plan-roadmap": "roadmap",
+    "register-log": "register",
+    "assessment-report": "decision-paper",
+    "procedure-runbook": "runbook",
+    "model-view-set": "model",
+    "diagram-model": "diagram",
+    "prototype-implementation": "prototype",
+    "test-evidence": "test-report"
+  },
+  "policy": {
+    "artifact_type_source": "authoritative-contract-only",
+    "production_inference_forbidden": true,
+    "migration_inference_allowed_only_as_proposal": true
+  }
+}

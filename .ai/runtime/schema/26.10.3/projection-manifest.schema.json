@@ -1,0 +1,151 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10.3/projection-manifest.schema.json",
+  "title": "ProjectionManifest v3 with JAI lineage",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "jai",
+    "id",
+    "profile",
+    "source_semantic_hash",
+    "mandatory_fields",
+    "included_fields",
+    "omitted_fields",
+    "mappings",
+    "omission_justifications",
+    "mandatory_coverage",
+    "projection_hash",
+    "render"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "profile": {
+      "type": "string",
+      "minLength": 1
+    },
+    "source_semantic_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "mandatory_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "included_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "omitted_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "mappings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "source",
+          "destination"
+        ],
+        "properties": {
+          "source": {
+            "type": "string"
+          },
+          "destination": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "omission_justifications": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "minLength": 1
+      }
+    },
+    "mandatory_coverage": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
+    "projection_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "render": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "renderer",
+        "renderer_version"
+      ],
+      "properties": {
+        "renderer": {
+          "type": "string",
+          "minLength": 1
+        },
+        "renderer_version": {
+          "type": "string",
+          "minLength": 1
+        },
+        "render_hash": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      }
+    },
+    "jai": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "intent_ref",
+        "semantic_snapshot_ref",
+        "policy_ref",
+        "design_ref",
+        "realisation_ref",
+        "evidence_refs"
+      ],
+      "properties": {
+        "intent_ref": {
+          "type": "string"
+        },
+        "semantic_snapshot_ref": {
+          "type": "string"
+        },
+        "policy_ref": {
+          "type": "string"
+        },
+        "design_ref": {
+          "type": "string"
+        },
+        "realisation_ref": {
+          "type": "string"
+        },
+        "evidence_refs": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

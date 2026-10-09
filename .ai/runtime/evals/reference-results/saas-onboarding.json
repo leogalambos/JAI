@@ -1,0 +1,116 @@
+{
+  "case_id": "saas-onboarding",
+  "roles": [
+    "it-procurement-specialist",
+    "vendor-manager",
+    "third-party-risk-manager",
+    "enterprise-applications-architect",
+    "privacy-architect",
+    "service-transition-and-operational-readiness-manager"
+  ],
+  "workflows": [
+    "source-to-contract-to-service",
+    "new-service-onboarding"
+  ],
+  "requirements_covered": [
+    "REQ-02-1",
+    "REQ-02-2",
+    "REQ-02-3",
+    "REQ-02-4"
+  ],
+  "evidence_links": [
+    "EV-02-1",
+    "EV-02-2",
+    "EV-02-3",
+    "EV-02-4"
+  ],
+  "claims": [
+    {
+      "id": "CLAIM-1",
+      "critical": true,
+      "evidence": [
+        "EV-02-1"
+      ]
+    },
+    {
+      "id": "CLAIM-2",
+      "critical": true,
+      "evidence": [
+        "EV-02-2"
+      ]
+    },
+    {
+      "id": "CLAIM-3",
+      "critical": true,
+      "evidence": [
+        "EV-02-3"
+      ]
+    },
+    {
+      "id": "CLAIM-4",
+      "critical": true,
+      "evidence": [
+        "EV-02-4"
+      ]
+    }
+  ],
+  "decision_rationale": {
+    "chosen_option": "Option A",
+    "alternatives": [
+      "Option A",
+      "Option B"
+    ],
+    "trade_offs": [
+      "cost vs risk",
+      "speed vs control"
+    ],
+    "rationale": "Evidence-backed choice within stated constraints",
+    "residual_risk": "Owned residual risk remains",
+    "decision_owner": "Named authority"
+  },
+  "traceability_links": [
+    "TR-02-1",
+    "TR-02-2",
+    "TR-02-3",
+    "TR-02-4"
+  ],
+  "reviewer_findings": [
+    "DEF-02-1",
+    "DEF-02-2",
+    "DEF-02-3",
+    "DEF-02-4"
+  ],
+  "sod_violations": [],
+  "publications": [
+    "Supplier assessment",
+    "Architecture-fit decision",
+    "Contract control schedule",
+    "Service acceptance"
+  ],
+  "artifact_status": [
+    {
+      "name": "Supplier assessment",
+      "ok": true
+    },
+    {
+      "name": "Architecture-fit decision",
+      "ok": true
+    },
+    {
+      "name": "Contract control schedule",
+      "ok": true
+    },
+    {
+      "name": "Service acceptance",
+      "ok": true
+    }
+  ],
+  "visual_qa": {
+    "score": 1.0,
+    "critical_defects": 0
+  },
+  "cross_agent": {
+    "checks": 6,
+    "conflicts": 0
+  }
+}

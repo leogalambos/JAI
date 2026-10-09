@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10.3/jai-transition.schema.json",
+  "title": "JAITransition",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "from_layer",
+    "to_layer",
+    "contract_ref",
+    "input_refs",
+    "output_refs"
+  ],
+  "properties": {
+    "id": {
+      "type": "string"
+    },
+    "from_layer": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 5
+    },
+    "to_layer": {
+      "type": "integer",
+      "minimum": 2,
+      "maximum": 6
+    },
+    "contract_ref": {
+      "type": "string"
+    },
+    "input_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "output_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

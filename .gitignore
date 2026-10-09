@@ -1,0 +1,47 @@
+
+# JAI / AI IT House — selected project-specific rules
+
+# MkDocs Pages and distribution builds
+/site/
+/dist/
+/build/
+/out/
+
+# Generated qualification and supply-chain evidence
+/QUALIFICATION-A-H.json
+/SBOM.spdx.json
+/PROVENANCE.json
+/COMPATIBILITY.json
+/.ai/runtime/_meta/qualification-A-G.json
+/.ai/runtime/_meta/gates/
+/.ai/runtime/_meta/performance-report.json
+
+# Temporary staging; retain maintained documentation
+/.ai/runtime/staging/**
+!/.ai/runtime/staging/README.md
+
+# AI execution and review records
+.fabric/
+.findings/
+
+# Machine-local secrets
+.env
+.env.*
+!.env.example
+!.env.sample
+!.env.template
+.direnv/
+.secrets/
+*.pem
+*.key
+*.p12
+*.pfx
+
+# Local provider settings (not canonical definitions)
+.claude/settings.local.json
+.codex/config.local.toml
+
+# Python
+__pycache__/
+*.py[codz]
+*$py.class

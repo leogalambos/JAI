@@ -1,0 +1,117 @@
+{
+  "case_id": "erp-replacement",
+  "roles": [
+    "enterprise-applications-architect",
+    "data-architect",
+    "integration-architect",
+    "data-migration-and-cutover-lead",
+    "enterprise-release-manager",
+    "organisational-change-and-adoption-manager"
+  ],
+  "workflows": [
+    "demand-to-portfolio-to-funding",
+    "migration-and-cutover",
+    "enterprise-release-orchestration"
+  ],
+  "requirements_covered": [
+    "REQ-03-1",
+    "REQ-03-2",
+    "REQ-03-3",
+    "REQ-03-4"
+  ],
+  "evidence_links": [
+    "EV-03-1",
+    "EV-03-2",
+    "EV-03-3",
+    "EV-03-4"
+  ],
+  "claims": [
+    {
+      "id": "CLAIM-1",
+      "critical": true,
+      "evidence": [
+        "EV-03-1"
+      ]
+    },
+    {
+      "id": "CLAIM-2",
+      "critical": true,
+      "evidence": [
+        "EV-03-2"
+      ]
+    },
+    {
+      "id": "CLAIM-3",
+      "critical": true,
+      "evidence": [
+        "EV-03-3"
+      ]
+    },
+    {
+      "id": "CLAIM-4",
+      "critical": true,
+      "evidence": [
+        "EV-03-4"
+      ]
+    }
+  ],
+  "decision_rationale": {
+    "chosen_option": "Option A",
+    "alternatives": [
+      "Option A",
+      "Option B"
+    ],
+    "trade_offs": [
+      "cost vs risk",
+      "speed vs control"
+    ],
+    "rationale": "Evidence-backed choice within stated constraints",
+    "residual_risk": "Owned residual risk remains",
+    "decision_owner": "Named authority"
+  },
+  "traceability_links": [
+    "TR-03-1",
+    "TR-03-2",
+    "TR-03-3",
+    "TR-03-4"
+  ],
+  "reviewer_findings": [
+    "DEF-03-1",
+    "DEF-03-2",
+    "DEF-03-3",
+    "DEF-03-4"
+  ],
+  "sod_violations": [],
+  "publications": [
+    "Application capability-fit decision",
+    "Target solution design",
+    "Migration and cutover pack",
+    "Go/no-go decision"
+  ],
+  "artifact_status": [
+    {
+      "name": "Application capability-fit decision",
+      "ok": true
+    },
+    {
+      "name": "Target solution design",
+      "ok": true
+    },
+    {
+      "name": "Migration and cutover pack",
+      "ok": true
+    },
+    {
+      "name": "Go/no-go decision",
+      "ok": true
+    }
+  ],
+  "visual_qa": {
+    "score": 1.0,
+    "critical_defects": 0
+  },
+  "cross_agent": {
+    "checks": 6,
+    "conflicts": 0
+  }
+}

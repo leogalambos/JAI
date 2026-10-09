@@ -1,0 +1,108 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10.1/publication-profile.schema.json",
+  "title": "PublicationProfile",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "version",
+    "audience",
+    "max_detail",
+    "mandatory_sections",
+    "mandatory_semantic_fields",
+    "supported_diagrams",
+    "table_types",
+    "executive_summary",
+    "document_control",
+    "classification",
+    "approval_block",
+    "branding",
+    "accessibility",
+    "formats"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z0-9-]+$"
+    },
+    "version": {
+      "type": "string"
+    },
+    "audience": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "max_detail": {
+      "enum": [
+        "executive",
+        "decision",
+        "architecture",
+        "engineering",
+        "operational",
+        "evidence"
+      ]
+    },
+    "mandatory_sections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "mandatory_semantic_fields": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "uniqueItems": true
+    },
+    "supported_diagrams": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "table_types": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "executive_summary": {
+      "type": "object"
+    },
+    "document_control": {
+      "type": "object"
+    },
+    "classification": {
+      "type": "object"
+    },
+    "approval_block": {
+      "type": "object"
+    },
+    "branding": {
+      "type": "object"
+    },
+    "accessibility": {
+      "type": "object"
+    },
+    "formats": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "docx",
+          "pdf",
+          "pptx",
+          "xlsx",
+          "html",
+          "svg"
+        ]
+      }
+    }
+  }
+}

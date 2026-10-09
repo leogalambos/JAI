@@ -1,0 +1,28 @@
+{
+  "name": "enterprise-publication-editor",
+  "provider": "claude",
+  "workload_class": "standard",
+  "selection_strategy": "explicit-per-agent",
+  "strategy_scope": "project-internal",
+  "model_selector": "sonnet",
+  "tools": [
+    "Read",
+    "Grep",
+    "Glob",
+    "Write",
+    "Edit"
+  ],
+  "deny": [
+    "policy-mutation",
+    "approval-self-grant"
+  ],
+  "sandbox": {
+    "mode": "workspace-write",
+    "workspace_write": true,
+    "network": "provider-managed"
+  },
+  "approval_required_for": [
+    "policy-change",
+    "release-approval"
+  ]
+}

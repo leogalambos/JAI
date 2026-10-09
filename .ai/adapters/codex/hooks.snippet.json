@@ -1,0 +1,59 @@
+{
+  "$comment": [
+    "Merged into ~/.codex/hooks.json by the installer and removed by the uninstaller.",
+    "After install/update, review newly changed hooks in Codex before relying on them."
+  ],
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Write|Edit|apply_patch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 {AI_HOUSE}/hooks/guard_library_write.py"
+          }
+        ]
+      },
+      {
+        "matcher": "Bash|Read|Write|Edit|apply_patch",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 {AI_HOUSE}/hooks/guard_authority.py --provider codex"
+          }
+        ]
+      }
+    ],
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit|apply_patch|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 {AI_HOUSE}/hooks/code_gate.py"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 {AI_HOUSE}/hooks/code_gate.py"
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 {AI_HOUSE}/hooks/code_gate.py"
+          }
+        ]
+      }
+    ]
+  }
+}

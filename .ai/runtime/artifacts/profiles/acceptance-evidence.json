@@ -1,0 +1,78 @@
+{
+  "schema_version": "1.0.0",
+  "acceptance_profiles": {
+    "enterprise-publication": [
+      "purpose and scope is explicit",
+      "required inputs are accounted for",
+      "material claims are attributable",
+      "decision/analysis is complete for the artifact class",
+      "owner and approver are named",
+      "release metadata is complete"
+    ],
+    "decision-defensible": [
+      "decision or recommendation is explicit",
+      "options/trade-offs are recorded where applicable",
+      "material evidence is linked",
+      "assumptions and residual risk are explicit",
+      "decision owner and approver are named"
+    ],
+    "evidence-assured": [
+      "scope and method are explicit",
+      "evidence is attributable and sufficient",
+      "findings distinguish fact from inference",
+      "open issues and residual risk are explicit",
+      "reviewer independence is stated"
+    ],
+    "model-conformance": [
+      "stable identifiers are present",
+      "referential integrity passes",
+      "model/view consistency passes",
+      "source traceability is retained",
+      "serialization is deterministic"
+    ],
+    "engineering-handoff": [
+      "handoff target is explicit",
+      "source/version is pinned",
+      "verification method is defined",
+      "rollback/recovery expectations are defined where applicable"
+    ],
+    "configuration-handoff": [
+      "system of record is explicit",
+      "configuration version/baseline is pinned",
+      "verification evidence is required",
+      "change/rollback authority is identified"
+    ]
+  },
+  "evidence_profiles": {
+    "material-claims-evidence": [
+      "source/basis for each material claim",
+      "assumptions labelled",
+      "acceptance-gate evidence"
+    ],
+    "decision-evidence": [
+      "decision inputs",
+      "options/trade-offs or rationale",
+      "risk/residual risk",
+      "approval evidence"
+    ],
+    "assurance-evidence": [
+      "method/scope",
+      "observations or test evidence",
+      "findings",
+      "exceptions/limitations",
+      "review/approval evidence"
+    ],
+    "model-evidence": [
+      "source object references",
+      "mapping/projection version",
+      "validation report",
+      "round-trip/loss report when exchanged"
+    ],
+    "implementation-evidence": [
+      "source revision or configuration baseline",
+      "build/deploy/change evidence",
+      "verification result",
+      "approvals/exceptions"
+    ]
+  }
+}

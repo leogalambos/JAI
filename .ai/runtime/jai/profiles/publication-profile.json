@@ -1,0 +1,14 @@
+{
+  "profile": "publication",
+  "version": "3.0.0",
+  "authoritative_for": "publication-projection",
+  "jai_mapping": {
+    "L1": "audience/intended decision/authorised use",
+    "L2": "semantic snapshot",
+    "L3": "inclusion/omission/evidence/release rules",
+    "L4": "document or presentation design",
+    "L5": "renderer/output implementation",
+    "L6": "rendered artifact and visual evidence"
+  },
+  "release": "26.10.4"
+}

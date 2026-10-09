@@ -1,0 +1,61 @@
+{
+  "audit_version": "1.0.0",
+  "baseline": "26.10.1",
+  "target_release": "26.10.2",
+  "verified_against": [
+    "Potvrzení a plán úprav.txt",
+    "ai-it-house-universal-26.10.1.zip"
+  ],
+  "findings": [
+    {
+      "id": "26101-DOC-DRIFT",
+      "status": "remediated-in-26.10.2",
+      "severity": "release",
+      "finding": "VALIDATION.md identifies 26.10.0 and Artifact Contract v2; generated documentation gate did not cover it.",
+      "remediation": "Generate and gate VALIDATION.md from canonical 26.10.2 sources."
+    },
+    {
+      "id": "26101-V2-AUTHORITY",
+      "status": "remediated-in-26.10.2",
+      "severity": "architecture",
+      "finding": "Gate A/C and schema/reference checks still use role-deliverables.v2.json as an authority.",
+      "remediation": "Use ArtifactContract v3 for all production validation; freeze v2 as read/migration fixture only."
+    },
+    {
+      "id": "26101-MIGRATION-PROVENANCE",
+      "status": "remediated-in-26.10.2",
+      "severity": "semantic",
+      "finding": "1124 v3 contracts omit migration provenance although the migration script emits it; the schema rejects that emitted field.",
+      "remediation": "Add schema-supported migration provenance to all 1124 contracts and verify source hashes."
+    },
+    {
+      "id": "26101-MIGRATION-LOSS-RETENTION",
+      "status": "remediated-in-26.10.2",
+      "severity": "semantic",
+      "finding": "ArtifactContract v2 retention is not represented in the 26.10.1 v3 lifecycle and the migration-loss test samples too few fields.",
+      "remediation": "Restore retention in lifecycle and compare every material v2 field across all 1124 contracts."
+    },
+    {
+      "id": "26101-PUBLICATION-LINEAGE",
+      "status": "remediated-in-26.10.2",
+      "severity": "publication",
+      "finding": "ProjectionManifest schema requires JAI lineage, but projection.py does not emit it.",
+      "remediation": "Emit and schema-validate L1-L6 lineage in every new ProjectionManifest."
+    },
+    {
+      "id": "26101-FABRIC-REFS",
+      "status": "remediated-in-26.10.2",
+      "severity": "assurance",
+      "finding": "ProductFragment schema requires object_ref/object_hash/contract_ref/context_digest, but fabric runtime does not persist these consistently.",
+      "remediation": "Attach deterministic canonical semantic identity and lineage to every fragment/evidence write."
+    },
+    {
+      "id": "26101-DISTRIBUTION",
+      "status": "remediated-in-26.10.2",
+      "severity": "supply-chain",
+      "finding": "Drive distribution exposes the 26.10.1 ZIP without matching TGZ/checksum sidecars.",
+      "remediation": "Produce ZIP, TGZ and SHA-256 manifest for 26.10.2; detached signing remains external owner action."
+    }
+  ],
+  "verification_result": "all identified 26.10.1 carry-over findings remediated; release distribution sidecars are produced by release_bundle.py and external signature remains release-owner controlled"
+}

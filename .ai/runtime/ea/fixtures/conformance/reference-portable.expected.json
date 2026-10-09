@@ -1,0 +1,16 @@
+{
+  "element_ids": [
+    "e-a",
+    "e-p"
+  ],
+  "relationship_ids": [
+    "r-1"
+  ],
+  "view_ids": [
+    "v-1"
+  ],
+  "stable_ids": [
+    "AC-001",
+    "BP-001"
+  ]
+}

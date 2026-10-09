@@ -1,0 +1,237 @@
+{
+  "schema_registry_version": "3.3.0",
+  "release": "26.10.4",
+  "backward_compatibility_policy": "26.10.0 ArtifactContract v2 and 26.10.1-26.10.4 JAI/v3 remain readable via explicit migrations. The normative write contract is ArtifactContract-v3 independently of the package release. Schemas are versioned by contract and never rewritten for product-only releases.",
+  "migration_rules": [
+    {
+      "from": "26.10.0",
+      "to": "26.10.4",
+      "mode": "forward-only",
+      "script": "jai/migrations/migrate-26.10.0.py",
+      "preserve_ids": true,
+      "preserve_source_hashes": true,
+      "preserve_execution_history": true
+    },
+    {
+      "from": "26.10.1",
+      "to": "26.10.4",
+      "mode": "forward-only",
+      "script": "jai/migrations/migrate-26.10.1.py",
+      "preserve_ids": true,
+      "preserve_source_hashes": true,
+      "preserve_execution_history": true
+    },
+    {
+      "from": "26.10.2",
+      "to": "26.10.4",
+      "mode": "forward-only",
+      "script": "jai/migrations/migrate-26.10.2.py",
+      "preserve_ids": true,
+      "preserve_source_hashes": true,
+      "preserve_execution_history": true
+    },
+    {
+      "from": "26.10.3",
+      "to": "26.10.4",
+      "mode": "forward-only",
+      "script": "jai/migrations/migrate-26.10.3.py",
+      "preserve_ids": true,
+      "preserve_source_hashes": true,
+      "preserve_execution_history": true
+    }
+  ],
+  "schemas": [
+    {
+      "name": "AssuranceRecord",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/assurance-record.schema.json",
+      "critical": true
+    },
+    {
+      "name": "ReviewRecord",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/review-record.schema.json",
+      "critical": true
+    },
+    {
+      "name": "ProductFragment",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/product-fragment.schema.json",
+      "critical": true
+    },
+    {
+      "name": "LayerContract",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/layer-contract.schema.json",
+      "critical": true
+    },
+    {
+      "name": "JAIProfile",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/jai-profile.schema.json",
+      "critical": true
+    },
+    {
+      "name": "JAITransition",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/jai-transition.schema.json",
+      "critical": true
+    },
+    {
+      "name": "JAILayerBinding",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/jai-layer-binding.schema.json",
+      "critical": true
+    },
+    {
+      "name": "JAIObject",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/jai-object.schema.json",
+      "critical": true
+    },
+    {
+      "name": "ArtifactContract",
+      "version": "3.0.0",
+      "path": "schema/contracts/artifact-v3.schema.json",
+      "critical": true
+    },
+    {
+      "name": "SABSAElement",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/sabsa-element.schema.json",
+      "critical": true
+    },
+    {
+      "name": "EAElement",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/ea-element.schema.json",
+      "critical": true
+    },
+    {
+      "name": "Relationship",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/relationship.schema.json",
+      "critical": true
+    },
+    {
+      "name": "Decision",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/decision.schema.json",
+      "critical": true
+    },
+    {
+      "name": "Claim",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/claim.schema.json",
+      "critical": true
+    },
+    {
+      "name": "Evidence",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/evidence.schema.json",
+      "critical": true
+    },
+    {
+      "name": "Risk",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/risk.schema.json",
+      "critical": true
+    },
+    {
+      "name": "Approval",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/approval.schema.json",
+      "critical": true
+    },
+    {
+      "name": "ProjectionManifest",
+      "version": "3.0.0",
+      "path": "schema/26.10.4/projection-manifest.schema.json",
+      "critical": true
+    },
+    {
+      "name": "Workflow",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/workflow.schema.json",
+      "critical": true
+    },
+    {
+      "name": "WorkflowStep",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/workflow-step.schema.json",
+      "critical": true
+    },
+    {
+      "name": "AgentContract",
+      "version": "2.0.0",
+      "path": "schema/26.10.4/agent-contract.schema.json",
+      "critical": true
+    },
+    {
+      "name": "PolicyContract",
+      "version": "2.0.0",
+      "path": "schema/26.10.4/policy-contract.schema.json",
+      "critical": true
+    },
+    {
+      "name": "PublicationProfile",
+      "version": "2.0.0",
+      "path": "schema/26.10.4/publication-profile.schema.json",
+      "critical": true
+    },
+    {
+      "name": "EvaluationCase",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/evaluation-case.schema.json",
+      "critical": true
+    },
+    {
+      "name": "EvaluationResult",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/evaluation-result.schema.json",
+      "critical": true
+    },
+    {
+      "name": "EnterpriseAdapterContract",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/adapter-contract.schema.json",
+      "critical": true
+    },
+    {
+      "name": "ExecutionRecord",
+      "version": "1.0.0",
+      "path": "schema/contracts/execution-record-v1.schema.json",
+      "critical": true
+    },
+    {
+      "name": "ModelRegistry",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/model-registry.schema.json",
+      "critical": true
+    },
+    {
+      "name": "ServiceLevels",
+      "version": "1.0.0",
+      "path": "schema/26.10.4/service-levels.schema.json",
+      "critical": true
+    },
+    {
+      "name": "ReleasePolicy",
+      "version": "1.0.0",
+      "path": "schema/contracts/auto-release-policy-v2.schema.json",
+      "critical": true
+    },
+    {
+      "name": "NativeWritePolicy",
+      "version": "1.0.0",
+      "path": "schema/contracts/native-write-policy-v1.schema.json",
+      "critical": true
+    },
+    {
+      "name": "BehavioralQualificationEvidence",
+      "version": "1.0.0",
+      "path": "schema/contracts/behavioral-evidence-v1.schema.json",
+      "critical": true
+    }
+  ]
+}

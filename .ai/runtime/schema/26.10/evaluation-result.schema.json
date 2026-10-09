@@ -1,0 +1,161 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.10/evaluation-result.schema.json",
+  "title": "BehavioralEvaluationResult",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "case_id",
+    "roles",
+    "workflows",
+    "requirements_covered",
+    "evidence_links",
+    "claims",
+    "decision_rationale",
+    "traceability_links",
+    "reviewer_findings",
+    "sod_violations",
+    "publications",
+    "artifact_status",
+    "visual_qa",
+    "cross_agent"
+  ],
+  "properties": {
+    "case_id": {
+      "type": "string"
+    },
+    "roles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "workflows": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "requirements_covered": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "evidence_links": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "critical",
+          "evidence"
+        ],
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "critical": {
+            "type": "boolean"
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "additionalProperties": true
+      }
+    },
+    "decision_rationale": {
+      "type": "object"
+    },
+    "traceability_links": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "reviewer_findings": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "sod_violations": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "publications": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "artifact_status": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "ok"
+        ],
+        "properties": {
+          "name": {
+            "type": "string"
+          },
+          "ok": {
+            "type": "boolean"
+          }
+        },
+        "additionalProperties": false
+      }
+    },
+    "visual_qa": {
+      "type": "object",
+      "required": [
+        "score",
+        "critical_defects"
+      ],
+      "properties": {
+        "score": {
+          "type": "number",
+          "minimum": 0,
+          "maximum": 1
+        },
+        "critical_defects": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    },
+    "cross_agent": {
+      "type": "object",
+      "required": [
+        "checks",
+        "conflicts"
+      ],
+      "properties": {
+        "checks": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "conflicts": {
+          "type": "integer",
+          "minimum": 0
+        }
+      },
+      "additionalProperties": true
+    }
+  }
+}

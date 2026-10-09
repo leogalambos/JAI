@@ -1,0 +1,65 @@
+{
+  "id": "risk-assurance-pack",
+  "version": "2.0.0",
+  "audience": [
+    "risk",
+    "security",
+    "audit"
+  ],
+  "max_detail": "evidence",
+  "mandatory_sections": [
+    "Scope",
+    "Risk register",
+    "Control mapping",
+    "Evidence",
+    "Residual risk",
+    "Approvals"
+  ],
+  "mandatory_semantic_fields": [
+    "claims",
+    "evidence",
+    "risks",
+    "approvals",
+    "traceability"
+  ],
+  "formats": [
+    "docx",
+    "xlsx",
+    "html",
+    "pdf"
+  ],
+  "supported_diagrams": [
+    "architecture",
+    "flow",
+    "roadmap",
+    "risk",
+    "dependency"
+  ],
+  "table_types": [
+    "decision",
+    "risk",
+    "traceability",
+    "action",
+    "inventory"
+  ],
+  "executive_summary": {
+    "required": true,
+    "max_words": 300
+  },
+  "document_control": {
+    "required": true
+  },
+  "classification": {
+    "required": true
+  },
+  "approval_block": {
+    "required": true
+  },
+  "branding": {
+    "theme": "enterprise-default"
+  },
+  "accessibility": {
+    "min_font_pt": 10,
+    "require_alt_text_for_meaningful_images": true
+  }
+}

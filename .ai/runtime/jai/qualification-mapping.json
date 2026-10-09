@@ -1,0 +1,38 @@
+{
+  "version": "1.0.0",
+  "release": "26.10.4",
+  "dimensions": {
+    "A": {
+      "name": "Structural",
+      "jai": "metamodel and contracts"
+    },
+    "B": {
+      "name": "Semantic",
+      "jai": "L2 plus cross-layer semantic preservation"
+    },
+    "C": {
+      "name": "Governance",
+      "jai": "L1/L3 authority, ownership and approvals"
+    },
+    "D": {
+      "name": "Runtime Security",
+      "jai": "L3 policy -> L5 enforcement -> L6 evidence"
+    },
+    "E": {
+      "name": "Publication",
+      "jai": "L2-L6 fidelity"
+    },
+    "F": {
+      "name": "Visual",
+      "jai": "L6 observable result"
+    },
+    "G": {
+      "name": "Behavioral",
+      "jai": "end-to-end L1->L6->L1 assurance"
+    },
+    "H": {
+      "name": "Supply Chain",
+      "jai": "L5 build integrity plus L6 release evidence"
+    }
+  }
+}

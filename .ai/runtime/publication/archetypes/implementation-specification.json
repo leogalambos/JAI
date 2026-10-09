@@ -1,0 +1,60 @@
+{
+  "id": "implementation-specification",
+  "version": "2.0.0",
+  "audience": [
+    "engineering"
+  ],
+  "max_detail": "engineering",
+  "mandatory_sections": [
+    "Scope",
+    "Prerequisites",
+    "Implementation",
+    "Configuration",
+    "Validation",
+    "Rollback"
+  ],
+  "mandatory_semantic_fields": [
+    "claims",
+    "decisions",
+    "evidence",
+    "owner"
+  ],
+  "formats": [
+    "docx",
+    "html"
+  ],
+  "supported_diagrams": [
+    "architecture",
+    "flow",
+    "roadmap",
+    "risk",
+    "dependency"
+  ],
+  "table_types": [
+    "decision",
+    "risk",
+    "traceability",
+    "action",
+    "inventory"
+  ],
+  "executive_summary": {
+    "required": true,
+    "max_words": 300
+  },
+  "document_control": {
+    "required": true
+  },
+  "classification": {
+    "required": true
+  },
+  "approval_block": {
+    "required": true
+  },
+  "branding": {
+    "theme": "enterprise-default"
+  },
+  "accessibility": {
+    "min_font_pt": 10,
+    "require_alt_text_for_meaningful_images": true
+  }
+}

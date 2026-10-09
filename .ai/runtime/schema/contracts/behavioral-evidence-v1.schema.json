@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/contracts/behavioral-evidence-v1.schema.json",
+  "title": "BehavioralQualificationEvidence",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "release",
+    "capture_type",
+    "provider",
+    "model",
+    "generated_at",
+    "scenario_count",
+    "result_hashes"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0"
+    },
+    "release": {
+      "type": "string",
+      "pattern": "^\\d{2}\\.(?:0[1-9]|1[0-2])\\.\\d+$",
+      "description": "Product identity recorded at execution; independent of schema version."
+    },
+    "capture_type": {
+      "const": "live-provider"
+    },
+    "provider": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model": {
+      "type": "string",
+      "minLength": 1
+    },
+    "model_revision": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "configuration_ref": {
+      "type": [
+        "string",
+        "null"
+      ]
+    },
+    "generated_at": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "scenario_count": {
+      "type": "integer",
+      "minimum": 10
+    },
+    "result_hashes": {
+      "type": "object",
+      "minProperties": 10,
+      "additionalProperties": {
+        "type": "string",
+        "pattern": "^[0-9a-f]{64}$"
+      }
+    }
+  }
+}

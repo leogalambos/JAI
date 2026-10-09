@@ -1,0 +1,11 @@
+{
+  "version": "1.0.0",
+  "questions": {
+    "1": "Is the intended outcome, accountable authority, scope and material context explicit?",
+    "2": "Do all parties mean the same thing and is uncertainty represented?",
+    "3": "Are decisions, policy constraints, evidence obligations, trade-offs and escalation rules justified?",
+    "4": "Does the design satisfy the accepted semantics and controls without inventing new facts?",
+    "5": "Is the design implemented through permitted tools and bounded execution mechanisms?",
+    "6": "Is the observable result evidenced, attributable, reproducible and suitable for authority review?"
+  }
+}
