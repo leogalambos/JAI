@@ -10,7 +10,7 @@
 
 JAI brings a six-layer justifiability model together with the **AI IT House** runtime: specialist roles, executable agent contracts, enterprise workflows, structured artifacts and release assurance.
 
-[**Understand the model**](#the-six-layer-model) · [**Explore capabilities**](#what-jai-enables) · [**Get started**](#get-started) · [**Read the manual**](docs/) · [**Release assurance**](#quality-provenance-and-release-assurance)
+[**Understand the model**](#the-six-layer-model) · [**Explore capabilities**](#what-jai-enables) · [**Get started**](#documentation-and-runtime-entry-points) · [**Find the documentation**](#documentation-and-runtime-entry-points) · [**Release assurance**](#quality-provenance-and-release-assurance)
 
 </div>
 
@@ -70,40 +70,12 @@ flowchart TB
 
 ## What JAI enables
 
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### Enterprise architecture and security
-
-Apply coordinated expertise across business and solution architecture, **SABSA** security architecture and **EA** modelling. Keep business drivers, risks, controls, designs and architectural decisions connected to their context.
-
-</td>
-<td width="50%" valign="top">
-
-### End-to-end IS/IT delivery
-
-Use defined specialist roles and workflows across assessment, design, implementation, transition and operational assurance. Agent, command and skill contracts make responsibilities more explicit than a collection of free-form prompts.
-
-</td>
-</tr>
-<tr>
-<td valign="top">
-
-### Decision-ready artifacts
-
-Produce governed enterprise artifacts using typed contracts, semantic and publication controls, renderers and visual-quality checks. The intention is an output that is **useful to its audience**, not merely syntactically valid.
-
-</td>
-<td valign="top">
-
-### Controlled, evidence-led execution
-
-Use provider-neutral contracts with native **Claude Code** and **Codex CLI** adapters. Keep policy, tooling, approvals, execution evidence and release qualification visible and reviewable.
-
-</td>
-</tr>
-</table>
+| Capability | What JAI contributes |
+| :--- | :--- |
+| **Enterprise architecture and security** | Coordinated expertise across business and solution architecture, **SABSA** security architecture and **EA** modelling, with business drivers, risks, controls and architectural decisions in context. |
+| **End-to-end IS/IT delivery** | Specialist roles, explicit workflows and native agent/command/skill contracts spanning assessment, design, delivery, transition and operational assurance. |
+| **Decision-ready artifacts** | Typed artifact contracts, semantic and publication checks, renderers and visual-quality review to support human-readable enterprise outputs. |
+| **Controlled, evidence-led execution** | Provider-neutral contracts with **Claude Code** and **Codex CLI** adapters, policy boundaries, tool controls, approval paths and execution evidence. |
 
 ### A representative use case
 
@@ -137,21 +109,23 @@ This is an **illustrative workflow**, not a claim that every integration or orga
 | **Engineering, operations and assurance teams** | Contract-driven outputs, execution boundaries, validation and records suitable for review |
 | **Platform owners and maintainers** | A provider-neutral runtime, generated inventory, documentation checks and qualified release mechanisms |
 
-## Get started
+## Documentation and runtime entry points
 
-There are **two different entry points**: use the AI delivery runtime, or run the documentation site locally.
+JAI has **two separate entry points**: the AI delivery runtime (used through supported CLI providers) and the Markdown documentation site (built with MkDocs). Building the website is **not** the same as installing or running the AI runtime.
 
-### 1. Use the AI delivery runtime
+### 1. Start with the AI delivery runtime
 
-Start with the **[Installed CLI Guide](docs/reference/installed-cli-guide.md)**. It is the maintained guide for the native Claude Code and Codex CLI command/skill integrations.
+Start from the provider CLI guide and runtime files described by the project:
 
-Runtime definitions live under [`.ai/`](.ai/), where the providers load operational contracts. The checked deployment copy of the guide is [`.ai/runtime/GUIDE.md`](.ai/runtime/GUIDE.md); its maintained source is the Markdown manual, not an installed HTML site.
+- `docs/reference/installed-cli-guide.md` — maintained CLI guide for **Claude Code** and **Codex CLI**.
+- `.ai/` — runtime instructions, agent/command/skill contracts and tooling.
+- `.ai/runtime/GUIDE.md` — generated guide copy for an installed runtime distribution.
 
-> **Important:** The MkDocs commands below run the *documentation*, not the AI IT House execution runtime. Provider-specific runtime setup and invocation belong in the Installed CLI Guide.
+Use the copies associated with your selected checkout or release package; the source guide and its generated deployment copy serve different purposes.
 
-### 2. Read or develop the documentation
+### 2. Build the documentation locally
 
-Requirements: **Python 3.10+** and the dependencies declared by this repository.
+For a source checkout, the documented local setup uses **Python 3.10+** and repository dependencies:
 
 ```bash
 git clone https://github.com/leogalambos/JAI.git
@@ -162,7 +136,7 @@ python -m pip install -r requirements.txt
 mkdocs serve
 ```
 
-Open the local address printed by MkDocs. For a strict documentation build and contract check:
+Open the local address printed by MkDocs. To check the documentation and its generated content, use the commands from the original project README:
 
 ```bash
 python3 .ai/runtime/tools/docs_contract.py --root .
@@ -170,24 +144,25 @@ python3 .ai/runtime/tools/generate_docs.py --check --root .
 mkdocs build --strict
 ```
 
-The documentation is authored as **Markdown under [`docs/`](docs/)**, with navigation in [`mkdocs.yml`](mkdocs.yml), and rendered using **MkDocs Material**. The site uses HTML/CSS composition and local SVG architecture/workflow visuals where practical; Mermaid remains configured for other diagrams. The runtime ZIP does **not** install a separate HTML help site.
+The project documentation describes Markdown sources under `docs/`, MkDocs configuration in `mkdocs.yml`, local SVG diagrams and a separate GitHub Pages publishing workflow. **The runtime archive does not install a separate HTML help site.**
 
-## How the repository is organised
+### 3. Repository sources versus release outputs
 
-| Path | Purpose |
-| :--- | :--- |
-| [`.ai/`](.ai/) | Runtime instructions, agent/command/skill contracts, policies and tooling |
-| [`docs/`](docs/) | Maintained human-readable documentation and reference material |
-| [`docs/reference/installed-cli-guide.md`](docs/reference/installed-cli-guide.md) | Canonical provider CLI user guide |
-| [`mkdocs.yml`](mkdocs.yml) | Documentation navigation and site configuration |
-| [`requirements.txt`](requirements.txt) | Python dependencies used by the documented build |
-| [`VERSION`](VERSION) | Sole authority for the current product version |
-| [`QUALIFICATION-A-H.json`](QUALIFICATION-A-H.json) | Recorded qualification evidence for the release scope |
-| [`COMPATIBILITY.json`](COMPATIBILITY.json) | Release compatibility information |
-| [`SBOM.spdx.json`](SBOM.spdx.json) | Software bill of materials |
-| [`PROVENANCE.json`](PROVENANCE.json) | Build/release provenance information |
+**Source files and generated release evidence are different deliverables.** Release qualification and software supply-chain reports may be included in a published package without existing as tracked files at the GitHub repository root. Paths here are intentionally not presented as unverified file links.
 
-The full manual covers L0 authority, L1–L6 contracts and evidence flow, SABSA and EA profiles, artifact production and publication, runtime boundaries, release gates and production workflows. **`26.10.0` references in the manual are retained for explicitly identified compatibility and migration examples; the root `VERSION` controls the current product identity.**
+| Location or artifact | What it means | Where to look |
+| :--- | :--- | :--- |
+| `README.md` | Project introduction | Source repository |
+| `.ai/`, `docs/`, `mkdocs.yml` | Runtime and documentation sources described by the project | Check the selected source revision |
+| `docs/reference/installed-cli-guide.md` | Maintained CLI reference, per original README | Check the selected source revision |
+| `.ai/runtime/GUIDE.md` | Generated deployment copy of the CLI reference | Check the installed distribution or source revision |
+| `VERSION` | Documented product-version authority | Check the selected source revision |
+| `QUALIFICATION-A-H.json` | Qualification record for a particular release | Published release/package evidence, **not assumed at repository root** |
+| `COMPATIBILITY.json` | Compatibility report | Published release/package evidence, **not assumed at repository root** |
+| `SBOM.spdx.json` | SPDX software bill of materials | Published release/package evidence, **not assumed at repository root** |
+| `PROVENANCE.json` | Build and release provenance | Published release/package evidence, **not assumed at repository root** |
+
+The documentation covers L0 authority, JAI's six layers, SABSA/EA profiles, artifact production, publication, provider runtime boundaries and assurance gates. References to version `26.10.0` in the source manual are retained for identified compatibility or migration examples; the original README identifies `VERSION` as the product-version authority.
 
 ## Quality, provenance and release assurance
 
@@ -204,17 +179,17 @@ JAI treats a finished file and a trustworthy decision record as different things
 | **G · Behavioral** | End-to-end scenario and output behaviour |
 | **H · Supply chain** | Dependencies, compatibility, integrity and release provenance |
 
-Release materials include qualification, compatibility, an SPDX SBOM and provenance records. **Always assess evidence against the exact source revision or distribution being used**: a prior PASS does not certify a modified tree.
+The release process describes qualification, compatibility, SPDX SBOM and provenance evidence. **Do not assume these JSON files are present at the root of the source branch**: inspect the actual release package or published evidence for the version in use. A prior PASS does not certify a modified source tree.
 
 ### Releasing a version (maintainers)
 
-The root [`VERSION`](VERSION) is authoritative. After changing it, synchronise versioned files:
+The project identifies `VERSION` as the product-version authority. After changing it, synchronise versioned files:
 
 ```bash
 python3 scripts/versioning.py sync
 ```
 
-Commit/push the result, then create a matching `release@YY.MM.VV` tag. A mismatching tag is rejected. The release GitHub Actions workflow publishes a qualified production ZIP and a SHA-256 checksum; GitHub OIDC provenance is attached where supported. Documentation publishing is managed separately by [`.github/workflows/pages.yml`](.github/workflows/pages.yml), using the Markdown documentation tree. Installing the runtime ZIP does not publish the site.
+Commit/push the result, then create a matching `release@YY.MM.VV` tag. A mismatching tag is rejected. The release GitHub Actions workflow publishes a qualified production ZIP and a SHA-256 checksum; GitHub OIDC provenance is attached where supported. Documentation publishing is managed separately by the documented `.github/workflows/pages.yml` workflow, using the Markdown documentation tree. Installing the runtime ZIP does not publish the site.
 
 ---
 
@@ -282,6 +257,6 @@ authoritative.
 **JAI · Justifiable AI**  
 *Not simply an AI-generated answer — a traceable path from intent to evidence and accountable decisions.*
 
-[Architecture](#the-six-layer-model) · [Runtime guide](docs/reference/installed-cli-guide.md) · [Documentation](docs/) · [Quality & releases](#quality-provenance-and-release-assurance)
+[Architecture](#the-six-layer-model) · [Getting started](#documentation-and-runtime-entry-points) · [Quality & releases](#quality-provenance-and-release-assurance)
 
 </div>
