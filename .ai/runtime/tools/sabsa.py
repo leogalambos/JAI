@@ -78,7 +78,7 @@ LAYERS = ["Contextual", "Conceptual", "Logical", "Physical", "Component", "Servi
 SCHEMA_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "sabsa", "schema")
 REUSE_FILE = "reuse.json"
 OVERLAYS_DIR = "overlays"
-PACKAGE_ROOT = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+PACKAGE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RELEASE = open(os.path.join(PACKAGE_ROOT, "VERSION"), encoding="utf-8").read().strip()
 SABSA_JAI_PROFILE = "sabsa"
 SABSA_JAI_LAYER = "2"
