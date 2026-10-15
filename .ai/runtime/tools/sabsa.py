@@ -489,6 +489,15 @@ def collect_citations(lib, entries=None, cells=None):
     for (layer, aspect), c in cells.items():
         for src in ids(c["meta"].get("source")):
             cited[src.split("#", 1)[0]].append(f"matrix/{layer}-{aspect}")
+    from pathlib import Path
+    for path in sorted((Path(lib) / "narratives").glob("*/*.md")):
+        if path.name == "README.md": continue
+        try:
+            narrative = parse(path)
+        except SabsaError:
+            continue
+        for src in ids(narrative.get("source")):
+            cited[src.split("#", 1)[0]].append(path.relative_to(lib).as_posix())
     return cited
 
 
@@ -1005,7 +1014,9 @@ BUSINESS_PARENT_FIELDS = {name: tuple(spec.get("business_parent", ())) for name,
 
 def check(lib):
     entries, errors = load(lib)
-    warnings = []
+    from sabsa_narrative import narrative_issues
+    narrative_errors, warnings = narrative_issues(sys.modules[__name__], lib)
+    errors.extend(narrative_errors)
     for eid, m in entries.items():
         if m.get("_external"):
             continue
@@ -1232,7 +1243,7 @@ def _snapshot_files(lib):
         p = os.path.join(lib, single)
         if os.path.isfile(p):
             paths.append(p)
-    for d in [SOURCES_DIR, "matrix", OVERLAYS_DIR] + sorted({spec["dir"] for spec in TYPES.values()}):
+    for d in [SOURCES_DIR, "matrix", "narratives", OVERLAYS_DIR] + sorted({spec["dir"] for spec in TYPES.values()}):
         root = os.path.join(lib, d)
         if not os.path.isdir(root):
             continue
@@ -1391,6 +1402,7 @@ def cmd_init(a):
         "Each element is one Markdown file named by its ID, in the folder of its layer. Upward links are "
         "required, so every element traces to a business driver. Run `sabsa.py check` before any change is "
         "accepted, and `sabsa.py suggest` to see what is missing.\n")
+    print("Author narrative chapters with narrative-init LIB --layer LAYER; see runtime/sabsa/publication/README.md.")
     print(f"initialised SABSA library at {a.lib}: " + ", ".join(s["dir"] for s in TYPES.values()))
 
 
@@ -1922,12 +1934,98 @@ def cmd_questions(a):
         print("No open assumptions: every settled element and matrix cell is stated or inferred from cited material.")
 
 
+def cmd_narrative_init(a):
+    """Create editable chapter skeletons for a SABSA viewpoint.
+
+    Args:
+        a: CLI namespace containing lib and layer.
+    Returns:
+        Zero after creating missing files; existing files are preserved.
+    Raises:
+        SabsaError: If lib is not a valid library.
+    """
+    load(a.lib)
+    from sabsa_narrative import scaffold_narratives
+    key = "service-management" if a.layer == "operational" else a.layer
+    print(f"Created {scaffold_narratives(a.lib, key)} narrative chapter skeletons. Author English prose with basis/source/author provenance before publication.")
+    return 0
+
+
+def cmd_catalogues(a):
+    """Export, validate or import CSV edits to existing local catalogue entries.
+
+    Args:
+        a: CLI namespace with lib, action and directory.
+    Returns:
+        Zero on success; validation failures raise SabsaError without mutations.
+    Raises:
+        SabsaError: If the input is malformed or the proposed library is invalid.
+    """
+    import shutil
+    from sabsa_exchange import export_catalogues, read_catalogues
+    entries, errors = load(a.lib)
+    if errors: raise SabsaError("fix library loading errors before CSV exchange")
+    if a.action == "export":
+        export_catalogues(entries, TYPES, a.directory)
+    else:
+        try:
+            proposed = read_catalogues(a.directory, TYPES, entries)
+        except (ValueError, OSError) as exc:
+            raise SabsaError(str(exc)) from exc
+        with tempfile.TemporaryDirectory() as trial:
+            shutil.copytree(a.lib, trial, dirs_exist_ok=True)
+            reuse_path = os.path.join(trial, REUSE_FILE)
+            if os.path.isfile(reuse_path):
+                config = json.load(open(reuse_path, encoding="utf-8"))
+                for dependency in config.get("libraries", []):
+                    dependency["path"] = _resolve_reuse_path(a.lib, dependency.get("path"))
+                with open(reuse_path, "w", encoding="utf-8") as stream:
+                    json.dump(config, stream)
+            for eid, row in proposed.items():
+                path = os.path.join(trial, entries[eid]["_path"])
+                for field, value in row.items():
+                    if value != entries[eid].get(field, ""):
+                        _frontmatter_set(path, field, value)
+            _, trial_errors, _ = check(trial)
+            if trial_errors:
+                raise SabsaError("CSV proposal fails library validation: " + "; ".join(trial_errors[:5]))
+            if a.action == "import":
+                backups = {}
+                try:
+                    for eid in proposed:
+                        path = os.path.join(a.lib, entries[eid]["_path"])
+                        data = open(os.path.join(trial, entries[eid]["_path"]), "rb").read()
+                        original = open(path, "rb").read()
+                        if data != original:
+                            backups[path] = original
+                            with open(path, "wb") as stream: stream.write(data)
+                except OSError:
+                    for path, original in backups.items():
+                        with open(path, "wb") as stream: stream.write(original)
+                    raise
+    print(f"CSV catalogue {a.action}: {a.directory}")
+    return 0
+
+
 def cmd_document(a):
     """Render a document from a template. The output format follows the --out extension: the template's own
     format is written directly; .docx, .odt, .pdf and .html from a Markdown template go through pandoc, with a
     client's reference.docx supplying the Word styling."""
-    path, label = resolve_template(a.lib, a.template_name, a.template)
-    text, missing = render_template(open(path, encoding="utf-8").read(), build_model(a.lib))
+    selected_layer = getattr(a, "layer", None)
+    if selected_layer and (a.template or a.template_name != "architecture"):
+        raise SabsaError("--layer uses the dedicated layer template; omit --template/--template-name")
+    model = build_model(a.lib)
+    if selected_layer:
+        key = "service-management" if selected_layer == "operational" else selected_layer
+        model["layers"] = [layer for layer in model["layers"] if layer["key"] == key]
+        model["selected_layer"] = model["layers"][0]["name"]
+        from sabsa_narrative import publication_model
+        model = publication_model(sys.modules[__name__], a.lib, model, key)
+        path = os.path.join(PACKAGE_TEMPLATES, "layer.md")
+        label = "SABSA " + model["selected_layer"] + " layer"
+    else:
+        path, label = resolve_template(a.lib, a.template_name, a.template)
+    text, missing = render_template(open(path, encoding="utf-8").read(), model)
     for name in missing:
         print(f"warning: the template uses '{name}', which the library does not provide (see 'sabsa.py template --fields')",
               file=sys.stderr)
@@ -1944,7 +2042,23 @@ def cmd_document(a):
                              "convert it yourself")
         with tempfile.NamedTemporaryFile("w", suffix=tpl_ext or ".md", delete=False, encoding="utf-8") as fh:
             fh.write(text); tmp = fh.name
-        cmd = ["pandoc", tmp, "-o", a.out, "--from", "markdown" if tpl_ext == ".md" else tpl_ext.lstrip(".")]
+        cmd = ["pandoc", tmp, "-o", a.out, "--from", "markdown-raw_tex-raw_html" if tpl_ext == ".md" else tpl_ext.lstrip(".")]
+        if out_ext == ".tex" or getattr(a, "latex", False):
+            if out_ext not in (".tex", ".pdf") or tpl_ext != ".md":
+                raise SabsaError("LaTeX output requires a Markdown template and .tex or .pdf destination")
+            cmd += ["--standalone", "--template", os.path.join(PACKAGE_TEMPLATES, "latex", "enterprise.tex")]
+            cmd += ["--metadata", "lang=en", "--metadata", "organisation=" + model["library"].get("organisation", "")]
+            if selected_layer:
+                cmd += ["--metadata", "viewpoint=" + model["publication_title"], "--metadata", "audience=" + model["publication_audience"], "--metadata", "purpose=" + model["publication_purpose"]]
+            title = model["library"].get("name", "SABSA") + (" — " + model["publication_title"] if selected_layer else "")
+            cmd += ["--metadata", "title=" + title]
+            for field in ("owner", "version", "status", "scope"):
+                cmd += ["--metadata", field + "=" + str(model["library"].get(field, "unspecified"))]
+            cmd += ["--metadata", "approval=" + ("DRAFT / NOT APPROVED" if model["draft"] else "APPROVED")]
+            cmd += ["--lua-filter", os.path.join(PACKAGE_TEMPLATES, "latex", "tables.lua")]
+            if out_ext == ".pdf": cmd += ["--pdf-engine=xelatex"]
+        if out_ext == ".docx":
+            cmd += ["--toc", "--toc-depth=2", "--metadata", "lang=en"]
         ref = resolve_reference_docx(a.lib, a.reference) if out_ext in (".docx", ".odt") else None
         if ref:
             cmd += ["--reference-doc", ref]
@@ -1957,6 +2071,15 @@ def cmd_document(a):
         os.remove(tmp)
         if r.returncode:
             raise SabsaError(f"pandoc failed: {r.stderr.strip()[:300]}")
+        if out_ext == ".docx":
+            from sabsa_exchange import format_docx
+            format_docx(a.out)
+            if selected_layer:
+                from sabsa_exchange import format_narrative_docx
+                format_narrative_docx(a.out, {"title": model["library"].get("name", "SABSA"), "viewpoint": model["publication_title"],
+                    "organisation": model["library"].get("organisation", ""), "owner": model["library"].get("owner", "Not recorded"),
+                    "version": model["library"].get("version", "Not recorded"), "scope": model["library"].get("scope", "Not recorded"),
+                    "approval": "DRAFT / NOT APPROVED" if model["draft"] else "APPROVED"})
         if ref:
             print(f"styled with {ref}")
     print(f"wrote {a.out} from {label} ({os.path.basename(path)})")
@@ -2395,7 +2518,12 @@ def main():
     p.add_argument("--template-name", default="architecture", help="which template: architecture, client-questions, ...")
     p.add_argument("--template", help="use this template file instead of resolving one")
     p.add_argument("--reference", help="a .docx whose styles a Word output should use (the client's template)")
+    p.add_argument("--layer", choices=LAYER_KEYS + ["operational"], help="publish one SABSA matrix layer; operational aliases service-management")
+    p.add_argument("--latex", action="store_true", help="use controlled LaTeX template for .tex/.pdf")
     p.set_defaults(fn=cmd_document)
+    p = sp.add_parser("narrative-init"); p.add_argument("lib"); p.add_argument("--layer", choices=LAYER_KEYS + ["operational"], required=True); p.set_defaults(fn=cmd_narrative_init)
+    p = sp.add_parser("catalogues"); p.add_argument("lib"); p.add_argument("action", choices=["export", "validate", "import"])
+    p.add_argument("--directory", required=True); p.set_defaults(fn=cmd_catalogues)
     p = sp.add_parser("documents"); p.add_argument("lib"); p.set_defaults(fn=cmd_documents)
     p = sp.add_parser("template"); p.add_argument("lib"); p.add_argument("--name", default="architecture")
     p.add_argument("--init", action="store_true", help="copy the package default into <lib>/templates/ to edit")

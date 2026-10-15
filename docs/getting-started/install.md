@@ -27,17 +27,20 @@ See [the interaction guide](../using/interaction-model.md) for normal work and [
 
 ### Optional but relevant
 
+These dependencies are selected by the task. See [sandbox and environment prerequisites](sandbox-prerequisites.md) when an installed tool fails inside a provider session.
+
 | Component | Minimum / status | Used for |
 | --- | --- | --- |
-| Claude Code | provider-supported | adapter contract | yes |
-| Codex CLI | provider-supported | adapter contract | yes |
-| Python | 3.10 | 3.12 release CI target | yes |
-| Pandoc | optional | publication tool detects at runtime | optional |
-| LibreOffice | optional | publication tool detects at runtime | publication |
-| lxml | 5.x | XSD conformance suite | EA conformance |
-| jsonschema | 4.x | Draft 2020-12 | semantic schemas |
-| Pillow | runtime-supported | visual QA fixture rendering | visual QA |
-| GitHub Actions | tag-triggered release workflow | production publication in repository CI; not required for installation | release publication |
+| Pandoc | Optional, detected at runtime | SABSA DOCX and LaTeX source generation |
+| XeLaTeX, TeX packages and DejaVu Serif | Optional | Compile SABSA LaTeX to PDF |
+| Poppler | Optional | Inspect PDF pages as images/text during visual QA |
+| LibreOffice / compatible Office application | Optional for applicable visual QA | Render Office output; Pandoc DOCX generation does not require it |
+| lxml | 5.x | EA XSD conformance suite |
+| jsonschema | 4.x | Draft 2020-12 semantic schemas |
+| Pillow | Runtime-supported | Visual QA fixture rendering |
+| GitHub Actions | Tag-triggered release workflow | Repository production publication; not required for local installation |
+
+Full release/development qualification still needs the dependencies of its required gates. Ordinary Markdown authoring does not require the Office or TeX stack.
 
 ## Before you install
 

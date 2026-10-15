@@ -64,6 +64,8 @@ The release ships thirteen first-class archetypes, including:
 
 The publication stack supports first-class enterprise outputs such as HTML, DOCX, PPTX and XLSX, with PDF/SVG/EA interchange used where the relevant renderer/profile applies.
 
+For SABSA documentation, Markdown is the default. Explicit LaTeX source and DOCX requests use Pandoc; compiling the LaTeX PDF additionally needs XeLaTeX, TeX packages and fonts. Office rendering for visual QA is a separate optional dependency from DOCX generation. See [sandbox and environment prerequisites](../getting-started/sandbox-prerequisites.md) for the dependency/access matrix and [deployment notes](../getting-started/deployment-notes.md) for controlled build qualification.
+
 ## Semantic, projection and render identity
 
 Do not collapse the three hashes:

@@ -1,5 +1,29 @@
 # Changelog
 
+## Unreleased
+
+- SABSA: six authored English narrative viewpoint profiles, complete
+  source-backed specifications and typed business paths, semantic
+  narrative approval coverage, a reusable populated example, and
+  controlled LaTeX/PDF publication, deterministic editable CSV catalogue
+  exchange with preflight validation, and landscape proportional Word
+  catalogue tables.
+- Adds "How to use JAI" tutorials for a security assessment and Android
+  development, with complete Claude Code and Codex prompts in native
+  tabs, explanatory checkpoints and expected artefacts.
+- Fixes duplicate navigation markers on expandable tutorial sections
+  while preserving nested links, toggle controls and keyboard focus.
+- Documents task-specific sandbox and publication prerequisites,
+  including TeX resources, fonts, temporary files and resolver access.
+- Clarifies default runtime paths and installer destination overrides;
+  ordinary installation needs no path exports, and overrides do not
+  establish complete runtime relocation or migrate existing files.
+- Adds archival of completed private finding ledgers under exclusive
+  maintenance, preserving event and hash bytes without changing
+  authority.
+- Excludes private inputs and local audit and build outputs from release
+  bundles.
+
 ## 26.10.4 — Unified Lifecycle GA
 
 - Corrective repack: synchronizes `roles.json` and `workflows.json`

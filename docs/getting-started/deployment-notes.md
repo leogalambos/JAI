@@ -17,6 +17,8 @@ For most organisations, a sensible adoption path is:
 
 The package is installed locally, but enterprise teams often prefer to standardise optional dependencies such as LibreOffice, Pandoc and validation libraries in a shared developer workstation image or managed VDI.
 
+Qualify that image inside the actual provider sandbox as well as in a system terminal. Installed executables can still fail when their resources, fonts, TeX formats, resolver state or temporary directories are inaccessible. Use [sandbox and environment prerequisites](sandbox-prerequisites.md) to select task-specific dependencies and access. Administrators own the effective policy; local rendering does not justify broad filesystem writes or unrestricted network access.
+
 ## What to lock down before wider rollout
 
 - provider permissions and operating mode;

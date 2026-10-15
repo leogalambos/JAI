@@ -1,0 +1,77 @@
+{
+  "schema_version": "1",
+  "layer": "service-management",
+  "title": "Security Service Operations and Assurance",
+  "audience": "Service owners, operations teams and assurance reviewers",
+  "purpose": "Define how implemented security outcomes are operated, measured, evidenced and improved over time.",
+  "chapters": [
+    {
+      "key": "executive-summary",
+      "heading": "Executive summary"
+    },
+    {
+      "key": "purpose-scope",
+      "heading": "Purpose, scope and applicability"
+    },
+    {
+      "key": "business-risk-context",
+      "heading": "Business and risk context"
+    },
+    {
+      "key": "operating-model",
+      "heading": "Service operating model and escalation"
+    },
+    {
+      "key": "measurement-plan",
+      "heading": "Measurement plan and evidence lifecycle"
+    },
+    {
+      "key": "improvement",
+      "heading": "Continuous improvement and transition planning"
+    },
+    {
+      "key": "responsibilities",
+      "heading": "Responsibilities and decision rights"
+    },
+    {
+      "key": "evidence-metrics",
+      "heading": "Evidence, measurement and assurance"
+    },
+    {
+      "key": "exceptions",
+      "heading": "Exceptions and residual risk"
+    },
+    {
+      "key": "review-maintenance",
+      "heading": "Review, maintenance and change history"
+    },
+    {
+      "key": "references",
+      "heading": "References, definitions and interpretation"
+    }
+  ],
+  "groups": [
+    {
+      "heading": "Measures and evidence",
+      "types": [
+        "measure",
+        "evidence"
+      ]
+    },
+    {
+      "heading": "Operations and support model",
+      "types": [
+        "operation",
+        "support-model",
+        "operational-location"
+      ]
+    },
+    {
+      "heading": "Exceptions and transition roadmap",
+      "types": [
+        "exception",
+        "roadmap"
+      ]
+    }
+  ]
+}

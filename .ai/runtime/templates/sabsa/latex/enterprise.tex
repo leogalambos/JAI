@@ -1,0 +1,38 @@
+% SPDX-License-Identifier: BSD-4-Clause
+% Copyright (c) 2026 Leo Galambos and the Egothor team
+\documentclass[11pt,a4paper]{article}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\usepackage[margin=25mm,headheight=28pt]{geometry}
+\usepackage{longtable,booktabs,array,calc}
+\usepackage{graphicx,hyperref,xcolor,fancyhdr,lastpage,pdflscape}
+\hypersetup{colorlinks=true,allcolors=black}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small SABSA architecture}
+\fancyfoot[C]{\thepage/\pageref{LastPage}}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlength{\emergencystretch}{3em}
+\newcommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\begin{document}
+\begin{titlepage}
+\vspace*{25mm}
+{\Huge\bfseries $title$\par}
+\vspace{12mm}
+{\Large $if(viewpoint)$$viewpoint$$else$SABSA controlled architecture$endif$\par}
+\vspace{6mm}
+$organisation$\par
+$if(audience)$Audience: $audience$\par$endif$
+$if(purpose)$\vspace{5mm}$purpose$\par$endif$
+\vfill
+Owner: $owner$\par
+Version: $version$\par
+Status: $status$\par
+Scope: $scope$\par
+Approval: $approval$\par
+\end{titlepage}
+\tableofcontents
+\newpage
+$body$
+\end{document}

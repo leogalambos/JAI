@@ -83,6 +83,109 @@ JAI canonical semantic identity
 
 The bridge preserves source specialisation and canonical references so that EA views remain traceable to the semantic origin rather than becoming an independent copy of the truth.
 
+## LaTeX documents and editable CSV catalogues
+
+The SABSA conversation workflow uses **Markdown by default**. Ask for a different format in ordinary language when the audience needs it; this does not change the canonical source or approval rules. For example:
+
+The document workflow selects a viewpoint and presents its reviewed semantic content for the requested audience. Expect output paths, the selected template, source provenance and remaining publication gaps before treating a rendered document as ready for use.
+
+=== "Claude Code"
+
+    ```text
+    /sabsa document project/sabsa — generate the Logical Security Architecture
+    in English as LaTeX and PDF from the reviewed entries and authored
+    narrative. Preserve source provenance, report the template and output
+    paths, show publication gaps, and keep snapshot approval and rendered-QA
+    status explicit.
+    ```
+
+=== "Codex"
+
+    ```text
+    $workflow-sabsa document project/sabsa — generate the Logical Security
+    Architecture in English as LaTeX and PDF from the reviewed entries and
+    authored narrative. Preserve source provenance, report the template and
+    output paths, show publication gaps, and keep snapshot approval and
+    rendered-QA status explicit.
+    ```
+
+Ask for Word explicitly for a Word-based review, or request editable CSV catalogues when managing structured entries. The provider should report the chosen viewpoint/template, output paths, actual validation and remaining draft reasons. A format request does not authorise an owner approval.
+
+The following are implementation examples for a maintainer or for inspecting the commands JAI reports; normal users can make the conversation request above:
+
+```sh
+python3 .ai/runtime/tools/sabsa.py document LIB --out architecture.tex
+python3 .ai/runtime/tools/sabsa.py document LIB --layer logical --out logical.tex
+python3 .ai/runtime/tools/sabsa.py document LIB --out architecture.pdf --latex
+python3 .ai/runtime/tools/sabsa.py document LIB --template-name security-service-catalogue --out services.docx
+```
+
+Writing `.tex` requires Pandoc. Compiling the controlled LaTeX/PDF edition additionally requires XeLaTeX, its installed packages and DejaVu Serif. Word generation uses Pandoc; LibreOffice or Word is used when independently rendering Word output for visual review. These Office tools are not part of the SABSA TeX/PDF renderer. See [publication stack](../configuration/publication-stack.md) and [sandbox prerequisites](../getting-started/sandbox-prerequisites.md) for format-specific prerequisites. The shared LaTeX template provides a
+controlled cover (owner, version, status, scope, approval), contents, running header,
+page totals and landscape long tables. Markdown raw TeX is disabled during conversion.
+The controlled layout is shared across document views, while each viewpoint's
+authored content preserves its own architectural purpose. All existing document
+views can use this template.
+Word tables receive explicit proportional widths; tables with five or more columns
+use landscape sections, with a narrower identifier column and more room for prose.
+
+```sh
+python3 .ai/runtime/tools/sabsa.py catalogues LIB export --directory CSV
+# Edit CSV values, retaining IDs, headers and schema.json.
+python3 .ai/runtime/tools/sabsa.py catalogues LIB validate --directory CSV
+python3 .ai/runtime/tools/sabsa.py catalogues LIB import --directory CSV
+```
+
+Markdown entries remain authoritative. CSV is an editable exchange projection with
+versioned schema, UTF-8 encoding, comma delimiter, LF records, fixed columns per type,
+stable ID sorting and SHA-256 export manifest. Relation columns retain canonical
+comma-separated IDs; CSV quoting preserves commas and quotation marks. Reused entries
+are managed in their source library and are excluded from editable exports. Imports
+update existing local IDs only; use `new` to create entries and export again. Missing,
+new or duplicate IDs, changed schemas and multiline metadata are rejected. Validation
+checks a temporary library before any source mutation. Import preserves entry bodies
+and native metadata, rolls back write failures, and invalidates prior snapshot approval
+through the existing content hash. The export manifest fingerprints the original
+export; it is not an approval of subsequent CSV edits.
+
+Rollback: restore changed canonical entries from version control; generated CSV,
+LaTeX, PDF and DOCX can be regenerated. No owner approval or publication gate is implied
+by successful rendering or CSV validation.
+
+Use `--layer contextual|conceptual|logical|physical|component|service-management` for an individual matrix layer; `operational` aliases service-management. Each layer document includes its six matrix questions, local elements, source/basis, whole-library approval status and business traceability context.
+
+## Authored English viewpoint documents
+
+Each SABSA layer has its own document profile with substantial authored chapters,
+complete element specifications and source bodies, responsibilities, evidence, review
+and typed business justification paths. The logical viewpoint describes services,
+policy and information access; the component viewpoint describes engineering and
+verification; operations describes measurement and assurance. These are semantic
+viewpoints rather than a shared questionnaire dressed as a publication.
+
+| Viewpoint | Publication focus |
+| --- | --- |
+| Contextual | Business context, dependencies and security governance |
+| Conceptual | Measurable attributes, security concepts, objectives and trust |
+| Logical | Security services, policies, information and access |
+| Physical | Mechanisms, deployment boundaries and control execution |
+| Component | Component specifications, configuration and verification |
+| Service Management | Operations, measurement, evidence and improvement |
+
+Run `sabsa.py narrative-init LIB --layer logical`, write the chapter files under
+`narratives/logical/` with basis/source/author/language provenance, then use `document
+--layer logical`. Missing prose, source scaffolding and unresolved traceability stay
+visible as authoring gaps. Narratives participate in source citations, validation and
+snapshot approval; changing them invalidates prior approval. Authors supply reviewed
+professional English text, preserve original sources and cite translations. The
+renderer preserves canonical meaning and does not automatically translate content.
+
+The complete contract is in `runtime/sabsa/publication/README.md`. Generate the
+populated fictional six-viewpoint example with
+`python3 .ai/runtime/tools/sabsa_publication_demo.py --out DIR --render`.
+
+For guided use, follow [assessing a deployed system](../examples/how-to-use-JAI/security-assessment.md) or [keeping Android development aligned](../examples/how-to-use-JAI/android-development.md). Both explain why to take each step and how to distinguish source-backed results from proposed next work.
+
 ## Why this matters
 
 Organisations often struggle to keep security architecture, enterprise architecture and published documents aligned. The 26.10.4 profile model gives each subsystem a clear scope while preserving stable identity and traceability across them.

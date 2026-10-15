@@ -6,6 +6,10 @@
 
 ## Typed artefact taxonomy
 
+SABSA also has a domain-native document path through `/sabsa document` (Claude) or `$workflow-sabsa document` (Codex). Its six narrative viewpoint profiles combine authored semantic chapters, complete specifications and typed business traceability; they can emit Markdown, controlled LaTeX/PDF and Word. Editable CSV catalogues use a separate export/validate/import exchange around canonical local entries. The generic `/publish` projection contracts described below should not be confused with the SABSA renderer's own snapshot and draft checks. See [SABSA documents and catalogues](sabsa-ea.md#latex-documents-and-editable-csv-catalogues).
+
+For SABSA the conversation default is Markdown. Ask naturally for a viewpoint and formats, such as “Component Engineering Specification as LaTeX and PDF”; request DOCX when needed. Authors supply reviewed narrative rather than asking a renderer to invent it. TeX emission needs Pandoc, controlled PDF compilation adds XeLaTeX and fonts, and DOCX generation uses Pandoc. Required visual QA applies to the files produced; Office conversion is not a prerequisite for producing SABSA TeX/PDF. The [worked tutorials](../examples/how-to-use-JAI/index.md) place these choices in an engagement.
+
 The current taxonomy defines **28 artefact classes**.
 
 | Artifact type | Production mode | Render targets | Acceptance profile |

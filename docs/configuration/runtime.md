@@ -19,12 +19,11 @@ Ordinary users need not set any of these variables to start `/layered` or `$work
 
 ## Installation path overrides
 
-```bash
-export AI_IT_HOME=/opt/company-ai
-export AI_IT_HOUSE=/opt/company-ai/it-role-house
-export CLAUDE_HOME=/home/user/.claude
-export CODEX_HOME=/home/user/.codex
-```
+The standard installation needs no path-variable exports. The installer defaults to `AI_IT_HOME=~/.ai`, derives `AI_IT_HOUSE` as `<AI_IT_HOME>/it-role-house`, and uses `~/.claude` and `~/.codex` for the provider surfaces.
+
+Administrators can override these installer destinations with `AI_IT_HOME`, `AI_IT_HOUSE`, `CLAUDE_HOME` and `CODEX_HOME`. If `AI_IT_HOUSE` is explicitly set, it takes precedence over the path derived from `AI_IT_HOME`. See the [environment reference](../reference/paths-env.md) for the defaults.
+
+Destination overrides do not establish support for complete runtime relocation: generated instructions still contain references to `~/.ai/it-role-house`. A deployment using other destinations needs separate validation of its generated provider instructions and runtime paths. Exporting variables alone does not move or migrate an existing installation.
 
 ## Fabric-specific environment controls
 

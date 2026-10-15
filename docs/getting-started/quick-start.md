@@ -96,6 +96,10 @@ The defect workflow must compare the last known good state, a working analogue a
 - explicit coverage of all 36 SABSA matrix cells;
 - open questions identified separately from settled architecture elements.
 
+Markdown is the SABSA workflow's default document format. When you need a publication, ask in the same conversation: “Generate the Logical Security Architecture in English as LaTeX and PDF from the reviewed sources; keep unresolved gaps visible.” Use `/sabsa document acme-pay/sabsa` in Claude or `$workflow-sabsa document acme-pay/sabsa` in Codex before that instruction. Ask for DOCX or editable CSV catalogues explicitly when useful. These are existing format choices, not a new global default setting.
+
+The six viewpoint documents include authored narrative, full specifications and typed business paths. Write and review their semantic chapter files before rendering; generated files cannot substitute for missing architecture decisions. See [publication prerequisites](../configuration/publication-stack.md) and the [How to use JAI tutorials](../examples/how-to-use-JAI/index.md) for a fuller security-assessment or Android-development walkthrough. Those tutorials distinguish source reports, adapted instructions and work still to be performed.
+
 ## 6. Run a consequential decision
 
 ```text

@@ -2,34 +2,78 @@
 # SPDX-License-Identifier: BSD-4-Clause
 # Copyright (c) 2026 Leo Galambos and the Egothor team
 # https://www.egothor.org
-"""Build qualified AI IT House distribution archives for automatic publication."""
+"""Build qualified AI IT House distribution archives for automatic publication.
+
+Packaging is independent of Git and never traverses private input, local audit,
+provider-local state or generated output directories. Maintained runtime resources
+and required qualification evidence remain package inputs. Source trees must remain
+unchanged during a build; symbolic links are not distribution resources.
+"""
 from __future__ import annotations
 
-import argparse, hashlib, json, zipfile, subprocess, sys
+import argparse, hashlib, json, zipfile, subprocess, sys, os, stat
 from pathlib import Path
 
 TOOLS = Path(__file__).resolve().parent
 PY = sys.executable
 
+# Keep this contract explicit: release evidence may be Git-ignored but is required
+# in a qualified archive, whereas private workspace material must never be visited.
+ROOT_EXCLUDED_DIRECTORIES = frozenset({"INBOX", "build", "out", "dist", "site"})
+EXCLUDED_DIRECTORY_NAMES = frozenset({".git", ".venv", "__pycache__", ".findings", ".fabric",
+                                     ".direnv", ".secrets"})
+PRIVATE_FILE_SUFFIXES = frozenset({".pem", ".key", ".p12", ".pfx"})
+PUBLIC_ENV_EXAMPLES = frozenset({".env.example", ".env.sample", ".env.template"})
+
 
 def files(root, excluded_directory=None):
-    root = Path(root).resolve()
+    """Yield deterministic regular distribution files without traversing private trees.
+
+    Args:
+        root: Existing package source directory; symbolic-link roots are rejected.
+        excluded_directory: Optional output directory whose subtree must not be packaged.
+    Yields:
+        Regular nonsymlink paths below root, in deterministic directory/file order.
+        Private/generated directories are pruned before descent, independent of Git.
+    Raises:
+        ValueError: If root is a symbolic link or is not a directory.
+        OSError: If a traversed maintained directory cannot be enumerated.
+    """
+    root = Path(root)
+    if root.is_symlink() or not root.is_dir():
+        raise ValueError("package root must be a real directory")
+    root = root.resolve()
     excluded_directory = Path(excluded_directory).resolve() if excluded_directory else None
-    for path in sorted(root.rglob("*")):
-        if not path.is_file():
+
+    def excluded(path):
+        relative = path.relative_to(root)
+        return (bool(excluded_directory and path.is_relative_to(excluded_directory))
+                or bool(relative.parts and relative.parts[0] in ROOT_EXCLUDED_DIRECTORIES)
+                or any(part in EXCLUDED_DIRECTORY_NAMES for part in relative.parts)
+                or relative.as_posix() == ".ai/runtime/_meta/gates")
+
+    def walk_error(error):
+        raise error
+
+    for directory, subdirectories, names in os.walk(root, topdown=True, followlinks=False,
+                                                  onerror=walk_error):
+        directory = Path(directory)
+        if excluded(directory):
+            subdirectories[:] = []
             continue
-        rel = path.relative_to(root).as_posix()
-        if excluded_directory and path.is_relative_to(excluded_directory):
-            continue
-        if rel.split('/')[0] in {"dist", "site", ".venv", ".git"}:
-            continue
-        if "__pycache__" in path.parts or path.suffix == ".pyc":
-            continue
-        if rel == ".ai/runtime/_meta/qualification-A-G.json":
-            continue
-        if rel.startswith(".ai/runtime/_meta/gates/"):
-            continue
-        yield path
+        subdirectories[:] = sorted(name for name in subdirectories
+                                   if not (directory / name).is_symlink()
+                                   and not excluded(directory / name))
+        for name in sorted(names):
+            path = directory / name
+            relative = path.relative_to(root).as_posix()
+            if (path.is_symlink() or not path.is_file() or path.suffix == ".pyc"
+                    or path.suffix in PRIVATE_FILE_SUFFIXES
+                    or ((name == ".env" or name.startswith(".env.")) and name not in PUBLIC_ENV_EXAMPLES)
+                    or relative in {".claude/settings.local.json", ".codex/config.local.toml",
+                                    ".ai/runtime/_meta/qualification-A-G.json"}):
+                continue
+            yield path
 
 
 def check_ready(root):
@@ -42,11 +86,36 @@ def check_ready(root):
 
 
 def build_zip(root,out,prefix):
-    with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED,compresslevel=9) as zf:
+    """Write deterministic ZIP entries from the explicit distribution resource contract.
+
+    Args:
+        root: Package source directory, unchanged throughout this operation.
+        out: Destination ZIP path; its parent subtree is excluded from input discovery.
+        prefix: Archive root directory name supplied by the release builder.
+    Returns:
+        None. File bytes, stable timestamps and source permission bits are recorded.
+    Raises:
+        OSError: If a resource cannot be opened safely or the archive cannot be written.
+        ValueError: If the source is invalid or a resource is not a regular file.
+    """
+    root = Path(root)
+    if root.is_symlink():
+        raise ValueError("package root must be a real directory")
+    root = root.resolve()
+    out = Path(out).absolute()
+    if root.is_relative_to(out.parent.resolve()):
+        raise ValueError("archive output directory must not equal or contain the package source")
+    with zipfile.ZipFile(out,'x',zipfile.ZIP_DEFLATED,compresslevel=9) as zf:
         for path in files(root, out.parent):
+            flags = os.O_RDONLY | getattr(os, "O_NOFOLLOW", 0)
+            with os.fdopen(os.open(path, flags), "rb") as resource:
+                properties = os.fstat(resource.fileno())
+                if not stat.S_ISREG(properties.st_mode):
+                    raise ValueError("distribution resources must be regular files")
+                data = resource.read()
             rel=path.relative_to(root).as_posix(); info=zipfile.ZipInfo(f'{prefix}/{rel}')
-            info.date_time=(1980,1,1,0,0,0); info.external_attr=((path.stat().st_mode & 0o777)&0xFFFF)<<16; info.compress_type=zipfile.ZIP_DEFLATED; info.create_system=3
-            zf.writestr(info,path.read_bytes())
+            info.date_time=(1980,1,1,0,0,0); info.external_attr=((properties.st_mode & 0o777)&0xFFFF)<<16; info.compress_type=zipfile.ZIP_DEFLATED; info.create_system=3
+            zf.writestr(info,data)
 
 
 def build(root,dist):

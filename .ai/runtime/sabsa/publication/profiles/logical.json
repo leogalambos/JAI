@@ -1,0 +1,77 @@
+{
+  "schema_version": "1",
+  "layer": "logical",
+  "title": "Logical Security Architecture",
+  "audience": "Security service designers and information owners",
+  "purpose": "Specify technology-independent security services, information protection, access decisions and interactions.",
+  "chapters": [
+    {
+      "key": "executive-summary",
+      "heading": "Executive summary"
+    },
+    {
+      "key": "purpose-scope",
+      "heading": "Purpose, scope and applicability"
+    },
+    {
+      "key": "business-risk-context",
+      "heading": "Business and risk context"
+    },
+    {
+      "key": "service-design",
+      "heading": "Security services and policy enforcement"
+    },
+    {
+      "key": "information-access",
+      "heading": "Information, identity and access model"
+    },
+    {
+      "key": "interaction-model",
+      "heading": "Service interactions and processing lifecycle"
+    },
+    {
+      "key": "responsibilities",
+      "heading": "Responsibilities and decision rights"
+    },
+    {
+      "key": "evidence-metrics",
+      "heading": "Evidence, measurement and assurance"
+    },
+    {
+      "key": "exceptions",
+      "heading": "Exceptions and residual risk"
+    },
+    {
+      "key": "review-maintenance",
+      "heading": "Review, maintenance and change history"
+    },
+    {
+      "key": "references",
+      "heading": "References, definitions and interpretation"
+    }
+  ],
+  "groups": [
+    {
+      "heading": "Policies and security services",
+      "types": [
+        "policy",
+        "service"
+      ]
+    },
+    {
+      "heading": "Entities, privileges and information flows",
+      "types": [
+        "entity",
+        "privilege",
+        "information-flow"
+      ]
+    },
+    {
+      "heading": "Domain associations and processing cycles",
+      "types": [
+        "domain-association",
+        "processing-cycle"
+      ]
+    }
+  ]
+}

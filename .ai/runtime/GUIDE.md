@@ -564,6 +564,48 @@ Then try a client's own format:
 /sabsa template acme-pay/sabsa — copy the default so I can change the section titles
 ```
 
+**Choose the viewpoint and format in ordinary language.** Markdown is
+the SABSA workflow default. For example, ask `/sabsa document
+acme-pay/sabsa — generate the Logical Security Architecture in English
+as LaTeX and PDF, preserving source references and publication gaps`.
+In Codex use `$workflow-sabsa document acme-pay/sabsa` with the same
+instruction. Request DOCX when the review audience needs Word, or
+editable CSV catalogues when managing structured entries. This selects
+existing outputs; it does not change a global default or grant approval.
+
+**Author the narrative before rendering.** Six distinct viewpoint
+profiles cover business context, security concept, logical architecture,
+physical design, component engineering, and operations/assurance. They
+combine authored chapters with complete element fields and source
+bodies, provenance and typed business paths. Ask JAI to create chapter
+skeletons and help author source-backed professional English prose;
+missing decisions and narrative remain visible gaps. The renderer does
+not translate authoritative text automatically.
+
+The underlying `sabsa.py narrative-init LIB --layer LAYER` creates
+missing chapter skeletons under `narratives/LAYER/`, without replacing
+existing prose. Chapters record `basis`, `source`, `author` and
+`language: en`. They are semantic inputs covered by validation,
+citations and snapshot approval; editing them invalidates a prior
+approval just as editing an element does. The installed authoring
+contract is `~/.ai/it-role-house/sabsa/publication/README.md`.
+
+**Manage catalogues through the canonical source.** Ask JAI to export
+CSV, retain stable IDs and schema while editing, validate the proposal,
+then import it into the local entries and re-review. Import updates
+existing local IDs; CSV is an editable projection rather than a second
+authority. Reused entries are managed in their source library. An
+export manifest fingerprints the export, not subsequent edits or their
+approval.
+
+**Use the dependencies for the requested output.** Markdown needs no
+external document renderer. Pandoc emits TeX and DOCX; compiling the
+controlled PDF edition adds XeLaTeX, installed TeX packages and DejaVu
+Serif. LibreOffice or Word supports independent rendering of Office
+outputs for visual QA; the SABSA TeX/PDF renderer does not invoke an
+Office renderer. Ask for actual validation and rendered-QA evidence,
+not an inferred pass from file existence.
+
 **What to expect.**
 - *Drivers* such as doubling partner revenue through PSPs and partners
 demanding proof of controls, each citing
@@ -576,9 +618,12 @@ manually issued partner API keys.
 - *Assumptions* — and therefore questions for the client — such as
 whether ACME Pay is a regulated payment institution under PSD2, whether
 DORA applies, and data residency beyond eu-central-1.
-- *The document:* thirteen sections; each of the six layers asks its six
-questions; DRAFT until the library has zero errors/warnings, all 36
-cells are settled, and the current snapshot has a valid owner approval.
+- *The document:* the selected architecture or viewpoint template,
+including its matrix coverage and traceability. It remains DRAFT until
+the library has zero errors/warnings, all 36 cells are settled, and the
+current snapshot has a valid owner approval; incomplete viewpoint
+narrative or source-quality gaps also prevent an approved publication
+presentation.
 
 **Optional technical verification (agent or maintainer runs it; not a
 required operator step).** `python3 ~/.ai/it-role-house/tools/sabsa.py
@@ -767,6 +812,7 @@ a recorded authority event.
 ├── 00-sources/         what is known about the client; every claim cites a file here
 ├── 01-contextual/ … 06-service-management/    the elements, by SABSA layer
 ├── matrix/             36 files: each layer's six questions, answered or marked not applicable
+├── narratives/         authored viewpoint chapters with basis/source/author/language provenance
 └── templates/          optional: the client's own document template and reference.docx
 ```
 
@@ -872,7 +918,8 @@ The installed guide reproduces this maintained Markdown page.
 | `~/.ai/it-role-house/tools/test_check.py` | `<source files or folders>` — tests against the standard |
 | `~/.ai/it-role-house/tools/defect.py` | `repeat` · `bisect` · `changes` · `compare` · `timing` · `analysis validate\|render\|findings` |
 | `~/.ai/it-role-house/skills/it-roles-quality-and-testing/scripts/repo_survey.py` | `<repository>` |
-| `~/.ai/it-role-house/tools/sabsa.py` | `init` · `new` · `check` · `matrix` · `suggest` · `trace` · `view` · `lifecycle` · `overlays` · `reuse` · `questions` · `sources` · `documents` · `document` · `template` · `migrate` |
+| `~/.ai/it-role-house/tools/sabsa.py` | `init` · `new` · `check` · `matrix` · `suggest` · `trace` · `view` · `lifecycle` · `overlays` · `reuse` · `questions` · `sources` · `documents` · `document` · `narrative-init` · `catalogues export\|validate\|import` · `template` · `migrate` |
+| `~/.ai/it-role-house/tools/sabsa_publication_demo.py` | `--out DIR --render` — populated fictional English six-viewpoint example in a fresh directory |
 | `~/.ai/it-role-house/tools/publication.py` | semantic-model rendering to HTML · DOCX · PPTX · XLSX · SVG; `self-test` |
 | `~/.ai/it-role-house/tools/repository.py` | `init` · `validate` · `import-open-exchange` · `export-open-exchange` · `generate-views` · `portfolio` · `impact` · `decommission` · `self-test` |
 | `~/.ai/it-role-house/fabric/fabric.py` | `status` · `verify` · `justify` · `report` · `dossier` |
@@ -884,6 +931,28 @@ Each tool has `--help`. For example:
 python3 ~/.ai/it-role-house/tools/doc_survey.py ~/it-role-demo/policy-docs
 python3 ~/.ai/it-role-house/tools/sabsa.py matrix ~/it-role-demo/acme-pay/sabsa
 ```
+
+For a maintainer reproducing SABSA publication operations:
+
+```sh
+python3 ~/.ai/it-role-house/tools/sabsa.py narrative-init LIB --layer logical
+# Author and review LIB/narratives/logical/ and the canonical elements before rendering.
+python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer logical --out logical.md
+python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer logical --out logical.tex
+python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer logical --out logical.pdf --latex
+python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer logical --out logical.docx
+python3 ~/.ai/it-role-house/tools/sabsa.py catalogues LIB export --directory CSV
+# Edit existing local entries in CSV while retaining schema and stable IDs.
+python3 ~/.ai/it-role-house/tools/sabsa.py catalogues LIB validate --directory CSV
+python3 ~/.ai/it-role-house/tools/sabsa.py catalogues LIB import --directory CSV
+```
+
+`--layer` accepts `contextual`, `conceptual`, `logical`, `physical`,
+`component` and `service-management`; `operational` aliases the last.
+The installed publication contract describes chapter keys, provenance,
+language review and source-quality gaps. The example builder's
+`--render` emits Markdown, TeX, DOCX and PDF. Successful generation
+does not constitute an architecture approval or a product release.
 
 ---
 

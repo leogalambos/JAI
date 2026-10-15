@@ -105,6 +105,7 @@ nav:
       - Delivery model: overview/delivery-model.md
   - Getting started:
       - Installation: getting-started/install.md
+      - Sandbox prerequisites: getting-started/sandbox-prerequisites.md
       - Update & uninstall: getting-started/update-uninstall.md
       - 20-minute quick start: getting-started/quick-start.md
       - Deployment notes: getting-started/deployment-notes.md
@@ -154,6 +155,10 @@ nav:
       - Layered runtime and assurance: capabilities/layered-runtime.md
       - Research and defect analysis: capabilities/research-defect.md
   - Examples:
+      - How to use JAI:
+          - Learning guides: examples/how-to-use-JAI/index.md
+          - Security assessment: examples/how-to-use-JAI/security-assessment.md
+          - Android development: examples/how-to-use-JAI/android-development.md
       - Regulated cloud migration: examples/cloud-migration.md
       - Architecture Review Board pack: examples/architecture-board.md
       - Cyber incident to recovery: examples/cyber-incident.md

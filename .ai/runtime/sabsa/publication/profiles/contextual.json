@@ -1,0 +1,67 @@
+{
+  "schema_version": "1",
+  "layer": "contextual",
+  "title": "Business Context and Security Governance",
+  "audience": "Business owners and security governance",
+  "purpose": "Establish the business outcomes, operating environment and risk boundary that security architecture must serve.",
+  "chapters": [
+    {
+      "key": "executive-summary",
+      "heading": "Executive summary"
+    },
+    {
+      "key": "purpose-scope",
+      "heading": "Purpose, scope and applicability"
+    },
+    {
+      "key": "business-risk-context",
+      "heading": "Business and risk context"
+    },
+    {
+      "key": "business-environment",
+      "heading": "Business environment and critical dependencies"
+    },
+    {
+      "key": "governance-intent",
+      "heading": "Governance intent and security expectations"
+    },
+    {
+      "key": "responsibilities",
+      "heading": "Responsibilities and decision rights"
+    },
+    {
+      "key": "evidence-metrics",
+      "heading": "Evidence, measurement and assurance"
+    },
+    {
+      "key": "exceptions",
+      "heading": "Exceptions and residual risk"
+    },
+    {
+      "key": "review-maintenance",
+      "heading": "Review, maintenance and change history"
+    },
+    {
+      "key": "references",
+      "heading": "References, definitions and interpretation"
+    }
+  ],
+  "groups": [
+    {
+      "heading": "Business drivers and risk exposure",
+      "types": [
+        "driver",
+        "risk"
+      ]
+    },
+    {
+      "heading": "Business operating model",
+      "types": [
+        "business-process",
+        "business-actor",
+        "business-location",
+        "business-time-dependency"
+      ]
+    }
+  ]
+}

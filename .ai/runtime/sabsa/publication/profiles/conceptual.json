@@ -1,0 +1,77 @@
+{
+  "schema_version": "1",
+  "layer": "conceptual",
+  "title": "Security Concept and Control Objectives",
+  "audience": "Business security architects and risk owners",
+  "purpose": "Translate business intent into measurable attributes, security strategy, control objectives and authority boundaries.",
+  "chapters": [
+    {
+      "key": "executive-summary",
+      "heading": "Executive summary"
+    },
+    {
+      "key": "purpose-scope",
+      "heading": "Purpose, scope and applicability"
+    },
+    {
+      "key": "business-risk-context",
+      "heading": "Business and risk context"
+    },
+    {
+      "key": "attribute-profile",
+      "heading": "Business attribute profile and success criteria"
+    },
+    {
+      "key": "security-strategy",
+      "heading": "Security strategy and control baseline"
+    },
+    {
+      "key": "domains-trust",
+      "heading": "Security domains, trust and architecture decisions"
+    },
+    {
+      "key": "responsibilities",
+      "heading": "Responsibilities and decision rights"
+    },
+    {
+      "key": "evidence-metrics",
+      "heading": "Evidence, measurement and assurance"
+    },
+    {
+      "key": "exceptions",
+      "heading": "Exceptions and residual risk"
+    },
+    {
+      "key": "review-maintenance",
+      "heading": "Review, maintenance and change history"
+    },
+    {
+      "key": "references",
+      "heading": "References, definitions and interpretation"
+    }
+  ],
+  "groups": [
+    {
+      "heading": "Business attribute profile",
+      "types": [
+        "attribute"
+      ]
+    },
+    {
+      "heading": "Security strategy and objectives",
+      "types": [
+        "strategy",
+        "objective"
+      ]
+    },
+    {
+      "heading": "Domains, trust and decisions",
+      "types": [
+        "domain",
+        "trust",
+        "decision",
+        "security-lifetime"
+      ]
+    }
+  ]
+}

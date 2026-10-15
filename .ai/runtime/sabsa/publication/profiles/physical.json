@@ -1,0 +1,76 @@
+{
+  "schema_version": "1",
+  "layer": "physical",
+  "title": "Physical Security Design",
+  "audience": "Solution builders and platform owners",
+  "purpose": "Describe the physical mechanisms, deployment boundaries and operating procedures that realise logical services.",
+  "chapters": [
+    {
+      "key": "executive-summary",
+      "heading": "Executive summary"
+    },
+    {
+      "key": "purpose-scope",
+      "heading": "Purpose, scope and applicability"
+    },
+    {
+      "key": "business-risk-context",
+      "heading": "Business and risk context"
+    },
+    {
+      "key": "mechanism-design",
+      "heading": "Security mechanism design and deployment"
+    },
+    {
+      "key": "data-platform",
+      "heading": "Data stores, platform zones and integration boundaries"
+    },
+    {
+      "key": "control-execution",
+      "heading": "Control execution and failure handling"
+    },
+    {
+      "key": "responsibilities",
+      "heading": "Responsibilities and decision rights"
+    },
+    {
+      "key": "evidence-metrics",
+      "heading": "Evidence, measurement and assurance"
+    },
+    {
+      "key": "exceptions",
+      "heading": "Exceptions and residual risk"
+    },
+    {
+      "key": "review-maintenance",
+      "heading": "Review, maintenance and change history"
+    },
+    {
+      "key": "references",
+      "heading": "References, definitions and interpretation"
+    }
+  ],
+  "groups": [
+    {
+      "heading": "Security mechanisms",
+      "types": [
+        "mechanism"
+      ]
+    },
+    {
+      "heading": "Data stores and platform zones",
+      "types": [
+        "data-store",
+        "platform-zone"
+      ]
+    },
+    {
+      "heading": "Procedures, endpoints and control sequences",
+      "types": [
+        "security-procedure",
+        "interaction-endpoint",
+        "control-sequence"
+      ]
+    }
+  ]
+}

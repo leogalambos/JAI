@@ -1,0 +1,76 @@
+{
+  "schema_version": "1",
+  "layer": "component",
+  "title": "Security Component Engineering Specification",
+  "audience": "Component engineers and implementation reviewers",
+  "purpose": "Define component specifications, engineering conventions and verification instructions for the selected realisation.",
+  "chapters": [
+    {
+      "key": "executive-summary",
+      "heading": "Executive summary"
+    },
+    {
+      "key": "purpose-scope",
+      "heading": "Purpose, scope and applicability"
+    },
+    {
+      "key": "business-risk-context",
+      "heading": "Business and risk context"
+    },
+    {
+      "key": "component-baseline",
+      "heading": "Component baseline and engineering conventions"
+    },
+    {
+      "key": "implementation",
+      "heading": "Implementation and configuration instructions"
+    },
+    {
+      "key": "verification",
+      "heading": "Verification, release criteria and known limitations"
+    },
+    {
+      "key": "responsibilities",
+      "heading": "Responsibilities and decision rights"
+    },
+    {
+      "key": "evidence-metrics",
+      "heading": "Evidence, measurement and assurance"
+    },
+    {
+      "key": "exceptions",
+      "heading": "Exceptions and residual risk"
+    },
+    {
+      "key": "review-maintenance",
+      "heading": "Review, maintenance and change history"
+    },
+    {
+      "key": "references",
+      "heading": "References, definitions and interpretation"
+    }
+  ],
+  "groups": [
+    {
+      "heading": "Standards and component specifications",
+      "types": [
+        "standard",
+        "component"
+      ]
+    },
+    {
+      "heading": "Data formats and identity entitlements",
+      "types": [
+        "data-format",
+        "identity-entitlement"
+      ]
+    },
+    {
+      "heading": "Endpoint protocols and execution timings",
+      "types": [
+        "endpoint-protocol",
+        "component-timing"
+      ]
+    }
+  ]
+}

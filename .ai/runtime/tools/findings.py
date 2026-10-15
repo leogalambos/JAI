@@ -19,6 +19,8 @@ The ledger is append-only and hash-chained, like the fabric: state is derived fr
     findings.py accept-risk LEDGER ID --by WHO --rationale "..." --expires DAYS    (yours: asks you first)
     findings.py status   LEDGER                      what blocks completion, what is stuck
     findings.py report   LEDGER                      markdown
+    findings.py archive-private LEDGER --exclusive-maintenance
+                                                   move a COMPLETE ledger intact to INBOX/private-audit
     findings.py selftest
 
 Ledgers live in .findings/<LEDGER>.jsonl under the current directory, or FINDINGS_HOME.
@@ -28,6 +30,8 @@ import signal
 import hashlib
 import json
 import os
+from pathlib import Path
+import stat
 import sys
 import tempfile
 import time
@@ -59,19 +63,38 @@ def path(name):
     return os.path.join(HOME, f"{name}.jsonl")
 
 
+def _parse_events(data, name):
+    """Validate a ledger byte snapshot without rewriting its event serialization."""
+    events, prev = [], "0" * 64
+    try:
+        for i, line in enumerate(data.decode("utf-8").splitlines(), 1):
+            e = json.loads(line)
+            h = hashlib.sha256((prev + canonical(e["data"]) + str(e["seq"])).encode()).hexdigest()
+            if e["prev"] != prev or e["hash"] != h or e["seq"] != i:
+                raise LedgerError(f"ledger {name} is corrupt at entry {i}: it has been edited outside findings.py")
+            prev = e["hash"]
+            events.append(e)
+    except (UnicodeError, ValueError, KeyError, TypeError) as exc:
+        raise LedgerError(f"ledger {name} has invalid event serialization") from exc
+    return events
+
+
 def load(name):
+    """Read and validate a named ledger's existing hash chain.
+
+    Args:
+        name: Simple ledger identifier resolved under HOME.
+    Returns:
+        Ordered event dictionaries, or an empty list if the ledger does not exist.
+    Raises:
+        LedgerError: If the identifier, event serialization or hash chain is invalid.
+        OSError: If an existing ledger cannot be read.
+    """
     p = path(name)
     if not os.path.isfile(p):
         return []
-    events, prev = [], "0" * 64
-    for i, line in enumerate(open(p, encoding="utf-8"), 1):
-        e = json.loads(line)
-        h = hashlib.sha256((prev + canonical(e["data"]) + str(e["seq"])).encode()).hexdigest()
-        if e["prev"] != prev or e["hash"] != h or e["seq"] != i:
-            raise LedgerError(f"ledger {name} is corrupt at entry {i}: it has been edited outside findings.py")
-        prev = e["hash"]
-        events.append(e)
-    return events
+    with open(p, "rb") as stream:
+        return _parse_events(stream.read(), name)
 
 
 def append(name, events, datas):
@@ -272,6 +295,159 @@ def cmd_report(a):
               f"{cell(x['title'])} | {cell(x['recommendation'])} |")
 
 
+def _directory_fd(parent_fd, parts, create=False):
+    """Open descendant directories without following symlinks; close the caller's copy only."""
+    current = os.dup(parent_fd)
+    try:
+        for part in parts:
+            if part in ("", ".", ".."):
+                raise LedgerError("archive paths must not contain traversal components")
+            if create:
+                try:
+                    os.mkdir(part, mode=0o700, dir_fd=current)
+                except FileExistsError:
+                    pass
+            child = os.open(part, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW, dir_fd=current)
+            os.close(current)
+            current = child
+        return current
+    except BaseException:
+        os.close(current)
+        raise
+
+
+def _read_archive_fd(descriptor):
+    """Read an opened regular ledger without changing or reserializing event bytes."""
+    os.lseek(descriptor, 0, os.SEEK_SET)
+    chunks = []
+    while True:
+        chunk = os.read(descriptor, 65536)
+        if not chunk:
+            return b"".join(chunks)
+        chunks.append(chunk)
+
+
+def _rename_noreplace(source_dir, name, destination_dir):
+    """Atomically move one directory entry without overwriting any destination.
+
+    Linux renameat2 is required: a copy/delete or overwrite-capable fallback
+    would reintroduce the pathname deletion race this operation must avoid.
+    """
+    import ctypes
+    if not sys.platform.startswith("linux"):
+        raise LedgerError("private archival requires Linux no-overwrite atomic rename")
+    library = ctypes.CDLL(None, use_errno=True)
+    try:
+        rename = library.renameat2
+    except AttributeError as exc:
+        raise LedgerError("private archival requires renameat2 support") from exc
+    rename.argtypes = (ctypes.c_int, ctypes.c_char_p, ctypes.c_int, ctypes.c_char_p, ctypes.c_uint)
+    rename.restype = ctypes.c_int
+    encoded = os.fsencode(name)
+    if rename(source_dir, encoded, destination_dir, encoded, 1) != 0:
+        error = ctypes.get_errno()
+        raise OSError(error, os.strerror(error))
+
+
+def cmd_archive_private(a):
+    """Archive a COMPLETE ledger intact within the current workspace's private inbox.
+
+    Args:
+        a: CLI namespace with ledger and exclusive_maintenance. The caller must
+            explicitly confirm that all other workspace ledger writers are stopped.
+    Returns:
+        Zero after preserving the exact validated bytes in INBOX/private-audit and
+        removing the original directory entry. No event or authority state is changed.
+    Raises:
+        LedgerError: For invalid, active, corrupt, symlinked or out-of-workspace inputs,
+            destination collisions, missing maintenance confirmation, unsupported
+            no-follow/atomic-rename operations or filesystem failures. Cross-filesystem
+            moves fail without fallback. A failed preflight leaves the source unchanged.
+
+    An advisory directory lock serializes cooperating archival commands. It does not
+    prevent an uncooperative same-user process from renaming files. No pathname is
+    unlinked: a changed entry is restored by another no-overwrite atomic rename. If
+    concurrent writers prevent restoration, both entries remain intact and the command
+    reports a maintenance violation for the operator to reconcile.
+    """
+    if not getattr(a, "exclusive_maintenance", False):
+        raise LedgerError("stop other workspace ledger writers and confirm --exclusive-maintenance")
+    source = Path(path(a.ledger))
+    workspace = Path.cwd()
+    if ".." in source.parts:
+        raise LedgerError("archive paths must not contain traversal components")
+    source = Path(os.path.abspath(source))
+    try:
+        relative = source.relative_to(workspace)
+    except ValueError as exc:
+        raise LedgerError("private archival source must be inside the current workspace") from exc
+    if not hasattr(os, "O_NOFOLLOW") or not hasattr(os, "O_DIRECTORY"):
+        raise LedgerError("private archival requires no-follow directory and file handles")
+    root_fd = source_dir = source_fd = archive_dir = archived_fd = None
+    moved = False
+    identity = None
+    try:
+        root_fd = os.open(workspace, os.O_RDONLY | os.O_DIRECTORY | os.O_NOFOLLOW)
+        source_dir = _directory_fd(root_fd, relative.parts[:-1])
+        import fcntl
+        fcntl.flock(source_dir, fcntl.LOCK_EX | fcntl.LOCK_NB)
+        source_fd = os.open(relative.name, os.O_RDONLY | os.O_NOFOLLOW, dir_fd=source_dir)
+        original_stat = os.fstat(source_fd)
+        if not stat.S_ISREG(original_stat.st_mode) or original_stat.st_nlink != 1:
+            raise LedgerError("private archival requires a regular, singly linked source ledger")
+        identity = (original_stat.st_dev, original_stat.st_ino)
+        original = _read_archive_fd(source_fd)
+        events = _parse_events(original, a.ledger)
+        if not events:
+            raise LedgerError("an empty ledger cannot be archived as COMPLETE")
+        try:
+            blocking, _ = summary(state(events))
+        except (KeyError, TypeError, ValueError) as exc:
+            raise LedgerError("ledger state is invalid") from exc
+        if blocking:
+            raise LedgerError("only a COMPLETE ledger may be archived")
+        archive_dir = _directory_fd(root_fd, ("INBOX", "private-audit"), create=True)
+        source_directory_stat = os.fstat(source_dir)
+        archive_directory_stat = os.fstat(archive_dir)
+        if ((source_directory_stat.st_dev, source_directory_stat.st_ino)
+                == (archive_directory_stat.st_dev, archive_directory_stat.st_ino)):
+            raise LedgerError("ledger is already in the private archive")
+        current = os.stat(relative.name, dir_fd=source_dir, follow_symlinks=False)
+        if (current.st_dev, current.st_ino) != identity or _read_archive_fd(source_fd) != original:
+            raise LedgerError("ledger changed during archival preflight")
+        _rename_noreplace(source_dir, relative.name, archive_dir)
+        moved = True
+        archived_fd = os.open(relative.name, os.O_RDONLY | os.O_NOFOLLOW, dir_fd=archive_dir)
+        archived_stat = os.fstat(archived_fd)
+        archived = _read_archive_fd(archived_fd)
+        if ((archived_stat.st_dev, archived_stat.st_ino) != identity or archived != original
+                or _parse_events(archived, a.ledger) != events):
+            raise LedgerError("archived ledger failed byte identity or hash-chain verification")
+        if _read_archive_fd(source_fd) != original:
+            raise LedgerError("ledger changed before archival completion")
+        os.fsync(archive_dir)
+        os.fsync(source_dir)
+        moved = False
+    except (OSError, ValueError) as exc:
+        raise LedgerError("private archival failed; no overwrite or copy/delete fallback was attempted") from exc
+    finally:
+        restoration_failed = False
+        if moved and archive_dir is not None:
+            try:
+                _rename_noreplace(archive_dir, relative.name, source_dir)
+                os.fsync(source_dir)
+                os.fsync(archive_dir)
+            except (OSError, LedgerError):
+                restoration_failed = True
+        for descriptor in (archived_fd, archive_dir, source_fd, source_dir, root_fd):
+            if descriptor is not None:
+                os.close(descriptor)
+        if restoration_failed:
+            raise LedgerError("maintenance violation: verification failed and restoration collided or failed; preserve and reconcile both source and archive entries")
+    print(f"archived COMPLETE ledger {a.ledger} intact to INBOX/private-audit/{relative.name}")
+    return 0
+
+
 # ------------------------------------------------------------------------------------- selftest
 def cmd_selftest(a):
     global HOME
@@ -359,6 +535,9 @@ def main():
     p = sp.add_parser("accept-risk"); p.add_argument("ledger"); p.add_argument("id")
     p.add_argument("--by", required=True); p.add_argument("--rationale", required=True)
     p.add_argument("--expires", type=float, required=True); p.set_defaults(fn=cmd_accept)
+    p = sp.add_parser("archive-private"); p.add_argument("ledger")
+    p.add_argument("--exclusive-maintenance", action="store_true", help="confirm all other workspace ledger writers are stopped")
+    p.set_defaults(fn=cmd_archive_private)
     for name, fn in (("status", cmd_status), ("report", cmd_report)):
         p = sp.add_parser(name); p.add_argument("ledger"); p.set_defaults(fn=fn)
     sp.add_parser("selftest").set_defaults(fn=cmd_selftest)
