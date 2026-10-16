@@ -175,10 +175,3 @@ The paper's Prolog listings are a restricted symbolic model and orchestration sp
 ## Enforcement boundary
 
 Fabric controls are meaningful only on paths that actually use them. Direct role/workflow invocation remains available outside a layered engagement. Deployments that require every consequential task to be Fabric-supervised must enforce that entry-routing rule separately.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../artifacts-publication/"><small>← Previous · Capabilities</small><strong>Publication and visual QA</strong></a>
-  <a class="ai-next" href="../layered-runtime/"><small>Next · Capabilities →</small><strong>Layered runtime and assurance model</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

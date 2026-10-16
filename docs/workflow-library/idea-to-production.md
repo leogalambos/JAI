@@ -123,9 +123,3 @@ A practical prompt pattern is:
 ## Operational interpretation
 
 The workflow is most useful when the team keeps each hand-over explicit. The system can help generate or review the artefacts, but the accountable role and approval decision remain organisational responsibilities.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../../using/demo-estate/"><small>← Previous · Using the system</small><strong>Learning with the demo estate</strong></a>
-  <a class="ai-next" href="../new-service-onboarding/"><small>Next · Workflow library →</small><strong>New service onboarding</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

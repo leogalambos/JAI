@@ -1,0 +1,190 @@
+{
+  "version": "1",
+  "domain_id": "quality-and-testing",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "test-analyst",
+      "name": "Test Analyst",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-quality-and-testing",
+      "path": "skills/it-roles-quality-and-testing/references/test-analyst.md",
+      "deliverables": [
+        "Test conditions and cases",
+        "executed test evidence",
+        "defect reports with business impact",
+        "test completion summary"
+      ],
+      "aliases": [
+        "QA Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "test-automation-engineer",
+      "name": "Test Automation Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-quality-and-testing",
+      "path": "skills/it-roles-quality-and-testing/references/test-automation-engineer.md",
+      "deliverables": [
+        "Automated test suites",
+        "test framework and page or service abstractions",
+        "flakiness and reliability report",
+        "coverage-against-risk analysis"
+      ],
+      "aliases": [
+        "SDET"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "performance-test-engineer",
+      "name": "Performance Test Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-quality-and-testing",
+      "path": "skills/it-roles-quality-and-testing/references/performance-test-engineer.md",
+      "deliverables": [
+        "Performance test strategy and workload model",
+        "load and stress test results with bottleneck analysis",
+        "capacity recommendations",
+        "performance regression baselines"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "test-manager",
+      "name": "Test Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-quality-and-testing",
+      "path": "skills/it-roles-quality-and-testing/references/test-manager.md",
+      "deliverables": [
+        "Test strategy and plan",
+        "test progress and coverage reporting",
+        "residual risk statement for release",
+        "test capability and tooling plan"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "test-architect",
+      "name": "Test Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-quality-and-testing",
+      "path": "skills/it-roles-quality-and-testing/references/test-architect.md",
+      "deliverables": [
+        "Enterprise test architecture",
+        "environment and test data strategy",
+        "tooling standards and integration design",
+        "quality metric framework"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "user-acceptance-test-coordinator",
+      "name": "User Acceptance Test Coordinator",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-quality-and-testing",
+      "path": "skills/it-roles-quality-and-testing/references/user-acceptance-test-coordinator.md",
+      "deliverables": [
+        "UAT plan and participant schedule",
+        "business scenario scripts",
+        "UAT defect triage record",
+        "business acceptance recommendation"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "accessibility-tester",
+      "name": "Accessibility Tester",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-quality-and-testing",
+      "path": "skills/it-roles-quality-and-testing/references/accessibility-tester.md",
+      "deliverables": [
+        "Accessibility conformance evaluation",
+        "assistive technology test evidence",
+        "prioritised remediation list",
+        "accessibility statement input"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "localisation-qa-analyst",
+      "name": "Localisation QA Analyst",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-quality-and-testing",
+      "path": "skills/it-roles-quality-and-testing/references/localisation-qa-analyst.md",
+      "deliverables": [
+        "Locale test results",
+        "linguistic and truncation defect reports",
+        "locale coverage matrix",
+        "internationalisation defect analysis"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "chaos-and-resilience-engineer",
+      "name": "Chaos and Resilience Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-quality-and-testing",
+      "path": "skills/it-roles-quality-and-testing/references/chaos-and-resilience-engineer.md",
+      "deliverables": [
+        "Failure hypothesis and experiment design",
+        "game day plan and results",
+        "resilience gap findings",
+        "steady-state and blast-radius definitions"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "codebase-reviewer",
+      "name": "Codebase Reviewer",
+      "tier": "inspect",
+      "operator": "codebase-reviewer",
+      "skill": "it-roles-quality-and-testing",
+      "path": "skills/it-roles-quality-and-testing/references/codebase-reviewer.md",
+      "deliverables": [
+        "Codebase review report with prioritised findings",
+        "architecture conformance and coupling analysis",
+        "test coverage and risk gap assessment",
+        "dependency and supply chain exposure register"
+      ],
+      "aliases": [
+        "Code Auditor",
+        "Technical Due Diligence Reviewer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "release-quality-gatekeeper",
+      "name": "Release Quality Gatekeeper",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-quality-and-testing",
+      "path": "skills/it-roles-quality-and-testing/references/release-quality-gatekeeper.md",
+      "deliverables": [
+        "Release evidence pack",
+        "gate decision record",
+        "deviation and waiver register",
+        "regulatory traceability matrix"
+      ],
+      "aliases": [],
+      "guard": null
+    }
+  ]
+}

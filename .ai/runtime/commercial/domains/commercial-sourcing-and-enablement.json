@@ -1,0 +1,340 @@
+{
+  "version": "1",
+  "domain_id": "commercial-sourcing-and-enablement",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "it-procurement-specialist",
+      "name": "IT Procurement Specialist",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/it-procurement-specialist.md",
+      "deliverables": [
+        "Requirements and tender documentation",
+        "supplier evaluation and scoring records",
+        "commercial recommendation",
+        "negotiated terms summary"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "vendor-manager",
+      "name": "Vendor Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/vendor-manager.md",
+      "deliverables": [
+        "Supplier performance reviews and scorecards",
+        "relationship and governance cadence",
+        "issue and escalation records",
+        "renewal and value assessments"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "contract-manager",
+      "name": "Contract Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/contract-manager.md",
+      "deliverables": [
+        "Contract repository and obligation register",
+        "variation and change records",
+        "obligation compliance monitoring",
+        "dispute and remedy records"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "software-licence-compliance-specialist",
+      "name": "Software Licence Compliance Specialist",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/software-licence-compliance-specialist.md",
+      "deliverables": [
+        "Licence rule interpretation notes",
+        "compliance gap analysis",
+        "audit defence evidence pack",
+        "licensing risk register"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "pre-sales-solution-consultant",
+      "name": "Pre-Sales Solution Consultant",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/pre-sales-solution-consultant.md",
+      "deliverables": [
+        "Solution proposals and demonstration environments",
+        "technical responses to tenders",
+        "proof of concept plans and results",
+        "feasibility and dependency assessments"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "sales-engineer",
+      "name": "Sales Engineer",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/sales-engineer.md",
+      "deliverables": [
+        "Technical qualification assessments",
+        "integration and architecture answers",
+        "pilot configurations",
+        "technical objection responses"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "customer-success-engineer",
+      "name": "Customer Success Engineer",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/customer-success-engineer.md",
+      "deliverables": [
+        "Customer health assessments",
+        "adoption and value realisation plans",
+        "technical escalation coordination",
+        "renewal risk reporting"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "implementation-consultant",
+      "name": "Implementation Consultant",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/implementation-consultant.md",
+      "deliverables": [
+        "Implementation plan and configuration design",
+        "data migration and cutover plan",
+        "configuration and handover documentation",
+        "post-implementation review"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "technical-account-manager",
+      "name": "Technical Account Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/technical-account-manager.md",
+      "deliverables": [
+        "Account technical plan",
+        "escalation management records",
+        "proactive risk and upgrade advisories",
+        "quarterly technical review packs"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "technical-writer",
+      "name": "Technical Writer",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/technical-writer.md",
+      "deliverables": [
+        "Product and API documentation",
+        "task-based guides and tutorials",
+        "release notes",
+        "documentation information architecture"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "developer-advocate",
+      "name": "Developer Advocate",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/developer-advocate.md",
+      "deliverables": [
+        "Sample applications and reference implementations",
+        "technical content and talks",
+        "developer feedback synthesis",
+        "developer experience improvement proposals"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "it-trainer",
+      "name": "IT Trainer",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/it-trainer.md",
+      "deliverables": [
+        "Training needs analysis",
+        "course materials and exercises",
+        "delivery schedule and attendance records",
+        "competence assessment and follow-up results"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "technical-recruiter",
+      "name": "Technical Recruiter",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/technical-recruiter.md",
+      "deliverables": [
+        "Role definition and competency profile",
+        "sourcing strategy and pipeline",
+        "structured interview scorecards",
+        "offer and market rate analysis"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "resource-manager",
+      "name": "Resource Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/resource-manager.md",
+      "deliverables": [
+        "Resource supply and demand plan",
+        "allocation and utilisation reporting",
+        "skills inventory and gap analysis",
+        "contractor and partner sourcing plan"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "it-financial-management-tbm-manager",
+      "name": "IT Financial Management / TBM Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/it-financial-management-tbm-manager.md",
+      "deliverables": [
+        "IT financial and TBM cost model",
+        "Technology TCO and investment business case",
+        "Service and portfolio unit-economics dashboard",
+        "Financial variance and optimisation decision paper"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "bid-proposal-manager",
+      "name": "Bid / Proposal Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/bid-proposal-manager.md",
+      "deliverables": [
+        "Bid qualification and response plan",
+        "Proposal compliance and clarification matrix",
+        "Controlled client proposal and internal bid dossier",
+        "Bid-to-delivery handover record"
+      ],
+      "aliases": [
+        "Bid Manager",
+        "Proposal Manager",
+        "Tender Manager"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "commercial-pricing-deal-finance-specialist",
+      "name": "Commercial Pricing / Deal Finance Specialist",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/commercial-pricing-deal-finance-specialist.md",
+      "deliverables": [
+        "Deal financial and cash-flow model",
+        "Pricing and commercial trade-off recommendation",
+        "Deal baseline and variance review"
+      ],
+      "aliases": [
+        "Deal Finance Specialist",
+        "Commercial Pricing Specialist",
+        "Pricing Analyst"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "estimation-cost-engineering-specialist",
+      "name": "Estimation / Cost Engineering Specialist",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/estimation-cost-engineering-specialist.md",
+      "deliverables": [
+        "Basis of estimate and work/cost breakdown",
+        "Estimate uncertainty and discovery plan",
+        "Estimate calibration and forecast-at-completion report"
+      ],
+      "aliases": [
+        "Cost Estimator",
+        "Effort Estimation Specialist",
+        "Cost Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "independent-commercial-assurance-reviewer",
+      "name": "Independent Commercial Assurance Reviewer",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/independent-commercial-assurance-reviewer.md",
+      "deliverables": [
+        "Independent commercial assurance plan and findings",
+        "Rework verification and commercial assurance opinion"
+      ],
+      "aliases": [
+        "Commercial Assurance Reviewer",
+        "Independent Bid Reviewer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "supplier-commercial-deal-manager",
+      "name": "Supplier Commercial / Deal Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/supplier-commercial-deal-manager.md",
+      "deliverables": [
+        "Supplier commercial strategy and negotiation brief",
+        "Commercial commitments and lifecycle obligation baseline",
+        "Deal performance, change and renewal/exit recommendation"
+      ],
+      "aliases": [
+        "Supplier Commercial Manager",
+        "Deal Manager"
+      ],
+      "guard": null
+    }
+  ]
+}

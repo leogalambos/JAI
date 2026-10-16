@@ -1,5 +1,9 @@
 # Running a layered justifiable engagement
 
+Owner: JAI maintainers · Last reviewed: 2026-10-16
+
+First choose the assurance boundary using [the methodical workflow guide](methodical-workflows.md). `/layered` can govern creation with an explicitly named domain such as `sabsa-library` or `commercial-delivery`, or justify a new decision using an existing domain model as evidence. A later decision does not retroactively establish the model's creation history. Standalone domain workflows remain valid for their own scope.
+
 Use a layered engagement when the output is consequential: somebody may act on it, approve it, publish it, change a production system because of it, or later need to defend why it was allowed.
 
 The high-level entry point in Claude Code is:
@@ -16,7 +20,7 @@ The runtime then uses six JAI responsibility layers plus the external L0 Human A
   <img src="../../assets/diagrams/layered-runtime-cycle.svg" alt="Requirements descend through the JAI layers while evidence, review and escalation ascend to human authority">
 </div>
 
-## Operator journey: the only normal CLI entry point
+## Operator journey: starting a layered engagement
 
 Start **inside the target workspace** (the Fabric lives under that workspace unless `FABRIC_HOME` is configured). You do not initialise `.fabric/`, call `fabric.py`, construct JSON contracts or invoke L1–L6 agents yourself.
 
@@ -59,7 +63,7 @@ After the engagement, ask for the assurance record:
 
 Ask the assistant to report **engagement ID, artefact/fragment IDs, failing or accepted gates, evidence references, open conflicts, pending human authority acts and release eligibility**. The report must not conceal uncertainty or present an unaccepted draft as a released product. Use [the installed CLI guide](../reference/installed-cli-guide.md) for general provider syntax and [Human authority](../operations/human-authority.md) for the exceptional human-only operation.
 
-**Execution boundary:** `/layered` and `$workflow-layered` are **agent-orchestrated** capabilities. They instruct the provider to call the runtime tools; they are not a guarantee that a tool actually ran. If the provider cannot call an agent, collect evidence or obtain approval, the process must stop at the relevant gate and report why. Organisation-wide automatic routing of *every* consequential request into the layered path is not enforced by 26.10.4; deployments requiring that must apply an entry policy/control.
+**Execution boundary:** `/layered` and `$workflow-layered` are **agent-orchestrated** capabilities. They instruct the provider to call the runtime tools; they are not a guarantee that a tool actually ran. If the provider cannot call an agent, collect evidence or obtain approval, the process must stop at the relevant gate and report why. Organisation-wide automatic routing of *every* consequential request into the layered path is not enforced by the current release; deployments requiring that must apply an entry policy/control.
 
 ## Behind the scenes: implementation and diagnostic trace
 
@@ -109,7 +113,7 @@ The production/evidence split is deliberate:
 - **L5 Realisation and Tooling** can create or modify implementation artefacts but does not run the evidence checks that prove its own work;
 - **L6 Execution and Evidence** performs permitted checks and captures observations but has no normal Write/Edit capability for the artefact being measured.
 
-This is a structural segregation-of-duties control, not merely different role names in prompts.
+This is the required segregation-of-duties design. Its actual strength depends on the host enforcing tool and workspace boundaries; different role names or prompt instructions alone do not prove isolation. Report which controls were tested for the deployed provider and which are unavailable or unverified.
 
 When L6 references an evidence file, `fabric.py` records its digest. Later evidence drift makes the dependent release ineligible until it is re-evaluated.
 
@@ -250,10 +254,3 @@ Therefore the accurate deployment statement is:
 > **AI IT House is layered-capable and strongly enforced once a layered engagement is opened; organisations that require layered-by-construction for every consequential task must add an entry-routing policy/control that makes `/layered` mandatory for those task classes.**
 
 Do not describe the presence of JAI metadata alone as proof that every possible invocation path passed through a supervised layered episode.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../interaction-model/"><small>← Previous · Using the system</small><strong>Interaction patterns</strong></a>
-  <a class="ai-next" href="../commands/"><small>Next · Using the system →</small><strong>Commands and direct tools</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

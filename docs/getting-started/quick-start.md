@@ -2,6 +2,8 @@
 
 This tour is intentionally practical. It shows how the system behaves in realistic work rather than only describing features.
 
+These are short exercises across the demo estate, not a single governed engagement. For a complete reader journey, continue to [How to use JAI](../examples/how-to-use-JAI/index.md): choose the assurance arrangement, then follow the security-assessment, Android-development or commercial-proposal case. A final `/layered` exercise here does not recreate a layered history for preceding exercises.
+
 **Run the examples inside your Claude Code or Codex CLI session** in the demo workspace; do not paste these into a system shell. Except where shown explicitly, examples below use the **Claude** `/command` notation; Codex uses the corresponding **`$workflow-command`** skill with the same intent. The provider agent is responsible for calling the internal Python helpers. Manual shell work is normally limited to installation/maintenance and the special Codex **L0 human-authority** action; see [the interaction model](../using/interaction-model.md).
 
 | User intent | Claude command | Codex skill |
@@ -113,9 +115,3 @@ Then request an independent report **in the same provider conversation** (not a 
 ```
 
 This is the fastest way to experience what makes the Justifiable Fabric different from a normal AI-generated recommendation. In Codex the corresponding call is `$workflow-fabric-report`. The report should cite actual engagement IDs, evidence and blockers; if a risk/authority escalation reaches L0, Codex cannot perform the guarded approval for you. A trusted human action may be required before the result becomes releasable.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../update-uninstall/"><small>← Previous · Getting started</small><strong>Update & uninstall</strong></a>
-  <a class="ai-next" href="../deployment-notes/"><small>Next · Getting started →</small><strong>Deployment notes</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

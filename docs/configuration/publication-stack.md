@@ -81,10 +81,3 @@ The separation is essential for detecting both content omission and post-render 
 ## Visual QA
 
 Render-based visual QA checks the visible result after rendering. It complements, rather than replaces, semantic review and ProjectionManifest coverage checks.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../policy/"><small>← Previous · Configuration</small><strong>Governance, policy & approvals</strong></a>
-  <a class="ai-next" href="../../using/interaction-model/"><small>Next · Using the system →</small><strong>Interaction patterns</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

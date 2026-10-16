@@ -107,10 +107,3 @@ intent
 ```
 
 See [Layered runtime and assurance model](../capabilities/layered-runtime.md) for detailed enforcement semantics.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../../getting-started/deployment-notes/"><small>← Previous · Getting started</small><strong>Deployment notes</strong></a>
-  <a class="ai-next" href="../models/"><small>Next · Configuration →</small><strong>Providers, models & reasoning effort</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

@@ -23,9 +23,3 @@ Two capabilities often stand out in practice: disciplined research and disciplin
 - produce a regression-proof fix contract.
 
 This is a materially stronger pattern than “guess a patch from the failing symptom”.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../layered-runtime/"><small>← Previous · Capabilities</small><strong>Layered runtime and assurance model</strong></a>
-  <a class="ai-next" href="../../examples/cloud-migration/"><small>Next · Examples →</small><strong>Regulated cloud migration</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

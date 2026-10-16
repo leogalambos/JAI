@@ -59,10 +59,3 @@ A valid ProjectionManifest can show that the audience artefact matches its requi
 ## Historical evidence can become unavailable
 
 Hashes preserve identity/integrity relationships, not deleted source content. Retention, privacy and evidence-access policy determine how much later reconstruction remains possible.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../release-migration/"><small>← Previous · Reference</small><strong>26.10.4 release and migration</strong></a>
-  <a class="ai-next" href="../glossary/"><small>Next · Reference →</small><strong>Glossary</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

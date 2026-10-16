@@ -1,0 +1,159 @@
+{
+  "version": "1",
+  "domain_id": "network-and-telecommunications",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "network-engineer",
+      "name": "Network Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-network-and-telecommunications",
+      "path": "skills/it-roles-network-and-telecommunications/references/network-engineer.md",
+      "deliverables": [
+        "Device configurations under version control",
+        "network change implementations",
+        "topology and addressing documentation",
+        "performance and fault analysis"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "network-administrator",
+      "name": "Network Administrator",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-network-and-telecommunications",
+      "path": "skills/it-roles-network-and-telecommunications/references/network-administrator.md",
+      "deliverables": [
+        "Device inventory and firmware currency records",
+        "configuration compliance reports",
+        "routine maintenance evidence",
+        "access and credential hygiene records"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "network-operations-centre-analyst",
+      "name": "Network Operations Centre Analyst",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-network-and-telecommunications",
+      "path": "skills/it-roles-network-and-telecommunications/references/network-operations-centre-analyst.md",
+      "deliverables": [
+        "Event triage records",
+        "incident tickets with impact assessment",
+        "shift handover reports",
+        "recurring fault analysis"
+      ],
+      "aliases": [
+        "NOC Analyst"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "wireless-and-rf-engineer",
+      "name": "Wireless and RF Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-network-and-telecommunications",
+      "path": "skills/it-roles-network-and-telecommunications/references/wireless-and-rf-engineer.md",
+      "deliverables": [
+        "Wireless site survey and heat maps",
+        "channel and power plan",
+        "wireless security configuration",
+        "post-deployment validation results"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "unified-communications-engineer",
+      "name": "Unified Communications Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-network-and-telecommunications",
+      "path": "skills/it-roles-network-and-telecommunications/references/unified-communications-engineer.md",
+      "deliverables": [
+        "Voice and collaboration platform configuration",
+        "dial plan and routing design",
+        "call quality analysis",
+        "emergency calling configuration and evidence"
+      ],
+      "aliases": [
+        "Telephony Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "sd-wan-and-edge-engineer",
+      "name": "SD-WAN and Edge Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-network-and-telecommunications",
+      "path": "skills/it-roles-network-and-telecommunications/references/sd-wan-and-edge-engineer.md",
+      "deliverables": [
+        "SD-WAN overlay design and policy configuration",
+        "site connectivity and failover design",
+        "application steering policy",
+        "edge security configuration"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "firewall-and-perimeter-engineer",
+      "name": "Firewall and Perimeter Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-network-and-telecommunications",
+      "path": "skills/it-roles-network-and-telecommunications/references/firewall-and-perimeter-engineer.md",
+      "deliverables": [
+        "Firewall rule base and change records",
+        "rule review and cleanup evidence",
+        "perimeter configuration baselines",
+        "policy exception register"
+      ],
+      "aliases": [
+        "Firewall Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "dns-dhcp-and-ipam-specialist",
+      "name": "DNS DHCP and IPAM Specialist",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-network-and-telecommunications",
+      "path": "skills/it-roles-network-and-telecommunications/references/dns-dhcp-and-ipam-specialist.md",
+      "deliverables": [
+        "DNS zone and record management records",
+        "DHCP scope and reservation configuration",
+        "IP address plan and allocations",
+        "resilience and failover configuration"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "network-field-technician",
+      "name": "Network Field Technician",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-network-and-telecommunications",
+      "path": "skills/it-roles-network-and-telecommunications/references/network-field-technician.md",
+      "deliverables": [
+        "Installation and patching records",
+        "cable labelling and documentation",
+        "site survey notes",
+        "fault rectification evidence"
+      ],
+      "aliases": [
+        "Cabling Technician"
+      ],
+      "guard": null
+    }
+  ]
+}

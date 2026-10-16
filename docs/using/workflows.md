@@ -1,6 +1,6 @@
 # Enterprise workflows
 
-The release contains **24 named workflows**. A workflow connects roles, stages, gates and outcomes.
+The enterprise library contains **24 named workflows**. A workflow connects roles, stages, gates and outcomes. Use this catalogue after choosing your assurance arrangement in [How to use JAI](../examples/how-to-use-JAI/index.md). The `/commercial` extension adds supplier-side coordination; it is distinct from these enterprise workflow chains and their buyer-side sourcing processes.
 
 | Workflow | Title | Steps | Intended outcome |
 | --- | --- | ---: | --- |
@@ -41,7 +41,7 @@ Use the migration-and-cutover workflow for our ERP replacement. First identify t
 
 **Human accountable roles:** supply evidence and decide on approval, risk acceptance, production change, legal obligations and other reserved business actions. Provider instructions and workflow metadata cannot substitute for those decisions.
 
-The 24 detailed pages in the [workflow library](../workflow-library/idea-to-production.md) specify steps, deliverables and gates. They describe **what the agent should coordinate** and **which human role remains accountable**; they are not 24 separate executable shell scripts.
+Use the grouped **Workflow library** in the navigation to open any of the 24 detailed chains. The pages specify **what the agent should coordinate** and **which human role remains accountable**; they are not 24 separate executable shell scripts. [Source to contract to service](../workflow-library/source-to-contract-to-service.md) and [Supplier onboarding](../workflow-library/supplier-onboarding.md) describe buyer-side obligations. Use [Commercial delivery](../capabilities/commercial-delivery.md) when you are the supplier preparing and delivering a proposal.
 
 ## How to use workflows
 
@@ -54,9 +54,3 @@ Ask explicitly for the workflow you want, or describe the situation so the syste
 ## Why workflows are better than ad-hoc prompts
 
 A role tells the system **who** is relevant. A workflow tells it **how** the work should move and **where** the governance gates are.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../roles/"><small>← Previous · Using the system</small><strong>Roles and disciplines</strong></a>
-  <a class="ai-next" href="../deliverables/"><small>Next · Using the system →</small><strong>Working with deliverables</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

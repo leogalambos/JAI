@@ -93,9 +93,3 @@ Not releasable until conflict is resolved/authorised and L1 acceptance is record
 ## Why this example matters
 
 A later reviewer can inspect how the outcome earned release eligibility instead of trusting a polished retrospective explanation.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../supplier-onboarding/"><small>← Previous · Examples</small><strong>Supplier onboarding</strong></a>
-  <a class="ai-next" href="../regulatory-change/"><small>Next · Examples →</small><strong>Regulatory change to assurance</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

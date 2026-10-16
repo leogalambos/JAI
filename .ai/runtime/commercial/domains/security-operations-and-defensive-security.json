@@ -1,0 +1,407 @@
+{
+  "version": "1",
+  "domain_id": "security-operations-and-defensive-security",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "security-analyst-tier-1",
+      "name": "Security Analyst Tier 1",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/security-analyst-tier-1.md",
+      "deliverables": [
+        "Alert triage records with verdict and rationale",
+        "escalation handovers",
+        "enrichment and initial scoping notes",
+        "detection feedback for tuning"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "security-analyst-tier-2",
+      "name": "Security Analyst Tier 2",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/security-analyst-tier-2.md",
+      "deliverables": [
+        "Investigation records with timeline and evidence",
+        "scoping assessment",
+        "containment actions taken",
+        "detection improvement requests"
+      ],
+      "aliases": [
+        "Security Analyst"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "security-analyst-tier-3",
+      "name": "Security Analyst Tier 3",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/security-analyst-tier-3.md",
+      "deliverables": [
+        "Complex investigation reports",
+        "hunting hypotheses derived from cases",
+        "analytical tradecraft guidance",
+        "detection and tooling gap assessments"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "soc-manager",
+      "name": "SOC Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/soc-manager.md",
+      "deliverables": [
+        "SOC operating model and shift plan",
+        "detection coverage assessment",
+        "response performance reporting",
+        "analyst development and retention plan"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "threat-hunter",
+      "name": "Threat Hunter",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/threat-hunter.md",
+      "deliverables": [
+        "Hunt hypotheses and methodology",
+        "hunt findings and negative results",
+        "new detection candidates",
+        "visibility gap findings"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "incident-responder",
+      "name": "Incident Responder",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/incident-responder.md",
+      "deliverables": [
+        "Incident response plan execution records",
+        "containment and eradication decisions",
+        "recovery verification evidence",
+        "incident report and lessons"
+      ],
+      "aliases": [
+        "CSIRT Member"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "digital-forensics-examiner",
+      "name": "Digital Forensics Examiner",
+      "tier": "inspect",
+      "operator": "codebase-reviewer",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/digital-forensics-examiner.md",
+      "deliverables": [
+        "Forensic acquisition records and hashes",
+        "examination findings report",
+        "chain of custody documentation",
+        "expert statement where required"
+      ],
+      "aliases": [
+        "DFIR Analyst"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "malware-analyst",
+      "name": "Malware Analyst",
+      "tier": "inspect",
+      "operator": "codebase-reviewer",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/malware-analyst.md",
+      "deliverables": [
+        "Static and dynamic analysis reports",
+        "indicators of compromise and detection signatures",
+        "capability and impact assessment",
+        "YARA rules and detection artefacts"
+      ],
+      "aliases": [
+        "Reverse Engineer (Malware)"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "threat-intelligence-analyst",
+      "name": "Threat Intelligence Analyst",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/threat-intelligence-analyst.md",
+      "deliverables": [
+        "Prioritised intelligence requirements",
+        "threat assessments and actor profiles",
+        "indicator and technique feeds with context",
+        "intelligence-driven recommendations"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "detection-engineer",
+      "name": "Detection Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/detection-engineer.md",
+      "deliverables": [
+        "Detection rules in version control",
+        "detection test cases and validation evidence",
+        "coverage mapping against ATT&CK",
+        "tuning and false-positive analysis"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "security-engineer",
+      "name": "Security Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/security-engineer.md",
+      "deliverables": [
+        "Security control implementations and configurations",
+        "control health and coverage monitoring",
+        "hardening baselines",
+        "security tooling integration"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "vulnerability-management-analyst",
+      "name": "Vulnerability Management Analyst",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/vulnerability-management-analyst.md",
+      "deliverables": [
+        "Vulnerability scan coverage and results",
+        "risk-based prioritisation and remediation targets",
+        "exception register",
+        "remediation performance reporting"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "cryptography-and-pki-engineer",
+      "name": "Cryptography and PKI Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/cryptography-and-pki-engineer.md",
+      "deliverables": [
+        "PKI architecture and certificate policy",
+        "key lifecycle and ceremony records",
+        "certificate inventory and expiry monitoring",
+        "cryptographic standard for the organisation"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "secrets-and-configuration-management-engineer",
+      "name": "Secrets and Configuration Management Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/secrets-and-configuration-management-engineer.md",
+      "deliverables": [
+        "Secret store architecture and access model",
+        "dynamic and short-lived credential issuance design",
+        "rotation and revocation procedures",
+        "repository, log and artefact secret scanning configuration"
+      ],
+      "aliases": [
+        "Secrets Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "identity-and-access-management-engineer",
+      "name": "Identity and Access Management Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/identity-and-access-management-engineer.md",
+      "deliverables": [
+        "Identity platform configuration",
+        "authentication and authorisation flows",
+        "joiner-mover-leaver automation",
+        "access model and role definitions"
+      ],
+      "aliases": [
+        "IAM Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "identity-governance-specialist",
+      "name": "Identity Governance Specialist",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/identity-governance-specialist.md",
+      "deliverables": [
+        "Access certification campaigns and results",
+        "role and entitlement model",
+        "segregation of duties rule set and violations",
+        "access risk reporting"
+      ],
+      "aliases": [
+        "IGA Specialist"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "privileged-access-management-administrator",
+      "name": "Privileged Access Management Administrator",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/privileged-access-management-administrator.md",
+      "deliverables": [
+        "Privileged account inventory and vaulting records",
+        "session recording and monitoring configuration",
+        "just-in-time access workflows",
+        "break-glass procedures and test evidence"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "cloud-security-engineer",
+      "name": "Cloud Security Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/cloud-security-engineer.md",
+      "deliverables": [
+        "Cloud security baselines and guardrails as code",
+        "posture management findings and remediation",
+        "identity and entitlement configuration",
+        "cloud detection coverage"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "application-security-engineer",
+      "name": "Application Security Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/application-security-engineer.md",
+      "deliverables": [
+        "Secure development standards and threat models",
+        "pipeline security testing configuration",
+        "finding triage and remediation guidance",
+        "security champion enablement material"
+      ],
+      "aliases": [
+        "Product Security Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "security-champion",
+      "name": "Security Champion",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/security-champion.md",
+      "deliverables": [
+        "Team-level threat model contributions",
+        "security review of designs and changes",
+        "security finding triage within the team",
+        "team security practice improvements"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "operational-technology-security-engineer",
+      "name": "Operational Technology Security Engineer",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/operational-technology-security-engineer.md",
+      "deliverables": [
+        "OT asset inventory and network diagrams",
+        "zone and conduit model",
+        "OT-specific monitoring and detection",
+        "compensating controls for unpatchable systems"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "security-awareness-and-training-manager",
+      "name": "Security Awareness and Training Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/security-awareness-and-training-manager.md",
+      "deliverables": [
+        "Awareness programme plan",
+        "simulation and exercise results",
+        "role-based training content",
+        "behaviour change measurement"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "insider-threat-analyst",
+      "name": "Insider Threat Analyst",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/insider-threat-analyst.md",
+      "deliverables": [
+        "Insider risk indicators and detection logic",
+        "case assessments with evidence",
+        "referral packages for HR or legal",
+        "programme governance documentation"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "purple-team-lead",
+      "name": "Purple Team Lead",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-security-operations-and-defensive-security",
+      "path": "skills/it-roles-security-operations-and-defensive-security/references/purple-team-lead.md",
+      "deliverables": [
+        "Technique execution plan mapped to ATT&CK",
+        "detection and response measurement results",
+        "prioritised detection gap remediation",
+        "repeatable assessment baseline"
+      ],
+      "aliases": [],
+      "guard": null
+    }
+  ]
+}

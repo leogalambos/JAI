@@ -99,9 +99,3 @@ Cutover blockers
 ## Why this example matters
 
 The value is the full chain from business drivers and architecture to cutover and operational evidence — not merely a cloud diagram.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../../capabilities/research-defect/"><small>← Previous · Capabilities</small><strong>Research and defect analysis</strong></a>
-  <a class="ai-next" href="../architecture-board/"><small>Next · Examples →</small><strong>Architecture Review Board pack</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

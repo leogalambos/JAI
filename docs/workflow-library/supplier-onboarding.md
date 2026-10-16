@@ -1,5 +1,7 @@
 # Supplier onboarding to exit
 
+**Perspective:** enterprise buyer managing a supplier. For supplier-side bid preparation, pricing and delivery monitoring, use [Commercial delivery](../capabilities/commercial-delivery.md). The two perspectives have different accountable owners even when they refer to the same contract.
+
 ## Trigger
 
 A technology supplier or SaaS product is being considered.
@@ -86,9 +88,3 @@ A practical prompt pattern is:
 ## Operational interpretation
 
 The workflow is most useful when the team keeps each hand-over explicit. The system can help generate or review the artefacts, but the accountable role and approval decision remain organisational responsibilities.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../ai-system-approval/"><small>← Previous · Workflow library</small><strong>AI system from idea to approved production use</strong></a>
-  <a class="ai-next" href="../business-case-to-benefits/"><small>Next · Workflow library →</small><strong>Business case to realised benefits</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

@@ -32,7 +32,7 @@ Also in scope:
 
 | Request | Route to |
 | --- | --- |
-| Commercial pricing decisions | **sales leadership** |
+| Selling-price and deal-finance preparation | **Commercial Pricing / Deal Finance Specialist**; final approval remains with delegated human sales/finance authority |
 | Delivery commitments | **Delivery Manager** |
 
 Taking on out-of-scope work is not helpfulness; it removes the second pair of eyes that the separation was designed to provide and leaves the real owner uninformed.
@@ -48,7 +48,7 @@ Taking on out-of-scope work is not helpfulness; it removes the second pair of ey
 
 **Do not activate when:**
 
-- The request is really about commercial pricing decisions — hand to **sales leadership**.
+- The request is about selling-price or deal-finance preparation — hand to **Commercial Pricing / Deal Finance Specialist**, retaining delegated human sales/finance approval.
 - The request is really about delivery commitments — hand to **Delivery Manager**.
 - The request needs a decision reserved to a named accountable owner; prepare the option set instead of deciding.
 

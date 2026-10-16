@@ -26,13 +26,14 @@ theme:
         icon: material/weather-sunny
         name: Switch to light mode
   font: false
+  # The homepage has a distinct header/sidebar layout. Full-page navigation
+  # ensures Material rebuilds those template regions when entering a guide.
   features:
-    - navigation.instant
-    - navigation.instant.prefetch
     - navigation.tracking
     - navigation.sections
     - navigation.indexes
     - navigation.top
+    - navigation.footer
     - content.code.copy
     - content.tabs.link
     - search.highlight
@@ -42,8 +43,8 @@ theme:
 plugins:
   - search
 
-# Resolve only the two explicit homepage CTA hrefs at MkDocs build time.
-# The buttons themselves remain in version-controlled docs/index.md.
+# Build the homepage navigation from the canonical nav below and expand
+# source-authored release CTA URLs. Material uses the same tree for page footers.
 hooks:
   - hooks/jai_repository_links.py
 
@@ -98,67 +99,82 @@ validation:
 
 nav:
   - Home: index.md
-  - Executive overview:
-      - Product overview: overview/product-overview.md
-      - What's new in 26.10.4: overview/release-26-10-4.md
-      - Coverage matrix: overview/coverage-matrix.md
-      - Delivery model: overview/delivery-model.md
-  - Getting started:
+  - Start here:
+      - Product orientation:
+          - Product overview: overview/product-overview.md
+          - What's new in 26.10.4: overview/release-26-10-4.md
+          - Coverage matrix: overview/coverage-matrix.md
+          - Delivery model: overview/delivery-model.md
       - Installation: getting-started/install.md
       - Sandbox prerequisites: getting-started/sandbox-prerequisites.md
-      - Update & uninstall: getting-started/update-uninstall.md
       - 20-minute quick start: getting-started/quick-start.md
-      - Deployment notes: getting-started/deployment-notes.md
-  - Configuration:
-      - System architecture: configuration/system-architecture.md
-      - Providers, models & reasoning effort: configuration/models.md
-      - Runtime paths & environment variables: configuration/runtime.md
-      - Governance, policy & approvals: configuration/policy.md
-      - Publication stack: configuration/publication-stack.md
-  - Using the system:
+      - Update & uninstall: getting-started/update-uninstall.md
+  - How to use JAI:
+      - How to use this guide: examples/how-to-use-JAI/index.md
+      - Choose your workflow: using/methodical-workflows.md
       - Interaction patterns: using/interaction-model.md
       - Layered justifiable engagement: using/layered-engagement.md
+      - Worked guides:
+          - Security assessment: examples/how-to-use-JAI/security-assessment.md
+          - Android development: examples/how-to-use-JAI/android-development.md
+          - Commercial proposals and delivery: capabilities/commercial-delivery.md
       - Commands and direct tools: using/commands.md
+      - Working with deliverables: using/deliverables.md
       - Roles and disciplines: using/roles.md
       - Enterprise workflows: using/workflows.md
-      - Working with deliverables: using/deliverables.md
       - Learning with the demo estate: using/demo-estate.md
+      - Concepts and demonstration tour: using/concepts-and-tour.md
   - Workflow library:
-      - Idea to production: workflow-library/idea-to-production.md
-      - New service onboarding: workflow-library/new-service-onboarding.md
-      - Production change: workflow-library/production-change.md
-      - Incident to permanent fix: workflow-library/incident-to-problem.md
-      - Vulnerability to remediation: workflow-library/vulnerability-to-remediation.md
-      - Inherited codebase takeover: workflow-library/codebase-takeover.md
-      - Access request to periodic review: workflow-library/access-request-to-review.md
-      - Data product delivery: workflow-library/data-product-delivery.md
-      - AI system from idea to approved production use: workflow-library/ai-system-approval.md
-      - Supplier onboarding to exit: workflow-library/supplier-onboarding.md
-      - Business case to realised benefits: workflow-library/business-case-to-benefits.md
-      - Design to operational readiness: workflow-library/design-to-operational-readiness.md
-      - Migration and cutover: workflow-library/migration-and-cutover.md
-      - Organisational change and adoption: workflow-library/organisational-change-and-adoption.md
-      - Semantic artefact to enterprise publication: workflow-library/semantic-to-enterprise-publication.md
-      - Architecture model to repository governance: workflow-library/architecture-model-to-repository-governance.md
-      - Service retirement and decommission: workflow-library/service-retirement-and-decommission.md
-      - Cyber incident / breach to recovery: workflow-library/cyber-incident-breach-to-recovery.md
-      - Resilience validation: workflow-library/resilience-validation.md
-      - Demand to portfolio to funding: workflow-library/demand-to-portfolio-to-funding.md
-      - Source to contract to service: workflow-library/source-to-contract-to-service.md
-      - SIAM / multi-supplier service integration: workflow-library/siam-multi-supplier.md
-      - Enterprise release orchestration: workflow-library/enterprise-release-orchestration.md
-      - Regulatory change to assurance: workflow-library/regulatory-change-to-assurance.md
+      - Plan, fund and source:
+          - Demand to portfolio to funding: workflow-library/demand-to-portfolio-to-funding.md
+          - Business case to realised benefits: workflow-library/business-case-to-benefits.md
+          - Source to contract to service: workflow-library/source-to-contract-to-service.md
+          - Supplier onboarding to exit: workflow-library/supplier-onboarding.md
+          - SIAM / multi-supplier service integration: workflow-library/siam-multi-supplier.md
+      - Build, change and deliver:
+          - Idea to production: workflow-library/idea-to-production.md
+          - New service onboarding: workflow-library/new-service-onboarding.md
+          - Production change: workflow-library/production-change.md
+          - Inherited codebase takeover: workflow-library/codebase-takeover.md
+          - Data product delivery: workflow-library/data-product-delivery.md
+          - AI system from idea to approved production use: workflow-library/ai-system-approval.md
+          - Design to operational readiness: workflow-library/design-to-operational-readiness.md
+          - Migration and cutover: workflow-library/migration-and-cutover.md
+          - Organisational change and adoption: workflow-library/organisational-change-and-adoption.md
+          - Semantic artefact to enterprise publication: workflow-library/semantic-to-enterprise-publication.md
+          - Enterprise release orchestration: workflow-library/enterprise-release-orchestration.md
+      - Operate and recover:
+          - Incident to permanent fix: workflow-library/incident-to-problem.md
+          - Vulnerability to remediation: workflow-library/vulnerability-to-remediation.md
+          - Cyber incident / breach to recovery: workflow-library/cyber-incident-breach-to-recovery.md
+          - Resilience validation: workflow-library/resilience-validation.md
+      - Assure, govern and retire:
+          - Access request to periodic review: workflow-library/access-request-to-review.md
+          - Architecture model to repository governance: workflow-library/architecture-model-to-repository-governance.md
+          - Service retirement and decommission: workflow-library/service-retirement-and-decommission.md
+          - Regulatory change to assurance: workflow-library/regulatory-change-to-assurance.md
   - Capabilities:
       - SABSA and enterprise architecture: capabilities/sabsa-ea.md
       - Publication and visual QA: capabilities/artifacts-publication.md
       - Justifiable Fabric: capabilities/justifiable-fabric.md
       - Layered runtime and assurance: capabilities/layered-runtime.md
       - Research and defect analysis: capabilities/research-defect.md
-  - Examples:
-      - How to use JAI:
-          - Learning guides: examples/how-to-use-JAI/index.md
-          - Security assessment: examples/how-to-use-JAI/security-assessment.md
-          - Android development: examples/how-to-use-JAI/android-development.md
+      - Commercial implementation status: capabilities/commercial-delivery-implementation.md
+  - Deployment and operations:
+      - Configure and deploy:
+          - System architecture: configuration/system-architecture.md
+          - Providers, models & reasoning effort: configuration/models.md
+          - Runtime paths & environment variables: configuration/runtime.md
+          - Governance, policy & approvals: configuration/policy.md
+          - Publication stack: configuration/publication-stack.md
+          - Deployment notes: getting-started/deployment-notes.md
+      - Operate and govern:
+          - Validation and release controls: operations/validation.md
+          - Human authority and escalation: operations/human-authority.md
+          - Operating controls: operations/operating-controls.md
+          - Troubleshooting: operations/troubleshooting.md
+          - Maintaining local policy: operations/local-policy.md
+  - Scenario reference:
       - Regulated cloud migration: examples/cloud-migration.md
       - Architecture Review Board pack: examples/architecture-board.md
       - Cyber incident to recovery: examples/cyber-incident.md
@@ -167,12 +183,6 @@ nav:
       - Justifiable consequential decision: examples/justifiable-decision.md
       - Regulatory change to assurance: examples/regulatory-change.md
       - Service introduction: examples/service-onboarding.md
-  - Operate and govern:
-      - Validation and release controls: operations/validation.md
-      - Human authority and escalation: operations/human-authority.md
-      - Operating controls: operations/operating-controls.md
-      - Troubleshooting: operations/troubleshooting.md
-      - Maintaining local policy: operations/local-policy.md
   - Reference:
       - Release inventory: reference/inventory.md
       - Workflow catalogue: reference/workflows.md
@@ -181,7 +191,6 @@ nav:
       - Complete installed CLI guide: reference/installed-cli-guide.md
       - Documentation authority and installed CLI help: runtime-reference/current-help.md
       - Product version and release tags: reference/versioning.md
-      - Concepts and demonstration tour: using/concepts-and-tour.md
       - Extended command walkthroughs: reference/command-walkthroughs.md
       - Detailed tool CLI reference: reference/runtime-tools-detailed.md
       - Paths and environment variables: reference/paths-env.md

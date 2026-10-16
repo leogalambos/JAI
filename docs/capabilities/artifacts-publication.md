@@ -109,10 +109,3 @@ Render-based visual QA complements semantic integrity by inspecting what a human
 - broken TOC/cross-references or required document controls.
 
 A visually correct artefact can still be semantically wrong; a semantically correct source can still be unusable when rendered. The gates remain separate for that reason.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../sabsa-ea/"><small>← Previous · Capabilities</small><strong>SABSA and enterprise architecture</strong></a>
-  <a class="ai-next" href="../justifiable-fabric/"><small>Next · Capabilities →</small><strong>Justifiable Fabric</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

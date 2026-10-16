@@ -84,9 +84,3 @@ or point `AI_HOUSE_MODEL_CONFIG` to an organisation-managed file.
 - user-created or untracked files are preserved;
 - locally modified managed files are preserved unless `--force` is explicit;
 - only recorded managed settings and hooks are removed.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../install/"><small>← Previous · Getting started</small><strong>Installation</strong></a>
-  <a class="ai-next" href="../quick-start/"><small>Next · Getting started →</small><strong>20-minute quick start</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

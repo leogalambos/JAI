@@ -1,6 +1,6 @@
 {
-  "version": "26.10.4",
-  "count": 281,
+  "version": "26.10.5",
+  "count": 286,
   "layout": "provider-neutral",
   "roles": [
     {
@@ -21507,11 +21507,12 @@
         ],
         "out_of_scope": [
           {
-            "request": "Commercial pricing decisions",
+            "request": "Selling-price and deal-finance preparation; final approval remains delegated human authority",
             "route_to": {
-              "name": "sales leadership",
-              "kind": "collective",
-              "note": "A team or client-side group, not a defined role in this library."
+              "name": "Commercial Pricing / Deal Finance Specialist",
+              "kind": "role",
+              "slug": "commercial-pricing-deal-finance-specialist",
+              "skill": "it-roles-commercial-sourcing-and-enablement"
             }
           },
           {
@@ -25613,6 +25614,33 @@
               "slug": "portfolio-manager",
               "skill": "it-roles-product-delivery-and-agile"
             }
+          },
+          {
+            "request": "Supplier selling price, margin, payment and deal cash-flow recommendations",
+            "route_to": {
+              "name": "Commercial Pricing / Deal Finance Specialist",
+              "kind": "role",
+              "slug": "commercial-pricing-deal-finance-specialist",
+              "skill": "it-roles-commercial-sourcing-and-enablement"
+            }
+          },
+          {
+            "request": "Work-content effort estimation, estimate uncertainty and calibration",
+            "route_to": {
+              "name": "Estimation / Cost Engineering Specialist",
+              "kind": "role",
+              "slug": "estimation-cost-engineering-specialist",
+              "skill": "it-roles-commercial-sourcing-and-enablement"
+            }
+          },
+          {
+            "request": "Supplier deal negotiation and post-award commercial exposure",
+            "route_to": {
+              "name": "Supplier Commercial / Deal Manager",
+              "kind": "role",
+              "slug": "supplier-commercial-deal-manager",
+              "skill": "it-roles-commercial-sourcing-and-enablement"
+            }
           }
         ]
       },
@@ -25830,6 +25858,443 @@
       "layer_agent": "l1-intent",
       "layer_operator": "l1-intent",
       "path": "skills/it-roles-architecture/references/application-portfolio-manager.md",
+      "jai": {
+        "primary_layer": 1,
+        "allowed_layers": [
+          1
+        ],
+        "authority_class": "manage",
+        "can_generate": true,
+        "can_review": false,
+        "can_approve": false
+      }
+    },
+    {
+      "name": "Bid / Proposal Manager",
+      "slug": "bid-proposal-manager",
+      "category": "Commercial, Sourcing and Enablement",
+      "category_index": 15,
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "archetype": "manage",
+      "archetype_label": "Practice ownership (management)",
+      "sfia_responsibility_band": "4-6",
+      "mission": "Own the supplier's evidence-based bid and proposal process from qualification through submission, clarification and controlled handover, so the offer is complete, responsive, deliverable and authorised.",
+      "primary_deliverables": [
+        "Bid qualification and response plan",
+        "Proposal compliance and clarification matrix",
+        "Controlled client proposal and internal bid dossier",
+        "Bid-to-delivery handover record"
+      ],
+      "reference_frameworks": [
+        "APMP Body of Knowledge and APMP professional practices: bid qualification, proposal development, compliance and review. Consult the current licensed/public materials; no APMP certification is implied.",
+        "Client procurement procedure and applicable procurement/competition law are authoritative; legal interpretation belongs to qualified counsel."
+      ],
+      "aliases": [
+        "Bid Manager",
+        "Proposal Manager",
+        "Tender Manager"
+      ],
+      "tool_tier": "author",
+      "allowed_tools": "Read, Grep, Glob, WebSearch, Write, Edit",
+      "links": {
+        "upstream": [
+          {
+            "name": "Delegated commercial and finance authority",
+            "kind": "external",
+            "note": "Named human owner of bid, price, signature and risk acceptance decisions."
+          }
+        ],
+        "downstream": [
+          {
+            "name": "Commercial Pricing / Deal Finance Specialist",
+            "kind": "role",
+            "slug": "commercial-pricing-deal-finance-specialist",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          },
+          {
+            "name": "Estimation / Cost Engineering Specialist",
+            "kind": "role",
+            "slug": "estimation-cost-engineering-specialist",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          },
+          {
+            "name": "Independent Commercial Assurance Reviewer",
+            "kind": "role",
+            "slug": "independent-commercial-assurance-reviewer",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          },
+          {
+            "name": "Supplier Commercial / Deal Manager",
+            "kind": "role",
+            "slug": "supplier-commercial-deal-manager",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          }
+        ],
+        "out_of_scope": [
+          {
+            "request": "Legal interpretation and signature",
+            "route_to": {
+              "name": "Qualified legal counsel and authorised human signatory",
+              "kind": "external"
+            }
+          }
+        ]
+      },
+      "operator_agent": "role-author",
+      "layer": 1,
+      "layer_name": "Intent and Context",
+      "layer_agent": "l1-intent",
+      "layer_operator": "l1-intent",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/bid-proposal-manager.md",
+      "jai": {
+        "primary_layer": 1,
+        "allowed_layers": [
+          1
+        ],
+        "authority_class": "manage",
+        "can_generate": true,
+        "can_review": false,
+        "can_approve": false
+      }
+    },
+    {
+      "name": "Commercial Pricing / Deal Finance Specialist",
+      "slug": "commercial-pricing-deal-finance-specialist",
+      "category": "Commercial, Sourcing and Enablement",
+      "category_index": 15,
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "archetype": "manage",
+      "archetype_label": "Practice ownership (management)",
+      "sfia_responsibility_band": "5-6",
+      "mission": "Develop defensible supplier selling-price and deal-finance recommendations that connect delivery cost, cash flow, commercial terms and uncertainty to authorised return and risk appetite over the full contract lifecycle.",
+      "primary_deliverables": [
+        "Deal financial and cash-flow model",
+        "Pricing and commercial trade-off recommendation",
+        "Deal baseline and variance review"
+      ],
+      "reference_frameworks": [
+        "GAO Cost Estimating and Assessment Guide, GAO-20-195G (2020): credible cost baselines, risk/sensitivity analysis and updates with actuals; adapted to supplier deals, not a claim of GAO certification.",
+        "IFRS 15 Revenue from Contracts with Customers, where applicable: route identification of performance obligations and revenue recognition to authorised accounting specialists.",
+        "Organisation treasury, tax, pricing, credit and accounting policies; IAS 21 for applicable currency accounting questions, with qualified finance review."
+      ],
+      "aliases": [
+        "Deal Finance Specialist",
+        "Commercial Pricing Specialist",
+        "Pricing Analyst"
+      ],
+      "tool_tier": "author",
+      "allowed_tools": "Read, Grep, Glob, WebSearch, Write, Edit",
+      "links": {
+        "upstream": [
+          {
+            "name": "Delegated commercial and finance authority",
+            "kind": "external",
+            "note": "Named human owner of bid, price, signature and risk acceptance decisions."
+          }
+        ],
+        "downstream": [
+          {
+            "name": "Bid / Proposal Manager",
+            "kind": "role",
+            "slug": "bid-proposal-manager",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          },
+          {
+            "name": "Estimation / Cost Engineering Specialist",
+            "kind": "role",
+            "slug": "estimation-cost-engineering-specialist",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          },
+          {
+            "name": "Independent Commercial Assurance Reviewer",
+            "kind": "role",
+            "slug": "independent-commercial-assurance-reviewer",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          },
+          {
+            "name": "Supplier Commercial / Deal Manager",
+            "kind": "role",
+            "slug": "supplier-commercial-deal-manager",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          }
+        ],
+        "out_of_scope": [
+          {
+            "request": "Legal interpretation and signature",
+            "route_to": {
+              "name": "Qualified legal counsel and authorised human signatory",
+              "kind": "external"
+            }
+          }
+        ]
+      },
+      "operator_agent": "role-author",
+      "layer": 1,
+      "layer_name": "Intent and Context",
+      "layer_agent": "l1-intent",
+      "layer_operator": "l1-intent",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/commercial-pricing-deal-finance-specialist.md",
+      "jai": {
+        "primary_layer": 1,
+        "allowed_layers": [
+          1
+        ],
+        "authority_class": "manage",
+        "can_generate": true,
+        "can_review": false,
+        "can_approve": false
+      }
+    },
+    {
+      "name": "Estimation / Cost Engineering Specialist",
+      "slug": "estimation-cost-engineering-specialist",
+      "category": "Commercial, Sourcing and Enablement",
+      "category_index": 15,
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "archetype": "manage",
+      "archetype_label": "Practice ownership (management)",
+      "sfia_responsibility_band": "4-6",
+      "mission": "Produce and maintain a reproducible basis of estimate for supplier work and lifecycle cost, with calibrated methods, explicit uncertainty and a learning loop from actual delivery rather than unsupported numerical precision.",
+      "primary_deliverables": [
+        "Basis of estimate and work/cost breakdown",
+        "Estimate uncertainty and discovery plan",
+        "Estimate calibration and forecast-at-completion report"
+      ],
+      "reference_frameworks": [
+        "GAO Cost Estimating and Assessment Guide, GAO-20-195G (2020), https://www.gao.gov/products/gao-20-195g: technical baseline, WBS, assumptions, data, methods, sensitivity/risk analysis, documentation and updates.",
+        "AACE International Total Cost Management Framework and relevant estimate-classification recommended practices: use only industry-appropriate versions. AACE 18R-97 is process-industry oriented and does not establish universal IS/IT accuracy percentages.",
+        "ISO/IEC/IEEE 15939 measurement-process concepts and organisation-approved software/service estimation practices; use only validated local parametric calibrations."
+      ],
+      "aliases": [
+        "Cost Estimator",
+        "Effort Estimation Specialist",
+        "Cost Engineer"
+      ],
+      "tool_tier": "author",
+      "allowed_tools": "Read, Grep, Glob, WebSearch, Write, Edit",
+      "links": {
+        "upstream": [
+          {
+            "name": "Delegated commercial and finance authority",
+            "kind": "external",
+            "note": "Named human owner of bid, price, signature and risk acceptance decisions."
+          }
+        ],
+        "downstream": [
+          {
+            "name": "Bid / Proposal Manager",
+            "kind": "role",
+            "slug": "bid-proposal-manager",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          },
+          {
+            "name": "Commercial Pricing / Deal Finance Specialist",
+            "kind": "role",
+            "slug": "commercial-pricing-deal-finance-specialist",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          },
+          {
+            "name": "Independent Commercial Assurance Reviewer",
+            "kind": "role",
+            "slug": "independent-commercial-assurance-reviewer",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          },
+          {
+            "name": "Supplier Commercial / Deal Manager",
+            "kind": "role",
+            "slug": "supplier-commercial-deal-manager",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          }
+        ],
+        "out_of_scope": [
+          {
+            "request": "Legal interpretation and signature",
+            "route_to": {
+              "name": "Qualified legal counsel and authorised human signatory",
+              "kind": "external"
+            }
+          }
+        ]
+      },
+      "operator_agent": "role-author",
+      "layer": 1,
+      "layer_name": "Intent and Context",
+      "layer_agent": "l1-intent",
+      "layer_operator": "l1-intent",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/estimation-cost-engineering-specialist.md",
+      "jai": {
+        "primary_layer": 1,
+        "allowed_layers": [
+          1
+        ],
+        "authority_class": "manage",
+        "can_generate": true,
+        "can_review": false,
+        "can_approve": false
+      }
+    },
+    {
+      "name": "Independent Commercial Assurance Reviewer",
+      "slug": "independent-commercial-assurance-reviewer",
+      "category": "Commercial, Sourcing and Enablement",
+      "category_index": 15,
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "archetype": "assure",
+      "archetype_label": "Assurance, risk and compliance",
+      "sfia_responsibility_band": "5-6",
+      "mission": "Independently challenge the evidence, completeness and consistency of supplier proposals, estimates, pricing and lifecycle commercial controls, reporting located findings without authoring the model or accepting management's risk.",
+      "primary_deliverables": [
+        "Independent commercial assurance plan and findings",
+        "Rework verification and commercial assurance opinion"
+      ],
+      "reference_frameworks": [
+        "GAO-20-195G cost-estimate credibility criteria, adapted to the engagement's estimate and price review.",
+        "The IIA Three Lines Model and relevant Global Internal Audit Standards independence/objectivity concepts: assurance positioning guidance, not a claim that this commercial review is a statutory/internal-audit engagement.",
+        "Organisation bid, finance, risk, evidence and segregation-of-duties policies; professional legal/accounting advice remains separately owned."
+      ],
+      "aliases": [
+        "Commercial Assurance Reviewer",
+        "Independent Bid Reviewer"
+      ],
+      "tool_tier": "advise",
+      "allowed_tools": "Read, Grep, Glob, WebSearch",
+      "links": {
+        "upstream": [
+          {
+            "name": "Delegated commercial and finance authority",
+            "kind": "external",
+            "note": "Named human owner of bid, price, signature and risk acceptance decisions."
+          }
+        ],
+        "downstream": [
+          {
+            "name": "Bid / Proposal Manager",
+            "kind": "role",
+            "slug": "bid-proposal-manager",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          },
+          {
+            "name": "Commercial Pricing / Deal Finance Specialist",
+            "kind": "role",
+            "slug": "commercial-pricing-deal-finance-specialist",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          },
+          {
+            "name": "Estimation / Cost Engineering Specialist",
+            "kind": "role",
+            "slug": "estimation-cost-engineering-specialist",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          },
+          {
+            "name": "Supplier Commercial / Deal Manager",
+            "kind": "role",
+            "slug": "supplier-commercial-deal-manager",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          }
+        ],
+        "out_of_scope": [
+          {
+            "request": "Legal interpretation and signature",
+            "route_to": {
+              "name": "Qualified legal counsel and authorised human signatory",
+              "kind": "external"
+            }
+          }
+        ]
+      },
+      "operator_agent": "role-advisor",
+      "layer": 3,
+      "layer_name": "Reasoning, Policy and Control",
+      "layer_agent": "l3-policy",
+      "layer_operator": "l3-policy",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/independent-commercial-assurance-reviewer.md",
+      "jai": {
+        "primary_layer": 3,
+        "allowed_layers": [
+          3
+        ],
+        "authority_class": "assure",
+        "can_generate": false,
+        "can_review": true,
+        "can_approve": false
+      }
+    },
+    {
+      "name": "Supplier Commercial / Deal Manager",
+      "slug": "supplier-commercial-deal-manager",
+      "category": "Commercial, Sourcing and Enablement",
+      "category_index": 15,
+      "skill": "it-roles-commercial-sourcing-and-enablement",
+      "archetype": "manage",
+      "archetype_label": "Practice ownership (management)",
+      "sfia_responsibility_band": "5-6",
+      "mission": "Own supplier-side commercial coherence across qualification, negotiation, contract handover, delivery change, service operation, renewal and exit, ensuring agreed commitments and economic risk remain aligned throughout the deal.",
+      "primary_deliverables": [
+        "Supplier commercial strategy and negotiation brief",
+        "Commercial commitments and lifecycle obligation baseline",
+        "Deal performance, change and renewal/exit recommendation"
+      ],
+      "reference_frameworks": [
+        "World Commerce & Contracting contract and commercial management lifecycle practices: lifecycle commercial coherence, obligations, negotiation and change; no certification claim.",
+        "ISO 44001 collaborative business relationship management concepts where applicable; collaboration does not displace contractual duties.",
+        "Applicable contract/procurement/competition law and organisation delegated-authority, accounting, pricing and risk policies, interpreted by accountable specialists."
+      ],
+      "aliases": [
+        "Supplier Commercial Manager",
+        "Deal Manager"
+      ],
+      "tool_tier": "author",
+      "allowed_tools": "Read, Grep, Glob, WebSearch, Write, Edit",
+      "links": {
+        "upstream": [
+          {
+            "name": "Delegated commercial and finance authority",
+            "kind": "external",
+            "note": "Named human owner of bid, price, signature and risk acceptance decisions."
+          }
+        ],
+        "downstream": [
+          {
+            "name": "Bid / Proposal Manager",
+            "kind": "role",
+            "slug": "bid-proposal-manager",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          },
+          {
+            "name": "Commercial Pricing / Deal Finance Specialist",
+            "kind": "role",
+            "slug": "commercial-pricing-deal-finance-specialist",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          },
+          {
+            "name": "Estimation / Cost Engineering Specialist",
+            "kind": "role",
+            "slug": "estimation-cost-engineering-specialist",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          },
+          {
+            "name": "Independent Commercial Assurance Reviewer",
+            "kind": "role",
+            "slug": "independent-commercial-assurance-reviewer",
+            "skill": "it-roles-commercial-sourcing-and-enablement"
+          }
+        ],
+        "out_of_scope": [
+          {
+            "request": "Legal interpretation and signature",
+            "route_to": {
+              "name": "Qualified legal counsel and authorised human signatory",
+              "kind": "external"
+            }
+          }
+        ]
+      },
+      "operator_agent": "role-author",
+      "layer": 1,
+      "layer_name": "Intent and Context",
+      "layer_agent": "l1-intent",
+      "layer_operator": "l1-intent",
+      "path": "skills/it-roles-commercial-sourcing-and-enablement/references/supplier-commercial-deal-manager.md",
       "jai": {
         "primary_layer": 1,
         "allowed_layers": [

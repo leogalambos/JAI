@@ -1,0 +1,344 @@
+{
+  "version": "1",
+  "domain_id": "service-management-and-support",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "service-desk-analyst",
+      "name": "Service Desk Analyst",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/service-desk-analyst.md",
+      "deliverables": [
+        "Incident and request records with accurate categorisation",
+        "first-line resolutions",
+        "user communications",
+        "knowledge article usage and feedback"
+      ],
+      "aliases": [
+        "First Line Support",
+        "Helpdesk Analyst"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "desktop-support-engineer",
+      "name": "Desktop Support Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/desktop-support-engineer.md",
+      "deliverables": [
+        "Second-line resolution records",
+        "device build and reimage evidence",
+        "hardware replacement records",
+        "recurring fault escalations"
+      ],
+      "aliases": [
+        "Second Line Support"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "application-support-analyst",
+      "name": "Application Support Analyst",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/application-support-analyst.md",
+      "deliverables": [
+        "Third-line diagnosis and resolution records",
+        "known error documentation",
+        "data fix requests with authorisation",
+        "application health reporting"
+      ],
+      "aliases": [
+        "Third Line Support"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "incident-manager",
+      "name": "Incident Manager",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/incident-manager.md",
+      "deliverables": [
+        "Incident records and timelines",
+        "major incident communications",
+        "incident review inputs",
+        "escalation and resolution decisions"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "major-incident-manager",
+      "name": "Major Incident Manager",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/major-incident-manager.md",
+      "deliverables": [
+        "Major incident command log",
+        "stakeholder and customer communications",
+        "recovery decision record",
+        "post-incident review pack"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "problem-manager",
+      "name": "Problem Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/problem-manager.md",
+      "deliverables": [
+        "Problem records with root cause analysis",
+        "known error database entries",
+        "permanent fix recommendations with owners",
+        "recurring incident trend analysis"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "change-manager",
+      "name": "Change Manager",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/change-manager.md",
+      "deliverables": [
+        "Change records and approval decisions",
+        "change schedule and blackout calendar",
+        "change success and failure analysis",
+        "change policy and risk model"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "request-fulfilment-manager",
+      "name": "Request Fulfilment Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/request-fulfilment-manager.md",
+      "deliverables": [
+        "Request catalogue and fulfilment workflows",
+        "entitlement and approval rules",
+        "fulfilment performance reporting",
+        "automation candidates list"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "service-level-manager",
+      "name": "Service Level Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/service-level-manager.md",
+      "deliverables": [
+        "Service level agreements and operational level agreements",
+        "service review packs",
+        "breach analysis and improvement plans",
+        "supplier service level alignment"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "service-catalogue-manager",
+      "name": "Service Catalogue Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/service-catalogue-manager.md",
+      "deliverables": [
+        "Service catalogue entries with owners and terms",
+        "request and service definitions",
+        "catalogue review and currency evidence",
+        "catalogue usability improvements"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "continual-improvement-manager",
+      "name": "Continual Improvement Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/continual-improvement-manager.md",
+      "deliverables": [
+        "Improvement register with business cases",
+        "measured improvement outcomes",
+        "maturity assessment results",
+        "improvement method and coaching materials"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "knowledge-manager",
+      "name": "Knowledge Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/knowledge-manager.md",
+      "deliverables": [
+        "Knowledge article standards and templates",
+        "knowledge base health and coverage reporting",
+        "article review and retirement process",
+        "knowledge capture workflow"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "configuration-manager",
+      "name": "Configuration Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/configuration-manager.md",
+      "deliverables": [
+        "Configuration management system model and policy",
+        "CMDB accuracy audit results",
+        "relationship and service mapping",
+        "data quality improvement plan"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "it-asset-manager",
+      "name": "IT Asset Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/it-asset-manager.md",
+      "deliverables": [
+        "Asset register and lifecycle records",
+        "asset financial and depreciation reporting",
+        "refresh and disposal plan",
+        "reconciliation findings"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "software-asset-manager",
+      "name": "Software Asset Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/software-asset-manager.md",
+      "deliverables": [
+        "Licence position statement (effective licence position)",
+        "entitlement records",
+        "compliance risk assessment",
+        "optimisation and true-up recommendations"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "end-user-computing-engineer",
+      "name": "End-User Computing Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/end-user-computing-engineer.md",
+      "deliverables": [
+        "Device images and configuration baselines",
+        "endpoint management policies",
+        "application packaging and deployment",
+        "compliance and patch reporting"
+      ],
+      "aliases": [
+        "Modern Device Engineer",
+        "Workplace Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "business-relationship-manager",
+      "name": "Business Relationship Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/business-relationship-manager.md",
+      "deliverables": [
+        "Relationship and engagement plan",
+        "demand pipeline for the business area",
+        "value and satisfaction reporting",
+        "joint improvement roadmap"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "service-transition-and-operational-readiness-manager",
+      "name": "Service Transition and Operational Readiness Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/service-transition-and-operational-readiness-manager.md",
+      "deliverables": [
+        "Operational readiness assessment",
+        "Service transition and handover plan",
+        "Operational acceptance criteria and evidence pack",
+        "Early-life support and service acceptance report"
+      ],
+      "aliases": [
+        "Operational Readiness Manager",
+        "Service Transition Manager"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "technology-lifecycle-and-decommission-manager",
+      "name": "Technology Lifecycle and Decommission Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/technology-lifecycle-and-decommission-manager.md",
+      "deliverables": [
+        "Technology lifecycle and decommission assessment",
+        "Dependency impact and retirement plan",
+        "Decommission acceptance and evidence record",
+        "Residual obligations and benefits closure report"
+      ],
+      "aliases": [
+        "Technology Lifecycle Manager",
+        "Decommission Manager",
+        "Service Retirement Manager"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "siam-manager",
+      "name": "SIAM Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-service-management-and-support",
+      "path": "skills/it-roles-service-management-and-support/references/siam-manager.md",
+      "deliverables": [
+        "SIAM operating model and service integration design",
+        "End-to-end SLA and OLA responsibility matrix",
+        "Multi-supplier governance and escalation decision paper",
+        "Multi-supplier service assurance report"
+      ],
+      "aliases": [],
+      "guard": null
+    }
+  ]
+}

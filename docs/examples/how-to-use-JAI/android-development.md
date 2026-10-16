@@ -9,6 +9,36 @@ Consider a fictional Android app that helps a user keep a personal check-in rout
 
 You will use JAI to connect those needs to security architecture, implement a bounded increment, review discrepancies and prepare an evidence-based release decision. This is an architecture-and-development exercise, not a complete Android coding course. The goal is to keep requirements, code and evidence consistent as the product changes.
 
+## Choose the assurance arrangement
+
+This case uses **domain work followed by a layered decision**, as explained in [the methodical workflow guide](../../using/methodical-workflows.md). Steps 1–6 establish and reconcile the architecture and one code increment using `/sabsa` and `/develop`. Step 7 explicitly uses `/layered` for a different question: whether a named candidate is ready for release. Step 8 publishes architecture views; publication does not replace the release decision.
+
+Unlike the [security-assessment case](security-assessment.md), which stops at assessment, this exercise includes a release-readiness question. That is why `/layered` appears later here. It is neither an omitted architecture command nor a universal final check for every SABSA activity. The domain workflows already require separate authors and reviewers; the layered decision adds contracts, upward review, bounded recovery and escalation for its own scope.
+
+If the creation process must itself have a six-layer history, choose this alternative **before** step 1:
+
+=== "Claude Code"
+
+    ```text
+    /layered Create the security architecture and realise the bounded consent
+    increment using sabsa-library and the development workflow. Preserve
+    adjacent contracts, independent author/reviewer roles and actual test
+    evidence. Reserve product claims, risk acceptance and release authority
+    for the named human owners.
+    ```
+
+=== "Codex"
+
+    ```text
+    $workflow-layered Create the security architecture and realise the bounded
+    consent increment using sabsa-library and the development workflow.
+    Preserve adjacent contracts, independent author/reviewer roles and actual
+    test evidence. Reserve product claims, risk acceptance and release
+    authority for the named human owners.
+    ```
+
+The orchestrator then uses the activities below as checkpoints inside that engagement. Do not start duplicate domain engagements. The default two-stage exercise below remains useful when its scope meets your assurance policy.
+
 ## Understand the workflows before you start
 
 The **SABSA workflow** establishes business drivers, measurable attributes, risks, objectives and security services, then maps them into physical mechanisms, components and operational assurance. Its architect authors the model and an independent reviewer checks suitability and provenance.
@@ -205,6 +235,8 @@ The reviewer identifies the discrepancy. The appropriate owner decides the inten
     ```
 
 ## 7. Prepare a bounded release decision
+
+This starts a decision scope against the exact candidate and architecture snapshot. It does not retrospectively establish L1–L6 contracts or reviews for steps 1–6. Require the orchestrator to identify those snapshots and report the new decision engagement ID before assessing readiness.
 
 A defensible architecture is one input to release readiness. The decision also needs a defined candidate, actual test and operational evidence, relevant conditions and an assessment of remaining exposure. Use layered delivery for that consequential judgement rather than treating the SABSA model as an automatic release verdict.
 

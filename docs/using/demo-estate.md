@@ -8,6 +8,8 @@ The demos are not marketing toys. They exercise the system's workflows against s
 
 ## Recommended sequence
 
+Treat the following as a tour of separate exercises, not one prescribed engagement history. In particular, a later `/layered` exercise does not retrospectively govern earlier `/sabsa` authoring. Choose the arrangement using [Methodical workflows](methodical-workflows.md); follow the [worked cases](../examples/how-to-use-JAI/index.md) for coherent end-to-end engagements. Use Claude slash commands below or the corresponding Codex `$workflow-<name>` skills in the provider conversation.
+
 1. `/demo setup`
 2. `/analyse invoice-service`
 3. `/criteria invoice-service`
@@ -27,9 +29,3 @@ Good results are typically characterised by:
 - concrete next actions;
 - professional deliverable structure;
 - clear statement of uncertainty when evidence is weak.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../deliverables/"><small>← Previous · Using the system</small><strong>Working with deliverables</strong></a>
-  <a class="ai-next" href="../../workflow-library/idea-to-production/"><small>Next · Workflow library →</small><strong>Idea to production</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

@@ -1,5 +1,7 @@
 # Source to contract to service
 
+**Perspective:** enterprise buyer. This chain selects, contracts and accepts a supplier/service. For the supplier's opportunity, proposal and delivery economics, use [Commercial delivery](../capabilities/commercial-delivery.md). Choose the required assurance arrangement using [Methodical workflows](../using/methodical-workflows.md).
+
 ## Trigger
 
 A capability may be sourced externally and must move from requirement/RFI/RFP through supplier selection and contract controls to implementation and accepted service.
@@ -109,9 +111,3 @@ A practical prompt pattern is:
 ## Operational interpretation
 
 The workflow is most useful when the team keeps each hand-over explicit. The system can help generate or review the artefacts, but the accountable role and approval decision remain organisational responsibilities.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../demand-to-portfolio-to-funding/"><small>← Previous · Workflow library</small><strong>Demand to portfolio to funding</strong></a>
-  <a class="ai-next" href="../siam-multi-supplier/"><small>Next · Workflow library →</small><strong>SIAM / multi-supplier service integration</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

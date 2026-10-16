@@ -81,10 +81,3 @@ release is still published with a SHA-256 checksum and embedded evidence;
 this does **not** constitute a cryptographically signed provenance claim.
 Protect `release@*` tags and use branch protection on `main`. GitHub Pages
 is public where permitted, so assess documentation classification.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../quick-start/"><small>← Previous · Getting started</small><strong>20-minute quick start</strong></a>
-  <a class="ai-next" href="../../configuration/system-architecture/"><small>Next · Configuration →</small><strong>System architecture</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

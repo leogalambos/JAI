@@ -92,9 +92,3 @@ Authority decisions required
 ## Why this example matters
 
 The workflow keeps evidence, containment, legal/privacy judgement, recovery and risk acceptance distinct even under incident pressure.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../architecture-board/"><small>← Previous · Examples</small><strong>Architecture Review Board pack</strong></a>
-  <a class="ai-next" href="../incident-diagnosis/"><small>Next · Examples →</small><strong>Intermittent production defect</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

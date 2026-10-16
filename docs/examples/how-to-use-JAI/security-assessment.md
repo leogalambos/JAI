@@ -9,6 +9,35 @@ Imagine that an organisation relies on a monitoring platform with privileged acc
 
 This fictional tutorial uses JAI's SABSA workflow to build that foundation. You will derive technology-independent requirements, develop a reference realisation, compare it with the observed deployment, and turn supported gaps into a transformation roadmap. The result is an assessable chain from business need to proposed change, with unresolved questions kept visible.
 
+## Choose the assurance arrangement
+
+This case uses the **direct domain workflow** from [the methodical workflow guide](../../using/methodical-workflows.md). The main sequence deliberately stops at a reviewed assessment, transformation roadmap and architecture-owner approval. It does not decide whether a system may be released, accept residual risk or authorise production changes. `/sabsa` is appropriate for that documented scope because it supplies domain authoring, independent review and verified rework without requiring a complete six-layer creation episode.
+
+The absence of `/layered` from the main sequence does not mean that review is optional. It means that the exercise does not claim a Fabric record of its creation process. This explains the tutorial's scope; it is not a claim about why an earlier author or provider chose particular commands.
+
+If your policy requires layered justification of **creation itself**, choose this alternative before step 1:
+
+=== "Claude Code"
+
+    ```text
+    /layered Create and independently review the monitoring-platform security
+    assessment using sabsa-library, PROJECT.md and the supplied evidence.
+    Preserve the distinction between reference design and observed deployment,
+    use adjacent contracts and keep owner decisions outside agent authority.
+    ```
+
+=== "Codex"
+
+    ```text
+    $workflow-layered Create and independently review the monitoring-platform
+    security assessment using sabsa-library, PROJECT.md and the supplied
+    evidence. Preserve the distinction between reference design and observed
+    deployment, use adjacent contracts and keep owner decisions outside agent
+    authority.
+    ```
+
+Under that arrangement the orchestrator carries out the domain activities below inside the layer contracts. Use them as checkpoints within the existing engagement; do not start a duplicate `/sabsa` engagement for each checkpoint. The [layered operating cycle](../../using/layered-engagement.md) describes the required evidence and recovery paths.
+
 ## Prepare the engagement
 
 Create `PROJECT.md` with the intended decision, systems in and out of scope, stakeholders, known constraints and available evidence. Identify the assessment owner and the permissions for using supplied material. Begin with documents and agreed read-only evidence; this tutorial does not authorise probing a live system.
@@ -314,6 +343,37 @@ After the human action, check whether the recorded snapshot still matches the mo
     approval matches the current semantic snapshot and report any changes
     requiring fresh review or approval.
     ```
+
+## Optional extension: justify a new decision
+
+The assessment can legitimately end here with unresolved funding or risk decisions. Architecture-owner approval records the owner's decision about an exact model snapshot; it is not permission to expose the service or implement the roadmap.
+
+If the next task is a consequential decision, use the reviewed assessment as input to a **new decision scope**. This extension is an additional teaching option, not evidence that the earlier domain work ran through Fabric:
+
+=== "Claude Code"
+
+    ```text
+    /layered Assess whether the reviewed monitoring-platform assessment
+    snapshot <reference and digest> supports the proposed transformation
+    commitment. Use sabsa-library and the actual deployment evidence;
+    independently examine gaps, uncertainty, implementation dependencies and
+    acceptance conditions. Escalate funding and risk acceptance to the human
+    owner. Do not authorise implementation or invent earlier creation records.
+    ```
+
+=== "Codex"
+
+    ```text
+    $workflow-layered Assess whether the reviewed monitoring-platform
+    assessment snapshot <reference and digest> supports the proposed
+    transformation commitment. Use sabsa-library and the actual deployment
+    evidence; independently examine gaps, uncertainty, implementation
+    dependencies and acceptance conditions. Escalate funding and risk
+    acceptance to the human owner. Do not authorise implementation or invent
+    earlier creation records.
+    ```
+
+Request `/fabric-report <decision-engagement-ID>` in Claude or `$workflow-fabric-report <decision-engagement-ID>` in Codex afterwards. A blocked or conditional decision is a valid result. Missing supporting evidence must remain visible; later review cannot recreate an unrecorded creation history.
 
 ## Carry the result forward
 

@@ -136,10 +136,3 @@ an earlier release tree should be requalified after source changes.
 ## Supply-chain separation
 
 The release workflow builds a ZIP after A-H qualification and publishes it with a `.sha256` checksum. GitHub Actions produces a keyless OIDC-signed attestation where the repository plan supports it; otherwise release assets retain SHA-256 and embedded SBOM/digest provenance. No operator signature or secret signing key is needed.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../../examples/service-onboarding/"><small>← Previous · Examples</small><strong>Service introduction</strong></a>
-  <a class="ai-next" href="../human-authority/"><small>Next · Operate and govern →</small><strong>Human authority and escalation</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

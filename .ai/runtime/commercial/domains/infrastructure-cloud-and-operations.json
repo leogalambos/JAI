@@ -1,0 +1,350 @@
+{
+  "version": "1",
+  "domain_id": "infrastructure-cloud-and-operations",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "linux-systems-administrator",
+      "name": "Linux Systems Administrator",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/linux-systems-administrator.md",
+      "deliverables": [
+        "System build and hardening baselines",
+        "patch and vulnerability remediation evidence",
+        "backup and restore verification",
+        "operational runbooks"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "windows-systems-administrator",
+      "name": "Windows Systems Administrator",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/windows-systems-administrator.md",
+      "deliverables": [
+        "Server and group policy baselines",
+        "patching and update evidence",
+        "Active Directory health and configuration records",
+        "backup and recovery verification"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "cloud-engineer",
+      "name": "Cloud Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/cloud-engineer.md",
+      "deliverables": [
+        "Infrastructure-as-code modules",
+        "environment provisioning automation",
+        "cloud configuration baselines",
+        "cost and tagging compliance"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "cloud-operations-engineer",
+      "name": "Cloud Operations Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/cloud-operations-engineer.md",
+      "deliverables": [
+        "Cloud health and compliance reporting",
+        "incident and event response records",
+        "configuration drift remediation",
+        "operational cost anomalies"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "platform-engineer",
+      "name": "Platform Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/platform-engineer.md",
+      "deliverables": [
+        "Platform capabilities and golden paths",
+        "self-service provisioning interfaces",
+        "platform service levels and documentation",
+        "guardrails as code"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "devops-engineer",
+      "name": "DevOps Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/devops-engineer.md",
+      "deliverables": [
+        "CI/CD pipeline definitions",
+        "environment and deployment automation",
+        "configuration management code",
+        "deployment metrics and feedback loops"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "site-reliability-engineer",
+      "name": "Site Reliability Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/site-reliability-engineer.md",
+      "deliverables": [
+        "Service level objectives and error budget policy",
+        "reliability improvement backlog",
+        "incident response and postmortem records",
+        "toil reduction automation"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "kubernetes-platform-engineer",
+      "name": "Kubernetes Platform Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/kubernetes-platform-engineer.md",
+      "deliverables": [
+        "Cluster architecture and configuration as code",
+        "workload isolation and policy configuration",
+        "upgrade and lifecycle plan",
+        "platform runbooks"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "infrastructure-as-code-engineer",
+      "name": "Infrastructure as Code Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/infrastructure-as-code-engineer.md",
+      "deliverables": [
+        "Terraform or OpenTofu modules and root configurations",
+        "state and backend topology with locking",
+        "policy-as-code guardrails",
+        "drift detection and reconciliation reports"
+      ],
+      "aliases": [
+        "Cloud Automation Engineer",
+        "Terraform Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "container-platform-engineer",
+      "name": "Container Platform Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/container-platform-engineer.md",
+      "deliverables": [
+        "Base image catalogue and lifecycle policy",
+        "container build standards and multi-stage patterns",
+        "Compose stack definitions for development and integration",
+        "image signing, SBOM and registry promotion policy"
+      ],
+      "aliases": [
+        "Container Image Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "environment-manager",
+      "name": "Environment Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/environment-manager.md",
+      "deliverables": [
+        "Environment inventory, topology and ownership map",
+        "environment booking and refresh schedule",
+        "test data seeding and masking procedure",
+        "ephemeral environment provisioning standard"
+      ],
+      "aliases": [
+        "Test Environment Manager"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "virtualisation-engineer",
+      "name": "Virtualisation Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/virtualisation-engineer.md",
+      "deliverables": [
+        "Hypervisor configuration baselines",
+        "capacity and consolidation analysis",
+        "patch and upgrade plan",
+        "host resilience and failover evidence"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "storage-engineer",
+      "name": "Storage Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/storage-engineer.md",
+      "deliverables": [
+        "Storage architecture and tiering configuration",
+        "capacity and performance analysis",
+        "replication and snapshot configuration",
+        "data protection evidence"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "backup-and-recovery-engineer",
+      "name": "Backup and Recovery Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/backup-and-recovery-engineer.md",
+      "deliverables": [
+        "Backup configuration and schedule",
+        "restore test results and evidence",
+        "recovery time and point measurement",
+        "immutability and isolation configuration"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "datacentre-technician",
+      "name": "Datacentre Technician",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/datacentre-technician.md",
+      "deliverables": [
+        "Rack and asset installation records",
+        "hardware replacement and RMA evidence",
+        "environmental and power readings",
+        "physical access and escort logs"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "capacity-manager",
+      "name": "Capacity Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/capacity-manager.md",
+      "deliverables": [
+        "Capacity plan and forecast",
+        "utilisation and headroom analysis",
+        "capacity risk register",
+        "demand and growth model"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "availability-manager",
+      "name": "Availability Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/availability-manager.md",
+      "deliverables": [
+        "Availability plan per service",
+        "single point of failure analysis",
+        "availability performance reporting",
+        "resilience improvement actions"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "observability-engineer",
+      "name": "Observability Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/observability-engineer.md",
+      "deliverables": [
+        "Instrumentation standards and libraries",
+        "dashboards and service health views",
+        "alert rules with defined ownership",
+        "telemetry cost and retention policy"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "middleware-administrator",
+      "name": "Middleware Administrator",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/middleware-administrator.md",
+      "deliverables": [
+        "Middleware configuration baselines",
+        "queue and throughput monitoring",
+        "patching and version currency records",
+        "middleware runbooks"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "finops-engineer",
+      "name": "FinOps Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/finops-engineer.md",
+      "deliverables": [
+        "Cost optimisation implementations",
+        "automated rightsizing and shutdown tooling",
+        "tagging and allocation enforcement",
+        "commitment portfolio management"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "sustainable-it-engineer",
+      "name": "Sustainable IT Engineer",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-infrastructure-cloud-and-operations",
+      "path": "skills/it-roles-infrastructure-cloud-and-operations/references/sustainable-it-engineer.md",
+      "deliverables": [
+        "Technology carbon and energy baseline",
+        "efficiency improvement roadmap",
+        "reporting inputs for corporate disclosure",
+        "procurement sustainability criteria"
+      ],
+      "aliases": [],
+      "guard": null
+    }
+  ]
+}

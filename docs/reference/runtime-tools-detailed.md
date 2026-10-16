@@ -1,6 +1,6 @@
 # Runtime tools and command-line reference
 
-> **Example compatibility.** This detailed material originated in the 26.10.0 runtime handbook and is retained in the maintained Markdown documentation for its hands-on examples and technical references. AI IT House 26.10.4 has additional capabilities; treat the installed `GUIDE.md`, current `.ai/commands/` contracts, runtime tool `--help`, and versioned schemas as the authoritative behavior. Examples may require adaptation to the deployment context. These notes are not a separate release or documentation system.
+> **Example compatibility.** This detailed material originated in the 26.10.0 runtime handbook and is retained in the maintained Markdown documentation for its hands-on examples and technical references. AI IT House {{ JAI_VERSION }} has additional capabilities; treat the installed `GUIDE.md`, current `.ai/commands/` contracts, runtime tool `--help`, and versioned schemas as the authoritative behavior. Examples may require adaptation to the deployment context. These notes are not a separate release or documentation system.
 
 ## Intended reader and invocation boundary
 
@@ -15,7 +15,7 @@ The important exception is L0: Codex intentionally cannot execute guarded human 
 
 Who does the work, and with which tools.
 
-The current runtime includes **33 agent contracts** (see `docs/using/roles.md` and `.ai/agents/` for authoritative definitions). The following **28-entry table is an explanatory earlier-release subset**, including historical model selectors. It must not be used as the current provider tool allowlist: native Agent/Policy Contracts, model routing and runtime enforcement determine effective permissions. Commands and skills dispatch agents; they are not a bypass around those controls.
+Consult the [release inventory](inventory.md) for current counts and `.ai/agents/` for authoritative behavioural definitions. The following **28-entry table is an explanatory earlier-release subset**, including historical model selectors. It must not be used as the current provider tool allowlist: native Agent/Policy Contracts, model routing and runtime enforcement determine effective permissions. Commands and skills dispatch agents; they are not a bypass around those controls.
 
 #### Tiers
 
@@ -69,8 +69,7 @@ The current runtime includes **33 agent contracts** (see `docs/using/roles.md` a
 
 What Claude knows, and when it uses it.
 
-The 23 skills. Claude loads a skill when a request matches its description — you do not invoke them
-by name. The role-category skills route to 273 role definitions; the others orchestrate workflows.
+The following 23-skill table is an **earlier-release illustrative subset**, including its historical role counts. Use the [release inventory](inventory.md) and [full role catalogue](roles.md) for current coverage. Domain skills may be selected by matching their descriptions; explicitly requested workflow skills in Codex use the `$workflow-<name>` interface. The table is not a complete current skill registry or a provider permission boundary.
 
 | Skill | Roles | Allowed tools | When it is used |
 | --- | --- | --- | --- |

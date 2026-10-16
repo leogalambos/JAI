@@ -102,8 +102,22 @@ def render_claude_agent(src,registry):
     return line.sub(replacement,text).encode()
 
 def provider_contract_config(contract,provider,registry):
+    """Render a detached provider projection preserving canonical JAI obligations.
+
+    Args:
+        contract: Canonical AgentContract including its runtime JAI binding.
+        provider: Supported adapter, codex or claude.
+        registry: Effective install-time model routing registry.
+    Returns:
+        Provider configuration with the exact independent JAI binding copy.
+    Raises:
+        ValueError: Unsupported provider or missing canonical JAI binding.
+        SystemExit: Registry lacks the requested workload mapping.
+    """
+    if provider not in ('codex', 'claude') or not isinstance(contract.get('jai'), dict) or not contract['jai']:
+        raise ValueError('supported provider and canonical JAI binding required')
     workload=contract.get('workload_class',registry.get('fallback_class','standard')); mapping=model_mapping(registry,provider,workload); selector=mapping['model_selector']
-    common={'name':contract['id'],'provider':provider,'workload_class':workload,'selection_strategy':registry['providers'][provider].get('selection_strategy'),'strategy_scope':registry['providers'][provider].get('strategy_scope','project-internal'),'model_selector':selector}
+    common={'name':contract['id'],'provider':provider,'jai':copy.deepcopy(contract['jai']),'workload_class':workload,'selection_strategy':registry['providers'][provider].get('selection_strategy'),'strategy_scope':registry['providers'][provider].get('strategy_scope','project-internal'),'model_selector':selector}
     if mapping.get('reasoning_effort'): common['reasoning_effort']=mapping['reasoning_effort']
     if mapping.get('fallbacks'): common['fallbacks']=copy.deepcopy(mapping['fallbacks'])
     if provider=='codex':

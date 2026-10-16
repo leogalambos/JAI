@@ -1,0 +1,215 @@
+{
+  "version": "1",
+  "domain_id": "sabsa-security-architecture",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "chief-security-architect-sabsa-practice-lead",
+      "name": "Chief Security Architect (SABSA Practice Lead)",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-sabsa-security-architecture",
+      "path": "skills/it-roles-sabsa-security-architecture/references/chief-security-architect-sabsa-practice-lead.md",
+      "deliverables": [
+        "SABSA architecture practice and governance model",
+        "enterprise security architecture matrix",
+        "architecture principles and patterns",
+        "security architecture roadmap"
+      ],
+      "aliases": [
+        "Chief Security Architect"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "business-security-architect-sabsa-contextual-layer",
+      "name": "Business Security Architect (SABSA Contextual Layer)",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-sabsa-security-architecture",
+      "path": "skills/it-roles-sabsa-security-architecture/references/business-security-architect-sabsa-contextual-layer.md",
+      "deliverables": [
+        "Contextual security architecture (business view)",
+        "business driver and requirement catalogue",
+        "business risk and opportunity context",
+        "security business case inputs"
+      ],
+      "aliases": [
+        "Business Security Architect"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "business-attribute-profiler",
+      "name": "Business Attribute Profiler",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-sabsa-security-architecture",
+      "path": "skills/it-roles-sabsa-security-architecture/references/business-attribute-profiler.md",
+      "deliverables": [
+        "Business attribute profile",
+        "attribute definitions with measurement approach",
+        "performance targets and thresholds per attribute",
+        "traceability from drivers to attributes"
+      ],
+      "aliases": [
+        "Business Attribute Profiler"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "conceptual-security-architect-sabsa-architect-s-view",
+      "name": "Conceptual Security Architect (SABSA Architect's View)",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-sabsa-security-architecture",
+      "path": "skills/it-roles-sabsa-security-architecture/references/conceptual-security-architect-sabsa-architect-s-view.md",
+      "deliverables": [
+        "Conceptual security architecture (architect's view)",
+        "security domain model and trust relationships",
+        "control objectives mapped to attributes",
+        "risk and opportunity strategy"
+      ],
+      "aliases": [
+        "Conceptual Security Architect"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "logical-security-designer-sabsa-designer-s-view",
+      "name": "Logical Security Designer (SABSA Designer's View)",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-sabsa-security-architecture",
+      "path": "skills/it-roles-sabsa-security-architecture/references/logical-security-designer-sabsa-designer-s-view.md",
+      "deliverables": [
+        "Logical security architecture (designer's view)",
+        "security service catalogue and policy model",
+        "entity and trust interaction design",
+        "security information flow design"
+      ],
+      "aliases": [
+        "Logical Security Designer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "physical-security-solution-builder-sabsa-builder-s-view",
+      "name": "Physical Security Solution Builder (SABSA Builder's View)",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-sabsa-security-architecture",
+      "path": "skills/it-roles-sabsa-security-architecture/references/physical-security-solution-builder-sabsa-builder-s-view.md",
+      "deliverables": [
+        "Physical security architecture (builder's view)",
+        "solution specification and platform selection rationale",
+        "security mechanism design",
+        "build and deployment specifications"
+      ],
+      "aliases": [
+        "Physical Security Solution Builder"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "security-component-specialist-sabsa-tradesman-s-view",
+      "name": "Security Component Specialist (SABSA Tradesman's View)",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-sabsa-security-architecture",
+      "path": "skills/it-roles-sabsa-security-architecture/references/security-component-specialist-sabsa-tradesman-s-view.md",
+      "deliverables": [
+        "Component configuration specifications",
+        "product selection and compatibility assessments",
+        "component hardening baselines",
+        "integration and interoperability evidence"
+      ],
+      "aliases": [
+        "Security Component Specialist"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "security-service-manager-sabsa-service-management-view",
+      "name": "Security Service Manager (SABSA Service Management View)",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-sabsa-security-architecture",
+      "path": "skills/it-roles-sabsa-security-architecture/references/security-service-manager-sabsa-service-management-view.md",
+      "deliverables": [
+        "Security service management model",
+        "operational security service levels",
+        "architecture conformance in operation",
+        "through-life security service improvement plan"
+      ],
+      "aliases": [
+        "Security Service Manager"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "security-domain-authority",
+      "name": "Security Domain Authority",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-sabsa-security-architecture",
+      "path": "skills/it-roles-sabsa-security-architecture/references/security-domain-authority.md",
+      "deliverables": [
+        "Domain security policy and standards",
+        "inter-domain trust agreements",
+        "domain risk acceptance decisions",
+        "domain conformance reporting"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "security-risk-and-opportunity-architect",
+      "name": "Security Risk and Opportunity Architect",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-sabsa-security-architecture",
+      "path": "skills/it-roles-sabsa-security-architecture/references/security-risk-and-opportunity-architect.md",
+      "deliverables": [
+        "Risk and opportunity assessments per attribute",
+        "threat, vulnerability and impact analysis",
+        "control effectiveness and residual risk positions",
+        "risk-informed design recommendations"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "security-assurance-and-measurement-architect",
+      "name": "Security Assurance and Measurement Architect",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-sabsa-security-architecture",
+      "path": "skills/it-roles-sabsa-security-architecture/references/security-assurance-and-measurement-architect.md",
+      "deliverables": [
+        "Security measurement framework and metric definitions",
+        "assurance evidence model per control objective",
+        "performance and conformance reporting",
+        "measurement improvement plan"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "sabsa-and-togaf-integration-architect",
+      "name": "SABSA and TOGAF Integration Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-sabsa-security-architecture",
+      "path": "skills/it-roles-sabsa-security-architecture/references/sabsa-and-togaf-integration-architect.md",
+      "deliverables": [
+        "Integrated architecture method and governance",
+        "mapping between SABSA layers and TOGAF ADM phases",
+        "shared repository and artefact model",
+        "joint review and gate design"
+      ],
+      "aliases": [],
+      "guard": null
+    }
+  ]
+}

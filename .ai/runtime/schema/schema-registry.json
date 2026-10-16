@@ -232,6 +232,12 @@
       "version": "1.0.0",
       "path": "schema/contracts/behavioral-evidence-v1.schema.json",
       "critical": true
+    },
+    {
+      "name": "CommercialSnapshot",
+      "version": "1.0.0",
+      "path": "schema/contracts/commercial-snapshot-v1.schema.json",
+      "critical": true
     }
   ]
 }

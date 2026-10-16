@@ -34,6 +34,17 @@ def _mkdocs_page_url(rel: str) -> str:
 
 
 def check(root: Path) -> list[str]:
+    """Collect documentation contract violations without changing the checkout.
+
+    Args:
+        root: Checkout containing canonical docs and runtime help.
+
+    Returns:
+        Located validation messages, or an empty list when all checks pass.
+
+    Raises:
+        OSError: An existing documentation file cannot be read.
+    """
     problems: list[str] = []
     docroot = root / 'docs'
     mkdoc = root / 'mkdocs.yml'
@@ -135,7 +146,9 @@ def check(root: Path) -> list[str]:
             problems.append(f'docs/{name}: missing CLI-user versus runtime boundary')
     for name in sorted(markdown):
         content = markdown[name].read_text(encoding='utf-8')
-        if name.startswith('examples/') and '## Run this scenario in the provider CLI' not in content:
+        # Directory indexes are reading maps, rather than executable scenarios.
+        # Every non-index example still declares its operator/runtime boundary.
+        if name.startswith('examples/') and Path(name).name != 'index.md' and '## Run this scenario in the provider CLI' not in content:
             problems.append(f'docs/{name}: scenario lacks operator entry and implementation boundary')
         if name.startswith('workflow-library/') and '## Running this workflow: operator and implementer boundary' not in content:
             problems.append(f'docs/{name}: workflow lacks operator versus implementer boundary')
@@ -190,6 +203,14 @@ def check(root: Path) -> list[str]:
 
 
 def main() -> int:
+    """Validate the CLI-selected checkout and print its documentation status.
+
+    Returns:
+        Zero when validation passes, otherwise one.
+
+    Raises:
+        SystemExit: Argument parsing rejects invalid CLI options.
+    """
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root', type=Path, default=ROOT)
     args = parser.parse_args()

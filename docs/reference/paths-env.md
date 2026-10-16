@@ -23,9 +23,3 @@ No path-variable exports are needed for the standard installation. These install
 | `FABRIC_MAX_CONTRACTS` | `40` | Contract bound |
 | `FABRIC_MAX_ROUNDS` | `5` | Revision-round bound |
 | `FABRIC_MAX_STEPS` | `120` | Shared episode budget |
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../commands/"><small>← Previous · Reference</small><strong>Command reference</strong></a>
-  <a class="ai-next" href="../compatibility/"><small>Next · Reference →</small><strong>Compatibility matrix</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

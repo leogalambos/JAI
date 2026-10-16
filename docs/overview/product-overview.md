@@ -31,19 +31,7 @@ AI IT House addresses these failure modes through:
 
 ## Release scope at a glance
 
-| Item | Count |
-| --- | ---: |
-| Roles | 281 |
-| Agents | 33 |
-| Skills | 23 |
-| Workflows | 24 |
-| Artifact types | 28 |
-| Schemas | 32 |
-| Renderers | 4 |
-| Tests | 31 |
-| Provider adapters | 2 |
-
-Counts are generated from canonical package sources; manual documentation counts are not authoritative over the release manifest.
+Consult the [release inventory](../reference/inventory.md) for the generated package counts and the [commercial implementation matrix](../capabilities/commercial-delivery-implementation.md) for the extension's coverage and qualification limits. The release manifest is authoritative over historical or explanatory counts. Source availability, passing repository checks and qualified live deployment are separate states.
 
 ## The normative architecture
 
@@ -58,7 +46,7 @@ The JAI core has six responsibility layers:
 
 **L0 Human Authority is external.** Agents may prepare evidence, recommendations and dossiers, but they cannot manufacture L0 authority.
 
-For consequential work, `/layered` operationalises the downward/upward cycle with typed contracts, independent review, bounded recovery and release gating. See [Running a layered justifiable engagement](../using/layered-engagement.md).
+For consequential work, `/layered` operationalises the downward/upward cycle with typed contracts, independent review, bounded recovery and release gating. Begin with [How to use JAI](../examples/how-to-use-JAI/index.md) to choose the assurance arrangement and follow a complete example. [Running a layered engagement](../using/layered-engagement.md) explains its operating cycle.
 
 ## Supported working domains
 
@@ -84,10 +72,3 @@ The platform also does not claim that every possible direct role invocation is a
 ## Why “Universal” is fair but bounded
 
 The platform spans a broad set of IS/IT working contexts and output types. “Universal” should be read as broad enterprise applicability and shared governance/runtime mechanisms — not as unlimited autonomy, infallibility or automatic suitability for every environment.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../../"><small>← Previous · Home</small><strong>Home</strong></a>
-  <a class="ai-next" href="../release-26-10-4/"><small>Next · Executive overview →</small><strong>What's new in 26.10.4</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

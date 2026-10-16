@@ -1,6 +1,6 @@
 # Governance, policy and approvals
 
-AI IT House 26.10.4 uses layered enforcement. Prompt text may reinforce expected behavior, but the high-value controls are intended to sit in data contracts, tool permissions, provider adapters, deterministic validators and human authority boundaries.
+AI IT House {{ JAI_VERSION }} uses layered enforcement. Prompt text may reinforce expected behavior, but the high-value controls are intended to sit in data contracts, tool permissions, provider adapters, deterministic validators and human authority boundaries.
 
 ## Enforcement order
 
@@ -66,10 +66,3 @@ Managed hooks are useful enforcement but are not the whole sandbox. The authorit
 ## Data classification and network behavior
 
 The default managed policy assumes enterprise caution: network access is deny-by-default and permitted through controlled/provider contract paths. Organisations must adapt classification, network, evidence-retention and provider-use rules for their environment.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../runtime/"><small>← Previous · Configuration</small><strong>Runtime paths & environment variables</strong></a>
-  <a class="ai-next" href="../publication-stack/"><small>Next · Configuration →</small><strong>Publication stack</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

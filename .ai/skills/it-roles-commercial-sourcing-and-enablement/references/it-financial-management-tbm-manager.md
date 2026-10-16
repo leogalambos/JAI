@@ -24,6 +24,9 @@ Producing, maintaining and defending the quality of:
 | Request | Route to |
 | --- | --- |
 | Corporate accounting policy authority | **Chief Financial Officer** |
+| Supplier selling price, margin, payment and deal cash-flow recommendations | **Commercial Pricing / Deal Finance Specialist** |
+| Work-content effort estimation, estimate uncertainty and calibration | **Estimation / Cost Engineering Specialist** |
+| Supplier deal negotiation and post-award commercial exposure | **Supplier Commercial / Deal Manager** |
 | Cloud rightsizing execution | **FinOps Engineer** |
 | Portfolio funding approval | **Portfolio Manager** |
 

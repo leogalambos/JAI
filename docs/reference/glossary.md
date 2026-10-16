@@ -35,10 +35,3 @@
 **Unified Lifecycle GA** — Release objective completed in 26.10.4: JAI is the normative architecture and Artifact/SABSA/EA/Publication/Runtime use profile-native current writes and shared lifecycle/identity rules.
 
 **Workflow** — Canonical operating sequence connecting roles, stages, gates and outcomes.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../limitations/"><small>← Previous · Reference</small><strong>Boundaries and limitations</strong></a>
-  <a class="ai-next" href="../../about/justifiable-ai/"><small>Next · About →</small><strong>Justifiable AI</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

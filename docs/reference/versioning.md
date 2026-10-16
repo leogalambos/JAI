@@ -55,10 +55,3 @@ python3 .ai/runtime/tools/generate_docs.py --check --root .
 ```
 
 If the source `VERSION` was changed but `sync` was skipped, version checks intentionally fail and report which projection is stale. Avoid any global `sed`, `perl` or file-wide replacement of release numbers.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../compatibility/"><small>← Previous · Reference</small><strong>Compatibility matrix</strong></a>
-  <a class="ai-next" href="../release-migration/"><small>Next · Reference →</small><strong>Release and migration</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

@@ -29,9 +29,3 @@ python3 ~/.ai/it-role-house/tools/publication.py self-test
 python3 ~/.ai/it-role-house/tools/repository.py self-test
 python3 ~/.ai/it-role-house/fabric/fabric.py selftest
 ```
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../operating-controls/"><small>← Previous · Operate and govern</small><strong>Operating controls</strong></a>
-  <a class="ai-next" href="../local-policy/"><small>Next · Operate and govern →</small><strong>Maintaining local policy</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

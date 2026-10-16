@@ -1,0 +1,308 @@
+{
+  "version": "1",
+  "domain_id": "architecture",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "enterprise-architect",
+      "name": "Enterprise Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/enterprise-architect.md",
+      "deliverables": [
+        "Enterprise architecture models (business, data, application, technology)",
+        "architecture principles and standards",
+        "technology roadmap",
+        "architecture decision records"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "business-architect",
+      "name": "Business Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/business-architect.md",
+      "deliverables": [
+        "Business capability model",
+        "value stream maps",
+        "capability heat map against strategy",
+        "business architecture roadmap"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "solution-architect",
+      "name": "Solution Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/solution-architect.md",
+      "deliverables": [
+        "Solution architecture document",
+        "interface and integration design",
+        "non-functional requirement specification",
+        "architecture decision records"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "application-architect",
+      "name": "Application Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/application-architect.md",
+      "deliverables": [
+        "Application structure and module boundaries",
+        "dependency and layering rules",
+        "refactoring roadmap",
+        "application architecture decision records"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "domain-architect",
+      "name": "Domain Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/domain-architect.md",
+      "deliverables": [
+        "Domain reference architecture",
+        "domain data and service model",
+        "domain roadmap and lifecycle plan",
+        "domain-specific standards"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "data-architect",
+      "name": "Data Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/data-architect.md",
+      "deliverables": [
+        "Conceptual and logical data models",
+        "data platform architecture",
+        "data flow and lineage design",
+        "data standards and naming conventions"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "integration-architect",
+      "name": "Integration Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/integration-architect.md",
+      "deliverables": [
+        "Integration reference architecture",
+        "API and event contract standards",
+        "integration pattern catalogue",
+        "interface inventory"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "cloud-architect",
+      "name": "Cloud Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/cloud-architect.md",
+      "deliverables": [
+        "Cloud landing zone design",
+        "resilience and availability design",
+        "cloud cost model",
+        "cloud security and network topology"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "network-architect",
+      "name": "Network Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/network-architect.md",
+      "deliverables": [
+        "Network topology and addressing design",
+        "segmentation and zoning model",
+        "network resilience design",
+        "network standards"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "security-architect",
+      "name": "Security Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/security-architect.md",
+      "deliverables": [
+        "Security architecture and control set",
+        "threat models",
+        "security patterns and reference designs",
+        "security requirements for projects"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "ai-and-ml-architect",
+      "name": "AI and ML Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/ai-and-ml-architect.md",
+      "deliverables": [
+        "ML platform and serving architecture",
+        "model lifecycle and promotion design",
+        "data and feature architecture for ML",
+        "model monitoring design"
+      ],
+      "aliases": [
+        "AI/ML Architect"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "technical-design-authority-member",
+      "name": "Technical Design Authority Member",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/technical-design-authority-member.md",
+      "deliverables": [
+        "Design review findings and conditions",
+        "approved design register",
+        "architecture exception decisions",
+        "review criteria and checklist"
+      ],
+      "aliases": [
+        "Architecture Review Board Member"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "architecture-repository-and-modelling-lead",
+      "name": "Architecture Repository and Modelling Lead",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/architecture-repository-and-modelling-lead.md",
+      "deliverables": [
+        "Architecture repository metamodel and modelling conventions",
+        "Repository governance and quality rules",
+        "Published architecture view set",
+        "Model quality and traceability report"
+      ],
+      "aliases": [
+        "EA Repository Lead",
+        "Architecture Modelling Lead"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "identity-and-access-management-architect",
+      "name": "Identity and Access Management Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/identity-and-access-management-architect.md",
+      "deliverables": [
+        "IAM architecture and reference patterns",
+        "Authentication and federation architecture",
+        "Authorisation and entitlement model",
+        "IAM transition roadmap and control decisions"
+      ],
+      "aliases": [
+        "IAM Architect",
+        "Identity Architect"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "operational-and-technology-resilience-architect",
+      "name": "Operational and Technology Resilience Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/operational-and-technology-resilience-architect.md",
+      "deliverables": [
+        "Technology resilience architecture",
+        "Dependency and failure-domain model",
+        "Recovery architecture and resilience patterns",
+        "Resilience validation roadmap and decision record"
+      ],
+      "aliases": [
+        "Technology Resilience Architect",
+        "Operational Resilience Architect"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "enterprise-applications-architect",
+      "name": "Enterprise Applications Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/enterprise-applications-architect.md",
+      "deliverables": [
+        "Enterprise application landscape architecture",
+        "Application rationalisation and platform decision paper",
+        "Enterprise applications roadmap",
+        "Enterprise SaaS/ERP capability-fit and integration design"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "secure-delivery-devsecops-architect",
+      "name": "Secure Delivery / DevSecOps Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/secure-delivery-devsecops-architect.md",
+      "deliverables": [
+        "Secure delivery and DevSecOps architecture",
+        "Secure SDLC and pipeline control design",
+        "Pipeline and software supply-chain assurance report",
+        "Software supply-chain implementation specification"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "application-portfolio-manager",
+      "name": "Application Portfolio Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-architecture",
+      "path": "skills/it-roles-architecture/references/application-portfolio-manager.md",
+      "deliverables": [
+        "Application portfolio model",
+        "Application rationalisation decision paper",
+        "Application lifecycle and modernisation roadmap",
+        "Application portfolio health and risk dashboard"
+      ],
+      "aliases": [],
+      "guard": null
+    }
+  ]
+}

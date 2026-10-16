@@ -147,9 +147,3 @@ A successful installation should make these capabilities available immediately:
 - demo estate setup;
 - managed publication and Fabric tooling;
 - stable local paths for the common runtime and provider surfaces.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../../overview/delivery-model/"><small>← Previous · Executive overview</small><strong>Delivery model</strong></a>
-  <a class="ai-next" href="../update-uninstall/"><small>Next · Getting started →</small><strong>Update & uninstall</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

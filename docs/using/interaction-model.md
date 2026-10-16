@@ -1,6 +1,10 @@
 # Interaction patterns
 
+Owner: JAI maintainers · Last reviewed: 2026-10-16
+
 AI IT House exposes several working modes because not every task needs the same assurance intensity.
+
+Start with [Choosing and running a methodical workflow](methodical-workflows.md) for the decision between direct domain work, layered creation and a separate layered decision after domain work. Then follow the [worked security, Android or proposal case](../examples/how-to-use-JAI/index.md#2-work-through-a-complete-case). These are distinct assurance boundaries, not a mandatory sequence of `/sabsa` or `/commercial` followed by `/layered`.
 
 ## First: choose the interface, not a Python script
 
@@ -64,7 +68,8 @@ See [Running a layered justifiable engagement](layered-engagement.md) for the op
 | Typo, rename, low-risk quick question | direct answer/tool path |
 | Clear single-discipline analysis or authoring | role-router → specialist operator |
 | Standard repeatable enterprise process | named workflow |
-| Consequential result requiring justification/authority | `/layered` |
+| Creation itself requires six-layer justification | `/layered` with the domain explicitly named |
+| Existing domain model needs a justified readiness/risk decision | domain workflow, then `/layered` for the new decision against an exact snapshot |
 | Need to inspect why a layered output is entitled to be used | `/fabric-report` or `$workflow-fabric-report`; `fabric.py` is a maintainer-level API |
 
 ## Important runtime boundary
@@ -78,10 +83,3 @@ Therefore organisations should distinguish:
 - **layered-by-construction** — host/runtime entry control technically prevents consequential tasks from bypassing the layered route.
 
 The current runtime provides the first two when deployed with an appropriate operating policy. The third requires an additional entry-routing/enforcement control in the deployment.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../../configuration/publication-stack/"><small>← Previous · Configuration</small><strong>Publication stack</strong></a>
-  <a class="ai-next" href="../layered-engagement/"><small>Next · Using the system →</small><strong>Running a layered justifiable engagement</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

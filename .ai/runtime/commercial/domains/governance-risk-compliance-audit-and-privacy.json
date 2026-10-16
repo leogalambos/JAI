@@ -1,0 +1,302 @@
+{
+  "version": "1",
+  "domain_id": "governance-risk-compliance-audit-and-privacy",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "it-governance-manager",
+      "name": "IT Governance Manager",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/it-governance-manager.md",
+      "deliverables": [
+        "Governance framework and forum structure",
+        "decision rights and delegated authority matrix",
+        "policy hierarchy and currency",
+        "governance performance reporting"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "grc-analyst",
+      "name": "GRC Analyst",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/grc-analyst.md",
+      "deliverables": [
+        "Control inventory and testing calendar",
+        "risk and issue register maintenance",
+        "compliance evidence collection",
+        "GRC reporting packs"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "it-risk-manager",
+      "name": "IT Risk Manager",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/it-risk-manager.md",
+      "deliverables": [
+        "Technology risk register with quantified exposure",
+        "risk assessments for changes and initiatives",
+        "risk appetite monitoring",
+        "treatment plans and acceptance records"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "information-security-officer-local",
+      "name": "Information Security Officer (Local)",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/information-security-officer-local.md",
+      "deliverables": [
+        "Local risk and control position",
+        "local exceptions and compensating controls",
+        "local awareness and incident coordination",
+        "assurance input to the central function"
+      ],
+      "aliases": [
+        "Divisional Security Officer",
+        "LISO"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "compliance-officer-technology",
+      "name": "Compliance Officer (Technology)",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/compliance-officer-technology.md",
+      "deliverables": [
+        "Regulatory obligation register mapped to controls",
+        "compliance assessments and gap analyses",
+        "regulator and certification body liaison records",
+        "remediation plans"
+      ],
+      "aliases": [
+        "Compliance Officer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "internal-it-auditor",
+      "name": "Internal IT Auditor",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/internal-it-auditor.md",
+      "deliverables": [
+        "Audit plan and engagement scope",
+        "audit working papers and evidence",
+        "audit report with findings and ratings",
+        "follow-up and closure verification"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "external-auditor-and-assessor",
+      "name": "External Auditor and Assessor",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/external-auditor-and-assessor.md",
+      "deliverables": [
+        "Assessment scope and sampling plan",
+        "evidence evaluation records",
+        "certification or attestation report",
+        "non-conformity and corrective action records"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "control-owner",
+      "name": "Control Owner",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/control-owner.md",
+      "deliverables": [
+        "Control design documentation",
+        "operating evidence for each period",
+        "control performance and exception reporting",
+        "remediation of control failures"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "control-tester",
+      "name": "Control Tester",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/control-tester.md",
+      "deliverables": [
+        "Test scripts and sampling rationale",
+        "test execution evidence",
+        "exception findings with impact",
+        "testing summary for each cycle"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "data-protection-officer",
+      "name": "Data Protection Officer",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/data-protection-officer.md",
+      "deliverables": [
+        "Records of processing activities",
+        "DPIA opinions and advice",
+        "data subject rights oversight",
+        "supervisory authority liaison and breach notification assessments"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "privacy-analyst",
+      "name": "Privacy Analyst",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/privacy-analyst.md",
+      "deliverables": [
+        "Data protection impact assessments",
+        "records of processing activity entries",
+        "data subject rights request handling",
+        "privacy notices and consent design input"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "records-manager",
+      "name": "Records Manager",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/records-manager.md",
+      "deliverables": [
+        "Retention schedule with legal justification",
+        "records classification scheme",
+        "disposal authorisations and certificates",
+        "legal hold register"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "business-continuity-manager",
+      "name": "Business Continuity Manager",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/business-continuity-manager.md",
+      "deliverables": [
+        "Business impact analysis",
+        "continuity strategies and plans",
+        "exercise programme and results",
+        "recovery objectives per process"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "disaster-recovery-coordinator",
+      "name": "Disaster Recovery Coordinator",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/disaster-recovery-coordinator.md",
+      "deliverables": [
+        "Technical recovery plans and runbooks",
+        "recovery test schedule and results",
+        "recovery capability gaps against objectives",
+        "failover and failback procedures"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "third-party-risk-manager",
+      "name": "Third-Party Risk Manager",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/third-party-risk-manager.md",
+      "deliverables": [
+        "Supplier risk assessments and tiering",
+        "register of information for critical suppliers",
+        "contractual control requirements",
+        "ongoing monitoring and exit plans"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "policy-author",
+      "name": "Policy Author",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/policy-author.md",
+      "deliverables": [
+        "Policy and standard documents",
+        "policy hierarchy and mapping to obligations",
+        "consultation and approval records",
+        "policy review and retirement schedule"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "crisis-manager",
+      "name": "Crisis Manager",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/crisis-manager.md",
+      "deliverables": [
+        "Crisis management plan and activation criteria",
+        "crisis team structure and decision log",
+        "stakeholder and regulator communications",
+        "post-crisis review"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "privacy-architect",
+      "name": "Privacy Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-governance-risk-compliance-audit-and-privacy",
+      "path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/privacy-architect.md",
+      "deliverables": [
+        "Privacy architecture and design requirements",
+        "Personal-data flow and processing architecture",
+        "Privacy engineering patterns and reference controls",
+        "Privacy architecture decision and exception record"
+      ],
+      "aliases": [
+        "Data Privacy Architect"
+      ],
+      "guard": null
+    }
+  ]
+}

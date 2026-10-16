@@ -87,9 +87,3 @@ python3 ~/.ai/it-role-house/tools/provider_parity.py
 ```
 
 These should be part of any controlled enterprise upgrade.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../system-architecture/"><small>← Previous · Configuration</small><strong>System architecture</strong></a>
-  <a class="ai-next" href="../runtime/"><small>Next · Configuration →</small><strong>Runtime paths & environment variables</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

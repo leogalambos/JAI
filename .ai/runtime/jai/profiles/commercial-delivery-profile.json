@@ -1,0 +1,27 @@
+{
+  "profile": "commercial-delivery",
+  "version": "1.0.0",
+  "schema_version": "1",
+  "activation": "explicit-opt-in",
+  "authoritative_for": "supplier-commercial-delivery-view",
+  "orthogonal_coordinates": [
+    "commercial.domain_layer",
+    "commercial.question",
+    "commercial.lifecycle_phase"
+  ],
+  "rule": "Reuse canonical identities and exact versions. Domain coordinates are independent of JAI execution layers. Recorded validation is not authority or contractual acceptance.",
+  "jai_default_binding": 2,
+  "runtime": "tools/commercial_core.py",
+  "release": "26.10.4",
+  "production_readiness": "blocked-until-host-enforcement-and-operational-controls-independently-verified",
+  "current_selection": {
+    "active_roots": {
+      "internal": "exact Publication version with audience=internal",
+      "client": "distinct exact Publication version with audience=client"
+    },
+    "active_claims": "Exact scoped Claim versions; must equal publication-root ancestry claims. Unbound or omitted scoped commitments block readiness.",
+    "active_versions": "Explicit draft-only exact versions before publication roots exist; cannot select two versions of one canonical identity.",
+    "history": "Store retains immutable historical entities/relations; current assurance and client export evaluate selected forward-dependency closure. Supersession/review navigation never pulls obsolete claims into current validity.",
+    "fabric_binding": "ExecutionContract data fabric_binding_id/digest resolve through the trusted ledger adapter; text declarations do not establish assurance."
+  }
+}

@@ -1,13 +1,13 @@
 {
   "manifest_version": "1.0.0",
-  "release": "26.10.4",
+  "release": "26.10.5",
   "counts": {
-    "roles": 281,
-    "agents": 33,
-    "skills": 23,
+    "roles": 286,
+    "agents": 34,
+    "skills": 24,
     "workflows": 24,
     "artifact_types": 28,
-    "schemas": 32,
+    "schemas": 33,
     "renderers": 4,
     "tests": 32,
     "provider_adapters": 2
@@ -21,6 +21,7 @@
     "artefact-governor",
     "authority-liaison",
     "codebase-reviewer",
+    "commercial-coordinator",
     "defect-analyst",
     "docs-author",
     "document-reviewer",
@@ -52,6 +53,7 @@
     "visual-quality-reviewer"
   ],
   "skills": [
+    "commercial-delivery",
     "defect-analysis",
     "it-role-workflows",
     "it-roles-analysis",

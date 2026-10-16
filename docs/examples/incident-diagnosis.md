@@ -93,9 +93,3 @@ Regression contract
 ## Why this example matters
 
 The important output is not a clever guess. It is a reproducible explanation and a regression contract that prevents the defect class from returning.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../cyber-incident/"><small>← Previous · Examples</small><strong>Cyber incident to recovery</strong></a>
-  <a class="ai-next" href="../supplier-onboarding/"><small>Next · Examples →</small><strong>Supplier onboarding</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

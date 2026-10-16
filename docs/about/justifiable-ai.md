@@ -55,7 +55,7 @@ Keep four assurance levels separate:
 3. **substantive assurance** — are requirements, decomposition, evidence and argument actually valid?;
 4. **operational control** — can release/action occur only through the authorised path in the deployment?
 
-26.10.4 contains strong controls for the first two and selected mechanisms for the fourth. The third remains dependent on evidence quality, domain competence and empirical evaluation; the fourth remains deployment-dependent wherever provider/host/tool bypass is possible.
+The current release contains strong controls for the first two and selected mechanisms for the fourth. The third remains dependent on evidence quality, domain competence and empirical evaluation; the fourth remains deployment-dependent wherever provider/host/tool bypass is possible.
 
 ## Why human authority remains outside JAI
 
@@ -70,10 +70,3 @@ Human approval is also not a truth oracle: it can authorise a bounded use or acc
 - [Justifiable Fabric](../capabilities/justifiable-fabric.md)
 - [Human authority and escalation](../operations/human-authority.md)
 - [Boundaries and limitations](../reference/limitations.md)
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../../reference/glossary/"><small>← Previous · Reference</small><strong>Glossary</strong></a>
-  <a class="ai-next" href="../license-attribution/"><small>Next · About →</small><strong>Licensing and attribution</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

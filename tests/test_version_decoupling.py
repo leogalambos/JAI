@@ -28,16 +28,79 @@ versioning = module('scripts/versioning.py', 'jai_versioning')
 class VersionDecoupling(unittest.TestCase):
     def test_contracts_are_not_bound_to_product_release(self):
         root = ROOT / '.ai/runtime'
+        roles = json.loads((root / 'roles.json').read_text(encoding='utf-8'))['roles']
+        expected_ids = {f"{role['slug']}:{number}"
+                        for role in roles
+                        for number in range(1, len(role['primary_deliverables']) + 1)}
+        self.assertTrue(expected_ids)
+        catalogues = []
         for relative in ('artifacts/contracts/role-deliverables.v3.json',
                          'artifacts/role-deliverables.json'):
             data = json.loads((root / relative).read_text(encoding='utf-8'))
-            self.assertEqual(len(data['contracts']), 1124)
+            self.assertEqual(len(data['contracts']), len(expected_ids))
+            self.assertEqual({c['id'] for c in data['contracts']}, expected_ids)
+            self.assertEqual(data['role_count'], len(roles))
+            self.assertEqual(data['deliverable_count'], len(expected_ids))
+            self.assertEqual(data['schema_version'], '3.0.0')
+            self.assertEqual({c['version'] for c in data['contracts']}, {'3.0.0'})
             self.assertEqual({c['compatibility']['writes'] for c in data['contracts']},
                              {'ArtifactContract-v3'})
+            catalogues.append(data['contracts'])
+        tools = str(root / 'tools')
+        with patch.object(sys, 'path', [tools, *sys.path]):
+            artifacts = module('.ai/runtime/tools/artifacts.py', 'jai_artifacts_version_projection')
+        projected = {row['id']: row for row in catalogues[1]}
+        roles_by_slug = {role['slug']: role for role in roles}
+        for row in catalogues[0]:
+            with self.subTest(contract=row['id']):
+                flattened = artifacts.flatten_v3(row)
+                stored = projected[row['id']]
+                self.assertEqual(flattened, {key: stored[key] for key in flattened})
+                role = roles_by_slug[row['role_slug']]
+                self.assertEqual(stored['role'], role['name'])
+                self.assertEqual(stored['skill'], role['skill'])
         reg = json.loads((root / 'schema/schema-registry.json').read_text())
         by_name = {row['name']: row for row in reg['schemas']}
         self.assertEqual(by_name['ArtifactContract']['version'], '3.0.0')
         self.assertEqual(by_name['ArtifactContract']['path'], 'schema/contracts/artifact-v3.schema.json')
+
+    def test_product_sync_preserves_native_and_legacy_contract_records(self):
+        """A new distribution must not rewrite either kind of contract origin."""
+        runtime = ROOT / '.ai/runtime'
+        source = json.loads((runtime / 'artifacts/contracts/role-deliverables.v3.json').read_text())
+        self.assertTrue(any('migration' in row for row in source['contracts']))
+        self.assertTrue(any('native_creation' in row for row in source['contracts']))
+        immutable = (
+            'artifacts/contracts/role-deliverables.v3.json',
+            'artifacts/role-deliverables.json',
+            'artifacts/contracts/role-deliverables.v2.json',
+            'artifacts/contracts/commercial-specialists.native-v3.json',
+            'schema/contracts/artifact-v3.schema.json',
+            'schema/26.10.4/artifact-contract.schema.json',
+        )
+        with tempfile.TemporaryDirectory() as directory:
+            temp = Path(directory)
+            (temp / 'VERSION').write_text('99.12.999\n', encoding='utf-8')
+            for relative in versioning.MIRRORS[1:]:
+                path = temp / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_text('26.10.4\n', encoding='utf-8')
+            for relative in versioning.PRODUCT_CATALOGS:
+                path = temp / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                path.write_bytes((ROOT / relative).read_bytes())
+            originals = {}
+            for relative in immutable:
+                path = temp / '.ai/runtime' / relative
+                path.parent.mkdir(parents=True, exist_ok=True)
+                originals[path] = (runtime / relative).read_bytes()
+                path.write_bytes(originals[path])
+            versioning.sync(temp, generate_docs=False)
+            for path, original in originals.items():
+                with self.subTest(path=str(path.relative_to(temp))):
+                    self.assertEqual(path.read_bytes(), original)
+            for relative, key in versioning.PRODUCT_CATALOGS.items():
+                self.assertEqual(json.loads((temp / relative).read_text())[key], '99.12.999')
 
     def test_sync_uses_only_root_version_and_preserves_history(self):
         with tempfile.TemporaryDirectory() as d:

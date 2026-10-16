@@ -13,24 +13,8 @@ title: AI IT House Universal
       <img src="assets/images/logo-mark.svg" alt="AI IT House logo">
       <span><strong>AI IT HOUSE</strong><em>UNIVERSAL</em></span>
     </a>
-    <nav class="ai-sidebar-nav-v31">
-      <a class="active" href="./"><span>⌂</span>Home</a>
-      <a href="overview/product-overview/"><span>◉</span>Overview</a>
-      <a href="getting-started/quick-start/"><span>◌</span>Quick Start</a>
-      <a href="getting-started/install/"><span>⇩</span>Installation</a>
-      <a href="configuration/system-architecture/"><span>⚙</span>Configuration</a>
-      <a href="using/interaction-model/"><span>◇</span>Using the System</a>
-      <a href="using/workflows/"><span>⌘</span>Workflows &amp; Processes</a>
-      <a href="using/roles/"><span>♙</span>Roles &amp; Capabilities</a>
-      <a href="using/deliverables/"><span>▤</span>Deliverables &amp; Outputs</a>
-      <a href="capabilities/sabsa-ea/"><span>△</span>SABSA &amp; EA Support</a>
-      <a href="capabilities/justifiable-fabric/"><span>⬡</span>Justifiable Fabric</a>
-      <a href="configuration/models/"><span>✦</span>Models &amp; Effort</a>
-      <a href="examples/cloud-migration/"><span>▧</span>Examples &amp; Use Cases</a>
-      <a href="operations/operating-controls/"><span>⚒</span>Operations &amp; Maintenance</a>
-      <a href="configuration/policy/"><span>♢</span>Security &amp; Governance</a>
-      <a href="reference/inventory/"><span>▦</span>Reference</a>
-      <a href="about/justifiable-ai/"><span>?</span>About</a>
+    <nav class="ai-sidebar-nav-v31" aria-label="Documentation sections">
+      <!-- JAI_CANONICAL_NAVIGATION -->
     </nav>
     <div class="ai-sidebar-promo-v31">
       <div>From Understanding<br>to Justifiable Decisions.</div>
@@ -57,9 +41,19 @@ title: AI IT House Universal
       </div>
     </section>
 
+    <section class="ai-home-learning" aria-labelledby="ai-home-learning-title">
+      <h2 id="ai-home-learning-title">Find your way through JAI</h2>
+      <div class="ai-home-learning-links">
+        <a href="using/methodical-workflows/">Choose your workflow →</a>
+        <a href="examples/how-to-use-JAI/">Follow the worked guides →</a>
+        <a href="using/commands/">Look up commands →</a>
+        <a href="overview/product-overview/">Explore the product overview →</a>
+      </div>
+    </section>
+
     <section class="ai-feature-band-v31"><div class="ai-feature-grid-v31">
       <div class="ai-feature-v31"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="16"/><path d="M17 31 23 18l8-4-4 9z"/></svg><strong>Enterprise Scope</strong><span>Architecture, security, risk, governance and delivery</span></div>
-      <div class="ai-feature-v31"><svg viewBox="0 0 48 48"><circle cx="18" cy="19" r="6"/><circle cx="31" cy="20" r="5"/><path d="M7 37c1-8 6-12 11-12s10 4 11 12M27 29c7 0 11 3 13 9"/></svg><strong>Broad Role Coverage</strong><span>281 IS/IT roles across 17 domains</span></div>
+      <div class="ai-feature-v31"><svg viewBox="0 0 48 48"><circle cx="18" cy="19" r="6"/><circle cx="31" cy="20" r="5"/><path d="M7 37c1-8 6-12 11-12s10 4 11 12M27 29c7 0 11 3 13 9"/></svg><strong>Broad Role Coverage</strong><span>{{ JAI_ROLE_COVERAGE }}</span></div>
       <div class="ai-feature-v31"><svg viewBox="0 0 48 48"><path d="M13 7h17l7 7v27H13z"/><path d="M30 7v8h8M18 22h14M18 28h14M18 34h10"/></svg><strong>Professional Deliverables</strong><span>Documents, models, diagrams and reports</span></div>
       <div class="ai-feature-v31"><svg viewBox="0 0 48 48"><circle cx="13" cy="16" r="4"/><circle cx="34" cy="12" r="4"/><circle cx="35" cy="34" r="4"/><circle cx="13" cy="34" r="4"/><path d="M17 16l13-3M16 19l16 12M17 34h14M34 16v14"/></svg><strong>Structured Knowledge</strong><span>SABSA-aligned and traceable</span></div>
       <div class="ai-feature-v31"><svg viewBox="0 0 48 48"><circle cx="24" cy="24" r="7"/><path d="M24 6v6M24 36v6M6 24h6M36 24h6M11 11l4 4M33 33l4 4M37 11l-4 4M15 33l-4 4"/></svg><strong>Practical by Design</strong><span>From analysis to implementation support</span></div>

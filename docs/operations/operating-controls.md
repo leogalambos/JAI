@@ -15,7 +15,7 @@
 
 ## Consequential-task routing policy
 
-26.10.4 strongly supervises work once `/layered` is used, but direct role/workflow paths still exist. A production deployment that wants layered-by-construction behavior should define an entry rule such as:
+The current release strongly supervises work once `/layered` is used, but direct role/workflow paths still exist. A production deployment that wants layered-by-construction behavior should define an entry rule such as:
 
 > If a task can materially change production, approve/accept risk, publish a consequential enterprise statement, create compliance evidence, or drive a high-impact architecture decision, it must open a layered engagement before specialist execution.
 
@@ -51,10 +51,3 @@ For long-running consequential work:
 ## Human oversight quality
 
 Human oversight is not demonstrated merely by the existence of an approval field. Monitor workload, decision latency, repeated rubber-stamp patterns, expired exceptions and whether operators can actually see decisive evidence/blockers.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../human-authority/"><small>← Previous · Operate and govern</small><strong>Human authority and escalation</strong></a>
-  <a class="ai-next" href="../troubleshooting/"><small>Next · Operate and govern →</small><strong>Troubleshooting</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

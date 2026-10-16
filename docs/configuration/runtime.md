@@ -40,9 +40,3 @@ Destination overrides do not establish support for complete runtime relocation: 
 ## Operational reading
 
 Treat these environment variables as governance controls, not as mere performance knobs. Changing them alters what autonomous rework and escalation behaviour is permitted.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../models/"><small>← Previous · Configuration</small><strong>Providers, models & reasoning effort</strong></a>
-  <a class="ai-next" href="../policy/"><small>Next · Configuration →</small><strong>Governance, policy & approvals</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

@@ -1,0 +1,452 @@
+{
+  "version": "1",
+  "domain_id": "software-development-and-engineering",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "software-engineer",
+      "name": "Software Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/software-engineer.md",
+      "deliverables": [
+        "Reviewed and merged code",
+        "automated tests",
+        "technical documentation for the change",
+        "deployment and rollback notes"
+      ],
+      "aliases": [
+        "Developer",
+        "Programmer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "senior-software-engineer",
+      "name": "Senior Software Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/senior-software-engineer.md",
+      "deliverables": [
+        "Reviewed and merged code for complex changes",
+        "design proposals and ADRs",
+        "code review feedback that teaches",
+        "technical debt assessments"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "staff-engineer",
+      "name": "Staff Engineer",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/staff-engineer.md",
+      "deliverables": [
+        "Cross-team technical strategy",
+        "architecture decision records",
+        "prototypes that settle contested questions",
+        "technical standards adopted across teams"
+      ],
+      "aliases": [
+        "Principal Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "backend-engineer",
+      "name": "Backend Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/backend-engineer.md",
+      "deliverables": [
+        "Service and API implementation",
+        "database access and migration code",
+        "service tests and load profiles",
+        "service runbook entries"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "frontend-engineer",
+      "name": "Frontend Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/frontend-engineer.md",
+      "deliverables": [
+        "User interface implementation",
+        "component tests and visual regression coverage",
+        "accessibility conformance evidence",
+        "performance budget results"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "full-stack-engineer",
+      "name": "Full-stack Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/full-stack-engineer.md",
+      "deliverables": [
+        "End-to-end feature implementation",
+        "tests at each layer",
+        "data and interface changes",
+        "feature telemetry"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "mobile-engineer",
+      "name": "Mobile Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/mobile-engineer.md",
+      "deliverables": [
+        "Mobile application code",
+        "store release builds and metadata",
+        "crash and performance instrumentation",
+        "offline and state-handling design"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "embedded-firmware-engineer",
+      "name": "Embedded Firmware Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/embedded-firmware-engineer.md",
+      "deliverables": [
+        "Firmware implementation",
+        "hardware abstraction and driver code",
+        "power and timing analysis",
+        "field update mechanism"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "real-time-systems-engineer",
+      "name": "Real-time Systems Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/real-time-systems-engineer.md",
+      "deliverables": [
+        "Real-time design with timing budgets",
+        "scheduling and priority analysis",
+        "worst-case execution time evidence",
+        "determinism test results"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "systems-programmer",
+      "name": "Systems Programmer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/systems-programmer.md",
+      "deliverables": [
+        "Kernel or driver code",
+        "low-level performance analysis",
+        "memory and concurrency safety evidence",
+        "platform compatibility matrix"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "mainframe-developer",
+      "name": "Mainframe Developer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/mainframe-developer.md",
+      "deliverables": [
+        "COBOL or PL/I program changes",
+        "JCL and batch schedule updates",
+        "data and copybook changes",
+        "regression evidence for batch cycles"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "api-developer",
+      "name": "API Developer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/api-developer.md",
+      "deliverables": [
+        "API implementation",
+        "OpenAPI or AsyncAPI specification",
+        "consumer-facing documentation and examples",
+        "contract tests"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "integration-developer",
+      "name": "Integration Developer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/integration-developer.md",
+      "deliverables": [
+        "Integration flows and transformations",
+        "error handling and retry design",
+        "message contracts and schemas",
+        "reconciliation reports"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "erp-and-crm-consultant-developer",
+      "name": "ERP and CRM Consultant Developer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/erp-and-crm-consultant-developer.md",
+      "deliverables": [
+        "Configuration and customisation specification",
+        "platform extensions and code",
+        "upgrade impact assessment",
+        "data migration objects"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "low-code-and-rpa-developer",
+      "name": "Low-code and RPA Developer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/low-code-and-rpa-developer.md",
+      "deliverables": [
+        "Automation or application implementation",
+        "process exception handling design",
+        "solution documentation and ownership record",
+        "monitoring and failure alerting"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "game-developer",
+      "name": "Game Developer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/game-developer.md",
+      "deliverables": [
+        "Gameplay systems code",
+        "performance profiling results against frame budget",
+        "build and platform certification artefacts",
+        "tooling for content creators"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "graphics-and-engine-engineer",
+      "name": "Graphics and Engine Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/graphics-and-engine-engineer.md",
+      "deliverables": [
+        "Rendering and engine subsystem code",
+        "GPU and CPU profiling analysis",
+        "platform compatibility and fallback paths",
+        "engine API documentation for other teams"
+      ],
+      "aliases": [
+        "Graphics Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "blockchain-and-smart-contract-developer",
+      "name": "Blockchain and Smart Contract Developer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/blockchain-and-smart-contract-developer.md",
+      "deliverables": [
+        "Smart contract code",
+        "formal or property-based verification evidence",
+        "deployment and upgrade strategy",
+        "independent audit remediation record"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "quantitative-developer",
+      "name": "Quantitative Developer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/quantitative-developer.md",
+      "deliverables": [
+        "Model implementation code",
+        "numerical accuracy and benchmark evidence",
+        "performance and latency measurements",
+        "model change documentation for validation"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "compiler-and-toolchain-engineer",
+      "name": "Compiler and Toolchain Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/compiler-and-toolchain-engineer.md",
+      "deliverables": [
+        "Compiler or tool implementation",
+        "correctness test suite and conformance evidence",
+        "performance benchmarks",
+        "migration guidance for users"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "build-engineer",
+      "name": "Build Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/build-engineer.md",
+      "deliverables": [
+        "Build system configuration",
+        "build performance and cache analysis",
+        "dependency and artefact management policy",
+        "reproducibility evidence"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "release-engineer",
+      "name": "Release Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/release-engineer.md",
+      "deliverables": [
+        "Release plan and schedule",
+        "release notes and change manifest",
+        "deployment automation",
+        "rollback procedure and evidence of test"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "ci-cd-platform-engineer",
+      "name": "CI/CD Platform Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/ci-cd-platform-engineer.md",
+      "deliverables": [
+        "Shared pipeline templates and reusable workflows",
+        "runner fleet topology and scaling policy",
+        "pipeline identity and OIDC federation design",
+        "supply chain provenance and attestation configuration"
+      ],
+      "aliases": [
+        "Build and Release Platform Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "gitops-and-continuous-delivery-engineer",
+      "name": "GitOps and Continuous Delivery Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/gitops-and-continuous-delivery-engineer.md",
+      "deliverables": [
+        "Environment promotion model and desired-state repositories",
+        "GitOps reconciliation configuration",
+        "progressive delivery policy for canary, blue-green and feature flags",
+        "automated rollback and health gate definitions"
+      ],
+      "aliases": [
+        "Continuous Delivery Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "developer-experience-engineer",
+      "name": "Developer Experience Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/developer-experience-engineer.md",
+      "deliverables": [
+        "Golden path tooling and templates",
+        "developer friction measurement",
+        "local development environment",
+        "internal tooling documentation"
+      ],
+      "aliases": [
+        "DevEx Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "open-source-program-office-engineer",
+      "name": "Open Source Program Office Engineer",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/open-source-program-office-engineer.md",
+      "deliverables": [
+        "Open source policy and approval workflow",
+        "software bill of materials and licence inventory",
+        "contribution and publication process",
+        "dependency risk report"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "software-modernisation-engineer",
+      "name": "Software Modernisation Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-software-development-and-engineering",
+      "path": "skills/it-roles-software-development-and-engineering/references/software-modernisation-engineer.md",
+      "deliverables": [
+        "Modernisation strategy and sequencing plan",
+        "characterisation test suite for legacy behaviour",
+        "extracted or strangled components",
+        "migration and cutover runbooks"
+      ],
+      "aliases": [],
+      "guard": null
+    }
+  ]
+}

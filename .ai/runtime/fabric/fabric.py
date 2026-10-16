@@ -929,13 +929,17 @@ def cmd_policy(a):
 
 def impact_dependents(fb, changed):
     """Return fragments whose justification transitively depends on changed through explicit
-    support/consolidation/request edges. This is the runtime counterpart of affected/4."""
+    support/consolidation/request/derivation/refinement edges. Implements points
+    from product to requirement, so dependency impact follows its inverse.
+    Navigation and review edges never invalidate dependents."""
     q, seen, out = deque([changed]), {changed}, set()
-    labels = {"supports", "consolidated_into", "requests"}
+    labels = {"supports", "consolidated_into", "requests", "derives", "refines"}
     while q:
         cur = q.popleft()
-        for p, dst in fb.out[cur]:
-            if p not in labels or dst in seen:
+        dependents = [(p, dst) for p, dst in fb.out[cur] if p in labels]
+        dependents.extend(("implements", src) for src, label in fb.inc[cur] if label == "implements")
+        for p, dst in dependents:
+            if dst in seen:
                 continue
             seen.add(dst); q.append(dst)
             if fb.nodes[dst]["type"] == "frag":

@@ -129,7 +129,82 @@ def flatten_v3(c: dict) -> dict:
     j=c["jai"]; i=j["intent"]; m=j["semantics"]; q=j["justification"]; d=j["design"]; r=j["realisation"]; e=j["evidence"]
     return {**c, "owner_role":i["owner_role"], "artifact_type":m["artifact_type"], "purpose":i["purpose"], "audience":i["audience"], "decision_supported":i["decision_supported"], "schema_ref":m["schema_ref"], "required_inputs":m["required_inputs"], "required_evidence":q["required_evidence"], "required_relations":m["required_relations"], "mandatory_sections":d["mandatory_sections"], "producer":r["producer"], "reviewers":q["reviewers"], "approver":q["approver"], "renderer":r["renderer"], "output_formats":r["output_formats"], "publication_profile":d["publication_profile"], "acceptance_profile":q["acceptance_profile"], "evidence_profile":q["evidence_profile"], "system_of_record":r["system_of_record"], "external_handoff_adapter":r["external_handoff_adapter"], "classification":i["classification"], "production_mode":r["production_mode"], "semantic_gate":q["semantic_policy"], "repository_gate":q["repository_policy"], "publication_gate":e["publication_gate"], "portfolio_traceability":e["portfolio_traceability"], "classification_source":c["compatibility"]["classification_source"], "retention":c["lifecycle"].get("retention")}
 
+
+def _record_hash(record: dict) -> str:
+    return hashlib.sha256(json.dumps(record, sort_keys=True, separators=(',', ':'), ensure_ascii=False).encode()).hexdigest()
+
+
+def _origin_problems(raw: dict, legacy_by: dict, live: dict | None, runtime: Path) -> list[str]:
+    """Validate origin without treating authored provenance as approval or signature."""
+    cid = raw.get('id')
+    problems = []
+    migration = raw.get('migration')
+    native = raw.get('native_creation')
+    compatibility = raw.get('compatibility', {})
+    old = legacy_by.get(cid)
+    if (migration is None) == (native is None):
+        return [f'{cid}: exactly one migration or native_creation origin required']
+    if migration is not None and not isinstance(migration, dict) or native is not None and not isinstance(native, dict):
+        return [f'{cid}: origin must be an object']
+    if old is not None:
+        if native is not None:
+            return [f'{cid}: legacy contract cannot be relabelled as native creation']
+        if migration.get('source_id') != cid or migration.get('source_hash') != _record_hash(old):
+            problems.append(f'{cid}: migration provenance/hash mismatch')
+        if compatibility.get('migration') != 'forward-only':
+            problems.append(f'{cid}: legacy migration must remain forward-only')
+        if not str(compatibility.get('classification_source', '')).startswith('explicit-ga-'):
+            problems.append(f'{cid}: legacy classification must preserve its GA provenance')
+    elif migration is not None:
+        problems.append(f'{cid}: legacy migration source missing')
+    else:
+        if compatibility.get('migration') != 'native-creation-no-legacy-source':
+            problems.append(f'{cid}: native origin must declare no legacy source')
+        if not str(compatibility.get('classification_source', '')).startswith('explicit-native-'):
+            problems.append(f'{cid}: native classification must declare native provenance')
+        if live is None or native.get('source_path') != live['role']['path']:
+            problems.append(f'{cid}: native origin role source mismatch')
+        if native.get('source_kind') != 'reviewed-role-definition':
+            problems.append(f'{cid}: unsupported native source kind')
+        ref = native.get('evidence_ref', '')
+        if not re.fullmatch(r'artifacts/contracts/[a-z0-9-]+\.native-v3\.json', ref):
+            return problems + [f'{cid}: invalid native provenance reference']
+        path = runtime / ref
+        if not path.resolve().is_relative_to(runtime.resolve()):
+            return problems + [f'{cid}: native provenance reference escapes runtime']
+        try:
+            payload = path.read_bytes()
+            evidence = json.loads(payload)
+        except (OSError, ValueError):
+            return problems + [f'{cid}: native provenance evidence missing or invalid']
+        if not isinstance(evidence, dict) or not isinstance(evidence.get('contracts'), list) or any(not isinstance(entry, dict) for entry in evidence['contracts']):
+            return problems + [f'{cid}: native provenance evidence must contain contract objects']
+        if hashlib.sha256(payload).hexdigest() != native.get('evidence_hash'):
+            problems.append(f'{cid}: native provenance evidence hash mismatch')
+        entries = evidence.get('contracts', [])
+        ids = [entry.get('id') for entry in entries]
+        if len(ids) != len(set(ids)):
+            problems.append(f'{cid}: duplicate native provenance ids')
+        matching = [entry for entry in entries if entry.get('id') == cid]
+        record = {key: value for key, value in raw.items() if key != 'native_creation'}
+        if evidence.get('origin') != 'native-v3-authored' or len(matching) != 1 or matching[0].get('contract_hash') != _record_hash(record):
+            problems.append(f'{cid}: native provenance contract binding mismatch')
+    if cid != f"{raw.get('role_slug')}:{raw.get('deliverable_number')}":
+        problems.append(f'{cid}: contract identity differs from role/deliverable identity')
+    return problems
+
 def validate(root: Path):
+    """Return validation problems and loaded state; read all registered role sources.
+
+    Args:
+        root: Repository or installed library root containing the canonical registry.
+
+    Returns:
+        A pair of problem strings and state used to construct the compatibility view.
+
+    Raises:
+        SystemExit: Required canonical files or role references are missing.
+    """
     p,taxonomy,schema,source,profiles,roles=load_all(root); problems=[]
     if taxonomy.get('policy',{}).get('production_inference_forbidden') is not True:
         problems.append('taxonomy policy must forbid production inference')
@@ -146,17 +221,14 @@ def validate(root: Path):
     if source.get('authoritative_write_model') is not True or source.get('native_write_enforced') is not True:
         problems.append('authoritative v3 source must declare native write enforcement')
     legacy=json.loads(p['legacy'].read_text(encoding='utf-8')); legacy_by={x['id']:x for x in legacy.get('contracts',[])}
-    def source_hash(x):
-        return hashlib.sha256(json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest()
     for cid,c in actual.items():
         if jsonschema:
             try: jsonschema.Draft202012Validator(schema).validate(next(x for x in rows if x.get('id')==cid))
             except Exception as exc: problems.append(f'{cid}: contract schema: {exc.message if hasattr(exc,"message") else exc}')
-        if not re.match(r'^explicit-ga-[0-9]{2}\.(0[1-9]|1[0-2])\.[0-9]+$', str(c.get('classification_source',''))): problems.append(f'{cid}: non-explicit classification source')
-        raw=next(x for x in rows if x.get('id')==cid); mig=raw.get('migration',{}); old=legacy_by.get(cid)
+        if not re.fullmatch(r'explicit-(?:ga|native)-[0-9]{2}\.(0[1-9]|1[0-2])\.[0-9]+', str(c.get('classification_source',''))): problems.append(f'{cid}: non-explicit classification source')
+        raw=next(x for x in rows if x.get('id')==cid)
         if raw.get('compatibility',{}).get('writes')!='ArtifactContract-v3': problems.append(f'{cid}: non-native write target')
-        if not old: problems.append(f'{cid}: legacy migration source missing')
-        elif mig.get('source_id')!=cid or mig.get('source_hash')!=source_hash(old): problems.append(f'{cid}: migration provenance/hash mismatch')
+        problems.extend(_origin_problems(raw, legacy_by, live.get(cid), p['runtime']))
         if not c.get('retention'): problems.append(f'{cid}: retention obligation lost in v3 lifecycle')
         ld=live.get(cid)
         if ld and c.get('source_fingerprint')!=ld['fingerprint']: problems.append(f'{cid}: role Section 6 drift; explicit contract review required')

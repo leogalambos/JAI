@@ -1,0 +1,67 @@
+{
+  "origin": "native-v3-authored",
+  "classification_release": "26.10.4",
+  "meaning": "Authored provenance and content binding only; independent review evidence and human approval are separate. Existing legacy IDs cannot use native origin.",
+  "contracts": [
+    {
+      "id": "bid-proposal-manager:1",
+      "contract_hash": "160bc9794ddf3f69c06afe45722d717c5c4aab30421fd7463196156cea229e29"
+    },
+    {
+      "id": "bid-proposal-manager:2",
+      "contract_hash": "12e866bdcbe338514bcb39992807e81361068f936a44ef6d20eb24a52fbbd684"
+    },
+    {
+      "id": "bid-proposal-manager:3",
+      "contract_hash": "f8e0acf320e68d04ba4dca7523b5a63356cf1173164030b71d8b5f340a0a2490"
+    },
+    {
+      "id": "bid-proposal-manager:4",
+      "contract_hash": "0e17c77903d55f4d83ad4cbf6f07e261e1053cabc1e6ca4c4d85dd3484e64e1f"
+    },
+    {
+      "id": "commercial-pricing-deal-finance-specialist:1",
+      "contract_hash": "5b1e93b613cd2a47da37305fcaca5fa0c03b2bc86a2842330914cf89c13d36b8"
+    },
+    {
+      "id": "commercial-pricing-deal-finance-specialist:2",
+      "contract_hash": "116e2078d51470906d168610868f4d4030301c5a4307fd94658bddab6f6d0e9f"
+    },
+    {
+      "id": "commercial-pricing-deal-finance-specialist:3",
+      "contract_hash": "835c045367b3523be0491e87aeec6e0ac954af5c170348197e33a11959c0bd94"
+    },
+    {
+      "id": "estimation-cost-engineering-specialist:1",
+      "contract_hash": "e0bfe9504722d26a52340875dff8187a185b9184bc43da399394c3804430d47b"
+    },
+    {
+      "id": "estimation-cost-engineering-specialist:2",
+      "contract_hash": "b1a3fc1f5e0e86079a0e90225665e6ffedd1291354c9c94b6fed7cb62e9e97d0"
+    },
+    {
+      "id": "estimation-cost-engineering-specialist:3",
+      "contract_hash": "5fc95dcf317d0d6d0e0d7014de9226b03fee36eefebdc8071c7427ab4fb34baf"
+    },
+    {
+      "id": "independent-commercial-assurance-reviewer:1",
+      "contract_hash": "91ccece9a1730df80c17e7a4a6e0d61416c910fe94fa3dc2b37fe876750f877a"
+    },
+    {
+      "id": "independent-commercial-assurance-reviewer:2",
+      "contract_hash": "5d4dc93fb1a061800809acd9e44a838aa8d828494e39e5df56856a10e6e7e0bf"
+    },
+    {
+      "id": "supplier-commercial-deal-manager:1",
+      "contract_hash": "6e00f549814115e0069303196da084363b6d875f61ebe95286fa7d9abaa2eaa4"
+    },
+    {
+      "id": "supplier-commercial-deal-manager:2",
+      "contract_hash": "3033250a7bb1eae3b608fd37c10052548bfcc30dfdcfad20914f6e6592900bb2"
+    },
+    {
+      "id": "supplier-commercial-deal-manager:3",
+      "contract_hash": "5b1c0148f2f19b41b6453daed03d3dd75bffe4c5a8f80711d260c4d5068a0d03"
+    }
+  ]
+}
