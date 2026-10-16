@@ -40,14 +40,75 @@ def material_v2_equals_v3(old,new):
     # version and classification_source are intentionally version-governance fields, not semantic payload.
     return all(old.get(k)==mapping.get(k) for k in mapping)
 
+def catalogue_problems(roles_catalog, v2, v3, layers, runtime):
+    """Return active catalogue and frozen migration integrity failures.
+
+    Args:
+        roles_catalog: Canonical role manifest, including its declared count.
+        v2: Immutable legacy contract catalogue (1124 original contracts).
+        v3: Current authoritative catalogue, including native additions.
+        layers: Canonical JAI layer registry.
+        runtime: Runtime directory containing schema and provenance evidence.
+
+    Returns:
+        A list of failures. Validation reads JSON evidence only, never role
+        bodies; the separate artifact gate verifies source deliverable drift.
+        Native provenance is a content binding, never human approval.
+    """
+    import artifacts
+    problems = []
+    roles = roles_catalog.get('roles', [])
+    old_rows = v2.get('contracts', [])
+    rows = v3.get('contracts', [])
+    by_role = {row.get('slug'): row for row in roles}
+    old = {row.get('id'): row for row in old_rows}
+    new = {row.get('id'): row for row in rows}
+    layer_map = {row['id']: row for row in layers['layers']}
+    if not roles or len(by_role) != len(roles) or None in by_role or roles_catalog.get('count') != len(roles):
+        problems.append('canonical role identities/count mismatch')
+    for role in roles:
+        layer = layer_map.get(role.get('layer'))
+        if not layer or role.get('layer_name') != layer['name'] or role.get('jai', {}).get('primary_layer') != role.get('layer'):
+            problems.append(f"{role.get('slug')}: invalid role layer binding")
+    if len(old_rows) != 1124 or len(old) != len(old_rows) or None in old:
+        problems.append('immutable legacy contract cohort must contain 1124 unique identities')
+    if not rows or len(new) != len(rows) or None in new:
+        problems.append('duplicate, empty or missing authoritative contract identities')
+    if v3.get('deliverable_count') != len(rows) or v3.get('role_count') != len(by_role):
+        problems.append('active catalogue declared counts mismatch')
+    expected_ids = {f"{role.get('slug')}:{number}" for role in roles
+                    for number in range(1, len(role.get('primary_deliverables', [])) + 1)}
+    if set(new) != expected_ids:
+        problems.append('canonical role deliverable identity coverage mismatch')
+    if {row.get('role_slug') for row in rows} != set(by_role):
+        problems.append('active contract role coverage mismatch')
+    if not set(old) <= set(new):
+        problems.append('immutable legacy contract identity coverage lost')
+    if not jsonschema:
+        return problems + ['jsonschema required for native release qualification']
+    validator = jsonschema.Draft202012Validator(load(Path(runtime) / 'schema/contracts/artifact-v3.schema.json'))
+    for row in rows:
+        cid = row.get('id')
+        errors = list(validator.iter_errors(row))
+        if errors:
+            problems.append(f'{cid}: invalid ArtifactContract v3 schema: {errors[0].message}')
+            continue
+        role = by_role.get(row.get('role_slug'))
+        problems.extend(artifacts._origin_problems(row, old, {'role': role} if role else None, Path(runtime)))
+        if cid in old and not material_v2_equals_v3(old[cid], row):
+            problems.append(f'{cid}: immutable legacy material fields changed')
+    return problems
+
 def main():
+    """Run release checks; return one on any failed catalogue or runtime gate."""
+    CHECKS.clear()
     problems=[]
     layers=load(R/'jai/core/layers.json'); lmap={x['id']:x for x in layers['layers']}
     check(len(lmap)==6 and layers['authority_boundary']['id']==0 and layers['authority_boundary']['external_to_jai'],'jai-layer-registry-test',problems)
     roles_catalog=load(R/'roles.json'); workflows_catalog=load(R/'workflows.json')
     roles=roles_catalog['roles']
     check(bool(roles_catalog.get('version')) and bool(workflows_catalog.get('version')),'catalogue-release-metadata-conformance',problems)
-    check(len(roles)==281 and all(r.get('layer_name')==lmap[r['layer']]['name'] and r.get('jai',{}).get('primary_layer')==r['layer'] for r in roles),'role-layer-conformance',problems)
+    check(len(roles)==roles_catalog.get('count') and all(r.get('layer') in lmap and r.get('layer_name')==lmap[r['layer']]['name'] and r.get('jai',{}).get('primary_layer')==r['layer'] for r in roles),'role-layer-conformance',problems)
 
     policy=load(R/'jai/core/native-write-policy.json')
     frozen=(R/'artifacts/contracts/role-deliverables.v2.json').read_bytes()
@@ -55,21 +116,28 @@ def main():
     check(policy['legacy_read_only'][0]['sha256']==hashlib.sha256(frozen).hexdigest(),'legacy-v2-immutability-hash',problems)
 
     v2=load(R/'artifacts/contracts/role-deliverables.v2.json'); v3=load(R/'artifacts/contracts/role-deliverables.v3.json')
+    catalogue_errors = catalogue_problems(roles_catalog, v2, v3, layers, R)
+    check(not catalogue_errors, 'active-and-immutable-contract-cohorts', problems)
+    if catalogue_errors:
+        for error in catalogue_errors:
+            print('FAIL', error)
+        return 1
     old={x['id']:x for x in v2['contracts']}; new={x['id']:x for x in v3['contracts']}
-    check(bool(v3.get('release')) and v3.get('authoritative_write_model') and v3.get('native_write_enforced') and len(new)==1124,'artifact-v3-native-authority',problems)
-    check(set(old)==set(new),'artifact-contract-identity-coverage',problems)
+    legacy = {cid: new[cid] for cid in old}
+    check(bool(v3.get('release')) and v3.get('authoritative_write_model') and v3.get('native_write_enforced') and len(new)==v3.get('deliverable_count'),'artifact-v3-native-authority',problems)
+    check(set(old)<=set(new),'artifact-contract-identity-coverage',problems)
     check(all(set(c['jai'])=={'core_version','intent','semantics','justification','design','realisation','evidence'} for c in new.values()),'artifact-v3-L1-L6-bindings',problems)
     check(all(c['compatibility']['writes']=='ArtifactContract-v3' for c in new.values()),'artifact-native-write-target',problems)
-    check(all(c.get('migration',{}).get('source_hash')==h(old[cid]) and c['migration'].get('source_id')==cid for cid,c in new.items()),'migration-source-hash-coverage-1124',problems)
-    check(all(material_v2_equals_v3(old[cid],c) for cid,c in new.items()),'migration-loss-test-all-material-fields-1124',problems)
+    check(all(c.get('migration',{}).get('source_hash')==h(old[cid]) and c['migration'].get('source_id')==cid for cid,c in legacy.items()),'migration-source-hash-coverage-1124',problems)
+    check(all(material_v2_equals_v3(old[cid],c) for cid,c in legacy.items()),'migration-loss-test-all-material-fields-1124',problems)
 
     if jsonschema:
         schema=load(R/'schema/contracts/artifact-v3.schema.json'); val=jsonschema.Draft202012Validator(schema)
-        check(not any(next(val.iter_errors(c),None) for c in new.values()),'artifact-v3-schema-1124',problems)
+        check(not any(next(val.iter_errors(c),None) for c in new.values()),'artifact-v3-schema-current',problems)
 
     mig0=module_from(R/'jai/migrations/migrate-26.10.0.py','mig26100')
     migrated={cid:mig0.migrate(c) for cid,c in old.items()}
-    check(all({**migrated[cid], "compatibility": {**migrated[cid]["compatibility"], "writes":"ArtifactContract-v3"}}==new[cid] for cid in new),'legacy-26.10.0-migration-exact-1124',problems)
+    check(all({**migrated[cid], "compatibility": {**migrated[cid]["compatibility"], "writes":"ArtifactContract-v3"}}==new[cid] for cid in legacy),'legacy-26.10.0-migration-exact-1124',problems)
     check(all(mig0.migrate(mig0.migrate(c))==mig0.migrate(c) for c in list(old.values())[:50]),'migration-idempotency-test',problems)
     mig2=module_from(R/'jai/migrations/migrate-26.10.2.py','mig26102to26104')
     source26102=module_from(R/'jai/migrations/migrate-26.10.0.py','source26102builder')
@@ -78,13 +146,13 @@ def main():
     for c in old.values():
         x=source26102.migrate(c); x['compatibility']['reads']=[r for r in x['compatibility']['reads'] if not r.startswith('26.10.2/')]; x['compatibility']['writes']='26.10.2/ArtifactContract-v3'; rows26102.append(x)
     migrated2={x['id']:mig2.migrate(x) for x in rows26102}
-    check(all({**migrated2[cid], "compatibility": {**migrated2[cid]["compatibility"], "writes":"ArtifactContract-v3"}}==new[cid] for cid in new),'legacy-26.10.2-migration-exact-1124',problems)
+    check(all({**migrated2[cid], "compatibility": {**migrated2[cid]["compatibility"], "writes":"ArtifactContract-v3"}}==new[cid] for cid in legacy),'legacy-26.10.2-migration-exact-1124',problems)
     mig3=module_from(R/'jai/migrations/migrate-26.10.3.py','mig26103to26104')
-    source3={cid:json.loads(json.dumps(c)) for cid,c in new.items()}
+    source3={cid:json.loads(json.dumps(c)) for cid,c in legacy.items()}
     for c in source3.values():
         c['compatibility']['writes']='26.10.3/ArtifactContract-v3'; c['compatibility']['reads']=[x for x in c['compatibility']['reads'] if x!='26.10.3/ArtifactContract-v3']
     migrated3={cid:mig3.migrate(c) for cid,c in source3.items()}
-    check(all({**migrated3[cid], "compatibility": {**migrated3[cid]["compatibility"], "writes":"ArtifactContract-v3"}}==new[cid] for cid in new),'legacy-26.10.3-migration-exact-1124',problems)
+    check(all({**migrated3[cid], "compatibility": {**migrated3[cid]["compatibility"], "writes":"ArtifactContract-v3"}}==new[cid] for cid in legacy),'legacy-26.10.3-migration-exact-1124',problems)
 
     reg=load(R/'schema/schema-registry.json')
     check(bool(reg.get('release')) and {x['from'] for x in reg['migration_rules']}=={'26.10.0','26.10.1','26.10.2','26.10.3'} and all(x['to']==reg['release'] for x in reg['migration_rules']),'schema-registry-native-namespace',problems)

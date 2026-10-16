@@ -131,3 +131,48 @@ jobs:
           done
         env:
           GH_TOKEN: ${{ github.token }}
+
+  release-preflight:
+    name: Full A-H release preflight without publication
+    runs-on: ubuntu-24.04
+    permissions:
+      contents: read
+    steps:
+      - name: Checkout candidate source independently of policy checks
+        uses: actions/checkout@v4
+      - name: Prepare canonical qualification environment
+        uses: ./.github/actions/setup-qualification
+      - name: Validate the same documentation inputs as the release workflow
+        run: |
+          python3 .ai/runtime/tools/docs_contract.py --root .
+          python3 .ai/runtime/tools/generate_docs.py --check --root .
+          python3 -m mkdocs build --strict
+      - name: Execute the complete release qualification before tagging
+        run: python3 .ai/runtime/tools/release_ga.py qualify
+      - name: Verify generated release evidence without publishing
+        run: |
+          python3 .ai/runtime/tools/release_policy.py check --final
+          python3 .ai/runtime/tools/supply_chain.py verify --root . \
+            --sbom SBOM.spdx.json --provenance PROVENANCE.json \
+            --compatibility COMPATIBILITY.json
+      - name: Build the candidate archive and verify its checksum
+        shell: bash
+        run: |
+          set -euo pipefail
+          python3 .ai/runtime/tools/release_bundle.py build --root . --dist dist
+          cd dist
+          sha256sum -c ai-it-house-universal-*.sha256
+      - name: Upload preflight diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: jai-release-preflight
+          path: |
+            ${{ runner.temp }}/jai-ci-environment.json
+            ${{ runner.temp }}/jai-ci-python-freeze.txt
+            .ai/runtime/_meta/gates/*.json
+            .ai/runtime/_meta/qualification-A-G.json
+            QUALIFICATION-A-H.json
+          include-hidden-files: true
+          retention-days: 14
+          if-no-files-found: ignore

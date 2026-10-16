@@ -25,14 +25,15 @@ or demo topics).
 
 ## Operator versus runtime: read this first
 
-Choose the method before beginning the work: use a domain workflow directly,
-run creation inside `/layered` from the start, or use a completed domain
-artefact as evidence for a **new** `/layered` decision. These are different
-assurance scopes. A later decision review does not retrospectively establish
-that creation followed layered contracts. The source-controlled and published
-[methodical workflow guide](../using/methodical-workflows.md) explains all three
-with proposal and security-architecture examples. That page is not included in
-the compact installed offline runtime.
+Choose the method before beginning the work: use a domain workflow
+directly, run creation inside `/layered` from the start, or use a
+completed domain artefact as evidence for a **new** `/layered` decision.
+These are different assurance scopes. A later decision review does not
+retrospectively establish that creation followed layered contracts. The
+source-controlled and published [methodical workflow
+guide](../using/methodical-workflows.md) explains all three with
+proposal and security-architecture examples. That page is not included
+in the compact installed offline runtime.
 
 - **User interface:** type `/command` in **Claude Code** or
   `$workflow-command` in **Codex CLI**, with your task in the provider
@@ -775,7 +776,19 @@ is releasable.
 
 ### /commercial
 
-In Claude use `/commercial`; in Codex use `$workflow-commercial`. This opt-in supplier extension coordinates discovery, estimation, bid economics, contracts, staged delivery and service monitoring. Existing technical engagements keep their identities and workflows. Human authority retains contractual decisions. The commercial coordinator loads compact domain metadata and requests bounded specialist consultations; strict dispatch stays blocked while critical provider controls lack current local evidence. For layered creation, explicitly request the commercial profile within `/layered` rather than assuming the domain command automatically starts a six-layer engagement. A later layered bid decision has its own scope. See the [commercial capability guide](../capabilities/commercial-delivery.md) and the [methodical workflow guide](../using/methodical-workflows.md).
+In Claude use `/commercial`; in Codex use `$workflow-commercial`. This
+opt-in supplier extension coordinates discovery, estimation, bid
+economics, contracts, staged delivery and service monitoring. Existing
+technical engagements keep their identities and workflows. Human
+authority retains contractual decisions. The commercial coordinator
+loads compact domain metadata and requests bounded specialist
+consultations; strict dispatch stays blocked while critical provider
+controls lack current local evidence. For layered creation, explicitly
+request the commercial profile within `/layered` rather than assuming
+the domain command automatically starts a six-layer engagement. A later
+layered bid decision has its own scope. See the [commercial capability
+guide](../capabilities/commercial-delivery.md) and the [methodical
+workflow guide](../using/methodical-workflows.md).
 
 ## 4. Concepts
 

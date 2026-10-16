@@ -12,6 +12,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import hashlib
+import importlib.util
 import json
 import platform
 import tempfile
@@ -31,21 +32,26 @@ def sha(data: bytes) -> str:
 
 
 def tree_files(root):
-    for path in sorted(Path(root).rglob("*")):
-        if not path.is_file():
-            continue
-        if path.name in EXCLUDE:
-            continue
-        if "__pycache__" in path.parts or path.name.endswith(".pyc"):
-            continue
-        rel = path.relative_to(root).as_posix()
-        if rel.split('/')[0] in {"dist", "site", ".venv", ".git"}:
-            continue
-        if rel == ".ai/runtime/_meta/qualification-A-G.json":
-            continue
-        if rel.startswith(".ai/runtime/_meta/gates/"):
-            continue
-        yield path
+    """Yield public distribution files covered by supply-chain integrity.
+
+    Args:
+        root: Existing, nonsymlink package source directory.
+    Yields:
+        Deterministically ordered regular paths selected by release packaging,
+        excluding generated integrity evidence to avoid circular digests.
+        Private and generated directories are pruned before descent.
+    Raises:
+        ValueError: If root is missing, is not a directory or is a symlink.
+        OSError: If a maintained distribution directory cannot be enumerated.
+    """
+    spec = importlib.util.spec_from_file_location(
+        '_jai_supply_chain_release_bundle', Path(__file__).with_name('release_bundle.py'))
+    distribution = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(distribution)
+    source = Path(root)
+    for path in distribution.files(source):
+        if path.name not in EXCLUDE:
+            yield source / path.relative_to(source.resolve())
 
 
 def tree_digest(root) -> str:

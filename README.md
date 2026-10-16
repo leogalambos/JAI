@@ -2,15 +2,23 @@
 
 # JAI · Justifiable AI
 
-### From enterprise intent to decisions you can explain, evidence, and reproduce.
+### Enterprise intent. Explainable decisions. Reproducible evidence.
 
-**A governed, provider-neutral AI delivery system for enterprise architecture, cybersecurity and the full IS/IT lifecycle.**
+**A governed, provider-neutral AI delivery system for enterprise
+architecture, cybersecurity and the full IS/IT lifecycle.**
 
-**Enterprise GA** · **Provider-neutral** · **Human-governed** · **Evidence-led**
+**Enterprise GA** · **Provider-neutral** · **Human-governed** ·
+**Evidence-led**
 
-JAI brings a six-layer justifiability model together with the **AI IT House** runtime: specialist roles, executable agent contracts, enterprise workflows, structured artifacts and release assurance.
+JAI brings a six-layer justifiability model together with the **AI IT
+House** runtime: specialist roles, executable agent contracts,
+enterprise workflows, structured artifacts and release assurance.
 
-[**Understand the model**](#the-six-layer-model) · [**Explore capabilities**](#what-jai-enables) · [**Get started**](#documentation-and-runtime-entry-points) · [**Find the documentation**](#documentation-and-runtime-entry-points) · [**Release assurance**](#quality-provenance-and-release-assurance)
+[**Understand the model**](#the-six-layer-model) · [**Explore
+capabilities**](#what-jai-enables) · [**Get
+started**](#documentation-and-runtime-entry-points) · [**Find the
+documentation**](#documentation-and-runtime-entry-points) · [**Release
+assurance**](#quality-provenance-and-release-assurance)
 
 </div>
 
@@ -18,13 +26,19 @@ JAI brings a six-layer justifiability model together with the **AI IT House** ru
 
 ## Why JAI exists
 
-Enterprise IT decisions cannot rest on a fluent answer alone. They must be **grounded in business intent, semantically consistent, policy-conformant, reviewable and supported by evidence** — and the resulting artifacts must be usable by the people who own the decision.
+Enterprise IT decisions cannot rest on a fluent answer alone. They must
+be **grounded in business intent, semantically consistent,
+policy-conformant, reviewable and supported by evidence** — and the
+resulting artifacts must be usable by the people who own the decision.
 
-JAI is designed to move AI-assisted work beyond *prompt → response* and toward a controlled delivery chain:
+JAI is designed to move AI-assisted work beyond *prompt → response* and
+toward a controlled delivery chain:
 
-> **Intent → shared meaning → justified reasoning → solution design → controlled realisation → execution evidence → human decision.**
+> **Intent → shared meaning → justified reasoning → solution design →
+> controlled realisation → execution evidence → human decision.**
 
-That difference matters when an output is headed to an Architecture Review Board, a CISO, a delivery team, a risk committee or an auditor.
+That difference matters when an output is headed to an Architecture
+Review Board, a CISO, a delivery team, a risk committee or an auditor.
 
 | Without an explicit delivery model | With the JAI approach |
 | :--- | :--- |
@@ -34,11 +48,14 @@ That difference matters when an output is headed to an Architecture Review Board
 | A polished document with unclear completeness | Publication controls and checks on the produced artifact |
 | Implicit or delegated authority | **L0 human authority** remains outside the six AI layers |
 
-**JAI is a decision-support and delivery framework, not a substitute for accountable human ownership or approval.**
+**JAI is a decision-support and delivery framework, not a substitute for
+accountable human ownership or approval.**
 
 ## The six-layer model
 
-The JAI model gives each stage of AI-assisted delivery a distinct purpose. **L0 — Human Authority** sits above the model as the external authority and approval boundary; it is **not** a seventh JAI layer.
+The JAI model gives each stage of AI-assisted delivery a distinct
+purpose. **L0 — Human Authority** sits above the model as the external
+authority and approval boundary; it is **not** a seventh JAI layer.
 
 ```mermaid
 flowchart TB
@@ -66,7 +83,9 @@ flowchart TB
 | **L5 — Realisation and Tooling** | *How is the design implemented within permitted boundaries?* | Producers, renderers, provider adapters, tools and sandboxes |
 | **L6 — Execution and Evidence** | *What actually happened, and what can be verified?* | Results, validation, publication evidence, execution records and review |
 
-**The essential separation:** domain facts, control decisions, implementation steps and observed evidence should not be treated as interchangeable. JAI makes their relationships explicit.
+**The essential separation:** domain facts, control decisions,
+implementation steps and observed evidence should not be treated as
+interchangeable. JAI makes their relationships explicit.
 
 ## What JAI enables
 
@@ -79,7 +98,11 @@ flowchart TB
 
 ### A representative use case
 
-Consider the onboarding of a business-critical cloud service. A JAI-oriented delivery can connect the business objective to security and privacy requirements, architecture options, SABSA/EA viewpoints, risk treatment, implementation responsibilities and an evidence-backed review package.
+Consider the onboarding of a business-critical cloud service. A
+JAI-oriented delivery can connect the business objective to security and
+privacy requirements, architecture options, SABSA/EA viewpoints, risk
+treatment, implementation responsibilities and an evidence-backed review
+package.
 
 ```text
 Business need
@@ -97,7 +120,10 @@ Validation, publication and evidence
 Human review and decision
 ```
 
-This is an **illustrative workflow**, not a claim that every integration or organizational approval can be executed automatically. Available outputs depend on the relevant contracts, configured tools and permitted runtime access.
+This is an **illustrative workflow**, not a claim that every integration
+or organizational approval can be executed automatically. Available
+outputs depend on the relevant contracts, configured tools and permitted
+runtime access.
 
 ## Who it is for
 
@@ -111,21 +137,31 @@ This is an **illustrative workflow**, not a claim that every integration or orga
 
 ## Documentation and runtime entry points
 
-JAI has **two separate entry points**: the AI delivery runtime (used through supported CLI providers) and the Markdown documentation site (built with MkDocs). Building the website is **not** the same as installing or running the AI runtime.
+JAI has **two separate entry points**: the AI delivery runtime (used
+through supported CLI providers) and the Markdown documentation site
+(built with MkDocs). Building the website is **not** the same as
+installing or running the AI runtime.
 
 ### 1. Start with the AI delivery runtime
 
-Start from the provider CLI guide and runtime files described by the project:
+Start from the provider CLI guide and runtime files described by the
+project:
 
-- `docs/reference/installed-cli-guide.md` — maintained CLI guide for **Claude Code** and **Codex CLI**.
-- `.ai/` — runtime instructions, agent/command/skill contracts and tooling.
-- `.ai/runtime/GUIDE.md` — generated guide copy for an installed runtime distribution.
+- `docs/reference/installed-cli-guide.md` — maintained CLI guide for
+  **Claude Code** and **Codex CLI**.
+- `.ai/` — runtime instructions, agent/command/skill contracts and
+  tooling.
+- `.ai/runtime/GUIDE.md` — generated guide copy for an installed runtime
+  distribution.
 
-Use the copies associated with your selected checkout or release package; the source guide and its generated deployment copy serve different purposes.
+Use the copies associated with your selected checkout or release
+package; the source guide and its generated deployment copy serve
+different purposes.
 
 ### 2. Build the documentation locally
 
-For a source checkout, the documented local setup uses **Python 3.10+** and repository dependencies:
+For a source checkout, the documented local setup uses **Python 3.10+**
+and repository dependencies:
 
 ```bash
 git clone https://github.com/leogalambos/JAI.git
@@ -136,7 +172,9 @@ python -m pip install -r requirements.txt
 mkdocs serve
 ```
 
-Open the local address printed by MkDocs. To check the documentation and its generated content, use the commands from the original project README:
+Open the local address printed by MkDocs. To check the documentation and
+its generated content, use the commands from the original project
+README:
 
 ```bash
 python3 .ai/runtime/tools/docs_contract.py --root .
@@ -144,11 +182,18 @@ python3 .ai/runtime/tools/generate_docs.py --check --root .
 mkdocs build --strict
 ```
 
-The project documentation describes Markdown sources under `docs/`, MkDocs configuration in `mkdocs.yml`, local SVG diagrams and a separate GitHub Pages publishing workflow. **The runtime archive does not install a separate HTML help site.**
+The project documentation describes Markdown sources under `docs/`,
+MkDocs configuration in `mkdocs.yml`, local SVG diagrams and a separate
+GitHub Pages publishing workflow. **The runtime archive does not install
+a separate HTML help site.**
 
 ### 3. Repository sources versus release outputs
 
-**Source files and generated release evidence are different deliverables.** Release qualification and software supply-chain reports may be included in a published package without existing as tracked files at the GitHub repository root. Paths here are intentionally not presented as unverified file links.
+**Source files and generated release evidence are different
+deliverables.** Release qualification and software supply-chain reports
+may be included in a published package without existing as tracked files
+at the GitHub repository root. Paths here are intentionally not
+presented as unverified file links.
 
 | Location or artifact | What it means | Where to look |
 | :--- | :--- | :--- |
@@ -162,11 +207,18 @@ The project documentation describes Markdown sources under `docs/`, MkDocs confi
 | `SBOM.spdx.json` | SPDX software bill of materials | Published release/package evidence, **not assumed at repository root** |
 | `PROVENANCE.json` | Build and release provenance | Published release/package evidence, **not assumed at repository root** |
 
-The documentation covers L0 authority, JAI's six layers, SABSA/EA profiles, artifact production, publication, provider runtime boundaries and assurance gates. References to version `26.10.0` in the source manual are retained for identified compatibility or migration examples; the original README identifies `VERSION` as the product-version authority.
+The documentation covers L0 authority, JAI's six layers, SABSA/EA
+profiles, artifact production, publication, provider runtime boundaries
+and assurance gates. References to version `26.10.0` in the source
+manual are retained for identified compatibility or migration examples;
+the original README identifies `VERSION` as the product-version
+authority.
 
 ## Quality, provenance and release assurance
 
-JAI treats a finished file and a trustworthy decision record as different things. Its release qualification is organised into **eight complementary dimensions**:
+JAI treats a finished file and a trustworthy decision record as
+different things. Its release qualification is organised into **eight
+complementary dimensions**:
 
 | Gate | What is assessed |
 | :--- | :--- |
@@ -179,17 +231,32 @@ JAI treats a finished file and a trustworthy decision record as different things
 | **G · Behavioral** | End-to-end scenario and output behaviour |
 | **H · Supply chain** | Dependencies, compatibility, integrity and release provenance |
 
-The release process describes qualification, compatibility, SPDX SBOM and provenance evidence. **Do not assume these JSON files are present at the root of the source branch**: inspect the actual release package or published evidence for the version in use. A prior PASS does not certify a modified source tree.
+The release process describes qualification, compatibility, SPDX SBOM
+and provenance evidence. **Do not assume these JSON files are present at
+the root of the source branch**: inspect the actual release package or
+published evidence for the version in use. A prior PASS does not certify
+a modified source tree.
 
 ### Releasing a version (maintainers)
 
-The project identifies `VERSION` as the product-version authority. After changing it, synchronise versioned files:
+The project identifies `VERSION` as the product-version authority. After
+changing it, synchronise versioned files:
 
 ```bash
 python3 scripts/versioning.py sync
 ```
 
-Commit/push the result, then create a matching `release@YY.MM.VV` tag. A mismatching tag is rejected. The release GitHub Actions workflow publishes a qualified production ZIP and a SHA-256 checksum; GitHub OIDC provenance is attached where supported. Documentation publishing is managed separately by the documented `.github/workflows/pages.yml` workflow, using the Markdown documentation tree. Installing the runtime ZIP does not publish the site.
+Commit and push the result. Wait for the `validate-library` workflow,
+including its full A-H release preflight, to pass before creating a
+matching `release@YY.MM.VV` tag. The preflight runs the same
+qualification command as the release workflow without publishing a
+release. A
+mismatching tag is rejected. The release GitHub Actions workflow
+publishes a qualified production ZIP and a SHA-256 checksum; GitHub OIDC
+provenance is attached where supported. Documentation publishing is
+managed separately by the documented `.github/workflows/pages.yml`
+workflow, using the Markdown documentation tree. Installing the runtime
+ZIP does not publish the site.
 
 ---
 
@@ -254,9 +321,11 @@ authoritative.
 
 <div align="center">
 
-**JAI · Justifiable AI**  
-*Not simply an AI-generated answer — a traceable path from intent to evidence and accountable decisions.*
+**JAI · Justifiable AI** *Not simply an AI-generated answer — a
+traceable path from intent to evidence and accountable decisions.*
 
-[Architecture](#the-six-layer-model) · [Getting started](#documentation-and-runtime-entry-points) · [Quality & releases](#quality-provenance-and-release-assurance)
+[Architecture](#the-six-layer-model) · [Getting
+started](#documentation-and-runtime-entry-points) · [Quality &
+releases](#quality-provenance-and-release-assurance)
 
 </div>

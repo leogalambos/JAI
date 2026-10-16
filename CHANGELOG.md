@@ -2,24 +2,30 @@
 
 ## 26.10.5 — Supplier Commercial Delivery and Methodical Guidance
 
-- Adds dedicated supplier Bid / Proposal Manager, Estimation / Cost Engineering
-  Specialist, Commercial Pricing / Deal Finance Specialist, Supplier Commercial /
-  Deal Manager and Independent Commercial Assurance Reviewer role contracts.
-  The working catalogue now contains 286 roles across the existing 17 domains.
-  Shared Claude/Codex routing requires these specialisms for their full scopes;
-  independent assurance remains read-only and separate from authorship.
-- Generates integrity-checked commercial discovery projections from the canonical
-  role registry and derives homepage role/domain coverage from registry rows.
+- Adds dedicated supplier Bid / Proposal Manager, Estimation / Cost
+  Engineering Specialist, Commercial Pricing / Deal Finance Specialist,
+  Supplier Commercial / Deal Manager and Independent Commercial
+  Assurance Reviewer role contracts. The working catalogue now contains
+  286 roles across the existing 17 domains. Shared Claude/Codex routing
+  requires these specialisms for their full scopes; independent
+  assurance remains read-only and separate from authorship.
+- Generates integrity-checked commercial discovery projections from the
+  canonical role registry and derives homepage role/domain coverage from
+  registry rows.
 
-- Adds supplier-side commercial delivery from discovery and proposal through
-  estimation, pricing, phased delivery and operational feedback, with hierarchical
-  cross-domain routing and traceable internal and client publication boundaries.
-- Reorganises public documentation around method selection and adjacent worked
-  guides; derives homepage navigation and current inventory from canonical data.
-- Corrects process-based worker identity assignment, provider installation bindings,
-  readiness CLI exit status and extensible contract-count regression checks.
-- Makes commercial implementation guidance self-contained for public readers and
-  corrects stale role/schema counts in the public coverage matrix.
+- Adds supplier-side commercial delivery from discovery and proposal
+  through estimation, pricing, phased delivery and operational feedback,
+  with hierarchical cross-domain routing and traceable internal and
+  client publication boundaries.
+- Reorganises public documentation around method selection and adjacent
+  worked guides; derives homepage navigation and current inventory from
+  canonical data.
+- Corrects process-based worker identity assignment, provider
+  installation bindings, readiness CLI exit status and extensible
+  contract-count regression checks.
+- Makes commercial implementation guidance self-contained for public
+  readers and corrects stale role/schema counts in the public coverage
+  matrix.
 
 - SABSA: six authored English narrative viewpoint profiles, complete
   source-backed specifications and typed business paths, semantic
