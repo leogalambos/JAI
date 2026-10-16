@@ -3,6 +3,7 @@
   "$id": "https://ai-it-house.local/schema/contracts/commercial-snapshot-v1.schema.json",
   "title": "Opt-in CommercialSnapshot v1",
   "type": "object",
+  "additionalProperties": false,
   "required": [
     "profile",
     "schema_version",
@@ -155,6 +156,28 @@
       "items": {
         "type": "string"
       }
+    },
+    "crosswalk": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "discovery": {
+      "type": "array",
+      "items": { "type": "object" }
+    },
+    "enforcement": {
+      "type": "object"
+    },
+    "operational_recovery": {
+      "type": "object"
+    },
+    "captured_at": {
+      "type": "string",
+      "minLength": 1,
+      "format": "date-time"
+    },
+    "recovery_policy": {
+      "type": "object"
     },
     "active_versions": {
       "type": "array",

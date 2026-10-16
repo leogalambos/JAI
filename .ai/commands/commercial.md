@@ -4,7 +4,9 @@ description: Add supplier-side opportunity, discovery, commercial economics and 
 
 # Commercial
 
-Use the `commercial-delivery` skill and `commercial-coordinator` procedure. This is an opt-in extension, preserving existing technical `/layered` and `/sabsa` behaviour.
+> **Agents named here** are subagents: `commercial-coordinator` is a read-only routing adviser; the parent orchestrator dispatches it through the active provider's delegation mechanism.
+
+Use the `commercial-delivery` skill and the `commercial-coordinator` agent's procedure. This is an opt-in extension, preserving existing technical `/layered` and `/sabsa` behaviour.
 
 1. Establish the human commercial owner and explicit profile scope change. Reuse canonical identities, source passages and existing engagement memberships.
 2. Qualify the opportunity; iterate discovery with the six-question domain matrix. Unknown client/expert estimates remain explicit.

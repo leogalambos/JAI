@@ -6,7 +6,9 @@ allowed-tools: Read, Grep, Glob
 
 # Commercial delivery
 
-Add this profile explicitly to the existing engagement; preserve its canonical IDs and technical workflows. Route through `commercial-coordinator`. This skill routes and explains; it does not execute tools, approve a bid, sign a contract or release an artefact.
+> **Agents named here** are subagents: `commercial-coordinator` is a read-only routing adviser; the parent orchestrator dispatches it through the active provider's delegation mechanism.
+
+Add this profile explicitly to the existing engagement; preserve its canonical IDs and technical workflows. Route through the `commercial-coordinator` agent. This skill routes and explains; it does not execute tools, approve a bid, sign a contract or release an artefact.
 
 Read the installed `commercial/catalog.json` compact root first, then selected `commercial/domains/*.json` metadata. Only the selected role loads its own skill and reference. A missing/truncated shard is discovery failure, never proof no specialist exists. The domain router does not replace `model_router.py`: model workload selection and enterprise policy remain a separate handoff.
 

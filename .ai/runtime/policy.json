@@ -10,6 +10,7 @@
     "research": "Read, Grep, Glob, WebSearch, WebFetch"
   },
   "agent_tier": {
+    "commercial-coordinator": "route",
     "role-router": "route",
     "role-advisor": "advise",
     "role-author": "author",
@@ -89,6 +90,12 @@
     "execute": "role-engineer"
   },
   "write_scope": {
+    "commercial-coordinator": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
+    },
     "role-router": {
       "allow": [],
       "deny": [
