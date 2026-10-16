@@ -2,6 +2,8 @@
 # Copyright (c) 2026 Leo Galambos and the Egothor team
 """Public contract and real-filesystem tests for the additive commercial core."""
 import copy
+import contextlib
+import io
 import hashlib
 import importlib.util
 from pathlib import Path
@@ -185,8 +187,15 @@ class CommercialCoreTests(unittest.TestCase):
             path = Path(directory) / "input.json"
             import json
             path.write_text(json.dumps(snapshot()))
-            self.assertEqual(core.main(["check", str(path)]), 0)
-            self.assertEqual(core.main(["readiness", str(path)]), 2)
+            with contextlib.redirect_stdout(io.StringIO()) as output:
+                self.assertEqual(core.main(["check", str(path)]), 0)
+            self.assertEqual(json.loads(output.getvalue()), {"valid": True})
+            with contextlib.redirect_stdout(io.StringIO()) as output:
+                self.assertEqual(core.main(["readiness", str(path)]), 2)
+            report = json.loads(output.getvalue())
+            self.assertFalse(report["ready"])
+            self.assertFalse(report["authority_granted"])
+            self.assertIn("missing execution chain", report["blockers"])
 
 
 if __name__ == "__main__":

@@ -2,6 +2,8 @@
 # Copyright (c) 2026 Leo Galambos and the Egothor team
 """Canonical discovery projection and drift detection regression tests."""
 import copy
+import contextlib
+import io
 import importlib.util
 import json
 import tempfile
@@ -47,14 +49,18 @@ class GenerateCommercialCatalogTests(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             runtime = Path(directory)
             (runtime / 'roles.json').write_text(json.dumps(self.fixture()))
-            self.assertEqual(g.run(runtime, check=True), 1)
+            with contextlib.redirect_stdout(io.StringIO()) as output:
+                self.assertEqual(g.run(runtime, check=True), 1)
+            self.assertIn('Commercial catalog drift:', output.getvalue())
             self.assertFalse((runtime / 'commercial').exists())
             self.assertEqual(g.run(runtime), 0)
             self.assertEqual(g.run(runtime, check=True), 0)
             catalog = json.loads((runtime / 'commercial/catalog.json').read_text())
             shard = runtime / 'commercial' / catalog['domains'][0]['shard']
             shard.write_text('{}')
-            self.assertEqual(g.run(runtime, check=True), 1)
+            with contextlib.redirect_stdout(io.StringIO()) as output:
+                self.assertEqual(g.run(runtime, check=True), 1)
+            self.assertEqual(output.getvalue().strip(), 'Commercial catalog drift: ' + catalog['domains'][0]['shard'])
             self.assertEqual(shard.read_text(), '{}')
 
 

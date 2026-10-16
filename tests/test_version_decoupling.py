@@ -3,6 +3,8 @@
 """Protect product-version/material contract independence across future releases."""
 from __future__ import annotations
 
+import contextlib
+import io
 import importlib.util
 import json
 import sys
@@ -95,7 +97,10 @@ class VersionDecoupling(unittest.TestCase):
                 path.parent.mkdir(parents=True, exist_ok=True)
                 originals[path] = (runtime / relative).read_bytes()
                 path.write_bytes(originals[path])
-            versioning.sync(temp, generate_docs=False)
+            with contextlib.redirect_stdout(io.StringIO()) as output:
+                versioning.sync(temp, generate_docs=False)
+            self.assertEqual(output.getvalue().strip(),
+                             f'PASS synchronized product identity {(temp / "VERSION").read_text().strip()}; historical identities unchanged')
             for path, original in originals.items():
                 with self.subTest(path=str(path.relative_to(temp))):
                     self.assertEqual(path.read_bytes(), original)
@@ -117,7 +122,10 @@ class VersionDecoupling(unittest.TestCase):
                                         indent=2) + '\n', encoding='utf-8')
             historical = temp / 'CHANGELOG.md'
             historical.write_text('## 26.10.4\nHistory remains\n', encoding='utf-8')
-            versioning.sync(temp, generate_docs=False)
+            with contextlib.redirect_stdout(io.StringIO()) as output:
+                versioning.sync(temp, generate_docs=False)
+            self.assertEqual(output.getvalue().strip(),
+                             f'PASS synchronized product identity {(temp / "VERSION").read_text().strip()}; historical identities unchanged')
             for rel in versioning.MIRRORS:
                 self.assertEqual((temp / rel).read_text(), '26.10.5\n')
             for rel, key in versioning.PRODUCT_CATALOGS.items():
@@ -126,7 +134,10 @@ class VersionDecoupling(unittest.TestCase):
                 self.assertEqual(data['items'][0]['version'], '3.0.0')
             self.assertEqual(historical.read_text(), '## 26.10.4\nHistory remains\n')
             before = {p.relative_to(temp): p.read_bytes() for p in temp.rglob('*') if p.is_file()}
-            versioning.sync(temp, generate_docs=False)
+            with contextlib.redirect_stdout(io.StringIO()) as output:
+                versioning.sync(temp, generate_docs=False)
+            self.assertEqual(output.getvalue().strip(),
+                             f'PASS synchronized product identity {(temp / "VERSION").read_text().strip()}; historical identities unchanged')
             self.assertEqual(before, {p.relative_to(temp): p.read_bytes() for p in temp.rglob('*') if p.is_file()})
 
     def test_cannot_downgrade_or_use_malformed_tag(self):

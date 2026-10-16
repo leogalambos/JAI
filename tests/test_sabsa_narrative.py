@@ -9,6 +9,7 @@ import sys
 import tempfile
 import unittest
 from argparse import Namespace
+from unittest.mock import patch
 
 TOOLS = Path(__file__).resolve().parents[1] / '.ai/runtime/tools'
 sys.path.insert(0, str(TOOLS))
@@ -22,8 +23,21 @@ class SabsaNarrativeTest(unittest.TestCase):
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
         self.output = Path(self.temporary.name) / 'example'
-        with contextlib.redirect_stdout(io.StringIO()):
+        # Python redirects do not capture output inherited by real subprocesses.
+        run = demo.subprocess.run
+        captured = []
+        def capture_command(command, **kwargs):
+            result = run(command, **{**kwargs, 'check': False, 'capture_output': True, 'text': True})
+            self.assertEqual(result.returncode, 0, f'{command!r}\n{result.stdout}\n{result.stderr}')
+            self.assertEqual(result.stderr, '', f'{command!r}\n{result.stdout}\n{result.stderr}')
+            captured.append(result.stdout)
+            return result
+        with patch.object(demo.subprocess, 'run', side_effect=capture_command), contextlib.redirect_stdout(io.StringIO()):
             self.lib = demo.build_example(self.output)
+        self.assertEqual(len(captured), len(sabsa.LAYER_KEYS) + 1)
+        for layer, output in zip(sabsa.LAYER_KEYS, captured):
+            self.assertIn(f'wrote {self.output / (layer + ".md")}', output)
+        self.assertEqual(captured[-1].strip(), f'CSV catalogue export: {self.output / "csv"}')
 
     def test_build_example_profiles_preserve_body_fields_and_trace(self):
         model = sabsa.build_model(str(self.lib))

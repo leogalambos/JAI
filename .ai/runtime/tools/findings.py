@@ -154,8 +154,9 @@ def require_person():
                   os.path.join(homes[1], "config.toml"), os.path.join(os.getcwd(), ".codex", "config.toml")]
     for p in candidates:
         try:
-            if "guard_authority.py" in open(p, encoding="utf-8").read():
-                return "claude-code-approval-prompt"
+            with open(p, encoding="utf-8") as stream:
+                if "guard_authority.py" in stream.read():
+                    return "claude-code-approval-prompt"
         except OSError:
             pass
     raise LedgerError("accepting a finding as a risk is the user's decision, and no approval gate is active; "
@@ -172,7 +173,11 @@ def get(events, fid):
 # ------------------------------------------------------------------------------------- commands
 def cmd_add(a):
     events = load(a.ledger)
-    raw = sys.stdin.read() if a.file == "-" else open(a.file, encoding="utf-8").read()
+    if a.file == "-":
+        raw = sys.stdin.read()
+    else:
+        with open(a.file, encoding="utf-8") as stream:
+            raw = stream.read()
     doc = json.loads(raw[raw.find("{"):raw.rfind("}") + 1])
     if set(doc) - {"reviewer", "target", "criteria", "findings"}:
         raise LedgerError(f"unexpected keys {sorted(set(doc) - {'reviewer', 'target', 'criteria', 'findings'})}")
@@ -477,10 +482,12 @@ def cmd_selftest(a):
                           "location": "docs/:1", "criterion": "terminology", "evidence": "terms vary",
                           "recommendation": "add glossary.md"}]}
     bad = dict(good, findings=[dict(good["findings"][0], location="somewhere in the docs")])
-    open(rv, "w", encoding="utf-8").write(json.dumps(bad))
+    with open(rv, "w", encoding="utf-8") as stream:
+        stream.write(json.dumps(bad))
     expect("an unlocated finding is refused, and nothing is written",
            raises(lambda: cmd_add(NS(ledger="t", file=rv))) and load("t") == [])
-    open(rv, "w", encoding="utf-8").write(json.dumps(good))
+    with open(rv, "w", encoding="utf-8") as stream:
+        stream.write(json.dumps(good))
     with q():
         cmd_add(NS(ledger="t", file=rv))
     expect("the reviewer may not fix its own finding",
@@ -504,9 +511,11 @@ def cmd_selftest(a):
         cmd_accept(NS(ledger="t", id="F-0001", by="owner", rationale="tolerable", expires=30))
         rc = cmd_status(NS(ledger="t"))
     expect("once the user accepts it, an open suggestion does not block completion", rc == 0)
-    lines = open(path("t"), encoding="utf-8").read().splitlines()
+    with open(path("t"), encoding="utf-8") as stream:
+        lines = stream.read().splitlines()
     d = json.loads(lines[0]); d["data"]["criteria"] = "changed"; lines[0] = canonical(d)
-    open(path("t"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
+    with open(path("t"), "w", encoding="utf-8") as stream:
+        stream.write("\n".join(lines) + "\n")
     expect("an edited ledger is detected", raises(lambda: load("t")))
 
     for n, ok in checks:

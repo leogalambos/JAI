@@ -43,18 +43,34 @@ def _require(condition, message):
 
 def _validate(engagement):
     import jsonschema
+    from referencing import Registry, Resource
+    from referencing.exceptions import NoSuchResource, Unresolvable
+
     schema_path = Path(__file__).resolve().parents[1] / "schema/26.10.4/jai-object.schema.json"
     schema = json.loads(schema_path.read_text())
-    binding = json.loads((schema_path.parent / "jai-layer-binding.schema.json").read_text())
-    def reject_remote(uri):
-        raise LifecycleError("unknown offline schema reference: " + uri)
-    resolver = jsonschema.RefResolver(base_uri=schema_path.as_uri(), referrer=schema, store={schema["$id"]: schema, binding["$id"]: binding}, handlers={"https": reject_remote, "http": reject_remote})
+    binding_path = schema_path.parent / "jai-layer-binding.schema.json"
+    binding = json.loads(binding_path.read_text())
+
+    def reject_unregistered(uri):
+        raise NoSuchResource(ref=uri)
+
+    # Explicit retrieval prevents validator defaults from fetching untrusted refs.
+    registry = Registry(retrieve=reject_unregistered)
+    for path, document in ((schema_path, schema), (binding_path, binding)):
+        resource = Resource.from_contents(document)
+        registry = registry.with_resources(((document["$id"], resource), (path.as_uri(), resource)))
+    validator_type = jsonschema.validators.validator_for(schema)
+    validator_type.check_schema(schema)
+    validator = validator_type(schema, registry=registry)
     _require(engagement.get("schema_version") == "26.10.4", "unsupported engagement schema")
     _require(bool(engagement.get("id")), "engagement identity required")
     objects = engagement.get("objects", [])
     ids = []
     for obj in objects:
-        jsonschema.validate(obj, schema, resolver=resolver)
+        try:
+            validator.validate(obj)
+        except Unresolvable as error:
+            raise LifecycleError("unknown offline schema reference: " + error.ref) from error
         _require(not obj.get("canonical_ref") or obj["canonical_ref"] == obj["id"], "ambiguous canonical mapping")
         ids.append(obj["id"])
     _require(len(ids) == len(set(ids)), "duplicate canonical identity")
@@ -76,7 +92,8 @@ def activate(engagement, scope_receipt, verifier, policy_digest):
     Returns:
         Original/candidate engagements, exact identity crosswalk and receipt.
     Raises:
-        LifecycleError: Invalid version, identities, scope or membership.
+        LifecycleError: Invalid version, identities, scope, membership or an
+            unregistered schema reference. Schema validation is offline only.
         jsonschema.ValidationError: Invalid existing canonical JAIObject.
     """
     _validate(engagement)

@@ -66,6 +66,7 @@ import re
 import sys
 import tempfile
 from collections import defaultdict
+from pathlib import Path
 for _s in (sys.stdin, sys.stdout, sys.stderr):  # Windows consoles default to a code page, not UTF-8
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
@@ -79,7 +80,7 @@ SCHEMA_ROOT = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 REUSE_FILE = "reuse.json"
 OVERLAYS_DIR = "overlays"
 PACKAGE_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-RELEASE = open(os.path.join(PACKAGE_ROOT, "VERSION"), encoding="utf-8").read().strip()
+RELEASE = Path(os.path.join(PACKAGE_ROOT, "VERSION")).read_text(encoding="utf-8").strip()
 SABSA_JAI_PROFILE = "sabsa"
 SABSA_JAI_LAYER = "2"
 
@@ -87,7 +88,7 @@ SABSA_JAI_LAYER = "2"
 def _load_lifecycle_model():
     path = os.path.join(SCHEMA_ROOT, "lifecycle.json")
     try:
-        doc = json.load(open(path, encoding="utf-8"))
+        doc = json.loads(Path(path).read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise RuntimeError(f"cannot load SABSA lifecycle model {path}: {exc}") from exc
     horizons = tuple(doc.get("horizons", ()))
@@ -109,7 +110,7 @@ COMMON_FIELDS = ("horizon", "lifecycle_state", "valid_from", "valid_until", "pre
 def _load_metamodel():
     path = os.path.join(SCHEMA_ROOT, "elements.json")
     try:
-        doc = json.load(open(path, encoding="utf-8"))
+        doc = json.loads(Path(path).read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise RuntimeError(f"cannot load SABSA metamodel {path}: {exc}") from exc
     raw = doc.get("element_types")
@@ -364,12 +365,11 @@ def cell_path(lib, layer, aspect):
 def scaffold_cell(lib, layer, aspect):
     q, g = QUESTIONS[(layer, aspect)]
     name, view, _ = LAYER_INFO[layer]
-    open(cell_path(lib, layer, aspect), "w", encoding="utf-8").write(
-        f"---\nlayer: {layer}\naspect: {aspect}\nquestion: {q}\n"
+    Path(cell_path(lib, layer, aspect)).write_text(f"---\nlayer: {layer}\naspect: {aspect}\nquestion: {q}\n"
         "status:    # leave empty; set to not-applicable (with a reason) if this cell does not apply\n"
         "reason:    # required when status is not-applicable\n"
         f"source:    # {GUIDE['source']}\nbasis:     # {GUIDE['basis']}\n---\n\n"
-        f"# {name} · {INTERROGATIVE[aspect]} — {view}\n\n**{q}**\n\n_Guidance: {g}_\n\n{CELL_PLACEHOLDER}\n")
+        f"# {name} · {INTERROGATIVE[aspect]} — {view}\n\n**{q}**\n\n_Guidance: {g}_\n\n{CELL_PLACEHOLDER}\n", encoding="utf-8")
 
 
 def load_cells(lib):
@@ -489,7 +489,6 @@ def collect_citations(lib, entries=None, cells=None):
     for (layer, aspect), c in cells.items():
         for src in ids(c["meta"].get("source")):
             cited[src.split("#", 1)[0]].append(f"matrix/{layer}-{aspect}")
-    from pathlib import Path
     for path in sorted((Path(lib) / "narratives").glob("*/*.md")):
         if path.name == "README.md": continue
         try:
@@ -669,7 +668,7 @@ def build_model(lib):
 def _load_document_views():
     path = os.path.join(SCHEMA_ROOT, "documents.json")
     try:
-        doc = json.load(open(path, encoding="utf-8"))
+        doc = json.loads(Path(path).read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise SabsaError(f"cannot load SABSA document-view catalogue {path}: {exc}") from exc
     return doc.get("views", {})
@@ -726,7 +725,7 @@ class SabsaError(Exception):
 
 # --------------------------------------------------------------------------------------- parsing
 def parse(path):
-    text = open(path, encoding="utf-8").read()
+    text = Path(path).read_text(encoding="utf-8")
     if not text.startswith("---"):
         raise SabsaError(f"{path}: no front matter")
     end = text.find("\n---", 3)
@@ -785,7 +784,7 @@ def load_reuse_config(lib):
     if not os.path.isfile(path):
         return {"schema": 1, "libraries": []}, []
     try:
-        doc = json.load(open(path, encoding="utf-8"))
+        doc = json.loads(Path(path).read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         return {"schema": 1, "libraries": []}, [f"{REUSE_FILE}: cannot parse: {exc}"]
     if not isinstance(doc.get("libraries", []), list):
@@ -930,7 +929,7 @@ def load_overlays(lib):
             continue
         path = os.path.join(root, f)
         try:
-            doc = json.load(open(path, encoding="utf-8"))
+            doc = json.loads(Path(path).read_text(encoding="utf-8"))
         except (OSError, json.JSONDecodeError) as exc:
             errors.append(f"{OVERLAYS_DIR}/{f}: cannot parse: {exc}"); continue
         if not isinstance(doc, dict):
@@ -1215,7 +1214,7 @@ def children(entries):
 
 # --------------------------------------------------------------------------- approval / release gate
 def _frontmatter_set(path, key, value):
-    text = open(path, encoding="utf-8").read()
+    text = Path(path).read_text(encoding="utf-8")
     if not text.startswith("---"):
         raise SabsaError(f"{path}: no front matter")
     end = text.find("\n---", 3)
@@ -1233,7 +1232,7 @@ def _frontmatter_set(path, key, value):
             out.append(line)
     if not found:
         out.append(f"{key}: {value}")
-    open(path, "w", encoding="utf-8").write("---" + "\n".join(out) + tail)
+    Path(path).write_text("---" + "\n".join(out) + tail, encoding="utf-8")
 
 
 def _snapshot_files(lib):
@@ -1271,7 +1270,7 @@ def snapshot_sha256(lib, _seen=None):
     files = _snapshot_files(lib)
     for path in files:
         rel = os.path.relpath(path, lib).replace(os.sep, "/")
-        data = open(path, "rb").read()
+        data = Path(path).read_bytes()
         h.update(rel.encode("utf-8")); h.update(b"\0")
         h.update(hashlib.sha256(data).digest()); h.update(b"\0")
     cfg, _ = load_reuse_config(lib)
@@ -1294,7 +1293,7 @@ def approval_state(lib, _seen=None):
     if not os.path.isfile(p):
         return {"valid": False, "reason": "no owner approval record", "approved_by": "", "approved_at": ""}
     try:
-        rec = json.load(open(p, encoding="utf-8"))
+        rec = json.loads(Path(p).read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         return {"valid": False, "reason": f"approval record is unreadable: {exc}", "approved_by": "", "approved_at": ""}
     now_hash, count = snapshot_sha256(lib, _seen)
@@ -1334,7 +1333,7 @@ def cmd_approve(a):
     }
     d = os.path.join(a.lib, APPROVAL_DIR); os.makedirs(d, exist_ok=True)
     tmp = os.path.join(d, APPROVAL_FILE + ".tmp")
-    open(tmp, "w", encoding="utf-8").write(json.dumps(rec, indent=2, ensure_ascii=False) + "\n")
+    Path(tmp).write_text(json.dumps(rec, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     os.replace(tmp, os.path.join(d, APPROVAL_FILE))
     print(f"approved {meta.get('name', a.lib)} version {meta.get('version', '')} by {a.by}")
     print(f"  snapshot sha256 {snap} ({count} architecture input file(s))")
@@ -1382,26 +1381,23 @@ def cmd_init(a):
     for layer in LAYER_KEYS:
         for aspect in INTERROGATIVE:
             scaffold_cell(a.lib, layer, aspect)
-    open(os.path.join(a.lib, SOURCES_DIR, "README.md"), "w", encoding="utf-8").write(
-        "# Sources\n\nPut everything known about the client and the environment here, as files: the brief or RFP, "
+    Path(os.path.join(a.lib, SOURCES_DIR, "README.md")).write_text("# Sources\n\nPut everything known about the client and the environment here, as files: the brief or RFP, "
         "meeting and interview notes, their website or annual report as text, organisation chart, regulatory "
         "context, existing architecture or policy documents, incident history. Text formats (Markdown, plain "
         "text) are read directly; convert PDFs and Word files to text first.\n\nEvery architecture claim — elements and settled matrix cells — "
         "states its basis and cites supporting material when stated or inferred (`source: 00-sources/brief.md#goals`). "
         "Use *stated* when the client says it, *inferred* when it follows from evidence, or *assumed* when confirmation is required. Assumptions become the list of questions for "
-        "the client: `sabsa.py questions`.\n")
-    open(os.path.join(a.lib, OVERLAYS_DIR, "README.md"), "w", encoding="utf-8").write(
-        "# External framework overlays\n\nUse `sabsa.py overlay-init` to create mapping files. Overlays store requirement identifiers, "
+        "the client: `sabsa.py questions`.\n", encoding="utf-8")
+    Path(os.path.join(a.lib, OVERLAYS_DIR, "README.md")).write_text("# External framework overlays\n\nUse `sabsa.py overlay-init` to create mapping files. Overlays store requirement identifiers, "
         "mapping status, architecture element IDs, evidence, exceptions and roadmap links. Do not copy licensed standard text "
-        "unless your organisation has the rights to reproduce it.\n")
+        "unless your organisation has the rights to reproduce it.\n", encoding="utf-8")
     _atomic_json(os.path.join(a.lib, REUSE_FILE), {"schema": 1, "libraries": []})
-    open(os.path.join(a.lib, "library.md"), "w", encoding="utf-8").write(
-        f"---\nname: {a.name}\norganisation: {a.organisation}\nscope: {a.scope}\nowner: {a.owner}\n"
+    Path(os.path.join(a.lib, "library.md")).write_text(f"---\nname: {a.name}\norganisation: {a.organisation}\nscope: {a.scope}\nowner: {a.owner}\n"
         f"version: 0.1.0\nstatus: draft\njai_profile: {SABSA_JAI_PROFILE}\njai_layer: {SABSA_JAI_LAYER}\njai_release: {RELEASE}\nsemantic_identity_authority: JAI\n---\n\n"
         f"# {a.name}\n\nSABSA security architecture library for {a.organisation}. Scope: {a.scope}.\n\n"
         "Each element is one Markdown file named by its ID, in the folder of its layer. Upward links are "
         "required, so every element traces to a business driver. Run `sabsa.py check` before any change is "
-        "accepted, and `sabsa.py suggest` to see what is missing.\n")
+        "accepted, and `sabsa.py suggest` to see what is missing.\n", encoding="utf-8")
     print("Author narrative chapters with narrative-init LIB --layer LAYER; see runtime/sabsa/publication/README.md.")
     print(f"initialised SABSA library at {a.lib}: " + ", ".join(s["dir"] for s in TYPES.values()))
 
@@ -1441,8 +1437,8 @@ def cmd_new(a):
                  "aspect:    # what | why | how | who | where | when")
     lines.append(f"status: {given.get('status', 'draft')}")
     path = os.path.join(a.lib, spec["dir"], f"{eid}.md")
-    open(path, "w", encoding="utf-8").write("---\n" + "\n".join(lines) + "\n---\n\n"
-                                            f"# {eid} {a.title}\n\nRationale and notes.\n")
+    Path(path).write_text("---\n" + "\n".join(lines) + "\n---\n\n"
+                                            f"# {eid} {a.title}\n\nRationale and notes.\n", encoding="utf-8")
     print(f"{eid}  {os.path.relpath(path, a.lib)}")
 
 
@@ -1545,7 +1541,7 @@ def cmd_trace(a):
 def _load_trace_views():
     path = os.path.join(SCHEMA_ROOT, "views.json")
     try:
-        doc = json.load(open(path, encoding="utf-8"))
+        doc = json.loads(Path(path).read_text(encoding="utf-8"))
     except (OSError, json.JSONDecodeError) as exc:
         raise SabsaError(f"cannot load SABSA trace views {path}: {exc}") from exc
     return doc.get("views", {})
@@ -1605,7 +1601,7 @@ def cmd_view(a):
 def _atomic_json(path, doc):
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     tmp = path + ".tmp"
-    open(tmp, "w", encoding="utf-8").write(json.dumps(doc, indent=2, ensure_ascii=False) + "\n")
+    Path(tmp).write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
     os.replace(tmp, path)
 
 
@@ -1976,7 +1972,7 @@ def cmd_catalogues(a):
             shutil.copytree(a.lib, trial, dirs_exist_ok=True)
             reuse_path = os.path.join(trial, REUSE_FILE)
             if os.path.isfile(reuse_path):
-                config = json.load(open(reuse_path, encoding="utf-8"))
+                config = json.loads(Path(reuse_path).read_text(encoding="utf-8"))
                 for dependency in config.get("libraries", []):
                     dependency["path"] = _resolve_reuse_path(a.lib, dependency.get("path"))
                 with open(reuse_path, "w", encoding="utf-8") as stream:
@@ -1994,8 +1990,8 @@ def cmd_catalogues(a):
                 try:
                     for eid in proposed:
                         path = os.path.join(a.lib, entries[eid]["_path"])
-                        data = open(os.path.join(trial, entries[eid]["_path"]), "rb").read()
-                        original = open(path, "rb").read()
+                        data = Path(os.path.join(trial, entries[eid]["_path"])).read_bytes()
+                        original = Path(path).read_bytes()
                         if data != original:
                             backups[path] = original
                             with open(path, "wb") as stream: stream.write(data)
@@ -2025,7 +2021,7 @@ def cmd_document(a):
         label = "SABSA " + model["selected_layer"] + " layer"
     else:
         path, label = resolve_template(a.lib, a.template_name, a.template)
-    text, missing = render_template(open(path, encoding="utf-8").read(), model)
+    text, missing = render_template(Path(path).read_text(encoding="utf-8"), model)
     for name in missing:
         print(f"warning: the template uses '{name}', which the library does not provide (see 'sabsa.py template --fields')",
               file=sys.stderr)
@@ -2034,7 +2030,7 @@ def cmd_document(a):
     if not a.out:
         print(text); return 0
     if out_ext == tpl_ext or out_ext in (".md", ".txt") and tpl_ext in (".md", ".txt"):
-        open(a.out, "w", encoding="utf-8").write(text)
+        Path(a.out).write_text(text, encoding="utf-8")
     else:
         import shutil, subprocess, tempfile
         if not shutil.which("pandoc"):
@@ -2119,7 +2115,7 @@ def cmd_template(a):
         walk(build_model(a.lib), "", 0)
         return 0
     path, label = resolve_template(a.lib, a.name, a.check)
-    _, missing = render_template(open(path, encoding="utf-8").read(), build_model(a.lib))
+    _, missing = render_template(Path(path).read_text(encoding="utf-8"), build_model(a.lib))
     print(f"template '{a.name}' for {a.lib}: {path}  ({label})")
     if a.check or missing:
         print("  unknown fields: " + (", ".join(missing) if missing else "none — the template is consistent with the library"))
@@ -2153,8 +2149,8 @@ def cmd_selftest(a):
     expect("a security domain must cite at least one control objective",
            any("DM-001" in e and "objectives" in e and "empty" in e for e in err))
     dp = os.path.join(lib, TYPES["domain"]["dir"], "DM-001.md")
-    dt = open(dp, encoding="utf-8").read().replace("objectives: ", "objectives: CO-001")
-    open(dp, "w", encoding="utf-8").write(dt)
+    dt = Path(dp).read_text(encoding="utf-8").replace("objectives: ", "objectives: CO-001")
+    Path(dp).write_text(dt, encoding="utf-8")
     new("service", "Privileged activity monitoring", description="Collect and correlate", objectives="CO-001", domain="DM-001", aspect="how")
     new("mechanism", "Session recording", description="PAM recording", services="SS-001", aspect="how")
     new("component", "PAM vault", product="Vendor PAM 12", mechanisms="SM-001", aspect="where")
@@ -2171,9 +2167,9 @@ def cmd_selftest(a):
     expect("an operation without threshold_action is an error",
            any("SO-001" in e and "threshold_action" in e for e in err))
     op = os.path.join(lib, TYPES["operation"]["dir"], "SO-001.md")
-    ot = open(op, encoding="utf-8").read()
+    ot = Path(op).read_text(encoding="utf-8")
     ot = re.sub(r"threshold_action: .*", "threshold_action: Escalate to the CISO and open corrective action", ot)
-    open(op, "w", encoding="utf-8").write(ot)
+    Path(op).write_text(ot, encoding="utf-8")
 
     # ---- 3.1 declarative metamodel and first-class governance/assurance artefacts
     new("strategy", "Identity-first strategy", statement="Prefer attributable identity controls", rationale="Supports attributable administration",
@@ -2186,8 +2182,8 @@ def cmd_selftest(a):
     new("policy", "Privileged access policy", statement="Privileged actions require named identity and recording", owner="CISO",
         objectives="CO-001", services="SS-001")
     sp = os.path.join(lib, TYPES["service"]["dir"], "SS-001.md")
-    st = open(sp, encoding="utf-8").read().replace("policies: ", "policies: PL-001")
-    open(sp, "w", encoding="utf-8").write(st)
+    st = Path(sp).read_text(encoding="utf-8").replace("policies: ", "policies: PL-001")
+    Path(sp).write_text(st, encoding="utf-8")
     new("entity", "Privileged administrators", population="Named privileged human administrators", owner="IAM Owner",
         objectives="CO-001", domains="DM-001")
     new("privilege", "PAM administrator", privileges="Approve and operate privileged sessions", conditions="No self-approval", owner="IAM Owner",
@@ -2259,7 +2255,7 @@ def cmd_selftest(a):
     run(cmd_overlay_init, NS(lib=lib, id="TEST-FW", title="Test framework", version="1.0", source="https://example.invalid/framework",
                              evidence_required=True))
     opath=os.path.join(lib, OVERLAYS_DIR, "test-fw.json")
-    odoc=json.load(open(opath,encoding="utf-8"))
+    odoc=json.loads(Path(opath).read_text(encoding="utf-8"))
     odoc["mappings"]=[{"requirement":"R-1","title":"Test requirement","status":"covered","elements":"PL-001, CO-001",
                        "evidence":"EV-001","roadmap":"","exceptions":"","rationale":"Mapped by design and evidence","owner":"CISO"},
                       {"requirement":"R-2","title":"Future requirement","status":"gap","elements":"","evidence":"",
@@ -2277,8 +2273,8 @@ def cmd_selftest(a):
     p = os.path.join(lib, TYPES["component"]["dir"], "SC-002.md")
 
     def edit(old, new_):
-        text = open(p, encoding="utf-8").read()                 # read first: open(p, "w") would truncate before the read
-        open(p, "w", encoding="utf-8").write(text.replace(old, new_))
+        text = Path(p).read_text(encoding="utf-8")                 # read first: open(p, "w") would truncate before the read
+        Path(p).write_text(text.replace(old, new_), encoding="utf-8")
 
     edit("mechanisms: ", "mechanisms: SM-999")
     _, err, _ = check(lib)
@@ -2295,7 +2291,7 @@ def cmd_selftest(a):
     expect("trace shows the downward impact of changing an attribute",
            all(x in out for x in ("CO-001", "SS-001", "SM-001", "SC-001")))
 
-    open(os.path.join(lib, SOURCES_DIR, "brief.md"), "w", encoding="utf-8").write("# Brief\n## Goals\nGrow partners\n")
+    Path(os.path.join(lib, SOURCES_DIR, "brief.md")).write_text("# Brief\n## Goals\nGrow partners\n", encoding="utf-8")
     new("driver", "Grow through partners", statement="Partner revenue doubles", owner="CEO", aspect="why",
         source="00-sources/brief.md#goals", basis="stated")
     new("driver", "Cited from nowhere", statement="x", owner="CEO", aspect="why", source="00-sources/missing.md",
@@ -2318,27 +2314,22 @@ def cmd_selftest(a):
     # ---- the matrix and templates
     expect("init scaffolds all 36 matrix cells, each with its own question",
            len(os.listdir(os.path.join(lib, "matrix"))) == 36
-           and "Where does the business operate" in open(cell_path(lib, "contextual", "where"), encoding="utf-8").read())
-    open(cell_path(lib, "component", "when"), "w", encoding="utf-8").write(
-        "---\nlayer: component\naspect: when\nstatus: not-applicable\n---\n")
+           and "Where does the business operate" in Path(cell_path(lib, "contextual", "where")).read_text(encoding="utf-8"))
+    Path(cell_path(lib, "component", "when")).write_text("---\nlayer: component\naspect: when\nstatus: not-applicable\n---\n", encoding="utf-8")
     _, err, _ = check(lib)
     expect("a cell marked not-applicable without a reason is an error", any("component-when" in e and "reason" in e for e in err))
-    open(cell_path(lib, "contextual", "where"), "w", encoding="utf-8").write(
-        "---\nlayer: contextual\naspect: where\nbasis: stated\nsource: 00-sources/brief.md\n---\n# x\n\nPrague; EU-wide.\n")
+    Path(cell_path(lib, "contextual", "where")).write_text("---\nlayer: contextual\naspect: where\nbasis: stated\nsource: 00-sources/brief.md\n---\n# x\n\nPrague; EU-wide.\n", encoding="utf-8")
     cells = load_cells(lib)
     expect("an answered cell is read as answered, with its text", cells[("contextual", "where")]["status"] == "answered"
            and "Prague" in cells[("contextual", "where")]["answer"])
-    open(cell_path(lib, "contextual", "how"), "w", encoding="utf-8").write(
-        "---\nlayer: contextual\naspect: how\n---\n# x\n\nOnline payment processing.\n")
+    Path(cell_path(lib, "contextual", "how")).write_text("---\nlayer: contextual\naspect: how\n---\n# x\n\nOnline payment processing.\n", encoding="utf-8")
     _, err, _ = check(lib)
     expect("a settled matrix cell without basis is an error",
            any("contextual-how" in e and "no basis" in e for e in err))
-    open(cell_path(lib, "contextual", "how"), "w", encoding="utf-8").write(
-        "---\nlayer: contextual\naspect: how\nbasis: assumed\n---\n# x\n\nOnline payment processing.\n")
+    Path(cell_path(lib, "contextual", "how")).write_text("---\nlayer: contextual\naspect: how\nbasis: assumed\n---\n# x\n\nOnline payment processing.\n", encoding="utf-8")
     expect("an assumed matrix cell becomes a client question",
            "matrix/contextual-how" in run(cmd_questions, NS(lib=lib)))
-    open(cell_path(lib, "contextual", "how"), "w", encoding="utf-8").write(
-        "---\nlayer: contextual\naspect: how\nbasis: stated\nsource: 00-sources/brief.md\n---\n# x\n\nOnline payment processing.\n")
+    Path(cell_path(lib, "contextual", "how")).write_text("---\nlayer: contextual\naspect: how\nbasis: stated\nsource: 00-sources/brief.md\n---\n# x\n\nOnline payment processing.\n", encoding="utf-8")
     expect("source usage includes citations from matrix cells",
            "matrix/contextual-how" in run(cmd_sources, NS(lib=lib)))
     doc = run(cmd_document, NS(lib=lib, out=None, template_name="architecture", template=None, reference=None))
@@ -2356,7 +2347,7 @@ def cmd_selftest(a):
     expect("with no override, the package default template applies",
            resolve_template(lib, "architecture")[1] == "the package default")
     os.makedirs(os.path.join(home, "sabsa-templates"))
-    open(os.path.join(home, "sabsa-templates", "architecture.md"), "w", encoding="utf-8").write("# personal {{library.name}}\n")
+    Path(os.path.join(home, "sabsa-templates", "architecture.md")).write_text("# personal {{library.name}}\n", encoding="utf-8")
     expect("a personal template overrides the package default", resolve_template(lib, "architecture")[1] == "your personal template")
     run(cmd_template, NS(lib=lib, name="architecture", init=True, fields=False, check=None))
     expect("the library's own template overrides both", resolve_template(lib, "architecture")[1] == "the library's own template")
@@ -2374,17 +2365,16 @@ def cmd_selftest(a):
     clean = os.path.join(tempfile.mkdtemp(prefix="sabsa-approval-selftest-"), "lib")
     with q():
         cmd_init(NS(lib=clean, name="Approval test", organisation="Org", scope="test", owner="CSA"))
-    open(os.path.join(clean, SOURCES_DIR, "brief.md"), "w", encoding="utf-8").write("# Brief\nApproved test basis.\n")
+    Path(os.path.join(clean, SOURCES_DIR, "brief.md")).write_text("# Brief\nApproved test basis.\n", encoding="utf-8")
     with q():
         cmd_new(NS(lib=clean, type="driver", title="Business continuity",
                    set=["statement=Business service must continue", "owner=CEO",
                         "source=00-sources/brief.md", "basis=stated"]))
     for lk in LAYER_KEYS:
         for aspect in INTERROGATIVE:
-            open(cell_path(clean, lk, aspect), "w", encoding="utf-8").write(
-                f"---\nlayer: {lk}\naspect: {aspect}\nstatus: not-applicable\n"
+            Path(cell_path(clean, lk, aspect)).write_text(f"---\nlayer: {lk}\naspect: {aspect}\nstatus: not-applicable\n"
                 "reason: Test fixture deliberately limits scope to approval mechanics\n"
-                "basis: stated\nsource: 00-sources/brief.md\n---\n")
+                "basis: stated\nsource: 00-sources/brief.md\n---\n", encoding="utf-8")
     _, cerr, cwarn = check(clean)
     expect("a clean fully settled library has no structural warnings before approval", not cerr and not cwarn)
     approve_out = run(cmd_approve, NS(lib=clean, by="CSA", note="selftest approval"))
@@ -2393,7 +2383,8 @@ def cmd_selftest(a):
     approved_doc = run(cmd_document, NS(lib=clean, out=None, template_name="architecture", template=None, reference=None))
     expect("an approved clean snapshot renders without a DRAFT banner", "> **DRAFT.**" not in approved_doc)
     drv = os.path.join(clean, TYPES["driver"]["dir"], "BD-001.md")
-    open(drv, "a", encoding="utf-8").write("\nChanged after approval.\n")
+    with open(drv, "a", encoding="utf-8") as stream:
+        stream.write("\nChanged after approval.\n")
     expect("any architecture-input change invalidates the recorded approval",
            not approval_state(clean).get("valid") and "stale" in approval_state(clean).get("reason", ""))
     stale_doc = run(cmd_document, NS(lib=clean, out=None, template_name="architecture", template=None, reference=None))
@@ -2402,29 +2393,28 @@ def cmd_selftest(a):
     # ---- 3.2 cross-library reuse: namespaced refs and dependency-bound approval
     src = os.path.join(tempfile.mkdtemp(prefix="sabsa-reuse-source-"), "lib")
     with q(): cmd_init(NS(lib=src, name="Enterprise reference", organisation="Org", scope="enterprise", owner="CSA"))
-    open(os.path.join(src,SOURCES_DIR,"brief.md"),"w",encoding="utf-8").write("# Enterprise brief\nShared driver.\n")
+    Path(os.path.join(src,SOURCES_DIR,"brief.md")).write_text("# Enterprise brief\nShared driver.\n", encoding="utf-8")
     with q(): cmd_new(NS(lib=src,type="driver",title="Shared resilience",set=["statement=Enterprise services require resilience","owner=CEO","basis=stated","source=00-sources/brief.md","horizon=reference","lifecycle_state=approved"]))
     for lk in LAYER_KEYS:
         for aspect in INTERROGATIVE:
-            open(cell_path(src,lk,aspect),"w",encoding="utf-8").write(
-                f"---\nlayer: {lk}\naspect: {aspect}\nstatus: not-applicable\nreason: Reference-library selftest scope\nbasis: stated\nsource: 00-sources/brief.md\n---\n")
+            Path(cell_path(src,lk,aspect)).write_text(f"---\nlayer: {lk}\naspect: {aspect}\nstatus: not-applicable\nreason: Reference-library selftest scope\nbasis: stated\nsource: 00-sources/brief.md\n---\n", encoding="utf-8")
     expect("reference library is clean before reuse approval", not check(src)[1] and not check(src)[2])
     run(cmd_approve, NS(lib=src,by="Enterprise CSA",note="reference approval"))
     consumer = os.path.join(tempfile.mkdtemp(prefix="sabsa-reuse-consumer-"), "lib")
     with q(): cmd_init(NS(lib=consumer,name="Solution",organisation="Org",scope="solution",owner="Solution CSA"))
-    open(os.path.join(consumer,SOURCES_DIR,"brief.md"),"w",encoding="utf-8").write("# Solution brief\nSolution inherits enterprise resilience intent.\n")
+    Path(os.path.join(consumer,SOURCES_DIR,"brief.md")).write_text("# Solution brief\nSolution inherits enterprise resilience intent.\n", encoding="utf-8")
     run(cmd_reuse_add, NS(lib=consumer,alias="enterprise",path=src,types="driver",ids=None,allow_unapproved=False))
     with q(): cmd_new(NS(lib=consumer,type="attribute",title="Solution resilient",set=["drivers=enterprise:BD-001","definition=Solution tolerates agreed failures","metric=availability","measurement=monthly service report","target=99.9%","owner=Service Owner","basis=inferred","source=00-sources/brief.md","horizon=current","lifecycle_state=operational"]))
     for lk in LAYER_KEYS:
         for aspect in INTERROGATIVE:
-            open(cell_path(consumer,lk,aspect),"w",encoding="utf-8").write(
-                f"---\nlayer: {lk}\naspect: {aspect}\nstatus: not-applicable\nreason: Reuse selftest scope\nbasis: stated\nsource: 00-sources/brief.md\n---\n")
+            Path(cell_path(consumer,lk,aspect)).write_text(f"---\nlayer: {lk}\naspect: {aspect}\nstatus: not-applicable\nreason: Reuse selftest scope\nbasis: stated\nsource: 00-sources/brief.md\n---\n", encoding="utf-8")
     ce, cerr, cwarn = check(consumer)
     expect("consumer resolves a namespaced cross-library business-parent reference", not cerr and not cwarn and "enterprise:BD-001" in ce)
     run(cmd_approve, NS(lib=consumer,by="Solution CSA",note="consumer approval"))
     expect("consumer approval is valid while the approved reused snapshot is unchanged", approval_state(consumer).get("valid"))
     spath=os.path.join(src,TYPES["driver"]["dir"],"BD-001.md")
-    open(spath,"a",encoding="utf-8").write("\nChanged shared architecture after downstream approval.\n")
+    with open(spath, "a", encoding="utf-8") as stream:
+        stream.write("\nChanged shared architecture after downstream approval.\n")
     expect("change in a reused source library invalidates the consumer snapshot approval", not approval_state(consumer).get("valid"))
 
     views = _load_document_views()
@@ -2433,7 +2423,7 @@ def cmd_selftest(a):
     template_missing=[]
     for name in views:
         model = build_model(consumer if name == "reuse-register" else lib)
-        _, miss = render_template(open(os.path.join(PACKAGE_TEMPLATES, name + ".md"), encoding="utf-8").read(), model)
+        _, miss = render_template(Path(os.path.join(PACKAGE_TEMPLATES, name + ".md")).read_text(encoding="utf-8"), model)
         template_missing += [f"{name}:{x}" for x in miss]
     expect("all specialised package document views render against the 3.2 document model without unknown fields",
            not template_missing)

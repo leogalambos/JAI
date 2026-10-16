@@ -33,7 +33,10 @@ class TrustedDispatcher:
     Args:
         key: At least 32 random bytes held outside agent context and mounts.
         allowed_commands: Exact tuples of executable/arguments the host approved.
-        executable_roots: Read-only runtime roots; no project/history roots allowed.
+        executable_roots: Approved read-only system runtime paths. Logical mount
+            destinations are preserved, including /lib and /lib64 on usr-merged
+            hosts; their resolved sources must also be approved system paths.
+            Missing approved paths are omitted; duplicates are mounted once.
     Raises:
         ValueError: Weak key or unsafe runtime roots/commands.
     """
@@ -43,9 +46,19 @@ class TrustedDispatcher:
             raise ValueError('host key requires at least 32 random bytes')
         self._key = key
         self._commands = {tuple(command) for command in allowed_commands}
-        self._roots = tuple(Path(root).resolve() for root in executable_roots if Path(root).exists())
-        if any(str(root) not in {'/usr', '/usr/lib', '/usr/lib64', '/lib', '/lib64'} for root in self._roots):
-            raise ValueError('runtime roots must contain executables only, never workspace/history')
+        approved_roots = {'/usr', '/usr/lib', '/usr/lib64', '/lib', '/lib64'}
+        mounts = set()
+        for requested in executable_roots:
+            target = Path(requested)
+            if str(target) not in approved_roots:
+                raise ValueError('runtime roots must contain executables only, never workspace/history')
+            if not target.exists():
+                continue
+            source = target.resolve()
+            if str(source) not in approved_roots:
+                raise ValueError('resolved runtime roots must remain approved system paths')
+            mounts.add((source, target))
+        self._roots = tuple(sorted(mounts, key=lambda mount: str(mount[1])))
         for command in self._commands:
             if not command or not Path(command[0]).is_absolute() or Path(command[0]).name in {'sh', 'bash', 'dash', 'zsh', 'fish'}:
                 raise ValueError('exact absolute non-shell commands required')
@@ -110,8 +123,8 @@ class TrustedDispatcher:
         if not bwrap:
             return {'status': 'unsupported', 'reason': 'bwrap unavailable', 'attestation': None}
         args = [bwrap, '--unshare-all', '--die-with-parent', '--new-session', '--clearenv', '--setenv', 'PATH', '/usr/bin', '--setenv', 'HOME', '/home/worker', '--tmpfs', '/tmp', '--dir', '/home', '--dir', '/home/worker', '--proc', '/proc', '--dev', '/dev', '--dir', '/inputs', '--chdir', '/home/worker']
-        for root in sorted(set(self._roots), key=str):
-            args += ['--ro-bind', str(root), str(root)]
+        for source, target in self._roots:
+            args += ['--ro-bind', str(source), str(target)]
         mounted = []
         for number, source in enumerate(inputs):
             path = Path(source).resolve(strict=True)

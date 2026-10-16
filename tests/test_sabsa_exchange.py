@@ -2,6 +2,8 @@
 # Copyright (c) 2026 Leo Galambos and the Egothor team
 """CSV exchange and real document integration coverage."""
 import csv
+import contextlib
+import io
 import importlib.util
 from pathlib import Path
 import shutil
@@ -53,7 +55,9 @@ class SabsaExchangeTest(unittest.TestCase):
             self.assertEqual(0, run('init', lib, '--name', 'Test', '--organisation', 'Example', '--scope', 'Scope', '--owner', 'Owner').returncode)
             (lib / '00-sources/brief.md').write_text('Client statement')
             self.assertEqual(0, run('new', lib, 'driver', '--title', 'Original', '--set', 'statement=Business reason', '--set', 'owner=Owner', '--set', 'basis=stated', '--set', 'source=00-sources/brief.md').returncode)
-            self.assertEqual(0, sabsa.cmd_catalogues(Namespace(lib=str(lib), action='export', directory=str(csvdir))))
+            with contextlib.redirect_stdout(io.StringIO()) as output:
+                self.assertEqual(0, sabsa.cmd_catalogues(Namespace(lib=str(lib), action='export', directory=str(csvdir))))
+            self.assertEqual(output.getvalue().strip(), f'CSV catalogue export: {csvdir}')
             path = csvdir / 'driver.csv'
             with path.open(newline='') as stream:
                 reader = csv.DictReader(stream); columns = reader.fieldnames; rows = list(reader)

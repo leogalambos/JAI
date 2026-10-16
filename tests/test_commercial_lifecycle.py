@@ -6,6 +6,7 @@ import importlib.util
 from pathlib import Path
 import tempfile
 import unittest
+import warnings
 from unittest.mock import patch
 
 SPEC = importlib.util.spec_from_file_location("commercial_lifecycle", Path(__file__).resolve().parents[1] / ".ai/runtime/tools/commercial_lifecycle.py")
@@ -67,6 +68,40 @@ class LifecycleTest(unittest.TestCase):
             self.assertEqual(store.read()["engagement"], self.original)
             self.assertEqual(store.read()["history"][0]["signature"], "preserved")
             self.assertEqual(generation.read_bytes(), old)
+
+    def test_activation_validates_local_schema_without_deprecated_api_or_network(self):
+        with warnings.catch_warnings(record=True) as caught:
+            warnings.simplefilter("always", DeprecationWarning)
+            with patch("socket.create_connection", side_effect=AssertionError("network forbidden")):
+                result = life.activate(self.original, self.scope(), self.verifier, self.policy)
+        self.assertEqual(result["candidate"]["objects"], self.original["objects"])
+        self.assertEqual([str(item.message) for item in caught if issubclass(item.category, DeprecationWarning)], [])
+
+    def test_activation_rejects_invalid_referenced_binding(self):
+        import jsonschema
+        for mutation in (lambda binding: binding.pop("acceptance_question"), lambda binding: binding.update(layer=7)):
+            with self.subTest(mutation=mutation):
+                self.original = source()
+                mutation(self.original["objects"][0]["jai"])
+                with self.assertRaises(jsonschema.ValidationError):
+                    life.activate(self.original, self.scope(), self.verifier, self.policy)
+
+    def test_activation_rejects_unknown_schema_reference_without_network(self):
+        read_text = Path.read_text
+
+        def schema_with_unknown_reference(path, *args, **kwargs):
+            import json
+            text = read_text(path, *args, **kwargs)
+            if path.name == "jai-object.schema.json":
+                schema = json.loads(text)
+                schema["properties"]["jai"]["$ref"] = "https://unregistered.invalid/binding.json"
+                return json.dumps(schema)
+            return text
+
+        with patch.object(Path, "read_text", schema_with_unknown_reference):
+            with patch("socket.create_connection", side_effect=AssertionError("network forbidden")):
+                with self.assertRaisesRegex(life.LifecycleError, "unknown offline schema reference"):
+                    life.activate(self.original, self.scope(), self.verifier, self.policy)
 
     def test_crash_after_generation_retries_without_overwriting_or_mixing_history(self):
         """Durable orphan generations cannot block a different same-revision retry."""

@@ -2,6 +2,8 @@
 # Copyright (c) 2026 Leo Galambos and the Egothor team
 # https://www.egothor.org
 """Real isolation probe: unsupported kernels remain explicit rather than fake passes."""
+import contextlib
+import io
 import importlib.util
 import hashlib
 import json
@@ -18,6 +20,55 @@ _SPEC.loader.exec_module(runtime)
 
 
 class CommercialRuntimeTests(unittest.TestCase):
+    def test_usr_merged_mounts_preserve_loader_alias_destinations(self):
+        aliases = {'/usr': '/usr', '/lib': '/usr/lib', '/lib64': '/usr/lib64'}
+        with patch.object(runtime.Path, 'exists', return_value=True), patch.object(
+                runtime.Path, 'resolve', autospec=True,
+                side_effect=lambda path: Path(aliases[str(path)])):
+            dispatcher = runtime.TrustedDispatcher(b'x' * 32, [('/usr/bin/true',)])
+        worker = unittest.mock.Mock(pid=1001, returncode=1)
+        worker.communicate.return_value = ('', 'deliberately failed launch')
+        with patch.object(runtime.shutil, 'which', return_value='/usr/bin/bwrap'), patch.object(
+                runtime.subprocess, 'Popen', return_value=worker) as launch:
+            result = dispatcher.run(('/usr/bin/true',), {}, 'a' * 64,
+                                    {'history_policy': 'fresh', 'injected_instructions': ['policy:1']})
+        argv = launch.call_args.args[0]
+        mounts = [tuple(argv[index + 1:index + 3]) for index, arg in enumerate(argv) if arg == '--ro-bind']
+        self.assertEqual(mounts, [('/usr/lib', '/lib'), ('/usr/lib64', '/lib64'), ('/usr', '/usr')])
+        self.assertIsNone(result['attestation'])
+
+    def test_runtime_roots_reject_unapproved_alias_even_into_system_tree(self):
+        with patch.object(runtime.Path, 'exists', return_value=True), patch.object(
+                runtime.Path, 'resolve', return_value=Path('/usr')):
+            with self.assertRaises(ValueError):
+                runtime.TrustedDispatcher(b'x' * 32, [('/usr/bin/true',)], ['/workspace/runtime'])
+
+    def test_runtime_roots_reject_system_alias_resolving_outside_system_tree(self):
+        with patch.object(runtime.Path, 'exists', return_value=True), patch.object(
+                runtime.Path, 'resolve', return_value=Path('/workspace/runtime')):
+            with self.assertRaises(ValueError):
+                runtime.TrustedDispatcher(b'x' * 32, [('/usr/bin/true',)], ['/lib64'])
+
+    def test_runtime_roots_keep_custom_subset_and_deduplicate_targets(self):
+        with patch.object(runtime.Path, 'exists', return_value=True), patch.object(
+                runtime.Path, 'resolve', autospec=True, side_effect=lambda path: path):
+            dispatcher = runtime.TrustedDispatcher(b'x' * 32, [('/usr/bin/true',)], ['/usr', '/usr'])
+        worker = unittest.mock.Mock(pid=1001, returncode=1)
+        worker.communicate.return_value = ('', 'deliberately failed launch')
+        with patch.object(runtime.shutil, 'which', return_value='/usr/bin/bwrap'), patch.object(
+                runtime.subprocess, 'Popen', return_value=worker) as launch:
+            dispatcher.run(('/usr/bin/true',), {}, 'a' * 64,
+                           {'history_policy': 'fresh', 'injected_instructions': ['policy:1']})
+        argv = launch.call_args.args[0]
+        self.assertEqual(argv.count('--ro-bind'), 1)
+        index = argv.index('--ro-bind')
+        self.assertEqual(argv[index + 1:index + 3], ['/usr', '/usr'])
+
+    def test_absent_approved_runtime_root_is_omitted(self):
+        with patch.object(runtime.Path, 'exists', return_value=False):
+            dispatcher = runtime.TrustedDispatcher(b'x' * 32, [('/usr/bin/true',)], ['/lib64'])
+        self.assertEqual(dispatcher._roots, ())
+
     def test_untrusted_identity_and_provider_flags_are_not_qualification(self):
         dispatcher = runtime.TrustedDispatcher(b'x' * 32, [('/usr/bin/true',)])
         self.assertIsNone(dispatcher.verify({'principal': 'reviewer'}))
@@ -161,7 +212,7 @@ class CommercialRuntimeTests(unittest.TestCase):
         spec.loader.exec_module(fabric)
         domain = {'version_id': 'domain:1', 'type': 'DomainContract', 'data': {}}
         claim = {'version_id': 'claim:1', 'type': 'Claim', 'data': {'text': 'one claim'}}
-        with tempfile.TemporaryDirectory() as directory:
+        with tempfile.TemporaryDirectory() as directory, contextlib.redirect_stdout(io.StringIO()) as output:
             fabric.FABRIC_DIR = directory
             fabric.KEY_PATH = str(Path(directory) / 'authority.key')
             fabric.cmd_init(NS(engagement='binding', intent='commercial test', owner='test', success=None, boundary=None))
@@ -193,6 +244,9 @@ class CommercialRuntimeTests(unittest.TestCase):
                                'fragment_ids': ['fragment:1'], 'fabric_contract_id': contract['id'],
                                'fabric_contract_digest': runtime._digest(contract),
                                'fabric_binding_id': binding['id'], 'fabric_binding_digest': runtime._digest(binding)}}
+            for emitted in ('intent-0001', 'req-0001', 'ctr-0001', 'frag-0001', 'rev-0001'):
+                self.assertIn(emitted, output.getvalue())
+            self.assertIn('accepts', output.getvalue())
             snapshot = {'entities': [domain, claim, fragment]}
             resolver = runtime.fabric_binding_resolver(Path(directory) / 'binding.jsonl')
             self.assertTrue(resolver(entity, snapshot))

@@ -198,7 +198,8 @@ def load(eng):
 
 def authority_key(create=True):
     if os.path.isfile(KEY_PATH):
-        return open(KEY_PATH, "rb").read()
+        with open(KEY_PATH, "rb") as stream:
+            return stream.read()
     if not create:
         raise FabricError(f"no signing key at {KEY_PATH}")
     os.makedirs(os.path.dirname(KEY_PATH), exist_ok=True)
@@ -217,8 +218,9 @@ def confirmation_gate_active():
     home = os.path.expanduser(os.environ.get("CLAUDE_HOME") or "~/.claude")
     for path in (os.path.join(home, "settings.json"), os.path.join(os.getcwd(), ".claude", "settings.json")):
         try:
-            if "guard_authority.py" in open(path, encoding="utf-8").read():
-                return True
+            with open(path, encoding="utf-8") as stream:
+                if "guard_authority.py" in stream.read():
+                    return True
         except OSError:
             pass
     return False
@@ -537,7 +539,8 @@ class Fabric:
         prev = "0" * 64
         key = None
         if os.path.isfile(KEY_PATH):
-            key = open(KEY_PATH, "rb").read()
+            with open(KEY_PATH, "rb") as stream:
+                key = stream.read()
         for i, e in enumerate(self.entries, start=1):
             if e["seq"] != i or e["prev"] != prev:
                 problems.append(f"seq {i}: chain broken (entry reordered, removed or inserted)")
@@ -590,7 +593,8 @@ class Fabric:
                     problems.append(f"{n['id']}: attempt is not bound to contract/context")
             if n["type"] == "evd" and n.get("file"):
                 try:
-                    cur = hashlib.sha256(open(n["file"], "rb").read()).hexdigest()
+                    with open(n["file"], "rb") as stream:
+                        cur = hashlib.sha256(stream.read()).hexdigest()
                     if cur != n.get("sha256"):
                         warnings.append(f"{n['id']}: evidence file {n['file']} changed since recorded")
                 except OSError:
@@ -776,7 +780,11 @@ def cmd_ingest(a):
     c = fb.nodes.get(a.contract)
     if not c or c["type"] != "ctr":
         raise FabricError("--contract must name a contract")
-    raw = sys.stdin.read() if a.result == "-" else open(a.result, encoding="utf-8").read()
+    if a.result == "-":
+        raw = sys.stdin.read()
+    else:
+        with open(a.result, encoding="utf-8") as stream:
+            raw = stream.read()
     start, end = raw.find("{"), raw.rfind("}")
     if start < 0 or end < start:
         raise FabricError("no JSON object in the agent result")
@@ -1047,7 +1055,11 @@ A fragment with no evidence cannot be better than 'resonates'. Do not accept on 
 
 def cmd_ingest_reviews(a):
     fb = open_fabric(a.engagement)
-    raw = sys.stdin.read() if a.result == "-" else open(a.result, encoding="utf-8").read()
+    if a.result == "-":
+        raw = sys.stdin.read()
+    else:
+        with open(a.result, encoding="utf-8") as stream:
+            raw = stream.read()
     doc = json.loads(raw[raw.find("{"):raw.rfind("}") + 1])
     if set(doc) - {"reviews"}:
         raise FabricError("review messages carry only 'reviews'")
@@ -1224,8 +1236,9 @@ def make_evidence(fb, layer, source, confidence, path):
         p = os.path.abspath(path)
         if not os.path.isfile(p):
             raise FabricError(f"evidence file {p} does not exist: evidence is not a description of a file")
-        meta.update(file=p, sha256=hashlib.sha256(open(p, "rb").read()).hexdigest(),
-                    size=os.path.getsize(p))
+        with open(p, "rb") as stream:
+            meta.update(file=p, sha256=hashlib.sha256(stream.read()).hexdigest(),
+                        size=os.path.getsize(p))
     elif confidence == "deterministic":
         raise FabricError("deterministic evidence must point at a file or output the tool can hash")
     return fb.add_node("evd", layer, source, **meta)
@@ -1684,9 +1697,11 @@ def cmd_selftest(a):
                   fb.add_edge(r1["id"], "refines", r2["id"])))
     p, _ = Fabric("t", load("t")).verify()
     expect("verify passes on the untampered log", not p)
-    lines = open(log_path("t"), encoding="utf-8").read().splitlines()
+    with open(log_path("t"), encoding="utf-8") as stream:
+        lines = stream.read().splitlines()
     d = json.loads(lines[3]); d["data"]["text"] = "edited after the fact"; lines[3] = canonical(d)
-    open(log_path("t"), "w", encoding="utf-8").write("\n".join(lines) + "\n")
+    with open(log_path("t"), "w", encoding="utf-8") as stream:
+        stream.write("\n".join(lines) + "\n")
     p, _ = Fabric("t", load("t")).verify()
     expect("verify detects an edited entry", any("hash mismatch" in x for x in p))
 
@@ -1702,7 +1717,8 @@ def cmd_selftest(a):
         fbx = open_fabric("r")
         doc = dict(doc)
         doc["context_digest"] = contract_context_packet(fbx, fbx.nodes[ctr])[1]
-        open(msg, "w", encoding="utf-8").write(json.dumps(doc))
+        with open(msg, "w", encoding="utf-8") as stream:
+            stream.write(json.dumps(doc))
         cmd_ingest(NS(engagement="r", contract=ctr, result=msg))
 
     before = len(load("r"))
@@ -1729,7 +1745,8 @@ def cmd_selftest(a):
            rc == 3 and any(n["type"] == "esc" for n in fr.nodes.values()))
 
     probe = os.path.join(tmp, "probe.txt")
-    open(probe, "w", encoding="utf-8").write("p95=241ms")
+    with open(probe, "w", encoding="utf-8") as stream:
+        stream.write("p95=241ms")
     cmd_contract(NS(engagement="r", rework_of=None, **full, **{"from": "req-0001"}))
     ctr_last = sorted(i for i in Fabric("r", load("r")).nodes if i.startswith("ctr-"))[-1]
     ingest({"fragments": [{"key": "m", "text": "measured p95 241ms"}],
@@ -1746,7 +1763,8 @@ def cmd_selftest(a):
     import io, contextlib
     with contextlib.redirect_stdout(io.StringIO()):
         ok_release = cmd_release(NS(engagement="r", fragment=prod)) == 0
-    open(probe, "w", encoding="utf-8").write("p95=480ms")
+    with open(probe, "w", encoding="utf-8") as stream:
+        stream.write("p95=480ms")
     with contextlib.redirect_stdout(io.StringIO()):
         drift_blocks = cmd_release(NS(engagement="r", fragment=prod)) == 1
     expect("release gate passes a strict-justified, authority-accepted product", ok_release)
@@ -1791,7 +1809,8 @@ def cmd_selftest(a):
         fbx = open_fabric(eng)
         doc = dict(doc)
         doc["context_digest"] = contract_context_packet(fbx, fbx.nodes[ctr])[1]
-        open(msg, "w", encoding="utf-8").write(json.dumps(doc))
+        with open(msg, "w", encoding="utf-8") as stream:
+            stream.write(json.dumps(doc))
         cmd_ingest(NS(engagement=eng, contract=ctr, result=msg))
 
     def esc(eng, src, layer, code):
@@ -1983,14 +2002,16 @@ def cmd_selftest(a):
                                          **bad, **{"from": "req-0001"}))))
 
     dg = contract_context_packet(ff, ff.nodes["ctr-0001"])[1]
-    open(msg, "w", encoding="utf-8").write(json.dumps({"context_digest": "wrong",
-                                                          "fragments": [{"key": "x", "text": "x"}]}))
+    with open(msg, "w", encoding="utf-8") as stream:
+        stream.write(json.dumps({"context_digest": "wrong",
+                                 "fragments": [{"key": "x", "text": "x"}]}))
     expect("context digest mismatch is rejected before append",
            raises(lambda: cmd_ingest(NS(engagement="f33", contract="ctr-0001", result=msg))))
-    open(msg, "w", encoding="utf-8").write(json.dumps({"context_digest": dg,
-                                                          "fragments": [{"key": "x", "text": "x"}],
-                                                          "evidence": [{"supports": ["x"], "source": "obs",
-                                                                        "confidence": "observation"}]}))
+    with open(msg, "w", encoding="utf-8") as stream:
+        stream.write(json.dumps({"context_digest": dg,
+                                 "fragments": [{"key": "x", "text": "x"}],
+                                 "evidence": [{"supports": ["x"], "source": "obs",
+                                               "confidence": "observation"}]}))
     with quiet():
         cmd_ingest(NS(engagement="f33", contract="ctr-0001", result=msg))
         cmd_review(NS(engagement="f33", fragment="frag-0001", layer=1, state="accepts",
