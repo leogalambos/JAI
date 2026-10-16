@@ -1,0 +1,368 @@
+{
+  "version": "1",
+  "domain_id": "product-delivery-and-agile",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "product-manager",
+      "name": "Product Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/product-manager.md",
+      "deliverables": [
+        "Product strategy and roadmap",
+        "prioritised product backlog",
+        "opportunity and problem definitions",
+        "launch plan"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "product-owner",
+      "name": "Product Owner",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/product-owner.md",
+      "deliverables": [
+        "Ordered product backlog",
+        "sprint goal",
+        "acceptance criteria",
+        "release notes"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "technical-product-manager",
+      "name": "Technical Product Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/technical-product-manager.md",
+      "deliverables": [
+        "API and platform roadmap",
+        "interface contracts and deprecation policy",
+        "developer adoption metrics",
+        "technical product requirements"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "scrum-master",
+      "name": "Scrum Master",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/scrum-master.md",
+      "deliverables": [
+        "Team working agreement",
+        "impediment log",
+        "flow and delivery metrics",
+        "retrospective action set"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "agile-coach",
+      "name": "Agile Coach",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/agile-coach.md",
+      "deliverables": [
+        "Capability assessment",
+        "coaching plan",
+        "ways-of-working playbook",
+        "measured improvement report"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "delivery-manager",
+      "name": "Delivery Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/delivery-manager.md",
+      "deliverables": [
+        "Delivery plan and dependency map",
+        "risk and issue log",
+        "delivery status report",
+        "release coordination plan"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "release-train-engineer",
+      "name": "Release Train Engineer",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/release-train-engineer.md",
+      "deliverables": [
+        "Programme increment plan",
+        "programme board and dependency map",
+        "programme risk (ROAM) log",
+        "inspect-and-adapt outputs"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "epic-owner",
+      "name": "Epic Owner",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/epic-owner.md",
+      "deliverables": [
+        "Epic hypothesis statement",
+        "lean business case",
+        "minimum viable product definition",
+        "epic outcome assessment"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "safe-system-architect",
+      "name": "SAFe System Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/safe-system-architect.md",
+      "deliverables": [
+        "Architectural runway plan",
+        "enabler backlog",
+        "non-functional requirement set",
+        "system-level interface definitions"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "project-manager",
+      "name": "Project Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/project-manager.md",
+      "deliverables": [
+        "Project plan and baseline",
+        "risk and issue register",
+        "change control log",
+        "project closure report"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "programme-manager",
+      "name": "Programme Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/programme-manager.md",
+      "deliverables": [
+        "Programme blueprint",
+        "benefits realisation plan",
+        "programme plan and tranche structure",
+        "programme risk register"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "portfolio-manager",
+      "name": "Portfolio Manager",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/portfolio-manager.md",
+      "deliverables": [
+        "Investment portfolio and prioritisation model",
+        "capacity and funding allocation",
+        "portfolio performance report",
+        "stop/continue decisions"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "pmo-analyst",
+      "name": "PMO Analyst",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/pmo-analyst.md",
+      "deliverables": [
+        "Portfolio status report",
+        "dependency register",
+        "resource and capacity analysis",
+        "data quality exceptions list"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "pmo-lead",
+      "name": "PMO Lead",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/pmo-lead.md",
+      "deliverables": [
+        "Delivery method and standards",
+        "stage gate and assurance model",
+        "portfolio reporting pack",
+        "delivery capability plan"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "engineering-manager",
+      "name": "Engineering Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/engineering-manager.md",
+      "deliverables": [
+        "Team capacity and staffing plan",
+        "delivery performance (DORA) report",
+        "individual development and performance plans",
+        "team health assessment"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "technical-lead",
+      "name": "Technical Lead",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/technical-lead.md",
+      "deliverables": [
+        "Team technical design and ADRs",
+        "technical debt register",
+        "code and review standards",
+        "technical breakdown of upcoming work"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "transformation-manager",
+      "name": "Transformation Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/transformation-manager.md",
+      "deliverables": [
+        "Change impact assessment",
+        "stakeholder engagement plan",
+        "adoption and readiness measures",
+        "new operating model definition"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "organisational-change-and-adoption-manager",
+      "name": "Organisational Change and Adoption Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/organisational-change-and-adoption-manager.md",
+      "deliverables": [
+        "Change impact and stakeholder assessment",
+        "Adoption and communications plan",
+        "Training and readiness plan",
+        "Adoption measurement and reinforcement report"
+      ],
+      "aliases": [
+        "OCM Manager",
+        "Change and Adoption Lead"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "benefits-realisation-manager",
+      "name": "Benefits Realisation Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/benefits-realisation-manager.md",
+      "deliverables": [
+        "Benefits map and benefits register",
+        "Benefits realisation plan",
+        "Benefit measurement baseline",
+        "Post-implementation benefits review"
+      ],
+      "aliases": [
+        "Benefits Manager",
+        "Benefits Lead"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "data-migration-and-cutover-lead",
+      "name": "Data Migration and Cutover Lead",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/data-migration-and-cutover-lead.md",
+      "deliverables": [
+        "Migration strategy and data migration plan",
+        "Cutover runbook and integrated schedule",
+        "Migration reconciliation and acceptance pack",
+        "Rollback and contingency plan"
+      ],
+      "aliases": [
+        "Cutover Manager",
+        "Migration Lead"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "enterprise-release-manager",
+      "name": "Enterprise Release Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/enterprise-release-manager.md",
+      "deliverables": [
+        "Integrated enterprise release calendar and dependency roadmap",
+        "Enterprise release readiness assessment",
+        "Enterprise release go/no-go decision paper",
+        "Post-release validation and release performance report"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "demand-and-intake-manager",
+      "name": "Demand & Intake Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-product-delivery-and-agile",
+      "path": "skills/it-roles-product-delivery-and-agile/references/demand-and-intake-manager.md",
+      "deliverables": [
+        "Demand and intake register",
+        "Demand qualification and impact assessment",
+        "Prioritisation and routing decision paper",
+        "Intake-to-portfolio commitment roadmap"
+      ],
+      "aliases": [],
+      "guard": null
+    }
+  ]
+}

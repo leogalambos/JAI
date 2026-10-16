@@ -1,0 +1,167 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/contracts/commercial-snapshot-v1.schema.json",
+  "title": "Opt-in CommercialSnapshot v1",
+  "type": "object",
+  "required": [
+    "profile",
+    "schema_version",
+    "entities",
+    "relations"
+  ],
+  "properties": {
+    "profile": {
+      "const": "commercial-delivery/1"
+    },
+    "schema_version": {
+      "const": "1"
+    },
+    "entities": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "version_id",
+          "type",
+          "schema_version",
+          "engagement_id",
+          "timestamp",
+          "accountable_owner",
+          "classification",
+          "provenance",
+          "data"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "version_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "type": "string",
+            "minLength": 1
+          },
+          "schema_version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "engagement_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "timestamp": {
+            "type": "string",
+            "minLength": 1
+          },
+          "accountable_owner": {
+            "type": "string",
+            "minLength": 1
+          },
+          "classification": {
+            "type": "string",
+            "minLength": 1
+          },
+          "provenance": {
+            "type": "array"
+          },
+          "data": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "type",
+          "input",
+          "output"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "type": {
+            "enum": [
+              "derives",
+              "refines",
+              "supports",
+              "requests",
+              "consolidated_into",
+              "allocation",
+              "disclosure",
+              "navigation",
+              "review",
+              "supersession"
+            ]
+          },
+          "input": {
+            "type": "string",
+            "minLength": 1
+          },
+          "output": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "attachments": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "digest",
+          "kind",
+          "classification"
+        ],
+        "properties": {
+          "digest": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "kind": {
+            "type": "string"
+          },
+          "classification": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "active_roots": {
+      "type": "object",
+      "required": [
+        "internal",
+        "client"
+      ],
+      "additionalProperties": false,
+      "properties": {
+        "internal": {
+          "type": "string"
+        },
+        "client": {
+          "type": "string"
+        }
+      }
+    },
+    "active_claims": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    },
+    "active_versions": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}

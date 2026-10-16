@@ -110,10 +110,3 @@ current automated workflow.
 6. Re-run structural validation and any local provider parity checks.
 7. For consequential layered engagements already in progress, preserve their `.fabric` history; do not rewrite old records simply to change a release number.
 8. Requalify deployment-specific provider/model behavior if the deployment claims a live provider/model behavioral assurance statement.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../compatibility/"><small>← Previous · Reference</small><strong>Compatibility matrix</strong></a>
-  <a class="ai-next" href="../limitations/"><small>Next · Reference →</small><strong>Boundaries and limitations</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

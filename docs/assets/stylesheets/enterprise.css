@@ -236,3 +236,21 @@ body:has(.ai-home-shell-v31) .md-content__inner::before,body:has(.ai-home-shell-
 .ai-example-step b{display:block;color:#0a5e8a;font-size:.76rem;margin-bottom:.28rem}.ai-example-step span{font-size:.71rem;line-height:1.35;color:#53697a}
 [data-md-color-scheme="slate"] .ai-example-step{background:#0c2234;border-color:#173a54}.ai-example-step b{color:#36baf0}[data-md-color-scheme="slate"] .ai-example-step span{color:#bfd0db}
 @media(max-width:850px){.ai-example-process{grid-template-columns:1fr 1fr}.ai-example-step:last-child{grid-column:1/-1}}
+
+/* Native disclosure navigation must not inherit Material's light admonition cards. */
+.ai-sidebar-nav-v31 .ai-canonical-nav-list{list-style:none;margin:0;padding:0}
+.md-typeset .ai-sidebar-nav-v31 .ai-canonical-nav-list>li{margin:0;padding:0}
+.md-typeset .ai-sidebar-nav-v31 details{margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;box-shadow:none!important;color:#d4e2eb;font-size:inherit;overflow:visible}
+.md-typeset .ai-sidebar-nav-v31 details>summary{position:relative;display:block;margin:0!important;padding:10px 30px 10px 15px!important;min-height:0;cursor:pointer;color:#d4e2eb!important;background:transparent!important;border:0;border-radius:0;list-style:none;font-size:.78rem;line-height:1.4;font-weight:650}
+.md-typeset .ai-sidebar-nav-v31 details>summary::before{display:none!important}
+.md-typeset .ai-sidebar-nav-v31 details>summary::after{content:"›";position:absolute;top:50%;right:12px;width:auto;height:auto;margin:0;background:none!important;mask:none!important;color:inherit;font-size:1.15rem;line-height:1;transform:translateY(-50%);transform-origin:center}
+.md-typeset .ai-sidebar-nav-v31 details[open]>summary::after{transform:translateY(-50%) rotate(90deg)}
+.md-typeset .ai-sidebar-nav-v31 details>summary::-webkit-details-marker{display:none}
+.md-typeset .ai-sidebar-nav-v31 details>summary:hover{background:rgba(23,91,135,.32)!important}
+.ai-sidebar-nav-v31 .ai-canonical-nav-list .ai-canonical-nav-list{padding-left:12px;border-left:1px solid rgba(97,156,197,.2);margin-left:12px}
+.ai-sidebar-nav-v31 a:focus-visible,.ai-sidebar-nav-v31 summary:focus-visible{outline:2px solid #efc45c;outline-offset:-2px}
+.ai-home-learning{padding:18px 5%;background:#0b2133;color:#d7e5ee;border-bottom:1px solid rgba(97,156,197,.2)}
+.ai-home-learning h2{color:#fff;margin:0 0 10px;font-size:1.15rem}
+.ai-home-learning a{color:#efc45c!important}
+.ai-home-learning-links{display:flex;flex-wrap:wrap;gap:10px 24px;margin:0;font-weight:650}
+@media(max-width:1060px){.ai-sidebar-nav-v31{display:block!important;padding:8px}.ai-sidebar-nav-v31 a{border-bottom:0}.md-typeset .ai-sidebar-nav-v31 details>summary{padding:12px 30px 12px 15px!important}}

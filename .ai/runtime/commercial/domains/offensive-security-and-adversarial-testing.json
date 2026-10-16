@@ -1,0 +1,346 @@
+{
+  "version": "1",
+  "domain_id": "offensive-security-and-adversarial-testing",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "penetration-tester-network-and-infrastructure",
+      "name": "Penetration Tester (Network and Infrastructure)",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/penetration-tester-network-and-infrastructure.md",
+      "deliverables": [
+        "Rules of engagement and signed scope",
+        "test findings with reproducible evidence",
+        "prioritised remediation report",
+        "retest verification results"
+      ],
+      "aliases": [
+        "Penetration Tester",
+        "Penetration Tester (Network)"
+      ],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "penetration-tester-web-application",
+      "name": "Penetration Tester (Web Application)",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/penetration-tester-web-application.md",
+      "deliverables": [
+        "Application test plan aligned to OWASP WSTG",
+        "findings with reproduction steps and impact",
+        "business logic flaw analysis",
+        "remediation guidance and retest results"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "penetration-tester-mobile",
+      "name": "Penetration Tester (Mobile)",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/penetration-tester-mobile.md",
+      "deliverables": [
+        "Mobile test plan aligned to OWASP MASTG",
+        "client-side and transport findings",
+        "backend API findings",
+        "remediation and retest evidence"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "penetration-tester-api",
+      "name": "Penetration Tester (API)",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/penetration-tester-api.md",
+      "deliverables": [
+        "API test plan and coverage matrix",
+        "authorisation and object-level access findings",
+        "rate limiting and abuse case results",
+        "remediation guidance"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "penetration-tester-cloud",
+      "name": "Penetration Tester (Cloud)",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/penetration-tester-cloud.md",
+      "deliverables": [
+        "Cloud test plan respecting provider policy",
+        "identity and privilege escalation path findings",
+        "misconfiguration and exposure findings",
+        "remediation guidance"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "penetration-tester-wireless",
+      "name": "Penetration Tester (Wireless)",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/penetration-tester-wireless.md",
+      "deliverables": [
+        "Wireless test plan and coverage area agreement",
+        "authentication and isolation findings",
+        "rogue access point findings",
+        "remediation recommendations"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "penetration-tester-thick-client",
+      "name": "Penetration Tester (Thick Client)",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/penetration-tester-thick-client.md",
+      "deliverables": [
+        "Thick client test plan",
+        "local storage, privilege and tampering findings",
+        "client-server trust boundary findings",
+        "remediation guidance"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "red-team-operator",
+      "name": "Red Team Operator",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/red-team-operator.md",
+      "deliverables": [
+        "Operation plan and rules of engagement",
+        "operator activity log",
+        "objective progression narrative",
+        "detection and response observations"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "red-team-lead",
+      "name": "Red Team Lead",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/red-team-lead.md",
+      "deliverables": [
+        "Engagement scoping and authorisation package",
+        "methodology and quality standards",
+        "engagement report and executive briefing",
+        "team competency and safety records"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "exploit-developer",
+      "name": "Exploit Developer",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/exploit-developer.md",
+      "deliverables": [
+        "Proof-of-concept code held under controlled access",
+        "reliability and impact analysis",
+        "defensive detection and mitigation guidance",
+        "disclosure recommendation"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "vulnerability-researcher",
+      "name": "Vulnerability Researcher",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/vulnerability-researcher.md",
+      "deliverables": [
+        "Research methodology and target analysis",
+        "vulnerability findings with reproduction",
+        "coordinated disclosure correspondence",
+        "advisory and CVE submissions"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "binary-reverse-engineer",
+      "name": "Binary Reverse Engineer",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/binary-reverse-engineer.md",
+      "deliverables": [
+        "Reverse engineering analysis notes",
+        "behaviour and protocol documentation",
+        "interoperability or security findings",
+        "tooling and scripts for repeat analysis"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "social-engineering-specialist",
+      "name": "Social Engineering Specialist",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/social-engineering-specialist.md",
+      "deliverables": [
+        "Social engineering scenario plan and approval",
+        "execution log and evidence",
+        "findings on process and detection weaknesses",
+        "awareness recommendations"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "physical-intrusion-specialist",
+      "name": "Physical Intrusion Specialist",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/physical-intrusion-specialist.md",
+      "deliverables": [
+        "Physical engagement plan and authorisation letter",
+        "entry attempt log with photographic evidence",
+        "control failure findings",
+        "remediation recommendations"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "open-source-intelligence-investigator",
+      "name": "Open Source Intelligence Investigator",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/open-source-intelligence-investigator.md",
+      "deliverables": [
+        "Collection plan and source list",
+        "exposure and attack surface findings",
+        "verified intelligence assessment",
+        "data handling and retention record"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "adversary-emulation-engineer",
+      "name": "Adversary Emulation Engineer",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/adversary-emulation-engineer.md",
+      "deliverables": [
+        "Emulation plans mapped to ATT&CK",
+        "automation content and safety controls",
+        "coverage measurement results over time",
+        "detection gap backlog"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "breach-and-attack-simulation-engineer",
+      "name": "Breach and Attack Simulation Engineer",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/breach-and-attack-simulation-engineer.md",
+      "deliverables": [
+        "Simulation schedule and scenario configuration",
+        "control efficacy results and trends",
+        "prioritised control gap findings",
+        "evidence pack for assurance"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "bug-bounty-programme-manager",
+      "name": "Bug Bounty Programme Manager",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/bug-bounty-programme-manager.md",
+      "deliverables": [
+        "Programme policy, scope and safe harbour terms",
+        "triage and reward decisions",
+        "researcher communications",
+        "programme performance and cost reporting"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "bug-bounty-triage-analyst",
+      "name": "Bug Bounty Triage Analyst",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/bug-bounty-triage-analyst.md",
+      "deliverables": [
+        "Submission validation records",
+        "severity and reward assessments",
+        "reproduction evidence",
+        "duplicate and out-of-scope determinations"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "vulnerability-disclosure-coordinator",
+      "name": "Vulnerability Disclosure Coordinator",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/vulnerability-disclosure-coordinator.md",
+      "deliverables": [
+        "Vulnerability disclosure policy and intake channel",
+        "coordination timeline and reporter communications",
+        "advisory and CVE publication",
+        "internal remediation tracking"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    },
+    {
+      "role_id": "hardware-and-iot-security-researcher",
+      "name": "Hardware and IoT Security Researcher",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-offensive-security-and-adversarial-testing",
+      "path": "skills/it-roles-offensive-security-and-adversarial-testing/references/hardware-and-iot-security-researcher.md",
+      "deliverables": [
+        "Hardware assessment plan",
+        "firmware extraction and analysis findings",
+        "debug interface and supply chain exposure findings",
+        "hardening recommendations"
+      ],
+      "aliases": [],
+      "guard": "engagement-authorisation-guard"
+    }
+  ]
+}

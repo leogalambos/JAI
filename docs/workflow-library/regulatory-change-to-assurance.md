@@ -109,9 +109,3 @@ A practical prompt pattern is:
 ## Operational interpretation
 
 The workflow is most useful when the team keeps each hand-over explicit. The system can help generate or review the artefacts, but the accountable role and approval decision remain organisational responsibilities.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../enterprise-release-orchestration/"><small>← Previous · Workflow library</small><strong>Enterprise release orchestration</strong></a>
-  <a class="ai-next" href="../../capabilities/sabsa-ea/"><small>Next · Capabilities →</small><strong>SABSA and enterprise architecture</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

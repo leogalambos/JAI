@@ -1,6 +1,10 @@
 # Command walkthroughs and example outcomes
 
-> **Example compatibility.** This detailed material originated in the 26.10.0 runtime handbook and is retained in the maintained Markdown documentation for its hands-on examples and technical references. AI IT House 26.10.4 has additional capabilities; treat the installed `GUIDE.md`, current `.ai/commands/` contracts, runtime tool `--help`, and versioned schemas as the authoritative behavior. Examples may require adaptation to the deployment context. These notes are not a separate release or documentation system.
+Owner: JAI maintainers · Last reviewed: 2026-10-16
+
+Use this page to look up a single command's exercise and expected outputs. For a first end-to-end engagement, follow [How to use JAI](../examples/how-to-use-JAI/index.md): method, provider interaction, then a complete security, Android or commercial case. The examples below do not imply that every domain command automatically creates a six-layer Fabric engagement.
+
+> **Example compatibility.** This detailed material originated in the 26.10.0 runtime handbook and is retained in the maintained Markdown documentation for its hands-on examples and technical references. AI IT House {{ JAI_VERSION }} has additional capabilities; treat the installed `GUIDE.md`, current `.ai/commands/` contracts, runtime tool `--help`, and versioned schemas as the authoritative behavior. Examples may require adaptation to the deployment context. These notes are not a separate release or documentation system.
 
 ## Reading the examples in Codex and Claude
 
@@ -346,6 +350,8 @@ one command, and offers to run that command's demo.
 
 ### /layered
 
+This command may govern creation using a named domain, or assess a new decision using an existing domain model. It does not replace domain methods or automatically reconstruct missing records of prior work. Name `sabsa-library` or `commercial-delivery` explicitly where relevant; see [the decision table and scenarios](../using/methodical-workflows.md).
+
 Run a consequential task through the six-layer justifiable delivery method
 
 `/layered <intent, stated as you would to an accountable team>`
@@ -369,14 +375,16 @@ decision; not for routine changes.
    for the layer below.
 3. Results come back up and are reviewed by the layer that asked for
    them; nothing is built on unreviewed work.
-4. When a layer cannot meet its requirement, it reformulates — within a
-   budget — or escalates. Escalations climb one layer at a time.
-5. **When one reaches you**, Claude shows you a decision
-   packet built from the record: what was tried, real examples of why it
-   failed, and the options found. You choose; Claude runs your choice and
-   Claude Code asks you to approve it.
-6. The result is released only if the record shows it is
-   justified.
+4. When a layer cannot meet its requirement, the producer reworks the
+   unchanged obligation, or returns it to its issuer for owner-controlled
+   reformulation within budget. Escalations climb one layer at a time.
+5. **When one reaches you**, the provider shows a decision packet built
+   from the record: what was tried, the evidence and the options. You make
+   the authority decision. In Codex, protected authority commands must be
+   executed by the human in a trusted terminal; provider approval interactions
+   must not be assumed equivalent.
+6. Completion does not itself authorise release. Applicable justification,
+   review and human-authority gates must be satisfied for the exact result.
 
 **Try it.** In `~/it-role-demo` (expect 20–40
 minutes; it is the most thorough command):
@@ -625,10 +633,77 @@ stuck findings for you; and the tests pass: in
 `py -3 -m pytest`). If pytest is missing, install it first
 with `python -m pip install pytest`.
 
+## commands : commercial
+
+### /commercial
+
+Add the supplier commercial-delivery profile to opportunity, bid or delivery work.
+
+**Syntax:** `/commercial <opportunity, bid or delivery scope>` in Claude Code;
+`$workflow-commercial <opportunity, bid or delivery scope>` in Codex.
+The remainder is a natural-language scope, not a set of lifecycle subcommands.
+
+**Prerequisites.** Work in the target workspace. Identify the commercial owner,
+available sources, existing engagement/canonical model, intended stage and
+client/internal disclosure boundary. The coordinator routes expertise; it does
+not sign a contract, grant a specialist authority or itself implement a change.
+
+**Try it in Claude Code, one checkpoint at a time:**
+
+```text
+/commercial Qualify the managed integration service opportunity from the supplied sources. Reuse the existing engagement where present, identify the commercial owner, and prepare the discovery questions, explicit unknowns and bid/no-bid considerations.
+```
+
+After answering discovery questions, continue in ordinary conversation:
+
+```text
+Continue engagement <ID>. Incorporate the answers from <source>; develop the solution options, staged work packages, estimates, resource pyramid and commercial economics. Preserve evidence and estimation uncertainty, obtain independent review, and report the current snapshot.
+```
+
+Then request the output checkpoint:
+
+```text
+Continue engagement <ID>. Prepare separate internal and client proposal projections from the reviewed snapshot. Report required disclosures, unresolved pricing exposure and human decisions. Stop before issue or binding commitment.
+```
+
+If a justified bid-issue decision is required, start a distinct engagement:
+
+```text
+/layered Decide whether proposal snapshot <reference and digest> is ready to issue, using commercial-delivery. Independently assess its evidence, economics, disclosures and residual exposure; reserve commercial commitments for the human owner.
+/fabric-report <decision-engagement-ID>
+```
+
+In Codex replace the slash commands with `$workflow-commercial`,
+`$workflow-layered` and `$workflow-fabric-report`. Continuation is a
+natural-language request against an existing ID, not an implemented `resume`
+subcommand. For six-layer control of **creation itself**, start with
+`/layered` or `$workflow-layered` and explicitly request `commercial-delivery`
+instead of creating domain material first.
+
+**What to expect.** Traceability from source passages and business needs to work
+packages, estimate states, staffing, costs, price and subsequent forecasts;
+separate internal/client outputs; independent review tied to the current
+version; explicit uncertainty treatments and pending human acts. A benchmark
+must retain its provenance and applicability rather than becoming an assumed
+client fact. Actuals update forecasts without rewriting signed baselines.
+
+**Check it worked.** Inspect actual object/snapshot IDs, calculation evidence,
+review and findings records, disclosure checks and unresolved gates. Command
+execution is not proof that every gate passed. Strict provider dispatch remains
+blocked until deployment controls are qualified: the shipped Codex and Claude
+capability records are `not_run`. See [Commercial delivery](../capabilities/commercial-delivery.md)
+and [Choosing and running a methodical workflow](../using/methodical-workflows.md).
+
 ## commands : sabsa
 
 
 ### /sabsa
+
+This is a domain workflow with architect/reviewer separation and its own
+checks. It is not automatically a `/layered` engagement. A subsequent
+`/layered` readiness decision is valid when scoped as a new decision; to
+govern creation itself through L1–L6, start `/layered` with `sabsa-library`
+explicitly named. See [the worked scenarios](../using/methodical-workflows.md).
 
 Build a SABSA security architecture from client material, or update, review, improve or document one
 

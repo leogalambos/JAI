@@ -137,10 +137,3 @@ A healthy human-oversight process monitors at least:
 - escalation queue growth and backpressure.
 
 A queue that never resolves is not successful human oversight simply because no unsafe release occurred.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../validation/"><small>← Previous · Operate and govern</small><strong>Validation and release controls</strong></a>
-  <a class="ai-next" href="../operating-controls/"><small>Next · Operate and govern →</small><strong>Operating controls</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

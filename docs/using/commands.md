@@ -19,6 +19,7 @@ The **Claude** column is typed in the Claude Code conversation. The **Codex** co
 | `/sabsa` | `$workflow-sabsa` | SABSA library lifecycle. |
 | `/publish` | `$workflow-publish` | Render reviewed semantics into enterprise deliverables. |
 | `/repository` | `$workflow-repository` | Scoped EA-domain projection repository operations and Open Exchange interoperability. |
+| `/commercial` | `$workflow-commercial` | Opt-in supplier opportunity-to-exit coordination with commercial-delivery/1; strict provider controls require current runtime evidence. |
 | `/layered` | `$workflow-layered` | Consequential JAI L1–L6 flow with typed contracts, bottom-up review, bounded rework/reformulation and L0 escalation. |
 | `/fabric-report` | `$workflow-fabric-report` | Independent audit/report view over a Fabric record. |
 
@@ -26,6 +27,7 @@ The **Claude** column is typed in the Claude Code conversation. The **Codex** co
 
 The provider workflows are instruction/adaptation surfaces that **may invoke** direct tools under the common runtime. These tools are implementation interfaces for the agent, CI, or developer troubleshooting—not a second end-user procedure. Their availability alone does not prove that a particular run executed them: inspect tool results and evidence. See [the developer reference](../reference/runtime-tools-detailed.md), [interaction patterns](interaction-model.md) and [human authority](../operations/human-authority.md).
 
+- `tools/commercial_router.py`
 - `tools/model_router.py`
 - `tools/provider_parity.py`
 - `tools/criteria.py`
@@ -37,9 +39,3 @@ The provider workflows are instruction/adaptation surfaces that **may invoke** d
 - `tools/native_enforcement_26104.py`
 - `fabric/fabric.py`
 - `demo/demo.py`
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../layered-engagement/"><small>← Previous · Using the system</small><strong>Running a layered justifiable engagement</strong></a>
-  <a class="ai-next" href="../roles/"><small>Next · Using the system →</small><strong>Roles and disciplines</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

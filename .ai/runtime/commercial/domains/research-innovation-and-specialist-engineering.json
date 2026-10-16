@@ -1,0 +1,151 @@
+{
+  "version": "1",
+  "domain_id": "research-innovation-and-specialist-engineering",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "research-engineer",
+      "name": "Research Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-research-innovation-and-specialist-engineering",
+      "path": "skills/it-roles-research-innovation-and-specialist-engineering/references/research-engineer.md",
+      "deliverables": [
+        "Experimental systems and prototypes",
+        "evaluation methodology and results",
+        "technical feasibility assessments",
+        "transfer recommendations"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "innovation-lead",
+      "name": "Innovation Lead",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-research-innovation-and-specialist-engineering",
+      "path": "skills/it-roles-research-innovation-and-specialist-engineering/references/innovation-lead.md",
+      "deliverables": [
+        "Innovation portfolio and stage gates",
+        "validated learning reports",
+        "adoption or termination decisions",
+        "innovation process and funding model"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "technology-scout",
+      "name": "Technology Scout",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-research-innovation-and-specialist-engineering",
+      "path": "skills/it-roles-research-innovation-and-specialist-engineering/references/technology-scout.md",
+      "deliverables": [
+        "Technology radar with adopt/trial/assess/hold positions",
+        "vendor and ecosystem assessments",
+        "emerging technology briefings",
+        "watch list with review triggers"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "standards-body-representative",
+      "name": "Standards Body Representative",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-research-innovation-and-specialist-engineering",
+      "path": "skills/it-roles-research-innovation-and-specialist-engineering/references/standards-body-representative.md",
+      "deliverables": [
+        "Position papers and contributions",
+        "standards participation and voting records",
+        "impact assessment of draft standards",
+        "internal adoption guidance"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "ethics-and-responsible-technology-lead",
+      "name": "Ethics and Responsible Technology Lead",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-research-innovation-and-specialist-engineering",
+      "path": "skills/it-roles-research-innovation-and-specialist-engineering/references/ethics-and-responsible-technology-lead.md",
+      "deliverables": [
+        "Ethical review process and criteria",
+        "impact assessments for high-risk initiatives",
+        "responsible technology principles",
+        "escalation and stop recommendations"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "systems-engineer-incose",
+      "name": "Systems Engineer (INCOSE)",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-research-innovation-and-specialist-engineering",
+      "path": "skills/it-roles-research-innovation-and-specialist-engineering/references/systems-engineer-incose.md",
+      "deliverables": [
+        "System requirements specification",
+        "system architecture and interface definitions",
+        "verification and validation plan",
+        "trade study and decision records"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "simulation-engineer",
+      "name": "Simulation Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-research-innovation-and-specialist-engineering",
+      "path": "skills/it-roles-research-innovation-and-specialist-engineering/references/simulation-engineer.md",
+      "deliverables": [
+        "Simulation models and configurations",
+        "validation against real-world data",
+        "scenario results and sensitivity analysis",
+        "model limitation documentation"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "high-performance-computing-engineer",
+      "name": "High Performance Computing Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-research-innovation-and-specialist-engineering",
+      "path": "skills/it-roles-research-innovation-and-specialist-engineering/references/high-performance-computing-engineer.md",
+      "deliverables": [
+        "Cluster configuration and scheduler policy",
+        "job performance and scaling analysis",
+        "user support and optimisation guidance",
+        "capacity and allocation reporting"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "quantum-computing-engineer",
+      "name": "Quantum Computing Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-research-innovation-and-specialist-engineering",
+      "path": "skills/it-roles-research-innovation-and-specialist-engineering/references/quantum-computing-engineer.md",
+      "deliverables": [
+        "Algorithm implementations and benchmarks",
+        "hardware capability assessments",
+        "readiness and roadmap advice",
+        "post-quantum migration input"
+      ],
+      "aliases": [],
+      "guard": null
+    }
+  ]
+}

@@ -1,5 +1,7 @@
 # Example: Supplier onboarding
 
+This is a buyer-side governance example. Use [Commercial delivery](../capabilities/commercial-delivery.md) for the supplier-side proposal and economics. First-time operators should follow [How to use JAI](how-to-use-JAI/index.md) before adapting this shorter scenario.
+
 <img class="ai-example-photo" src="../../assets/images/example-supplier-onboarding.jpg" alt="Example: Supplier onboarding">
 
 ## Scenario
@@ -89,9 +91,3 @@ Pre-service-acceptance gate: PENDING
 ## Why this example matters
 
 The process prevents “vendor selected” from being confused with “service safe and operationally accepted”.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../incident-diagnosis/"><small>← Previous · Examples</small><strong>Intermittent production defect</strong></a>
-  <a class="ai-next" href="../justifiable-decision/"><small>Next · Examples →</small><strong>Justifiable consequential decision</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

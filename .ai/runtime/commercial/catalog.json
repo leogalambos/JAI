@@ -1,0 +1,1972 @@
+{
+  "version": "1",
+  "source_roles_version": "26.10.5",
+  "complete": true,
+  "domains": [
+    {
+      "domain_id": "executive-and-leadership",
+      "purpose": "Executive and Leadership",
+      "hints": [
+        "chief",
+        "data",
+        "digital",
+        "director",
+        "engineering",
+        "group",
+        "head",
+        "information",
+        "officer",
+        "owner",
+        "platform",
+        "product",
+        "security",
+        "service",
+        "staff",
+        "technology"
+      ],
+      "shard": "domains/executive-and-leadership.json",
+      "version": "1",
+      "sha256": "f4f81821be57512e98e7beb4aa9c992c4d736ee465cdf1e471117bbee588f6c4",
+      "role_count": 11
+    },
+    {
+      "domain_id": "product-delivery-and-agile",
+      "purpose": "Product, Delivery and Agile",
+      "hints": [
+        "adoption",
+        "agile",
+        "analyst",
+        "and",
+        "architect",
+        "benefits",
+        "change",
+        "coach",
+        "cutover",
+        "data",
+        "delivery",
+        "demand",
+        "engineer",
+        "engineering",
+        "enterprise",
+        "epic",
+        "intake",
+        "lead",
+        "manager",
+        "master",
+        "migration",
+        "ocm",
+        "organisational",
+        "owner",
+        "pmo",
+        "portfolio",
+        "product",
+        "programme",
+        "project",
+        "realisation",
+        "release",
+        "safe",
+        "scrum",
+        "system",
+        "technical",
+        "train",
+        "transformation"
+      ],
+      "shard": "domains/product-delivery-and-agile.json",
+      "version": "1",
+      "sha256": "08d64096d3367ac8477b7fe40228c0eaa08f317dc4be93e7b45f9fc5b530a2a7",
+      "role_count": 22
+    },
+    {
+      "domain_id": "analysis",
+      "purpose": "Analysis",
+      "hints": [
+        "analyst",
+        "business",
+        "configuration",
+        "data",
+        "engineer",
+        "enterprise",
+        "finops",
+        "intelligence",
+        "level",
+        "process",
+        "product",
+        "requirements",
+        "service",
+        "systems"
+      ],
+      "shard": "domains/analysis.json",
+      "version": "1",
+      "sha256": "562b469309f5fb18534ab4a6c5e4149c75a889492ce5534a03e14fc2de5bf4ad",
+      "role_count": 11
+    },
+    {
+      "domain_id": "architecture",
+      "purpose": "Architecture",
+      "hints": [
+        "access",
+        "and",
+        "application",
+        "applications",
+        "architect",
+        "architecture",
+        "authority",
+        "board",
+        "business",
+        "cloud",
+        "data",
+        "delivery",
+        "design",
+        "devsecops",
+        "domain",
+        "enterprise",
+        "iam",
+        "identity",
+        "integration",
+        "lead",
+        "management",
+        "manager",
+        "member",
+        "modelling",
+        "network",
+        "operational",
+        "portfolio",
+        "repository",
+        "resilience",
+        "review",
+        "secure",
+        "security",
+        "solution",
+        "technical",
+        "technology"
+      ],
+      "shard": "domains/architecture.json",
+      "version": "1",
+      "sha256": "2be197899bfa53be22448dbac22a881413e43cd61f64a0a74070a985880978f4",
+      "role_count": 18
+    },
+    {
+      "domain_id": "software-development-and-engineering",
+      "purpose": "Software Development and Engineering",
+      "hints": [
+        "and",
+        "api",
+        "backend",
+        "blockchain",
+        "build",
+        "code",
+        "compiler",
+        "consultant",
+        "continuous",
+        "contract",
+        "crm",
+        "delivery",
+        "developer",
+        "devex",
+        "embedded",
+        "engine",
+        "engineer",
+        "erp",
+        "experience",
+        "firmware",
+        "frontend",
+        "full",
+        "game",
+        "gitops",
+        "graphics",
+        "integration",
+        "low",
+        "mainframe",
+        "mobile",
+        "modernisation",
+        "office",
+        "open",
+        "platform",
+        "principal",
+        "program",
+        "programmer",
+        "quantitative",
+        "real",
+        "release",
+        "rpa",
+        "senior",
+        "smart",
+        "software",
+        "source",
+        "stack",
+        "staff",
+        "systems",
+        "time",
+        "toolchain"
+      ],
+      "shard": "domains/software-development-and-engineering.json",
+      "version": "1",
+      "sha256": "aeea6da492f03955dbcdc9b3cc3717993e146fbd6147e49d875f5654f363f9bf",
+      "role_count": 27
+    },
+    {
+      "domain_id": "quality-and-testing",
+      "purpose": "Quality and Testing",
+      "hints": [
+        "acceptance",
+        "accessibility",
+        "analyst",
+        "and",
+        "architect",
+        "auditor",
+        "automation",
+        "chaos",
+        "code",
+        "codebase",
+        "coordinator",
+        "diligence",
+        "due",
+        "engineer",
+        "gatekeeper",
+        "localisation",
+        "manager",
+        "performance",
+        "quality",
+        "release",
+        "resilience",
+        "reviewer",
+        "sdet",
+        "technical",
+        "test",
+        "tester",
+        "user"
+      ],
+      "shard": "domains/quality-and-testing.json",
+      "version": "1",
+      "sha256": "6910f929c48b6ddc53c1caec52051b9133922f764ab62731c627afc5110ef453",
+      "role_count": 11
+    },
+    {
+      "domain_id": "data-analytics-and-ai",
+      "purpose": "Data, Analytics and AI",
+      "hints": [
+        "administrator",
+        "analyst",
+        "analytics",
+        "and",
+        "custodian",
+        "data",
+        "database",
+        "engineer",
+        "governance",
+        "lead",
+        "learning",
+        "librarian",
+        "llmops",
+        "machine",
+        "management",
+        "manager",
+        "master",
+        "metadata",
+        "mlops",
+        "model",
+        "modeller",
+        "officer",
+        "owner",
+        "platform",
+        "privacy",
+        "prompt",
+        "quality",
+        "red",
+        "reliability",
+        "research",
+        "safety",
+        "scientist",
+        "solutions",
+        "specialist",
+        "steward",
+        "team"
+      ],
+      "shard": "domains/data-analytics-and-ai.json",
+      "version": "1",
+      "sha256": "95c828813788ce3bb00deb264a68cb274d2e9ef48aba1bd2cc8a4bed301a3432",
+      "role_count": 21
+    },
+    {
+      "domain_id": "infrastructure-cloud-and-operations",
+      "purpose": "Infrastructure, Cloud and Operations",
+      "hints": [
+        "administrator",
+        "and",
+        "automation",
+        "availability",
+        "backup",
+        "capacity",
+        "cloud",
+        "code",
+        "container",
+        "datacentre",
+        "devops",
+        "engineer",
+        "environment",
+        "finops",
+        "image",
+        "infrastructure",
+        "kubernetes",
+        "linux",
+        "manager",
+        "middleware",
+        "observability",
+        "operations",
+        "platform",
+        "recovery",
+        "reliability",
+        "site",
+        "storage",
+        "sustainable",
+        "systems",
+        "technician",
+        "terraform",
+        "test",
+        "virtualisation",
+        "windows"
+      ],
+      "shard": "domains/infrastructure-cloud-and-operations.json",
+      "version": "1",
+      "sha256": "9f5ec75f994fd055eec0aa8504941dfc65ca950ce44a05ec16aa409ff2a50ad5",
+      "role_count": 21
+    },
+    {
+      "domain_id": "network-and-telecommunications",
+      "purpose": "Network and Telecommunications",
+      "hints": [
+        "administrator",
+        "analyst",
+        "and",
+        "cabling",
+        "centre",
+        "communications",
+        "dhcp",
+        "dns",
+        "edge",
+        "engineer",
+        "field",
+        "firewall",
+        "ipam",
+        "network",
+        "noc",
+        "operations",
+        "perimeter",
+        "specialist",
+        "technician",
+        "telephony",
+        "unified",
+        "wan",
+        "wireless"
+      ],
+      "shard": "domains/network-and-telecommunications.json",
+      "version": "1",
+      "sha256": "6a19a6827f4ffd13b56a49f22d45e70e5e12263ea5409be8017d1ef642c606a6",
+      "role_count": 9
+    },
+    {
+      "domain_id": "service-management-and-support",
+      "purpose": "Service Management and Support",
+      "hints": [
+        "analyst",
+        "and",
+        "application",
+        "asset",
+        "business",
+        "catalogue",
+        "change",
+        "computing",
+        "configuration",
+        "continual",
+        "decommission",
+        "desk",
+        "desktop",
+        "device",
+        "end",
+        "engineer",
+        "first",
+        "fulfilment",
+        "helpdesk",
+        "improvement",
+        "incident",
+        "knowledge",
+        "level",
+        "lifecycle",
+        "line",
+        "major",
+        "manager",
+        "modern",
+        "operational",
+        "problem",
+        "readiness",
+        "relationship",
+        "request",
+        "retirement",
+        "second",
+        "service",
+        "siam",
+        "software",
+        "support",
+        "technology",
+        "third",
+        "transition",
+        "user",
+        "workplace"
+      ],
+      "shard": "domains/service-management-and-support.json",
+      "version": "1",
+      "sha256": "8cc348a6c25470e357d82e1588ff855c103d136eb587c193af19ff337a9a37f9",
+      "role_count": 20
+    },
+    {
+      "domain_id": "security-operations-and-defensive-security",
+      "purpose": "Security Operations and Defensive Security",
+      "hints": [
+        "access",
+        "administrator",
+        "analyst",
+        "and",
+        "application",
+        "awareness",
+        "champion",
+        "cloud",
+        "configuration",
+        "cryptography",
+        "csirt",
+        "detection",
+        "dfir",
+        "digital",
+        "engineer",
+        "examiner",
+        "forensics",
+        "governance",
+        "hunter",
+        "iam",
+        "identity",
+        "iga",
+        "incident",
+        "insider",
+        "intelligence",
+        "lead",
+        "malware",
+        "management",
+        "manager",
+        "member",
+        "operational",
+        "pki",
+        "privileged",
+        "product",
+        "purple",
+        "responder",
+        "reverse",
+        "secrets",
+        "security",
+        "soc",
+        "specialist",
+        "team",
+        "technology",
+        "threat",
+        "tier",
+        "training",
+        "vulnerability"
+      ],
+      "shard": "domains/security-operations-and-defensive-security.json",
+      "version": "1",
+      "sha256": "cf48e8445ae5d79a8192d55f4b1d69cd7cedf425e280a0794a716d100b65eea6",
+      "role_count": 24
+    },
+    {
+      "domain_id": "offensive-security-and-adversarial-testing",
+      "purpose": "Offensive Security and Adversarial Testing",
+      "hints": [
+        "adversary",
+        "analyst",
+        "and",
+        "api",
+        "application",
+        "attack",
+        "binary",
+        "bounty",
+        "breach",
+        "bug",
+        "client",
+        "cloud",
+        "coordinator",
+        "developer",
+        "disclosure",
+        "emulation",
+        "engineer",
+        "engineering",
+        "exploit",
+        "hardware",
+        "infrastructure",
+        "intelligence",
+        "intrusion",
+        "investigator",
+        "iot",
+        "lead",
+        "manager",
+        "mobile",
+        "network",
+        "open",
+        "operator",
+        "penetration",
+        "physical",
+        "programme",
+        "red",
+        "researcher",
+        "reverse",
+        "security",
+        "simulation",
+        "social",
+        "source",
+        "specialist",
+        "team",
+        "tester",
+        "thick",
+        "triage",
+        "vulnerability",
+        "web",
+        "wireless"
+      ],
+      "shard": "domains/offensive-security-and-adversarial-testing.json",
+      "version": "1",
+      "sha256": "68a01d0a5c8bec2f5052aae09e54c966e1a5253099006ff74f499ed6ef2391a9",
+      "role_count": 21
+    },
+    {
+      "domain_id": "governance-risk-compliance-audit-and-privacy",
+      "purpose": "Governance, Risk, Compliance, Audit and Privacy",
+      "hints": [
+        "analyst",
+        "and",
+        "architect",
+        "assessor",
+        "auditor",
+        "author",
+        "business",
+        "compliance",
+        "continuity",
+        "control",
+        "coordinator",
+        "crisis",
+        "data",
+        "disaster",
+        "divisional",
+        "external",
+        "governance",
+        "grc",
+        "information",
+        "internal",
+        "liso",
+        "local",
+        "manager",
+        "officer",
+        "owner",
+        "party",
+        "policy",
+        "privacy",
+        "protection",
+        "records",
+        "recovery",
+        "risk",
+        "security",
+        "technology",
+        "tester",
+        "third"
+      ],
+      "shard": "domains/governance-risk-compliance-audit-and-privacy.json",
+      "version": "1",
+      "sha256": "819ed5f7648a46568188197e44205a756412795623c8d13c3abdd16cfb99e985",
+      "role_count": 18
+    },
+    {
+      "domain_id": "design-and-user-experience",
+      "purpose": "Design and User Experience",
+      "hints": [
+        "accessibility",
+        "architect",
+        "content",
+        "design",
+        "designer",
+        "engineer",
+        "information",
+        "interaction",
+        "product",
+        "researcher",
+        "service",
+        "specialist",
+        "system",
+        "tester",
+        "usability",
+        "writer"
+      ],
+      "shard": "domains/design-and-user-experience.json",
+      "version": "1",
+      "sha256": "e74e7590b61d287bab7efebbeaf04ba3cf8e051caec3379be982ec5ce06fcd18",
+      "role_count": 11
+    },
+    {
+      "domain_id": "commercial-sourcing-and-enablement",
+      "purpose": "Commercial, Sourcing and Enablement",
+      "hints": [
+        "account",
+        "advocate",
+        "analyst",
+        "assurance",
+        "bid",
+        "commercial",
+        "compliance",
+        "consultant",
+        "contract",
+        "cost",
+        "customer",
+        "deal",
+        "developer",
+        "effort",
+        "engineer",
+        "engineering",
+        "estimation",
+        "estimator",
+        "finance",
+        "financial",
+        "implementation",
+        "independent",
+        "licence",
+        "management",
+        "manager",
+        "pre",
+        "pricing",
+        "procurement",
+        "proposal",
+        "recruiter",
+        "resource",
+        "reviewer",
+        "sales",
+        "software",
+        "solution",
+        "specialist",
+        "success",
+        "supplier",
+        "tbm",
+        "technical",
+        "tender",
+        "trainer",
+        "vendor",
+        "writer"
+      ],
+      "shard": "domains/commercial-sourcing-and-enablement.json",
+      "version": "1",
+      "sha256": "233d7e3cb75bb9b0edb9f08e9523a3e7cc23377b2d9459a75d41e8e98ef31912",
+      "role_count": 20
+    },
+    {
+      "domain_id": "research-innovation-and-specialist-engineering",
+      "purpose": "Research, Innovation and Specialist Engineering",
+      "hints": [
+        "and",
+        "body",
+        "computing",
+        "engineer",
+        "ethics",
+        "high",
+        "incose",
+        "innovation",
+        "lead",
+        "performance",
+        "quantum",
+        "representative",
+        "research",
+        "responsible",
+        "scout",
+        "simulation",
+        "standards",
+        "systems",
+        "technology"
+      ],
+      "shard": "domains/research-innovation-and-specialist-engineering.json",
+      "version": "1",
+      "sha256": "f8eb403163efb44fd9915d7b9959533e130b01d17526d6989d37b59fb796cb09",
+      "role_count": 9
+    },
+    {
+      "domain_id": "sabsa-security-architecture",
+      "purpose": "SABSA Security Architecture",
+      "hints": [
+        "and",
+        "architect",
+        "assurance",
+        "attribute",
+        "authority",
+        "builder",
+        "business",
+        "chief",
+        "component",
+        "conceptual",
+        "contextual",
+        "designer",
+        "domain",
+        "integration",
+        "layer",
+        "lead",
+        "logical",
+        "management",
+        "manager",
+        "measurement",
+        "opportunity",
+        "physical",
+        "practice",
+        "profiler",
+        "risk",
+        "sabsa",
+        "security",
+        "service",
+        "solution",
+        "specialist",
+        "togaf",
+        "tradesman",
+        "view"
+      ],
+      "shard": "domains/sabsa-security-architecture.json",
+      "version": "1",
+      "sha256": "10a799989dad947853953ed1ce723e975b81454c43337f825f63679fbe695b9a",
+      "role_count": 12
+    }
+  ],
+  "exact_role_domains": {
+    "chief information officer": [
+      "executive-and-leadership"
+    ],
+    "head of it": [
+      "executive-and-leadership"
+    ],
+    "it director": [
+      "executive-and-leadership"
+    ],
+    "chief technology officer": [
+      "executive-and-leadership"
+    ],
+    "chief information security officer": [
+      "executive-and-leadership"
+    ],
+    "group head of information security": [
+      "executive-and-leadership"
+    ],
+    "chief data officer": [
+      "executive-and-leadership"
+    ],
+    "chief digital officer": [
+      "executive-and-leadership"
+    ],
+    "chief product officer": [
+      "executive-and-leadership"
+    ],
+    "chief ai officer": [
+      "executive-and-leadership"
+    ],
+    "it chief of staff": [
+      "executive-and-leadership"
+    ],
+    "vp of engineering": [
+      "executive-and-leadership"
+    ],
+    "director of engineering": [
+      "executive-and-leadership"
+    ],
+    "head of platform": [
+      "executive-and-leadership"
+    ],
+    "it service owner": [
+      "executive-and-leadership"
+    ],
+    "product manager": [
+      "product-delivery-and-agile"
+    ],
+    "product owner": [
+      "product-delivery-and-agile"
+    ],
+    "technical product manager": [
+      "product-delivery-and-agile"
+    ],
+    "scrum master": [
+      "product-delivery-and-agile"
+    ],
+    "agile coach": [
+      "product-delivery-and-agile"
+    ],
+    "delivery manager": [
+      "product-delivery-and-agile"
+    ],
+    "release train engineer": [
+      "product-delivery-and-agile"
+    ],
+    "epic owner": [
+      "product-delivery-and-agile"
+    ],
+    "safe system architect": [
+      "product-delivery-and-agile"
+    ],
+    "project manager": [
+      "product-delivery-and-agile"
+    ],
+    "programme manager": [
+      "product-delivery-and-agile"
+    ],
+    "portfolio manager": [
+      "product-delivery-and-agile"
+    ],
+    "pmo analyst": [
+      "product-delivery-and-agile"
+    ],
+    "pmo lead": [
+      "product-delivery-and-agile"
+    ],
+    "engineering manager": [
+      "product-delivery-and-agile"
+    ],
+    "technical lead": [
+      "product-delivery-and-agile"
+    ],
+    "transformation manager": [
+      "product-delivery-and-agile"
+    ],
+    "business analyst": [
+      "analysis"
+    ],
+    "systems analyst": [
+      "analysis"
+    ],
+    "requirements engineer": [
+      "analysis"
+    ],
+    "process analyst": [
+      "analysis"
+    ],
+    "enterprise business analyst": [
+      "analysis"
+    ],
+    "data analyst": [
+      "analysis"
+    ],
+    "business intelligence analyst": [
+      "analysis"
+    ],
+    "finops analyst": [
+      "analysis"
+    ],
+    "product analyst": [
+      "analysis"
+    ],
+    "service level analyst": [
+      "analysis"
+    ],
+    "configuration analyst": [
+      "analysis"
+    ],
+    "enterprise architect": [
+      "architecture"
+    ],
+    "business architect": [
+      "architecture"
+    ],
+    "solution architect": [
+      "architecture"
+    ],
+    "application architect": [
+      "architecture"
+    ],
+    "domain architect": [
+      "architecture"
+    ],
+    "data architect": [
+      "architecture"
+    ],
+    "integration architect": [
+      "architecture"
+    ],
+    "cloud architect": [
+      "architecture"
+    ],
+    "network architect": [
+      "architecture"
+    ],
+    "security architect": [
+      "architecture"
+    ],
+    "ai and ml architect": [
+      "architecture"
+    ],
+    "ai ml architect": [
+      "architecture"
+    ],
+    "technical design authority member": [
+      "architecture"
+    ],
+    "architecture review board member": [
+      "architecture"
+    ],
+    "software engineer": [
+      "software-development-and-engineering"
+    ],
+    "developer": [
+      "software-development-and-engineering"
+    ],
+    "programmer": [
+      "software-development-and-engineering"
+    ],
+    "senior software engineer": [
+      "software-development-and-engineering"
+    ],
+    "staff engineer": [
+      "software-development-and-engineering"
+    ],
+    "principal engineer": [
+      "software-development-and-engineering"
+    ],
+    "backend engineer": [
+      "software-development-and-engineering"
+    ],
+    "frontend engineer": [
+      "software-development-and-engineering"
+    ],
+    "full stack engineer": [
+      "software-development-and-engineering"
+    ],
+    "mobile engineer": [
+      "software-development-and-engineering"
+    ],
+    "embedded firmware engineer": [
+      "software-development-and-engineering"
+    ],
+    "real time systems engineer": [
+      "software-development-and-engineering"
+    ],
+    "systems programmer": [
+      "software-development-and-engineering"
+    ],
+    "mainframe developer": [
+      "software-development-and-engineering"
+    ],
+    "api developer": [
+      "software-development-and-engineering"
+    ],
+    "integration developer": [
+      "software-development-and-engineering"
+    ],
+    "erp and crm consultant developer": [
+      "software-development-and-engineering"
+    ],
+    "low code and rpa developer": [
+      "software-development-and-engineering"
+    ],
+    "game developer": [
+      "software-development-and-engineering"
+    ],
+    "graphics and engine engineer": [
+      "software-development-and-engineering"
+    ],
+    "graphics engineer": [
+      "software-development-and-engineering"
+    ],
+    "blockchain and smart contract developer": [
+      "software-development-and-engineering"
+    ],
+    "quantitative developer": [
+      "software-development-and-engineering"
+    ],
+    "compiler and toolchain engineer": [
+      "software-development-and-engineering"
+    ],
+    "build engineer": [
+      "software-development-and-engineering"
+    ],
+    "release engineer": [
+      "software-development-and-engineering"
+    ],
+    "ci cd platform engineer": [
+      "software-development-and-engineering"
+    ],
+    "build and release platform engineer": [
+      "software-development-and-engineering"
+    ],
+    "gitops and continuous delivery engineer": [
+      "software-development-and-engineering"
+    ],
+    "continuous delivery engineer": [
+      "software-development-and-engineering"
+    ],
+    "developer experience engineer": [
+      "software-development-and-engineering"
+    ],
+    "devex engineer": [
+      "software-development-and-engineering"
+    ],
+    "open source program office engineer": [
+      "software-development-and-engineering"
+    ],
+    "software modernisation engineer": [
+      "software-development-and-engineering"
+    ],
+    "test analyst": [
+      "quality-and-testing"
+    ],
+    "qa engineer": [
+      "quality-and-testing"
+    ],
+    "test automation engineer": [
+      "quality-and-testing"
+    ],
+    "sdet": [
+      "quality-and-testing"
+    ],
+    "performance test engineer": [
+      "quality-and-testing"
+    ],
+    "test manager": [
+      "quality-and-testing"
+    ],
+    "test architect": [
+      "quality-and-testing"
+    ],
+    "user acceptance test coordinator": [
+      "quality-and-testing"
+    ],
+    "accessibility tester": [
+      "quality-and-testing"
+    ],
+    "localisation qa analyst": [
+      "quality-and-testing"
+    ],
+    "chaos and resilience engineer": [
+      "quality-and-testing"
+    ],
+    "codebase reviewer": [
+      "quality-and-testing"
+    ],
+    "code auditor": [
+      "quality-and-testing"
+    ],
+    "technical due diligence reviewer": [
+      "quality-and-testing"
+    ],
+    "release quality gatekeeper": [
+      "quality-and-testing"
+    ],
+    "data engineer": [
+      "data-analytics-and-ai"
+    ],
+    "analytics engineer": [
+      "data-analytics-and-ai"
+    ],
+    "database administrator": [
+      "data-analytics-and-ai"
+    ],
+    "database reliability engineer": [
+      "data-analytics-and-ai"
+    ],
+    "data modeller": [
+      "data-analytics-and-ai"
+    ],
+    "data steward": [
+      "data-analytics-and-ai"
+    ],
+    "data owner": [
+      "data-analytics-and-ai"
+    ],
+    "data custodian": [
+      "data-analytics-and-ai"
+    ],
+    "data governance lead": [
+      "data-analytics-and-ai"
+    ],
+    "data quality analyst": [
+      "data-analytics-and-ai"
+    ],
+    "master data management specialist": [
+      "data-analytics-and-ai"
+    ],
+    "data scientist": [
+      "data-analytics-and-ai"
+    ],
+    "research scientist": [
+      "data-analytics-and-ai"
+    ],
+    "machine learning engineer": [
+      "data-analytics-and-ai"
+    ],
+    "ml engineer": [
+      "data-analytics-and-ai"
+    ],
+    "mlops engineer": [
+      "data-analytics-and-ai"
+    ],
+    "llmops and ai platform engineer": [
+      "data-analytics-and-ai"
+    ],
+    "ai solutions engineer": [
+      "data-analytics-and-ai"
+    ],
+    "prompt engineer": [
+      "data-analytics-and-ai"
+    ],
+    "ai safety and model red team specialist": [
+      "data-analytics-and-ai"
+    ],
+    "ai governance officer": [
+      "data-analytics-and-ai"
+    ],
+    "data privacy engineer": [
+      "data-analytics-and-ai"
+    ],
+    "metadata manager": [
+      "data-analytics-and-ai"
+    ],
+    "data librarian": [
+      "data-analytics-and-ai"
+    ],
+    "linux systems administrator": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "windows systems administrator": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "cloud engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "cloud operations engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "platform engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "devops engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "site reliability engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "kubernetes platform engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "infrastructure as code engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "cloud automation engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "terraform engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "container platform engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "container image engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "environment manager": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "test environment manager": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "virtualisation engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "storage engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "backup and recovery engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "datacentre technician": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "capacity manager": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "availability manager": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "observability engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "middleware administrator": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "finops engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "sustainable it engineer": [
+      "infrastructure-cloud-and-operations"
+    ],
+    "network engineer": [
+      "network-and-telecommunications"
+    ],
+    "network administrator": [
+      "network-and-telecommunications"
+    ],
+    "network operations centre analyst": [
+      "network-and-telecommunications"
+    ],
+    "noc analyst": [
+      "network-and-telecommunications"
+    ],
+    "wireless and rf engineer": [
+      "network-and-telecommunications"
+    ],
+    "unified communications engineer": [
+      "network-and-telecommunications"
+    ],
+    "telephony engineer": [
+      "network-and-telecommunications"
+    ],
+    "sd wan and edge engineer": [
+      "network-and-telecommunications"
+    ],
+    "firewall and perimeter engineer": [
+      "network-and-telecommunications"
+    ],
+    "firewall engineer": [
+      "network-and-telecommunications"
+    ],
+    "dns dhcp and ipam specialist": [
+      "network-and-telecommunications"
+    ],
+    "network field technician": [
+      "network-and-telecommunications"
+    ],
+    "cabling technician": [
+      "network-and-telecommunications"
+    ],
+    "service desk analyst": [
+      "service-management-and-support"
+    ],
+    "first line support": [
+      "service-management-and-support"
+    ],
+    "helpdesk analyst": [
+      "service-management-and-support"
+    ],
+    "desktop support engineer": [
+      "service-management-and-support"
+    ],
+    "second line support": [
+      "service-management-and-support"
+    ],
+    "application support analyst": [
+      "service-management-and-support"
+    ],
+    "third line support": [
+      "service-management-and-support"
+    ],
+    "incident manager": [
+      "service-management-and-support"
+    ],
+    "major incident manager": [
+      "service-management-and-support"
+    ],
+    "problem manager": [
+      "service-management-and-support"
+    ],
+    "change manager": [
+      "service-management-and-support"
+    ],
+    "request fulfilment manager": [
+      "service-management-and-support"
+    ],
+    "service level manager": [
+      "service-management-and-support"
+    ],
+    "service catalogue manager": [
+      "service-management-and-support"
+    ],
+    "continual improvement manager": [
+      "service-management-and-support"
+    ],
+    "knowledge manager": [
+      "service-management-and-support"
+    ],
+    "configuration manager": [
+      "service-management-and-support"
+    ],
+    "it asset manager": [
+      "service-management-and-support"
+    ],
+    "software asset manager": [
+      "service-management-and-support"
+    ],
+    "end user computing engineer": [
+      "service-management-and-support"
+    ],
+    "modern device engineer": [
+      "service-management-and-support"
+    ],
+    "workplace engineer": [
+      "service-management-and-support"
+    ],
+    "business relationship manager": [
+      "service-management-and-support"
+    ],
+    "security analyst tier 1": [
+      "security-operations-and-defensive-security"
+    ],
+    "security analyst tier 2": [
+      "security-operations-and-defensive-security"
+    ],
+    "security analyst": [
+      "security-operations-and-defensive-security"
+    ],
+    "security analyst tier 3": [
+      "security-operations-and-defensive-security"
+    ],
+    "soc manager": [
+      "security-operations-and-defensive-security"
+    ],
+    "threat hunter": [
+      "security-operations-and-defensive-security"
+    ],
+    "incident responder": [
+      "security-operations-and-defensive-security"
+    ],
+    "csirt member": [
+      "security-operations-and-defensive-security"
+    ],
+    "digital forensics examiner": [
+      "security-operations-and-defensive-security"
+    ],
+    "dfir analyst": [
+      "security-operations-and-defensive-security"
+    ],
+    "malware analyst": [
+      "security-operations-and-defensive-security"
+    ],
+    "reverse engineer malware": [
+      "security-operations-and-defensive-security"
+    ],
+    "threat intelligence analyst": [
+      "security-operations-and-defensive-security"
+    ],
+    "detection engineer": [
+      "security-operations-and-defensive-security"
+    ],
+    "security engineer": [
+      "security-operations-and-defensive-security"
+    ],
+    "vulnerability management analyst": [
+      "security-operations-and-defensive-security"
+    ],
+    "cryptography and pki engineer": [
+      "security-operations-and-defensive-security"
+    ],
+    "secrets and configuration management engineer": [
+      "security-operations-and-defensive-security"
+    ],
+    "secrets engineer": [
+      "security-operations-and-defensive-security"
+    ],
+    "identity and access management engineer": [
+      "security-operations-and-defensive-security"
+    ],
+    "iam engineer": [
+      "security-operations-and-defensive-security"
+    ],
+    "identity governance specialist": [
+      "security-operations-and-defensive-security"
+    ],
+    "iga specialist": [
+      "security-operations-and-defensive-security"
+    ],
+    "privileged access management administrator": [
+      "security-operations-and-defensive-security"
+    ],
+    "cloud security engineer": [
+      "security-operations-and-defensive-security"
+    ],
+    "application security engineer": [
+      "security-operations-and-defensive-security"
+    ],
+    "product security engineer": [
+      "security-operations-and-defensive-security"
+    ],
+    "security champion": [
+      "security-operations-and-defensive-security"
+    ],
+    "operational technology security engineer": [
+      "security-operations-and-defensive-security"
+    ],
+    "security awareness and training manager": [
+      "security-operations-and-defensive-security"
+    ],
+    "insider threat analyst": [
+      "security-operations-and-defensive-security"
+    ],
+    "purple team lead": [
+      "security-operations-and-defensive-security"
+    ],
+    "penetration tester network and infrastructure": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "penetration tester": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "penetration tester network": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "penetration tester web application": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "penetration tester mobile": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "penetration tester api": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "penetration tester cloud": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "penetration tester wireless": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "penetration tester thick client": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "red team operator": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "red team lead": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "exploit developer": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "vulnerability researcher": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "binary reverse engineer": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "social engineering specialist": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "physical intrusion specialist": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "open source intelligence investigator": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "adversary emulation engineer": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "breach and attack simulation engineer": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "bug bounty programme manager": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "bug bounty triage analyst": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "vulnerability disclosure coordinator": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "hardware and iot security researcher": [
+      "offensive-security-and-adversarial-testing"
+    ],
+    "it governance manager": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "grc analyst": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "it risk manager": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "information security officer local": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "divisional security officer": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "liso": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "compliance officer technology": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "compliance officer": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "internal it auditor": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "external auditor and assessor": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "control owner": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "control tester": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "data protection officer": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "privacy analyst": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "records manager": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "business continuity manager": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "disaster recovery coordinator": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "third party risk manager": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "policy author": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "crisis manager": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "ux designer": [
+      "design-and-user-experience"
+    ],
+    "ui designer": [
+      "design-and-user-experience"
+    ],
+    "product designer": [
+      "design-and-user-experience"
+    ],
+    "ux researcher": [
+      "design-and-user-experience"
+    ],
+    "usability tester": [
+      "design-and-user-experience"
+    ],
+    "interaction designer": [
+      "design-and-user-experience"
+    ],
+    "service designer": [
+      "design-and-user-experience"
+    ],
+    "information architect": [
+      "design-and-user-experience"
+    ],
+    "design system engineer": [
+      "design-and-user-experience"
+    ],
+    "accessibility specialist": [
+      "design-and-user-experience"
+    ],
+    "content designer": [
+      "design-and-user-experience"
+    ],
+    "ux writer": [
+      "design-and-user-experience"
+    ],
+    "it procurement specialist": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "vendor manager": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "contract manager": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "software licence compliance specialist": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "pre sales solution consultant": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "sales engineer": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "customer success engineer": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "implementation consultant": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "technical account manager": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "technical writer": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "developer advocate": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "it trainer": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "technical recruiter": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "resource manager": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "research engineer": [
+      "research-innovation-and-specialist-engineering"
+    ],
+    "innovation lead": [
+      "research-innovation-and-specialist-engineering"
+    ],
+    "technology scout": [
+      "research-innovation-and-specialist-engineering"
+    ],
+    "standards body representative": [
+      "research-innovation-and-specialist-engineering"
+    ],
+    "ethics and responsible technology lead": [
+      "research-innovation-and-specialist-engineering"
+    ],
+    "systems engineer incose": [
+      "research-innovation-and-specialist-engineering"
+    ],
+    "simulation engineer": [
+      "research-innovation-and-specialist-engineering"
+    ],
+    "high performance computing engineer": [
+      "research-innovation-and-specialist-engineering"
+    ],
+    "quantum computing engineer": [
+      "research-innovation-and-specialist-engineering"
+    ],
+    "chief security architect sabsa practice lead": [
+      "sabsa-security-architecture"
+    ],
+    "chief security architect": [
+      "sabsa-security-architecture"
+    ],
+    "business security architect sabsa contextual layer": [
+      "sabsa-security-architecture"
+    ],
+    "business security architect": [
+      "sabsa-security-architecture"
+    ],
+    "business attribute profiler": [
+      "sabsa-security-architecture"
+    ],
+    "conceptual security architect sabsa architect s view": [
+      "sabsa-security-architecture"
+    ],
+    "conceptual security architect": [
+      "sabsa-security-architecture"
+    ],
+    "logical security designer sabsa designer s view": [
+      "sabsa-security-architecture"
+    ],
+    "logical security designer": [
+      "sabsa-security-architecture"
+    ],
+    "physical security solution builder sabsa builder s view": [
+      "sabsa-security-architecture"
+    ],
+    "physical security solution builder": [
+      "sabsa-security-architecture"
+    ],
+    "security component specialist sabsa tradesman s view": [
+      "sabsa-security-architecture"
+    ],
+    "security component specialist": [
+      "sabsa-security-architecture"
+    ],
+    "security service manager sabsa service management view": [
+      "sabsa-security-architecture"
+    ],
+    "security service manager": [
+      "sabsa-security-architecture"
+    ],
+    "security domain authority": [
+      "sabsa-security-architecture"
+    ],
+    "security risk and opportunity architect": [
+      "sabsa-security-architecture"
+    ],
+    "security assurance and measurement architect": [
+      "sabsa-security-architecture"
+    ],
+    "sabsa and togaf integration architect": [
+      "sabsa-security-architecture"
+    ],
+    "organisational change and adoption manager": [
+      "product-delivery-and-agile"
+    ],
+    "ocm manager": [
+      "product-delivery-and-agile"
+    ],
+    "change and adoption lead": [
+      "product-delivery-and-agile"
+    ],
+    "benefits realisation manager": [
+      "product-delivery-and-agile"
+    ],
+    "benefits manager": [
+      "product-delivery-and-agile"
+    ],
+    "benefits lead": [
+      "product-delivery-and-agile"
+    ],
+    "data migration and cutover lead": [
+      "product-delivery-and-agile"
+    ],
+    "cutover manager": [
+      "product-delivery-and-agile"
+    ],
+    "migration lead": [
+      "product-delivery-and-agile"
+    ],
+    "service transition and operational readiness manager": [
+      "service-management-and-support"
+    ],
+    "operational readiness manager": [
+      "service-management-and-support"
+    ],
+    "service transition manager": [
+      "service-management-and-support"
+    ],
+    "architecture repository and modelling lead": [
+      "architecture"
+    ],
+    "ea repository lead": [
+      "architecture"
+    ],
+    "architecture modelling lead": [
+      "architecture"
+    ],
+    "identity and access management architect": [
+      "architecture"
+    ],
+    "iam architect": [
+      "architecture"
+    ],
+    "identity architect": [
+      "architecture"
+    ],
+    "privacy architect": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "data privacy architect": [
+      "governance-risk-compliance-audit-and-privacy"
+    ],
+    "operational and technology resilience architect": [
+      "architecture"
+    ],
+    "technology resilience architect": [
+      "architecture"
+    ],
+    "operational resilience architect": [
+      "architecture"
+    ],
+    "technology lifecycle and decommission manager": [
+      "service-management-and-support"
+    ],
+    "technology lifecycle manager": [
+      "service-management-and-support"
+    ],
+    "decommission manager": [
+      "service-management-and-support"
+    ],
+    "service retirement manager": [
+      "service-management-and-support"
+    ],
+    "enterprise applications architect": [
+      "architecture"
+    ],
+    "secure delivery devsecops architect": [
+      "architecture"
+    ],
+    "siam manager": [
+      "service-management-and-support"
+    ],
+    "enterprise release manager": [
+      "product-delivery-and-agile"
+    ],
+    "it financial management tbm manager": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "demand intake manager": [
+      "product-delivery-and-agile"
+    ],
+    "demand and intake manager": [
+      "product-delivery-and-agile"
+    ],
+    "application portfolio manager": [
+      "architecture"
+    ],
+    "bid proposal manager": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "bid manager": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "proposal manager": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "tender manager": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "commercial pricing deal finance specialist": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "deal finance specialist": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "commercial pricing specialist": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "pricing analyst": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "estimation cost engineering specialist": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "cost estimator": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "effort estimation specialist": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "cost engineer": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "independent commercial assurance reviewer": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "commercial assurance reviewer": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "independent bid reviewer": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "supplier commercial deal manager": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "supplier commercial manager": [
+      "commercial-sourcing-and-enablement"
+    ],
+    "deal manager": [
+      "commercial-sourcing-and-enablement"
+    ]
+  },
+  "specialist_intents": [
+    {
+      "role_id": "bid-proposal-manager",
+      "phrases": [
+        "supplier bid",
+        "bid proposal",
+        "proposal management",
+        "proposal manager",
+        "tender response",
+        "rfp response",
+        "bid compliance",
+        "tvorbu nabidky",
+        "tvorbu nabídky",
+        "rizeni nabidky",
+        "řízení nabídky"
+      ],
+      "exclude": [
+        "buyer",
+        "buyer procurement",
+        "supplier evaluation",
+        "buyer sourcing",
+        "nákup dodavatele",
+        "nakup dodavatele"
+      ]
+    },
+    {
+      "role_id": "commercial-pricing-deal-finance-specialist",
+      "phrases": [
+        "commercial pricing",
+        "deal finance",
+        "selling price",
+        "sales price",
+        "deal margin",
+        "margin cashflow",
+        "margin cash flow",
+        "cenotvorba",
+        "prodejni cena",
+        "prodejní cena",
+        "marze zakazky",
+        "marže zakázky"
+      ],
+      "exclude": [
+        "buyer",
+        "buyer procurement",
+        "supplier evaluation",
+        "buyer sourcing",
+        "nákup dodavatele",
+        "nakup dodavatele"
+      ]
+    },
+    {
+      "role_id": "estimation-cost-engineering-specialist",
+      "phrases": [
+        "cost engineering",
+        "basis of estimate",
+        "effort estimate",
+        "effort estimation",
+        "estimate calibration",
+        "estimation uncertainty",
+        "odhad pracnosti",
+        "odhady pracnosti",
+        "odhad nakladu",
+        "odhad nákladů"
+      ],
+      "exclude": [
+        "buyer",
+        "buyer procurement",
+        "supplier evaluation",
+        "buyer sourcing",
+        "nákup dodavatele",
+        "nakup dodavatele"
+      ]
+    },
+    {
+      "role_id": "independent-commercial-assurance-reviewer",
+      "phrases": [
+        "independent commercial assurance",
+        "commercial assurance review",
+        "independent bid review",
+        "independent pricing review",
+        "price challenge",
+        "nezavisla obchodni kontrola",
+        "nezávislá obchodní kontrola",
+        "independent commercial assurance"
+      ],
+      "exclude": [
+        "buyer",
+        "buyer procurement",
+        "supplier evaluation",
+        "buyer sourcing",
+        "nákup dodavatele",
+        "nakup dodavatele"
+      ]
+    },
+    {
+      "role_id": "supplier-commercial-deal-manager",
+      "phrases": [
+        "supplier deal",
+        "supplier commercial",
+        "commercial lifecycle",
+        "deal negotiation",
+        "supplier contract change",
+        "dodavatelske obchodni rizeni",
+        "dodavatelské obchodní řízení"
+      ],
+      "exclude": [
+        "buyer",
+        "buyer procurement",
+        "supplier evaluation",
+        "buyer sourcing",
+        "nákup dodavatele",
+        "nakup dodavatele"
+      ]
+    }
+  ]
+}

@@ -3,77 +3,53 @@ owner: JAI documentation maintainers
 review_due: 2027-01-16
 ---
 
-# How to use JAI: worked learning guides
+# How to use JAI
 
-JAI helps you organise substantial work around a clear outcome, explicit sources, independent review and evidence. These tutorials show how to steer that process: what to ask for, why the next step matters, what should be produced and when you need to make a decision.
+Start with the method, choose what must be justified, and then follow a worked case. JAI's commands select procedures; they are not interchangeable shortcuts to an automatically approved result. This learning path keeps the explanation beside the cases that demonstrate it.
 
-Both scenarios are fictional teaching exercises using the current JAI workflow contracts. The [security assessment](security-assessment.md) compares a deployed system with business-driven security requirements. The [Android development guide](android-development.md) keeps architecture, implementation and release evidence aligned through small changes. Choose the one closest to your task; each is self-contained.
+## 1. Learn the method before choosing a command
 
-## Understand the working parts
+Read [Choosing and running a methodical workflow](../../using/methodical-workflows.md) first. It explains the three valid arrangements:
 
-A **workflow** coordinates the work. A specialist **author** creates architecture or implementation artefacts. A different **reviewer** assesses the result and verifies rework. Deterministic **tools** check structure, trace dependencies and generate publications. The **human owner** decides matters such as scope, risk acceptance and final authority.
-
-This separation gives you useful questions to ask at every stage: which source supports this claim, who authored it, who reviewed it, which checks actually ran, and what remains undecided? A polished document is useful only when those questions have clear answers.
-
-| Your task | Workflow | Main artefacts | Why use it |
-| --- | --- | --- | --- |
-| Establish a business-driven security architecture | SABSA | Sources, typed architecture entries, matrix answers and narrative chapters | Connect technical choices to business outcomes |
-| Implement a bounded change | Develop | Reviewed code, tests and execution evidence | Keep implementation scope and acceptance criteria explicit |
-| Make a consequential decision | Layered delivery | Contracts, evidence, reviews and escalation dossier | Show what supports the decision and where human authority is needed |
-| Communicate reviewed architecture | SABSA document publication | Viewpoint documents and catalogue exports | Give readers usable views of the canonical source |
-
-SABSA's six architecture viewpoints and JAI's six delivery layers serve different purposes. A SABSA coordinate describes an architectural perspective; a JAI layer describes a delivery responsibility. Their numbers are not interchangeable.
-
-## Run this scenario in the provider CLI
-
-Use the prompts in your existing Claude Code or Codex project conversation. They are conversation requests, not shell commands. Each tab contains one complete prompt for that provider; copy only the tab you use.
-
-Start with preparation because JAI needs the intended outcome and evidence before deriving requirements. You provide `PROJECT.md` and available sources. The SABSA workflow should organise those sources, ask about missing context and propose business drivers with explicit provenance.
-
-**Expected output:** a source register, initial drivers and open questions. **Checkpoint:** the proposed scope and drivers describe your business need rather than a product chosen in advance.
-
-=== "Claude Code"
-
-    ```text
-    /sabsa prepare project/sabsa — use project/PROJECT.md and the supplied
-    sources. Establish the intended decision, scope and business drivers.
-    Separate stated facts, justified inferences and assumptions, and show
-    questions that must be resolved before requirements are treated as
-    settled.
-    ```
-
-=== "Codex"
-
-    ```text
-    $workflow-sabsa prepare project/sabsa — use project/PROJECT.md and the
-    supplied sources. Establish the intended decision, scope and business
-    drivers. Separate stated facts, justified inferences and assumptions, and
-    show questions that must be resolved before requirements are treated as
-    settled.
-    ```
-
-**Operator:** provide material, inspect assumptions and make the decisions that belong to you. **Behind the scenes:** JAI routes authoring and independent review, invokes permitted tools and reports actual results. A workflow name or a generated file does not prove that a check ran. In Codex, protected authority actions are handed to the actual human as exact commands for a trusted terminal; the agent cannot impersonate that human.
-
-## Learn the iterative pattern
-
-Each tutorial uses the same pattern: establish intent, build a bounded part, inspect its evidence, review it independently, and reconcile changes before proceeding. You do not need to ask for the entire engagement in one prompt. Smaller stages make unsupported assumptions and inconsistent decisions easier to find.
-
-| Learning goal | Security assessment | Android development |
+| Arrangement | What you ask JAI to establish | Worked illustration |
 | --- | --- | --- |
-| Establish intent | Business exposure and assessment boundary | User benefit, privacy and failure consequences |
-| Build the model | Requirements, then a reference realisation | Requirements, then an implementable increment |
-| Use evidence | Compare observed deployment with the reference | Reconcile code, tests, device observations and architecture |
-| Handle change | Findings and a transformation roadmap | Reviewed development increments and model updates |
-| Reach a decision | Identify justified changes and unresolved exposure | Distinguish release evidence from remaining conditions |
+| Direct domain workflow | A domain model, its sources, domain checks and independent review | [Security assessment](security-assessment.md) |
+| Domain work followed by a layered decision | Whether an exact existing model and other evidence support a new decision | [Android development and release](android-development.md) |
+| Layered creation with a named domain | The justification of the creation process itself, through L1–L6 contracts, evidence and review | Alternatives at the beginning of both cases; [proposal creation](../../capabilities/commercial-delivery.md#worked-proposal-from-discovery-to-bid-decision) |
 
-## Choose a useful publication
+These arrangements answer different questions. A later `/layered` decision does not retroactively turn earlier `/sabsa` work into a layered creation history. Conversely, a direct `/sabsa` workflow already has architect/reviewer separation: the absence of `/layered` does not mean the absence of all review.
 
-The SABSA workflow uses Markdown by default. Ask naturally for another format when the audience needs it: a Logical Security Architecture as LaTeX and PDF, a Component Engineering Specification as Word, or editable CSV catalogues for structured maintenance.
+Next read [Interaction patterns](../../using/interaction-model.md) for provider syntax and operator responsibilities. If you choose a layered arrangement, [Running a layered engagement](../../using/layered-engagement.md) explains the complete cycle, including unsuccessful work and human authority.
 
-The six viewpoint publications combine authored chapters with full element fields and bodies, provenance and typed business paths. Canonical Markdown entries and narrative chapters carry the meaning. Generated publications present it; missing decisions remain gaps. CSV supports export, validation and import of edits to existing local entries while retaining stable IDs and schema. It is an editable projection, not a second source of authority.
+## 2. Work through a complete case
 
-See [deliverables](../../using/deliverables.md), [publication dependencies](../../configuration/publication-stack.md) and [sandbox prerequisites](../../getting-started/sandbox-prerequisites.md) for the relevant output and access requirements.
+### Security assessment: stop at a reviewed assessment
+
+[Assess a deployed system with SABSA](security-assessment.md) follows `/sabsa` from business drivers to a reference architecture, observed deployment, findings and a transformation roadmap. Its main exercise stops at assessment and architecture-owner approval; it does not make a formal release or risk-acceptance decision. That scope explains why its main sequence uses `/sabsa` rather than `/layered`. An optional decision extension shows where to introduce the latter if needed.
+
+### Android: build, reconcile, then ask a new release question
+
+[Keep Android development aligned with SABSA](android-development.md) uses `/sabsa` for architecture, `/develop` for a bounded code increment, and `/layered` in step 7 for release readiness. The last step is a new consequential question using the architecture and actual implementation evidence. It does not certify the history of the preceding authoring work.
+
+### Commercial proposal: discover, estimate and expose commitment risk
+
+[Commercial delivery](../../capabilities/commercial-delivery.md#worked-proposal-from-discovery-to-bid-decision) develops a supplier proposal with incomplete service volumes, staged estimates, staffing and separate internal/client views. It shows direct commercial preparation followed by a bid decision, as well as the alternative of layered creation from the start. Its provider-qualification limits remain explicit.
+
+Each case explains its chosen arrangement before presenting commands. Choose an alternative **before** production begins if your policy requires the creation process itself to be layered.
+
+## 3. Continue with the reference you actually need
+
+| Your next question | Read |
+| --- | --- |
+| Which conversation command or Codex skill should I use? | [Commands and direct tools](../../using/commands.md) |
+| Which enterprise stages, roles and handoffs apply? | [Workflow library](../../using/workflows.md) |
+| What should the output contain, and how is it published? | [Working with deliverables](../../using/deliverables.md) |
+| How can I practise without using a real client system? | [Demo estate](../../using/demo-estate.md) |
+| Which domain capabilities and technical boundaries exist? | [SABSA and EA](../../capabilities/sabsa-ea.md), [Commercial delivery](../../capabilities/commercial-delivery.md), [Layered runtime](../../capabilities/layered-runtime.md) |
+| What may only the human decide? | [Human authority and escalation](../../operations/human-authority.md) |
+
+The [quick start](../../getting-started/quick-start.md) is a short installation smoke tour. The [command walkthroughs](../../reference/command-walkthroughs.md) are individual reference exercises. Neither replaces the end-to-end methodology and cases in this learning path.
 
 ## Teaching and validation status
 
-These pages describe proposed exercises and expected artefacts, not executed provider conversations, customer assessments or Android release results. Repository documentation checks and deterministic examples are separate validation activities. In your engagement, request actual evidence for each claimed result and keep unperformed work visible.
+The cases are fictional teaching exercises, not executed provider transcripts, customer assessments or successful release records. Their commands describe requested work and expected artefacts. Repository checks can validate links, syntax and deterministic fixtures; they do not establish live provider isolation, completed reviews or human authority. Request actual evidence and state identifiers in each real engagement.

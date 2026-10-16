@@ -1,0 +1,190 @@
+{
+  "version": "1",
+  "domain_id": "executive-and-leadership",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "chief-information-officer",
+      "name": "Chief Information Officer",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-executive-and-leadership",
+      "path": "skills/it-roles-executive-and-leadership/references/chief-information-officer.md",
+      "deliverables": [
+        "IT strategy",
+        "IT investment portfolio",
+        "IT operating model",
+        "annual IT plan and budget"
+      ],
+      "aliases": [
+        "Head of IT",
+        "IT Director"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "chief-technology-officer",
+      "name": "Chief Technology Officer",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-executive-and-leadership",
+      "path": "skills/it-roles-executive-and-leadership/references/chief-technology-officer.md",
+      "deliverables": [
+        "Technology strategy",
+        "build-versus-buy position",
+        "engineering capability plan",
+        "technical risk register"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "chief-information-security-officer",
+      "name": "Chief Information Security Officer",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-executive-and-leadership",
+      "path": "skills/it-roles-executive-and-leadership/references/chief-information-security-officer.md",
+      "deliverables": [
+        "Security strategy and roadmap",
+        "ISMS and policy set",
+        "security risk register",
+        "board security report"
+      ],
+      "aliases": [
+        "Group Head of Information Security"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "chief-data-officer",
+      "name": "Chief Data Officer",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-executive-and-leadership",
+      "path": "skills/it-roles-executive-and-leadership/references/chief-data-officer.md",
+      "deliverables": [
+        "Data strategy",
+        "data governance operating model",
+        "critical data element inventory",
+        "data value case portfolio"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "chief-digital-officer",
+      "name": "Chief Digital Officer",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-executive-and-leadership",
+      "path": "skills/it-roles-executive-and-leadership/references/chief-digital-officer.md",
+      "deliverables": [
+        "Digital transformation roadmap",
+        "customer channel strategy",
+        "benefits realisation plan",
+        "transformation risk register"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "chief-product-officer",
+      "name": "Chief Product Officer",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-executive-and-leadership",
+      "path": "skills/it-roles-executive-and-leadership/references/chief-product-officer.md",
+      "deliverables": [
+        "Product portfolio strategy",
+        "investment allocation across products",
+        "pricing and packaging position",
+        "portfolio roadmap"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "chief-ai-officer",
+      "name": "Chief AI Officer",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-executive-and-leadership",
+      "path": "skills/it-roles-executive-and-leadership/references/chief-ai-officer.md",
+      "deliverables": [
+        "AI strategy",
+        "AI use-case register",
+        "AI governance framework",
+        "model risk appetite statement"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "it-chief-of-staff",
+      "name": "IT Chief of Staff",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-executive-and-leadership",
+      "path": "skills/it-roles-executive-and-leadership/references/it-chief-of-staff.md",
+      "deliverables": [
+        "Leadership operating calendar",
+        "decision log",
+        "commitment tracker",
+        "executive briefing pack"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "vp-of-engineering",
+      "name": "VP of Engineering",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-executive-and-leadership",
+      "path": "skills/it-roles-executive-and-leadership/references/vp-of-engineering.md",
+      "deliverables": [
+        "Engineering operating model",
+        "delivery capacity plan",
+        "engineering standards set",
+        "org design and succession plan"
+      ],
+      "aliases": [
+        "Director of Engineering"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "head-of-platform",
+      "name": "Head of Platform",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-executive-and-leadership",
+      "path": "skills/it-roles-executive-and-leadership/references/head-of-platform.md",
+      "deliverables": [
+        "Platform product roadmap",
+        "golden paths and paved-road documentation",
+        "platform service levels",
+        "platform adoption report"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "it-service-owner",
+      "name": "IT Service Owner",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-executive-and-leadership",
+      "path": "skills/it-roles-executive-and-leadership/references/it-service-owner.md",
+      "deliverables": [
+        "Service definition and service level agreement",
+        "service cost model",
+        "service improvement plan",
+        "service risk profile"
+      ],
+      "aliases": [],
+      "guard": null
+    }
+  ]
+}

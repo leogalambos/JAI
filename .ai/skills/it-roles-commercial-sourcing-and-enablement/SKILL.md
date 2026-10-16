@@ -1,6 +1,6 @@
 ---
 name: it-roles-commercial-sourcing-and-enablement
-description: "Commercial, Sourcing and Enablement role skills: 15 defined roles covering it procurement specialist; vendor manager; contract manager; software licence compliance specialist; pre-sales solution consultant; sales engineer; customer success engineer; implementation consultant; and more. Use when the request involves any of these roles, their deliverables, or the design of the function itself — job descriptions, RACI, segregation of duties, maturity assessment or hiring scorecards within commercial, sourcing and enablement. Read the matching file in references/ before answering."
+description: "Commercial, Sourcing and Enablement role skills: 20 defined roles covering supplier bid/proposal management, estimation and cost engineering, commercial pricing and deal finance, supplier commercial lifecycle management, independent commercial assurance, procurement, contracts, pre-sales and enablement. Use for these specialist deliverables or role design, RACI and segregation of duties. Read the matching reference before operating; technical pre-sales, TBM and FinOps do not substitute for supplier commercial specialists."
 allowed-tools: Read, Grep, Glob
 ---
 
@@ -8,7 +8,7 @@ allowed-tools: Read, Grep, Glob
 
 > **Agents named here** are subagents: delegate them through the active provider's operator/delegation mechanism — `role-advisor`, `role-author`.
 
-`category-index: 15`  ·  `roles: 15`  ·  `tool-tier: route` (`Read, Grep, Glob`)  ·  `version: 1.0.0`  ·  `licence: BSD-4-Clause`
+`category-index: 15`  ·  `roles: 20`  ·  `tool-tier: route` (`Read, Grep, Glob`)  ·  `version: 1.1.0`  ·  `licence: BSD-4-Clause`
 
 This skill routes and explains. It cannot write files or run commands. To produce a deliverable, hand the chosen reference file to the operator agent named in the table below. The agents live in `~/.ai/it-role-house/agents/`; the shared index, permission model and validators are in `~/.ai/it-role-house/`.
 
@@ -40,6 +40,17 @@ If the request spans two roles, read both files and state where the boundary fal
 | Technical Recruiter | [`references/technical-recruiter.md`](references/technical-recruiter.md) | enable | 3-5 | `author` | `role-author` |
 | Resource Manager | [`references/resource-manager.md`](references/resource-manager.md) | manage | 3-5 | `author` | `role-author` |
 | IT Financial Management / TBM Manager | [`references/it-financial-management-tbm-manager.md`](references/it-financial-management-tbm-manager.md) | manage | 5-6 | `author` | `role-author` |
+| Bid / Proposal Manager | [`references/bid-proposal-manager.md`](references/bid-proposal-manager.md) | manage | 4-6 | `author` | `role-author` |
+| Commercial Pricing / Deal Finance Specialist | [`references/commercial-pricing-deal-finance-specialist.md`](references/commercial-pricing-deal-finance-specialist.md) | manage | 5-6 | `author` | `role-author` |
+| Estimation / Cost Engineering Specialist | [`references/estimation-cost-engineering-specialist.md`](references/estimation-cost-engineering-specialist.md) | manage | 4-6 | `author` | `role-author` |
+| Independent Commercial Assurance Reviewer | [`references/independent-commercial-assurance-reviewer.md`](references/independent-commercial-assurance-reviewer.md) | assure | 5-6 | `advise` | `role-advisor` |
+| Supplier Commercial / Deal Manager | [`references/supplier-commercial-deal-manager.md`](references/supplier-commercial-deal-manager.md) | manage | 5-6 | `author` | `role-author` |
+
+## Supplier commercial specialisation
+
+For supplier proposals, route response coordination to Bid / Proposal Manager, work and cost uncertainty to Estimation / Cost Engineering Specialist, selling price and cash economics to Commercial Pricing / Deal Finance Specialist, and negotiation plus post-award commercial exposure to Supplier Commercial / Deal Manager. Route independent challenge to Independent Commercial Assurance Reviewer using a separate operator. Read only the references needed for the current handoff.
+
+Pre-sales owns technical solution evidence; TBM owns enterprise cost/allocation methodology; buyer procurement owns buying activities. They supply specialist inputs without replacing the five supplier commercial responsibilities. Human bid/no-bid, price approval, signature and risk acceptance remain reserved under delegated authority.
 
 ## Response contract
 
@@ -65,4 +76,4 @@ No role performs, approves and assures the same activity. Where headcount forces
 
 ## Tool restriction
 
-1 of the 15 roles here are `advise` tier (`Read, Grep, Glob, WebSearch`) because their work is assurance, oversight, evidential or adversarial. Operate them with `role-advisor`: analyse and document, and hand anything that changes a system to the role named in its interfaces section.
+2 of the 20 roles here are `advise` tier (`Read, Grep, Glob, WebSearch`) because their work is assurance or oversight. Operate them with `role-advisor`: return analysis and findings, and hand file changes to an authorised writer. The independent reviewer does not repair or author the evidence it judges.

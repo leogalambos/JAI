@@ -16,9 +16,3 @@ Before broad deployment, decide:
 ## Change discipline
 
 Treat local policy and model-routing changes as controlled configuration changes. They can materially alter system behaviour and therefore should be versioned, reviewed and tested.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../troubleshooting/"><small>← Previous · Operate and govern</small><strong>Troubleshooting</strong></a>
-  <a class="ai-next" href="../../reference/inventory/"><small>Next · Reference →</small><strong>Release inventory</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

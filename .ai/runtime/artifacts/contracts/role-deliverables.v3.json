@@ -1,8 +1,8 @@
 {
   "schema_version": "3.0.0",
   "release": "26.10.4",
-  "role_count": 281,
-  "deliverable_count": 1124,
+  "role_count": 286,
+  "deliverable_count": 1139,
   "authoritative_write_model": true,
   "legacy_read_source": "role-deliverables.v2.json",
   "contracts": [
@@ -129836,6 +129836,1776 @@
         "source_id": "application-portfolio-manager:4",
         "source_hash": "6074be878fe7264394cc8f53d84bebe4783d622683b63f848dbd4f4e66d367d7",
         "migration_version": "2.0.0"
+      }
+    },
+    {
+      "id": "bid-proposal-manager:1",
+      "version": "3.0.0",
+      "role_slug": "bid-proposal-manager",
+      "deliverable_number": 1,
+      "source_fingerprint": "0763fb1fe5011504f21865b12609bbb076dc50d370b9f6a0d0cd04362d517983",
+      "jai": {
+        "core_version": "1.0.0",
+        "intent": {
+          "purpose": "Bid qualification and response plan",
+          "audience": [
+            "Bid / Proposal Manager",
+            "Supplier Commercial / Deal Manager",
+            "Delegated human commercial and finance authority"
+          ],
+          "decision_supported": "Decision owner can approve or decline with costs, constraints and evidence visible.",
+          "owner_role": "Bid / Proposal Manager",
+          "classification": "Protected supplier internal; explicitly approved client projection only"
+        },
+        "semantics": {
+          "artifact_type": "roadmap",
+          "schema_ref": "publication/schema/publication-model.json",
+          "required_inputs": [
+            "Opportunity brief, client outcomes and qualification criteria",
+            "RFI/RFP/ITT, amendments, procurement rules, deadlines and evaluation criteria",
+            "Solution, delivery and service assumptions with dependencies",
+            "Basis of estimate, pricing recommendation and contractual departures"
+          ],
+          "required_relations": [
+            "business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence",
+            "material inputs -> source/version/assumption",
+            "client commitments -> protected internal commitment baseline",
+            "decision -> human approver where required"
+          ]
+        },
+        "justification": {
+          "required_evidence": [
+            "Source and basis of material scope, quantities, rates and decisions",
+            "Input uncertainty, unknowns, alternative scenarios and lifecycle effort/cost",
+            "Role gates and independent review/rework dispositions"
+          ],
+          "acceptance_profile": "enterprise-publication",
+          "evidence_profile": "material-claims-evidence",
+          "reviewers": [
+            "Independent Commercial Assurance Reviewer"
+          ],
+          "approver": "Named delegated human bid/price/contract authority; no agent authority act",
+          "semantic_policy": "Material claims, assumptions, uncertainty, evidence and commitments must be consistent before publication",
+          "repository_policy": "Apply governed repository policy if the artefact changes canonical architecture facts; otherwise maintain stable commercial record links"
+        },
+        "design": {
+          "mandatory_sections": [
+            "purpose, scope and authority",
+            "input provenance and unresolved unknowns",
+            "specialist methods, lifecycle analysis and alternatives",
+            "L1-L6 rationale and commercial record references",
+            "output gate dispositions",
+            "residual risk and receiving-owner acceptance"
+          ],
+          "publication_profile": "architecture-definition"
+        },
+        "realisation": {
+          "producer": "tools/publication.py",
+          "renderer": "tools/publication.py",
+          "output_formats": [
+            "Qualification rationale, responsibilities, milestones, review strategy and authority map"
+          ],
+          "system_of_record": "Governed protected commercial case record",
+          "external_handoff_adapter": null,
+          "production_mode": "internal",
+          "operator_boundary": "Role-author produces the semantic artefact; calculation source files are attached evidence or explicit external handoff. Generic publication validation does not validate financial formula correctness."
+        },
+        "evidence": {
+          "obligations": [
+            "Source data/assumptions and reviewed version integrity",
+            "Scope and obligation coverage, units/rates and calculation evidence",
+            "Independent review and version-bounded rework verification",
+            "Client/internal commitment consistency and disclosure review"
+          ],
+          "publication_gate": "Run semantic/publication gates before releasing a rendered artefact; never substitute rendering for commercial approval",
+          "portfolio_traceability": "Retain applicable cross-domain architecture and shared-resource dependencies"
+        }
+      },
+      "lifecycle": {
+        "state": "active",
+        "review_cycle": "Role checkpoints, phase actuals, scope/terms change and material forecast variance",
+        "version": "3.0.0",
+        "retention": "Enterprise contract and engagement records policy"
+      },
+      "traceability": {
+        "upstream": [
+          "Opportunity brief, client outcomes and qualification criteria",
+          "RFI/RFP/ITT, amendments, procurement rules, deadlines and evaluation criteria",
+          "Solution, delivery and service assumptions with dependencies",
+          "Basis of estimate, pricing recommendation and contractual departures"
+        ],
+        "downstream": [
+          "Protected commercial case records",
+          "Bid/price/contract human decisions",
+          "Delivery/service accepted baseline"
+        ]
+      },
+      "compatibility": {
+        "reads": [
+          "ArtifactContract-v3"
+        ],
+        "writes": "ArtifactContract-v3",
+        "migration": "native-creation-no-legacy-source",
+        "classification_source": "explicit-native-26.10.4"
+      },
+      "native_creation": {
+        "source_kind": "reviewed-role-definition",
+        "source_path": "skills/it-roles-commercial-sourcing-and-enablement/references/bid-proposal-manager.md",
+        "classification_basis": "Explicit specialist author mapping, independently reviewed; no legacy migration asserted",
+        "evidence_ref": "artifacts/contracts/commercial-specialists.native-v3.json",
+        "evidence_hash": "b52b97937839838e16c279939c9b9d86f0f5621f47902a1b609df6f947ad2a3f"
+      }
+    },
+    {
+      "id": "bid-proposal-manager:2",
+      "version": "3.0.0",
+      "role_slug": "bid-proposal-manager",
+      "deliverable_number": 2,
+      "source_fingerprint": "0f87eb796becaa15565422c0c67a411ea29c88c244d6b1d90efa9d8544cda6db",
+      "jai": {
+        "core_version": "1.0.0",
+        "intent": {
+          "purpose": "Proposal compliance and clarification matrix",
+          "audience": [
+            "Bid / Proposal Manager",
+            "Supplier Commercial / Deal Manager",
+            "Delegated human commercial and finance authority"
+          ],
+          "decision_supported": "Every mandatory request is answered, explicitly departed from or escalated; no silent omissions.",
+          "owner_role": "Bid / Proposal Manager",
+          "classification": "Protected supplier internal; explicitly approved client projection only"
+        },
+        "semantics": {
+          "artifact_type": "register",
+          "schema_ref": "publication/schema/publication-model.json",
+          "required_inputs": [
+            "Opportunity brief, client outcomes and qualification criteria",
+            "RFI/RFP/ITT, amendments, procurement rules, deadlines and evaluation criteria",
+            "Solution, delivery and service assumptions with dependencies",
+            "Basis of estimate, pricing recommendation and contractual departures"
+          ],
+          "required_relations": [
+            "business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence",
+            "material inputs -> source/version/assumption",
+            "client commitments -> protected internal commitment baseline",
+            "decision -> human approver where required"
+          ]
+        },
+        "justification": {
+          "required_evidence": [
+            "Source and basis of material scope, quantities, rates and decisions",
+            "Input uncertainty, unknowns, alternative scenarios and lifecycle effort/cost",
+            "Role gates and independent review/rework dispositions"
+          ],
+          "acceptance_profile": "enterprise-publication",
+          "evidence_profile": "material-claims-evidence",
+          "reviewers": [
+            "Independent Commercial Assurance Reviewer"
+          ],
+          "approver": "Named delegated human bid/price/contract authority; no agent authority act",
+          "semantic_policy": "Material claims, assumptions, uncertainty, evidence and commitments must be consistent before publication",
+          "repository_policy": "Apply governed repository policy if the artefact changes canonical architecture facts; otherwise maintain stable commercial record links"
+        },
+        "design": {
+          "mandatory_sections": [
+            "purpose, scope and authority",
+            "input provenance and unresolved unknowns",
+            "specialist methods, lifecycle analysis and alternatives",
+            "L1-L6 rationale and commercial record references",
+            "output gate dispositions",
+            "residual risk and receiving-owner acceptance"
+          ],
+          "publication_profile": "architecture-definition"
+        },
+        "realisation": {
+          "producer": "tools/publication.py",
+          "renderer": "tools/publication.py",
+          "output_formats": [
+            "Source-linked requirement register, response/evidence location, amendments, questions and dispositions"
+          ],
+          "system_of_record": "Governed protected commercial case record",
+          "external_handoff_adapter": null,
+          "production_mode": "internal",
+          "operator_boundary": "Role-author produces the semantic artefact; calculation source files are attached evidence or explicit external handoff. Generic publication validation does not validate financial formula correctness."
+        },
+        "evidence": {
+          "obligations": [
+            "Source data/assumptions and reviewed version integrity",
+            "Scope and obligation coverage, units/rates and calculation evidence",
+            "Independent review and version-bounded rework verification",
+            "Client/internal commitment consistency and disclosure review"
+          ],
+          "publication_gate": "Run semantic/publication gates before releasing a rendered artefact; never substitute rendering for commercial approval",
+          "portfolio_traceability": "Retain applicable cross-domain architecture and shared-resource dependencies"
+        }
+      },
+      "lifecycle": {
+        "state": "active",
+        "review_cycle": "Role checkpoints, phase actuals, scope/terms change and material forecast variance",
+        "version": "3.0.0",
+        "retention": "Enterprise contract and engagement records policy"
+      },
+      "traceability": {
+        "upstream": [
+          "Opportunity brief, client outcomes and qualification criteria",
+          "RFI/RFP/ITT, amendments, procurement rules, deadlines and evaluation criteria",
+          "Solution, delivery and service assumptions with dependencies",
+          "Basis of estimate, pricing recommendation and contractual departures"
+        ],
+        "downstream": [
+          "Protected commercial case records",
+          "Bid/price/contract human decisions",
+          "Delivery/service accepted baseline"
+        ]
+      },
+      "compatibility": {
+        "reads": [
+          "ArtifactContract-v3"
+        ],
+        "writes": "ArtifactContract-v3",
+        "migration": "native-creation-no-legacy-source",
+        "classification_source": "explicit-native-26.10.4"
+      },
+      "native_creation": {
+        "source_kind": "reviewed-role-definition",
+        "source_path": "skills/it-roles-commercial-sourcing-and-enablement/references/bid-proposal-manager.md",
+        "classification_basis": "Explicit specialist author mapping, independently reviewed; no legacy migration asserted",
+        "evidence_ref": "artifacts/contracts/commercial-specialists.native-v3.json",
+        "evidence_hash": "b52b97937839838e16c279939c9b9d86f0f5621f47902a1b609df6f947ad2a3f"
+      }
+    },
+    {
+      "id": "bid-proposal-manager:3",
+      "version": "3.0.0",
+      "role_slug": "bid-proposal-manager",
+      "deliverable_number": 3,
+      "source_fingerprint": "913c0c41273b36fa66dd0ed040aca54628ca45d3175327d052d393040dedb74c",
+      "jai": {
+        "core_version": "1.0.0",
+        "intent": {
+          "purpose": "Controlled client proposal and internal bid dossier",
+          "audience": [
+            "Bid / Proposal Manager",
+            "Supplier Commercial / Deal Manager",
+            "Delegated human commercial and finance authority"
+          ],
+          "decision_supported": "Offer is responsive and authorised; sensitive internal evidence is retained without being exposed.",
+          "owner_role": "Bid / Proposal Manager",
+          "classification": "Protected supplier internal; explicitly approved client projection only"
+        },
+        "semantics": {
+          "artifact_type": "document",
+          "schema_ref": "publication/schema/publication-model.json",
+          "required_inputs": [
+            "Opportunity brief, client outcomes and qualification criteria",
+            "RFI/RFP/ITT, amendments, procurement rules, deadlines and evaluation criteria",
+            "Solution, delivery and service assumptions with dependencies",
+            "Basis of estimate, pricing recommendation and contractual departures"
+          ],
+          "required_relations": [
+            "business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence",
+            "material inputs -> source/version/assumption",
+            "client commitments -> protected internal commitment baseline",
+            "decision -> human approver where required"
+          ]
+        },
+        "justification": {
+          "required_evidence": [
+            "Source and basis of material scope, quantities, rates and decisions",
+            "Input uncertainty, unknowns, alternative scenarios and lifecycle effort/cost",
+            "Role gates and independent review/rework dispositions"
+          ],
+          "acceptance_profile": "enterprise-publication",
+          "evidence_profile": "material-claims-evidence",
+          "reviewers": [
+            "Independent Commercial Assurance Reviewer"
+          ],
+          "approver": "Named delegated human bid/price/contract authority; no agent authority act",
+          "semantic_policy": "Material claims, assumptions, uncertainty, evidence and commitments must be consistent before publication",
+          "repository_policy": "Apply governed repository policy if the artefact changes canonical architecture facts; otherwise maintain stable commercial record links"
+        },
+        "design": {
+          "mandatory_sections": [
+            "purpose, scope and authority",
+            "input provenance and unresolved unknowns",
+            "specialist methods, lifecycle analysis and alternatives",
+            "L1-L6 rationale and commercial record references",
+            "output gate dispositions",
+            "residual risk and receiving-owner acceptance"
+          ],
+          "publication_profile": "architecture-definition"
+        },
+        "realisation": {
+          "producer": "tools/publication.py",
+          "renderer": "tools/publication.py",
+          "output_formats": [
+            "Client offer plus separately protected cost, rationale, assumptions and review history"
+          ],
+          "system_of_record": "Governed protected commercial case record",
+          "external_handoff_adapter": null,
+          "production_mode": "internal",
+          "operator_boundary": "Role-author produces the semantic artefact; calculation source files are attached evidence or explicit external handoff. Generic publication validation does not validate financial formula correctness."
+        },
+        "evidence": {
+          "obligations": [
+            "Source data/assumptions and reviewed version integrity",
+            "Scope and obligation coverage, units/rates and calculation evidence",
+            "Independent review and version-bounded rework verification",
+            "Client/internal commitment consistency and disclosure review"
+          ],
+          "publication_gate": "Run semantic/publication gates before releasing a rendered artefact; never substitute rendering for commercial approval",
+          "portfolio_traceability": "Retain applicable cross-domain architecture and shared-resource dependencies"
+        }
+      },
+      "lifecycle": {
+        "state": "active",
+        "review_cycle": "Role checkpoints, phase actuals, scope/terms change and material forecast variance",
+        "version": "3.0.0",
+        "retention": "Enterprise contract and engagement records policy"
+      },
+      "traceability": {
+        "upstream": [
+          "Opportunity brief, client outcomes and qualification criteria",
+          "RFI/RFP/ITT, amendments, procurement rules, deadlines and evaluation criteria",
+          "Solution, delivery and service assumptions with dependencies",
+          "Basis of estimate, pricing recommendation and contractual departures"
+        ],
+        "downstream": [
+          "Protected commercial case records",
+          "Bid/price/contract human decisions",
+          "Delivery/service accepted baseline"
+        ]
+      },
+      "compatibility": {
+        "reads": [
+          "ArtifactContract-v3"
+        ],
+        "writes": "ArtifactContract-v3",
+        "migration": "native-creation-no-legacy-source",
+        "classification_source": "explicit-native-26.10.4"
+      },
+      "native_creation": {
+        "source_kind": "reviewed-role-definition",
+        "source_path": "skills/it-roles-commercial-sourcing-and-enablement/references/bid-proposal-manager.md",
+        "classification_basis": "Explicit specialist author mapping, independently reviewed; no legacy migration asserted",
+        "evidence_ref": "artifacts/contracts/commercial-specialists.native-v3.json",
+        "evidence_hash": "b52b97937839838e16c279939c9b9d86f0f5621f47902a1b609df6f947ad2a3f"
+      }
+    },
+    {
+      "id": "bid-proposal-manager:4",
+      "version": "3.0.0",
+      "role_slug": "bid-proposal-manager",
+      "deliverable_number": 4,
+      "source_fingerprint": "101a8b1a8541aaee2cf9e112e1cc7e985db7803bb5d8c2d75d8ee334e6d30a45",
+      "jai": {
+        "core_version": "1.0.0",
+        "intent": {
+          "purpose": "Bid-to-delivery handover record",
+          "audience": [
+            "Bid / Proposal Manager",
+            "Supplier Commercial / Deal Manager",
+            "Delegated human commercial and finance authority"
+          ],
+          "decision_supported": "Delivery and service owners accept the same version the client was offered.",
+          "owner_role": "Bid / Proposal Manager",
+          "classification": "Protected supplier internal; explicitly approved client projection only"
+        },
+        "semantics": {
+          "artifact_type": "decision-paper",
+          "schema_ref": "publication/schema/publication-model.json",
+          "required_inputs": [
+            "Opportunity brief, client outcomes and qualification criteria",
+            "RFI/RFP/ITT, amendments, procurement rules, deadlines and evaluation criteria",
+            "Solution, delivery and service assumptions with dependencies",
+            "Basis of estimate, pricing recommendation and contractual departures"
+          ],
+          "required_relations": [
+            "business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence",
+            "material inputs -> source/version/assumption",
+            "client commitments -> protected internal commitment baseline",
+            "decision -> human approver where required"
+          ]
+        },
+        "justification": {
+          "required_evidence": [
+            "Source and basis of material scope, quantities, rates and decisions",
+            "Input uncertainty, unknowns, alternative scenarios and lifecycle effort/cost",
+            "Role gates and independent review/rework dispositions"
+          ],
+          "acceptance_profile": "decision-defensible",
+          "evidence_profile": "decision-evidence",
+          "reviewers": [
+            "Independent Commercial Assurance Reviewer"
+          ],
+          "approver": "Named delegated human bid/price/contract authority; no agent authority act",
+          "semantic_policy": "Material claims, assumptions, uncertainty, evidence and commitments must be consistent before publication",
+          "repository_policy": "Apply governed repository policy if the artefact changes canonical architecture facts; otherwise maintain stable commercial record links"
+        },
+        "design": {
+          "mandatory_sections": [
+            "purpose, scope and authority",
+            "input provenance and unresolved unknowns",
+            "specialist methods, lifecycle analysis and alternatives",
+            "L1-L6 rationale and commercial record references",
+            "output gate dispositions",
+            "residual risk and receiving-owner acceptance"
+          ],
+          "publication_profile": "architecture-definition"
+        },
+        "realisation": {
+          "producer": "tools/publication.py",
+          "renderer": "tools/publication.py",
+          "output_formats": [
+            "Commitments, baselines, residual risks, service obligations and receiving-owner acceptance"
+          ],
+          "system_of_record": "Governed protected commercial case record",
+          "external_handoff_adapter": null,
+          "production_mode": "internal",
+          "operator_boundary": "Role-author produces the semantic artefact; calculation source files are attached evidence or explicit external handoff. Generic publication validation does not validate financial formula correctness."
+        },
+        "evidence": {
+          "obligations": [
+            "Source data/assumptions and reviewed version integrity",
+            "Scope and obligation coverage, units/rates and calculation evidence",
+            "Independent review and version-bounded rework verification",
+            "Client/internal commitment consistency and disclosure review"
+          ],
+          "publication_gate": "Run semantic/publication gates before releasing a rendered artefact; never substitute rendering for commercial approval",
+          "portfolio_traceability": "Retain applicable cross-domain architecture and shared-resource dependencies"
+        }
+      },
+      "lifecycle": {
+        "state": "active",
+        "review_cycle": "Role checkpoints, phase actuals, scope/terms change and material forecast variance",
+        "version": "3.0.0",
+        "retention": "Enterprise contract and engagement records policy"
+      },
+      "traceability": {
+        "upstream": [
+          "Opportunity brief, client outcomes and qualification criteria",
+          "RFI/RFP/ITT, amendments, procurement rules, deadlines and evaluation criteria",
+          "Solution, delivery and service assumptions with dependencies",
+          "Basis of estimate, pricing recommendation and contractual departures"
+        ],
+        "downstream": [
+          "Protected commercial case records",
+          "Bid/price/contract human decisions",
+          "Delivery/service accepted baseline"
+        ]
+      },
+      "compatibility": {
+        "reads": [
+          "ArtifactContract-v3"
+        ],
+        "writes": "ArtifactContract-v3",
+        "migration": "native-creation-no-legacy-source",
+        "classification_source": "explicit-native-26.10.4"
+      },
+      "native_creation": {
+        "source_kind": "reviewed-role-definition",
+        "source_path": "skills/it-roles-commercial-sourcing-and-enablement/references/bid-proposal-manager.md",
+        "classification_basis": "Explicit specialist author mapping, independently reviewed; no legacy migration asserted",
+        "evidence_ref": "artifacts/contracts/commercial-specialists.native-v3.json",
+        "evidence_hash": "b52b97937839838e16c279939c9b9d86f0f5621f47902a1b609df6f947ad2a3f"
+      }
+    },
+    {
+      "id": "commercial-pricing-deal-finance-specialist:1",
+      "version": "3.0.0",
+      "role_slug": "commercial-pricing-deal-finance-specialist",
+      "deliverable_number": 1,
+      "source_fingerprint": "98779b6c241712fa3e3a13c3f7b23a2f47063199eacaa76c677edb055001214f",
+      "jai": {
+        "core_version": "1.0.0",
+        "intent": {
+          "purpose": "Deal financial and cash-flow model",
+          "audience": [
+            "Bid / Proposal Manager",
+            "Supplier Commercial / Deal Manager",
+            "Delegated human commercial and finance authority"
+          ],
+          "decision_supported": "Inputs, units, formulas, dependencies and policy treatment reconcile; no unsupported precision.",
+          "owner_role": "Commercial Pricing / Deal Finance Specialist",
+          "classification": "Protected supplier internal; explicitly approved client projection only"
+        },
+        "semantics": {
+          "artifact_type": "business-case",
+          "schema_ref": "publication/schema/publication-model.json",
+          "required_inputs": [
+            "Scoped cost and effort estimate with uncertainty and resource rates",
+            "Margin, return, discount, contingency and credit policy",
+            "Payment, acceptance, liability, indexation, SLA, currency and exit terms",
+            "Billing milestones, delivery/service schedule and resource pyramid"
+          ],
+          "required_relations": [
+            "business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence",
+            "material inputs -> source/version/assumption",
+            "client commitments -> protected internal commitment baseline",
+            "decision -> human approver where required"
+          ]
+        },
+        "justification": {
+          "required_evidence": [
+            "Source and basis of material scope, quantities, rates and decisions",
+            "Input uncertainty, unknowns, alternative scenarios and lifecycle effort/cost",
+            "Role gates and independent review/rework dispositions"
+          ],
+          "acceptance_profile": "decision-defensible",
+          "evidence_profile": "decision-evidence",
+          "reviewers": [
+            "Independent Commercial Assurance Reviewer"
+          ],
+          "approver": "Named delegated human bid/price/contract authority; no agent authority act",
+          "semantic_policy": "Material claims, assumptions, uncertainty, evidence and commitments must be consistent before publication",
+          "repository_policy": "Apply governed repository policy if the artefact changes canonical architecture facts; otherwise maintain stable commercial record links"
+        },
+        "design": {
+          "mandatory_sections": [
+            "purpose, scope and authority",
+            "input provenance and unresolved unknowns",
+            "specialist methods, lifecycle analysis and alternatives",
+            "L1-L6 rationale and commercial record references",
+            "output gate dispositions",
+            "residual risk and receiving-owner acceptance"
+          ],
+          "publication_profile": "architecture-definition"
+        },
+        "realisation": {
+          "producer": "tools/publication.py",
+          "renderer": "tools/publication.py",
+          "output_formats": [
+            "Versioned, reproducible calculations with cost bridge, price options, margin, cash and sensitivities"
+          ],
+          "system_of_record": "Governed protected commercial case record",
+          "external_handoff_adapter": null,
+          "production_mode": "internal",
+          "operator_boundary": "Role-author produces the semantic artefact; calculation source files are attached evidence or explicit external handoff. Generic publication validation does not validate financial formula correctness."
+        },
+        "evidence": {
+          "obligations": [
+            "Source data/assumptions and reviewed version integrity",
+            "Scope and obligation coverage, units/rates and calculation evidence",
+            "Independent review and version-bounded rework verification",
+            "Client/internal commitment consistency and disclosure review"
+          ],
+          "publication_gate": "Run semantic/publication gates before releasing a rendered artefact; never substitute rendering for commercial approval",
+          "portfolio_traceability": "Retain applicable cross-domain architecture and shared-resource dependencies"
+        }
+      },
+      "lifecycle": {
+        "state": "active",
+        "review_cycle": "Role checkpoints, phase actuals, scope/terms change and material forecast variance",
+        "version": "3.0.0",
+        "retention": "Enterprise contract and engagement records policy"
+      },
+      "traceability": {
+        "upstream": [
+          "Scoped cost and effort estimate with uncertainty and resource rates",
+          "Margin, return, discount, contingency and credit policy",
+          "Payment, acceptance, liability, indexation, SLA, currency and exit terms",
+          "Billing milestones, delivery/service schedule and resource pyramid"
+        ],
+        "downstream": [
+          "Protected commercial case records",
+          "Bid/price/contract human decisions",
+          "Delivery/service accepted baseline"
+        ]
+      },
+      "compatibility": {
+        "reads": [
+          "ArtifactContract-v3"
+        ],
+        "writes": "ArtifactContract-v3",
+        "migration": "native-creation-no-legacy-source",
+        "classification_source": "explicit-native-26.10.4"
+      },
+      "native_creation": {
+        "source_kind": "reviewed-role-definition",
+        "source_path": "skills/it-roles-commercial-sourcing-and-enablement/references/commercial-pricing-deal-finance-specialist.md",
+        "classification_basis": "Explicit specialist author mapping, independently reviewed; no legacy migration asserted",
+        "evidence_ref": "artifacts/contracts/commercial-specialists.native-v3.json",
+        "evidence_hash": "b52b97937839838e16c279939c9b9d86f0f5621f47902a1b609df6f947ad2a3f"
+      }
+    },
+    {
+      "id": "commercial-pricing-deal-finance-specialist:2",
+      "version": "3.0.0",
+      "role_slug": "commercial-pricing-deal-finance-specialist",
+      "deliverable_number": 2,
+      "source_fingerprint": "b6a554ad5fd492f726ee9478ffd7a0f3191a749935f07b840dd6994c298a1bf9",
+      "jai": {
+        "core_version": "1.0.0",
+        "intent": {
+          "purpose": "Pricing and commercial trade-off recommendation",
+          "audience": [
+            "Bid / Proposal Manager",
+            "Supplier Commercial / Deal Manager",
+            "Delegated human commercial and finance authority"
+          ],
+          "decision_supported": "Human decision owner can see trade-offs, limits and residual risk for the complete lifecycle.",
+          "owner_role": "Commercial Pricing / Deal Finance Specialist",
+          "classification": "Protected supplier internal; explicitly approved client projection only"
+        },
+        "semantics": {
+          "artifact_type": "decision-paper",
+          "schema_ref": "publication/schema/publication-model.json",
+          "required_inputs": [
+            "Scoped cost and effort estimate with uncertainty and resource rates",
+            "Margin, return, discount, contingency and credit policy",
+            "Payment, acceptance, liability, indexation, SLA, currency and exit terms",
+            "Billing milestones, delivery/service schedule and resource pyramid"
+          ],
+          "required_relations": [
+            "business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence",
+            "material inputs -> source/version/assumption",
+            "client commitments -> protected internal commitment baseline",
+            "decision -> human approver where required"
+          ]
+        },
+        "justification": {
+          "required_evidence": [
+            "Source and basis of material scope, quantities, rates and decisions",
+            "Input uncertainty, unknowns, alternative scenarios and lifecycle effort/cost",
+            "Role gates and independent review/rework dispositions"
+          ],
+          "acceptance_profile": "decision-defensible",
+          "evidence_profile": "decision-evidence",
+          "reviewers": [
+            "Independent Commercial Assurance Reviewer"
+          ],
+          "approver": "Named delegated human bid/price/contract authority; no agent authority act",
+          "semantic_policy": "Material claims, assumptions, uncertainty, evidence and commitments must be consistent before publication",
+          "repository_policy": "Apply governed repository policy if the artefact changes canonical architecture facts; otherwise maintain stable commercial record links"
+        },
+        "design": {
+          "mandatory_sections": [
+            "purpose, scope and authority",
+            "input provenance and unresolved unknowns",
+            "specialist methods, lifecycle analysis and alternatives",
+            "L1-L6 rationale and commercial record references",
+            "output gate dispositions",
+            "residual risk and receiving-owner acceptance"
+          ],
+          "publication_profile": "architecture-definition"
+        },
+        "realisation": {
+          "producer": "tools/publication.py",
+          "renderer": "tools/publication.py",
+          "output_formats": [
+            "Option paper covering price, terms, discount, reserves, return and downside exposure"
+          ],
+          "system_of_record": "Governed protected commercial case record",
+          "external_handoff_adapter": null,
+          "production_mode": "internal",
+          "operator_boundary": "Role-author produces the semantic artefact; calculation source files are attached evidence or explicit external handoff. Generic publication validation does not validate financial formula correctness."
+        },
+        "evidence": {
+          "obligations": [
+            "Source data/assumptions and reviewed version integrity",
+            "Scope and obligation coverage, units/rates and calculation evidence",
+            "Independent review and version-bounded rework verification",
+            "Client/internal commitment consistency and disclosure review"
+          ],
+          "publication_gate": "Run semantic/publication gates before releasing a rendered artefact; never substitute rendering for commercial approval",
+          "portfolio_traceability": "Retain applicable cross-domain architecture and shared-resource dependencies"
+        }
+      },
+      "lifecycle": {
+        "state": "active",
+        "review_cycle": "Role checkpoints, phase actuals, scope/terms change and material forecast variance",
+        "version": "3.0.0",
+        "retention": "Enterprise contract and engagement records policy"
+      },
+      "traceability": {
+        "upstream": [
+          "Scoped cost and effort estimate with uncertainty and resource rates",
+          "Margin, return, discount, contingency and credit policy",
+          "Payment, acceptance, liability, indexation, SLA, currency and exit terms",
+          "Billing milestones, delivery/service schedule and resource pyramid"
+        ],
+        "downstream": [
+          "Protected commercial case records",
+          "Bid/price/contract human decisions",
+          "Delivery/service accepted baseline"
+        ]
+      },
+      "compatibility": {
+        "reads": [
+          "ArtifactContract-v3"
+        ],
+        "writes": "ArtifactContract-v3",
+        "migration": "native-creation-no-legacy-source",
+        "classification_source": "explicit-native-26.10.4"
+      },
+      "native_creation": {
+        "source_kind": "reviewed-role-definition",
+        "source_path": "skills/it-roles-commercial-sourcing-and-enablement/references/commercial-pricing-deal-finance-specialist.md",
+        "classification_basis": "Explicit specialist author mapping, independently reviewed; no legacy migration asserted",
+        "evidence_ref": "artifacts/contracts/commercial-specialists.native-v3.json",
+        "evidence_hash": "b52b97937839838e16c279939c9b9d86f0f5621f47902a1b609df6f947ad2a3f"
+      }
+    },
+    {
+      "id": "commercial-pricing-deal-finance-specialist:3",
+      "version": "3.0.0",
+      "role_slug": "commercial-pricing-deal-finance-specialist",
+      "deliverable_number": 3,
+      "source_fingerprint": "e5964b76fc5c76a377173f60d4abf7f38c95878aaa6995d48917024cc4ab67af",
+      "jai": {
+        "core_version": "1.0.0",
+        "intent": {
+          "purpose": "Deal baseline and variance review",
+          "audience": [
+            "Bid / Proposal Manager",
+            "Supplier Commercial / Deal Manager",
+            "Delegated human commercial and finance authority"
+          ],
+          "decision_supported": "Material adverse variance has an owner, threshold, corrective option and decision date.",
+          "owner_role": "Commercial Pricing / Deal Finance Specialist",
+          "classification": "Protected supplier internal; explicitly approved client projection only"
+        },
+        "semantics": {
+          "artifact_type": "decision-paper",
+          "schema_ref": "publication/schema/publication-model.json",
+          "required_inputs": [
+            "Scoped cost and effort estimate with uncertainty and resource rates",
+            "Margin, return, discount, contingency and credit policy",
+            "Payment, acceptance, liability, indexation, SLA, currency and exit terms",
+            "Billing milestones, delivery/service schedule and resource pyramid"
+          ],
+          "required_relations": [
+            "business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence",
+            "material inputs -> source/version/assumption",
+            "client commitments -> protected internal commitment baseline",
+            "decision -> human approver where required"
+          ]
+        },
+        "justification": {
+          "required_evidence": [
+            "Source and basis of material scope, quantities, rates and decisions",
+            "Input uncertainty, unknowns, alternative scenarios and lifecycle effort/cost",
+            "Role gates and independent review/rework dispositions"
+          ],
+          "acceptance_profile": "decision-defensible",
+          "evidence_profile": "decision-evidence",
+          "reviewers": [
+            "Independent Commercial Assurance Reviewer"
+          ],
+          "approver": "Named delegated human bid/price/contract authority; no agent authority act",
+          "semantic_policy": "Material claims, assumptions, uncertainty, evidence and commitments must be consistent before publication",
+          "repository_policy": "Apply governed repository policy if the artefact changes canonical architecture facts; otherwise maintain stable commercial record links"
+        },
+        "design": {
+          "mandatory_sections": [
+            "purpose, scope and authority",
+            "input provenance and unresolved unknowns",
+            "specialist methods, lifecycle analysis and alternatives",
+            "L1-L6 rationale and commercial record references",
+            "output gate dispositions",
+            "residual risk and receiving-owner acceptance"
+          ],
+          "publication_profile": "architecture-definition"
+        },
+        "realisation": {
+          "producer": "tools/publication.py",
+          "renderer": "tools/publication.py",
+          "output_formats": [
+            "Signed-scope financial baseline, actuals, forecast at completion and change effects"
+          ],
+          "system_of_record": "Governed protected commercial case record",
+          "external_handoff_adapter": null,
+          "production_mode": "internal",
+          "operator_boundary": "Role-author produces the semantic artefact; calculation source files are attached evidence or explicit external handoff. Generic publication validation does not validate financial formula correctness."
+        },
+        "evidence": {
+          "obligations": [
+            "Source data/assumptions and reviewed version integrity",
+            "Scope and obligation coverage, units/rates and calculation evidence",
+            "Independent review and version-bounded rework verification",
+            "Client/internal commitment consistency and disclosure review"
+          ],
+          "publication_gate": "Run semantic/publication gates before releasing a rendered artefact; never substitute rendering for commercial approval",
+          "portfolio_traceability": "Retain applicable cross-domain architecture and shared-resource dependencies"
+        }
+      },
+      "lifecycle": {
+        "state": "active",
+        "review_cycle": "Role checkpoints, phase actuals, scope/terms change and material forecast variance",
+        "version": "3.0.0",
+        "retention": "Enterprise contract and engagement records policy"
+      },
+      "traceability": {
+        "upstream": [
+          "Scoped cost and effort estimate with uncertainty and resource rates",
+          "Margin, return, discount, contingency and credit policy",
+          "Payment, acceptance, liability, indexation, SLA, currency and exit terms",
+          "Billing milestones, delivery/service schedule and resource pyramid"
+        ],
+        "downstream": [
+          "Protected commercial case records",
+          "Bid/price/contract human decisions",
+          "Delivery/service accepted baseline"
+        ]
+      },
+      "compatibility": {
+        "reads": [
+          "ArtifactContract-v3"
+        ],
+        "writes": "ArtifactContract-v3",
+        "migration": "native-creation-no-legacy-source",
+        "classification_source": "explicit-native-26.10.4"
+      },
+      "native_creation": {
+        "source_kind": "reviewed-role-definition",
+        "source_path": "skills/it-roles-commercial-sourcing-and-enablement/references/commercial-pricing-deal-finance-specialist.md",
+        "classification_basis": "Explicit specialist author mapping, independently reviewed; no legacy migration asserted",
+        "evidence_ref": "artifacts/contracts/commercial-specialists.native-v3.json",
+        "evidence_hash": "b52b97937839838e16c279939c9b9d86f0f5621f47902a1b609df6f947ad2a3f"
+      }
+    },
+    {
+      "id": "estimation-cost-engineering-specialist:1",
+      "version": "3.0.0",
+      "role_slug": "estimation-cost-engineering-specialist",
+      "deliverable_number": 1,
+      "source_fingerprint": "369ac0d1f2d9621e81811c7b9f7ae55ebd8e08e0dd22db15212294fa81b03e22",
+      "jai": {
+        "core_version": "1.0.0",
+        "intent": {
+          "purpose": "Basis of estimate and work/cost breakdown",
+          "audience": [
+            "Bid / Proposal Manager",
+            "Supplier Commercial / Deal Manager",
+            "Delegated human commercial and finance authority"
+          ],
+          "decision_supported": "Another qualified estimator can reconstruct the material figures and distinguish fact from assumption.",
+          "owner_role": "Estimation / Cost Engineering Specialist",
+          "classification": "Protected supplier internal; explicitly approved client projection only"
+        },
+        "semantics": {
+          "artifact_type": "business-case",
+          "schema_ref": "publication/schema/publication-model.json",
+          "required_inputs": [
+            "Business outcomes, scope, acceptance and service obligations",
+            "Work breakdown, dependencies, resource pyramid and schedule constraints",
+            "Historical actual effort, productivity, costs and change history",
+            "Public benchmarks, SME estimates, rate cards and licensing assumptions"
+          ],
+          "required_relations": [
+            "business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence",
+            "material inputs -> source/version/assumption",
+            "client commitments -> protected internal commitment baseline",
+            "decision -> human approver where required"
+          ]
+        },
+        "justification": {
+          "required_evidence": [
+            "Source and basis of material scope, quantities, rates and decisions",
+            "Input uncertainty, unknowns, alternative scenarios and lifecycle effort/cost",
+            "Role gates and independent review/rework dispositions"
+          ],
+          "acceptance_profile": "decision-defensible",
+          "evidence_profile": "decision-evidence",
+          "reviewers": [
+            "Independent Commercial Assurance Reviewer"
+          ],
+          "approver": "Named delegated human bid/price/contract authority; no agent authority act",
+          "semantic_policy": "Material claims, assumptions, uncertainty, evidence and commitments must be consistent before publication",
+          "repository_policy": "Apply governed repository policy if the artefact changes canonical architecture facts; otherwise maintain stable commercial record links"
+        },
+        "design": {
+          "mandatory_sections": [
+            "purpose, scope and authority",
+            "input provenance and unresolved unknowns",
+            "specialist methods, lifecycle analysis and alternatives",
+            "L1-L6 rationale and commercial record references",
+            "output gate dispositions",
+            "residual risk and receiving-owner acceptance"
+          ],
+          "publication_profile": "architecture-definition"
+        },
+        "realisation": {
+          "producer": "tools/publication.py",
+          "renderer": "tools/publication.py",
+          "output_formats": [
+            "Source-linked quantities, methods, effort, rates, assumptions, ranges and exclusions"
+          ],
+          "system_of_record": "Governed protected commercial case record",
+          "external_handoff_adapter": null,
+          "production_mode": "internal",
+          "operator_boundary": "Role-author produces the semantic artefact; calculation source files are attached evidence or explicit external handoff. Generic publication validation does not validate financial formula correctness."
+        },
+        "evidence": {
+          "obligations": [
+            "Source data/assumptions and reviewed version integrity",
+            "Scope and obligation coverage, units/rates and calculation evidence",
+            "Independent review and version-bounded rework verification",
+            "Client/internal commitment consistency and disclosure review"
+          ],
+          "publication_gate": "Run semantic/publication gates before releasing a rendered artefact; never substitute rendering for commercial approval",
+          "portfolio_traceability": "Retain applicable cross-domain architecture and shared-resource dependencies"
+        }
+      },
+      "lifecycle": {
+        "state": "active",
+        "review_cycle": "Role checkpoints, phase actuals, scope/terms change and material forecast variance",
+        "version": "3.0.0",
+        "retention": "Enterprise contract and engagement records policy"
+      },
+      "traceability": {
+        "upstream": [
+          "Business outcomes, scope, acceptance and service obligations",
+          "Work breakdown, dependencies, resource pyramid and schedule constraints",
+          "Historical actual effort, productivity, costs and change history",
+          "Public benchmarks, SME estimates, rate cards and licensing assumptions"
+        ],
+        "downstream": [
+          "Protected commercial case records",
+          "Bid/price/contract human decisions",
+          "Delivery/service accepted baseline"
+        ]
+      },
+      "compatibility": {
+        "reads": [
+          "ArtifactContract-v3"
+        ],
+        "writes": "ArtifactContract-v3",
+        "migration": "native-creation-no-legacy-source",
+        "classification_source": "explicit-native-26.10.4"
+      },
+      "native_creation": {
+        "source_kind": "reviewed-role-definition",
+        "source_path": "skills/it-roles-commercial-sourcing-and-enablement/references/estimation-cost-engineering-specialist.md",
+        "classification_basis": "Explicit specialist author mapping, independently reviewed; no legacy migration asserted",
+        "evidence_ref": "artifacts/contracts/commercial-specialists.native-v3.json",
+        "evidence_hash": "b52b97937839838e16c279939c9b9d86f0f5621f47902a1b609df6f947ad2a3f"
+      }
+    },
+    {
+      "id": "estimation-cost-engineering-specialist:2",
+      "version": "3.0.0",
+      "role_slug": "estimation-cost-engineering-specialist",
+      "deliverable_number": 2,
+      "source_fingerprint": "35b0bb6e87ddce38173accdc7684d71216eb3ae8a111a6446fc3ce2701670577",
+      "jai": {
+        "core_version": "1.0.0",
+        "intent": {
+          "purpose": "Estimate uncertainty and discovery plan",
+          "audience": [
+            "Bid / Proposal Manager",
+            "Supplier Commercial / Deal Manager",
+            "Delegated human commercial and finance authority"
+          ],
+          "decision_supported": "Each material unknown has a decision consequence, owner and route to reduce or explicitly retain exposure.",
+          "owner_role": "Estimation / Cost Engineering Specialist",
+          "classification": "Protected supplier internal; explicitly approved client projection only"
+        },
+        "semantics": {
+          "artifact_type": "roadmap",
+          "schema_ref": "publication/schema/publication-model.json",
+          "required_inputs": [
+            "Business outcomes, scope, acceptance and service obligations",
+            "Work breakdown, dependencies, resource pyramid and schedule constraints",
+            "Historical actual effort, productivity, costs and change history",
+            "Public benchmarks, SME estimates, rate cards and licensing assumptions"
+          ],
+          "required_relations": [
+            "business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence",
+            "material inputs -> source/version/assumption",
+            "client commitments -> protected internal commitment baseline",
+            "decision -> human approver where required"
+          ]
+        },
+        "justification": {
+          "required_evidence": [
+            "Source and basis of material scope, quantities, rates and decisions",
+            "Input uncertainty, unknowns, alternative scenarios and lifecycle effort/cost",
+            "Role gates and independent review/rework dispositions"
+          ],
+          "acceptance_profile": "enterprise-publication",
+          "evidence_profile": "material-claims-evidence",
+          "reviewers": [
+            "Independent Commercial Assurance Reviewer"
+          ],
+          "approver": "Named delegated human bid/price/contract authority; no agent authority act",
+          "semantic_policy": "Material claims, assumptions, uncertainty, evidence and commitments must be consistent before publication",
+          "repository_policy": "Apply governed repository policy if the artefact changes canonical architecture facts; otherwise maintain stable commercial record links"
+        },
+        "design": {
+          "mandatory_sections": [
+            "purpose, scope and authority",
+            "input provenance and unresolved unknowns",
+            "specialist methods, lifecycle analysis and alternatives",
+            "L1-L6 rationale and commercial record references",
+            "output gate dispositions",
+            "residual risk and receiving-owner acceptance"
+          ],
+          "publication_profile": "architecture-definition"
+        },
+        "realisation": {
+          "producer": "tools/publication.py",
+          "renderer": "tools/publication.py",
+          "output_formats": [
+            "Sensitivity/scenario analysis, non-estimable items, evidence acquisition and commitment options"
+          ],
+          "system_of_record": "Governed protected commercial case record",
+          "external_handoff_adapter": null,
+          "production_mode": "internal",
+          "operator_boundary": "Role-author produces the semantic artefact; calculation source files are attached evidence or explicit external handoff. Generic publication validation does not validate financial formula correctness."
+        },
+        "evidence": {
+          "obligations": [
+            "Source data/assumptions and reviewed version integrity",
+            "Scope and obligation coverage, units/rates and calculation evidence",
+            "Independent review and version-bounded rework verification",
+            "Client/internal commitment consistency and disclosure review"
+          ],
+          "publication_gate": "Run semantic/publication gates before releasing a rendered artefact; never substitute rendering for commercial approval",
+          "portfolio_traceability": "Retain applicable cross-domain architecture and shared-resource dependencies"
+        }
+      },
+      "lifecycle": {
+        "state": "active",
+        "review_cycle": "Role checkpoints, phase actuals, scope/terms change and material forecast variance",
+        "version": "3.0.0",
+        "retention": "Enterprise contract and engagement records policy"
+      },
+      "traceability": {
+        "upstream": [
+          "Business outcomes, scope, acceptance and service obligations",
+          "Work breakdown, dependencies, resource pyramid and schedule constraints",
+          "Historical actual effort, productivity, costs and change history",
+          "Public benchmarks, SME estimates, rate cards and licensing assumptions"
+        ],
+        "downstream": [
+          "Protected commercial case records",
+          "Bid/price/contract human decisions",
+          "Delivery/service accepted baseline"
+        ]
+      },
+      "compatibility": {
+        "reads": [
+          "ArtifactContract-v3"
+        ],
+        "writes": "ArtifactContract-v3",
+        "migration": "native-creation-no-legacy-source",
+        "classification_source": "explicit-native-26.10.4"
+      },
+      "native_creation": {
+        "source_kind": "reviewed-role-definition",
+        "source_path": "skills/it-roles-commercial-sourcing-and-enablement/references/estimation-cost-engineering-specialist.md",
+        "classification_basis": "Explicit specialist author mapping, independently reviewed; no legacy migration asserted",
+        "evidence_ref": "artifacts/contracts/commercial-specialists.native-v3.json",
+        "evidence_hash": "b52b97937839838e16c279939c9b9d86f0f5621f47902a1b609df6f947ad2a3f"
+      }
+    },
+    {
+      "id": "estimation-cost-engineering-specialist:3",
+      "version": "3.0.0",
+      "role_slug": "estimation-cost-engineering-specialist",
+      "deliverable_number": 3,
+      "source_fingerprint": "9bb81681b7f343989a5974df2a546c553953703bebf1a95145a69832b4c9fbb9",
+      "jai": {
+        "core_version": "1.0.0",
+        "intent": {
+          "purpose": "Estimate calibration and forecast-at-completion report",
+          "audience": [
+            "Bid / Proposal Manager",
+            "Supplier Commercial / Deal Manager",
+            "Delegated human commercial and finance authority"
+          ],
+          "decision_supported": "Changes are attributable, scope-normalised where justified, and feed the next controlled decision.",
+          "owner_role": "Estimation / Cost Engineering Specialist",
+          "classification": "Protected supplier internal; explicitly approved client projection only"
+        },
+        "semantics": {
+          "artifact_type": "decision-paper",
+          "schema_ref": "publication/schema/publication-model.json",
+          "required_inputs": [
+            "Business outcomes, scope, acceptance and service obligations",
+            "Work breakdown, dependencies, resource pyramid and schedule constraints",
+            "Historical actual effort, productivity, costs and change history",
+            "Public benchmarks, SME estimates, rate cards and licensing assumptions"
+          ],
+          "required_relations": [
+            "business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence",
+            "material inputs -> source/version/assumption",
+            "client commitments -> protected internal commitment baseline",
+            "decision -> human approver where required"
+          ]
+        },
+        "justification": {
+          "required_evidence": [
+            "Source and basis of material scope, quantities, rates and decisions",
+            "Input uncertainty, unknowns, alternative scenarios and lifecycle effort/cost",
+            "Role gates and independent review/rework dispositions"
+          ],
+          "acceptance_profile": "decision-defensible",
+          "evidence_profile": "decision-evidence",
+          "reviewers": [
+            "Independent Commercial Assurance Reviewer"
+          ],
+          "approver": "Named delegated human bid/price/contract authority; no agent authority act",
+          "semantic_policy": "Material claims, assumptions, uncertainty, evidence and commitments must be consistent before publication",
+          "repository_policy": "Apply governed repository policy if the artefact changes canonical architecture facts; otherwise maintain stable commercial record links"
+        },
+        "design": {
+          "mandatory_sections": [
+            "purpose, scope and authority",
+            "input provenance and unresolved unknowns",
+            "specialist methods, lifecycle analysis and alternatives",
+            "L1-L6 rationale and commercial record references",
+            "output gate dispositions",
+            "residual risk and receiving-owner acceptance"
+          ],
+          "publication_profile": "architecture-definition"
+        },
+        "realisation": {
+          "producer": "tools/publication.py",
+          "renderer": "tools/publication.py",
+          "output_formats": [
+            "Baseline-to-actual bridge, remaining-work estimate, bias analysis and revised forecast"
+          ],
+          "system_of_record": "Governed protected commercial case record",
+          "external_handoff_adapter": null,
+          "production_mode": "internal",
+          "operator_boundary": "Role-author produces the semantic artefact; calculation source files are attached evidence or explicit external handoff. Generic publication validation does not validate financial formula correctness."
+        },
+        "evidence": {
+          "obligations": [
+            "Source data/assumptions and reviewed version integrity",
+            "Scope and obligation coverage, units/rates and calculation evidence",
+            "Independent review and version-bounded rework verification",
+            "Client/internal commitment consistency and disclosure review"
+          ],
+          "publication_gate": "Run semantic/publication gates before releasing a rendered artefact; never substitute rendering for commercial approval",
+          "portfolio_traceability": "Retain applicable cross-domain architecture and shared-resource dependencies"
+        }
+      },
+      "lifecycle": {
+        "state": "active",
+        "review_cycle": "Role checkpoints, phase actuals, scope/terms change and material forecast variance",
+        "version": "3.0.0",
+        "retention": "Enterprise contract and engagement records policy"
+      },
+      "traceability": {
+        "upstream": [
+          "Business outcomes, scope, acceptance and service obligations",
+          "Work breakdown, dependencies, resource pyramid and schedule constraints",
+          "Historical actual effort, productivity, costs and change history",
+          "Public benchmarks, SME estimates, rate cards and licensing assumptions"
+        ],
+        "downstream": [
+          "Protected commercial case records",
+          "Bid/price/contract human decisions",
+          "Delivery/service accepted baseline"
+        ]
+      },
+      "compatibility": {
+        "reads": [
+          "ArtifactContract-v3"
+        ],
+        "writes": "ArtifactContract-v3",
+        "migration": "native-creation-no-legacy-source",
+        "classification_source": "explicit-native-26.10.4"
+      },
+      "native_creation": {
+        "source_kind": "reviewed-role-definition",
+        "source_path": "skills/it-roles-commercial-sourcing-and-enablement/references/estimation-cost-engineering-specialist.md",
+        "classification_basis": "Explicit specialist author mapping, independently reviewed; no legacy migration asserted",
+        "evidence_ref": "artifacts/contracts/commercial-specialists.native-v3.json",
+        "evidence_hash": "b52b97937839838e16c279939c9b9d86f0f5621f47902a1b609df6f947ad2a3f"
+      }
+    },
+    {
+      "id": "independent-commercial-assurance-reviewer:1",
+      "version": "3.0.0",
+      "role_slug": "independent-commercial-assurance-reviewer",
+      "deliverable_number": 1,
+      "source_fingerprint": "17ed80ce673a9fa01fdec16deebe6f0cf33a8ce07aa3d7643fa3e485714828a6",
+      "jai": {
+        "core_version": "1.0.0",
+        "intent": {
+          "purpose": "Independent commercial assurance plan and findings",
+          "audience": [
+            "Bid / Proposal Manager",
+            "Supplier Commercial / Deal Manager",
+            "Delegated human commercial and finance authority"
+          ],
+          "decision_supported": "Independence and coverage are explicit; every finding is evidence-linked and assigned.",
+          "owner_role": "Independent Commercial Assurance Reviewer",
+          "classification": "Protected supplier internal; explicitly approved client projection only"
+        },
+        "semantics": {
+          "artifact_type": "decision-paper",
+          "schema_ref": "publication/schema/publication-model.json",
+          "required_inputs": [
+            "Review mandate, materiality, criteria, conflicts and authority map",
+            "Versioned proposal, compliance matrix and contractual commitments",
+            "Basis of estimate, financial model, source evidence and sensitivities",
+            "Prior findings, approvals, changes, actuals and service forecasts"
+          ],
+          "required_relations": [
+            "business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence",
+            "material inputs -> source/version/assumption",
+            "client commitments -> protected internal commitment baseline",
+            "decision -> human approver where required"
+          ]
+        },
+        "justification": {
+          "required_evidence": [
+            "Source and basis of material scope, quantities, rates and decisions",
+            "Input uncertainty, unknowns, alternative scenarios and lifecycle effort/cost",
+            "Role gates and independent review/rework dispositions"
+          ],
+          "acceptance_profile": "decision-defensible",
+          "evidence_profile": "decision-evidence",
+          "reviewers": [
+            "Independent assurance peer not the bid or model author"
+          ],
+          "approver": "Named delegated human bid/price/contract authority; no agent authority act",
+          "semantic_policy": "Material claims, assumptions, uncertainty, evidence and commitments must be consistent before publication",
+          "repository_policy": "Apply governed repository policy if the artefact changes canonical architecture facts; otherwise maintain stable commercial record links"
+        },
+        "design": {
+          "mandatory_sections": [
+            "purpose, scope and authority",
+            "input provenance and unresolved unknowns",
+            "specialist methods, lifecycle analysis and alternatives",
+            "L1-L6 rationale and commercial record references",
+            "output gate dispositions",
+            "residual risk and receiving-owner acceptance"
+          ],
+          "publication_profile": "architecture-definition"
+        },
+        "realisation": {
+          "producer": "tools/publication.py",
+          "renderer": "tools/publication.py",
+          "output_formats": [
+            "Response report or controlled external findings handoff with criteria, scope, sampling, conflict declaration and located findings"
+          ],
+          "system_of_record": "Governed protected commercial case record",
+          "external_handoff_adapter": null,
+          "production_mode": "internal",
+          "operator_boundary": "Advise-tier reviewer returns report in response only; separate authorised role-author records and renders it, preserving findings."
+        },
+        "evidence": {
+          "obligations": [
+            "Source data/assumptions and reviewed version integrity",
+            "Scope and obligation coverage, units/rates and calculation evidence",
+            "Independent review and version-bounded rework verification",
+            "Client/internal commitment consistency and disclosure review"
+          ],
+          "publication_gate": "Run semantic/publication gates before releasing a rendered artefact; never substitute rendering for commercial approval",
+          "portfolio_traceability": "Retain applicable cross-domain architecture and shared-resource dependencies"
+        }
+      },
+      "lifecycle": {
+        "state": "active",
+        "review_cycle": "Role checkpoints, phase actuals, scope/terms change and material forecast variance",
+        "version": "3.0.0",
+        "retention": "Enterprise contract and engagement records policy"
+      },
+      "traceability": {
+        "upstream": [
+          "Review mandate, materiality, criteria, conflicts and authority map",
+          "Versioned proposal, compliance matrix and contractual commitments",
+          "Basis of estimate, financial model, source evidence and sensitivities",
+          "Prior findings, approvals, changes, actuals and service forecasts"
+        ],
+        "downstream": [
+          "Protected commercial case records",
+          "Bid/price/contract human decisions",
+          "Delivery/service accepted baseline"
+        ]
+      },
+      "compatibility": {
+        "reads": [
+          "ArtifactContract-v3"
+        ],
+        "writes": "ArtifactContract-v3",
+        "migration": "native-creation-no-legacy-source",
+        "classification_source": "explicit-native-26.10.4"
+      },
+      "native_creation": {
+        "source_kind": "reviewed-role-definition",
+        "source_path": "skills/it-roles-commercial-sourcing-and-enablement/references/independent-commercial-assurance-reviewer.md",
+        "classification_basis": "Explicit specialist author mapping, independently reviewed; no legacy migration asserted",
+        "evidence_ref": "artifacts/contracts/commercial-specialists.native-v3.json",
+        "evidence_hash": "b52b97937839838e16c279939c9b9d86f0f5621f47902a1b609df6f947ad2a3f"
+      }
+    },
+    {
+      "id": "independent-commercial-assurance-reviewer:2",
+      "version": "3.0.0",
+      "role_slug": "independent-commercial-assurance-reviewer",
+      "deliverable_number": 2,
+      "source_fingerprint": "9bb7cbe01e8ff803cf58075cb7139a68593ac699c251f6a29b9c172ea6039f31",
+      "jai": {
+        "core_version": "1.0.0",
+        "intent": {
+          "purpose": "Rework verification and commercial assurance opinion",
+          "audience": [
+            "Bid / Proposal Manager",
+            "Supplier Commercial / Deal Manager",
+            "Delegated human commercial and finance authority"
+          ],
+          "decision_supported": "Closure is supported by evidence; the opinion makes no human approval or unreviewed-scope claim.",
+          "owner_role": "Independent Commercial Assurance Reviewer",
+          "classification": "Protected supplier internal; explicitly approved client projection only"
+        },
+        "semantics": {
+          "artifact_type": "decision-paper",
+          "schema_ref": "publication/schema/publication-model.json",
+          "required_inputs": [
+            "Review mandate, materiality, criteria, conflicts and authority map",
+            "Versioned proposal, compliance matrix and contractual commitments",
+            "Basis of estimate, financial model, source evidence and sensitivities",
+            "Prior findings, approvals, changes, actuals and service forecasts"
+          ],
+          "required_relations": [
+            "business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence",
+            "material inputs -> source/version/assumption",
+            "client commitments -> protected internal commitment baseline",
+            "decision -> human approver where required"
+          ]
+        },
+        "justification": {
+          "required_evidence": [
+            "Source and basis of material scope, quantities, rates and decisions",
+            "Input uncertainty, unknowns, alternative scenarios and lifecycle effort/cost",
+            "Role gates and independent review/rework dispositions"
+          ],
+          "acceptance_profile": "decision-defensible",
+          "evidence_profile": "decision-evidence",
+          "reviewers": [
+            "Independent assurance peer not the bid or model author"
+          ],
+          "approver": "Named delegated human bid/price/contract authority; no agent authority act",
+          "semantic_policy": "Material claims, assumptions, uncertainty, evidence and commitments must be consistent before publication",
+          "repository_policy": "Apply governed repository policy if the artefact changes canonical architecture facts; otherwise maintain stable commercial record links"
+        },
+        "design": {
+          "mandatory_sections": [
+            "purpose, scope and authority",
+            "input provenance and unresolved unknowns",
+            "specialist methods, lifecycle analysis and alternatives",
+            "L1-L6 rationale and commercial record references",
+            "output gate dispositions",
+            "residual risk and receiving-owner acceptance"
+          ],
+          "publication_profile": "architecture-definition"
+        },
+        "realisation": {
+          "producer": "tools/publication.py",
+          "renderer": "tools/publication.py",
+          "output_formats": [
+            "Response report or external review record with disposition, residual exposure and version bounds"
+          ],
+          "system_of_record": "Governed protected commercial case record",
+          "external_handoff_adapter": null,
+          "production_mode": "internal",
+          "operator_boundary": "Advise-tier reviewer returns report in response only; separate authorised role-author records and renders it, preserving findings."
+        },
+        "evidence": {
+          "obligations": [
+            "Source data/assumptions and reviewed version integrity",
+            "Scope and obligation coverage, units/rates and calculation evidence",
+            "Independent review and version-bounded rework verification",
+            "Client/internal commitment consistency and disclosure review"
+          ],
+          "publication_gate": "Run semantic/publication gates before releasing a rendered artefact; never substitute rendering for commercial approval",
+          "portfolio_traceability": "Retain applicable cross-domain architecture and shared-resource dependencies"
+        }
+      },
+      "lifecycle": {
+        "state": "active",
+        "review_cycle": "Role checkpoints, phase actuals, scope/terms change and material forecast variance",
+        "version": "3.0.0",
+        "retention": "Enterprise contract and engagement records policy"
+      },
+      "traceability": {
+        "upstream": [
+          "Review mandate, materiality, criteria, conflicts and authority map",
+          "Versioned proposal, compliance matrix and contractual commitments",
+          "Basis of estimate, financial model, source evidence and sensitivities",
+          "Prior findings, approvals, changes, actuals and service forecasts"
+        ],
+        "downstream": [
+          "Protected commercial case records",
+          "Bid/price/contract human decisions",
+          "Delivery/service accepted baseline"
+        ]
+      },
+      "compatibility": {
+        "reads": [
+          "ArtifactContract-v3"
+        ],
+        "writes": "ArtifactContract-v3",
+        "migration": "native-creation-no-legacy-source",
+        "classification_source": "explicit-native-26.10.4"
+      },
+      "native_creation": {
+        "source_kind": "reviewed-role-definition",
+        "source_path": "skills/it-roles-commercial-sourcing-and-enablement/references/independent-commercial-assurance-reviewer.md",
+        "classification_basis": "Explicit specialist author mapping, independently reviewed; no legacy migration asserted",
+        "evidence_ref": "artifacts/contracts/commercial-specialists.native-v3.json",
+        "evidence_hash": "b52b97937839838e16c279939c9b9d86f0f5621f47902a1b609df6f947ad2a3f"
+      }
+    },
+    {
+      "id": "supplier-commercial-deal-manager:1",
+      "version": "3.0.0",
+      "role_slug": "supplier-commercial-deal-manager",
+      "deliverable_number": 1,
+      "source_fingerprint": "2c0b9f99e0c6305fcd8a279a8d7490182333dbbf75130364ba3f9cc4fbfa09a4",
+      "jai": {
+        "core_version": "1.0.0",
+        "intent": {
+          "purpose": "Supplier commercial strategy and negotiation brief",
+          "audience": [
+            "Bid / Proposal Manager",
+            "Supplier Commercial / Deal Manager",
+            "Delegated human commercial and finance authority"
+          ],
+          "decision_supported": "Human negotiator/authority can distinguish delegated positions from reserved decisions.",
+          "owner_role": "Supplier Commercial / Deal Manager",
+          "classification": "Protected supplier internal; explicitly approved client projection only"
+        },
+        "semantics": {
+          "artifact_type": "decision-paper",
+          "schema_ref": "publication/schema/publication-model.json",
+          "required_inputs": [
+            "Client objectives, procurement route and opportunity strategy",
+            "Negotiation mandate, signing limits, risk appetite and legal constraints",
+            "Solution, estimate, price options and delivery/service feasibility",
+            "Draft/signed terms, obligations, changes, invoices, service performance and claims"
+          ],
+          "required_relations": [
+            "business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence",
+            "material inputs -> source/version/assumption",
+            "client commitments -> protected internal commitment baseline",
+            "decision -> human approver where required"
+          ]
+        },
+        "justification": {
+          "required_evidence": [
+            "Source and basis of material scope, quantities, rates and decisions",
+            "Input uncertainty, unknowns, alternative scenarios and lifecycle effort/cost",
+            "Role gates and independent review/rework dispositions"
+          ],
+          "acceptance_profile": "decision-defensible",
+          "evidence_profile": "decision-evidence",
+          "reviewers": [
+            "Independent Commercial Assurance Reviewer"
+          ],
+          "approver": "Named delegated human bid/price/contract authority; no agent authority act",
+          "semantic_policy": "Material claims, assumptions, uncertainty, evidence and commitments must be consistent before publication",
+          "repository_policy": "Apply governed repository policy if the artefact changes canonical architecture facts; otherwise maintain stable commercial record links"
+        },
+        "design": {
+          "mandatory_sections": [
+            "purpose, scope and authority",
+            "input provenance and unresolved unknowns",
+            "specialist methods, lifecycle analysis and alternatives",
+            "L1-L6 rationale and commercial record references",
+            "output gate dispositions",
+            "residual risk and receiving-owner acceptance"
+          ],
+          "publication_profile": "architecture-definition"
+        },
+        "realisation": {
+          "producer": "tools/publication.py",
+          "renderer": "tools/publication.py",
+          "output_formats": [
+            "Versioned term positions, trade-off packages, economic effects, mandate and escalation limits"
+          ],
+          "system_of_record": "Governed protected commercial case record",
+          "external_handoff_adapter": null,
+          "production_mode": "internal",
+          "operator_boundary": "Role-author produces the semantic artefact; calculation source files are attached evidence or explicit external handoff. Generic publication validation does not validate financial formula correctness."
+        },
+        "evidence": {
+          "obligations": [
+            "Source data/assumptions and reviewed version integrity",
+            "Scope and obligation coverage, units/rates and calculation evidence",
+            "Independent review and version-bounded rework verification",
+            "Client/internal commitment consistency and disclosure review"
+          ],
+          "publication_gate": "Run semantic/publication gates before releasing a rendered artefact; never substitute rendering for commercial approval",
+          "portfolio_traceability": "Retain applicable cross-domain architecture and shared-resource dependencies"
+        }
+      },
+      "lifecycle": {
+        "state": "active",
+        "review_cycle": "Role checkpoints, phase actuals, scope/terms change and material forecast variance",
+        "version": "3.0.0",
+        "retention": "Enterprise contract and engagement records policy"
+      },
+      "traceability": {
+        "upstream": [
+          "Client objectives, procurement route and opportunity strategy",
+          "Negotiation mandate, signing limits, risk appetite and legal constraints",
+          "Solution, estimate, price options and delivery/service feasibility",
+          "Draft/signed terms, obligations, changes, invoices, service performance and claims"
+        ],
+        "downstream": [
+          "Protected commercial case records",
+          "Bid/price/contract human decisions",
+          "Delivery/service accepted baseline"
+        ]
+      },
+      "compatibility": {
+        "reads": [
+          "ArtifactContract-v3"
+        ],
+        "writes": "ArtifactContract-v3",
+        "migration": "native-creation-no-legacy-source",
+        "classification_source": "explicit-native-26.10.4"
+      },
+      "native_creation": {
+        "source_kind": "reviewed-role-definition",
+        "source_path": "skills/it-roles-commercial-sourcing-and-enablement/references/supplier-commercial-deal-manager.md",
+        "classification_basis": "Explicit specialist author mapping, independently reviewed; no legacy migration asserted",
+        "evidence_ref": "artifacts/contracts/commercial-specialists.native-v3.json",
+        "evidence_hash": "b52b97937839838e16c279939c9b9d86f0f5621f47902a1b609df6f947ad2a3f"
+      }
+    },
+    {
+      "id": "supplier-commercial-deal-manager:2",
+      "version": "3.0.0",
+      "role_slug": "supplier-commercial-deal-manager",
+      "deliverable_number": 2,
+      "source_fingerprint": "e94e1d361927e4777b8a25ad462f23a57c7ce9324af00f2335cbec0b156e73a9",
+      "jai": {
+        "core_version": "1.0.0",
+        "intent": {
+          "purpose": "Commercial commitments and lifecycle obligation baseline",
+          "audience": [
+            "Bid / Proposal Manager",
+            "Supplier Commercial / Deal Manager",
+            "Delegated human commercial and finance authority"
+          ],
+          "decision_supported": "Every material obligation has a feasible owner and traceable lifecycle effort/cost treatment.",
+          "owner_role": "Supplier Commercial / Deal Manager",
+          "classification": "Protected supplier internal; explicitly approved client projection only"
+        },
+        "semantics": {
+          "artifact_type": "register",
+          "schema_ref": "publication/schema/publication-model.json",
+          "required_inputs": [
+            "Client objectives, procurement route and opportunity strategy",
+            "Negotiation mandate, signing limits, risk appetite and legal constraints",
+            "Solution, estimate, price options and delivery/service feasibility",
+            "Draft/signed terms, obligations, changes, invoices, service performance and claims"
+          ],
+          "required_relations": [
+            "business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence",
+            "material inputs -> source/version/assumption",
+            "client commitments -> protected internal commitment baseline",
+            "decision -> human approver where required"
+          ]
+        },
+        "justification": {
+          "required_evidence": [
+            "Source and basis of material scope, quantities, rates and decisions",
+            "Input uncertainty, unknowns, alternative scenarios and lifecycle effort/cost",
+            "Role gates and independent review/rework dispositions"
+          ],
+          "acceptance_profile": "enterprise-publication",
+          "evidence_profile": "material-claims-evidence",
+          "reviewers": [
+            "Independent Commercial Assurance Reviewer"
+          ],
+          "approver": "Named delegated human bid/price/contract authority; no agent authority act",
+          "semantic_policy": "Material claims, assumptions, uncertainty, evidence and commitments must be consistent before publication",
+          "repository_policy": "Apply governed repository policy if the artefact changes canonical architecture facts; otherwise maintain stable commercial record links"
+        },
+        "design": {
+          "mandatory_sections": [
+            "purpose, scope and authority",
+            "input provenance and unresolved unknowns",
+            "specialist methods, lifecycle analysis and alternatives",
+            "L1-L6 rationale and commercial record references",
+            "output gate dispositions",
+            "residual risk and receiving-owner acceptance"
+          ],
+          "publication_profile": "architecture-definition"
+        },
+        "realisation": {
+          "producer": "tools/publication.py",
+          "renderer": "tools/publication.py",
+          "output_formats": [
+            "Linked client commitments, internal economics, subcontract gaps, owners, acceptance and review triggers"
+          ],
+          "system_of_record": "Governed protected commercial case record",
+          "external_handoff_adapter": null,
+          "production_mode": "internal",
+          "operator_boundary": "Role-author produces the semantic artefact; calculation source files are attached evidence or explicit external handoff. Generic publication validation does not validate financial formula correctness."
+        },
+        "evidence": {
+          "obligations": [
+            "Source data/assumptions and reviewed version integrity",
+            "Scope and obligation coverage, units/rates and calculation evidence",
+            "Independent review and version-bounded rework verification",
+            "Client/internal commitment consistency and disclosure review"
+          ],
+          "publication_gate": "Run semantic/publication gates before releasing a rendered artefact; never substitute rendering for commercial approval",
+          "portfolio_traceability": "Retain applicable cross-domain architecture and shared-resource dependencies"
+        }
+      },
+      "lifecycle": {
+        "state": "active",
+        "review_cycle": "Role checkpoints, phase actuals, scope/terms change and material forecast variance",
+        "version": "3.0.0",
+        "retention": "Enterprise contract and engagement records policy"
+      },
+      "traceability": {
+        "upstream": [
+          "Client objectives, procurement route and opportunity strategy",
+          "Negotiation mandate, signing limits, risk appetite and legal constraints",
+          "Solution, estimate, price options and delivery/service feasibility",
+          "Draft/signed terms, obligations, changes, invoices, service performance and claims"
+        ],
+        "downstream": [
+          "Protected commercial case records",
+          "Bid/price/contract human decisions",
+          "Delivery/service accepted baseline"
+        ]
+      },
+      "compatibility": {
+        "reads": [
+          "ArtifactContract-v3"
+        ],
+        "writes": "ArtifactContract-v3",
+        "migration": "native-creation-no-legacy-source",
+        "classification_source": "explicit-native-26.10.4"
+      },
+      "native_creation": {
+        "source_kind": "reviewed-role-definition",
+        "source_path": "skills/it-roles-commercial-sourcing-and-enablement/references/supplier-commercial-deal-manager.md",
+        "classification_basis": "Explicit specialist author mapping, independently reviewed; no legacy migration asserted",
+        "evidence_ref": "artifacts/contracts/commercial-specialists.native-v3.json",
+        "evidence_hash": "b52b97937839838e16c279939c9b9d86f0f5621f47902a1b609df6f947ad2a3f"
+      }
+    },
+    {
+      "id": "supplier-commercial-deal-manager:3",
+      "version": "3.0.0",
+      "role_slug": "supplier-commercial-deal-manager",
+      "deliverable_number": 3,
+      "source_fingerprint": "83db63b880fa4dd369a313249a00cbc2f2ea391499e8f5f28393a9e6f822b651",
+      "jai": {
+        "core_version": "1.0.0",
+        "intent": {
+          "purpose": "Deal performance, change and renewal/exit recommendation",
+          "audience": [
+            "Bid / Proposal Manager",
+            "Supplier Commercial / Deal Manager",
+            "Delegated human commercial and finance authority"
+          ],
+          "decision_supported": "Material commercial drift is visible before a new commitment, with accountable action and approval route.",
+          "owner_role": "Supplier Commercial / Deal Manager",
+          "classification": "Protected supplier internal; explicitly approved client projection only"
+        },
+        "semantics": {
+          "artifact_type": "decision-paper",
+          "schema_ref": "publication/schema/publication-model.json",
+          "required_inputs": [
+            "Client objectives, procurement route and opportunity strategy",
+            "Negotiation mandate, signing limits, risk appetite and legal constraints",
+            "Solution, estimate, price options and delivery/service feasibility",
+            "Draft/signed terms, obligations, changes, invoices, service performance and claims"
+          ],
+          "required_relations": [
+            "business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence",
+            "material inputs -> source/version/assumption",
+            "client commitments -> protected internal commitment baseline",
+            "decision -> human approver where required"
+          ]
+        },
+        "justification": {
+          "required_evidence": [
+            "Source and basis of material scope, quantities, rates and decisions",
+            "Input uncertainty, unknowns, alternative scenarios and lifecycle effort/cost",
+            "Role gates and independent review/rework dispositions"
+          ],
+          "acceptance_profile": "decision-defensible",
+          "evidence_profile": "decision-evidence",
+          "reviewers": [
+            "Independent Commercial Assurance Reviewer"
+          ],
+          "approver": "Named delegated human bid/price/contract authority; no agent authority act",
+          "semantic_policy": "Material claims, assumptions, uncertainty, evidence and commitments must be consistent before publication",
+          "repository_policy": "Apply governed repository policy if the artefact changes canonical architecture facts; otherwise maintain stable commercial record links"
+        },
+        "design": {
+          "mandatory_sections": [
+            "purpose, scope and authority",
+            "input provenance and unresolved unknowns",
+            "specialist methods, lifecycle analysis and alternatives",
+            "L1-L6 rationale and commercial record references",
+            "output gate dispositions",
+            "residual risk and receiving-owner acceptance"
+          ],
+          "publication_profile": "architecture-definition"
+        },
+        "realisation": {
+          "producer": "tools/publication.py",
+          "renderer": "tools/publication.py",
+          "output_formats": [
+            "Baseline-to-actual/forecast bridge, contract impact, options and decision request"
+          ],
+          "system_of_record": "Governed protected commercial case record",
+          "external_handoff_adapter": null,
+          "production_mode": "internal",
+          "operator_boundary": "Role-author produces the semantic artefact; calculation source files are attached evidence or explicit external handoff. Generic publication validation does not validate financial formula correctness."
+        },
+        "evidence": {
+          "obligations": [
+            "Source data/assumptions and reviewed version integrity",
+            "Scope and obligation coverage, units/rates and calculation evidence",
+            "Independent review and version-bounded rework verification",
+            "Client/internal commitment consistency and disclosure review"
+          ],
+          "publication_gate": "Run semantic/publication gates before releasing a rendered artefact; never substitute rendering for commercial approval",
+          "portfolio_traceability": "Retain applicable cross-domain architecture and shared-resource dependencies"
+        }
+      },
+      "lifecycle": {
+        "state": "active",
+        "review_cycle": "Role checkpoints, phase actuals, scope/terms change and material forecast variance",
+        "version": "3.0.0",
+        "retention": "Enterprise contract and engagement records policy"
+      },
+      "traceability": {
+        "upstream": [
+          "Client objectives, procurement route and opportunity strategy",
+          "Negotiation mandate, signing limits, risk appetite and legal constraints",
+          "Solution, estimate, price options and delivery/service feasibility",
+          "Draft/signed terms, obligations, changes, invoices, service performance and claims"
+        ],
+        "downstream": [
+          "Protected commercial case records",
+          "Bid/price/contract human decisions",
+          "Delivery/service accepted baseline"
+        ]
+      },
+      "compatibility": {
+        "reads": [
+          "ArtifactContract-v3"
+        ],
+        "writes": "ArtifactContract-v3",
+        "migration": "native-creation-no-legacy-source",
+        "classification_source": "explicit-native-26.10.4"
+      },
+      "native_creation": {
+        "source_kind": "reviewed-role-definition",
+        "source_path": "skills/it-roles-commercial-sourcing-and-enablement/references/supplier-commercial-deal-manager.md",
+        "classification_basis": "Explicit specialist author mapping, independently reviewed; no legacy migration asserted",
+        "evidence_ref": "artifacts/contracts/commercial-specialists.native-v3.json",
+        "evidence_hash": "b52b97937839838e16c279939c9b9d86f0f5621f47902a1b609df6f947ad2a3f"
       }
     }
   ],

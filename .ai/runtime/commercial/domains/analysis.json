@@ -1,0 +1,183 @@
+{
+  "version": "1",
+  "domain_id": "analysis",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "business-analyst",
+      "name": "Business Analyst",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-analysis",
+      "path": "skills/it-roles-analysis/references/business-analyst.md",
+      "deliverables": [
+        "Requirements specification",
+        "process and data models",
+        "stakeholder and impact analysis",
+        "solution evaluation report"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "systems-analyst",
+      "name": "Systems Analyst",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-analysis",
+      "path": "skills/it-roles-analysis/references/systems-analyst.md",
+      "deliverables": [
+        "System behaviour specification",
+        "interface and data mapping",
+        "impact analysis across systems",
+        "transition and migration rules"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "requirements-engineer",
+      "name": "Requirements Engineer",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-analysis",
+      "path": "skills/it-roles-analysis/references/requirements-engineer.md",
+      "deliverables": [
+        "Requirements baseline",
+        "traceability matrix",
+        "requirements quality and volatility analysis",
+        "change impact assessments"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "process-analyst",
+      "name": "Process Analyst",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-analysis",
+      "path": "skills/it-roles-analysis/references/process-analyst.md",
+      "deliverables": [
+        "As-is and to-be process models",
+        "process performance analysis",
+        "control point map",
+        "improvement case"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "enterprise-business-analyst",
+      "name": "Enterprise Business Analyst",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-analysis",
+      "path": "skills/it-roles-analysis/references/enterprise-business-analyst.md",
+      "deliverables": [
+        "Cross-domain problem analysis",
+        "capability gap assessment",
+        "cross-system impact map",
+        "options analysis for executives"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "data-analyst",
+      "name": "Data Analyst",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-analysis",
+      "path": "skills/it-roles-analysis/references/data-analyst.md",
+      "deliverables": [
+        "Analysis notebook or query set",
+        "findings report with confidence and caveats",
+        "reusable dataset or metric definition",
+        "data quality exceptions"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "business-intelligence-analyst",
+      "name": "Business Intelligence Analyst",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-analysis",
+      "path": "skills/it-roles-analysis/references/business-intelligence-analyst.md",
+      "deliverables": [
+        "Semantic model and metric definitions",
+        "production dashboards",
+        "report catalogue",
+        "data lineage documentation"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "finops-analyst",
+      "name": "FinOps Analyst",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-analysis",
+      "path": "skills/it-roles-analysis/references/finops-analyst.md",
+      "deliverables": [
+        "Cost allocation and showback model",
+        "unit economics analysis",
+        "commitment and discount plan",
+        "waste and optimisation register"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "product-analyst",
+      "name": "Product Analyst",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-analysis",
+      "path": "skills/it-roles-analysis/references/product-analyst.md",
+      "deliverables": [
+        "Product metric framework",
+        "experiment design and results",
+        "funnel and retention analysis",
+        "feature adoption assessment"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "service-level-analyst",
+      "name": "Service Level Analyst",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-analysis",
+      "path": "skills/it-roles-analysis/references/service-level-analyst.md",
+      "deliverables": [
+        "Service level reporting pack",
+        "SLA and OLA definitions",
+        "breach and trend analysis",
+        "improvement recommendations"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "configuration-analyst",
+      "name": "Configuration Analyst",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-analysis",
+      "path": "skills/it-roles-analysis/references/configuration-analyst.md",
+      "deliverables": [
+        "Configuration management database content and model",
+        "relationship and dependency maps",
+        "configuration audit findings",
+        "data quality remediation plan"
+      ],
+      "aliases": [],
+      "guard": null
+    }
+  ]
+}

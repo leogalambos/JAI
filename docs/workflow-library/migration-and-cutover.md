@@ -94,9 +94,3 @@ A practical prompt pattern is:
 ## Operational interpretation
 
 The workflow is most useful when the team keeps each hand-over explicit. The system can help generate or review the artefacts, but the accountable role and approval decision remain organisational responsibilities.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../design-to-operational-readiness/"><small>← Previous · Workflow library</small><strong>Design to operational readiness</strong></a>
-  <a class="ai-next" href="../organisational-change-and-adoption/"><small>Next · Workflow library →</small><strong>Organisational change and adoption</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

@@ -50,6 +50,12 @@
 - **Technical Recruiter** — Find and attract people who can actually do the work, without wasting anyone's time
 - **Resource Manager** — Match people to work across the portfolio, honestly, including when there are not enough of them
 - **IT Financial Management / TBM Manager** — Own the transparent service/project cost model, TCO and technology-business allocation model that lets leaders make comparable investment, sourcing, optimisation and lifecycle decisions across cloud and non-cloud spend.
+- **Bid / Proposal Manager** — Own the supplier's evidence-based bid and proposal process from qualification through submission, clarification and controlled handover, so the offer is complete, responsive, deliverable and authorised.
+- **Commercial Pricing / Deal Finance Specialist** — Develop defensible supplier selling-price and deal-finance recommendations that connect delivery cost, cash flow, commercial terms and uncertainty to authorised return and risk appetite over the full contract lifecycle.
+- **Estimation / Cost Engineering Specialist** — Produce and maintain a reproducible basis of estimate for supplier work and lifecycle cost, with calibrated methods, explicit uncertainty and a learning loop from actual delivery rather than unsupported numerical precision.
+- **Independent Commercial Assurance Reviewer** — Independently challenge the evidence, completeness and consistency of supplier proposals, estimates, pricing and lifecycle commercial controls, reporting located findings without authoring the model or accepting management's risk.
+- **Supplier Commercial / Deal Manager** — Own supplier-side commercial coherence across qualification, negotiation, contract handover, delivery change, service operation, renewal and exit, ensuring agreed commitments and economic risk remain aligned throughout the deal.
+
 ## Data, Analytics and AI
 
 - **Data Engineer** — Move data reliably from where it is produced to where it can be used, at known quality and cost
@@ -315,9 +321,3 @@
 - **Developer Experience Engineer** — Reduce the friction between an engineer having an idea and that idea running in production
 - **Open Source Program Office Engineer** — Manage how the organisation consumes, contributes to and publishes open source safely
 - **Software Modernisation Engineer** — Change legacy systems safely and incrementally, without a big-bang rewrite nobody survives
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../workflows/"><small>← Previous · Reference</small><strong>Workflow catalogue</strong></a>
-  <a class="ai-next" href="../commands/"><small>Next · Reference →</small><strong>Command reference</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

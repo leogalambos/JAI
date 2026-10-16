@@ -2,6 +2,8 @@
 
 AI IT House separates work into clearly different concerns.
 
+For the practical reading order—method, provider interaction and a complete case—start with [How to use JAI](../examples/how-to-use-JAI/index.md). This page explains the delivery model; it is not a command sequence.
+
 <div class="ai-diagram ai-diagram-inline" role="img" aria-label="Architecture and delivery diagram">
 <svg class="ai-inline-diagram-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 919 756" role="img" aria-labelledby="t d">
 <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e3859"/><stop offset="1" stop-color="#0b6b9a"/></linearGradient><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3ba9d6"/></marker></defs>
@@ -68,7 +70,7 @@ When a decision may later need defence — for example external exposure of a ri
 
 ## Two delivery modes share the same governance model
 
-26.10.4 supports both ordinary specialist delivery and fully supervised consequential delivery.
+The current release supports both ordinary specialist delivery and fully supervised consequential delivery.
 
 ### Standard specialist path
 
@@ -98,10 +100,3 @@ The second path is not merely "more agents". Its value is the preserved requirem
 The current release makes JAI the normative semantic architecture, but it does not claim that every direct role invocation is automatically forced through a layered Fabric engagement. Where an organisation requires that property, enforce the consequential-task classification/routing rule at the deployment entry boundary.
 
 See [Running a layered justifiable engagement](../using/layered-engagement.md) for the concrete operator cycle.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../coverage-matrix/"><small>← Previous · Executive overview</small><strong>Coverage matrix</strong></a>
-  <a class="ai-next" href="../../getting-started/install/"><small>Next · Getting started →</small><strong>Installation</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

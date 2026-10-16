@@ -11,12 +11,12 @@ This block is generated from canonical package sources by
 `.ai/runtime/tools/generate_docs.py`. Manual count edits are not
 authoritative.
 
-- Roles: **281**
-- Agents: **33**
-- Skills: **23**
+- Roles: **286**
+- Agents: **34**
+- Skills: **24**
 - Workflows: **24**
 - Artifact Types: **28**
-- Schemas: **32**
+- Schemas: **33**
 - Renderers: **4**
 - Tests: **32**
 - Provider Adapters: **2**

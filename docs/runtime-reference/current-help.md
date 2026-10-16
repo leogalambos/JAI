@@ -1,5 +1,7 @@
 # Documentation and installed CLI help — {{ JAI_VERSION }}
 
+For first use, follow [How to use JAI](../examples/how-to-use-JAI/index.md): choose the method and assurance boundary, learn the provider interface, then follow a complete case. This page explains documentation ownership, offline help and maintainer boundaries.
+
 ## The maintained documentation source
 
 **The `docs/` Markdown tree is the authoritative product manual.** `mkdocs.yml` defines navigation and presentation; GitHub Actions builds and deploys that material to Pages. No HTML content is stored in `.ai/runtime/` and no second site is maintained. The site's HTML is an ephemeral GitHub Actions build output, **not** an input or a runtime dependency.

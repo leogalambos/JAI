@@ -1,5 +1,7 @@
 # SABSA and enterprise architecture
 
+For an end-to-end operator journey, read the [security-assessment case](../examples/how-to-use-JAI/security-assessment.md) or [Android architecture/development case](../examples/how-to-use-JAI/android-development.md). This capability page explains model structure, supported operations and interchange. Choose direct domain work or layered creation using [Methodical workflows](../using/methodical-workflows.md) before beginning; `/sabsa` does not automatically open a complete `/layered` episode.
+
 ## SABSA support
 
 The SABSA capability treats the architecture as a structured, traceable library rather than one monolithic report.
@@ -189,10 +191,3 @@ For guided use, follow [assessing a deployed system](../examples/how-to-use-JAI/
 ## Why this matters
 
 Organisations often struggle to keep security architecture, enterprise architecture and published documents aligned. The 26.10.4 profile model gives each subsystem a clear scope while preserving stable identity and traceability across them.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../../workflow-library/regulatory-change-to-assurance/"><small>← Previous · Workflow library</small><strong>Regulatory change to assurance</strong></a>
-  <a class="ai-next" href="../artifacts-publication/"><small>Next · Capabilities →</small><strong>Publication and visual QA</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

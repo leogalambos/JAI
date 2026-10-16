@@ -89,9 +89,3 @@ Production acceptance: NOT READY
 ## Why this example matters
 
 The onboarding process makes “deployable” different from “operable and owned”. It connects engineering readiness with service-management acceptance.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../regulatory-change/"><small>← Previous · Examples</small><strong>Regulatory change to assurance</strong></a>
-  <a class="ai-next" href="../../operations/validation/"><small>Next · Operate and govern →</small><strong>Validation and release controls</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

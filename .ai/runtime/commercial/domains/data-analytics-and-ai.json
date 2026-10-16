@@ -1,0 +1,349 @@
+{
+  "version": "1",
+  "domain_id": "data-analytics-and-ai",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "data-engineer",
+      "name": "Data Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/data-engineer.md",
+      "deliverables": [
+        "Data pipelines and orchestration code",
+        "source-to-target documentation",
+        "data quality checks and alerting",
+        "pipeline runbooks and service levels"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "analytics-engineer",
+      "name": "Analytics Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/analytics-engineer.md",
+      "deliverables": [
+        "Transformation models and tests",
+        "semantic layer definitions",
+        "dataset documentation and lineage",
+        "data freshness and quality dashboards"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "database-administrator",
+      "name": "Database Administrator",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/database-administrator.md",
+      "deliverables": [
+        "Database configuration baselines",
+        "backup and restore evidence",
+        "performance tuning analysis",
+        "capacity and growth forecast"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "database-reliability-engineer",
+      "name": "Database Reliability Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/database-reliability-engineer.md",
+      "deliverables": [
+        "Database automation and infrastructure-as-code",
+        "service level objectives for data stores",
+        "schema migration tooling and policy",
+        "reliability and toil reduction plan"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "data-modeller",
+      "name": "Data Modeller",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/data-modeller.md",
+      "deliverables": [
+        "Conceptual, logical and physical data models",
+        "data dictionary and business glossary entries",
+        "model change impact analysis",
+        "naming and modelling standards"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "data-steward",
+      "name": "Data Steward",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/data-steward.md",
+      "deliverables": [
+        "Business glossary entries for the domain",
+        "data quality rules and thresholds",
+        "issue log and remediation actions",
+        "access and usage decisions record"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "data-owner",
+      "name": "Data Owner",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/data-owner.md",
+      "deliverables": [
+        "Data asset accountability statement",
+        "approved use and access policy for the asset",
+        "accepted quality tolerances",
+        "risk acceptance records"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "data-custodian",
+      "name": "Data Custodian",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/data-custodian.md",
+      "deliverables": [
+        "Access control implementation records",
+        "retention and disposal evidence",
+        "encryption and protection configuration",
+        "custody and transfer logs"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "data-governance-lead",
+      "name": "Data Governance Lead",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/data-governance-lead.md",
+      "deliverables": [
+        "Data governance framework and operating model",
+        "policy and standard set",
+        "governance forum agenda and decision log",
+        "maturity assessment and improvement plan"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "data-quality-analyst",
+      "name": "Data Quality Analyst",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/data-quality-analyst.md",
+      "deliverables": [
+        "Data quality rules and measurement results",
+        "quality issue register with root cause",
+        "impact analysis of poor quality",
+        "remediation recommendations"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "master-data-management-specialist",
+      "name": "Master Data Management Specialist",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/master-data-management-specialist.md",
+      "deliverables": [
+        "Match, merge and survivorship rules",
+        "golden record definitions and stewardship workflow",
+        "MDM hub configuration",
+        "data quality and duplication metrics"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "data-scientist",
+      "name": "Data Scientist",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/data-scientist.md",
+      "deliverables": [
+        "Analysis and model code with reproducible environment",
+        "model performance and limitation report",
+        "feature and data documentation",
+        "recommendation with confidence and caveats"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "research-scientist",
+      "name": "Research Scientist",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/research-scientist.md",
+      "deliverables": [
+        "Research design and protocol",
+        "experimental results with reproducibility package",
+        "publication or internal research report",
+        "recommendation on technology readiness"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "machine-learning-engineer",
+      "name": "Machine Learning Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/machine-learning-engineer.md",
+      "deliverables": [
+        "Training and inference pipeline code",
+        "model packaging and versioning",
+        "performance and latency evidence",
+        "model monitoring instrumentation"
+      ],
+      "aliases": [
+        "ML Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "mlops-engineer",
+      "name": "MLOps Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/mlops-engineer.md",
+      "deliverables": [
+        "Model deployment and promotion automation",
+        "drift and performance monitoring",
+        "retraining pipeline and schedule",
+        "model rollback procedures"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "llmops-and-ai-platform-engineer",
+      "name": "LLMOps and AI Platform Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/llmops-and-ai-platform-engineer.md",
+      "deliverables": [
+        "Model serving and gateway configuration",
+        "evaluation harness and regression suites",
+        "prompt and configuration version control",
+        "cost and token consumption reporting"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "ai-solutions-engineer",
+      "name": "AI Solutions Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/ai-solutions-engineer.md",
+      "deliverables": [
+        "Application and orchestration implementation",
+        "prompt and context strategy under version control",
+        "evaluation set and results",
+        "failure handling and human-in-the-loop design"
+      ],
+      "aliases": [
+        "Prompt Engineer"
+      ],
+      "guard": null
+    },
+    {
+      "role_id": "ai-safety-and-model-red-team-specialist",
+      "name": "AI Safety and Model Red Team Specialist",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/ai-safety-and-model-red-team-specialist.md",
+      "deliverables": [
+        "Adversarial evaluation suite and results",
+        "harm taxonomy and severity ratings",
+        "jailbreak and misuse findings",
+        "mitigation recommendations and retest results"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "ai-governance-officer",
+      "name": "AI Governance Officer",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/ai-governance-officer.md",
+      "deliverables": [
+        "AI system inventory and risk classification",
+        "conformity and impact assessments",
+        "model approval and monitoring decisions",
+        "AI policy and control set"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "data-privacy-engineer",
+      "name": "Data Privacy Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/data-privacy-engineer.md",
+      "deliverables": [
+        "Privacy control implementation (minimisation, pseudonymisation, encryption)",
+        "data subject request tooling",
+        "retention and deletion automation",
+        "privacy technical design reviews"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "metadata-manager",
+      "name": "Metadata Manager",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-data-analytics-and-ai",
+      "path": "skills/it-roles-data-analytics-and-ai/references/metadata-manager.md",
+      "deliverables": [
+        "Metadata catalogue content and standards",
+        "lineage documentation",
+        "glossary integration",
+        "catalogue adoption and coverage reporting"
+      ],
+      "aliases": [
+        "Data Librarian"
+      ],
+      "guard": null
+    }
+  ]
+}

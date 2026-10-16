@@ -43,9 +43,3 @@ You can also ask for editable CSV catalogues. Export the current local entries, 
 Markdown needs no external document renderer. Emitting TeX or DOCX uses Pandoc; compiling the controlled PDF edition also needs XeLaTeX, installed TeX packages and the selected fonts. Independently render and inspect the formats actually delivered. LibreOffice/Word supports Office visual QA; the SABSA TeX/PDF path does not invoke an Office renderer. See the [publication stack](../configuration/publication-stack.md) for dependencies and gates.
 
 The [How to use JAI series](../examples/how-to-use-JAI/index.md) demonstrates these choices inside a security assessment and an iterative Android project. Successful generation is one check; architecture approval and a product release decision remain separate statuses.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../workflows/"><small>← Previous · Using the system</small><strong>Enterprise workflows</strong></a>
-  <a class="ai-next" href="../demo-estate/"><small>Next · Using the system →</small><strong>Learning with the demo estate</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

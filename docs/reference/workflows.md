@@ -1,5 +1,7 @@
 # Workflow catalogue
 
+This is a compact lookup table. Use the [workflow selection guide](../using/workflows.md) and the grouped **Workflow library** navigation for the detailed chains. First-time operators should begin with [How to use JAI](../examples/how-to-use-JAI/index.md). Buyer-side sourcing workflows are distinct from the supplier-side [commercial profile](../capabilities/commercial-delivery.md).
+
 | Key | Title | Steps | Outcome |
 | --- | --- | ---: | --- |
 | `idea-to-production` | Idea to production | 13 | A change running in production with a measured benefit and a named owner. |
@@ -26,9 +28,3 @@
 | `siam-multi-supplier` | SIAM / multi-supplier service integration | 8 | One governed service-integration model joins supplier responsibilities into end-to-end service outcomes with measurable SLAs/OLAs, clear process ownership and cross-supplier escalation. |
 | `enterprise-release-orchestration` | Enterprise release orchestration | 12 | The integrated release is sequenced, independently readiness-checked, authorised, executed by technical owners, validated and closed with measurable release performance. |
 | `regulatory-change-to-assurance` | Regulatory change to assurance | 10 | Applicability and obligations are translated into traceable requirements/controls, architecture and remediation changes are implemented, evidence is independently assured, and closure is authorised. |
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../inventory/"><small>← Previous · Reference</small><strong>Release inventory</strong></a>
-  <a class="ai-next" href="../roles/"><small>Next · Reference →</small><strong>Full role catalogue</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

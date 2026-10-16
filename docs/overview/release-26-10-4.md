@@ -78,10 +78,3 @@ The corrected distribution remains **26.10.4** because this was a corrective rep
 The packaged `QUALIFICATION-A-H.json` reports **A–H = 8/8 PASS**. The distribution state is `ready-for-release-owner-signature`; the build deliberately does not contain or use the release owner's private signing key.
 
 See [Validation and release controls](../operations/validation.md) for the gate details and [26.10.4 release and migration](../reference/release-migration.md) for compatibility rules.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../product-overview/"><small>← Previous · Executive overview</small><strong>Product overview</strong></a>
-  <a class="ai-next" href="../coverage-matrix/"><small>Next · Executive overview →</small><strong>Coverage matrix</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

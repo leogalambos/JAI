@@ -88,9 +88,3 @@ Visual QA: PASS
 ## Why this example matters
 
 This demonstrates the difference between governed publication and “make me a PowerPoint”: presentation can improve, but the approved semantic content remains authoritative.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../cloud-migration/"><small>← Previous · Examples</small><strong>Regulated cloud migration</strong></a>
-  <a class="ai-next" href="../cyber-incident/"><small>Next · Examples →</small><strong>Cyber incident to recovery</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

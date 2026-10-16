@@ -27,10 +27,3 @@
 Migration is forward-only. Historical schema namespaces and migration sources are intentionally retained so that previous data can be interpreted without pretending it originated in the current release.
 
 See [26.10.4 release and migration](release-migration.md) for subsystem-specific behavior.
-
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../paths-env/"><small>← Previous · Reference</small><strong>Paths and environment variables</strong></a>
-  <a class="ai-next" href="../release-migration/"><small>Next · Reference →</small><strong>26.10.4 release and migration</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

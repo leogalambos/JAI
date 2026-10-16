@@ -1,0 +1,185 @@
+{
+  "version": "1",
+  "domain_id": "design-and-user-experience",
+  "complete": true,
+  "roles": [
+    {
+      "role_id": "ux-designer",
+      "name": "UX Designer",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-design-and-user-experience",
+      "path": "skills/it-roles-design-and-user-experience/references/ux-designer.md",
+      "deliverables": [
+        "Interaction designs and prototypes",
+        "user flows and journey maps",
+        "design specification with all states",
+        "usability test findings"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "ui-designer",
+      "name": "UI Designer",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-design-and-user-experience",
+      "path": "skills/it-roles-design-and-user-experience/references/ui-designer.md",
+      "deliverables": [
+        "Visual designs and specifications",
+        "typography, colour and spacing definitions",
+        "component visual states",
+        "asset and icon delivery"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "product-designer",
+      "name": "Product Designer",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-design-and-user-experience",
+      "path": "skills/it-roles-design-and-user-experience/references/product-designer.md",
+      "deliverables": [
+        "Design strategy for the product area",
+        "end-to-end designs and prototypes",
+        "research-backed design rationale",
+        "measured design outcomes"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "ux-researcher",
+      "name": "UX Researcher",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-design-and-user-experience",
+      "path": "skills/it-roles-design-and-user-experience/references/ux-researcher.md",
+      "deliverables": [
+        "Research plans and discussion guides",
+        "research findings and evidence repository",
+        "participant recruitment and consent records",
+        "insight synthesis and recommendations"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "usability-tester",
+      "name": "Usability Tester",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-design-and-user-experience",
+      "path": "skills/it-roles-design-and-user-experience/references/usability-tester.md",
+      "deliverables": [
+        "Usability test plans and task scenarios",
+        "session recordings and observation notes",
+        "severity-rated usability findings",
+        "retest results after changes"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "interaction-designer",
+      "name": "Interaction Designer",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-design-and-user-experience",
+      "path": "skills/it-roles-design-and-user-experience/references/interaction-designer.md",
+      "deliverables": [
+        "Interaction specifications and state diagrams",
+        "motion and feedback definitions",
+        "input and error handling behaviour",
+        "prototype demonstrating behaviour"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "service-designer",
+      "name": "Service Designer",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-design-and-user-experience",
+      "path": "skills/it-roles-design-and-user-experience/references/service-designer.md",
+      "deliverables": [
+        "Service blueprints across front and back stage",
+        "channel and touchpoint design",
+        "operational process implications",
+        "service prototype and pilot results"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "information-architect",
+      "name": "Information Architect",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-design-and-user-experience",
+      "path": "skills/it-roles-design-and-user-experience/references/information-architect.md",
+      "deliverables": [
+        "Site and content structure",
+        "navigation and taxonomy design",
+        "labelling and metadata schemes",
+        "findability test results"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "design-system-engineer",
+      "name": "Design System Engineer",
+      "tier": "execute",
+      "operator": "role-engineer",
+      "skill": "it-roles-design-and-user-experience",
+      "path": "skills/it-roles-design-and-user-experience/references/design-system-engineer.md",
+      "deliverables": [
+        "Component library implementation",
+        "design tokens and theming",
+        "component documentation and usage guidance",
+        "accessibility conformance per component"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "accessibility-specialist",
+      "name": "Accessibility Specialist",
+      "tier": "advise",
+      "operator": "role-advisor",
+      "skill": "it-roles-design-and-user-experience",
+      "path": "skills/it-roles-design-and-user-experience/references/accessibility-specialist.md",
+      "deliverables": [
+        "Accessibility policy and standards",
+        "conformance assessments and accessibility statements",
+        "remediation roadmap",
+        "training and capability building"
+      ],
+      "aliases": [],
+      "guard": null
+    },
+    {
+      "role_id": "content-designer",
+      "name": "Content Designer",
+      "tier": "author",
+      "operator": "role-author",
+      "skill": "it-roles-design-and-user-experience",
+      "path": "skills/it-roles-design-and-user-experience/references/content-designer.md",
+      "deliverables": [
+        "Interface content and microcopy",
+        "content patterns and voice guidance",
+        "error and system message library",
+        "readability and comprehension test results"
+      ],
+      "aliases": [
+        "UX Writer"
+      ],
+      "guard": null
+    }
+  ]
+}

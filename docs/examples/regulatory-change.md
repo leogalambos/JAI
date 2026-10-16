@@ -91,9 +91,3 @@ PENDING until remediation evidence is independently reviewed.
 ## Why this example matters
 
 This closes the gap between “we read the regulation” and “we can demonstrate that affected services are designed, operated and evidenced accordingly”.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../justifiable-decision/"><small>← Previous · Examples</small><strong>Justifiable consequential decision</strong></a>
-  <a class="ai-next" href="../service-onboarding/"><small>Next · Examples →</small><strong>Service introduction</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->

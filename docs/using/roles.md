@@ -1,12 +1,12 @@
 # Roles and disciplines
 
-AI IT House 26.10.4 contains **281 roles across 17 disciplines**.
+The current working catalogue contains **{{ JAI_ROLE_COVERAGE }}**.
 
 | Discipline | Roles | Representative roles |
 | --- | ---: | --- |
 | Analysis | 11 | Business Analyst, Systems Analyst, Requirements Engineer, Process Analyst |
 | Architecture | 18 | Enterprise Architect, Business Architect, Solution Architect, Application Architect |
-| Commercial, Sourcing and Enablement | 15 | IT Procurement Specialist, Vendor Manager, Contract Manager, Software Licence Compliance Specialist |
+| Commercial, Sourcing and Enablement | 20 | Bid / Proposal Manager, Commercial Pricing / Deal Finance Specialist, Estimation / Cost Engineering Specialist, Independent Commercial Assurance Reviewer |
 | Data, Analytics and AI | 21 | Data Engineer, Analytics Engineer, Database Administrator, Database Reliability Engineer |
 | Design and User Experience | 11 | UX Designer, UI Designer, Product Designer, UX Researcher |
 | Executive and Leadership | 11 | Chief Information Officer, Chief Technology Officer, Chief Information Security Officer, Chief Data Officer |
@@ -24,7 +24,7 @@ AI IT House 26.10.4 contains **281 roles across 17 disciplines**.
 
 ## Using roles in a provider session
 
-You can ask in plain language: "Have the Solution Architect and Security Architect evaluate this SaaS integration; show their respective deliverables, evidence and the independent reviewer." You do not instantiate 281 roles as separate processes or run a Python role catalogue command. Claude/Codex uses the installed `role-router`, knowledge skills and provider delegation (where supported) to select a relevant specialist with the appropriate author/reviewer boundary. Ask for the selected role and its limits to be shown; role choice is not itself approval or enforcement of host tool permissions.
+You can ask in plain language: "Have the Solution Architect and Security Architect evaluate this SaaS integration; show their respective deliverables, evidence and the independent reviewer." You do not instantiate all registered roles as separate processes or run a Python role catalogue command. Claude/Codex uses the installed `role-router`, knowledge skills and provider delegation (where supported) to select a relevant specialist with the appropriate author/reviewer boundary. Ask for the selected role and its limits to be shown; role choice is not itself approval or enforcement of host tool permissions.
 
 For high-impact outcomes, explicitly start `/layered` (Claude) or `$workflow-layered` (Codex) so typed contracts and supervision are part of the engagement. Role routing alone is not a substitute for that release evidence.
 
@@ -44,9 +44,3 @@ This is one of the reasons the system is more useful than asking a general model
 ## Example
 
 If you ask for a migration strategy, a good answer may involve solution architecture, data migration, service transition, security architecture, test leadership, operational readiness and release/change governance — not only one job title.
-<!-- AI-PAGE-NAV -->
-<div class="ai-page-nav">
-  <a class="ai-prev" href="../commands/"><small>← Previous · Using the system</small><strong>Commands and direct tools</strong></a>
-  <a class="ai-next" href="../workflows/"><small>Next · Using the system →</small><strong>Enterprise workflows</strong></a>
-</div>
-<!-- /AI-PAGE-NAV -->
