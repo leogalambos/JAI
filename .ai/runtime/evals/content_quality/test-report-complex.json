@@ -1,6 +1,10 @@
 {
   "artifact_id": "synthetic/test-report/complex",
+  "contract_id": "test-analyst:2",
   "document_kind": "test-report",
+  "author": {
+    "principal_id": "synthetic-author"
+  },
   "title": "Regulated payment platform transition: test-report",
   "context": {
     "processes_personal_data": true,
@@ -113,6 +117,13 @@
       "evidence_refs": [
         "SYN-01"
       ]
+    },
+    "identity": {
+      "artifact_id": "synthetic/test-report/complex",
+      "owner": "Synthetic service owner",
+      "source_version": "1",
+      "intended_usage": "Development regression only; professional approval pending",
+      "knowledge_status": "synthetic-assumption"
     },
     "privacy_analysis": {
       "description": "Transaction identifiers are pseudonymised; access is role-limited, retention is tied to the approved purpose and deletion is verified in rehearsal.",

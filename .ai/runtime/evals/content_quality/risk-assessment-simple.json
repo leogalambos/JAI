@@ -1,6 +1,10 @@
 {
   "artifact_id": "synthetic/risk-assessment/simple",
+  "contract_id": "it-risk-manager:2",
   "document_kind": "risk-assessment",
+  "author": {
+    "principal_id": "synthetic-author"
+  },
   "title": "Inventory service recovery: risk-assessment",
   "context": {
     "processes_personal_data": false,
@@ -122,7 +126,14 @@
           "SYN-01"
         ]
       }
-    ]
+    ],
+    "identity": {
+      "artifact_id": "synthetic/risk-assessment/simple",
+      "owner": "Synthetic service owner",
+      "source_version": "1",
+      "intended_usage": "Development regression only; professional approval pending",
+      "knowledge_status": "synthetic-assumption"
+    }
   },
   "evidence": [
     {

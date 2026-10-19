@@ -1,6 +1,10 @@
 {
   "artifact_id": "synthetic/business-case/simple",
+  "contract_id": "it-financial-management-tbm-manager:2",
   "document_kind": "business-case",
+  "author": {
+    "principal_id": "synthetic-author"
+  },
   "title": "Inventory service recovery: business-case",
   "context": {
     "processes_personal_data": false,
@@ -99,6 +103,13 @@
       "evidence_refs": [
         "SYN-01"
       ]
+    },
+    "identity": {
+      "artifact_id": "synthetic/business-case/simple",
+      "owner": "Synthetic service owner",
+      "source_version": "1",
+      "intended_usage": "Development regression only; professional approval pending",
+      "knowledge_status": "synthetic-assumption"
     }
   },
   "evidence": [

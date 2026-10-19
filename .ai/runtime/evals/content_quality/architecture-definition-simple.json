@@ -1,6 +1,10 @@
 {
   "artifact_id": "synthetic/architecture-definition/simple",
+  "contract_id": "enterprise-architect:1",
   "document_kind": "architecture-definition",
+  "author": {
+    "principal_id": "synthetic-author"
+  },
   "title": "Inventory service recovery: architecture-definition",
   "context": {
     "processes_personal_data": false,
@@ -152,6 +156,13 @@
       "evidence_refs": [
         "SYN-01"
       ]
+    },
+    "identity": {
+      "artifact_id": "synthetic/architecture-definition/simple",
+      "owner": "Synthetic service owner",
+      "source_version": "1",
+      "intended_usage": "Development regression only; professional approval pending",
+      "knowledge_status": "synthetic-assumption"
     }
   },
   "evidence": [

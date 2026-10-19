@@ -2,7 +2,7 @@
   "profile": "content",
   "version": "1.0.0",
   "status": "proposed",
-  "phase": "26.10.6-semantic-content-foundation",
+  "phase": "26.10.7-authoring-content-qa",
   "compatibility": {
     "read": [
       "ArtifactContract-v3"
@@ -24,7 +24,7 @@
     "L3": "obligations, provenance, conflict and acceptance policy",
     "L4": "compiled content blueprint and presentation overlays",
     "L5": "canonical authoring and compiled specification hash",
-    "L6": "structural validation and synthetic reference evidence"
+    "L6": "Deterministic content QA and independent hash-bound semantic review; synthetic pilot evidence"
   },
   "invariants": [
     "Existing security, authorization, evidence and governance gates remain mandatory.",
@@ -32,6 +32,10 @@
     "DCS cannot grant authority or replace the existing JAI model."
   ],
   "schema_refs": {
-    "document_content_specification": "content/schema/document-content-spec.schema.json"
-  }
+    "document_content_specification": "content/schema/document-content-spec.schema.json",
+    "content_evaluation": "content/schema/content-evaluation.schema.json"
+  },
+  "validator": "tools/content_lint.py",
+  "metrics": "tools/content_metrics.py",
+  "pilot_evaluator": "tools/content_eval.py"
 }

@@ -1,5 +1,17 @@
 # Changelog
 
+## 26.10.7 — Authoring and Content QA (implementation candidate)
+
+- Adds typed content outlines, semantic validation and located findings.
+  Hash-bound content QA reports preserve existing JAI authority.
+- Integrates content QA with projection and publication integrity while
+  retaining independent visual QA and historical compatibility.
+- Evaluates actual synthetic mutations through the shared content engine
+  and checks Claude/Codex behavior against the same policy catalogue.
+- Keeps specifications proposed, calibration synthetic-only and new
+  content checks advisory. Professional acceptance, human-gold and
+  production enforcement remain pending existing JAI L0 approval.
+
 ## 26.10.6 — Semantic Content Foundation (implementation candidate)
 
 - Adds a shared Document Content Specification catalogue, explicit

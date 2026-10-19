@@ -157,6 +157,19 @@ def governance_check():
 def gate_a():
     return [
         command(
+            "DCS semantic and publication regression tests",
+            [PY, "-m", "pytest", "-q",
+             str(PACKAGE / "tests/test_content_lint.py"),
+             str(PACKAGE / "tests/test_content_metrics.py"),
+             str(PACKAGE / "tests/test_content_publication.py"),
+             str(PACKAGE / "tests/test_content_eval.py"),
+             str(PACKAGE / "tests/test_content_provider_parity.py")],
+        ),
+        command(
+            "DCS deterministic synthetic pilot (not human-gold)",
+            [PY, str(TOOLS / "content_eval.py"), "run", "--root", str(PACKAGE)],
+        ),
+        command(
             "Unified Lifecycle GA native enforcement",
             [PY, str(TOOLS / "native_enforcement_26104.py")],
         ),

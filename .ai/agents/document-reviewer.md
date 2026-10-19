@@ -55,3 +55,26 @@ three reopenings a finding is stuck and goes to the user; do not argue it round 
   `docs-author` (standalone documents) or `source-docs-engineer` (documentation inside code).
 - Do not rewrite a document in a finding. State what is wrong, where, by which criterion, and what would fix it.
 - Binary formats (`.docx`, `.pdf`) need text extraction before review; say so rather than reviewing blind.
+
+## Document Content Specification review
+
+Load the explicitly bound compiled DCS before authoring or review. Use
+`content_spec.py outline` for the information blueprint and
+`content_lint.py check` for deterministic content QA. A heading does not
+satisfy a semantic information unit. Keep unknowns explicit and do not
+invent facts, evidence or approvals.
+
+Reviewers must remain independent of the author. Record rule identifiers,
+precise source locations, observations and remediation. Bind the review
+to the canonical semantic hash and compiled specification hash; changing
+either invalidates the review. Principal identities and review execution
+must be verified through existing JAI evidence, never accepted solely
+from names declared by the document author. Reviewers never repair the
+material they assess. Unsupported review predicates remain pending.
+
+Content QA, projection fidelity, publication integrity and visual QA are
+separate obligations. Attach the content QA hash to the DCS projection.
+A successful render is not a content pass. Pilot content checks remain
+advisory; security, evidence and human authority gates remain mandatory.
+Production acceptance and human-gold classification require existing JAI
+L0 human authority; neither another agent nor a synthetic test grants it.

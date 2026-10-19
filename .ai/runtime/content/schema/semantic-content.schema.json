@@ -1,0 +1,74 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "jai/content/semantic-content/1.0.0",
+  "title": "Typed canonical DCS semantic material, preserving extension content",
+  "type": "object",
+  "properties": {
+    "artifact_id": {
+      "type": "string"
+    },
+    "contract_id": {
+      "type": "string"
+    },
+    "document_kind": {
+      "type": "string"
+    },
+    "compiled_spec_hash": {
+      "type": "string"
+    },
+    "source_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "context": {
+      "type": "object"
+    },
+    "semantic_units": {
+      "type": "object"
+    },
+    "knowledge_states": {
+      "type": "object",
+      "additionalProperties": {
+        "enum": [
+          "known",
+          "assumption",
+          "synthetic-assumption",
+          "unknown",
+          "pending"
+        ]
+      }
+    },
+    "producer": {
+      "type": "object"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "object"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "evidence": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    },
+    "sections": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      }
+    }
+  }
+}

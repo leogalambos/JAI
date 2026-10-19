@@ -1,33 +1,66 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "$id": "jai/content/content-evaluation/1.0.0",
-  "title": "Reserved content QA record for later enforcement; foundation is structural only",
+  "$id": "jai/content/content-evaluation/1.1.0",
+  "title": "Immutable draft content QA record, not human approval",
   "type": "object",
+  "additionalProperties": false,
   "required": [
+    "schema_version",
     "artifact_id",
-    "semantic_hash",
+    "contract_id",
+    "document_kind",
     "spec_id",
     "spec_version",
+    "semantic_hash",
+    "source_hash",
     "compiled_spec_hash",
     "context_hash",
+    "report_hash",
+    "section_coverage",
+    "semantic_unit_coverage",
+    "forbidden_violations",
+    "unknowns",
+    "unsupported_claims",
+    "duplication",
+    "critical_coverage_percent",
     "findings",
-    "gate_verdict",
+    "length",
     "reviewer",
-    "approval_refs"
+    "waivers",
+    "approval_refs",
+    "mode",
+    "gate_verdict",
+    "deterministic_status",
+    "calibration_status",
+    "production_ready",
+    "limitations"
   ],
   "properties": {
+    "schema_version": {
+      "type": "string"
+    },
     "artifact_id": {
       "type": "string"
     },
-    "semantic_hash": {
-      "type": "string",
-      "pattern": "^[0-9a-f]{64}$"
+    "contract_id": {
+      "type": "string"
+    },
+    "document_kind": {
+      "type": "string"
     },
     "spec_id": {
       "type": "string"
     },
     "spec_version": {
       "type": "string"
+    },
+    "semantic_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "source_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
     },
     "compiled_spec_hash": {
       "type": "string",
@@ -37,12 +70,171 @@
       "type": "string",
       "pattern": "^[0-9a-f]{64}$"
     },
+    "report_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "section_coverage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "section_id",
+          "substantive"
+        ],
+        "properties": {
+          "section_id": {
+            "type": "string"
+          },
+          "substantive": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "semantic_unit_coverage": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "unit_id",
+          "fields",
+          "status",
+          "critical"
+        ],
+        "properties": {
+          "unit_id": {
+            "type": "string"
+          },
+          "fields": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "status": {
+            "enum": [
+              "complete",
+              "unknown-applicability",
+              "not-applicable",
+              "missing-or-invalid",
+              "unknown"
+            ]
+          },
+          "critical": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "forbidden_violations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "unit_id",
+          "location"
+        ],
+        "properties": {
+          "unit_id": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "unknowns": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "unit_id",
+          "location",
+          "reason"
+        ],
+        "properties": {
+          "unit_id": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "reason": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "unsupported_claims": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "location",
+          "evidence_refs"
+        ],
+        "properties": {
+          "location": {
+            "type": "string"
+          },
+          "evidence_refs": {
+            "type": "array",
+            "items": {
+              "type": [
+                "string",
+                "object"
+              ]
+            }
+          }
+        }
+      }
+    },
+    "duplication": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "locations",
+          "text"
+        ],
+        "properties": {
+          "locations": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          },
+          "text": {
+            "type": "string"
+          },
+          "object_hash": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        }
+      }
+    },
+    "critical_coverage_percent": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 100
+    },
     "findings": {
       "type": "array",
       "items": {
         "type": "object",
+        "additionalProperties": false,
         "required": [
           "rule_id",
+          "location",
           "category",
           "severity",
           "evidence",
@@ -51,6 +243,15 @@
         ],
         "properties": {
           "rule_id": {
+            "type": "string"
+          },
+          "location": {
+            "type": "string"
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "remediation": {
             "type": "string"
           },
           "category": {
@@ -70,31 +271,134 @@
               "minor"
             ]
           },
-          "evidence": {
-            "type": "string"
-          },
-          "remediation": {
-            "type": "string"
-          },
           "blocking": {
             "type": "boolean"
           }
         }
       }
     },
+    "length": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "words",
+        "pages",
+        "slides",
+        "rows",
+        "diagram_nodes",
+        "semantic_units"
+      ],
+      "properties": {
+        "words": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "pages": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "slides": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "rows": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "diagram_nodes": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "semantic_units": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        }
+      }
+    },
+    "reviewer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "required_units",
+        "claimed_review"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "pending-independent-review",
+            "verified-independent-review"
+          ]
+        },
+        "required_units": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "claimed_review": {
+          "type": [
+            "object",
+            "null"
+          ]
+        }
+      }
+    },
+    "waivers": {
+      "type": "array",
+      "maxItems": 0
+    },
+    "approval_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "mode": {
+      "enum": [
+        "advisory",
+        "warning",
+        "blocking"
+      ]
+    },
     "gate_verdict": {
       "enum": [
         "DRAFT_INCOMPLETE",
-        "CONTENT_PASS",
         "CONTENT_FAIL",
-        "PUBLISHABLE_PENDING_APPROVAL",
-        "RELEASED"
+        "CONTENT_PASS"
       ]
     },
-    "reviewer": {
-      "type": "object"
+    "deterministic_status": {
+      "enum": [
+        "PASS",
+        "FAIL"
+      ]
     },
-    "approval_refs": {
+    "calibration_status": {
+      "type": "string"
+    },
+    "production_ready": {
+      "const": false
+    },
+    "limitations": {
       "type": "array",
       "items": {
         "type": "string"

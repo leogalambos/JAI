@@ -1,6 +1,10 @@
 {
   "artifact_id": "synthetic/runbook/simple",
+  "contract_id": "linux-systems-administrator:4",
   "document_kind": "runbook",
+  "author": {
+    "principal_id": "synthetic-author"
+  },
   "title": "Inventory service recovery: runbook",
   "context": {
     "processes_personal_data": false,
@@ -100,6 +104,13 @@
       "evidence_refs": [
         "SYN-01"
       ]
+    },
+    "identity": {
+      "artifact_id": "synthetic/runbook/simple",
+      "owner": "Synthetic service owner",
+      "source_version": "1",
+      "intended_usage": "Development regression only; professional approval pending",
+      "knowledge_status": "synthetic-assumption"
     }
   },
   "evidence": [

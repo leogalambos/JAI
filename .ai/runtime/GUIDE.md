@@ -1001,3 +1001,23 @@ directory, run `bash uninstall.sh` (macOS/Linux) or `uninstall.cmd`
 (Windows). These wrappers invoke the managed uninstaller under
 `.ai/setup/`; personal files, unrelated settings and demo projects
 remain outside its removal scope.
+
+## Document content QA pilot
+
+The shared content tools preserve existing authority and evidence gates:
+
+```sh
+python3 ~/.ai/it-role-house/tools/content_spec.py outline \
+  --artifact-id enterprise-architect:4 --output outline.json
+python3 ~/.ai/it-role-house/tools/content_spec.py resolve \
+  --artifact-id enterprise-architect:4 > compiled.json
+python3 ~/.ai/it-role-house/tools/content_lint.py check semantic.json \
+  --spec compiled.json --output content-qa.json --provider codex
+python3 ~/.ai/it-role-house/tools/content_metrics.py analyze semantic.json
+python3 ~/.ai/it-role-house/tools/content_eval.py run
+```
+
+Use `--provider claude` to exercise the same engine through the Claude
+adapter. Reports are hash-bound and immutable; a different source or
+specification needs a new report path. The corpus is synthetic-only.
+A draft report is not professional acceptance or human authority.

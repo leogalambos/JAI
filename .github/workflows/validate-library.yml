@@ -37,11 +37,13 @@ jobs:
       - uses: actions/checkout@v4
       - name: Prepare canonical qualification environment
         uses: ./.github/actions/setup-qualification
-      - name: Validate proposed DCS structural foundation
+      - name: Validate proposed DCS content QA pilot
         run: |
           python3 tools/generate_content_catalog.py --check
           python3 tools/generate_content_corpus.py --check
           python3 .ai/runtime/tools/content_spec.py lint-registry --root .
+          python3 .ai/runtime/tools/content_eval.py run --root .
+          python3 -m pytest -q tests/test_content_lint.py tests/test_content_metrics.py tests/test_content_publication.py tests/test_content_eval.py tests/test_content_provider_parity.py
 
       - name: Regression tests for source homepage links and release tags
         run: python3 -m unittest discover -s tests -v
@@ -147,11 +149,13 @@ jobs:
         uses: actions/checkout@v4
       - name: Prepare canonical qualification environment
         uses: ./.github/actions/setup-qualification
-      - name: Validate proposed DCS structural foundation
+      - name: Validate proposed DCS content QA pilot
         run: |
           python3 tools/generate_content_catalog.py --check
           python3 tools/generate_content_corpus.py --check
           python3 .ai/runtime/tools/content_spec.py lint-registry --root .
+          python3 .ai/runtime/tools/content_eval.py run --root .
+          python3 -m pytest -q tests/test_content_lint.py tests/test_content_metrics.py tests/test_content_publication.py tests/test_content_eval.py tests/test_content_provider_parity.py
       - name: Validate the same documentation inputs as the release workflow
         run: |
           python3 .ai/runtime/tools/docs_contract.py --root .

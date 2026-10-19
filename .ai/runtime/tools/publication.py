@@ -15,13 +15,13 @@ Commands:
   publication.py self-test
 """
 from __future__ import annotations
-import argparse, hashlib, html, json, math, os, re, shutil, sys, tempfile, zipfile
+import argparse, hashlib, html, json, math, os, re, shutil, sys, tempfile, textwrap, zipfile
 from pathlib import Path
 from xml.etree.ElementTree import Element, SubElement, tostring
 
 ROOT=Path(__file__).resolve().parents[1]
 PACKAGE=ROOT.parents[1]
-RELEASE=(PACKAGE/'VERSION').read_text().strip()
+RELEASE=((PACKAGE/'VERSION') if (PACKAGE/'VERSION').is_file() else ROOT/'VERSION').read_text().strip()
 DEFAULT_THEME=ROOT/'publication/themes/enterprise-default.json'
 
 
@@ -32,6 +32,14 @@ def clean_xml(s): return ''.join(c for c in str(s) if c=='\t' or c=='\n' or c=='
 def esc(s): return html.escape(str(s),quote=True)
 
 def validate_model(m):
+    """Validate structure and substantive section presence; headings alone are invalid.
+
+    Args:
+        m: Publication model dictionary.
+    Returns:
+        Located structural and existing claim/evidence errors.
+    """
+    from projection import section_has_content
     probs=[]
     for k in ('title','artifact_id','audience','owner','classification','sections'):
         if not m.get(k): probs.append(f'missing/empty {k}')
@@ -48,6 +56,7 @@ def validate_model(m):
         if c.get('basis')=='stated' and not c.get('evidence'): probs.append(f'claim {c.get("id")} stated without evidence')
     for i,s in enumerate(m.get('sections',[])):
         if not s.get('heading'): probs.append(f'sections[{i}] missing heading')
+        if not section_has_content(s): probs.append(f'sections[{i}] has no substantive content')
         if 'diagram' in s and s['diagram']:
             probs += [f'sections[{i}].diagram: {x}' for x in validate_diagram(s['diagram'])]
     return probs
@@ -144,14 +153,31 @@ def render_docx(m,out,theme):
         z.writestr('[Content_Types].xml',types); z.writestr('_rels/.rels',rels); z.writestr('word/_rels/document.xml.rels',docrels); z.writestr('word/styles.xml',styles); z.writestr('word/document.xml',b'<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+tostring(document,encoding='utf-8'))
 
 def slide_xml(title,lines):
+    """Build slide XML from an already paginated line sequence.
+
+    Args:
+        title: Slide title.
+        lines: Text lines; caller paginates for visual density.
+    Returns:
+        Slide XML string.
+    """
     def tx(text,y,size=1800,bold=False):
-        return f'''<p:sp><p:nvSpPr><p:cNvPr id="{y}" name="Text {y}"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm><a:off x="685800" y="{y*40000}"/><a:ext cx="10800000" cy="1100000"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom><a:noFill/></p:spPr><p:txBody><a:bodyPr wrap="square"/><a:lstStyle/><a:p><a:r><a:rPr lang="en-US" sz="{size}" b="{'1' if bold else '0'}"/><a:t>{esc(text)}</a:t></a:r><a:endParaRPr lang="en-US"/></a:p></p:txBody></p:sp>'''
+        return f'''<p:sp><p:nvSpPr><p:cNvPr id="{y}" name="Text {y}"/><p:cNvSpPr/><p:nvPr/></p:nvSpPr><p:spPr><a:xfrm><a:off x="685800" y="{y*40000}"/><a:ext cx="10800000" cy="520000"/></a:xfrm><a:prstGeom prst="rect"><a:avLst/></a:prstGeom><a:noFill/></p:spPr><p:txBody><a:bodyPr wrap="square"/><a:lstStyle/><a:p><a:r><a:rPr lang="en-US" sz="{size}" b="{'1' if bold else '0'}"/><a:t>{esc(text)}</a:t></a:r><a:endParaRPr lang="en-US"/></a:p></p:txBody></p:sp>'''
     shapes=tx(title,20,2600,True)
-    y=55
-    for line in lines[:8]: shapes+=tx(line,y,1600,False); y+=28
+    y=48
+    for line in lines: shapes+=tx(line,y,1600,False); y+=13
     return f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><p:sld xmlns:a="http://schemas.openxmlformats.org/drawingml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships" xmlns:p="http://schemas.openxmlformats.org/presentationml/2006/main"><p:cSld><p:spTree><p:nvGrpSpPr><p:cNvPr id="1" name=""/><p:cNvGrpSpPr/><p:nvPr/></p:nvGrpSpPr><p:grpSpPr><a:xfrm><a:off x="0" y="0"/><a:ext cx="0" cy="0"/><a:chOff x="0" y="0"/><a:chExt cx="0" cy="0"/></a:xfrm></p:grpSpPr>{shapes}</p:spTree></p:cSld><p:clrMapOvr><a:masterClrMapping/></p:clrMapOvr></p:sld>'''
 
 def render_pptx(m,out,theme):
+    """Write a draft presentation retaining all section lines across continued slides.
+
+    Args:
+        m: Verified draft model.
+        out: Destination PPTX path.
+        theme: Presentation theme.
+    Raises:
+        OSError: If the output file cannot be written.
+    """
     slides=[]
     cover=[m.get('subtitle',''),f"Owner: {m['owner']}",f"Classification: {m['classification']}",f"Semantic hash: {semantic_hash(m)[:16]}…"]
     slides.append((m['title'],[x for x in cover if x]))
@@ -160,8 +186,10 @@ def render_pptx(m,out,theme):
         if s.get('body'): lines += [x.strip() for x in re.split(r'(?<=[.!?])\s+',s['body']) if x.strip()]
         lines += ['• '+x for x in s.get('bullets',[])]
         t=s.get('table') or {}
-        if t.get('headers'): lines.append(' | '.join(map(str,t['headers']))); lines += [' | '.join(map(str,r)) for r in t.get('rows',[])[:4]]
-        slides.append((s['heading'],lines or ['']))
+        if t.get('headers'): lines.append(' | '.join(map(str,t['headers']))); lines += [' | '.join(map(str,r)) for r in t.get('rows',[])]
+        lines=[wrapped for line in lines for paragraph in str(line).splitlines() for wrapped in (textwrap.wrap(paragraph,width=80,replace_whitespace=False,drop_whitespace=False) or [''])]
+        for start in range(0,max(1,len(lines)),8):
+            slides.append((s['heading']+(' (continued)' if start else ''),lines[start:start+8] or ['']))
     n=len(slides)
     types=['''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/ppt/presentation.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.presentation.main+xml"/>''']
     for i in range(1,n+1): types.append(f'<Override PartName="/ppt/slides/slide{i}.xml" ContentType="application/vnd.openxmlformats-officedocument.presentationml.slide+xml"/>')
@@ -180,12 +208,22 @@ def colname(n):
     return s
 
 def render_xlsx(m,out,theme):
+    """Write a draft workbook retaining prose sections as content worksheets.
+
+    Args:
+        m: Verified draft model.
+        out: Destination XLSX path.
+        theme: Workbook theme.
+    Raises:
+        OSError: If the output file cannot be written.
+    """
     sheets=[]
     # summary sheet plus one sheet per table section
     summary=[['Field','Value'],['Title',m['title']],['Artifact ID',m['artifact_id']],['Owner',m['owner']],['Classification',m['classification']],['Semantic SHA-256',semantic_hash(m)]]
     sheets.append(('Summary',summary))
     for i,s in enumerate(m['sections'],1):
         t=s.get('table') or {}
+        if s.get('body'): sheets.append((f'Content {i}',[['Section','Content'],[s['heading'],s['body']]]))
         if t.get('headers'): sheets.append(((s['heading'][:28] or f'Section{i}'),[t['headers']]+t.get('rows',[])))
     types=['''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>''']
     for i in range(1,len(sheets)+1): types.append(f'<Override PartName="/xl/worksheets/sheet{i}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>')
@@ -224,25 +262,99 @@ def render_svg_diagram(d,out,theme):
     parts.append('</svg>'); Path(out).write_text(''.join(parts),encoding='utf-8')
 
 def render_svg(m,out,theme):
+    """Write a diagram SVG with complete semantic-unit description metadata.
+
+    Args:
+        m: Verified draft model.
+        out: Destination SVG path.
+        theme: Diagram theme.
+    Raises:
+        OSError: If the output file cannot be written.
+    """
     ds=[s.get('diagram') for s in m['sections'] if s.get('diagram')]
     if not ds:
         ds=[{'title':m['title'],'kind':'relationship','nodes':[{'id':'source','label':'Semantic source'},{'id':'publication','label':'Enterprise publication'}],'edges':[{'from':'source','to':'publication','label':'render'}]}]
     render_svg_diagram(ds[0],out,theme)
+    # Mandatory prose is visibly rendered rather than hidden in SVG metadata.
+    if m.get('semantic_units'):
+        text=Path(out).read_text(encoding='utf-8')
+        original_height=int(re.search(r'height="(\d+)"',text).group(1))
+        lines=[line for section in m.get('sections',[]) for paragraph in ([section.get('heading','')]+str(section.get('body','')).splitlines()) for line in (textwrap.wrap(paragraph,width=100,replace_whitespace=False,drop_whitespace=False) or [''])]
+        height=original_height+50+22*len(lines)
+        text=re.sub(r'height="\d+"',f'height="{height}"',text,count=1)
+        text=re.sub(r'viewBox="0 0 (\d+) \d+"',lambda match:f'viewBox="0 0 {match.group(1)} {height}"',text,count=1)
+        panel=f'<rect x="0" y="{original_height}" width="100%" height="{height-original_height}" fill="white"/>'
+        panel+=''.join(f'<text x="30" y="{original_height+35+22*i}" font-size="14">{esc(line)}</text>' for i,line in enumerate(lines))
+        Path(out).write_text(text.replace('</svg>',panel+'</svg>'),encoding='utf-8')
 
 
 def render_pdf(m,out,theme):
+    """Convert a DOCX draft using an isolated, writable LibreOffice profile.
+
+    Args:
+        m: Verified draft publication model.
+        out: PDF destination path.
+        theme: Document theme.
+    Raises:
+        RuntimeError: If LibreOffice is unavailable or conversion fails.
+        subprocess.TimeoutExpired: If conversion exceeds ninety seconds.
+        OSError: If temporary files or output cannot be written.
+    """
     with tempfile.TemporaryDirectory() as td:
         td=Path(td); docx=td/'source.docx'; render_docx(m,docx,theme)
         exe=shutil.which('libreoffice') or shutil.which('soffice')
         if not exe: raise RuntimeError('PDF renderer requires LibreOffice/soffice')
         import subprocess
-        r=subprocess.run([exe,'--headless','--convert-to','pdf','--outdir',str(td),str(docx)],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,timeout=90)
+        r=subprocess.run([exe,'-env:UserInstallation='+(td/'libreoffice-profile').as_uri(),'--headless','--convert-to','pdf','--outdir',str(td),str(docx)],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,timeout=90)
         pdf=td/'source.pdf'
         if r.returncode or not pdf.exists(): raise RuntimeError('PDF render failed: '+r.stderr[-500:])
         shutil.copyfile(pdf,out)
 
-def render(m,fmt,out,theme):
+def _render_format(m,fmt,out,theme):
     {'html':render_html,'docx':render_docx,'pdf':render_pdf,'pptx':render_pptx,'xlsx':render_xlsx,'svg':render_svg}[fmt](m,out,theme)
+
+
+def render(m,fmt,out,theme,manifest=None,directory=None,trusted_executions=None,authority=None):
+    """Render only after independently checking the complete local QA bundle.
+
+    Args:
+        m: Publication model matching manifest projection hash.
+        fmt: Supported output format name.
+        out: Destination path.
+        theme: Theme dictionary.
+        manifest: Required DCS-bound projection manifest.
+        directory: Required immutable sidecar directory.
+        trusted_executions: Optional host runtime attestation verifier.
+        authority: Optional existing JAI L0 authority verifier.
+    Raises:
+        ValueError: If verification inputs are absent or invalid.
+        OSError: If output cannot be written.
+    """
+    if manifest is None or directory is None: raise ValueError('render requires verified DCS manifest and sidecars')
+    return render_verified(m,manifest,directory,fmt,out,theme,trusted_executions=trusted_executions,authority=authority)
+
+def render_verified(m,manifest,directory,fmt,out,theme,trusted_executions=None,authority=None):
+    """Verify current immutable QA before rendering a clearly classified draft.
+
+    Args:
+        m: Publication model matching manifest hash.
+        manifest: DCS-bound v4 projection manifest.
+        directory: Directory containing the fixed QA sidecars.
+        fmt: Output format.
+        out: Destination path.
+        theme: Theme dictionary.
+        trusted_executions: Optional host runtime attestation verifier.
+        authority: Optional existing JAI L0 authority verifier.
+    Raises:
+        ValueError: If current content QA or projection integrity fails.
+        OSError: If rendering fails.
+    """
+    import publication_integrity
+    problems=publication_integrity.verify_content(m,manifest,directory,trusted_executions=trusted_executions,authority=authority)
+    if problems: raise ValueError('; '.join(problems))
+    rendered=dict(m,publication_status='DRAFT_INCOMPLETE')
+    rendered['subtitle']='DRAFT — content specification and professional approval pending. '+str(m.get('subtitle') or '')
+    _render_format(rendered,fmt,out,theme)
 
 def qa_file(path,theme):
     p=Path(path); ext=p.suffix.lower(); probs=[]; warnings=[]
@@ -284,7 +396,7 @@ def self_test():
     ok('model-valid',not validate_model(m) and not validate_native_jai(m)); h=semantic_hash(m); ok('hash-64',len(h)==64)
     with tempfile.TemporaryDirectory() as td:
         for fmt in ('html','docx','pdf','pptx','xlsx','svg'):
-            p=Path(td)/('out.'+fmt); render(m,fmt,p,load_json(DEFAULT_THEME)); ok(fmt+'-created',p.is_file() and p.stat().st_size>100); pr,w=qa_file(p,load_json(DEFAULT_THEME)); ok(fmt+'-qa',not pr)
+            p=Path(td)/('out.'+fmt); _render_format(dict(m,publication_status='DRAFT_INCOMPLETE'),fmt,p,load_json(DEFAULT_THEME)); ok(fmt+'-created',p.is_file() and p.stat().st_size>100); pr,w=qa_file(p,load_json(DEFAULT_THEME)); ok(fmt+'-qa',not pr)
         # deterministic HTML
         p1=Path(td)/'a.html'; p2=Path(td)/'b.html'; render_html(m,p1,{}); render_html(m,p2,{}); ok('html-deterministic',p1.read_bytes()==p2.read_bytes())
         # semantic hash embedded
@@ -300,7 +412,7 @@ def main():
     sp.add_parser('self-test')
     a=ap.parse_args()
     if a.cmd=='self-test': raise SystemExit(self_test())
-    theme=load_json(a.theme)
+    theme=load_json(getattr(a,'theme',DEFAULT_THEME))
     if a.cmd=='validate':
         probs=validate_model(load_json(a.model)); print('OK' if not probs else 'FAILED'); [print(' -',p) for p in probs]; raise SystemExit(1 if probs else 0)
     if a.cmd=='qa':
@@ -308,19 +420,22 @@ def main():
     m=load_json(a.model); probs=validate_model(m)+validate_native_jai(m)
     if probs: [print(' -',p,file=sys.stderr) for p in probs]; raise SystemExit(2)
     import projection, publication_integrity
-    man=load_json(a.manifest); probs=projection.validate_manifest(man)+publication_integrity.check(m,man)
+    man=load_json(a.manifest); probs=projection.validate_manifest(man)+publication_integrity.check(m,man)+publication_integrity.verify_content(m,man,Path(a.manifest).parent)
     if probs: [print(' -',p,file=sys.stderr) for p in probs]; raise SystemExit(2)
     if m.get('jai') != man.get('jai'): print(' - publication model JAI lineage differs from manifest',file=sys.stderr); raise SystemExit(2)
     out=Path(a.out); out.mkdir(parents=True,exist_ok=True)
-    render_evidence={'release':RELEASE,'artifact_id':m['artifact_id'],'profile_id':m['profile_id'],'projection_hash':man['projection_hash'],'jai':man['jai'],'renders':{}}
+    if (out/'render-evidence.json').exists() or (out/'render-evidence.json').is_symlink(): raise FileExistsError('immutable render evidence already exists; choose a new output directory')
+    render_evidence={'release':RELEASE,'artifact_id':m['artifact_id'],'profile_id':m['profile_id'],'projection_hash':man['projection_hash'],'jai':man['jai'],'content_qa_ref':man['content_qa_ref'],'content_qa_hash':man['content_qa_hash'],'content_status':man['content_status'],'publication_status':'DRAFT_INCOMPLETE','render_status':'RENDER_SUCCESS','renders':{}}
     formats=['html','docx','pdf','pptx','xlsx','svg'] if a.format=='all' else [a.format]
     stem=re.sub(r'[^A-Za-z0-9._-]+','-',m['artifact_id']).strip('-').lower() or 'publication'
     for fmt in formats:
-        p=out/f'{stem}.{fmt}'; render(m,fmt,p,theme); pr,w=qa_file(p,theme)
+        p=out/f'{stem}.{fmt}'
+        if p.exists() or p.is_symlink(): raise FileExistsError('render output already exists: '+str(p))
+        render_verified(m,man,Path(a.manifest).parent,fmt,p,theme); pr,w=qa_file(p,theme)
         fh=hashlib.sha256(p.read_bytes()).hexdigest()
         render_evidence['renders'][fmt]={'sha256':fh,'qa':'PASS' if not pr else 'FAIL','warnings':w,'critical_defects':pr}
         print(f'{fmt}: {p} sha256={fh} semantic={semantic_hash(m)} qa={"PASS" if not pr else "FAIL"}')
         [print(' WARN',x) for x in w]
         if pr: [print(' FAIL',x) for x in pr]; raise SystemExit(3)
-    (out/'render-evidence.json').write_text(json.dumps(render_evidence,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+    with (out/'render-evidence.json').open('x',encoding='utf-8') as stream: stream.write(json.dumps(render_evidence,indent=2,ensure_ascii=False)+'\n')
 if __name__=='__main__': main()

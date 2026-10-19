@@ -18,22 +18,32 @@ except Exception:
 
 ROOT=Path(__file__).resolve().parents[1]
 PACKAGE=ROOT.parents[1]
-RELEASE=(PACKAGE/'VERSION').read_text().strip()
+RELEASE=((PACKAGE/'VERSION') if (PACKAGE/'VERSION').is_file() else ROOT/'VERSION').read_text().strip()
 PROFILE_DIR=ROOT/'publication/archetypes'
-SCHEMA=ROOT/'schema'/RELEASE/'projection-manifest.schema.json'
+SCHEMA=ROOT/'schema/26.10.4/projection-manifest.schema.json'
+CONTENT_SCHEMA=ROOT/'content/schema/projection-manifest-v4.schema.json'
 
 def canonical(x): return json.dumps(x,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()
 def sha(x): return hashlib.sha256(canonical(x)).hexdigest()
 def load(p): return json.loads(Path(p).read_text(encoding='utf-8'))
 
 def field_present(model, field):
-    if field=='traceability':
-        return bool(model.get('traceability') or any(s.get('table',{}).get('headers') and any('trace' in str(h).lower() for h in s['table']['headers']) for s in model.get('sections',[])))
-    if field=='approvals': return bool(model.get('approvals') or model.get('approver'))
-    if field=='decisions': return bool(model.get('decisions') or any('decision' in s.get('heading','').lower() for s in model.get('sections',[])))
-    if field=='risks': return bool(model.get('risks') or any('risk' in s.get('heading','').lower() for s in model.get('sections',[])))
-    if field=='evidence': return bool(model.get('evidence') or any(c.get('evidence') for c in model.get('claims',[])))
-    return bool(model.get(field))
+    """Return substantive explicit field presence; section headings never count.
+
+    Args:
+        model: Canonical semantic model with explicit values.
+        field: Exact field name; evidence also accepts claim evidence references.
+    Returns:
+        Whether an explicit substantive value exists.
+    """
+    def substantive(value):
+        if isinstance(value, str): return bool(value.strip())
+        if isinstance(value, dict): return any(substantive(v) for k,v in value.items() if k not in ('heading','id','knowledge_status'))
+        if isinstance(value, list): return any(substantive(v) for v in value)
+        return value is not None and value is not False
+    if field=='evidence': return substantive(model.get('evidence')) or any(substantive(c.get('evidence')) for c in model.get('claims',[]))
+    if field=='approvals': return substantive(model.get('approvals') or model.get('approver'))
+    return substantive(model.get(field))
 
 def evidence_refs(model):
     refs=[]
@@ -59,12 +69,37 @@ def jai_lineage(model, profile, semantic_hash):
       'evidence_refs':sorted(set(supplied.get('evidence_refs',[])+evidence_refs(model))),
     }
 
+def section_has_content(section):
+    """Return whether a section carries text, data rows or diagram entities.
+
+    Args:
+        section: Section mapping; headings and table headers alone do not count.
+    Returns:
+        True when at least one substantive rendered information value exists.
+    """
+    if str(section.get('body') or '').strip(): return True
+    if any(str(x).strip() for x in section.get('bullets',[])): return True
+    table=section.get('table') or {}
+    if any(any(str(cell).strip() for cell in row) for row in table.get('rows',[])): return True
+    diagram=section.get('diagram') or {}
+    return any(str(node.get('label') or '').strip() for node in diagram.get('nodes',[]))
+
+
 def select_sections(model, profile):
+    """Return legacy projection and manifest from explicit model/profile dictionaries.
+
+    This read-compatible helper does not certify DCS quality or persist outputs.
+    Args:
+        model: Canonical semantic source mapping.
+        profile: Registered publication profile mapping.
+    Returns:
+        Publication-model and legacy manifest pair.
+    """
     by={s.get('heading','').strip().lower():s for s in model.get('sections',[])}
     selected=[]; mappings=[]; omitted=[]; just={}
     for req in profile['mandatory_sections']:
         k=req.strip().lower()
-        if k in by:
+        if k in by and section_has_content(by[k]):
             selected.append(by[k]); mappings.append({'source':f'sections:{by[k]["heading"]}','destination':f'sections:{req}'})
         else: omitted.append(f'section:{req}')
     mandatory=set(profile.get('mandatory_semantic_fields',[]))
@@ -97,6 +132,13 @@ def select_sections(model, profile):
     return pm,manifest
 
 def validate_manifest(manifest):
+    """Validate legacy/v4 manifest schema and mandatory publication coverage.
+
+    Args:
+        manifest: Projection manifest dictionary.
+    Returns:
+        Policy, lineage, hash syntax and schema errors.
+    """
     probs=[]
     if manifest.get('mandatory_coverage') != 100.0: probs.append(f"mandatory coverage {manifest.get('mandatory_coverage')}% < 100%")
     unjust=[x for x in manifest.get('omitted_fields',[]) if x not in manifest.get('omission_justifications',{})]
@@ -107,22 +149,84 @@ def validate_manifest(manifest):
     for key in ('intent_ref','semantic_snapshot_ref','policy_ref','design_ref','realisation_ref'):
         if not str(lineage.get(key,'')).strip(): probs.append(f'JAI lineage missing {key}')
     if not isinstance(lineage.get('evidence_refs'),list): probs.append('JAI lineage evidence_refs must be a list')
-    if jsonschema and SCHEMA.is_file():
-        for err in jsonschema.Draft202012Validator(load(SCHEMA)).iter_errors(manifest): probs.append('projection schema: '+err.message)
+    schema=CONTENT_SCHEMA if manifest.get('schema_version')=='4.0.0' else SCHEMA
+    if not schema.is_file(): probs.append('projection schema unavailable')
+    if jsonschema and schema.is_file():
+        for err in jsonschema.Draft202012Validator(load(schema)).iter_errors(manifest): probs.append('projection schema: '+err.message)
     return probs
 
-def build(model_path,profile_path,outdir):
+def build(model_path,profile_path,outdir,reviewer=None,trusted_executions=None,authority=None):
+    """Persist a new DCS-bound projection with immutable source and QA sidecars.
+
+    Args:
+        model_path: Canonical JSON with explicit registered contract_id.
+        profile_path: Publication profile JSON path.
+        outdir: Output directory; immutable sidecars cannot be overwritten.
+        reviewer: Independent review claim authenticated by the host.
+        trusted_executions: Optional existing runtime attestation verifier.
+        authority: Optional existing JAI L0 authority verifier.
+    Returns:
+        Problems, publication model and manifest. Failed builds write nothing.
+    Raises:
+        OSError: Filesystem failure or immutable sidecar collision.
+    """
+    import content_spec, content_lint
     model=load(model_path); profile=load(profile_path)
-    pub,man=select_sections(model,profile); probs=validate_manifest(man)
-    out=Path(outdir); out.mkdir(parents=True,exist_ok=True)
+    pub,man=select_sections(model,profile)
+    try:
+        if not model.get('contract_id'): raise ValueError('explicit registered contract_id required for new projection')
+        spec=content_spec.ContentSpec(ROOT).resolve(model['contract_id'], model.get('context',{}))
+        report=content_lint.evaluate(model,spec,reviewer=reviewer,trusted_executions=trusted_executions,authority=authority)
+    except (ValueError, content_spec.SpecError) as exc:
+        return [str(exc)],pub,man
+    # DCS units are carried unchanged rather than reconstructed from presentation headings.
+    units=model.get('semantic_units',{})
+    pub['semantic_units']=units
+    for key in ('contract_id','document_kind','compiled_spec_hash','context'):
+        pub[key]=model.get(key)
+    unit_mappings=[]
+    for unit in spec['blueprint']['semantic_units']:
+        if unit.get('category') not in ('required_information','conditional_information') or unit.get('applicability') is False: continue
+        for field in unit.get('semantic_fields',[]):
+            if field in units:
+                value=units[field]; destination='semantic_units.'+field
+            else:
+                value=model
+                for part in field.split('.'):
+                    value=value.get(part) if isinstance(value,dict) else None
+                if value is None: continue
+                pub.setdefault('semantic_fields',{})[field]=value; destination='semantic_fields.'+field
+            section_index=len(pub['sections'])
+            pub['sections'].append({'heading':'Semantic information: '+field,'body':json.dumps(value,sort_keys=True,ensure_ascii=False,indent=2)})
+            unit_mappings.append({'source':field,'destination':destination,'rendered_section':section_index,'value_hash':sha(value),'required':True})
+    man.update(schema_version='4.0.0',content_qa_ref='content-qa.json',content_qa_hash=sha(report),
+               source_ref='semantic-source.json',compiled_spec_ref='compiled-content-spec.json',
+               compiled_spec_hash=spec['compiled_spec_hash'],context_hash=spec['context_hash'],
+               semantic_unit_mappings=unit_mappings,content_status=report['gate_verdict'])
+    man['projection_hash']=sha(pub)
+    probs=validate_manifest(man)
+    if man.get('omitted_fields'): probs.append('new projections cannot waive mandatory publication fields through omission text')
+    if any(f.get('blocking') for f in report.get('findings',[])): probs.append('blocking content QA findings')
+    out=Path(outdir)
     if not probs:
-        (out/'publication-model.json').write_text(json.dumps(pub,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
-        (out/'projection-manifest.json').write_text(json.dumps(man,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+        out.mkdir(parents=True,exist_ok=True)
+        payloads={'semantic-source.json':model,'compiled-content-spec.json':spec,'content-qa.json':report,
+                  'publication-model.json':pub,'projection-manifest.json':man}
+        for name,value in payloads.items():
+            path=out/name
+            if path.is_symlink(): raise FileExistsError('symlink projection output forbidden: '+str(path))
+            if path.exists() and load(path)!=value: raise FileExistsError('immutable projection output differs: '+str(path))
+        for name,value in payloads.items():
+            path=out/name
+            try:
+                with path.open('x',encoding='utf-8') as stream: stream.write(json.dumps(value,indent=2,ensure_ascii=False)+'\n')
+            except FileExistsError:
+                if path.is_symlink() or load(path)!=value: raise FileExistsError('immutable projection output differs: '+str(path))
     return probs,pub,man
 
 def self_test():
     profile={'id':'decision-paper','audience':['ARB'],'mandatory_sections':['Decision required','Context'],'mandatory_semantic_fields':['claims','decisions','evidence']}
-    good={'title':'X','artifact_id':'A','owner':'O','classification':'Internal','claims':[{'id':'C','statement':'x','basis':'stated','evidence':['E']}],'decisions':[{'id':'D'}],'sections':[{'heading':'Decision required','body':'Approve'},{'heading':'Context','body':'Context'}]}
+    good={'title':'X','artifact_id':'A','owner':'O','classification':'Internal','claims':[{'id':'C','statement':'x','basis':'stated','evidence':['E']}],'decisions':[{'id':'D','question':'Approve recovery design?'}],'sections':[{'heading':'Decision required','body':'Approve'},{'heading':'Context','body':'Context'}]}
     pub,man=select_sections(good,profile)
     tests=[('good-coverage',man['mandatory_coverage']==100),('hashes',len(man['source_semantic_hash'])==64 and len(man['projection_hash'])==64),('jai-lineage',set(man['jai'])=={'intent_ref','semantic_snapshot_ref','policy_ref','design_ref','realisation_ref','evidence_refs'} and 'evidence:E' in man['jai']['evidence_refs']),('schema-and-policy-valid',not validate_manifest(man))]
     bad=dict(good); bad['sections']=[{'heading':'Context','body':'x'}]; bad['decisions']=[]

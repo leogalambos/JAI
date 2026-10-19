@@ -205,7 +205,7 @@ class ContentSpec:
             return True
         if condition['op'] == 'present':
             return field in context
-        if field not in context:
+        if field not in context or context[field] is None:
             return None
         value, expected = context[field], condition.get('value')
         if condition['op'] == 'eq':
@@ -226,6 +226,8 @@ class ContentSpec:
             if definition is None:
                 raise SpecError(f'UNKNOWN_CONTEXT_FIELD: {field}')
             kind = definition.get('type') if isinstance(definition, dict) else definition
+            if value is None:
+                continue
             if kind not in types or not isinstance(value, types[kind]) or (kind in ('number', 'integer') and isinstance(value, bool)):
                 raise SpecError(f'CONTEXT_TYPE_MISMATCH: {field}')
             if isinstance(definition, dict) and 'enum' in definition and not any(type(value) is type(candidate) and value == candidate for candidate in definition['enum']):
@@ -250,6 +252,8 @@ class ContentSpec:
             overlays: Registered overlay IDs applied after the selected profile.
         Returns:
             Compiled specification, hashes, units, budgets and approval limitations.
+            Registered status/calibration metadata is preserved as a declaration;
+            compilation never verifies approval or activates enforcement.
         Raises:
             SpecError: For unknown references, cycles, conflicts or invalid context.
         """
@@ -335,7 +339,7 @@ class ContentSpec:
                 'resolved_content_spec_version': selected['version'], 'context_hash': canonical_hash(context),
                 'context': context, 'inheritance': [{'id': s['id'], 'version': s['version'], 'hash': canonical_hash(s)} for s in ordered],
                 'blueprint': {'semantic_units': [units[k] for k in sorted(units)], 'budgets': budgets},
-                'status': 'proposed', 'mode': 'advisory', 'calibration_status': 'synthetic-only',
+                'status': selected['status'], 'mode': 'advisory', 'calibration_status': selected.get('calibration_status', 'synthetic-only'),
                 'approval_status': 'pending-human-L0', 'production_ready': False,
                 'jai_core': 'L1-L6', 'authority': 'existing JAI L0; no DCS authority acts',
                 'limitations': ['Structural blueprint only; no semantic content certification.', 'Human professional approval and human-gold calibration remain required.']}
@@ -393,6 +397,41 @@ class ContentSpec:
                       decision_supported=copy.deepcopy(binding.get('decision_supported', {'status': 'pending-correction'})))
         result['resolution_hash'] = canonical_hash({'artifact_id': artifact_id, 'binding': binding, 'compiled_spec_hash': result['compiled_spec_hash'], 'context_hash': result['context_hash']})
         return result
+
+    def outline(self, artifact_id, context=None):
+        """Create an unfilled, hash-bound authoring outline without inventing facts.
+
+        Args:
+            artifact_id: Exact stable role contract identifier, not an instance ID.
+            context: Explicit applicability values; unknown values stay pending.
+        Returns:
+            Semantic draft and separate blueprint with all required fields null.
+        Raises:
+            SpecError: If selection or applicability context is invalid.
+        """
+        compiled = self.resolve(artifact_id, context)
+        fields = {}
+        sections = []
+        for unit in compiled['blueprint']['semantic_units']:
+            if unit['category'] in ('required_information', 'conditional_information'):
+                for field in unit['semantic_fields']:
+                    current = fields
+                    parts = field.split('.')
+                    for part in parts[:-1]:
+                        current = current.setdefault(part, {})
+                    current[parts[-1]] = None
+                sections.append({'unit_id': unit['id'], 'semantic_fields': unit['semantic_fields'],
+                                 'datatype': unit['datatype'], 'applicability': unit['applicability'],
+                                 'acceptance_criteria': unit.get('acceptance_criteria', []),
+                                 'evidence_policy': unit.get('evidence_policy', {}),
+                                 'rationale': unit.get('rationale', {})})
+        return {'semantic_model': {'artifact_id': None, 'contract_id': artifact_id,
+                                  'document_kind': compiled['document_kind'],
+                                  'compiled_spec_hash': compiled['compiled_spec_hash'],
+                                  'context': compiled['context'], 'semantic_units': fields,
+                                  'claims': [], 'evidence': [], 'evaluation_date': None},
+                'blueprint': sections, 'compiled_spec': compiled,
+                'authoring_status': 'DRAFT_INCOMPLETE', 'production_ready': False}
 
     def _check_binding_provenance(self, artifact_id, binding):
         path = self.base.parent / 'artifacts/contracts/role-deliverables.v3.json'
@@ -517,14 +556,15 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--root')
     sub = parser.add_subparsers(dest='command', required=True)
-    for name in ('list', 'compile', 'resolve', 'lint-registry', 'coverage'):
+    for name in ('list', 'compile', 'resolve', 'lint-registry', 'coverage', 'outline'):
         command = sub.add_parser(name)
         command.add_argument('--root', dest='command_root')
-        if name in ('compile', 'resolve'):
+        command.add_argument('--output')
+        if name in ('compile', 'resolve', 'outline'):
             command.add_argument('--context')
         if name == 'compile':
             command.add_argument('--spec-ref', '--spec', required=True)
-        if name == 'resolve':
+        if name in ('resolve', 'outline'):
             command.add_argument('--artifact-id', required=True)
     args = parser.parse_args(argv)
     try:
@@ -536,11 +576,17 @@ def main(argv=None):
             result = engine.compile(args.spec_ref, context)
         elif args.command == 'resolve':
             result = engine.resolve(args.artifact_id, context)
+        elif args.command == 'outline':
+            result = engine.outline(args.artifact_id, context)
         elif args.command == 'lint-registry':
             result = {'errors': engine.lint_registry()}
         else:
             result = engine.coverage()
-        print(json.dumps(result, indent=2, sort_keys=True, ensure_ascii=False))
+        serialized = json.dumps(result, indent=2, sort_keys=True, ensure_ascii=False)
+        if args.output:
+            Path(args.output).write_text(serialized + '\n', encoding='utf-8')
+        else:
+            print(serialized)
         return 1 if isinstance(result, dict) and result.get('errors') else 0
     except (SpecError, OSError, KeyError, TypeError, ValueError) as exc:
         print(json.dumps({'error': str(exc)}))

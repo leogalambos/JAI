@@ -7,6 +7,8 @@ from __future__ import annotations
 import importlib.util
 from pathlib import Path
 import tempfile
+import sys
+from unittest.mock import patch
 import unittest
 
 import yaml
@@ -41,6 +43,34 @@ class ReleasePreflightTests(unittest.TestCase):
         self.assertNotIn("--through-g", commands)
         self.assertNotIn("gh release", commands)
         self.assertNotIn("contents: write", yaml.dump(job))
+
+    def test_dcs_pytest_suites_run_in_ci_and_actual_qualification(self):
+        suites = ('test_content_lint.py', 'test_content_metrics.py',
+                  'test_content_publication.py', 'test_content_eval.py',
+                  'test_content_provider_parity.py')
+        self.assertIn('pytest==8.4.2',
+                      (ROOT / 'requirements-ci.txt').read_text().splitlines())
+        for name in ('validate-library.yml', 'release.yml'):
+            workflow = yaml.load((ROOT / '.github/workflows' / name).read_text(),
+                                 Loader=yaml.BaseLoader)
+            commands = '\n'.join(step.get('run', '')
+                                 for job in workflow['jobs'].values()
+                                 for step in job.get('steps', []))
+            self.assertIn('python3 -m pytest -q', commands)
+            for suite in suites:
+                self.assertIn('tests/' + suite, commands)
+        sys.path.insert(0, str(ROOT / '.ai/runtime/tools'))
+        import qualification_core
+        with patch.object(qualification_core, 'command',
+                          side_effect=lambda name, args, **kwargs:
+                          {'name': name, 'args': args, 'ok': True}):
+            checks = qualification_core.gate_a()
+        test_commands = [check['args'] for check in checks
+                         if '-m' in check.get('args', [])
+                         and 'pytest' in check.get('args', [])]
+        self.assertEqual(1, len(test_commands))
+        for suite in suites:
+            self.assertIn(str(ROOT / 'tests' / suite), test_commands[0])
 
     def test_current_human_documentation_meets_release_width(self):
         self.assertEqual(WIDTH.check(ROOT), [])

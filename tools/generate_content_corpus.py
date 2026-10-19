@@ -7,10 +7,14 @@ Variants are explicit mutations with expected rule IDs and observable defects.
 These fixtures qualify the foundation test harness, not production content QA.
 """
 import argparse
+import sys
 import copy
 import json
 from pathlib import Path
-from generate_content_catalog import FAMILIES, ROOT
+from generate_content_catalog import BINDINGS, FAMILIES, ROOT
+
+sys.path.insert(0, str(ROOT / '.ai/runtime/tools'))
+from content_mutations import apply_variant
 
 SCENARIOS = {
  'simple':{'name':'Inventory service recovery','scope':'One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.','drivers':'Restore warehouse inventory updates within 30 minutes; data loss must remain below five minutes.','design':'One application instance and a standby database in the existing managed platform.','cost':'EUR 18000 implementation and EUR 6000 annual operation; one-year benefit EUR 32000, with a 25 percent adoption uncertainty.','risk':'Database replication delay can lose updates; lag alert at 60 seconds and hourly recovery-point checks reduce likelihood.','operations':'Warehouse operations owns support from 06:00 to 22:00; the platform duty engineer handles recovery escalation.','regulatory':False,'privacy':False},
@@ -63,33 +67,6 @@ def populated_units(family, complexity, scenario):
     return output
 
 
-def apply_variant(reference, variant):
-    """Return a mutated deep copy of reference using the variant recipe.
-
-    reference is a synthetic case dictionary; variant identifies an operation
-    and its arguments. The original remains unchanged. Raises ValueError for
-    unknown operations or KeyError for a malformed authored recipe.
-    """
-    result=copy.deepcopy(reference);units=result['semantic_units'];op=variant['operation'];field=variant.get('field')
-    if op=='headings_only':result['semantic_units']={k:'' for k in units}
-    elif op=='append_irrelevant':result['irrelevant_annex']=variant['text']
-    elif op=='remove':del units[field]
-    elif op=='unsupported_claim':result['claims']=[{'text':variant['text'],'material':True,'evidence_refs':[]}]
-    elif op=='repeat':result['repeated_content']=[copy.deepcopy(units[field]) for _ in range(variant['count'])]
-    elif op=='mark_na':units[field]={'status':'not_applicable','reason':variant['reason']}
-    elif op=='unknown_context':result['context'][field]=None
-    elif op=='unauthorised_exception':
-        result['context']['regulatory_requirement']=True
-        units[field]={'status':'waived','reason':variant['text'],'authority_ref':None}
-    elif op=='justified_conditional_na':
-        result['context'].update(variant['context'])
-        result['scenario']['privacy']=False
-        result['scenario']['scope']='Anonymous stock-count service; no account, operator or transaction personal identifiers.'
-        result['applicability_evidence']={'id':'SYN-NA','description':variant['justification'],'classification':'synthetic-scope-alternative'}
-        units[field]={'status':'not_applicable','reason':variant['justification'],'evidence_refs':['SYN-NA']}
-    else:raise ValueError(op)
-    return result
-
 
 def observe_variant(reference, variant):
     """Return observable rule IDs and review limitations for a seeded variant.
@@ -118,6 +95,8 @@ def build():
     for family, definitions in FAMILIES.items():
         for complexity,scenario in SCENARIOS.items():
             units=populated_units(family,complexity,scenario)
+            contract_id=next(key for key,value in BINDINGS.items() if value==family)
+            units['identity']={'artifact_id':f'synthetic/{family}/{complexity}','owner':'Synthetic service owner','source_version':'1','intended_usage':'Development regression only; professional approval pending','knowledge_status':'synthetic-assumption'}
             if scenario['privacy']:
                 units['privacy_analysis']={'description':'Transaction identifiers are pseudonymised; access is role-limited, retention is tied to the approved purpose and deletion is verified in rehearsal.','evidence_refs':['SYN-01'],'knowledge_status':'assumption'}
             if scenario['regulatory']:
@@ -134,7 +113,7 @@ def build():
               {'id':'regulatory-exception','operation':'unauthorised_exception','field':'regulatory_analysis','text':'The author claims that schedule pressure waives the applicable legal restriction.','expected_rule_ids':['global.authority_bypass'],'expected_category':'existing-mandatory-gate'},
               {'id':'valid-conditional-na','operation':'justified_conditional_na','field':'privacy_analysis','context':{'processes_personal_data':False},'justification':'Alternative synthetic scope explicitly excludes personal identifiers; SYN-NA documents anonymous stock counts only.','expected_rule_ids':[],'expected_category':'borderline-review'},
             ]
-            document={'artifact_id':f'synthetic/{family}/{complexity}','document_kind':family,'title':f'{scenario["name"]}: {family}',
+            document={'artifact_id':f'synthetic/{family}/{complexity}','contract_id':contract_id,'document_kind':family,'author':{'principal_id':'synthetic-author'},'title':f'{scenario["name"]}: {family}',
              'context':{'processes_personal_data':scenario['privacy'],'regulatory_requirement':scenario['regulatory']},
              'summary':scenario['scope']+' '+scenario['drivers']+' '+scenario['design'],
              'scenario':scenario,'semantic_units':units,

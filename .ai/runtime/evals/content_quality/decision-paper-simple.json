@@ -1,6 +1,10 @@
 {
   "artifact_id": "synthetic/decision-paper/simple",
+  "contract_id": "enterprise-applications-architect:2",
   "document_kind": "decision-paper",
+  "author": {
+    "principal_id": "synthetic-author"
+  },
   "title": "Inventory service recovery: decision-paper",
   "context": {
     "processes_personal_data": false,
@@ -118,6 +122,13 @@
       "evidence_refs": [
         "SYN-01"
       ]
+    },
+    "identity": {
+      "artifact_id": "synthetic/decision-paper/simple",
+      "owner": "Synthetic service owner",
+      "source_version": "1",
+      "intended_usage": "Development regression only; professional approval pending",
+      "knowledge_status": "synthetic-assumption"
     }
   },
   "evidence": [
