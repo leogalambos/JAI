@@ -37,14 +37,18 @@ class ContentCatalogueTests(unittest.TestCase):
             self.assertTrue(b['decision_supported_copy_detected'])
             if b['decision_supported']['status']=='mapped':
                 self.assertNotEqual(b['decision_supported']['value'],contract['jai']['intent']['decision_supported'])
-            else:self.assertEqual(b['decision_supported']['status'],'pending-correction')
+            else:
+                self.assertEqual(b['decision_supported']['status'],'mapped-proposed')
+                self.assertIn(contract['id'],b['decision_supported']['evidence_refs'][0])
+                self.assertFalse(b['decision_supported']['human_approval'])
+                self.assertNotEqual(b['decision_supported']['value'],contract['jai']['intent']['decision_supported'])
 
     def test_coverage_and_unique_kind_contracts(self):
         """Every registered layer has substantive proposed obligations and attribution."""
         registry=read(CONTENT/'registry.json')
         self.assertEqual([len(registry['mappings'][key]) for key in ['artifact_types','archetypes','sabsa_views']],[28,13,19])
         complete=[s for s in registry['specifications'] if s['completeness']=='complete']
-        self.assertEqual(len(complete),1205)
+        self.assertEqual(len(complete),1211)
         self.assertEqual(len(registry['mappings']['domains']),6)
         fieldsets=[]
         for entry in complete:
@@ -68,7 +72,7 @@ class ContentCatalogueTests(unittest.TestCase):
         sys.path.insert(0,str(ROOT/'.ai/runtime/tools'))
         from content_spec import ContentSpec
         report=ContentSpec(ROOT).coverage()
-        expected={'type':28,'archetype':13,'sabsa':19,'domain':6,'document_kind':1139}
+        expected={'type':28,'archetype':13,'sabsa':19,'domain':12,'document_kind':1139}
         for category,count in expected.items():
             dimension=report['coverage_dimensions'][category]
             self.assertEqual(dimension['registered'],count)
@@ -76,11 +80,11 @@ class ContentCatalogueTests(unittest.TestCase):
             self.assertEqual(dimension['declared_human_approved'],0)
             self.assertIsNone(dimension['verified_human_approved'])
             self.assertIsNone(dimension['evaluated'])
-        self.assertEqual(report['decision_supported_migration']['pending-correction'],1129)
+        self.assertEqual(report['decision_supported_migration']['mapped-proposed'],1129)
         self.assertFalse(report['production_ready'])
 
-    def test_role_proposals_retain_exact_inputs_gates_and_migration_debt(self):
-        """Contract proposals preserve source-specific substance and pending decisions."""
+    def test_role_proposals_retain_exact_inputs_gates_and_proposed_actions(self):
+        """Contract proposals preserve source-specific substance and review boundaries."""
         registry=read(CONTENT/'registry.json')
         contracts={row['id']:row for row in read(ROOT/'.ai/runtime/artifacts/contracts/role-deliverables.v3.json')['contracts']}
         for entry in registry['document_kinds']:
@@ -223,3 +227,186 @@ class ContentCatalogueTests(unittest.TestCase):
         self.assertEqual(set(cases_by_family.values()),{3})
 
 if __name__=='__main__':unittest.main()
+
+
+class SemanticTaxonomyTests(unittest.TestCase):
+    """Historical IDs resolve through explicit shared families without reapproval."""
+
+    def engine(self):
+        import sys
+        sys.path.insert(0,str(ROOT/'.ai/runtime/tools'))
+        from content_spec import ContentSpec
+        return ContentSpec(ROOT)
+
+    def test_every_historical_kind_alias_has_one_shared_family(self):
+        engine=self.engine()
+        self.assertEqual(len(engine.registry['kind_aliases']),1139)
+        self.assertEqual(len(engine.registry['semantic_families']),35)
+        self.assertEqual(engine._taxonomy_errors(),[])
+        for binding in engine.bindings.values():
+            family=binding['semantic_family']
+            self.assertNotIn('role/',family)
+            self.assertEqual(binding['content_spec_ref'],'kind/'+binding['document_kind'])
+        resolved=engine.resolve('chief-information-officer:1')
+        self.assertEqual(resolved['document_kind'],'role/chief-information-officer:1')
+        self.assertEqual(resolved['semantic_family'],'strategy')
+        self.assertEqual(resolved['decision_supported']['status'],'mapped-proposed')
+        self.assertFalse(resolved['production_ready'])
+
+    def test_priority_anchors_and_historical_role_unit_ids_remain_stable(self):
+        engine=self.engine()
+        result=engine.resolve('enterprise-architect:4')
+        self.assertEqual(result['document_kind'],'adr')
+        self.assertEqual(result['semantic_family'],'adr')
+        self.assertIn('adr.architecture_choice',{u['id'] for u in result['blueprint']['semantic_units']})
+        legacy=engine.resolve('chief-information-officer:1')
+        self.assertIn('role/chief-information-officer:1.decision_purpose_correction',
+            {u['id'] for u in legacy['blueprint']['semantic_units']})
+
+    def test_conflicting_duplicate_alias_and_unknown_family_fail_explicitly(self):
+        engine=self.engine()
+        engine.registry['kind_aliases'].append(dict(engine.registry['kind_aliases'][0]))
+        self.assertIn('TAXONOMY_CONFLICT',engine._taxonomy_errors()[0])
+        engine.registry['kind_aliases'].pop()
+        engine.bindings['chief-information-officer:1']['semantic_family']='unregistered'
+        with self.assertRaisesRegex(ValueError,'TAXONOMY_CONFLICT'):
+            engine.resolve('chief-information-officer:1')
+
+    def test_alias_cannot_change_binding_or_omit_shared_family(self):
+        engine=self.engine()
+        alias=next(a for a in engine.registry['kind_aliases'] if a['contract_id']=='chief-information-officer:1')
+        alias['family']='release-notes'
+        self.assertTrue(any('TAXONOMY_CONFLICT' in e for e in engine._taxonomy_errors()))
+        alias['family']='strategy'
+        engine.specs['kind/role/chief-information-officer:1']['inherits'].remove('family/strategy')
+        with self.assertRaisesRegex(ValueError,'shared family not inherited'):
+            engine.resolve('chief-information-officer:1')
+
+    def test_proposed_action_requires_evidence_and_cannot_claim_approval(self):
+        engine=self.engine()
+        purpose=engine.bindings['chief-information-officer:1']['decision_supported']
+        purpose['evidence_refs']=[]
+        self.assertTrue(any('PURPOSE_MAPPING_INVALID' in e for e in engine._taxonomy_errors()))
+        purpose['evidence_refs']=['public-source']
+        purpose['human_approval']=True
+        self.assertTrue(any('PURPOSE_MAPPING_INVALID' in e for e in engine._taxonomy_errors()))
+
+
+    def test_copied_acceptance_and_wrong_recipient_cannot_masquerade_as_purpose(self):
+        engine=self.engine()
+        binding=engine.bindings['chief-information-officer:1']
+        purpose=binding['decision_supported']
+        original=purpose['value']
+        purpose['value']=purpose['source_acceptance_text']
+        with self.assertRaisesRegex(ValueError,'PURPOSE_MAPPING_PROVENANCE_MISMATCH'):
+            engine.resolve('chief-information-officer:1')
+        purpose['value']=original
+        purpose['receiving_roles']=['Unrelated recipient']
+        with self.assertRaisesRegex(ValueError,'PURPOSE_MAPPING_PROVENANCE_MISMATCH'):
+            engine.resolve('chief-information-officer:1')
+
+
+class PurposeMeaningTests(unittest.TestCase):
+    """Source meanings take precedence over historically broad modalities."""
+
+    def test_refined_and_implementation_purposes_match_the_actual_deliverable(self):
+        bindings={b['artifact_id']:b for b in read(CONTENT/'migrations/26.10.5-binding-map.json')['bindings']}
+        cases={
+            'business-analyst:1':('requirements','Implement the specified parameters'),
+            'chief-information-officer:1':('strategic choices','Sequence delivery increments'),
+            'release-engineer:3':('deployment automation','Adopt, revise or abandon'),
+            'software-engineer:2':('automated tests','Adopt, revise or abandon'),
+        }
+        for cid,(required,forbidden) in cases.items():
+            value=bindings[cid]['decision_supported']['value']
+            self.assertIn(required,value)
+            self.assertNotIn(forbidden,value)
+
+
+class CompiledPurposeConsistencyTests(unittest.TestCase):
+    """Executed duties must not acquire incompatible historical modality rules."""
+
+    def test_automation_and_software_artifacts_do_not_require_prototype_or_option_papers(self):
+        import sys
+        sys.path.insert(0,str(ROOT/'.ai/runtime/tools'))
+        from content_spec import ContentSpec
+        engine=ContentSpec(ROOT)
+        for cid in ['release-engineer:3','software-engineer:1','software-engineer:2',
+                    'software-engineer:4','devops-engineer:1','devops-engineer:2',
+                    'devops-engineer:4','test-automation-engineer:3']:
+            units=engine.resolve(cid)['blueprint']['semantic_units']
+            ids={u['id'] for u in units}
+            self.assertNotIn('type/prototype.prototype_hypothesis',ids,cid)
+            self.assertNotIn('type/decision-paper.option_comparison',ids,cid)
+            self.assertTrue(any(u['id'].startswith('global.') for u in units),cid)
+            self.assertTrue(any('role_gate_observations' in u['id'] for u in units),cid)
+        deployment=engine.resolve('release-engineer:3')['blueprint']['semantic_units']
+        self.assertIn('family/deployment-automation.deployment_controls',{u['id'] for u in deployment})
+
+    def test_refined_semantic_family_replaces_incompatible_legacy_modality(self):
+        import sys
+        sys.path.insert(0,str(ROOT/'.ai/runtime/tools'))
+        from content_spec import ContentSpec
+        engine=ContentSpec(ROOT)
+        strategy=engine.resolve('chief-technology-officer:1')['blueprint']['semantic_units']
+        self.assertNotIn('type/register.register_records',{u['id'] for u in strategy})
+        self.assertIn('family/strategy.strategic_choices',{u['id'] for u in strategy})
+        prototype=next(cid for cid,b in engine.bindings.items() if b['artifact_type']=='prototype' and cid not in ['software-engineer:4','release-engineer:3','devops-engineer:1','devops-engineer:2','devops-engineer:4'])
+        self.assertIn('type/prototype.prototype_hypothesis',
+            {u['id'] for u in engine.resolve(prototype)['blueprint']['semantic_units']})
+
+
+    def test_all_exact_engineering_corrections_retain_source_identity_and_domain_controls(self):
+        import sys
+        sys.path.insert(0,str(ROOT/'.ai/runtime/tools'))
+        sys.path.insert(0,str(ROOT/'tools'))
+        from content_spec import ContentSpec
+        from content_catalog_definitions import CONTRACT_PURPOSE_ACTIONS, TYPE_DOMAINS
+        engine=ContentSpec(ROOT)
+        contracts={c['id']:c for c in read(ROOT/'.ai/runtime/artifacts/contracts/role-deliverables.v3.json')['contracts']}
+        for cid in CONTRACT_PURPOSE_ACTIONS:
+            legacy=contracts[cid]['jai']['semantics']['artifact_type']
+            result=engine.resolve(cid)
+            self.assertEqual(engine.bindings[cid]['artifact_type'],legacy)
+            inherited={item['id'] for item in result['inheritance']}
+            self.assertIn('global/invariants',inherited,cid)
+            self.assertIn('domain/'+TYPE_DOMAINS[legacy],inherited,cid)
+            self.assertEqual(engine.specs[result['spec_id']]['applies_to']['artifact_types'],[legacy])
+            self.assertFalse(result['production_ready'])
+
+    def test_unknown_semantic_foundation_is_rejected_without_fallback(self):
+        import sys
+        sys.path.insert(0,str(ROOT/'.ai/runtime/tools'))
+        from content_spec import ContentSpec
+        engine=ContentSpec(ROOT)
+        ref='kind/role/release-engineer:3'
+        engine.specs[ref]['semantic_foundation_ref']='family/missing'
+        with self.assertRaisesRegex(ValueError,'UNREGISTERED_SEMANTIC_FOUNDATION'):
+            engine.compile(ref)
+
+
+    def test_malformed_or_wrong_registered_foundation_fails_with_spec_error(self):
+        import sys
+        sys.path.insert(0,str(ROOT/'.ai/runtime/tools'))
+        from content_spec import ContentSpec, SpecError
+        engine=ContentSpec(ROOT)
+        ref='kind/role/release-engineer:3'
+        for value in [[],{},None,False,'']:
+            engine.specs[ref]['semantic_foundation_ref']=value
+            with self.assertRaisesRegex(SpecError,'INVALID_SEMANTIC_FOUNDATION'):
+                engine.compile(ref)
+        engine.specs[ref]['semantic_foundation_ref']='type/register'
+        with self.assertRaisesRegex(SpecError,'SEMANTIC_FOUNDATION_MISMATCH'):
+            engine.compile(ref)
+
+
+    def test_foundation_requires_a_registered_semantic_family(self):
+        import sys
+        sys.path.insert(0,str(ROOT/'.ai/runtime/tools'))
+        from content_spec import ContentSpec, SpecError
+        engine=ContentSpec(ROOT)
+        ref='kind/role/release-engineer:3'
+        for value in [None,'missing']:
+            engine.specs[ref]['semantic_family']=value
+            with self.assertRaisesRegex(SpecError,'UNREGISTERED_SEMANTIC_FAMILY'):
+                engine.compile(ref)

@@ -24,9 +24,9 @@
     "operational teams"
   ],
   "decisions_supported": [
-    "Determine whether the specific deliverable is fit for its explicit receiving-role use; competent domain confirmation remains pending."
+    "Use \"operating evidence for each period\" to communicate the attributable findings and required follow-up actions from Control requirement and risk it addresses; Operating procedures; Test results; Exceptions and incidents to Control Tester; operational teams."
   ],
-  "intended_usage": "26.10.8 advisory content contract; professional approval pending",
+  "intended_usage": "Advisory content contract; professional approval pending",
   "non_goals": [
     "Replace JAI authority",
     "Claim a professional framework requirement without a cited source"
@@ -157,7 +157,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "State the specific choice enabled, alternatives and competent decision authority, or explain why this output supports no decision; copied acceptance boilerplate is not a decision purpose.",
+        "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -172,7 +172,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "State the specific choice enabled, alternatives and competent decision authority, or explain why this output supports no decision; copied acceptance boilerplate is not a decision purpose.",
+        "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#control-owner:2",
           "content/types/document.yaml"
@@ -740,7 +740,13 @@
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "coverage_note": "Source-attributed contract-specific proposal plus modality/domain obligations; original copied decision purpose remains a mandatory migration review item.",
+  "semantic_family": "document",
+  "role_overlay": {
+    "contract_id": "control-owner:2",
+    "scope": "Exact source deliverable, input analysis and existing role gates only",
+    "adds_authority": false
+  },
+  "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "control-owner:2",
     "source_fingerprint": "fdcd9696f7f176f5d30eedb3210a8cf6212733bdc8f43e943a311f74621f7387",

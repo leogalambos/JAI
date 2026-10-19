@@ -2,7 +2,7 @@
   "profile": "content",
   "version": "1.0.0",
   "status": "proposed",
-  "phase": "26.10.8-enterprise-content-quality",
+  "phase": "26.10.9-offline-content-readiness",
   "compatibility": {
     "read": [
       "ArtifactContract-v3"
@@ -41,5 +41,9 @@
   "workflow_acceptance": "tools/content_workflow.py",
   "workflow_registry": "content/workflow-acceptance.json",
   "migration": "tools/content_migrate.py",
-  "synthetic_calibration_ref": "content/calibration/synthetic-development.json"
+  "synthetic_calibration_ref": "content/calibration/synthetic-development.json",
+  "expert_references": "content/expert_references/index.json",
+  "expert_reference_resolver": "tools/expert_references.py",
+  "optional_provider_evaluation": "tools/optional_provider_eval.py",
+  "extended_evaluation_descriptor": "content/evaluation-package.json"
 }

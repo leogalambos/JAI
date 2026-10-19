@@ -11,7 +11,9 @@ import json
 import subprocess
 import sys
 import re
+import shutil
 import artifacts as artifact_registry
+from offline_guard import run_offline
 from pathlib import Path
 
 PACKAGE = Path(__file__).resolve().parents[3]
@@ -44,30 +46,31 @@ def now():
 
 
 def command(name, args, timeout=120):
+    """Execute a mandatory local check under inherited offline enforcement.
+
+    Args:
+        name: Public check label.
+        args: Explicit executable and argument vector; no shell expansion.
+        timeout: Positive maximum execution duration in seconds.
+    Returns:
+        Located PASS, FAIL or NOT_EXECUTED record. The offline runner is always
+        applied, including standalone qualification outside CI. Missing tools
+        or unavailable OS controls are non-passing; there is no direct fallback.
+    """
     print("RUN ", name, flush=True)
-    try:
-        proc = subprocess.run(
-            args,
-            cwd=PACKAGE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.STDOUT,
-            text=True,
-            timeout=timeout,
-        )
-        ok = proc.returncode == 0
-        output = proc.stdout
-    except subprocess.TimeoutExpired as exc:
-        ok = False
-        output = str((exc.stdout or "") + (exc.stderr or ""))
-        output += f"\nTIMEOUT after {timeout}s"
-    print(("PASS" if ok else "FAIL"), name, flush=True)
+    result = run_offline(args, PACKAGE, timeout=timeout)
+    state = result['status']
+    ok = state == 'PASS' and result['returncode'] == 0
+    if state == 'PASS' and not ok:
+        state = 'FAIL'
+    output = result.get('stdout', '') + result.get('stderr', '')
+    if result.get('reason'):
+        output += "\n" + result['reason']
+    print(("PASS" if ok else state), name, flush=True)
     if not ok:
         print(output[-8000:], flush=True)
-    return {
-        "name": name,
-        "ok": ok,
-        "detail": output[-2000:] if not ok else "",
-    }
+    return {"name": name, "ok": ok, "state": state,
+            "detail": output[-2000:] if not ok else ""}
 
 
 def governance_check():
@@ -180,13 +183,31 @@ def gate_a():
              str(PACKAGE / "tests/test_content_calibration.py"),
              str(PACKAGE / "tests/test_content_catalog.py"),
              str(PACKAGE / "tests/test_content_spec.py"),
-             str(PACKAGE / "tests/test_content_integration.py")],
+             str(PACKAGE / "tests/test_content_integration.py"),
+             str(PACKAGE / "tests/test_expert_references.py"),
+             str(PACKAGE / "tests/test_optional_provider_eval.py"),
+             str(PACKAGE / "tests/test_evaluation_package.py"),
+             str(PACKAGE / "tests/test_content_scenarios.py"),
+             str(PACKAGE / "tests/test_offline_guard.py"),
+             str(PACKAGE / "tests/test_qualification_dependencies.py")],
             timeout=600,
         ),
         command(
             "DCS deterministic synthetic pilot (not human-gold)",
             [PY, str(TOOLS / "content_eval.py"), "run", "--root", str(PACKAGE)],
             timeout=600,
+        ),
+        command(
+            "bundled expert reference structure and integrity",
+            [PY, str(TOOLS / "expert_references.py"), "validate", "--root", str(PACKAGE), "--all"],
+        ),
+        command(
+            "seven deterministic content lifecycle scenarios",
+            [PY, str(TOOLS / "content_scenarios.py"), "run", "--root", str(PACKAGE)],
+        ),
+        command(
+            "required local extended evaluation payload integrity",
+            [PY, str(TOOLS / "evaluation_package.py"), "check", "--root", str(PACKAGE)],
         ),
         command(
             "Unified Lifecycle GA native enforcement",
@@ -279,16 +300,28 @@ def gate_d():
     ]
 
 
+def publication_renderer_check():
+    """Run renderer validation only when the required PDF executable is present.
+
+    Returns:
+        Mandatory non-passing NOT_EXECUTED record if LibreOffice is missing;
+        otherwise the actual renderer self-test outcome. Presence is not PASS.
+    """
+    if not (shutil.which('libreoffice') or shutil.which('soffice')):
+        return {'name': 'enterprise publication renderers', 'ok': False,
+                'state': 'NOT_EXECUTED',
+                'detail': 'Required PDF renderer dependency LibreOffice is unavailable.'}
+    return command('enterprise publication renderers',
+                   [PY, str(TOOLS / 'publication.py'), 'self-test'])
+
+
 def gate_e():
     return [
         command(
             "publication projection contract",
             [PY, str(TOOLS / "projection.py"), "self-test"],
         ),
-        command(
-            "enterprise publication renderers",
-            [PY, str(TOOLS / "publication.py"), "self-test"],
-        ),
+        publication_renderer_check(),
         command(
             "publication integrity",
             [PY, str(TOOLS / "publication_integrity.py"), "self-test"],

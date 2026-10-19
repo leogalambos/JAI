@@ -21,7 +21,8 @@ PY = sys.executable
 # in a qualified archive, whereas private workspace material must never be visited.
 ROOT_EXCLUDED_DIRECTORIES = frozenset({"INBOX", "build", "out", "dist", "site"})
 EXCLUDED_DIRECTORY_NAMES = frozenset({".git", ".venv", "__pycache__", ".findings", ".fabric",
-                                     ".direnv", ".secrets"})
+                                     ".direnv", ".secrets", ".pytest_cache", ".cache", ".mypy_cache",
+                                     ".ruff_cache", ".tox", "node_modules"})
 PRIVATE_FILE_SUFFIXES = frozenset({".pem", ".key", ".p12", ".pfx"})
 PUBLIC_ENV_EXAMPLES = frozenset({".env.example", ".env.sample", ".env.template"})
 
@@ -50,7 +51,8 @@ def files(root, excluded_directory=None):
         return (bool(excluded_directory and path.is_relative_to(excluded_directory))
                 or bool(relative.parts and relative.parts[0] in ROOT_EXCLUDED_DIRECTORIES)
                 or any(part in EXCLUDED_DIRECTORY_NAMES for part in relative.parts)
-                or relative.as_posix() == ".ai/runtime/_meta/gates")
+                or relative.as_posix() in {".ai/runtime/_meta/gates",
+                    ".ai/runtime/evals/content_quality/enterprise"})
 
     def walk_error(error):
         raise error
@@ -68,6 +70,8 @@ def files(root, excluded_directory=None):
             path = directory / name
             relative = path.relative_to(root).as_posix()
             if (path.is_symlink() or not path.is_file() or path.suffix == ".pyc"
+                    or name == "AGENTS.md"
+                    or ("/" not in relative and path.suffix in {".zip", ".log", ".tmp"})
                     or path.suffix in PRIVATE_FILE_SUFFIXES
                     or ((name == ".env" or name.startswith(".env.")) and name not in PUBLIC_ENV_EXAMPLES)
                     or relative in {".claude/settings.local.json", ".codex/config.local.toml",

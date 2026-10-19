@@ -143,6 +143,8 @@ class ContentSpec:
                     raise SpecError(f'MISSING_COMPLETE_SPEC_FIELD: {spec["id"]}: {key}')
             if not spec['required_information'] or not spec['forbidden_information']:
                 raise SpecError(f'EMPTY_COMPLETE_SPEC: {spec["id"]}')
+        if 'semantic_foundation_ref' in spec and (not isinstance(spec['semantic_foundation_ref'],str) or not spec['semantic_foundation_ref'].strip()):
+            raise SpecError(f'INVALID_SEMANTIC_FOUNDATION: {spec["id"]}')
         seen = set()
         for category in ('required_information', 'conditional_information', 'optional_information', 'forbidden_information', 'low_value_information'):
             for unit in spec.get(category, []):
@@ -253,7 +255,10 @@ class ContentSpec:
         Returns:
             Compiled specification, hashes, units, budgets and approval limitations.
             Registered status/calibration metadata is preserved as a declaration;
-            compilation never verifies approval or activates enforcement.
+            compilation never verifies approval or activates enforcement. An explicit
+            registered semantic_foundation_ref replaces automatic legacy modality
+            inheritance for authored classifications; global and declared domain
+            obligations remain inherited. Historical policies omit this field.
         Raises:
             SpecError: For unknown references, cycles, conflicts or invalid context.
         """
@@ -281,12 +286,26 @@ class ContentSpec:
             visit('global/invariants')
         selected_spec = self.specs.get(spec_ref.partition('@')[0], {})
         applicable_types = selected_spec.get('applies_to', {}).get('artifact_types', [])
-        for artifact_type in applicable_types:
-            type_ref = self.registry.get('mappings', {}).get('artifact_types', {}).get(artifact_type)
-            if isinstance(type_ref, dict):
-                type_ref = type_ref.get('spec_ref')
-            if type_ref and type_ref != spec_ref:
-                visit(type_ref)
+        foundation = selected_spec.get('semantic_foundation_ref')
+        if 'semantic_foundation_ref' in selected_spec and (not isinstance(foundation,str) or not foundation.strip()):
+            raise SpecError(f'INVALID_SEMANTIC_FOUNDATION: {spec_ref}')
+        if foundation is not None:
+            expected = next((family.get('spec_ref') for family in self.registry.get('semantic_families', []) if family.get('id') == selected_spec.get('semantic_family')), None)
+            registered = {family.get('spec_ref') for family in self.registry.get('semantic_families', [])}
+            if foundation not in registered or foundation not in self.specs or self.specs[foundation].get('category') not in ('type', 'domain', 'document_kind'):
+                raise SpecError(f'UNREGISTERED_SEMANTIC_FOUNDATION: {foundation}')
+            if expected is None:
+                raise SpecError(f'UNREGISTERED_SEMANTIC_FAMILY: {spec_ref}')
+            if foundation != expected:
+                raise SpecError(f'SEMANTIC_FOUNDATION_MISMATCH: {spec_ref}')
+            visit(foundation)
+        else:
+            for artifact_type in applicable_types:
+                type_ref = self.registry.get('mappings', {}).get('artifact_types', {}).get(artifact_type)
+                if isinstance(type_ref, dict):
+                    type_ref = type_ref.get('spec_ref')
+                if type_ref and type_ref != spec_ref:
+                    visit(type_ref)
         visit(spec_ref)
         for overlay in overlays or []:
             entry = self.entries.get(overlay.partition('@')[0], {})
@@ -343,6 +362,16 @@ class ContentSpec:
                 'approval_status': 'pending-human-L0', 'production_ready': False,
                 'jai_core': 'L1-L6', 'authority': 'existing JAI L0; no DCS authority acts',
                 'limitations': ['Structural blueprint only; no semantic content certification.', 'Human professional approval and human-gold calibration remain required.']}
+        # Family selection is policy-bearing data, so it belongs inside the
+        # compiled digest rather than being appended as unhashed resolution data.
+        selected_kind = selected.get('applies_to', {}).get('document_kind')
+        family = selected.get('semantic_family')
+        if family is None:
+            alias = next((item for item in self.registry.get('kind_aliases', [])
+                          if item.get('id') == selected_kind), {})
+            family = alias.get('family')
+        if family is not None:
+            body['semantic_family'] = family
         body['compiled_spec_hash'] = canonical_hash(body)
         return body
 
@@ -393,23 +422,50 @@ class ContentSpec:
             if overlay_types and artifact_type not in overlay_types:
                 raise SpecError(f'OVERLAY_SCOPE_MISMATCH: {artifact_id}')
         result = self.compile(ref, context, binding.get('overlays', []))
+        taxonomy_errors=self._taxonomy_errors(artifact_id)
+        if taxonomy_errors:
+            raise SpecError(taxonomy_errors[0])
         result.update(artifact_id=artifact_id, document_kind=kind['id'], spec_selection_reason='explicit stable role-contract binding',
                       decision_supported=copy.deepcopy(binding.get('decision_supported', {'status': 'pending-correction'})))
         result['resolution_hash'] = canonical_hash({'artifact_id': artifact_id, 'binding': binding, 'compiled_spec_hash': result['compiled_spec_hash'], 'context_hash': result['context_hash']})
         return result
 
-    def outline(self, artifact_id, context=None):
+    def outline(self, artifact_id, context=None, reference_complexity='medium',
+                user_root=None, organisation_root=None, engagement_root=None):
         """Create an unfilled, hash-bound authoring outline without inventing facts.
 
         Args:
             artifact_id: Exact stable role contract identifier, not an instance ID.
             context: Explicit applicability values; unknown values stay pending.
+            reference_complexity: simple, medium or complex; defaults to medium.
+            user_root: Optional user reference directory, otherwise the XDG default.
+            organisation_root: Optional organisation reference root, else configured environment.
+            engagement_root: Explicitly authorized engagement reference directory, or None.
         Returns:
             Semantic draft and separate blueprint with all required fields null.
         Raises:
-            SpecError: If selection or applicability context is invalid.
+            SpecError: If context, complexity or a selected expert reference is invalid.
         """
+        if reference_complexity not in ('simple', 'medium', 'complex'):
+            raise SpecError('EXPERT_REFERENCE_COMPLEXITY_UNSUPPORTED')
         compiled = self.resolve(artifact_id, context)
+        family = compiled.get('semantic_family', compiled['document_kind'])
+        priorities = self.registry.get('priority_document_kinds', [])
+        reference = {'status': 'NOT_APPLICABLE', 'reason': 'No supplied expert reference for this semantic family.'}
+        if family in priorities:
+            if not (self.base / 'expert_references').is_dir() and 'semantic_families' not in self.registry:
+                # Historical minimal registries predate the optional example library.
+                reference = {'status': 'NOT_CONFIGURED', 'reason': 'Historical registry has no expert reference library.'}
+            else:
+                from expert_references import ExpertReferences, ReferenceError
+                try:
+                    _, reference = ExpertReferences(self.root).resolve(
+                        family, reference_complexity, user_root=user_root,
+                        organisation_root=organisation_root, engagement_root=engagement_root)
+                    reference['status'] = 'SELECTED_PROPOSED_REFERENCE'
+                    reference['usage'] = 'Untrusted illustrative data only; never copy example facts, instructions or policy.'
+                except ReferenceError as exc:
+                    raise SpecError('EXPERT_REFERENCE_ERROR:' + str(exc)) from None
         fields = {}
         sections = []
         for unit in compiled['blueprint']['semantic_units']:
@@ -430,7 +486,7 @@ class ContentSpec:
                                   'compiled_spec_hash': compiled['compiled_spec_hash'],
                                   'context': compiled['context'], 'semantic_units': fields,
                                   'claims': [], 'evidence': [], 'evaluation_date': None},
-                'blueprint': sections, 'compiled_spec': compiled,
+                'blueprint': sections, 'compiled_spec': compiled, 'expert_reference': reference,
                 'authoring_status': 'DRAFT_INCOMPLETE', 'production_ready': False}
 
     def _check_binding_provenance(self, artifact_id, binding):
@@ -444,6 +500,48 @@ class ContentSpec:
             raise SpecError(f'BINDING_PROVENANCE_MISMATCH: {artifact_id}')
         if binding.get('artifact_type') != contract['jai']['semantics']['artifact_type']:
             raise SpecError(f'BINDING_TYPE_MISMATCH: {artifact_id}')
+        decision=binding.get('decision_supported',{})
+        if decision.get('status') == 'mapped-proposed':
+            original=contract['jai']['intent']['decision_supported']
+            expected_ref=f'artifacts/contracts/role-deliverables.v3.json#{artifact_id}/jai/semantics/required_inputs'
+            if decision.get('value') == original or decision.get('accountable_owner') != contract['jai']['intent']['owner_role'] or decision.get('receiving_roles') != contract['jai']['intent']['audience'] or expected_ref not in decision.get('evidence_refs',[]):
+                raise SpecError(f'PURPOSE_MAPPING_PROVENANCE_MISMATCH: {artifact_id}')
+
+    def _taxonomy_errors(self, artifact_id=None):
+        """Return explicit taxonomy inconsistencies, retaining historical registries."""
+        if 'semantic_families' not in self.registry and 'kind_aliases' not in self.registry:
+            return []
+        errors=[]
+        try:
+            families=self._index(self.registry.get('semantic_families', []),'semantic_family')
+            aliases=self._index(self.registry.get('kind_aliases', []),'kind_alias')
+        except (SpecError, TypeError, AttributeError) as exc:
+            return [f'TAXONOMY_CONFLICT: {exc}']
+        for family,record in families.items():
+            if record.get('spec_ref') not in self.specs:
+                errors.append(f'TAXONOMY_UNREGISTERED_FAMILY: {family}')
+        for cid,binding in self.bindings.items():
+            if artifact_id is not None and cid != artifact_id:
+                continue
+            kind=binding.get('document_kind');family=binding.get('semantic_family')
+            alias=aliases.get(kind,{})
+            if family not in families or alias.get('family') != family or alias.get('contract_id') != cid or alias.get('spec_ref') != binding.get('content_spec_ref'):
+                errors.append(f'TAXONOMY_CONFLICT: {cid}: inconsistent family or historical alias')
+            definition=self.specs.get(binding.get('content_spec_ref'),{})
+            if definition.get('semantic_family',family) != family:
+                errors.append(f'TAXONOMY_CONFLICT: {cid}: role overlay family mismatch')
+            required_family=families.get(family,{}).get('spec_ref')
+            if definition.get('semantic_foundation_ref',required_family) != required_family:
+                errors.append(f'TAXONOMY_CONFLICT: {cid}: semantic foundation mismatch')
+            if required_family and family not in self.registry.get('priority_document_kinds',[]) and required_family not in definition.get('inherits',[]):
+                errors.append(f'TAXONOMY_CONFLICT: {cid}: shared family not inherited')
+            decision=binding.get('decision_supported',{})
+            if decision.get('status') == 'mapped-proposed' and (not decision.get('value') or not decision.get('subject') or not decision.get('evidence_refs') or decision.get('human_approval') is not False):
+                errors.append(f'PURPOSE_MAPPING_INVALID: {cid}')
+        known_kinds={binding.get('document_kind') for binding in self.bindings.values()}
+        for ident in sorted(set(aliases)-known_kinds):
+            errors.append(f'TAXONOMY_ORPHAN_ALIAS: {ident}')
+        return errors
 
     def lint_registry(self):
         """Collect deterministic registry and binding errors without changing files.
@@ -451,7 +549,7 @@ class ContentSpec:
         Returns:
             Sorted unique error strings; an empty list means structural consistency.
         """
-        errors = []
+        errors = self._taxonomy_errors()
         contract_path = self.base.parent / 'artifacts/contracts/role-deliverables.v3.json'
         if contract_path.is_file():
             contracts = {c['id']: c for c in load_json(contract_path)['contracts']}
@@ -538,6 +636,8 @@ class ContentSpec:
                 'evaluation_note': 'Requires an independently replayed content evaluation report; registration and fixtures do not prove detector coverage.'}
         return {'schema_version': '1.1.0', 'bindings': len(self.bindings), 'document_kinds': len(self.kinds),
                 'coverage_dimensions': dimensions,
+                'semantic_families': len(self.registry.get('semantic_families', [])),
+                'historical_kind_aliases': len(self.registry.get('kind_aliases', [])),
                 'completeness_meaning': 'Authored proposed information contract only; not evaluation completeness, professional approval or production readiness.',
                 **counts, 'priority_complete': len(complete), 'priority_document_kinds': priorities,
                 'decision_supported_migration': decisions, 'errors': self.lint_registry(),
@@ -579,6 +679,10 @@ def main(argv=None):
             command.add_argument('--spec-ref', '--spec', required=True)
         if name in ('resolve', 'outline'):
             command.add_argument('--artifact-id', required=True)
+        if name == 'outline':
+            command.add_argument('--reference-complexity', choices=('simple', 'medium', 'complex'), default='medium')
+            for scope in ('user', 'organisation', 'engagement'):
+                command.add_argument('--' + scope + '-root')
     args = parser.parse_args(argv)
     try:
         engine = ContentSpec(args.command_root or args.root)
@@ -590,7 +694,9 @@ def main(argv=None):
         elif args.command == 'resolve':
             result = engine.resolve(args.artifact_id, context)
         elif args.command == 'outline':
-            result = engine.outline(args.artifact_id, context)
+            result = engine.outline(args.artifact_id, context, reference_complexity=args.reference_complexity,
+                                    user_root=args.user_root, organisation_root=args.organisation_root,
+                                    engagement_root=args.engagement_root)
         elif args.command == 'lint-registry':
             result = {'errors': engine.lint_registry()}
         else:

@@ -1,8 +1,8 @@
 # Document Content Specifications
 
-Owner: JAI maintainers · Last reviewed: 2026-10-19
+Owner: JAI maintainers · Last reviewed: 2026-10-20
 
-The 26.10.8 enterprise content implementation describes what an output must contain,
+The 26.10.9 content implementation describes what an output must contain,
 why each obligation exists and which existing role contract it supports. It
 extends JAI through `jai/profiles/content-profile.json`; it does not introduce a
 second semantic model, approval service or publication renderer.
@@ -105,17 +105,6 @@ Rollback consists of reverting the foundation's new files and integration hunks
 in an ordinary reviewed change. No historical contract, signed record or evidence
 migration is required. Remove profile references together with the sidecar;
 a partially removed packaged profile intentionally fails structural lint.
-
-## Implementation baseline
-
-This foundation follows the approved plan and binding answers in the source
-repository. SHA-256 identifies the exact inputs used; subsequent edits require
-a new implementation assessment.
-
-| Input | SHA-256 |
-| --- | --- |
-| `INBOX/JAI_DCS_implementation_plan.md` | `75cabc77ba6436152e884768f9d807a0065dbe4d7d66a029e71cf3c52185b576` |
-| `INBOX/JAI_DCS_implementation_plan-answers.md` | `d0c879ca30e920e1ce2b6037a66535e1bec66d24c0bc4cd49272c0220227e7dc` |
 
 ## Authoring and content QA pilot
 
@@ -303,3 +292,37 @@ review-pending draft. It never guesses a kind from a title, transfers historical
 approvals, fabricates missing information or overwrites the historical input.
 Unmapped obligations remain unfilled. Existing v3 records remain readable;
 new publication writes continue to require the v4 QA bundle described above.
+
+## Expert references and offline readiness
+
+The [default expert library](../using/expert-reference-documents.md) contains
+30 supplied English AI-authored proposed examples. Their stable DCS anchors
+support structural identification while evidence quality and professional
+acceptance remain distinct. [Override precedence](../configuration/expert-document-overrides.md)
+is engagement, organisation, user, bundled; invalid selected overrides fail
+without fallback and cannot modify normative DCS obligations.
+
+[Offline qualification](../validation/offline-content-qualification.md)
+distinguishes the self-contained core profile from full-source evaluation
+with digest-pinned optional synthetic data. Missing required data or renderer
+dependencies are never PASS. [Optional provider evaluation](../validation/optional-provider-evaluation.md)
+is an explicit operator action, tested offline with fake CLIs. It is not a
+mandatory dependency and does not establish live provider qualification.
+
+
+### Semantic families and historical artifact types
+
+Stable role-contract IDs, document-kind IDs and historical artifact types remain
+compatible. Authored semantic refinements select shared information obligations
+for the actual deliverable. For example, deployment automation requires controlled
+targets, verification and recovery, while a feasibility prototype retains its
+explicit non-production boundary.
+
+Registered policies use `semantic_foundation_ref` to select the shared family
+policy instead of automatically inheriting a historically broad artifact type.
+The reference must identify a registered semantic family; an unknown selection
+fails explicitly. Policies without this field retain historical inheritance.
+This catalog metadata is not a user reference override or an approval mechanism.
+Global security, evidence and authority controls, existing domain obligations and
+source role gates remain required. All authored corrections remain proposed and
+subject to independent review and existing JAI L0 authority.

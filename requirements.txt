@@ -3,3 +3,4 @@ mkdocs-material>=9.6,<10
 pymdown-extensions>=10,<11
 mistune>=3,<4
 jsonschema>=4.26,<5
+PyYAML>=6,<7

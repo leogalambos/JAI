@@ -14,7 +14,9 @@ import json
 import argparse
 import importlib.util
 from content_catalog_definitions import (TYPE_REQUIREMENTS, DOMAIN_REQUIREMENTS,
-    TYPE_DOMAINS, SABSA_REQUIREMENTS, ARCHETYPE_REQUIREMENTS)
+    TYPE_DOMAINS, SABSA_REQUIREMENTS, ARCHETYPE_REQUIREMENTS,
+    SEMANTIC_FAMILIES, SEMANTIC_REFINEMENTS, ADDITIONAL_FAMILIES,
+    REFINED_PURPOSE_ACTIONS, CONTRACT_PURPOSE_ACTIONS)
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / '.ai/runtime'
@@ -144,7 +146,7 @@ def spec(identifier, category, purpose, completeness='skeleton', inherits=None):
     return {'license':'SPDX-License-Identifier: BSD-4-Clause','copyright':'Copyright (c) 2026 Leo Galambos and the Egothor team','id':identifier,'version':'1.1.0','owner':'Content Standards Owner','status':'proposed',
       'effective_from':None,'category':category,'completeness':completeness,'inherits':inherits or [],
       'applies_to':{},'purpose':purpose,'target_audience':['competent independent domain reviewer'],
-      'decisions_supported':[],'intended_usage':'26.10.8 advisory content contract; professional approval pending',
+      'decisions_supported':[],'intended_usage':'Advisory content contract; professional approval pending',
       'non_goals':['Replace JAI authority','Claim a professional framework requirement without a cited source'],
       'required_information':[],'conditional_information':[],'optional_information':[],
       'forbidden_information':[],'low_value_information':[],
@@ -203,10 +205,10 @@ def contract_units(contract, kind, source):
         source: Exact parsed source role deliverable and gate declarations.
     Returns:
         Typed units requiring analysis of actual inputs and receiving-role needs.
-        Copied legacy decision text is explicitly retained as migration debt.
+        Legacy rule IDs remain compatible; action mapping is explicitly proposed.
     """
     jai=contract['jai'];cid=contract['id']
-    result=[unit(kind,'delivery_scope','object',f"Identify the subject entities, boundaries, outcomes and versioned sources for: {jai['intent']['purpose']}"),unit(kind,'receiving_acceptance','array',f"For each receiving role ({'; '.join(jai['intent']['audience'])}), identify the concrete downstream use, requested action, acceptance measure and accountable recipient."),unit(kind,'contract_relations','array',f"Identify actual entity IDs and relationship instances for: {'; '.join(jai['semantics']['required_relations'])}."),unit(kind,'decision_purpose_correction','object','State the specific choice enabled, alternatives and competent decision authority, or explain why this output supports no decision; copied acceptance boilerplate is not a decision purpose.')]
+    result=[unit(kind,'delivery_scope','object',f"Identify the subject entities, boundaries, outcomes and versioned sources for: {jai['intent']['purpose']}"),unit(kind,'receiving_acceptance','array',f"For each receiving role ({'; '.join(jai['intent']['audience'])}), identify the concrete downstream use, requested action, acceptance measure and accountable recipient."),unit(kind,'contract_relations','array',f"Identify actual entity IDs and relationship instances for: {'; '.join(jai['semantics']['required_relations'])}."),unit(kind,'decision_purpose_correction','object','Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.')]
     delivery=source['deliverable']
     verification=unit(kind,'delivery_verification','array',f"For the specific output '{delivery['name']}', provide verifiable evidence satisfying: {delivery['acceptance_criterion']}. Required delivery form: {delivery['format']}.")
     verification['source_deliverable']={'name':delivery['name'],'format':delivery['format'],'acceptance_criterion':delivery['acceptance_criterion'],'role_path':source['role']['path']}
@@ -223,10 +225,43 @@ def contract_units(contract, kind, source):
     return result
 
 
+def decision_mapping(contract, source, priority=None):
+    """Return a source-specific proposed operational purpose, never approval.
+
+    Args:
+        contract: Frozen canonical role contract identifying recipients and inputs.
+        source: Parsed authoritative role declaration including exact deliverable.
+        priority: Optional previously authored priority-family purpose.
+    Returns:
+        Mapping with accountable recipients, original source pointers and rationale.
+        Existing acceptance boilerplate is retained as historical input only.
+    Raises:
+        KeyError: If required canonical role source metadata is missing.
+    """
+    jai=contract['jai'];name=source['deliverable']['name'];legacy=jai['semantics']['artifact_type']
+    family=SEMANTIC_REFINEMENTS.get(contract['id'])
+    action=CONTRACT_PURPOSE_ACTIONS.get(contract['id'],REFINED_PURPOSE_ACTIONS.get(family))
+    inputs=jai['semantics']['required_inputs']
+    if action is not None:
+        value=priority or f'{action} for "{name}", using '+ '; '.join(inputs)+'.'
+    else:
+        value=priority or f'Use "{name}" to communicate the attributable findings and required follow-up actions from '+ '; '.join(inputs)+f' to '+ '; '.join(jai['intent']['audience'])+'.'
+    mapping_basis='authored exact contract action' if contract['id'] in CONTRACT_PURPOSE_ACTIONS else 'authored semantic-family action' if family in REFINED_PURPOSE_ACTIONS else 'source-deliverable operational-use proposal; no modality-specific action inferred'
+    return {'status':'mapped' if priority else 'mapped-proposed','value':value,
+        'action_class':'decision-or-operational-action','subject':name,
+        'accountable_owner':jai['intent']['owner_role'],'receiving_roles':jai['intent']['audience'],
+        'reason':'Source-derived operational-use proposal from the exact deliverable and required inputs; broad historical modality does not establish professional meaning. Competent domain confirmation and existing JAI L0 authority remain separate.',
+        'derivation_basis':mapping_basis,
+        'derivation_limits':['The source-deliverable scope is retained; operational meaning remains a proposal requiring competent domain confirmation.','Frozen modality is preserved for compatibility, not treated as proof of professional purpose.'],
+        'evidence_refs':[f'artifacts/contracts/role-deliverables.v3.json#{contract["id"]}/jai/semantics/required_inputs',source['role']['path']+'#6-deliverables'],
+        'source_acceptance_text':jai['intent']['decision_supported'],
+        'professional_acceptance':'pending-independent-review','human_approval':False}
+
+
 def build():
     """Return every reproducible catalogue file without mutating canonical contracts."""
     files={}
-    registry={'schema_version':'1.0.0','version':'26.10.8','status':'proposed','calibration_status':'synthetic-only','specifications':[],
+    registry={'schema_version':'1.0.0','version':'26.10.9','status':'proposed','calibration_status':'synthetic-only','specifications':[],
       'document_kinds':[],'mappings':{'artifact_types':{},'archetypes':{},'sabsa_views':{},'domains':{}},
       'context_fields':{'processes_personal_data':{'type':'boolean'},'regulatory_requirement':{'type':'boolean'}},
       'priority_document_kinds':list(FAMILIES),'binding_map_ref':'migrations/26.10.5-binding-map.json'}
@@ -279,28 +314,48 @@ def build():
         value['completion_scope']='Authored information contract and synthetic fixtures only; proposed and not production-qualified.'
         registry['document_kinds'].append({'id':family,'artifact_types':legacy,'spec_ref':value['id'],'completeness':'complete','status':'proposed'})
         add(value,f'document_kinds/{family}.yaml')
+    for family, obligations in ADDITIONAL_FAMILIES.items():
+        value=spec('family/'+family,'domain',f'Shared semantic obligations for {family}.','complete')
+        value['required_information']=[unit('family/'+family,*entry) for entry in obligations]
+        complete_policy(value,'family/'+family)
+        add(value,f'families/{family}.yaml')
+    family_records={family:{'id':family,'spec_ref':'type/'+legacy,'basis':'Explicit frozen artifact modality; role-specific meaning remains in the bounded overlay.'}
+                    for legacy,family in SEMANTIC_FAMILIES.items()}
+    family_records['operational-handover']={'id':'operational-handover','spec_ref':'kind/operational-handover','basis':'Exact reviewed priority binding.'}
+    family_records.update({family:{'id':family,'spec_ref':'family/'+family,'basis':'Authored exact contract-ID refinements.'} for family in ADDITIONAL_FAMILIES})
+    registry['semantic_families']=list(family_records.values())
+    registry['kind_aliases']=[]
     bindings=[]
     for c in contracts:
         cid=c['id'];legacy=c['jai']['semantics']['artifact_type'];kind=BINDINGS.get(cid,'role/'+cid)
+        family=BINDINGS.get(cid,SEMANTIC_REFINEMENTS.get(cid,SEMANTIC_FAMILIES[legacy]))
+        proposed=decision_mapping(c,live[cid],DECISIONS.get(kind))
         if cid not in BINDINGS:
-            value=spec('kind/'+kind,'document_kind',c['jai']['intent']['purpose'],'complete',inherits=['type/'+legacy,'domain/'+TYPE_DOMAINS[legacy]])
+            foundation=family_records[family]['spec_ref'] if cid in SEMANTIC_REFINEMENTS else 'type/'+legacy
+            value=spec('kind/'+kind,'document_kind',c['jai']['intent']['purpose'],'complete',inherits=[foundation,'domain/'+TYPE_DOMAINS[legacy]])
+            if cid in SEMANTIC_REFINEMENTS:
+                value['semantic_foundation_ref']=foundation
+                value['semantic_foundation_basis']='Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.'
             value['applies_to']={'document_kind':kind,'artifact_types':[legacy]}
             value['target_audience']=c['jai']['intent']['audience']
             value['required_information']=contract_units(c,kind,live[cid])
             complete_policy(value,kind)
-            value['size_budget']['metric']=modality(legacy)
-            value['decisions_supported']=['Determine whether the specific deliverable is fit for its explicit receiving-role use; competent domain confirmation remains pending.']
-            value['coverage_note']='Source-attributed contract-specific proposal plus modality/domain obligations; original copied decision purpose remains a mandatory migration review item.'
+            value['size_budget']['metric']=modality(family if family in SEMANTIC_FAMILIES else 'document')
+            value['decisions_supported']=[proposed['value']]
+            value['semantic_family']=family
+            value['role_overlay']={'contract_id':cid,'scope':'Exact source deliverable, input analysis and existing role gates only','adds_authority':False}
+            value['coverage_note']='Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.'
             value['source_contract']={'id':cid,'source_fingerprint':c['source_fingerprint'],'source_hash':hashlib.sha256(canonical(c)).hexdigest()}
             value['derivation_limits']=['Source inputs identify the subject boundary but do not prove professional sufficiency.','Independent semantic assessment and human L0 approval remain pending.']
             registry['document_kinds'].append({'id':kind,'artifact_types':[legacy],'spec_ref':value['id'],'completeness':'complete','status':'proposed'})
             add(value,f'document_kinds/roles/{cid.replace(":","-")}.yaml')
         purpose=DECISIONS.get(kind)
+        registry['kind_aliases'].append({'id':kind,'family':family,'spec_ref':'kind/'+kind,'contract_id':cid})
         bindings.append({'artifact_id':cid,'artifact_type':legacy,'document_kind':kind,'content_spec_ref':'kind/'+kind,'overlays':[],
           'source_id':cid,'source_fingerprint':c['source_fingerprint'],'source_hash':hashlib.sha256(canonical(c)).hexdigest(),
-          'decision_supported_copy_detected':True,'decision_supported':{'status':'mapped' if purpose else 'pending-correction','value':purpose,'reason':'Explicitly reviewed priority decision purpose.' if purpose else 'Legacy acceptance text is not a decision purpose; requires contract-specific domain review.'},
+          'decision_supported_copy_detected':True,'decision_supported':proposed,'semantic_family':family,
           'jai_extension':{'semantics.content_spec_ref':'kind/'+kind,'design.content_profile_ref':'kind/'+kind,'justification.content_acceptance_ref':'kind/'+kind},
-          'classification_basis':'Reviewed explicit contract ID; original artifact type preserved.' if purpose else 'Unique explicit legacy contract binding; no name inference.'})
+          'classification_basis':'Reviewed explicit contract ID; original artifact type preserved.' if purpose else 'Exact stable contract ID and explicit shared family with a bounded role overlay; no runtime name inference.'})
     files[CONTENT/'migrations/26.10.5-binding-map.json']={'schema_version':'1.0.0','source_release':'26.10.5','source_ref':'artifacts/contracts/role-deliverables.v3.json','canonical_contracts_unchanged':True,'bindings':bindings}
     for path in sorted((RUNTIME/'publication/archetypes').glob('*.json')):
         original=json.loads(path.read_text());name=path.stem

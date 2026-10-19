@@ -1,0 +1,602 @@
+{
+  "collection": "jai-expert-reference-documents",
+  "intended_baseline": "JAI 26.10.8",
+  "version": "1.0.0",
+  "status": "ai-authored-proposed",
+  "created_on": "2026-10-19",
+  "language": "en",
+  "source": "Supplied AI-authored proposed public-synthetic reference library",
+  "reference_count": 30,
+  "families": [
+    "decision-paper",
+    "adr",
+    "business-case",
+    "risk-assessment",
+    "assurance-report",
+    "architecture-definition",
+    "hld",
+    "operational-handover",
+    "runbook",
+    "test-report"
+  ],
+  "levels": [
+    "simple",
+    "medium",
+    "complex"
+  ],
+  "approval_status": "not-human-approved",
+  "entries": [
+    {
+      "reference_id": "example:decision-paper:simple",
+      "document_kind": "decision-paper",
+      "complexity": "simple",
+      "path": "decision-paper/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "ae8b24257b304a2f31a85890cfbcc3140c6ad97d0a43a3e6bf86015929998ca9",
+      "bytes": 6803,
+      "words": 856,
+      "dcs_required_units": [
+        "decision-paper.decision_request",
+        "decision-paper.baseline",
+        "decision-paper.options",
+        "decision-paper.tradeoffs",
+        "decision-paper.recommendation"
+      ]
+    },
+    {
+      "reference_id": "example:decision-paper:medium",
+      "document_kind": "decision-paper",
+      "complexity": "medium",
+      "path": "decision-paper/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "ae415ba9eb4a0946e89f6654c9e0beffd646b103d392532dd351a9611aa52cc2",
+      "bytes": 6901,
+      "words": 875,
+      "dcs_required_units": [
+        "decision-paper.decision_request",
+        "decision-paper.baseline",
+        "decision-paper.options",
+        "decision-paper.tradeoffs",
+        "decision-paper.recommendation"
+      ]
+    },
+    {
+      "reference_id": "example:decision-paper:complex",
+      "document_kind": "decision-paper",
+      "complexity": "complex",
+      "path": "decision-paper/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "0b7242389ed65221fbcf3409c9f39291b64d95720a84149ac5e3faca74174477",
+      "bytes": 7302,
+      "words": 894,
+      "dcs_required_units": [
+        "decision-paper.decision_request",
+        "decision-paper.baseline",
+        "decision-paper.options",
+        "decision-paper.tradeoffs",
+        "decision-paper.recommendation"
+      ]
+    },
+    {
+      "reference_id": "example:adr:simple",
+      "document_kind": "adr",
+      "complexity": "simple",
+      "path": "adr/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "94b961e67fe6c0569d66700e83b6e7f32b5e7490da8ec2ec2c6d79aa0393139e",
+      "bytes": 6212,
+      "words": 741,
+      "dcs_required_units": [
+        "adr.decision_context",
+        "adr.architecture_options",
+        "adr.architecture_choice",
+        "adr.consequences",
+        "adr.supersession"
+      ]
+    },
+    {
+      "reference_id": "example:adr:medium",
+      "document_kind": "adr",
+      "complexity": "medium",
+      "path": "adr/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "19e325b044afd1cc9257e696df69f360344d7d5db4e45376d2c43b936611d46b",
+      "bytes": 6329,
+      "words": 753,
+      "dcs_required_units": [
+        "adr.decision_context",
+        "adr.architecture_options",
+        "adr.architecture_choice",
+        "adr.consequences",
+        "adr.supersession"
+      ]
+    },
+    {
+      "reference_id": "example:adr:complex",
+      "document_kind": "adr",
+      "complexity": "complex",
+      "path": "adr/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "977951ac1246d240eb44e85d4f48d58edffb8a249b41074ff3ab26df652198a2",
+      "bytes": 6749,
+      "words": 790,
+      "dcs_required_units": [
+        "adr.decision_context",
+        "adr.architecture_options",
+        "adr.architecture_choice",
+        "adr.consequences",
+        "adr.supersession"
+      ]
+    },
+    {
+      "reference_id": "example:business-case:simple",
+      "document_kind": "business-case",
+      "complexity": "simple",
+      "path": "business-case/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "41c7e918069b8e73a14acf42657f9db413f755fd0cd875517a897b1344fc44fd",
+      "bytes": 6469,
+      "words": 800,
+      "dcs_required_units": [
+        "business-case.investment_request",
+        "business-case.investment_options",
+        "business-case.financial_model",
+        "business-case.sensitivity",
+        "business-case.benefit_realisation"
+      ]
+    },
+    {
+      "reference_id": "example:business-case:medium",
+      "document_kind": "business-case",
+      "complexity": "medium",
+      "path": "business-case/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "babb0b2eb83e963549efa13091a3a1999e5bdaa11ccb3861e8580ff437f56983",
+      "bytes": 6595,
+      "words": 823,
+      "dcs_required_units": [
+        "business-case.investment_request",
+        "business-case.investment_options",
+        "business-case.financial_model",
+        "business-case.sensitivity",
+        "business-case.benefit_realisation"
+      ]
+    },
+    {
+      "reference_id": "example:business-case:complex",
+      "document_kind": "business-case",
+      "complexity": "complex",
+      "path": "business-case/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "d2d5047f15df2137793a5e02ae10910d1cd5a645f5c16e78cda893fcf5741749",
+      "bytes": 6871,
+      "words": 846,
+      "dcs_required_units": [
+        "business-case.investment_request",
+        "business-case.investment_options",
+        "business-case.financial_model",
+        "business-case.sensitivity",
+        "business-case.benefit_realisation"
+      ]
+    },
+    {
+      "reference_id": "example:risk-assessment:simple",
+      "document_kind": "risk-assessment",
+      "complexity": "simple",
+      "path": "risk-assessment/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "ec7e5e9da7cbaf89722804730ab40a215bbbf766bb3aa2d18df7a42a36f30e3d",
+      "bytes": 6318,
+      "words": 766,
+      "dcs_required_units": [
+        "risk-assessment.assessment_scope",
+        "risk-assessment.scoring_method",
+        "risk-assessment.risk_scenarios",
+        "risk-assessment.risk_evaluation",
+        "risk-assessment.risk_treatment"
+      ]
+    },
+    {
+      "reference_id": "example:risk-assessment:medium",
+      "document_kind": "risk-assessment",
+      "complexity": "medium",
+      "path": "risk-assessment/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "141561ee1d19c0101bc2c7ed884e2b7fb7f02e71338a891482c9791ea1464027",
+      "bytes": 6578,
+      "words": 801,
+      "dcs_required_units": [
+        "risk-assessment.assessment_scope",
+        "risk-assessment.scoring_method",
+        "risk-assessment.risk_scenarios",
+        "risk-assessment.risk_evaluation",
+        "risk-assessment.risk_treatment"
+      ]
+    },
+    {
+      "reference_id": "example:risk-assessment:complex",
+      "document_kind": "risk-assessment",
+      "complexity": "complex",
+      "path": "risk-assessment/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "cad1f8c5a26aa534238326bcdc96cf4371403f1067457916eb69ce5d00bc0708",
+      "bytes": 6961,
+      "words": 833,
+      "dcs_required_units": [
+        "risk-assessment.assessment_scope",
+        "risk-assessment.scoring_method",
+        "risk-assessment.risk_scenarios",
+        "risk-assessment.risk_evaluation",
+        "risk-assessment.risk_treatment"
+      ]
+    },
+    {
+      "reference_id": "example:assurance-report:simple",
+      "document_kind": "assurance-report",
+      "complexity": "simple",
+      "path": "assurance-report/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "e8bf1a9e22e7f68b04b316a53b616605ec5ba79475cbaf76616ee1ef57ef886c",
+      "bytes": 6024,
+      "words": 712,
+      "dcs_required_units": [
+        "assurance-report.assurance_scope",
+        "assurance-report.assurance_method",
+        "assurance-report.control_tests",
+        "assurance-report.assurance_findings",
+        "assurance-report.assurance_conclusion"
+      ]
+    },
+    {
+      "reference_id": "example:assurance-report:medium",
+      "document_kind": "assurance-report",
+      "complexity": "medium",
+      "path": "assurance-report/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "5b27a461d9956d7d5fc6c588103877c50751b4a4f64a01be38f85104d8c4c36d",
+      "bytes": 6197,
+      "words": 736,
+      "dcs_required_units": [
+        "assurance-report.assurance_scope",
+        "assurance-report.assurance_method",
+        "assurance-report.control_tests",
+        "assurance-report.assurance_findings",
+        "assurance-report.assurance_conclusion"
+      ]
+    },
+    {
+      "reference_id": "example:assurance-report:complex",
+      "document_kind": "assurance-report",
+      "complexity": "complex",
+      "path": "assurance-report/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "454ffe5ef6e426563ebc8009441d007d6c5ba15b6d0df6ea45870ca9307875f7",
+      "bytes": 6512,
+      "words": 765,
+      "dcs_required_units": [
+        "assurance-report.assurance_scope",
+        "assurance-report.assurance_method",
+        "assurance-report.control_tests",
+        "assurance-report.assurance_findings",
+        "assurance-report.assurance_conclusion"
+      ]
+    },
+    {
+      "reference_id": "example:architecture-definition:simple",
+      "document_kind": "architecture-definition",
+      "complexity": "simple",
+      "path": "architecture-definition/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "842769bdc698d01988931cdc8b01ce80b7660772c2b220718d66aa951569fac6",
+      "bytes": 7361,
+      "words": 841,
+      "dcs_required_units": [
+        "architecture-definition.architecture_context",
+        "architecture-definition.architecture_drivers",
+        "architecture-definition.architecture_viewpoints",
+        "architecture-definition.architecture_relations",
+        "architecture-definition.architecture_evolution"
+      ]
+    },
+    {
+      "reference_id": "example:architecture-definition:medium",
+      "document_kind": "architecture-definition",
+      "complexity": "medium",
+      "path": "architecture-definition/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "1ad954aea04e787b420202aa039b480d4d3c075ef7f9cbb20070b1edd1eb52a3",
+      "bytes": 7577,
+      "words": 866,
+      "dcs_required_units": [
+        "architecture-definition.architecture_context",
+        "architecture-definition.architecture_drivers",
+        "architecture-definition.architecture_viewpoints",
+        "architecture-definition.architecture_relations",
+        "architecture-definition.architecture_evolution"
+      ]
+    },
+    {
+      "reference_id": "example:architecture-definition:complex",
+      "document_kind": "architecture-definition",
+      "complexity": "complex",
+      "path": "architecture-definition/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "2c6c7afcba8a0365330d22b087309d1b306ed86cf03263ca59b8f68a835a12d2",
+      "bytes": 8140,
+      "words": 898,
+      "dcs_required_units": [
+        "architecture-definition.architecture_context",
+        "architecture-definition.architecture_drivers",
+        "architecture-definition.architecture_viewpoints",
+        "architecture-definition.architecture_relations",
+        "architecture-definition.architecture_evolution"
+      ]
+    },
+    {
+      "reference_id": "example:hld:simple",
+      "document_kind": "hld",
+      "complexity": "simple",
+      "path": "hld/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "8c1d091db19aa1fcef78b17a4d9ce980fd0a8298938f4b1e0767238b958182fc",
+      "bytes": 6334,
+      "words": 750,
+      "dcs_required_units": [
+        "hld.solution_scope",
+        "hld.quality_requirements",
+        "hld.solution_components",
+        "hld.solution_interfaces",
+        "hld.delivery_strategy"
+      ]
+    },
+    {
+      "reference_id": "example:hld:medium",
+      "document_kind": "hld",
+      "complexity": "medium",
+      "path": "hld/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "3a58945d67b95e33c97a200a6646d752a01097936f5c450fc3494ab364241980",
+      "bytes": 6573,
+      "words": 777,
+      "dcs_required_units": [
+        "hld.solution_scope",
+        "hld.quality_requirements",
+        "hld.solution_components",
+        "hld.solution_interfaces",
+        "hld.delivery_strategy"
+      ]
+    },
+    {
+      "reference_id": "example:hld:complex",
+      "document_kind": "hld",
+      "complexity": "complex",
+      "path": "hld/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "2ab6a6ee55fbaf1a72b342f5d02d47f95025ef3d3ddbe09c9085e07ab4198d84",
+      "bytes": 6968,
+      "words": 799,
+      "dcs_required_units": [
+        "hld.solution_scope",
+        "hld.quality_requirements",
+        "hld.solution_components",
+        "hld.solution_interfaces",
+        "hld.delivery_strategy"
+      ]
+    },
+    {
+      "reference_id": "example:operational-handover:simple",
+      "document_kind": "operational-handover",
+      "complexity": "simple",
+      "path": "operational-handover/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "d3d5f263fe1a1601a8580b33df8b20a5334dbc0c5b1de4ba78e7c7157dcc60b6",
+      "bytes": 6120,
+      "words": 726,
+      "dcs_required_units": [
+        "operational-handover.service_boundary",
+        "operational-handover.readiness_evidence",
+        "operational-handover.support_arrangements",
+        "operational-handover.handover_inventory",
+        "operational-handover.acceptance_decision"
+      ]
+    },
+    {
+      "reference_id": "example:operational-handover:medium",
+      "document_kind": "operational-handover",
+      "complexity": "medium",
+      "path": "operational-handover/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "e7a32357db7c5101ea30c052b49959380c186172f563c7bedc54ffff0e3381a0",
+      "bytes": 6283,
+      "words": 751,
+      "dcs_required_units": [
+        "operational-handover.service_boundary",
+        "operational-handover.readiness_evidence",
+        "operational-handover.support_arrangements",
+        "operational-handover.handover_inventory",
+        "operational-handover.acceptance_decision"
+      ]
+    },
+    {
+      "reference_id": "example:operational-handover:complex",
+      "document_kind": "operational-handover",
+      "complexity": "complex",
+      "path": "operational-handover/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "e8e6a2a94cbaa0833908e4bb7eaacde824b5e496c72d153890c307025112566a",
+      "bytes": 6562,
+      "words": 769,
+      "dcs_required_units": [
+        "operational-handover.service_boundary",
+        "operational-handover.readiness_evidence",
+        "operational-handover.support_arrangements",
+        "operational-handover.handover_inventory",
+        "operational-handover.acceptance_decision"
+      ]
+    },
+    {
+      "reference_id": "example:runbook:simple",
+      "document_kind": "runbook",
+      "complexity": "simple",
+      "path": "runbook/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "e5c5533f385b621aeff50bb4da2612dc0b739152943f550211123c3484b333b1",
+      "bytes": 6668,
+      "words": 814,
+      "dcs_required_units": [
+        "runbook.operational_trigger",
+        "runbook.prerequisites",
+        "runbook.procedure_steps",
+        "runbook.failure_recovery",
+        "runbook.operational_validation"
+      ]
+    },
+    {
+      "reference_id": "example:runbook:medium",
+      "document_kind": "runbook",
+      "complexity": "medium",
+      "path": "runbook/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "1c4cc1bfe52460708a8f46c662d9e037977c9129ebabcb90b3dc4682ace9e38b",
+      "bytes": 6870,
+      "words": 846,
+      "dcs_required_units": [
+        "runbook.operational_trigger",
+        "runbook.prerequisites",
+        "runbook.procedure_steps",
+        "runbook.failure_recovery",
+        "runbook.operational_validation"
+      ]
+    },
+    {
+      "reference_id": "example:runbook:complex",
+      "document_kind": "runbook",
+      "complexity": "complex",
+      "path": "runbook/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "b4030c7a8a04c6117155a0365a5803092be5ce1c274864f6f91d8654612cbda1",
+      "bytes": 7388,
+      "words": 887,
+      "dcs_required_units": [
+        "runbook.operational_trigger",
+        "runbook.prerequisites",
+        "runbook.procedure_steps",
+        "runbook.failure_recovery",
+        "runbook.operational_validation"
+      ]
+    },
+    {
+      "reference_id": "example:test-report:simple",
+      "document_kind": "test-report",
+      "complexity": "simple",
+      "path": "test-report/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "27a2c3a0218089c309b02ff32e7e055005b42b37c5f6f3ccfdba51c335b141c1",
+      "bytes": 5910,
+      "words": 740,
+      "dcs_required_units": [
+        "test-report.test_scope",
+        "test-report.test_environment",
+        "test-report.execution_results",
+        "test-report.defect_analysis",
+        "test-report.test_conclusion"
+      ]
+    },
+    {
+      "reference_id": "example:test-report:medium",
+      "document_kind": "test-report",
+      "complexity": "medium",
+      "path": "test-report/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "73e1418ee9714fb919eba3a672f76b1433569761cb4d3e7dee00d767ce2618d2",
+      "bytes": 6204,
+      "words": 769,
+      "dcs_required_units": [
+        "test-report.test_scope",
+        "test-report.test_environment",
+        "test-report.execution_results",
+        "test-report.defect_analysis",
+        "test-report.test_conclusion"
+      ]
+    },
+    {
+      "reference_id": "example:test-report:complex",
+      "document_kind": "test-report",
+      "complexity": "complex",
+      "path": "test-report/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "sha256": "10e3d12ebfe09e6d940d15eca96aaccd0d7f7b89565319efde69aba5a94d327d",
+      "bytes": 6434,
+      "words": 782,
+      "dcs_required_units": [
+        "test-report.test_scope",
+        "test-report.test_environment",
+        "test-report.execution_results",
+        "test-report.defect_analysis",
+        "test-report.test_conclusion"
+      ]
+    }
+  ],
+  "license": "SPDX-License-Identifier: BSD-4-Clause",
+  "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team"
+}

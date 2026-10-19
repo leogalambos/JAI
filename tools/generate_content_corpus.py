@@ -7,6 +7,7 @@ Variants are explicit mutations with expected rule IDs and observable defects.
 These fixtures qualify the foundation test harness, not production content QA.
 """
 import argparse
+import hashlib
 import sys
 import copy
 import json
@@ -323,6 +324,14 @@ def build():
     manifest['total_reference_count'] = manifest['reference_count'] + len(enterprise)
     manifest['total_mutation_count'] = manifest['reference_count'] * manifest['variants_per_reference'] + sum(len(case['variants']) for case in enterprise.values())
     manifest['evaluation_limit'] += ' Enterprise probes test typed contract coverage; professional meaning remains pending independent domain review.'
+    payload = {str(path.relative_to(ROOT / '.ai/runtime')):
+               hashlib.sha256((json.dumps(document, indent=2) + '\n').encode()).hexdigest()
+               for path, document in enterprise.items()}
+    descriptor = {'schema_version': '1.0.0', 'package_kind': 'optional-extended-synthetic-evaluation',
+                  'release': (ROOT / 'VERSION').read_text().strip(), 'files': payload,
+                  'classification': 'public-synthetic', 'professional_approval': False}
+    descriptor['payload_hash'] = canonical_hash(payload)
+    result[ROOT / '.ai/runtime/content/evaluation-package.json'] = descriptor
     return result
 
 

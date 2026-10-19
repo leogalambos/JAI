@@ -43,3 +43,9 @@ You can also ask for editable CSV catalogues. Export the current local entries, 
 Markdown needs no external document renderer. Emitting TeX or DOCX uses Pandoc; compiling the controlled PDF edition also needs XeLaTeX, installed TeX packages and the selected fonts. Independently render and inspect the formats actually delivered. LibreOffice/Word supports Office visual QA; the SABSA TeX/PDF path does not invoke an Office renderer. See the [publication stack](../configuration/publication-stack.md) for dependencies and gates.
 
 The [How to use JAI series](../examples/how-to-use-JAI/index.md) demonstrates these choices inside a security assessment and an iterative Android project. Successful generation is one check; architecture approval and a product release decision remain separate statuses.
+
+## Expert authoring references
+
+The [bundled expert references](expert-reference-documents.md) provide complete
+fictional examples at three complexity levels. They support authoring without
+replacing registered DCS rules, independent review or existing human authority.

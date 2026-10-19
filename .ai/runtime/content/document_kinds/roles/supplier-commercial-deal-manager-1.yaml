@@ -25,9 +25,9 @@
     "Delegated human commercial and finance authority"
   ],
   "decisions_supported": [
-    "Determine whether the specific deliverable is fit for its explicit receiving-role use; competent domain confirmation remains pending."
+    "Use \"Supplier commercial strategy and negotiation brief\" to communicate the attributable findings and required follow-up actions from Client objectives, procurement route and opportunity strategy; Negotiation mandate, signing limits, risk appetite and legal constraints; Solution, estimate, price options and delivery/service feasibility; Draft/signed terms, obligations, changes, invoices, service performance and claims to Bid / Proposal Manager; Supplier Commercial / Deal Manager; Delegated human commercial and finance authority."
   ],
-  "intended_usage": "26.10.8 advisory content contract; professional approval pending",
+  "intended_usage": "Advisory content contract; professional approval pending",
   "non_goals": [
     "Replace JAI authority",
     "Claim a professional framework requirement without a cited source"
@@ -158,7 +158,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "State the specific choice enabled, alternatives and competent decision authority, or explain why this output supports no decision; copied acceptance boilerplate is not a decision purpose.",
+        "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -173,7 +173,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "State the specific choice enabled, alternatives and competent decision authority, or explain why this output supports no decision; copied acceptance boilerplate is not a decision purpose.",
+        "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#supplier-commercial-deal-manager:1",
           "content/types/decision-paper.yaml"
@@ -743,7 +743,13 @@
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "coverage_note": "Source-attributed contract-specific proposal plus modality/domain obligations; original copied decision purpose remains a mandatory migration review item.",
+  "semantic_family": "decision-paper",
+  "role_overlay": {
+    "contract_id": "supplier-commercial-deal-manager:1",
+    "scope": "Exact source deliverable, input analysis and existing role gates only",
+    "adds_authority": false
+  },
+  "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "supplier-commercial-deal-manager:1",
     "source_fingerprint": "2c0b9f99e0c6305fcd8a279a8d7490182333dbbf75130364ba3f9cc4fbfa09a4",

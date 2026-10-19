@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:jai:expert-reference:1.0.0",
+  "title": "Proposed expert reference Markdown metadata",
+  "description": "Reference metadata does not confer authority or professional approval.",
+  "license": "SPDX-License-Identifier: BSD-4-Clause",
+  "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["reference_id", "schema_version", "document_kind", "complexity", "language", "classification", "provenance", "fictional_context", "applicable_dcs", "approval_status"],
+  "properties": {
+    "reference_id": {"type": "string", "minLength": 1, "maxLength": 200},
+    "schema_version": {"const": "1.0.0"},
+    "document_kind": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"},
+    "complexity": {"enum": ["simple", "medium", "complex"]},
+    "language": {"const": "en"},
+    "classification": {"enum": ["public-synthetic", "public", "internal", "confidential", "restricted"]},
+    "provenance": {"enum": ["ai-authored-proposed", "user-supplied-proposed", "expert-authored-proposed"]},
+    "fictional_context": {"type": "boolean"},
+    "applicable_dcs": {"type": "string", "pattern": "^kind/[a-z][a-z0-9-]*$"},
+    "approval_status": {"const": "not-human-approved"}
+  },
+  "allOf": [{"if": {"properties": {"classification": {"const": "public-synthetic"}}}, "then": {"properties": {"fictional_context": {"const": true}}}}]
+}

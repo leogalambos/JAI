@@ -93,3 +93,110 @@ ARCHETYPE_REQUIREMENTS = {
  'roadmap': ('roadmap_reader_sequence','Present outcome horizons, sequenced increments, critical dependencies, funding and acceptance milestones.'),
  'solution-design-hld': ('hld_reader_boundaries','Locate solution scope, measurable drivers, components/interfaces, trust boundaries and delivery verification.'),
 }
+
+# Explicit registered modality-to-family assignments; no runtime title inference.
+SEMANTIC_FAMILIES = {
+    'architecture-definition': 'architecture-definition', 'architecture-decision': 'adr',
+    'solution-design': 'hld', 'decision-paper': 'decision-paper',
+    'business-case': 'business-case', 'risk-assessment': 'risk-assessment',
+    'assurance-report': 'assurance-report', 'control-design': 'control-design',
+    'implementation-specification': 'implementation-specification',
+    'migration-plan': 'migration-plan', 'cutover-plan': 'cutover-plan',
+    'operational-readiness-assessment': 'operational-readiness-assessment',
+    'service-design': 'service-design', 'runbook': 'runbook',
+    'test-strategy': 'test-strategy', 'test-report': 'test-report',
+    'benefits-review': 'benefits-review', 'roadmap': 'roadmap', 'register': 'register',
+    'dashboard': 'dashboard', 'presentation': 'presentation', 'dataset': 'dataset',
+    'catalogue': 'catalogue', 'document': 'document', 'diagram': 'diagram',
+    'model': 'model', 'prototype': 'prototype',
+    'configuration-baseline': 'configuration-baseline',
+}
+
+# Bounded authored refinements for semantically distinct prose families whose
+# frozen legacy modality is too broad. Keys are exact canonical contract IDs.
+SEMANTIC_REFINEMENTS = {
+    'chief-information-officer:1': 'strategy',
+    'chief-technology-officer:1': 'strategy',
+    'chief-data-officer:1': 'strategy',
+    'chief-digital-officer:2': 'strategy',
+    'chief-product-officer:1': 'strategy',
+    'chief-ai-officer:1': 'strategy',
+    'staff-engineer:1': 'strategy',
+    'product-owner:4': 'release-notes',
+    'release-engineer:2': 'release-notes',
+    'technical-writer:3': 'release-notes',
+    'business-analyst:1': 'requirements-specification',
+    'systems-engineer-incose:1': 'requirements-specification',
+}
+
+ADDITIONAL_FAMILIES = {
+    'strategy': [
+        ('strategic_outcomes', 'array', 'Trace target outcomes and measurable success to business direction and baseline constraints.'),
+        ('strategic_choices', 'array', 'Compare investment and operating choices, dependencies, resource assumptions and rejected alternatives.'),
+        ('strategy_execution', 'array', 'Assign sequenced initiatives, accountable owners, outcome measures and review triggers.')],
+    'release-notes': [
+        ('release_identity', 'object', 'Identify exact release and predecessor versions, affected products and deployment applicability.'),
+        ('release_changes', 'array', 'Link delivered changes, resolved defects, known limitations and compatibility impacts to traceable change records.'),
+        ('release_actions', 'array', 'Specify required upgrade actions, configuration changes, rollback constraints and recipient communication.')],
+    'requirements-specification': [
+        ('requirement_sources', 'array', 'Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers.'),
+        ('verifiable_requirements', 'array', 'State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions.'),
+        ('requirements_consistency', 'array', 'Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility.')],
+}
+
+# Semantic purpose comes from the authored refinement, never the legacy storage
+# modality. Broad frozen artifact types sometimes describe the wrong activity.
+REFINED_PURPOSE_ACTIONS = {
+    'strategy': 'Set strategic choices, target outcomes, investment priorities and accountable review triggers',
+    'release-notes': 'Inform recipients of release changes, compatibility impacts, known issues and required upgrade actions',
+    'requirements-specification': 'Agree testable requirements, resolve stakeholder conflicts and trace acceptance conditions to implementation and verification',
+}
+
+CONTRACT_PURPOSE_ACTIONS = {
+    'software-engineer:1': 'Integrate reviewed code against the specified behaviour and demonstrate regression and rollback readiness',
+    'software-engineer:2': 'Execute automated tests to detect behavioural regressions and expose untested requirements',
+    'software-engineer:3': 'Explain changed interfaces, assumptions and operating requirements to maintainers and users',
+    'software-engineer:4': 'Execute deployment and rollback actions using documented verification checkpoints and recovery constraints',
+    'release-engineer:3': 'Execute versioned deployment automation with controlled targets, verification checkpoints and rollback handling',
+    'test-automation-engineer:1': 'Execute automated test suites against risk-based coverage and investigate observed regressions',
+    'test-automation-engineer:2': 'Maintain reusable test framework abstractions that enable deterministic, isolated automated checks',
+    'test-automation-engineer:3': 'Prioritise remediation of intermittent test failures from measured flakiness and reliability evidence',
+    'test-automation-engineer:4': 'Identify untested product risks and prioritise additional test coverage against those risks',
+    'devops-engineer:1': 'Execute controlled build, test and deployment pipeline stages with explicit failure and rollback behaviour',
+    'devops-engineer:2': 'Provision and deploy consistent environments using versioned automation and verified recovery paths',
+    'devops-engineer:3': 'Apply versioned desired configuration and reconcile drift without exposing secrets',
+    'devops-engineer:4': 'Measure deployment outcomes and use feedback to prioritise delivery reliability improvements',
+}
+
+# These exact engineering source deliverables are not feasibility prototypes or
+# option papers, despite their frozen compatibility artifact types.
+SEMANTIC_REFINEMENTS.update({
+    'software-engineer:1': 'software-change',
+    'software-engineer:2': 'automated-tests',
+    'software-engineer:3': 'document',
+    'software-engineer:4': 'runbook',
+    'release-engineer:3': 'deployment-automation',
+    'test-automation-engineer:1': 'automated-tests',
+    'test-automation-engineer:2': 'automated-tests',
+    'test-automation-engineer:3': 'test-report',
+    'test-automation-engineer:4': 'test-strategy',
+    'devops-engineer:1': 'deployment-automation',
+    'devops-engineer:2': 'deployment-automation',
+    'devops-engineer:3': 'configuration-baseline',
+    'devops-engineer:4': 'dashboard',
+})
+
+ADDITIONAL_FAMILIES.update({
+    'software-change': [
+        ('change_behaviour', 'object', 'Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision.'),
+        ('change_verification', 'array', 'Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution.'),
+        ('change_recovery', 'object', 'Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints.')],
+    'automated-tests': [
+        ('automated_test_scope', 'array', 'Trace executable cases and reusable test abstractions to requirements, risk coverage, deterministic data and environment assumptions.'),
+        ('automated_test_execution', 'array', 'Give reproducible invocation, assertions, expected outcomes and failure diagnostics; distinguish test definitions from evidence of executed runs.'),
+        ('automated_test_maintenance', 'object', 'Define isolation, dependency handling, flakiness investigation, coverage limitations and maintenance ownership.')],
+    'deployment-automation': [
+        ('deployment_targets', 'array', 'Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets.'),
+        ('deployment_controls', 'array', 'Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths.'),
+        ('deployment_verification', 'array', 'Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence.')],
+})

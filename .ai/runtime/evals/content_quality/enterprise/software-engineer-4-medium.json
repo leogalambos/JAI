@@ -179,7 +179,7 @@
       "record_id": "SYN-DECISION-PURPOSE-CORRECTION",
       "service": "Regional order integration",
       "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "State the specific choice enabled, alternatives and competent decision authority, or explain why this output supports no decision; copied acceptance boilerplate is not a decision purpose.",
+      "criterion_under_review": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
       "accountable_role": "Synthetic receiving service owner",
       "evidence_refs": [
         "SYN-01"
@@ -260,6 +260,27 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
+    "execution_boundary": {
+      "service_owner": "Morgan Lee",
+      "support_team": "Warehouse platform operations",
+      "support_hours": "06:00-22:00",
+      "incident_ref": "SYN-INC1",
+      "step": 1,
+      "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+      "expected_output": "deployment transaction-api successfully rolled out",
+      "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+      "safe_state": "Keep new transaction traffic disabled",
+      "escalation": "Incident commander on bridge SYN-INC1",
+      "record_id": "SYN-EXECUTION-BOUNDARY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Define triggers, authorised operators, prerequisites and stop conditions.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
     "identity": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -277,76 +298,43 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
-    "prototype_hypothesis": {
-      "test_id": "SYN-T1",
-      "requirement_ref": "SYN-REC1",
-      "build": "candidate-1.0",
-      "environment": "Isolated recovery rehearsal",
-      "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
-      "expected_max_minutes": 30,
-      "observed_minutes": 27,
-      "expected_duplicate_count": 0,
-      "observed_duplicate_count": 0,
-      "sample_size": 10,
-      "exclusions": [
-        "Peak-load recovery"
-      ],
-      "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
-      "record_id": "SYN-PROTOTYPE-HYPOTHESIS",
+    "recovery_and_escalation": {
+      "service_owner": "Morgan Lee",
+      "support_team": "Warehouse platform operations",
+      "support_hours": "06:00-22:00",
+      "incident_ref": "SYN-INC1",
+      "step": 1,
+      "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+      "expected_output": "deployment transaction-api successfully rolled out",
+      "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+      "safe_state": "Keep new transaction traffic disabled",
+      "escalation": "Incident commander on bridge SYN-INC1",
+      "record_id": "SYN-RECOVERY-AND-ESCALATION",
       "service": "Regional order integration",
       "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Define the feasibility question, explicit non-production boundary and success criteria.",
+      "criterion_under_review": "Define failures, safe-state recovery, rollback and named escalation responsibility.",
       "accountable_role": "Synthetic receiving service owner",
       "evidence_refs": [
         "SYN-01"
       ],
       "knowledge_status": "synthetic-assumption"
     },
-    "prototype_reproduction": {
-      "test_id": "SYN-T1",
-      "requirement_ref": "SYN-REC1",
-      "build": "candidate-1.0",
-      "environment": "Isolated recovery rehearsal",
-      "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
-      "expected_max_minutes": 30,
-      "observed_minutes": 27,
-      "expected_duplicate_count": 0,
-      "observed_duplicate_count": 0,
-      "sample_size": 10,
-      "exclusions": [
-        "Peak-load recovery"
-      ],
-      "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
-      "record_id": "SYN-PROTOTYPE-REPRODUCTION",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify versioned code, dependencies, representative inputs and reproducible execution.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "prototype_results": [
+    "verified_steps": [
       {
-        "test_id": "SYN-T1",
-        "requirement_ref": "SYN-REC1",
-        "build": "candidate-1.0",
-        "environment": "Isolated recovery rehearsal",
-        "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
-        "expected_max_minutes": 30,
-        "observed_minutes": 27,
-        "expected_duplicate_count": 0,
-        "observed_duplicate_count": 0,
-        "sample_size": 10,
-        "exclusions": [
-          "Peak-load recovery"
-        ],
-        "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
-        "record_id": "SYN-PROTOTYPE-RESULTS",
+        "service_owner": "Morgan Lee",
+        "support_team": "Warehouse platform operations",
+        "support_hours": "06:00-22:00",
+        "incident_ref": "SYN-INC1",
+        "step": 1,
+        "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+        "expected_output": "deployment transaction-api successfully rolled out",
+        "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+        "safe_state": "Keep new transaction traffic disabled",
+        "escalation": "Incident commander on bridge SYN-INC1",
+        "record_id": "SYN-VERIFIED-STEPS",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Record observed results, limitations, risks and disposition against predeclared criteria.",
+        "criterion_under_review": "Provide ordered actions, exact targets, expected observations and verification.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -394,10 +382,10 @@
         "role/software-engineer:4.delivery_verification",
         "role/software-engineer:4.receiving_acceptance",
         "role/software-engineer:4.role_gate_observations",
-        "type/prototype.identity",
-        "type/prototype.prototype_hypothesis",
-        "type/prototype.prototype_reproduction",
-        "type/prototype.prototype_results"
+        "type/runbook.execution_boundary",
+        "type/runbook.identity",
+        "type/runbook.recovery_and_escalation",
+        "type/runbook.verified_steps"
       ],
       "expected_category": "critical-content"
     },

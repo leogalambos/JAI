@@ -60,7 +60,7 @@ def prepare_case(reference, resolver):
     return model, spec
 
 
-def evaluate_corpus(root, detector=None, include_enterprise=True):
+def evaluate_corpus(root, detector=None, include_enterprise=True, extended_root=None):
     """Measure actual seeded-defect recall and reference false positives.
 
     Args:
@@ -69,6 +69,8 @@ def evaluate_corpus(root, detector=None, include_enterprise=True):
             contract; defaults to content_lint.evaluate.
         include_enterprise: Include every explicit role and presentation/domain
             probe. False selects only the historical thirty priority references.
+        extended_root: Optional locally unpacked, digest-pinned evaluation package.
+            No package is ever downloaded during evaluation.
     Returns:
         Reproducible JSON report containing every case hash and findings.
     Raises:
@@ -83,6 +85,19 @@ def evaluate_corpus(root, detector=None, include_enterprise=True):
     resolver = ContentSpec(root)
     mutate = _mutator(root)
     manifest = json.loads((runtime / 'evals/content_quality/manifest.json').read_text())
+    enterprise_directory = Path(extended_root).resolve() if extended_root else runtime
+    if include_enterprise:
+        from evaluation_package import validate_package
+        availability = validate_package(runtime, enterprise_directory)
+        if availability['state'] != 'AVAILABLE':
+            unavailable = {'schema_version': '1.0.0', 'calibration_status': 'synthetic-only',
+                           'human_gold': False, 'production_ready': False,
+                           'approval_status': 'pending-existing-JAI-L0', 'pilot_pass': False,
+                           'qualification_state': 'NOT_EXECUTED', 'qualification_profile': 'full-source',
+                           'reason': availability['reason'], 'cases': [],
+                           'missing_case_count': availability.get('missing_count', 0)}
+            unavailable['evaluation_hash'] = canonical_hash(unavailable)
+            return unavailable
     cases = []
     counts = dict(expected_critical=0, detected_critical=0,
                   reference_count=0, reference_false_positives=0,
@@ -91,7 +106,8 @@ def evaluate_corpus(root, detector=None, include_enterprise=True):
     coverage_records = []
     selected_cases = [*manifest['cases'], *(manifest.get('enterprise_cases', []) if include_enterprise else [])]
     for relative in selected_cases:
-        reference = json.loads((runtime / relative).read_text())
+        case_root = enterprise_directory if relative in manifest.get('enterprise_cases', []) else runtime
+        reference = json.loads((case_root / relative).read_text())
         reference_ok = False
         negative_ok = False
         borderline_ok = False
@@ -146,7 +162,9 @@ def evaluate_corpus(root, detector=None, include_enterprise=True):
                    if counts['critical_case_count'] else 0.0)
     false_positive = (counts['reference_false_positives'] / counts['reference_count']
                       if counts['reference_count'] else 1.0)
-    result = {'schema_version': '1.0.0', 'calibration_status': 'synthetic-only',
+    result = {'schema_version': '1.0.0', 'qualification_profile': 'full-source' if include_enterprise else 'core',
+              'qualification_state': 'EXECUTED', 'evidence_class': 'synthetic-regression',
+              'calibration_status': 'synthetic-only',
               'human_gold': False, 'production_ready': False,
               'approval_status': 'pending-existing-JAI-L0', 'counts': counts,
               'critical_recall': recall, 'critical_case_recall': case_recall,
@@ -300,19 +318,21 @@ def main(argv=None):
     parser.add_argument('command', choices=['run'])
     parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument('--output', type=Path)
+    parser.add_argument('--profile', choices=('core', 'full-source'), default='full-source')
+    parser.add_argument('--extended-root', type=Path)
     args = parser.parse_args(argv)
     try:
-        result = evaluate_corpus(args.root)
+        result = evaluate_corpus(args.root, include_enterprise=args.profile == 'full-source', extended_root=args.extended_root)
         if args.output:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(json.dumps(result, indent=2) + '\n')
         summary = {key: value for key, value in result.items() if key not in ('cases', 'segregation_of_duties_probes', 'catalogue_coverage')}
         summary['catalogue_coverage'] = {name: {key: value[key] for key in ('expected', 'covered', 'gaps')}
-                                         for name, value in result['catalogue_coverage']['dimensions'].items()}
+                                         for name, value in result.get('catalogue_coverage', {}).get('dimensions', {}).items()}
         print(json.dumps(summary, indent=2))
         return 0 if result['pilot_pass'] else 1
-    except (OSError, ValueError, KeyError) as exc:
-        parser.exit(1, f'Content pilot failed: {exc}\n')
+    except (OSError, ValueError, KeyError):
+        parser.exit(1, 'Content pilot failed: invalid local corpus or registry input.\n')
 
 
 if __name__ == '__main__':

@@ -37,71 +37,76 @@ jobs:
       - uses: actions/checkout@v4
       - name: Prepare canonical qualification environment
         uses: ./.github/actions/setup-qualification
+      - name: Audit mandatory sources for live provider execution
+        run: python3 .ai/runtime/tools/offline_guard.py scan --root .
       - name: Validate proposed enterprise DCS development coverage
         run: |
-          python3 tools/generate_content_catalog.py --check
-          python3 tools/generate_content_corpus.py --check
-          python3 tools/generate_content_workflows.py --check
-          python3 tools/generate_content_calibration.py --check
-          python3 .ai/runtime/tools/content_spec.py lint-registry --root .
-          python3 .ai/runtime/tools/content_eval.py run --root .
-          python3 -m pytest -q tests/test_content_lint.py tests/test_content_metrics.py tests/test_content_publication.py tests/test_content_eval.py tests/test_content_provider_parity.py tests/test_content_workflow.py tests/test_content_migrate.py tests/test_content_calibration.py tests/test_content_catalog.py tests/test_content_spec.py tests/test_content_integration.py
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 tools/generate_content_catalog.py --check
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 tools/generate_content_corpus.py --check
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 tools/generate_content_workflows.py --check
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 tools/generate_content_calibration.py --check
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/content_spec.py lint-registry --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/content_eval.py run --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/expert_references.py validate --root . --all
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/content_scenarios.py run --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/evaluation_package.py check --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 -m pytest -q tests/test_content_lint.py tests/test_content_metrics.py tests/test_content_publication.py tests/test_content_eval.py tests/test_content_provider_parity.py tests/test_content_workflow.py tests/test_content_migrate.py tests/test_content_calibration.py tests/test_content_catalog.py tests/test_content_spec.py tests/test_content_integration.py tests/test_expert_references.py tests/test_optional_provider_eval.py tests/test_evaluation_package.py tests/test_content_scenarios.py tests/test_offline_guard.py tests/test_qualification_dependencies.py
 
       - name: Regression tests for source homepage links and release tags
-        run: python3 -m unittest discover -s tests -v
+        run: python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 -m unittest discover -s tests -v
 
       - name: Product version and stable artifact contract identity
-        run: python3 scripts/versioning.py check --root .
+        run: python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 scripts/versioning.py check --root .
 
       - name: Permission model and structural policy
-        run: python3 .ai/runtime/scripts/check_agent_policy.py --fast .
+        run: python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/scripts/check_agent_policy.py --fast .
 
       - name: Artifact Contract v3/JAI and typed taxonomy
         run: |
-          python3 .ai/runtime/tools/artifacts.py check --root .
-          python3 .ai/runtime/tools/artifacts.py golden-test --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/artifacts.py check --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/artifacts.py golden-test --root .
 
       - name: Full semantic schemas
-        run: python3 .ai/runtime/tools/schema_check.py self-test --root .
+        run: python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/schema_check.py self-test --root .
 
       - name: SABSA to canonical EA bridge
-        run: python3 .ai/runtime/tools/sabsa_ea.py self-test
+        run: python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/sabsa_ea.py self-test
 
       - name: EA repository and interoperability conformance
         run: |
-          python3 .ai/runtime/tools/repository.py self-test
-          python3 .ai/runtime/tools/ea_conformance.py self-test
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/repository.py self-test
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/ea_conformance.py self-test
 
       - name: Publication Projection Contract and integrity
         run: |
-          python3 .ai/runtime/tools/projection.py self-test
-          python3 .ai/runtime/tools/publication.py self-test
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/projection.py self-test
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/publication.py self-test
 
       - name: Render-based Visual QA v2
-        run: python3 .ai/runtime/tools/visual_qa.py self-test
+        run: python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/visual_qa.py self-test
 
       - name: Native agent enforcement and provider parity
         run: |
-          python3 .ai/runtime/tools/agent_runtime.py self-test
-          PYTHONPATH=.ai/runtime/tools python3 .ai/runtime/tools/provider_parity.py
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/agent_runtime.py self-test
+          PYTHONPATH=.ai/runtime/tools python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/provider_parity.py
 
       - name: GA regression gate
-        run: python3 .ai/runtime/tools/qualification_regression.py
+        run: python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/qualification_regression.py
 
       - name: Canonical documentation and generated CLI guide drift
         run: |
-          python3 .ai/runtime/tools/generate_docs.py --check --root .
-          python3 .ai/runtime/tools/docs_contract.py --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/generate_docs.py --check --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/docs_contract.py --root .
           git diff --exit-code -- README.md .ai/runtime/README.md .ai/runtime/_meta/release-manifest.json .ai/runtime/GUIDE.md VALIDATION.md
 
       - name: Gate checker positive and negative regression
         run: |
           printf 'G1: pass\nG2: pass\nG3: pass\nG4: pass\nG5: pass\n' > /tmp/gc-pass.txt
-          python3 .ai/skills/it-roles-architecture/scripts/check_gates.py \
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/skills/it-roles-architecture/scripts/check_gates.py \
             --skill .ai/skills/it-roles-architecture/references/solution-architect.md \
             /tmp/gc-pass.txt
           printf 'G1: pass\n' > /tmp/gc-incomplete.txt
-          if python3 .ai/skills/it-roles-architecture/scripts/check_gates.py \
+          if python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/skills/it-roles-architecture/scripts/check_gates.py \
             --skill .ai/skills/it-roles-architecture/references/solution-architect.md \
             /tmp/gc-incomplete.txt; then
             echo '::error::An incomplete gate set was incorrectly accepted'
@@ -151,33 +156,38 @@ jobs:
         uses: actions/checkout@v4
       - name: Prepare canonical qualification environment
         uses: ./.github/actions/setup-qualification
+      - name: Audit mandatory sources for live provider execution
+        run: python3 .ai/runtime/tools/offline_guard.py scan --root .
       - name: Validate proposed enterprise DCS development coverage
         run: |
-          python3 tools/generate_content_catalog.py --check
-          python3 tools/generate_content_corpus.py --check
-          python3 tools/generate_content_workflows.py --check
-          python3 tools/generate_content_calibration.py --check
-          python3 .ai/runtime/tools/content_spec.py lint-registry --root .
-          python3 .ai/runtime/tools/content_eval.py run --root .
-          python3 -m pytest -q tests/test_content_lint.py tests/test_content_metrics.py tests/test_content_publication.py tests/test_content_eval.py tests/test_content_provider_parity.py tests/test_content_workflow.py tests/test_content_migrate.py tests/test_content_calibration.py tests/test_content_catalog.py tests/test_content_spec.py tests/test_content_integration.py
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 tools/generate_content_catalog.py --check
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 tools/generate_content_corpus.py --check
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 tools/generate_content_workflows.py --check
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 tools/generate_content_calibration.py --check
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/content_spec.py lint-registry --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/content_eval.py run --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/expert_references.py validate --root . --all
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/content_scenarios.py run --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/evaluation_package.py check --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 -m pytest -q tests/test_content_lint.py tests/test_content_metrics.py tests/test_content_publication.py tests/test_content_eval.py tests/test_content_provider_parity.py tests/test_content_workflow.py tests/test_content_migrate.py tests/test_content_calibration.py tests/test_content_catalog.py tests/test_content_spec.py tests/test_content_integration.py tests/test_expert_references.py tests/test_optional_provider_eval.py tests/test_evaluation_package.py tests/test_content_scenarios.py tests/test_offline_guard.py tests/test_qualification_dependencies.py
       - name: Validate the same documentation inputs as the release workflow
         run: |
-          python3 .ai/runtime/tools/docs_contract.py --root .
-          python3 .ai/runtime/tools/generate_docs.py --check --root .
-          python3 -m mkdocs build --strict
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/docs_contract.py --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/generate_docs.py --check --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 -m mkdocs build --strict
       - name: Execute the complete release qualification before tagging
-        run: python3 .ai/runtime/tools/release_ga.py qualify
+        run: python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/release_ga.py qualify
       - name: Verify generated release evidence without publishing
         run: |
-          python3 .ai/runtime/tools/release_policy.py check --final
-          python3 .ai/runtime/tools/supply_chain.py verify --root . \
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/release_policy.py check --final
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/supply_chain.py verify --root . \
             --sbom SBOM.spdx.json --provenance PROVENANCE.json \
             --compatibility COMPATIBILITY.json
       - name: Build the candidate archive and verify its checksum
         shell: bash
         run: |
           set -euo pipefail
-          python3 .ai/runtime/tools/release_bundle.py build --root . --dist dist
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/release_bundle.py build --root . --dist dist
           cd dist
           sha256sum -c ai-it-house-universal-*.sha256
       - name: Upload preflight diagnostics

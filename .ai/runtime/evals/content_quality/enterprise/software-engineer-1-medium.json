@@ -82,6 +82,59 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
+    "change_behaviour": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-CHANGE-BEHAVIOUR",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "change_recovery": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-CHANGE-RECOVERY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "change_verification": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-CHANGE-VERIFICATION",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
     "contract_input_1": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -179,7 +232,7 @@
       "record_id": "SYN-DECISION-PURPOSE-CORRECTION",
       "service": "Regional order integration",
       "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "State the specific choice enabled, alternatives and competent decision authority, or explain why this output supports no decision; copied acceptance boilerplate is not a decision purpose.",
+      "criterion_under_review": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
       "accountable_role": "Synthetic receiving service owner",
       "evidence_refs": [
         "SYN-01"
@@ -259,94 +312,6 @@
         ],
         "knowledge_status": "synthetic-assumption"
       }
-    ],
-    "decision_authority": {
-      "baseline": {
-        "id": "BASE",
-        "restore_minutes": 48,
-        "transition_eur": 0
-      },
-      "candidate": {
-        "id": "TARGET",
-        "restore_minutes": 27,
-        "transition_eur": 18000
-      },
-      "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
-      "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
-      "record_id": "SYN-DECISION-AUTHORITY",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify the specific choice, accountable authority and decision deadline.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "decision_impacts": {
-      "baseline": {
-        "id": "BASE",
-        "restore_minutes": 48,
-        "transition_eur": 0
-      },
-      "candidate": {
-        "id": "TARGET",
-        "restore_minutes": 27,
-        "transition_eur": 18000
-      },
-      "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
-      "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
-      "record_id": "SYN-DECISION-IMPACTS",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Explain cost, benefit, dependencies, uncertainty and residual risks of the recommendation.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "identity": {
-      "element_id": "SYN-APP-1",
-      "responsibility": "Accept transaction IDs and persist each committed event once",
-      "interface_ref": "SYN-IF-1",
-      "deployment": "Managed Linux service with PostgreSQL standby",
-      "failure_handling": "Retry twice using the same event ID, then reject and alert",
-      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
-      "record_id": "SYN-IDENTITY",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify stable artifact ID, owner, source version and intended usage.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "option_comparison": [
-      {
-        "baseline": {
-          "id": "BASE",
-          "restore_minutes": 48,
-          "transition_eur": 0
-        },
-        "candidate": {
-          "id": "TARGET",
-          "restore_minutes": 27,
-          "transition_eur": 18000
-        },
-        "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
-        "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
-        "record_id": "SYN-OPTION-COMPARISON",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Compare viable options including the do-nothing baseline against common criteria.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
     ]
   },
   "evaluation_selection": {
@@ -378,6 +343,9 @@
       "expected_rule_ids": [
         "domain/delivery.delivery_accountability",
         "domain/delivery.delivery_dependencies",
+        "family/software-change.change_behaviour",
+        "family/software-change.change_recovery",
+        "family/software-change.change_verification",
         "role/software-engineer:1.contract_input_1",
         "role/software-engineer:1.contract_input_2",
         "role/software-engineer:1.contract_input_3",
@@ -387,11 +355,7 @@
         "role/software-engineer:1.delivery_scope",
         "role/software-engineer:1.delivery_verification",
         "role/software-engineer:1.receiving_acceptance",
-        "role/software-engineer:1.role_gate_observations",
-        "type/decision-paper.decision_authority",
-        "type/decision-paper.decision_impacts",
-        "type/decision-paper.identity",
-        "type/decision-paper.option_comparison"
+        "role/software-engineer:1.role_gate_observations"
       ],
       "expected_category": "critical-content"
     },

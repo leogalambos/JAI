@@ -120,6 +120,7 @@ nav:
           - Commercial proposals and delivery: capabilities/commercial-delivery.md
       - Commands and direct tools: using/commands.md
       - Working with deliverables: using/deliverables.md
+      - Expert reference documents: using/expert-reference-documents.md
       - Roles and disciplines: using/roles.md
       - Enterprise workflows: using/workflows.md
       - Learning with the demo estate: using/demo-estate.md
@@ -166,11 +167,14 @@ nav:
           - System architecture: configuration/system-architecture.md
           - Providers, models & reasoning effort: configuration/models.md
           - Runtime paths & environment variables: configuration/runtime.md
+          - Expert document overrides: configuration/expert-document-overrides.md
           - Governance, policy & approvals: configuration/policy.md
           - Publication stack: configuration/publication-stack.md
           - Deployment notes: getting-started/deployment-notes.md
       - Operate and govern:
           - Validation and release controls: operations/validation.md
+          - Offline content qualification: validation/offline-content-qualification.md
+          - Optional provider evaluation: validation/optional-provider-evaluation.md
           - Human authority and escalation: operations/human-authority.md
           - Operating controls: operations/operating-controls.md
           - Troubleshooting: operations/troubleshooting.md
@@ -195,6 +199,7 @@ nav:
       - Extended command walkthroughs: reference/command-walkthroughs.md
       - Detailed tool CLI reference: reference/runtime-tools-detailed.md
       - Paths and environment variables: reference/paths-env.md
+      - Expert reference format: reference/expert-reference-format.md
       - Compatibility matrix: reference/compatibility.md
       - 26.10.4 release and migration: reference/release-migration.md
       - Boundaries and limitations: reference/limitations.md

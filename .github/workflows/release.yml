@@ -46,38 +46,43 @@ jobs:
         shell: bash
         env:
           RELEASE_TAG: ${{ github.ref_name }}
-        run: python3 scripts/validate_release_tag.py --tag "$RELEASE_TAG" --root .
+        run: python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 scripts/validate_release_tag.py --tag "$RELEASE_TAG" --root .
       - name: Verify committed VERSION and synchronized release metadata
         shell: bash
         env:
           RELEASE_TAG: ${{ github.ref_name }}
         run: |
           set -euo pipefail
-          python3 scripts/versioning.py check --tag "$RELEASE_TAG" --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 scripts/versioning.py check --tag "$RELEASE_TAG" --root .
       - name: Prepare canonical qualification environment
         uses: ./.github/actions/setup-qualification
+      - name: Audit mandatory sources for live provider execution
+        run: python3 .ai/runtime/tools/offline_guard.py scan --root .
       - name: Validate proposed enterprise DCS development coverage
         run: |
-          python3 tools/generate_content_catalog.py --check
-          python3 tools/generate_content_corpus.py --check
-          python3 tools/generate_content_workflows.py --check
-          python3 tools/generate_content_calibration.py --check
-          python3 .ai/runtime/tools/content_spec.py lint-registry --root .
-          python3 .ai/runtime/tools/content_eval.py run --root .
-          python3 -m pytest -q tests/test_content_lint.py tests/test_content_metrics.py tests/test_content_publication.py tests/test_content_eval.py tests/test_content_provider_parity.py tests/test_content_workflow.py tests/test_content_migrate.py tests/test_content_calibration.py tests/test_content_catalog.py tests/test_content_spec.py tests/test_content_integration.py
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 tools/generate_content_catalog.py --check
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 tools/generate_content_corpus.py --check
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 tools/generate_content_workflows.py --check
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 tools/generate_content_calibration.py --check
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/content_spec.py lint-registry --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/content_eval.py run --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/expert_references.py validate --root . --all
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/content_scenarios.py run --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/evaluation_package.py check --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 -m pytest -q tests/test_content_lint.py tests/test_content_metrics.py tests/test_content_publication.py tests/test_content_eval.py tests/test_content_provider_parity.py tests/test_content_workflow.py tests/test_content_migrate.py tests/test_content_calibration.py tests/test_content_catalog.py tests/test_content_spec.py tests/test_content_integration.py tests/test_expert_references.py tests/test_optional_provider_eval.py tests/test_evaluation_package.py tests/test_content_scenarios.py tests/test_offline_guard.py tests/test_qualification_dependencies.py
       - name: Verify canonical docs, historical integrity, 404 links and site
         run: |
-          python3 .ai/runtime/tools/docs_contract.py --root .
-          python3 .ai/runtime/tools/generate_docs.py --check --root .
-          python3 -m mkdocs build --strict
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/docs_contract.py --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/generate_docs.py --check --root .
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 -m mkdocs build --strict
       - name: Validate versioning and homepage regression
-        run: python3 -m unittest discover -s tests -v
+        run: python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 -m unittest discover -s tests -v
       - name: Execute A-H enterprise GA qualification
-        run: python3 .ai/runtime/tools/release_ga.py qualify
+        run: python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/release_ga.py qualify
       - name: Verify all release evidence
         run: |
-          python3 .ai/runtime/tools/release_policy.py check --final
-          python3 .ai/runtime/tools/supply_chain.py verify --root . \
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/release_policy.py check --final
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/supply_chain.py verify --root . \
             --sbom SBOM.spdx.json --provenance PROVENANCE.json \
             --compatibility COMPATIBILITY.json
       - name: Build production ZIP and SHA-256
@@ -86,7 +91,9 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 .ai/runtime/tools/release_bundle.py build --root . --dist dist
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/release_bundle.py build --root . --dist dist
+          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/evaluation_package.py build --root . \
+            --output "dist/jai-extended-evaluation-${RELEASE_VERSION}.zip"
           cd dist
           test -s "ai-it-house-universal-${RELEASE_VERSION}.zip"
           sha256sum -c "ai-it-house-universal-${RELEASE_VERSION}.sha256"
@@ -145,6 +152,7 @@ jobs:
           set -euo pipefail
           cd candidate/dist
           sha256sum -c "ai-it-house-universal-${RELEASE_VERSION}.sha256"
+          sha256sum -c "jai-extended-evaluation-${RELEASE_VERSION}.zip.sha256"
           cd ..
           python3 - <<'PY'
           import json
@@ -165,6 +173,10 @@ jobs:
           Download \`ai-it-house-universal-${RELEASE_VERSION}.zip\` and verify
           its downloaded checksum with the attached \`.sha256\` file.
 
+          The optional \`jai-extended-evaluation-${RELEASE_VERSION}.zip\` contains
+          synthetic regression inputs excluded from the core distribution.
+          It is not professional approval or live provider qualification.
+
           This release was published automatically by GitHub Actions.
           GitHub OIDC/Sigstore attestations are generated where supported;
           verify an attested ZIP with \`gh attestation verify FILE -R ${GH_REPO}\`.
@@ -174,6 +186,8 @@ jobs:
           gh release create "$RELEASE_TAG" \
             "dist/ai-it-house-universal-${RELEASE_VERSION}.zip" \
             "dist/ai-it-house-universal-${RELEASE_VERSION}.sha256" \
+            "dist/jai-extended-evaluation-${RELEASE_VERSION}.zip" \
+            "dist/jai-extended-evaluation-${RELEASE_VERSION}.zip.sha256" \
             QUALIFICATION-A-H.json COMPATIBILITY.json SBOM.spdx.json PROVENANCE.json \
             --verify-tag --latest --title "$RELEASE_VERSION" \
             --notes-file "$RUNNER_TEMP/jai-release-notes.md"

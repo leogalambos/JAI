@@ -179,7 +179,7 @@
       "record_id": "SYN-DECISION-PURPOSE-CORRECTION",
       "service": "Regional order integration",
       "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "State the specific choice enabled, alternatives and competent decision authority, or explain why this output supports no decision; copied acceptance boilerplate is not a decision purpose.",
+      "criterion_under_review": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
       "accountable_role": "Synthetic receiving service owner",
       "evidence_refs": [
         "SYN-01"
@@ -260,52 +260,6 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
-    "decision_authority": {
-      "baseline": {
-        "id": "BASE",
-        "restore_minutes": 48,
-        "transition_eur": 0
-      },
-      "candidate": {
-        "id": "TARGET",
-        "restore_minutes": 27,
-        "transition_eur": 18000
-      },
-      "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
-      "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
-      "record_id": "SYN-DECISION-AUTHORITY",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify the specific choice, accountable authority and decision deadline.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "decision_impacts": {
-      "baseline": {
-        "id": "BASE",
-        "restore_minutes": 48,
-        "transition_eur": 0
-      },
-      "candidate": {
-        "id": "TARGET",
-        "restore_minutes": 27,
-        "transition_eur": 18000
-      },
-      "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
-      "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
-      "record_id": "SYN-DECISION-IMPACTS",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Explain cost, benefit, dependencies, uncertainty and residual risks of the recommendation.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
     "identity": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -323,31 +277,83 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
-    "option_comparison": [
+    "observed_test_results": [
       {
-        "baseline": {
-          "id": "BASE",
-          "restore_minutes": 48,
-          "transition_eur": 0
-        },
-        "candidate": {
-          "id": "TARGET",
-          "restore_minutes": 27,
-          "transition_eur": 18000
-        },
-        "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
-        "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
-        "record_id": "SYN-OPTION-COMPARISON",
+        "test_id": "SYN-T1",
+        "requirement_ref": "SYN-REC1",
+        "build": "candidate-1.0",
+        "environment": "Isolated recovery rehearsal",
+        "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
+        "expected_max_minutes": 30,
+        "observed_minutes": 27,
+        "expected_duplicate_count": 0,
+        "observed_duplicate_count": 0,
+        "sample_size": 10,
+        "exclusions": [
+          "Peak-load recovery"
+        ],
+        "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
+        "record_id": "SYN-OBSERVED-TEST-RESULTS",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Compare viable options including the do-nothing baseline against common criteria.",
+        "criterion_under_review": "Link test cases and requirements to actual outcomes, timestamps and execution evidence.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
         ],
         "knowledge_status": "synthetic-assumption"
       }
-    ]
+    ],
+    "test_release_constraints": {
+      "test_id": "SYN-T1",
+      "requirement_ref": "SYN-REC1",
+      "build": "candidate-1.0",
+      "environment": "Isolated recovery rehearsal",
+      "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
+      "expected_max_minutes": 30,
+      "observed_minutes": 27,
+      "expected_duplicate_count": 0,
+      "observed_duplicate_count": 0,
+      "sample_size": 10,
+      "exclusions": [
+        "Peak-load recovery"
+      ],
+      "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
+      "record_id": "SYN-TEST-RELEASE-CONSTRAINTS",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Explain defects, untested scope, achieved exit criteria and residual release risk.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "tested_baseline": {
+      "test_id": "SYN-T1",
+      "requirement_ref": "SYN-REC1",
+      "build": "candidate-1.0",
+      "environment": "Isolated recovery rehearsal",
+      "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
+      "expected_max_minutes": 30,
+      "observed_minutes": 27,
+      "expected_duplicate_count": 0,
+      "observed_duplicate_count": 0,
+      "sample_size": 10,
+      "exclusions": [
+        "Peak-load recovery"
+      ],
+      "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
+      "record_id": "SYN-TESTED-BASELINE",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify build, requirements, environment, reporting period and exclusions.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    }
   },
   "evaluation_selection": {
     "overlays": []
@@ -388,10 +394,10 @@
         "role/test-automation-engineer:3.delivery_verification",
         "role/test-automation-engineer:3.receiving_acceptance",
         "role/test-automation-engineer:3.role_gate_observations",
-        "type/decision-paper.decision_authority",
-        "type/decision-paper.decision_impacts",
-        "type/decision-paper.identity",
-        "type/decision-paper.option_comparison"
+        "type/test-report.identity",
+        "type/test-report.observed_test_results",
+        "type/test-report.test_release_constraints",
+        "type/test-report.tested_baseline"
       ],
       "expected_category": "critical-content"
     },

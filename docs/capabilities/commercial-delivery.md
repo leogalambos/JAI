@@ -241,7 +241,8 @@ The trusted host opens Fabric through its supported API; never edit `.fabric/` d
 
 The API appends an immutable evidence node without exercising authority. Independent review remains necessary. `fabric_binding_resolver(ledger_path)` verifies actual nodes and binding digests for readiness; a report title or assumed file existence cannot substitute for this binding.
 
-The [implementation matrix](commercial-delivery-implementation.md) records coverage and remaining deployment acceptance. Original verbatim inputs and historical evidence remain in the operator's private INBOX archive, outside the default public distribution.
+The [implementation matrix](commercial-delivery-implementation.md)
+records coverage and remaining deployment acceptance.
 
 
 ## Specialist competence and accountability

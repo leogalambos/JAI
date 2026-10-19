@@ -1,5 +1,30 @@
 # Changelog
 
+## 26.10.9 — Expert References and Offline Readiness (candidate)
+
+- Adds source-attributed proposed purposes and shared semantic families,
+  preserving historical role contract identities and compatibility.
+  Semantic foundations match actual deliverables while retaining global
+  controls, original domain obligations and source role gates.
+- Integrates thirty English AI-authored proposed Markdown examples with
+  integrity metadata, stable DCS anchors and structural content checks.
+- Adds engagement, organisation, user and bundled reference precedence.
+  Invalid selected overrides fail explicitly without silent fallback,
+  changes to normative DCS rules or fabricated professional approval.
+- Adds deterministic offline workflow scenarios and an optional provider
+  evaluation harness tested with fake CLI processes and sanitized
+  reports.
+  Live execution requires explicit consent and is outside mandatory CI.
+- Separates the core runtime and expert references from digest-pinned
+  optional extended synthetic evaluation data. Excludes private inputs,
+  caches, working files and execution reports from distribution.
+- Documents implemented reference, override, qualification and
+  evaluation
+  commands in MkDocs. Missing required data or renderers cannot pass.
+- Keeps synthetic regression evidence, professional human acceptance and
+  live provider qualification distinct. Existing JAI L0 authority and
+  mandatory release gates remain unchanged; no activation is implied.
+
 ## 26.10.8 — Enterprise Content Quality (implementation candidate)
 
 - Extends proposed content contracts across all existing artifact types,
