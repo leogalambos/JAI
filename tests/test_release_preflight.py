@@ -47,7 +47,10 @@ class ReleasePreflightTests(unittest.TestCase):
     def test_dcs_pytest_suites_run_in_ci_and_actual_qualification(self):
         suites = ('test_content_lint.py', 'test_content_metrics.py',
                   'test_content_publication.py', 'test_content_eval.py',
-                  'test_content_provider_parity.py')
+                  'test_content_provider_parity.py', 'test_content_workflow.py',
+                  'test_content_migrate.py', 'test_content_calibration.py',
+                  'test_content_catalog.py', 'test_content_spec.py',
+                  'test_content_integration.py')
         self.assertIn('pytest==8.4.2',
                       (ROOT / 'requirements-ci.txt').read_text().splitlines())
         for name in ('validate-library.yml', 'release.yml'):
@@ -59,11 +62,13 @@ class ReleasePreflightTests(unittest.TestCase):
             self.assertIn('python3 -m pytest -q', commands)
             for suite in suites:
                 self.assertIn('tests/' + suite, commands)
+            for generator in ('catalog', 'corpus', 'workflows', 'calibration'):
+                self.assertIn('tools/generate_content_' + generator + '.py --check', commands)
         sys.path.insert(0, str(ROOT / '.ai/runtime/tools'))
         import qualification_core
         with patch.object(qualification_core, 'command',
                           side_effect=lambda name, args, **kwargs:
-                          {'name': name, 'args': args, 'ok': True}):
+                          {'name': name, 'args': args, 'ok': True, 'timeout': kwargs.get('timeout', 120)}):
             checks = qualification_core.gate_a()
         test_commands = [check['args'] for check in checks
                          if '-m' in check.get('args', [])
@@ -71,6 +76,13 @@ class ReleasePreflightTests(unittest.TestCase):
         self.assertEqual(1, len(test_commands))
         for suite in suites:
             self.assertIn(str(ROOT / 'tests' / suite), test_commands[0])
+        for generator in ('catalog', 'corpus', 'workflows', 'calibration'):
+            self.assertTrue(any(str(ROOT / 'tools' / ('generate_content_' + generator + '.py'))
+                                in check['args'] for check in checks))
+        dcs_runs = [check for check in checks if 'regression tests' in check['name']
+                    or 'deterministic synthetic pilot' in check['name']]
+        self.assertEqual(2, len(dcs_runs))
+        self.assertTrue(all(check['timeout'] >= 600 for check in dcs_runs))
 
     def test_current_human_documentation_meets_release_width(self):
         self.assertEqual(WIDTH.check(ROOT), [])

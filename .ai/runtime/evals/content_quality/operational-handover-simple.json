@@ -93,6 +93,69 @@
       "source_version": "1",
       "intended_usage": "Development regression only; professional approval pending",
       "knowledge_status": "synthetic-assumption"
+    },
+    "document_actions": [
+      {
+        "increment_id": "SYN-WAVE1",
+        "start": "2026-11-01",
+        "finish": "2026-11-05",
+        "dependency": "SYN-T1 peak-load retest",
+        "entry": "Backup restore rehearsed and rollback configuration retained",
+        "exit": "Ledger totals reconcile and operations independently accepts support",
+        "go_no_go": "Service owner with independent operations evidence",
+        "fallback_decision_time": "Before enabling transaction traffic",
+        "record_id": "SYN-DOCUMENT-ACTIONS",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Identify decisions or downstream uses, accountable recipients and verifiable next actions.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "document_analysis": [
+      {
+        "source_id": "SYN-LEDGER-1",
+        "source_version": "1",
+        "extracted_at": "2026-10-19T10:00:00Z",
+        "transformation": "Group committed records by event_id and compare counts before/after restore",
+        "input_records": 10,
+        "output_records": 10,
+        "classification": "Synthetic non-customer data",
+        "retention": "Delete rehearsal extracts after regression investigation closes",
+        "permitted_use": "Development regression only",
+        "record_id": "SYN-DOCUMENT-ANALYSIS",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Provide attributable substantive findings, reasoning and limitations for the specific subject.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "document_scope": {
+      "source_id": "SYN-LEDGER-1",
+      "source_version": "1",
+      "extracted_at": "2026-10-19T10:00:00Z",
+      "transformation": "Group committed records by event_id and compare counts before/after restore",
+      "input_records": 10,
+      "output_records": 10,
+      "classification": "Synthetic non-customer data",
+      "retention": "Delete rehearsal extracts after regression investigation closes",
+      "permitted_use": "Development regression only",
+      "record_id": "SYN-DOCUMENT-SCOPE",
+      "service": "Inventory service recovery",
+      "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+      "criterion_under_review": "Identify document purpose, audience, subject boundary and authoritative source versions.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
     }
   },
   "evidence": [

@@ -1,0 +1,1285 @@
+{
+  "schema_version": "1.0.0",
+  "status": "proposed",
+  "calibration_status": "synthetic-only",
+  "human_gold": false,
+  "production_ready": false,
+  "automatically_applied_to_policy": false,
+  "scope": "Descriptive word-count envelopes and QA deltas from synthetic development scenarios; not enterprise calibration.",
+  "corpus_manifest_hash": "f8e284dae0051672818291183ac9830b2c45a95965d36a1f94999d78adac4f40",
+  "candidates": {
+    "adr": {
+      "document_kind": "adr",
+      "contract_id": "enterprise-architect:4",
+      "policy_inheritance_hash": "ef4999f0d27d842e34f84539c0c18462ccde951ba93fcb8cddc0a10ee3b10907",
+      "context_strata": {
+        "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08": {
+          "context": {
+            "processes_personal_data": false,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "dbab712f3241982028f78c6d82671ce2a7139ad177653cada3e8ff9cf04524d6",
+          "projects": [
+            "adr-simple"
+          ]
+        },
+        "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "a00f60f820d61e2ca967ccbe6189540c229d34e34b7955906671065b0c8895ed",
+          "projects": [
+            "adr-medium"
+          ]
+        },
+        "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": true
+          },
+          "compiled_spec_hash": "08deb3ecbe00fbd55820304af74e427aff4eee877ce327c0562e5b9f2832d28a",
+          "projects": [
+            "adr-complex"
+          ]
+        }
+      },
+      "status": "proposed",
+      "calibration_status": "synthetic-only",
+      "size_budget": {
+        "metric": "words",
+        "target": [
+          319,
+          391
+        ],
+        "soft_max": 391,
+        "minimum_is_quality_gate": false,
+        "target_is_informational": true,
+        "applicability": "Descriptive envelope across explicitly listed context/complexity strata; no per-stratum quality threshold."
+      },
+      "observed_median": 349,
+      "samples": [
+        {
+          "project_id": "adr-simple",
+          "complexity": "simple",
+          "synthetic": true,
+          "semantic_hash": "e3e8e42b4d310dbcee5811094573f6086691a41e2c3edc38ee587d4e02e79cc8",
+          "report_hash": "c88ef06aca5a08660f1c49922fd9087d8be991a7e20de4b04770a8b516759646",
+          "observed": 319,
+          "context_hash": "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08",
+          "compiled_spec_hash": "dbab712f3241982028f78c6d82671ce2a7139ad177653cada3e8ff9cf04524d6"
+        },
+        {
+          "project_id": "adr-medium",
+          "complexity": "medium",
+          "synthetic": true,
+          "semantic_hash": "1ecb04575924e2ae94fac4e5599292b971518e4b2e19e2cb18c8a58fa6a3074a",
+          "report_hash": "a588a989ba8ccc7eda064ec048264c7a69d1735849a9fefd837b115fd6fa426e",
+          "observed": 349,
+          "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+          "compiled_spec_hash": "a00f60f820d61e2ca967ccbe6189540c229d34e34b7955906671065b0c8895ed"
+        },
+        {
+          "project_id": "adr-complex",
+          "complexity": "complex",
+          "synthetic": true,
+          "semantic_hash": "81b13afb11d92bfe63b988c4e8e633d27c1a992f83c403926276a55791498771",
+          "report_hash": "a24ea15563561ab15cec71a0008f1e68bcccbc271a84cab2e3f9a780e997eeb0",
+          "observed": 391,
+          "context_hash": "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12",
+          "compiled_spec_hash": "08deb3ecbe00fbd55820304af74e427aff4eee877ce327c0562e5b9f2832d28a"
+        }
+      ],
+      "production_ready": false,
+      "human_approval_required": true,
+      "activation_authority": "Existing JAI L0 only; this candidate is not an approval.",
+      "calibration_hash": "3394f38160f28c35ef9ce0ee0df169fa2cf1a832a6228460ee87c8aecaafa976"
+    },
+    "architecture-definition": {
+      "document_kind": "architecture-definition",
+      "contract_id": "enterprise-architect:1",
+      "policy_inheritance_hash": "67874baca4552e4e59006c18315fc55670f8161760eee29023360b5f6c2dd495",
+      "context_strata": {
+        "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08": {
+          "context": {
+            "processes_personal_data": false,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "a9a104639d5c67aba242a367016b93d5199657e788922197e013185f647d232e",
+          "projects": [
+            "architecture-definition-simple"
+          ]
+        },
+        "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "e219d06a289f71aaf4e45518c0a77302da2b6f5665373141f8d0ebec806a0042",
+          "projects": [
+            "architecture-definition-medium"
+          ]
+        },
+        "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": true
+          },
+          "compiled_spec_hash": "d6c08d3efb3fb1b9182d8b9eacc680e24d0bd954fb1ca290a2868b440f70efbf",
+          "projects": [
+            "architecture-definition-complex"
+          ]
+        }
+      },
+      "status": "proposed",
+      "calibration_status": "synthetic-only",
+      "size_budget": {
+        "metric": "words",
+        "target": [
+          443,
+          526
+        ],
+        "soft_max": 526,
+        "minimum_is_quality_gate": false,
+        "target_is_informational": true,
+        "applicability": "Descriptive envelope across explicitly listed context/complexity strata; no per-stratum quality threshold."
+      },
+      "observed_median": 481,
+      "samples": [
+        {
+          "project_id": "architecture-definition-simple",
+          "complexity": "simple",
+          "synthetic": true,
+          "semantic_hash": "3e4d1b68d0380e64c892667cd911d88a4a001182cb7a8111efbe9da3d3b54399",
+          "report_hash": "cd329fbd607860eece7c496d95b5a8ba889f80f5727f6450a9a6ff824300371f",
+          "observed": 443,
+          "context_hash": "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08",
+          "compiled_spec_hash": "a9a104639d5c67aba242a367016b93d5199657e788922197e013185f647d232e"
+        },
+        {
+          "project_id": "architecture-definition-medium",
+          "complexity": "medium",
+          "synthetic": true,
+          "semantic_hash": "118063fc283ccef75de1d4d670910492eb1de0beca4b69e0b2777160fda2e0dd",
+          "report_hash": "254f23a18cfd0254386e2508c1b650bc2032e057f7086ef846c62d92cbc6d83a",
+          "observed": 481,
+          "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+          "compiled_spec_hash": "e219d06a289f71aaf4e45518c0a77302da2b6f5665373141f8d0ebec806a0042"
+        },
+        {
+          "project_id": "architecture-definition-complex",
+          "complexity": "complex",
+          "synthetic": true,
+          "semantic_hash": "ec57184f2697a92f226a8437f1d0f44c0428259bb155fad0c76bde882c8dbbca",
+          "report_hash": "837130b0c90ef16f7d5dc1871d2dc218b5295750af7c12a9017782aeeeb33985",
+          "observed": 526,
+          "context_hash": "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12",
+          "compiled_spec_hash": "d6c08d3efb3fb1b9182d8b9eacc680e24d0bd954fb1ca290a2868b440f70efbf"
+        }
+      ],
+      "production_ready": false,
+      "human_approval_required": true,
+      "activation_authority": "Existing JAI L0 only; this candidate is not an approval.",
+      "calibration_hash": "e962bdf56c50908a1e2a94e5b6f062a7e044af8070c50886ffa1e6106b5e82f1"
+    },
+    "assurance-report": {
+      "document_kind": "assurance-report",
+      "contract_id": "secure-delivery-devsecops-architect:3",
+      "policy_inheritance_hash": "11ea6ebfec5088fa3b5fe73ab78dc5a34d36565aa0c82d46ccc9527ea17253d1",
+      "context_strata": {
+        "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08": {
+          "context": {
+            "processes_personal_data": false,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "74057daecd95e0eb78f4d97e699c9afb24942b8221626837eddad6e71e851c26",
+          "projects": [
+            "assurance-report-simple"
+          ]
+        },
+        "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "7ddbab05dcc5f30fbf29240866aab4bda0f216ffc568b3fed9400c54b12886ce",
+          "projects": [
+            "assurance-report-medium"
+          ]
+        },
+        "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": true
+          },
+          "compiled_spec_hash": "ac2213eda27c27d187938341411bf9e06b413a218cc5d013a7e22a1ece7d019c",
+          "projects": [
+            "assurance-report-complex"
+          ]
+        }
+      },
+      "status": "proposed",
+      "calibration_status": "synthetic-only",
+      "size_budget": {
+        "metric": "words",
+        "target": [
+          365,
+          437
+        ],
+        "soft_max": 437,
+        "minimum_is_quality_gate": false,
+        "target_is_informational": true,
+        "applicability": "Descriptive envelope across explicitly listed context/complexity strata; no per-stratum quality threshold."
+      },
+      "observed_median": 395,
+      "samples": [
+        {
+          "project_id": "assurance-report-simple",
+          "complexity": "simple",
+          "synthetic": true,
+          "semantic_hash": "a8c9246fee1ee93eb54c26e2eb6cd4636e15c90a825ab836291f35218986c857",
+          "report_hash": "bbb5a714b651b7c5c1946b3cb866809ff2335dd4d6c05d33ace361be7531126c",
+          "observed": 365,
+          "context_hash": "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08",
+          "compiled_spec_hash": "74057daecd95e0eb78f4d97e699c9afb24942b8221626837eddad6e71e851c26"
+        },
+        {
+          "project_id": "assurance-report-medium",
+          "complexity": "medium",
+          "synthetic": true,
+          "semantic_hash": "52fa4984339f4dd0f1e56f7cf458f1ab23ae58aaa74817a252a3c7daffe438e9",
+          "report_hash": "4cadea276bb762c7d5e017fc5fb3cd3570840bfa9d23143383fb38ff5839057c",
+          "observed": 395,
+          "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+          "compiled_spec_hash": "7ddbab05dcc5f30fbf29240866aab4bda0f216ffc568b3fed9400c54b12886ce"
+        },
+        {
+          "project_id": "assurance-report-complex",
+          "complexity": "complex",
+          "synthetic": true,
+          "semantic_hash": "5979484d299bea99417499b108b2b47faece0711729123fc1178136a1690d872",
+          "report_hash": "98f6527d9a09b6673c3c59f7b286b1df33c5612b85c2d029ccdf4fe2c5a387e5",
+          "observed": 437,
+          "context_hash": "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12",
+          "compiled_spec_hash": "ac2213eda27c27d187938341411bf9e06b413a218cc5d013a7e22a1ece7d019c"
+        }
+      ],
+      "production_ready": false,
+      "human_approval_required": true,
+      "activation_authority": "Existing JAI L0 only; this candidate is not an approval.",
+      "calibration_hash": "945a529864994070c65efaa9fbb85e93e07a4e6bb6bad777e2dca33ecf52243b"
+    },
+    "business-case": {
+      "document_kind": "business-case",
+      "contract_id": "it-financial-management-tbm-manager:2",
+      "policy_inheritance_hash": "9c9bb64944cb05605cebf5c26a94497fa4e54b04cc50619842603a249ad9da13",
+      "context_strata": {
+        "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08": {
+          "context": {
+            "processes_personal_data": false,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "c1133c2a39793a760fb1af4fd88b1d0835dbe004e4fd47e1502d6e2c6114d484",
+          "projects": [
+            "business-case-simple"
+          ]
+        },
+        "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "f93c7c44423e26e925f93d006ca13747d5273f92da5975391693198931fc5522",
+          "projects": [
+            "business-case-medium"
+          ]
+        },
+        "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": true
+          },
+          "compiled_spec_hash": "6dbdaa0c5b1df2a1b41634a0bc6e9f157deff192235257ada62ed488a469c910",
+          "projects": [
+            "business-case-complex"
+          ]
+        }
+      },
+      "status": "proposed",
+      "calibration_status": "synthetic-only",
+      "size_budget": {
+        "metric": "words",
+        "target": [
+          242,
+          311
+        ],
+        "soft_max": 311,
+        "minimum_is_quality_gate": false,
+        "target_is_informational": true,
+        "applicability": "Descriptive envelope across explicitly listed context/complexity strata; no per-stratum quality threshold."
+      },
+      "observed_median": 272,
+      "samples": [
+        {
+          "project_id": "business-case-simple",
+          "complexity": "simple",
+          "synthetic": true,
+          "semantic_hash": "a7f7d1161844ac3fd8fc994130edc172aa7da892099cc40b2677e40c976340db",
+          "report_hash": "59597a136b4955d5fb06dfabab1ac770270cebc59cb8de5d0be72f23a5aa0fc6",
+          "observed": 242,
+          "context_hash": "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08",
+          "compiled_spec_hash": "c1133c2a39793a760fb1af4fd88b1d0835dbe004e4fd47e1502d6e2c6114d484"
+        },
+        {
+          "project_id": "business-case-medium",
+          "complexity": "medium",
+          "synthetic": true,
+          "semantic_hash": "70c04280800a30a6b78478b7b20913f160f55a642104fa3016e8893c3bb65423",
+          "report_hash": "c404a550f32608c3746618c7e53499d15f222b9d4c1c3552b13ff63204afb5ef",
+          "observed": 272,
+          "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+          "compiled_spec_hash": "f93c7c44423e26e925f93d006ca13747d5273f92da5975391693198931fc5522"
+        },
+        {
+          "project_id": "business-case-complex",
+          "complexity": "complex",
+          "synthetic": true,
+          "semantic_hash": "462ab61067503aa2bd66652c193ce9aa69bdeb57e4527604b9bab1071986c503",
+          "report_hash": "ecf55ee571330ff865b96b49e6b4972fe738f785b9d5a40377c3778bddcef764",
+          "observed": 311,
+          "context_hash": "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12",
+          "compiled_spec_hash": "6dbdaa0c5b1df2a1b41634a0bc6e9f157deff192235257ada62ed488a469c910"
+        }
+      ],
+      "production_ready": false,
+      "human_approval_required": true,
+      "activation_authority": "Existing JAI L0 only; this candidate is not an approval.",
+      "calibration_hash": "19017779ed57b8eaa343437f2d48b3cd62dfb3c4f745da92e397e71834f61258"
+    },
+    "decision-paper": {
+      "document_kind": "decision-paper",
+      "contract_id": "enterprise-applications-architect:2",
+      "policy_inheritance_hash": "231b4daa2b36fd6ed913a5781d4f4427ea29e8817dafa59f2c1a13c46b758ba6",
+      "context_strata": {
+        "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08": {
+          "context": {
+            "processes_personal_data": false,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "d35ec35067c222663f82b4dbc7963ec0d331a81a1b7d89b4ef039e6613df3f1d",
+          "projects": [
+            "decision-paper-simple"
+          ]
+        },
+        "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "9c1ee2938b8de5b7482c4df3b0a3ff70e23e1f5ae204bc73b52e5557e337553e",
+          "projects": [
+            "decision-paper-medium"
+          ]
+        },
+        "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": true
+          },
+          "compiled_spec_hash": "46cbbd953da4a29c6faa63e75efe5b08831090b055fe309ffddad8cd6b52bb30",
+          "projects": [
+            "decision-paper-complex"
+          ]
+        }
+      },
+      "status": "proposed",
+      "calibration_status": "synthetic-only",
+      "size_budget": {
+        "metric": "words",
+        "target": [
+          339,
+          408
+        ],
+        "soft_max": 408,
+        "minimum_is_quality_gate": false,
+        "target_is_informational": true,
+        "applicability": "Descriptive envelope across explicitly listed context/complexity strata; no per-stratum quality threshold."
+      },
+      "observed_median": 369,
+      "samples": [
+        {
+          "project_id": "decision-paper-simple",
+          "complexity": "simple",
+          "synthetic": true,
+          "semantic_hash": "c4baffebf2055813c908e555ea7d1b50ff089d6e5aa125b483e1c7587d76e808",
+          "report_hash": "0748d81a2ce2608c230386a70fbf779d7f2ab5d2a78cfecc836b94ebfacece3b",
+          "observed": 339,
+          "context_hash": "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08",
+          "compiled_spec_hash": "d35ec35067c222663f82b4dbc7963ec0d331a81a1b7d89b4ef039e6613df3f1d"
+        },
+        {
+          "project_id": "decision-paper-medium",
+          "complexity": "medium",
+          "synthetic": true,
+          "semantic_hash": "c799b59933f2251a44a4e5e6d92566719c91d07aa6ea546fe6f7c7a626c6fe4f",
+          "report_hash": "c797d8aaa87ac82a510288659a7aa86320a756eba2c2a225a036ce7bd1b01e5e",
+          "observed": 369,
+          "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+          "compiled_spec_hash": "9c1ee2938b8de5b7482c4df3b0a3ff70e23e1f5ae204bc73b52e5557e337553e"
+        },
+        {
+          "project_id": "decision-paper-complex",
+          "complexity": "complex",
+          "synthetic": true,
+          "semantic_hash": "b1cef64baa83a82f0493fb113f108629940784d4064c151c1d3aee32642f224d",
+          "report_hash": "43ecb8ca154af62f44b296a64030b85b09697c7a8b6ed71ad2283438228a97f4",
+          "observed": 408,
+          "context_hash": "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12",
+          "compiled_spec_hash": "46cbbd953da4a29c6faa63e75efe5b08831090b055fe309ffddad8cd6b52bb30"
+        }
+      ],
+      "production_ready": false,
+      "human_approval_required": true,
+      "activation_authority": "Existing JAI L0 only; this candidate is not an approval.",
+      "calibration_hash": "f595fa0c96e99bc3297b7a6c90cf92f7155858b153f52d33942b15584a1e8920"
+    },
+    "hld": {
+      "document_kind": "hld",
+      "contract_id": "solution-architect:1",
+      "policy_inheritance_hash": "2bf0a021566bd3d1be5859fe1a0b74412b6c3dcceb5744142ac19f017cece8d1",
+      "context_strata": {
+        "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08": {
+          "context": {
+            "processes_personal_data": false,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "157c65ad426a916e922de174b23de626c658752494455c5d0bc43f0608a538d2",
+          "projects": [
+            "hld-simple"
+          ]
+        },
+        "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "082fc44846eee26a48f2209cd6b431a23d72b5e88f21cff945c816fadf42a453",
+          "projects": [
+            "hld-medium"
+          ]
+        },
+        "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": true
+          },
+          "compiled_spec_hash": "6783bff42d26bd2b2d033ba5f865073d24e6d1aeaab7a6e42ba25e2e800c561a",
+          "projects": [
+            "hld-complex"
+          ]
+        }
+      },
+      "status": "proposed",
+      "calibration_status": "synthetic-only",
+      "size_budget": {
+        "metric": "words",
+        "target": [
+          377,
+          450
+        ],
+        "soft_max": 450,
+        "minimum_is_quality_gate": false,
+        "target_is_informational": true,
+        "applicability": "Descriptive envelope across explicitly listed context/complexity strata; no per-stratum quality threshold."
+      },
+      "observed_median": 407,
+      "samples": [
+        {
+          "project_id": "hld-simple",
+          "complexity": "simple",
+          "synthetic": true,
+          "semantic_hash": "a86e2ce2593e3eb2a12dc5168e5e564f9e3932a34d2a79c20b300f15fe620a28",
+          "report_hash": "a7797cce85790a309e4aa8487f788a642dcf01dd61d620b2528630bd31a949ab",
+          "observed": 377,
+          "context_hash": "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08",
+          "compiled_spec_hash": "157c65ad426a916e922de174b23de626c658752494455c5d0bc43f0608a538d2"
+        },
+        {
+          "project_id": "hld-medium",
+          "complexity": "medium",
+          "synthetic": true,
+          "semantic_hash": "17aa9770f66d3c708bc67035c7b2449d77a725d1e3b1df747f67a8190dab8e13",
+          "report_hash": "6b6769f9586294d50add9c4cf11c021209d329e23dbd1dd0f5809b78493f355a",
+          "observed": 407,
+          "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+          "compiled_spec_hash": "082fc44846eee26a48f2209cd6b431a23d72b5e88f21cff945c816fadf42a453"
+        },
+        {
+          "project_id": "hld-complex",
+          "complexity": "complex",
+          "synthetic": true,
+          "semantic_hash": "6218da13ef4a3277de41af3dabf2b929506ce423b23bc5b3789c646562e7bed1",
+          "report_hash": "9c4dff570312934aab8134e60f161b5f35fdd7283ba8698131286379f28dacf1",
+          "observed": 450,
+          "context_hash": "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12",
+          "compiled_spec_hash": "6783bff42d26bd2b2d033ba5f865073d24e6d1aeaab7a6e42ba25e2e800c561a"
+        }
+      ],
+      "production_ready": false,
+      "human_approval_required": true,
+      "activation_authority": "Existing JAI L0 only; this candidate is not an approval.",
+      "calibration_hash": "5f68748f9e028a7e79114459bb794d9bc57579e0c32ee591f31bd8d2a9606980"
+    },
+    "operational-handover": {
+      "document_kind": "operational-handover",
+      "contract_id": "implementation-consultant:3",
+      "policy_inheritance_hash": "7d48bc75e851a85a1fec5635b4d722015be40c3fa432366182b11a1d01677d79",
+      "context_strata": {
+        "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08": {
+          "context": {
+            "processes_personal_data": false,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "896fba2a7ac7bc9d55bf4a37df70a7fe9d35159e22ef11af64457cee8327770a",
+          "projects": [
+            "operational-handover-simple"
+          ]
+        },
+        "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "2d007d3b2affd5dd9525905f6ad94ea915f2e9f6e5de5ce839f072f379b27104",
+          "projects": [
+            "operational-handover-medium"
+          ]
+        },
+        "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": true
+          },
+          "compiled_spec_hash": "6386fac69dbf547139ac7057c3632f6720657388de76964138261cf938e59248",
+          "projects": [
+            "operational-handover-complex"
+          ]
+        }
+      },
+      "status": "proposed",
+      "calibration_status": "synthetic-only",
+      "size_budget": {
+        "metric": "words",
+        "target": [
+          312,
+          380
+        ],
+        "soft_max": 380,
+        "minimum_is_quality_gate": false,
+        "target_is_informational": true,
+        "applicability": "Descriptive envelope across explicitly listed context/complexity strata; no per-stratum quality threshold."
+      },
+      "observed_median": 342,
+      "samples": [
+        {
+          "project_id": "operational-handover-simple",
+          "complexity": "simple",
+          "synthetic": true,
+          "semantic_hash": "32deb09fe480eb463bab1e1fae56097ce20ff9276ef218b6692418aaddbef122",
+          "report_hash": "fa41bc5a925c31eae742d0f9a0b5300c3e486729cbc1f11fdcbe542213ef505e",
+          "observed": 312,
+          "context_hash": "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08",
+          "compiled_spec_hash": "896fba2a7ac7bc9d55bf4a37df70a7fe9d35159e22ef11af64457cee8327770a"
+        },
+        {
+          "project_id": "operational-handover-medium",
+          "complexity": "medium",
+          "synthetic": true,
+          "semantic_hash": "50c66055b936f0bfc47c0bd3aac1261c7512e0e3248cdd2807a990272198cb48",
+          "report_hash": "1e179a9f9c933b240312f6192f66262214415824273aca5b342f40fce34017c6",
+          "observed": 342,
+          "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+          "compiled_spec_hash": "2d007d3b2affd5dd9525905f6ad94ea915f2e9f6e5de5ce839f072f379b27104"
+        },
+        {
+          "project_id": "operational-handover-complex",
+          "complexity": "complex",
+          "synthetic": true,
+          "semantic_hash": "3dd8262e1293af3bf4aca24d8e8b1ad99a5e5c28034fa67664e6fe61f11bbb86",
+          "report_hash": "d1ea065886cb007b72202c2a57f5dd381c94368eaa2c61991c0d1b52f4fe6f36",
+          "observed": 380,
+          "context_hash": "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12",
+          "compiled_spec_hash": "6386fac69dbf547139ac7057c3632f6720657388de76964138261cf938e59248"
+        }
+      ],
+      "production_ready": false,
+      "human_approval_required": true,
+      "activation_authority": "Existing JAI L0 only; this candidate is not an approval.",
+      "calibration_hash": "c22bad5f61590f648917ba621604473095331d95dae88249af9e6be44b612fe3"
+    },
+    "risk-assessment": {
+      "document_kind": "risk-assessment",
+      "contract_id": "it-risk-manager:2",
+      "policy_inheritance_hash": "4f16ef29e57c58d247c378bff2bb7f166d80a917f1e2d42f30508acc0f121d21",
+      "context_strata": {
+        "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08": {
+          "context": {
+            "processes_personal_data": false,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "28ab9b4a624b75533d97f7ce4c8d39cce8317c9f5c4e24fbede7f43c11a3df94",
+          "projects": [
+            "risk-assessment-simple"
+          ]
+        },
+        "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "7a3a62988247cc9ff8ac2a9ed38e5d1ee233b4a6e97a29592dd5383c88b4e403",
+          "projects": [
+            "risk-assessment-medium"
+          ]
+        },
+        "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": true
+          },
+          "compiled_spec_hash": "d2fcbabb6e0f36d37c24b7543510289a7acb9ff2264661cc346a3d18976f36d7",
+          "projects": [
+            "risk-assessment-complex"
+          ]
+        }
+      },
+      "status": "proposed",
+      "calibration_status": "synthetic-only",
+      "size_budget": {
+        "metric": "words",
+        "target": [
+          366,
+          439
+        ],
+        "soft_max": 439,
+        "minimum_is_quality_gate": false,
+        "target_is_informational": true,
+        "applicability": "Descriptive envelope across explicitly listed context/complexity strata; no per-stratum quality threshold."
+      },
+      "observed_median": 396,
+      "samples": [
+        {
+          "project_id": "risk-assessment-simple",
+          "complexity": "simple",
+          "synthetic": true,
+          "semantic_hash": "5a1d03f0ca9d24b3a9471925fb730dbbfae6c47b58a69b8e7d7f640baff7ffeb",
+          "report_hash": "659ee4e605294809c200f2d127e101bcffcafc83acf32e5396fff70ea26d080a",
+          "observed": 366,
+          "context_hash": "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08",
+          "compiled_spec_hash": "28ab9b4a624b75533d97f7ce4c8d39cce8317c9f5c4e24fbede7f43c11a3df94"
+        },
+        {
+          "project_id": "risk-assessment-medium",
+          "complexity": "medium",
+          "synthetic": true,
+          "semantic_hash": "db07b47f77f3a18b5bc23f12cfc943681fe45c7ee22bdb93213a43dba6962a87",
+          "report_hash": "0918c40bc343f2ca4afc14c0322ed741b23e85b10bb3f9830568acc4db0fe5d4",
+          "observed": 396,
+          "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+          "compiled_spec_hash": "7a3a62988247cc9ff8ac2a9ed38e5d1ee233b4a6e97a29592dd5383c88b4e403"
+        },
+        {
+          "project_id": "risk-assessment-complex",
+          "complexity": "complex",
+          "synthetic": true,
+          "semantic_hash": "d24711f4cb148d2c7a749f644541c3a863e56ad297d2631091c63ca0d2b8c1d6",
+          "report_hash": "54171e2d345e3023c7c9782a2b15504088fc62c6bad35cd270f4901749d73d49",
+          "observed": 439,
+          "context_hash": "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12",
+          "compiled_spec_hash": "d2fcbabb6e0f36d37c24b7543510289a7acb9ff2264661cc346a3d18976f36d7"
+        }
+      ],
+      "production_ready": false,
+      "human_approval_required": true,
+      "activation_authority": "Existing JAI L0 only; this candidate is not an approval.",
+      "calibration_hash": "abf0ce1ed3d1a25dbf6e8763d9596c5e719e50c1d0fbef111da209851ff4d8b0"
+    },
+    "runbook": {
+      "document_kind": "runbook",
+      "contract_id": "linux-systems-administrator:4",
+      "policy_inheritance_hash": "4c7d319098f8914d080eb6067485cf3e4e0b4043fcbc924da788980d79e0611d",
+      "context_strata": {
+        "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08": {
+          "context": {
+            "processes_personal_data": false,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "5358666e218b38a641e2f7870f46820496a21b97d55e8c817fcd1aa58636c983",
+          "projects": [
+            "runbook-simple"
+          ]
+        },
+        "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "716bbc1911c23123c93a19e2ebda0d0683a16acdf9a6dbfb92d2a4085576385a",
+          "projects": [
+            "runbook-medium"
+          ]
+        },
+        "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": true
+          },
+          "compiled_spec_hash": "681d33898b60997aa860ddf757a62ec2da0165056cc38b3c799337474238259b",
+          "projects": [
+            "runbook-complex"
+          ]
+        }
+      },
+      "status": "proposed",
+      "calibration_status": "synthetic-only",
+      "size_budget": {
+        "metric": "words",
+        "target": [
+          388,
+          457
+        ],
+        "soft_max": 457,
+        "minimum_is_quality_gate": false,
+        "target_is_informational": true,
+        "applicability": "Descriptive envelope across explicitly listed context/complexity strata; no per-stratum quality threshold."
+      },
+      "observed_median": 418,
+      "samples": [
+        {
+          "project_id": "runbook-simple",
+          "complexity": "simple",
+          "synthetic": true,
+          "semantic_hash": "259a25916e1e16a1783ab55804f7a3963be1803381f06552d03e6d35a85bd803",
+          "report_hash": "621e53c87727c7dc9f04c30279cd2412c0203336e9a9348ee73d3249d4864449",
+          "observed": 388,
+          "context_hash": "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08",
+          "compiled_spec_hash": "5358666e218b38a641e2f7870f46820496a21b97d55e8c817fcd1aa58636c983"
+        },
+        {
+          "project_id": "runbook-medium",
+          "complexity": "medium",
+          "synthetic": true,
+          "semantic_hash": "2659701af5cf95c161f0396191e1a7804ae8130f499461c3436e87e2003050a4",
+          "report_hash": "ae7cc2bdcadfb76887474b6f1cbc74d500951c8ac79636ad37dcad98e816b0f8",
+          "observed": 418,
+          "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+          "compiled_spec_hash": "716bbc1911c23123c93a19e2ebda0d0683a16acdf9a6dbfb92d2a4085576385a"
+        },
+        {
+          "project_id": "runbook-complex",
+          "complexity": "complex",
+          "synthetic": true,
+          "semantic_hash": "128cfff744932fcd2992630cc88e4901c6e80fbf54a7c096322a0687c3794a1a",
+          "report_hash": "ee9c3d5b2d26c74dad1d8f6ac09743e3b99c83896a2a37096da2555c5e467de5",
+          "observed": 457,
+          "context_hash": "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12",
+          "compiled_spec_hash": "681d33898b60997aa860ddf757a62ec2da0165056cc38b3c799337474238259b"
+        }
+      ],
+      "production_ready": false,
+      "human_approval_required": true,
+      "activation_authority": "Existing JAI L0 only; this candidate is not an approval.",
+      "calibration_hash": "9c07bdd890977bfc0e6eb4980b5ce933f9d2e7e846658308f035d1571e404635"
+    },
+    "test-report": {
+      "document_kind": "test-report",
+      "contract_id": "test-analyst:2",
+      "policy_inheritance_hash": "6f663e5c631aaa9601d8ed184fefb8a9ef6e38c2849cff5c68bfa8ee1cc5e05f",
+      "context_strata": {
+        "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08": {
+          "context": {
+            "processes_personal_data": false,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "09759bd986ba4a99ad0e59d748ee9110b732f966ee9e0249d07f5ef8bc552363",
+          "projects": [
+            "test-report-simple"
+          ]
+        },
+        "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": false
+          },
+          "compiled_spec_hash": "233306da2fab791a9dd51201a8821e20729256486e7a6fba5039ca89c6ba2f6d",
+          "projects": [
+            "test-report-medium"
+          ]
+        },
+        "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12": {
+          "context": {
+            "processes_personal_data": true,
+            "regulatory_requirement": true
+          },
+          "compiled_spec_hash": "d4d2b5bef7d8801e070278017d3089d3e986f082f6e8051703bf9a191b3d3f46",
+          "projects": [
+            "test-report-complex"
+          ]
+        }
+      },
+      "status": "proposed",
+      "calibration_status": "synthetic-only",
+      "size_budget": {
+        "metric": "words",
+        "target": [
+          331,
+          400
+        ],
+        "soft_max": 400,
+        "minimum_is_quality_gate": false,
+        "target_is_informational": true,
+        "applicability": "Descriptive envelope across explicitly listed context/complexity strata; no per-stratum quality threshold."
+      },
+      "observed_median": 361,
+      "samples": [
+        {
+          "project_id": "test-report-simple",
+          "complexity": "simple",
+          "synthetic": true,
+          "semantic_hash": "892a2d1706749e528678ea10bd8f33756d5964c492fe04f5791518f7db84bab1",
+          "report_hash": "db29bbaea61290c57540f9e17107f89cfbe65aeb9283d7953480fb31a691019e",
+          "observed": 331,
+          "context_hash": "ebad75ee569810f31c36bbdfafd34a0c4361234e5b6374983d13244984eccc08",
+          "compiled_spec_hash": "09759bd986ba4a99ad0e59d748ee9110b732f966ee9e0249d07f5ef8bc552363"
+        },
+        {
+          "project_id": "test-report-medium",
+          "complexity": "medium",
+          "synthetic": true,
+          "semantic_hash": "472f92db85473c36e7cc15c2dc97acc546325f44ab60a8ced0abaeb7e269de34",
+          "report_hash": "bb6628231c9cd85068acdbb224403fa8816c77a74f17d6e5480823c91b7bef73",
+          "observed": 361,
+          "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+          "compiled_spec_hash": "233306da2fab791a9dd51201a8821e20729256486e7a6fba5039ca89c6ba2f6d"
+        },
+        {
+          "project_id": "test-report-complex",
+          "complexity": "complex",
+          "synthetic": true,
+          "semantic_hash": "b00b41181a8b96e58eafba224c2634673f61f3f3d6a19d5d03607fb4102b86e3",
+          "report_hash": "f0a353ffcf8ad9626b0500da0e7954a6abb0e6aa1646e7c567d6fe12cc729801",
+          "observed": 400,
+          "context_hash": "e111ad2867f96bbd75467f50e224c846726a0879587229d84fd3867ca8521a12",
+          "compiled_spec_hash": "d4d2b5bef7d8801e070278017d3089d3e986f082f6e8051703bf9a191b3d3f46"
+        }
+      ],
+      "production_ready": false,
+      "human_approval_required": true,
+      "activation_authority": "Existing JAI L0 only; this candidate is not an approval.",
+      "calibration_hash": "587356cc2234fec08d3f3dbd7f3c41faaec79ac22f74efe34a5042fe85ad332f"
+    }
+  },
+  "trend_examples": {
+    "adr": {
+      "contract_id": "enterprise-architect:4",
+      "document_kind": "adr",
+      "compiled_spec_hash": "a00f60f820d61e2ca967ccbe6189540c229d34e34b7955906671065b0c8895ed",
+      "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+      "observations": [
+        {
+          "observed_at": "2026-10-19T09:00:00+00:00",
+          "artifact_id": "synthetic/adr/medium",
+          "semantic_hash": "66b5e66b8516e33e4a4a1891dfd1954629dafae8826bb84e3f58dabddd103ab5",
+          "report_hash": "75f4801c20b6ca28084d93d06c8ef0b7e3ec06e3261ca6da596780c7bf355d11",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 328,
+          "duplicate_groups": 5,
+          "findings": 6,
+          "critical_findings": 1
+        },
+        {
+          "observed_at": "2026-10-19T10:00:00+00:00",
+          "artifact_id": "synthetic/adr/medium",
+          "semantic_hash": "1ecb04575924e2ae94fac4e5599292b971518e4b2e19e2cb18c8a58fa6a3074a",
+          "report_hash": "a588a989ba8ccc7eda064ec048264c7a69d1735849a9fefd837b115fd6fa426e",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 349,
+          "duplicate_groups": 5,
+          "findings": 5,
+          "critical_findings": 0
+        }
+      ],
+      "delta": {
+        "words": 21,
+        "duplicate_groups": 0,
+        "findings": -1,
+        "critical_findings": -1
+      },
+      "qualification_evidence": false,
+      "production_ready": false,
+      "comparison_basis": "Exact QA replay; timestamps are caller observations, not trusted execution time.",
+      "trend_hash": "b3cc3f45ec5dd60f75e27ed7f05eba0e7ef76a2beb509a13ee4b82a87519f783"
+    },
+    "architecture-definition": {
+      "contract_id": "enterprise-architect:1",
+      "document_kind": "architecture-definition",
+      "compiled_spec_hash": "e219d06a289f71aaf4e45518c0a77302da2b6f5665373141f8d0ebec806a0042",
+      "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+      "observations": [
+        {
+          "observed_at": "2026-10-19T09:00:00+00:00",
+          "artifact_id": "synthetic/architecture-definition/medium",
+          "semantic_hash": "7433704707dc7da7c0cf72b04faa62b6e9d1a7dd71b58a0ffa4d0c329496fda3",
+          "report_hash": "42b07ac01ed467de58240d60993992fc13c967b3b46edb82ca54fc1479e7ac2c",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 452,
+          "duplicate_groups": 5,
+          "findings": 6,
+          "critical_findings": 1
+        },
+        {
+          "observed_at": "2026-10-19T10:00:00+00:00",
+          "artifact_id": "synthetic/architecture-definition/medium",
+          "semantic_hash": "118063fc283ccef75de1d4d670910492eb1de0beca4b69e0b2777160fda2e0dd",
+          "report_hash": "254f23a18cfd0254386e2508c1b650bc2032e057f7086ef846c62d92cbc6d83a",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 481,
+          "duplicate_groups": 5,
+          "findings": 5,
+          "critical_findings": 0
+        }
+      ],
+      "delta": {
+        "words": 29,
+        "duplicate_groups": 0,
+        "findings": -1,
+        "critical_findings": -1
+      },
+      "qualification_evidence": false,
+      "production_ready": false,
+      "comparison_basis": "Exact QA replay; timestamps are caller observations, not trusted execution time.",
+      "trend_hash": "08af232ce82676daa8ca22716edb259d8deec2ea0cbbe2e7a3708c3ec4da9510"
+    },
+    "assurance-report": {
+      "contract_id": "secure-delivery-devsecops-architect:3",
+      "document_kind": "assurance-report",
+      "compiled_spec_hash": "7ddbab05dcc5f30fbf29240866aab4bda0f216ffc568b3fed9400c54b12886ce",
+      "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+      "observations": [
+        {
+          "observed_at": "2026-10-19T09:00:00+00:00",
+          "artifact_id": "synthetic/assurance-report/medium",
+          "semantic_hash": "603a98af9c180e125515715c7dc7d8e4d19666b517a08bba8b00e963502a40c1",
+          "report_hash": "aa8d8bea13fcdf17e2bb1e3cf7f2064c947a68d4b5898261f74b797f17fa0ec9",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 376,
+          "duplicate_groups": 3,
+          "findings": 4,
+          "critical_findings": 1
+        },
+        {
+          "observed_at": "2026-10-19T10:00:00+00:00",
+          "artifact_id": "synthetic/assurance-report/medium",
+          "semantic_hash": "52fa4984339f4dd0f1e56f7cf458f1ab23ae58aaa74817a252a3c7daffe438e9",
+          "report_hash": "4cadea276bb762c7d5e017fc5fb3cd3570840bfa9d23143383fb38ff5839057c",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 395,
+          "duplicate_groups": 3,
+          "findings": 3,
+          "critical_findings": 0
+        }
+      ],
+      "delta": {
+        "words": 19,
+        "duplicate_groups": 0,
+        "findings": -1,
+        "critical_findings": -1
+      },
+      "qualification_evidence": false,
+      "production_ready": false,
+      "comparison_basis": "Exact QA replay; timestamps are caller observations, not trusted execution time.",
+      "trend_hash": "28978a903810ac66ddea9110cb07110cd072d061d99937948560e643babe0fc3"
+    },
+    "business-case": {
+      "contract_id": "it-financial-management-tbm-manager:2",
+      "document_kind": "business-case",
+      "compiled_spec_hash": "f93c7c44423e26e925f93d006ca13747d5273f92da5975391693198931fc5522",
+      "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+      "observations": [
+        {
+          "observed_at": "2026-10-19T09:00:00+00:00",
+          "artifact_id": "synthetic/business-case/medium",
+          "semantic_hash": "20369838f189a53b37a886622f8f472687360f525ddeb205c7d18a529cbd24f5",
+          "report_hash": "36d543f8feb88b4d434cff81f5e95a4ead620c49a5f5b0444af25d12c3fecf3f",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 264,
+          "duplicate_groups": 2,
+          "findings": 3,
+          "critical_findings": 1
+        },
+        {
+          "observed_at": "2026-10-19T10:00:00+00:00",
+          "artifact_id": "synthetic/business-case/medium",
+          "semantic_hash": "70c04280800a30a6b78478b7b20913f160f55a642104fa3016e8893c3bb65423",
+          "report_hash": "c404a550f32608c3746618c7e53499d15f222b9d4c1c3552b13ff63204afb5ef",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 272,
+          "duplicate_groups": 2,
+          "findings": 2,
+          "critical_findings": 0
+        }
+      ],
+      "delta": {
+        "words": 8,
+        "duplicate_groups": 0,
+        "findings": -1,
+        "critical_findings": -1
+      },
+      "qualification_evidence": false,
+      "production_ready": false,
+      "comparison_basis": "Exact QA replay; timestamps are caller observations, not trusted execution time.",
+      "trend_hash": "7ec96fa4a49e72c1595de2a69412f7623fdd3b61b742830bbb847983aa033a78"
+    },
+    "decision-paper": {
+      "contract_id": "enterprise-applications-architect:2",
+      "document_kind": "decision-paper",
+      "compiled_spec_hash": "9c1ee2938b8de5b7482c4df3b0a3ff70e23e1f5ae204bc73b52e5557e337553e",
+      "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+      "observations": [
+        {
+          "observed_at": "2026-10-19T09:00:00+00:00",
+          "artifact_id": "synthetic/decision-paper/medium",
+          "semantic_hash": "bbfaf52667410e4a4628ea076f6198e40d1de529a012f3a786369fd3ec362b06",
+          "report_hash": "d0de3abe54263770a8e6200e9c5242fafe455db0676073aa2f901adaad2e26b5",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 352,
+          "duplicate_groups": 5,
+          "findings": 6,
+          "critical_findings": 1
+        },
+        {
+          "observed_at": "2026-10-19T10:00:00+00:00",
+          "artifact_id": "synthetic/decision-paper/medium",
+          "semantic_hash": "c799b59933f2251a44a4e5e6d92566719c91d07aa6ea546fe6f7c7a626c6fe4f",
+          "report_hash": "c797d8aaa87ac82a510288659a7aa86320a756eba2c2a225a036ce7bd1b01e5e",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 369,
+          "duplicate_groups": 5,
+          "findings": 5,
+          "critical_findings": 0
+        }
+      ],
+      "delta": {
+        "words": 17,
+        "duplicate_groups": 0,
+        "findings": -1,
+        "critical_findings": -1
+      },
+      "qualification_evidence": false,
+      "production_ready": false,
+      "comparison_basis": "Exact QA replay; timestamps are caller observations, not trusted execution time.",
+      "trend_hash": "e789ee0ec7451c4d33d5d1b99c511d29f65c476590e7f6bc34c5515604954b0b"
+    },
+    "hld": {
+      "contract_id": "solution-architect:1",
+      "document_kind": "hld",
+      "compiled_spec_hash": "082fc44846eee26a48f2209cd6b431a23d72b5e88f21cff945c816fadf42a453",
+      "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+      "observations": [
+        {
+          "observed_at": "2026-10-19T09:00:00+00:00",
+          "artifact_id": "synthetic/hld/medium",
+          "semantic_hash": "0f3f169c186c86a83a5d970bf03d375dd8c61a70c5d962ae26cd7f7d87e67bf0",
+          "report_hash": "d2aeb898fb1ce1fe83157099642012c3f0483d23e9f157ad9c54aa533cf51b72",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 388,
+          "duplicate_groups": 5,
+          "findings": 6,
+          "critical_findings": 1
+        },
+        {
+          "observed_at": "2026-10-19T10:00:00+00:00",
+          "artifact_id": "synthetic/hld/medium",
+          "semantic_hash": "17aa9770f66d3c708bc67035c7b2449d77a725d1e3b1df747f67a8190dab8e13",
+          "report_hash": "6b6769f9586294d50add9c4cf11c021209d329e23dbd1dd0f5809b78493f355a",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 407,
+          "duplicate_groups": 5,
+          "findings": 5,
+          "critical_findings": 0
+        }
+      ],
+      "delta": {
+        "words": 19,
+        "duplicate_groups": 0,
+        "findings": -1,
+        "critical_findings": -1
+      },
+      "qualification_evidence": false,
+      "production_ready": false,
+      "comparison_basis": "Exact QA replay; timestamps are caller observations, not trusted execution time.",
+      "trend_hash": "0b4c850ada56235aa432686d5749096b42f7e42f2d14e5e1a3accbbb1afc7fbc"
+    },
+    "operational-handover": {
+      "contract_id": "implementation-consultant:3",
+      "document_kind": "operational-handover",
+      "compiled_spec_hash": "2d007d3b2affd5dd9525905f6ad94ea915f2e9f6e5de5ce839f072f379b27104",
+      "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+      "observations": [
+        {
+          "observed_at": "2026-10-19T09:00:00+00:00",
+          "artifact_id": "synthetic/operational-handover/medium",
+          "semantic_hash": "cd610a0e206cd0b8bb909583a712c61cfecec73e6e01166afd3e49f906afab40",
+          "report_hash": "2fa7561693c5d9473ea3afe436a027a6d44856f428a095d13633eb76bea1ba5f",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 330,
+          "duplicate_groups": 2,
+          "findings": 3,
+          "critical_findings": 1
+        },
+        {
+          "observed_at": "2026-10-19T10:00:00+00:00",
+          "artifact_id": "synthetic/operational-handover/medium",
+          "semantic_hash": "50c66055b936f0bfc47c0bd3aac1261c7512e0e3248cdd2807a990272198cb48",
+          "report_hash": "1e179a9f9c933b240312f6192f66262214415824273aca5b342f40fce34017c6",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 342,
+          "duplicate_groups": 2,
+          "findings": 2,
+          "critical_findings": 0
+        }
+      ],
+      "delta": {
+        "words": 12,
+        "duplicate_groups": 0,
+        "findings": -1,
+        "critical_findings": -1
+      },
+      "qualification_evidence": false,
+      "production_ready": false,
+      "comparison_basis": "Exact QA replay; timestamps are caller observations, not trusted execution time.",
+      "trend_hash": "6e6820633664214f50bf9b180b95323f056e9b3fcce6191e3dacd5f0bedf22b2"
+    },
+    "risk-assessment": {
+      "contract_id": "it-risk-manager:2",
+      "document_kind": "risk-assessment",
+      "compiled_spec_hash": "7a3a62988247cc9ff8ac2a9ed38e5d1ee233b4a6e97a29592dd5383c88b4e403",
+      "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+      "observations": [
+        {
+          "observed_at": "2026-10-19T09:00:00+00:00",
+          "artifact_id": "synthetic/risk-assessment/medium",
+          "semantic_hash": "b2bf44c3a4c9c0b4e1334a2ccaa5949310343020298b8a125be9071e6a55b969",
+          "report_hash": "e588c22d8ab81608c45e28ffcd7f804209522623156d6bd7eb4b7e28d136fde0",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 346,
+          "duplicate_groups": 2,
+          "findings": 3,
+          "critical_findings": 1
+        },
+        {
+          "observed_at": "2026-10-19T10:00:00+00:00",
+          "artifact_id": "synthetic/risk-assessment/medium",
+          "semantic_hash": "db07b47f77f3a18b5bc23f12cfc943681fe45c7ee22bdb93213a43dba6962a87",
+          "report_hash": "0918c40bc343f2ca4afc14c0322ed741b23e85b10bb3f9830568acc4db0fe5d4",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 396,
+          "duplicate_groups": 2,
+          "findings": 2,
+          "critical_findings": 0
+        }
+      ],
+      "delta": {
+        "words": 50,
+        "duplicate_groups": 0,
+        "findings": -1,
+        "critical_findings": -1
+      },
+      "qualification_evidence": false,
+      "production_ready": false,
+      "comparison_basis": "Exact QA replay; timestamps are caller observations, not trusted execution time.",
+      "trend_hash": "82c81e76c6e82d58d1070b43ff3b5993dce5c4074850f088b29477aef6648029"
+    },
+    "runbook": {
+      "contract_id": "linux-systems-administrator:4",
+      "document_kind": "runbook",
+      "compiled_spec_hash": "716bbc1911c23123c93a19e2ebda0d0683a16acdf9a6dbfb92d2a4085576385a",
+      "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+      "observations": [
+        {
+          "observed_at": "2026-10-19T09:00:00+00:00",
+          "artifact_id": "synthetic/runbook/medium",
+          "semantic_hash": "28b0debaaec1ce9d5467fdcc8a464b8481b228fb2b697aea735d043a90a30b82",
+          "report_hash": "698759246fc97b15578d1f64ad01b5138d5496da77dd99274ac23b0a54083c90",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 401,
+          "duplicate_groups": 3,
+          "findings": 4,
+          "critical_findings": 1
+        },
+        {
+          "observed_at": "2026-10-19T10:00:00+00:00",
+          "artifact_id": "synthetic/runbook/medium",
+          "semantic_hash": "2659701af5cf95c161f0396191e1a7804ae8130f499461c3436e87e2003050a4",
+          "report_hash": "ae7cc2bdcadfb76887474b6f1cbc74d500951c8ac79636ad37dcad98e816b0f8",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 418,
+          "duplicate_groups": 3,
+          "findings": 3,
+          "critical_findings": 0
+        }
+      ],
+      "delta": {
+        "words": 17,
+        "duplicate_groups": 0,
+        "findings": -1,
+        "critical_findings": -1
+      },
+      "qualification_evidence": false,
+      "production_ready": false,
+      "comparison_basis": "Exact QA replay; timestamps are caller observations, not trusted execution time.",
+      "trend_hash": "7d8cb1e36968c38d8a359ac9283de4fa0318fda4da4be92bcc5fbe863a225347"
+    },
+    "test-report": {
+      "contract_id": "test-analyst:2",
+      "document_kind": "test-report",
+      "compiled_spec_hash": "233306da2fab791a9dd51201a8821e20729256486e7a6fba5039ca89c6ba2f6d",
+      "context_hash": "9c38368675372e0ae601a44af55f6f71d58641d7c9defee1f0725d036eb0c595",
+      "observations": [
+        {
+          "observed_at": "2026-10-19T09:00:00+00:00",
+          "artifact_id": "synthetic/test-report/medium",
+          "semantic_hash": "991d41811227744ab1186674536dc188b5442f82795552fa077b91bba0b33717",
+          "report_hash": "4dc033b123f74c7b6c462d69b9cc692ad454dac8f499f5d30b998cacd8bb06c6",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 352,
+          "duplicate_groups": 3,
+          "findings": 4,
+          "critical_findings": 1
+        },
+        {
+          "observed_at": "2026-10-19T10:00:00+00:00",
+          "artifact_id": "synthetic/test-report/medium",
+          "semantic_hash": "472f92db85473c36e7cc15c2dc97acc546325f44ab60a8ced0abaeb7e269de34",
+          "report_hash": "bb6628231c9cd85068acdbb224403fa8816c77a74f17d6e5480823c91b7bef73",
+          "gate_verdict": "DRAFT_INCOMPLETE",
+          "words": 361,
+          "duplicate_groups": 3,
+          "findings": 3,
+          "critical_findings": 0
+        }
+      ],
+      "delta": {
+        "words": 9,
+        "duplicate_groups": 0,
+        "findings": -1,
+        "critical_findings": -1
+      },
+      "qualification_evidence": false,
+      "production_ready": false,
+      "comparison_basis": "Exact QA replay; timestamps are caller observations, not trusted execution time.",
+      "trend_hash": "8b9a2935bbce9142b8d1ae409680ac4648f294aaa7231edfd45ea54f877e5cc5"
+    }
+  },
+  "development_evidence_hash": "d96a2f06e51629c2c6e53d6a34ec34d81a21d7cd6876d827d1894ff932fafecf"
+}

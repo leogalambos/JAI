@@ -155,7 +155,18 @@ def governance_check():
 
 
 def gate_a():
+    """Run structural release checks and the shared DCS development regressions.
+
+    Returns:
+        Located check results, including real corpus evaluation and reproducible
+        generated policy/workflow/calibration evidence. DCS regressions have a
+        bounded 10-minute allowance for the full 12,550-case enterprise corpus.
+        Passing this gate does not provide human domain or release approval.
+    """
     return [
+        *[command("DCS generated " + name + " reproducibility",
+                  [PY, str(PACKAGE / "tools" / ("generate_content_" + name + ".py")), "--check"])
+          for name in ("catalog", "corpus", "workflows", "calibration")],
         command(
             "DCS semantic and publication regression tests",
             [PY, "-m", "pytest", "-q",
@@ -163,11 +174,19 @@ def gate_a():
              str(PACKAGE / "tests/test_content_metrics.py"),
              str(PACKAGE / "tests/test_content_publication.py"),
              str(PACKAGE / "tests/test_content_eval.py"),
-             str(PACKAGE / "tests/test_content_provider_parity.py")],
+             str(PACKAGE / "tests/test_content_provider_parity.py"),
+             str(PACKAGE / "tests/test_content_workflow.py"),
+             str(PACKAGE / "tests/test_content_migrate.py"),
+             str(PACKAGE / "tests/test_content_calibration.py"),
+             str(PACKAGE / "tests/test_content_catalog.py"),
+             str(PACKAGE / "tests/test_content_spec.py"),
+             str(PACKAGE / "tests/test_content_integration.py")],
+            timeout=600,
         ),
         command(
             "DCS deterministic synthetic pilot (not human-gold)",
             [PY, str(TOOLS / "content_eval.py"), "run", "--root", str(PACKAGE)],
+            timeout=600,
         ),
         command(
             "Unified Lifecycle GA native enforcement",

@@ -138,6 +138,83 @@
         "SYN-01"
       ],
       "knowledge_status": "pending"
+    },
+    "observed_test_results": [
+      {
+        "test_id": "SYN-T1",
+        "requirement_ref": "SYN-REC1",
+        "build": "candidate-1.0",
+        "environment": "Isolated recovery rehearsal",
+        "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
+        "expected_max_minutes": 30,
+        "observed_minutes": 27,
+        "expected_duplicate_count": 0,
+        "observed_duplicate_count": 0,
+        "sample_size": 10,
+        "exclusions": [
+          "Peak-load recovery"
+        ],
+        "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
+        "record_id": "SYN-OBSERVED-TEST-RESULTS",
+        "service": "Regulated payment platform transition",
+        "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+        "criterion_under_review": "Link test cases and requirements to actual outcomes, timestamps and execution evidence.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "test_release_constraints": {
+      "test_id": "SYN-T1",
+      "requirement_ref": "SYN-REC1",
+      "build": "candidate-1.0",
+      "environment": "Isolated recovery rehearsal",
+      "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
+      "expected_max_minutes": 30,
+      "observed_minutes": 27,
+      "expected_duplicate_count": 0,
+      "observed_duplicate_count": 0,
+      "sample_size": 10,
+      "exclusions": [
+        "Peak-load recovery"
+      ],
+      "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
+      "record_id": "SYN-TEST-RELEASE-CONSTRAINTS",
+      "service": "Regulated payment platform transition",
+      "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+      "criterion_under_review": "Explain defects, untested scope, achieved exit criteria and residual release risk.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "tested_baseline": {
+      "test_id": "SYN-T1",
+      "requirement_ref": "SYN-REC1",
+      "build": "candidate-1.0",
+      "environment": "Isolated recovery rehearsal",
+      "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
+      "expected_max_minutes": 30,
+      "observed_minutes": 27,
+      "expected_duplicate_count": 0,
+      "observed_duplicate_count": 0,
+      "sample_size": 10,
+      "exclusions": [
+        "Peak-load recovery"
+      ],
+      "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
+      "record_id": "SYN-TESTED-BASELINE",
+      "service": "Regulated payment platform transition",
+      "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+      "criterion_under_review": "Identify build, requirements, environment, reporting period and exclusions.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
     }
   },
   "evidence": [

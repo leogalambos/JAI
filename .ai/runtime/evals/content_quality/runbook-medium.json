@@ -118,7 +118,72 @@
         "SYN-01"
       ],
       "knowledge_status": "assumption"
-    }
+    },
+    "execution_boundary": {
+      "service_owner": "Morgan Lee",
+      "support_team": "Warehouse platform operations",
+      "support_hours": "06:00-22:00",
+      "incident_ref": "SYN-INC1",
+      "step": 1,
+      "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+      "expected_output": "deployment transaction-api successfully rolled out",
+      "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+      "safe_state": "Keep new transaction traffic disabled",
+      "escalation": "Incident commander on bridge SYN-INC1",
+      "record_id": "SYN-EXECUTION-BOUNDARY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Define triggers, authorised operators, prerequisites and stop conditions.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "recovery_and_escalation": {
+      "service_owner": "Morgan Lee",
+      "support_team": "Warehouse platform operations",
+      "support_hours": "06:00-22:00",
+      "incident_ref": "SYN-INC1",
+      "step": 1,
+      "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+      "expected_output": "deployment transaction-api successfully rolled out",
+      "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+      "safe_state": "Keep new transaction traffic disabled",
+      "escalation": "Incident commander on bridge SYN-INC1",
+      "record_id": "SYN-RECOVERY-AND-ESCALATION",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Define failures, safe-state recovery, rollback and named escalation responsibility.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "verified_steps": [
+      {
+        "service_owner": "Morgan Lee",
+        "support_team": "Warehouse platform operations",
+        "support_hours": "06:00-22:00",
+        "incident_ref": "SYN-INC1",
+        "step": 1,
+        "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+        "expected_output": "deployment transaction-api successfully rolled out",
+        "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+        "safe_state": "Keep new transaction traffic disabled",
+        "escalation": "Incident commander on bridge SYN-INC1",
+        "record_id": "SYN-VERIFIED-STEPS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Provide ordered actions, exact targets, expected observations and verification.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ]
   },
   "evidence": [
     {

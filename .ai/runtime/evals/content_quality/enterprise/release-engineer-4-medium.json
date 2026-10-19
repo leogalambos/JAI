@@ -1,0 +1,473 @@
+{
+  "artifact_id": "synthetic/enterprise/release-engineer-4-medium",
+  "contract_id": "release-engineer:4",
+  "document_kind": "role/release-engineer:4",
+  "author": {
+    "principal_id": "synthetic-author"
+  },
+  "title": "Regional order integration: release-engineer-4-medium",
+  "context": {
+    "processes_personal_data": true,
+    "regulatory_requirement": false
+  },
+  "summary": "Three regional order services, ERP integration, identity management and two operations teams.",
+  "scenario": {
+    "name": "Regional order integration",
+    "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+    "drivers": "Reconcile regional orders within 15 minutes with 99.9 percent monthly availability and no duplicated financial postings.",
+    "design": "An idempotent event gateway connects three regional services to ERP using versioned schemas and a dead-letter queue.",
+    "cost": "EUR 420000 implementation and EUR 90000 annual operation; three-year avoided handling cost EUR 810000, sensitive to order volume by 30 percent.",
+    "risk": "Replayed events can duplicate postings; deduplication keys and reconciled ledger totals reduce exposure but require weekly evidence review.",
+    "operations": "Regional service owners retain customer support; the integration team owns gateway recovery and ERP reconciliation escalation.",
+    "regulatory": false,
+    "privacy": true
+  },
+  "semantic_units": {
+    "operational_ownership": {
+      "service_owner": "Morgan Lee",
+      "support_team": "Warehouse platform operations",
+      "support_hours": "06:00-22:00",
+      "incident_ref": "SYN-INC1",
+      "step": 1,
+      "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+      "expected_output": "deployment transaction-api successfully rolled out",
+      "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+      "safe_state": "Keep new transaction traffic disabled",
+      "escalation": "Incident commander on bridge SYN-INC1",
+      "record_id": "SYN-OPERATIONAL-OWNERSHIP",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify receiving service owner, support boundaries, escalation and review triggers.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "operational_recoverability": [
+      {
+        "service_owner": "Morgan Lee",
+        "support_team": "Warehouse platform operations",
+        "support_hours": "06:00-22:00",
+        "incident_ref": "SYN-INC1",
+        "step": 1,
+        "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+        "expected_output": "deployment transaction-api successfully rolled out",
+        "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+        "safe_state": "Keep new transaction traffic disabled",
+        "escalation": "Incident commander on bridge SYN-INC1",
+        "record_id": "SYN-OPERATIONAL-RECOVERABILITY",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Trace monitoring, failure handling, backup/recovery and rollback requirements to rehearsed evidence.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "privacy_analysis": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-PRIVACY-ANALYSIS",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "contract_input_1": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-CONTRACT-INPUT-1",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Analyse the specific input \"Change records and approvals\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "contract_input_2": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-CONTRACT-INPUT-2",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Analyse the specific input \"Build artefacts and provenance\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "contract_input_3": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-CONTRACT-INPUT-3",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Analyse the specific input \"Test results and exit criteria\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "contract_input_4": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-CONTRACT-INPUT-4",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Analyse the specific input \"Environment status\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "contract_relations": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-CONTRACT-RELATIONS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "decision_purpose_correction": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-DECISION-PURPOSE-CORRECTION",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "State the specific choice enabled, alternatives and competent decision authority, or explain why this output supports no decision; copied acceptance boilerplate is not a decision purpose.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "delivery_scope": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-DELIVERY-SCOPE",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: rollback procedure and evidence of test.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "delivery_verification": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-DELIVERY-VERIFICATION",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "For the specific output 'rollback procedure and evidence of test', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "receiving_acceptance": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-RECEIVING-ACCEPTANCE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "For each receiving role (Site Reliability Engineer; Application Support Analyst), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "role_gate_observations": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-ROLE-GATE-OBSERVATIONS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "execution_boundary": {
+      "service_owner": "Morgan Lee",
+      "support_team": "Warehouse platform operations",
+      "support_hours": "06:00-22:00",
+      "incident_ref": "SYN-INC1",
+      "step": 1,
+      "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+      "expected_output": "deployment transaction-api successfully rolled out",
+      "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+      "safe_state": "Keep new transaction traffic disabled",
+      "escalation": "Incident commander on bridge SYN-INC1",
+      "record_id": "SYN-EXECUTION-BOUNDARY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Define triggers, authorised operators, prerequisites and stop conditions.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "identity": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-IDENTITY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify stable artifact ID, owner, source version and intended usage.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "recovery_and_escalation": {
+      "service_owner": "Morgan Lee",
+      "support_team": "Warehouse platform operations",
+      "support_hours": "06:00-22:00",
+      "incident_ref": "SYN-INC1",
+      "step": 1,
+      "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+      "expected_output": "deployment transaction-api successfully rolled out",
+      "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+      "safe_state": "Keep new transaction traffic disabled",
+      "escalation": "Incident commander on bridge SYN-INC1",
+      "record_id": "SYN-RECOVERY-AND-ESCALATION",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Define failures, safe-state recovery, rollback and named escalation responsibility.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "verified_steps": [
+      {
+        "service_owner": "Morgan Lee",
+        "support_team": "Warehouse platform operations",
+        "support_hours": "06:00-22:00",
+        "incident_ref": "SYN-INC1",
+        "step": 1,
+        "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+        "expected_output": "deployment transaction-api successfully rolled out",
+        "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+        "safe_state": "Keep new transaction traffic disabled",
+        "escalation": "Incident commander on bridge SYN-INC1",
+        "record_id": "SYN-VERIFIED-STEPS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Provide ordered actions, exact targets, expected observations and verification.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ]
+  },
+  "evaluation_selection": {
+    "overlays": []
+  },
+  "structural_probe": true,
+  "evaluation_scope": "Typed contract/overlay detector probe; professional semantic adequacy is not established by these generated records.",
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Fabricated recovery service records; no real customer evidence or human approval."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "domain/operations.operational_ownership",
+        "domain/operations.operational_recoverability",
+        "role/release-engineer:4.contract_input_1",
+        "role/release-engineer:4.contract_input_2",
+        "role/release-engineer:4.contract_input_3",
+        "role/release-engineer:4.contract_input_4",
+        "role/release-engineer:4.contract_relations",
+        "role/release-engineer:4.decision_purpose_correction",
+        "role/release-engineer:4.delivery_scope",
+        "role/release-engineer:4.delivery_verification",
+        "role/release-engineer:4.receiving_acceptance",
+        "role/release-engineer:4.role_gate_observations",
+        "type/runbook.execution_boundary",
+        "type/runbook.identity",
+        "type/runbook.recovery_and_escalation",
+        "type/runbook.verified_steps"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "contract_input_1",
+      "expected_rule_ids": [
+        "role/release-engineer:4.contract_input_1"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "contract_input_1",
+      "reason": "Author omitted a required obligation without authority.",
+      "expected_rule_ids": [
+        "role/release-engineer:4.contract_input_1"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "The recovery design guarantees permanent zero incidents without evidence.",
+      "expected_rule_ids": [
+        "role/release-engineer:4.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "The history of office furniture procurement does not support service recovery or the receiving decision.",
+      "expected_rule_ids": [
+        "role/release-engineer:4.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "role/release-engineer:4.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "Schedule pressure is claimed to waive the applicable legal restriction without authority.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope excludes personal identifiers; SYN-NA records anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "contract_input_1",
+      "count": 5,
+      "expected_rule_ids": [
+        "role/release-engineer:4.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    }
+  ]
+}

@@ -409,7 +409,8 @@ def test_secret_references_and_redacted_examples_do_not_trigger_credential_detec
     assert 'global.secret_disclosure' not in rules(evaluate(model,spec))
 
 
-def test_registered_approved_policy_activates_via_actual_existing_signed_fabric(tmp_path, monkeypatch):
+@pytest.mark.parametrize('hard_constraint', [False, True])
+def test_registered_approved_policy_activates_via_actual_existing_signed_fabric(tmp_path, monkeypatch, hard_constraint):
     import datetime as dt
     import hashlib
     import hmac
@@ -421,6 +422,8 @@ def test_registered_approved_policy_activates_via_actual_existing_signed_fabric(
         'purpose':'Test-only qualified registered policy, never a shipped standard.',
         'required_information':[{'id':'decision-paper.core','semantic_fields':['core'],'datatype':'object','acceptance_predicate':{'op':'review'}}],
         'conditional_information':[],'optional_information':[],'forbidden_information':[],'size_budget':{'metric':'words'}}
+    if hard_constraint:
+        registered['size_budget'].update(hard_max=1,hard_limit_basis={'kind':'contractual','source_ref':'contract:test-upper-bound','reason':'Synthetic fixed one-word channel capacity for boundary test.'})
     registry={'schema_version':'1.0.0','specifications':[{'id':registered['id'],'version':'1.0.0','path':'policy.json','status':'approved'}],
         'document_kinds':[{'id':'decision-paper','artifact_types':['document'],'spec_ref':registered['id']}],
         'bindings':[{'artifact_id':'role:decision-paper','artifact_type':'document','document_kind':'decision-paper','content_spec_ref':registered['id']}],
@@ -461,7 +464,12 @@ def test_registered_approved_policy_activates_via_actual_existing_signed_fabric(
     fabric=module.Fabric('synthetic-registered-policy-test',entries)
     authority=ExistingFabricAuthority(fabric,'frag-policy',clock=lambda:dt.datetime(2026,10,19,tzinfo=dt.timezone.utc))
     report=evaluate(model,spec,mode='blocking',reviewer=review,trusted_executions=dispatcher,authority=authority)
-    assert report['gate_verdict']=='CONTENT_PASS'
+    assert report['gate_verdict']==('CONTENT_FAIL' if hard_constraint else 'CONTENT_PASS')
+    if hard_constraint:
+        assert next(f for f in report['findings'] if f['rule_id']=='HARD_SIZE_CONSTRAINT')['blocking']
+        advisory=evaluate(model,spec,reviewer=review,trusted_executions=dispatcher)
+        assert not next(f for f in advisory['findings'] if f['rule_id']=='HARD_SIZE_CONSTRAINT')['blocking']
+        assert advisory['gate_verdict']=='DRAFT_INCOMPLETE'
     assert report['approval_refs']==['rev-l0']
     assert not verify_report(report,model,spec,trusted_executions=dispatcher,authority=authority)
     assert len(entries)==5
@@ -522,3 +530,29 @@ def test_authority_qualification_rejects_nonfinite_boolean_and_untyped_metrics(f
         def verify(self, attestation):
             return proof
     assert _activation_valid(Host(),spec,model) is False
+
+
+def test_historical_26_10_7_report_replays_without_new_optional_modality_counts():
+    model,spec=sample()
+    model['nodes']=[{'id':'node-one'}]
+    report=evaluate(model,spec)
+    assert report['length']['elements']==1
+    report['length'].pop('elements');report['length'].pop('configuration_checks')
+    report.pop('report_hash')
+    report['report_hash']=canonical_hash(report)
+    assert verify_report(report,model,spec)==[]
+    report['gate_verdict']='CONTENT_PASS'
+    report['report_hash']=canonical_hash({k:v for k,v in report.items() if k!='report_hash'})
+    assert verify_report(report,model,spec)
+
+
+def test_current_spec_report_cannot_omit_modality_counts_and_rehash():
+    model,spec=sample()
+    spec['spec_version']='1.1.0'
+    spec['compiled_spec_hash']=canonical_hash({k:v for k,v in spec.items() if k not in ('artifact_id','document_kind','compiled_spec_hash')})
+    model['compiled_spec_hash']=spec['compiled_spec_hash']
+    report=evaluate(model,spec)
+    report['length'].pop('elements')
+    report.pop('report_hash')
+    report['report_hash']=canonical_hash(report)
+    assert verify_report(report,model,spec)

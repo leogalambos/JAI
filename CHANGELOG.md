@@ -1,5 +1,17 @@
 # Changelog
 
+## 26.10.8 — Enterprise Content Quality (implementation candidate)
+
+- Extends proposed content contracts across all existing artifact types,
+  role bindings, publication archetypes, domains and SABSA views.
+- Adds receiving-role workflow acceptance checks and quality trends,
+  contextual size calibration and read-only migration assessment.
+- Expands reproducible positive, negative and borderline evaluations
+  through the shared production validator and release regression checks.
+- Preserves synthetic-only calibration, advisory defaults and existing
+  JAI human authority. GA qualification and professional acceptance are
+  evidence-dependent; this version does not grant production approval.
+
 ## 26.10.7 — Authoring and Content QA (implementation candidate)
 
 - Adds typed content outlines, semantic validation and located findings.

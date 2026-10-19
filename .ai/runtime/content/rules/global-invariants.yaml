@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "global/invariants",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -15,7 +15,7 @@
     "competent independent domain reviewer"
   ],
   "decisions_supported": [],
-  "intended_usage": "26.10.6 advisory foundation; professional approval pending",
+  "intended_usage": "26.10.8 advisory content contract; professional approval pending",
   "non_goals": [
     "Replace JAI authority",
     "Claim a professional framework requirement without a cited source"
@@ -148,7 +148,7 @@
   "low_value_information": [],
   "size_budget": {
     "metric": "semantic_units",
-    "calibration_basis": "No generic numeric budget exists for a foundation skeleton.",
+    "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
     "allowance_rules": [
@@ -191,7 +191,7 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.0.0",
+    "effective_version": "1.1.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],

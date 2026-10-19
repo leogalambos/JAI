@@ -56,13 +56,15 @@ jobs:
           python3 scripts/versioning.py check --tag "$RELEASE_TAG" --root .
       - name: Prepare canonical qualification environment
         uses: ./.github/actions/setup-qualification
-      - name: Validate proposed DCS content QA pilot
+      - name: Validate proposed enterprise DCS development coverage
         run: |
           python3 tools/generate_content_catalog.py --check
           python3 tools/generate_content_corpus.py --check
+          python3 tools/generate_content_workflows.py --check
+          python3 tools/generate_content_calibration.py --check
           python3 .ai/runtime/tools/content_spec.py lint-registry --root .
           python3 .ai/runtime/tools/content_eval.py run --root .
-          python3 -m pytest -q tests/test_content_lint.py tests/test_content_metrics.py tests/test_content_publication.py tests/test_content_eval.py tests/test_content_provider_parity.py
+          python3 -m pytest -q tests/test_content_lint.py tests/test_content_metrics.py tests/test_content_publication.py tests/test_content_eval.py tests/test_content_provider_parity.py tests/test_content_workflow.py tests/test_content_migrate.py tests/test_content_calibration.py tests/test_content_catalog.py tests/test_content_spec.py tests/test_content_integration.py
       - name: Verify canonical docs, historical integrity, 404 links and site
         run: |
           python3 .ai/runtime/tools/docs_contract.py --root .

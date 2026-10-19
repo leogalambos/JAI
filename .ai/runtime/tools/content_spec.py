@@ -516,7 +516,7 @@ class ContentSpec:
             JSON-compatible coverage dictionary including pending decision migration.
         """
         counts = {}
-        for category in ('artifact_types', 'archetypes', 'sabsa_views'):
+        for category in ('artifact_types', 'archetypes', 'sabsa_views', 'domains'):
             counts[category] = len(self.registry.get('mappings', {}).get(category, self.registry.get(category, [])))
         priorities = self.registry.get('priority_document_kinds', [])
         complete = [k for k in priorities if k in self.kinds and self.specs.get(self.kinds[k]['spec_ref'], {}).get('completeness') == 'complete']
@@ -525,7 +525,20 @@ class ContentSpec:
             decision = binding.get('decision_supported', {})
             status = decision.get('status', 'pending-correction') if isinstance(decision, dict) else 'pending-correction'
             decisions[status] = decisions.get(status, 0) + 1
-        return {'schema_version': '1.0.0', 'bindings': len(self.bindings), 'document_kinds': len(self.kinds),
+        dimensions = {}
+        for category in ('type', 'domain', 'archetype', 'sabsa', 'document_kind'):
+            entries = [value for value in self.specs.values() if value.get('category') == category]
+            dimensions[category] = {
+                'registered': len(entries),
+                'authored': sum(value.get('completeness') == 'complete' for value in entries),
+                'declared_human_approved': sum(value.get('status') == 'approved' and value.get('approval', {}).get('authority_ref') is not None for value in entries),
+                'verified_human_approved': None,
+                'approval_note': 'Declared metadata is not signature verification; existing JAI L0 verification is required for activation.',
+                'evaluated': None,
+                'evaluation_note': 'Requires an independently replayed content evaluation report; registration and fixtures do not prove detector coverage.'}
+        return {'schema_version': '1.1.0', 'bindings': len(self.bindings), 'document_kinds': len(self.kinds),
+                'coverage_dimensions': dimensions,
+                'completeness_meaning': 'Authored proposed information contract only; not evaluation completeness, professional approval or production readiness.',
                 **counts, 'priority_complete': len(complete), 'priority_document_kinds': priorities,
                 'decision_supported_migration': decisions, 'errors': self.lint_registry(),
                 'calibration_status': 'synthetic-only', 'production_ready': False, 'approval_status': 'pending-human-L0'}

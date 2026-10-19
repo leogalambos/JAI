@@ -5,12 +5,16 @@
 
 The role catalogue remains authoritative. This generator never infers a production
 kind from a name: the reviewed mapping below is the only priority classification.
-All other contracts receive their own explicitly incomplete specification.
+Other contracts receive source-attributed proposals with inherited modality/domain
+obligations; authored completeness never means independent professional approval.
 """
 from pathlib import Path
 import hashlib
 import json
 import argparse
+import importlib.util
+from content_catalog_definitions import (TYPE_REQUIREMENTS, DOMAIN_REQUIREMENTS,
+    TYPE_DOMAINS, SABSA_REQUIREMENTS, ARCHETYPE_REQUIREMENTS)
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / '.ai/runtime'
@@ -137,27 +141,93 @@ def spec(identifier, category, purpose, completeness='skeleton', inherits=None):
     completeness marks authored coverage and inherits lists parent IDs.
     Defaults deliberately preserve proposed status and pending human approval.
     """
-    return {'license':'SPDX-License-Identifier: BSD-4-Clause','copyright':'Copyright (c) 2026 Leo Galambos and the Egothor team','id':identifier,'version':'1.0.0','owner':'Content Standards Owner','status':'proposed',
+    return {'license':'SPDX-License-Identifier: BSD-4-Clause','copyright':'Copyright (c) 2026 Leo Galambos and the Egothor team','id':identifier,'version':'1.1.0','owner':'Content Standards Owner','status':'proposed',
       'effective_from':None,'category':category,'completeness':completeness,'inherits':inherits or [],
       'applies_to':{},'purpose':purpose,'target_audience':['competent independent domain reviewer'],
-      'decisions_supported':[],'intended_usage':'26.10.6 advisory foundation; professional approval pending',
+      'decisions_supported':[],'intended_usage':'26.10.8 advisory content contract; professional approval pending',
       'non_goals':['Replace JAI authority','Claim a professional framework requirement without a cited source'],
       'required_information':[],'conditional_information':[],'optional_information':[],
       'forbidden_information':[],'low_value_information':[],
-      'size_budget':{'metric':'semantic_units','calibration_basis':'No generic numeric budget exists for a foundation skeleton.','minimum_is_quality_gate':False,'calibration_status':'synthetic-only','allowance_rules':['Document complexity and audience need; excess requires review, not automatic rejection.'],'annex_rules':['Reference canonical detail rather than repeat it.']},
+      'size_budget':{'metric':'semantic_units','calibration_basis':'Modality-specific information coverage; numerical envelopes require approved enterprise calibration.','minimum_is_quality_gate':False,'calibration_status':'synthetic-only','allowance_rules':['Document complexity and audience need; excess requires review, not automatic rejection.'],'annex_rules':['Reference canonical detail rather than repeat it.']},
       'sources':{'evidence_grade':'AI-derived proposal','provenance':['Approved implementation direction; content specifics remain proposed.'],'freshness':'review on source or policy change','claim_to_evidence_rules':['Material claims reference dated, versioned evidence or explicit uncertainty.']},
       'overlap':{'excluded_content':['Unrelated material'],'deduplication_rules':['Reference canonical claims by stable ID.'],'canonical_reference_rules':['Preserve source version and hash.']},
       'runtime':{'validators':['content_spec.py lint-registry'],'judge_rubric':['Evaluate actual meaning, applicability, evidence and contradictions.'],'gate':'advisory','reviewer_class':'independent competent domain reviewer','waiver_policy':'Existing JAI L0 authority only; no legal/security bypass.'},
-      'lifecycle':{'effective_version':'1.0.0','deprecation':None,'migration':'26.10.5 explicit sidecar binding','golden_case_refs':[],'change_history':['Initial proposed foundation; no professional approval asserted.']},
+      'lifecycle':{'effective_version':'1.1.0','deprecation':None,'migration':'26.10.5 explicit sidecar binding','golden_case_refs':[],'change_history':['Initial proposed foundation; no professional approval asserted.']},
       'jai':{'L1':'purpose, audience and decision_supported','L2':'typed semantic information units','L3':'global invariants, precedence and acceptance','L4':'content blueprint and profile reference','L5':'canonical artifact source; existing producer','L6':'evidence and independent review; existing fabric authority references','L0':'Human professional approval through existing JAI authority acts; never AI self-approval'},
       'approval':{'status':'pending','authority_ref':None,'independent_of_author':True,'mechanism':'Existing JAI L0 / fabric authority process'},'calibration_status':'synthetic-only'}
+
+
+def modality(artifact_type):
+    """Return the authored size modality for a registered artifact type.
+
+    Args:
+        artifact_type: Explicit legacy artifact type, never a guessed title.
+    Returns:
+        Schema-supported metric; data/configuration outputs avoid prose budgets.
+    """
+    if artifact_type in ('register','catalogue','dataset','dashboard'):
+        return 'rows'
+    if artifact_type in ('diagram','model'):
+        return 'elements'
+    if artifact_type in ('configuration-baseline','prototype','implementation-specification'):
+        return 'typed'
+    if artifact_type=='presentation':
+        return 'slides'
+    return 'semantic_units'
+
+
+def complete_policy(value, prefix):
+    """Populate proposed contextual, optional, forbidden and evidence obligations.
+
+    Args:
+        value: Mutable authored policy receiving the shared control obligations.
+        prefix: Stable rule namespace identifying this policy.
+    Returns:
+        None; modifies only the supplied policy without granting approval.
+    """
+    value['conditional_information']=[unit(prefix,'privacy_analysis','object','Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.','CONDITIONAL',{'field':'processes_personal_data','op':'eq','value':True}),unit(prefix,'regulatory_analysis','object','Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.','CONDITIONAL',{'field':'regulatory_requirement','op':'eq','value':True})]
+    value['optional_information']=[unit(prefix,'supporting_annex','object','Include versioned calculations, logs or technical detail only when linked to a specific required claim.','MAY')]
+    value['forbidden_information']=[unit(prefix,'unsupported_material_claim','object','Do not assert material conclusions without dated evidence or an explicitly labelled assumption.','MUST NOT')|{'category':'critical-content','severity':'critical'}]
+    value['low_value_information']=[unit(prefix,'irrelevant_detail','object','Remove material unrelated to the stated purpose, required input analysis or receiving-role action.','SHOULD NOT')|{'category':'editorial','severity':'minor'}]
+    value['applicability_policy']={'unconditional_units':'N/A prohibited','conditional_units':'N/A requires evidenced false applicability and review; unknown remains pending'}
+    value['completion_scope']='Authored proposed contract only; evaluated and human-approved coverage must be reported separately.'
+    value['lifecycle']['change_history'].append('26.10.8 substantive proposed obligations; no professional approval asserted.')
+
+
+def contract_units(contract, kind, source):
+    """Derive traceable proposed units from one exact unchanged role contract.
+
+    Args:
+        contract: Canonical Artifact Contract v3 object with explicit ID and inputs.
+        kind: Registered contract-specific kind, not a classifier output.
+        source: Exact parsed source role deliverable and gate declarations.
+    Returns:
+        Typed units requiring analysis of actual inputs and receiving-role needs.
+        Copied legacy decision text is explicitly retained as migration debt.
+    """
+    jai=contract['jai'];cid=contract['id']
+    result=[unit(kind,'delivery_scope','object',f"Identify the subject entities, boundaries, outcomes and versioned sources for: {jai['intent']['purpose']}"),unit(kind,'receiving_acceptance','array',f"For each receiving role ({'; '.join(jai['intent']['audience'])}), identify the concrete downstream use, requested action, acceptance measure and accountable recipient."),unit(kind,'contract_relations','array',f"Identify actual entity IDs and relationship instances for: {'; '.join(jai['semantics']['required_relations'])}."),unit(kind,'decision_purpose_correction','object','State the specific choice enabled, alternatives and competent decision authority, or explain why this output supports no decision; copied acceptance boilerplate is not a decision purpose.')]
+    delivery=source['deliverable']
+    verification=unit(kind,'delivery_verification','array',f"For the specific output '{delivery['name']}', provide verifiable evidence satisfying: {delivery['acceptance_criterion']}. Required delivery form: {delivery['format']}.")
+    verification['source_deliverable']={'name':delivery['name'],'format':delivery['format'],'acceptance_criterion':delivery['acceptance_criterion'],'role_path':source['role']['path']}
+    gate=unit(kind,'role_gate_observations','array','Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.')
+    gate['acceptance_criteria'] += [row['id']+': '+row['criterion'] for row in source['gates']]
+    gate['source_role_gate_refs']=[source['role']['path']+'#'+row['id'] for row in source['gates']]
+    result += [verification,gate]
+    for index,input_name in enumerate(jai['semantics']['required_inputs'],1):
+        item=unit(kind,f'contract_input_{index}','object',f'Analyse the specific input "{input_name}" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.')
+        item['source_input']={'contract_id':cid,'json_pointer':f'/jai/semantics/required_inputs/{index-1}','value':input_name}
+        result.append(item)
+    for item in result:
+        item['rationale']['source_refs']=[f'artifacts/contracts/role-deliverables.v3.json#{cid}', 'content/types/'+jai['semantics']['artifact_type']+'.yaml']
+    return result
 
 
 def build():
     """Return every reproducible catalogue file without mutating canonical contracts."""
     files={}
-    registry={'schema_version':'1.0.0','version':'26.10.6','status':'proposed','calibration_status':'synthetic-only','specifications':[],
-      'document_kinds':[],'mappings':{'artifact_types':{},'archetypes':{},'sabsa_views':{}},
+    registry={'schema_version':'1.0.0','version':'26.10.8','status':'proposed','calibration_status':'synthetic-only','specifications':[],
+      'document_kinds':[],'mappings':{'artifact_types':{},'archetypes':{},'sabsa_views':{},'domains':{}},
       'context_fields':{'processes_personal_data':{'type':'boolean'},'regulatory_requirement':{'type':'boolean'}},
       'priority_document_kinds':list(FAMILIES),'binding_map_ref':'migrations/26.10.5-binding-map.json'}
     def add(value,path):
@@ -173,12 +243,24 @@ def build():
     add(glob,'rules/global-invariants.yaml')
     types=json.loads((RUNTIME/'artifacts/schema/artifact-types.json').read_text())['artifact_types']
     for name in types:
-        value=spec('type/'+name,'type',f'Common typed foundation for {name}; no substitute for a substantive document kind.',inherits=['global/invariants'])
+        value=spec('type/'+name,'type',f'Common typed foundation for {name}; no substitute for a substantive document kind.','complete',inherits=['global/invariants'])
         value['applies_to']={'artifact_types':[name]}
-        value['required_information']=[unit('type/'+name,'identity','object','Identify stable artifact ID, owner, source version and intended usage.')]
-        value['coverage_note']='Type skeleton only; subtype obligations must be authored and professionally approved.'
+        value['required_information']=[unit('type/'+name,'identity','object','Identify stable artifact ID, owner, source version and intended usage.')]+[unit('type/'+name,*entry) for entry in TYPE_REQUIREMENTS[name]]
+        complete_policy(value, 'type/'+name)
+        value['size_budget']['metric']=modality(name)
+        value['coverage_note']='Authored proposed modality policy; professional approval and evaluated coverage are separate.'
         registry['mappings']['artifact_types'][name]=value['id'];add(value,f'types/{name}.yaml')
+    for name, obligations in DOMAIN_REQUIREMENTS.items():
+        value=spec('domain/'+name,'domain',f'Professional {name} obligations supplement the explicitly bound artifact contract.','complete')
+        value['applies_to']={'artifact_types':[key for key,domain in TYPE_DOMAINS.items() if domain==name]}
+        value['required_information']=[unit('domain/'+name,*entry) for entry in obligations]
+        complete_policy(value,'domain/'+name)
+        registry['mappings']['domains'][name]=value['id'];add(value,f'domain/{name}.yaml')
     contracts=json.loads((RUNTIME/'artifacts/contracts/role-deliverables.v3.json').read_text())['contracts']
+    role_module=importlib.util.spec_from_file_location('catalog_role_sources',RUNTIME/'tools/artifacts.py')
+    role_sources=importlib.util.module_from_spec(role_module);role_module.loader.exec_module(role_sources)
+    roles=json.loads((RUNTIME/'roles.json').read_text())['roles']
+    live=role_sources.live_deliverables({'skills':ROOT/'.ai/skills'},roles)
     for family, obligations in FAMILIES.items():
         legacy=sorted({c['jai']['semantics']['artifact_type'] for c in contracts if BINDINGS.get(c['id'])==family})
         value=spec('kind/'+family,'document_kind',DECISIONS[family],'complete',[])
@@ -201,10 +283,17 @@ def build():
     for c in contracts:
         cid=c['id'];legacy=c['jai']['semantics']['artifact_type'];kind=BINDINGS.get(cid,'role/'+cid)
         if cid not in BINDINGS:
-            value=spec('kind/'+kind,'document_kind',c['jai']['intent']['purpose'],inherits=['type/'+legacy])
+            value=spec('kind/'+kind,'document_kind',c['jai']['intent']['purpose'],'complete',inherits=['type/'+legacy,'domain/'+TYPE_DOMAINS[legacy]])
             value['applies_to']={'document_kind':kind,'artifact_types':[legacy]}
-            value['coverage_note']='Explicit contract-specific placeholder; substantive obligations, decision-purpose correction and professional approval remain pending.'
-            registry['document_kinds'].append({'id':kind,'artifact_types':[legacy],'spec_ref':value['id'],'completeness':'skeleton','status':'proposed'})
+            value['target_audience']=c['jai']['intent']['audience']
+            value['required_information']=contract_units(c,kind,live[cid])
+            complete_policy(value,kind)
+            value['size_budget']['metric']=modality(legacy)
+            value['decisions_supported']=['Determine whether the specific deliverable is fit for its explicit receiving-role use; competent domain confirmation remains pending.']
+            value['coverage_note']='Source-attributed contract-specific proposal plus modality/domain obligations; original copied decision purpose remains a mandatory migration review item.'
+            value['source_contract']={'id':cid,'source_fingerprint':c['source_fingerprint'],'source_hash':hashlib.sha256(canonical(c)).hexdigest()}
+            value['derivation_limits']=['Source inputs identify the subject boundary but do not prove professional sufficiency.','Independent semantic assessment and human L0 approval remain pending.']
+            registry['document_kinds'].append({'id':kind,'artifact_types':[legacy],'spec_ref':value['id'],'completeness':'complete','status':'proposed'})
             add(value,f'document_kinds/roles/{cid.replace(":","-")}.yaml')
         purpose=DECISIONS.get(kind)
         bindings.append({'artifact_id':cid,'artifact_type':legacy,'document_kind':kind,'content_spec_ref':'kind/'+kind,'overlays':[],
@@ -215,15 +304,24 @@ def build():
     files[CONTENT/'migrations/26.10.5-binding-map.json']={'schema_version':'1.0.0','source_release':'26.10.5','source_ref':'artifacts/contracts/role-deliverables.v3.json','canonical_contracts_unchanged':True,'bindings':bindings}
     for path in sorted((RUNTIME/'publication/archetypes').glob('*.json')):
         original=json.loads(path.read_text());name=path.stem
-        value=spec('archetype/'+name,'archetype',f'Audience and presentation overlay for {name}.')
+        value=spec('archetype/'+name,'archetype',f'Audience and presentation overlay for {name}.','complete')
         value['applies_to']={'publication_archetype':name};value['source_ref']=str(path.relative_to(RUNTIME))
+        field,reason=ARCHETYPE_REQUIREMENTS[name]
+        value['required_information']=[unit('archetype/'+name,field,'object',reason)]
+        complete_policy(value,'archetype/'+name)
+        value['target_audience']=original['audience']
         value['presentation_obligations']={'source_profile':original,'preserve_required_information':True,'no_obligation_weakening':True}
         registry['mappings']['archetypes'][name]=value['id'];add(value,f'archetypes/{name}.yaml')
     views=json.loads((RUNTIME/'sabsa/schema/documents.json').read_text())['views']
     for name, original in views.items():
-        value=spec('sabsa/'+name,'sabsa',original['purpose']);value['applies_to']={'sabsa_view':name}
+        value=spec('sabsa/'+name,'sabsa',original['purpose'],'complete');value['applies_to']={'sabsa_view':name}
         value['target_audience']=[original['audience']];value['required_information']=[unit('sabsa/'+name,'business_traceability','array','Trace selected security elements to business drivers, measurable attributes and source model IDs.'),unit('sabsa/'+name,'matrix_coverage','array','Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.')]
-        value['coverage_note']='Mapped view skeleton; detailed view specialisation deferred beyond 26.10.6.'
+        value['required_information'] += [unit('sabsa/'+name,*entry) for entry in SABSA_REQUIREMENTS[name]]
+        complete_policy(value,'sabsa/'+name)
+        value['size_budget']['metric']='elements'
+        value['coverage_note']='Authored view-specific proposal; all 36 cells require evidenced applicability, not invented facts.'
+        if name=='risk-treatment-plan':
+            value['inherits']=['kind/risk-assessment','domain/security']
         registry['mappings']['sabsa_views'][name]=value['id'];add(value,f'sabsa/{name}.yaml')
     files[CONTENT/'registry.json']=registry
     return files

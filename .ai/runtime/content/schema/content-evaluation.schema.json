@@ -330,6 +330,20 @@
             "null"
           ],
           "minimum": 0
+        },
+        "elements": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "configuration_checks": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "minimum": 0
         }
       }
     },

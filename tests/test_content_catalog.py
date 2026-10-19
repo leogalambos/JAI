@@ -40,18 +40,19 @@ class ContentCatalogueTests(unittest.TestCase):
             else:self.assertEqual(b['decision_supported']['status'],'pending-correction')
 
     def test_coverage_and_unique_kind_contracts(self):
-        """Only the approved ten families claim complete authored specifications."""
+        """Every registered layer has substantive proposed obligations and attribution."""
         registry=read(CONTENT/'registry.json')
         self.assertEqual([len(registry['mappings'][key]) for key in ['artifact_types','archetypes','sabsa_views']],[28,13,19])
         complete=[s for s in registry['specifications'] if s['completeness']=='complete']
-        self.assertEqual(len(complete),10)
+        self.assertEqual(len(complete),1205)
+        self.assertEqual(len(registry['mappings']['domains']),6)
         fieldsets=[]
         for entry in complete:
             spec=read(CONTENT/entry['path'])
             self.assertEqual(spec['status'],'proposed')
             self.assertIsNone(spec['approval']['authority_ref'])
             self.assertEqual(spec['calibration_status'],'synthetic-only')
-            self.assertGreaterEqual(len(spec['required_information']),5)
+            self.assertGreaterEqual(len(spec['required_information']),1)
             for group in ['required_information','conditional_information','optional_information','forbidden_information','low_value_information']:
                 self.assertTrue(spec[group])
                 for unit in spec[group]:
@@ -59,7 +60,58 @@ class ContentCatalogueTests(unittest.TestCase):
                     self.assertFalse(unit['provenance']['normative_claim'])
             fieldsets.append(tuple(u['semantic_fields'][0] for u in spec['required_information']))
             self.assertFalse(spec['size_budget']['minimum_is_quality_gate'])
-        self.assertEqual(len(set(fieldsets)),10)
+        self.assertGreaterEqual(len(set(fieldsets)),60)
+
+    def test_coverage_separates_authorship_evaluation_and_authority(self):
+        """Coverage never promotes policy metadata to trusted approval evidence."""
+        import sys
+        sys.path.insert(0,str(ROOT/'.ai/runtime/tools'))
+        from content_spec import ContentSpec
+        report=ContentSpec(ROOT).coverage()
+        expected={'type':28,'archetype':13,'sabsa':19,'domain':6,'document_kind':1139}
+        for category,count in expected.items():
+            dimension=report['coverage_dimensions'][category]
+            self.assertEqual(dimension['registered'],count)
+            self.assertEqual(dimension['authored'],count)
+            self.assertEqual(dimension['declared_human_approved'],0)
+            self.assertIsNone(dimension['verified_human_approved'])
+            self.assertIsNone(dimension['evaluated'])
+        self.assertEqual(report['decision_supported_migration']['pending-correction'],1129)
+        self.assertFalse(report['production_ready'])
+
+    def test_role_proposals_retain_exact_inputs_gates_and_migration_debt(self):
+        """Contract proposals preserve source-specific substance and pending decisions."""
+        registry=read(CONTENT/'registry.json')
+        contracts={row['id']:row for row in read(ROOT/'.ai/runtime/artifacts/contracts/role-deliverables.v3.json')['contracts']}
+        for entry in registry['document_kinds']:
+            if not entry['id'].startswith('role/'):
+                continue
+            spec=read(CONTENT/f"document_kinds/roles/{entry['id'][5:].replace(':','-')}.yaml")
+            cid=entry['id'][5:];contract=contracts[cid]
+            units={row['semantic_fields'][0]:row for row in spec['required_information']}
+            self.assertIn('decision_purpose_correction',units)
+            self.assertTrue(units['role_gate_observations']['source_role_gate_refs'])
+            self.assertTrue(units['delivery_verification']['source_deliverable']['acceptance_criterion'])
+            for index,input_name in enumerate(contract['jai']['semantics']['required_inputs'],1):
+                unit=units[f'contract_input_{index}']
+                self.assertEqual(unit['source_input']['value'],input_name)
+                self.assertEqual(unit['source_input']['contract_id'],cid)
+                self.assertIn(input_name,unit['acceptance_criteria'][0])
+            self.assertIn('domain/',spec['inherits'][1])
+            self.assertEqual(spec['source_contract']['source_fingerprint'],contract['source_fingerprint'])
+
+    def test_modality_and_view_obligations_are_distinct(self):
+        """Data and models avoid prose quotas; SABSA risk treatment specialises risk."""
+        for name,metric in [('dataset','rows'),('register','rows'),('model','elements'),('configuration-baseline','typed'),('presentation','slides')]:
+            self.assertEqual(read(CONTENT/f'types/{name}.yaml')['size_budget']['metric'],metric)
+        risk=read(CONTENT/'sabsa/risk-treatment-plan.yaml')
+        self.assertIn('kind/risk-assessment',risk['inherits'])
+        fields=[]
+        for path in (CONTENT/'sabsa').glob('*.yaml'):
+            view=read(path)
+            fields.append(tuple(row['semantic_fields'][0] for row in view['required_information']))
+            self.assertEqual(len(view['required_information']),4)
+        self.assertEqual(len(set(fields)),19)
 
     def test_fixture_navigation_resolves_single_canonical_corpus(self):
         """Resolve all reference and mutation entries without duplicating documents."""

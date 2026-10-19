@@ -123,7 +123,110 @@
       "source_version": "1",
       "intended_usage": "Development regression only; professional approval pending",
       "knowledge_status": "synthetic-assumption"
-    }
+    },
+    "model_entities": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-MODEL-ENTITIES",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Provide stable identified entities and typed relationships with ownership and provenance.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "model_metamodel": {
+      "schema_version": "1.0",
+      "entity_id": "SYN-APP-1",
+      "columns": [
+        {
+          "name": "event_id",
+          "datatype": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "amount",
+          "datatype": "decimal(12,2)",
+          "unit": "EUR",
+          "nullable": false
+        }
+      ],
+      "key": "event_id",
+      "record": {
+        "event_id": "SYN-EVENT-1",
+        "amount": 125.5
+      },
+      "uniqueness_observed": "10 of 10 event IDs unique",
+      "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+      "record_id": "SYN-MODEL-METAMODEL",
+      "service": "Inventory service recovery",
+      "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+      "criterion_under_review": "Define entity/relation types, constraints, model boundary and source baseline.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "model_validation": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-MODEL-VALIDATION",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Evidence referential integrity, constraint checks, cross-view consistency and known gaps.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ]
   },
   "evidence": [
     {

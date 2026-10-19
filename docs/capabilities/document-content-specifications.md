@@ -2,7 +2,7 @@
 
 Owner: JAI maintainers · Last reviewed: 2026-10-19
 
-The 26.10.6 semantic content foundation and 26.10.7 content QA pilot describe what an output must contain,
+The 26.10.8 enterprise content implementation describes what an output must contain,
 why each obligation exists and which existing role contract it supports. It
 extends JAI through `jai/profiles/content-profile.json`; it does not introduce a
 second semantic model, approval service or publication renderer.
@@ -17,20 +17,29 @@ schemas. Publication archetypes and SABSA mappings reference the same catalogue.
 Production classification must use an explicit registered binding, never a guess
 from the deliverable name.
 
-Ten families have detailed **proposed** specifications: decision paper, ADR,
-business case, risk assessment, assurance report, architecture definition, HLD,
-operational handover, runbook and test report. Architecture definition describes
-architectural context and viewpoints; HLD describes a specific solution design.
-Other kinds and mappings provide a traceable foundation, rather than a claim
-that every specialist document standard has already been professionally accepted.
-SABSA risk treatment remains a subsequent risk-assessment specialisation.
+All 1,139 role bindings now resolve authored **proposed** content contracts.
+The 28 type foundations, six domain specialisations, 13 publication archetypes
+and 19 SABSA views contribute typed obligations. Each remaining role-specific
+kind retains its own purpose, required input duties, receiving acceptance and
+contract relations. This preserves distinct specialist outputs instead of
+replacing them with one generic document template.
 
-Synthetic reference scenarios cover simple, medium and complex contexts, with
-seeded defects and expected observations. Their calibration status is
-**synthetic-only**. Passing a structural check establishes catalogue integrity;
-it does not establish professional content acceptance. Human approval of the ten
-priority standards, real enterprise calibration and a human-approved gold corpus
-remain pending. The phase's manual-approval exit condition is therefore open.
+Ten priority families retain detailed simple, medium and complex scenarios:
+decision paper, ADR, business case, risk assessment, assurance report,
+architecture definition, HLD, operational handover, runbook and test report.
+Architecture definition describes architectural context and viewpoints; HLD
+specifies a particular implementation. SABSA risk treatment strengthens the
+risk-assessment contract with business-attribute and residual-acceptance links.
+
+The additional catalogue probes exercise registered types and overlays through
+the real deterministic validator. Coverage requires observed positive, negative
+and borderline evaluations; a generated policy file alone is insufficient.
+These probes establish development coverage, rather than professional semantic
+adequacy. Review-based predicates remain pending without attributable review.
+Calibration remains **synthetic-only**. Competent human approval of proposed
+standards, real enterprise calibration and human-approved gold remain pending.
+The 26.10.8 GA label in the plan is an acceptance target, not an approval granted
+by implementing the version or passing synthetic tests.
 
 ## Resolve and inspect a specification
 
@@ -77,14 +86,14 @@ existing [JAI L0 authority](../operations/human-authority.md). An agent cannot
 approve its own policy or upgrade synthetic examples to human-gold. Structural
 CI acceptance and a product version change do not grant that approval.
 
-## Compatibility and subsequent phases
+## Compatibility and rollout
 
 Older unprofiled installations remain readable. When the DCS sidecar profile is
 present, `artifacts.py check` also validates its catalogue references and policy
 conflicts. Source validation and release qualification run the same structural
 lint while retaining all existing checks.
 
-26.10.7 adds content outlines, deterministic semantic validation, immutable
+The shared implementation provides content outlines, deterministic semantic validation, immutable
 content QA reports and projection/publication integration. Existing publication
 and visual QA remain separate controls; a successful render never constitutes
 content approval. All pilot results retain the synthetic-only qualification.
@@ -105,7 +114,7 @@ a new implementation assessment.
 
 | Input | SHA-256 |
 | --- | --- |
-| `INBOX/JAI_DCS_implementation_plan.md` | `9a7a7bdefebc60fd9574e3416da24a5a59440ace409711e684b28370fc6fc1ec` |
+| `INBOX/JAI_DCS_implementation_plan.md` | `75cabc77ba6436152e884768f9d807a0065dbe4d7d66a029e71cf3c52185b576` |
 | `INBOX/JAI_DCS_implementation_plan-answers.md` | `d0c879ca30e920e1ce2b6037a66535e1bec66d24c0bc4cd49272c0220227e7dc` |
 
 ## Authoring and content QA pilot
@@ -121,7 +130,7 @@ python3 .ai/runtime/tools/content_lint.py check semantic.json \
   --spec compiled.json --output content-qa.json --provider codex
 python3 .ai/runtime/tools/content_metrics.py analyze semantic.json
 python3 .ai/runtime/tools/content_eval.py run --root . \
-  --output build/dcs-26.10.7-pilot.json
+  --output build/dcs-26.10.8-pilot.json
 ```
 
 The semantic source records its instance `artifact_id`, explicit role
@@ -130,13 +139,19 @@ context. Required information belongs in `semantic_units`. Claims distinguish
 known facts, assumptions and pending knowledge. Known material claims require
 versioned evidence with a verified payload hash and explicit freshness dates.
 
-The evaluator applies all 270 mutation recipes to the 30 canonical references
-and runs the production validator. Expected rule identifiers are compared with
-actual located findings. Reports retain per-case source, specification and
-report hashes, seeded critical false negatives and reference false positives.
-The initial thresholds are 95 percent critical seeded-defect recall and at
-most 10 percent reference false positives. These are synthetic development
-thresholds, not enterprise calibration or human professional acceptance.
+The evaluator retains the original 30 priority references and 270 mutations,
+and adds 1,225 enterprise probes with nine mutations each. The complete run
+therefore evaluates 1,255 references and 11,295 seeded mutations. Every mutation
+runs the production validator; expected identifiers are compared with actual
+located findings. The report records source/specification/report hashes,
+critical false negatives, reference false positives and evidenced catalogue
+coverage for bindings, kinds, types, domains, archetypes and SABSA views.
+
+The initial development thresholds remain 95 percent critical seeded-defect
+recall and at most 10 percent reference false positives. A failing or incomplete
+catalogue dimension fails the full pilot. These are synthetic development
+thresholds, not enterprise calibration or professional acceptance. The report
+never upgrades a synthetic example to human-gold.
 
 Both provider paths use the same registry and deterministic validator.
 Behavioral parity tests execute the CLI for Claude and Codex against identical
@@ -214,3 +229,77 @@ path marks output `DRAFT_INCOMPLETE`. Deterministic completeness or an
 independently authenticated review does not approve a proposed domain
 standard, upgrade synthetic calibration to human-gold or release the
 publication. Those remain separate existing human authority conditions.
+
+## Workflow receiving acceptance
+
+The shared registry maps all 207 handoffs across 24 workflows to existing
+contract IDs, producing roles, receiving roles and specific acceptance criteria.
+It does not create 207 new document types. Inspect the explicit bindings:
+
+```sh
+python3 .ai/runtime/tools/content_workflow.py --root . list
+python3 tools/generate_content_workflows.py --check
+```
+
+An embedding host calls `content_workflow.check` with the selected handoff ID,
+canonical semantic source, exact content QA report and receiving evidence.
+The checker replays QA, verifies the registered contract and requires a receiver
+whose authenticated principal differs from the producer. Receiving roles come
+from host-owned assignments, rather than role names asserted in a document.
+The attested subject binds the handoff, catalogue, source and report hashes and
+the specific acceptance criterion. A final human authority step requires the
+existing signed JAI L0 acceptance; an agent receiver cannot substitute for it.
+`ACCEPTANCE_VERIFIED` is a handoff result and does not authorise product release.
+
+The CLI can inspect a draft but cannot authenticate receiver JSON. A `check`
+result therefore remains pending until the trusted host supplies attributable
+acceptance evidence. Advisory content warnings do not establish receiving
+acceptance, and existing security or evidence failures cannot be waived here.
+
+## Trends and proposed size calibration
+
+```sh
+python3 .ai/runtime/tools/content_metrics.py trends snapshots.json --root .
+python3 .ai/runtime/tools/content_metrics.py calibrate samples.json \
+  --metric words --root .
+python3 tools/generate_content_calibration.py --check
+```
+
+Each trend snapshot contains `observed_at`, `semantic_model` and `content_qa`.
+Reports must replay against the current registered specification. A comparable
+series retains the same contract, kind, specification and context; incompatible
+policy versions or contexts require a separate series. The result records
+observed word counts, duplicate groups, critical findings and deltas, with exact
+source/report hashes. Caller timestamps describe observations and do not prove
+trusted execution time or release qualification.
+
+Each calibration sample contains `project_id`, `complexity`, `synthetic`,
+`semantic_model` and `content_qa`. At least three distinct projects must cover
+simple, medium and complex scenarios for the same kind and policy inheritance.
+Context strata remain explicit in the evidence. A range across strata is
+descriptive and does not become a quality threshold for each individual stratum.
+Only measured modalities may be calibrated; prose cannot establish page counts.
+
+The generated `content/calibration/synthetic-development.json` contains ten
+priority-family candidate word envelopes and ten missing-core-to-reference
+trend examples derived from the 30 scenarios. Candidates remain proposed and
+synthetic-only; they are not automatically applied to policy. Existing page
+ranges remain informational pending measured enterprise examples and competent
+human acceptance. A short document with all required information must not fail
+solely because it falls below an indicative length range.
+
+## Explicit historical migration
+
+```sh
+python3 .ai/runtime/tools/content_migrate.py historical.json --root . \
+  --contract-id enterprise-architect:4 --artifact-id migrated/adr-1 \
+  --source-release 26.10.5 --field-map field-map.json
+```
+
+Migration accepts explicit registered contract and instance identifiers and an
+optional source-field map. It preserves the historical snapshot and source hash,
+records field provenance, resolves the current specification and produces a
+review-pending draft. It never guesses a kind from a title, transfers historical
+approvals, fabricates missing information or overwrites the historical input.
+Unmapped obligations remain unfilled. Existing v3 records remain readable;
+new publication writes continue to require the v4 QA bundle described above.

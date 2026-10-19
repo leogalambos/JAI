@@ -110,7 +110,71 @@
       "source_version": "1",
       "intended_usage": "Development regression only; professional approval pending",
       "knowledge_status": "synthetic-assumption"
-    }
+    },
+    "investment_boundary": {
+      "currency": "EUR",
+      "horizon_years": 1,
+      "transition": 18000,
+      "annual_operation": 6000,
+      "annual_avoided_manual_cost": 32000,
+      "net_benefit": 8000,
+      "benefit_downside_fraction": 0.25,
+      "downside_net_benefit": 0,
+      "double_counting_rule": "Count avoided manual handling only, with no revenue uplift",
+      "record_id": "SYN-INVESTMENT-BOUNDARY",
+      "service": "Inventory service recovery",
+      "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+      "criterion_under_review": "Identify sponsor, financial owner, funding decision and appraisal horizon.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "investment_cashflows": [
+      {
+        "currency": "EUR",
+        "horizon_years": 1,
+        "transition": 18000,
+        "annual_operation": 6000,
+        "annual_avoided_manual_cost": 32000,
+        "net_benefit": 8000,
+        "benefit_downside_fraction": 0.25,
+        "downside_net_benefit": 0,
+        "double_counting_rule": "Count avoided manual handling only, with no revenue uplift",
+        "record_id": "SYN-INVESTMENT-CASHFLOWS",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Show dated currency, baseline, costs and non-overlapping benefits with assumptions.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "investment_sensitivity": [
+      {
+        "currency": "EUR",
+        "horizon_years": 1,
+        "transition": 18000,
+        "annual_operation": 6000,
+        "annual_avoided_manual_cost": 32000,
+        "net_benefit": 8000,
+        "benefit_downside_fraction": 0.25,
+        "downside_net_benefit": 0,
+        "double_counting_rule": "Count avoided manual handling only, with no revenue uplift",
+        "record_id": "SYN-INVESTMENT-SENSITIVITY",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Assess uncertain benefit, cost and timing assumptions and assign realisation owners.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ]
   },
   "evidence": [
     {

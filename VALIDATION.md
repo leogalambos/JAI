@@ -1,8 +1,8 @@
-# Validation — AI IT House 26.10.7
+# Validation — AI IT House 26.10.8
 
 ## Production boundary
 
-26.10.7 uses the six-layer Justifiable AI core as its single normative
+26.10.8 uses the six-layer Justifiable AI core as its single normative
 architecture. Artifact Contract v3 is the native production write model.
 Artifact Contract v2 is read/migration-only and is hash-frozen by the
 Native Write Policy.
@@ -43,8 +43,8 @@ The independent release gates are:
 # Only VERSION is edited manually; no global string replacement.
 python3 scripts/versioning.py sync
 # Commit the result, push main, then publish this exact source version.
-git tag -a 'release@26.10.7' -m 'JAI 26.10.7'
-git push origin 'release@26.10.7'
+git tag -a 'release@26.10.8' -m 'JAI 26.10.8'
+git push origin 'release@26.10.8'
 ```
 
 The root `VERSION` is the authoritative product version.

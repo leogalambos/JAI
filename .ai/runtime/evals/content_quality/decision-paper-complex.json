@@ -143,7 +143,78 @@
         "SYN-01"
       ],
       "knowledge_status": "pending"
-    }
+    },
+    "decision_authority": {
+      "baseline": {
+        "id": "BASE",
+        "restore_minutes": 48,
+        "transition_eur": 0
+      },
+      "candidate": {
+        "id": "TARGET",
+        "restore_minutes": 27,
+        "transition_eur": 18000
+      },
+      "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
+      "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
+      "record_id": "SYN-DECISION-AUTHORITY",
+      "service": "Regulated payment platform transition",
+      "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+      "criterion_under_review": "Identify the specific choice, accountable authority and decision deadline.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "decision_impacts": {
+      "baseline": {
+        "id": "BASE",
+        "restore_minutes": 48,
+        "transition_eur": 0
+      },
+      "candidate": {
+        "id": "TARGET",
+        "restore_minutes": 27,
+        "transition_eur": 18000
+      },
+      "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
+      "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
+      "record_id": "SYN-DECISION-IMPACTS",
+      "service": "Regulated payment platform transition",
+      "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+      "criterion_under_review": "Explain cost, benefit, dependencies, uncertainty and residual risks of the recommendation.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "option_comparison": [
+      {
+        "baseline": {
+          "id": "BASE",
+          "restore_minutes": 48,
+          "transition_eur": 0
+        },
+        "candidate": {
+          "id": "TARGET",
+          "restore_minutes": 27,
+          "transition_eur": 18000
+        },
+        "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
+        "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
+        "record_id": "SYN-OPTION-COMPARISON",
+        "service": "Regulated payment platform transition",
+        "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+        "criterion_under_review": "Compare viable options including the do-nothing baseline against common criteria.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ]
   },
   "evidence": [
     {

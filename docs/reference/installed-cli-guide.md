@@ -1002,7 +1002,7 @@ directory, run `bash uninstall.sh` (macOS/Linux) or `uninstall.cmd`
 `.ai/setup/`; personal files, unrelated settings and demo projects
 remain outside its removal scope.
 
-## Document content QA pilot
+## Document content QA and workflow acceptance
 
 The shared content tools preserve existing authority and evidence gates:
 
@@ -1021,3 +1021,21 @@ Use `--provider claude` to exercise the same engine through the Claude
 adapter. Reports are hash-bound and immutable; a different source or
 specification needs a new report path. The corpus is synthetic-only.
 A draft report is not professional acceptance or human authority.
+
+The 26.10.8 tools add explicit workflow acceptance, descriptive trends,
+proposed size calibration and review-pending historical migration:
+
+```sh
+python3 ~/.ai/it-role-house/tools/content_workflow.py list
+python3 ~/.ai/it-role-house/tools/content_metrics.py trends snapshots.json
+python3 ~/.ai/it-role-house/tools/content_metrics.py calibrate samples.json
+python3 ~/.ai/it-role-house/tools/content_migrate.py historical.json \
+  --contract-id enterprise-architect:4 --artifact-id migrated/adr-1
+```
+
+Receiving acceptance requires the host's authenticated dispatcher and
+assigned receiving role; the CLI cannot approve receiver declarations.
+Final human steps retain existing signed JAI L0 authority. Calibration
+candidates remain proposed and synthetic-only until enterprise evidence
+and competent approval exist. Migration preserves the historical source,
+records explicit field mappings and never transfers old approvals.

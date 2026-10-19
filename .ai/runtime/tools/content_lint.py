@@ -442,7 +442,10 @@ def evaluate(model, spec, mode='advisory', reviewer=None, trusted_executions=Non
             finding(model.get('document_kind', '') + '.irrelevant_detail', '$.' + key, 'Annex content has no registered semantic unit or decision-purpose reference; relevance requires independent review.', 'editorial', 'minor', 'Link annex information to a required unit and audience decision, or remove it.')
     metrics = content_metrics.analyze(model, spec)
     for item in metrics['budget_advice']:
-        finding('SOFT_SIZE_BUDGET', '$', str(item), 'editorial', 'minor', 'Reduce or justify length against audience needs.')
+        if item.get('category') == 'critical-content':
+            finding(item['rule_id'], '$', str(item), 'critical-content', 'critical', item['action'])
+        else:
+            finding('SOFT_SIZE_BUDGET', '$', str(item), 'editorial', 'minor', 'Reduce or justify length against audience needs.')
     for item in metrics['duplication']:
         finding(model.get('document_kind', '') + '.duplicate_claim', item['locations'][0], str(item['locations']), 'editorial', 'minor', 'Reference canonical information instead of repeating it.')
     required = [item for item in coverage if item['status'] != 'not-applicable']
@@ -480,6 +483,13 @@ def verify_report(report, model, spec, trusted_executions=None, authority=None):
     try:
         jsonschema.Draft202012Validator(content_spec.load_json(SCHEMA)).validate(report)
         expected = evaluate(model, spec, mode=report['mode'], reviewer=report['reviewer'].get('claimed_review'), trusted_executions=trusted_executions, authority=authority)
+        # Optional modality counters were added in .8. Historical .7 reports
+        # retain their original immutable bytes/hash while all gate findings replay.
+        for metric in ('elements', 'configuration_checks'):
+            if spec.get('spec_version') == '1.0.0' and metric not in report.get('length', {}):
+                expected['length'].pop(metric, None)
+        expected.pop('report_hash', None)
+        expected['report_hash'] = content_spec.canonical_hash(expected)
         return [] if expected == report else ['CONTENT_QA_REPLAY_MISMATCH']
     except (ValueError, TypeError, KeyError, jsonschema.ValidationError) as exc:
         return ['CONTENT_QA_INVALID: ' + str(exc)]

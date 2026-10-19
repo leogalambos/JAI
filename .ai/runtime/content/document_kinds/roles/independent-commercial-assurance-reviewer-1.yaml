@@ -2,14 +2,15 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/independent-commercial-assurance-reviewer:1",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
-  "completeness": "skeleton",
+  "completeness": "complete",
   "inherits": [
-    "type/decision-paper"
+    "type/decision-paper",
+    "domain/delivery"
   ],
   "applies_to": {
     "document_kind": "role/independent-commercial-assurance-reviewer:1",
@@ -19,22 +20,657 @@
   },
   "purpose": "Independent commercial assurance plan and findings",
   "target_audience": [
-    "competent independent domain reviewer"
+    "Bid / Proposal Manager",
+    "Supplier Commercial / Deal Manager",
+    "Delegated human commercial and finance authority"
   ],
-  "decisions_supported": [],
-  "intended_usage": "26.10.6 advisory foundation; professional approval pending",
+  "decisions_supported": [
+    "Determine whether the specific deliverable is fit for its explicit receiving-role use; competent domain confirmation remains pending."
+  ],
+  "intended_usage": "26.10.8 advisory content contract; professional approval pending",
   "non_goals": [
     "Replace JAI authority",
     "Claim a professional framework requirement without a cited source"
   ],
-  "required_information": [],
-  "conditional_information": [],
-  "optional_information": [],
-  "forbidden_information": [],
-  "low_value_information": [],
+  "required_information": [
+    {
+      "id": "role/independent-commercial-assurance-reviewer:1.delivery_scope",
+      "semantic_fields": [
+        "delivery_scope"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Identify the subject entities, boundaries, outcomes and versioned sources for: Independent commercial assurance plan and findings",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Independent commercial assurance plan and findings",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
+          "content/types/decision-paper.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/independent-commercial-assurance-reviewer:1.receiving_acceptance",
+      "semantic_fields": [
+        "receiving_acceptance"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "For each receiving role (Bid / Proposal Manager; Supplier Commercial / Deal Manager; Delegated human commercial and finance authority), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "For each receiving role (Bid / Proposal Manager; Supplier Commercial / Deal Manager; Delegated human commercial and finance authority), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
+          "content/types/decision-paper.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/independent-commercial-assurance-reviewer:1.contract_relations",
+      "semantic_fields": [
+        "contract_relations"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Identify actual entity IDs and relationship instances for: business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence; material inputs -> source/version/assumption; client commitments -> protected internal commitment baseline; decision -> human approver where required.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Identify actual entity IDs and relationship instances for: business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence; material inputs -> source/version/assumption; client commitments -> protected internal commitment baseline; decision -> human approver where required.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
+          "content/types/decision-paper.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/independent-commercial-assurance-reviewer:1.decision_purpose_correction",
+      "semantic_fields": [
+        "decision_purpose_correction"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "State the specific choice enabled, alternatives and competent decision authority, or explain why this output supports no decision; copied acceptance boilerplate is not a decision purpose.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "State the specific choice enabled, alternatives and competent decision authority, or explain why this output supports no decision; copied acceptance boilerplate is not a decision purpose.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
+          "content/types/decision-paper.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/independent-commercial-assurance-reviewer:1.delivery_verification",
+      "semantic_fields": [
+        "delivery_verification"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "For the specific output 'Independent commercial assurance plan and findings', provide verifiable evidence satisfying: Independence and coverage are explicit; every finding is evidence-linked and assigned.. Required delivery form: Response report or controlled external findings handoff with criteria, scope, sampling, conflict declaration and located findings.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "For the specific output 'Independent commercial assurance plan and findings', provide verifiable evidence satisfying: Independence and coverage are explicit; every finding is evidence-linked and assigned.. Required delivery form: Response report or controlled external findings handoff with criteria, scope, sampling, conflict declaration and located findings.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
+          "content/types/decision-paper.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "source_deliverable": {
+        "name": "Independent commercial assurance plan and findings",
+        "format": "Response report or controlled external findings handoff with criteria, scope, sampling, conflict declaration and located findings",
+        "acceptance_criterion": "Independence and coverage are explicit; every finding is evidence-linked and assigned.",
+        "role_path": "skills/it-roles-commercial-sourcing-and-enablement/references/independent-commercial-assurance-reviewer.md"
+      }
+    },
+    {
+      "id": "role/independent-commercial-assurance-reviewer:1.role_gate_observations",
+      "semantic_fields": [
+        "role_gate_observations"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations.",
+        "G1: Reviewer has not authored the material evidence under review; conflicts and compensating controls are explicitly disclosed.",
+        "G2: Material conclusions cite inspected versions and source evidence, with sampling and untested scope visible.",
+        "G3: Findings are located, criterion-based and independently verified after rework; unresolved material findings reach the authorised decision owner.",
+        "G4: The report neither changes artefacts nor signs, approves, waives, certifies or accepts the deal's business risk.",
+        "G5: Critical business-to-economics-to-evidence links and client/internal commitment consistency are complete; unresolved links remain visible and decision-limiting.",
+        "G6: Lifecycle effort and cost, including recurring service and exit where relevant, are classified without double-counting; missing evidence is never silently zero.",
+        "G7: Author, independent reviewer and human approval/risk-acceptance boundaries are explicit; superseded versions and review/reopen triggers are retained."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
+          "content/types/decision-paper.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "source_role_gate_refs": [
+        "skills/it-roles-commercial-sourcing-and-enablement/references/independent-commercial-assurance-reviewer.md#G1",
+        "skills/it-roles-commercial-sourcing-and-enablement/references/independent-commercial-assurance-reviewer.md#G2",
+        "skills/it-roles-commercial-sourcing-and-enablement/references/independent-commercial-assurance-reviewer.md#G3",
+        "skills/it-roles-commercial-sourcing-and-enablement/references/independent-commercial-assurance-reviewer.md#G4",
+        "skills/it-roles-commercial-sourcing-and-enablement/references/independent-commercial-assurance-reviewer.md#G5",
+        "skills/it-roles-commercial-sourcing-and-enablement/references/independent-commercial-assurance-reviewer.md#G6",
+        "skills/it-roles-commercial-sourcing-and-enablement/references/independent-commercial-assurance-reviewer.md#G7"
+      ]
+    },
+    {
+      "id": "role/independent-commercial-assurance-reviewer:1.contract_input_1",
+      "semantic_fields": [
+        "contract_input_1"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Analyse the specific input \"Review mandate, materiality, criteria, conflicts and authority map\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Analyse the specific input \"Review mandate, materiality, criteria, conflicts and authority map\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
+          "content/types/decision-paper.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "source_input": {
+        "contract_id": "independent-commercial-assurance-reviewer:1",
+        "json_pointer": "/jai/semantics/required_inputs/0",
+        "value": "Review mandate, materiality, criteria, conflicts and authority map"
+      }
+    },
+    {
+      "id": "role/independent-commercial-assurance-reviewer:1.contract_input_2",
+      "semantic_fields": [
+        "contract_input_2"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Analyse the specific input \"Versioned proposal, compliance matrix and contractual commitments\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Analyse the specific input \"Versioned proposal, compliance matrix and contractual commitments\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
+          "content/types/decision-paper.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "source_input": {
+        "contract_id": "independent-commercial-assurance-reviewer:1",
+        "json_pointer": "/jai/semantics/required_inputs/1",
+        "value": "Versioned proposal, compliance matrix and contractual commitments"
+      }
+    },
+    {
+      "id": "role/independent-commercial-assurance-reviewer:1.contract_input_3",
+      "semantic_fields": [
+        "contract_input_3"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Analyse the specific input \"Basis of estimate, financial model, source evidence and sensitivities\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Analyse the specific input \"Basis of estimate, financial model, source evidence and sensitivities\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
+          "content/types/decision-paper.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "source_input": {
+        "contract_id": "independent-commercial-assurance-reviewer:1",
+        "json_pointer": "/jai/semantics/required_inputs/2",
+        "value": "Basis of estimate, financial model, source evidence and sensitivities"
+      }
+    },
+    {
+      "id": "role/independent-commercial-assurance-reviewer:1.contract_input_4",
+      "semantic_fields": [
+        "contract_input_4"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Analyse the specific input \"Prior findings, approvals, changes, actuals and service forecasts\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Analyse the specific input \"Prior findings, approvals, changes, actuals and service forecasts\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
+          "content/types/decision-paper.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "source_input": {
+        "contract_id": "independent-commercial-assurance-reviewer:1",
+        "json_pointer": "/jai/semantics/required_inputs/3",
+        "value": "Prior findings, approvals, changes, actuals and service forecasts"
+      }
+    }
+  ],
+  "conditional_information": [
+    {
+      "id": "role/independent-commercial-assurance-reviewer:1.privacy_analysis",
+      "semantic_fields": [
+        "privacy_analysis"
+      ],
+      "datatype": "object",
+      "obligation": "CONDITIONAL",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "when": {
+        "field": "processes_personal_data",
+        "op": "eq",
+        "value": true
+      }
+    },
+    {
+      "id": "role/independent-commercial-assurance-reviewer:1.regulatory_analysis",
+      "semantic_fields": [
+        "regulatory_analysis"
+      ],
+      "datatype": "object",
+      "obligation": "CONDITIONAL",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "when": {
+        "field": "regulatory_requirement",
+        "op": "eq",
+        "value": true
+      }
+    }
+  ],
+  "optional_information": [
+    {
+      "id": "role/independent-commercial-assurance-reviewer:1.supporting_annex",
+      "semantic_fields": [
+        "supporting_annex"
+      ],
+      "datatype": "object",
+      "obligation": "MAY",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    }
+  ],
+  "forbidden_information": [
+    {
+      "id": "role/independent-commercial-assurance-reviewer:1.unsupported_material_claim",
+      "semantic_fields": [
+        "unsupported_material_claim"
+      ],
+      "datatype": "object",
+      "obligation": "MUST NOT",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Do not assert material conclusions without dated evidence or an explicitly labelled assumption.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Do not assert material conclusions without dated evidence or an explicitly labelled assumption.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "category": "critical-content",
+      "severity": "critical"
+    }
+  ],
+  "low_value_information": [
+    {
+      "id": "role/independent-commercial-assurance-reviewer:1.irrelevant_detail",
+      "semantic_fields": [
+        "irrelevant_detail"
+      ],
+      "datatype": "object",
+      "obligation": "SHOULD NOT",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Remove material unrelated to the stated purpose, required input analysis or receiving-role action.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Remove material unrelated to the stated purpose, required input analysis or receiving-role action.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "category": "editorial",
+      "severity": "minor"
+    }
+  ],
   "size_budget": {
     "metric": "semantic_units",
-    "calibration_basis": "No generic numeric budget exists for a foundation skeleton.",
+    "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
     "allowance_rules": [
@@ -77,12 +713,13 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.0.0",
+    "effective_version": "1.1.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
-      "Initial proposed foundation; no professional approval asserted."
+      "Initial proposed foundation; no professional approval asserted.",
+      "26.10.8 substantive proposed obligations; no professional approval asserted."
     ]
   },
   "jai": {
@@ -101,5 +738,19 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
-  "coverage_note": "Explicit contract-specific placeholder; substantive obligations, decision-purpose correction and professional approval remain pending."
+  "applicability_policy": {
+    "unconditional_units": "N/A prohibited",
+    "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
+  },
+  "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
+  "coverage_note": "Source-attributed contract-specific proposal plus modality/domain obligations; original copied decision purpose remains a mandatory migration review item.",
+  "source_contract": {
+    "id": "independent-commercial-assurance-reviewer:1",
+    "source_fingerprint": "17ed80ce673a9fa01fdec16deebe6f0cf33a8ce07aa3d7643fa3e485714828a6",
+    "source_hash": "ca8bff85aece366015729602dc3b887c543a24d425d6c54e75fc20f31c55b8eb"
+  },
+  "derivation_limits": [
+    "Source inputs identify the subject boundary but do not prove professional sufficiency.",
+    "Independent semantic assessment and human L0 approval remain pending."
+  ]
 }

@@ -1,0 +1,1274 @@
+{
+  "artifact_id": "synthetic/enterprise/sabsa-governance-register-simple",
+  "contract_id": "enterprise-architect:1",
+  "document_kind": "architecture-definition",
+  "author": {
+    "principal_id": "synthetic-author"
+  },
+  "title": "Inventory service recovery: sabsa-governance-register-simple",
+  "context": {
+    "processes_personal_data": false,
+    "regulatory_requirement": false
+  },
+  "summary": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+  "scenario": {
+    "name": "Inventory service recovery",
+    "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+    "drivers": "Restore warehouse inventory updates within 30 minutes; data loss must remain below five minutes.",
+    "design": "One application instance and a standby database in the existing managed platform.",
+    "cost": "EUR 18000 implementation and EUR 6000 annual operation; one-year benefit EUR 32000, with a 25 percent adoption uncertainty.",
+    "risk": "Database replication delay can lose updates; lag alert at 60 seconds and hourly recovery-point checks reduce likelihood.",
+    "operations": "Warehouse operations owns support from 06:00 to 22:00; the platform duty engineer handles recovery escalation.",
+    "regulatory": false,
+    "privacy": false
+  },
+  "semantic_units": {
+    "architecture_context": {
+      "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+      "stakeholders": [
+        "Morgan Lee",
+        "Warehouse or payment operations"
+      ],
+      "baseline": "Manual restoration misses the recovery objective by 18 minutes",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "architecture_drivers": [
+      {
+        "id": "INV-DRV1",
+        "driver": "Restore warehouse inventory updates within 30 minutes; data loss must remain below five minutes.",
+        "requirement_ref": "INV-REC1",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "architecture_viewpoints": [
+      {
+        "id": "INV-BUS",
+        "viewpoint": "business",
+        "description": "Service owner delivers reconciled transaction processing",
+        "element_refs": [
+          "INV-OPS"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "id": "INV-INFO",
+        "viewpoint": "information",
+        "description": "Ledger records immutable event IDs",
+        "element_refs": [
+          "INV-DB"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "id": "INV-APPS",
+        "viewpoint": "application",
+        "description": "One application instance and a standby database in the existing managed platform.",
+        "element_refs": [
+          "INV-APP"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "id": "INV-TECH",
+        "viewpoint": "technology",
+        "description": "Managed Linux runtime and PostgreSQL standby",
+        "element_refs": [
+          "INV-APP",
+          "INV-DB"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "architecture_relations": [
+      {
+        "id": "INV-IF1",
+        "source": "INV-APP",
+        "target": "INV-DB",
+        "protocol": "PostgreSQL TLS",
+        "contract_version": "1.0",
+        "fields": [
+          "event_id",
+          "amount",
+          "status"
+        ],
+        "failure": "Timeout after 5 seconds; retry twice with same event_id; then reject and alert",
+        "trust_boundary": "Application service identity to restricted database role",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "architecture_evolution": {
+      "entities": [
+        {
+          "id": "INV-APP",
+          "type": "application",
+          "name": "Inventory service recovery",
+          "responsibility": "Accept authorised transaction requests and return durable IDs"
+        },
+        {
+          "id": "INV-DB",
+          "type": "data-store",
+          "name": "PostgreSQL ledger",
+          "responsibility": "Persist unique event IDs and reconciled balances"
+        },
+        {
+          "id": "INV-OPS",
+          "type": "operational-role",
+          "name": "Morgan Lee",
+          "responsibility": "Own restore rehearsal and incident escalation"
+        }
+      ],
+      "target": "Managed recovery with durable event IDs",
+      "gaps": [
+        {
+          "id": "INV-DEF1",
+          "severity": "material",
+          "description": "Retry queue drain under peak load remains untested",
+          "status": "retest-pending",
+          "owner": "Morgan Lee",
+          "due": "2026-11-05",
+          "impact": "Peak-load recovery claim remains outside demonstrated scope"
+        }
+      ],
+      "transition_owner": "Morgan Lee",
+      "decision_ref": "TARGET",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "business_traceability": [
+      {
+        "driver_id": "SYN-DRV1",
+        "driver": "Restore warehouse inventory updates within 30 minutes",
+        "attribute_id": "SYN-ATTR1",
+        "attribute": "Recoverable",
+        "measure": "Recovery minutes",
+        "target_max": 30,
+        "objective_id": "SYN-OBJ1",
+        "control_id": "SYN-C1",
+        "service_id": "SYN-SVC1",
+        "mechanism_id": "SYN-MECH1",
+        "component_id": "SYN-APP-1",
+        "source_model_version": "synthetic-1",
+        "chain": "SYN-DRV1 -> SYN-ATTR1 -> SYN-OBJ1 -> SYN-SVC1 -> SYN-MECH1 -> SYN-APP-1 -> SYN-M1",
+        "record_id": "SYN-BUSINESS-TRACEABILITY",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Trace selected security elements to business drivers, measurable attributes and source model IDs.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "governance_decisions": [
+      {
+        "driver_id": "SYN-DRV1",
+        "driver": "Restore warehouse inventory updates within 30 minutes",
+        "attribute_id": "SYN-ATTR1",
+        "attribute": "Recoverable",
+        "measure": "Recovery minutes",
+        "target_max": 30,
+        "objective_id": "SYN-OBJ1",
+        "control_id": "SYN-C1",
+        "service_id": "SYN-SVC1",
+        "mechanism_id": "SYN-MECH1",
+        "component_id": "SYN-APP-1",
+        "source_model_version": "synthetic-1",
+        "chain": "SYN-DRV1 -> SYN-ATTR1 -> SYN-OBJ1 -> SYN-SVC1 -> SYN-MECH1 -> SYN-APP-1 -> SYN-M1",
+        "record_id": "SYN-GOVERNANCE-DECISIONS",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Record dated decisions, rationale, mandate, owners and source-model effects.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "governance_exceptions": [
+      {
+        "risk_id": "SYN-R1",
+        "cause": "Recovery checkpoint lags active transaction state",
+        "event": "Replay duplicates a committed transaction",
+        "business_consequence": "Ledger imbalance delays warehouse updates",
+        "inherent_score": 12,
+        "residual_score": 8,
+        "control_ref": "SYN-C1",
+        "treatment": "Enforce unique event IDs and rehearse ledger reconciliation",
+        "due": "2026-11-05",
+        "residual_authority": "Independent service risk owner; approval pending",
+        "record_id": "SYN-GOVERNANCE-EXCEPTIONS",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Identify policy/trust exceptions, scope, expiry, compensating controls and acceptance authority.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "matrix_coverage": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "contextual",
+        "column": "what",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "contextual",
+        "column": "why",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "contextual",
+        "column": "how",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "contextual",
+        "column": "who",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "contextual",
+        "column": "where",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "contextual",
+        "column": "when",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "conceptual",
+        "column": "what",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "conceptual",
+        "column": "why",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "conceptual",
+        "column": "how",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "conceptual",
+        "column": "who",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "conceptual",
+        "column": "where",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "conceptual",
+        "column": "when",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "logical",
+        "column": "what",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "logical",
+        "column": "why",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "logical",
+        "column": "how",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "logical",
+        "column": "who",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "logical",
+        "column": "where",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "logical",
+        "column": "when",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "physical",
+        "column": "what",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "physical",
+        "column": "why",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "physical",
+        "column": "how",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "physical",
+        "column": "who",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "physical",
+        "column": "where",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "physical",
+        "column": "when",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "component",
+        "column": "what",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "component",
+        "column": "why",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "component",
+        "column": "how",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "component",
+        "column": "who",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "component",
+        "column": "where",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "component",
+        "column": "when",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "operational",
+        "column": "what",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "operational",
+        "column": "why",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "operational",
+        "column": "how",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "operational",
+        "column": "who",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "operational",
+        "column": "where",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "operational",
+        "column": "when",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      }
+    ],
+    "identity": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-IDENTITY",
+      "service": "Inventory service recovery",
+      "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+      "criterion_under_review": "Identify stable artifact ID, owner, source version and intended usage.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "model_entities": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-MODEL-ENTITIES",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Provide stable identified entities and typed relationships with ownership and provenance.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "model_metamodel": {
+      "schema_version": "1.0",
+      "entity_id": "SYN-APP-1",
+      "columns": [
+        {
+          "name": "event_id",
+          "datatype": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "amount",
+          "datatype": "decimal(12,2)",
+          "unit": "EUR",
+          "nullable": false
+        }
+      ],
+      "key": "event_id",
+      "record": {
+        "event_id": "SYN-EVENT-1",
+        "amount": 125.5
+      },
+      "uniqueness_observed": "10 of 10 event IDs unique",
+      "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+      "record_id": "SYN-MODEL-METAMODEL",
+      "service": "Inventory service recovery",
+      "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+      "criterion_under_review": "Define entity/relation types, constraints, model boundary and source baseline.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "model_validation": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-MODEL-VALIDATION",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Evidence referential integrity, constraint checks, cross-view consistency and known gaps.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ]
+  },
+  "evaluation_selection": {
+    "overlays": [
+      "sabsa/governance-register"
+    ]
+  },
+  "structural_probe": true,
+  "evaluation_scope": "Typed contract/overlay detector probe; professional semantic adequacy is not established by these generated records.",
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Fabricated recovery service records; no real customer evidence or human approval."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "architecture-definition.architecture_context",
+        "architecture-definition.architecture_drivers",
+        "architecture-definition.architecture_evolution",
+        "architecture-definition.architecture_relations",
+        "architecture-definition.architecture_viewpoints",
+        "sabsa/governance-register.business_traceability",
+        "sabsa/governance-register.governance_decisions",
+        "sabsa/governance-register.governance_exceptions",
+        "sabsa/governance-register.matrix_coverage",
+        "type/model.identity",
+        "type/model.model_entities",
+        "type/model.model_metamodel",
+        "type/model.model_validation"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "architecture_context",
+      "expected_rule_ids": [
+        "architecture-definition.architecture_context"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "architecture_context",
+      "reason": "Author omitted a required obligation without authority.",
+      "expected_rule_ids": [
+        "architecture-definition.architecture_context"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "The recovery design guarantees permanent zero incidents without evidence.",
+      "expected_rule_ids": [
+        "architecture-definition.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "The history of office furniture procurement does not support service recovery or the receiving decision.",
+      "expected_rule_ids": [
+        "architecture-definition.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "architecture-definition.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "Schedule pressure is claimed to waive the applicable legal restriction without authority.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope excludes personal identifiers; SYN-NA records anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "architecture_context",
+      "count": 5,
+      "expected_rule_ids": [
+        "architecture-definition.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Semantic artefact to enterprise publication
 
-`workflow: semantic-to-enterprise-publication`  ·  `steps: 4`  ·  `tool-tier: route`
+`workflow: semantic-to-enterprise-publication`  ·  `steps: 5`  ·  `tool-tier: route`
 
 **Trigger.** A specialist artefact is substantively complete and requires enterprise-grade publication.
 
@@ -14,6 +14,7 @@
 | 2 | Evidence & Rationale Reviewer | checks evidence strength, assumptions, alternatives, rationale and residual risk | semantic gate result and located findings | Material claims are supported and basis is explicit |
 | 3 | Enterprise Publication Editor | restructures approved content for audience and target formats without changing meaning | rendered enterprise publication set | Semantic hash continuity is preserved |
 | 4 | Visual Quality Reviewer | inspects actual HTML/DOCX/PPTX/XLSX/SVG outputs for usability and presentation defects | publication gate result | No blocking legibility, density, integrity or document-control defect remains |
+| 5 | Named authority | reviews the completed semantic, publication and visual evidence under the existing JAI authority boundary | release approval | Explicit approval is recorded before release; agents cannot substitute for the authority |
 
 ## Operating this chain
 

@@ -2,7 +2,7 @@
   "profile": "content",
   "version": "1.0.0",
   "status": "proposed",
-  "phase": "26.10.7-authoring-content-qa",
+  "phase": "26.10.8-enterprise-content-quality",
   "compatibility": {
     "read": [
       "ArtifactContract-v3"
@@ -37,5 +37,9 @@
   },
   "validator": "tools/content_lint.py",
   "metrics": "tools/content_metrics.py",
-  "pilot_evaluator": "tools/content_eval.py"
+  "pilot_evaluator": "tools/content_eval.py",
+  "workflow_acceptance": "tools/content_workflow.py",
+  "workflow_registry": "content/workflow-acceptance.json",
+  "migration": "tools/content_migrate.py",
+  "synthetic_calibration_ref": "content/calibration/synthetic-development.json"
 }

@@ -46,18 +46,29 @@ def prepare_case(reference, resolver):
     model = copy.deepcopy(reference)
     model.pop('variants', None)
     model.pop('reference_expectation', None)
+    selection = model.pop('evaluation_selection', {})
     spec = resolver.resolve(model['contract_id'], context=model['context'])
+    overlays = selection.get('overlays', [])
+    if overlays:
+        binding = resolver.bindings[model['contract_id']]
+        compiled = resolver.compile(binding['content_spec_ref'], model['context'],
+                                    list(dict.fromkeys([*binding.get('overlays', []), *overlays])))
+        for key in ('artifact_id', 'document_kind', 'spec_selection_reason', 'decision_supported'):
+            compiled[key] = copy.deepcopy(spec[key])
+        spec = compiled
     model['compiled_spec_hash'] = spec['compiled_spec_hash']
     return model, spec
 
 
-def evaluate_corpus(root, detector=None):
+def evaluate_corpus(root, detector=None, include_enterprise=True):
     """Measure actual seeded-defect recall and reference false positives.
 
     Args:
         root: Source checkout or installed runtime root accepted by ContentSpec.
         detector: Optional callable with the production evaluate(model, spec)
             contract; defaults to content_lint.evaluate.
+        include_enterprise: Include every explicit role and presentation/domain
+            probe. False selects only the historical thirty priority references.
     Returns:
         Reproducible JSON report containing every case hash and findings.
     Raises:
@@ -77,19 +88,27 @@ def evaluate_corpus(root, detector=None):
                   reference_count=0, reference_false_positives=0,
                   critical_case_count=0, detected_critical_case_count=0,
                   expected_rules=0, detected_rules=0)
-    for relative in manifest['cases']:
+    coverage_records = []
+    selected_cases = [*manifest['cases'], *(manifest.get('enterprise_cases', []) if include_enterprise else [])]
+    for relative in selected_cases:
         reference = json.loads((runtime / relative).read_text())
+        reference_ok = False
+        negative_ok = False
+        borderline_ok = False
+        profile_spec = None
         for variant in [None, *reference['variants']]:
             applied = reference if variant is None else mutate(reference, variant)
             model, spec = prepare_case(applied, resolver)
             report = detector(model, spec)
             findings = report['findings']
+            profile_spec = spec
             observed = {finding['rule_id'] for finding in findings}
             expected = set(variant['expected_rule_ids']) if variant else set()
             matched = expected & observed
             counts['expected_rules'] += len(expected)
             counts['detected_rules'] += len(matched)
             if variant is None:
+                reference_ok = not any(f.get('category') in ('critical-content', 'security-policy', 'existing-mandatory-gate', 'existing-gate') for f in findings)
                 counts['reference_count'] += 1
                 if any(f.get('category') in ('critical-content', 'security-policy',
                        'existing-mandatory-gate', 'existing-gate') for f in findings):
@@ -100,8 +119,14 @@ def evaluate_corpus(root, detector=None):
                 counts['detected_critical'] += len(matched)
                 counts['critical_case_count'] += 1
                 counts['detected_critical_case_count'] += int(expected <= observed)
+            if variant is not None:
+                if variant['expected_category'] in ('critical-content', 'existing-mandatory-gate'):
+                    negative_ok = negative_ok or bool(expected) and expected <= observed
+                elif variant['expected_category'] in ('editorial', 'pending-applicability', 'borderline-review'):
+                    borderline_ok = borderline_ok or expected <= observed
             cases.append({'case_id': model['artifact_id'] + '/' +
                           (variant['id'] if variant else 'reference'),
+                          'structural_probe': reference.get('structural_probe', False),
                           'semantic_hash': canonical_hash(model),
                           'compiled_spec_hash': spec['compiled_spec_hash'],
                           'report_hash': canonical_hash(report),
@@ -110,6 +135,11 @@ def evaluate_corpus(root, detector=None):
                           'missing_rule_ids': sorted(expected - observed),
                           'findings': findings,
                           'gate_verdict': report['gate_verdict']})
+        coverage_records.append({'case_ref': relative, 'contract_id': reference['contract_id'],
+                                 'spec_ids': [entry['id'] for entry in profile_spec['inheritance']],
+                                 'positive': reference_ok, 'negative': negative_ok,
+                                 'borderline': borderline_ok,
+                                 'professional_acceptance': False})
     recall = (counts['detected_critical'] / counts['expected_critical']
               if counts['expected_critical'] else 0.0)
     case_recall = (counts['detected_critical_case_count'] / counts['critical_case_count']
@@ -131,7 +161,11 @@ def evaluate_corpus(root, detector=None):
               'limitations': ['Synthetic deterministic seeded-defect evaluation only.',
                              'Unimplemented semantic review predicates remain pending.',
                              'No human domain acceptance or enforcement activation.'],
-              'cases': cases}
+              'enterprise_scope_evaluated': include_enterprise,
+              'cases': cases,
+              'catalogue_coverage': catalogue_coverage(resolver, coverage_records)}
+    if include_enterprise:
+        result['pilot_pass'] = result['pilot_pass'] and result['catalogue_coverage']['all_development_dimensions_covered']
     if detector.__module__ == 'content_lint':
         first_reference = json.loads((runtime / manifest['cases'][0]).read_text())
         probe_model, probe_spec = prepare_case(first_reference, resolver)
@@ -139,6 +173,44 @@ def evaluate_corpus(root, detector=None):
         result['pilot_pass'] = result['pilot_pass'] and result['segregation_of_duties_probes']['pass']
     result['evaluation_hash'] = canonical_hash(result)
     return result
+
+
+
+def catalogue_coverage(resolver, records):
+    """Summarize evidenced positive/negative/borderline catalogue coverage.
+
+    Args:
+        resolver: Registered ContentSpec instance used for the actual evaluation.
+        records: Per-reference detector observations with exact spec/binding IDs.
+    Returns:
+        Dimension counts and gaps. Coverage means synthetic development checks,
+        never professional semantic approval, calibration or GA qualification.
+    """
+    dimensions = {'bindings': {cid: cid for cid in resolver.bindings}}
+    for name in ('artifact_types', 'archetypes', 'sabsa_views', 'domains'):
+        mapping = resolver.registry.get('mappings', {}).get(name, {})
+        dimensions[name] = {key: value.get('spec_ref') if isinstance(value, dict) else value
+                            for key, value in mapping.items()}
+    dimensions['document_kinds'] = {key: value['spec_ref'] for key, value in resolver.kinds.items()}
+    result = {}
+    for dimension, members in dimensions.items():
+        covered, gaps = [], []
+        for label, identifier in sorted(members.items()):
+            selected = [record for record in records if
+                        (record['contract_id'] == identifier if dimension == 'bindings'
+                         else identifier in record['spec_ids'])]
+            observations = {name: any(record[name] for record in selected)
+                            for name in ('positive', 'negative', 'borderline')}
+            if all(observations.values()):
+                covered.append(label)
+            else:
+                gaps.append({'id': label, 'observations': observations})
+        result[dimension] = {'expected': len(members), 'covered': len(covered),
+                             'covered_ids': covered, 'gaps': gaps}
+    return {'scope': 'Actual synthetic detector observations, including generated typed structural probes; semantic adequacy remains pending competent independent review.',
+            'professional_acceptance': False, 'dimensions': result,
+            'all_development_dimensions_covered': all(value['expected'] > 0 and not value['gaps']
+                                                     for value in result.values())}
 
 
 def evaluate_sod_probes(model, spec, detector=None):
@@ -234,7 +306,10 @@ def main(argv=None):
         if args.output:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             args.output.write_text(json.dumps(result, indent=2) + '\n')
-        print(json.dumps({key: value for key, value in result.items() if key not in ('cases', 'segregation_of_duties_probes')}, indent=2))
+        summary = {key: value for key, value in result.items() if key not in ('cases', 'segregation_of_duties_probes', 'catalogue_coverage')}
+        summary['catalogue_coverage'] = {name: {key: value[key] for key in ('expected', 'covered', 'gaps')}
+                                         for name, value in result['catalogue_coverage']['dimensions'].items()}
+        print(json.dumps(summary, indent=2))
         return 0 if result['pilot_pass'] else 1
     except (OSError, ValueError, KeyError) as exc:
         parser.exit(1, f'Content pilot failed: {exc}\n')

@@ -116,7 +116,80 @@
         "SYN-01"
       ],
       "knowledge_status": "assumption"
-    }
+    },
+    "decision_consequences": [
+      {
+        "baseline": {
+          "id": "BASE",
+          "restore_minutes": 48,
+          "transition_eur": 0
+        },
+        "candidate": {
+          "id": "TARGET",
+          "restore_minutes": 27,
+          "transition_eur": 18000
+        },
+        "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
+        "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
+        "record_id": "SYN-DECISION-CONSEQUENCES",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Describe rejected options, reversibility, debt and operational consequences.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "decision_record": {
+      "baseline": {
+        "id": "BASE",
+        "restore_minutes": 48,
+        "transition_eur": 0
+      },
+      "candidate": {
+        "id": "TARGET",
+        "restore_minutes": 27,
+        "transition_eur": 18000
+      },
+      "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
+      "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
+      "record_id": "SYN-DECISION-RECORD",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Record decision status, owner, date and architecture concern.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "design_alternatives": [
+      {
+        "baseline": {
+          "id": "BASE",
+          "restore_minutes": 48,
+          "transition_eur": 0
+        },
+        "candidate": {
+          "id": "TARGET",
+          "restore_minutes": 27,
+          "transition_eur": 18000
+        },
+        "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
+        "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
+        "record_id": "SYN-DESIGN-ALTERNATIVES",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Compare feasible alternatives against explicit drivers and constraints.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ]
   },
   "evidence": [
     {

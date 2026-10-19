@@ -2,14 +2,15 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/cryptography-and-pki-engineer:2",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
-  "completeness": "skeleton",
+  "completeness": "complete",
   "inherits": [
-    "type/register"
+    "type/register",
+    "domain/data"
   ],
   "applies_to": {
     "document_kind": "role/cryptography-and-pki-engineer:2",
@@ -19,22 +20,660 @@
   },
   "purpose": "Produce and govern the role deliverable: key lifecycle and ceremony records.",
   "target_audience": [
-    "competent independent domain reviewer"
+    "Security Engineer",
+    "Platform Engineer"
   ],
-  "decisions_supported": [],
-  "intended_usage": "26.10.6 advisory foundation; professional approval pending",
+  "decisions_supported": [
+    "Determine whether the specific deliverable is fit for its explicit receiving-role use; competent domain confirmation remains pending."
+  ],
+  "intended_usage": "26.10.8 advisory content contract; professional approval pending",
   "non_goals": [
     "Replace JAI authority",
     "Claim a professional framework requirement without a cited source"
   ],
-  "required_information": [],
-  "conditional_information": [],
-  "optional_information": [],
-  "forbidden_information": [],
-  "low_value_information": [],
+  "required_information": [
+    {
+      "id": "role/cryptography-and-pki-engineer:2.delivery_scope",
+      "semantic_fields": [
+        "delivery_scope"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: key lifecycle and ceremony records.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: key lifecycle and ceremony records.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#cryptography-and-pki-engineer:2",
+          "content/types/register.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/cryptography-and-pki-engineer:2.receiving_acceptance",
+      "semantic_fields": [
+        "receiving_acceptance"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "For each receiving role (Security Engineer; Platform Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "For each receiving role (Security Engineer; Platform Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#cryptography-and-pki-engineer:2",
+          "content/types/register.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/cryptography-and-pki-engineer:2.contract_relations",
+      "semantic_fields": [
+        "contract_relations"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#cryptography-and-pki-engineer:2",
+          "content/types/register.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/cryptography-and-pki-engineer:2.decision_purpose_correction",
+      "semantic_fields": [
+        "decision_purpose_correction"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "State the specific choice enabled, alternatives and competent decision authority, or explain why this output supports no decision; copied acceptance boilerplate is not a decision purpose.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "State the specific choice enabled, alternatives and competent decision authority, or explain why this output supports no decision; copied acceptance boilerplate is not a decision purpose.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#cryptography-and-pki-engineer:2",
+          "content/types/register.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/cryptography-and-pki-engineer:2.delivery_verification",
+      "semantic_fields": [
+        "delivery_verification"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "For the specific output 'key lifecycle and ceremony records', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "For the specific output 'key lifecycle and ceremony records', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#cryptography-and-pki-engineer:2",
+          "content/types/register.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "source_deliverable": {
+        "name": "key lifecycle and ceremony records",
+        "format": "Versioned artefact in the agreed system of record",
+        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "role_path": "skills/it-roles-security-operations-and-defensive-security/references/cryptography-and-pki-engineer.md"
+      }
+    },
+    {
+      "id": "role/cryptography-and-pki-engineer:2.role_gate_observations",
+      "semantic_fields": [
+        "role_gate_observations"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations.",
+        "G1: No change merges without passing automated tests and peer review by someone who did not write it.",
+        "G2: A defect is fixed only after its root cause is established by comparing against the last known good state, a working analogue and timing factors, and a regression test reproduces it first (it-role-library/standards/defect-analysis.md).",
+        "G3: Every public behaviour added or changed has unit tests covering normal, boundary and failure cases; every boundary to an external system has an integration test against the real dependency; the full suite was run after the last change and passed (it-role-library/standards/testing.md).",
+        "G4: Secrets, credentials and personal data never appear in source, logs or fixtures.",
+        "G5: Every public element of the change carries a doc comment stating its contract — parameters, result, exceptions — and no comment narrates what the code does (it-role-library/standards/code-documentation.md).",
+        "G6: The change ships with the telemetry needed to tell whether it is working in production.",
+        "G7: A rollback or forward-fix path is defined and has been tried at least once for high-risk changes.",
+        "G8: Every private key's custody, protection level and recovery path is documented",
+        "G9: keys whose location is unknown are treated as compromised"
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#cryptography-and-pki-engineer:2",
+          "content/types/register.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "source_role_gate_refs": [
+        "skills/it-roles-security-operations-and-defensive-security/references/cryptography-and-pki-engineer.md#G1",
+        "skills/it-roles-security-operations-and-defensive-security/references/cryptography-and-pki-engineer.md#G2",
+        "skills/it-roles-security-operations-and-defensive-security/references/cryptography-and-pki-engineer.md#G3",
+        "skills/it-roles-security-operations-and-defensive-security/references/cryptography-and-pki-engineer.md#G4",
+        "skills/it-roles-security-operations-and-defensive-security/references/cryptography-and-pki-engineer.md#G5",
+        "skills/it-roles-security-operations-and-defensive-security/references/cryptography-and-pki-engineer.md#G6",
+        "skills/it-roles-security-operations-and-defensive-security/references/cryptography-and-pki-engineer.md#G7",
+        "skills/it-roles-security-operations-and-defensive-security/references/cryptography-and-pki-engineer.md#G8",
+        "skills/it-roles-security-operations-and-defensive-security/references/cryptography-and-pki-engineer.md#G9"
+      ]
+    },
+    {
+      "id": "role/cryptography-and-pki-engineer:2.contract_input_1",
+      "semantic_fields": [
+        "contract_input_1"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Analyse the specific input \"Trust requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Analyse the specific input \"Trust requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#cryptography-and-pki-engineer:2",
+          "content/types/register.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "source_input": {
+        "contract_id": "cryptography-and-pki-engineer:2",
+        "json_pointer": "/jai/semantics/required_inputs/0",
+        "value": "Trust requirements"
+      }
+    },
+    {
+      "id": "role/cryptography-and-pki-engineer:2.contract_input_2",
+      "semantic_fields": [
+        "contract_input_2"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Analyse the specific input \"Regulatory and algorithm requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Analyse the specific input \"Regulatory and algorithm requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#cryptography-and-pki-engineer:2",
+          "content/types/register.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "source_input": {
+        "contract_id": "cryptography-and-pki-engineer:2",
+        "json_pointer": "/jai/semantics/required_inputs/1",
+        "value": "Regulatory and algorithm requirements"
+      }
+    },
+    {
+      "id": "role/cryptography-and-pki-engineer:2.contract_input_3",
+      "semantic_fields": [
+        "contract_input_3"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Analyse the specific input \"Certificate inventory\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Analyse the specific input \"Certificate inventory\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#cryptography-and-pki-engineer:2",
+          "content/types/register.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "source_input": {
+        "contract_id": "cryptography-and-pki-engineer:2",
+        "json_pointer": "/jai/semantics/required_inputs/2",
+        "value": "Certificate inventory"
+      }
+    },
+    {
+      "id": "role/cryptography-and-pki-engineer:2.contract_input_4",
+      "semantic_fields": [
+        "contract_input_4"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Analyse the specific input \"HSM and key store capabilities\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Analyse the specific input \"HSM and key store capabilities\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#cryptography-and-pki-engineer:2",
+          "content/types/register.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "source_input": {
+        "contract_id": "cryptography-and-pki-engineer:2",
+        "json_pointer": "/jai/semantics/required_inputs/3",
+        "value": "HSM and key store capabilities"
+      }
+    }
+  ],
+  "conditional_information": [
+    {
+      "id": "role/cryptography-and-pki-engineer:2.privacy_analysis",
+      "semantic_fields": [
+        "privacy_analysis"
+      ],
+      "datatype": "object",
+      "obligation": "CONDITIONAL",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "when": {
+        "field": "processes_personal_data",
+        "op": "eq",
+        "value": true
+      }
+    },
+    {
+      "id": "role/cryptography-and-pki-engineer:2.regulatory_analysis",
+      "semantic_fields": [
+        "regulatory_analysis"
+      ],
+      "datatype": "object",
+      "obligation": "CONDITIONAL",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "when": {
+        "field": "regulatory_requirement",
+        "op": "eq",
+        "value": true
+      }
+    }
+  ],
+  "optional_information": [
+    {
+      "id": "role/cryptography-and-pki-engineer:2.supporting_annex",
+      "semantic_fields": [
+        "supporting_annex"
+      ],
+      "datatype": "object",
+      "obligation": "MAY",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    }
+  ],
+  "forbidden_information": [
+    {
+      "id": "role/cryptography-and-pki-engineer:2.unsupported_material_claim",
+      "semantic_fields": [
+        "unsupported_material_claim"
+      ],
+      "datatype": "object",
+      "obligation": "MUST NOT",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Do not assert material conclusions without dated evidence or an explicitly labelled assumption.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Do not assert material conclusions without dated evidence or an explicitly labelled assumption.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "category": "critical-content",
+      "severity": "critical"
+    }
+  ],
+  "low_value_information": [
+    {
+      "id": "role/cryptography-and-pki-engineer:2.irrelevant_detail",
+      "semantic_fields": [
+        "irrelevant_detail"
+      ],
+      "datatype": "object",
+      "obligation": "SHOULD NOT",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Remove material unrelated to the stated purpose, required input analysis or receiving-role action.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Remove material unrelated to the stated purpose, required input analysis or receiving-role action.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "category": "editorial",
+      "severity": "minor"
+    }
+  ],
   "size_budget": {
-    "metric": "semantic_units",
-    "calibration_basis": "No generic numeric budget exists for a foundation skeleton.",
+    "metric": "rows",
+    "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
     "allowance_rules": [
@@ -77,12 +716,13 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.0.0",
+    "effective_version": "1.1.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
-      "Initial proposed foundation; no professional approval asserted."
+      "Initial proposed foundation; no professional approval asserted.",
+      "26.10.8 substantive proposed obligations; no professional approval asserted."
     ]
   },
   "jai": {
@@ -101,5 +741,19 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
-  "coverage_note": "Explicit contract-specific placeholder; substantive obligations, decision-purpose correction and professional approval remain pending."
+  "applicability_policy": {
+    "unconditional_units": "N/A prohibited",
+    "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
+  },
+  "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
+  "coverage_note": "Source-attributed contract-specific proposal plus modality/domain obligations; original copied decision purpose remains a mandatory migration review item.",
+  "source_contract": {
+    "id": "cryptography-and-pki-engineer:2",
+    "source_fingerprint": "9273cd7b1c00d871de9f1a02f476670880b50173e384f14ce50cd95551231bf5",
+    "source_hash": "92235f2e17cfe12cca6fbdf95b766cafc7473b433af6baaa676c145f100e3036"
+  },
+  "derivation_limits": [
+    "Source inputs identify the subject boundary but do not prove professional sufficiency.",
+    "Independent semantic assessment and human L0 approval remain pending."
+  ]
 }

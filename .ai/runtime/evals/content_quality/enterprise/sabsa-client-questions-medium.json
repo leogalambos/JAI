@@ -1,0 +1,1286 @@
+{
+  "artifact_id": "synthetic/enterprise/sabsa-client-questions-medium",
+  "contract_id": "enterprise-architect:1",
+  "document_kind": "architecture-definition",
+  "author": {
+    "principal_id": "synthetic-author"
+  },
+  "title": "Regional order integration: sabsa-client-questions-medium",
+  "context": {
+    "processes_personal_data": true,
+    "regulatory_requirement": false
+  },
+  "summary": "Three regional order services, ERP integration, identity management and two operations teams.",
+  "scenario": {
+    "name": "Regional order integration",
+    "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+    "drivers": "Reconcile regional orders within 15 minutes with 99.9 percent monthly availability and no duplicated financial postings.",
+    "design": "An idempotent event gateway connects three regional services to ERP using versioned schemas and a dead-letter queue.",
+    "cost": "EUR 420000 implementation and EUR 90000 annual operation; three-year avoided handling cost EUR 810000, sensitive to order volume by 30 percent.",
+    "risk": "Replayed events can duplicate postings; deduplication keys and reconciled ledger totals reduce exposure but require weekly evidence review.",
+    "operations": "Regional service owners retain customer support; the integration team owns gateway recovery and ERP reconciliation escalation.",
+    "regulatory": false,
+    "privacy": true
+  },
+  "semantic_units": {
+    "architecture_context": {
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "stakeholders": [
+        "Alex Chen",
+        "Warehouse or payment operations"
+      ],
+      "baseline": "Manual restoration misses the recovery objective by 18 minutes",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "architecture_drivers": [
+      {
+        "id": "ORD-DRV1",
+        "driver": "Reconcile regional orders within 15 minutes with 99.9 percent monthly availability and no duplicated financial postings.",
+        "requirement_ref": "ORD-REC1",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "architecture_viewpoints": [
+      {
+        "id": "ORD-BUS",
+        "viewpoint": "business",
+        "description": "Service owner delivers reconciled transaction processing",
+        "element_refs": [
+          "ORD-OPS"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "id": "ORD-INFO",
+        "viewpoint": "information",
+        "description": "Ledger records immutable event IDs",
+        "element_refs": [
+          "ORD-DB"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "id": "ORD-APPS",
+        "viewpoint": "application",
+        "description": "An idempotent event gateway connects three regional services to ERP using versioned schemas and a dead-letter queue.",
+        "element_refs": [
+          "ORD-APP"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "id": "ORD-TECH",
+        "viewpoint": "technology",
+        "description": "Managed Linux runtime and PostgreSQL standby",
+        "element_refs": [
+          "ORD-APP",
+          "ORD-DB"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "architecture_relations": [
+      {
+        "id": "ORD-IF1",
+        "source": "ORD-APP",
+        "target": "ORD-DB",
+        "protocol": "PostgreSQL TLS",
+        "contract_version": "1.0",
+        "fields": [
+          "event_id",
+          "amount",
+          "status"
+        ],
+        "failure": "Timeout after 5 seconds; retry twice with same event_id; then reject and alert",
+        "trust_boundary": "Application service identity to restricted database role",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "architecture_evolution": {
+      "entities": [
+        {
+          "id": "ORD-APP",
+          "type": "application",
+          "name": "Regional order integration",
+          "responsibility": "Accept authorised transaction requests and return durable IDs"
+        },
+        {
+          "id": "ORD-DB",
+          "type": "data-store",
+          "name": "PostgreSQL ledger",
+          "responsibility": "Persist unique event IDs and reconciled balances"
+        },
+        {
+          "id": "ORD-OPS",
+          "type": "operational-role",
+          "name": "Alex Chen",
+          "responsibility": "Own restore rehearsal and incident escalation"
+        }
+      ],
+      "target": "Managed recovery with durable event IDs",
+      "gaps": [
+        {
+          "id": "ORD-DEF1",
+          "severity": "material",
+          "description": "Retry queue drain under peak load remains untested",
+          "status": "retest-pending",
+          "owner": "Alex Chen",
+          "due": "2026-11-05",
+          "impact": "Peak-load recovery claim remains outside demonstrated scope"
+        }
+      ],
+      "transition_owner": "Alex Chen",
+      "decision_ref": "TARGET",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "privacy_analysis": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-PRIVACY-ANALYSIS",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify personal-data flows, lawful handling constraints, minimisation and review evidence.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "business_traceability": [
+      {
+        "driver_id": "SYN-DRV1",
+        "driver": "Restore warehouse inventory updates within 30 minutes",
+        "attribute_id": "SYN-ATTR1",
+        "attribute": "Recoverable",
+        "measure": "Recovery minutes",
+        "target_max": 30,
+        "objective_id": "SYN-OBJ1",
+        "control_id": "SYN-C1",
+        "service_id": "SYN-SVC1",
+        "mechanism_id": "SYN-MECH1",
+        "component_id": "SYN-APP-1",
+        "source_model_version": "synthetic-1",
+        "chain": "SYN-DRV1 -> SYN-ATTR1 -> SYN-OBJ1 -> SYN-SVC1 -> SYN-MECH1 -> SYN-APP-1 -> SYN-M1",
+        "record_id": "SYN-BUSINESS-TRACEABILITY",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Trace selected security elements to business drivers, measurable attributes and source model IDs.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "confirmation_accountability": [
+      {
+        "source_id": "SYN-LEDGER-1",
+        "source_version": "1",
+        "extracted_at": "2026-10-19T10:00:00Z",
+        "transformation": "Group committed records by event_id and compare counts before/after restore",
+        "input_records": 10,
+        "output_records": 10,
+        "classification": "Synthetic non-customer data",
+        "retention": "Delete rehearsal extracts after regression investigation closes",
+        "permitted_use": "Development regression only",
+        "record_id": "SYN-CONFIRMATION-ACCOUNTABILITY",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Assign competent respondents, due dates, pending decisions and consequences of no answer.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "confirmation_questions": [
+      {
+        "source_id": "SYN-LEDGER-1",
+        "source_version": "1",
+        "extracted_at": "2026-10-19T10:00:00Z",
+        "transformation": "Group committed records by event_id and compare counts before/after restore",
+        "input_records": 10,
+        "output_records": 10,
+        "classification": "Synthetic non-customer data",
+        "retention": "Delete rehearsal extracts after regression investigation closes",
+        "permitted_use": "Development regression only",
+        "record_id": "SYN-CONFIRMATION-QUESTIONS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Identify unresolved assumptions, precise questions, business impact and requested evidence.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "matrix_coverage": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "contextual",
+        "column": "what",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "contextual",
+        "column": "why",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "contextual",
+        "column": "how",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "contextual",
+        "column": "who",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "contextual",
+        "column": "where",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "contextual",
+        "column": "when",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "conceptual",
+        "column": "what",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "conceptual",
+        "column": "why",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "conceptual",
+        "column": "how",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "conceptual",
+        "column": "who",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "conceptual",
+        "column": "where",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "conceptual",
+        "column": "when",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "logical",
+        "column": "what",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "logical",
+        "column": "why",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "logical",
+        "column": "how",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "logical",
+        "column": "who",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "logical",
+        "column": "where",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "logical",
+        "column": "when",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "physical",
+        "column": "what",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "physical",
+        "column": "why",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "physical",
+        "column": "how",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "physical",
+        "column": "who",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "physical",
+        "column": "where",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "physical",
+        "column": "when",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "component",
+        "column": "what",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "component",
+        "column": "why",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "component",
+        "column": "how",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "component",
+        "column": "who",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "component",
+        "column": "where",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "component",
+        "column": "when",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "operational",
+        "column": "what",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "operational",
+        "column": "why",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "operational",
+        "column": "how",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "operational",
+        "column": "who",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "operational",
+        "column": "where",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      },
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-MATRIX-COVERAGE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Account for all 36 SABSA cells through selected source elements or explicit applicability reasons; never invent missing architecture facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "row": "operational",
+        "column": "when",
+        "source_element_ref": "SYN-ELEMENT-1",
+        "applicability": "selected",
+        "rationale": "Fictional recovery service demonstrates this cell; actual architecture facts remain subject to domain review."
+      }
+    ],
+    "identity": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-IDENTITY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify stable artifact ID, owner, source version and intended usage.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "model_entities": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-MODEL-ENTITIES",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Provide stable identified entities and typed relationships with ownership and provenance.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "model_metamodel": {
+      "schema_version": "1.0",
+      "entity_id": "SYN-APP-1",
+      "columns": [
+        {
+          "name": "event_id",
+          "datatype": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "amount",
+          "datatype": "decimal(12,2)",
+          "unit": "EUR",
+          "nullable": false
+        }
+      ],
+      "key": "event_id",
+      "record": {
+        "event_id": "SYN-EVENT-1",
+        "amount": 125.5
+      },
+      "uniqueness_observed": "10 of 10 event IDs unique",
+      "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+      "record_id": "SYN-MODEL-METAMODEL",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Define entity/relation types, constraints, model boundary and source baseline.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "model_validation": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-MODEL-VALIDATION",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Evidence referential integrity, constraint checks, cross-view consistency and known gaps.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ]
+  },
+  "evaluation_selection": {
+    "overlays": [
+      "sabsa/client-questions"
+    ]
+  },
+  "structural_probe": true,
+  "evaluation_scope": "Typed contract/overlay detector probe; professional semantic adequacy is not established by these generated records.",
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Fabricated recovery service records; no real customer evidence or human approval."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "architecture-definition.architecture_context",
+        "architecture-definition.architecture_drivers",
+        "architecture-definition.architecture_evolution",
+        "architecture-definition.architecture_relations",
+        "architecture-definition.architecture_viewpoints",
+        "sabsa/client-questions.business_traceability",
+        "sabsa/client-questions.confirmation_accountability",
+        "sabsa/client-questions.confirmation_questions",
+        "sabsa/client-questions.matrix_coverage",
+        "type/model.identity",
+        "type/model.model_entities",
+        "type/model.model_metamodel",
+        "type/model.model_validation"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "architecture_context",
+      "expected_rule_ids": [
+        "architecture-definition.architecture_context"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "architecture_context",
+      "reason": "Author omitted a required obligation without authority.",
+      "expected_rule_ids": [
+        "architecture-definition.architecture_context"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "The recovery design guarantees permanent zero incidents without evidence.",
+      "expected_rule_ids": [
+        "architecture-definition.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "The history of office furniture procurement does not support service recovery or the receiving decision.",
+      "expected_rule_ids": [
+        "architecture-definition.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "architecture-definition.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "Schedule pressure is claimed to waive the applicable legal restriction without authority.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope excludes personal identifiers; SYN-NA records anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "architecture_context",
+      "count": 5,
+      "expected_rule_ids": [
+        "architecture-definition.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    }
+  ]
+}

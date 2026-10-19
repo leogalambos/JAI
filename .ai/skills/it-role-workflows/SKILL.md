@@ -31,7 +31,7 @@ The role skills define single roles. This one defines the chains between them: t
 | [Design to operational readiness](references/design-to-operational-readiness.md) | 7 | A solution design is becoming build/release ready and must prove it can be operated safely before go-live. |
 | [Migration and cutover](references/migration-and-cutover.md) | 8 | A project must move data/services from a current state to a target state through a controlled production cutover. |
 | [Organisational change and adoption](references/organisational-change-and-adoption.md) | 6 | Technology or process change requires people to work differently for the intended outcome to materialise. |
-| [Semantic artefact to enterprise publication](references/semantic-to-enterprise-publication.md) | 4 | A specialist artefact is substantively complete and requires enterprise-grade publication. |
+| [Semantic artefact to enterprise publication](references/semantic-to-enterprise-publication.md) | 5 | A specialist artefact is substantively complete and requires enterprise-grade publication. |
 | [Architecture model to repository governance](references/architecture-model-to-repository-governance.md) | 6 | A project/domain architecture needs to become a governed enterprise repository model and published view set. |
 | [Service retirement and decommission](references/service-retirement-and-decommission.md) | 8 | A service, application, platform or technology component is approved for retirement, replacement or exit. |
 | [Cyber incident / breach to recovery](references/cyber-incident-breach-to-recovery.md) | 13 | A suspected or confirmed cyber incident may affect systems, data, customers, regulatory obligations or business operations. |
@@ -52,3 +52,19 @@ The role skills define single roles. This one defines the chains between them: t
 ## What these chains are not
 
 They are not a project plan and not a mandated sequence. Real work skips steps, loops back and runs steps in parallel. The value is in knowing which hand-off you are at and which gate you are about to skip — not in walking all thirteen steps of a value stream for a one-line change.
+
+## Content acceptance at a handoff
+
+When operating a registered handoff, the execute-tier operator loads its
+exact `handoff_id` from `content/workflow-acceptance.json` and delegates the
+acceptance check to the existing trusted host's `content_workflow.check`.
+This routing skill remains read-only and does not execute the checker.
+Require the canonical source, registered contract and replayable content QA,
+then an independent authenticated receiver with a host-assigned receiving
+role and evidence for the specific gate. Producer names, declared roles,
+advisory findings and successful rendering cannot establish acceptance.
+
+The shared content profile and checker apply identically to Claude and
+Codex. A final named human authority step uses the existing signed JAI L0
+acceptance; agents cannot replace it. Record pending acceptance explicitly
+and preserve every existing security, evidence and governance block.

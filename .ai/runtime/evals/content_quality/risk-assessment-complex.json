@@ -147,7 +147,74 @@
         "SYN-01"
       ],
       "knowledge_status": "pending"
-    }
+    },
+    "evaluated_scenarios": [
+      {
+        "risk_id": "SYN-R1",
+        "cause": "Recovery checkpoint lags active transaction state",
+        "event": "Replay duplicates a committed transaction",
+        "business_consequence": "Ledger imbalance delays warehouse updates",
+        "inherent_score": 12,
+        "residual_score": 8,
+        "control_ref": "SYN-C1",
+        "treatment": "Enforce unique event IDs and rehearse ledger reconciliation",
+        "due": "2026-11-05",
+        "residual_authority": "Independent service risk owner; approval pending",
+        "record_id": "SYN-EVALUATED-SCENARIOS",
+        "service": "Regulated payment platform transition",
+        "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+        "criterion_under_review": "Link assets, causes, events, consequences and inherent/residual ratings to evidence.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "risk_method": {
+      "risk_id": "SYN-R1",
+      "cause": "Recovery checkpoint lags active transaction state",
+      "event": "Replay duplicates a committed transaction",
+      "business_consequence": "Ledger imbalance delays warehouse updates",
+      "inherent_score": 12,
+      "residual_score": 8,
+      "control_ref": "SYN-C1",
+      "treatment": "Enforce unique event IDs and rehearse ledger reconciliation",
+      "due": "2026-11-05",
+      "residual_authority": "Independent service risk owner; approval pending",
+      "record_id": "SYN-RISK-METHOD",
+      "service": "Regulated payment platform transition",
+      "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+      "criterion_under_review": "Define scope, likelihood, impact scales and applicable risk appetite.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "treatment_accountability": [
+      {
+        "risk_id": "SYN-R1",
+        "cause": "Recovery checkpoint lags active transaction state",
+        "event": "Replay duplicates a committed transaction",
+        "business_consequence": "Ledger imbalance delays warehouse updates",
+        "inherent_score": 12,
+        "residual_score": 8,
+        "control_ref": "SYN-C1",
+        "treatment": "Enforce unique event IDs and rehearse ledger reconciliation",
+        "due": "2026-11-05",
+        "residual_authority": "Independent service risk owner; approval pending",
+        "record_id": "SYN-TREATMENT-ACCOUNTABILITY",
+        "service": "Regulated payment platform transition",
+        "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+        "criterion_under_review": "Assign treatments, deadlines, risk owners and residual acceptance authority.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ]
   },
   "evidence": [
     {
