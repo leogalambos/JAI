@@ -54,9 +54,6 @@ NARRATION = [re.compile(p, re.I) for p in (
     r"^we\s+(now|then|next|first|need to|will|are going to)\b",
     r"^(start|end|beginning)\s+of\s+(the\s+)?(block|section|loop|function|method|code)\b",
     r"^(block|section|part)\s+(for|about|handling|dealing|related)\b",
-    r"^(zde|tady|nyn[ií])\s+(je|jsou|se|bude|provedeme|n[aá]sleduje)\b",       # Czech narration
-    r"^(blok|sekce|[cč][aá]st)\s+(pro|t[yý]kaj[ií]c[ií]|ohledn[eě]|zab[yý]vaj[ií]c[ií])\b",
-    r"^krok\s*\d+\b",
 )]
 CODE_IN_COMMENT = re.compile(
     r"^\s*((if|for|while|return|import|from|def|class|public|private|protected|var|let|const|val|fun|func|"
@@ -679,12 +676,12 @@ class Calc {
 }
 ''',
 "tests/test_ignored.py": "def test_x():\n    assert True\n",
-"zde.py": '''"""Module."""
+"narration.py": '''"""Module."""
 
 
 def f():
     """Do it."""
-    # zde je blok tykajici se vypoctu
+    # section dealing with calculation
     return 1
 ''',
 }
@@ -736,7 +733,7 @@ def selftest():
        ("missing-doc", "total") in rules("Bad.kt") and ("missing-param", "add") in rules("Bad.kt")
        and not any(k in ("helper", "hidden") for _, k in rules("Bad.kt")))
     ok("tests are exempt", not got["tests/test_ignored.py"])
-    ok("czech narration ('zde je blok…') is recognised", any(f["rule"] == "narration" for f in got["zde.py"]))
+    ok("English section narration is recognised", any(f["rule"] == "narration" for f in got["narration.py"]))
     scoped = check_file(os.path.join(d, "Bad.java"), ranges=[(13, 17)])
     ok("edit scope: only declarations inside the edited lines are reported",
        scoped and all(13 <= f["line"] <= 17 for f in scoped) and len(scoped) < len(got["Bad.java"]))

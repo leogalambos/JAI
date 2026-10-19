@@ -1865,18 +1865,18 @@
         "tender response",
         "rfp response",
         "bid compliance",
-        "tvorbu nabidky",
-        "tvorbu nabídky",
-        "rizeni nabidky",
-        "řízení nabídky"
+        "proposal preparation",
+        "proposal development",
+        "bid management",
+        "tender management"
       ],
       "exclude": [
         "buyer",
         "buyer procurement",
         "supplier evaluation",
         "buyer sourcing",
-        "nákup dodavatele",
-        "nakup dodavatele"
+        "supplier procurement",
+        "supplier sourcing"
       ]
     },
     {
@@ -1889,19 +1889,17 @@
         "deal margin",
         "margin cashflow",
         "margin cash flow",
-        "cenotvorba",
-        "prodejni cena",
-        "prodejní cena",
-        "marze zakazky",
-        "marže zakázky"
+        "pricing strategy",
+        "contract margin",
+        "deal profitability"
       ],
       "exclude": [
         "buyer",
         "buyer procurement",
         "supplier evaluation",
         "buyer sourcing",
-        "nákup dodavatele",
-        "nakup dodavatele"
+        "supplier procurement",
+        "supplier sourcing"
       ]
     },
     {
@@ -1913,18 +1911,18 @@
         "effort estimation",
         "estimate calibration",
         "estimation uncertainty",
-        "odhad pracnosti",
-        "odhady pracnosti",
-        "odhad nakladu",
-        "odhad nákladů"
+        "labor estimate",
+        "labor estimates",
+        "cost estimate",
+        "cost estimation"
       ],
       "exclude": [
         "buyer",
         "buyer procurement",
         "supplier evaluation",
         "buyer sourcing",
-        "nákup dodavatele",
-        "nakup dodavatele"
+        "supplier procurement",
+        "supplier sourcing"
       ]
     },
     {
@@ -1935,17 +1933,16 @@
         "independent bid review",
         "independent pricing review",
         "price challenge",
-        "nezavisla obchodni kontrola",
-        "nezávislá obchodní kontrola",
-        "independent commercial assurance"
+        "independent commercial review",
+        "independent deal review"
       ],
       "exclude": [
         "buyer",
         "buyer procurement",
         "supplier evaluation",
         "buyer sourcing",
-        "nákup dodavatele",
-        "nakup dodavatele"
+        "supplier procurement",
+        "supplier sourcing"
       ]
     },
     {
@@ -1956,16 +1953,16 @@
         "commercial lifecycle",
         "deal negotiation",
         "supplier contract change",
-        "dodavatelske obchodni rizeni",
-        "dodavatelské obchodní řízení"
+        "supplier commercial management",
+        "supplier deal management"
       ],
       "exclude": [
         "buyer",
         "buyer procurement",
         "supplier evaluation",
         "buyer sourcing",
-        "nákup dodavatele",
-        "nakup dodavatele"
+        "supplier procurement",
+        "supplier sourcing"
       ]
     }
   ]

@@ -25,9 +25,9 @@ with warnings.catch_warnings(record=True) as observed:
     else:
         workspace = Path(sys.argv[2])
         entry = workspace / "entry.md"
-        entry.write_text("---\\nname: Příliš\\n---\\n\\nBusiness intent.\\n", encoding="utf-8")
+        entry.write_text("---\\nname: Café\\n---\\n\\nBusiness intent.\\n", encoding="utf-8")
         parsed = module.parse(str(entry))
-        assert parsed == {"name": "Příliš", "_body": "Business intent."}, parsed
+        assert parsed == {"name": "Café", "_body": "Business intent."}, parsed
         entry.write_text("", encoding="utf-8")
         try:
             module.parse(str(entry))

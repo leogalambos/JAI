@@ -223,12 +223,12 @@ class RootDomainRecallTests(unittest.TestCase):
         self.assertEqual(r.Catalog().route('engineer and IT specialist','ctr')['candidates'],[])
         self.assertEqual(r.Catalog().route('zzzz unknown','ctr')['loaded_domains'],[])
 
-class CzechConsultationRoutingTests(unittest.TestCase):
-    def test_czech_procurement_firewall_consultation_selects_network_specialist(self):
-        result=r.Catalog().route('Odhad pracnosti firewallu pro nabídku nákup požaduje', 'ctr-procurement', ['network-and-telecommunications'])
+class EnglishConsultationRoutingTests(unittest.TestCase):
+    def test_procurement_firewall_consultation_selects_network_specialist(self):
+        result=r.Catalog().route('Procurement requests firewall effort estimates for a proposal', 'ctr-procurement', ['network-and-telecommunications'])
         self.assertTrue(any('firewall' in role['role_id'] for role in result['candidates']))
         self.assertEqual(result['loaded_domains'],['network-and-telecommunications'])
-        automatic=r.Catalog().route('správa firewallu síť', 'ctr')
+        automatic=r.Catalog().route('firewalls administration networking', 'ctr')
         self.assertIn('network-and-telecommunications',automatic['loaded_domains'])
         self.assertLessEqual(len(automatic['loaded_domains']),3)
 
@@ -241,9 +241,9 @@ class CommercialSpecialistIntentTests(unittest.TestCase):
             'Prepare basis of estimate and effort estimation': 'estimation-cost-engineering-specialist',
             'Independent commercial assurance review': 'independent-commercial-assurance-reviewer',
             'Supplier deal negotiation and commercial lifecycle': 'supplier-commercial-deal-manager',
-            'Proved odhad pracnosti': 'estimation-cost-engineering-specialist',
-            'Zajisti cenotvorba a prodejni cena': 'commercial-pricing-deal-finance-specialist',
-            'Koordinuj tvorbu nabídky': 'bid-proposal-manager',
+            'Prepare labor estimates': 'estimation-cost-engineering-specialist',
+            'Determine pricing strategy and selling price': 'commercial-pricing-deal-finance-specialist',
+            'Coordinate proposal preparation': 'bid-proposal-manager',
         }
         for question, expected in cases.items():
             with self.subTest(question=question):
@@ -301,6 +301,6 @@ class CommercialSpecialistIntentTests(unittest.TestCase):
         self.assertEqual(result['candidates'][0]['role_id'], 'bid-proposal-manager')
 
     def test_explicit_technical_consultation_domain_preserves_its_estimate_owner(self):
-        result = r.Catalog().route('Odhad pracnosti firewallu pro nabídku nákup požaduje', 'consultation-contract', ['network-and-telecommunications'])
+        result = r.Catalog().route('Procurement requests firewall effort estimates for a proposal', 'consultation-contract', ['network-and-telecommunications'])
         self.assertTrue(any('firewall' in role['role_id'] for role in result['candidates']))
         self.assertEqual(result['loaded_domains'], ['network-and-telecommunications'])

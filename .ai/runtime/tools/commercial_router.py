@@ -37,10 +37,9 @@ def _load(path):
 
 def _words(value):
     terms = set(re.findall(r'\w+', value.casefold()))
-    aliases = {'nákup': 'procurement', 'nakup': 'procurement', 'procurementu': 'procurement',
-               'firewallu': 'firewall', 'firewally': 'firewall', 'síť': 'network',
-               'síťové': 'network', 'sit': 'network', 'nabídka': 'sales',
-               'nabidky': 'sales', 'nabídky': 'sales', 'poptávka': 'procurement'}
+    aliases = {'purchasing': 'procurement', 'sourcing': 'procurement',
+               'firewalls': 'firewall', 'networks': 'network',
+               'networking': 'network', 'proposals': 'sales', 'bids': 'sales'}
     return terms | {aliases[term] for term in terms if term in aliases}
 
 

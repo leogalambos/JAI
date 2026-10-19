@@ -3,9 +3,10 @@
   "baseline": "26.10.1",
   "target_release": "26.10.2",
   "verified_against": [
-    "Potvrzení a plán úprav.txt",
+    "Confirmation and change plan.txt",
     "ai-it-house-universal-26.10.1.zip"
   ],
+  "source_name_note": "The first verified_against entry is the English translation of the original source filename; the historical source file was not renamed.",
   "findings": [
     {
       "id": "26101-DOC-DRIFT",

@@ -23,11 +23,11 @@ import sabsa_exchange as exchange
 
 class SabsaExchangeTest(unittest.TestCase):
     def test_catalogue_schema_and_deterministic_roundtrip(self):
-        entries = {'BD-001': {'id': 'BD-001', 'title': 'Český, "název"', '_dirtype': 'driver'}}
+        entries = {'BD-001': {'id': 'BD-001', 'title': 'Café, "title"', '_dirtype': 'driver'}}
         with tempfile.TemporaryDirectory() as directory:
             exchange.export_catalogues(entries, sabsa.TYPES, directory)
             original = (Path(directory) / 'driver.csv').read_bytes()
-            self.assertEqual(exchange.read_catalogues(directory, sabsa.TYPES, entries)['BD-001']['title'], 'Český, "název"')
+            self.assertEqual(exchange.read_catalogues(directory, sabsa.TYPES, entries)['BD-001']['title'], 'Café, "title"')
             exchange.export_catalogues(entries, sabsa.TYPES, directory)
             self.assertEqual(original, (Path(directory) / 'driver.csv').read_bytes())
             (Path(directory) / 'driver.csv').write_text('id,title\nx,y\n')
@@ -61,7 +61,7 @@ class SabsaExchangeTest(unittest.TestCase):
             path = csvdir / 'driver.csv'
             with path.open(newline='') as stream:
                 reader = csv.DictReader(stream); columns = reader.fieldnames; rows = list(reader)
-            rows[0]['title'] = 'Edited Czech název'
+            rows[0]['title'] = 'Edited café title'
             with path.open('w', newline='') as stream:
                 writer = csv.DictWriter(stream, fieldnames=columns); writer.writeheader(); writer.writerows(rows)
             source = next((lib / '01-contextual/drivers').glob('*.md'))
@@ -71,7 +71,7 @@ class SabsaExchangeTest(unittest.TestCase):
             self.assertEqual(before, source.read_bytes())
             result = run('catalogues', lib, 'import', '--directory', csvdir)
             self.assertEqual(0, result.returncode, result.stderr)
-            self.assertIn('Edited Czech název', source.read_text())
+            self.assertIn('Edited café title', source.read_text())
             original = source.read_bytes()
             rows[0]['id'] = 'BD-999'
             with path.open('w', newline='') as stream:
@@ -99,14 +99,14 @@ class SabsaExchangeTest(unittest.TestCase):
         with tempfile.TemporaryDirectory() as directory:
             lib = Path(directory) / 'lib'
             tool = TOOLS / 'sabsa.py'
-            subprocess.run([sys.executable, str(tool), 'init', str(lib), '--name', r'Česká architektura & 100% _ \ input', '--organisation', 'Example', '--scope', 'Test', '--owner', 'Owner'], check=True, capture_output=True)
+            subprocess.run([sys.executable, str(tool), 'init', str(lib), '--name', r'Café architecture & 100% _ \ input', '--organisation', 'Example', '--scope', 'Test', '--owner', 'Owner'], check=True, capture_output=True)
             for extension in ('tex', 'docx'):
                 dest = Path(directory) / ('out.' + extension)
                 subprocess.run([sys.executable, str(tool), 'document', str(lib), '--out', str(dest)], check=True, capture_output=True)
                 self.assertTrue(dest.is_file())
                 if extension == 'tex':
                     text = dest.read_text()
-                    self.assertIn('Česká architektura', text)
+                    self.assertIn('Café architecture', text)
                     self.assertIn(r'\&', text)
                     self.assertIn(r'100\%', text)
                     self.assertIn(r'\_', text)
