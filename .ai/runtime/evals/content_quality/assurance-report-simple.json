@@ -1,0 +1,225 @@
+{
+  "artifact_id": "synthetic/assurance-report/simple",
+  "document_kind": "assurance-report",
+  "title": "Inventory service recovery: assurance-report",
+  "context": {
+    "processes_personal_data": false,
+    "regulatory_requirement": false
+  },
+  "summary": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators. Restore warehouse inventory updates within 30 minutes; data loss must remain below five minutes. One application instance and a standby database in the existing managed platform.",
+  "scenario": {
+    "name": "Inventory service recovery",
+    "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+    "drivers": "Restore warehouse inventory updates within 30 minutes; data loss must remain below five minutes.",
+    "design": "One application instance and a standby database in the existing managed platform.",
+    "cost": "EUR 18000 implementation and EUR 6000 annual operation; one-year benefit EUR 32000, with a 25 percent adoption uncertainty.",
+    "risk": "Database replication delay can lose updates; lag alert at 60 seconds and hourly recovery-point checks reduce likelihood.",
+    "operations": "Warehouse operations owns support from 06:00 to 22:00; the platform duty engineer handles recovery escalation.",
+    "regulatory": false,
+    "privacy": false
+  },
+  "semantic_units": {
+    "assurance_scope": {
+      "period": "2026-10-19",
+      "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+      "criteria": [
+        "INV-REC1",
+        "INV-INT1"
+      ],
+      "exclusions": [
+        "Peak-load recovery"
+      ],
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "assurance_method": {
+      "assessor": "Independent QA reviewer Jordan Patel",
+      "method": "Inspect configuration and replay duplicate event IDs",
+      "sample_size": 10,
+      "limitation": "Synthetic sample only",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "control_tests": [
+      {
+        "id": "INV-C1",
+        "criterion": "Repeated event IDs must not create a second ledger entry",
+        "procedure": "Submit the same transaction ID twice and compare the ledger total",
+        "sample_size": 10,
+        "observed_duplicates": 0,
+        "result": "met in synthetic rehearsal",
+        "evidence_ref": "SYN-01",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "assurance_findings": [
+      {
+        "finding_ref": "INV-DEF1",
+        "criterion": "INV-REC1",
+        "significance": "material",
+        "observation": "Peak-load recovery was excluded from the rehearsal",
+        "owner": "Morgan Lee",
+        "response": "Schedule load retest by 2026-11-05",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "assurance_conclusion": {
+      "conclusion": "Sampled integrity control met; full recovery assurance remains qualified",
+      "basis_refs": [
+        "INV-EX1",
+        "INV-EX2"
+      ],
+      "execution_records": [
+        {
+          "id": "INV-EX1",
+          "requirement": "INV-REC1",
+          "started": "2026-10-19T09:00:00Z",
+          "finished": "2026-10-19T09:27:00Z",
+          "expected_max_minutes": 30,
+          "actual_minutes": 27,
+          "result": "PASS",
+          "evidence_ref": "SYN-01"
+        },
+        {
+          "id": "INV-EX2",
+          "requirement": "INV-INT1",
+          "started": "2026-10-19T10:00:00Z",
+          "finished": "2026-10-19T10:02:00Z",
+          "expected_ledger_count": 10,
+          "actual_ledger_count": 10,
+          "result": "PASS",
+          "evidence_ref": "SYN-01"
+        }
+      ],
+      "limits": [
+        "Synthetic evidence",
+        "Peak workload excluded"
+      ],
+      "approval_status": "pending",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    }
+  },
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Scenario assumptions and fabricated rehearsal observations for test development only; not real customer evidence."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "required_units_present": true,
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "assurance-report.assurance_scope",
+        "assurance-report.assurance_method",
+        "assurance-report.control_tests",
+        "assurance-report.assurance_findings",
+        "assurance-report.assurance_conclusion"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "A detailed history of office furniture procurement has no connection to the service decision or operational procedure.",
+      "expected_rule_ids": [
+        "assurance-report.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "assurance_scope",
+      "expected_rule_ids": [
+        "assurance-report.assurance_scope"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "This design guarantees zero incidents forever; no observation or assumption supports this assertion.",
+      "expected_rule_ids": [
+        "assurance-report.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "assurance_scope",
+      "count": 200,
+      "expected_rule_ids": [
+        "assurance-report.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "assurance_scope",
+      "reason": "The author omitted this unconditional obligation.",
+      "expected_rule_ids": [
+        "assurance-report.assurance_scope"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "assurance-report.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "The author claims that schedule pressure waives the applicable legal restriction.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope explicitly excludes personal identifiers; SYN-NA documents anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    }
+  ]
+}

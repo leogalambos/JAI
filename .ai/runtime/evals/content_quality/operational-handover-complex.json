@@ -1,0 +1,211 @@
+{
+  "artifact_id": "synthetic/operational-handover/complex",
+  "document_kind": "operational-handover",
+  "title": "Regulated payment platform transition: operational-handover",
+  "context": {
+    "processes_personal_data": true,
+    "regulatory_requirement": true
+  },
+  "summary": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response. Preserve reconciled balances and a 15-minute recovery objective while retaining auditable transaction evidence within approved jurisdictions. A staged migration uses immutable event IDs, dual reconciliation and approved regional failover; outbound settlement remains gated by ledger equality.",
+  "scenario": {
+    "name": "Regulated payment platform transition",
+    "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+    "drivers": "Preserve reconciled balances and a 15-minute recovery objective while retaining auditable transaction evidence within approved jurisdictions.",
+    "design": "A staged migration uses immutable event IDs, dual reconciliation and approved regional failover; outbound settlement remains gated by ledger equality.",
+    "cost": "EUR 8400000 transition and EUR 1900000 annual operation; five-year benefits EUR 16000000, sensitive to delay and compliance cost by 35 percent.",
+    "risk": "Cross-border failover can violate approved data-location constraints; regional routing and policy checks reduce exposure, with legal interpretation remaining reviewable.",
+    "operations": "The payment service owner authorises cutover; independent control assurance and round-the-clock operations review reconciliation before traffic migration.",
+    "regulatory": true,
+    "privacy": true
+  },
+  "semantic_units": {
+    "service_boundary": {
+      "service": "Regulated payment platform transition",
+      "owner": "Sam Rivera",
+      "application_team": "Transaction engineering",
+      "platform_team": "Managed platform operations",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "readiness_evidence": [
+      {
+        "criterion": "Repeated event IDs must not create a second ledger entry",
+        "result": "met in synthetic rehearsal",
+        "evidence_ref": "SYN-01",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "support_arrangements": {
+      "support_hours": "24x7",
+      "response_minutes": 5,
+      "escalation_owner": "Sam Rivera",
+      "access": "Approved identity group operations-recovery",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "handover_inventory": [
+      {
+        "id": "PAY-RB1",
+        "version": "1.0",
+        "owner": "Sam Rivera",
+        "purpose": "Recovery procedure",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "id": "PAY-CFG1",
+        "version": "candidate-1.0",
+        "owner": "Platform operations",
+        "purpose": "Configuration baseline",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "acceptance_decision": {
+      "status": "pending-human-approval",
+      "receiving_owner": "Sam Rivera",
+      "open_item": "PAY-DEF1",
+      "approval_ref": null,
+      "condition": "Independent operations authority reviews pending load retest before acceptance.",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "privacy_analysis": {
+      "description": "Transaction identifiers are pseudonymised; access is role-limited, retention is tied to the approved purpose and deletion is verified in rehearsal.",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "assumption"
+    },
+    "regulatory_analysis": {
+      "description": "Data-location and transaction-retention obligations require competent jurisdictional interpretation; the fixture does not assert a legal exemption or real compliance approval.",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "pending"
+    }
+  },
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Scenario assumptions and fabricated rehearsal observations for test development only; not real customer evidence."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "required_units_present": true,
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "operational-handover.service_boundary",
+        "operational-handover.readiness_evidence",
+        "operational-handover.support_arrangements",
+        "operational-handover.handover_inventory",
+        "operational-handover.acceptance_decision"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "A detailed history of office furniture procurement has no connection to the service decision or operational procedure.",
+      "expected_rule_ids": [
+        "operational-handover.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "service_boundary",
+      "expected_rule_ids": [
+        "operational-handover.service_boundary"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "This design guarantees zero incidents forever; no observation or assumption supports this assertion.",
+      "expected_rule_ids": [
+        "operational-handover.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "service_boundary",
+      "count": 200,
+      "expected_rule_ids": [
+        "operational-handover.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "service_boundary",
+      "reason": "The author omitted this unconditional obligation.",
+      "expected_rule_ids": [
+        "operational-handover.service_boundary"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "operational-handover.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "The author claims that schedule pressure waives the applicable legal restriction.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope explicitly excludes personal identifiers; SYN-NA documents anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    }
+  ]
+}

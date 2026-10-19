@@ -193,6 +193,40 @@ def _origin_problems(raw: dict, legacy_by: dict, live: dict | None, runtime: Pat
         problems.append(f'{cid}: contract identity differs from role/deliverable identity')
     return problems
 
+def content_profile_problems(runtime: Path) -> list[str]:
+    """Validate an optional DCS sidecar without rewriting historical contracts.
+
+    Args:
+        runtime: Canonical runtime directory in a source or installed library.
+
+    Returns:
+        Structural DCS errors, or an empty list for compatible unprofiled trees.
+        Packaged profiles fail closed if the resolver or referenced data is absent.
+    """
+    profile = runtime / 'jai/profiles/content-profile.json'
+    if not profile.exists():
+        return []
+    try:
+        settings = json.loads(profile.read_text(encoding='utf-8'))
+        expected_refs = {
+            'registry_ref': 'content/registry.json',
+            'binding_map_ref': 'content/migrations/26.10.5-binding-map.json',
+            'resolver': 'tools/content_spec.py',
+        }
+        if not isinstance(settings, dict) or any(settings.get(key) != value for key, value in expected_refs.items()):
+            return ['DCS: content profile must reference the canonical registry, bindings and resolver']
+        import importlib.util
+        spec = importlib.util.spec_from_file_location('jai_content_spec', runtime / 'tools/content_spec.py')
+        if spec is None or spec.loader is None:
+            return ['DCS: content resolver is unavailable']
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[spec.name] = module
+        spec.loader.exec_module(module)
+        return ['DCS: ' + problem for problem in module.lint_registry(runtime)]
+    except (OSError, ValueError, ImportError, AttributeError, TypeError, KeyError) as exc:
+        return [f'DCS: packaged content profile cannot be validated: {exc}']
+
+
 def validate(root: Path):
     """Return validation problems and loaded state; read all registered role sources.
 
@@ -201,6 +235,8 @@ def validate(root: Path):
 
     Returns:
         A pair of problem strings and state used to construct the compatibility view.
+        When a DCS sidecar profile is packaged, problems include its structural
+        reference and policy-conflict checks. Older unprofiled installations remain readable.
 
     Raises:
         SystemExit: Required canonical files or role references are missing.
@@ -253,6 +289,7 @@ def validate(root: Path):
         c=actual.get(case.get('id'))
         if not c: problems.append(f"golden case missing contract {case.get('id')}")
         elif c.get('artifact_type')!=case.get('expected_artifact_type'): problems.append(f"golden {case['id']}: {c.get('artifact_type')} != {case.get('expected_artifact_type')}")
+    problems.extend(content_profile_problems(p['runtime']))
     return problems, (p,taxonomy,source,live)
 
 

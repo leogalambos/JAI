@@ -1,0 +1,221 @@
+{
+  "artifact_id": "synthetic/business-case/medium",
+  "document_kind": "business-case",
+  "title": "Regional order integration: business-case",
+  "context": {
+    "processes_personal_data": true,
+    "regulatory_requirement": false
+  },
+  "summary": "Three regional order services, ERP integration, identity management and two operations teams. Reconcile regional orders within 15 minutes with 99.9 percent monthly availability and no duplicated financial postings. An idempotent event gateway connects three regional services to ERP using versioned schemas and a dead-letter queue.",
+  "scenario": {
+    "name": "Regional order integration",
+    "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+    "drivers": "Reconcile regional orders within 15 minutes with 99.9 percent monthly availability and no duplicated financial postings.",
+    "design": "An idempotent event gateway connects three regional services to ERP using versioned schemas and a dead-letter queue.",
+    "cost": "EUR 420000 implementation and EUR 90000 annual operation; three-year avoided handling cost EUR 810000, sensitive to order volume by 30 percent.",
+    "risk": "Replayed events can duplicate postings; deduplication keys and reconciled ledger totals reduce exposure but require weekly evidence review.",
+    "operations": "Regional service owners retain customer support; the integration team owns gateway recovery and ERP reconciliation escalation.",
+    "regulatory": false,
+    "privacy": true
+  },
+  "semantic_units": {
+    "investment_request": {
+      "requested_funding": 420000,
+      "currency": "EUR",
+      "sponsor": "Alex Chen",
+      "financial_owner": "Taylor Smith",
+      "decision_deadline": "2026-11-12",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "investment_options": [
+      {
+        "id": "BASE",
+        "name": "Retain current service",
+        "transition": 0,
+        "annual_operation": 360000,
+        "recovery_minutes": 33,
+        "criterion_result": "Fails recovery objective",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "id": "TARGET",
+        "name": "Managed recovery deployment",
+        "transition": 420000,
+        "annual_operation": 90000,
+        "recovery_minutes": 12,
+        "criterion_result": "Meets proposed recovery objective",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "financial_model": {
+      "currency": "EUR",
+      "horizon_years": 3,
+      "transition": 420000,
+      "annual_operation": 90000,
+      "total_cost": 690000,
+      "annual_avoided_manual_cost": 270000,
+      "gross_benefit": 810000,
+      "net_benefit": 120000,
+      "benefit_basis": "Avoided manual processing only; no revenue uplift counted.",
+      "benefit_owner": "Alex Chen",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "sensitivity": {
+      "benefit_downside": {
+        "reduction_fraction": 0.3,
+        "gross_benefit": 567000.0,
+        "net_benefit": -123000.0
+      },
+      "six_month_delay": {
+        "lost_benefit": 135000.0,
+        "net_benefit": -15000.0
+      },
+      "interpretation": "Reconsider scope if delayed or reduced benefits do not justify total cost.",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "benefit_realisation": {
+      "measure": "Manual handling cost avoided",
+      "baseline_annual_eur": 270000,
+      "target_annual_avoidance_eur": 270000,
+      "owner": "Alex Chen",
+      "review": "quarterly",
+      "risk_ref": "ORD-R1",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "privacy_analysis": {
+      "description": "Transaction identifiers are pseudonymised; access is role-limited, retention is tied to the approved purpose and deletion is verified in rehearsal.",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "assumption"
+    }
+  },
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Scenario assumptions and fabricated rehearsal observations for test development only; not real customer evidence."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "required_units_present": true,
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "business-case.investment_request",
+        "business-case.investment_options",
+        "business-case.financial_model",
+        "business-case.sensitivity",
+        "business-case.benefit_realisation"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "A detailed history of office furniture procurement has no connection to the service decision or operational procedure.",
+      "expected_rule_ids": [
+        "business-case.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "investment_request",
+      "expected_rule_ids": [
+        "business-case.investment_request"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "This design guarantees zero incidents forever; no observation or assumption supports this assertion.",
+      "expected_rule_ids": [
+        "business-case.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "investment_request",
+      "count": 200,
+      "expected_rule_ids": [
+        "business-case.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "investment_request",
+      "reason": "The author omitted this unconditional obligation.",
+      "expected_rule_ids": [
+        "business-case.investment_request"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "business-case.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "The author claims that schedule pressure waives the applicable legal restriction.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope explicitly excludes personal identifiers; SYN-NA documents anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    }
+  ]
+}

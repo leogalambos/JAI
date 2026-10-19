@@ -48,3 +48,12 @@ Codex provides the corresponding `$workflow-<command>` surfaces. For command-by-
 Use this opt-in command to add supplier-side qualification, discovery, estimation, staffing, costing/pricing, terms, dual publication and delivery/service monitoring to an existing JAI engagement, or to establish that scope for a new one. Supply the source material, commercial owner, intended outputs and disclosure/commitment boundaries. The argument is a scoped request; there are no documented `/commercial prepare`, `review` or `approve` subcommands.
 
 Expected outputs depend on the requested stage: a discovery/assumption record, linked work packages and estimates, resource and economic models, review evidence, distinct client/internal projections, and unresolved human decisions. The command does not approve a bid or authorise a contract. Strict provider dispatch requires qualified execution controls; shipped capability records remain `not_run`. See [Commercial delivery](../capabilities/commercial-delivery.md) and [the worked proposal sequences](../using/methodical-workflows.md#4-example-prepare-an-enterprise-proposal).
+
+## DCS foundation inspection
+
+The shared `content_spec.py` tool provides `list`, `resolve --artifact-id ID`,
+`compile --spec-ref ID`, `lint-registry` and `coverage`, each with `--root PATH`.
+Resolution and compilation accept `--context FILE`. These inspect proposed
+content obligations; they do not approve standards or run 26.10.7 content QA.
+See [Document Content Specifications](../capabilities/document-content-specifications.md)
+for scope, compatibility and the human acceptance boundary.

@@ -1,0 +1,105 @@
+{
+  "license": "SPDX-License-Identifier: BSD-4-Clause",
+  "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
+  "id": "kind/role/grc-analyst:2",
+  "version": "1.0.0",
+  "owner": "Content Standards Owner",
+  "status": "proposed",
+  "effective_from": null,
+  "category": "document_kind",
+  "completeness": "skeleton",
+  "inherits": [
+    "type/register"
+  ],
+  "applies_to": {
+    "document_kind": "role/grc-analyst:2",
+    "artifact_types": [
+      "register"
+    ]
+  },
+  "purpose": "Produce and govern the role deliverable: risk and issue register maintenance.",
+  "target_audience": [
+    "competent independent domain reviewer"
+  ],
+  "decisions_supported": [],
+  "intended_usage": "26.10.6 advisory foundation; professional approval pending",
+  "non_goals": [
+    "Replace JAI authority",
+    "Claim a professional framework requirement without a cited source"
+  ],
+  "required_information": [],
+  "conditional_information": [],
+  "optional_information": [],
+  "forbidden_information": [],
+  "low_value_information": [],
+  "size_budget": {
+    "metric": "semantic_units",
+    "calibration_basis": "No generic numeric budget exists for a foundation skeleton.",
+    "minimum_is_quality_gate": false,
+    "calibration_status": "synthetic-only",
+    "allowance_rules": [
+      "Document complexity and audience need; excess requires review, not automatic rejection."
+    ],
+    "annex_rules": [
+      "Reference canonical detail rather than repeat it."
+    ]
+  },
+  "sources": {
+    "evidence_grade": "AI-derived proposal",
+    "provenance": [
+      "Approved implementation direction; content specifics remain proposed."
+    ],
+    "freshness": "review on source or policy change",
+    "claim_to_evidence_rules": [
+      "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ]
+  },
+  "overlap": {
+    "excluded_content": [
+      "Unrelated material"
+    ],
+    "deduplication_rules": [
+      "Reference canonical claims by stable ID."
+    ],
+    "canonical_reference_rules": [
+      "Preserve source version and hash."
+    ]
+  },
+  "runtime": {
+    "validators": [
+      "content_spec.py lint-registry"
+    ],
+    "judge_rubric": [
+      "Evaluate actual meaning, applicability, evidence and contradictions."
+    ],
+    "gate": "advisory",
+    "reviewer_class": "independent competent domain reviewer",
+    "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
+  },
+  "lifecycle": {
+    "effective_version": "1.0.0",
+    "deprecation": null,
+    "migration": "26.10.5 explicit sidecar binding",
+    "golden_case_refs": [],
+    "change_history": [
+      "Initial proposed foundation; no professional approval asserted."
+    ]
+  },
+  "jai": {
+    "L1": "purpose, audience and decision_supported",
+    "L2": "typed semantic information units",
+    "L3": "global invariants, precedence and acceptance",
+    "L4": "content blueprint and profile reference",
+    "L5": "canonical artifact source; existing producer",
+    "L6": "evidence and independent review; existing fabric authority references",
+    "L0": "Human professional approval through existing JAI authority acts; never AI self-approval"
+  },
+  "approval": {
+    "status": "pending",
+    "authority_ref": null,
+    "independent_of_author": true,
+    "mechanism": "Existing JAI L0 / fabric authority process"
+  },
+  "calibration_status": "synthetic-only",
+  "coverage_note": "Explicit contract-specific placeholder; substantive obligations, decision-purpose correction and professional approval remain pending."
+}

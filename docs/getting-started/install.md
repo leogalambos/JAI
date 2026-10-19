@@ -20,6 +20,10 @@ See [the interaction guide](../using/interaction-model.md) for normal work and [
 ### Required
 
 - Python **3.10 or newer**.
+- `jsonschema>=4.26,<5` for packaged DCS and Artifact Contract validation.
+  Install the declared dependencies with `python3 -m pip install -r requirements.txt`
+  from the repository or extracted package root. DCS schema checks fail closed
+  if this dependency is absent; they are never silently skipped.
 - A supported provider surface:
   - **Claude Code**, and/or
   - **Codex CLI / compatible OpenAI-oriented execution surface**.
@@ -36,7 +40,6 @@ These dependencies are selected by the task. See [sandbox and environment prereq
 | Poppler | Optional | Inspect PDF pages as images/text during visual QA |
 | LibreOffice / compatible Office application | Optional for applicable visual QA | Render Office output; Pandoc DOCX generation does not require it |
 | lxml | 5.x | EA XSD conformance suite |
-| jsonschema | 4.x | Draft 2020-12 semantic schemas |
 | Pillow | Runtime-supported | Visual QA fixture rendering |
 | GitHub Actions | Tag-triggered release workflow | Repository production publication; not required for local installation |
 

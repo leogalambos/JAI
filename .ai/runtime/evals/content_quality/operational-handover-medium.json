@@ -1,0 +1,204 @@
+{
+  "artifact_id": "synthetic/operational-handover/medium",
+  "document_kind": "operational-handover",
+  "title": "Regional order integration: operational-handover",
+  "context": {
+    "processes_personal_data": true,
+    "regulatory_requirement": false
+  },
+  "summary": "Three regional order services, ERP integration, identity management and two operations teams. Reconcile regional orders within 15 minutes with 99.9 percent monthly availability and no duplicated financial postings. An idempotent event gateway connects three regional services to ERP using versioned schemas and a dead-letter queue.",
+  "scenario": {
+    "name": "Regional order integration",
+    "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+    "drivers": "Reconcile regional orders within 15 minutes with 99.9 percent monthly availability and no duplicated financial postings.",
+    "design": "An idempotent event gateway connects three regional services to ERP using versioned schemas and a dead-letter queue.",
+    "cost": "EUR 420000 implementation and EUR 90000 annual operation; three-year avoided handling cost EUR 810000, sensitive to order volume by 30 percent.",
+    "risk": "Replayed events can duplicate postings; deduplication keys and reconciled ledger totals reduce exposure but require weekly evidence review.",
+    "operations": "Regional service owners retain customer support; the integration team owns gateway recovery and ERP reconciliation escalation.",
+    "regulatory": false,
+    "privacy": true
+  },
+  "semantic_units": {
+    "service_boundary": {
+      "service": "Regional order integration",
+      "owner": "Alex Chen",
+      "application_team": "Transaction engineering",
+      "platform_team": "Managed platform operations",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "readiness_evidence": [
+      {
+        "criterion": "Repeated event IDs must not create a second ledger entry",
+        "result": "met in synthetic rehearsal",
+        "evidence_ref": "SYN-01",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "support_arrangements": {
+      "support_hours": "06:00-22:00",
+      "response_minutes": 15,
+      "escalation_owner": "Alex Chen",
+      "access": "Approved identity group operations-recovery",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "handover_inventory": [
+      {
+        "id": "ORD-RB1",
+        "version": "1.0",
+        "owner": "Alex Chen",
+        "purpose": "Recovery procedure",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "id": "ORD-CFG1",
+        "version": "candidate-1.0",
+        "owner": "Platform operations",
+        "purpose": "Configuration baseline",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "acceptance_decision": {
+      "status": "pending-human-approval",
+      "receiving_owner": "Alex Chen",
+      "open_item": "ORD-DEF1",
+      "approval_ref": null,
+      "condition": "Independent operations authority reviews pending load retest before acceptance.",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "privacy_analysis": {
+      "description": "Transaction identifiers are pseudonymised; access is role-limited, retention is tied to the approved purpose and deletion is verified in rehearsal.",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "assumption"
+    }
+  },
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Scenario assumptions and fabricated rehearsal observations for test development only; not real customer evidence."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "required_units_present": true,
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "operational-handover.service_boundary",
+        "operational-handover.readiness_evidence",
+        "operational-handover.support_arrangements",
+        "operational-handover.handover_inventory",
+        "operational-handover.acceptance_decision"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "A detailed history of office furniture procurement has no connection to the service decision or operational procedure.",
+      "expected_rule_ids": [
+        "operational-handover.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "service_boundary",
+      "expected_rule_ids": [
+        "operational-handover.service_boundary"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "This design guarantees zero incidents forever; no observation or assumption supports this assertion.",
+      "expected_rule_ids": [
+        "operational-handover.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "service_boundary",
+      "count": 200,
+      "expected_rule_ids": [
+        "operational-handover.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "service_boundary",
+      "reason": "The author omitted this unconditional obligation.",
+      "expected_rule_ids": [
+        "operational-handover.service_boundary"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "operational-handover.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "The author claims that schedule pressure waives the applicable legal restriction.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope explicitly excludes personal identifiers; SYN-NA documents anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    }
+  ]
+}

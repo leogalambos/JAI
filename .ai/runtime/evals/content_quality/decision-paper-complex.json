@@ -1,0 +1,247 @@
+{
+  "artifact_id": "synthetic/decision-paper/complex",
+  "document_kind": "decision-paper",
+  "title": "Regulated payment platform transition: decision-paper",
+  "context": {
+    "processes_personal_data": true,
+    "regulatory_requirement": true
+  },
+  "summary": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response. Preserve reconciled balances and a 15-minute recovery objective while retaining auditable transaction evidence within approved jurisdictions. A staged migration uses immutable event IDs, dual reconciliation and approved regional failover; outbound settlement remains gated by ledger equality.",
+  "scenario": {
+    "name": "Regulated payment platform transition",
+    "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+    "drivers": "Preserve reconciled balances and a 15-minute recovery objective while retaining auditable transaction evidence within approved jurisdictions.",
+    "design": "A staged migration uses immutable event IDs, dual reconciliation and approved regional failover; outbound settlement remains gated by ledger equality.",
+    "cost": "EUR 8400000 transition and EUR 1900000 annual operation; five-year benefits EUR 16000000, sensitive to delay and compliance cost by 35 percent.",
+    "risk": "Cross-border failover can violate approved data-location constraints; regional routing and policy checks reduce exposure, with legal interpretation remaining reviewable.",
+    "operations": "The payment service owner authorises cutover; independent control assurance and round-the-clock operations review reconciliation before traffic migration.",
+    "regulatory": true,
+    "privacy": true
+  },
+  "semantic_units": {
+    "decision_request": {
+      "question": "Approve TARGET managed recovery design or retain BASE?",
+      "owner": "Sam Rivera",
+      "authority": "Service investment board",
+      "deadline": "2026-11-12",
+      "status": "proposed",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "baseline": {
+      "problem": "Synthetic rehearsal missed the recovery objective by 18 minutes",
+      "current_recovery_minutes": 33,
+      "objective_minutes": 15,
+      "evidence_ref": "SYN-01",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "options": [
+      {
+        "id": "BASE",
+        "name": "Retain current service",
+        "transition": 0,
+        "annual_operation": 5100000,
+        "recovery_minutes": 33,
+        "criterion_result": "Fails recovery objective",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "id": "TARGET",
+        "name": "Managed recovery deployment",
+        "transition": 8400000,
+        "annual_operation": 1900000,
+        "recovery_minutes": 12,
+        "criterion_result": "Meets proposed recovery objective",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "tradeoffs": {
+      "financial_model": {
+        "currency": "EUR",
+        "horizon_years": 5,
+        "transition": 8400000,
+        "annual_operation": 1900000,
+        "total_cost": 17900000,
+        "annual_avoided_manual_cost": 3200000,
+        "gross_benefit": 16000000,
+        "net_benefit": -1900000,
+        "benefit_basis": "Avoided manual processing only; no revenue uplift counted.",
+        "benefit_owner": "Sam Rivera"
+      },
+      "risk": {
+        "id": "PAY-R1",
+        "cause": "Recovery checkpoint lags active transaction state",
+        "event": "Replay duplicates a committed transaction",
+        "consequence": "Ledger imbalance delays service restoration",
+        "owner": "Sam Rivera",
+        "inherent": {
+          "likelihood": 3,
+          "impact": 4,
+          "score": 12
+        },
+        "residual": {
+          "likelihood": 2,
+          "impact": 4,
+          "score": 8
+        },
+        "control_ref": "PAY-C1",
+        "evidence_ref": "SYN-01"
+      },
+      "criteria": [
+        "recovery time",
+        "lifetime cost",
+        "operator effort"
+      ],
+      "uncertainty": "Benefit adoption may be 35 percent below plan",
+      "adoption_uncertainty_fraction": 0.35,
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "recommendation": {
+      "option_ref": "TARGET",
+      "rationale": "TARGET meets the recovery objective; BASE exceeds it by 18 minutes. Additional investment buys a measurable recovery improvement.",
+      "condition": "Independent operations acceptance remains pending",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "privacy_analysis": {
+      "description": "Transaction identifiers are pseudonymised; access is role-limited, retention is tied to the approved purpose and deletion is verified in rehearsal.",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "assumption"
+    },
+    "regulatory_analysis": {
+      "description": "Data-location and transaction-retention obligations require competent jurisdictional interpretation; the fixture does not assert a legal exemption or real compliance approval.",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "pending"
+    }
+  },
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Scenario assumptions and fabricated rehearsal observations for test development only; not real customer evidence."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "required_units_present": true,
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "decision-paper.decision_request",
+        "decision-paper.baseline",
+        "decision-paper.options",
+        "decision-paper.tradeoffs",
+        "decision-paper.recommendation"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "A detailed history of office furniture procurement has no connection to the service decision or operational procedure.",
+      "expected_rule_ids": [
+        "decision-paper.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "decision_request",
+      "expected_rule_ids": [
+        "decision-paper.decision_request"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "This design guarantees zero incidents forever; no observation or assumption supports this assertion.",
+      "expected_rule_ids": [
+        "decision-paper.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "decision_request",
+      "count": 200,
+      "expected_rule_ids": [
+        "decision-paper.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "decision_request",
+      "reason": "The author omitted this unconditional obligation.",
+      "expected_rule_ids": [
+        "decision-paper.decision_request"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "decision-paper.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "The author claims that schedule pressure waives the applicable legal restriction.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope explicitly excludes personal identifiers; SYN-NA documents anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    }
+  ]
+}

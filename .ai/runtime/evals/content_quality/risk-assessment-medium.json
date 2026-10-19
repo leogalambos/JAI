@@ -1,0 +1,244 @@
+{
+  "artifact_id": "synthetic/risk-assessment/medium",
+  "document_kind": "risk-assessment",
+  "title": "Regional order integration: risk-assessment",
+  "context": {
+    "processes_personal_data": true,
+    "regulatory_requirement": false
+  },
+  "summary": "Three regional order services, ERP integration, identity management and two operations teams. Reconcile regional orders within 15 minutes with 99.9 percent monthly availability and no duplicated financial postings. An idempotent event gateway connects three regional services to ERP using versioned schemas and a dead-letter queue.",
+  "scenario": {
+    "name": "Regional order integration",
+    "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+    "drivers": "Reconcile regional orders within 15 minutes with 99.9 percent monthly availability and no duplicated financial postings.",
+    "design": "An idempotent event gateway connects three regional services to ERP using versioned schemas and a dead-letter queue.",
+    "cost": "EUR 420000 implementation and EUR 90000 annual operation; three-year avoided handling cost EUR 810000, sensitive to order volume by 30 percent.",
+    "risk": "Replayed events can duplicate postings; deduplication keys and reconciled ledger totals reduce exposure but require weekly evidence review.",
+    "operations": "Regional service owners retain customer support; the integration team owns gateway recovery and ERP reconciliation escalation.",
+    "regulatory": false,
+    "privacy": true
+  },
+  "semantic_units": {
+    "assessment_scope": {
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "assets": [
+        {
+          "id": "ORD-APP",
+          "type": "application",
+          "name": "Regional order integration",
+          "responsibility": "Accept authorised transaction requests and return durable IDs"
+        },
+        {
+          "id": "ORD-DB",
+          "type": "data-store",
+          "name": "PostgreSQL ledger",
+          "responsibility": "Persist unique event IDs and reconciled balances"
+        },
+        {
+          "id": "ORD-OPS",
+          "type": "operational-role",
+          "name": "Alex Chen",
+          "responsibility": "Own restore rehearsal and incident escalation"
+        }
+      ],
+      "risk_owner": "Alex Chen",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "scoring_method": {
+      "likelihood_scale": {
+        "1": "rare",
+        "2": "unlikely",
+        "3": "possible",
+        "4": "likely",
+        "5": "frequent"
+      },
+      "impact_scale": {
+        "1": "minor",
+        "2": "limited",
+        "3": "moderate",
+        "4": "major",
+        "5": "severe"
+      },
+      "calculation": "likelihood * impact",
+      "escalation_threshold": 12,
+      "authority": "Synthetic proposed method; not enterprise-approved",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "risk_scenarios": [
+      {
+        "id": "ORD-R1",
+        "cause": "Recovery checkpoint lags active transaction state",
+        "event": "Replay duplicates a committed transaction",
+        "consequence": "Ledger imbalance delays service restoration",
+        "owner": "Alex Chen",
+        "inherent": {
+          "likelihood": 3,
+          "impact": 4,
+          "score": 12
+        },
+        "residual": {
+          "likelihood": 2,
+          "impact": 4,
+          "score": 8
+        },
+        "control_ref": "ORD-C1",
+        "evidence_ref": "SYN-01",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "risk_evaluation": [
+      {
+        "risk_ref": "ORD-R1",
+        "inherent_score": 12,
+        "residual_score": 8,
+        "control_ref": "ORD-C1",
+        "uncertainty": "Peak-load recovery not exercised",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "risk_treatment": [
+      {
+        "risk_ref": "ORD-R1",
+        "action": "Enable unique event_id constraint and rehearse restored-ledger reconciliation",
+        "owner": "Alex Chen",
+        "due": "2026-11-05",
+        "verification_ref": "ORD-EX2",
+        "acceptance_authority": "Independent service risk owner",
+        "approval_status": "pending",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "privacy_analysis": {
+      "description": "Transaction identifiers are pseudonymised; access is role-limited, retention is tied to the approved purpose and deletion is verified in rehearsal.",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "assumption"
+    }
+  },
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Scenario assumptions and fabricated rehearsal observations for test development only; not real customer evidence."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "required_units_present": true,
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "risk-assessment.assessment_scope",
+        "risk-assessment.scoring_method",
+        "risk-assessment.risk_scenarios",
+        "risk-assessment.risk_evaluation",
+        "risk-assessment.risk_treatment"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "A detailed history of office furniture procurement has no connection to the service decision or operational procedure.",
+      "expected_rule_ids": [
+        "risk-assessment.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "assessment_scope",
+      "expected_rule_ids": [
+        "risk-assessment.assessment_scope"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "This design guarantees zero incidents forever; no observation or assumption supports this assertion.",
+      "expected_rule_ids": [
+        "risk-assessment.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "assessment_scope",
+      "count": 200,
+      "expected_rule_ids": [
+        "risk-assessment.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "assessment_scope",
+      "reason": "The author omitted this unconditional obligation.",
+      "expected_rule_ids": [
+        "risk-assessment.assessment_scope"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "risk-assessment.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "The author claims that schedule pressure waives the applicable legal restriction.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope explicitly excludes personal identifiers; SYN-NA documents anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "manifest_version": "1.0.0",
-  "release": "26.10.5",
+  "release": "26.10.6",
   "counts": {
     "roles": 286,
     "agents": 34,

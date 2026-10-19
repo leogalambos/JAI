@@ -156,6 +156,7 @@ nav:
   - Capabilities:
       - SABSA and enterprise architecture: capabilities/sabsa-ea.md
       - Publication and visual QA: capabilities/artifacts-publication.md
+      - Document Content Specifications: capabilities/document-content-specifications.md
       - Justifiable Fabric: capabilities/justifiable-fabric.md
       - Layered runtime and assurance: capabilities/layered-runtime.md
       - Research and defect analysis: capabilities/research-defect.md

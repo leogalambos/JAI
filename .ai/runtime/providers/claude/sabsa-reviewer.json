@@ -22,5 +22,6 @@
   "approval_required_for": [
     "policy-change",
     "release-approval"
-  ]
+  ],
+  "content_profile_ref": "jai/profiles/content-profile.json"
 }

@@ -1,0 +1,158 @@
+{
+  "schema_version": "1.0.0",
+  "category": "valid",
+  "authority": "Navigation only; canonical examples remain in evals/content_quality.",
+  "calibration_status": "synthetic-only",
+  "entries": [
+    {
+      "case_ref": "evals/content_quality/decision-paper-simple.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/decision-paper-medium.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/decision-paper-complex.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/adr-simple.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/adr-medium.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/adr-complex.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/business-case-simple.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/business-case-medium.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/business-case-complex.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/risk-assessment-simple.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/risk-assessment-medium.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/risk-assessment-complex.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/assurance-report-simple.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/assurance-report-medium.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/assurance-report-complex.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/architecture-definition-simple.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/architecture-definition-medium.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/architecture-definition-complex.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/hld-simple.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/hld-medium.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/hld-complex.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/operational-handover-simple.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/operational-handover-medium.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/operational-handover-complex.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/runbook-simple.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/runbook-medium.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/runbook-complex.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/test-report-simple.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/test-report-medium.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    },
+    {
+      "case_ref": "evals/content_quality/test-report-complex.json",
+      "variant_id": null,
+      "role": "synthetic-reference; professional review pending"
+    }
+  ]
+}

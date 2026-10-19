@@ -1,0 +1,214 @@
+{
+  "artifact_id": "synthetic/business-case/simple",
+  "document_kind": "business-case",
+  "title": "Inventory service recovery: business-case",
+  "context": {
+    "processes_personal_data": false,
+    "regulatory_requirement": false
+  },
+  "summary": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators. Restore warehouse inventory updates within 30 minutes; data loss must remain below five minutes. One application instance and a standby database in the existing managed platform.",
+  "scenario": {
+    "name": "Inventory service recovery",
+    "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+    "drivers": "Restore warehouse inventory updates within 30 minutes; data loss must remain below five minutes.",
+    "design": "One application instance and a standby database in the existing managed platform.",
+    "cost": "EUR 18000 implementation and EUR 6000 annual operation; one-year benefit EUR 32000, with a 25 percent adoption uncertainty.",
+    "risk": "Database replication delay can lose updates; lag alert at 60 seconds and hourly recovery-point checks reduce likelihood.",
+    "operations": "Warehouse operations owns support from 06:00 to 22:00; the platform duty engineer handles recovery escalation.",
+    "regulatory": false,
+    "privacy": false
+  },
+  "semantic_units": {
+    "investment_request": {
+      "requested_funding": 18000,
+      "currency": "EUR",
+      "sponsor": "Morgan Lee",
+      "financial_owner": "Taylor Smith",
+      "decision_deadline": "2026-11-12",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "investment_options": [
+      {
+        "id": "BASE",
+        "name": "Retain current service",
+        "transition": 0,
+        "annual_operation": 38000,
+        "recovery_minutes": 48,
+        "criterion_result": "Fails recovery objective",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "id": "TARGET",
+        "name": "Managed recovery deployment",
+        "transition": 18000,
+        "annual_operation": 6000,
+        "recovery_minutes": 27,
+        "criterion_result": "Meets proposed recovery objective",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "financial_model": {
+      "currency": "EUR",
+      "horizon_years": 1,
+      "transition": 18000,
+      "annual_operation": 6000,
+      "total_cost": 24000,
+      "annual_avoided_manual_cost": 32000,
+      "gross_benefit": 32000,
+      "net_benefit": 8000,
+      "benefit_basis": "Avoided manual processing only; no revenue uplift counted.",
+      "benefit_owner": "Morgan Lee",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "sensitivity": {
+      "benefit_downside": {
+        "reduction_fraction": 0.25,
+        "gross_benefit": 24000.0,
+        "net_benefit": 0.0
+      },
+      "six_month_delay": {
+        "lost_benefit": 16000.0,
+        "net_benefit": -8000.0
+      },
+      "interpretation": "Reconsider scope if delayed or reduced benefits do not justify total cost.",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "benefit_realisation": {
+      "measure": "Manual handling cost avoided",
+      "baseline_annual_eur": 32000,
+      "target_annual_avoidance_eur": 32000,
+      "owner": "Morgan Lee",
+      "review": "quarterly",
+      "risk_ref": "INV-R1",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    }
+  },
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Scenario assumptions and fabricated rehearsal observations for test development only; not real customer evidence."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "required_units_present": true,
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "business-case.investment_request",
+        "business-case.investment_options",
+        "business-case.financial_model",
+        "business-case.sensitivity",
+        "business-case.benefit_realisation"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "A detailed history of office furniture procurement has no connection to the service decision or operational procedure.",
+      "expected_rule_ids": [
+        "business-case.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "investment_request",
+      "expected_rule_ids": [
+        "business-case.investment_request"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "This design guarantees zero incidents forever; no observation or assumption supports this assertion.",
+      "expected_rule_ids": [
+        "business-case.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "investment_request",
+      "count": 200,
+      "expected_rule_ids": [
+        "business-case.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "investment_request",
+      "reason": "The author omitted this unconditional obligation.",
+      "expected_rule_ids": [
+        "business-case.investment_request"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "business-case.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "The author claims that schedule pressure waives the applicable legal restriction.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope explicitly excludes personal identifiers; SYN-NA documents anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    }
+  ]
+}

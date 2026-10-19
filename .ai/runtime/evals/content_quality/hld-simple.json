@@ -1,0 +1,227 @@
+{
+  "artifact_id": "synthetic/hld/simple",
+  "document_kind": "hld",
+  "title": "Inventory service recovery: hld",
+  "context": {
+    "processes_personal_data": false,
+    "regulatory_requirement": false
+  },
+  "summary": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators. Restore warehouse inventory updates within 30 minutes; data loss must remain below five minutes. One application instance and a standby database in the existing managed platform.",
+  "scenario": {
+    "name": "Inventory service recovery",
+    "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+    "drivers": "Restore warehouse inventory updates within 30 minutes; data loss must remain below five minutes.",
+    "design": "One application instance and a standby database in the existing managed platform.",
+    "cost": "EUR 18000 implementation and EUR 6000 annual operation; one-year benefit EUR 32000, with a 25 percent adoption uncertainty.",
+    "risk": "Database replication delay can lose updates; lag alert at 60 seconds and hourly recovery-point checks reduce likelihood.",
+    "operations": "Warehouse operations owns support from 06:00 to 22:00; the platform duty engineer handles recovery escalation.",
+    "regulatory": false,
+    "privacy": false
+  },
+  "semantic_units": {
+    "solution_scope": {
+      "boundary": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+      "release": "candidate-1.0",
+      "external_dependency": "Approved identity provider",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "quality_requirements": [
+      {
+        "id": "INV-REC1",
+        "metric": "recovery_minutes",
+        "maximum": 30,
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "id": "INV-INT1",
+        "metric": "duplicate_committed_event_ids",
+        "maximum": 0,
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "solution_components": [
+      {
+        "id": "INV-APP",
+        "type": "application",
+        "name": "Inventory service recovery",
+        "responsibility": "Accept authorised transaction requests and return durable IDs",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "id": "INV-DB",
+        "type": "data-store",
+        "name": "PostgreSQL ledger",
+        "responsibility": "Persist unique event IDs and reconciled balances",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "id": "INV-OPS",
+        "type": "operational-role",
+        "name": "Morgan Lee",
+        "responsibility": "Own restore rehearsal and incident escalation",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "solution_interfaces": [
+      {
+        "id": "INV-IF1",
+        "source": "INV-APP",
+        "target": "INV-DB",
+        "protocol": "PostgreSQL TLS",
+        "contract_version": "1.0",
+        "fields": [
+          "event_id",
+          "amount",
+          "status"
+        ],
+        "failure": "Timeout after 5 seconds; retry twice with same event_id; then reject and alert",
+        "trust_boundary": "Application service identity to restricted database role",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "delivery_strategy": {
+      "deployment": "Restore candidate configuration in isolated rehearsal; reconcile ledger before traffic switch",
+      "rollback": "Disable candidate traffic; retain previous primary; restore previous configuration only after queue drain",
+      "verification_refs": [
+        "INV-EX1",
+        "INV-EX2"
+      ],
+      "owner": "Morgan Lee",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    }
+  },
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Scenario assumptions and fabricated rehearsal observations for test development only; not real customer evidence."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "required_units_present": true,
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "hld.solution_scope",
+        "hld.quality_requirements",
+        "hld.solution_components",
+        "hld.solution_interfaces",
+        "hld.delivery_strategy"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "A detailed history of office furniture procurement has no connection to the service decision or operational procedure.",
+      "expected_rule_ids": [
+        "hld.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "solution_scope",
+      "expected_rule_ids": [
+        "hld.solution_scope"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "This design guarantees zero incidents forever; no observation or assumption supports this assertion.",
+      "expected_rule_ids": [
+        "hld.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "solution_scope",
+      "count": 200,
+      "expected_rule_ids": [
+        "hld.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "solution_scope",
+      "reason": "The author omitted this unconditional obligation.",
+      "expected_rule_ids": [
+        "hld.solution_scope"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "hld.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "The author claims that schedule pressure waives the applicable legal restriction.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope explicitly excludes personal identifiers; SYN-NA documents anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    }
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "artifact_id": "synthetic/runbook/complex",
+  "document_kind": "runbook",
+  "title": "Regulated payment platform transition: runbook",
+  "context": {
+    "processes_personal_data": true,
+    "regulatory_requirement": true
+  },
+  "summary": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response. Preserve reconciled balances and a 15-minute recovery objective while retaining auditable transaction evidence within approved jurisdictions. A staged migration uses immutable event IDs, dual reconciliation and approved regional failover; outbound settlement remains gated by ledger equality.",
+  "scenario": {
+    "name": "Regulated payment platform transition",
+    "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+    "drivers": "Preserve reconciled balances and a 15-minute recovery objective while retaining auditable transaction evidence within approved jurisdictions.",
+    "design": "A staged migration uses immutable event IDs, dual reconciliation and approved regional failover; outbound settlement remains gated by ledger equality.",
+    "cost": "EUR 8400000 transition and EUR 1900000 annual operation; five-year benefits EUR 16000000, sensitive to delay and compliance cost by 35 percent.",
+    "risk": "Cross-border failover can violate approved data-location constraints; regional routing and policy checks reduce exposure, with legal interpretation remaining reviewable.",
+    "operations": "The payment service owner authorises cutover; independent control assurance and round-the-clock operations review reconciliation before traffic migration.",
+    "regulatory": true,
+    "privacy": true
+  },
+  "semantic_units": {
+    "operational_trigger": {
+      "trigger": "Incident commander confirms unavailable transaction API",
+      "incident_ref": "PAY-INC1",
+      "operator": "Sam Rivera",
+      "stop_condition": "Environment label differs from rehearsal target",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "prerequisites": [
+      {
+        "tool": "kubectl",
+        "version": "1.31",
+        "context": "pay-rehearsal",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "permission": "operations-recovery",
+        "credential_location": "Existing approved secret store; no credential content included",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "procedure_steps": [
+      {
+        "step": 1,
+        "command": "kubectl --context pay-rehearsal get deployment transaction-api",
+        "expected_output": "transaction-api 0/1 available",
+        "stop_on": "Unexpected deployment or environment",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "step": 2,
+        "command": "kubectl --context pay-rehearsal rollout undo deployment/transaction-api",
+        "expected_output": "deployment.apps/transaction-api rolled back",
+        "stop_on": "Rollback failed",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      },
+      {
+        "step": 3,
+        "command": "kubectl --context pay-rehearsal rollout status deployment/transaction-api --timeout=120s",
+        "expected_output": "deployment \"transaction-api\" successfully rolled out",
+        "stop_on": "Timeout; do not enable traffic",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "failure_recovery": {
+      "rollback": "Keep external traffic disabled; preserve last consistent database checkpoint; incident commander approves any database restoration",
+      "escalation_owner": "Sam Rivera",
+      "escalation_channel": "Incident bridge PAY-INC1",
+      "safe_state": "No new transaction traffic",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "operational_validation": {
+      "rehearsal_date": "2026-10-19",
+      "environment": "pay-rehearsal",
+      "evidence_ref": "SYN-01",
+      "next_review": "After deployment or dependency change",
+      "owner": "Sam Rivera",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "privacy_analysis": {
+      "description": "Transaction identifiers are pseudonymised; access is role-limited, retention is tied to the approved purpose and deletion is verified in rehearsal.",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "assumption"
+    },
+    "regulatory_analysis": {
+      "description": "Data-location and transaction-retention obligations require competent jurisdictional interpretation; the fixture does not assert a legal exemption or real compliance approval.",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "pending"
+    }
+  },
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Scenario assumptions and fabricated rehearsal observations for test development only; not real customer evidence."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "required_units_present": true,
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "runbook.operational_trigger",
+        "runbook.prerequisites",
+        "runbook.procedure_steps",
+        "runbook.failure_recovery",
+        "runbook.operational_validation"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "A detailed history of office furniture procurement has no connection to the service decision or operational procedure.",
+      "expected_rule_ids": [
+        "runbook.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "operational_trigger",
+      "expected_rule_ids": [
+        "runbook.operational_trigger"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "This design guarantees zero incidents forever; no observation or assumption supports this assertion.",
+      "expected_rule_ids": [
+        "runbook.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "operational_trigger",
+      "count": 200,
+      "expected_rule_ids": [
+        "runbook.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "operational_trigger",
+      "reason": "The author omitted this unconditional obligation.",
+      "expected_rule_ids": [
+        "runbook.operational_trigger"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "runbook.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "The author claims that schedule pressure waives the applicable legal restriction.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope explicitly excludes personal identifiers; SYN-NA documents anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    }
+  ]
+}

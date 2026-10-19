@@ -36,5 +36,6 @@
   "native_codex": {
     "model": "gpt-6.1-sol",
     "model_reasoning_effort": "medium"
-  }
+  },
+  "content_profile_ref": "jai/profiles/content-profile.json"
 }

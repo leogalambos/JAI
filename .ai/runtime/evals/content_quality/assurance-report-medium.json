@@ -1,0 +1,232 @@
+{
+  "artifact_id": "synthetic/assurance-report/medium",
+  "document_kind": "assurance-report",
+  "title": "Regional order integration: assurance-report",
+  "context": {
+    "processes_personal_data": true,
+    "regulatory_requirement": false
+  },
+  "summary": "Three regional order services, ERP integration, identity management and two operations teams. Reconcile regional orders within 15 minutes with 99.9 percent monthly availability and no duplicated financial postings. An idempotent event gateway connects three regional services to ERP using versioned schemas and a dead-letter queue.",
+  "scenario": {
+    "name": "Regional order integration",
+    "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+    "drivers": "Reconcile regional orders within 15 minutes with 99.9 percent monthly availability and no duplicated financial postings.",
+    "design": "An idempotent event gateway connects three regional services to ERP using versioned schemas and a dead-letter queue.",
+    "cost": "EUR 420000 implementation and EUR 90000 annual operation; three-year avoided handling cost EUR 810000, sensitive to order volume by 30 percent.",
+    "risk": "Replayed events can duplicate postings; deduplication keys and reconciled ledger totals reduce exposure but require weekly evidence review.",
+    "operations": "Regional service owners retain customer support; the integration team owns gateway recovery and ERP reconciliation escalation.",
+    "regulatory": false,
+    "privacy": true
+  },
+  "semantic_units": {
+    "assurance_scope": {
+      "period": "2026-10-19",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criteria": [
+        "ORD-REC1",
+        "ORD-INT1"
+      ],
+      "exclusions": [
+        "Peak-load recovery"
+      ],
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "assurance_method": {
+      "assessor": "Independent QA reviewer Jordan Patel",
+      "method": "Inspect configuration and replay duplicate event IDs",
+      "sample_size": 100,
+      "limitation": "Synthetic sample only",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "control_tests": [
+      {
+        "id": "ORD-C1",
+        "criterion": "Repeated event IDs must not create a second ledger entry",
+        "procedure": "Submit the same transaction ID twice and compare the ledger total",
+        "sample_size": 100,
+        "observed_duplicates": 0,
+        "result": "met in synthetic rehearsal",
+        "evidence_ref": "SYN-01",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "assurance_findings": [
+      {
+        "finding_ref": "ORD-DEF1",
+        "criterion": "ORD-REC1",
+        "significance": "material",
+        "observation": "Peak-load recovery was excluded from the rehearsal",
+        "owner": "Alex Chen",
+        "response": "Schedule load retest by 2026-11-05",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "assurance_conclusion": {
+      "conclusion": "Sampled integrity control met; full recovery assurance remains qualified",
+      "basis_refs": [
+        "ORD-EX1",
+        "ORD-EX2"
+      ],
+      "execution_records": [
+        {
+          "id": "ORD-EX1",
+          "requirement": "ORD-REC1",
+          "started": "2026-10-19T09:00:00Z",
+          "finished": "2026-10-19T09:12:00Z",
+          "expected_max_minutes": 15,
+          "actual_minutes": 12,
+          "result": "PASS",
+          "evidence_ref": "SYN-01"
+        },
+        {
+          "id": "ORD-EX2",
+          "requirement": "ORD-INT1",
+          "started": "2026-10-19T10:00:00Z",
+          "finished": "2026-10-19T10:02:00Z",
+          "expected_ledger_count": 100,
+          "actual_ledger_count": 100,
+          "result": "PASS",
+          "evidence_ref": "SYN-01"
+        }
+      ],
+      "limits": [
+        "Synthetic evidence",
+        "Peak workload excluded"
+      ],
+      "approval_status": "pending",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "privacy_analysis": {
+      "description": "Transaction identifiers are pseudonymised; access is role-limited, retention is tied to the approved purpose and deletion is verified in rehearsal.",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "assumption"
+    }
+  },
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Scenario assumptions and fabricated rehearsal observations for test development only; not real customer evidence."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "required_units_present": true,
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "assurance-report.assurance_scope",
+        "assurance-report.assurance_method",
+        "assurance-report.control_tests",
+        "assurance-report.assurance_findings",
+        "assurance-report.assurance_conclusion"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "A detailed history of office furniture procurement has no connection to the service decision or operational procedure.",
+      "expected_rule_ids": [
+        "assurance-report.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "assurance_scope",
+      "expected_rule_ids": [
+        "assurance-report.assurance_scope"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "This design guarantees zero incidents forever; no observation or assumption supports this assertion.",
+      "expected_rule_ids": [
+        "assurance-report.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "assurance_scope",
+      "count": 200,
+      "expected_rule_ids": [
+        "assurance-report.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "assurance_scope",
+      "reason": "The author omitted this unconditional obligation.",
+      "expected_rule_ids": [
+        "assurance-report.assurance_scope"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "assurance-report.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "The author claims that schedule pressure waives the applicable legal restriction.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope explicitly excludes personal identifiers; SYN-NA documents anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    }
+  ]
+}

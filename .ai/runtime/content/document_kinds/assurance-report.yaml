@@ -1,0 +1,564 @@
+{
+  "license": "SPDX-License-Identifier: BSD-4-Clause",
+  "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
+  "id": "kind/assurance-report",
+  "version": "1.0.0",
+  "owner": "Content Standards Owner",
+  "status": "proposed",
+  "effective_from": null,
+  "category": "document_kind",
+  "completeness": "complete",
+  "inherits": [],
+  "applies_to": {
+    "document_kind": "assurance-report",
+    "artifact_types": [
+      "assurance-report"
+    ]
+  },
+  "purpose": "Determine whether delivery controls provide sufficient evidenced assurance for the stated scope.",
+  "target_audience": [
+    "competent independent domain reviewer"
+  ],
+  "decisions_supported": [
+    "Determine whether delivery controls provide sufficient evidenced assurance for the stated scope."
+  ],
+  "intended_usage": "26.10.6 advisory foundation; professional approval pending",
+  "non_goals": [
+    "Replace JAI authority",
+    "Claim a professional framework requirement without a cited source"
+  ],
+  "required_information": [
+    {
+      "id": "assurance-report.assurance_scope",
+      "semantic_fields": [
+        "assurance_scope"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Define assurance objectives, applicable criteria, period and exclusions.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Define assurance objectives, applicable criteria, period and exclusions.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "assurance-report.assurance_method",
+      "semantic_fields": [
+        "assurance_method"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Identify independent assessor, sampling approach, limitations and evidence collection method.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Identify independent assessor, sampling approach, limitations and evidence collection method.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "assurance-report.control_tests",
+      "semantic_fields": [
+        "control_tests"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Link each tested criterion to procedure, evidence, sample and observed outcome.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Link each tested criterion to procedure, evidence, sample and observed outcome.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "assurance-report.assurance_findings",
+      "semantic_fields": [
+        "assurance_findings"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Record located deviations, significance, management response and corrective owners.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Record located deviations, significance, management response and corrective owners.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "assurance-report.assurance_conclusion",
+      "semantic_fields": [
+        "assurance_conclusion"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Bound the assurance conclusion by tested scope, evidence and remaining uncertainty.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Bound the assurance conclusion by tested scope, evidence and remaining uncertainty.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    }
+  ],
+  "conditional_information": [
+    {
+      "id": "assurance-report.privacy_analysis",
+      "semantic_fields": [
+        "privacy_analysis"
+      ],
+      "datatype": "object",
+      "obligation": "CONDITIONAL",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Identify personal-data flows, lawful handling constraints, minimisation and review evidence.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Identify personal-data flows, lawful handling constraints, minimisation and review evidence.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "when": {
+        "field": "processes_personal_data",
+        "op": "eq",
+        "value": true
+      }
+    },
+    {
+      "id": "assurance-report.regulatory_analysis",
+      "semantic_fields": [
+        "regulatory_analysis"
+      ],
+      "datatype": "object",
+      "obligation": "CONDITIONAL",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Trace each applicable regulatory obligation to scope, evidence and competent interpretation; exceptions cannot waive law.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Trace each applicable regulatory obligation to scope, evidence and competent interpretation; exceptions cannot waive law.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "when": {
+        "field": "regulatory_requirement",
+        "op": "eq",
+        "value": true
+      }
+    }
+  ],
+  "optional_information": [
+    {
+      "id": "assurance-report.technical_annex",
+      "semantic_fields": [
+        "technical_annex"
+      ],
+      "datatype": "object",
+      "obligation": "MAY",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Include deeper calculations or technical detail only when linked to a reader need.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Include deeper calculations or technical detail only when linked to a reader need.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    }
+  ],
+  "forbidden_information": [
+    {
+      "id": "assurance-report.unsupported_material_claim",
+      "semantic_fields": [
+        "unsupported_material_claim"
+      ],
+      "datatype": "object",
+      "obligation": "MUST NOT",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Never state a material conclusion as established without evidence or explicit uncertainty.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Never state a material conclusion as established without evidence or explicit uncertainty.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "category": "critical-content",
+      "severity": "critical"
+    }
+  ],
+  "low_value_information": [
+    {
+      "id": "assurance-report.irrelevant_detail",
+      "semantic_fields": [
+        "irrelevant_detail"
+      ],
+      "datatype": "object",
+      "obligation": "SHOULD NOT",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Remove detail that does not support the stated purpose or a referenced annex.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Remove detail that does not support the stated purpose or a referenced annex.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "category": "editorial",
+      "severity": "minor"
+    },
+    {
+      "id": "assurance-report.duplicate_claim",
+      "semantic_fields": [
+        "duplicate_claim"
+      ],
+      "datatype": "object",
+      "obligation": "SHOULD NOT",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Reference an existing claim instead of repeating it without new analytical value.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Reference an existing claim instead of repeating it without new analytical value.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "category": "editorial",
+      "severity": "minor"
+    }
+  ],
+  "size_budget": {
+    "metric": "pages",
+    "calibration_basis": "No generic numeric budget exists for a foundation skeleton.",
+    "minimum_is_quality_gate": false,
+    "calibration_status": "synthetic-only",
+    "allowance_rules": [
+      "Document complexity and audience need; excess requires review, not automatic rejection."
+    ],
+    "annex_rules": [
+      "Reference canonical detail rather than repeat it."
+    ],
+    "target": [
+      4,
+      12
+    ],
+    "soft_max": 16,
+    "basis": "Indicative pilot intervals from approved implementation direction; assurance and handover use proposed evidence-pack intervals requiring calibration.",
+    "exclude": [
+      "controlled_annexes",
+      "source_register"
+    ],
+    "target_is_informational": true
+  },
+  "sources": {
+    "evidence_grade": "AI-derived proposal",
+    "provenance": [
+      "Approved implementation direction; content specifics remain proposed."
+    ],
+    "freshness": "review on source or policy change",
+    "claim_to_evidence_rules": [
+      "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ]
+  },
+  "overlap": {
+    "excluded_content": [
+      "Unrelated material"
+    ],
+    "deduplication_rules": [
+      "Reference canonical claims by stable ID."
+    ],
+    "canonical_reference_rules": [
+      "Preserve source version and hash."
+    ]
+  },
+  "runtime": {
+    "validators": [
+      "content_spec.py lint-registry"
+    ],
+    "judge_rubric": [
+      "Evaluate actual meaning, applicability, evidence and contradictions."
+    ],
+    "gate": "advisory",
+    "reviewer_class": "independent competent domain reviewer",
+    "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
+  },
+  "lifecycle": {
+    "effective_version": "1.0.0",
+    "deprecation": null,
+    "migration": "26.10.5 explicit sidecar binding",
+    "golden_case_refs": [
+      "evals/content_quality/assurance-report-simple.json",
+      "evals/content_quality/assurance-report-medium.json",
+      "evals/content_quality/assurance-report-complex.json"
+    ],
+    "change_history": [
+      "Initial proposed foundation; no professional approval asserted."
+    ]
+  },
+  "jai": {
+    "L1": "purpose, audience and decision_supported",
+    "L2": "typed semantic information units",
+    "L3": "global invariants, precedence and acceptance",
+    "L4": "content blueprint and profile reference",
+    "L5": "canonical artifact source; existing producer",
+    "L6": "evidence and independent review; existing fabric authority references",
+    "L0": "Human professional approval through existing JAI authority acts; never AI self-approval"
+  },
+  "approval": {
+    "status": "pending",
+    "authority_ref": null,
+    "independent_of_author": true,
+    "mechanism": "Existing JAI L0 / fabric authority process"
+  },
+  "calibration_status": "synthetic-only",
+  "applicability_policy": {
+    "unconditional_units": "N/A prohibited",
+    "conditional_units": "N/A requires context evidence, reviewer-visible justification and condition=false; unknown condition remains pending",
+    "unknown_context": "Do not silently assume false; request evidence or retain pending review."
+  },
+  "completion_scope": "Authored information contract and synthetic fixtures only; proposed and not production-qualified."
+}

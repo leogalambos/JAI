@@ -1,0 +1,237 @@
+{
+  "artifact_id": "synthetic/risk-assessment/simple",
+  "document_kind": "risk-assessment",
+  "title": "Inventory service recovery: risk-assessment",
+  "context": {
+    "processes_personal_data": false,
+    "regulatory_requirement": false
+  },
+  "summary": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators. Restore warehouse inventory updates within 30 minutes; data loss must remain below five minutes. One application instance and a standby database in the existing managed platform.",
+  "scenario": {
+    "name": "Inventory service recovery",
+    "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+    "drivers": "Restore warehouse inventory updates within 30 minutes; data loss must remain below five minutes.",
+    "design": "One application instance and a standby database in the existing managed platform.",
+    "cost": "EUR 18000 implementation and EUR 6000 annual operation; one-year benefit EUR 32000, with a 25 percent adoption uncertainty.",
+    "risk": "Database replication delay can lose updates; lag alert at 60 seconds and hourly recovery-point checks reduce likelihood.",
+    "operations": "Warehouse operations owns support from 06:00 to 22:00; the platform duty engineer handles recovery escalation.",
+    "regulatory": false,
+    "privacy": false
+  },
+  "semantic_units": {
+    "assessment_scope": {
+      "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+      "assets": [
+        {
+          "id": "INV-APP",
+          "type": "application",
+          "name": "Inventory service recovery",
+          "responsibility": "Accept authorised transaction requests and return durable IDs"
+        },
+        {
+          "id": "INV-DB",
+          "type": "data-store",
+          "name": "PostgreSQL ledger",
+          "responsibility": "Persist unique event IDs and reconciled balances"
+        },
+        {
+          "id": "INV-OPS",
+          "type": "operational-role",
+          "name": "Morgan Lee",
+          "responsibility": "Own restore rehearsal and incident escalation"
+        }
+      ],
+      "risk_owner": "Morgan Lee",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "scoring_method": {
+      "likelihood_scale": {
+        "1": "rare",
+        "2": "unlikely",
+        "3": "possible",
+        "4": "likely",
+        "5": "frequent"
+      },
+      "impact_scale": {
+        "1": "minor",
+        "2": "limited",
+        "3": "moderate",
+        "4": "major",
+        "5": "severe"
+      },
+      "calculation": "likelihood * impact",
+      "escalation_threshold": 12,
+      "authority": "Synthetic proposed method; not enterprise-approved",
+      "knowledge_status": "synthetic-assumption",
+      "evidence_refs": [
+        "SYN-01"
+      ]
+    },
+    "risk_scenarios": [
+      {
+        "id": "INV-R1",
+        "cause": "Recovery checkpoint lags active transaction state",
+        "event": "Replay duplicates a committed transaction",
+        "consequence": "Ledger imbalance delays service restoration",
+        "owner": "Morgan Lee",
+        "inherent": {
+          "likelihood": 3,
+          "impact": 4,
+          "score": 12
+        },
+        "residual": {
+          "likelihood": 2,
+          "impact": 4,
+          "score": 8
+        },
+        "control_ref": "INV-C1",
+        "evidence_ref": "SYN-01",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "risk_evaluation": [
+      {
+        "risk_ref": "INV-R1",
+        "inherent_score": 12,
+        "residual_score": 8,
+        "control_ref": "INV-C1",
+        "uncertainty": "Peak-load recovery not exercised",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ],
+    "risk_treatment": [
+      {
+        "risk_ref": "INV-R1",
+        "action": "Enable unique event_id constraint and rehearse restored-ledger reconciliation",
+        "owner": "Morgan Lee",
+        "due": "2026-11-05",
+        "verification_ref": "INV-EX2",
+        "acceptance_authority": "Independent service risk owner",
+        "approval_status": "pending",
+        "knowledge_status": "synthetic-assumption",
+        "evidence_refs": [
+          "SYN-01"
+        ]
+      }
+    ]
+  },
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Scenario assumptions and fabricated rehearsal observations for test development only; not real customer evidence."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "required_units_present": true,
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "risk-assessment.assessment_scope",
+        "risk-assessment.scoring_method",
+        "risk-assessment.risk_scenarios",
+        "risk-assessment.risk_evaluation",
+        "risk-assessment.risk_treatment"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "A detailed history of office furniture procurement has no connection to the service decision or operational procedure.",
+      "expected_rule_ids": [
+        "risk-assessment.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "assessment_scope",
+      "expected_rule_ids": [
+        "risk-assessment.assessment_scope"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "This design guarantees zero incidents forever; no observation or assumption supports this assertion.",
+      "expected_rule_ids": [
+        "risk-assessment.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "assessment_scope",
+      "count": 200,
+      "expected_rule_ids": [
+        "risk-assessment.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "assessment_scope",
+      "reason": "The author omitted this unconditional obligation.",
+      "expected_rule_ids": [
+        "risk-assessment.assessment_scope"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "risk-assessment.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "The author claims that schedule pressure waives the applicable legal restriction.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope explicitly excludes personal identifiers; SYN-NA documents anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    }
+  ]
+}

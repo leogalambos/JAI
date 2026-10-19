@@ -1,5 +1,23 @@
 # Changelog
 
+## 26.10.6 — Semantic Content Foundation (implementation candidate)
+
+- Adds a shared Document Content Specification catalogue, explicit
+  document kinds and sidecar bindings without changing historical
+  Artifact Contract v3 records or existing authorization, evidence and
+  security gates.
+- Adds deterministic resolution, compilation, conflict lint and
+  catalogue coverage for 28 types, 13 publication archetypes and 19
+  SABSA mappings.
+- Provides ten detailed priority-family proposals and synthetic
+  reference scenarios for development and regression; calibration is
+  synthetic-only.
+- Adds shared Claude/Codex profile references and structural source/CI
+  checks. Specific standards remain proposed and require competent human
+  domain approval through existing JAI L0. No human-gold, production
+  content approval, 26.10.7 content QA enforcement or release
+  publication is claimed here.
+
 ## 26.10.5 — Supplier Commercial Delivery and Methodical Guidance
 
 - Adds dedicated supplier Bid / Proposal Manager, Estimation / Cost

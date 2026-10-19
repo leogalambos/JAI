@@ -1,0 +1,227 @@
+{
+  "license": "SPDX-License-Identifier: BSD-4-Clause",
+  "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
+  "id": "global/invariants",
+  "version": "1.0.0",
+  "owner": "Content Standards Owner",
+  "status": "proposed",
+  "effective_from": null,
+  "category": "global",
+  "completeness": "skeleton",
+  "inherits": [],
+  "applies_to": {},
+  "purpose": "Preserve evidence, privacy, authority and explicit uncertainty.",
+  "target_audience": [
+    "competent independent domain reviewer"
+  ],
+  "decisions_supported": [],
+  "intended_usage": "26.10.6 advisory foundation; professional approval pending",
+  "non_goals": [
+    "Replace JAI authority",
+    "Claim a professional framework requirement without a cited source"
+  ],
+  "required_information": [],
+  "conditional_information": [],
+  "optional_information": [],
+  "forbidden_information": [
+    {
+      "id": "global.secret_disclosure",
+      "semantic_fields": [
+        "secret_disclosure"
+      ],
+      "datatype": "object",
+      "obligation": "MUST NOT",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Never disclose credentials, restricted personal information or information outside the authorised classification boundary.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Never disclose credentials, restricted personal information or information outside the authorised classification boundary.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "category": "security-policy",
+      "severity": "critical"
+    },
+    {
+      "id": "global.fabricated_evidence",
+      "semantic_fields": [
+        "fabricated_evidence"
+      ],
+      "datatype": "object",
+      "obligation": "MUST NOT",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Do not invent observations, claim unsupported certainty or present synthetic examples as human-approved gold.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Do not invent observations, claim unsupported certainty or present synthetic examples as human-approved gold.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "category": "existing-mandatory-gate",
+      "severity": "critical"
+    },
+    {
+      "id": "global.authority_bypass",
+      "semantic_fields": [
+        "authority_bypass"
+      ],
+      "datatype": "object",
+      "obligation": "MUST NOT",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Never replace existing JAI human approval or weaken security, evidence and authorisation gates.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Never replace existing JAI human approval or weaken security, evidence and authorisation gates.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "category": "existing-mandatory-gate",
+      "severity": "critical"
+    }
+  ],
+  "low_value_information": [],
+  "size_budget": {
+    "metric": "semantic_units",
+    "calibration_basis": "No generic numeric budget exists for a foundation skeleton.",
+    "minimum_is_quality_gate": false,
+    "calibration_status": "synthetic-only",
+    "allowance_rules": [
+      "Document complexity and audience need; excess requires review, not automatic rejection."
+    ],
+    "annex_rules": [
+      "Reference canonical detail rather than repeat it."
+    ]
+  },
+  "sources": {
+    "evidence_grade": "AI-derived proposal",
+    "provenance": [
+      "Approved implementation direction; content specifics remain proposed."
+    ],
+    "freshness": "review on source or policy change",
+    "claim_to_evidence_rules": [
+      "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ]
+  },
+  "overlap": {
+    "excluded_content": [
+      "Unrelated material"
+    ],
+    "deduplication_rules": [
+      "Reference canonical claims by stable ID."
+    ],
+    "canonical_reference_rules": [
+      "Preserve source version and hash."
+    ]
+  },
+  "runtime": {
+    "validators": [
+      "content_spec.py lint-registry"
+    ],
+    "judge_rubric": [
+      "Evaluate actual meaning, applicability, evidence and contradictions."
+    ],
+    "gate": "advisory",
+    "reviewer_class": "independent competent domain reviewer",
+    "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
+  },
+  "lifecycle": {
+    "effective_version": "1.0.0",
+    "deprecation": null,
+    "migration": "26.10.5 explicit sidecar binding",
+    "golden_case_refs": [],
+    "change_history": [
+      "Initial proposed foundation; no professional approval asserted."
+    ]
+  },
+  "jai": {
+    "L1": "purpose, audience and decision_supported",
+    "L2": "typed semantic information units",
+    "L3": "global invariants, precedence and acceptance",
+    "L4": "content blueprint and profile reference",
+    "L5": "canonical artifact source; existing producer",
+    "L6": "evidence and independent review; existing fabric authority references",
+    "L0": "Human professional approval through existing JAI authority acts; never AI self-approval"
+  },
+  "approval": {
+    "status": "pending",
+    "authority_ref": null,
+    "independent_of_author": true,
+    "mechanism": "Existing JAI L0 / fabric authority process"
+  },
+  "calibration_status": "synthetic-only",
+  "precedence": [
+    "applicable law and classification",
+    "binding customer/organisational requirements",
+    "approved internal methods",
+    "applicable professional frameworks",
+    "existing JAI contracts",
+    "AI-derived professional proposals"
+  ],
+  "conflict_policy": "SPEC_CONFLICT: lower precedence may strengthen but cannot silently weaken applicable obligations."
+}

@@ -1,0 +1,104 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "jai/content/content-evaluation/1.0.0",
+  "title": "Reserved content QA record for later enforcement; foundation is structural only",
+  "type": "object",
+  "required": [
+    "artifact_id",
+    "semantic_hash",
+    "spec_id",
+    "spec_version",
+    "compiled_spec_hash",
+    "context_hash",
+    "findings",
+    "gate_verdict",
+    "reviewer",
+    "approval_refs"
+  ],
+  "properties": {
+    "artifact_id": {
+      "type": "string"
+    },
+    "semantic_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "spec_id": {
+      "type": "string"
+    },
+    "spec_version": {
+      "type": "string"
+    },
+    "compiled_spec_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "context_hash": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "findings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "rule_id",
+          "category",
+          "severity",
+          "evidence",
+          "remediation",
+          "blocking"
+        ],
+        "properties": {
+          "rule_id": {
+            "type": "string"
+          },
+          "category": {
+            "enum": [
+              "security-policy",
+              "existing-gate",
+              "critical-content",
+              "material-content",
+              "editorial"
+            ]
+          },
+          "severity": {
+            "enum": [
+              "blocker",
+              "critical",
+              "major",
+              "minor"
+            ]
+          },
+          "evidence": {
+            "type": "string"
+          },
+          "remediation": {
+            "type": "string"
+          },
+          "blocking": {
+            "type": "boolean"
+          }
+        }
+      }
+    },
+    "gate_verdict": {
+      "enum": [
+        "DRAFT_INCOMPLETE",
+        "CONTENT_PASS",
+        "CONTENT_FAIL",
+        "PUBLISHABLE_PENDING_APPROVAL",
+        "RELEASED"
+      ]
+    },
+    "reviewer": {
+      "type": "object"
+    },
+    "approval_refs": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    }
+  }
+}
