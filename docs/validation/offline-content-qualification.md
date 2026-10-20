@@ -17,8 +17,9 @@ variables. This is qualification containment, not a hostile-code sandbox.
 
 ```bash
 python3 .ai/runtime/tools/offline_guard.py scan --root .
-python3 .ai/runtime/tools/offline_guard.py run --root . -- \
-  python3 -m pytest -q tests
+regression_budget="$(python3 .ai/runtime/tools/qualification_core.py budget --scope regression)"
+python3 .ai/runtime/tools/offline_guard.py run --root . --timeout "$regression_budget" -- \
+  python3 -u .ai/runtime/tools/qualification_core.py regression
 ```
 
 Unavailable kernel controls produce `NOT_EXECUTED` and a non-passing exit;
@@ -108,9 +109,48 @@ mandatory. Run the existing full release qualification entrypoint in the
 prepared environment:
 
 ```bash
-python3 .ai/runtime/tools/offline_guard.py run --root . -- \
-  python3 .ai/runtime/tools/release_ga.py qualify
+qualification_budget="$(python3 .ai/runtime/tools/qualification_core.py budget --scope qualification)"
+python3 .ai/runtime/tools/offline_guard.py run --root . --timeout "$qualification_budget" -- \
+  python3 -u .ai/runtime/tools/release_ga.py qualify
 ```
 
 The provider harness is separate and never a dependency of qualification;
 see [optional provider evaluation](optional-provider-evaluation.md).
+
+## Bounded CI regression execution
+
+The canonical mandatory regression inventory lives in
+`qualification_core.py`. CI and gate A execute the same 22 modules in their
+maintained order, each in a separate offline-controlled process with a
+600-second ceiling. Every module remains mandatory. A failure, timeout or
+unavailable control prevents qualification; module isolation does not waive
+checks or permit live provider execution.
+
+Run the complete regression inventory with the aggregate kernel guard:
+
+```bash
+regression_budget="$(python3 .ai/runtime/tools/qualification_core.py budget --scope regression)"
+python3 .ai/runtime/tools/offline_guard.py run --root . --timeout "$regression_budget" -- python3 -u .ai/runtime/tools/qualification_core.py regression
+```
+
+Run full A–H qualification with its own aggregate budget:
+
+```bash
+qualification_budget="$(python3 .ai/runtime/tools/qualification_core.py budget --scope qualification)"
+python3 .ai/runtime/tools/offline_guard.py run --root . --timeout "$qualification_budget" -- python3 -u .ai/runtime/tools/release_ga.py qualify
+```
+
+The regression ceiling is 13,320 seconds: 22 module ceilings plus 120 seconds
+for orchestration. The complete A–H ceiling is 19,440 seconds: all individual
+command ceilings, including evidence generation and the final policy check,
+plus the same margin. These are maximum resource budgets, not expected run
+times. A regression test checks their relationship to the actual gate commands.
+The workflow job ceiling remains finite at 360 minutes. Independent individual
+commands retain the guard's default 900-second ceiling unless explicitly set.
+
+Each regression result identifies its module, elapsed seconds and execution
+ceiling. Unbuffered verbose pytest diagnostics identify the last active test
+when a module times out. Captured stdout and stderr survive timeout termination;
+they are displayed after the guarded process finishes, rather than streamed
+live. Treat diagnostics as local operational records. Do not automatically
+publish private project inputs or unsanitized customer output from local runs.

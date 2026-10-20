@@ -353,6 +353,11 @@ class ExpertReferences:
             if len(expected) != 1:
                 raise ReferenceError('MANIFEST_SLOT_AMBIGUOUS')
             entry = expected[0]
+            if self.manifest.get('version') == '2.3.0' and (
+                    entry.get('review_version') != '2.3.0'
+                    or meta.get('content_revision') != entry.get('review_version')
+                    or entry.get('review_status') != 'tri-lens-ai-review-applied-not-human-approved'):
+                raise ReferenceError('BUNDLED_REVIEW_METADATA_INVALID')
             if (meta['classification'] != 'public-synthetic' or meta['provenance'] != 'ai-authored-proposed'
                     or meta['fictional_context'] is not True or entry['sha256'] != hashlib.sha256(raw).hexdigest()
                     or entry['bytes'] != len(raw) or entry['reference_id'] != meta['reference_id']
@@ -388,6 +393,7 @@ class ExpertReferences:
                 'content_presence': 'PASS', 'content_adequacy': 'NOT_EVALUATED',
                 'evidence_and_rationale_quality': 'NOT_EVALUATED',
                 'professional_acceptance': 'NOT_APPROVED',
+                'review_status': entry.get('review_status', 'NOT_EVALUATED') if bundled else 'NOT_EVALUATED',
                 'required_units': required, 'reference_required_anchors': ['dcs-' + unit for unit in source_required],
                 'present_units': [translation[unit] for unit in source_required if sections.get(unit)],
                 'cross_reference_integrity': 'PASS_DCS_LINKS_ONLY',
@@ -402,6 +408,11 @@ class ExpertReferences:
         Raises:
             ReferenceError: If slots, paths, checksums, metadata or anchors differ.
         """
+        if self.manifest.get('version') == '2.3.0' and (self.manifest.get('review_summary') != {
+                'type': 'three-ai-review-lenses-not-three-human-reviewers',
+                'all_documents_revised': 135, 'human_approved': False}
+                or self.manifest['review_summary'].get('human_approved') is not False):
+            raise ReferenceError('BUNDLED_REVIEW_METADATA_INVALID')
         expected = {(kind, level) for kind in self.families for level in LEVELS}
         try:
             slots = [(item['document_kind'], item['complexity']) for item in self.entries]
@@ -419,6 +430,7 @@ class ExpertReferences:
                 raise ReferenceError('BUNDLED_UNINDEXED_REFERENCE')
             return {'status': 'PASS', 'reference_count': len(results), 'family_count': len(self.families),
                     'proposal_reference_count': sum('proposal_pack_id' in entry for entry in self.entries),
+                    'editorial_review_status': 'AI_EDITORIAL_ONLY' if self.manifest.get('version') == '2.3.0' else 'NOT_EVALUATED',
                     'professional_acceptance': 'NOT_APPROVED', 'results': results}
         except (KeyError, TypeError, OSError):
             raise ReferenceError('MANIFEST_INVALID') from None

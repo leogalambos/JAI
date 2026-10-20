@@ -23,6 +23,38 @@ class ReferenceBindingTests(unittest.TestCase):
         cls.contracts=json.loads((ROOT/'.ai/runtime/artifacts/contracts/role-deliverables.v3.json').read_text())['contracts']
         cls.contract_ids={row['id'] for row in cls.contracts}
 
+    def test_all_reference_review_supplements_preserve_unexecuted_evidence_and_external_authority(self):
+        manifest=json.loads((ROOT/'.ai/runtime/content/expert_references/index.json').read_text())
+        for entry in manifest['entries']:
+            path=ROOT/'.ai/runtime/content/expert_references'/entry['path']
+            text=path.read_text()
+            with self.subTest(reference_id=entry['reference_id']):
+                supplement=text.split('## Evidence-led expert review supplement (v2.3.0)',1)[1]
+                self.assertIn('fictional',supplement)
+                self.assertIn('OPEN until attributable evidence exists',supplement)
+                self.assertIn('NOT_EXECUTED if no actual test or review',supplement)
+                self.assertIn('PENDING, never inferred approval',supplement)
+                self.assertIn('Human-approved status remains **false**',supplement)
+                self.assertIn('Missing renderer = NOT_EXECUTED, not PASS',supplement)
+                self.assertIn('DEFER external commitment or release',supplement)
+                self.assertIn('Source fidelity',supplement)
+                self.assertIn('Cross-artifact consistency',supplement)
+                self.assertIn('No underlying customer system',supplement)
+
+    def test_security_review_supplements_require_observed_negative_test_evidence(self):
+        families=('security-architecture-assessment','threat-model','security-control-assessment',
+                  'devsecops-pipeline-design','cicd-pipeline-assurance','appsec-verification-report',
+                  'software-supply-chain-assessment')
+        for family in families:
+            for level in ('simple','medium','complex'):
+                text=(ROOT/'.ai/runtime/content/expert_references'/family/(level+'.md')).read_text()
+                supplement=text.split('## Evidence-led expert review supplement (v2.3.0)',1)[1]
+                with self.subTest(family=family,complexity=level):
+                    self.assertIn('planned negative scenario',supplement)
+                    self.assertIn('required technical trace and control owner',supplement)
+                    self.assertIn('absent observed evidence is NOT_EXECUTED',supplement)
+                    self.assertIn('Separate design review from observed operating effectiveness',supplement)
+
     def test_all_135_manifest_documents_have_exact_one_to_one_registered_anchor_mappings(self):
         manifest=json.loads((ROOT/'.ai/runtime/content/expert_references/index.json').read_text())
         by_family={row['reference_family']:row for row in self.document['families']}

@@ -112,3 +112,38 @@ def test_cli_reports_missing_execution_and_scan_success(tmp_path,capsys):
     assert main(['scan', '--root', str(tmp_path)]) == 0
     assert main(['run', '--root', str(ROOT)]) == 1
     assert 'FAIL' in capsys.readouterr().out
+
+
+def test_timeout_preserves_partial_stdout_and_stderr(monkeypatch):
+    import offline_guard
+    import subprocess
+    class Process:
+        pid = 12345
+        calls = 0
+        def communicate(self, timeout=None):
+            self.calls += 1
+            if self.calls == 1:
+                raise subprocess.TimeoutExpired('fixture', timeout)
+            return 'completed test before timeout\n', 'last diagnostic\n'
+    process = Process()
+    monkeypatch.setattr(offline_guard.subprocess, 'Popen', lambda *a, **k: process)
+    monkeypatch.setattr(offline_guard.os, 'killpg', lambda *a: None)
+    result = offline_guard.run_offline(['fixture'], ROOT, timeout=1)
+    assert result['status'] == 'FAIL' and result['returncode'] == 124
+    assert result['stdout'] == 'completed test before timeout\n'
+    assert result['stderr'] == 'last diagnostic\n'
+
+
+def test_cli_accepts_explicit_finite_timeout_without_changing_default(monkeypatch):
+    import offline_guard
+    calls = []
+    def execute(command, root, timeout=900):
+        calls.append(timeout)
+        return {'stdout': '', 'stderr': '', 'status': 'PASS', 'returncode': 0}
+    monkeypatch.setattr(offline_guard, 'run_offline', execute)
+    assert offline_guard.main(['run', '--timeout', '13320', '--', 'fixture']) == 0
+    assert offline_guard.main(['run', '--', 'fixture']) == 0
+    assert calls == [13320, 900]
+    for value in ('0', '-1', 'nan', 'inf'):
+        with pytest.raises(SystemExit):
+            offline_guard.main(['run', '--timeout', value, '--', 'fixture'])

@@ -9,7 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/operational-handover
 approval_status: not-human-approved
-content_revision: 2.0.0
+content_revision: 2.3.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -62,6 +62,39 @@ Transfer includes configuration source, deployment version, vendor contracts/exi
 **Status: NOT ACCEPTED (illustrative).** Receiving authority is Service Operations Manager; sponsor does not substitute for service-owner acceptance. Open actions: prove recovery within 2 hours, confirm alert routing, complete privilege review, rehearse rollback, close unresolved reconciliation exceptions and capture a signed record of each disposition.
 
 Final acceptance must contain exact service/build identity, date, evidence snapshot hash, explicit go/no-go, authorised signatory and residual-risk ownership. If any critical safeguard remains unverified, choose defer or explicitly invoke a permitted exception mechanism; do not report green by default.
+
+## Evidence-led expert review supplement (v2.3.0)
+
+> **Editorial status:** reviewer-designed example content for the fictional `MRG-OEI` context. No underlying customer system, security test, supplier quote or sign-off was inspected. This section is an illustrative professional decision aid, not completed assurance.
+
+### Context-specific decision and evidence matrix
+
+| Evaluation object | Explicit verification question | Evidence to request | Required disposition |
+|---|---|---|---|
+| Service/tenant ownership boundary | Is this statement supported for `MRG-OEI` by a source-controlled input with an identified owner? | Source record, scope identifier, timestamp and version | OPEN until attributable evidence exists |
+| On-call readiness and recovery evidence | Is the claim testable against a falsifiable success or failure criterion? | Expected/observed values and independent review result | NOT_EXECUTED if no actual test or review |
+| Receiving-owner acceptance | Does the proposed conclusion change a decision, cost, permission or release condition? | Approval or refusal recorded in the existing JAI authority mechanism | PENDING, never inferred approval |
+
+### Technical expert challenge — service boundary
+
+State service, covered tenant/region, in-scope components, excluded suppliers, accountable service owner and observability boundary. For **operational-handover**, the reviewer should actively challenge **service/tenant ownership boundary** and **on-call readiness and recovery evidence**. A plausible narrative without attributable source material remains a proposed hypothesis.
+
+### Management challenge — failure-safe control
+
+Name precise abort or escalation triggers, untested rollback edges and data integrity invariants. Do not treat a green process health probe as business recovery. The accountable party for this illustrative acceptance is **Service Owner / Incident Authority**, not an unspecified project team. Required management decision: **DEFER external commitment or release when a material evidence gap remains**. Create a tracked action with named owner, due date, acceptance predicate and escalation path; none is asserted as completed here.
+
+### Presentation and reader decision check
+
+**Decision headline:** evidence is insufficient for an unconditional approval; the current proposal is fit for discussion and refinement only. **What matters now:** service/tenant ownership boundary, on-call readiness and recovery evidence, and receiving-owner acceptance. **Next step:** obtain original evidence, reconcile contradictory figures and issue an updated, independently reviewed version. Use descriptive heading hierarchy, non-colour-only statuses, concise table labels, explicit units and a separate annex for technical detail. Do not bury exceptions below a visually positive summary.
+
+### Decision-oriented quality acceptance
+
+| Test | Expected finding for this fictional example | Decision implication |
+|---|---|---|
+| Source fidelity | Unverified example facts are marked synthetic or assumed | No production factual claim |
+| Cross-artifact consistency | IDs, scope, prices, controls and status must reconcile with linked artifacts | Any substantive mismatch requires correction |
+| Independent review | No real reviewer evidence is provided | Human-approved status remains **false** |
+| Publication quality | Headings, tables, links and any figures must render without truncation; validate when a renderer is present | Missing renderer = NOT_EXECUTED, not PASS |
 
 ## Evidence register, assumptions and limitations
 

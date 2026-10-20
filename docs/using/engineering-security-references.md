@@ -2,11 +2,16 @@
 
 Owner: JAI maintainers · Last reviewed: 2026-10-20
 
-Library v2.2.0 adds 39 English synthetic examples across 13 families to the
-96 established references. Each family has `simple`, `medium` and `complex`
-documents. Existing proposal references and production commands remain
-unchanged. These examples are authoring inputs, not a second semantic record,
+Library v2.3.0 contains 135 English synthetic examples, including 39 across
+13 engineering, transformation and security families. Each family has
+`simple`, `medium` and `complex` documents. All reference bodies now include
+AI editorial decision/evidence supplements; stable identities and production
+commands remain unchanged. These examples are authoring inputs, not a second semantic record,
 security assessment, release approval or record of executed tests.
+
+See [editorial review status](../validation/expert-reference-review.md) for
+the scope of the three review lenses. They do not replace the professional
+review rubric below or existing human authority.
 
 ## Choose a family and audience
 

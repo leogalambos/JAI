@@ -43,6 +43,8 @@ def test_offline_timeout_remains_failed_without_direct_subprocess_fallback():
     assert not result['ok']
     assert result['state'] == 'FAIL'
     assert 'TIMEOUT' in result['detail']
+    assert result['timeout_seconds'] == 1
+    assert result['duration_seconds'] >= 0
 
 
 def test_success_state_requires_executed_zero_exit():
@@ -53,23 +55,28 @@ def test_success_state_requires_executed_zero_exit():
 
 def test_ci_runs_new_regressions_and_qualification_under_offline_guard():
     import yaml
-    required = ('test_expert_references.py', 'test_optional_provider_eval.py',
+    required = {'test_expert_references.py', 'test_optional_provider_eval.py',
                 'test_evaluation_package.py', 'test_content_scenarios.py',
                 'test_offline_guard.py', 'test_qualification_dependencies.py',
-                'test_qualification_core.py', 'test_release_ga.py', 'test_release_bundle.py', 'test_reference_bindings.py',
-                'test_commercial_proposal.py')
+                'test_qualification_core.py', 'test_release_ga.py', 'test_release_bundle.py',
+                'test_reference_bindings.py', 'test_commercial_proposal.py'}
+    assert required <= set(qualification.REGRESSION_MODULES)
     for filename, jobs in [('release.yml', ('qualification',)),
                            ('validate-library.yml', ('policy', 'release-preflight'))]:
         document = yaml.safe_load((ROOT / '.github/workflows' / filename).read_text())
         for name in jobs:
-            runs = [step.get('run', '') for step in document['jobs'][name]['steps']]
-            regression = next(run for run in runs if 'python3 -m pytest' in run)
-            for module in required:
-                assert module in regression
-            assert 'offline_guard.py run --root . -- python3 -m pytest' in regression
+            job = document['jobs'][name]
+            assert job['timeout-minutes'] == 360
+            runs = [step.get('run', '') for step in job['steps']]
+            regression = next(run for run in runs if 'qualification_core.py regression' in run)
+            assert 'qualification_core.py budget --scope regression' in regression
+            assert 'offline_guard.py run --root . --timeout "$regression_budget" -- python3 -u .ai/runtime/tools/qualification_core.py regression' in regression
             for run in runs:
                 if 'release_ga.py qualify' in run:
-                    assert 'offline_guard.py run --root . -- python3 .ai/runtime/tools/release_ga.py qualify' in run
+                    assert 'qualification_core.py budget --scope qualification' in run
+                    assert 'offline_guard.py run --root . --timeout "$qualification_budget" -- python3 -u .ai/runtime/tools/release_ga.py qualify' in run
+                if 'unittest discover' in run:
+                    assert '--timeout "$regression_budget"' in run
 
 
 def test_standalone_command_always_applies_offline_runner_and_preserves_unavailable():

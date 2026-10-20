@@ -37,7 +37,7 @@ class ReleasePreflightTests(unittest.TestCase):
                             for s in steps))
         commands = "\n".join(s.get("run", "") for s in steps)
         self.assertIn("python3 -m mkdocs build --strict", commands)
-        self.assertIn("python3 .ai/runtime/tools/release_ga.py qualify", commands)
+        self.assertIn("python3 -u .ai/runtime/tools/release_ga.py qualify", commands)
         self.assertIn("python3 .ai/runtime/tools/release_bundle.py build --root . --dist dist", commands)
         self.assertIn("sha256sum -c", commands)
         self.assertNotIn("--through-g", commands)
@@ -59,9 +59,9 @@ class ReleasePreflightTests(unittest.TestCase):
             commands = '\n'.join(step.get('run', '')
                                  for job in workflow['jobs'].values()
                                  for step in job.get('steps', []))
-            self.assertIn('python3 -m pytest -q', commands)
-            for suite in suites:
-                self.assertIn('tests/' + suite, commands)
+            self.assertIn('qualification_core.py regression', commands)
+            self.assertIn('qualification_core.py budget --scope regression', commands)
+            self.assertIn('--timeout', commands)
             for generator in ('catalog', 'corpus', 'workflows', 'calibration'):
                 self.assertIn('tools/generate_content_' + generator + '.py --check', commands)
         sys.path.insert(0, str(ROOT / '.ai/runtime/tools'))
@@ -73,15 +73,22 @@ class ReleasePreflightTests(unittest.TestCase):
         test_commands = [check['args'] for check in checks
                          if '-m' in check.get('args', [])
                          and 'pytest' in check.get('args', [])]
-        self.assertEqual(1, len(test_commands))
+        self.assertEqual(len(qualification_core.REGRESSION_MODULES), len(test_commands))
+        actual_modules = [args[-1] for args in test_commands]
+        self.assertEqual(
+            [str(ROOT / 'tests' / module) for module in qualification_core.REGRESSION_MODULES],
+            actual_modules,
+        )
         for suite in suites:
-            self.assertIn(str(ROOT / 'tests' / suite), test_commands[0])
+            self.assertIn(str(ROOT / 'tests' / suite), actual_modules)
+        self.assertTrue(all('-u' in args and '-vv' in args and '-s' in args
+                            for args in test_commands))
         for generator in ('catalog', 'corpus', 'workflows', 'calibration'):
             self.assertTrue(any(str(ROOT / 'tools' / ('generate_content_' + generator + '.py'))
                                 in check['args'] for check in checks))
-        dcs_runs = [check for check in checks if 'regression tests' in check['name']
+        dcs_runs = [check for check in checks if check['name'].startswith('DCS regression: ')
                     or 'deterministic synthetic pilot' in check['name']]
-        self.assertEqual(2, len(dcs_runs))
+        self.assertEqual(len(qualification_core.REGRESSION_MODULES) + 1, len(dcs_runs))
         self.assertTrue(all(check['timeout'] >= 600 for check in dcs_runs))
 
     def test_current_human_documentation_meets_release_width(self):

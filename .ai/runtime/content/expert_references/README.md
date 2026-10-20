@@ -1,11 +1,17 @@
 # Bundled expert reference examples
 
-The complete version 2.2.0 library contains 135 English Markdown examples:
-45 document families at simple, medium and complex levels. This revision
-preserves all 96 established examples byte-for-byte, including all 30 proposal
-references, and adds 39 engineering, transformation, security assessment and
-DevSecOps/AppSec examples. All distributed Markdown bytes match the supplied
-version 2.2.0 documents.
+The complete version 2.3.0 library contains 135 English Markdown examples:
+45 document families at simple, medium and complex levels. All 135 documents
+are intentionally revised; reference IDs, paths, family/complexity and stable
+DCS anchors remain unchanged, including the 30 proposal references. All
+Markdown bytes match the supplied version 2.3.0 documents.
+
+Technical, management and presentation lenses were applied by the same AI
+reviewer system. These are editorial improvements, not three independent
+human reviews. Decision and evidence supplements retain OPEN, PENDING and
+NOT_EXECUTED states until real attributable evidence and existing authority
+procedures establish otherwise. Review status never changes normative DCS
+requirements, security rules, approval rights or release qualification.
 
 These are AI-authored proposed professional illustrations. Organisations,
 measurements, evidence, prices, offers and execution results are fictional.

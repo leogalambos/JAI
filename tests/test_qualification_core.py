@@ -34,8 +34,9 @@ def test_every_gate_keeps_failed_checks_and_proposal_regressions(monkeypatch):
               qualification.gate_g()]
     assert all(group and not any(check['ok'] for check in group) for group in groups)
     commands = [check.get('args', []) for check in groups[0]]
-    pytest_command = next(args for args in commands if 'pytest' in args)
-    assert any(str(path).endswith('test_commercial_proposal.py') for path in pytest_command)
+    pytest_commands = [args for args in commands if 'pytest' in args]
+    assert [Path(args[-1]).name for args in pytest_commands] == list(qualification.REGRESSION_MODULES)
+    assert any(str(args[-1]).endswith('test_commercial_proposal.py') for args in pytest_commands)
     for level in ('simple', 'medium', 'complex'):
         assert any('proposal-validate' in args and any(str(a).endswith(f'proposal-{level}.json') for a in args)
                    for args in commands)
@@ -118,3 +119,65 @@ def test_cli_dispatch_and_invalid_syntax(monkeypatch):
     monkeypatch.setattr(sys, 'argv', ['qualification_core.py', 'unknown'])
     with pytest.raises(SystemExit):
         qualification.main()
+
+
+def test_regression_inventory_executes_each_module_once_under_its_own_bound(monkeypatch):
+    calls = []
+    def execute(name, args, timeout=120):
+        calls.append((name, args, timeout))
+        return {'name': name, 'ok': False, 'state': 'NOT_EXECUTED'}
+    monkeypatch.setattr(qualification, 'command', execute)
+    results = qualification.regression_checks()
+    assert len(results) == len(qualification.REGRESSION_MODULES) == 22
+    assert len(set(qualification.REGRESSION_MODULES)) == 22
+    assert all(not check['ok'] and check['state'] == 'NOT_EXECUTED' for check in results)
+    assert [Path(args[-1]).name for _, args, _ in calls] == list(qualification.REGRESSION_MODULES)
+    assert all(timeout == 600 and args[:4] == [qualification.PY, '-u', '-m', 'pytest']
+               and len(args) == 7 for _, args, timeout in calls)
+    assert all(module in name for module, (name, _, _) in zip(qualification.REGRESSION_MODULES, calls))
+
+
+def test_regression_cli_never_promotes_failed_or_unexecuted_modules(monkeypatch):
+    monkeypatch.setattr(sys, 'argv', ['qualification_core.py', 'regression'])
+    for state, ok, expected in [('PASS', True, 0), ('FAIL', False, 1), ('NOT_EXECUTED', False, 1)]:
+        monkeypatch.setattr(qualification, 'regression_checks', lambda: [{'name': 'fixture', 'ok': ok, 'state': state}])
+        assert qualification.main() == expected
+
+
+def test_canonical_inventory_preserves_every_previously_mandatory_module():
+    expected = (
+        'test_content_lint.py test_content_metrics.py test_content_publication.py '
+        'test_content_eval.py test_content_provider_parity.py test_content_workflow.py '
+        'test_content_migrate.py test_content_calibration.py test_content_catalog.py '
+        'test_content_spec.py test_content_integration.py test_expert_references.py '
+        'test_optional_provider_eval.py test_evaluation_package.py test_content_scenarios.py '
+        'test_offline_guard.py test_qualification_dependencies.py test_qualification_core.py '
+        'test_release_ga.py test_release_bundle.py test_reference_bindings.py test_commercial_proposal.py'
+    ).split()
+    assert list(qualification.REGRESSION_MODULES) == expected
+    assert all((ROOT / 'tests' / name).is_file() for name in expected)
+
+
+def test_aggregate_budgets_cover_all_a_h_command_ceilings(monkeypatch, capsys):
+    import release_ga
+    timeouts = []
+    def execute(name, args, timeout=120):
+        timeouts.append(timeout)
+        return {'name': name, 'ok': True, 'state': 'PASS'}
+    monkeypatch.setattr(qualification, 'command', execute)
+    monkeypatch.setattr(release_ga, 'command', execute)
+    monkeypatch.setattr(qualification, 'governance_check', lambda: {'ok': True})
+    monkeypatch.setattr(qualification, 'publication_renderer_check', lambda: execute('renderer', []))
+    monkeypatch.setattr(release_ga, 'prep_check', lambda: {'ok': True})
+    for gate in release_ga.GATES.values():
+        gate()
+    release_ga.h_checks(generate=True)
+    execute('final policy', [])
+    assert qualification.aggregate_budget('regression') == 22 * 600 + 120 == 13320
+    assert qualification.aggregate_budget('qualification') == sum(timeouts) + 120 == 19440
+    assert qualification.aggregate_budget('qualification') <= 21600
+    with pytest.raises(ValueError, match='UNKNOWN_QUALIFICATION'):
+        qualification.aggregate_budget('unknown')
+    monkeypatch.setattr(sys, 'argv', ['qualification_core.py', 'budget', '--scope', 'regression'])
+    assert qualification.main() == 0
+    assert capsys.readouterr().out.strip() == '13320'

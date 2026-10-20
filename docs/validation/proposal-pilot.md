@@ -7,6 +7,10 @@ references are AI-authored synthetic examples, not already accepted offers
 or a human-approved benchmark. This rubric supports professional feedback;
 it does not replace existing commercial, legal, security or JAI authority.
 
+The v2.3.0 reference revision adds [AI editorial review supplements](expert-reference-review.md).
+They do not constitute completed colleague evaluation or approval of a
+proposal package. The E1–E10 criteria and required authority remain unchanged.
+
 ## Record the evaluated version
 
 In the authorized private review record, identify the evaluation, exact

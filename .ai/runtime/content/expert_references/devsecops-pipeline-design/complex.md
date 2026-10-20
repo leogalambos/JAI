@@ -1,7 +1,7 @@
 ---
 reference_id: example:devsecops-pipeline-design:complex
 schema_version: '1.0.0'
-content_revision: 2.2.0
+content_revision: 2.3.0
 document_kind: devsecops-pipeline-design
 complexity: complex
 language: en
@@ -103,3 +103,37 @@ All decision IDs above are local worked-example identifiers; they are not proof 
 **Methodological reference:** NIST SSDF SP 800-218 v1.1 (final); OWASP ASVS 5.0; SLSA v1.2 supply-chain framework. These frameworks inform professional coverage and challenge questions; this reference does not assert compliance or quote normative control clauses.
 
 **Professional review disposition:** OPEN. No actual implementation, live provider validation, signed security assessment, executive approval or legal determination occurred.
+
+## Evidence-led expert review supplement (v2.3.0)
+
+> **Editorial status:** reviewer-designed example content for the fictional `OPG-RSM` context. No underlying customer system, security test, supplier quote or sign-off was inspected. This section is an illustrative professional decision aid, not completed assurance.
+
+### Context-specific decision and evidence matrix
+
+| Evaluation object | Explicit verification question | Evidence to request | Required disposition |
+|---|---|---|---|
+| Trusted build identity and privilege separation | Is this statement supported for `OPG-RSM` by a source-controlled input with an identified owner? | Source record, scope identifier, timestamp and version | OPEN until attributable evidence exists |
+| Security gate with negative fixture | Is the claim testable against a falsifiable success or failure criterion? | Expected/observed values and independent review result | NOT_EXECUTED if no actual test or review |
+| Signed output and failure response | Does the proposed conclusion change a decision, cost, permission or release condition? | Approval or refusal recorded in the existing JAI authority mechanism | PENDING, never inferred approval |
+
+### Technical expert challenge — control evidence and negative test
+
+For an asserted control, record control objective, relevant asset or trust boundary, planned negative scenario, required technical trace and control owner; absent observed evidence is NOT_EXECUTED. For **devsecops-pipeline-design**, the reviewer should actively challenge **trusted build identity and privilege separation** and **security gate with negative fixture**. A plausible narrative without attributable source material remains a proposed hypothesis.
+
+### Management challenge — assurance scope
+
+State assessment population, methodology and exposure window. Separate design review from observed operating effectiveness and from risk acceptance. The accountable party for this illustrative acceptance is **Independent Security Reviewer / Risk Owner**, not an unspecified project team. Required management decision: **DEFER external commitment or release when a material evidence gap remains**. Create a tracked action with named owner, due date, acceptance predicate and escalation path; none is asserted as completed here.
+
+### Presentation and reader decision check
+
+**Decision headline:** evidence is insufficient for an unconditional approval; the current proposal is fit for discussion and refinement only. **What matters now:** trusted build identity and privilege separation, security gate with negative fixture, and signed output and failure response. **Next step:** obtain original evidence, reconcile contradictory figures and issue an updated, independently reviewed version. Use descriptive heading hierarchy, non-colour-only statuses, concise table labels, explicit units and a separate annex for technical detail. Do not bury exceptions below a visually positive summary.
+
+### Decision-oriented quality acceptance
+
+| Test | Expected finding for this fictional example | Decision implication |
+|---|---|---|
+| Source fidelity | Unverified example facts are marked synthetic or assumed | No production factual claim |
+| Cross-artifact consistency | IDs, scope, prices, controls and status must reconcile with linked artifacts | Any substantive mismatch requires correction |
+| Independent review | No real reviewer evidence is provided | Human-approved status remains **false** |
+| Publication quality | Headings, tables, links and any figures must render without truncation; validate when a renderer is present | Missing renderer = NOT_EXECUTED, not PASS |
+

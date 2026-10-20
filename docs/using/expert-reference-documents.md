@@ -32,10 +32,14 @@ presentation. Establish project facts separately, resolve the registered DCS
 contract and retain independent review and existing JAI human authority.
 Replacing a reference never changes DCS MUST, MAY or MUST NOT obligations.
 
-Library v2.2.0 preserves all 96 established reference documents, identifiers,
-integrity hashes and DCS relationships unchanged, including the 30 proposal
-examples. It adds 39 examples. Updates do not overwrite separately stored
-user overrides.
+Library v2.3.0 revises all 135 examples, including the 30 proposal examples.
+Identifiers, complexity slots, stable DCS anchors and existing DCS
+relationships remain unchanged; document integrity hashes change with the
+revised bytes. The complete library works without an earlier reference
+package. Updates do not overwrite separately stored user overrides.
+The [editorial review guide](../validation/expert-reference-review.md)
+explains the technical, management and presentation supplements and their
+limits. Their AI editorial status does not grant independent human approval.
 See [proposal production](proposal-production.md) for coherent packages and
 [colleague evaluation](../validation/proposal-pilot.md) for the pilot rubric.
 

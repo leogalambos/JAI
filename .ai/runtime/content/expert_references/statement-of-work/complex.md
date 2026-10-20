@@ -1,7 +1,7 @@
 ---
 reference_id: example:statement-of-work:complex
 schema_version: '1.0.0'
-content_revision: 2.1.0
+content_revision: 2.3.0
 document_kind: statement-of-work
 complexity: complex
 language: en
@@ -146,3 +146,37 @@ The proposal is based on a **fictional, unconfirmed scenario**. Open evidence ob
 **Synthetic-fact containment:** Do not copy the organisation name, budget, performance numbers, vendor assertions, customer reference, regulatory conclusions or illustrative pass/fail statements into a live proposal. For a real opportunity, retrieve confirmed customer facts from authorized inputs, record uncertainty and rerun pricing and approval validations.
 
 **Status:** `ai-authored-proposed`, `not-human-approved`; professional peer review and all customer approvals remain pending. **Applicable JAI context:** `OPG-RSM`; **document kind:** `statement-of-work`; **scenario:** `complex`.
+
+## Evidence-led expert review supplement (v2.3.0)
+
+> **Editorial status:** reviewer-designed example content for the fictional `OPG-RSM-PROPOSAL-EXAMPLE` context. No underlying customer system, security test, supplier quote or sign-off was inspected. This section is an illustrative professional decision aid, not completed assurance.
+
+### Context-specific decision and evidence matrix
+
+| Evaluation object | Explicit verification question | Evidence to request | Required disposition |
+|---|---|---|---|
+| Deliverable acceptance and rejection window | Is this statement supported for `OPG-RSM-PROPOSAL-EXAMPLE` by a source-controlled input with an identified owner? | Source record, scope identifier, timestamp and version | OPEN until attributable evidence exists |
+| Client/supplier responsibility split | Is the claim testable against a falsifiable success or failure criterion? | Expected/observed values and independent review result | NOT_EXECUTED if no actual test or review |
+| Change request and exclusion handling | Does the proposed conclusion change a decision, cost, permission or release condition? | Approval or refusal recorded in the existing JAI authority mechanism | PENDING, never inferred approval |
+
+### Technical expert challenge — customer commitment integrity
+
+Trace the exact customer-requested outcome to a separately priced deliverable and explicit acceptance test; classify any unsupported requirement as an assumption or clarification. For **statement-of-work**, the reviewer should actively challenge **deliverable acceptance and rejection window** and **client/supplier responsibility split**. A plausible narrative without attributable source material remains a proposed hypothesis.
+
+### Management challenge — contractual acceptance boundary
+
+Distinguish indicative estimate, binding price, third-party pass-through and client internal cost. Change in scope requires a defined change-order rather than implied free delivery. The accountable party for this illustrative acceptance is **Bid Manager / Commercial Owner**, not an unspecified project team. Required management decision: **DEFER external commitment or release when a material evidence gap remains**. Create a tracked action with named owner, due date, acceptance predicate and escalation path; none is asserted as completed here.
+
+### Presentation and reader decision check
+
+**Decision headline:** evidence is insufficient for an unconditional approval; the current proposal is fit for discussion and refinement only. **What matters now:** deliverable acceptance and rejection window, client/supplier responsibility split, and change request and exclusion handling. **Next step:** obtain original evidence, reconcile contradictory figures and issue an updated, independently reviewed version. Use descriptive heading hierarchy, non-colour-only statuses, concise table labels, explicit units and a separate annex for technical detail. Do not bury exceptions below a visually positive summary.
+
+### Decision-oriented quality acceptance
+
+| Test | Expected finding for this fictional example | Decision implication |
+|---|---|---|
+| Source fidelity | Unverified example facts are marked synthetic or assumed | No production factual claim |
+| Cross-artifact consistency | IDs, scope, prices, controls and status must reconcile with linked artifacts | Any substantive mismatch requires correction |
+| Independent review | No real reviewer evidence is provided | Human-approved status remains **false** |
+| Publication quality | Headings, tables, links and any figures must render without truncation; validate when a renderer is present | Missing renderer = NOT_EXECUTED, not PASS |
+

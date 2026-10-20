@@ -347,3 +347,47 @@ def test_unknown_customer_input_is_not_promoted_to_an_assumption_or_known_fact()
     value = proposal._unit_value('customer_need','object',data,[])
     assert value['knowledge_status'] == 'unknown'
     assert 'OPEN' in value['text']
+
+
+@pytest.mark.parametrize('level,supplier,programme,recurring,onboarding,first_year', [
+    ('simple',84000,140000,28800,4500,33300),
+    ('medium',780000,1250000,180000,45000,225000),
+    ('complex',4500000,6800000,780000,210000,990000)])
+def test_reviewed_optional_security_prices_reconcile_without_entering_baseline(
+        level,supplier,programme,recurring,onboarding,first_year):
+    """Check actual illustrative source amounts, retaining their synthetic status."""
+    from decimal import Decimal
+    assert recurring + onboarding == first_year
+    texts={kind:(RUNTIME/'content/expert_references'/kind/(level+'.md')).read_text()
+           for kind in ('commercial-proposal','managed-security-services-proposal')}
+    for kind,text in texts.items():
+        for amount in (supplier,programme,onboarding,first_year):
+            assert f'{amount:,}' in text,kind
+        assert 'optional' in text.lower()
+        assert 'separate' in text.lower()
+        assert 'not-human-approved' in text
+        assert 'NOT_EXECUTED if no actual test or review' in text
+    commercial_text=texts['commercial-proposal']
+    payments=re.findall(r'\|[^\n|]+\|\s*(\d+)%\s*\|\s*[£€]([\d,]+)\s*\|',commercial_text)
+    assert payments, 'The actual commercial reference must retain its milestone schedule.'
+    assert sum(int(percent) for percent,_ in payments)==100
+    assert sum(Decimal(amount.replace(',','')) for _,amount in payments)==Decimal(supplier)
+    for percent,amount in payments:
+        assert Decimal(percent)*Decimal(supplier)/100==Decimal(amount.replace(',',''))
+    service_text=texts['managed-security-services-proposal']
+    if level=='complex':
+        assert f'{recurring:,}' in service_text
+        assert 'annual recurring' in service_text
+    else:
+        assert f'{recurring//12:,}' in service_text
+        assert '12-month' in service_text
+    data=fixture(level)
+    for offer in data['optional_offerings']:
+        offer['selected']=True
+        data['documents'][offer['kind']]=proposal._claims(data)
+    result=proposal.validate_package(data)
+    assert result['consistency_pass'],result['findings']
+    assert Decimal(data['pricing']['programme_total'])==Decimal(programme)
+    assert result['execution_evidence']=='NOT_EXECUTED'
+    assert result['professional_acceptance']=='NOT_APPROVED'
+    assert not result['authority_granted']

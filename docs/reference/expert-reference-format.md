@@ -61,6 +61,13 @@ inconsistent mappings fail; import cannot approve or activate a rule.
 | `case_id` | Synthetic case association, never a real engagement or evidence identity. |
 | `methodology_context` | Illustrative professional methods, not a compliance attestation. |
 
+Bundled index entries also carry `review_version` and `review_status` for
+the v2.3.0 editorial revision. These are manifest metadata, not required new
+front-matter fields or an authority record. The recorded status is
+`tri-lens-ai-review-applied-not-human-approved`. All three lenses used the
+same AI system; neither this status nor a successful integrity check proves
+independent human review. See the [review guide](../validation/expert-reference-review.md).
+
 ## Stable DCS anchors
 
 Content sections identify DCS information units directly or through an

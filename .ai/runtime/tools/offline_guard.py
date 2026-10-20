@@ -213,8 +213,8 @@ def run_offline(command, root, timeout=900):
                     pass
             else:
                 process.kill()
-            process.communicate()
-            return {'status': 'FAIL', 'returncode': 124, 'reason': 'OFFLINE_TIMEOUT', 'stdout': '', 'stderr': ''}
+            stdout, stderr = process.communicate()
+            return {'status': 'FAIL', 'returncode': 124, 'reason': 'OFFLINE_TIMEOUT', 'stdout': stdout, 'stderr': stderr}
     except subprocess.TimeoutExpired:
         return {'status': 'FAIL', 'returncode': 124, 'reason': 'OFFLINE_TIMEOUT', 'stdout': '', 'stderr': ''}
     except OSError:
@@ -231,7 +231,8 @@ def main(argv=None):
     """Scan mandatory source or execute a guarded qualification command.
 
     Args:
-        argv: Optional arguments; run takes --root ROOT -- COMMAND [ARGS...].
+        argv: Optional arguments; run takes --root ROOT [--timeout SECONDS] --
+            COMMAND [ARGS...]. The default 900-second ceiling is unchanged.
     Returns:
         Zero only for successful scan/execution; one for failure, 77 for unavailable
         OS denial. Captured test output is local diagnostic output, not public
@@ -252,11 +253,15 @@ def main(argv=None):
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', choices=('scan', 'run'))
     parser.add_argument('--root', type=Path, default=Path.cwd())
+    parser.add_argument('--timeout', type=float, default=900,
+                        help='Positive finite wall seconds (default: 900).')
     command_args = []
     if '--' in argv:
         index = argv.index('--')
         command_args, argv = argv[index + 1:], argv[:index]
     args = parser.parse_args(argv)
+    if not math.isfinite(args.timeout) or args.timeout <= 0:
+        parser.error('--timeout must be positive and finite')
     if args.command == 'scan':
         findings = scan_sources(args.root)
         print(json.dumps({'status': 'FAIL' if findings else 'PASS', 'findings': findings}, indent=2))
@@ -264,7 +269,7 @@ def main(argv=None):
     if not command_args:
         print(json.dumps({'status': 'FAIL', 'reason': 'OFFLINE_COMMAND_REQUIRED'}))
         return 1
-    result = run_offline(command_args, args.root)
+    result = run_offline(command_args, args.root, timeout=args.timeout)
     sys.stdout.write(result['stdout'])
     sys.stderr.write(result['stderr'])
     print(json.dumps({key: value for key, value in result.items() if key not in ('stdout', 'stderr')}))

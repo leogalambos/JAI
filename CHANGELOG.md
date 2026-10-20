@@ -1,5 +1,27 @@
 # Changelog
 
+## 26.10.12 — Expert Reference Editorial Review (candidate)
+
+- Integrates complete Expert Reference Library v2.3.0: all 135 English
+  documents revised across 45 families. Preserves reference identities,
+  complexity slots, stable DCS anchors and existing registry
+  relationships.
+
+- Adds technical, management and presentation decision/evidence review
+  supplements as AI editorial guidance, without implying independent
+  human approval, executed evidence or new normative DCS enforcement.
+
+- Retains proposal production, override precedence, signed human
+  authority, segregation of duties and existing mandatory release gates.
+
+- Repairs CI regression time budgeting through shared mandatory module
+  execution, individual offline bounds and calculated aggregate
+  ceilings. Timeout failures retain diagnostics and remain non-passing.
+
+- Documents editorial review status, evidence boundaries and
+  professional review guidance; qualifies offline using synthetic
+  fixtures and mocks.
+
 ## 26.10.11 — Engineering and Security Expert References (candidate)
 
 - Integrates complete Expert Reference Library v2.2.0: 135 English

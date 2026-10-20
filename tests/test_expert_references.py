@@ -362,7 +362,7 @@ def test_all135_anchor_bindings_match_registered_required_units(library):
     (b'dcs_status: proposed-not-mapped\n', b'', 'PROPOSED_DCS_STATUS_REQUIRED'),
     (b'proposed/kind/client-proposal', b'proposed/kind/commercial-proposal', 'DCS_IDENTITY_MISMATCH'),
     (b'dcs-proposed-client-proposal.customer_need', b'dcs-client-proposal.customer_need', 'anchor.missing'),
-    (b'content_revision: 2.1.0', b'content_revision: approved', 'METADATA_SCHEMA_INVALID'),
+    (b'content_revision: 2.3.0', b'content_revision: approved', 'METADATA_SCHEMA_INVALID'),
     (b'proposal_pack_id:', b'authority_signature:', 'METADATA_SCHEMA_INVALID'),
 ])
 def test_proposed_metadata_and_anchor_errors_cannot_promote_rules(library, tmp_path, before, after, diagnostic):
@@ -480,12 +480,51 @@ def test_engineering_manifest_case_metadata_must_match(library, field):
         library.validate_all()
 
 
-def test_all_established_reference_bytes_remain_unchanged(library):
-    """Pin the 96 public example identities and hashes, including 30 proposals."""
+def test_revised_established_reference_bytes_match_v230_manifest(library):
+    """Pin the intentionally revised 96 public examples, including all 30 proposals."""
     established = [entry for entry in library.entries if entry['document_kind'] not in ENGINEERING_FAMILIES]
     assert len(established) == 96
     fingerprint = hashlib.sha256(json.dumps(sorted((entry['reference_id'], entry['sha256'])
                                                   for entry in established), separators=(',', ':')).encode()).hexdigest()
-    assert fingerprint == '0e0ebf739017564a9195328211f884bd6b2038e336648c7d2116e671f3c50a5a'
+    assert fingerprint == '1db9d952ca1df01161a5040391b06a4f5d93b67f9978205ab7ef3ac693333b24'
     for entry in established:
         assert hashlib.sha256((library.base / entry['path']).read_bytes()).hexdigest() == entry['sha256']
+
+
+def test_editorial_review_status_never_confers_professional_acceptance(library):
+    """The complete revised corpus retains explicitly non-authoritative review metadata."""
+    assert library.manifest['version'] == '2.3.0'
+    assert library.manifest['review_summary'] == {
+        'type': 'three-ai-review-lenses-not-three-human-reviewers',
+        'all_documents_revised': 135,
+        'human_approved': False,
+    }
+    for entry in library.entries:
+        assert entry['review_version'] == '2.3.0'
+        assert entry['review_status'] == 'tri-lens-ai-review-applied-not-human-approved'
+        assert 'previous_sha256' not in entry
+    result = library.validate_all()
+    assert result['editorial_review_status'] == 'AI_EDITORIAL_ONLY'
+    assert result['professional_acceptance'] == 'NOT_APPROVED'
+    assert all(item['review_status'] == 'tri-lens-ai-review-applied-not-human-approved'
+               for item in result['results'])
+
+
+@pytest.mark.parametrize('field,value', [
+    ('review_version', 'approved'),
+    ('review_status', 'human-approved'),
+    ('review_version', None),
+])
+def test_editorial_manifest_cannot_claim_approval(library, field, value):
+    """Untrusted editorial status cannot silently become an approval assertion."""
+    library.entries[0][field] = value
+    with pytest.raises(ReferenceError, match='BUNDLED_REVIEW_METADATA_INVALID'):
+        library.validate_all()
+
+
+@pytest.mark.parametrize('value', [True, 0, 'false'])
+def test_editorial_summary_rejects_forged_human_approval(library, value):
+    """A Boolean false assertion is required; coercible values are rejected."""
+    library.manifest['review_summary']['human_approved'] = value
+    with pytest.raises(ReferenceError, match='BUNDLED_REVIEW_METADATA_INVALID'):
+        library.validate_all()

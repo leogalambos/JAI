@@ -12,6 +12,7 @@ import subprocess
 import sys
 import re
 import shutil
+import time
 import artifacts as artifact_registry
 from offline_guard import run_offline
 from pathlib import Path
@@ -21,6 +22,69 @@ RUNTIME = PACKAGE / ".ai/runtime"
 TOOLS = RUNTIME / "tools"
 PY = sys.executable
 GATE_DIR = RUNTIME / "_meta/gates"
+# Each module retains the former suite's strict execution bound. Aggregate
+# budgets cover the sum, rather than imposing one module's limit on all modules.
+REGRESSION_MODULE_TIMEOUT = 600
+REGRESSION_MODULES = (
+    'test_content_lint.py',
+    'test_content_metrics.py',
+    'test_content_publication.py',
+    'test_content_eval.py',
+    'test_content_provider_parity.py',
+    'test_content_workflow.py',
+    'test_content_migrate.py',
+    'test_content_calibration.py',
+    'test_content_catalog.py',
+    'test_content_spec.py',
+    'test_content_integration.py',
+    'test_expert_references.py',
+    'test_optional_provider_eval.py',
+    'test_evaluation_package.py',
+    'test_content_scenarios.py',
+    'test_offline_guard.py',
+    'test_qualification_dependencies.py',
+    'test_qualification_core.py',
+    'test_release_ga.py',
+    'test_release_bundle.py',
+    'test_reference_bindings.py',
+    'test_commercial_proposal.py',
+)
+AGGREGATE_HEADROOM = 120
+# All non-regression A-H command bounds, including generated evidence/final policy.
+OTHER_QUALIFICATION_TIMEOUTS = 6120
+
+
+def aggregate_budget(scope):
+    """Return a finite worst-case outer-guard budget in seconds.
+
+    Args:
+        scope: ``regression`` or complete A-H ``qualification``.
+    Returns:
+        Sum of mandatory command ceilings plus 120 seconds orchestration margin;
+        this is a resource ceiling, not an expected duration or a waiver.
+    Raises:
+        ValueError: If scope is unknown.
+    """
+    if scope not in ('regression', 'qualification'):
+        raise ValueError('UNKNOWN_QUALIFICATION_BUDGET_SCOPE')
+    return (len(REGRESSION_MODULES) * REGRESSION_MODULE_TIMEOUT + AGGREGATE_HEADROOM
+            + (OTHER_QUALIFICATION_TIMEOUTS if scope == 'qualification' else 0))
+
+
+def regression_checks():
+    """Execute every canonical regression module once under offline enforcement.
+
+    Returns:
+        Ordered, individually named actual execution records. Each module keeps
+        a 600-second bound; failed or unavailable modules remain non-passing.
+        Verbose unbuffered output identifies the last test if a worker expires.
+    """
+    return [command('DCS regression: ' + module,
+                    [PY, '-u', '-m', 'pytest', '-vv', '-s', str(PACKAGE / 'tests' / module)],
+                    timeout=REGRESSION_MODULE_TIMEOUT)
+            for module in REGRESSION_MODULES]
+
+
 NEW_ROLES = {
     "enterprise-applications-architect",
     "secure-delivery-devsecops-architect",
@@ -59,7 +123,9 @@ def command(name, args, timeout=120):
         or unavailable OS controls are non-passing; there is no direct fallback.
     """
     print("RUN ", name, flush=True)
+    started = time.monotonic()
     result = run_offline(args, PACKAGE, timeout=timeout)
+    elapsed = round(time.monotonic() - started, 3)
     state = result['status']
     ok = state == 'PASS' and result['returncode'] == 0
     if state == 'PASS' and not ok:
@@ -67,10 +133,11 @@ def command(name, args, timeout=120):
     output = result.get('stdout', '') + result.get('stderr', '')
     if result.get('reason'):
         output += "\n" + result['reason']
-    print(("PASS" if ok else state), name, flush=True)
+    print(("PASS" if ok else state), name, f"({elapsed:.3f}s; limit {timeout}s)", flush=True)
     if not ok:
         print(output[-8000:], flush=True)
     return {"name": name, "ok": ok, "state": state,
+            "duration_seconds": elapsed, "timeout_seconds": timeout,
             "detail": output[-2000:] if not ok else ""}
 
 
@@ -173,40 +240,14 @@ def gate_a():
     Returns:
         Located check results, including real corpus evaluation and reproducible
         generated policy/workflow/calibration evidence. DCS regressions have a
-        bounded 10-minute allowance for the full extended enterprise corpus.
+        bounded 10-minute allowance per regression module and for corpus evaluation.
         Passing this gate does not provide human domain or release approval.
     """
     return [
         *[command("DCS generated " + name + " reproducibility",
                   [PY, str(PACKAGE / "tools" / ("generate_content_" + name + ".py")), "--check"])
           for name in ("catalog", "corpus", "workflows", "calibration")],
-        command(
-            "DCS semantic and publication regression tests",
-            [PY, "-m", "pytest", "-q",
-             str(PACKAGE / "tests/test_content_lint.py"),
-             str(PACKAGE / "tests/test_content_metrics.py"),
-             str(PACKAGE / "tests/test_content_publication.py"),
-             str(PACKAGE / "tests/test_content_eval.py"),
-             str(PACKAGE / "tests/test_content_provider_parity.py"),
-             str(PACKAGE / "tests/test_content_workflow.py"),
-             str(PACKAGE / "tests/test_content_migrate.py"),
-             str(PACKAGE / "tests/test_content_calibration.py"),
-             str(PACKAGE / "tests/test_content_catalog.py"),
-             str(PACKAGE / "tests/test_content_spec.py"),
-             str(PACKAGE / "tests/test_content_integration.py"),
-             str(PACKAGE / "tests/test_expert_references.py"),
-             str(PACKAGE / "tests/test_optional_provider_eval.py"),
-             str(PACKAGE / "tests/test_evaluation_package.py"),
-             str(PACKAGE / "tests/test_content_scenarios.py"),
-             str(PACKAGE / "tests/test_offline_guard.py"),
-             str(PACKAGE / "tests/test_qualification_dependencies.py"),
-             str(PACKAGE / "tests/test_qualification_core.py"),
-             str(PACKAGE / "tests/test_release_ga.py"),
-             str(PACKAGE / "tests/test_release_bundle.py"),
-             str(PACKAGE / "tests/test_reference_bindings.py"),
-             str(PACKAGE / "tests/test_commercial_proposal.py")],
-            timeout=600,
-        ),
+        *regression_checks(),
         command(
             "DCS deterministic synthetic pilot (not human-gold)",
             [PY, str(TOOLS / "content_eval.py"), "run", "--root", str(PACKAGE)],
@@ -534,6 +575,9 @@ def main():
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="cmd", required=True)
     sub.add_parser("qualify")
+    sub.add_parser("regression")
+    budget = sub.add_parser("budget")
+    budget.add_argument("--scope", choices=("regression", "qualification"), required=True)
     gate = sub.add_parser("gate")
     gate.add_argument("name", choices=list("ABCDEFG"))
     gate.add_argument("--out")
@@ -541,6 +585,12 @@ def main():
     assemble_cmd.add_argument("--gate-dir", default=str(GATE_DIR))
     assemble_cmd.add_argument("--out")
     args = parser.parse_args()
+    if args.cmd == "budget":
+        print(aggregate_budget(args.scope))
+        return 0
+    if args.cmd == "regression":
+        checks = regression_checks()
+        return 0 if checks and all(check.get("ok") is True and check.get("state") == "PASS" for check in checks) else 1
     if args.cmd == "gate":
         return run_gate(args.name, args.out)
     if args.cmd == "assemble":

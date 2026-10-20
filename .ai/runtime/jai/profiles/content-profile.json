@@ -2,7 +2,7 @@
   "profile": "content",
   "version": "1.0.0",
   "status": "proposed",
-  "phase": "26.10.11-engineering-security-references",
+  "phase": "26.10.12-expert-editorial-review",
   "compatibility": {
     "read": [
       "ArtifactContract-v3"

@@ -1,7 +1,7 @@
 {
   "collection": "jai-expert-reference-documents",
   "intended_baseline": "JAI 26.10.8 and subsequent releases",
-  "version": "2.2.0",
+  "version": "2.3.0",
   "status": "ai-authored-proposed",
   "created_on": "2026-10-20",
   "language": "en",
@@ -108,7 +108,7 @@
     "complex"
   ],
   "approval_status": "not-human-approved",
-  "source": "Complete synthetic expert reference library; 96 established examples preserved and 39 engineering, transformation and security examples added.",
+  "source": "Reviewed under three separate AI editorial rubrics (technical, management, presentation); no independent human approval",
   "dcs_caveat": "New 13 families use proposed-not-mapped DCS anchor namespaces; current JAI registry mapping and independent qualified approval are mandatory before normative enforcement.",
   "entries": [
     {
@@ -120,16 +120,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "efbd2e3fdab2163b4ca916db9482fe3a041bb5ff990238d25a0d41c14e92c0a9",
-      "bytes": 10105,
-      "words": 1177,
+      "sha256": "c50069a6924047b7867fe2f63f3029944409c29f69bb1deb172cd724173e2f7a",
+      "bytes": 13609,
+      "words": 1712,
       "anchor_ids": [
         "adr.decision_context",
         "adr.architecture_options",
         "adr.architecture_choice",
         "adr.consequences",
         "adr.supersession"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:adr:medium",
@@ -140,16 +142,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "087235e09c37dc9f5cad42a94802083e6e7d6bc5dabfbc6b89c49f8a0b98160b",
-      "bytes": 8471,
-      "words": 985,
+      "sha256": "ae562736111d643b6a1b46b9ae9eb8c98a5d3e651c905245c6902ead6bd71cff",
+      "bytes": 11975,
+      "words": 1519,
       "anchor_ids": [
         "adr.decision_context",
         "adr.architecture_options",
         "adr.architecture_choice",
         "adr.consequences",
         "adr.supersession"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:adr:simple",
@@ -160,16 +164,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "0404d04ac35739994ba83a6cce4c34daee497da111a3c9e9b0e7d96bc70a9525",
-      "bytes": 7258,
-      "words": 845,
+      "sha256": "c22ebf9da4af54a2a10ccfbeda387f84bc3f220b579ac6ed5cfe2cc5999a985f",
+      "bytes": 10762,
+      "words": 1352,
       "anchor_ids": [
         "adr.decision_context",
         "adr.architecture_options",
         "adr.architecture_choice",
         "adr.consequences",
         "adr.supersession"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:api-interface-contract:complex",
@@ -180,9 +186,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "fe96f1c80ec09e6264896b833fb429105f1c9957639ac6c5ec36d15d4cd4db44",
-      "bytes": 11813,
-      "words": 1461,
+      "sha256": "32f33e6ba5544858891d48ab01ea5682c418245c4f4b30c93e22cee8789ecce2",
+      "bytes": 15381,
+      "words": 1944,
       "anchor_ids": [
         "proposed-api-interface-contract.contract_boundary",
         "proposed-api-interface-contract.schemas_semantics",
@@ -192,7 +198,9 @@
         "proposed-api-interface-contract.ownership_acceptance"
       ],
       "case_id": "OPG-RSM",
-      "methodology_context": "OWASP ASVS 5.0 for applicable web-service verification practices and standard API contract governance"
+      "methodology_context": "OWASP ASVS 5.0 for applicable web-service verification practices and standard API contract governance",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:api-interface-contract:medium",
@@ -203,9 +211,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "78baf1f19ae26eee0267134df494da0d1a34ab60b31d24348344ed1d81226f37",
-      "bytes": 9820,
-      "words": 1237,
+      "sha256": "04499989766dfb53b5d3baf5ceff383b06f406d598dda79a2975b1b92e7c920c",
+      "bytes": 13388,
+      "words": 1720,
       "anchor_ids": [
         "proposed-api-interface-contract.contract_boundary",
         "proposed-api-interface-contract.schemas_semantics",
@@ -215,7 +223,9 @@
         "proposed-api-interface-contract.ownership_acceptance"
       ],
       "case_id": "MRG-OEI",
-      "methodology_context": "OWASP ASVS 5.0 for applicable web-service verification practices and standard API contract governance"
+      "methodology_context": "OWASP ASVS 5.0 for applicable web-service verification practices and standard API contract governance",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:api-interface-contract:simple",
@@ -226,9 +236,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "768a32db23b72abc288d8f6cd671fc96228bfb8f150c63e6baccd579cd73ebf1",
-      "bytes": 8109,
-      "words": 987,
+      "sha256": "c8c5b7c9a3a4b61d4c32ae299ccefdeca2fecd05a41bbb16650b7392b3cecebf",
+      "bytes": 11677,
+      "words": 1470,
       "anchor_ids": [
         "proposed-api-interface-contract.contract_boundary",
         "proposed-api-interface-contract.schemas_semantics",
@@ -238,7 +248,9 @@
         "proposed-api-interface-contract.ownership_acceptance"
       ],
       "case_id": "HFS-FAR",
-      "methodology_context": "OWASP ASVS 5.0 for applicable web-service verification practices and standard API contract governance"
+      "methodology_context": "OWASP ASVS 5.0 for applicable web-service verification practices and standard API contract governance",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:appsec-verification-report:complex",
@@ -249,9 +261,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "b98ccaf05ba26298c28e19babb6bf2c339c67667817f3c845d55f43ee4d1a613",
-      "bytes": 11211,
-      "words": 1375,
+      "sha256": "dcd311389dbf17129748511a3afe3d5ce00bb1675d8164f8dcbac2cf16c5f506",
+      "bytes": 14847,
+      "words": 1862,
       "anchor_ids": [
         "proposed-appsec-verification-report.verification_scope",
         "proposed-appsec-verification-report.threat_requirements",
@@ -261,7 +273,9 @@
         "proposed-appsec-verification-report.acceptance_disposition"
       ],
       "case_id": "OPG-RSM",
-      "methodology_context": "OWASP ASVS 5.0 verification categories and NIST SSDF SP 800-218 v1.1"
+      "methodology_context": "OWASP ASVS 5.0 verification categories and NIST SSDF SP 800-218 v1.1",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:appsec-verification-report:medium",
@@ -272,9 +286,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "8e7cc8cc3548baa9567402817e5e0d56284387c03cf80beeaa8dd45861a78699",
-      "bytes": 9349,
-      "words": 1166,
+      "sha256": "c9abe499a164b8a2a4e107ef5b4e20962c3c376432fe800363b8b2f6ce4829ee",
+      "bytes": 12985,
+      "words": 1653,
       "anchor_ids": [
         "proposed-appsec-verification-report.verification_scope",
         "proposed-appsec-verification-report.threat_requirements",
@@ -284,7 +298,9 @@
         "proposed-appsec-verification-report.acceptance_disposition"
       ],
       "case_id": "MRG-OEI",
-      "methodology_context": "OWASP ASVS 5.0 verification categories and NIST SSDF SP 800-218 v1.1"
+      "methodology_context": "OWASP ASVS 5.0 verification categories and NIST SSDF SP 800-218 v1.1",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:appsec-verification-report:simple",
@@ -295,9 +311,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "de21774d6436c6063bd695016c26154d82b4ea47b9e1ad881c8081d8b9072564",
-      "bytes": 7699,
-      "words": 924,
+      "sha256": "6f0f1fb278a0152014536b7a6476ccf6d5fd9bb72eb18d203f1f8eef0650e9c2",
+      "bytes": 11335,
+      "words": 1411,
       "anchor_ids": [
         "proposed-appsec-verification-report.verification_scope",
         "proposed-appsec-verification-report.threat_requirements",
@@ -307,7 +323,9 @@
         "proposed-appsec-verification-report.acceptance_disposition"
       ],
       "case_id": "HFS-FAR",
-      "methodology_context": "OWASP ASVS 5.0 verification categories and NIST SSDF SP 800-218 v1.1"
+      "methodology_context": "OWASP ASVS 5.0 verification categories and NIST SSDF SP 800-218 v1.1",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:architecture-definition:complex",
@@ -318,16 +336,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "0102d64b9708541e0d1e6fc0fd1dac790d1c14b922ccc351592e28e15a3b4582",
-      "bytes": 11449,
-      "words": 1247,
+      "sha256": "cc1eba88209e7f485c05f8ffce9f7b0f05a9a5b4f1c841a5bb68505ff3ce7760",
+      "bytes": 14987,
+      "words": 1833,
       "anchor_ids": [
         "architecture-definition.architecture_context",
         "architecture-definition.architecture_drivers",
         "architecture-definition.architecture_viewpoints",
         "architecture-definition.architecture_relations",
         "architecture-definition.architecture_evolution"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:architecture-definition:medium",
@@ -338,16 +358,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "038a3cf93e8e1971c9cbf615c5eef334a560e2360f45bcfbb49d2e61e7578ee7",
-      "bytes": 9690,
-      "words": 1069,
+      "sha256": "0de6291156315bd8eaf83b5588b56cb8a0a6484c9d7ede8810fa1c15d410dcdd",
+      "bytes": 13228,
+      "words": 1651,
       "anchor_ids": [
         "architecture-definition.architecture_context",
         "architecture-definition.architecture_drivers",
         "architecture-definition.architecture_viewpoints",
         "architecture-definition.architecture_relations",
         "architecture-definition.architecture_evolution"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:architecture-definition:simple",
@@ -358,16 +380,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "5f78331dbab449ae063c2d831b15bc724f2149f753ca048380678f143cf052c8",
-      "bytes": 8489,
-      "words": 921,
+      "sha256": "a5e1a32031c0be44598f5624aa83f7457804945a9a5eb29bd6177251d5835dfe",
+      "bytes": 12027,
+      "words": 1500,
       "anchor_ids": [
         "architecture-definition.architecture_context",
         "architecture-definition.architecture_drivers",
         "architecture-definition.architecture_viewpoints",
         "architecture-definition.architecture_relations",
         "architecture-definition.architecture_evolution"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:assurance-report:complex",
@@ -378,16 +402,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "4ed93c471d6ae69380ab8cee2659c8301c4e65884a1ed64525ad20a76f1b06d0",
-      "bytes": 9887,
-      "words": 1150,
+      "sha256": "a97c0d97a911174dfccd95a664dda1664a1c9b2d0c49c1da0cce3c77956f818a",
+      "bytes": 13459,
+      "words": 1739,
       "anchor_ids": [
         "assurance-report.assurance_scope",
         "assurance-report.assurance_method",
         "assurance-report.control_tests",
         "assurance-report.assurance_findings",
         "assurance-report.assurance_conclusion"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:assurance-report:medium",
@@ -398,16 +424,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "27941c6a848cd98dfa69e94378c8f6ea0a2839966588db307ce3a93ca6b23e45",
-      "bytes": 8398,
-      "words": 966,
+      "sha256": "25512a8aa246cad00bc160340b60dae3851caee8786bd15a69d152e5b5b91e1b",
+      "bytes": 11970,
+      "words": 1546,
       "anchor_ids": [
         "assurance-report.assurance_scope",
         "assurance-report.assurance_method",
         "assurance-report.control_tests",
         "assurance-report.assurance_findings",
         "assurance-report.assurance_conclusion"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:assurance-report:simple",
@@ -418,16 +446,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "0f0538ac0458ada0f85c7331fbf73edafbc3c7864d0810fcc8e83b28b925285c",
-      "bytes": 6980,
-      "words": 801,
+      "sha256": "426229eef74a5dc74bfce296c0b3a669d6a6606a95ca8b071b5de1a099b28109",
+      "bytes": 10552,
+      "words": 1341,
       "anchor_ids": [
         "assurance-report.assurance_scope",
         "assurance-report.assurance_method",
         "assurance-report.control_tests",
         "assurance-report.assurance_findings",
         "assurance-report.assurance_conclusion"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:benefits-realisation-review:complex",
@@ -438,16 +468,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "7c6d884fab4fd1967683274bf8cd91e4efb8cbcbd6680fb3ce9918262cc688e7",
-      "bytes": 11993,
-      "words": 1391,
+      "sha256": "940a20207249ccfe872ce61334551a981eecc7b142ccd18c808d41da13f66de4",
+      "bytes": 15543,
+      "words": 1990,
       "anchor_ids": [
         "proposed-benefits-realisation-review.benefit_baseline",
         "proposed-benefits-realisation-review.actuals",
         "proposed-benefits-realisation-review.variance_drivers",
         "proposed-benefits-realisation-review.corrective_actions",
         "proposed-benefits-realisation-review.closure_value"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:benefits-realisation-review:medium",
@@ -458,16 +490,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "8ef2629057b25d9980f1e329241b34657cbae65c071bfb4fe2d9eeb55e3a2b30",
-      "bytes": 9301,
-      "words": 1097,
+      "sha256": "0e4a70d6d606607eab357eb01d6762ebce6a3b82a20c7af10d2af4380de9d02f",
+      "bytes": 12851,
+      "words": 1673,
       "anchor_ids": [
         "proposed-benefits-realisation-review.benefit_baseline",
         "proposed-benefits-realisation-review.actuals",
         "proposed-benefits-realisation-review.variance_drivers",
         "proposed-benefits-realisation-review.corrective_actions",
         "proposed-benefits-realisation-review.closure_value"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:benefits-realisation-review:simple",
@@ -478,16 +512,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "17f00e49a9f5d6bde8db8df39737ab1cb4e875d32f8efcd87a8c4e7911fa20f5",
-      "bytes": 7922,
-      "words": 933,
+      "sha256": "3aae5c0a17a740bbaddcfe4068a9df71a012ecba00b8514505540924d7207a3f",
+      "bytes": 11472,
+      "words": 1479,
       "anchor_ids": [
         "proposed-benefits-realisation-review.benefit_baseline",
         "proposed-benefits-realisation-review.actuals",
         "proposed-benefits-realisation-review.variance_drivers",
         "proposed-benefits-realisation-review.corrective_actions",
         "proposed-benefits-realisation-review.closure_value"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:business-case:complex",
@@ -498,16 +534,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "638167b009277e0e4c1965fb0e57d42a8e691f8eed854a3c06d2472deaedcbcd",
-      "bytes": 10437,
-      "words": 1221,
+      "sha256": "9ac9625282ba683ff67d8cae3954bdda88b78ec6c2e673edfecf3b73051b90ba",
+      "bytes": 13992,
+      "words": 1816,
       "anchor_ids": [
         "business-case.investment_request",
         "business-case.investment_options",
         "business-case.financial_model",
         "business-case.sensitivity",
         "business-case.benefit_realisation"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:business-case:medium",
@@ -518,16 +556,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "d3c00657cfca84c4f24262dfbe8802ad13c9239d3cbbaa14c7e79a674cae6981",
-      "bytes": 8951,
-      "words": 1063,
+      "sha256": "7a774e6754c48e0dcb1c5e28c99b88e1c5b3558619956587558b9d08fdb55af9",
+      "bytes": 12506,
+      "words": 1656,
       "anchor_ids": [
         "business-case.investment_request",
         "business-case.investment_options",
         "business-case.financial_model",
         "business-case.sensitivity",
         "business-case.benefit_realisation"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:business-case:simple",
@@ -538,16 +578,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "7ae93ed9c84594af51ab70a607ddafd2862f218955ee7bf09dda87a7064fcdce",
-      "bytes": 7597,
-      "words": 902,
+      "sha256": "1c2dbccbe2e08f14d456becc1d65bf536457a0ef80301431aed4208d00b8531f",
+      "bytes": 11152,
+      "words": 1462,
       "anchor_ids": [
         "business-case.investment_request",
         "business-case.investment_options",
         "business-case.financial_model",
         "business-case.sensitivity",
         "business-case.benefit_realisation"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:cicd-pipeline-assurance:complex",
@@ -558,9 +600,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "2cdd101d8bbb1423f59932829075e96ac91481097f76ae4f579dbe710da15d78",
-      "bytes": 10683,
-      "words": 1336,
+      "sha256": "05866845aea2e1d24c77a3d8e76ad23f513f54706cddcf80bcf55401fe86966d",
+      "bytes": 14332,
+      "words": 1835,
       "anchor_ids": [
         "proposed-cicd-pipeline-assurance.assurance_scope",
         "proposed-cicd-pipeline-assurance.runner_trust",
@@ -570,7 +612,9 @@
         "proposed-cicd-pipeline-assurance.release_attestation"
       ],
       "case_id": "OPG-RSM",
-      "methodology_context": "SLSA v1.2 Build Track and source/provenance assurance concepts"
+      "methodology_context": "SLSA v1.2 Build Track and source/provenance assurance concepts",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:cicd-pipeline-assurance:medium",
@@ -581,9 +625,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "de94a57f1cb7816a9e3202faad25d95c3125ccc2637cb0d73b6e3f29c2809db7",
-      "bytes": 8911,
-      "words": 1133,
+      "sha256": "cb0b111f949ded7c2ee22cc2b71d021c19ad90ca3e6d554b1a9aa929ea7a8d5a",
+      "bytes": 12560,
+      "words": 1632,
       "anchor_ids": [
         "proposed-cicd-pipeline-assurance.assurance_scope",
         "proposed-cicd-pipeline-assurance.runner_trust",
@@ -593,7 +637,9 @@
         "proposed-cicd-pipeline-assurance.release_attestation"
       ],
       "case_id": "MRG-OEI",
-      "methodology_context": "SLSA v1.2 Build Track and source/provenance assurance concepts"
+      "methodology_context": "SLSA v1.2 Build Track and source/provenance assurance concepts",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:cicd-pipeline-assurance:simple",
@@ -604,9 +650,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "d3dd00d47563cf2a3e6d30b735287f233938f45a939ee4d6023ebeb481b15c70",
-      "bytes": 7297,
-      "words": 900,
+      "sha256": "213a69734c5826c1e2ee745995dcba9b7c7ee317329ffeacde3c56aacad489cd",
+      "bytes": 10946,
+      "words": 1399,
       "anchor_ids": [
         "proposed-cicd-pipeline-assurance.assurance_scope",
         "proposed-cicd-pipeline-assurance.runner_trust",
@@ -616,7 +662,9 @@
         "proposed-cicd-pipeline-assurance.release_attestation"
       ],
       "case_id": "HFS-FAR",
-      "methodology_context": "SLSA v1.2 Build Track and source/provenance assurance concepts"
+      "methodology_context": "SLSA v1.2 Build Track and source/provenance assurance concepts",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:client-proposal:complex",
@@ -627,9 +675,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "a99b5985dd00b353bae7662cd38cae3d3acdfd9693fa81eea46d8f7a830438cf",
-      "bytes": 13408,
-      "words": 1738,
+      "sha256": "84d6957b4082516fc2c6debac2c40c2663959d4a1135c0a48d8582e9d9f48426",
+      "bytes": 17059,
+      "words": 2227,
       "anchor_ids": [
         "proposed-client-proposal.customer_need",
         "proposed-client-proposal.proposed_solution",
@@ -638,7 +686,9 @@
         "proposed-client-proposal.commercial_overview",
         "proposed-client-proposal.decision_request"
       ],
-      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:client-proposal:medium",
@@ -649,9 +699,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "716660bda82c205286ee055ff6a2a6d675d151033bbe94bbc125b7b87fcc4758",
-      "bytes": 11823,
-      "words": 1583,
+      "sha256": "089e51490350f79246ed781e6d923d5cb315297d0b355960c394f75c3f5999a6",
+      "bytes": 15474,
+      "words": 2072,
       "anchor_ids": [
         "proposed-client-proposal.customer_need",
         "proposed-client-proposal.proposed_solution",
@@ -660,7 +710,9 @@
         "proposed-client-proposal.commercial_overview",
         "proposed-client-proposal.decision_request"
       ],
-      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:client-proposal:simple",
@@ -671,9 +723,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "c735cb2ddb7065161bb9c4da8e107abb2f30aac28786e0cb327cc8ce18832528",
-      "bytes": 11416,
-      "words": 1543,
+      "sha256": "2e08e2df39329a2ffd1e409472b67e9cd76ff7b7021aa98d3309ed7f6e123f33",
+      "bytes": 15067,
+      "words": 2032,
       "anchor_ids": [
         "proposed-client-proposal.customer_need",
         "proposed-client-proposal.proposed_solution",
@@ -682,7 +734,9 @@
         "proposed-client-proposal.commercial_overview",
         "proposed-client-proposal.decision_request"
       ],
-      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:commercial-proposal:complex",
@@ -693,9 +747,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "76540d020a20d105583b75e4b73eb6dfd94b6b4d4f5bc24bcab605615017ab35",
-      "bytes": 10234,
-      "words": 1283,
+      "sha256": "6228e11166330c8c167c09a1d5023b360c93b7091a7a623ad2c8072a85a16015",
+      "bytes": 13894,
+      "words": 1785,
       "anchor_ids": [
         "proposed-commercial-proposal.price_basis",
         "proposed-commercial-proposal.cost_breakdown",
@@ -704,7 +758,9 @@
         "proposed-commercial-proposal.commercial_risks",
         "proposed-commercial-proposal.approval_boundary"
       ],
-      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:commercial-proposal:medium",
@@ -715,9 +771,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "e147b0ab61b83bbb65c8ca9360e20c44d8ca76d471f645852cc11d93bbb7d6fc",
-      "bytes": 9339,
-      "words": 1190,
+      "sha256": "07c2c9c68a1b84e714a415fdd09f5763335cc962f33915c17eaadbee6ae29075",
+      "bytes": 12999,
+      "words": 1692,
       "anchor_ids": [
         "proposed-commercial-proposal.price_basis",
         "proposed-commercial-proposal.cost_breakdown",
@@ -726,7 +782,9 @@
         "proposed-commercial-proposal.commercial_risks",
         "proposed-commercial-proposal.approval_boundary"
       ],
-      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:commercial-proposal:simple",
@@ -737,9 +795,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "6d83f0f14047c916d2ad36e97edc7e70548184ccf8b927b46ed5ac92a8921451",
-      "bytes": 9131,
-      "words": 1177,
+      "sha256": "52bc03a228ed78ca049919abdedf10076f82f2287289b4189ad7cc3d354cf84d",
+      "bytes": 12791,
+      "words": 1679,
       "anchor_ids": [
         "proposed-commercial-proposal.price_basis",
         "proposed-commercial-proposal.cost_breakdown",
@@ -748,7 +806,9 @@
         "proposed-commercial-proposal.commercial_risks",
         "proposed-commercial-proposal.approval_boundary"
       ],
-      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:compliance-gap-analysis:complex",
@@ -759,16 +819,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "70baa491994d4ef2a4842001be211cfca587a74f6aaca502f1f945d39acede4d",
-      "bytes": 12091,
-      "words": 1400,
+      "sha256": "20f1069561f29d24218bd8e980a139f9e65d00bacccbf67cc3f76d6d0b3f41af",
+      "bytes": 15636,
+      "words": 2005,
       "anchor_ids": [
         "proposed-compliance-gap-analysis.applicability",
         "proposed-compliance-gap-analysis.mapping",
         "proposed-compliance-gap-analysis.gap_analysis",
         "proposed-compliance-gap-analysis.remediation",
         "proposed-compliance-gap-analysis.closure"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:compliance-gap-analysis:medium",
@@ -779,16 +841,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "8532a1c9726d0d38d759021fe6330d858813c9f52e932bde1e72991e033bd279",
-      "bytes": 9353,
-      "words": 1074,
+      "sha256": "55f18072c9c68f25c00c116a4094c958e7f027944326a242385f306dedcec8ba",
+      "bytes": 12898,
+      "words": 1656,
       "anchor_ids": [
         "proposed-compliance-gap-analysis.applicability",
         "proposed-compliance-gap-analysis.mapping",
         "proposed-compliance-gap-analysis.gap_analysis",
         "proposed-compliance-gap-analysis.remediation",
         "proposed-compliance-gap-analysis.closure"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:compliance-gap-analysis:simple",
@@ -799,16 +863,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "897089853fba911cbf62b195a94ca27b1017c569f7566bc15daebf885b8f8616",
-      "bytes": 7776,
-      "words": 902,
+      "sha256": "dd76f4cc3ab061a95da7df7f2523bfc3784bd85bf954a16796911ccb822372a9",
+      "bytes": 11321,
+      "words": 1454,
       "anchor_ids": [
         "proposed-compliance-gap-analysis.applicability",
         "proposed-compliance-gap-analysis.mapping",
         "proposed-compliance-gap-analysis.gap_analysis",
         "proposed-compliance-gap-analysis.remediation",
         "proposed-compliance-gap-analysis.closure"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:cybersecurity-transformation-proposal:complex",
@@ -819,9 +885,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "04777332ebc2a91a14a7aa68c0fe56380b0cd82ce1a7aa2d5f456455de6e3bb8",
-      "bytes": 11949,
-      "words": 1419,
+      "sha256": "a32821e5819d2aa4242cd91ceec45c4bbb15438a43eff394c7f9156bae6c378b",
+      "bytes": 15599,
+      "words": 1911,
       "anchor_ids": [
         "proposed-cybersecurity-transformation-proposal.security_baseline",
         "proposed-cybersecurity-transformation-proposal.target_control_architecture",
@@ -830,7 +896,9 @@
         "proposed-cybersecurity-transformation-proposal.resourcing_cost",
         "proposed-cybersecurity-transformation-proposal.risk_acceptance"
       ],
-      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:cybersecurity-transformation-proposal:medium",
@@ -841,9 +909,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "efce214cff1b269984cf72e2c0c95067ffe1047374b4fcbd4b3b6715d70c0cc6",
-      "bytes": 10517,
-      "words": 1294,
+      "sha256": "194ad966fed2779724ae3f13849b5f0f7f17d4af33289781d372e43c199958b4",
+      "bytes": 14167,
+      "words": 1786,
       "anchor_ids": [
         "proposed-cybersecurity-transformation-proposal.security_baseline",
         "proposed-cybersecurity-transformation-proposal.target_control_architecture",
@@ -852,7 +920,9 @@
         "proposed-cybersecurity-transformation-proposal.resourcing_cost",
         "proposed-cybersecurity-transformation-proposal.risk_acceptance"
       ],
-      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:cybersecurity-transformation-proposal:simple",
@@ -863,9 +933,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "1c2ec75bd0cc69a07bbf4c18ed272e907917d88e71842d14376ea749ae45ff08",
-      "bytes": 10288,
-      "words": 1270,
+      "sha256": "ab550f7198937ab44ad0930270889d3f5752aa91b7ee12ab555aaf830ca60b60",
+      "bytes": 13938,
+      "words": 1762,
       "anchor_ids": [
         "proposed-cybersecurity-transformation-proposal.security_baseline",
         "proposed-cybersecurity-transformation-proposal.target_control_architecture",
@@ -874,7 +944,9 @@
         "proposed-cybersecurity-transformation-proposal.resourcing_cost",
         "proposed-cybersecurity-transformation-proposal.risk_acceptance"
       ],
-      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:decision-paper:complex",
@@ -885,16 +957,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "33f73e98ca04a02980f9ab1827bb509fe40289e08ebdda96fce737b26bf7eb01",
-      "bytes": 11136,
-      "words": 1342,
+      "sha256": "f819947b3cdb94c4c9a6ce6df0857aabd219d9e26f81ef8f7a54268e50a562c1",
+      "bytes": 14706,
+      "words": 1907,
       "anchor_ids": [
         "decision-paper.decision_request",
         "decision-paper.baseline",
         "decision-paper.options",
         "decision-paper.tradeoffs",
         "decision-paper.recommendation"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:decision-paper:medium",
@@ -905,16 +979,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "18cc6154874f9bd36917a72da3f0f52a61139f2164e800d5a8746b330f7f0a15",
-      "bytes": 9475,
-      "words": 1166,
+      "sha256": "4726f5f4e71beaba8c60162e1bd571d4b8318072aeed14a7f39aac1882bbba8e",
+      "bytes": 13045,
+      "words": 1729,
       "anchor_ids": [
         "decision-paper.decision_request",
         "decision-paper.baseline",
         "decision-paper.options",
         "decision-paper.tradeoffs",
         "decision-paper.recommendation"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:decision-paper:simple",
@@ -925,16 +1001,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "2c1f2838866daa39a6f7496bf38ff41391b8cc48aea44e1e20d747865dcefb8e",
-      "bytes": 8096,
-      "words": 987,
+      "sha256": "be2cc2636dffedb63333665cb62f2d2d14446bca76c43bd71ddc82946475f0b9",
+      "bytes": 11666,
+      "words": 1528,
       "anchor_ids": [
         "decision-paper.decision_request",
         "decision-paper.baseline",
         "decision-paper.options",
         "decision-paper.tradeoffs",
         "decision-paper.recommendation"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:delivery-proposal:complex",
@@ -945,9 +1023,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "25e5222abe56b22b2f5f50d416620deae8fb43cb59574e33ca2c6ee04e823d75",
-      "bytes": 10930,
-      "words": 1398,
+      "sha256": "ac848de9a22d8fcb44221a3f7aed1424919938fe367fe39997c5fe10d12ee282",
+      "bytes": 14561,
+      "words": 1890,
       "anchor_ids": [
         "proposed-delivery-proposal.delivery_scope",
         "proposed-delivery-proposal.work_packages",
@@ -956,7 +1034,9 @@
         "proposed-delivery-proposal.quality_acceptance",
         "proposed-delivery-proposal.transition_controls"
       ],
-      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:delivery-proposal:medium",
@@ -967,9 +1047,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "ac86e3a1b4a3b711297cc64f55b581f65b176e3ef050ebf493ed70c09021bbbd",
-      "bytes": 9644,
-      "words": 1265,
+      "sha256": "ff4b194c1126d8f172571eead5df33d0ddb7d6158fce460200d3474f9a30ddbd",
+      "bytes": 13275,
+      "words": 1757,
       "anchor_ids": [
         "proposed-delivery-proposal.delivery_scope",
         "proposed-delivery-proposal.work_packages",
@@ -978,7 +1058,9 @@
         "proposed-delivery-proposal.quality_acceptance",
         "proposed-delivery-proposal.transition_controls"
       ],
-      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:delivery-proposal:simple",
@@ -989,9 +1071,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "ce9dd8848c7a3b0c7b00c61769e1ae96024f147ed1945985ba47b033571a5879",
-      "bytes": 9240,
-      "words": 1217,
+      "sha256": "f148d97d707fe49ff8ea65b8c4594a8703b676b560fca6a4e5ef49ebfbe6e33c",
+      "bytes": 12871,
+      "words": 1709,
       "anchor_ids": [
         "proposed-delivery-proposal.delivery_scope",
         "proposed-delivery-proposal.work_packages",
@@ -1000,7 +1082,9 @@
         "proposed-delivery-proposal.quality_acceptance",
         "proposed-delivery-proposal.transition_controls"
       ],
-      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:devsecops-pipeline-design:complex",
@@ -1011,9 +1095,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "f1c34bd676ab868e61c765d129007265b0b8839499f475a48337f1f5596c8e12",
-      "bytes": 11215,
-      "words": 1400,
+      "sha256": "a7bea2268c0cd4abcbcc2cfd37b55f8cf769b70f06aefbac51188af545cd24e5",
+      "bytes": 14856,
+      "words": 1901,
       "anchor_ids": [
         "proposed-devsecops-pipeline-design.pipeline_scope",
         "proposed-devsecops-pipeline-design.stages_and_protection",
@@ -1023,7 +1107,9 @@
         "proposed-devsecops-pipeline-design.operating_acceptance"
       ],
       "case_id": "OPG-RSM",
-      "methodology_context": "NIST SSDF SP 800-218 v1.1 (final); OWASP ASVS 5.0; SLSA v1.2 supply-chain framework"
+      "methodology_context": "NIST SSDF SP 800-218 v1.1 (final); OWASP ASVS 5.0; SLSA v1.2 supply-chain framework",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:devsecops-pipeline-design:medium",
@@ -1034,9 +1120,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "c7ae181b809a3e70197f39c0e1f37cd0c0ca91ada317bb13a7a340418876a50e",
-      "bytes": 9389,
-      "words": 1192,
+      "sha256": "2e7733de59a3f7a7a3b3213a0faed300bad52cd0bb08335bc12830f03e5ecb4e",
+      "bytes": 13030,
+      "words": 1693,
       "anchor_ids": [
         "proposed-devsecops-pipeline-design.pipeline_scope",
         "proposed-devsecops-pipeline-design.stages_and_protection",
@@ -1046,7 +1132,9 @@
         "proposed-devsecops-pipeline-design.operating_acceptance"
       ],
       "case_id": "MRG-OEI",
-      "methodology_context": "NIST SSDF SP 800-218 v1.1 (final); OWASP ASVS 5.0; SLSA v1.2 supply-chain framework"
+      "methodology_context": "NIST SSDF SP 800-218 v1.1 (final); OWASP ASVS 5.0; SLSA v1.2 supply-chain framework",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:devsecops-pipeline-design:simple",
@@ -1057,9 +1145,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "30280507b79d9f604e50d7794d1fcd1525ee37d5d99b1debdcc2b08de074f657",
-      "bytes": 7767,
-      "words": 955,
+      "sha256": "88c90663c4b499901f73c67e091a8fc12d3adf04834be51a9b39d8c84635c1f7",
+      "bytes": 11408,
+      "words": 1456,
       "anchor_ids": [
         "proposed-devsecops-pipeline-design.pipeline_scope",
         "proposed-devsecops-pipeline-design.stages_and_protection",
@@ -1069,7 +1157,9 @@
         "proposed-devsecops-pipeline-design.operating_acceptance"
       ],
       "case_id": "HFS-FAR",
-      "methodology_context": "NIST SSDF SP 800-218 v1.1 (final); OWASP ASVS 5.0; SLSA v1.2 supply-chain framework"
+      "methodology_context": "NIST SSDF SP 800-218 v1.1 (final); OWASP ASVS 5.0; SLSA v1.2 supply-chain framework",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:executive-proposal:complex",
@@ -1080,9 +1170,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "5fcf7950e98f9c71b7de98506241b98a3f9a7798cdb4cf6b2cf4ed60d8f7cf7e",
-      "bytes": 8677,
-      "words": 1050,
+      "sha256": "c407311e933392a259a67c28b2e049d300890125013cd7f6843c5fcd3b83ec6d",
+      "bytes": 12308,
+      "words": 1541,
       "anchor_ids": [
         "proposed-executive-proposal.executive_ask",
         "proposed-executive-proposal.business_case",
@@ -1091,7 +1181,9 @@
         "proposed-executive-proposal.risk_dependencies",
         "proposed-executive-proposal.next_decision"
       ],
-      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:executive-proposal:medium",
@@ -1102,9 +1194,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "2a010c180b425b6389062e48acfb86d8ff564b14810e8755613ecd061564ccdd",
-      "bytes": 8113,
-      "words": 1002,
+      "sha256": "50e633e447c1420e5eeab8935d9dcf684d5224ecff7ee06cbec98583d6f48592",
+      "bytes": 11744,
+      "words": 1493,
       "anchor_ids": [
         "proposed-executive-proposal.executive_ask",
         "proposed-executive-proposal.business_case",
@@ -1113,7 +1205,9 @@
         "proposed-executive-proposal.risk_dependencies",
         "proposed-executive-proposal.next_decision"
       ],
-      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:executive-proposal:simple",
@@ -1124,9 +1218,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "30fafe4f3e696f6a4ae598c43b4a15a4aff1e5f3ab458591a8587726946b4c50",
-      "bytes": 7944,
-      "words": 983,
+      "sha256": "d5bd41daf93af32f453086f66634d0729d2fb8dc70ecb3c4925c80f50fa89183",
+      "bytes": 11575,
+      "words": 1474,
       "anchor_ids": [
         "proposed-executive-proposal.executive_ask",
         "proposed-executive-proposal.business_case",
@@ -1135,7 +1229,9 @@
         "proposed-executive-proposal.risk_dependencies",
         "proposed-executive-proposal.next_decision"
       ],
-      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:hld:complex",
@@ -1146,16 +1242,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "13e1e5b99c4693bef63f840ed9cf39cbf7616537f426ff17649ea0e81449946b",
-      "bytes": 10175,
-      "words": 1154,
+      "sha256": "450a703a90fdb2280d49477505ff7013b561c2029172bfe7e32f76c2dcd8661d",
+      "bytes": 13660,
+      "words": 1731,
       "anchor_ids": [
         "hld.solution_scope",
         "hld.quality_requirements",
         "hld.solution_components",
         "hld.solution_interfaces",
         "hld.delivery_strategy"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:hld:medium",
@@ -1166,16 +1264,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "56141006aa82c230a4e68f15426b501c12f7d7ed7b1ad6f1e847f36ba76880ba",
-      "bytes": 8603,
-      "words": 988,
+      "sha256": "79948241a317f0bf45f0d7bc87662df7e313ef9234c703c69df9567b63d6128c",
+      "bytes": 12088,
+      "words": 1559,
       "anchor_ids": [
         "hld.solution_scope",
         "hld.quality_requirements",
         "hld.solution_components",
         "hld.solution_interfaces",
         "hld.delivery_strategy"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:hld:simple",
@@ -1186,16 +1286,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "66501fe490bfaed1238fe063119dbb0566a3971627da52a7adb3901289416736",
-      "bytes": 7343,
-      "words": 842,
+      "sha256": "4a7ccf0e1c7f6ef39e608f98476177657b2928635f9486c52051c489118a1534",
+      "bytes": 10828,
+      "words": 1376,
       "anchor_ids": [
         "hld.solution_scope",
         "hld.quality_requirements",
         "hld.solution_components",
         "hld.solution_interfaces",
         "hld.delivery_strategy"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:implementation-specification-lld:complex",
@@ -1206,16 +1308,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "ddb3b6181d0d56e3f8235073e4617ffe180cc49408461f44cc07fea8568d0156",
-      "bytes": 12227,
-      "words": 1426,
+      "sha256": "681068673fd9a0b97395622ff0261cdf74c1b891fb79505ff7f8fbd54b7d17a2",
+      "bytes": 15799,
+      "words": 1996,
       "anchor_ids": [
         "proposed-implementation-specification-lld.implementation_scope",
         "proposed-implementation-specification-lld.configuration_contract",
         "proposed-implementation-specification-lld.deployment_sequence",
         "proposed-implementation-specification-lld.technical_validation",
         "proposed-implementation-specification-lld.handover"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:implementation-specification-lld:medium",
@@ -1226,16 +1330,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "f191f6381a091aa3d25173fdf0db4658738fbbc0e78861befff7f089afd4422c",
-      "bytes": 9434,
-      "words": 1100,
+      "sha256": "8fcf474c31c362c76a144bd5bc6113afbc1d0b379f22149e71bf005a9724c796",
+      "bytes": 13006,
+      "words": 1646,
       "anchor_ids": [
         "proposed-implementation-specification-lld.implementation_scope",
         "proposed-implementation-specification-lld.configuration_contract",
         "proposed-implementation-specification-lld.deployment_sequence",
         "proposed-implementation-specification-lld.technical_validation",
         "proposed-implementation-specification-lld.handover"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:implementation-specification-lld:simple",
@@ -1246,16 +1352,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "bec450d98b809a653c8dee6c623b7bbbb5ccc6f3d83aec84a743a87de97e8dd0",
-      "bytes": 7997,
-      "words": 926,
+      "sha256": "ecbc5a5438bc49777e4152d0bfe5cf9c23a1a5d37825f26a92de9969566f8c25",
+      "bytes": 11569,
+      "words": 1443,
       "anchor_ids": [
         "proposed-implementation-specification-lld.implementation_scope",
         "proposed-implementation-specification-lld.configuration_contract",
         "proposed-implementation-specification-lld.deployment_sequence",
         "proposed-implementation-specification-lld.technical_validation",
         "proposed-implementation-specification-lld.handover"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:incident-postmortem:complex",
@@ -1266,16 +1374,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "df194aca74376785fca88fc56159e39932b5c1330b3c204ec499fd71907512e5",
-      "bytes": 12056,
-      "words": 1404,
+      "sha256": "fbb4dac6eec155f3b46764c85e2a1b06d3b4a2c11d0bb9facd92b46230f440f9",
+      "bytes": 15567,
+      "words": 2001,
       "anchor_ids": [
         "proposed-incident-postmortem.incident_boundary",
         "proposed-incident-postmortem.contain_recovery",
         "proposed-incident-postmortem.causal_analysis",
         "proposed-incident-postmortem.action_plan",
         "proposed-incident-postmortem.lessons_followup"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:incident-postmortem:medium",
@@ -1286,16 +1396,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "109db1ee9ab564c12ab1846ad4f9a30617080883a5ea02968e326dee4f9b0e8e",
-      "bytes": 9238,
-      "words": 1095,
+      "sha256": "1cc0f5bc43aba8ff69ff9f322278f8220ed58a3c97cc706a4165504dad9372e5",
+      "bytes": 12749,
+      "words": 1669,
       "anchor_ids": [
         "proposed-incident-postmortem.incident_boundary",
         "proposed-incident-postmortem.contain_recovery",
         "proposed-incident-postmortem.causal_analysis",
         "proposed-incident-postmortem.action_plan",
         "proposed-incident-postmortem.lessons_followup"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:incident-postmortem:simple",
@@ -1306,16 +1418,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "ca82886fa8e52592da6ee54aacf3642092842facd1f24a89d5729190b317b428",
-      "bytes": 7816,
-      "words": 924,
+      "sha256": "d43e3302f077233d4fab2e3e912793857f99cc1b96f9c1d0b81aa5453aea25c0",
+      "bytes": 11327,
+      "words": 1469,
       "anchor_ids": [
         "proposed-incident-postmortem.incident_boundary",
         "proposed-incident-postmortem.contain_recovery",
         "proposed-incident-postmortem.causal_analysis",
         "proposed-incident-postmortem.action_plan",
         "proposed-incident-postmortem.lessons_followup"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:it-digital-strategy:complex",
@@ -1326,16 +1440,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "0bc4c7f5b3947ec61d779290a837a1bb5692ef5f3d9af4f8cbbbca3e4d6418e0",
-      "bytes": 12633,
-      "words": 1485,
+      "sha256": "badafb3f2899f3400e939a9c792b9f3e32e00f4a3bd689476bb0d328313c984e",
+      "bytes": 16180,
+      "words": 2056,
       "anchor_ids": [
         "proposed-it-digital-strategy.strategic_mandate",
         "proposed-it-digital-strategy.current_capabilities",
         "proposed-it-digital-strategy.target_portfolio",
         "proposed-it-digital-strategy.investment_waves",
         "proposed-it-digital-strategy.governance_measures"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:it-digital-strategy:medium",
@@ -1346,16 +1462,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "87ba2da3774d5c61a85e73e076201948fdf10ac7a0a6647caee4dd3f445e3d47",
-      "bytes": 9815,
-      "words": 1176,
+      "sha256": "c5ec3ce03cdf13eedf6c892f5db8bfbedb9baf33b994c3b1a734059482133818",
+      "bytes": 13362,
+      "words": 1724,
       "anchor_ids": [
         "proposed-it-digital-strategy.strategic_mandate",
         "proposed-it-digital-strategy.current_capabilities",
         "proposed-it-digital-strategy.target_portfolio",
         "proposed-it-digital-strategy.investment_waves",
         "proposed-it-digital-strategy.governance_measures"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:it-digital-strategy:simple",
@@ -1366,16 +1484,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "31296b87d82e7f82986d37a43d39b8ff815446c1cbd93a133b4340fdc624845b",
-      "bytes": 8393,
-      "words": 1005,
+      "sha256": "5d46b9ba632ebbfa29e8092032cb0073d44f669651d215d8188aae66da4f438e",
+      "bytes": 11940,
+      "words": 1524,
       "anchor_ids": [
         "proposed-it-digital-strategy.strategic_mandate",
         "proposed-it-digital-strategy.current_capabilities",
         "proposed-it-digital-strategy.target_portfolio",
         "proposed-it-digital-strategy.investment_waves",
         "proposed-it-digital-strategy.governance_measures"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:managed-security-services-proposal:complex",
@@ -1386,9 +1506,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "cf4367a95f6947482b09ac8049ae6ebf02f5780c722f239ca673eb65cdebfd9e",
-      "bytes": 10109,
-      "words": 1240,
+      "sha256": "05a1858f35b3b3b56e81fe9e77139835584e80fde4cf6aeebb65e767a07f75e9",
+      "bytes": 13795,
+      "words": 1738,
       "anchor_ids": [
         "proposed-managed-security-services-proposal.service_boundary",
         "proposed-managed-security-services-proposal.service_catalogue",
@@ -1397,7 +1517,9 @@
         "proposed-managed-security-services-proposal.commercial_service_model",
         "proposed-managed-security-services-proposal.transition_acceptance"
       ],
-      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:managed-security-services-proposal:medium",
@@ -1408,9 +1530,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "77e169fefe849b9f87875e2be138592519f0b0ad80931f4d2c3b0ef268880c49",
-      "bytes": 9813,
-      "words": 1211,
+      "sha256": "615bb3f938eaec56491d8eeeef567e503ca7f216d6ede2ba8127c8b957bb62b9",
+      "bytes": 13499,
+      "words": 1709,
       "anchor_ids": [
         "proposed-managed-security-services-proposal.service_boundary",
         "proposed-managed-security-services-proposal.service_catalogue",
@@ -1419,7 +1541,9 @@
         "proposed-managed-security-services-proposal.commercial_service_model",
         "proposed-managed-security-services-proposal.transition_acceptance"
       ],
-      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:managed-security-services-proposal:simple",
@@ -1430,9 +1554,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "20c8723be3c25395c2d1700663112337b4e93dadbfd8392375ee0677db42cfaf",
-      "bytes": 9738,
-      "words": 1208,
+      "sha256": "3bd639ca97c2b4446e46d36b1a53262d0a3d7614c4ca5f014cf31248d821a5fe",
+      "bytes": 13424,
+      "words": 1706,
       "anchor_ids": [
         "proposed-managed-security-services-proposal.service_boundary",
         "proposed-managed-security-services-proposal.service_catalogue",
@@ -1441,7 +1565,9 @@
         "proposed-managed-security-services-proposal.commercial_service_model",
         "proposed-managed-security-services-proposal.transition_acceptance"
       ],
-      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:migration-cutover-plan:complex",
@@ -1452,16 +1578,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "9d716d1f9aa66c0c75ed241820ddc7909f1ba086942390709197a7934c7526fb",
-      "bytes": 12056,
-      "words": 1397,
+      "sha256": "92bd72ac5f85c6fd1cf35591dc756000f6dfdb111c3540eb3b8b98898f1da80c",
+      "bytes": 15580,
+      "words": 1970,
       "anchor_ids": [
         "proposed-migration-cutover-plan.migration_scope",
         "proposed-migration-cutover-plan.mapping_reconciliation",
         "proposed-migration-cutover-plan.cutover_schedule",
         "proposed-migration-cutover-plan.rollback_contingency",
         "proposed-migration-cutover-plan.readiness_acceptance"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:migration-cutover-plan:medium",
@@ -1472,16 +1600,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "3f2c0f8eb21b83141295255d5b43e51f756f1d58baebab684937d9fcbc637bef",
-      "bytes": 9238,
-      "words": 1088,
+      "sha256": "90c91125f4e877079fedfef31bbdbd6946703acf85bad910616424eaba9894eb",
+      "bytes": 12762,
+      "words": 1638,
       "anchor_ids": [
         "proposed-migration-cutover-plan.migration_scope",
         "proposed-migration-cutover-plan.mapping_reconciliation",
         "proposed-migration-cutover-plan.cutover_schedule",
         "proposed-migration-cutover-plan.rollback_contingency",
         "proposed-migration-cutover-plan.readiness_acceptance"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:migration-cutover-plan:simple",
@@ -1492,16 +1622,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "0f091e70afb8cfdd43296cd90e2772db89405f765a5a73984c2a29bf6b9bd981",
-      "bytes": 7816,
-      "words": 917,
+      "sha256": "f23a4a18b4a4194983ec90c8c7f31fb067b71a4679f34acef7db7c57e31e432c",
+      "bytes": 11340,
+      "words": 1438,
       "anchor_ids": [
         "proposed-migration-cutover-plan.migration_scope",
         "proposed-migration-cutover-plan.mapping_reconciliation",
         "proposed-migration-cutover-plan.cutover_schedule",
         "proposed-migration-cutover-plan.rollback_contingency",
         "proposed-migration-cutover-plan.readiness_acceptance"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:operational-handover:complex",
@@ -1512,16 +1644,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "3a65bd7f7266c194c72fd2c298ea90013fcd05f33280ad387762d80bee8f06b0",
-      "bytes": 9768,
-      "words": 1132,
+      "sha256": "4c609e52ab1fb6b42f682b4c23f4410fd4270267b88e64723e4bcd25c9a587d5",
+      "bytes": 13284,
+      "words": 1729,
       "anchor_ids": [
         "operational-handover.service_boundary",
         "operational-handover.readiness_evidence",
         "operational-handover.support_arrangements",
         "operational-handover.handover_inventory",
         "operational-handover.acceptance_decision"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:operational-handover:medium",
@@ -1532,16 +1666,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "2ff154c2e958fa5df72c2b4027bd3e78bfd6755edbe787f0fea164c376bd86f0",
-      "bytes": 8322,
-      "words": 972,
+      "sha256": "6515a502128ca670fe4220987064a095a94ed6ea36e79d15783385219e45d5fb",
+      "bytes": 11838,
+      "words": 1559,
       "anchor_ids": [
         "operational-handover.service_boundary",
         "operational-handover.readiness_evidence",
         "operational-handover.support_arrangements",
         "operational-handover.handover_inventory",
         "operational-handover.acceptance_decision"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:operational-handover:simple",
@@ -1552,16 +1688,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "174c3884e50df7027a33396c0c8dde61cd0fb0cc631e8fd5fb6190fd16b4a5d0",
-      "bytes": 7271,
-      "words": 837,
+      "sha256": "aaaa7279cd2b9597174c830984e2aa7d1dc8df2ed1e21b30724811c57cacc481",
+      "bytes": 10787,
+      "words": 1416,
       "anchor_ids": [
         "operational-handover.service_boundary",
         "operational-handover.readiness_evidence",
         "operational-handover.support_arrangements",
         "operational-handover.handover_inventory",
         "operational-handover.acceptance_decision"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:operational-readiness-assessment:complex",
@@ -1572,16 +1710,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "53832a2ee7f09cf759076c3a1e61f76b8d6a169a21fdcf60138c579b993e5041",
-      "bytes": 11717,
-      "words": 1354,
+      "sha256": "e0d4b2535a98852e6ea3f8638481942025000c2b99261d64c5d1006a876be3e1",
+      "bytes": 15209,
+      "words": 1945,
       "anchor_ids": [
         "proposed-operational-readiness-assessment.operating_scope",
         "proposed-operational-readiness-assessment.technical_readiness",
         "proposed-operational-readiness-assessment.service_dependencies",
         "proposed-operational-readiness-assessment.readiness_findings",
         "proposed-operational-readiness-assessment.go_live"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:operational-readiness-assessment:medium",
@@ -1592,16 +1732,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "a96264022b8af8fcdcef385148adb6acb1101a834b7bb040fc6bd1f9c354adc2",
-      "bytes": 9025,
-      "words": 1060,
+      "sha256": "cb454e2318c5c7c03d9c63ed8cdea955f08a7734328b7c9ddc9c7992acb706e3",
+      "bytes": 12517,
+      "words": 1628,
       "anchor_ids": [
         "proposed-operational-readiness-assessment.operating_scope",
         "proposed-operational-readiness-assessment.technical_readiness",
         "proposed-operational-readiness-assessment.service_dependencies",
         "proposed-operational-readiness-assessment.readiness_findings",
         "proposed-operational-readiness-assessment.go_live"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:operational-readiness-assessment:simple",
@@ -1612,16 +1754,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "ce70905e4e193ce3720a56834ff97c38185c27328117f3ee070d7afeda1d0a51",
-      "bytes": 7646,
-      "words": 896,
+      "sha256": "3deff09986143a701bb37919ef0b3d237d9979252e979bd6de063cf11431fc67",
+      "bytes": 11138,
+      "words": 1434,
       "anchor_ids": [
         "proposed-operational-readiness-assessment.operating_scope",
         "proposed-operational-readiness-assessment.technical_readiness",
         "proposed-operational-readiness-assessment.service_dependencies",
         "proposed-operational-readiness-assessment.readiness_findings",
         "proposed-operational-readiness-assessment.go_live"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:policy-standard:complex",
@@ -1632,16 +1776,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "19d3c8a2b1ac30b37252d5f0f5fab541bd1580b7bbda6885a33f83f9136877b2",
-      "bytes": 11975,
-      "words": 1399,
+      "sha256": "25ed6121cc8536f961de3df63a0804e6f66c66cb90c158e26a484db0deb1ee34",
+      "bytes": 15545,
+      "words": 1981,
       "anchor_ids": [
         "proposed-policy-standard.policy_scope",
         "proposed-policy-standard.control_obligations",
         "proposed-policy-standard.implementation_guidance",
         "proposed-policy-standard.exceptions",
         "proposed-policy-standard.lifecycle"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:policy-standard:medium",
@@ -1652,16 +1798,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "2e520e9336b57229c770f9fd5085e63f3d68d42993ddaaf318c1869202c775e2",
-      "bytes": 9283,
-      "words": 1105,
+      "sha256": "60b04f7ddcc2b3ee8e824af07b35f1f050346b315e530013cca514869eeea977",
+      "bytes": 12853,
+      "words": 1664,
       "anchor_ids": [
         "proposed-policy-standard.policy_scope",
         "proposed-policy-standard.control_obligations",
         "proposed-policy-standard.implementation_guidance",
         "proposed-policy-standard.exceptions",
         "proposed-policy-standard.lifecycle"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:policy-standard:simple",
@@ -1672,16 +1820,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "f2d95f412ac6dbaca6f6c5bfd656c09ae4777504c23a3433063deeee6fe041fb",
-      "bytes": 7904,
-      "words": 941,
+      "sha256": "fe8a2a3af64190f7389a60be6fe7f77a7141ad90754dabc4c15e26720b977bcf",
+      "bytes": 11474,
+      "words": 1470,
       "anchor_ids": [
         "proposed-policy-standard.policy_scope",
         "proposed-policy-standard.control_obligations",
         "proposed-policy-standard.implementation_guidance",
         "proposed-policy-standard.exceptions",
         "proposed-policy-standard.lifecycle"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:proposal-compliance-matrix:complex",
@@ -1692,9 +1842,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "f04de256d02c52da6a304abb2337c9b740c7f15d13e374f2e117b9f6a7315aca",
-      "bytes": 9818,
-      "words": 1247,
+      "sha256": "4a421884efad925b9862843efbc79847febdfe7ebd085279a69853e796849a34",
+      "bytes": 13502,
+      "words": 1739,
       "anchor_ids": [
         "proposed-proposal-compliance-matrix.requirement_source",
         "proposed-proposal-compliance-matrix.response_classification",
@@ -1702,7 +1852,9 @@
         "proposed-proposal-compliance-matrix.exceptions_dependencies",
         "proposed-proposal-compliance-matrix.closure_governance"
       ],
-      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:proposal-compliance-matrix:medium",
@@ -1713,9 +1865,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "ab4bea22d1d12b880852ea36dae72cdbb09502d6b1759fc10341021f71e658c7",
-      "bytes": 9297,
-      "words": 1198,
+      "sha256": "d9839347c3e904285752fbd7409222ceecbfdd12928397a9b2b546a70dbd0ab1",
+      "bytes": 12981,
+      "words": 1690,
       "anchor_ids": [
         "proposed-proposal-compliance-matrix.requirement_source",
         "proposed-proposal-compliance-matrix.response_classification",
@@ -1723,7 +1875,9 @@
         "proposed-proposal-compliance-matrix.exceptions_dependencies",
         "proposed-proposal-compliance-matrix.closure_governance"
       ],
-      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:proposal-compliance-matrix:simple",
@@ -1734,9 +1888,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "ee5fdad12b2189f44d2da90303e033fcdab0fa3a717dbfce6e3285740b87fa07",
-      "bytes": 9104,
-      "words": 1178,
+      "sha256": "da01ae56965aba4ec40a4b9f7162cc2334591bc14fb6da501914cb3952f78528",
+      "bytes": 12788,
+      "words": 1670,
       "anchor_ids": [
         "proposed-proposal-compliance-matrix.requirement_source",
         "proposed-proposal-compliance-matrix.response_classification",
@@ -1744,7 +1898,9 @@
         "proposed-proposal-compliance-matrix.exceptions_dependencies",
         "proposed-proposal-compliance-matrix.closure_governance"
       ],
-      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:release-readiness-review:complex",
@@ -1755,9 +1911,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "393e230eaf48000a281d8b0236e8b01276c93ec19bc76a7b56e86311d6e592a4",
-      "bytes": 11148,
-      "words": 1384,
+      "sha256": "5bb24bdd345954806c6dff4130b7673e305d374413b3db3da02283d8902abdae",
+      "bytes": 14671,
+      "words": 1865,
       "anchor_ids": [
         "proposed-release-readiness-review.release_scope",
         "proposed-release-readiness-review.build_provenance",
@@ -1767,7 +1923,9 @@
         "proposed-release-readiness-review.release_disposition"
       ],
       "case_id": "OPG-RSM",
-      "methodology_context": "NIST SSDF SP 800-218 v1.1 and organizational release-management controls"
+      "methodology_context": "NIST SSDF SP 800-218 v1.1 and organizational release-management controls",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:release-readiness-review:medium",
@@ -1778,9 +1936,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "2dd34f022f1be43981b78b9de17d11ea5e999131ede32043f3815128f79016dd",
-      "bytes": 9273,
-      "words": 1178,
+      "sha256": "0bab2af1f2944649acad43f83397ea39a61d6df035cf8a452ad583c794fc1c3a",
+      "bytes": 12796,
+      "words": 1659,
       "anchor_ids": [
         "proposed-release-readiness-review.release_scope",
         "proposed-release-readiness-review.build_provenance",
@@ -1790,7 +1948,9 @@
         "proposed-release-readiness-review.release_disposition"
       ],
       "case_id": "MRG-OEI",
-      "methodology_context": "NIST SSDF SP 800-218 v1.1 and organizational release-management controls"
+      "methodology_context": "NIST SSDF SP 800-218 v1.1 and organizational release-management controls",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:release-readiness-review:simple",
@@ -1801,9 +1961,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "ab00b51d4fceaa7c2deee0cde214c3a46b1598470d2afdc5a9035c1d8317c7e1",
-      "bytes": 7619,
-      "words": 937,
+      "sha256": "e83e2255140263f8d54e7252f72282bb1dd10d94c021664664601d282ac224c0",
+      "bytes": 11142,
+      "words": 1418,
       "anchor_ids": [
         "proposed-release-readiness-review.release_scope",
         "proposed-release-readiness-review.build_provenance",
@@ -1813,7 +1973,9 @@
         "proposed-release-readiness-review.release_disposition"
       ],
       "case_id": "HFS-FAR",
-      "methodology_context": "NIST SSDF SP 800-218 v1.1 and organizational release-management controls"
+      "methodology_context": "NIST SSDF SP 800-218 v1.1 and organizational release-management controls",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:requirements-specification:complex",
@@ -1824,16 +1986,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "cba2984cea4cd6c7739e53b3882fad87a14b7a7f6d1db90237fb99a5890cea94",
-      "bytes": 12406,
-      "words": 1462,
+      "sha256": "bffe59806c80abdcc308e4ecebac221fe57c703db3406c8d699c6c1d4c5ec537",
+      "bytes": 15917,
+      "words": 2030,
       "anchor_ids": [
         "proposed-requirements-specification.business_problem",
         "proposed-requirements-specification.functional_requirements",
         "proposed-requirements-specification.quality_constraints",
         "proposed-requirements-specification.traceability_priorities",
         "proposed-requirements-specification.acceptance_model"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:requirements-specification:medium",
@@ -1844,16 +2008,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "059cb744c47abe08b4e7324f2640138f2308d06000a3b1c6cffa1ebe3613a71a",
-      "bytes": 9668,
-      "words": 1136,
+      "sha256": "9f31e1a7fc6fbbc5adaa1590c8748ef190a9752d418e5822d13d8e5f1a42af83",
+      "bytes": 13179,
+      "words": 1681,
       "anchor_ids": [
         "proposed-requirements-specification.business_problem",
         "proposed-requirements-specification.functional_requirements",
         "proposed-requirements-specification.quality_constraints",
         "proposed-requirements-specification.traceability_priorities",
         "proposed-requirements-specification.acceptance_model"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:requirements-specification:simple",
@@ -1864,16 +2030,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "81b7c0a9c22ec458567cabdbb2a0409f52e6168c50eddef2e9b581bf588eaeeb",
-      "bytes": 8091,
-      "words": 964,
+      "sha256": "1fe2e1f39f9e1523fc666613205431a183f0f6c3aa7b738554c9a0298931ec2b",
+      "bytes": 11602,
+      "words": 1479,
       "anchor_ids": [
         "proposed-requirements-specification.business_problem",
         "proposed-requirements-specification.functional_requirements",
         "proposed-requirements-specification.quality_constraints",
         "proposed-requirements-specification.traceability_priorities",
         "proposed-requirements-specification.acceptance_model"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:rfp-response:complex",
@@ -1884,9 +2052,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "4b0a3ca0e6fc92b501b692a5283065b4838d18662b41915e8d772f3c30f62ebc",
-      "bytes": 14066,
-      "words": 1773,
+      "sha256": "5e4c43e209d09f31a15f6705935e040681378db0fac6bf70a0cb31413aeca1fb",
+      "bytes": 17746,
+      "words": 2271,
       "anchor_ids": [
         "proposed-rfp-response.response_context",
         "proposed-rfp-response.requirement_mapping",
@@ -1895,7 +2063,9 @@
         "proposed-rfp-response.commercial_schedules",
         "proposed-rfp-response.clarifications"
       ],
-      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:rfp-response:medium",
@@ -1906,9 +2076,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "d163f71362a256ffb462ee8b3d0b8942b2f00603918ed40337ff9915930f11ea",
-      "bytes": 12442,
-      "words": 1617,
+      "sha256": "1ea46e4895152df07e98a1a03459a7f6b2a8ebd368fa9747a922e30d1c844d32",
+      "bytes": 16122,
+      "words": 2115,
       "anchor_ids": [
         "proposed-rfp-response.response_context",
         "proposed-rfp-response.requirement_mapping",
@@ -1917,7 +2087,9 @@
         "proposed-rfp-response.commercial_schedules",
         "proposed-rfp-response.clarifications"
       ],
-      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:rfp-response:simple",
@@ -1928,9 +2100,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "dce6228c3771ec1ea1712545ee8bd68108a401c5f48da57270a111837a9fb05a",
-      "bytes": 12017,
-      "words": 1578,
+      "sha256": "3b028b0d4069f1f84c65cea767df5e2cde93e367af2d875f76f35ab5642230a7",
+      "bytes": 15697,
+      "words": 2076,
       "anchor_ids": [
         "proposed-rfp-response.response_context",
         "proposed-rfp-response.requirement_mapping",
@@ -1939,7 +2111,9 @@
         "proposed-rfp-response.commercial_schedules",
         "proposed-rfp-response.clarifications"
       ],
-      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:risk-assessment:complex",
@@ -1950,16 +2124,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "bad9f1f28c774b4044654b3bc20b3728872bb6354345e8f5e42c04b00ddc181a",
-      "bytes": 10434,
-      "words": 1220,
+      "sha256": "30b0198f183df5ee3ef86b37707110c465c143a7882a5d15c136c2380656a8ac",
+      "bytes": 14001,
+      "words": 1823,
       "anchor_ids": [
         "risk-assessment.assessment_scope",
         "risk-assessment.scoring_method",
         "risk-assessment.risk_scenarios",
         "risk-assessment.risk_evaluation",
         "risk-assessment.risk_treatment"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:risk-assessment:medium",
@@ -1970,16 +2146,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "8d5c7eb95a8ffac7ac777779f8ed664424f5f7ed80c716c03d548a9534b1f1c7",
-      "bytes": 8873,
-      "words": 1044,
+      "sha256": "5728add00e7a92603719ee195efaf41dd80d71f608a187487755562e49078159",
+      "bytes": 12440,
+      "words": 1634,
       "anchor_ids": [
         "risk-assessment.assessment_scope",
         "risk-assessment.scoring_method",
         "risk-assessment.risk_scenarios",
         "risk-assessment.risk_evaluation",
         "risk-assessment.risk_treatment"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:risk-assessment:simple",
@@ -1990,16 +2168,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "2474e046489af43ca59dbd3c09c561aa4bf4d31b1488f309db2c787026945c40",
-      "bytes": 7323,
-      "words": 859,
+      "sha256": "883af78921004bf105d86ffa8fb76fa44f4a06c0cdce9d233ce098e2d6e308af",
+      "bytes": 10890,
+      "words": 1404,
       "anchor_ids": [
         "risk-assessment.assessment_scope",
         "risk-assessment.scoring_method",
         "risk-assessment.risk_scenarios",
         "risk-assessment.risk_evaluation",
         "risk-assessment.risk_treatment"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:runbook:complex",
@@ -2010,16 +2190,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "215c8dcee8616b0de5560364f10e751ef70a8ccaa6bf640917957ba158fcf4e8",
-      "bytes": 10599,
-      "words": 1242,
+      "sha256": "2e43b98deb20d1915f59079f17e60a9886c54294634d680c44f2acbec7804a66",
+      "bytes": 14062,
+      "words": 1821,
       "anchor_ids": [
         "runbook.operational_trigger",
         "runbook.prerequisites",
         "runbook.procedure_steps",
         "runbook.failure_recovery",
         "runbook.operational_validation"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:runbook:medium",
@@ -2030,16 +2212,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "bf6c0209d6c8421616ebbe7fcd8ef48d4dbd1eb1b7ab2b1b518aeeb85e4e354e",
-      "bytes": 8884,
-      "words": 1050,
+      "sha256": "0a3ee8e1b68ca1065210a10247a046565609d510d32804421f84bf8598636124",
+      "bytes": 12347,
+      "words": 1622,
       "anchor_ids": [
         "runbook.operational_trigger",
         "runbook.prerequisites",
         "runbook.procedure_steps",
         "runbook.failure_recovery",
         "runbook.operational_validation"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:runbook:simple",
@@ -2050,16 +2234,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "5e5d090dd17255d2e038b9f2de9a549998c7fb2fae41f4a49474cfcb747dc16a",
-      "bytes": 7808,
-      "words": 911,
+      "sha256": "e80eba2ceab0a1489db6ab9f03e9e91ee3956556963f2a477ad49ed524a30b26",
+      "bytes": 11271,
+      "words": 1476,
       "anchor_ids": [
         "runbook.operational_trigger",
         "runbook.prerequisites",
         "runbook.procedure_steps",
         "runbook.failure_recovery",
         "runbook.operational_validation"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:security-architecture-assessment:complex",
@@ -2070,9 +2256,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "85c91763813a36fac8d671e0e9765199121f0485170ab8dedaf2c52438dd3ae9",
-      "bytes": 11685,
-      "words": 1408,
+      "sha256": "93f5571503a3ecec057d15e3eeb816cb3b2ff0f4872819c461b2bf41d5f86106",
+      "bytes": 15311,
+      "words": 1900,
       "anchor_ids": [
         "proposed-security-architecture-assessment.scope_and_trust",
         "proposed-security-architecture-assessment.security_requirements",
@@ -2082,7 +2268,9 @@
         "proposed-security-architecture-assessment.risk_disposition"
       ],
       "case_id": "OPG-RSM",
-      "methodology_context": "NIST SP 800-53A Rev. 5 methodology; business-driven security architecture consistent with SABSA concepts"
+      "methodology_context": "NIST SP 800-53A Rev. 5 methodology; business-driven security architecture consistent with SABSA concepts",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:security-architecture-assessment:medium",
@@ -2093,9 +2281,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "ab0bfe471bc06c589abfaf20ecbec2a4a46242bbcb925744ed3e76d1de46b93b",
-      "bytes": 9746,
-      "words": 1203,
+      "sha256": "c4bdbc083dbe62106ede068c20d3eecbc7148e324280bb78563a8ff3771147bf",
+      "bytes": 13372,
+      "words": 1695,
       "anchor_ids": [
         "proposed-security-architecture-assessment.scope_and_trust",
         "proposed-security-architecture-assessment.security_requirements",
@@ -2105,7 +2293,9 @@
         "proposed-security-architecture-assessment.risk_disposition"
       ],
       "case_id": "MRG-OEI",
-      "methodology_context": "NIST SP 800-53A Rev. 5 methodology; business-driven security architecture consistent with SABSA concepts"
+      "methodology_context": "NIST SP 800-53A Rev. 5 methodology; business-driven security architecture consistent with SABSA concepts",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:security-architecture-assessment:simple",
@@ -2116,9 +2306,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "d2297d7f5c85342ad232066f6e099830479b50390e48b9d978ee916079a43ee3",
-      "bytes": 8073,
-      "words": 955,
+      "sha256": "0e3e3c8c07315807702da6b13bb1c5df68b92a8b04bead5bd77d5fadbc56e60a",
+      "bytes": 11699,
+      "words": 1447,
       "anchor_ids": [
         "proposed-security-architecture-assessment.scope_and_trust",
         "proposed-security-architecture-assessment.security_requirements",
@@ -2128,7 +2318,9 @@
         "proposed-security-architecture-assessment.risk_disposition"
       ],
       "case_id": "HFS-FAR",
-      "methodology_context": "NIST SP 800-53A Rev. 5 methodology; business-driven security architecture consistent with SABSA concepts"
+      "methodology_context": "NIST SP 800-53A Rev. 5 methodology; business-driven security architecture consistent with SABSA concepts",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:security-control-assessment:complex",
@@ -2139,9 +2331,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "cc604d6de331749c3eb46c8c905479d6199abd1897c93b680ea8135c06cb8a83",
-      "bytes": 11142,
-      "words": 1368,
+      "sha256": "ec68928609b78d7aa10546d75f61420d44beac460a3f861d402e1f64e9657399",
+      "bytes": 14736,
+      "words": 1858,
       "anchor_ids": [
         "proposed-security-control-assessment.assessment_criteria",
         "proposed-security-control-assessment.population_and_method",
@@ -2151,7 +2343,9 @@
         "proposed-security-control-assessment.assurance_conclusion"
       ],
       "case_id": "OPG-RSM",
-      "methodology_context": "NIST SP 800-53A Rev. 5 assessment-plan and assessment-procedure concepts"
+      "methodology_context": "NIST SP 800-53A Rev. 5 assessment-plan and assessment-procedure concepts",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:security-control-assessment:medium",
@@ -2162,9 +2356,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "43dd04d8697601f585e5b22147452cecad994833b694872fed59d255647cfb83",
-      "bytes": 9307,
-      "words": 1161,
+      "sha256": "ff12e556acd4df7c089909141321c428e3ac5e6165af0c4b62e13d6f192ed807",
+      "bytes": 12901,
+      "words": 1651,
       "anchor_ids": [
         "proposed-security-control-assessment.assessment_criteria",
         "proposed-security-control-assessment.population_and_method",
@@ -2174,7 +2368,9 @@
         "proposed-security-control-assessment.assurance_conclusion"
       ],
       "case_id": "MRG-OEI",
-      "methodology_context": "NIST SP 800-53A Rev. 5 assessment-plan and assessment-procedure concepts"
+      "methodology_context": "NIST SP 800-53A Rev. 5 assessment-plan and assessment-procedure concepts",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:security-control-assessment:simple",
@@ -2185,9 +2381,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "0771477a7add9f2b007bf4aca7dbdbef50d917cdac4682b9e568d67f01cd3893",
-      "bytes": 7664,
-      "words": 923,
+      "sha256": "350659600a9774b30aff107165331cc9969b0d73676bfebc034eefb37faf0ef4",
+      "bytes": 11258,
+      "words": 1413,
       "anchor_ids": [
         "proposed-security-control-assessment.assessment_criteria",
         "proposed-security-control-assessment.population_and_method",
@@ -2197,7 +2393,9 @@
         "proposed-security-control-assessment.assurance_conclusion"
       ],
       "case_id": "HFS-FAR",
-      "methodology_context": "NIST SP 800-53A Rev. 5 assessment-plan and assessment-procedure concepts"
+      "methodology_context": "NIST SP 800-53A Rev. 5 assessment-plan and assessment-procedure concepts",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:service-design-sla:complex",
@@ -2208,16 +2406,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "5f288207a30d4c0f980936a3ef5f1176417d84fc385dd57be359daf93b9b4b2c",
-      "bytes": 11897,
-      "words": 1405,
+      "sha256": "ce27daa90a6acf8aa4a3ac83c37c3683db8325bf9e01a71b9be2c72dc3be24fb",
+      "bytes": 15398,
+      "words": 1977,
       "anchor_ids": [
         "proposed-service-design-sla.service_value",
         "proposed-service-design-sla.sli_slo",
         "proposed-service-design-sla.support_operating_model",
         "proposed-service-design-sla.continuity_security",
         "proposed-service-design-sla.service_acceptance"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:service-design-sla:medium",
@@ -2228,16 +2428,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "216a82ea61db3bb2feb94b5e8eea585193af1d7ffd6808cc557cb1798882da5c",
-      "bytes": 9104,
-      "words": 1079,
+      "sha256": "8eece271ff1714ca184864fb1d6ca7475ee81ea7aa866eb68af7e699b5cf4950",
+      "bytes": 12605,
+      "words": 1627,
       "anchor_ids": [
         "proposed-service-design-sla.service_value",
         "proposed-service-design-sla.sli_slo",
         "proposed-service-design-sla.support_operating_model",
         "proposed-service-design-sla.continuity_security",
         "proposed-service-design-sla.service_acceptance"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:service-design-sla:simple",
@@ -2248,16 +2450,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "b19646d2cc2903ea682deabe22f503fd7540b4680688086a44937576d5d012a5",
-      "bytes": 7667,
-      "words": 905,
+      "sha256": "be8f7b52ef9155eae413e2f6b03fcc5db8978a00e0375e1a3b8b46648d9c88ce",
+      "bytes": 11168,
+      "words": 1424,
       "anchor_ids": [
         "proposed-service-design-sla.service_value",
         "proposed-service-design-sla.sli_slo",
         "proposed-service-design-sla.support_operating_model",
         "proposed-service-design-sla.continuity_security",
         "proposed-service-design-sla.service_acceptance"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:software-engineering-plan:complex",
@@ -2268,9 +2472,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "bd5bf8887875cccc1b2ffc1bb80f026d8fe550295a2e8973e3a37c0a07ceab9b",
-      "bytes": 12658,
-      "words": 1568,
+      "sha256": "8913d42a78f73768d39966f13cc09086001b5e90d957266a6237f2452e766506",
+      "bytes": 16229,
+      "words": 2059,
       "anchor_ids": [
         "proposed-software-engineering-plan.delivery_boundary",
         "proposed-software-engineering-plan.design_decomposition",
@@ -2280,7 +2484,9 @@
         "proposed-software-engineering-plan.acceptance_trace"
       ],
       "case_id": "OPG-RSM",
-      "methodology_context": "NIST SSDF SP 800-218 v1.1 (final), OWASP SAMM principles and engineering verification practice"
+      "methodology_context": "NIST SSDF SP 800-218 v1.1 (final), OWASP SAMM principles and engineering verification practice",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:software-engineering-plan:medium",
@@ -2291,9 +2497,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "87b4133b5d077d7d9634ec494f1b70cc1cd3990f1bab98ea139a85d138cca810",
-      "bytes": 10583,
-      "words": 1349,
+      "sha256": "85aac7c34393df3a76876391ee933b9815e9f88f2fed41b90854a6d8da4e8595",
+      "bytes": 14154,
+      "words": 1840,
       "anchor_ids": [
         "proposed-software-engineering-plan.delivery_boundary",
         "proposed-software-engineering-plan.design_decomposition",
@@ -2303,7 +2509,9 @@
         "proposed-software-engineering-plan.acceptance_trace"
       ],
       "case_id": "MRG-OEI",
-      "methodology_context": "NIST SSDF SP 800-218 v1.1 (final), OWASP SAMM principles and engineering verification practice"
+      "methodology_context": "NIST SSDF SP 800-218 v1.1 (final), OWASP SAMM principles and engineering verification practice",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:software-engineering-plan:simple",
@@ -2314,9 +2522,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "4a0281399818d8769b09e81b5f658c3f2d3c8b2637137c8266b75a7191f02859",
-      "bytes": 8840,
-      "words": 1093,
+      "sha256": "5e2a914e8a8bde88318a05c5e919baac4d90f44fb1d7422a21698c1b84e800d2",
+      "bytes": 12411,
+      "words": 1584,
       "anchor_ids": [
         "proposed-software-engineering-plan.delivery_boundary",
         "proposed-software-engineering-plan.design_decomposition",
@@ -2326,7 +2534,9 @@
         "proposed-software-engineering-plan.acceptance_trace"
       ],
       "case_id": "HFS-FAR",
-      "methodology_context": "NIST SSDF SP 800-218 v1.1 (final), OWASP SAMM principles and engineering verification practice"
+      "methodology_context": "NIST SSDF SP 800-218 v1.1 (final), OWASP SAMM principles and engineering verification practice",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:software-supply-chain-assessment:complex",
@@ -2337,9 +2547,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "741cee8dc300cc7ade067facd340c54fbcc4d417d2d2e055884e0bf690e23a48",
-      "bytes": 11144,
-      "words": 1368,
+      "sha256": "c23d4d1ac10c4e2da21c5695f0800f41a1e2a0e71d25d1c463f734cba348e519",
+      "bytes": 14762,
+      "words": 1855,
       "anchor_ids": [
         "proposed-software-supply-chain-assessment.supply_chain_scope",
         "proposed-software-supply-chain-assessment.dependency_inventory",
@@ -2349,7 +2559,9 @@
         "proposed-software-supply-chain-assessment.release_conditions"
       ],
       "case_id": "OPG-RSM",
-      "methodology_context": "SLSA v1.2 provenance and software supply-chain risk; NIST SSDF practices"
+      "methodology_context": "SLSA v1.2 provenance and software supply-chain risk; NIST SSDF practices",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:software-supply-chain-assessment:medium",
@@ -2360,9 +2572,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "f2462957b16e198f8170869af517bf71772b85c006ed0fee8cb5db7f8fa0b82f",
-      "bytes": 9372,
-      "words": 1164,
+      "sha256": "f0ac625fe0a53de7206eb0c483fe08b2155aa4bf1200d499c22150f7066d521b",
+      "bytes": 12990,
+      "words": 1651,
       "anchor_ids": [
         "proposed-software-supply-chain-assessment.supply_chain_scope",
         "proposed-software-supply-chain-assessment.dependency_inventory",
@@ -2372,7 +2584,9 @@
         "proposed-software-supply-chain-assessment.release_conditions"
       ],
       "case_id": "MRG-OEI",
-      "methodology_context": "SLSA v1.2 provenance and software supply-chain risk; NIST SSDF practices"
+      "methodology_context": "SLSA v1.2 provenance and software supply-chain risk; NIST SSDF practices",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:software-supply-chain-assessment:simple",
@@ -2383,9 +2597,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "0c4cab0ab501949c371d5105c455ad29e1b1c54b93e5599ca966e731bb34b9d8",
-      "bytes": 7705,
-      "words": 927,
+      "sha256": "501d412fb76d48bd5cc635bad176e231f13ba306c2aeb678c1ad826be0dc20e0",
+      "bytes": 11323,
+      "words": 1414,
       "anchor_ids": [
         "proposed-software-supply-chain-assessment.supply_chain_scope",
         "proposed-software-supply-chain-assessment.dependency_inventory",
@@ -2395,7 +2609,9 @@
         "proposed-software-supply-chain-assessment.release_conditions"
       ],
       "case_id": "HFS-FAR",
-      "methodology_context": "SLSA v1.2 provenance and software supply-chain risk; NIST SSDF practices"
+      "methodology_context": "SLSA v1.2 provenance and software supply-chain risk; NIST SSDF practices",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:statement-of-work:complex",
@@ -2406,9 +2622,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "7e48ff36a37dde92617b0c77c2e8b996d2a5e5ef42cd966d8b19675254a689c7",
-      "bytes": 13430,
-      "words": 1698,
+      "sha256": "9b12c6b0415cce13db458fd4825fb5969e26a1c83f906c29a9cdb2648b660161",
+      "bytes": 17108,
+      "words": 2190,
       "anchor_ids": [
         "proposed-statement-of-work.parties_scope",
         "proposed-statement-of-work.deliverables",
@@ -2417,7 +2633,9 @@
         "proposed-statement-of-work.commercial_change",
         "proposed-statement-of-work.legal_reservations"
       ],
-      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:statement-of-work:medium",
@@ -2428,9 +2646,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "80b627ed8cc13f99bef5d9474ae4b157aa5c05f5c142cacdcc3f12124538882b",
-      "bytes": 11964,
-      "words": 1548,
+      "sha256": "f2772d08887dcaa14a10024a04b1951c50fe8216fbc8cf318a0cc0b5cc65d89d",
+      "bytes": 15642,
+      "words": 2040,
       "anchor_ids": [
         "proposed-statement-of-work.parties_scope",
         "proposed-statement-of-work.deliverables",
@@ -2439,7 +2657,9 @@
         "proposed-statement-of-work.commercial_change",
         "proposed-statement-of-work.legal_reservations"
       ],
-      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:statement-of-work:simple",
@@ -2450,9 +2670,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "d4bb8dd9ff09a7c95c79af0681716baf85a83af7c8434fcb8ef101167e9f2a2c",
-      "bytes": 11481,
-      "words": 1495,
+      "sha256": "2ec0430fcde7b8237c29bedcd122bb8dd929a260347cd896bf7f57ca6a724228",
+      "bytes": 15159,
+      "words": 1987,
       "anchor_ids": [
         "proposed-statement-of-work.parties_scope",
         "proposed-statement-of-work.deliverables",
@@ -2461,7 +2681,9 @@
         "proposed-statement-of-work.commercial_change",
         "proposed-statement-of-work.legal_reservations"
       ],
-      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:target-operating-model:complex",
@@ -2472,9 +2694,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "827e3537fa234321f3126e784622865cc38f992c96a1b1413a40aee5f3c225e0",
-      "bytes": 11266,
-      "words": 1369,
+      "sha256": "ac8f0dc375c9dee8114ef24ff49d29412abb93ee2ccc0e6d97df1123a1f7f360",
+      "bytes": 14835,
+      "words": 1852,
       "anchor_ids": [
         "proposed-target-operating-model.target_value",
         "proposed-target-operating-model.capability_ownership",
@@ -2484,7 +2706,9 @@
         "proposed-target-operating-model.transition_acceptance"
       ],
       "case_id": "OPG-RSM",
-      "methodology_context": "ITIL service value thinking and accountable enterprise operating-model design"
+      "methodology_context": "ITIL service value thinking and accountable enterprise operating-model design",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:target-operating-model:medium",
@@ -2495,9 +2719,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "48260c58228a919b1140f0ca20d1fc7e2461bb17f02ffe3433c501b986baba76",
-      "bytes": 9362,
-      "words": 1163,
+      "sha256": "e02831fa08865e51e81404f0b4d47753e4312d11eb585b97e68b3545031d8842",
+      "bytes": 12931,
+      "words": 1646,
       "anchor_ids": [
         "proposed-target-operating-model.target_value",
         "proposed-target-operating-model.capability_ownership",
@@ -2507,7 +2731,9 @@
         "proposed-target-operating-model.transition_acceptance"
       ],
       "case_id": "MRG-OEI",
-      "methodology_context": "ITIL service value thinking and accountable enterprise operating-model design"
+      "methodology_context": "ITIL service value thinking and accountable enterprise operating-model design",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:target-operating-model:simple",
@@ -2518,9 +2744,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "9f5093e5d3719ce6e2f22f5529e836b417ac62a37a2cbf7411576a7aab1550d7",
-      "bytes": 7641,
-      "words": 923,
+      "sha256": "4e3ad6474bc75971be42212310bfcd6ed0ef4e7e2122ded984b99b1b85e7bc28",
+      "bytes": 11210,
+      "words": 1406,
       "anchor_ids": [
         "proposed-target-operating-model.target_value",
         "proposed-target-operating-model.capability_ownership",
@@ -2530,7 +2756,9 @@
         "proposed-target-operating-model.transition_acceptance"
       ],
       "case_id": "HFS-FAR",
-      "methodology_context": "ITIL service value thinking and accountable enterprise operating-model design"
+      "methodology_context": "ITIL service value thinking and accountable enterprise operating-model design",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:technical-proposal:complex",
@@ -2541,9 +2769,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "302861894b90bbdb3460584fb16c6e7cf61730cc0b74a40fae5cd145974f2bf0",
-      "bytes": 12248,
-      "words": 1515,
+      "sha256": "5ccd7082eeb07b64e2577fc2e9514666355e109fbf75e7753d31b03e49c570f4",
+      "bytes": 15872,
+      "words": 2006,
       "anchor_ids": [
         "proposed-technical-proposal.architecture_context",
         "proposed-technical-proposal.solution_design",
@@ -2552,7 +2780,9 @@
         "proposed-technical-proposal.verification_strategy",
         "proposed-technical-proposal.technical_assumptions"
       ],
-      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "OPG-RSM-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:technical-proposal:medium",
@@ -2563,9 +2793,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "0e347bfe50d2d499397f7c0b64e65570c7d32ea9398542f214c284fb02f09b9c",
-      "bytes": 10582,
-      "words": 1360,
+      "sha256": "95cc1d79f7b9ba120efeddd7e8881315c24bdb76972cfeb27acfaad3153ad61a",
+      "bytes": 14206,
+      "words": 1851,
       "anchor_ids": [
         "proposed-technical-proposal.architecture_context",
         "proposed-technical-proposal.solution_design",
@@ -2574,7 +2804,9 @@
         "proposed-technical-proposal.verification_strategy",
         "proposed-technical-proposal.technical_assumptions"
       ],
-      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "MRG-OEI-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:technical-proposal:simple",
@@ -2585,9 +2817,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "a8ac86bc2750bff7a2be5ecc2dbb75a8fb9016eb73dc4357987e9a7e2db05b7b",
-      "bytes": 10310,
-      "words": 1333,
+      "sha256": "76ec561f40406658eaa06544c4c92b4c0ace876f42ba2bbfafa617d01bf962f1",
+      "bytes": 13934,
+      "words": 1824,
       "anchor_ids": [
         "proposed-technical-proposal.architecture_context",
         "proposed-technical-proposal.solution_design",
@@ -2596,7 +2828,9 @@
         "proposed-technical-proposal.verification_strategy",
         "proposed-technical-proposal.technical_assumptions"
       ],
-      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE"
+      "proposal_pack_id": "HFS-FAR-PROPOSAL-EXAMPLE",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:test-report:complex",
@@ -2607,16 +2841,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "90ef3a16abb44577d562b0ea019abd1566e5f5bc0587143bde3cc8fad4de7350",
-      "bytes": 9584,
-      "words": 1151,
+      "sha256": "bdd113ddbe847ef1b077febb326e9784125a73f5553b873c650860f65ea44391",
+      "bytes": 13059,
+      "words": 1733,
       "anchor_ids": [
         "test-report.test_scope",
         "test-report.test_environment",
         "test-report.execution_results",
         "test-report.defect_analysis",
         "test-report.test_conclusion"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:test-report:medium",
@@ -2627,16 +2863,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "973e933bc47aa15b903841326bcd9cc0fce673806a47415e3eb6f806d842245f",
-      "bytes": 8199,
-      "words": 994,
+      "sha256": "1e536161035ea19b1cf40b2a4b9bb879eda5bb03f19f27970634f6d9f425313d",
+      "bytes": 11674,
+      "words": 1566,
       "anchor_ids": [
         "test-report.test_scope",
         "test-report.test_environment",
         "test-report.execution_results",
         "test-report.defect_analysis",
         "test-report.test_conclusion"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:test-report:simple",
@@ -2647,16 +2885,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "existing-verified",
-      "sha256": "7a01719d81be09c9ffe7eb29da296d5bf316d302fa14a6682b4311a9d6732b1b",
-      "bytes": 6875,
-      "words": 834,
+      "sha256": "0b86454cbaabfd63e53aa059f077992dc572c7b3d876cd88cc872655c2f8f889",
+      "bytes": 10350,
+      "words": 1367,
       "anchor_ids": [
         "test-report.test_scope",
         "test-report.test_environment",
         "test-report.execution_results",
         "test-report.defect_analysis",
         "test-report.test_conclusion"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:test-strategy-plan:complex",
@@ -2667,16 +2907,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "345b3f58c6a50b49fa70d6a451f0805a215e2fbd3e4fe43fe7338c0b9874a2b1",
-      "bytes": 11913,
-      "words": 1409,
+      "sha256": "c9be86fa6bf5d8c3d651b054c3bb043380db3ee908a1191c2ef1d2b8715e8731",
+      "bytes": 15454,
+      "words": 1981,
       "anchor_ids": [
         "proposed-test-strategy-plan.test_objectives",
         "proposed-test-strategy-plan.levels_techniques",
         "proposed-test-strategy-plan.environment_data",
         "proposed-test-strategy-plan.coverage_metrics",
         "proposed-test-strategy-plan.execution_governance"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:test-strategy-plan:medium",
@@ -2687,16 +2929,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "178c384bd08cfaec58127b57788d578870a894b1cea5ffa95a20cfc249e042ba",
-      "bytes": 9175,
-      "words": 1083,
+      "sha256": "506b522048f20fea1aaaeb3a8f46a5be3b1727758c3612aaa5d7e8a9e6f8b41d",
+      "bytes": 12716,
+      "words": 1632,
       "anchor_ids": [
         "proposed-test-strategy-plan.test_objectives",
         "proposed-test-strategy-plan.levels_techniques",
         "proposed-test-strategy-plan.environment_data",
         "proposed-test-strategy-plan.coverage_metrics",
         "proposed-test-strategy-plan.execution_governance"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:test-strategy-plan:simple",
@@ -2707,16 +2951,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "7246971e0942ee29e9dc149cabd9eb7bdafd69aca098006434e48680cd5e9800",
-      "bytes": 7598,
-      "words": 911,
+      "sha256": "b3c848a6fe30f18c20b2b03fde30b4a100a4656d6d66a1da956b2e0ceaadc87a",
+      "bytes": 11139,
+      "words": 1430,
       "anchor_ids": [
         "proposed-test-strategy-plan.test_objectives",
         "proposed-test-strategy-plan.levels_techniques",
         "proposed-test-strategy-plan.environment_data",
         "proposed-test-strategy-plan.coverage_metrics",
         "proposed-test-strategy-plan.execution_governance"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:threat-model:complex",
@@ -2727,9 +2973,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "e8e99c0f054b16e4e272419b42f90a5a31bbd17fdf85b2ef41638dda9528eef4",
-      "bytes": 11611,
-      "words": 1418,
+      "sha256": "4770eb8bf4abac84d2d1778d47cff920f02b9b7c0c8b3c0bda82e9ec15854ae2",
+      "bytes": 15189,
+      "words": 1913,
       "anchor_ids": [
         "proposed-threat-model.assets_and_scope",
         "proposed-threat-model.trust_flows",
@@ -2739,7 +2985,9 @@
         "proposed-threat-model.residual_risk"
       ],
       "case_id": "OPG-RSM",
-      "methodology_context": "Structured asset/trust-boundary threat modeling and OWASP application security design principles"
+      "methodology_context": "Structured asset/trust-boundary threat modeling and OWASP application security design principles",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:threat-model:medium",
@@ -2750,9 +2998,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "9ba5d390f4f2429c398426e28fcd87126ed1ca0e5f6284441815b4c2049442a0",
-      "bytes": 9624,
-      "words": 1195,
+      "sha256": "db2a157d8c599f3149727c24284fec7949a4eea937d037e6ad078c26fcdf22b7",
+      "bytes": 13202,
+      "words": 1690,
       "anchor_ids": [
         "proposed-threat-model.assets_and_scope",
         "proposed-threat-model.trust_flows",
@@ -2762,7 +3010,9 @@
         "proposed-threat-model.residual_risk"
       ],
       "case_id": "MRG-OEI",
-      "methodology_context": "Structured asset/trust-boundary threat modeling and OWASP application security design principles"
+      "methodology_context": "Structured asset/trust-boundary threat modeling and OWASP application security design principles",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:threat-model:simple",
@@ -2773,9 +3023,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "7ee32969e963bc1542b10e809ff0fa05c15342c714fb47abb8d148521bdadf93",
-      "bytes": 7874,
-      "words": 939,
+      "sha256": "2d5e62a2033a7d71e79e85517113a6f59a10b31fec2fc5df604331121ee212ff",
+      "bytes": 11452,
+      "words": 1434,
       "anchor_ids": [
         "proposed-threat-model.assets_and_scope",
         "proposed-threat-model.trust_flows",
@@ -2785,7 +3035,9 @@
         "proposed-threat-model.residual_risk"
       ],
       "case_id": "HFS-FAR",
-      "methodology_context": "Structured asset/trust-boundary threat modeling and OWASP application security design principles"
+      "methodology_context": "Structured asset/trust-boundary threat modeling and OWASP application security design principles",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:transformation-baseline-assessment:complex",
@@ -2796,9 +3048,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "b7c7b8546dab72548fc72cce1d5c3a9de3580fc7f1013a29be189989b263c7db",
-      "bytes": 11818,
-      "words": 1418,
+      "sha256": "12e3491cf8f6f5b9be9f7a5ffa9a21086a87dd98de1511c55d80573f64807dbd",
+      "bytes": 15393,
+      "words": 1902,
       "anchor_ids": [
         "proposed-transformation-baseline-assessment.baseline_boundary",
         "proposed-transformation-baseline-assessment.capability_evidence",
@@ -2808,7 +3060,9 @@
         "proposed-transformation-baseline-assessment.baseline_decision"
       ],
       "case_id": "OPG-RSM",
-      "methodology_context": "TOGAF-inspired baseline/target architecture and evidence-led capability assessment"
+      "methodology_context": "TOGAF-inspired baseline/target architecture and evidence-led capability assessment",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:transformation-baseline-assessment:medium",
@@ -2819,9 +3073,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "1009f5518e29290f8539c3d90b6fc0c4ce4c060da72224b7111bacf3c63540c0",
-      "bytes": 9885,
-      "words": 1208,
+      "sha256": "83a86c3cc0c421976daf291b6e039055676b4c33b1829b3f942202c914f9f5fd",
+      "bytes": 13460,
+      "words": 1692,
       "anchor_ids": [
         "proposed-transformation-baseline-assessment.baseline_boundary",
         "proposed-transformation-baseline-assessment.capability_evidence",
@@ -2831,7 +3085,9 @@
         "proposed-transformation-baseline-assessment.baseline_decision"
       ],
       "case_id": "MRG-OEI",
-      "methodology_context": "TOGAF-inspired baseline/target architecture and evidence-led capability assessment"
+      "methodology_context": "TOGAF-inspired baseline/target architecture and evidence-led capability assessment",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:transformation-baseline-assessment:simple",
@@ -2842,9 +3098,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "9f0e831689b888a24b6202ef6bb04ad26f6d43ee399c782cf8e778fb61dc7e3e",
-      "bytes": 8134,
-      "words": 962,
+      "sha256": "ee456d0f74bab5021a3bef6f28d522c9b60a604afde678fcc6afca637c6f485d",
+      "bytes": 11709,
+      "words": 1446,
       "anchor_ids": [
         "proposed-transformation-baseline-assessment.baseline_boundary",
         "proposed-transformation-baseline-assessment.capability_evidence",
@@ -2854,7 +3110,9 @@
         "proposed-transformation-baseline-assessment.baseline_decision"
       ],
       "case_id": "HFS-FAR",
-      "methodology_context": "TOGAF-inspired baseline/target architecture and evidence-led capability assessment"
+      "methodology_context": "TOGAF-inspired baseline/target architecture and evidence-led capability assessment",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:transformation-execution-plan:complex",
@@ -2865,9 +3123,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "5688f62958c3750afad32767983c66e1ad8410761b7fa48d2bec38b96099e560",
-      "bytes": 11534,
-      "words": 1394,
+      "sha256": "dd95897a5902e48a65fcc9af79424ff8a774c32f652309c16d3dd65acbb7f466",
+      "bytes": 15154,
+      "words": 1890,
       "anchor_ids": [
         "proposed-transformation-execution-plan.outcomes_scope",
         "proposed-transformation-execution-plan.transition_states",
@@ -2877,7 +3135,9 @@
         "proposed-transformation-execution-plan.decision_gates"
       ],
       "case_id": "OPG-RSM",
-      "methodology_context": "Enterprise architecture transition planning and programme dependency management"
+      "methodology_context": "Enterprise architecture transition planning and programme dependency management",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:transformation-execution-plan:medium",
@@ -2888,9 +3148,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "d909335748ecd4e43fe0aa288188bb116db326c4841a3ff15e4ceef65dccd550",
-      "bytes": 9569,
-      "words": 1181,
+      "sha256": "d1115886bc2ae80c9af13e26be2aa0b48ca920fa4cf4e6fe75446e1d52228254",
+      "bytes": 13189,
+      "words": 1677,
       "anchor_ids": [
         "proposed-transformation-execution-plan.outcomes_scope",
         "proposed-transformation-execution-plan.transition_states",
@@ -2900,7 +3160,9 @@
         "proposed-transformation-execution-plan.decision_gates"
       ],
       "case_id": "MRG-OEI",
-      "methodology_context": "Enterprise architecture transition planning and programme dependency management"
+      "methodology_context": "Enterprise architecture transition planning and programme dependency management",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:transformation-execution-plan:simple",
@@ -2911,9 +3173,9 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "8962a50ac00e4411780eb000ba309170cd56e26e23fca7be1dd4518933a4b70a",
-      "bytes": 7795,
-      "words": 930,
+      "sha256": "fa163620739264d1ce6dde2fadf471fd43278c6b5a8f475b4f37f5d747ec5963",
+      "bytes": 11415,
+      "words": 1426,
       "anchor_ids": [
         "proposed-transformation-execution-plan.outcomes_scope",
         "proposed-transformation-execution-plan.transition_states",
@@ -2923,7 +3185,9 @@
         "proposed-transformation-execution-plan.decision_gates"
       ],
       "case_id": "HFS-FAR",
-      "methodology_context": "Enterprise architecture transition planning and programme dependency management"
+      "methodology_context": "Enterprise architecture transition planning and programme dependency management",
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:transformation-roadmap:complex",
@@ -2934,16 +3198,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "7208a81f4a3f2ac2fe7441fa80b21d0e8462d8074f296aca781b54169b2e9502",
-      "bytes": 11923,
-      "words": 1405,
+      "sha256": "7b5c994922d46b9dc08189570957a367ddd46b1b018a79d93b84039c4625c02b",
+      "bytes": 15474,
+      "words": 2003,
       "anchor_ids": [
         "proposed-transformation-roadmap.transformation_objectives",
         "proposed-transformation-roadmap.current_target",
         "proposed-transformation-roadmap.waves_dependencies",
         "proposed-transformation-roadmap.risk_change",
         "proposed-transformation-roadmap.investment_governance"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:transformation-roadmap:medium",
@@ -2954,16 +3220,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "8f9f69c38a9c82c414a84fa30c5fc8a32d414fe5019c7d92d469b60262cf546c",
-      "bytes": 9130,
-      "words": 1079,
+      "sha256": "3b7d5faf035418713e6c39d7b4e4318ccfa2971f92a447273d47cf9382ca60a8",
+      "bytes": 12681,
+      "words": 1653,
       "anchor_ids": [
         "proposed-transformation-roadmap.transformation_objectives",
         "proposed-transformation-roadmap.current_target",
         "proposed-transformation-roadmap.waves_dependencies",
         "proposed-transformation-roadmap.risk_change",
         "proposed-transformation-roadmap.investment_governance"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     },
     {
       "reference_id": "example:transformation-roadmap:simple",
@@ -2974,16 +3242,18 @@
       "provenance": "ai-authored-proposed",
       "approval_status": "not-human-approved",
       "dcs_binding_status": "proposed-not-mapped",
-      "sha256": "978ac4174e4dc417865ee220f007746a1344e988197468677ff1eb0ba2901450",
-      "bytes": 7693,
-      "words": 905,
+      "sha256": "568241c566b298a431060b2df6d8c22d906f264b13f64ca8c53caa5c311dae45",
+      "bytes": 11244,
+      "words": 1450,
       "anchor_ids": [
         "proposed-transformation-roadmap.transformation_objectives",
         "proposed-transformation-roadmap.current_target",
         "proposed-transformation-roadmap.waves_dependencies",
         "proposed-transformation-roadmap.risk_change",
         "proposed-transformation-roadmap.investment_governance"
-      ]
+      ],
+      "review_version": "2.3.0",
+      "review_status": "tri-lens-ai-review-applied-not-human-approved"
     }
   ],
   "proposal_extension": {
@@ -3035,6 +3305,11 @@
     ],
     "binding_status": "proposed-not-mapped",
     "critical_consistency_note": "Synthetic test conditions, risk findings, CI execution results and approval states are not real controls evidence. Do not activate normative DCS enforcement merely by importing examples."
+  },
+  "review_summary": {
+    "type": "three-ai-review-lenses-not-three-human-reviewers",
+    "all_documents_revised": 135,
+    "human_approved": false
   },
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team"
