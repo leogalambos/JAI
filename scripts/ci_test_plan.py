@@ -17,7 +17,7 @@ QUICK_MODULES = (
     'test_ci_environment_contract.py', 'test_jai_pages_and_release.py',
     'test_version_decoupling.py', 'test_documentation_navigation.py',
     'test_license_policy_regression.py', 'test_offline_guard.py',
-    'test_qualification_core.py',
+    'test_qualification_core.py', 'test_release_version_output.py',
 )
 
 

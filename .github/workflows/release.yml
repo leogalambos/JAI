@@ -47,7 +47,11 @@ jobs:
         shell: bash
         env:
           RELEASE_TAG: ${{ github.ref_name }}
-        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 scripts/validate_release_tag.py --tag "$RELEASE_TAG" --root .
+        run: |
+          set -euo pipefail
+          python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 scripts/validate_release_tag.py --tag "$RELEASE_TAG" --root .
+          # Only the host step writes Actions outputs after guarded validation.
+          printf 'version=%s\n' "${RELEASE_TAG#release@}" >> "$GITHUB_OUTPUT"
       - name: Verify committed VERSION and synchronized release metadata
         shell: bash
         env:
@@ -98,6 +102,7 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
+          : "${RELEASE_VERSION:?Missing validated release version}"
           python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/runtime/tools/release_bundle.py build --root . --dist dist
           python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/runtime/tools/evaluation_package.py build --root . \
             --output "dist/jai-extended-evaluation-${RELEASE_VERSION}.zip"
