@@ -2,6 +2,12 @@
 
 AI IT House {{ JAI_VERSION }} separates **normative semantic architecture**, **domain profiles**, **runtime enforcement** and **provider-specific rendering**.
 
+This page is for maintainers locating configuration and implementation
+boundaries. For the request-to-context mechanism, continue with the
+[execution and context algorithm](../overview/execution-context-algorithm.md).
+Operators choosing how much assurance their task needs should instead start
+with [Methodical workflows](../using/methodical-workflows.md).
+
 ## JAI as the normative top-level architecture
 
 The six-layer Justifiable AI core is the single top-level architecture for production semantics. Human Authority is the external L0 boundary.

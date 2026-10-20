@@ -1,0 +1,154 @@
+{
+  "schema_version": 1,
+  "evidence_class": "synthetic-deterministic-retrieval",
+  "as_of": "2026-10-20",
+  "goal": "ownership checks",
+  "context": "Assessment",
+  "permitted_confidentiality": [
+    "internal"
+  ],
+  "cases": [
+    {
+      "id": "selected-lesson",
+      "records": [
+        {
+          "id": "lesson"
+        }
+      ],
+      "expected_ids": [
+        "lesson"
+      ],
+      "expected_excluded": {}
+    },
+    {
+      "id": "unrelated-goal",
+      "records": [
+        {
+          "id": "lesson",
+          "observations": [
+            "A budget estimate needed a currency."
+          ]
+        }
+      ],
+      "expected_ids": [],
+      "expected_excluded": {
+        "no_lexical_match": 1
+      }
+    },
+    {
+      "id": "restricted-record",
+      "records": [
+        {
+          "id": "lesson",
+          "confidentiality": "restricted"
+        }
+      ],
+      "expected_ids": [],
+      "expected_excluded": {
+        "confidentiality": 1
+      }
+    },
+    {
+      "id": "different-context",
+      "records": [
+        {
+          "id": "lesson",
+          "applicability": {
+            "contexts": [
+              "Cost estimation"
+            ],
+            "preconditions": [],
+            "exclusions": [
+              "No approval"
+            ]
+          }
+        }
+      ],
+      "expected_ids": [],
+      "expected_excluded": {
+        "applicability": 1
+      }
+    },
+    {
+      "id": "outdated-lesson",
+      "records": [
+        {
+          "id": "lesson",
+          "created": "2024-10-20",
+          "updated": "2024-10-20"
+        }
+      ],
+      "expected_ids": [],
+      "expected_excluded": {
+        "stale": 1
+      }
+    },
+    {
+      "id": "current-version-only",
+      "records": [
+        {
+          "id": "lesson"
+        },
+        {
+          "id": "lesson",
+          "version": 2,
+          "supersedes": 1
+        }
+      ],
+      "expected_ids": [
+        "lesson"
+      ],
+      "expected_excluded": {
+        "superseded": 1
+      }
+    },
+    {
+      "id": "assessment-intake",
+      "goal": "assessment intake checks",
+      "records": [
+        {
+          "id": "intake-lesson",
+          "observations": [
+            "Assessment intake checks must identify supplied architecture documents."
+          ]
+        }
+      ],
+      "expected_ids": [
+        "intake-lesson"
+      ],
+      "expected_excluded": {}
+    },
+    {
+      "id": "failed-evidence-approach",
+      "goal": "evidence gaps lessons",
+      "records": [
+        {
+          "id": "evidence-lesson",
+          "observations": [
+            "Evidence gaps lessons: treating undocumented controls as implemented produced unsupported conclusions."
+          ]
+        }
+      ],
+      "expected_ids": [
+        "evidence-lesson"
+      ],
+      "expected_excluded": {}
+    },
+    {
+      "id": "supplier-handoff",
+      "goal": "supplier handoff ownership",
+      "records": [
+        {
+          "id": "supplier-lesson",
+          "observations": [
+            "Supplier handoff ownership needs named evidence owners before assessment."
+          ]
+        }
+      ],
+      "expected_ids": [
+        "supplier-lesson"
+      ],
+      "expected_excluded": {}
+    }
+  ]
+}

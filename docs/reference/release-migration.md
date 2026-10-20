@@ -14,7 +14,9 @@ For that reason the Unified Lifecycle GA target completed in October 2026 is **2
 
 ## Native and legacy namespaces
 
-26.10.4 is the only current production-write namespace. Earlier supported versions are compatibility inputs.
+In the historical 26.10.4 baseline, 26.10.4 was the production-write
+namespace and earlier supported versions were compatibility inputs. This
+statement does not select the namespace for the current release.
 
 | Source | Read | Forward migrate | Native write |
 | --- | --- | --- | --- |
@@ -77,30 +79,33 @@ Repositories with schema versions `26.10`, `26.10.1`, `26.10.2` and `26.10.3` ar
 
 ### Publication
 
-Current production rendering uses ProjectionManifest v3 and JAI lineage. Older semantic material can be migrated/loaded according to its compatibility contract, but current production render evidence belongs to 26.10.4.
+The historical 26.10.4 baseline used ProjectionManifest v3 and JAI lineage.
+Its compatibility contract described how older semantic material could be
+migrated or loaded; its production render evidence belonged to that baseline.
+For current production rendering and DCS binding, see
+[artifacts and publication](../capabilities/artifacts-publication.md).
 
 ### Runtime records
 
 New Execution Records are 26.10.4 runtime-profile/L6 records. Existing historical execution evidence remains historical.
 
-## Automated release from a Git tag
+## Current release procedure
 
-To publish a new production distribution, push a tag named
-`release@YY.MM.VV` on an existing commit from `main`. GitHub Actions
-prepares the product identity from the tag, runs the A–H gates, builds
-and checks the ZIP, and **immediately publishes** a GitHub Release named
-`YY.MM.VV`. This flow has no draft, manual approval or GPG signature step.
+This page preserves the 26.10.4 baseline; it is not the current release
+runbook. Follow [Versioning and release policy](versioning.md) for current
+requirements and commands.
 
-The published Release contains the ZIP, SHA-256 checksum, SBOM,
-provenance and qualification results. GitHub OIDC/Sigstore attestations
-are added automatically where the repository plan supports them;
-SHA-256 alone does not prove publisher identity.
+The current root `VERSION` is the authoritative product identity. Synchronise
+its generated projections with `scripts/versioning.py sync`, check them,
+and commit the consistent state before tagging. A `release@YY.MM.VV` tag must
+match that committed identity; the tag does not manufacture a replacement
+version. Publication remains conditional on the current required checks.
 
-The historical 26.10.4 release documentation describes its former
-external-signature process; it does not govern releases created by the
-current automated workflow.
+The baseline's former external-signature process does not govern the current
+automated workflow. Do not treat historical qualification or compatibility
+tables on this page as evidence that a later release has passed its gates.
 
-## Upgrade checklist
+## Historical 26.10.4 upgrade checklist
 
 1. Back up local configuration and any local policy/model-routing overrides.
 2. Run the installer in dry-run mode.

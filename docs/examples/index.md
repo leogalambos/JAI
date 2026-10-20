@@ -9,6 +9,14 @@ when evidence or scope changes. The examples use fictional ACME teams,
 Alice and Bob in settings drawn from common public business practice.
 They are not case studies, executed traces or claims about real entities.
 
+For a natural-language recommendation, use [experimental hint support](../using/experimental-hint.md).
+Check its assumptions and sources before executing a suggested sequence.
+The [architecture assessment and recurring findings example](security-assessment-recurring-findings.md)
+shows how to combine outcomes while keeping proposed operating procedures
+separate from implemented monitoring.
+It is an additional illustrative adaptation, not a thirtieth bundled demo
+pack; the 29 maintained scenario packs remain the practice catalog.
+
 ## Choose a starting task
 
 For a first exercise, choose the closest business question rather than

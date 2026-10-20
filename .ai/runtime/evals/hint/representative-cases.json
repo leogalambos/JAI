@@ -1,0 +1,166 @@
+{
+  "schema_version": 1,
+  "evaluation_version": "1.0.0",
+  "status": "OFFLINE_FIXTURES_ONLY",
+  "translation": "English working goals are authored fixtures, not executed translations.",
+  "live_recommendation_quality": "NOT_EXECUTED",
+  "rubric": {
+    "version": "1.0.0",
+    "dimensions": [
+      "task fit",
+      "source grounding",
+      "sequencing",
+      "missing evidence",
+      "authority boundaries",
+      "operator usability"
+    ],
+    "ratings": [
+      "SATISFIED",
+      "NEEDS_REWORK",
+      "NOT_EVALUATED"
+    ],
+    "rule": "A future actual response must cite its sources and disclose unsupported goals; blocking authority or evidence errors prevent readiness. Static fixture success does not establish conversational quality."
+  },
+  "cases": [
+    {
+      "id": "architecture-assessment",
+      "request": "Assess the security of an architecture.",
+      "structured_goals": [
+        "assess architecture security"
+      ],
+      "expected_status": "MATCH",
+      "required_candidates": [
+        "security-assessment"
+      ],
+      "unmatched_goals": []
+    },
+    {
+      "id": "assessment-remediation",
+      "request": "Assess architecture security and track remediation.",
+      "structured_goals": [
+        "assess architecture security",
+        "track remediation"
+      ],
+      "expected_status": "MATCH",
+      "required_candidates": [
+        "security-assessment",
+        "vulnerability-remediation"
+      ],
+      "unmatched_goals": []
+    },
+    {
+      "id": "assessment-recurrence-gap",
+      "request": "Assess architecture security and establish a recurring assessment process.",
+      "structured_goals": [
+        "assess architecture security",
+        "establish a recurring assessment process"
+      ],
+      "expected_status": "PARTIAL_MATCH",
+      "required_candidates": [
+        "security-assessment"
+      ],
+      "unmatched_goals": [
+        "establish a recurring assessment process"
+      ]
+    },
+    {
+      "id": "supplier-proposal",
+      "request": "Prepare a supplier proposal.",
+      "structured_goals": [
+        "prepare supplier proposal"
+      ],
+      "expected_status": "MATCH",
+      "required_candidates": [
+        "proposal"
+      ],
+      "unmatched_goals": []
+    },
+    {
+      "id": "sabsa",
+      "request": "Develop a business-driven SABSA architecture.",
+      "structured_goals": [
+        "develop SABSA security architecture"
+      ],
+      "expected_status": "MATCH",
+      "required_candidates": [
+        "sabsa-development"
+      ],
+      "unmatched_goals": []
+    },
+    {
+      "id": "migration",
+      "request": "Plan a cloud migration with cutover.",
+      "structured_goals": [
+        "plan cloud migration"
+      ],
+      "expected_status": "MATCH",
+      "required_candidates": [
+        "cloud-migration"
+      ],
+      "unmatched_goals": []
+    },
+    {
+      "id": "data-product",
+      "request": "Deliver a governed data product.",
+      "structured_goals": [
+        "deliver governed data product"
+      ],
+      "expected_status": "MATCH",
+      "required_candidates": [
+        "data-product-delivery"
+      ],
+      "unmatched_goals": []
+    },
+    {
+      "id": "ai-governance",
+      "request": "Assess AI system readiness.",
+      "structured_goals": [
+        "assess AI system readiness"
+      ],
+      "expected_status": "MATCH",
+      "required_candidates": [
+        "ai-system-approval"
+      ],
+      "unmatched_goals": []
+    },
+    {
+      "id": "publication",
+      "request": "Publish an approved semantic artefact.",
+      "structured_goals": [
+        "publish approved semantic artefact"
+      ],
+      "expected_status": "MATCH",
+      "required_candidates": [
+        "enterprise-publication"
+      ],
+      "unmatched_goals": []
+    },
+    {
+      "id": "no-match",
+      "request": "Bake sourdough bread.",
+      "structured_goals": [
+        "bake sourdough bread"
+      ],
+      "expected_status": "NO_MATCH",
+      "required_candidates": [],
+      "unmatched_goals": [
+        "bake sourdough bread"
+      ]
+    },
+    {
+      "id": "unsupported-goal",
+      "request": "Prepare a supplier proposal and bake bread.",
+      "structured_goals": [
+        "prepare supplier proposal",
+        "bake sourdough bread"
+      ],
+      "expected_status": "PARTIAL_MATCH",
+      "required_candidates": [
+        "proposal"
+      ],
+      "unmatched_goals": [
+        "bake sourdough bread"
+      ]
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Command reference
 
-Owner: JAI maintainers · Last reviewed: 2026-10-16
+Owner: JAI maintainers · Last reviewed: 2026-10-20
 
 ## Operator syntax versus implementation API
 
@@ -21,6 +21,7 @@ In Codex, `/commercial` maps to `$workflow-commercial` in an installation genera
 ```text
 /demo setup|list|reset|check
 /guide [command|topic]
+/hint <natural-language project question>
 /analyse <path or description>
 /criteria <path>
 /review <path> [against <criteria>]
@@ -38,6 +39,36 @@ In Codex, `/commercial` maps to `$workflow-commercial` in an installation genera
 ```
 
 Codex provides the corresponding `$workflow-<command>` surfaces. For command-by-command prerequisites, demos and expected verification, consult the [full installed CLI guide](installed-cli-guide.md) or the [extended example walkthroughs](command-walkthroughs.md). The installed `GUIDE.md` is generated from that single Markdown source.
+
+## Experimental advisory hint
+
+`/hint <project question>` (`$workflow-hint` in Codex) recommends an adapted
+procedure from maintained examples. It interprets the request in English,
+uses deterministic local candidate ranking and reads selected scenario steps.
+Every answer carries the experimental advisory label, sources, assumptions,
+paired commands and evidence/authority limits. It does not execute the proposed
+work, create a demo, schedule monitoring or import project histories. Selection
+scores are lexical points, not confidence. See the [installed hint reference](installed-cli-guide.md#hint).
+
+### Explicit local knowledge capture
+
+Ask `/hint` or `$workflow-hint` to remember the useful part of your current
+conversation. The active provider prepares the English record; you do not
+need to describe each technical step or supply JSON. It asks for missing
+essential metadata and the authorised destination in ordinary language,
+then continues the original save request after your answers. A request only
+for a draft does not authorise saving. There is no new slash subcommand.
+
+Capture uses only selected context actually available to the provider, not
+an automatic full-history archive. Use a caller-owned library outside the
+distributed tree and installed runtime. Saving supplies no human approval,
+and records participate in hint selection only with explicit library and
+read/disclosure permission. They do not automatically become demo projects.
+See [Build and reuse local know-how](../using/reusing-knowledge.md) for
+selection, revisions, export and recoverable deletion.
+See [Remember useful knowledge](../using/remembering-knowledge.md) for worked
+conversations and [capture boundaries](installed-cli-guide.md#explicit-local-knowledge-capture)
+for the command contract.
 
 ## Commercial delivery
 

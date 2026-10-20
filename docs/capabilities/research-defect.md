@@ -2,6 +2,13 @@
 
 Two capabilities often stand out in practice: disciplined research and disciplined defect analysis.
 
+Use this page to distinguish an open research question from a reproducible
+defect and understand their evidence requirements. For command syntax, use
+the [command reference](../reference/commands.md); then choose a
+[commented task walkthrough](../examples/index.md) for an end-to-end case.
+These capabilities do not substitute for the broader assurance-method choice
+in [Methodical workflows](../using/methodical-workflows.md).
+
 ## Research
 
 `/research` is designed to move from question to defensible answer with explicit evidence handling and bounded experimentation when needed.

@@ -59,21 +59,14 @@ Local preview from an unpacked release (without a Git remote):
 JAI_GITHUB_REPOSITORY=YOUR_OWNER/JAI python -m mkdocs build --strict
 ```
 
-Use Git tags of the form `release@YY.MM.VV`, with the suffix **identical** to
-all three canonical `VERSION` files (`VERSION`, `.ai/VERSION`, and
-`.ai/runtime/VERSION`). Update the production changelog, release manifests and
-release-specific documentation consistently, and complete the required review
-on `main` before tagging. For example, when version 26.10.5 is actually ready:
-
-```sh
-git tag -a 'release@26.10.5' -m 'JAI 26.10.5'
-git push origin 'release@26.10.5'
-```
-
-`.github/workflows/release.yml` checks the tag and its ancestry in `main`,
-materializes its version without changing frozen schemas, builds the
-MkDocs site, qualifies A–H and publishes a **production GitHub Release**.
-No draft, operator signature or additional manual promotion step is needed.
+For the current procedure, use [Versioning and release policy](../reference/versioning.md).
+The root `VERSION` is the single authority; `.ai/VERSION` and
+`.ai/runtime/VERSION` are projections, not independent authorities.
+Synchronise them with
+`scripts/versioning.py sync`, check and commit the consistent state, then
+create a matching release tag. The workflow checks that committed identity
+and the tag's ancestry in `main`; it does not derive a new version from the
+tag. Publication requires the current qualification checks to succeed.
 
 For an eligible public repository GitHub generates signed OIDC/Sigstore
 attestations for the ZIP. On private GitHub plans without attestations the

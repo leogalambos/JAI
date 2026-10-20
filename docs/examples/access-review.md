@@ -40,8 +40,10 @@ Use the assessment sequence to compare evidence with agreed rules. A material ex
 
 The command pairs are equivalent entry points; they do not imply identical
 provider tools. Ask JAI to report actual output paths and any engagement,
-snapshot or findings identifiers. Read those results before proceeding. Replace `<reported-review-target>`
-with the actual draft path reported by the preceding stage.
+snapshot or findings identifiers. Read those results before proceeding.
+Replace `<reported-review-target>` with the actual access-population input
+path you selected for review; analysis and criteria creation do not produce
+an assessment draft automatically.
 In a rework prompt, replace `<reported-ledger>` with the ledger the review
 actually reported. Never invent its identifier or erase open findings.
 

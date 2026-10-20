@@ -82,9 +82,18 @@ One governed service-integration model joins supplier responsibilities into end-
 
 ## Running this workflow: operator and implementer boundary
 
-In **Claude Code or Codex CLI**, use the prompt in the next section (or adapt it to your programme): it is a **provider conversation request**, not a shell program named after this workflow. **You** supply the source materials, actual owners, gate acceptance and any authorisation for changing real systems. **The provider agent** interprets the registered workflow stages and role contracts, calls supported tools if allowed, and returns explicit evidence and blockers. Stage completion in the diagram or metadata is **not** proof of a successful external tool call, an approved exception or a released system.
+Use the next prompt in the provider conversation, not as a shell command.
+You supply permitted inputs, actual owners, gate acceptance and authority for
+real-system changes. The agent returns evidence and blockers; a listed stage
+is not proof of execution, approval or release.
 
-For consequential decisions explicitly start `/layered` (Claude) or `$workflow-layered` (Codex); this version does not force every direct/natural-language workflow invocation into Fabric. Human L0 authority remains separate, with Codex requiring the actual human to run any protected authority command in a trusted terminal. See [the interaction model](../using/interaction-model.md), [layered engagement](../using/layered-engagement.md) and [human authority](../operations/human-authority.md).
+For consequential work, explicitly start `/layered` or `$workflow-layered`;
+natural-language routing does not universally enforce Fabric. L0 authority
+remains human, and Codex protected authority commands require the human's
+trusted terminal. Follow the [interaction model](../using/interaction-model.md),
+[layered engagement](../using/layered-engagement.md) and
+[human authority](../operations/human-authority.md). Keep the workflow-specific
+stop conditions and gates on this page.
 
 ## How to use this workflow
 

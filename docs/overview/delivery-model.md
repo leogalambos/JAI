@@ -4,6 +4,12 @@ AI IT House separates work into clearly different concerns.
 
 For the practical reading order—method, provider interaction and a complete case—start with [How to use JAI](../examples/how-to-use-JAI/index.md). This page explains the delivery model; it is not a command sequence.
 
+Read this page to understand responsibilities and hand-offs. Next, use
+[Methodical workflows](../using/methodical-workflows.md) to choose the assurance
+method, or [Layered engagement](../using/layered-engagement.md) to operate a
+consequential engagement. For the implementation mechanism, see the
+[execution and context algorithm](execution-context-algorithm.md).
+
 <div class="ai-diagram ai-diagram-inline" role="img" aria-label="Architecture and delivery diagram">
 <svg class="ai-inline-diagram-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 919 756" role="img" aria-labelledby="t d">
 <defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e3859"/><stop offset="1" stop-color="#0b6b9a"/></linearGradient><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3ba9d6"/></marker></defs>

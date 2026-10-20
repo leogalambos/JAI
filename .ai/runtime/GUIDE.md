@@ -1,5 +1,7 @@
 # AI IT House — installed CLI guide
 
+Owner: JAI maintainers · Last reviewed: 2026-10-20
+
 This guide explains the workflows exposed by the library to Claude Code
 and Codex CLI, with demos you can run in a few minutes. In Claude Code
 use `/guide`; in Codex use `$workflow-guide` (for example review, SABSA
@@ -11,7 +13,8 @@ or demo topics).
 1. [Before you start](#1-before-you-start)
 2. [A 20-minute tour](#2-a-20-minute-tour)
 3. [Commands](#3-commands) —
-[/demo](#demo) · [/guide](#guide) · [/analyse](#analyse) ·
+[/demo](#demo) · [/guide](#guide) · [/hint](#hint) ·
+[/analyse](#analyse) ·
 [/criteria](#criteria) · [/review](#review) · [/rework](#rework) ·
 [/diagnose](#diagnose) · [/develop](#develop) · [/govern](#govern) ·
 [/research](#research) · [/sabsa](#sabsa) · [/publish](#publish) ·
@@ -200,6 +203,109 @@ this is assisted navigation, not automatic workflow execution or a
 separate context-loading mechanism. Use `/demo scenarios` to find exact
 IDs.
 Review-demo answer keys remain hidden until review, unless requested.
+
+### /hint
+
+**What it does.** Offers an experimental, sourced procedure for a
+project question using maintained task examples. In Codex use
+`$workflow-hint`.
+
+**Syntax.** `/hint <natural-language project question>`.
+
+Every answer is labelled: **Experimental hint — AI-generated advisory
+guidance. Requires project-specific verification.** The active
+conversational provider forms an English working interpretation,
+selects candidates with the local `demo/hint.py` tool and reads
+selected instructions through `demo.py describe`. The selector
+validates and ranks packaged metadata; interpretation and tailored
+advice are procedural provider behaviour. Lexical ranking points are
+not confidence, semantic completeness or approval. Missing or partial
+matches must be disclosed, with assumptions and missing prerequisites.
+
+Expect source IDs and reasons, required inputs, paired Claude/Codex
+steps, expected outputs and inspection points, adaptations and
+escalation boundaries. Expected outputs are not executed results.
+Advice does not execute workflows, create demos, schedule monitoring,
+save conversations or scan past projects. No additional provider or
+translation call is required. Explicit local knowledge capture is
+available separately. Saved records enter hint selection only after
+explicit library selection and permission to read and disclose their
+permitted content to the active provider. They do not automatically
+become demo projects.
+
+**Next step.** `/guide <returned-scenario-ID>` explains the maintained
+sequence; `/demo scenario <returned-scenario-ID> --to <new-directory>`
+prepares fictional practice only on explicit request. Replace
+placeholders with the returned ID and an explicitly chosen new
+destination. Current evidence, independent review and human authority
+remain necessary.
+
+For first use, result interpretation and confidentiality boundaries,
+see the maintained [experimental hint guide][hint-guide] and the
+[combined assessment and recurring findings walkthrough][hint-case].
+These are documentation links; installed hint operation uses its bundled
+catalog and does not require the MkDocs tree to be present.
+
+[hint-guide]: ../using/experimental-hint.md
+[hint-case]: ../examples/security-assessment-recurring-findings.md
+
+#### Explicit local knowledge capture
+
+Local knowledge storage requires POSIX descriptor, no-follow and
+file-locking support. Delete and restore additionally require Linux
+`renameat2` no-replace operations and fail closed without them.
+Do not assume Windows support or macOS delete/restore equivalence.
+
+Ask `/hint` or `$workflow-hint` to remember a specific lesson
+from the current conversation. You can also make that request
+in ordinary language in an active JAI conversation. The active
+provider extracts the selected visible material, prepares an
+English record and handles storage. You do not need to specify
+each step, write JSON or issue a separate technical save command.
+
+JAI asks for missing essential information before saving: the
+selected knowledge, an authorised library, confidentiality and
+reliability. It may use the operator as the responsible role when
+that responsibility is clear, but must not invent a person's
+identity. After your answers, it continues the original save
+request. A request only to prepare a draft authorises preparation,
+not final saving. Advice alone authorises no writes.
+
+Reliability describes the declared basis: user-reported, observed
+in the session, reported as independently verified, or uncertain.
+It is not a calculated confidence score or proof of independent
+approval. Unknown classification must be clarified rather than
+guessed.
+
+Use a caller-owned personal or engagement library outside the
+distributed tree and installed runtime, protected against group
+and other-user writes. An already authorised destination can be
+reused for the same capture request; the provider must ask when
+no destination is established. Source selection does not
+authorise access to unrelated files. Older conversation content
+may be unavailable: JAI must ask for a relevant excerpt or
+explicitly permitted source instead of reconstructing missing
+history.
+
+The local `tools/knowledge.py` capture helper validates the
+provider-prepared record and reports missing input without
+writing. It does not itself retrieve chat history or perform LLM
+extraction. The lower-level `validate`, `prepare`, `preview` and
+`save` interfaces remain available for file-backed maintenance;
+their source allowlists and digest checks are technical
+safeguards, not steps an ordinary operator must perform for
+conversational capture.
+
+Capture preserves observations separately from interpretations,
+recommendations and proposals. Completion reports the saved record
+and its destination; saving retains
+`authority_verification: NOT_VERIFIED` and confers no approval or
+normative status. Explicitly selected knowledge libraries can inform
+hint recommendations under the stated read and disclosure permissions.
+See [Build and reuse local know-how](../using/reusing-knowledge.md)
+for selection, revisions, export and recoverable deletion. See
+[Remember useful knowledge](../using/remembering-knowledge.md)
+for worked conversations and experimental provider limits.
 
 ### /analyse
 

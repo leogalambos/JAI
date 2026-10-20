@@ -52,7 +52,46 @@
           "inspect": "Pause at the unresolved requirement in inputs/role-rules.md. Alice requests John Doe's authorised employment status from Bob before accepting access. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/role-rules.md. Alice requests John Doe's authorised employment status from Bob before accepting access. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/role-rules.md. Alice requests John Doe's authorised employment status from Bob before accepting access. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "review access entitlements",
+          "resolve access exceptions"
+        ],
+        "domains": [
+          "identity",
+          "security",
+          "governance"
+        ],
+        "phases": [
+          "assessment",
+          "review"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "An authorised access population and entitlement rules; employment status must be confirmed externally"
+        ],
+        "input_kinds": [
+          "authorised access export",
+          "role rules"
+        ],
+        "output_kinds": [
+          "access review findings",
+          "remediation actions"
+        ],
+        "applicability_limits": [
+          "Does not revoke access or establish employment status.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "security-assessment",
+          "regulatory-change"
+        ],
+        "workflow_keys": [
+          "access-request-to-review"
+        ]
+      }
     },
     {
       "id": "adoption",
@@ -105,7 +144,46 @@
           "inspect": "Pause at the unresolved requirement in inputs/pilot-feedback.csv. Alice asks Bob's local leads to resolve the pending accessibility review and training schedule before rollout. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/pilot-feedback.csv. Alice asks Bob's local leads to resolve the pending accessibility review and training schedule before rollout. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/pilot-feedback.csv. Alice asks Bob's local leads to resolve the pending accessibility review and training schedule before rollout. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "plan organisational adoption",
+          "measure user readiness"
+        ],
+        "domains": [
+          "change",
+          "delivery",
+          "people"
+        ],
+        "phases": [
+          "planning",
+          "operations"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific change scope, stakeholder feedback or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "change scope",
+          "stakeholder feedback"
+        ],
+        "output_kinds": [
+          "adoption plan",
+          "readiness measures"
+        ],
+        "applicability_limits": [
+          "Does not prove adoption through attendance alone.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "service-onboarding",
+          "business-case-benefits"
+        ],
+        "workflow_keys": [
+          "organisational-change-and-adoption"
+        ]
+      }
     },
     {
       "id": "ai-system-approval",
@@ -158,7 +236,47 @@
           "inspect": "Pause at the unresolved requirement in inputs/data-flow.md. Alice asks Bob for retention and supplier terms and John Doe for assurance evidence before real-data use. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/data-flow.md. Alice asks Bob for retention and supplier terms and John Doe for assurance evidence before real-data use. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/data-flow.md. Alice asks Bob for retention and supplier terms and John Doe for assurance evidence before real-data use. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "assess AI system readiness",
+          "prepare AI governance decision"
+        ],
+        "domains": [
+          "ai",
+          "data",
+          "governance",
+          "security"
+        ],
+        "phases": [
+          "assessment",
+          "review"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific AI use case, data and model documentation or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "AI use case",
+          "data and model documentation"
+        ],
+        "output_kinds": [
+          "AI risk assessment",
+          "approval evidence gaps"
+        ],
+        "applicability_limits": [
+          "Does not grant AI approval or infer model quality.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "data-product-delivery",
+          "security-assessment"
+        ],
+        "workflow_keys": [
+          "ai-system-approval"
+        ]
+      }
     },
     {
       "id": "architecture-board",
@@ -210,7 +328,43 @@
           "inspect": "Pause at the unresolved requirement in inputs/current-interfaces.csv. Bob confirms Partner B's owner before John Doe takes the board decision. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/current-interfaces.csv. Bob confirms Partner B's owner before John Doe takes the board decision. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/current-interfaces.csv. Bob confirms Partner B's owner before John Doe takes the board decision. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "prepare architecture decision",
+          "review architectural options"
+        ],
+        "domains": [
+          "architecture",
+          "governance"
+        ],
+        "phases": [
+          "design",
+          "review"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific architecture options, decision criteria or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "architecture options",
+          "decision criteria"
+        ],
+        "output_kinds": [
+          "decision recommendation",
+          "architecture review findings"
+        ],
+        "applicability_limits": [
+          "Board decisions require actual authorised reviewers.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "architecture-repository",
+          "justifiable-decision"
+        ],
+        "workflow_keys": []
+      }
     },
     {
       "id": "architecture-repository",
@@ -263,7 +417,46 @@
           "inspect": "Pause at the unresolved requirement in inputs/service-owners.csv. Alice asks Bob to confirm Scheduling ownership before changing the canonical model. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/service-owners.csv. Alice asks Bob to confirm Scheduling ownership before changing the canonical model. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/service-owners.csv. Alice asks Bob to confirm Scheduling ownership before changing the canonical model. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "maintain enterprise architecture model",
+          "validate architecture traceability"
+        ],
+        "domains": [
+          "architecture",
+          "governance"
+        ],
+        "phases": [
+          "design",
+          "review",
+          "operations"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific architecture model, ownership boundaries or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "architecture model",
+          "ownership boundaries"
+        ],
+        "output_kinds": [
+          "validated model changes",
+          "repository findings"
+        ],
+        "applicability_limits": [
+          "Does not invent model facts or cross-project ownership.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "architecture-board",
+          "sabsa-development"
+        ],
+        "workflow_keys": [
+          "architecture-model-to-repository-governance"
+        ]
+      }
     },
     {
       "id": "business-case-benefits",
@@ -316,7 +509,46 @@
           "inspect": "Pause at the unresolved requirement in inputs/benefit-measures.md. John Doe obtains baseline coordination hours before Alice accepts realised benefits; assumed hours are not cash savings. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/benefit-measures.md. John Doe obtains baseline coordination hours before Alice accepts realised benefits; assumed hours are not cash savings. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/benefit-measures.md. John Doe obtains baseline coordination hours before Alice accepts realised benefits; assumed hours are not cash savings. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "justify investment",
+          "track realised benefits"
+        ],
+        "domains": [
+          "finance",
+          "delivery",
+          "governance"
+        ],
+        "phases": [
+          "planning",
+          "operations"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific business case assumptions, benefit baseline or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "business case assumptions",
+          "benefit baseline"
+        ],
+        "output_kinds": [
+          "business case",
+          "benefit review"
+        ],
+        "applicability_limits": [
+          "Forecasts are assumptions until measured.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "demand-funding",
+          "proposal"
+        ],
+        "workflow_keys": [
+          "business-case-to-benefits"
+        ]
+      }
     },
     {
       "id": "cloud-migration",
@@ -369,7 +601,47 @@
           "inspect": "Pause at the unresolved requirement in inputs/change-window.md. Alice asks Bob for dated restore evidence before John Doe considers cutover. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/change-window.md. Alice asks Bob for dated restore evidence before John Doe considers cutover. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/change-window.md. Alice asks Bob for dated restore evidence before John Doe considers cutover. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "plan cloud migration",
+          "prepare cutover and rollback"
+        ],
+        "domains": [
+          "cloud",
+          "operations",
+          "delivery"
+        ],
+        "phases": [
+          "planning",
+          "delivery"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific application inventory, dependencies, recovery requirements or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "application inventory",
+          "dependencies",
+          "recovery requirements"
+        ],
+        "output_kinds": [
+          "migration plan",
+          "cutover readiness"
+        ],
+        "applicability_limits": [
+          "Does not execute migration or prove recoverability.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "operational-readiness",
+          "production-change"
+        ],
+        "workflow_keys": [
+          "migration-and-cutover"
+        ]
+      }
     },
     {
       "id": "cyber-incident",
@@ -422,7 +694,47 @@
           "inspect": "Pause at the unresolved requirement in inputs/response-authority.md. Alice asks John Doe to verify the login observation and response authority before containment claims. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/response-authority.md. Alice asks John Doe to verify the login observation and response authority before containment claims. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/response-authority.md. Alice asks John Doe to verify the login observation and response authority before containment claims. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "coordinate cyber incident response",
+          "recover after security breach"
+        ],
+        "domains": [
+          "security",
+          "operations",
+          "privacy"
+        ],
+        "phases": [
+          "operations",
+          "recovery"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Current incident authority, emergency contacts and permitted response scope before operational actions"
+        ],
+        "input_kinds": [
+          "incident observations",
+          "response authority",
+          "recovery evidence"
+        ],
+        "output_kinds": [
+          "incident assessment",
+          "recovery plan"
+        ],
+        "applicability_limits": [
+          "No live containment, forensic certainty or breach determination is supplied.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "incident-diagnosis",
+          "resilience-validation"
+        ],
+        "workflow_keys": [
+          "cyber-incident-breach-to-recovery"
+        ]
+      }
     },
     {
       "id": "data-product-delivery",
@@ -475,7 +787,48 @@
           "inspect": "Pause at the unresolved requirement in inputs/definitions.md. Alice resolves the availability definition with John Doe before Bob implements the calculation. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/definitions.md. Alice resolves the availability definition with John Doe before Bob implements the calculation. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/definitions.md. Alice resolves the availability definition with John Doe before Bob implements the calculation. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "deliver governed data product",
+          "define data quality acceptance"
+        ],
+        "domains": [
+          "data",
+          "delivery",
+          "governance"
+        ],
+        "phases": [
+          "planning",
+          "design",
+          "delivery"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific data requirements, source ownership, quality evidence or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "data requirements",
+          "source ownership",
+          "quality evidence"
+        ],
+        "output_kinds": [
+          "data product specification",
+          "acceptance gaps"
+        ],
+        "applicability_limits": [
+          "Does not supply real data or establish lawful processing.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "ai-system-approval",
+          "service-onboarding"
+        ],
+        "workflow_keys": [
+          "data-product-delivery"
+        ]
+      }
     },
     {
       "id": "demand-funding",
@@ -528,7 +881,46 @@
           "inspect": "Pause at the unresolved requirement in inputs/demand-register.csv. Alice asks Bob to estimate D1 before John Doe compares funding; unknown cost is not zero. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/demand-register.csv. Alice asks Bob to estimate D1 before John Doe compares funding; unknown cost is not zero. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/demand-register.csv. Alice asks Bob to estimate D1 before John Doe compares funding; unknown cost is not zero. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "prioritise demand",
+          "prepare portfolio funding decision"
+        ],
+        "domains": [
+          "finance",
+          "portfolio",
+          "governance"
+        ],
+        "phases": [
+          "planning",
+          "review"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific demand proposals, capacity and funding constraints or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "demand proposals",
+          "capacity and funding constraints"
+        ],
+        "output_kinds": [
+          "prioritised portfolio",
+          "funding recommendation"
+        ],
+        "applicability_limits": [
+          "Does not allocate funds or invent capacity evidence.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "business-case-benefits",
+          "sourcing-contract"
+        ],
+        "workflow_keys": [
+          "demand-to-portfolio-to-funding"
+        ]
+      }
     },
     {
       "id": "enterprise-publication",
@@ -581,7 +973,46 @@
           "inspect": "Pause at the unresolved requirement in inputs/decision.md. Bob confirms actual review status with Alice before publication; preserve DRAFT and evidence limits. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/decision.md. Bob confirms actual review status with Alice before publication; preserve DRAFT and evidence limits. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/decision.md. Bob confirms actual review status with Alice before publication; preserve DRAFT and evidence limits. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "publish approved semantic artefact",
+          "check publication quality"
+        ],
+        "domains": [
+          "publication",
+          "documentation",
+          "quality"
+        ],
+        "phases": [
+          "publication",
+          "review"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "An actually approved semantic snapshot, registered publication profile and required manifest/QA inputs"
+        ],
+        "input_kinds": [
+          "approved semantic snapshot",
+          "publication profile"
+        ],
+        "output_kinds": [
+          "publication set",
+          "semantic and visual QA report"
+        ],
+        "applicability_limits": [
+          "Drafts do not become approved by rendering.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "proposal",
+          "justifiable-decision"
+        ],
+        "workflow_keys": [
+          "semantic-to-enterprise-publication"
+        ]
+      }
     },
     {
       "id": "enterprise-release",
@@ -634,7 +1065,46 @@
           "inspect": "Pause at the unresolved requirement in inputs/component-evidence.md. Alice asks Bob for portal 4.2 results before John Doe considers release acceptance. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/component-evidence.md. Alice asks Bob for portal 4.2 results before John Doe considers release acceptance. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/component-evidence.md. Alice asks Bob for portal 4.2 results before John Doe considers release acceptance. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "coordinate enterprise release",
+          "assess cross-team release readiness"
+        ],
+        "domains": [
+          "delivery",
+          "operations",
+          "governance"
+        ],
+        "phases": [
+          "delivery",
+          "review"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific release scope, dependency and readiness evidence or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "release scope",
+          "dependency and readiness evidence"
+        ],
+        "output_kinds": [
+          "release readiness assessment",
+          "coordination plan"
+        ],
+        "applicability_limits": [
+          "Does not waive release gates or authorise deployment.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "production-change",
+          "operational-readiness"
+        ],
+        "workflow_keys": [
+          "enterprise-release-orchestration"
+        ]
+      }
     },
     {
       "id": "incident-diagnosis",
@@ -687,7 +1157,47 @@
           "inspect": "Pause at the unresolved requirement in inputs/last-known-good.md. Alice requests the permitted source checkout and exact working commit from Bob before reproduction or bisect. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/last-known-good.md. Alice requests the permitted source checkout and exact working commit from Bob before reproduction or bisect. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/last-known-good.md. Alice requests the permitted source checkout and exact working commit from Bob before reproduction or bisect. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "diagnose incident",
+          "identify root cause",
+          "resolve recurring problem"
+        ],
+        "domains": [
+          "operations",
+          "reliability"
+        ],
+        "phases": [
+          "assessment",
+          "operations"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific incident timeline, telemetry, known good baseline or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "incident timeline",
+          "telemetry",
+          "known good baseline"
+        ],
+        "output_kinds": [
+          "root cause analysis",
+          "problem remediation"
+        ],
+        "applicability_limits": [
+          "Does not assert a root cause without comparative evidence.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "cyber-incident",
+          "production-change"
+        ],
+        "workflow_keys": [
+          "incident-to-problem"
+        ]
+      }
     },
     {
       "id": "inherited-codebase",
@@ -740,7 +1250,47 @@
           "inspect": "Pause at the unresolved requirement in inputs/build-instructions.md. Alice requests source, licence and actual build evidence from Bob before source findings or takeover acceptance. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/build-instructions.md. Alice requests source, licence and actual build evidence from Bob before source findings or takeover acceptance. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/build-instructions.md. Alice requests source, licence and actual build evidence from Bob before source findings or takeover acceptance. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "assess inherited codebase",
+          "plan codebase takeover"
+        ],
+        "domains": [
+          "software",
+          "quality",
+          "governance"
+        ],
+        "phases": [
+          "assessment",
+          "planning"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "An authorised real repository checkout and reproducible build instructions for any executable code assessment"
+        ],
+        "input_kinds": [
+          "repository",
+          "build instructions",
+          "ownership information"
+        ],
+        "output_kinds": [
+          "takeover findings",
+          "improvement backlog"
+        ],
+        "applicability_limits": [
+          "Does not infer executed tests or assign missing ownership.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "android-development",
+          "security-assessment"
+        ],
+        "workflow_keys": [
+          "codebase-takeover"
+        ]
+      }
     },
     {
       "id": "justifiable-decision",
@@ -792,7 +1342,44 @@
           "inspect": "Pause at the unresolved requirement in inputs/authority.md. Alice asks John Doe to identify the spending and risk authorities before acceptance; never manufacture L0 acts. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/authority.md. Alice asks John Doe to identify the spending and risk authorities before acceptance; never manufacture L0 acts. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/authority.md. Alice asks John Doe to identify the spending and risk authorities before acceptance; never manufacture L0 acts. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "trace consequential decision",
+          "justify evidence and authority"
+        ],
+        "domains": [
+          "governance",
+          "architecture"
+        ],
+        "phases": [
+          "planning",
+          "review"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "A named human authority and observable evidence; signed authority acts remain human-owned"
+        ],
+        "input_kinds": [
+          "decision objective",
+          "evidence",
+          "named human authority"
+        ],
+        "output_kinds": [
+          "traceable decision proposal",
+          "evidence gaps"
+        ],
+        "applicability_limits": [
+          "AI review is not signed human authority.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "architecture-board",
+          "enterprise-publication"
+        ],
+        "workflow_keys": []
+      }
     },
     {
       "id": "operational-readiness",
@@ -845,7 +1432,47 @@
           "inspect": "Pause at the unresolved requirement in inputs/readiness-scope.md. Alice requests dated restore evidence and support ownership from Bob before operating acceptance. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/readiness-scope.md. Alice requests dated restore evidence and support ownership from Bob before operating acceptance. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/readiness-scope.md. Alice requests dated restore evidence and support ownership from Bob before operating acceptance. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "assess operational readiness",
+          "prepare service acceptance"
+        ],
+        "domains": [
+          "operations",
+          "reliability",
+          "delivery"
+        ],
+        "phases": [
+          "review",
+          "delivery"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific service design, runbook, support and recovery evidence or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "service design",
+          "runbook",
+          "support and recovery evidence"
+        ],
+        "output_kinds": [
+          "readiness assessment",
+          "acceptance gaps"
+        ],
+        "applicability_limits": [
+          "A runbook is not an executed recovery test.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "service-onboarding",
+          "resilience-validation"
+        ],
+        "workflow_keys": [
+          "design-to-operational-readiness"
+        ]
+      }
     },
     {
       "id": "production-change",
@@ -898,7 +1525,47 @@
           "inspect": "Pause at the unresolved requirement in inputs/rollback-plan.md. Alice asks Bob for rehearsal evidence and the named change authority for window approval before any production action. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/rollback-plan.md. Alice asks Bob for rehearsal evidence and the named change authority for window approval before any production action. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/rollback-plan.md. Alice asks Bob for rehearsal evidence and the named change authority for window approval before any production action. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "assess production change",
+          "plan controlled implementation"
+        ],
+        "domains": [
+          "operations",
+          "delivery",
+          "governance"
+        ],
+        "phases": [
+          "planning",
+          "delivery"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific change request, impact evidence, rollback plan or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "change request",
+          "impact evidence",
+          "rollback plan"
+        ],
+        "output_kinds": [
+          "change assessment",
+          "implementation plan"
+        ],
+        "applicability_limits": [
+          "Does not authorise or execute production changes.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "enterprise-release",
+          "incident-diagnosis"
+        ],
+        "workflow_keys": [
+          "production-change"
+        ]
+      }
     },
     {
       "id": "proposal",
@@ -950,7 +1617,46 @@
           "inspect": "Pause at the unresolved requirement in inputs/clarifications.md. Alice asks John Doe to specify support hours and Bob to revise pricing before any fixed-price commitment. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/clarifications.md. Alice asks John Doe to specify support hours and Bob to revise pricing before any fixed-price commitment. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/clarifications.md. Alice asks John Doe to specify support hours and Bob to revise pricing before any fixed-price commitment. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "prepare supplier proposal",
+          "estimate commercial delivery"
+        ],
+        "domains": [
+          "commercial",
+          "finance",
+          "delivery"
+        ],
+        "phases": [
+          "planning",
+          "design"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "An existing engagement before extending it with commercial delivery; authorised scope and pricing assumptions"
+        ],
+        "input_kinds": [
+          "customer request",
+          "scope assumptions",
+          "commercial constraints"
+        ],
+        "output_kinds": [
+          "proposal",
+          "estimate",
+          "commercial risks"
+        ],
+        "applicability_limits": [
+          "Illustrative estimates are not binding prices or approved commitments.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "sourcing-contract",
+          "enterprise-publication"
+        ],
+        "workflow_keys": []
+      }
     },
     {
       "id": "regulatory-change",
@@ -1003,7 +1709,47 @@
           "inspect": "Pause at the unresolved requirement in inputs/legal-interpretation.md. Alice obtains maintained obligation text and qualified applicability advice before Bob or John Doe treats proposed controls as legal duties. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/legal-interpretation.md. Alice obtains maintained obligation text and qualified applicability advice before Bob or John Doe treats proposed controls as legal duties. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/legal-interpretation.md. Alice obtains maintained obligation text and qualified applicability advice before Bob or John Doe treats proposed controls as legal duties. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "assess regulatory change",
+          "prepare compliance assurance"
+        ],
+        "domains": [
+          "compliance",
+          "governance",
+          "security"
+        ],
+        "phases": [
+          "assessment",
+          "review"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific applicable requirement, control ownership, evidence inventory or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "applicable requirement",
+          "control ownership",
+          "evidence inventory"
+        ],
+        "output_kinds": [
+          "obligation mapping",
+          "assurance gaps"
+        ],
+        "applicability_limits": [
+          "Does not determine legal applicability or certify compliance.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "access-review",
+          "security-assessment"
+        ],
+        "workflow_keys": [
+          "regulatory-change-to-assurance"
+        ]
+      }
     },
     {
       "id": "resilience-validation",
@@ -1056,7 +1802,47 @@
           "inspect": "Pause at the unresolved requirement in inputs/continuity-objectives.md. Alice obtains the business recovery tolerance before Bob designs an exercise; tabletop results are not measured recovery. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/continuity-objectives.md. Alice obtains the business recovery tolerance before Bob designs an exercise; tabletop results are not measured recovery. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/continuity-objectives.md. Alice obtains the business recovery tolerance before Bob designs an exercise; tabletop results are not measured recovery. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "validate resilience",
+          "assess recovery capability"
+        ],
+        "domains": [
+          "operations",
+          "reliability",
+          "security"
+        ],
+        "phases": [
+          "assessment",
+          "recovery"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific recovery objectives, test scope, actual test observations or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "recovery objectives",
+          "test scope",
+          "actual test observations"
+        ],
+        "output_kinds": [
+          "resilience findings",
+          "recovery improvement plan"
+        ],
+        "applicability_limits": [
+          "Prepared exercises do not prove successful recovery.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "operational-readiness",
+          "cyber-incident"
+        ],
+        "workflow_keys": [
+          "resilience-validation"
+        ]
+      }
     },
     {
       "id": "sabsa-development",
@@ -1108,7 +1894,46 @@
           "inspect": "Pause at the unresolved requirement in inputs/business-drivers.md. John Doe asks Alice and Bob to establish business disruption tolerance before deriving security targets. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/business-drivers.md. John Doe asks Alice and Bob to establish business disruption tolerance before deriving security targets. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/business-drivers.md. John Doe asks Alice and Bob to establish business disruption tolerance before deriving security targets. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "develop SABSA security architecture",
+          "trace business security attributes"
+        ],
+        "domains": [
+          "security",
+          "architecture",
+          "governance"
+        ],
+        "phases": [
+          "planning",
+          "design",
+          "review"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Client-derived business drivers and security attributes; missing business facts remain unresolved"
+        ],
+        "input_kinds": [
+          "business drivers",
+          "attribute requirements",
+          "risk context"
+        ],
+        "output_kinds": [
+          "SABSA architecture",
+          "traceability gaps"
+        ],
+        "applicability_limits": [
+          "Does not fabricate business drivers or human acceptance.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "security-assessment",
+          "architecture-repository"
+        ],
+        "workflow_keys": []
+      }
     },
     {
       "id": "service-onboarding",
@@ -1161,7 +1986,47 @@
           "inspect": "Pause at the unresolved requirement in inputs/support-model.md. Alice asks Bob to agree out-of-hours escalation and contacts before accepting the handoff. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/support-model.md. Alice asks Bob to agree out-of-hours escalation and contacts before accepting the handoff. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/support-model.md. Alice asks Bob to agree out-of-hours escalation and contacts before accepting the handoff. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "onboard service",
+          "establish service ownership and support"
+        ],
+        "domains": [
+          "operations",
+          "service",
+          "delivery"
+        ],
+        "phases": [
+          "planning",
+          "delivery"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific service description, support model, acceptance evidence or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "service description",
+          "support model",
+          "acceptance evidence"
+        ],
+        "output_kinds": [
+          "onboarding plan",
+          "service readiness gaps"
+        ],
+        "applicability_limits": [
+          "Does not activate a service or infer acceptance.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "operational-readiness",
+          "adoption"
+        ],
+        "workflow_keys": [
+          "new-service-onboarding"
+        ]
+      }
     },
     {
       "id": "service-retirement",
@@ -1214,7 +2079,46 @@
           "inspect": "Pause at the unresolved requirement in inputs/data-obligations.md. Alice asks Bob and the records owner to establish retention and consumer readiness before shutdown or deletion. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/data-obligations.md. Alice asks Bob and the records owner to establish retention and consumer readiness before shutdown or deletion. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/data-obligations.md. Alice asks Bob and the records owner to establish retention and consumer readiness before shutdown or deletion. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "retire service",
+          "plan decommission and retention"
+        ],
+        "domains": [
+          "operations",
+          "data",
+          "governance"
+        ],
+        "phases": [
+          "planning",
+          "retirement"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific service inventory, dependency and retention requirements or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "service inventory",
+          "dependency and retention requirements"
+        ],
+        "output_kinds": [
+          "retirement plan",
+          "decommission blockers"
+        ],
+        "applicability_limits": [
+          "Does not delete data or prove dependencies removed.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "architecture-repository",
+          "production-change"
+        ],
+        "workflow_keys": [
+          "service-retirement-and-decommission"
+        ]
+      }
     },
     {
       "id": "siam-multi-supplier",
@@ -1267,7 +2171,47 @@
           "inspect": "Pause at the unresolved requirement in inputs/supplier-obligations.md. Alice asks Bob to establish end-to-end login accountability before accepting component availability as service evidence. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/supplier-obligations.md. Alice asks Bob to establish end-to-end login accountability before accepting component availability as service evidence. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/supplier-obligations.md. Alice asks Bob to establish end-to-end login accountability before accepting component availability as service evidence. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "coordinate multiple suppliers",
+          "define cross-supplier accountability"
+        ],
+        "domains": [
+          "commercial",
+          "service",
+          "operations"
+        ],
+        "phases": [
+          "planning",
+          "operations"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific supplier agreements, service dependencies, responsibility gaps or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "supplier agreements",
+          "service dependencies",
+          "responsibility gaps"
+        ],
+        "output_kinds": [
+          "SIAM operating model",
+          "escalation process"
+        ],
+        "applicability_limits": [
+          "Does not amend contracts or assume supplier consent.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "supplier-onboarding",
+          "sourcing-contract"
+        ],
+        "workflow_keys": [
+          "siam-multi-supplier"
+        ]
+      }
     },
     {
       "id": "sourcing-contract",
@@ -1320,7 +2264,47 @@
           "inspect": "Pause at the unresolved requirement in inputs/contract-issues.csv. Alice obtains exit pricing and John Doe's contract position before comparing total cost or committing. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/contract-issues.csv. Alice obtains exit pricing and John Doe's contract position before comparing total cost or committing. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/contract-issues.csv. Alice obtains exit pricing and John Doe's contract position before comparing total cost or committing. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "prepare sourcing decision",
+          "transition contract to service"
+        ],
+        "domains": [
+          "commercial",
+          "finance",
+          "governance"
+        ],
+        "phases": [
+          "planning",
+          "delivery"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific sourcing requirements, bid assumptions, contract constraints or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "sourcing requirements",
+          "bid assumptions",
+          "contract constraints"
+        ],
+        "output_kinds": [
+          "sourcing assessment",
+          "contract handover plan"
+        ],
+        "applicability_limits": [
+          "Does not provide legal approval or execute a contract.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "proposal",
+          "supplier-onboarding"
+        ],
+        "workflow_keys": [
+          "source-to-contract-to-service"
+        ]
+      }
     },
     {
       "id": "supplier-onboarding",
@@ -1373,7 +2357,47 @@
           "inspect": "Pause at the unresolved requirement in inputs/questionnaire.md. John Doe requests supplier control evidence through Alice before Bob accepts real-data use. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/questionnaire.md. John Doe requests supplier control evidence through Alice before Bob accepts real-data use. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/questionnaire.md. John Doe requests supplier control evidence through Alice before Bob accepts real-data use. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "onboard supplier",
+          "assess supplier service readiness"
+        ],
+        "domains": [
+          "commercial",
+          "service",
+          "security"
+        ],
+        "phases": [
+          "assessment",
+          "delivery"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Project-specific supplier scope, due diligence evidence, service responsibilities or an explicit record of their absence"
+        ],
+        "input_kinds": [
+          "supplier scope",
+          "due diligence evidence",
+          "service responsibilities"
+        ],
+        "output_kinds": [
+          "supplier onboarding assessment",
+          "readiness actions"
+        ],
+        "applicability_limits": [
+          "Does not certify supplier controls without evidence.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "sourcing-contract",
+          "siam-multi-supplier"
+        ],
+        "workflow_keys": [
+          "supplier-onboarding"
+        ]
+      }
     },
     {
       "id": "vulnerability-remediation",
@@ -1426,7 +2450,49 @@
           "inspect": "Pause at the unresolved requirement in inputs/deployment-map.md. Bob establishes reachability and exposure before Alice treats version matching as exploitability evidence. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/deployment-map.md. Bob establishes reachability and exposure before Alice treats version matching as exploitability evidence. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/deployment-map.md. Bob establishes reachability and exposure before Alice treats version matching as exploitability evidence. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "triage vulnerabilities",
+          "track remediation and verification",
+          "resolve security findings"
+        ],
+        "domains": [
+          "security",
+          "operations",
+          "software"
+        ],
+        "phases": [
+          "assessment",
+          "operations",
+          "review"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Authorised findings and asset owners, with an independent verification route before closure"
+        ],
+        "input_kinds": [
+          "authorised vulnerability report",
+          "asset ownership",
+          "verification evidence"
+        ],
+        "output_kinds": [
+          "remediation backlog",
+          "verified closure criteria"
+        ],
+        "applicability_limits": [
+          "Does not scan systems, schedule detection or close findings without verification.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "security-assessment",
+          "production-change"
+        ],
+        "workflow_keys": [
+          "vulnerability-to-remediation"
+        ]
+      }
     },
     {
       "id": "android-development",
@@ -1479,7 +2545,49 @@
           "inspect": "Pause at the unresolved requirement in inputs/acceptance-cases.md. Alice and Bob supply a permitted app/ checkout and platform prerequisites before claiming implementation or a build. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/acceptance-cases.md. Alice and Bob supply a permitted app/ checkout and platform prerequisites before claiming implementation or a build. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/acceptance-cases.md. Alice and Bob supply a permitted app/ checkout and platform prerequisites before claiming implementation or a build. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "develop Android application",
+          "deliver consent-based check-in service"
+        ],
+        "domains": [
+          "software",
+          "mobile",
+          "privacy",
+          "delivery"
+        ],
+        "phases": [
+          "planning",
+          "design",
+          "delivery"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "An authorised application checkout and development toolchain before implementation or execution claims"
+        ],
+        "input_kinds": [
+          "product objective",
+          "consent requirements",
+          "notification constraints"
+        ],
+        "output_kinds": [
+          "application design",
+          "implementation and test plan"
+        ],
+        "applicability_limits": [
+          "Does not supply executable application code in the fictional input pack.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "inherited-codebase",
+          "ai-system-approval"
+        ],
+        "workflow_keys": [
+          "idea-to-production"
+        ]
+      }
     },
     {
       "id": "security-assessment",
@@ -1531,7 +2639,49 @@
           "inspect": "Pause at the unresolved requirement in inputs/control-inventory.md. Alice requests dated restore and supplier evidence from Bob and retains unknown findings without deployment approval. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
         }
       ],
-      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/control-inventory.md. Alice requests dated restore and supplier evidence from Bob and retains unknown findings without deployment approval. Keep the affected acceptance pending until the actual input or human decision exists."
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/control-inventory.md. Alice requests dated restore and supplier evidence from Bob and retains unknown findings without deployment approval. Keep the affected acceptance pending until the actual input or human decision exists.",
+      "discovery": {
+        "goals": [
+          "assess architecture security",
+          "review security controls",
+          "identify security findings"
+        ],
+        "domains": [
+          "security",
+          "architecture",
+          "governance"
+        ],
+        "phases": [
+          "assessment",
+          "review"
+        ],
+        "prerequisites": [
+          "Named scope and accountable human owner",
+          "Authorised access to relevant project inputs",
+          "Defined architecture boundary, assessment criteria and evidence availability; no live scanning authority is implied"
+        ],
+        "input_kinds": [
+          "architecture boundaries",
+          "data flows",
+          "security requirements",
+          "control evidence"
+        ],
+        "output_kinds": [
+          "security assessment",
+          "findings and evidence gaps"
+        ],
+        "applicability_limits": [
+          "Does not continuously monitor, schedule assessments or establish human approval.",
+          "Fictional exercise materials are not actual project evidence."
+        ],
+        "related_scenarios": [
+          "vulnerability-remediation",
+          "sabsa-development",
+          "regulatory-change"
+        ],
+        "workflow_keys": []
+      }
     }
-  ]
+  ],
+  "discovery_version": 1
 }

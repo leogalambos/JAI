@@ -1,4 +1,5 @@
 # SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
 """Create local fictional walkthrough exercises without executing provider commands.
 
 Catalogs are validated in full before any workspace write. Explicit reset renames
@@ -24,11 +25,12 @@ def _relative(value):
             and all(part not in ('', '.', '..') for part in value.split('/')))
 
 
-def load_catalog(path=CATALOG):
+def load_catalog(path=CATALOG, *, require_discovery=False):
     """Return validated entries from path; raise ValueError on invalid data.
 
     Args:
         path: Local JSON catalog path, read without modifying it.
+        require_discovery: Require versioned discovery and the packaged workflow registry.
     Returns:
         A list of scenario dictionaries with unique identifiers and input paths.
     Raises:
@@ -80,7 +82,52 @@ def load_catalog(path=CATALOG):
         for key in ('description', 'missing_evidence_exercise'):
             if key in entry and not _text(entry[key]):
                 raise ValueError(f'Invalid {key}')
+    if require_discovery or 'discovery_version' in data or any('discovery' in e for e in entries):
+        _validate_discovery(data, entries, require_discovery)
     return entries
+
+
+def _validate_discovery(data, entries, require_registry):
+    if type(data.get('discovery_version')) is not int or data['discovery_version'] != 1:
+        raise ValueError('Invalid or missing discovery_version')
+    registry_path = Path(__file__).resolve().parent.parent / 'workflows.json'
+    workflow_keys = None
+    if require_registry:
+        try:
+            if registry_path.is_symlink():
+                raise ValueError('Symlink registry')
+            registry = json.loads(registry_path.read_text(encoding='utf-8'))
+            workflows = registry['workflows']
+            workflow_keys = [w['key'] for w in workflows]
+            if (not workflow_keys or any(not _text(k) for k in workflow_keys)
+                    or len(workflow_keys) != len(set(workflow_keys))):
+                raise ValueError('Invalid registry keys')
+        except (OSError, ValueError, KeyError, TypeError) as exc:
+            raise ValueError('Invalid packaged workflow registry') from exc
+    ids = {e['id'] for e in entries}
+    fields = {'goals', 'domains', 'phases', 'prerequisites', 'input_kinds',
+              'output_kinds', 'applicability_limits', 'related_scenarios', 'workflow_keys'}
+    phases = {'planning', 'assessment', 'design', 'delivery', 'review', 'operations',
+              'recovery', 'publication', 'retirement'}
+    for entry in entries:
+        discovery = entry.get('discovery')
+        if not isinstance(discovery, dict) or set(discovery) != fields:
+            raise ValueError('Invalid discovery fields')
+        for field in fields:
+            values = discovery[field]
+            if (not isinstance(values, list) or len(values) > 32
+                    or any(not _text(v) or len(v) > 500 for v in values)
+                    or len(values) != len(set(values))
+                    or (not values and field not in ('related_scenarios', 'workflow_keys'))):
+                raise ValueError(f'Invalid discovery {field}')
+        if not set(discovery['phases']) <= phases:
+            raise ValueError('Invalid discovery phases')
+        if not set(discovery['related_scenarios']) <= ids - {entry['id']}:
+            raise ValueError('Invalid discovery related_scenarios')
+        if workflow_keys is not None and not set(discovery['workflow_keys']) <= set(workflow_keys):
+            raise ValueError('Invalid discovery workflow registry reference')
+        if entry.get('workflow') and discovery['workflow_keys'] != [entry['workflow']]:
+            raise ValueError('Discovery workflow does not match scenario workflow')
 
 
 def _select(entries, scenario_id):

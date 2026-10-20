@@ -1,5 +1,19 @@
 # Troubleshooting
 
+## Experimental hint recommendations
+
+See [the hint guide](../using/experimental-hint.md) for the recommendation
+boundary. For `PARTIAL_MATCH`, inspect unmatched goals and keep them explicit;
+for `NO_MATCH`, clarify the objective without inventing an available example.
+For `ERROR`, correct the invalid query or catalog before continuing: do not
+silently fall back to other data. Ambiguous advice needs clarification, and
+outdated advice needs checking against current project requirements and policy.
+
+If `/hint` or `$workflow-hint` is not recognised, update the installation and
+start a new provider session. A successful offline selector check does not
+verify the active model's English interpretation or the suitability of its
+recommended procedure.
+
 **For a normal user:** first ask Claude or Codex to diagnose the failure and show which tool/agent/gate failed, without granting extra permissions or manually editing `.fabric/` or `.findings/`. Use `/fabric-report` (Claude) or `$workflow-fabric-report` (Codex) to inspect assurance evidence. **For a maintainer:** the table and self-test commands below show what can be checked in a system terminal. A self-test PASS is not approval to release.
 
 | Symptom | Likely cause or action |

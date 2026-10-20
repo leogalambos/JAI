@@ -2,6 +2,13 @@
 
 The layered runtime is the implementation-specific bridge between the research architecture in **Leo Galambos, _Towards Justifiable AI Systems_ (2026)** and the production controls shipped in AI IT House.
 
+Use this page to understand runtime states, controls and their limitations.
+For operating the engagement cycle, follow
+[Layered engagement](../using/layered-engagement.md); for choosing whether the
+method fits your task, use [Methodical workflows](../using/methodical-workflows.md).
+The [execution and context algorithm](../overview/execution-context-algorithm.md)
+explains how supported entry points assemble and control work.
+
 The research model is not treated as a claim that every model response is correct. Its operational idea is narrower and more useful: intermediate work is inspectable; other components challenge it against explicit obligations; and the resulting state determines whether the system may continue, request more evidence, rework, escalate or remain blocked.
 
 ## Six JAI responsibilities

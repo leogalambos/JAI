@@ -27,6 +27,17 @@ reset and backup behaviour only when reset is explicitly requested.
 required. The maintained walkthrough catalogue is `docs/examples/index.md`.
 
 
+If the user is unsure which task scenario fits a project, offer
+`/hint <project question>` or `$workflow-hint <project question>` for
+experimental advice. Do not execute the hint or its recommended steps
+automatically. A hint's selected ID can be inspected with `describe ID`;
+selection and description create no workspace. Only an explicit practice
+request with `scenario ID --to DIRECTORY` creates fictional inputs. Keep
+legacy `setup` limited to its original three tour projects and retain
+non-overwrite defaults and explicit reset backups. A hint does not supply
+missing evidence, source code, human authority or a monitoring scheduler.
+
+
 ## Operational specification — Demonstration discipline
 
 **Preconditions and boundary.** State which fixture, source release, provider adapter and scenario are being demonstrated.

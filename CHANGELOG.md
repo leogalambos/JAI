@@ -1,5 +1,42 @@
 # Changelog
 
+## 26.10.13 — Guided Scenarios and Knowledge Assistance (candidate)
+
+- Adds 29 commented task walkthroughs covering the 24 enterprise
+  workflows, with paired Claude and Codex instructions, input
+  preparation, inspection points and escalation guidance. Extends
+  existing guide and demo commands with maintained fictional
+  practice packs and safe workspace handling.
+
+- Adds experimental hint assistance using deterministic local
+  candidate selection and active-provider explanation.
+  Recommendations distinguish maintained procedures, adaptations,
+  missing evidence and human decisions.
+
+- Adds explicitly requested conversational knowledge capture, asking
+  for missing essential metadata before storage and continuing the
+  original save request after clarification. Only selected visible
+  context is captured.
+
+- Supports opt-in local knowledge retrieval, provenance and
+  applicability disclosure, immutable revisions, explicit exports,
+  recoverable withdrawal and restoration. Preserves confidentiality,
+  independent review and authority boundaries; stored claims and
+  historical outcomes do not establish approval.
+
+- Fixes knowledge writer/reader capacity compatibility, concurrent
+  admission, complete supported-command validation and source
+  licensing headers.
+
+- Clarifies execution, context assembly, hooks, runtime controls and
+  release policy in MkDocs; consolidates current guidance and labels
+  historical pages.
+
+- Keeps reference identities, DCS obligations, Expert Reference
+  Library v2.3.0 and mandatory A–H release gates unchanged. Feature
+  tests use offline local fixtures; live model usability and human
+  approval are not implied.
+
 ## 26.10.12 — Expert Reference Editorial Review (candidate)
 
 - Integrates complete Expert Reference Library v2.3.0: all 135 English

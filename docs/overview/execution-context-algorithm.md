@@ -8,6 +8,11 @@ evidence and review. It does not implement a separate language model.
 The flow describes supported operations and operating procedures; it is
 not a universally enforced interceptor for every conversational request.
 
+[Experimental hint support](../using/experimental-hint.md) helps choose a
+starting procedure from maintained examples. Its lexical metadata selection
+and procedural explanation do not establish universal routing, physical
+loading of a referenced document, or delivery of that document to a model.
+
 ## Reading implementation status
 
 | Label | Meaning on these pages |

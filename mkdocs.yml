@@ -113,6 +113,9 @@ nav:
   - How to use JAI:
       - How to use this guide: examples/how-to-use-JAI/index.md
       - Choose your workflow: using/methodical-workflows.md
+      - Experimental hint: using/experimental-hint.md
+      - Remember useful knowledge: using/remembering-knowledge.md
+      - Reuse local know-how: using/reusing-knowledge.md
       - Interaction patterns: using/interaction-model.md
       - Layered justifiable engagement: using/layered-engagement.md
       - Commented task walkthroughs:
@@ -136,6 +139,7 @@ nav:
               - Enterprise publication: examples/enterprise-publication.md
           - Security and reliability:
               - Security assessment: examples/how-to-use-JAI/security-assessment.md
+              - Assessment and recurring findings: examples/security-assessment-recurring-findings.md
               - Incident diagnosis: examples/incident-diagnosis.md
               - Vulnerability remediation: examples/vulnerability-remediation.md
               - Access review: examples/access-review.md
@@ -234,7 +238,7 @@ nav:
       - Expert reference format: reference/expert-reference-format.md
       - Reference selection and context delivery: reference/reference-selection-context.md
       - Compatibility matrix: reference/compatibility.md
-      - 26.10.4 release and migration: reference/release-migration.md
+      - Historical 26.10.4 baseline: reference/release-migration.md
       - Boundaries and limitations: reference/limitations.md
       - Glossary: reference/glossary.md
   - About:

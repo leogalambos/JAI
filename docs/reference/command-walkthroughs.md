@@ -15,30 +15,10 @@ The legacy examples use `/name` notation because they were written for Claude. I
 
 ### /analyse
 
-Analyse a code repository, a document library or a SABSA library — understand it, no verdicts
-
-`/analyse <path or description>`
-
-**What it does.** Understands a code repository, a
-document library or a SABSA library — what it is, how it is organised,
-who it serves, where it is thin — without judging it. Run it before a
-review, or on anything unfamiliar.
-
-**Syntax.**
-`/analyse <path or description>`
-
-**What happens.**
-
-1. Claude works out what kind of library it is.
-2. It runs the matching survey: `repo_survey.py` for code
-   (size, languages, churn hotspots, test ratio, dependencies);
-   `doc_survey.py` for documents (structure, owners, review
-   dates, links, orphans, duplicates).
-3. The analysis agent (`codebase-reviewer` or
-   `document-reviewer`, in analysis mode) reads what the survey
-   points to and writes up the picture.
-
-Nothing is changed, and no verdicts are given.
+Use this exercise to practise describing an unfamiliar project without
+turning analysis into a defect verdict. For syntax and command behavior,
+use the [command reference](commands.md) and
+[installed guide](installed-cli-guide.md).
 
 **Try it.**
 
@@ -66,23 +46,10 @@ of defects. If it starts rating things, it has drifted into
 
 ### /criteria
 
-Create or show the review criteria for this project
-
-`/criteria [project path]`
-
-**What it does.** Creates or shows the review criteria
-for a project. Criteria are what `/review` judges against;
-they live in `<project>/.claude/review-criteria.md`, a
-file you own and edit.
-
-**Syntax.** `/criteria [project path]`
-
-**What happens.** Claude shows which criteria currently
-apply and where they come from — see review
-criteria. If they are the package default, it offers to create the
-project's own file from the default, asking the type (software,
-documents or SABSA). Then it shows you the file and offers to tailor
-it.
+Use this exercise to make a project-specific money-handling criterion
+visible before review. For syntax and criteria precedence, use the
+[command reference](commands.md) and
+[installed guide](installed-cli-guide.md).
 
 **Try it.**
 
@@ -148,22 +115,10 @@ installed, has five commits:
 
 ### /develop
 
-Develop a change to a software product or document library, reviewed before it is proposed
-
-`/develop <what to build or change>`
-
-**What it does.** Builds or changes something in a
-software product or document library, through the role that owns that
-kind of work, on a branch, reviewed before it is proposed to you for
-merge.
-
-**Syntax.**
-`/develop <what to build or change>`
-
-**What happens.** Claude routes the request through
-`role-router` to the right role and agent; works on a branch;
-has the change reviewed as `/review` would; then proposes it
-to you. The merge is yours.
+Use this exercise to practise a bounded CSV-export change and its review.
+For the current change workflow and command syntax, use the
+[command reference](commands.md) and
+[installed guide](installed-cli-guide.md).
 
 **Try it.**
 
@@ -454,13 +409,9 @@ Research a problem to a decision, with experiments if needed
 
 `/research <question>`
 
-**What it does.** Researches a problem to a decision:
-frames the question and the decision it informs, surveys prior art from
-primary sources, and — only if needed — runs experiments whose success
-criteria are fixed before they run. It ends with adopt, trial, assess or
-hold.
-
-**Syntax.** `/research <question>`
+This exercise practises a bounded research decision. Use the
+[command reference](commands.md) and [installed guide](installed-cli-guide.md)
+for current syntax and the research contract.
 
 **What happens.**
 
@@ -505,17 +456,9 @@ Review code, documents or a SABSA library against criteria fixed before reading,
 
 `/review <path> [against <criteria or a criteria file>]`
 
-**What it does.** Reviews code, documents or a SABSA
-library against criteria fixed before reading, and records each finding
-— located to a file and line, with evidence and a recommendation — in a
-findings ledger.
-
-**Syntax.**
-
-```
-/review <path>
-/review <path> against <criteria file, or the criteria in words>
-```
+Use this exercise to inspect located findings against fixed criteria.
+For current syntax and reviewer boundaries, use the
+[command reference](commands.md) and [installed guide](installed-cli-guide.md).
 
 **What happens.**
 
@@ -584,13 +527,9 @@ Fix the open findings of a review, with independent verification, until complete
 
 `/rework [ledger]`
 
-**What it does.** Fixes the open findings of a review.
-One agent fixes; a different one verifies each fix; it repeats until
-every finding is verified — or brings you the ones that will not
-converge.
-
-**Syntax.** `/rework [ledger]` — without a
-ledger name, the newest in `.findings/`.
+Use this exercise to follow repairs and separate verification through the
+findings ledger. For current syntax and non-convergence handling, use the
+[command reference](commands.md) and [installed guide](installed-cli-guide.md).
 
 **What happens.**
 

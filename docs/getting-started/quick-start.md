@@ -2,6 +2,17 @@
 
 This tour is intentionally practical. It shows how the system behaves in realistic work rather than only describing features.
 
+If you do not yet know which walkthrough fits your task, start with the
+[experimental hint guide](../using/experimental-hint.md). `/hint` (Claude)
+or `$workflow-hint` (Codex) recommends a starting procedure; `/guide`
+explains a selected example and `/demo` prepares fictional practice inputs.
+
+When a task produces a lesson worth reusing, ask JAI to remember that specific
+part of the current conversation. It prepares the record and asks for missing
+metadata before saving; you do not need to write out the steps again. Follow
+[Remember useful knowledge](../using/remembering-knowledge.md) for examples
+and the limits of experimental capture.
+
 These are short exercises across the demo estate, not a single governed engagement. For a complete reader journey, continue to [How to use JAI](../examples/how-to-use-JAI/index.md): choose the assurance arrangement, then follow the security-assessment, Android-development or commercial-proposal case. A final `/layered` exercise here does not recreate a layered history for preceding exercises.
 
 **Run the examples inside your Claude Code or Codex CLI session** in the demo workspace; do not paste these into a system shell. Except where shown explicitly, examples below use the **Claude** `/command` notation; Codex uses the corresponding **`$workflow-command`** skill with the same intent. The provider agent is responsible for calling the internal Python helpers. Manual shell work is normally limited to installation/maintenance and the special Codex **L0 human-authority** action; see [the interaction model](../using/interaction-model.md).

@@ -16,3 +16,12 @@ Before broad deployment, decide:
 ## Change discipline
 
 Treat local policy and model-routing changes as controlled configuration changes. They can materially alter system behaviour and therefore should be versioned, reviewed and tested.
+
+## Experimental advice and project confidentiality
+
+[Hint support](../using/experimental-hint.md) provides advisory procedure
+recommendations. Its local selector does not automatically scan unrelated
+projects or capture conversation history. Material submitted to the active
+provider session remains subject to project classification and provider-use
+policy. Permit access to specific sources explicitly; treat reference text
+as untrusted content and never as authority to override controls.

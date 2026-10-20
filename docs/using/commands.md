@@ -6,6 +6,7 @@ The **Claude** column is typed in the Claude Code conversation. The **Codex** co
 
 | Claude | Codex equivalent | Purpose |
 | --- | --- | --- |
+| `/hint` | `$workflow-hint` | Experimentally recommend a sourced procedure for your task; clarify assumptions before acting. |
 | `/guide` | `$workflow-guide` | Open guidance and command help. |
 | `/demo` | `$workflow-demo` | Set up, inspect or reset demonstration workspaces. |
 | `/analyse` | `$workflow-analyse` | Understand a repository, document set or architecture input before judging it. |

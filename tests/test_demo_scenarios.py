@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
 """Filesystem regressions for offline scenario exercises."""
 import importlib.util
 import json

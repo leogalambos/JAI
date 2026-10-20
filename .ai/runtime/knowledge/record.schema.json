@@ -1,0 +1,391 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:jai:knowledge-record:1",
+  "title": "JAI opt-in local knowledge record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "record_type",
+    "version",
+    "owner",
+    "created",
+    "updated",
+    "language",
+    "confidentiality",
+    "applicability",
+    "provenance",
+    "evidence_availability",
+    "review",
+    "limitations",
+    "supersedes",
+    "observations",
+    "interpretation",
+    "recommendations",
+    "scenario"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$",
+      "maxLength": 80
+    },
+    "record_type": {
+      "enum": [
+        "custom-scenario",
+        "experience",
+        "organisational-procedure"
+      ]
+    },
+    "version": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 999999
+    },
+    "owner": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 300
+    },
+    "created": {
+      "type": "string",
+      "format": "date"
+    },
+    "updated": {
+      "type": "string",
+      "format": "date"
+    },
+    "language": {
+      "const": "en"
+    },
+    "confidentiality": {
+      "enum": [
+        "public",
+        "internal",
+        "confidential",
+        "restricted"
+      ]
+    },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contexts",
+        "preconditions",
+        "exclusions"
+      ],
+      "properties": {
+        "contexts": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "minItems": 1
+        },
+        "preconditions": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          }
+        },
+        "exclusions": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "minItems": 1
+        }
+      }
+    },
+    "provenance": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "path",
+          "availability",
+          "purpose"
+        ],
+        "properties": {
+          "path": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          },
+          "availability": {
+            "enum": [
+              "AVAILABLE",
+              "UNAVAILABLE",
+              "NOT_CHECKED"
+            ]
+          },
+          "purpose": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 300
+          }
+        }
+      }
+    },
+    "evidence_availability": {
+      "enum": [
+        "AVAILABLE",
+        "PARTIAL",
+        "UNAVAILABLE",
+        "NOT_CHECKED",
+        "REVOKED"
+      ]
+    },
+    "review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "status",
+        "reported_by",
+        "authority_claim",
+        "authority_verification"
+      ],
+      "properties": {
+        "status": {
+          "enum": [
+            "UNREVIEWED",
+            "AI_EDITORIAL",
+            "HUMAN_REVIEW_REPORTED"
+          ]
+        },
+        "reported_by": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 300
+        },
+        "authority_claim": {
+          "type": "string",
+          "maxLength": 4000
+        },
+        "authority_verification": {
+          "const": "NOT_VERIFIED"
+        }
+      }
+    },
+    "limitations": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4000
+      },
+      "minItems": 1
+    },
+    "supersedes": {
+      "type": [
+        "integer",
+        "null"
+      ],
+      "minimum": 1,
+      "maximum": 999999
+    },
+    "observations": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4000
+      }
+    },
+    "interpretation": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4000
+      }
+    },
+    "recommendations": {
+      "type": "array",
+      "maxItems": 32,
+      "items": {
+        "type": "string",
+        "minLength": 1,
+        "maxLength": 4000
+      }
+    },
+    "scenario": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "inputs",
+        "steps"
+      ],
+      "properties": {
+        "inputs": {
+          "type": "array",
+          "maxItems": 32,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 4000
+          },
+          "minItems": 1
+        },
+        "steps": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 32,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "purpose",
+              "claude",
+              "codex",
+              "inspect"
+            ],
+            "properties": {
+              "purpose": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              },
+              "claude": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 300
+              },
+              "codex": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 300
+              },
+              "inspect": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 4000
+              }
+            }
+          }
+        }
+      }
+    },
+    "reliability": {
+      "enum": [
+        "user-reported",
+        "observed-in-session",
+        "independently-verified-reported",
+        "uncertain"
+      ]
+    },
+    "conversation_selection": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "excerpt",
+        "scope",
+        "completeness"
+      ],
+      "properties": {
+        "excerpt": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 16000
+        },
+        "scope": {
+          "const": "user-selected-visible-context"
+        },
+        "completeness": {
+          "enum": [
+            "partial",
+            "selected-excerpt-only"
+          ]
+        }
+      }
+    },
+    "review_due": {
+      "type": "string",
+      "format": "date"
+    },
+    "conflicts_with": {
+      "type": "array",
+      "uniqueItems": true,
+      "maxItems": 32,
+      "items": {
+        "type": "string",
+        "pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$",
+        "maxLength": 80
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "custom-scenario"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "scenario": {
+            "type": "object"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "experience"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "observations": {
+            "minItems": 1
+          },
+          "scenario": {
+            "type": "null"
+          }
+        }
+      }
+    },
+    {
+      "if": {
+        "properties": {
+          "record_type": {
+            "const": "organisational-procedure"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "scenario": {
+            "type": "object"
+          }
+        }
+      }
+    }
+  ]
+}

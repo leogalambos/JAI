@@ -16,7 +16,7 @@ The table is generated from the canonical role registry. Representative roles il
 | Artifact contract | v3 native write |
 | SABSA projection | 36/36 projection-capable |
 | EA repository | scoped EA-domain projection with Open Exchange |
-| Publication | ProjectionManifest v3 + render evidence + visual QA |
+| Publication | Production ProjectionManifest v4 with DCS binding + render evidence + visual QA; see [publication capabilities](../capabilities/artifacts-publication.md). |
 | Release qualification | Gates A–H |
 | Behavioral universal qualification | harness/corpus/threshold/evaluator; no live provider/model claim |
 | Schemas | {{ JAI_SCHEMA_COUNT }} current registered schemas |
