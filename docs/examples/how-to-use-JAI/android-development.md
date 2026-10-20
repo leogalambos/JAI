@@ -5,6 +5,51 @@ review_due: 2027-01-16
 
 # Keep Android development aligned with SABSA
 
+Owner: JAI maintainers. Last reviewed: 2026-10-20.
+
+## Set up the development workspace
+
+ACME is building an Android personal check-in application. Alice owns the
+product and Bob develops the application. Users may choose to notify a
+trusted contact when a check-in is missed; consent and contact information
+therefore matter to the business design. This familiar mobile setting is
+fictional; identities and business requirements must come from your
+actual project inputs.
+
+Create a new project directory named `acme-safety-app/` with `input/`,
+`working/` and `output/`. Place the real application checkout under
+`app/`; do not treat an empty directory as an implemented application.
+The existing `app/sabsa` prompts below refer to architecture material
+associated with that checkout. Ask JAI to report actual artifact paths
+instead of assuming a command creates a particular file.
+
+Supply:
+
+- `input/product-brief.md`: user tasks, supported devices, notification
+  behavior and the business reason for the application.
+- `input/data-map.md`: contact information stored on the device,
+  notification history, retention and the backend boundary.
+- `input/platform-constraints.md`: Android support policy, identity
+  integration, device management and available test environments.
+- `input/acceptance-cases.md`: observable outcomes, including failed
+  notifications, consent withdrawal, shared devices and account changes.
+- `app/`: source, dependency definitions and maintained build/test
+  instructions for the existing application or agreed starter project.
+
+Put scope, accountable ownership and handling rules in `PROJECT.md`.
+If a backend API contract is absent, request it and keep integration
+claims provisional. A synthetic API fixture can support local tests;
+it cannot establish compatibility with a deployed backend. Do not use
+real contact or customer records merely to make a tutorial realistic.
+
+Install the appropriate adapter using the
+[installation guide](../../getting-started/install.md), then start Claude
+Code or Codex in `acme-safety-app/`. Enter the command pairs below in the
+provider conversation. Choose one provider and keep the same project
+conversation as you move between business analysis, SABSA and development.
+Check the reported scope and outputs between steps. Neither adapter
+automatically turns a product brief into an approved security design.
+
 Consider a fictional Android app that helps a user keep a personal check-in routine. The user may choose to notify a contact when a check-in is missed. The team needs to protect contact information, make consent understandable and explain what happens when the phone, process or network is unavailable.
 
 You will use JAI to connect those needs to security architecture, implement a bounded increment, review discrepancies and prepare an evidence-based release decision. This is an architecture-and-development exercise, not a complete Android coding course. The goal is to keep requirements, code and evidence consistent as the product changes.
@@ -325,6 +370,54 @@ This records hash-bound SABSA owner approval, not a Fabric release authority act
     Identify changes requiring fresh review or approval and keep architecture
     status distinct from the release decision.
     ```
+
+## Handle a failed check or a changed product request
+
+Suppose review finds that signing out leaves another user's contact
+information visible in a device cache. A successful notification test
+does not close this finding. Alice's example reply is: “Preserve the
+authorized notification behavior, but isolate cached data by identity. Keep the
+sign-out finding open until the account-switching case is verified.”
+
+Use the actual review ledger for the bounded correction:
+
+**Claude Code**
+
+```text
+/rework <reported-ledger> Correct the account-switching finding in app/. Preserve authorized notification behavior and add a local regression for access to cached contact data after sign-out. Report checks actually executed.
+```
+
+**Codex**
+
+```text
+$workflow-rework <reported-ledger> Correct the account-switching finding in app/. Preserve authorized notification behavior and add a local regression for access to cached contact data after sign-out. Report checks actually executed.
+```
+
+Replace the placeholder with the reported ledger. Have the reviewer
+verify the original account-switching condition, including failure and
+recovery behavior. If an emulator or managed device is unavailable, mark
+those checks NOT_EXECUTED. A JVM unit test does not demonstrate all
+Android lifecycle or device-management behavior.
+
+If the product owner adds continuous location tracking, pause the
+assumption that this is merely another screen. Return to the domain
+requirements and SABSA steps to establish purpose, data handling,
+affected business attributes and the consequences for users. If the
+choice needs formal justification, open the bounded layered extension
+with the changed intent. Preserve earlier findings and identifiers; a
+new request must not erase an unresolved cache defect.
+
+Conversational permission to explore an option is not a signed L0 act.
+If the runtime requires human authority, the authorized person follows
+the exact emitted instruction through the trusted authority path. An
+agent's draft or favorable review does not become human approval.
+
+Before handing off, reconcile the implemented behavior, architecture
+description, acceptance cases and actual test results. Keep device,
+backend and release checks pending until evidence exists. The
+[idea-to-production chain](../../reference/workflows.md) explains the
+wider handoffs; this walkthrough does not execute a store release or
+full release qualification merely by naming that workflow.
 
 ## Continue the development loop
 

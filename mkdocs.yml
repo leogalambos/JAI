@@ -115,10 +115,43 @@ nav:
       - Choose your workflow: using/methodical-workflows.md
       - Interaction patterns: using/interaction-model.md
       - Layered justifiable engagement: using/layered-engagement.md
-      - Worked guides:
-          - Security assessment: examples/how-to-use-JAI/security-assessment.md
-          - Android development: examples/how-to-use-JAI/android-development.md
-          - Commercial proposals and delivery: capabilities/commercial-delivery.md
+      - Commented task walkthroughs:
+          - Start here: examples/index.md
+          - Commercial and investment:
+              - Commercial proposal: examples/proposal.md
+              - Business case and benefits: examples/business-case-benefits.md
+              - Demand and funding: examples/demand-funding.md
+              - Sourcing and contracts: examples/sourcing-contract.md
+          - Architecture and assurance:
+              - SABSA development: examples/sabsa-development.md
+              - Architecture repository: examples/architecture-repository.md
+              - Architecture Review Board: examples/architecture-board.md
+              - Consequential decision: examples/justifiable-decision.md
+              - Regulatory assurance: examples/regulatory-change.md
+          - Delivery and change:
+              - Cloud migration: examples/cloud-migration.md
+              - Production change: examples/production-change.md
+              - Enterprise release: examples/enterprise-release.md
+              - Organisational adoption: examples/adoption.md
+              - Enterprise publication: examples/enterprise-publication.md
+          - Security and reliability:
+              - Security assessment: examples/how-to-use-JAI/security-assessment.md
+              - Incident diagnosis: examples/incident-diagnosis.md
+              - Vulnerability remediation: examples/vulnerability-remediation.md
+              - Access review: examples/access-review.md
+              - Cyber incident recovery: examples/cyber-incident.md
+              - Resilience validation: examples/resilience-validation.md
+          - Services and suppliers:
+              - Service onboarding: examples/service-onboarding.md
+              - Operational readiness: examples/operational-readiness.md
+              - Supplier onboarding: examples/supplier-onboarding.md
+              - Multi-supplier integration: examples/siam-multi-supplier.md
+              - Service retirement: examples/service-retirement.md
+          - Software and data:
+              - Android development: examples/how-to-use-JAI/android-development.md
+              - Inherited codebase: examples/inherited-codebase.md
+              - Data product delivery: examples/data-product-delivery.md
+              - AI-system approval: examples/ai-system-approval.md
       - Commands and direct tools: using/commands.md
       - Working with deliverables: using/deliverables.md
       - Expert reference documents: using/expert-reference-documents.md
@@ -164,6 +197,7 @@ nav:
       - Justifiable Fabric: capabilities/justifiable-fabric.md
       - Layered runtime and assurance: capabilities/layered-runtime.md
       - Research and defect analysis: capabilities/research-defect.md
+      - Commercial proposals and delivery: capabilities/commercial-delivery.md
       - Commercial implementation status: capabilities/commercial-delivery-implementation.md
   - Deployment and operations:
       - Configure and deploy:
@@ -186,15 +220,6 @@ nav:
           - Operating controls: operations/operating-controls.md
           - Troubleshooting: operations/troubleshooting.md
           - Maintaining local policy: operations/local-policy.md
-  - Scenario reference:
-      - Regulated cloud migration: examples/cloud-migration.md
-      - Architecture Review Board pack: examples/architecture-board.md
-      - Cyber incident to recovery: examples/cyber-incident.md
-      - Intermittent production defect: examples/incident-diagnosis.md
-      - Supplier onboarding: examples/supplier-onboarding.md
-      - Justifiable consequential decision: examples/justifiable-decision.md
-      - Regulatory change to assurance: examples/regulatory-change.md
-      - Service introduction: examples/service-onboarding.md
   - Reference:
       - Release inventory: reference/inventory.md
       - Workflow catalogue: reference/workflows.md

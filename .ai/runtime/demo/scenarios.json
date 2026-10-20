@@ -1,0 +1,1537 @@
+{
+  "schema_version": 1,
+  "entries": [
+    {
+      "id": "access-review",
+      "title": "Access review",
+      "guide": "examples/access-review.md",
+      "project_name": "acme-access-review",
+      "description": "Fictional ACME purchasing service exercise. Alice owns the service; Bob administers identities. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "access-request-to-review",
+      "inputs": [
+        {
+          "path": "inputs/review-scope.md",
+          "content": "# Access review: starting brief\n\nReview purchasing access for the fictional September period. Alice is the service owner and Bob is the identity administrator. No access removal is authorised by this exercise.\n"
+        },
+        {
+          "path": "inputs/access-export.csv",
+          "content": "account,role,status\nalice,service-owner,active\nbob,identity-admin,active\njdoe,purchase-approver,active\n"
+        },
+        {
+          "path": "inputs/role-rules.md",
+          "content": "# Access review: evidence boundary\n\nPurchase requesters must not approve their own purchases. Identity administrators cannot approve their own privileged access. John Doe's employment status is missing.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/review-scope.md, inputs/access-export.csv, inputs/role-rules.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/review-scope.md, inputs/access-export.csv, inputs/role-rules.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to access review, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the access review workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/review-scope.md, inputs/access-export.csv, inputs/role-rules.md. Access review for ACME purchasing service. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/review-scope.md, inputs/access-export.csv, inputs/role-rules.md. Access review for ACME purchasing service. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/role-rules.md. Alice requests John Doe's authorised employment status from Bob before accepting access. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/role-rules.md. Alice requests John Doe's authorised employment status from Bob before accepting access. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "adoption",
+      "title": "Organisational adoption",
+      "guide": "examples/adoption.md",
+      "project_name": "acme-adoption",
+      "description": "Fictional ACME service desk exercise. Alice owns the process; Bob coordinates local leads in three offices. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "organisational-change-and-adoption",
+      "inputs": [
+        {
+          "path": "inputs/adoption-brief.md",
+          "content": "# Organisational adoption: starting brief\n\nPrepare a pilot for common ticket categories in three offices. Alice owns the process and Bob coordinates local leads. No rollout decision exists.\n"
+        },
+        {
+          "path": "inputs/current-process.md",
+          "content": "# Organisational adoption: supporting input\n\nOffice North routes tickets by team; South uses product names; West uses free text. Baseline handling times have not been measured.\n"
+        },
+        {
+          "path": "inputs/pilot-feedback.csv",
+          "content": "office,observation,status\nNorth,Category names need examples,open\nSouth,Training clashes with shift handover,open\nWest,Accessibility review absent,pending\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/adoption-brief.md, inputs/current-process.md, inputs/pilot-feedback.csv; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/adoption-brief.md, inputs/current-process.md, inputs/pilot-feedback.csv; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to organisational adoption, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the organisational adoption workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/adoption-brief.md, inputs/current-process.md, inputs/pilot-feedback.csv. Organisational adoption for ACME service desk. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/adoption-brief.md, inputs/current-process.md, inputs/pilot-feedback.csv. Organisational adoption for ACME service desk. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/pilot-feedback.csv. Alice asks Bob's local leads to resolve the pending accessibility review and training schedule before rollout. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/pilot-feedback.csv. Alice asks Bob's local leads to resolve the pending accessibility review and training schedule before rollout. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "ai-system-approval",
+      "title": "AI system assessment",
+      "guide": "examples/ai-system-approval.md",
+      "project_name": "acme-ai-system-approval",
+      "description": "Fictional ACME Insurance exercise. Alice owns intended use; Bob owns the data platform; John Doe provides assurance. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "ai-system-approval",
+      "inputs": [
+        {
+          "path": "inputs/intended-use.md",
+          "content": "# AI system assessment: starting brief\n\nAssess a claims-handler drafting assistant. It may propose text for human review; autonomous coverage decisions and customer sending are excluded. Alice owns the use case.\n"
+        },
+        {
+          "path": "inputs/data-flow.md",
+          "content": "# AI system assessment: supporting input\n\nSynthetic claim summaries enter a supplier-hosted model. Real personal data is excluded from this demo. Bob must establish retention and supplier terms before any real-data trial.\n"
+        },
+        {
+          "path": "inputs/evaluation-results.md",
+          "content": "# AI system assessment: evidence boundary\n\nText derivative of a fictional evaluation JSON: 20 synthetic prompts; 17 useful drafts; 3 drafts requiring correction. No representative customer evaluation, human acceptance, or approval has occurred.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/intended-use.md, inputs/data-flow.md, inputs/evaluation-results.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/intended-use.md, inputs/data-flow.md, inputs/evaluation-results.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to ai system assessment, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the ai system assessment workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/intended-use.md, inputs/data-flow.md, inputs/evaluation-results.md. AI system assessment for ACME Insurance. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/intended-use.md, inputs/data-flow.md, inputs/evaluation-results.md. AI system assessment for ACME Insurance. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/data-flow.md. Alice asks Bob for retention and supplier terms and John Doe for assurance evidence before real-data use. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/data-flow.md. Alice asks Bob for retention and supplier terms and John Doe for assurance evidence before real-data use. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "architecture-board",
+      "title": "Architecture board decision",
+      "guide": "examples/architecture-board.md",
+      "project_name": "acme-architecture-board",
+      "description": "Fictional ACME Retail exercise. Alice sponsors; Bob owns the platform; John Doe chairs the board. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "inputs": [
+        {
+          "path": "inputs/decision-remit.md",
+          "content": "# Architecture board decision: starting brief\n\nCompare a shared order integration platform with direct partner interfaces. Alice sponsors the proposal; John Doe chairs the architecture board. No board decision exists.\n"
+        },
+        {
+          "path": "inputs/options.md",
+          "content": "# Architecture board decision: supporting input\n\nOption A: common integration platform with central operations. Option B: maintain direct partner connections. Throughput is an estimate, not measured production evidence.\n"
+        },
+        {
+          "path": "inputs/current-interfaces.csv",
+          "content": "partner,interface,owner\nPartner A,HTTPS order API,Bob\nPartner B,Batch order file,unconfirmed\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/decision-remit.md, inputs/options.md, inputs/current-interfaces.csv; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/decision-remit.md, inputs/options.md, inputs/current-interfaces.csv; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to architecture board decision, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the architecture board decision workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/decision-remit.md, inputs/options.md, inputs/current-interfaces.csv. Architecture board decision for ACME Retail. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/decision-remit.md, inputs/options.md, inputs/current-interfaces.csv. Architecture board decision for ACME Retail. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/current-interfaces.csv. Bob confirms Partner B's owner before John Doe takes the board decision. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/current-interfaces.csv. Bob confirms Partner B's owner before John Doe takes the board decision. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "architecture-repository",
+      "title": "Architecture repository change",
+      "guide": "examples/architecture-repository.md",
+      "project_name": "acme-architecture-repository",
+      "description": "Fictional ACME Group exercise. Alice owns enterprise architecture; Bob owns the platform; John Doe reviews. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "architecture-model-to-repository-governance",
+      "inputs": [
+        {
+          "path": "inputs/change-request.md",
+          "content": "# Architecture repository change: starting brief\n\nPrepare a repository change for replacement of a shared identity service. Alice owns enterprise architecture and Bob owns the platform. No canonical model update is approved.\n"
+        },
+        {
+          "path": "inputs/current-model.md",
+          "content": "# Architecture repository change: supporting input\n\nText derivative of a partial model snapshot: Identity Legacy serves Purchasing and Scheduling. This is an illustrative incomplete input, not an authoritative repository export.\n"
+        },
+        {
+          "path": "inputs/service-owners.csv",
+          "content": "service,owner,confirmation\nPurchasing,Alice,pending\nScheduling,unconfirmed,missing\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/change-request.md, inputs/current-model.md, inputs/service-owners.csv; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/change-request.md, inputs/current-model.md, inputs/service-owners.csv; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to architecture repository change, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the architecture repository change workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/repository Work in the current project directory (.). Use inputs/change-request.md, inputs/current-model.md, inputs/service-owners.csv. Architecture repository change for ACME Group. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-repository Work in the current project directory (.). Use inputs/change-request.md, inputs/current-model.md, inputs/service-owners.csv. Architecture repository change for ACME Group. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/service-owners.csv. Alice asks Bob to confirm Scheduling ownership before changing the canonical model. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/service-owners.csv. Alice asks Bob to confirm Scheduling ownership before changing the canonical model. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "business-case-benefits",
+      "title": "Business case and benefits",
+      "guide": "examples/business-case-benefits.md",
+      "project_name": "acme-business-case-benefits",
+      "description": "Fictional ACME Transport exercise. Alice sponsors; Bob estimates; John Doe owns benefits. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "business-case-to-benefits",
+      "inputs": [
+        {
+          "path": "inputs/current-costs.md",
+          "content": "# Business case and benefits: starting brief\n\nText derivative of a fictional spreadsheet: scheduling coordination takes an estimated 80 hours per month at an assumed internal cost of 40 currency units per hour. This is not assured cash saving.\n"
+        },
+        {
+          "path": "inputs/options.md",
+          "content": "# Business case and benefits: supporting input\n\nCompare process improvement, scheduling software replacement, and retaining the current tool. Bob estimates; Alice sponsors. Supplier quotations are absent.\n"
+        },
+        {
+          "path": "inputs/benefit-measures.md",
+          "content": "# Business case and benefits: evidence boundary\n\nJohn Doe proposes measuring coordination hours and scheduling errors before and after a pilot. Baseline collection, benefit ownership acceptance, and funding approval are pending.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/current-costs.md, inputs/options.md, inputs/benefit-measures.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/current-costs.md, inputs/options.md, inputs/benefit-measures.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to business case and benefits, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the business case and benefits workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/current-costs.md, inputs/options.md, inputs/benefit-measures.md. Business case and benefits for ACME Transport. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/current-costs.md, inputs/options.md, inputs/benefit-measures.md. Business case and benefits for ACME Transport. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/benefit-measures.md. John Doe obtains baseline coordination hours before Alice accepts realised benefits; assumed hours are not cash savings. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/benefit-measures.md. John Doe obtains baseline coordination hours before Alice accepts realised benefits; assumed hours are not cash savings. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "cloud-migration",
+      "title": "Cloud migration",
+      "guide": "examples/cloud-migration.md",
+      "project_name": "acme-cloud-migration",
+      "description": "Fictional ACME Manufacturing exercise. Alice owns the portal; Bob owns operations; John Doe authorises the decision. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "migration-and-cutover",
+      "inputs": [
+        {
+          "path": "inputs/service-map.md",
+          "content": "# Cloud migration: starting brief\n\nPlan a customer portal move from virtual machines to a managed cloud service. Alice owns the service; Bob owns operations. This exercise does not authorise cutover.\n"
+        },
+        {
+          "path": "inputs/dependencies.csv",
+          "content": "dependency,owner,status\nIdentity service,Bob,interface known\nSupplier callback,unconfirmed,network path missing\n"
+        },
+        {
+          "path": "inputs/change-window.md",
+          "content": "# Cloud migration: evidence boundary\n\nA Sunday maintenance window is proposed. Backups are configured, but no restore result exists. John Doe must decide only after dependencies and rollback evidence are reviewed.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/service-map.md, inputs/dependencies.csv, inputs/change-window.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/service-map.md, inputs/dependencies.csv, inputs/change-window.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to cloud migration, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the cloud migration workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/service-map.md, inputs/dependencies.csv, inputs/change-window.md. Cloud migration for ACME Manufacturing. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/service-map.md, inputs/dependencies.csv, inputs/change-window.md. Cloud migration for ACME Manufacturing. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/change-window.md. Alice asks Bob for dated restore evidence before John Doe considers cutover. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/change-window.md. Alice asks Bob for dated restore evidence before John Doe considers cutover. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "cyber-incident",
+      "title": "Cyber incident recovery",
+      "guide": "examples/cyber-incident.md",
+      "project_name": "acme-cyber-incident",
+      "description": "Fictional ACME Logistics exercise. Alice commands; Bob operates; John Doe coordinates security. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "cyber-incident-breach-to-recovery",
+      "inputs": [
+        {
+          "path": "inputs/incident-brief.md",
+          "content": "# Cyber incident recovery: starting brief\n\nExercise a suspicious supplier-account login affecting the booking service. This is a fictional tabletop report, not a confirmed compromise. Alice is incident commander.\n"
+        },
+        {
+          "path": "inputs/timeline.csv",
+          "content": "time,event,confidence\n09:10,Unusual login alert reported,unverified\n09:15,Booking owner notified,scenario assumption\n"
+        },
+        {
+          "path": "inputs/response-authority.md",
+          "content": "# Cyber incident recovery: evidence boundary\n\nBob may prepare recovery actions. John Doe coordinates security assessment. Destructive containment, disclosure, and recovery acceptance require the named human authority; none has occurred.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/incident-brief.md, inputs/timeline.csv, inputs/response-authority.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/incident-brief.md, inputs/timeline.csv, inputs/response-authority.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to cyber incident recovery, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the cyber incident recovery workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/incident-brief.md, inputs/timeline.csv, inputs/response-authority.md. Cyber incident recovery for ACME Logistics. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/incident-brief.md, inputs/timeline.csv, inputs/response-authority.md. Cyber incident recovery for ACME Logistics. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/response-authority.md. Alice asks John Doe to verify the login observation and response authority before containment claims. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/response-authority.md. Alice asks John Doe to verify the login observation and response authority before containment claims. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "data-product-delivery",
+      "title": "Data product delivery",
+      "guide": "examples/data-product-delivery.md",
+      "project_name": "acme-data-product-delivery",
+      "description": "Fictional ACME Retail exercise. Alice owns meaning; Bob owns pipelines; John Doe receives analytics. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "data-product-delivery",
+      "inputs": [
+        {
+          "path": "inputs/consumer-needs.md",
+          "content": "# Data product delivery: starting brief\n\nProvide a daily inventory availability dataset for planners. Alice owns business meaning; Bob owns pipelines; John Doe receives the data product.\n"
+        },
+        {
+          "path": "inputs/source-schema.md",
+          "content": "# Data product delivery: supporting input\n\nText derivative of a fictional JSON schema: sku:string; on_hand:integer; reserved:integer; snapshot_date:date. Source owners and freshness guarantees are unconfirmed.\n"
+        },
+        {
+          "path": "inputs/definitions.md",
+          "content": "# Data product delivery: evidence boundary\n\nWarehouse staff define availability as on_hand minus reserved; the sales report currently displays on_hand. Resolve this semantic conflict before accepting results.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/consumer-needs.md, inputs/source-schema.md, inputs/definitions.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/consumer-needs.md, inputs/source-schema.md, inputs/definitions.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to data product delivery, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the data product delivery workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/consumer-needs.md, inputs/source-schema.md, inputs/definitions.md. Data product delivery for ACME Retail. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/consumer-needs.md, inputs/source-schema.md, inputs/definitions.md. Data product delivery for ACME Retail. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/definitions.md. Alice resolves the availability definition with John Doe before Bob implements the calculation. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/definitions.md. Alice resolves the availability definition with John Doe before Bob implements the calculation. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "demand-funding",
+      "title": "Demand and funding",
+      "guide": "examples/demand-funding.md",
+      "project_name": "acme-demand-funding",
+      "description": "Fictional ACME Public Services exercise. Alice manages demand; Bob supplies capacity; John Doe decides funding. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "demand-to-portfolio-to-funding",
+      "inputs": [
+        {
+          "path": "inputs/demand-register.csv",
+          "content": "id,demand,estimate\nD1,Customer portal,unknown\nD2,Recovery rehearsal,20 staff days assumed\nD3,Reporting improvement,10 staff days assumed\n\n"
+        },
+        {
+          "path": "inputs/strategy.md",
+          "content": "# Demand and funding: supporting input\n\nImprove public service access while maintaining recovery capability. Alice manages demand; John Doe decides funding. These fictional priorities are not an approved portfolio.\n"
+        },
+        {
+          "path": "inputs/capacity.md",
+          "content": "# Demand and funding: evidence boundary\n\nBob estimates 25 staff days available next quarter. Portal demand remains unestimated and must not be treated as zero cost. Funding policy and specialist availability require confirmation.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/demand-register.csv, inputs/strategy.md, inputs/capacity.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/demand-register.csv, inputs/strategy.md, inputs/capacity.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to demand and funding, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the demand and funding workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/demand-register.csv, inputs/strategy.md, inputs/capacity.md. Demand and funding for ACME Public Services. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/demand-register.csv, inputs/strategy.md, inputs/capacity.md. Demand and funding for ACME Public Services. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/demand-register.csv. Alice asks Bob to estimate D1 before John Doe compares funding; unknown cost is not zero. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/demand-register.csv. Alice asks Bob to estimate D1 before John Doe compares funding; unknown cost is not zero. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "enterprise-publication",
+      "title": "Enterprise publication",
+      "guide": "examples/enterprise-publication.md",
+      "project_name": "acme-enterprise-publication",
+      "description": "Fictional ACME reporting platform exercise. Alice owns the decision; Bob prepares publication. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "semantic-to-enterprise-publication",
+      "inputs": [
+        {
+          "path": "inputs/decision.md",
+          "content": "# Enterprise publication: starting brief\n\nProposed reporting platform consolidation: compare shared hosting with separate services. Status: DRAFT, not human approved. Alice owns the decision and all material claims remain subject to evidence review.\n"
+        },
+        {
+          "path": "inputs/evidence-register.md",
+          "content": "# Enterprise publication: supporting input\n\nEstimated support effort is illustrative. No measured performance or signed approval exists. Publication must preserve these limitations and the DRAFT status.\n"
+        },
+        {
+          "path": "inputs/audience-brief.md",
+          "content": "# Enterprise publication: evidence boundary\n\nBob prepares a board briefing and an accessible operational handout. Readers need the decision, options, unknown costs, risk owners, and next review date. No renderer or visual QA result is supplied.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/decision.md, inputs/evidence-register.md, inputs/audience-brief.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/decision.md, inputs/evidence-register.md, inputs/audience-brief.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to enterprise publication, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the enterprise publication workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/publish Work in the current project directory (.). Use inputs/decision.md, inputs/evidence-register.md, inputs/audience-brief.md. Enterprise publication for ACME reporting platform. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-publish Work in the current project directory (.). Use inputs/decision.md, inputs/evidence-register.md, inputs/audience-brief.md. Enterprise publication for ACME reporting platform. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/decision.md. Bob confirms actual review status with Alice before publication; preserve DRAFT and evidence limits. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/decision.md. Bob confirms actual review status with Alice before publication; preserve DRAFT and evidence limits. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "enterprise-release",
+      "title": "Enterprise release",
+      "guide": "examples/enterprise-release.md",
+      "project_name": "acme-enterprise-release",
+      "description": "Fictional ACME Commerce exercise. Alice coordinates release; Bob operates; John Doe is change authority. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "enterprise-release-orchestration",
+      "inputs": [
+        {
+          "path": "inputs/release-scope.md",
+          "content": "# Enterprise release: starting brief\n\nCoordinate portal candidate 4.2 with identity configuration 7 and a support runbook update. Alice coordinates the release; this fictional product release is distinct from JAI A-H qualification.\n"
+        },
+        {
+          "path": "inputs/component-evidence.md",
+          "content": "# Enterprise release: supporting input\n\nText summary of fictional component evidence: portal tests refer to candidate 4.1; identity validation refers to configuration 7. Candidate 4.2 evidence is missing, so readiness is pending.\n"
+        },
+        {
+          "path": "inputs/rollout-plan.md",
+          "content": "# Enterprise release: evidence boundary\n\nBob proposes staged rollout, observation, and rollback to the current portal. John Doe is change authority. No deployment or approval has occurred; mismatched candidate evidence blocks acceptance.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/release-scope.md, inputs/component-evidence.md, inputs/rollout-plan.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/release-scope.md, inputs/component-evidence.md, inputs/rollout-plan.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to enterprise release, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the enterprise release workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/release-scope.md, inputs/component-evidence.md, inputs/rollout-plan.md. Enterprise release for ACME Commerce. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/release-scope.md, inputs/component-evidence.md, inputs/rollout-plan.md. Enterprise release for ACME Commerce. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/component-evidence.md. Alice asks Bob for portal 4.2 results before John Doe considers release acceptance. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/component-evidence.md. Alice asks Bob for portal 4.2 results before John Doe considers release acceptance. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "incident-diagnosis",
+      "title": "Incident diagnosis",
+      "guide": "examples/incident-diagnosis.md",
+      "project_name": "acme-incident-diagnosis",
+      "description": "Fictional ACME invoice service exercise. Alice maintains; Bob owns payment integration. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "incident-to-problem",
+      "inputs": [
+        {
+          "path": "inputs/failure-record.md",
+          "content": "# Incident diagnosis: starting brief\n\nFictional report: payment authorisation intermittently times out during invoice submission. Frequency and sanitized logs are incomplete. Alice maintains the service; Bob owns payment integration.\n"
+        },
+        {
+          "path": "inputs/last-known-good.md",
+          "content": "# Incident diagnosis: supporting input\n\nThe supplier reports a previously working revision, but its exact commit identity and reproducible source snapshot are missing. Obtain these before claiming a bisect result.\n"
+        },
+        {
+          "path": "inputs/payment-contract.md",
+          "content": "# Incident diagnosis: evidence boundary\n\nDistinguish a business decline from a transport timeout. Retrying must preserve idempotency and must not create duplicate charges. No live payment endpoint, credential, or source checkout is included.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/failure-record.md, inputs/last-known-good.md, inputs/payment-contract.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/failure-record.md, inputs/last-known-good.md, inputs/payment-contract.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to incident diagnosis, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the incident diagnosis workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/diagnose Work in the current project directory (.). Use inputs/failure-record.md, inputs/last-known-good.md, inputs/payment-contract.md. These are planning inputs; application source is absent. Stop and request it before code-dependent work. Incident diagnosis for ACME invoice service. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-diagnose Work in the current project directory (.). Use inputs/failure-record.md, inputs/last-known-good.md, inputs/payment-contract.md. These are planning inputs; application source is absent. Stop and request it before code-dependent work. Incident diagnosis for ACME invoice service. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Expect a request for the absent source checkout before code-dependent execution. Supply a permitted real checkout separately or keep the exercise at planning; do not mark absent tests PASS."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/last-known-good.md. Alice requests the permitted source checkout and exact working commit from Bob before reproduction or bisect. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/last-known-good.md. Alice requests the permitted source checkout and exact working commit from Bob before reproduction or bisect. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "inherited-codebase",
+      "title": "Inherited codebase",
+      "guide": "examples/inherited-codebase.md",
+      "project_name": "acme-inherited-codebase",
+      "description": "Fictional ACME booking portal exercise. Alice leads engineering; Bob represents the outgoing supplier. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "codebase-takeover",
+      "inputs": [
+        {
+          "path": "inputs/handover.md",
+          "content": "# Inherited codebase: starting brief\n\nACME takes over a supplier booking portal. Alice leads engineering; Bob represents the outgoing supplier. The scope is a bounded takeover assessment, not a rewrite.\n"
+        },
+        {
+          "path": "inputs/build-instructions.md",
+          "content": "# Inherited codebase: supporting input\n\nThe supplier says to use the documented toolchain and a local test database. Source checkout, licence verification, dependency lockfiles, and actual build output are absent from this text-only starter.\n"
+        },
+        {
+          "path": "inputs/service-map.md",
+          "content": "# Inherited codebase: evidence boundary\n\nThe portal depends on identity, booking storage, and email delivery. Ownership and support handover require confirmation. Do not invent successful tests when source is absent.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/handover.md, inputs/build-instructions.md, inputs/service-map.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/handover.md, inputs/build-instructions.md, inputs/service-map.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to inherited codebase, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the inherited codebase workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/review Work in the current project directory (.). Use inputs/handover.md, inputs/build-instructions.md, inputs/service-map.md. These are planning inputs; application source is absent. Stop and request it before code-dependent work. Inherited codebase for ACME booking portal. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-review Work in the current project directory (.). Use inputs/handover.md, inputs/build-instructions.md, inputs/service-map.md. These are planning inputs; application source is absent. Stop and request it before code-dependent work. Inherited codebase for ACME booking portal. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Expect a request for the absent source checkout before code-dependent execution. Supply a permitted real checkout separately or keep the exercise at planning; do not mark absent tests PASS."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/build-instructions.md. Alice requests source, licence and actual build evidence from Bob before source findings or takeover acceptance. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/build-instructions.md. Alice requests source, licence and actual build evidence from Bob before source findings or takeover acceptance. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "justifiable-decision",
+      "title": "Justifiable decision",
+      "guide": "examples/justifiable-decision.md",
+      "project_name": "acme-justifiable-decision",
+      "description": "Fictional ACME Utilities exercise. Alice sponsors; Bob operates; John Doe holds decision authority. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "inputs": [
+        {
+          "path": "inputs/intent.md",
+          "content": "# Justifiable decision: starting brief\n\nDecide whether to replace an ageing field-service application. Alice sponsors the work. Preserve service continuity and distinguish estimated costs from measured evidence.\n"
+        },
+        {
+          "path": "inputs/authority.md",
+          "content": "# Justifiable decision: supporting input\n\nJohn Doe holds the replacement decision authority. Spending approval and risk acceptance belong to separately named humans who have not yet been identified. No authority act is recorded.\n"
+        },
+        {
+          "path": "inputs/options.md",
+          "content": "# Justifiable decision: evidence boundary\n\nOptions: extend support, replace with a managed service, or build a replacement. Bob operates the current service. Cost quotations, recovery results, and workforce impacts remain unknown.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/intent.md, inputs/authority.md, inputs/options.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/intent.md, inputs/authority.md, inputs/options.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to justifiable decision, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the justifiable decision workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/intent.md, inputs/authority.md, inputs/options.md. Justifiable decision for ACME Utilities. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/intent.md, inputs/authority.md, inputs/options.md. Justifiable decision for ACME Utilities. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/authority.md. Alice asks John Doe to identify the spending and risk authorities before acceptance; never manufacture L0 acts. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/authority.md. Alice asks John Doe to identify the spending and risk authorities before acceptance; never manufacture L0 acts. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "operational-readiness",
+      "title": "Operational readiness",
+      "guide": "examples/operational-readiness.md",
+      "project_name": "acme-operational-readiness",
+      "description": "Fictional ACME supplier ordering API exercise. Alice owns operations; Bob owns delivery. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "design-to-operational-readiness",
+      "inputs": [
+        {
+          "path": "inputs/service-design.md",
+          "content": "# Operational readiness: starting brief\n\nAssess an ordering API before operational acceptance. Bob owns delivery and Alice owns operations. A successful feature demo does not establish support or recovery readiness.\n"
+        },
+        {
+          "path": "inputs/runbook-summary.md",
+          "content": "# Operational readiness: supporting input\n\nText derivative of draft runbooks: monitor request errors, escalate supplier failures, and restore the service after a failure. Night cover, tested contacts, and rehearsal records are missing.\n"
+        },
+        {
+          "path": "inputs/readiness-scope.md",
+          "content": "# Operational readiness: evidence boundary\n\nRequire dated load, backup and restore evidence plus support ownership. No actual test results are included. Keep acceptance pending and prepare a request for missing evidence.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/service-design.md, inputs/runbook-summary.md, inputs/readiness-scope.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/service-design.md, inputs/runbook-summary.md, inputs/readiness-scope.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to operational readiness, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the operational readiness workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/service-design.md, inputs/runbook-summary.md, inputs/readiness-scope.md. Operational readiness for ACME supplier ordering API. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/service-design.md, inputs/runbook-summary.md, inputs/readiness-scope.md. Operational readiness for ACME supplier ordering API. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/readiness-scope.md. Alice requests dated restore evidence and support ownership from Bob before operating acceptance. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/readiness-scope.md. Alice requests dated restore evidence and support ownership from Bob before operating acceptance. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "production-change",
+      "title": "Production change",
+      "guide": "examples/production-change.md",
+      "project_name": "acme-production-change",
+      "description": "Fictional ACME API exercise. Alice manages change; Bob operates. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "production-change",
+      "inputs": [
+        {
+          "path": "inputs/change-request.md",
+          "content": "# Production change: starting brief\n\nPrepare a change moving API traffic from the old worker pool to a new pool. Alice manages change; Bob operates. Preparation and review do not authorise production execution.\n"
+        },
+        {
+          "path": "inputs/routing-map.md",
+          "content": "# Production change: supporting input\n\nOld pool serves all traffic. Proposed new pool receives 10 percent before expansion. Health thresholds and customer-impact measures are proposed and need owner confirmation.\n"
+        },
+        {
+          "path": "inputs/rollback-plan.md",
+          "content": "# Production change: evidence boundary\n\nReturn routing to the old pool if agreed error or latency thresholds are exceeded. No rehearsal result exists and no change authority has approved the window.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/change-request.md, inputs/routing-map.md, inputs/rollback-plan.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/change-request.md, inputs/routing-map.md, inputs/rollback-plan.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to production change, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the production change workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/change-request.md, inputs/routing-map.md, inputs/rollback-plan.md. Production change for ACME API. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/change-request.md, inputs/routing-map.md, inputs/rollback-plan.md. Production change for ACME API. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/rollback-plan.md. Alice asks Bob for rehearsal evidence and the named change authority for window approval before any production action. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/rollback-plan.md. Alice asks Bob for rehearsal evidence and the named change authority for window approval before any production action. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "proposal",
+      "title": "Customer proposal",
+      "guide": "examples/proposal.md",
+      "project_name": "acme-proposal",
+      "description": "Fictional ACME Services exercise. Alice owns the bid; Bob estimates; John Doe represents the customer. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "inputs": [
+        {
+          "path": "inputs/customer-rfp.md",
+          "content": "# Customer proposal: starting brief\n\nText derivative of a fictional customer RFP: request a fixed-price support portal proposal including delivery, service levels and pricing. John Doe represents the customer. Support hours are unspecified.\n"
+        },
+        {
+          "path": "inputs/pricing.md",
+          "content": "# Customer proposal: supporting input\n\nText derivative of a fictional spreadsheet: 40 delivery days at 800 currency units per day gives 32000 before contingency and tax. Bob estimates. Currency, exclusions, support charges and approval are unresolved.\n"
+        },
+        {
+          "path": "inputs/clarifications.md",
+          "content": "# Customer proposal: evidence boundary\n\nAlice owns the bid. Ask whether support is business hours or continuous; confirm team capacity, draft contract, service levels, acceptance and commercial authority. No customer acceptance or supplier commitment exists.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/customer-rfp.md, inputs/pricing.md, inputs/clarifications.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/customer-rfp.md, inputs/pricing.md, inputs/clarifications.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to customer proposal, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the customer proposal workflow",
+          "why": "Establish the bounded bid engagement before using the opt-in commercial profile. The commercial workflow requires an existing engagement; it does not create one implicitly.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/customer-rfp.md, inputs/pricing.md, inputs/clarifications.md. Customer proposal for ACME Services. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/customer-rfp.md, inputs/pricing.md, inputs/clarifications.md. Customer proposal for ACME Services. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the actual engagement identifier reported by the layered workflow. Only then invoke /commercial or $workflow-commercial with that identifier to request the commercial profile, pricing and assurance work. Keep support-hours clarification and human commercial authority pending; no draft creates a fixed-price commitment."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/clarifications.md. Alice asks John Doe to specify support hours and Bob to revise pricing before any fixed-price commitment. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/clarifications.md. Alice asks John Doe to specify support hours and Bob to revise pricing before any fixed-price commitment. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "regulatory-change",
+      "title": "Regulatory change",
+      "guide": "examples/regulatory-change.md",
+      "project_name": "acme-regulatory-change",
+      "description": "Fictional ACME Finance exercise. Alice interprets compliance; Bob owns the service; John Doe delivers changes. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "regulatory-change-to-assurance",
+      "inputs": [
+        {
+          "path": "inputs/obligation-text.md",
+          "content": "# Regulatory change: starting brief\n\nText-only fictional briefing: a reporting obligation is expected to change. This is not legal text or legal advice. Obtain the maintained public source and a qualified interpretation before asserting duties.\n"
+        },
+        {
+          "path": "inputs/legal-interpretation.md",
+          "content": "# Regulatory change: supporting input\n\nAlice owns interpretation. Applicability, effective date and control requirements are not established. Do not invent a statutory citation or imply regulator approval.\n"
+        },
+        {
+          "path": "inputs/current-controls.csv",
+          "content": "control,owner,evidence\nReport reconciliation,Bob,pending\nChange delivery,John Doe,planned\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/obligation-text.md, inputs/legal-interpretation.md, inputs/current-controls.csv; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/obligation-text.md, inputs/legal-interpretation.md, inputs/current-controls.csv; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to regulatory change, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the regulatory change workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/obligation-text.md, inputs/legal-interpretation.md, inputs/current-controls.csv. Regulatory change for ACME Finance. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/obligation-text.md, inputs/legal-interpretation.md, inputs/current-controls.csv. Regulatory change for ACME Finance. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/legal-interpretation.md. Alice obtains maintained obligation text and qualified applicability advice before Bob or John Doe treats proposed controls as legal duties. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/legal-interpretation.md. Alice obtains maintained obligation text and qualified applicability advice before Bob or John Doe treats proposed controls as legal duties. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "resilience-validation",
+      "title": "Resilience validation",
+      "guide": "examples/resilience-validation.md",
+      "project_name": "acme-resilience-validation",
+      "description": "Fictional ACME ordering service exercise. Alice owns continuity; Bob coordinates the exercise. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "resilience-validation",
+      "inputs": [
+        {
+          "path": "inputs/service-map.md",
+          "content": "# Resilience validation: starting brief\n\nExercise loss of a supplier connection for ordering. Alice owns continuity; Bob coordinates the exercise. This is a fictional planning and tabletop scenario.\n"
+        },
+        {
+          "path": "inputs/continuity-objectives.md",
+          "content": "# Resilience validation: supporting input\n\nBusiness owners have not accepted a recovery-time objective. Orders may queue during supplier outages; the maximum tolerable delay is unknown.\n"
+        },
+        {
+          "path": "inputs/exercise-scope.md",
+          "content": "# Resilience validation: evidence boundary\n\nOnly discuss a tabletop scenario. No live fault injection, customer traffic changes, or measured recovery is authorised. Stop if anyone proposes actions outside this scope.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/service-map.md, inputs/continuity-objectives.md, inputs/exercise-scope.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/service-map.md, inputs/continuity-objectives.md, inputs/exercise-scope.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to resilience validation, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the resilience validation workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/service-map.md, inputs/continuity-objectives.md, inputs/exercise-scope.md. Resilience validation for ACME ordering service. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/service-map.md, inputs/continuity-objectives.md, inputs/exercise-scope.md. Resilience validation for ACME ordering service. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/continuity-objectives.md. Alice obtains the business recovery tolerance before Bob designs an exercise; tabletop results are not measured recovery. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/continuity-objectives.md. Alice obtains the business recovery tolerance before Bob designs an exercise; tabletop results are not measured recovery. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "sabsa-development",
+      "title": "SABSA development",
+      "guide": "examples/sabsa-development.md",
+      "project_name": "acme-sabsa-development",
+      "description": "Fictional ACME Distribution exercise. Alice owns the business; Bob owns warehouse operations; John Doe architects security. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "inputs": [
+        {
+          "path": "inputs/business-drivers.md",
+          "content": "# SABSA development: starting brief\n\nOnline ordering must support dependable fulfilment. Alice owns business priorities; Bob owns warehouse operations; John Doe is the security architect. Business recovery objectives are missing.\n"
+        },
+        {
+          "path": "inputs/order-process.md",
+          "content": "# SABSA development: supporting input\n\nText derivative of a fictional process PDF: customer order, stock reservation, warehouse picking, shipment confirmation. This is illustrative source material, not a measured process or approved policy.\n"
+        },
+        {
+          "path": "inputs/known-controls.md",
+          "content": "# SABSA development: evidence boundary\n\nStaff report access reviews and backups. No dated review, restore evidence, or approval is supplied. Ask Alice about acceptable disruption before inventing availability targets.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/business-drivers.md, inputs/order-process.md, inputs/known-controls.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/business-drivers.md, inputs/order-process.md, inputs/known-controls.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to sabsa development, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the sabsa development workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/sabsa Work in the current project directory (.). Use inputs/business-drivers.md, inputs/order-process.md, inputs/known-controls.md. SABSA development for ACME Distribution. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-sabsa Work in the current project directory (.). Use inputs/business-drivers.md, inputs/order-process.md, inputs/known-controls.md. SABSA development for ACME Distribution. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/business-drivers.md. John Doe asks Alice and Bob to establish business disruption tolerance before deriving security targets. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/business-drivers.md. John Doe asks Alice and Bob to establish business disruption tolerance before deriving security targets. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "service-onboarding",
+      "title": "Service onboarding",
+      "guide": "examples/service-onboarding.md",
+      "project_name": "acme-service-onboarding",
+      "description": "Fictional ACME customer notifications exercise. Alice receives the service; Bob delivers it. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "new-service-onboarding",
+      "inputs": [
+        {
+          "path": "inputs/service-design.md",
+          "content": "# Service onboarding: starting brief\n\nOnboard a customer notification service. Alice is the proposed receiving owner; Bob delivers the service. Demonstration messages do not establish an operating handoff.\n"
+        },
+        {
+          "path": "inputs/support-model.md",
+          "content": "# Service onboarding: supporting input\n\nProposed daytime support with out-of-hours escalation undecided. Contact ownership, service measures and incident responsibilities need agreement.\n"
+        },
+        {
+          "path": "inputs/acceptance-evidence.md",
+          "content": "# Service onboarding: evidence boundary\n\nNo runbook rehearsal, operating contact confirmation, or dated delivery evidence is included. Prepare a handover checklist and leave acceptance pending.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/service-design.md, inputs/support-model.md, inputs/acceptance-evidence.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/service-design.md, inputs/support-model.md, inputs/acceptance-evidence.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to service onboarding, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the service onboarding workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/service-design.md, inputs/support-model.md, inputs/acceptance-evidence.md. Service onboarding for ACME customer notifications. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/service-design.md, inputs/support-model.md, inputs/acceptance-evidence.md. Service onboarding for ACME customer notifications. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/support-model.md. Alice asks Bob to agree out-of-hours escalation and contacts before accepting the handoff. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/support-model.md. Alice asks Bob to agree out-of-hours escalation and contacts before accepting the handoff. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "service-retirement",
+      "title": "Service retirement",
+      "guide": "examples/service-retirement.md",
+      "project_name": "acme-service-retirement",
+      "description": "Fictional ACME legacy reporting exercise. Alice owns the service; Bob coordinates records and integrations. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "service-retirement-and-decommission",
+      "inputs": [
+        {
+          "path": "inputs/service-inventory.md",
+          "content": "# Service retirement: starting brief\n\nPrepare retirement of legacy reporting. Alice owns the service; Bob coordinates records and integrations. Two report consumers have not confirmed replacement readiness.\n"
+        },
+        {
+          "path": "inputs/replacement-status.md",
+          "content": "# Service retirement: supporting input\n\nA replacement report is demonstrated for one team. The second team's use and downstream export dependencies are unknown. Do not treat a demonstration as accepted migration.\n"
+        },
+        {
+          "path": "inputs/data-obligations.md",
+          "content": "# Service retirement: evidence boundary\n\nRetention requirements, record owner approval and export validation are unresolved. No switch-off or data deletion is authorised by this exercise.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/service-inventory.md, inputs/replacement-status.md, inputs/data-obligations.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/service-inventory.md, inputs/replacement-status.md, inputs/data-obligations.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to service retirement, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the service retirement workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/service-inventory.md, inputs/replacement-status.md, inputs/data-obligations.md. Service retirement for ACME legacy reporting. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/service-inventory.md, inputs/replacement-status.md, inputs/data-obligations.md. Service retirement for ACME legacy reporting. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/data-obligations.md. Alice asks Bob and the records owner to establish retention and consumer readiness before shutdown or deletion. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/data-obligations.md. Alice asks Bob and the records owner to establish retention and consumer readiness before shutdown or deletion. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "siam-multi-supplier",
+      "title": "Multi-supplier service integration",
+      "guide": "examples/siam-multi-supplier.md",
+      "project_name": "acme-siam-multi-supplier",
+      "description": "Fictional ACME employee portal exercise. Alice owns the end-to-end service; Bob coordinates interfaces. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "siam-multi-supplier",
+      "inputs": [
+        {
+          "path": "inputs/service-map.md",
+          "content": "# Multi-supplier service integration: starting brief\n\nThe employee portal depends on hosting, identity and application suppliers. Alice owns end-to-end service; Bob coordinates interfaces. All names and observations are fictional.\n"
+        },
+        {
+          "path": "inputs/supplier-obligations.md",
+          "content": "# Multi-supplier service integration: supporting input\n\nEach supplier reports component availability. End-to-end login success ownership and joint incident handoffs are not yet agreed.\n"
+        },
+        {
+          "path": "inputs/handoff-records.csv",
+          "content": "handoff,observation,status\nHosting to identity,Login failures referred onward,unresolved\nIdentity to application,Component dashboards green,reported only\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/service-map.md, inputs/supplier-obligations.md, inputs/handoff-records.csv; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/service-map.md, inputs/supplier-obligations.md, inputs/handoff-records.csv; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to multi-supplier service integration, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the multi-supplier service integration workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/service-map.md, inputs/supplier-obligations.md, inputs/handoff-records.csv. Multi-supplier service integration for ACME employee portal. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/service-map.md, inputs/supplier-obligations.md, inputs/handoff-records.csv. Multi-supplier service integration for ACME employee portal. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/supplier-obligations.md. Alice asks Bob to establish end-to-end login accountability before accepting component availability as service evidence. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/supplier-obligations.md. Alice asks Bob to establish end-to-end login accountability before accepting component availability as service evidence. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "sourcing-contract",
+      "title": "Sourcing and contract",
+      "guide": "examples/sourcing-contract.md",
+      "project_name": "acme-sourcing-contract",
+      "description": "Fictional ACME Engineering exercise. Alice sources; Bob owns networks; John Doe owns the contract. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "source-to-contract-to-service",
+      "inputs": [
+        {
+          "path": "inputs/service-requirements.md",
+          "content": "# Sourcing and contract: starting brief\n\nSource a managed network service. Alice coordinates sourcing; Bob owns networks; John Doe owns contract decisions. No supplier selection or commitment is authorised.\n"
+        },
+        {
+          "path": "inputs/evaluation-criteria.md",
+          "content": "# Sourcing and contract: supporting input\n\nCompare coverage, operating support, recovery evidence, transition, total cost and exit. Missing supplier data remains unknown rather than receiving a favourable score.\n"
+        },
+        {
+          "path": "inputs/contract-issues.csv",
+          "content": "issue,status,owner\nExit charges,Not priced,John Doe\nRecovery evidence,Not supplied,Bob\nTransition staffing,Unconfirmed,Alice\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/service-requirements.md, inputs/evaluation-criteria.md, inputs/contract-issues.csv; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/service-requirements.md, inputs/evaluation-criteria.md, inputs/contract-issues.csv; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to sourcing and contract, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the sourcing and contract workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/service-requirements.md, inputs/evaluation-criteria.md, inputs/contract-issues.csv. Sourcing and contract for ACME Engineering. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/service-requirements.md, inputs/evaluation-criteria.md, inputs/contract-issues.csv. Sourcing and contract for ACME Engineering. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/contract-issues.csv. Alice obtains exit pricing and John Doe's contract position before comparing total cost or committing. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/contract-issues.csv. Alice obtains exit pricing and John Doe's contract position before comparing total cost or committing. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "supplier-onboarding",
+      "title": "Supplier onboarding",
+      "guide": "examples/supplier-onboarding.md",
+      "project_name": "acme-supplier-onboarding",
+      "description": "Fictional ACME Health Services exercise. Alice procures; Bob owns the service; John Doe reviews security. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "supplier-onboarding",
+      "inputs": [
+        {
+          "path": "inputs/supplier-scope.md",
+          "content": "# Supplier onboarding: starting brief\n\nAssess an appointment-message supplier before onboarding. Alice coordinates procurement; Bob owns the service; John Doe reviews security. No patient data is included.\n"
+        },
+        {
+          "path": "inputs/questionnaire.md",
+          "content": "# Supplier onboarding: supporting input\n\nText derivative of a fictional questionnaire spreadsheet: supplier asserts encryption, backups and access reviews. These assertions are not independent control evidence.\n"
+        },
+        {
+          "path": "inputs/data-flow.md",
+          "content": "# Supplier onboarding: evidence boundary\n\nText derivative of a fictional data-flow PDF: appointment event to supplier, message to recipient, delivery status to ACME. Retention, sub-processors and draft contract terms require confirmation.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/supplier-scope.md, inputs/questionnaire.md, inputs/data-flow.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/supplier-scope.md, inputs/questionnaire.md, inputs/data-flow.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to supplier onboarding, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the supplier onboarding workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/supplier-scope.md, inputs/questionnaire.md, inputs/data-flow.md. Supplier onboarding for ACME Health Services. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/supplier-scope.md, inputs/questionnaire.md, inputs/data-flow.md. Supplier onboarding for ACME Health Services. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/questionnaire.md. John Doe requests supplier control evidence through Alice before Bob accepts real-data use. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/questionnaire.md. John Doe requests supplier control evidence through Alice before Bob accepts real-data use. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "vulnerability-remediation",
+      "title": "Vulnerability remediation",
+      "guide": "examples/vulnerability-remediation.md",
+      "project_name": "acme-vulnerability-remediation",
+      "description": "Fictional ACME portal exercise. Alice receives the advisory; Bob owns the application. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "vulnerability-to-remediation",
+      "inputs": [
+        {
+          "path": "inputs/dependency-inventory.md",
+          "content": "# Vulnerability remediation: starting brief\n\nText derivative of a fictional dependency JSON: portal uses sample-library 1.4 in a server component. The package and version are invented for this exercise; no real advisory is asserted.\n"
+        },
+        {
+          "path": "inputs/advisory.md",
+          "content": "# Vulnerability remediation: supporting input\n\nFictional advisory reports a potential issue in sample-library before 1.5. Alice receives the advisory and Bob owns the application. Version matching alone does not prove exploitability.\n"
+        },
+        {
+          "path": "inputs/deployment-map.md",
+          "content": "# Vulnerability remediation: evidence boundary\n\nThe component handles internal requests behind authentication. Reachability, exposure and patch compatibility require verification. No scanner output or production test exists.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/dependency-inventory.md, inputs/advisory.md, inputs/deployment-map.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/dependency-inventory.md, inputs/advisory.md, inputs/deployment-map.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to vulnerability remediation, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the vulnerability remediation workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/layered Work in the current project directory (.). Use inputs/dependency-inventory.md, inputs/advisory.md, inputs/deployment-map.md. Vulnerability remediation for ACME portal. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-layered Work in the current project directory (.). Use inputs/dependency-inventory.md, inputs/advisory.md, inputs/deployment-map.md. Vulnerability remediation for ACME portal. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/deployment-map.md. Bob establishes reachability and exposure before Alice treats version matching as exploitability evidence. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/deployment-map.md. Bob establishes reachability and exposure before Alice treats version matching as exploitability evidence. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "android-development",
+      "title": "Android application development",
+      "guide": "examples/how-to-use-JAI/android-development.md",
+      "project_name": "acme-android-development",
+      "description": "Fictional ACME personal check-in exercise. Alice owns the product; Bob develops the application. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "workflow": "idea-to-production",
+      "inputs": [
+        {
+          "path": "inputs/product-brief.md",
+          "content": "# Android application development: starting brief\n\nPlan an Android personal check-in application with trusted-contact notifications. Alice owns the product and Bob develops it. This pack contains no Android project or executed build.\n"
+        },
+        {
+          "path": "inputs/data-map.md",
+          "content": "# Android application development: supporting input\n\nConsider contact details, check-in status and notification delivery. Consent withdrawal, shared-device exposure and data deletion need explicit decisions. No real user data is included.\n"
+        },
+        {
+          "path": "inputs/acceptance-cases.md",
+          "content": "# Android application development: evidence boundary\n\nDiscuss consent withdrawal before sending, unavailable network, invalid trusted contact, and shared-device access. Platform constraints, an actual app/ checkout and measured tests must be supplied before implementation claims.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/product-brief.md, inputs/data-map.md, inputs/acceptance-cases.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/product-brief.md, inputs/data-map.md, inputs/acceptance-cases.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to android application development, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the android application development workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/develop Work in the current project directory (.). Use inputs/product-brief.md, inputs/data-map.md, inputs/acceptance-cases.md. These are planning inputs; application source is absent. Stop and request it before code-dependent work. Android application development for ACME personal check-in. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-develop Work in the current project directory (.). Use inputs/product-brief.md, inputs/data-map.md, inputs/acceptance-cases.md. These are planning inputs; application source is absent. Stop and request it before code-dependent work. Android application development for ACME personal check-in. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Expect a request for the absent source checkout before code-dependent execution. Supply a permitted real checkout separately or keep the exercise at planning; do not mark absent tests PASS."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/acceptance-cases.md. Alice and Bob supply a permitted app/ checkout and platform prerequisites before claiming implementation or a build. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/acceptance-cases.md. Alice and Bob supply a permitted app/ checkout and platform prerequisites before claiming implementation or a build. Keep the affected acceptance pending until the actual input or human decision exists."
+    },
+    {
+      "id": "security-assessment",
+      "title": "Security assessment",
+      "guide": "examples/how-to-use-JAI/security-assessment.md",
+      "project_name": "acme-security-assessment",
+      "description": "Fictional ACME privileged monitoring exercise. Alice assesses; Bob owns the platform. All seeded materials are illustrative, not business facts, legal advice, security evidence, test results or approval. inputs/ contains the actual generated files. Markdown summaries explicitly stand in for the guide's PDF, spreadsheet, JSON, model, runbook or source-material examples; no binary document, application checkout or external system is supplied.",
+      "inputs": [
+        {
+          "path": "inputs/business-brief.md",
+          "content": "# Security assessment: starting brief\n\nAssess privileged monitoring for a fictional enterprise platform. Alice owns the assessment and Bob owns the platform. Assessment completion does not authorise production deployment.\n"
+        },
+        {
+          "path": "inputs/deployment-map.md",
+          "content": "# Security assessment: supporting input\n\nPrivileged activity events flow from administration hosts to a monitoring service. Supplier boundaries, restore behaviour and log access need confirmation.\n"
+        },
+        {
+          "path": "inputs/control-inventory.md",
+          "content": "# Security assessment: evidence boundary\n\nBackups and supplier controls are asserted but unproven. No restore record or independent assurance is supplied. Keep these items unknown and request evidence through the assessment authority.\n"
+        }
+      ],
+      "steps": [
+        {
+          "title": "Understand the supplied inputs and scope",
+          "why": "Establish what is actually present before selecting outputs or assuming evidence exists.",
+          "claude": "/analyse . — read inputs/business-brief.md, inputs/deployment-map.md, inputs/control-inventory.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "codex": "$workflow-analyse . — read inputs/business-brief.md, inputs/deployment-map.md, inputs/control-inventory.md; explain the task, owners, missing inputs and limits. Do not infer approval.",
+          "inspect": "Check that the analysis names the actual seeded paths, distinguishes assumptions from observations, and identifies absent source material. The demonstration has not run any domain check."
+        },
+        {
+          "title": "Set review criteria before producing the deliverable",
+          "why": "Agree what a useful result must contain and which missing evidence or authority decision prevents acceptance.",
+          "claude": "/criteria .",
+          "codex": "$workflow-criteria .",
+          "inspect": "After the command returns, ask in normal conversation for criteria appropriate to security assessment, including factual traceability, evidence gaps, ownership and required human decisions. Read the proposed criteria; do not append this request to the path-only command. Preserve normative obligations and independent-review boundaries."
+        },
+        {
+          "title": "Start the security assessment workflow",
+          "why": "Use the existing domain workflow to create or assess the bounded work; a slash command does not supply missing evidence or grant authority.",
+          "claude": "/sabsa Work in the current project directory (.). Use inputs/business-brief.md, inputs/deployment-map.md, inputs/control-inventory.md. Security assessment for ACME privileged monitoring. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "codex": "$workflow-sabsa Work in the current project directory (.). Use inputs/business-brief.md, inputs/deployment-map.md, inputs/control-inventory.md. Security assessment for ACME privileged monitoring. Preserve unknowns, scope and named human authority. Produce only supported draft outputs; escalate missing evidence rather than inventing it.",
+          "inspect": "Inspect the draft artefacts, evidence references, unresolved questions and escalation. Stop at human authority or independent-review requirements; a generated draft is not approval."
+        },
+        {
+          "title": "Inspect the result and practise a blocked step",
+          "why": "Review the actual draft against the agreed criteria and learn how to resume when material input is missing.",
+          "claude": "/guide review",
+          "codex": "$workflow-guide review",
+          "inspect": "Pause at the unresolved requirement in inputs/control-inventory.md. Alice requests dated restore and supplier evidence from Bob and retains unknown findings without deployment approval. Keep the affected acceptance pending until the actual input or human decision exists. After a draft exists, run /review or $workflow-review with the actual output path reported by the workflow and the agreed criteria. Do not review the input pack as a completed deliverable. If no draft exists, explain the blocker and resume the original workflow after the actual evidence or human decision arrives."
+        }
+      ],
+      "missing_evidence_exercise": "Pause at the unresolved requirement in inputs/control-inventory.md. Alice requests dated restore and supplier evidence from Bob and retains unknown findings without deployment approval. Keep the affected acceptance pending until the actual input or human decision exists."
+    }
+  ]
+}

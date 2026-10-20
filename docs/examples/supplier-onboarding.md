@@ -1,93 +1,171 @@
-# Example: Supplier onboarding
+# Prepare supplier onboarding
 
-This is a buyer-side governance example. Use [Commercial delivery](../capabilities/commercial-delivery.md) for the supplier-side proposal and economics. First-time operators should follow [How to use JAI](how-to-use-JAI/index.md) before adapting this shorter scenario.
+Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
-<img class="ai-example-photo" src="../../assets/images/example-supplier-onboarding.jpg" alt="Example: Supplier onboarding">
+ACME Health Services wants to onboard a supplier that will process
+appointment messages. Alice owns procurement, Bob owns the service and
+John Doe coordinates security due diligence. This illustrative fiction
+reflects ordinary supplier assurance; it does not assert that a real
+supplier is safe, certified or contractually acceptable.
 
-## Scenario
+The outcome is a justified onboarding recommendation with explicit
+dependencies and residual risks. A supplier questionnaire is a statement
+by the supplier, not automatic evidence that every control operates.
 
-A business unit wants to procure a SaaS platform quickly. Procurement has a commercial proposal, but architecture, security, privacy, resilience, exit and service-acceptance concerns are incomplete.
+## Prepare the project
 
-## Starting material
+Create a new `acme-supplier-onboarding/` directory with `inputs/`,
+`working/` and `output/` beneath it. Keep received source files in
+`inputs/` and proposed work separate from material ready for handoff.
 
-Provide business requirements, supplier proposal/RFP response, DPA/security material, subprocessor list, service commitments, architecture/interface material, pricing/TCO assumptions and intended data classes.
+Collect the proposed service scope, data-flow description, supplier
+responses, available assurance reports, draft agreement, service levels,
+subprocessor information and exit requirements. Include ACME's
+classification and outsourcing policies and the identity of the actual
+contract and risk owners.
+
+Use names such as `inputs/supplier-scope.md`,
+`inputs/questionnaire.xlsx`, `inputs/data-flow.pdf and
+inputs/contract-draft.docx`. Keep source dates, versions and owners in
+`inputs/source-register.md`. Record evidence dates and coverage. If an
+assurance report excludes the proposed service, state the gap instead of
+borrowing its badge.
+
+Complete the [installation](../getting-started/install.md), then start
+Claude Code or Codex in `acme-supplier-onboarding/`. Confirm the
+installed JAI commands or skills are available. All paths below are
+relative to that project directory; do not run the example against the
+JAI library itself.
 
 ## Run this scenario in the provider CLI
 
-Paste the following as a **request in Claude Code or Codex CLI**. It is not a terminal command, and it does not automatically authorise tool execution or a business decision:
+Use layered delivery to coordinate procurement, security, privacy,
+operational acceptance and contract decisions. An internal supplier
+decision is distinct from the supplier commercial-delivery profile used
+to prepare ACME's own offers.
+
+Enter these instructions in the provider conversation, not a shell. The
+Claude slash command and Codex skill request the same work. They are
+workflow entry points, not a claim that routing or artefact creation is
+universally automatic. Inspect the actual output locations and use those
+paths if the workflow reports a different location from `working/`.
+
+### 1. Understand the service and evidence
+
+**Claude**
 
 ```text
-Assess the proposed SaaS supplier using supplier-onboarding and source-to-contract-to-service. Map contractual obligations, security/privacy evidence, exit risks, integrations and the residual decisions for our service and risk owners.
+/analyse inputs/ for appointment-message supplier onboarding. Describe information flows, service dependencies, assurance coverage and missing evidence.
 ```
 
-**You:** provide the starting material listed above, identify the accountable owners, inspect the evidence and respond to real approval gates. For material decisions, explicitly initiate `/layered <intent>` in Claude or `$workflow-layered <intent>` in Codex rather than assuming a natural-language router enforced Fabric. **Codex cannot execute protected L0 authority commands:** it must show the exact command for you to run separately in a trusted terminal.
-
-**Behind the scenes:** The agent coordinates sourcing, architecture, GRC and service-readiness reviews. Binding commercial commitments, risk exceptions and supplier/service acceptance belong to the authorised business owners. A named workflow or domain tool is *invoked by the provider* within its available permissions; its presence in the package is not execution evidence. Ask for exact artefact IDs, failed gates, source references and unresolved decisions.
-
-## End-to-end AI IT House process
-
-<div class="ai-example-process">
-<div class="ai-example-step"><b>1. Qualify</b><span>Clarify business need and mandatory requirements.</span></div>
-<div class="ai-example-step"><b>2. Assess</b><span>Run architecture, security, privacy and supplier-risk assessment.</span></div>
-<div class="ai-example-step"><b>3. Contract</b><span>Translate unresolved controls into enforceable clauses.</span></div>
-<div class="ai-example-step"><b>4. Implement</b><span>Track integration, access, monitoring and operational readiness.</span></div>
-<div class="ai-example-step"><b>5. Accept</b><span>Require service-acceptance evidence before declaring onboarding complete.</span></div>
-</div>
-
-### 1. Frame the engagement
-
-Before generating deliverables, establish the decision, scope, owners and source material. AI IT House should state what it knows, what it is assuming and what is still missing.
-
-### 2. Route to the correct workflow and roles
-
-Use the named workflow or ask the router to select the relevant specialists. The expected result is not a list of personas, but explicit responsibility for analysis, authoring, review, approval and hand-over.
-
-### 3. Build the semantic work product
-
-Generate or update the structured architecture, risk, design, operational or decision content. Keep claims tied to evidence and retain unresolved questions rather than silently filling them.
-
-### 4. Review and close evidence gaps
-
-Run an independent review before publication or approval. Findings should identify severity, evidence, owner and the condition for closure. If the decision is consequential, use the Justifiable Fabric to preserve the review and authority chain.
-
-### 5. Publish, approve and hand over
-
-Only after semantic review should the output be projected into a stakeholder-facing artefact. Publication may improve communication; it must not invent new decisions.
-
-## Example interaction sequence
+**Codex**
 
 ```text
-Apply the source-to-contract-to-service workflow to this SaaS purchase.
-Route each step to the correct role and identify missing evidence.
-
-/review supplier-assessment/
-/publish supplier-decision.json decision-paper docx,pdf
+$workflow-analyse inputs/ for appointment-message supplier onboarding. Describe information flows, service dependencies, assurance coverage and missing evidence.
 ```
 
-## Illustrative checkpoints and expected output
+Inspect the scope before scoring the questionnaire. A supplier may
+provide satisfactory evidence for one product and none for the product
+being purchased. Check whether subcontractors and support access appear
+in the service description.
+
+### 2. Prepare the onboarding decision
+
+**Claude**
 
 ```text
-Pre-signature gate: FAIL
-- subprocessor location evidence missing
-- RTO commitment not contractually enforceable
-- privileged support access model not accepted
-
-Pre-service-acceptance gate: PENDING
-- monitoring integration
-- CMDB/service ownership
-- tested exit/export procedure
+/layered Assess the supplier using inputs/. Prepare risk, contractual, privacy and operational acceptance needs, including exit and monitoring, in working/.
 ```
 
-## Expected artefacts
+**Codex**
 
-- requirement baseline
-- architecture fit assessment
-- security/privacy assurance
-- supplier risk statement
-- required contract clauses
-- service acceptance checklist
-- exit/data-return obligations
+```text
+$workflow-layered Assess the supplier using inputs/. Prepare risk, contractual, privacy and operational acceptance needs, including exit and monitoring, in working/.
+```
 
-## Why this example matters
+Inspect how each concern affects a concrete decision or contract
+requirement. Avoid a single unexplained risk score. The proposed
+recommendation should identify conditional acceptance, deferral or
+rejection options without impersonating the human risk owner.
 
-The process prevents “vendor selected” from being confused with “service safe and operationally accepted”.
+### 3. Review the decision package
+
+When review presents the criteria and their hash, inspect them and
+answer YES only if they match this task. The review then proceeds; that
+confirmation authorises the review, not the deliverable or a risk.
+
+**Claude**
+
+```text
+/review working/ against the supplied onboarding policies; check evidence scope, unresolved contract clauses and receiving-service responsibilities.
+```
+
+**Codex**
+
+```text
+$workflow-review working/ against the supplied onboarding policies; check evidence scope, unresolved contract clauses and receiving-service responsibilities.
+```
+
+Read located findings and compare contract schedules with the technical
+scope. A statement that encryption is available does not establish how
+this service will use it. Independent review should remain separate from
+procurement negotiation pressure.
+
+### 4. Escalate a missing assurance dependency
+
+Replace `<reported-ledger>` with the findings ledger identifier or path
+returned by the preceding review. Keep this same ledger through rework
+and independent verification; do not invent one or mark findings closed
+without verification.
+
+**Claude**
+
+```text
+/rework <reported-ledger>
+Use the current findings ledger to keep the supplier's unverified support-access controls open and prepare evidence and contract options for the responsible owners.
+```
+
+**Codex**
+
+```text
+$workflow-rework <reported-ledger>
+Use the current findings ledger to keep the supplier's unverified support-access controls open and prepare evidence and contract options for the responsible owners.
+```
+
+The illustrative supplier declines to disclose support-access evidence
+before signature. Alice replies: "Do not treat the questionnaire as
+verification; seek alternative assurance or defer onboarding." The next
+rework should preserve that dependency. The actual authority, if needed,
+records its act using the exact runtime-emitted trusted command.
+
+### 5. Reassess onboarding conditions
+
+**Claude**
+
+```text
+/layered Reassess the supplier after the new evidence or negotiated terms in inputs/. Update conditions, monitoring ownership and operational handoff before a recommendation.
+```
+
+**Codex**
+
+```text
+$workflow-layered Reassess the supplier after the new evidence or negotiated terms in inputs/. Update conditions, monitoring ownership and operational handoff before a recommendation.
+```
+
+If a new subprocessor appears, register it as a changed input and
+revisit privacy, trust and exit implications. Inspect whether conditions
+have been fulfilled or merely promised; an unresolved promise must
+remain visible at the decision.
+
+## Finish and hand off
+
+Procurement and the service owner receive the evidence register,
+assessment, contract issues, actual decisions and onboarding conditions.
+Contract signature, risk acceptance and access provisioning remain
+separately authorised actions. JAI does not grant supplier approval
+because the dossier has no formatting errors.
+
+For the wider role chain, required handoffs and blocking decisions, see
+the [workflow catalogue](../reference/workflows.md). For handling an
+actual authority request, follow [human
+authority](../operations/human-authority.md).

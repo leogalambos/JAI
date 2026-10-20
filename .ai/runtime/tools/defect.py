@@ -100,6 +100,12 @@ def cmd_repeat(a):
 
 
 # ------------------------------------------------------------------------------------------- bisect
+def _first_bad_commit(output):
+    """Return the SHA from legacy or Git 2.56 quoted bisect output, or None."""
+    match = re.search(r"^([0-9a-f]{40}) is the first (?:bad|'bad') commit", output, re.M)
+    return match.group(1) if match else None
+
+
 def cmd_bisect(a):
     """Find the first bad commit between good and bad, in a temporary worktree."""
     repo = os.path.abspath(a.repo)
@@ -136,9 +142,8 @@ def cmd_bisect(a):
             subject = git(wt, "log", "-1", "--format=%s", rev).strip()
             steps.append((rev[:10], verdict, subject))
             out = git(wt, "bisect", verdict)
-            m = re.search(r"^([0-9a-f]{40}) is the first bad commit", out, re.M)
-            if m:
-                first = m.group(1)
+            first = _first_bad_commit(out)
+            if first:
                 break
             if "only skipped commits left" in out:
                 break

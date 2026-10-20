@@ -151,8 +151,36 @@ demos are ready to use". `setup` lists three folders under
 `~/it-role-demo`.
 
 **Check it worked.** `~/it-role-demo/invoice-service` exists and, if git
-is installed, has five commits: `git -C ~/it-role-demo/invoice-service
+is installed, has seven commits: `git -C ~/it-role-demo/invoice-service
 log --oneline`.
+
+**Task walkthroughs.** The demo tool includes 29 fictional practice
+scenarios across the supported workflow domains. Use `/demo scenarios`
+for this catalogue; legacy `/demo list` lists the three tour projects.
+For example:
+
+```text
+/demo describe proposal
+/demo describe proposal --step 2
+/demo scenario proposal --to /tmp/acme-proposal
+```
+
+In Codex, use the same arguments with `$workflow-demo`. Open the active
+AI CLI in the newly created directory and read `START.md` before running
+its guided commands. Each step explains its purpose, both provider
+command forms and what to inspect. The generated Markdown and CSV files
+are fictional inputs, including labelled text derivatives of document
+types discussed in the guide. They are not real project evidence.
+Source-dependent scenarios still require an actual permitted checkout.
+
+`describe` is read-only and does not execute or complete a workflow.
+`scenario --to` creates a practice workspace; it does not run the steps.
+Use a new destination. Do not reset or overwrite existing work without
+an explicit request and the tool's backup safeguards. The legacy
+`setup` tour still creates its original three projects.
+
+See the [commented task walkthroughs](../examples/index.md) for the full
+explanations and the evidence or human decisions needed at a pause.
 
 ### /guide
 
@@ -164,7 +192,17 @@ example `/guide approvals`, `/guide templates`).
 
 **Try it.** `/guide rework`.
 
+**Scenario help.** Ask `/guide proposal` or `$workflow-guide proposal`
+to explain a supported task scenario. For a particular step, ask for its
+number, for example `/guide proposal --step 2`. The command instruction
+uses the demonstration tool's read-only `describe proposal --step 2`;
+this is assisted navigation, not automatic workflow execution or a
+separate context-loading mechanism. Use `/demo scenarios` to find exact
+IDs.
+Review-demo answer keys remain hidden until review, unless requested.
+
 ### /analyse
+
 
 **What it does.** Understands a code repository, a document library or a
 SABSA library — what it is, how it is organised, who it serves, where it
@@ -949,7 +987,7 @@ The installed guide reproduces this maintained Markdown page.
 | `~/.ai/it-role-house/tools/publication.py` | semantic-model rendering to HTML · DOCX · PPTX · XLSX · SVG; `self-test` |
 | `~/.ai/it-role-house/tools/repository.py` | `init` · `validate` · `import-open-exchange` · `export-open-exchange` · `generate-views` · `portfolio` · `impact` · `decommission` · `self-test` |
 | `~/.ai/it-role-house/fabric/fabric.py` | `status` · `verify` · `justify` · `report` · `dossier` |
-| `~/.ai/it-role-house/demo/demo.py` | `setup` · `reset` · `check` · `list` |
+| `~/.ai/it-role-house/demo/demo.py` | `setup` · `reset` · `check` · `list` · `scenarios` · `describe` · `scenario` · `reset-scenario` · `check-scenarios` |
 
 Each tool has `--help`. For example:
 

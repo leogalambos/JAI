@@ -6,6 +6,24 @@ allowed-tools: Read, Grep, Glob, Bash, Task, Agent
 
 Read `~/.ai/it-role-house/GUIDE.md`. If I named a command or topic ($ARGUMENTS), show me just that section — what it does, its syntax, what happens, the demo to try, what to expect and how to check it worked — and offer to run the demo now. If I named nothing, give me the contents and the 20-minute tour. Do not show the 'what to expect' answer keys of review demos before I have run the review, unless I ask for them. If I ask for the full website/manual, use `docs/index.md` from a source checkout or an actual verified deployment URL from project configuration. Do not invent a Pages address. If only the installed runtime is available, explain that `GUIDE.md` is its offline guide and the full maintained documentation is distributed in the repository `docs/` tree.
 
+For a task scenario ID, read its maintained demonstration description:
+`python3 ~/.ai/it-role-house/demo/demo.py describe SCENARIO`.
+Use `--step N` for a requested numbered step. Explain required inputs,
+the Claude slash command and Codex `$workflow-...` equivalent, why the
+step belongs in the sequence, and what the reader should inspect.
+Do not execute the scenario or claim a step has completed merely because
+its description was shown. Use `scenarios` to resolve a scenario ID instead
+of inventing one. Preserve the review-demo answer-key rule above.
+
+Link to the corresponding maintained page when the source documentation
+is available. For hands-on practice, explain
+`/demo scenario SCENARIO --to DIRECTORY` and its `$workflow-demo`
+equivalent. Creation requires an explicit practice destination and
+produces fictional inputs and `START.md`, not actual evidence or
+approval. If inputs, application source, independent review or human
+authority are missing, explain the pause and the evidence needed to
+resume the original workflow. Do not introduce another top-level command.
+
 
 ## Operational specification — Assisted navigation
 

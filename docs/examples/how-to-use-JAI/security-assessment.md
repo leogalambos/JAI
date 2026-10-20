@@ -5,6 +5,51 @@ review_due: 2027-01-16
 
 # Assess a deployed system with SABSA
 
+Owner: JAI maintainers. Last reviewed: 2026-10-20.
+
+## Set up the assessment workspace
+
+Use a fictional starting question: ACME's monitoring platform is already
+operating with privileged production reach. Alice needs to understand
+whether its security controls support the business service. Bob owns the
+platform and can supply dated
+records. These are illustrative roles, not evidence about an actual
+organisation. Assessment must start from the deployed system and its
+business use; a reference document is not a substitute for either.
+
+Create a new project directory named `acme-monitoring-assessment/`. Within it,
+create `input/`, `assessment/`, `working/` and `output/`. The subsequent
+`assessment/sabsa` examples refer to this project's assessment material.
+They do not imply that JAI discovers the production system automatically.
+Reserve `working/` for draft analysis and `output/` for a reviewed handoff;
+ask the selected workflow to report the paths it actually produces.
+
+Supply a small, coherent initial evidence set:
+
+- `input/business-brief.md`: service purpose, users, business attributes,
+  consequences of interruption and the question Alice must answer.
+- `input/deployment-map.md`: deployed components, trust boundaries,
+  integrations, owners and the date represented by the map.
+- `input/control-inventory.md`: controls claimed by Bob, with links to
+  available configuration or operating evidence.
+- `input/observations/`: authorized, sanitized test results, incident
+  records and control observations with their dates and environments.
+- `input/assessment-scope.md`: exclusions, allowed evidence handling,
+  assessment period, accountable owner and required human reviewers.
+
+Add `PROJECT.md` summarizing that scope. Do not start with a large folder
+of unexplained screenshots. Record why each item supports a claim and
+which deployment it describes. If restore results or supplier evidence
+are missing, list them as requested inputs and narrow the conclusion.
+An unanswered request is not a passing control.
+
+Follow the [installation guide](../../getting-started/install.md), then
+start Claude Code or Codex in `acme-monitoring-assessment/`. Use the paired
+prompts below in the provider conversation, not in a terminal shell. Read
+each resulting draft, evidence gap and actual output path before moving
+to the next stage. The assessment commands organize work; they do not
+authorize live penetration tests or grant access to customer records.
+
 Imagine that an organisation relies on a monitoring platform with privileged access to production systems. Its owner wants to know whether the deployed security is adequate and which changes deserve priority. A checklist of settings alone cannot answer that question: you first need to establish the business exposure, required outcomes and evidence that would demonstrate them.
 
 This fictional tutorial uses JAI's SABSA workflow to build that foundation. You will derive technology-independent requirements, develop a reference realisation, compare it with the observed deployment, and turn supported gaps into a transformation roadmap. The result is an assessable chain from business need to proposed change, with unresolved questions kept visible.
@@ -374,6 +419,52 @@ If the next task is a consequential decision, use the reviewed assessment as inp
     ```
 
 Request `/fabric-report <decision-engagement-ID>` in Claude or `$workflow-fabric-report <decision-engagement-ID>` in Codex afterwards. A blocked or conditional decision is a valid result. Missing supporting evidence must remain visible; later review cannot recreate an unrecorded creation history.
+
+## Respond to missing evidence and review findings
+
+Suppose Bob supplies a backup schedule but no restoration result. The
+assessment should distinguish a configured backup from demonstrated
+recoverability. Alice can reply: “Continue the assessment, but leave
+recoverability unverified. Request a dated restoration result and its
+environment; do not infer that our recovery target has been met.”
+
+Continue the current domain conversation with that evidence request.
+If a review ledger already exists, use its actual identifier:
+
+**Claude Code**
+
+```text
+/rework <reported-ledger> Incorporate Bob's supplied restoration evidence into the assessment. Preserve the recoverability finding if the evidence does not demonstrate the stated target.
+```
+
+**Codex**
+
+```text
+$workflow-rework <reported-ledger> Incorporate Bob's supplied restoration evidence into the assessment. Preserve the recoverability finding if the evidence does not demonstrate the stated target.
+```
+
+Replace the placeholder with the ledger returned by review. Ask an
+independent reviewer to verify the finding against the actual result;
+rewriting the assessment is not verification. A tabletop explanation,
+an automated backup log and a successful restoration have different
+evidential meanings.
+
+If Alice instead asks whether to launch a new payment integration, the
+question has changed from assessment to a consequential decision. Keep
+the existing assessment intact and use the optional layered extension
+above to frame the new intent, scope, alternatives and unresolved risks.
+A reply that clarifies the work does not substitute for any signed L0
+authority act required by the runtime. Follow its exact human authority
+instruction when one is emitted; do not invent an approval command.
+
+Before handoff, check that each conclusion cites available evidence and
+that missing checks remain NOT_EXECUTED or otherwise explicitly
+unverified. Separate AI editorial review, actual independent assessment
+and human acceptance. This guide has not executed the fictional case.
+
+The [enterprise workflow catalogue](../../reference/workflows.md)
+provides the related security and assurance handoffs; the scenario does
+not create a new `/assessment` command.
 
 ## Carry the result forward
 

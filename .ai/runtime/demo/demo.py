@@ -37,6 +37,7 @@ ABOUT = {
 
 
 def git(repo, *args, author=("Dana Developer", "dana@example.com"), date=None):
+    """Run git arguments in repo with fictional author/date; return captured process result."""
     env = dict(os.environ, GIT_AUTHOR_NAME=author[0], GIT_AUTHOR_EMAIL=author[1],
                GIT_COMMITTER_NAME=author[0], GIT_COMMITTER_EMAIL=author[1])
     if date:
@@ -45,7 +46,7 @@ def git(repo, *args, author=("Dana Developer", "dana@example.com"), date=None):
 
 
 def history(repo):
-    """A short, realistic history with governance gaps: a direct commit to main, a feature merged by its own
+    """Create a short history in repo with governance gaps: a direct commit to main, a feature merged by its own
     author without review, no tags, no CODEOWNERS, no changelog."""
     if not shutil.which("git"):
         print("  note: git is not installed, so invoice-service has no history; /govern will have less to assess")
@@ -91,6 +92,7 @@ def history(repo):
 
 
 def copy_project(name, to):
+    """Restore legacy fixture name beneath to, replacing it; return its directory path."""
     dst = os.path.join(to, name)
     if os.path.exists(dst):
         shutil.rmtree(dst)
@@ -101,11 +103,13 @@ def copy_project(name, to):
 
 
 def cmd_list(a):
+    """Print legacy project descriptions; a is the parsed CLI namespace."""
     for name in sorted(os.listdir(PROJECTS)):
         print(f"  {name:<17} {ABOUT.get(name, '')}")
 
 
 def cmd_setup(a):
+    """Copy legacy projects to a.to; reject existing projects unless a.force is true."""
     os.makedirs(a.to, exist_ok=True)
     existing = [n for n in os.listdir(PROJECTS) if os.path.exists(os.path.join(a.to, n))]
     if existing and not a.force:
@@ -117,17 +121,20 @@ def cmd_setup(a):
 
 
 def cmd_reset(a):
+    """Explicitly restore legacy a.name beneath a.to; exit for an unknown project."""
     if a.name not in os.listdir(PROJECTS):
         sys.exit(f"no demo project '{a.name}'; choose from {', '.join(sorted(os.listdir(PROJECTS)))}")
     print(f"restored {copy_project(a.name, a.to)} to its starting state")
 
 
 def run_tool(*args, cwd=None, env=None):
+    """Run local Python args in cwd with optional env additions; return captured process result."""
     return subprocess.run([sys.executable, *args], capture_output=True, encoding="utf-8", errors="replace", cwd=cwd,
                           env=dict(os.environ, **(env or {})))
 
 
 def cmd_check(a):
+    """Exercise legacy fixtures in a temporary directory; return zero only when checks pass."""
     work = tempfile.mkdtemp(prefix="it-role-demo-check-")
     results = []
     ok = lambda name, cond: results.append((name, bool(cond)))
@@ -184,6 +191,12 @@ def cmd_check(a):
 
 
 def main():
+    """Dispatch legacy demo operations or safe catalog exercises; return exit status."""
+    if len(sys.argv) > 1 and sys.argv[1] in {
+        "scenarios", "describe", "scenario", "reset-scenario", "check-scenarios"
+    }:
+        from scenario_demo import main as scenario_main
+        return scenario_main(sys.argv[1:])
     ap = argparse.ArgumentParser(description="Demo kit for the IS/IT role library.")
     sp = ap.add_subparsers(dest="cmd", required=True)
     sp.add_parser("list").set_defaults(fn=cmd_list)

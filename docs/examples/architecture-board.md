@@ -1,90 +1,177 @@
-# Example: Architecture Review Board pack
+# Prepare an architecture board decision
 
-<img class="ai-example-photo" src="../../assets/images/example-architecture-board.jpg" alt="Example: Architecture Review Board pack">
+Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
-## Scenario
+ACME Retail must decide whether its order service should use a shared
+integration platform or direct partner connections. Alice sponsors the
+service, Bob maintains the platform and John Doe coordinates the
+architecture board. This illustrative fiction reflects a familiar
+design-review setting and supplies no actual approval or performance
+evidence.
 
-A solution architect has completed the design model and ADR set for an integration platform. The Architecture Review Board now needs a concise, controlled decision pack covering scope, key decisions, options, dependencies, risks and the approval request.
+The useful result is a decision package that makes the options and
+consequences understandable. The board should be able to distinguish a
+mandatory constraint from a preference and a measured fact from an
+estimate.
 
-## Starting material
+## Prepare the project
 
-Provide the reviewed semantic architecture, ADRs, requirements, open risks, dependency model, roadmap and the exact decision requested from the board. Do not begin from an empty slide deck.
+Create a new `acme-architecture-board/` directory with `inputs/`,
+`working/` and `output/` beneath it. Keep received source files in
+`inputs/` and proposed work separate from material ready for handoff.
+
+Collect the business outcome, current application and interface views,
+approved architecture principles, relevant security constraints,
+service-level needs and the candidate solution descriptions. Include the
+actual decision remit: which decisions belong to this board and which
+require a different owner.
+
+Use names such as `inputs/decision-remit.md`, `inputs/options.md`,
+`inputs/current-interfaces.csv` and `inputs/architecture-principles.md`.
+Keep source dates, versions and owners in `inputs/source-register.md`.
+If throughput requirements are estimates, identify the estimator and
+uncertainty. Do not turn an illustrative reference architecture into an
+ACME-approved standard.
+
+Complete the [installation](../getting-started/install.md), then start
+Claude Code or Codex in `acme-architecture-board/`. Confirm the
+installed JAI commands or skills are available. All paths below are
+relative to that project directory; do not run the example against the
+JAI library itself.
 
 ## Run this scenario in the provider CLI
 
-Paste the following as a **request in Claude Code or Codex CLI**. It is not a terminal command, and it does not automatically authorise tool execution or a business decision:
+Use layered delivery for the decision itself. A direct document review
+can inspect the resulting paper, but cannot grant the board's authority
+or resolve a cross-domain policy conflict.
+
+Enter these instructions in the provider conversation, not a shell. The
+Claude slash command and Codex skill request the same work. They are
+workflow entry points, not a claim that routing or artefact creation is
+universally automatic. Inspect the actual output locations and use those
+paths if the workflow reports a different location from `working/`.
+
+### 1. Understand the decision boundary
+
+**Claude**
 
 ```text
-Prepare an Architecture Review Board decision pack for our integration platform from the supplied ADRs, risk register and reviewed model. Use semantic-to-enterprise-publication, show mandatory claims and omissions, and identify which board decisions remain pending.
+/analyse inputs/ for the integration decision. Separate binding constraints, preferences, evidence and unresolved questions.
 ```
 
-**You:** provide the starting material listed above, identify the accountable owners, inspect the evidence and respond to real approval gates. For material decisions, explicitly initiate `/layered <intent>` in Claude or `$workflow-layered <intent>` in Codex rather than assuming a natural-language router enforced Fabric. **Codex cannot execute protected L0 authority commands:** it must show the exact command for you to run separately in a trusted terminal.
-
-**Behind the scenes:** The agent routes architecture review and publication, creates a traceable projection and renders requested artefacts. It does not exercise the Architecture Board's authority or manufacture an approved decision. A named workflow or domain tool is *invoked by the provider* within its available permissions; its presence in the package is not execution evidence. Ask for exact artefact IDs, failed gates, source references and unresolved decisions.
-
-## End-to-end AI IT House process
-
-<div class="ai-example-process">
-<div class="ai-example-step"><b>1. Analyse</b><span>Confirm the decision, audience and source-of-truth artefacts.</span></div>
-<div class="ai-example-step"><b>2. Criteria</b><span>Fix the ARB acceptance criteria and mandatory sections.</span></div>
-<div class="ai-example-step"><b>3. Review</b><span>Independently review semantic completeness and unresolved risks.</span></div>
-<div class="ai-example-step"><b>4. Project</b><span>Create a projection manifest for the ARB audience.</span></div>
-<div class="ai-example-step"><b>5. Publish</b><span>Render DOCX/PPTX/HTML and pass publication + visual QA.</span></div>
-</div>
-
-### 1. Frame the engagement
-
-Before generating deliverables, establish the decision, scope, owners and source material. AI IT House should state what it knows, what it is assuming and what is still missing.
-
-### 2. Route to the correct workflow and roles
-
-Use the named workflow or ask the router to select the relevant specialists. The expected result is not a list of personas, but explicit responsibility for analysis, authoring, review, approval and hand-over.
-
-### 3. Build the semantic work product
-
-Generate or update the structured architecture, risk, design, operational or decision content. Keep claims tied to evidence and retain unresolved questions rather than silently filling them.
-
-### 4. Review and close evidence gaps
-
-Run an independent review before publication or approval. Findings should identify severity, evidence, owner and the condition for closure. If the decision is consequential, use the Justifiable Fabric to preserve the review and authority chain.
-
-### 5. Publish, approve and hand over
-
-Only after semantic review should the output be projected into a stakeholder-facing artefact. Publication may improve communication; it must not invent new decisions.
-
-## Example interaction sequence
+**Codex**
 
 ```text
-/analyse architecture-review.json
-/criteria architecture-review.json
-/review architecture-review.json
-/publish architecture-review.json architecture-review-pack docx,pptx,html
+$workflow-analyse inputs/ for the integration decision. Separate binding constraints, preferences, evidence and unresolved questions.
 ```
 
-## Illustrative checkpoints and expected output
+Inspect the scope before analysing products. The current platform owner
+may be a valuable source and still have a preference that deserves
+independent challenge. Confirm that all relevant decision makers and
+affected service owners are represented.
+
+### 2. Build an evidence-based option set
+
+**Claude**
 
 ```text
-Semantic review: PASS WITH 2 OPEN DECISIONS
-Projection mandatory coverage: 100%
-Omissions: 0
-
-Rendered
-- out/ARB-INT-042.docx
-- out/ARB-INT-042.pptx
-- out/ARB-INT-042.html
-
-Publication gate: PASS
-Visual QA: PASS
+/layered Prepare the integration decision from inputs/. Compare the shared platform and direct connections, including security, operability, cost basis and reversibility. Use working/ for proposed artefacts.
 ```
 
-## Expected artefacts
+**Codex**
 
-- Architecture Review Board decision pack
-- projection manifest
-- semantic / projection / render hashes
-- decision and risk appendix
-- final approval record
+```text
+$workflow-layered Prepare the integration decision from inputs/. Compare the shared platform and direct connections, including security, operability, cost basis and reversibility. Use working/ for proposed artefacts.
+```
 
-## Why this example matters
+Look for a meaningful alternative, explicit assumptions and consequences
+over the service lifecycle. An unsupported numerical score should not
+conceal a tradeoff. Check that each important conclusion identifies the
+source or missing test behind it.
 
-This demonstrates the difference between governed publication and “make me a PowerPoint”: presentation can improve, but the approved semantic content remains authoritative.
+### 3. Review the board paper
+
+When review presents the criteria and their hash, inspect them and
+answer YES only if they match this task. The review then proceeds; that
+confirmation authorises the review, not the deliverable or a risk.
+
+**Claude**
+
+```text
+/review working/ against inputs/decision-remit.md and inputs/architecture-principles.md; check option fairness and traceable rationale.
+```
+
+**Codex**
+
+```text
+$workflow-review working/ against inputs/decision-remit.md and inputs/architecture-principles.md; check option fairness and traceable rationale.
+```
+
+Inspect the findings and ensure the proposed recommendation remains
+visibly proposed. A reviewer should identify gaps without rewriting the
+author's reasoning into an apparently independent endorsement. AI
+editorial review is not a board vote.
+
+### 4. Handle an unresolved policy conflict
+
+Replace `<reported-ledger>` with the findings ledger identifier or path
+returned by the preceding review. Keep this same ledger through rework
+and independent verification; do not invent one or mark findings closed
+without verification.
+
+**Claude**
+
+```text
+/rework <reported-ledger>
+Use the current findings ledger to revise the decision paper. Keep the data-location exception open and prepare its options for the responsible authority.
+```
+
+**Codex**
+
+```text
+$workflow-rework <reported-ledger>
+Use the current findings ledger to revise the decision paper. Keep the data-location exception open and prepare its options for the responsible authority.
+```
+
+Suppose the preferred partner connection crosses a jurisdiction boundary
+prohibited by the existing policy. Alice replies: "Do not waive the
+policy; present a compliant option and the exception path separately."
+The next rework must preserve the requirement. Human authority acts,
+when needed, use only the exact runtime-emitted trusted command.
+
+### 5. Prepare the board reading pack
+
+Publication requires an approved, stable semantic snapshot and a
+registered publication profile. Use the actual approved snapshot returned
+by the workflow, then follow its manifest and rendering steps. If those
+prerequisites are absent, stop before rendering. Approval for publication
+does not itself approve the business, deployment or risk decision.
+
+**Claude**
+
+```text
+/publish Prepare a publication from the reviewed semantic artefact in working/ for output/. Preserve alternatives, pending exceptions and the recorded decision status.
+```
+
+**Codex**
+
+```text
+$workflow-publish Prepare a publication from the reviewed semantic artefact in working/ for output/. Preserve alternatives, pending exceptions and the recorded decision status.
+```
+
+If the partner revises its hosting location, register the new source and
+reopen affected analysis before publication. Inspect the rendered
+comparison table and the prominence of unresolved issues; attractive
+slides must not suppress the board's actual choice.
+
+## Finish and hand off
+
+Hand over the decision paper, source and assumption register, option
+comparison, reviewer findings and the actual decision record if one
+exists. The paper can be ready for a meeting while the decision remains
+pending. Implementation must follow the recorded authority and scope.
+
+For the wider role chain, required handoffs and blocking decisions, see
+the [workflow catalogue](../reference/workflows.md). For handling an
+actual authority request, follow [human
+authority](../operations/human-authority.md).

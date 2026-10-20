@@ -1,101 +1,173 @@
-# Example: Regulated cloud migration
+# Plan a cloud migration
 
-<img class="ai-example-photo" src="../../assets/images/cloud-migration.jpg" alt="Example: Regulated cloud migration">
+Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
-## Scenario
+ACME Manufacturing wants to move its customer portal from a data-centre
+virtual machine estate to a managed cloud platform. Alice owns the
+service, Bob coordinates operations, and John Doe chairs the migration
+decision. This is an illustrative fictional case based on a common
+migration problem; no benchmark, cloud saving or outage allowance is
+established by the example.
 
-A European financial-services organisation is moving a customer-facing platform from a private data centre to public cloud. The programme must satisfy resilience, identity, privacy, operational-readiness and cutover expectations, and the sponsor needs outputs that can survive architecture and risk scrutiny.
+The outcome is a reviewable migration and cutover plan, with a credible
+reversal path. Choosing a target platform is only one decision:
+dependencies, data transfer, support ownership and the business service
+window determine whether migration can proceed.
 
-## Starting material
+## Prepare the project
 
-Provide the business case, current architecture, target constraints, data classification, regulatory obligations, RTO/RPO objectives, identity model, supplier material, migration milestones and known risks. If some are absent, treat them as questions rather than facts.
+Create a new `acme-cloud-migration/` directory with `inputs/`,
+`working/` and `output/` beneath it. Keep received source files in
+`inputs/` and proposed work separate from material ready for handoff.
+
+Collect the current architecture, application and database inventory,
+interface catalogue, data classification, actual utilisation history,
+contract constraints and service-level requirements. Include an existing
+backup/restore report if one exists; an inventory claiming backups are
+configured is weaker evidence than a successful recovery exercise.
+
+Use names such as `inputs/service-map.md`, `inputs/dependencies.csv`,
+`inputs/utilisation.csv` and `inputs/change-window.md`. Keep source dates,
+versions and owners in `inputs/source-register.md`. If recovery time or
+the maximum tolerable data loss is unknown, ask the service owner. Do
+not infer a recovery promise from a cloud product description.
+
+Complete the [installation](../getting-started/install.md), then start
+Claude Code or Codex in `acme-cloud-migration/`. Confirm the installed
+JAI commands or skills are available. All paths below are relative to
+that project directory; do not run the example against the JAI library
+itself.
 
 ## Run this scenario in the provider CLI
 
-Paste the following as a **request in Claude Code or Codex CLI**. It is not a terminal command, and it does not automatically authorise tool execution or a business decision:
+Use layered delivery because the migration joins business constraints,
+design, implementation planning and an operational go/no-go. It
+preserves the authority boundary while allowing specialists to work on
+their own evidence.
+
+Enter these instructions in the provider conversation, not a shell. The
+Claude slash command and Codex skill request the same work. They are
+workflow entry points, not a claim that routing or artefact creation is
+universally automatic. Inspect the actual output locations and use those
+paths if the workflow reports a different location from `working/`.
+
+### 1. Read the existing estate
+
+**Claude**
 
 ```text
-Assess the proposed regulated cloud migration. Include SABSA and EA traceability, privacy/IAM/resilience review, migration-and-cutover gates, operational acceptance and an Architecture Board decision dossier. Escalate material residual risk.
+/analyse inputs/ for the portal migration. Describe dependencies, source gaps and constraints without selecting a target solution.
 ```
 
-**You:** provide the starting material listed above, identify the accountable owners, inspect the evidence and respond to real approval gates. For material decisions, explicitly initiate `/layered <intent>` in Claude or `$workflow-layered <intent>` in Codex rather than assuming a natural-language router enforced Fabric. **Codex cannot execute protected L0 authority commands:** it must show the exact command for you to run separately in a trusted terminal.
-
-**Behind the scenes:** The agent coordinates the named architecture, migration and readiness workflows, records contract/evidence links and routes unresolved risk to the actual accountable owner. It does not deploy or approve production changes merely because a workflow page lists those stages. A named workflow or domain tool is *invoked by the provider* within its available permissions; its presence in the package is not execution evidence. Ask for exact artefact IDs, failed gates, source references and unresolved decisions.
-
-## End-to-end AI IT House process
-
-<div class="ai-example-process">
-<div class="ai-example-step"><b>1. Analyse</b><span>Establish drivers, dependencies, constraints and evidence quality.</span></div>
-<div class="ai-example-step"><b>2. SABSA / EA</b><span>Build the security and enterprise architecture model with stable traceability.</span></div>
-<div class="ai-example-step"><b>3. Migration</b><span>Apply migration-and-cutover plus operational-readiness workflow gates.</span></div>
-<div class="ai-example-step"><b>4. Review</b><span>Challenge resilience, IAM, data, supplier and rollback claims.</span></div>
-<div class="ai-example-step"><b>5. Publish</b><span>Produce the ARB / risk pack and approved migration hand-over.</span></div>
-</div>
-
-### 1. Frame the engagement
-
-Before generating deliverables, establish the decision, scope, owners and source material. AI IT House should state what it knows, what it is assuming and what is still missing.
-
-### 2. Route to the correct workflow and roles
-
-Use the named workflow or ask the router to select the relevant specialists. The expected result is not a list of personas, but explicit responsibility for analysis, authoring, review, approval and hand-over.
-
-### 3. Build the semantic work product
-
-Generate or update the structured architecture, risk, design, operational or decision content. Keep claims tied to evidence and retain unresolved questions rather than silently filling them.
-
-### 4. Review and close evidence gaps
-
-Run an independent review before publication or approval. Findings should identify severity, evidence, owner and the condition for closure. If the decision is consequential, use the Justifiable Fabric to preserve the review and authority chain.
-
-### 5. Publish, approve and hand over
-
-Only after semantic review should the output be projected into a stakeholder-facing artefact. Publication may improve communication; it must not invent new decisions.
-
-## Example interaction sequence
+**Codex**
 
 ```text
-/analyse cloud-program/source
-/sabsa prepare cloud-program/sabsa — source material is under cloud-program/source
-/sabsa create cloud-program/sabsa
-/sabsa questions cloud-program/sabsa
-
-Use the migration-and-cutover and design-to-operational-readiness workflows.
-Show accountable roles, hand-offs, gate status, missing evidence and blockers.
-
-/review cloud-program/sabsa
-/publish cloud-program/architecture-review.json architecture-review-pack docx,pptx,html
+$workflow-analyse inputs/ for the portal migration. Describe dependencies, source gaps and constraints without selecting a target solution.
 ```
 
-## Illustrative checkpoints and expected output
+Inspect the estate summary against the inventory. Look for a payment
+connection, scheduled batch job or identity dependency omitted from the
+diagram. Keep the observed estate distinct from an architect's preferred
+replacement.
+
+### 2. Develop the migration decision
+
+**Claude**
 
 ```text
-SABSA
-- 36/36 matrix cells addressed
-- 0 structural errors
-- 3 client questions remain open
-
-Material risks
-R-014 privileged cloud administration is not attributable end-to-end
-R-019 recovery dependency on one identity plane exceeds stated RTO
-R-027 backup-copy residency is assumed, not evidenced
-
-Cutover blockers
-- rollback boundary not approved
-- recovery exercise evidence missing
-- CMDB/service ownership hand-over incomplete
+/layered Plan the portal migration using inputs/. Compare feasible target options, migration waves, cutover, verification and rollback. Keep proposed material in working/.
 ```
 
-## Expected artefacts
+**Codex**
 
-- SABSA architecture library and matrix status
-- target architecture / EA views
-- cloud risk and assurance pack
-- migration and cutover plan
-- operational-readiness assessment
-- Architecture Review Board pack
-- open-question and residual-risk register
+```text
+$workflow-layered Plan the portal migration using inputs/. Compare feasible target options, migration waves, cutover, verification and rollback. Keep proposed material in working/.
+```
 
-## Why this example matters
+Inspect the derived requirements and acceptance evidence. A wave plan
+should say what moves together and why. A rollback plan needs a trigger,
+owner and data-consistency consequences; the word rollback is not a
+tested procedure.
 
-The value is the full chain from business drivers and architecture to cutover and operational evidence — not merely a cloud diagram.
+### 3. Challenge the plan
+
+When review presents the criteria and their hash, inspect them and
+answer YES only if they match this task. The review then proceeds; that
+confirmation authorises the review, not the deliverable or a risk.
+
+**Claude**
+
+```text
+/review working/ against inputs/change-window.md; check dependency coverage, data reconciliation, recovery evidence and receiving-team ownership.
+```
+
+**Codex**
+
+```text
+$workflow-review working/ against inputs/change-window.md; check dependency coverage, data reconciliation, recovery evidence and receiving-team ownership.
+```
+
+Read findings as concrete problems to resolve. Confirm that success
+means a working business service, not merely successful infrastructure
+deployment. Have reviewers expose untested restoration and ambiguous
+supplier responsibilities.
+
+### 4. Respond to the findings
+
+Replace `<reported-ledger>` with the findings ledger identifier or path
+returned by the preceding review. Keep this same ledger through rework
+and independent verification; do not invent one or mark findings closed
+without verification.
+
+**Claude**
+
+```text
+/rework <reported-ledger>
+Use the current findings ledger to revise working/. Preserve the unresolved data-recovery conflict and identify the evidence needed before cutover.
+```
+
+**Codex**
+
+```text
+$workflow-rework <reported-ledger>
+Use the current findings ledger to revise working/. Preserve the unresolved data-recovery conflict and identify the evidence needed before cutover.
+```
+
+The illustrative escalation is that replication lag could exceed the
+agreed data-loss boundary. Alice replies: "Keep cutover pending; obtain
+a rehearsal and compare the reconciliation results." That is a request
+for evidence, not acceptance of the risk. Use the runtime's exact
+protected command only through the named human if authority recording is
+required.
+
+### 5. Resume with fresh evidence
+
+**Claude**
+
+```text
+/layered Reassess the portal migration using the new rehearsal evidence in inputs/. Reopen affected acceptance criteria and prepare the cutover decision for the actual authority.
+```
+
+**Codex**
+
+```text
+$workflow-layered Reassess the portal migration using the new rehearsal evidence in inputs/. Reopen affected acceptance criteria and prepare the cutover decision for the actual authority.
+```
+
+If a supplier changes the database migration method, treat it as a
+changed input and repeat the affected design and evidence work. Inspect
+source revisions and findings closure; never copy the fictional
+example's outcome into a real migration report.
+
+## Finish and hand off
+
+The receiving team has the reviewed wave and cutover plan, dependency
+inventory, recovery procedure, evidence references and outstanding
+decisions. Production execution requires the organisation's actual
+change authority. A document review does not demonstrate that failover,
+restore or rollback has succeeded.
+
+For the wider role chain, required handoffs and blocking decisions, see
+the [workflow catalogue](../reference/workflows.md). For handling an
+actual authority request, follow [human
+authority](../operations/human-authority.md).

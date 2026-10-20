@@ -1,95 +1,165 @@
-# Example: Justifiable consequential decision
+# Make a consequential decision with traceability
 
-<img class="ai-example-photo" src="../../assets/images/example-justifiable-decision.jpg" alt="Example: Justifiable consequential decision">
+Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
-## Scenario
+ACME Utilities must choose how to replace an ageing field-service
+application. Alice is the business sponsor, Bob owns operations and John
+Doe coordinates the decision. This illustrative fiction supplies a
+familiar investment and service-risk problem, not a real recommendation
+or accepted risk.
 
-An organisation must decide whether to expose a legacy invoice service to external partners before a major rewrite. Revenue pressure is high, but security defects and money-correctness risks are known.
+The objective is a decision whose reasoning and evidence can be
+inspected. The six JAI execution layers transform intent through
+meaning, policy, design, realisation and evidence. External L0 human
+authority remains outside those layers.
 
-## Starting material
+## Prepare the project
 
-Provide the business objective, exposure scope, code/review evidence, known risks, partner access model, correctness tests, compensating-control options and the human authority who can accept residual risk.
+Create a new `acme-justifiable-decision/` directory with `inputs/`,
+`working/` and `output/` beneath it. Keep received source files in
+`inputs/` and proposed work separate from material ready for handoff.
+
+Collect the business problem, decision remit, current service
+description, constraints, candidate options, cost assumptions and
+available operational evidence. Include who can authorise expenditure
+and who can accept service risk; those may be different people.
+
+Use names such as `inputs/intent.md`, `inputs/authority.md`,
+`inputs/options.md` and `inputs/evidence-register.csv`. Keep source dates,
+versions and owners in `inputs/source-register.md`. Write unknowns
+explicitly. An absence of failure reports does not establish
+reliability, and a reference document does not prove ACME's readiness.
+
+Complete the [installation](../getting-started/install.md), then start
+Claude Code or Codex in `acme-justifiable-decision/`. Confirm the
+installed JAI commands or skills are available. All paths below are
+relative to that project directory; do not run the example against the
+JAI library itself.
 
 ## Run this scenario in the provider CLI
 
-Paste the following as a **request in Claude Code or Codex CLI**. It is not a terminal command, and it does not automatically authorise tool execution or a business decision:
+Use the layered workflow directly because this is a consequential
+decision. Do not start with a stack of unrelated role prompts and later
+claim that their outputs form a verified traceability chain.
+
+Enter these instructions in the provider conversation, not a shell. The
+Claude slash command and Codex skill request the same work. They are
+workflow entry points, not a claim that routing or artefact creation is
+universally automatic. Inspect the actual output locations and use those
+paths if the workflow reports a different location from `working/`.
+
+### 1. Clarify the starting point
+
+**Claude**
 
 ```text
-Decide whether the legacy invoice service is ready for external partner exposure. Preserve the original intent, independently verify security and money correctness, record alternatives and escalate any acceptance of residual risk to me.
+/analyse inputs/ for the field-service replacement. Describe the decision boundary, stakeholders, evidence gaps and competing objectives.
 ```
 
-**You:** provide the starting material listed above, identify the accountable owners, inspect the evidence and respond to real approval gates. For material decisions, explicitly initiate `/layered <intent>` in Claude or `$workflow-layered <intent>` in Codex rather than assuming a natural-language router enforced Fabric. **Codex cannot execute protected L0 authority commands:** it must show the exact command for you to run separately in a trusted terminal.
-
-**Behind the scenes:** The layered orchestrator manages contracts and Fabric, separates L5 build from L6 measurement, reviews evidence and compiles a human authority dossier. A positive AI judgement is not an L0 approval. A named workflow or domain tool is *invoked by the provider* within its available permissions; its presence in the package is not execution evidence. Ask for exact artefact IDs, failed gates, source references and unresolved decisions.
-
-## End-to-end AI IT House process
-
-<div class="ai-example-process">
-<div class="ai-example-step"><b>1. Intent</b><span>State the consequential decision and success conditions.</span></div>
-<div class="ai-example-step"><b>2. Decompose</b><span>Translate intent into adjacent-layer requirements and contracts.</span></div>
-<div class="ai-example-step"><b>3. Evidence</b><span>Collect deterministic/observed evidence for material claims.</span></div>
-<div class="ai-example-step"><b>4. Conflict</b><span>Record contradictions, failed attempts and unresolved proposals.</span></div>
-<div class="ai-example-step"><b>5. Authority</b><span>Present a mechanically compiled dossier for human decision.</span></div>
-</div>
-
-### 1. Frame the engagement
-
-Before generating deliverables, establish the decision, scope, owners and source material. AI IT House should state what it knows, what it is assuming and what is still missing.
-
-### 2. Route to the correct workflow and roles
-
-Use the named workflow or ask the router to select the relevant specialists. The expected result is not a list of personas, but explicit responsibility for analysis, authoring, review, approval and hand-over.
-
-### 3. Build the semantic work product
-
-Generate or update the structured architecture, risk, design, operational or decision content. Keep claims tied to evidence and retain unresolved questions rather than silently filling them.
-
-### 4. Review and close evidence gaps
-
-Run an independent review before publication or approval. Findings should identify severity, evidence, owner and the condition for closure. If the decision is consequential, use the Justifiable Fabric to preserve the review and authority chain.
-
-### 5. Publish, approve and hand over
-
-Only after semantic review should the output be projected into a stakeholder-facing artefact. Publication may improve communication; it must not invent new decisions.
-
-## Example interaction sequence
+**Codex**
 
 ```text
-/layered Decide whether invoice-service is ready to be exposed to external partners. It must be secure enough for partner traffic and its money calculations must be exact.
-
-/fabric-report
-
-python3 ~/.ai/it-role-house/fabric/fabric.py verify <engagement>
-python3 ~/.ai/it-role-house/fabric/fabric.py justify <engagement> --strict
+$workflow-analyse inputs/ for the field-service replacement. Describe the decision boundary, stakeholders, evidence gaps and competing objectives.
 ```
 
-## Illustrative checkpoints and expected output
+Inspect whether the summary expresses a decision rather than an already
+selected product. If the sponsor's preferred option is a constraint,
+record who established it and why. Keep that distinct from a comparative
+conclusion.
+
+### 2. Establish the governed decision
+
+**Claude**
 
 ```text
-Fabric integrity: VERIFIED
-Open conflicts: 1
-
-Strictly justifiable findings
-✓ SQL injection exists — deterministic evidence
-✓ partner authorization gap exists — observed/test evidence
-✓ money boundary defect exists — deterministic regression evidence
-
-Authority dossier
-A fix before exposure
-B read-only exposure with compensating controls
-C time-bound risk exception
-
-Not releasable until conflict is resolved/authorised and L1 acceptance is recorded.
+/layered Prepare the field-service replacement decision from inputs/. Preserve L0 authority, independent review and explicit uncertainty. Keep proposed deliverables in working/.
 ```
 
-## Expected artefacts
+**Codex**
 
-- append-only Fabric JSONL record
-- evidence links/hashes
-- review and conflict records
-- authority dossier
-- final human acceptance / exception / rejection record
+```text
+$workflow-layered Prepare the field-service replacement decision from inputs/. Preserve L0 authority, independent review and explicit uncertainty. Keep proposed deliverables in working/.
+```
 
-## Why this example matters
+Inspect the contracts and fragments produced by the engagement.
+Requirements should remain traceable as they pass through layers; an
+infeasible requirement becomes a visible conflict or compensation need,
+not a silently deleted condition. File presence alone does not establish
+entitlement to use its conclusions.
 
-A later reviewer can inspect how the outcome earned release eligibility instead of trusting a polished retrospective explanation.
+### 3. Inspect justifiability independently
+
+**Claude**
+
+```text
+/fabric-report Independently report on the traceability fabric for this engagement. Explain supported fragments, failures and the effect of missing evidence without recording authority acts.
+```
+
+**Codex**
+
+```text
+$workflow-fabric-report Independently report on the traceability fabric for this engagement. Explain supported fragments, failures and the effect of missing evidence without recording authority acts.
+```
+
+Read the report's scope and rule failures. Integrity and well-typedness
+are different from the truth of every business claim. Do not translate a
+structurally valid chain into human acceptance or assume an unsigned
+record is equivalent to an authority signature.
+
+### 4. Handle the escalation
+
+**Claude**
+
+```text
+/layered Continue the existing replacement engagement with the unresolved conflict between the required outage boundary and the proposed migration approach. Prepare options for the appropriate authority.
+```
+
+**Codex**
+
+```text
+$workflow-layered Continue the existing replacement engagement with the unresolved conflict between the required outage boundary and the proposed migration approach. Prepare options for the appropriate authority.
+```
+
+The illustrative reply from Alice is: "Keep the outage requirement;
+compare a phased transition and an interim operating procedure before a
+decision." That reply directs further work. Where the runtime requires
+an authority act, the named human must use its exact emitted trusted
+command. The agent must not manufacture the act.
+
+### 5. Prepare the decision for its audience
+
+Publication requires an approved, stable semantic snapshot and a
+registered publication profile. Use the actual approved snapshot returned
+by the workflow, then follow its manifest and rendering steps. If those
+prerequisites are absent, stop before rendering. Approval for publication
+does not itself approve the business, deployment or risk decision.
+
+**Claude**
+
+```text
+/publish Prepare a publication from the reviewed semantic decision artefact in working/ for output/. Preserve source references, alternatives, uncertainty and actual authority state.
+```
+
+**Codex**
+
+```text
+$workflow-publish Prepare a publication from the reviewed semantic decision artefact in working/ for output/. Preserve source references, alternatives, uncertainty and actual authority state.
+```
+
+If new cost or service evidence changes the recommendation, return to
+the affected engagement work and independent review. Do not patch only
+the executive summary. Inspect the publication against its semantic
+source, especially qualifications omitted by a shorter presentation.
+
+## Finish and hand off
+
+The handoff contains the decision package, evidence and assumption
+register, independent fabric report, unresolved conflicts and genuine
+authority record where available. A pending decision is an honest
+outcome. Neither an AI review nor a polished publication substitutes for
+the accountable human decision.
+
+For the wider role chain, required handoffs and blocking decisions, see
+the [workflow catalogue](../reference/workflows.md). For handling an
+actual authority request, follow [human
+authority](../operations/human-authority.md).
