@@ -1,10 +1,11 @@
 # Bundled expert reference examples
 
-The complete version 2.1.0 library contains 96 English Markdown examples:
-32 document families at simple, medium and complex levels. This revision
-updates the original 30 example documents while preserving their reference
-identifiers and adds 66 examples, including 30 proposal-domain references.
-All distributed Markdown bytes match the supplied version 2.1.0 documents.
+The complete version 2.2.0 library contains 135 English Markdown examples:
+45 document families at simple, medium and complex levels. This revision
+preserves all 96 established examples byte-for-byte, including all 30 proposal
+references, and adds 39 engineering, transformation, security assessment and
+DevSecOps/AppSec examples. All distributed Markdown bytes match the supplied
+version 2.2.0 documents.
 
 These are AI-authored proposed professional illustrations. Organisations,
 measurements, evidence, prices, offers and execution results are fictional.

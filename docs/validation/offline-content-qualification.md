@@ -29,7 +29,7 @@ through this same runner after dependency installation.
 ## Core and full-source profiles
 
 The core distribution includes runtime configuration, DCS registries,
-96 expert Markdown references, 30 small representative JSON regression
+135 expert Markdown references, 30 small representative JSON regression
 fixtures, validators and optional provider tooling. It excludes the extended
 enterprise payload, private working inputs, build directories, caches and
 bulky execution results. Minimal existing release evidence remains subject

@@ -13,7 +13,7 @@ import hashlib
 import json
 import argparse
 import importlib.util
-from content_reference_definitions import REFERENCE_KINDS, REFERENCE_ROLE_LINKS
+from content_reference_definitions import REFERENCE_KINDS, REFERENCE_ROLE_LINKS, ENGINEERING_REFERENCE_KINDS
 from content_catalog_definitions import (TYPE_REQUIREMENTS, DOMAIN_REQUIREMENTS,
     TYPE_DOMAINS, SABSA_REQUIREMENTS, ARCHETYPE_REQUIREMENTS,
     SEMANTIC_FAMILIES, SEMANTIC_REFINEMENTS, ADDITIONAL_FAMILIES,
@@ -429,6 +429,8 @@ def build():
             complete_policy(value,kind)
             value['decisions_supported']=[f'Use the evidenced {family} scope, analysis and limitations to determine the stated next action; approval remains with existing competent JAI authority.']
             value['reference_integration']={'reference_family':family,'structural_coverage_only':True,'inherited_obligations_remain_required':True,'professional_approval':'not-human-approved'}
+            if family in ENGINEERING_REFERENCE_KINDS:
+                value['reference_integration'].update(selection_mode='explicit-kind-only', normative_activation=False, source_dcs_status='proposed-not-mapped')
             if family in REFERENCE_ROLE_LINKS:
                 value['forbidden_information'].append(unit(kind,'unapproved_commitment','object','Do not present illustrative fees, supplier commitments, legal terms, compliance claims or synthetic tests as authorised, executed or verified facts.','MUST NOT')|{'category':'existing-mandatory-gate','severity':'critical'})
                 value['commercial_integration']={'profile':'commercial-delivery/1','authority':'Existing JAI L0 and delegated supplier/client authorities only','source_role_contract_ids':role_ids,'optional_offerings':'Keep separately priced cybersecurity and managed services outside base programme totals unless explicitly included by authorised scope.'}
@@ -442,7 +444,7 @@ def build():
             'anchor_bindings':[{'source_anchor':f'dcs-{proposal_prefix}{family}.{name}','unit_id':f'{kind}.{name}'} for name in fields],
             'status':'proposed','registration':registration,'role_contract_ids':role_ids,
             'source_applicable_dcs':('kind/' if family in FAMILIES else 'proposed/kind/')+family,
-            'source_binding_status':'existing-verified' if family in FAMILIES else 'proposed-not-mapped' if family in REFERENCE_ROLE_LINKS else 'proposed-unmapped',
+            'source_binding_status':'existing-verified' if family in FAMILIES else 'proposed-not-mapped' if family in REFERENCE_ROLE_LINKS or family in ENGINEERING_REFERENCE_KINDS else 'proposed-unmapped',
             'coverage_scope':'Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.',
             'professional_approval':'not-human-approved'})
     files[CONTENT/'expert-reference-bindings.json']={'schema_version':'1.0.0','status':'proposed','professional_approval':'not-human-approved','authoring_defaults':{'delivery-manager:1':'delivery-proposal','bid-proposal-manager:1':'rfp-response','bid-proposal-manager:3':'client-proposal'},'families':reference_bindings}

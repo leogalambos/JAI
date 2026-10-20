@@ -2,6 +2,7 @@
 # Copyright (c) 2026 Leo Galambos and the Egothor team
 """Explicit reference mapping, proposed semantics and historical compatibility."""
 import copy
+import hashlib
 import json
 from pathlib import Path
 import sys
@@ -22,11 +23,11 @@ class ReferenceBindingTests(unittest.TestCase):
         cls.contracts=json.loads((ROOT/'.ai/runtime/artifacts/contracts/role-deliverables.v3.json').read_text())['contracts']
         cls.contract_ids={row['id'] for row in cls.contracts}
 
-    def test_all_96_manifest_documents_have_exact_one_to_one_registered_anchor_mappings(self):
+    def test_all_135_manifest_documents_have_exact_one_to_one_registered_anchor_mappings(self):
         manifest=json.loads((ROOT/'.ai/runtime/content/expert_references/index.json').read_text())
         by_family={row['reference_family']:row for row in self.document['families']}
-        self.assertEqual(len(by_family),32)
-        self.assertEqual(len(manifest['entries']),96)
+        self.assertEqual(len(by_family),45)
+        self.assertEqual(len(manifest['entries']),135)
         validate_reference_bindings(self.document,self.engine.specs,self.contract_ids)
         for entry in manifest['entries']:
             mapping=by_family[entry['document_kind']]
@@ -159,7 +160,7 @@ class ReferenceBindingTests(unittest.TestCase):
         standalone={record['spec_ref'] for record in self.document['families'] if record['registration']!='reused-priority-kind'}
         cases={ref:json.loads((ROOT/'.ai/runtime'/ref).read_text()) for ref in manifest['enterprise_cases']}
         selected=[case for case in cases.values() if case['contract_id'] in standalone]
-        self.assertEqual(len(selected),66)
+        self.assertEqual(len(selected),105)
         for ref in standalone:
             matching=[case for case in selected if case['contract_id']==ref]
             self.assertEqual(len(matching),3,ref)
@@ -185,3 +186,30 @@ class ReferenceBindingTests(unittest.TestCase):
         tampered['role_authority']=True
         rejected=evaluate(model,tampered)
         self.assertIn('COMPILED_SPEC_HASH_MISMATCH',{f['rule_id'] for f in rejected['findings']})
+
+    def test_engineering_specializations_are_explicit_proposals_without_role_activation(self):
+        """New example namespaces never rebind existing production role contracts."""
+        from content_reference_definitions import ENGINEERING_REFERENCE_KINDS
+        self.assertEqual(len(ENGINEERING_REFERENCE_KINDS),13)
+        for family in ENGINEERING_REFERENCE_KINDS:
+            mapping=next(row for row in self.document['families'] if row['reference_family']==family)
+            self.assertEqual(mapping['document_kind'],family)
+            self.assertEqual(mapping['source_binding_status'],'proposed-not-mapped')
+            self.assertEqual(mapping['role_contract_ids'],[])
+            policy=self.engine.specs[mapping['spec_ref']]
+            self.assertFalse(policy['reference_integration']['normative_activation'])
+            self.assertEqual(policy['reference_integration']['selection_mode'],'explicit-kind-only')
+            self.assertEqual(policy['approval']['status'],'pending')
+            resolved=self.engine.resolve(mapping['spec_ref'])
+            self.assertFalse(resolved['production_ready'])
+            self.assertFalse(resolved['role_authority'])
+            self.assertIsNone(resolved['source_role_contract_id'])
+        self.assertEqual(len(self.engine.bindings),1139)
+        self.assertFalse(any(row['document_kind'] in ENGINEERING_REFERENCE_KINDS for row in self.engine.bindings.values()))
+
+    def test_established_reference_relationships_remain_exactly_compatible(self):
+        """Pin the public v2.1 mapping, independently of newly added examples."""
+        rows=self.document['families'][:32]
+        digest=hashlib.sha256(json.dumps(rows,sort_keys=True,separators=(',',':')).encode()).hexdigest()
+        self.assertEqual(digest,'f0d96418636baebe3fc036db96e95bbfbe262c6c22da9b793adced0e6d41ad6c')
+        self.assertEqual(sum(len(row['anchor_bindings']) for row in rows),169)

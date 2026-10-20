@@ -58,6 +58,8 @@ inconsistent mappings fail; import cannot approve or activate a rule.
 | `proposal_pack_id` | Synthetic pack association, not a customer engagement identity. |
 | `target_audiences` | Explicit audience constraints for an override. |
 | `applicability_context` | Explicit flat scalar constraints for reference selection. |
+| `case_id` | Synthetic case association, never a real engagement or evidence identity. |
+| `methodology_context` | Illustrative professional methods, not a compliance attestation. |
 
 ## Stable DCS anchors
 
@@ -134,3 +136,22 @@ authoring requirements. Reference coverage is not complete project approval.
 | `proposal-compliance-matrix` | `proposal-compliance-matrix` | Proposed specialization |
 | `cybersecurity-transformation-proposal` | `cybersecurity-transformation-proposal` | Proposed specialization |
 | `managed-security-services-proposal` | `managed-security-services-proposal` | Proposed specialization |
+| `software-engineering-plan` | `software-engineering-plan` | Proposed specialization |
+| `api-interface-contract` | `api-interface-contract` | Proposed specialization |
+| `release-readiness-review` | `release-readiness-review` | Proposed specialization |
+| `transformation-baseline-assessment` | `transformation-baseline-assessment` | Proposed specialization |
+| `target-operating-model` | `target-operating-model` | Proposed specialization |
+| `transformation-execution-plan` | `transformation-execution-plan` | Proposed specialization |
+| `security-architecture-assessment` | `security-architecture-assessment` | Proposed specialization |
+| `threat-model` | `threat-model` | Proposed specialization |
+| `security-control-assessment` | `security-control-assessment` | Proposed specialization |
+| `devsecops-pipeline-design` | `devsecops-pipeline-design` | Proposed specialization |
+| `cicd-pipeline-assurance` | `cicd-pipeline-assurance` | Proposed specialization |
+| `appsec-verification-report` | `appsec-verification-report` | Proposed specialization |
+| `software-supply-chain-assessment` | `software-supply-chain-assessment` | Proposed specialization |
+
+The 13 engineering, transformation and security additions preserve source
+`proposed-not-mapped` declarations. JAI supplies explicit advisory mappings;
+it does not rewrite those declarations into approval. Their standalone
+`kind/<document-kind>` selectors are opt-in authoring blueprints, not new
+obligations on existing role contracts or permission to perform security tests.

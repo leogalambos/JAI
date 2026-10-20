@@ -48,7 +48,7 @@ class ContentCatalogueTests(unittest.TestCase):
         registry=read(CONTENT/'registry.json')
         self.assertEqual([len(registry['mappings'][key]) for key in ['artifact_types','archetypes','sabsa_views']],[28,13,19])
         complete=[s for s in registry['specifications'] if s['completeness']=='complete']
-        self.assertEqual(len(complete),1233)
+        self.assertEqual(len(complete),1246)
         self.assertEqual(len(registry['mappings']['domains']),6)
         fieldsets=[]
         for entry in complete:
@@ -72,7 +72,7 @@ class ContentCatalogueTests(unittest.TestCase):
         sys.path.insert(0,str(ROOT/'.ai/runtime/tools'))
         from content_spec import ContentSpec
         report=ContentSpec(ROOT).coverage()
-        expected={'type':28,'archetype':13,'sabsa':19,'domain':12,'document_kind':1161}
+        expected={'type':28,'archetype':13,'sabsa':19,'domain':12,'document_kind':1174}
         for category,count in expected.items():
             dimension=report['coverage_dimensions'][category]
             self.assertEqual(dimension['registered'],count)
@@ -241,7 +241,7 @@ class SemanticTaxonomyTests(unittest.TestCase):
     def test_every_historical_kind_alias_has_one_shared_family(self):
         engine=self.engine()
         self.assertEqual(len(engine.registry['kind_aliases']),1139)
-        self.assertEqual(len(engine.registry['semantic_families']),49)
+        self.assertEqual(len(engine.registry['semantic_families']),62)
         self.assertEqual(engine._taxonomy_errors(),[])
         for binding in engine.bindings.values():
             family=binding['semantic_family']
@@ -466,9 +466,9 @@ class CatalogGeneratorBehaviorTests(unittest.TestCase):
         generated=generator.build()
         bindings=generated[CONTENT/'migrations/26.10.5-binding-map.json']['bindings']
         self.assertEqual(len(bindings),1139)
-        self.assertEqual(len(generated[CONTENT/'expert-reference-bindings.json']['families']),32)
+        self.assertEqual(len(generated[CONTENT/'expert-reference-bindings.json']['families']),45)
         registry=generated[CONTENT/'registry.json']
-        self.assertEqual(len(registry['document_kinds']),1161)
+        self.assertEqual(len(registry['document_kinds']),1174)
         self.assertTrue(all(row['status']=='proposed' for row in registry['document_kinds']))
 
 
@@ -541,9 +541,9 @@ class CorpusGeneratorBehaviorTests(unittest.TestCase):
 
     def test_enterprise_cases_include_all_standalone_complexities_and_real_binding_selection(self):
         cases=self.generator.enterprise_cases(self.resolver)
-        self.assertEqual(len(cases),1291)
+        self.assertEqual(len(cases),1330)
         standalone=[case for case in cases.values() if case['contract_id'].startswith('kind/')]
-        self.assertEqual(len(standalone),66)
+        self.assertEqual(len(standalone),105)
         for case in standalone:
             resolved=self.resolver.resolve(case['contract_id'],case['context'])
             self.assertEqual(case['document_kind'],resolved['document_kind'])

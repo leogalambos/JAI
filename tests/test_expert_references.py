@@ -44,12 +44,12 @@ def _put(root, raw, name='simple.md'):
     return path
 
 
-def test_supplied_collection_has_96_unique_verified_slots(library):
-    """Manifest bytes, all ten family IDs and every mandatory anchor agree."""
+def test_supplied_collection_has_135_unique_verified_slots(library):
+    """Manifest bytes, all 45 family IDs and every mandatory anchor agree."""
     result = library.validate_all()
     assert result['status'] == 'PASS'
-    assert result['reference_count'] == 96
-    assert len({(entry['document_kind'], entry['complexity']) for entry in result['results']}) == 96
+    assert result['reference_count'] == 135
+    assert len({(entry['document_kind'], entry['complexity']) for entry in result['results']}) == 135
     assert all(entry['professional_acceptance'] == 'NOT_APPROVED' for entry in result['results'])
     assert all(entry['content_adequacy'] == 'NOT_EVALUATED' for entry in result['results'])
     assert all(entry['evidence_and_rationale_quality'] == 'NOT_EVALUATED' for entry in result['results'])
@@ -344,12 +344,12 @@ def test_registered_kind_alias_resolves_original_reference_family(library, tmp_p
     assert report['professional_acceptance'] == 'NOT_APPROVED'
 
 
-def test_all96_anchor_bindings_match_registered_required_units(library):
+def test_all135_anchor_bindings_match_registered_required_units(library):
     """Every distributed source anchor maps onto an actual kind-owned MUST unit."""
     result = library.validate_all()
-    assert result['family_count'] == 32
+    assert result['family_count'] == 45
     assert result['proposal_reference_count'] == 30
-    assert len(library.bindings) == 32
+    assert len(library.bindings) == 45
     for report in result['results']:
         assert set(report['present_units']) == set(report['required_units'])
         definition = library.specs.specs[report['spec_ref']]
@@ -436,3 +436,56 @@ def test_context_filters_cannot_hide_canonical_identity_errors(library, original
     _put(tmp_path, raw)
     with pytest.raises(ReferenceError, match='SELECTED_REFERENCE_INVALID:user'):
         library.resolve('adr','simple',user_root=tmp_path,audience='engineering')
+
+
+ENGINEERING_FAMILIES = (
+    'software-engineering-plan', 'api-interface-contract', 'release-readiness-review',
+    'transformation-baseline-assessment', 'target-operating-model', 'transformation-execution-plan',
+    'security-architecture-assessment', 'threat-model', 'security-control-assessment',
+    'devsecops-pipeline-design', 'cicd-pipeline-assurance', 'appsec-verification-report',
+    'software-supply-chain-assessment',
+)
+
+
+@pytest.mark.parametrize('family', ENGINEERING_FAMILIES)
+@pytest.mark.parametrize('complexity', ('simple', 'medium', 'complex'))
+def test_engineering_reference_selection_preserves_proposed_status(library, tmp_path, family, complexity):
+    """Every new family selects locally without evidence or authority promotion."""
+    path, report = library.resolve(family, complexity, user_root=tmp_path,
+                                   audience='engineering reviewer', context={'domain': 'security'})
+    assert path == library.base / family / f'{complexity}.md'
+    assert report['source_dcs_status'] == 'proposed-not-mapped'
+    assert report['professional_acceptance'] == 'NOT_APPROVED'
+    assert report['evidence_and_rationale_quality'] == 'NOT_EVALUATED'
+    assert report['content_adequacy'] == 'NOT_EVALUATED'
+
+
+@pytest.mark.parametrize('family', ENGINEERING_FAMILIES)
+def test_invalid_selected_engineering_override_never_falls_back(library, tmp_path, family):
+    """New domains inherit hard failure for an invalid applicable override."""
+    raw = (library.base / family / 'simple.md').read_bytes()
+    target = tmp_path / family / 'simple.md'
+    target.parent.mkdir()
+    target.write_bytes(raw.replace(b'dcs_status: proposed-not-mapped', b'dcs_status: approved'))
+    with pytest.raises(ReferenceError, match='SELECTED_REFERENCE_INVALID:engagement'):
+        library.resolve(family, 'simple', engagement_root=tmp_path)
+
+
+@pytest.mark.parametrize('field', ('case_id', 'methodology_context'))
+def test_engineering_manifest_case_metadata_must_match(library, field):
+    """Correct hashes cannot conceal a contradictory illustrative case identity."""
+    entry = next(item for item in library.entries if item['document_kind'] == 'threat-model')
+    entry[field] = 'contradictory metadata'
+    with pytest.raises(ReferenceError, match='BUNDLED_INTEGRITY_MISMATCH'):
+        library.validate_all()
+
+
+def test_all_established_reference_bytes_remain_unchanged(library):
+    """Pin the 96 public example identities and hashes, including 30 proposals."""
+    established = [entry for entry in library.entries if entry['document_kind'] not in ENGINEERING_FAMILIES]
+    assert len(established) == 96
+    fingerprint = hashlib.sha256(json.dumps(sorted((entry['reference_id'], entry['sha256'])
+                                                  for entry in established), separators=(',', ':')).encode()).hexdigest()
+    assert fingerprint == '0e0ebf739017564a9195328211f884bd6b2038e336648c7d2116e671f3c50a5a'
+    for entry in established:
+        assert hashlib.sha256((library.base / entry['path']).read_bytes()).hexdigest() == entry['sha256']

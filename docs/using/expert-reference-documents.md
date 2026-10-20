@@ -2,14 +2,18 @@
 
 Owner: JAI maintainers · Last reviewed: 2026-10-20
 
-JAI includes 96 complete English Markdown examples: three complexity levels
-for each of 32 document families. They work immediately after installation;
+JAI includes 135 complete English Markdown examples: three complexity levels
+for each of 45 document families. They work immediately after installation;
 customer documents and provider accounts are optional.
 
 The library covers decisions, architecture, requirements, strategy, policy,
 implementation, migration, testing, operations, assurance and proposals.
 Ten proposal families provide 30 examples for executive, technical, delivery,
 commercial, contractual, RFP and optional security-service components.
+Thirteen additional families cover engineering, transformation, security
+assessment, DevSecOps and AppSec. See the
+[engineering and security guide](engineering-security-references.md) for
+selection, worked cases and evidence boundaries.
 The installed `list` command reports the complete family inventory.
 Each family has `simple`, `medium` and `complex` examples.
 Select complexity for the number of dependencies, alternatives and risks,
@@ -28,9 +32,10 @@ presentation. Establish project facts separately, resolve the registered DCS
 contract and retain independent review and existing JAI human authority.
 Replacing a reference never changes DCS MUST, MAY or MUST NOT obligations.
 
-The complete library replaces the earlier bundled collection. Existing
-reference IDs remain stable; revised supplied documents have new integrity
-hashes. Updates do not overwrite separately stored user overrides.
+Library v2.2.0 preserves all 96 established reference documents, identifiers,
+integrity hashes and DCS relationships unchanged, including the 30 proposal
+examples. It adds 39 examples. Updates do not overwrite separately stored
+user overrides.
 See [proposal production](proposal-production.md) for coherent packages and
 [colleague evaluation](../validation/proposal-pilot.md) for the pilot rubric.
 

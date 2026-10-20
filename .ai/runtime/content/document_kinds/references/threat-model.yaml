@@ -1,0 +1,569 @@
+{
+  "license": "SPDX-License-Identifier: BSD-4-Clause",
+  "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
+  "id": "kind/threat-model",
+  "version": "1.1.0",
+  "owner": "Content Standards Owner",
+  "status": "proposed",
+  "effective_from": null,
+  "category": "document_kind",
+  "completeness": "complete",
+  "inherits": [
+    "domain/security"
+  ],
+  "applies_to": {
+    "document_kind": "threat-model"
+  },
+  "purpose": "Provide the proposed threat-model information required for a bounded receiving-role decision or operational action.",
+  "target_audience": [
+    "competent independent domain reviewer",
+    "accountable receiving role and existing JAI authority"
+  ],
+  "decisions_supported": [
+    "Use the evidenced threat-model scope, analysis and limitations to determine the stated next action; approval remains with existing competent JAI authority."
+  ],
+  "intended_usage": "Advisory content contract; professional approval pending",
+  "non_goals": [
+    "Replace JAI authority",
+    "Claim a professional framework requirement without a cited source"
+  ],
+  "required_information": [
+    {
+      "id": "threat-model.assets_and_scope",
+      "semantic_fields": [
+        "assets_and_scope"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Identify valuable assets, business invariants, attacker assumptions and authorized modeling scope.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Identify valuable assets, business invariants, attacker assumptions and authorized modeling scope.",
+        "source_refs": [
+          "content/expert_references/threat-model/simple.md",
+          "content/expert_references/threat-model/medium.md",
+          "content/expert_references/threat-model/complex.md",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-authored proposed professional reference integration",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "threat-model.trust_flows",
+      "semantic_fields": [
+        "trust_flows"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Describe components, data flows, trust crossings, identities and security-relevant dependencies.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Describe components, data flows, trust crossings, identities and security-relevant dependencies.",
+        "source_refs": [
+          "content/expert_references/threat-model/simple.md",
+          "content/expert_references/threat-model/medium.md",
+          "content/expert_references/threat-model/complex.md",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-authored proposed professional reference integration",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "threat-model.threat_scenarios",
+      "semantic_fields": [
+        "threat_scenarios"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Enumerate credible misuse scenarios with preconditions, attack paths and business consequences.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Enumerate credible misuse scenarios with preconditions, attack paths and business consequences.",
+        "source_refs": [
+          "content/expert_references/threat-model/simple.md",
+          "content/expert_references/threat-model/medium.md",
+          "content/expert_references/threat-model/complex.md",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-authored proposed professional reference integration",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "threat-model.security_controls",
+      "semantic_fields": [
+        "security_controls"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Map mitigations to threats, responsible owners and defense limitations without claiming effectiveness.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Map mitigations to threats, responsible owners and defense limitations without claiming effectiveness.",
+        "source_refs": [
+          "content/expert_references/threat-model/simple.md",
+          "content/expert_references/threat-model/medium.md",
+          "content/expert_references/threat-model/complex.md",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-authored proposed professional reference integration",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "threat-model.validation_plan",
+      "semantic_fields": [
+        "validation_plan"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Define reproducible abuse-case, authorization and recovery checks with expected evidence.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Define reproducible abuse-case, authorization and recovery checks with expected evidence.",
+        "source_refs": [
+          "content/expert_references/threat-model/simple.md",
+          "content/expert_references/threat-model/medium.md",
+          "content/expert_references/threat-model/complex.md",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-authored proposed professional reference integration",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "threat-model.residual_risk",
+      "semantic_fields": [
+        "residual_risk"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Evaluate remaining exposure, uncertain assumptions and the separate human risk disposition.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Evaluate remaining exposure, uncertain assumptions and the separate human risk disposition.",
+        "source_refs": [
+          "content/expert_references/threat-model/simple.md",
+          "content/expert_references/threat-model/medium.md",
+          "content/expert_references/threat-model/complex.md",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-authored proposed professional reference integration",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    }
+  ],
+  "conditional_information": [
+    {
+      "id": "threat-model.privacy_analysis",
+      "semantic_fields": [
+        "privacy_analysis"
+      ],
+      "datatype": "object",
+      "obligation": "CONDITIONAL",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "when": {
+        "field": "processes_personal_data",
+        "op": "eq",
+        "value": true
+      }
+    },
+    {
+      "id": "threat-model.regulatory_analysis",
+      "semantic_fields": [
+        "regulatory_analysis"
+      ],
+      "datatype": "object",
+      "obligation": "CONDITIONAL",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "when": {
+        "field": "regulatory_requirement",
+        "op": "eq",
+        "value": true
+      }
+    }
+  ],
+  "optional_information": [
+    {
+      "id": "threat-model.supporting_annex",
+      "semantic_fields": [
+        "supporting_annex"
+      ],
+      "datatype": "object",
+      "obligation": "MAY",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    }
+  ],
+  "forbidden_information": [
+    {
+      "id": "threat-model.unsupported_material_claim",
+      "semantic_fields": [
+        "unsupported_material_claim"
+      ],
+      "datatype": "object",
+      "obligation": "MUST NOT",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Do not assert material conclusions without dated evidence or an explicitly labelled assumption.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Do not assert material conclusions without dated evidence or an explicitly labelled assumption.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "category": "critical-content",
+      "severity": "critical"
+    }
+  ],
+  "low_value_information": [
+    {
+      "id": "threat-model.irrelevant_detail",
+      "semantic_fields": [
+        "irrelevant_detail"
+      ],
+      "datatype": "object",
+      "obligation": "SHOULD NOT",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Remove material unrelated to the stated purpose, required input analysis or receiving-role action.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Remove material unrelated to the stated purpose, required input analysis or receiving-role action.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json",
+          "content/rules/global-invariants.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2",
+      "category": "editorial",
+      "severity": "minor"
+    }
+  ],
+  "size_budget": {
+    "metric": "semantic_units",
+    "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
+    "minimum_is_quality_gate": false,
+    "calibration_status": "synthetic-only",
+    "allowance_rules": [
+      "Document complexity and audience need; excess requires review, not automatic rejection."
+    ],
+    "annex_rules": [
+      "Reference canonical detail rather than repeat it."
+    ]
+  },
+  "sources": {
+    "evidence_grade": "AI-derived proposal",
+    "provenance": [
+      "Approved implementation direction; content specifics remain proposed."
+    ],
+    "freshness": "review on source or policy change",
+    "claim_to_evidence_rules": [
+      "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ]
+  },
+  "overlap": {
+    "excluded_content": [
+      "Unrelated material"
+    ],
+    "deduplication_rules": [
+      "Reference canonical claims by stable ID."
+    ],
+    "canonical_reference_rules": [
+      "Preserve source version and hash."
+    ]
+  },
+  "runtime": {
+    "validators": [
+      "content_spec.py lint-registry"
+    ],
+    "judge_rubric": [
+      "Evaluate actual meaning, applicability, evidence and contradictions."
+    ],
+    "gate": "advisory",
+    "reviewer_class": "independent competent domain reviewer",
+    "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
+  },
+  "lifecycle": {
+    "effective_version": "1.1.0",
+    "deprecation": null,
+    "migration": "26.10.5 explicit sidecar binding",
+    "golden_case_refs": [],
+    "change_history": [
+      "Initial proposed foundation; no professional approval asserted.",
+      "26.10.8 substantive proposed obligations; no professional approval asserted."
+    ]
+  },
+  "jai": {
+    "L1": "purpose, audience and decision_supported",
+    "L2": "typed semantic information units",
+    "L3": "global invariants, precedence and acceptance",
+    "L4": "content blueprint and profile reference",
+    "L5": "canonical artifact source; existing producer",
+    "L6": "evidence and independent review; existing fabric authority references",
+    "L0": "Human professional approval through existing JAI authority acts; never AI self-approval"
+  },
+  "approval": {
+    "status": "pending",
+    "authority_ref": null,
+    "independent_of_author": true,
+    "mechanism": "Existing JAI L0 / fabric authority process"
+  },
+  "calibration_status": "synthetic-only",
+  "semantic_family": "threat-model",
+  "applicability_policy": {
+    "unconditional_units": "N/A prohibited",
+    "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
+  },
+  "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
+  "reference_integration": {
+    "reference_family": "threat-model",
+    "structural_coverage_only": true,
+    "inherited_obligations_remain_required": true,
+    "professional_approval": "not-human-approved",
+    "selection_mode": "explicit-kind-only",
+    "normative_activation": false,
+    "source_dcs_status": "proposed-not-mapped"
+  }
+}

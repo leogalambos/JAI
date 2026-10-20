@@ -2,7 +2,7 @@
 
 Owner: JAI maintainers · Last reviewed: 2026-10-20
 
-The 26.10.10 content implementation describes what an output must contain,
+The 26.10.11 content implementation describes what an output must contain,
 why each obligation exists and which existing role contract it supports. It
 extends JAI through `jai/profiles/content-profile.json`; it does not introduce a
 second semantic model, approval service or publication renderer.

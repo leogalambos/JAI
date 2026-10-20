@@ -9621,6 +9621,110 @@
       "path": "document_kinds/references/managed-security-services-proposal.yaml"
     },
     {
+      "id": "kind/software-engineering-plan",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/software-engineering-plan.yaml"
+    },
+    {
+      "id": "kind/api-interface-contract",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/api-interface-contract.yaml"
+    },
+    {
+      "id": "kind/release-readiness-review",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/release-readiness-review.yaml"
+    },
+    {
+      "id": "kind/transformation-baseline-assessment",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/transformation-baseline-assessment.yaml"
+    },
+    {
+      "id": "kind/target-operating-model",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/target-operating-model.yaml"
+    },
+    {
+      "id": "kind/transformation-execution-plan",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/transformation-execution-plan.yaml"
+    },
+    {
+      "id": "kind/security-architecture-assessment",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/security-architecture-assessment.yaml"
+    },
+    {
+      "id": "kind/threat-model",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/threat-model.yaml"
+    },
+    {
+      "id": "kind/security-control-assessment",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/security-control-assessment.yaml"
+    },
+    {
+      "id": "kind/devsecops-pipeline-design",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/devsecops-pipeline-design.yaml"
+    },
+    {
+      "id": "kind/cicd-pipeline-assurance",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/cicd-pipeline-assurance.yaml"
+    },
+    {
+      "id": "kind/appsec-verification-report",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/appsec-verification-report.yaml"
+    },
+    {
+      "id": "kind/software-supply-chain-assessment",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/software-supply-chain-assessment.yaml"
+    },
+    {
       "id": "archetype/architecture-definition",
       "version": "1.1.0",
       "category": "archetype",
@@ -20282,6 +20386,97 @@
       "spec_ref": "kind/managed-security-services-proposal",
       "completeness": "complete",
       "status": "proposed"
+    },
+    {
+      "id": "software-engineering-plan",
+      "artifact_types": [],
+      "spec_ref": "kind/software-engineering-plan",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "api-interface-contract",
+      "artifact_types": [],
+      "spec_ref": "kind/api-interface-contract",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "release-readiness-review",
+      "artifact_types": [],
+      "spec_ref": "kind/release-readiness-review",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "transformation-baseline-assessment",
+      "artifact_types": [],
+      "spec_ref": "kind/transformation-baseline-assessment",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "target-operating-model",
+      "artifact_types": [],
+      "spec_ref": "kind/target-operating-model",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "transformation-execution-plan",
+      "artifact_types": [],
+      "spec_ref": "kind/transformation-execution-plan",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "security-architecture-assessment",
+      "artifact_types": [],
+      "spec_ref": "kind/security-architecture-assessment",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "threat-model",
+      "artifact_types": [],
+      "spec_ref": "kind/threat-model",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "security-control-assessment",
+      "artifact_types": [],
+      "spec_ref": "kind/security-control-assessment",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "devsecops-pipeline-design",
+      "artifact_types": [],
+      "spec_ref": "kind/devsecops-pipeline-design",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "cicd-pipeline-assurance",
+      "artifact_types": [],
+      "spec_ref": "kind/cicd-pipeline-assurance",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "appsec-verification-report",
+      "artifact_types": [],
+      "spec_ref": "kind/appsec-verification-report",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "software-supply-chain-assessment",
+      "artifact_types": [],
+      "spec_ref": "kind/software-supply-chain-assessment",
+      "completeness": "complete",
+      "status": "proposed"
     }
   ],
   "mappings": {
@@ -20625,6 +20820,71 @@
     {
       "id": "managed-security-services-proposal",
       "spec_ref": "kind/managed-security-services-proposal",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "software-engineering-plan",
+      "spec_ref": "kind/software-engineering-plan",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "api-interface-contract",
+      "spec_ref": "kind/api-interface-contract",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "release-readiness-review",
+      "spec_ref": "kind/release-readiness-review",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "transformation-baseline-assessment",
+      "spec_ref": "kind/transformation-baseline-assessment",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "target-operating-model",
+      "spec_ref": "kind/target-operating-model",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "transformation-execution-plan",
+      "spec_ref": "kind/transformation-execution-plan",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "security-architecture-assessment",
+      "spec_ref": "kind/security-architecture-assessment",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "threat-model",
+      "spec_ref": "kind/threat-model",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "security-control-assessment",
+      "spec_ref": "kind/security-control-assessment",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "devsecops-pipeline-design",
+      "spec_ref": "kind/devsecops-pipeline-design",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "cicd-pipeline-assurance",
+      "spec_ref": "kind/cicd-pipeline-assurance",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "appsec-verification-report",
+      "spec_ref": "kind/appsec-verification-report",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "software-supply-chain-assessment",
+      "spec_ref": "kind/software-supply-chain-assessment",
       "basis": "Authored proposed reference-family information obligations; not professional approval."
     }
   ],

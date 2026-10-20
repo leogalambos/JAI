@@ -1,5 +1,25 @@
 # Changelog
 
+## 26.10.11 — Engineering and Security Expert References (candidate)
+
+- Integrates complete Expert Reference Library v2.2.0: 135 English
+  examples across 45 families. Preserves all 96 established documents,
+  their hashes, reference identities and existing DCS relationships,
+  including all 30 proposal examples and proposal-package production
+  capabilities. - Adds 39 engineering, transformation, security
+  assessment, DevSecOps and AppSec references through 13 explicit
+  proposed standalone specializations. Source anchors remain proposed;
+  no existing role contract acquires new normative obligations or
+  approval authority from this import. - Extends shared reference
+  selection and offline regression coverage while preserving override
+  precedence and explicit invalid-override failures. - Adds an
+  engineering/security casebook and optional professional review rubric
+  to MkDocs, distinguishing synthetic plans, executed evidence,
+  specialist recommendations and existing JAI L0 human approval. -
+  Retains mandatory offline A–H qualification, publication controls and
+  separation of core distribution from extended synthetic evaluation
+  data.
+
 ## 26.10.10 — Expert References and Proposal Production (candidate)
 
 - Integrates the complete 96-document English expert reference library

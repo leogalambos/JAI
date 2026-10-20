@@ -229,7 +229,7 @@ class ExpertReferences:
                     or not all(isinstance(unit, str) for unit in entry['anchor_ids'])
                     for entry in self.entries):
                 raise ReferenceError('MANIFEST_ENTRIES_INVALID')
-            if len(self.families) != 32 or len(set(self.families)) != 32 or set(self.manifest['levels']) != set(LEVELS):
+            if len(self.families) != 45 or len(set(self.families)) != 45 or set(self.manifest['levels']) != set(LEVELS):
                 raise ReferenceError('MANIFEST_FAMILIES_INVALID')
             self.bindings = self._load_bindings()
         except (OSError, ValueError, KeyError, TypeError, AttributeError):
@@ -361,6 +361,7 @@ class ExpertReferences:
                     or entry.get('language') != meta['language']
                     or entry.get('provenance') != meta['provenance']
                     or entry.get('approval_status') != meta['approval_status']
+                    or any(entry.get(field) != meta.get(field) for field in ('case_id', 'methodology_context'))
                     or entry.get('proposal_pack_id') != meta.get('proposal_pack_id')
                     or bool(meta.get('proposal_pack_id')) != (family in self.manifest.get('proposal_extension', {}).get('new_families', []))):
                 raise ReferenceError('BUNDLED_INTEGRITY_MISMATCH')
@@ -394,7 +395,7 @@ class ExpertReferences:
                 'findings': size_findings}
 
     def validate_all(self):
-        """Validate all 96 bundled manifest slots and their raw checksums.
+        """Validate all 135 bundled manifest slots and their raw checksums.
 
         Returns:
             Sanitized collection count and results; contains only public metadata.
@@ -404,8 +405,8 @@ class ExpertReferences:
         expected = {(kind, level) for kind in self.families for level in LEVELS}
         try:
             slots = [(item['document_kind'], item['complexity']) for item in self.entries]
-            if (len(slots) != 96 or set(slots) != expected or self.manifest['reference_count'] != 96
-                    or len({item['reference_id'] for item in self.entries}) != 96):
+            if (len(slots) != 135 or set(slots) != expected or self.manifest['reference_count'] != 135
+                    or len({item['reference_id'] for item in self.entries}) != 135):
                 raise ReferenceError('MANIFEST_COVERAGE_INVALID')
             results = []
             for entry in self.entries:

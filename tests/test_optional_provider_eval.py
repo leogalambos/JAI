@@ -148,7 +148,7 @@ def test_untrusted_observed_metadata_cannot_expose_absolute_paths():
     assert parsed['usage'] == {}
 
 
-@pytest.mark.parametrize('family,expected', [('strategy','it-digital-strategy'), ('client-proposal','client-proposal'), ('managed-security-services-proposal','managed-security-services-proposal')])
+@pytest.mark.parametrize('family,expected', [('strategy','it-digital-strategy'), ('client-proposal','client-proposal'), ('managed-security-services-proposal','managed-security-services-proposal'), ('software-engineering-plan','software-engineering-plan'), ('api-interface-contract','api-interface-contract'), ('release-readiness-review','release-readiness-review'), ('transformation-baseline-assessment','transformation-baseline-assessment'), ('target-operating-model','target-operating-model'), ('transformation-execution-plan','transformation-execution-plan'), ('security-architecture-assessment','security-architecture-assessment'), ('threat-model','threat-model'), ('security-control-assessment','security-control-assessment'), ('devsecops-pipeline-design','devsecops-pipeline-design'), ('cicd-pipeline-assurance','cicd-pipeline-assurance'), ('appsec-verification-report','appsec-verification-report'), ('software-supply-chain-assessment','software-supply-chain-assessment')])
 def test_plan_supports_mapped_and_proposed_families_without_inference(family, expected):
     """Expanded bundled families reuse actual registered specs, never guessed IDs."""
     with patch.object(provider.subprocess, 'Popen', side_effect=AssertionError('no inference')):

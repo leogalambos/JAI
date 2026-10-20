@@ -6,7 +6,7 @@
   "production_ready": false,
   "automatically_applied_to_policy": false,
   "scope": "Descriptive word-count envelopes and QA deltas from synthetic development scenarios; not enterprise calibration.",
-  "corpus_manifest_hash": "decbc60a6159a5e62e05744d759eb8ca9da2f37ac8852c0d8130d25520a3c8ef",
+  "corpus_manifest_hash": "f3860652ebe37812d085c31295c242f2f0b4f47ecfee6100bd776fc3aa539b69",
   "candidates": {
     "adr": {
       "document_kind": "adr",
@@ -1281,5 +1281,5 @@
       "trend_hash": "5717234768d747eebf2328fb083b0de3a85b6a4081e80661f0b17e5afbb66b6b"
     }
   },
-  "development_evidence_hash": "26b3a458a7c58f56fc4ad7135e2ac1aa8d3b2b127bdb99f8d181d2fdc5cc004c"
+  "development_evidence_hash": "a36609cdf120aea298b631113a139b77d3d03bccd4a82fa1eaa4e7ce2e4fcf74"
 }

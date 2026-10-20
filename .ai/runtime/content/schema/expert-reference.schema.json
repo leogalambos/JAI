@@ -107,6 +107,16 @@
           "null"
         ]
       }
+    },
+    "case_id": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 200
+    },
+    "methodology_context": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 2000
     }
   },
   "allOf": [
