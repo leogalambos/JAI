@@ -115,6 +115,7 @@ def test_cli_reports_missing_execution_and_scan_success(tmp_path,capsys):
 
 
 def test_timeout_preserves_partial_stdout_and_stderr(monkeypatch):
+    monkeypatch.delenv('JAI_OFFLINE_STREAM', raising=False)
     import offline_guard
     import subprocess
     class Process:
@@ -135,6 +136,7 @@ def test_timeout_preserves_partial_stdout_and_stderr(monkeypatch):
 
 
 def test_cli_accepts_explicit_finite_timeout_without_changing_default(monkeypatch):
+    monkeypatch.delenv('JAI_OFFLINE_STREAM', raising=False)
     import offline_guard
     calls = []
     def execute(command, root, timeout=900):
@@ -147,3 +149,90 @@ def test_cli_accepts_explicit_finite_timeout_without_changing_default(monkeypatc
     for value in ('0', '-1', 'nan', 'inf'):
         with pytest.raises(SystemExit):
             offline_guard.main(['run', '--timeout', value, '--', 'fixture'])
+
+
+def test_streaming_delivers_output_before_child_completion(tmp_path, capsys):
+    import offline_guard
+    release = tmp_path / 'release'
+    # The sink releases the child only when its first output is delivered. A
+    # buffered implementation times out, without relying on timing sleeps.
+    class Sink:
+        def write(self, value):
+            if 'ready' in value:
+                release.touch()
+            return len(value)
+        def flush(self):
+            pass
+    with pytest.MonkeyPatch.context() as patch:
+        patch.setattr(offline_guard.sys, 'stdout', Sink())
+        result = offline_guard.run_offline([
+            sys.executable, '-u', '-c',
+            "from pathlib import Path; print('ready', flush=True); "
+            f"p=Path({str(release)!r}); "
+            "exec('while not p.exists(): pass'); print('finished')",
+        ], ROOT, timeout=3, stream=True)
+    assert result['status'] == 'PASS', result
+    assert result['stdout'] == 'ready\nfinished\n'
+
+
+def test_streaming_timeout_retains_both_output_channels(capsys):
+    from offline_guard import run_offline
+    result = run_offline([sys.executable, '-u', '-c',
+                          "import sys; print('progress'); print('diagnostic', file=sys.stderr); exec('while True: pass')"],
+                         ROOT, timeout=.5, stream=True)
+    assert result['reason'] == 'OFFLINE_TIMEOUT'
+    assert result['stdout'] == 'progress\n'
+    assert result['stderr'] == 'diagnostic\n'
+    output = capsys.readouterr()
+    assert output.out == result['stdout']
+    assert output.err == result['stderr']
+
+
+def test_stream_setting_is_explicit_and_preserved_for_nested_guards(monkeypatch, capsys):
+    from offline_guard import run_offline, safe_environment
+    monkeypatch.setenv('JAI_OFFLINE_STREAM', '1')
+    assert safe_environment(ROOT)['JAI_OFFLINE_STREAM'] == '1'
+    result = run_offline([sys.executable, '-c', "print('captured')"], ROOT, stream=False)
+    assert result['stdout'] == 'captured\n'
+    assert capsys.readouterr().out == ''
+    result = run_offline([sys.executable, '-c', "print('inherited')"], ROOT)
+    assert result['stdout'] == 'inherited\n'
+    assert capsys.readouterr().out == 'inherited\n'
+
+
+def test_cli_stream_prints_child_output_once(capsys):
+    from offline_guard import main
+    assert main(['run', '--stream', '--', sys.executable, '-c', "print('unique-output')"]) == 0
+    assert capsys.readouterr().out.count('unique-output') == 1
+
+
+def test_streaming_preserves_unicode_without_newlines(capsys):
+    from offline_guard import run_offline
+    result = run_offline([sys.executable, '-c',
+                          "import os; os.write(1, bytes([195])); os.write(1, bytes([169])); os.write(2, b'no-newline')"],
+                         ROOT, stream=True)
+    assert result['status'] == 'PASS'
+    assert result['stdout'] == 'é'
+    assert result['stderr'] == 'no-newline'
+    output = capsys.readouterr()
+    assert output.out == 'é' and output.err == 'no-newline'
+
+
+def test_streaming_timeout_covers_descendants_holding_pipes():
+    from offline_guard import run_offline
+    result = run_offline([sys.executable, '-u', '-c',
+                          "import subprocess,sys; subprocess.Popen([sys.executable, '-c', 'while True: pass']); print('parent complete')"],
+                         ROOT, timeout=.5, stream=True)
+    assert result['reason'] == 'OFFLINE_TIMEOUT'
+    assert result['returncode'] == 124
+    assert result['stdout'] == 'parent complete\n'
+
+
+def test_nested_cli_inherits_streaming_without_replaying_output(capsys):
+    from offline_guard import main
+    guard = ROOT / '.ai/runtime/tools/offline_guard.py'
+    assert main(['run', '--stream', '--', sys.executable, str(guard), 'run', '--',
+                 sys.executable, '-c', "print('nested-progress')"]) == 0
+    output = capsys.readouterr()
+    assert output.out.count('nested-progress') == 1
+    assert output.out.count('linux-seccomp-inherited') == 2

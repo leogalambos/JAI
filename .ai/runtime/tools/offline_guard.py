@@ -15,6 +15,7 @@ from __future__ import annotations
 import argparse
 import ast
 import ctypes
+import codecs
 import errno
 import json
 import math
@@ -25,6 +26,8 @@ import shlex
 import signal
 import subprocess
 import sys
+import threading
+import time
 
 _PROVIDERS = {'codex', 'claude', 'codex.exe', 'claude.exe', 'codex.cmd', 'claude.cmd'}
 _ALLOWED_ENV = ('PATH', 'HOME', 'USER', 'LOGNAME', 'TMPDIR', 'TMP', 'TEMP',
@@ -111,7 +114,8 @@ def safe_environment(root):
         root: Trusted project root, used only to locate the guard bootstrap.
     Returns:
         New environment containing selected operating-system settings and fixed
-        offline controls. Arbitrary parent variables and credential keys are
+        offline controls, including the explicit streaming preference when set.
+        Arbitrary parent variables and credential keys are
         neither copied nor inspected. Credential-file access is not sandboxed.
     """
     environment = {key: os.environ[key] for key in _ALLOWED_ENV if key in os.environ}
@@ -121,6 +125,8 @@ def safe_environment(root):
     environment['PYTEST_DISABLE_PLUGIN_AUTOLOAD'] = '1'
     environment['PYTHONNOUSERSITE'] = '1'
     environment['PYTHONDONTWRITEBYTECODE'] = '1'
+    if os.environ.get('JAI_OFFLINE_STREAM') == '1':
+        environment['JAI_OFFLINE_STREAM'] = '1'
     return environment
 
 
@@ -181,13 +187,33 @@ def _install_network_filter():
         library.seccomp_release(context)
 
 
-def run_offline(command, root, timeout=900):
+def _stream_pipe(pipe, sink, captured):
+    decoder = codecs.getincrementaldecoder(pipe.encoding)(errors='replace')
+    try:
+        while chunk := pipe.buffer.read1(65536):
+            value = decoder.decode(chunk)
+            captured.append(value)
+            sink.write(value)
+            sink.flush()
+        value = decoder.decode(b'', final=True)
+        captured.append(value)
+        if value:
+            sink.write(value)
+            sink.flush()
+    finally:
+        pipe.close()
+
+
+def run_offline(command, root, timeout=900, stream=None):
     """Run a trusted command under inherited Linux network-denial controls.
 
     Args:
         command: Nonempty argument list, never executed through an implicit shell.
         root: Working directory for the child process.
         timeout: Positive maximum wall seconds; expiry is nonpassing.
+        stream: Forward child output immediately while retaining capture. None
+            inherits the explicit JAI_OFFLINE_STREAM=1 setting; False disables
+            forwarding. True propagates streaming to nested guarded commands.
     Returns:
         Status, exit code and captured local output. NOT_EXECUTED is returned
         when required OS controls cannot load, not a waiver or qualification.
@@ -198,13 +224,36 @@ def run_offline(command, root, timeout=900):
         raise ValueError('INVALID_OFFLINE_COMMAND_OR_TIMEOUT')
     if _provider_command(command):
         return {'status': 'FAIL', 'returncode': 1, 'reason': 'LIVE_PROVIDER_FORBIDDEN', 'stdout': '', 'stderr': ''}
+    stream = os.environ.get('JAI_OFFLINE_STREAM') == '1' if stream is None else stream
+    environment = safe_environment(root)
+    if stream:
+        environment['JAI_OFFLINE_STREAM'] = '1'
+    else:
+        environment.pop('JAI_OFFLINE_STREAM', None)
     try:
         process = subprocess.Popen([sys.executable, str(Path(__file__).resolve()), '_worker', *command],
-                                   cwd=root, env=safe_environment(root), stdout=subprocess.PIPE,
+                                   cwd=root, env=environment, stdout=subprocess.PIPE,
                                    stderr=subprocess.PIPE, stdin=subprocess.DEVNULL, text=True, close_fds=True,
                                    start_new_session=True)
+        deadline = time.monotonic() + timeout
+        captures = ([], [])
+        readers = []
+        if stream:
+            for pipe, sink, captured in zip((process.stdout, process.stderr),
+                                            (sys.stdout, sys.stderr), captures):
+                reader = threading.Thread(target=_stream_pipe, args=(pipe, sink, captured))
+                reader.start()
+                readers.append(reader)
         try:
-            stdout, stderr = process.communicate(timeout=timeout)
+            if stream:
+                process.wait(timeout=timeout)
+                for reader in readers:
+                    reader.join(timeout=max(0, deadline - time.monotonic()))
+                if any(reader.is_alive() for reader in readers):
+                    raise subprocess.TimeoutExpired(command, timeout)
+                stdout, stderr = (''.join(parts) for parts in captures)
+            else:
+                stdout, stderr = process.communicate(timeout=timeout)
         except (subprocess.TimeoutExpired, KeyboardInterrupt):
             if os.name == 'posix':
                 try:
@@ -213,7 +262,13 @@ def run_offline(command, root, timeout=900):
                     pass
             else:
                 process.kill()
-            stdout, stderr = process.communicate()
+            if stream:
+                process.wait()
+                for reader in readers:
+                    reader.join()
+                stdout, stderr = (''.join(parts) for parts in captures)
+            else:
+                stdout, stderr = process.communicate()
             return {'status': 'FAIL', 'returncode': 124, 'reason': 'OFFLINE_TIMEOUT', 'stdout': stdout, 'stderr': stderr}
     except subprocess.TimeoutExpired:
         return {'status': 'FAIL', 'returncode': 124, 'reason': 'OFFLINE_TIMEOUT', 'stdout': '', 'stderr': ''}
@@ -231,7 +286,7 @@ def main(argv=None):
     """Scan mandatory source or execute a guarded qualification command.
 
     Args:
-        argv: Optional arguments; run takes --root ROOT [--timeout SECONDS] --
+        argv: Optional arguments; run takes --root ROOT [--timeout SECONDS] [--stream] --
             COMMAND [ARGS...]. The default 900-second ceiling is unchanged.
     Returns:
         Zero only for successful scan/execution; one for failure, 77 for unavailable
@@ -255,6 +310,8 @@ def main(argv=None):
     parser.add_argument('--root', type=Path, default=Path.cwd())
     parser.add_argument('--timeout', type=float, default=900,
                         help='Positive finite wall seconds (default: 900).')
+    parser.add_argument('--stream', action='store_true',
+                        help='Forward output immediately and retain diagnostic capture.')
     command_args = []
     if '--' in argv:
         index = argv.index('--')
@@ -269,9 +326,12 @@ def main(argv=None):
     if not command_args:
         print(json.dumps({'status': 'FAIL', 'reason': 'OFFLINE_COMMAND_REQUIRED'}))
         return 1
-    result = run_offline(command_args, args.root, timeout=args.timeout)
-    sys.stdout.write(result['stdout'])
-    sys.stderr.write(result['stderr'])
+    streaming = args.stream or os.environ.get('JAI_OFFLINE_STREAM') == '1'
+    options = {'stream': True} if streaming else {}
+    result = run_offline(command_args, args.root, timeout=args.timeout, **options)
+    if not streaming:
+        sys.stdout.write(result['stdout'])
+        sys.stderr.write(result['stderr'])
     print(json.dumps({key: value for key, value in result.items() if key not in ('stdout', 'stderr')}))
     return 0 if result['status'] == 'PASS' else 77 if result['status'] == 'NOT_EXECUTED' else 1
 

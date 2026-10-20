@@ -181,3 +181,19 @@ def test_aggregate_budgets_cover_all_a_h_command_ceilings(monkeypatch, capsys):
     monkeypatch.setattr(sys, 'argv', ['qualification_core.py', 'budget', '--scope', 'regression'])
     assert qualification.main() == 0
     assert capsys.readouterr().out.strip() == '13320'
+
+
+def test_streamed_failure_keeps_evidence_without_replaying_output(monkeypatch, capsys):
+    """Live diagnostics appear once while the failure record retains evidence."""
+    monkeypatch.setenv('JAI_OFFLINE_STREAM', '1')
+    monkeypatch.setattr(qualification, 'run_offline', lambda *args, **kwargs: {
+        'status': 'FAIL', 'returncode': 1, 'stdout': 'already-streamed-marker',
+        'stderr': 'failure-detail',
+    })
+    result = qualification.command('streamed negative check', ['unused'])
+    assert result['ok'] is False
+    assert 'already-streamed-marker' in result['detail']
+    assert 'failure-detail' in result['detail']
+    output = capsys.readouterr().out
+    assert 'FAIL streamed negative check' in output
+    assert 'already-streamed-marker' not in output

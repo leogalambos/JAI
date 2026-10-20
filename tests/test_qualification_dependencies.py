@@ -62,21 +62,18 @@ def test_ci_runs_new_regressions_and_qualification_under_offline_guard():
                 'test_reference_bindings.py', 'test_commercial_proposal.py'}
     assert required <= set(qualification.REGRESSION_MODULES)
     for filename, jobs in [('release.yml', ('qualification',)),
-                           ('validate-library.yml', ('policy', 'release-preflight'))]:
+                           ('validate-library.yml', ('release-preflight',))]:
         document = yaml.safe_load((ROOT / '.github/workflows' / filename).read_text())
         for name in jobs:
             job = document['jobs'][name]
             assert job['timeout-minutes'] == 360
             runs = [step.get('run', '') for step in job['steps']]
-            regression = next(run for run in runs if 'qualification_core.py regression' in run)
-            assert 'qualification_core.py budget --scope regression' in regression
-            assert 'offline_guard.py run --root . --timeout "$regression_budget" -- python3 -u .ai/runtime/tools/qualification_core.py regression' in regression
-            for run in runs:
-                if 'release_ga.py qualify' in run:
-                    assert 'qualification_core.py budget --scope qualification' in run
-                    assert 'offline_guard.py run --root . --timeout "$qualification_budget" -- python3 -u .ai/runtime/tools/release_ga.py qualify' in run
-                if 'unittest discover' in run:
-                    assert '--timeout "$regression_budget"' in run
+            assert not any('qualification_core.py regression' in run for run in runs)
+            assert not any('unittest discover' in run for run in runs)
+            qualification_run = next(run for run in runs if 'release_ga.py qualify' in run)
+            assert 'qualification_core.py budget --scope qualification' in qualification_run
+            assert 'offline_guard.py run --stream --root . --timeout "$qualification_budget" -- python3 -u .ai/runtime/tools/release_ga.py qualify' in qualification_run
+            assert any('ci_test_plan.py supplementary' in run and 'offline_guard.py run' in run for run in runs)
 
 
 def test_standalone_command_always_applies_offline_runner_and_preserves_unavailable():

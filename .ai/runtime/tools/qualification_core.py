@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse
 import datetime as dt
 import json
+import os
 import subprocess
 import sys
 import re
@@ -134,7 +135,7 @@ def command(name, args, timeout=120):
     if result.get('reason'):
         output += "\n" + result['reason']
     print(("PASS" if ok else state), name, f"({elapsed:.3f}s; limit {timeout}s)", flush=True)
-    if not ok:
+    if not ok and os.environ.get('JAI_OFFLINE_STREAM') != '1':
         print(output[-8000:], flush=True)
     return {"name": name, "ok": ok, "state": state,
             "duration_seconds": elapsed, "timeout_seconds": timeout,

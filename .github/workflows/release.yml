@@ -47,48 +47,49 @@ jobs:
         shell: bash
         env:
           RELEASE_TAG: ${{ github.ref_name }}
-        run: python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 scripts/validate_release_tag.py --tag "$RELEASE_TAG" --root .
+        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 scripts/validate_release_tag.py --tag "$RELEASE_TAG" --root .
       - name: Verify committed VERSION and synchronized release metadata
         shell: bash
         env:
           RELEASE_TAG: ${{ github.ref_name }}
         run: |
           set -euo pipefail
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 scripts/versioning.py check --tag "$RELEASE_TAG" --root .
+          python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 scripts/versioning.py check --tag "$RELEASE_TAG" --root .
       - name: Prepare canonical qualification environment
         uses: ./.github/actions/setup-qualification
       - name: Audit mandatory sources for live provider execution
         run: python3 .ai/runtime/tools/offline_guard.py scan --root .
-      - name: Validate proposed enterprise DCS development coverage
+      - name: Build documentation site
+        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 -m mkdocs build --strict
+      - name: Supplementary tests outside Gate A (each module once)
+        shell: bash
         run: |
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 tools/generate_content_catalog.py --check
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 tools/generate_content_corpus.py --check
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 tools/generate_content_workflows.py --check
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 tools/generate_content_calibration.py --check
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/content_spec.py lint-registry --root .
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/content_eval.py run --root .
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/expert_references.py validate --root . --all
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/content_scenarios.py run --root .
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/evaluation_package.py check --root .
-          regression_budget="$(python3 .ai/runtime/tools/qualification_core.py budget --scope regression)"
-          python3 .ai/runtime/tools/offline_guard.py run --root . --timeout "$regression_budget" -- python3 -u .ai/runtime/tools/qualification_core.py regression
-      - name: Verify canonical docs, historical integrity, 404 links and site
+          set -euo pipefail
+          python3 scripts/ci_test_plan.py supplementary > "$RUNNER_TEMP/jai-supplementary-tests.txt"
+          mapfile -t modules < "$RUNNER_TEMP/jai-supplementary-tests.txt"
+          python3 .ai/runtime/tools/offline_guard.py run --stream --root . --timeout 900 -- python3 -u -m pytest -vv -s "${modules[@]}"
+      - name: Gate checker positive and negative regression
         run: |
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/docs_contract.py --root .
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/generate_docs.py --check --root .
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 -m mkdocs build --strict
-      - name: Validate versioning and homepage regression
+          printf 'G1: pass\nG2: pass\nG3: pass\nG4: pass\nG5: pass\n' > /tmp/gc-pass.txt
+          python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/skills/it-roles-architecture/scripts/check_gates.py --skill .ai/skills/it-roles-architecture/references/solution-architect.md /tmp/gc-pass.txt
+          printf 'G1: pass\n' > /tmp/gc-incomplete.txt
+          if python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/skills/it-roles-architecture/scripts/check_gates.py --skill .ai/skills/it-roles-architecture/references/solution-architect.md /tmp/gc-incomplete.txt; then
+            echo '::error::An incomplete gate set was incorrectly accepted'
+            exit 1
+          fi
+
+      - name: Additional registry and provider checks
         run: |
-          regression_budget="$(python3 .ai/runtime/tools/qualification_core.py budget --scope regression)"
-          python3 .ai/runtime/tools/offline_guard.py run --root . --timeout "$regression_budget" -- python3 -u -m unittest discover -s tests -v
+          python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/runtime/tools/content_spec.py lint-registry --root .
+          PYTHONPATH=.ai/runtime/tools python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/runtime/tools/provider_parity.py
       - name: Execute A-H enterprise GA qualification
         run: |
           qualification_budget="$(python3 .ai/runtime/tools/qualification_core.py budget --scope qualification)"
-          python3 .ai/runtime/tools/offline_guard.py run --root . --timeout "$qualification_budget" -- python3 -u .ai/runtime/tools/release_ga.py qualify
+          python3 .ai/runtime/tools/offline_guard.py run --stream --root . --timeout "$qualification_budget" -- python3 -u .ai/runtime/tools/release_ga.py qualify
       - name: Verify all release evidence
         run: |
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/release_policy.py check --final
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/supply_chain.py verify --root . \
+          python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/runtime/tools/release_policy.py check --final
+          python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/runtime/tools/supply_chain.py verify --root . \
             --sbom SBOM.spdx.json --provenance PROVENANCE.json \
             --compatibility COMPATIBILITY.json
       - name: Build production ZIP and SHA-256
@@ -97,8 +98,8 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/release_bundle.py build --root . --dist dist
-          python3 .ai/runtime/tools/offline_guard.py run --root . -- python3 .ai/runtime/tools/evaluation_package.py build --root . \
+          python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/runtime/tools/release_bundle.py build --root . --dist dist
+          python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/runtime/tools/evaluation_package.py build --root . \
             --output "dist/jai-extended-evaluation-${RELEASE_VERSION}.zip"
           cd dist
           test -s "ai-it-house-universal-${RELEASE_VERSION}.zip"

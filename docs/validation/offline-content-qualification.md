@@ -120,8 +120,8 @@ see [optional provider evaluation](optional-provider-evaluation.md).
 ## Bounded CI regression execution
 
 The canonical mandatory regression inventory lives in
-`qualification_core.py`. CI and gate A execute the same 22 modules in their
-maintained order, each in a separate offline-controlled process with a
+`qualification_core.py`. Full qualification executes these 22 modules in
+gate A once, each in a separate offline-controlled process with a
 600-second ceiling. Every module remains mandatory. A failure, timeout or
 unavailable control prevents qualification; module isolation does not waive
 checks or permit live provider execution.
@@ -145,12 +145,37 @@ for orchestration. The complete A–H ceiling is 19,440 seconds: all individual
 command ceilings, including evidence generation and the final policy check,
 plus the same margin. These are maximum resource budgets, not expected run
 times. A regression test checks their relationship to the actual gate commands.
-The workflow job ceiling remains finite at 360 minutes. Independent individual
+Full qualification retains a finite job ceiling. Ordinary source validation
+uses a separate short budget and does not claim A–H qualification. Individual
 commands retain the guard's default 900-second ceiling unless explicitly set.
 
 Each regression result identifies its module, elapsed seconds and execution
 ceiling. Unbuffered verbose pytest diagnostics identify the last active test
 when a module times out. Captured stdout and stderr survive timeout termination;
-they are displayed after the guarded process finishes, rather than streamed
-live. Treat diagnostics as local operational records. Do not automatically
+the default API displays them after completion. CI explicitly enables
+`offline_guard.py run --stream` to display progress while retaining captured
+diagnostics and the same timeout and network controls. Treat diagnostics as
+local operational records. Do not automatically
 publish private project inputs or unsanitized customer output from local runs.
+
+
+## Source validation and release execution
+
+Pushes to main and pull requests run bounded source checks with Python
+requirements only. They do not install Office renderers, regenerate the full
+synthetic corpus, run the complete regression inventory or qualify a release.
+A passing source check means the selected smoke and structural checks passed;
+it does not establish complete regression coverage or release readiness.
+Superseded source runs are cancelled for the same branch or pull request.
+
+Use the workflow dispatch full-qualification option for a complete candidate
+preflight. A release tag always executes the complete A–H qualification with
+required renderers, independent of the fast source result. A–H runs once per
+full job; supplementary tests cover only modules outside its canonical
+regression inventory. Full jobs do not repeat the same generators, full corpus
+evaluation or regression modules before qualification, and do not run an
+overlapping unittest discovery pass. Publication still requires successful
+qualification, release identity checks and supply-chain verification.
+
+Commands print progress during execution. A failed check remains non-passing;
+streaming does not remove captured failure details or relax offline controls.

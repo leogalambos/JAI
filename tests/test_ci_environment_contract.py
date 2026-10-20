@@ -6,6 +6,8 @@
 from pathlib import Path
 import unittest
 
+import yaml
+
 ROOT = Path(__file__).resolve().parents[1]
 ACTION = ROOT / '.github/actions/setup-qualification/action.yml'
 MANIFEST = ROOT / 'ci/system-packages.txt'
@@ -18,7 +20,9 @@ class CIEnvironmentContract(unittest.TestCase):
             with self.subTest(filename=filename):
                 text = (ROOT / '.github/workflows' / filename).read_text()
                 self.assertIn('uses: ./.github/actions/setup-qualification', text)
-                self.assertNotIn('pip install --disable-pip-version-check', text)
+                workflow = yaml.load(text, Loader=yaml.BaseLoader)
+                full_job = workflow['jobs'].get('qualification', workflow['jobs'].get('release-preflight'))
+                self.assertNotIn('pip install --disable-pip-version-check', yaml.dump(full_job))
                 self.assertNotIn('sudo apt-get install', text)
                 self.assertIn('jai-ci-environment', text)
 

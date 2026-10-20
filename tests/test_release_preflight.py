@@ -22,7 +22,7 @@ SPEC.loader.exec_module(WIDTH)
 
 
 class ReleasePreflightTests(unittest.TestCase):
-    def test_source_workflow_executes_full_release_gate_before_tagging(self):
+    def test_manual_source_workflow_executes_full_release_gate_before_tagging(self):
         workflow = yaml.load(
             (ROOT / ".github/workflows/validate-library.yml").read_text(),
             Loader=yaml.BaseLoader,
@@ -31,6 +31,8 @@ class ReleasePreflightTests(unittest.TestCase):
         self.assertIn("main", workflow["on"]["push"]["branches"])
         job = workflow["jobs"].get("release-preflight")
         self.assertIsNotNone(job, "Source CI must exercise tag qualification")
+        self.assertEqual(job["if"], "github.event_name == 'workflow_dispatch' && inputs.full_qualification")
+        self.assertEqual(workflow["on"]["workflow_dispatch"]["inputs"]["full_qualification"]["default"], "false")
         steps = job["steps"]
         self.assertTrue(any(s.get("uses") == "actions/checkout@v4" for s in steps))
         self.assertTrue(any(s.get("uses") == "./.github/actions/setup-qualification"
@@ -56,14 +58,16 @@ class ReleasePreflightTests(unittest.TestCase):
         for name in ('validate-library.yml', 'release.yml'):
             workflow = yaml.load((ROOT / '.github/workflows' / name).read_text(),
                                  Loader=yaml.BaseLoader)
-            commands = '\n'.join(step.get('run', '')
-                                 for job in workflow['jobs'].values()
-                                 for step in job.get('steps', []))
-            self.assertIn('qualification_core.py regression', commands)
-            self.assertIn('qualification_core.py budget --scope regression', commands)
-            self.assertIn('--timeout', commands)
-            for generator in ('catalog', 'corpus', 'workflows', 'calibration'):
-                self.assertIn('tools/generate_content_' + generator + '.py --check', commands)
+            for job in workflow['jobs'].values():
+                commands = '\n'.join(step.get('run', '') for step in job.get('steps', []))
+                self.assertNotIn('qualification_core.py regression', commands)
+                self.assertNotIn('unittest discover', commands)
+                for generator in ('catalog', 'corpus', 'workflows', 'calibration'):
+                    self.assertNotIn('tools/generate_content_' + generator + '.py --check', commands)
+                if 'release_ga.py qualify' in commands:
+                    self.assertEqual(commands.count('release_ga.py qualify'), 1)
+                    self.assertIn('ci_test_plan.py supplementary', commands)
+                    self.assertIn('qualification_core.py budget --scope qualification', commands)
         sys.path.insert(0, str(ROOT / '.ai/runtime/tools'))
         import qualification_core
         with patch.object(qualification_core, 'command',
@@ -90,6 +94,23 @@ class ReleasePreflightTests(unittest.TestCase):
                     or 'deterministic synthetic pilot' in check['name']]
         self.assertEqual(len(qualification_core.REGRESSION_MODULES) + 1, len(dcs_runs))
         self.assertTrue(all(check['timeout'] >= 600 for check in dcs_runs))
+
+    def test_ordinary_push_is_bounded_and_does_not_install_renderers(self):
+        workflow = yaml.load((ROOT / '.github/workflows/validate-library.yml').read_text(),
+                             Loader=yaml.BaseLoader)
+        job = workflow['jobs']['policy']
+        self.assertEqual(job['timeout-minutes'], '10')
+        self.assertEqual(job['if'], "github.event_name != 'workflow_dispatch' || !inputs.full_qualification")
+        self.assertNotIn('./.github/actions/setup-qualification', yaml.dump(job))
+        commands = '\n'.join(step.get('run', '') for step in job['steps'])
+        self.assertIn('ci_test_plan.py quick', commands)
+        self.assertNotIn('release_ga.py qualify', commands)
+        self.assertNotIn('content_eval.py run', commands)
+        self.assertNotIn('content_scenarios.py run', commands)
+        self.assertEqual(workflow['concurrency']['cancel-in-progress'], 'true')
+        release = yaml.load((ROOT / '.github/workflows/release.yml').read_text(),
+                            Loader=yaml.BaseLoader)
+        self.assertEqual(release['concurrency']['cancel-in-progress'], 'false')
 
     def test_current_human_documentation_meets_release_width(self):
         self.assertEqual(WIDTH.check(ROOT), [])
