@@ -67,7 +67,7 @@ A production audience artefact is generated through:
 ```text
 semantic source
 → publication profile
-→ ProjectionManifest v3
+→ DCS-bound ProjectionManifest v4
 → publication model with JAI lineage
 → renderer
 → render evidence / visual QA
@@ -90,7 +90,9 @@ Material claims and evidence must either be represented in the audience projecti
 
 ## Production render boundary
 
-The supported production renderer requires the matching ProjectionManifest v3. Directly rendering a semantic model without the projection contract is not the profile-native production path.
+The current content-aware renderer requires the matching DCS-bound v4
+manifest and QA sidecars. Historical v3 manifests remain compatibility
+inputs; they do not authorize a new render. Directly rendering a semantic model without the projection contract is not the profile-native production path.
 
 Render output is accompanied by evidence such as file hashes and QA outcomes so that the concrete published file can be distinguished from the semantic/projection state that produced it.
 

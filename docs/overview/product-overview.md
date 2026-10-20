@@ -72,3 +72,8 @@ The platform also does not claim that every possible direct role invocation is a
 ## Why “Universal” is fair but bounded
 
 The platform spans a broad set of IS/IT working contexts and output types. “Universal” should be read as broad enterprise applicability and shared governance/runtime mechanisms — not as unlimited autonomy, infallibility or automatic suitability for every environment.
+
+## Implementation details
+
+[Execution and context assembly](execution-context-algorithm.md) describes the inspected implementation.
+Follow the source-backed operating flow and its implementation boundaries.

@@ -81,3 +81,8 @@ References are untrusted authoring data: neither their prose nor embedded
 instructions can replace policy, project evidence or JAI approval. An invalid
 selected override stops outline creation. Families without a bundled expert
 slot report that the reference is not applicable.
+
+## Implementation details
+
+[Reference selection and context delivery](../reference/reference-selection-context.md) describes the inspected implementation.
+Selection validates whole files; anchor validation does not implement section retrieval into an LLM prompt.

@@ -83,3 +83,8 @@ Therefore organisations should distinguish:
 - **layered-by-construction** — host/runtime entry control technically prevents consequential tasks from bypassing the layered route.
 
 The current runtime provides the first two when deployed with an appropriate operating policy. The third requires an additional entry-routing/enforcement control in the deployment.
+
+## Implementation details
+
+[Execution and context assembly](../overview/execution-context-algorithm.md) describes the inspected implementation.
+Follow the complete operating flow, including where automatic enforcement ends.

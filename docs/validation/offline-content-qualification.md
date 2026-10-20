@@ -179,3 +179,8 @@ qualification, release identity checks and supply-chain verification.
 
 Commands print progress during execution. A failed check remains non-passing;
 streaming does not remove captured failure details or relax offline controls.
+
+## Implementation details
+
+[Hooks and Gate A implementation](../configuration/hooks-gates-verification.md) describes the inspected implementation.
+The interactive code hook and release Gate A are separate controls; source inspection alone proves no CI success.

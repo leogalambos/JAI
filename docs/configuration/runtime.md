@@ -40,3 +40,8 @@ Destination overrides do not establish support for complete runtime relocation: 
 ## Operational reading
 
 Treat these environment variables as governance controls, not as mere performance knobs. Changing them alters what autonomous rework and escalation behaviour is permitted.
+
+## Implementation details
+
+[Tool hooks, runtime controls and release gates](hooks-gates-verification.md) describes the inspected implementation.
+Inspect the shipped provider event registrations and their enforcement limits.

@@ -102,6 +102,7 @@ nav:
   - Start here:
       - Product orientation:
           - Product overview: overview/product-overview.md
+          - Execution and context assembly: overview/execution-context-algorithm.md
           - What's new in 26.10.4: overview/release-26-10-4.md
           - Coverage matrix: overview/coverage-matrix.md
           - Delivery model: overview/delivery-model.md
@@ -169,6 +170,7 @@ nav:
           - System architecture: configuration/system-architecture.md
           - Providers, models & reasoning effort: configuration/models.md
           - Runtime paths & environment variables: configuration/runtime.md
+          - Tool hooks and runtime verification: configuration/hooks-gates-verification.md
           - Expert document overrides: configuration/expert-document-overrides.md
           - Governance, policy & approvals: configuration/policy.md
           - Publication stack: configuration/publication-stack.md
@@ -205,6 +207,7 @@ nav:
       - Detailed tool CLI reference: reference/runtime-tools-detailed.md
       - Paths and environment variables: reference/paths-env.md
       - Expert reference format: reference/expert-reference-format.md
+      - Reference selection and context delivery: reference/reference-selection-context.md
       - Compatibility matrix: reference/compatibility.md
       - 26.10.4 release and migration: reference/release-migration.md
       - Boundaries and limitations: reference/limitations.md

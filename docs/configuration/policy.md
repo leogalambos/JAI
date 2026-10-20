@@ -66,3 +66,8 @@ Managed hooks are useful enforcement but are not the whole sandbox. The authorit
 ## Data classification and network behavior
 
 The default managed policy assumes enterprise caution: network access is deny-by-default and permitted through controlled/provider contract paths. Organisations must adapt classification, network, evidence-retention and provider-use rules for their environment.
+
+## Implementation details
+
+[Tool hooks, runtime controls and release gates](hooks-gates-verification.md) describes the inspected implementation.
+Distinguish procedural routing, interactive hooks, semantic validation and release qualification.

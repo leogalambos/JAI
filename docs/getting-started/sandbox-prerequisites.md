@@ -146,3 +146,8 @@ Ask the provider to identify the failing operation and preserve its exact error.
 - [Claude Code: sandboxing](https://code.claude.com/docs/en/sandboxing) and [permissions](https://code.claude.com/docs/en/permissions).
 
 The policy snippets are documentation examples reviewed against those sources, not a verified production policy for every client/version. JAI publication checks on the development workstation established that filesystem access to installed TeX/font assets and Office resources matters independently of executable availability. An administrator must validate the effective policy on the target host before rollout; keep any unexecuted host-specific procedure marked unverified.
+
+## Implementation details
+
+[Tool hooks, runtime controls and release gates](../configuration/hooks-gates-verification.md) describes the inspected implementation.
+Hooks depend on host event delivery and do not replace sandbox or filesystem controls.

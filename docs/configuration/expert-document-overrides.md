@@ -88,3 +88,8 @@ reference is never automatically exported to an optional provider evaluation.
 
 The supported language is currently English. Other languages are rejected
 explicitly rather than claimed to have equivalent professional qualification.
+
+## Implementation details
+
+[Reference selection and context delivery](../reference/reference-selection-context.md) describes the inspected implementation.
+See exact applicability, fallback/error behavior and the boundary between discovery and model input.

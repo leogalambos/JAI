@@ -83,7 +83,7 @@ The production publication sequence is:
 ```text
 semantic source
 → publication profile
-→ ProjectionManifest v3
+→ DCS-bound ProjectionManifest v4
 → publication model with JAI lineage
 → renderer
 → render evidence / visual QA
@@ -107,3 +107,8 @@ intent
 ```
 
 See [Layered runtime and assurance model](../capabilities/layered-runtime.md) for detailed enforcement semantics.
+
+## Implementation details
+
+[Execution and context assembly](../overview/execution-context-algorithm.md) describes the inspected implementation.
+See how the architecture maps to supported procedures and actual runtime calls.

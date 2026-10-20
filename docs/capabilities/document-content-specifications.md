@@ -326,3 +326,8 @@ This catalog metadata is not a user reference override or an approval mechanism.
 Global security, evidence and authority controls, existing domain obligations and
 source role gates remain required. All authored corrections remain proposed and
 subject to independent review and existing JAI L0 authority.
+
+## Implementation details
+
+[Reference selection and context delivery](../reference/reference-selection-context.md) describes the inspected implementation.
+Distinguish compiled obligations, selected references, local reads and actual provider input.

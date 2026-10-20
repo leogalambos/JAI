@@ -24,7 +24,7 @@ L5 renderer and output implementation
 L6 rendered artefact + hashes + visual evidence
 ```
 
-## ProjectionManifest v3
+## Current DCS-bound projection manifest
 
 The manifest binds the publication to both JAI lineage and content identity. It carries the relationship between:
 
@@ -36,7 +36,10 @@ The manifest binds the publication to both JAI lineage and content identity. It 
 - evidence;
 - semantic/projection/render hashes.
 
-The production renderer validates the matching manifest before emitting the supported current-release artefact.
+The current content-aware renderer validates the matching DCS-bound v4
+manifest and immutable QA sidecars. Historical v3 lineage remains readable
+for compatibility; it does not satisfy the current render boundary. See
+[DCS publication integrity](../capabilities/document-content-specifications.md).
 
 ## Why the projection layer matters
 
