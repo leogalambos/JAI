@@ -9,6 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/assurance-report
 approval_status: not-human-approved
+content_revision: 2.0.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -70,3 +71,17 @@ Illustrative evidence IDs are internal cross-references, **not accessible custom
 This is a proposed, non-authoritative reference. `HFS-FAR-DR-01` must be reviewed by the accountable authority and bound to a hash of the final canonical semantic record; no implied approval arises from the presence of an approval field. The owner must close material evidence gaps before using the document as the basis for deployment or risk acceptance.
 
 **Downstream references:** HFS-FAR-RA-01, HFS-FAR-TEST-01, HFS-FAR-OPS-01. Revalidate when scope, data classification, controlling evidence or major dependencies change.
+
+
+
+
+## Professional deepening: decision rationale and practical checks
+
+### Assurance objective versus management assertion
+
+Separate the management statement (“control is designed to operate”) from independently observed evidence (“control operated successfully in a defined sample”). Fix the assurance period, tested populations, sampling method and independence limitations. Avoid absolute phrases such as “fully compliant” unless scope, criteria, sufficient evidence and authority support that conclusion.
+
+### Test design and evidence sufficiency
+
+Map criterion → control objective → test procedure → expected outcome → actual observation → finding. Evidence should be current, attributable, tamper-evident and relevant to the population. An interview alone rarely substantiates continuous operational effectiveness. Where the evidence is absent, classify *not tested* or *unable to conclude*, not PASS.
+

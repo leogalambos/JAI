@@ -9,6 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/risk-assessment
 approval_status: not-human-approved
+content_revision: 2.0.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -69,3 +70,30 @@ Illustrative evidence IDs are internal cross-references, **not accessible custom
 This is a proposed, non-authoritative reference. `MRG-OEI-DR-01` must be reviewed by the accountable authority and bound to a hash of the final canonical semantic record; no implied approval arises from the presence of an approval field. The owner must close material evidence gaps before using the document as the basis for deployment or risk acceptance.
 
 **Downstream references:** MRG-OEI-HLD-01, MRG-OEI-TEST-01, MRG-OEI-OPS-01. Revalidate when scope, data classification, controlling evidence or major dependencies change.
+
+
+
+
+## Professional deepening: decision rationale and practical checks
+
+### Risk taxonomy and scenario articulation
+
+Express each material scenario as threat/event → vulnerable condition → business impact, against a concrete asset and an operational horizon. Use a stable risk ID, asset owner, impact owner and named treatment owner. Keep compliance obligations distinct from discretionary risk appetite: a likely regulatory violation cannot be accepted merely by assigning a low score.
+
+### Scoring and inherent/residual distinction
+
+Qualitative likelihood and impact scales must have unambiguous anchors. An inherent score describes exposure before evaluated controls; a residual score requires evidence of control design and effectiveness. Where controls have not been tested, residual scores are **conditional projections**, not measured facts. Separate uncertainty about likelihood from uncertainty about impact, and record the assessor's confidence alongside the score.
+
+### Scenario and control assurance matrix
+
+| Risk event | Preventive control | Detective control | Recovery control | Required evidence |
+|---|---|---|---|---|
+| Duplicate financial instruction | Idempotency key enforced at business boundary | Ledger reconciliation alert | Safe replay from checkpoint | Replay and balancing tests |
+| Unauthorized entitlement | Approval and separation of duties | Privileged session review | Revoke and reconcile permissions | IAM policy and negative-case results |
+| Regional dependency outage | Failure domain separation | Dependency health signals | Tested controlled switchover | Restoration timings and data-integrity check |
+| Data location breach | Rule-based routing and encryption | Routing exception detection | Isolate and remediate affected records | Jurisdiction mapping and privacy review |
+
+### Treatment plan and risk acceptance
+
+For each high-impact item, record treatment option (reduce, avoid, transfer or accept), action, testable control objective, deadline and budget dependency. Transferring a commercial liability does not remove accountability for service continuity. Risk acceptance must identify the authorised business owner, acceptance expiry and monitored indicators; authoring this example does not exercise that authority.
+

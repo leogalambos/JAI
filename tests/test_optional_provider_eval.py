@@ -146,3 +146,15 @@ def test_untrusted_observed_metadata_cannot_expose_absolute_paths():
     assert parsed['valid']
     assert parsed['model'] is None
     assert parsed['usage'] == {}
+
+
+@pytest.mark.parametrize('family,expected', [('strategy','it-digital-strategy'), ('client-proposal','client-proposal'), ('managed-security-services-proposal','managed-security-services-proposal')])
+def test_plan_supports_mapped_and_proposed_families_without_inference(family, expected):
+    """Expanded bundled families reuse actual registered specs, never guessed IDs."""
+    with patch.object(provider.subprocess, 'Popen', side_effect=AssertionError('no inference')):
+        record = provider.prepare_plan(ROOT, 'codex', family, 1, 'fake-model')
+    assert record['family'] == expected
+    assert record['classification'] == 'public-synthetic'
+    assert record['invocations'] == 1
+    assert record['professional_qualification'] is False
+    assert len(record['cases'][0]['compiled_spec_hash']) == 64

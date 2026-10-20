@@ -16,6 +16,7 @@ import commercial_plan as plan
 import commercial_router as router
 import commercial_lifecycle as lifecycle
 import commercial_scheduler as scheduler
+import commercial_proposal as proposal
 
 
 def main(argv=None):
@@ -45,9 +46,34 @@ def main(argv=None):
             sub.add_argument('--store',type=Path,required=True)
             sub.add_argument('--expected-revision',type=int,required=True)
         if name=='calc':sub.add_argument('--operation',required=True,choices=sorted(economics._OPERATIONS))
+    for name in ('proposal-plan','proposal-prepare','proposal-validate','proposal-handoff'):
+        sub=commands.add_parser(name)
+        sub.add_argument('input',type=Path)
+        sub.add_argument('--root',type=Path,default=Path(__file__).resolve().parents[1])
+        if name in ('proposal-prepare','proposal-handoff'):
+            sub.add_argument('--output',type=Path,required=True)
+        if name=='proposal-handoff':
+            sub.add_argument('--kind',required=True,choices=proposal.CORE_KINDS+proposal.OPTIONAL_KINDS)
+        if name in ('proposal-plan','proposal-prepare'):
+            sub.add_argument('--user-root',type=Path)
+            sub.add_argument('--organisation-root',type=Path)
+            sub.add_argument('--engagement-root',type=Path)
     args=parser.parse_args(argv)
     try:
-        if args.command=='plan':
+        if args.command.startswith('proposal-'):
+            if args.command=='proposal-handoff':
+                result=proposal.publication_handoff(args.input,args.kind,args.output,root=args.root)
+            else:
+                data=json.loads(args.input.read_text())
+                if args.command=='proposal-validate':
+                    result=proposal.validate_prepared(args.input,args.root) if data.get('package_kind')=='proposal-prepared-draft/1' else proposal.validate_package(data)
+                else:
+                    options={key:getattr(args,key) for key in ('user_root','organisation_root','engagement_root')}
+                    result=proposal.plan_package(data,args.root,**options) if args.command=='proposal-plan' else proposal.prepare_package(data,args.output,args.root,**options)
+            print(json.dumps(result,ensure_ascii=False,indent=2))
+            consistency=result.get('consistency',result)
+            return 2 if consistency.get('consistency_pass') is False or result.get('status')=='BLOCKED' else 0
+        elif args.command=='plan':
             result={'order':plan.validate_plan(plan.load_plan(args.input, fixture=args.input.suffix=='.json'))}
         elif args.command=='archive':
             result=core.SnapshotStore(args.store).archive(args.input)
@@ -78,7 +104,7 @@ def main(argv=None):
         print(json.dumps(result,ensure_ascii=False,indent=2))
         return 2 if isinstance(result,dict) and (result.get('ready') is False or result.get('complete') is False or result.get('feasible') is False or result.get('roster_ready') is False or result.get('feasible_aggregate_roster') is False or result.get('operational_recovery_verified') is False) else 0
     except (ValueError,KeyError,TypeError,OSError) as exc:
-        print(json.dumps({'error':str(exc)}))
+        print(json.dumps({'error':'Proposal command failed: invalid input or local resource.' if args.command.startswith('proposal-') else str(exc)}))
         return 2
 
 

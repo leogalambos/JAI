@@ -1,5 +1,10 @@
 # Commercial delivery
 
+For the 96-reference library and coherent proposal-package authoring, see
+[proposal production](../using/proposal-production.md). Use the
+[colleague pilot rubric](../validation/proposal-pilot.md) for independent
+practical evaluation; a pilot disposition does not authorize an offer.
+
 The opt-in `commercial-delivery/1` profile extends JAI with the supplier lifecycle: opportunity, proposal, negotiation, delivery, service operation, renewal and exit. It preserves existing technical workflows and canonical identities. It coordinates commercial work; it does not sign contracts or exercise human authority.
 
 **Owner:** JAI maintainers. **Last reviewed:** 16 October 2026. Source implementation is available; live provider qualification remains incomplete. This page combines the commercial operator guide and worked proposal in the [How to use JAI learning path](../examples/how-to-use-JAI/index.md). Read [methodical workflows](../using/methodical-workflows.md) before choosing an engagement method.

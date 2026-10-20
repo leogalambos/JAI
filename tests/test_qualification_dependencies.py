@@ -55,7 +55,9 @@ def test_ci_runs_new_regressions_and_qualification_under_offline_guard():
     import yaml
     required = ('test_expert_references.py', 'test_optional_provider_eval.py',
                 'test_evaluation_package.py', 'test_content_scenarios.py',
-                'test_offline_guard.py', 'test_qualification_dependencies.py')
+                'test_offline_guard.py', 'test_qualification_dependencies.py',
+                'test_qualification_core.py', 'test_release_ga.py', 'test_release_bundle.py', 'test_reference_bindings.py',
+                'test_commercial_proposal.py')
     for filename, jobs in [('release.yml', ('qualification',)),
                            ('validate-library.yml', ('policy', 'release-preflight'))]:
         document = yaml.safe_load((ROOT / '.github/workflows' / filename).read_text())

@@ -9,6 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/hld
 approval_status: not-human-approved
+content_revision: 2.0.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -74,3 +75,30 @@ Illustrative evidence IDs are internal cross-references, **not accessible custom
 This is a proposed, non-authoritative reference. `MRG-OEI-DR-01` must be reviewed by the accountable authority and bound to a hash of the final canonical semantic record; no implied approval arises from the presence of an approval field. The owner must close material evidence gaps before using the document as the basis for deployment or risk acceptance.
 
 **Downstream references:** MRG-OEI-ADR-01, MRG-OEI-TEST-01, MRG-OEI-OPS-01. Revalidate when scope, data classification, controlling evidence or major dependencies change.
+
+
+
+
+## Professional deepening: decision rationale and practical checks
+
+### Service boundary and responsibility model
+
+For each runtime component, declare responsibilities, data authority, upstream/downstream interfaces, scaling unit and failure response. Security responsibilities must be explicit at trust boundaries: which service authenticates the caller, enforces the business authorization and issues an audit event. A high-level design should not substitute vague terms such as “secure API” for enforceable controls.
+
+### Interfaces, consistency and error semantics
+
+Specify request IDs, idempotency keys, schema compatibility, ordering needs, timeouts, retries, dead-letter handling and retention boundaries. Define whether a response means acceptance, persistence or final business processing. If an asynchronous consumer fails after acknowledging a message, demonstrate how the source of truth and replay mechanism prevent permanent loss and duplicate business effects.
+
+### NFR and observability allocation
+
+| Requirement | Design allocation | Observable signal | Verification |
+|---|---|---|---|
+| Availability | Isolated failure domains | Dependency SLI and synthetic health | Fault injection |
+| Data integrity | Durable state + reconciliation | Unmatched records and checksum variance | Replay, corruption and balance tests |
+| Access control | Service identity + least privilege | Denied action rate and policy audit | Negative entitlement tests |
+| Recoverability | Restorable checkpoints | Restore time and consistency proof | Timed recovery rehearsal |
+
+### Deployment and cutover strategy
+
+Describe environment separation, infrastructure ownership, configuration provenance, secret injection, progressive traffic shifting and rollback boundary. A rollback must explain what happens to data created in the new path. Provide an order of operations consistent with migration dependencies, and name the release authority who decides whether to resume or abort after a partial failure.
+

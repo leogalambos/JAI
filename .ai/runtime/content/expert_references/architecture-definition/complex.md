@@ -9,6 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/architecture-definition
 approval_status: not-human-approved
+content_revision: 2.0.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -87,3 +88,40 @@ Illustrative evidence IDs are internal cross-references, **not accessible custom
 This is a proposed, non-authoritative reference. `OPG-RSM-DR-01` must be reviewed by the accountable authority and bound to a hash of the final canonical semantic record; no implied approval arises from the presence of an approval field. The owner must close material evidence gaps before using the document as the basis for deployment or risk acceptance.
 
 **Downstream references:** OPG-RSM-HLD-01, OPG-RSM-RA-01, OPG-RSM-OPS-01. Revalidate when scope, data classification, controlling evidence or major dependencies change.
+
+
+
+
+## Professional deepening: decision rationale and practical checks
+
+### Stakeholders and architecture viewpoints
+
+Identify stakeholders, concerns, viewpoints and views as separate concepts. A component inventory is not a set of architecture viewpoints. Map business processes to application services and technology dependencies, and explain why each selected view supports a particular decision. Define repository ownership and model revision so diagrams, tables and narrative can be traced to the same semantic identities.
+
+### Cross-domain architecture traceability
+
+| Architecture concern | Viewpoint | Canonical relation | Acceptance evidence |
+|---|---|---|---|
+| Business capability | Capability-to-service | Capability → service | Owner review of coverage |
+| Trust and information | Trust-boundary/data flow | Actor → flow → control | Threat/risk assessment |
+| Operational resilience | Failure-domain/dependency | Component → dependency → location | Recovery rehearsal |
+| Transformation | Current/target/transition | Baseline → change → target | Migration and cutover plan |
+
+### Non-functional design and trade-offs
+
+State availability, latency, confidentiality, integrity, recoverability and jurisdiction constraints quantitatively where applicable; include the measurement method and operating profile. Evaluate the architectural implications of conflicting targets. For example, synchronised cross-region write confirmation may protect data integrity yet threaten the deadline for time-sensitive business processing. Record the rationale for which attribute is prioritised and under what authority.
+
+### Current, target and transition integrity
+
+Assign a versioned identity to each current asset and target element. Capture transition architectures explicitly rather than silently presenting the future state as implemented. The dependency plan should include data conversion, temporary controls, dual-run services, legacy retirement and the checkpoint where rollback becomes a new migration. Architecture acceptance is not proof of operational readiness.
+
+### Architecture review objections and open decisions
+
+Log architectural objections with affected viewpoint, violated requirement, rejected alternative and owner. The review board needs both the recommendation and the reason why apparently attractive alternatives fail. Preserve uncertainty and assumptions. Update impact analysis when source elements change, and invalidate stale published views rather than preserving a misleading “approved” diagram.
+
+### Enterprise review challenge and operational hand-off
+
+The reviewer should challenge the weakest evidence source before accepting the proposed conclusion, including dependency coupling, supplier exit conditions and whether ownership survives organizational change. If a required artifact is missing, record an unresolved gap rather than generating plausible-looking completion text. Translate each material concern into a downstream receiving artifact with stable ID, explicit owner and verification condition.
+
+The following review disposition is intentionally **OPEN**: professional approval absent; operating evidence not provided; example cannot be repurposed as a production release, financial authorization or safety assurance.
+

@@ -9,6 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/runbook
 approval_status: not-human-approved
+content_revision: 2.0.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -73,3 +74,23 @@ Illustrative evidence IDs are internal cross-references, **not accessible custom
 This is a proposed, non-authoritative reference. `HFS-FAR-DR-01` must be reviewed by the accountable authority and bound to a hash of the final canonical semantic record; no implied approval arises from the presence of an approval field. The owner must close material evidence gaps before using the document as the basis for deployment or risk acceptance.
 
 **Downstream references:** HFS-FAR-OPS-01, HFS-FAR-RA-01, HFS-FAR-INC-01. Revalidate when scope, data classification, controlling evidence or major dependencies change.
+
+
+
+
+## Professional deepening: decision rationale and practical checks
+
+### Preflight and safe operating envelope
+
+Distinguish read-only diagnosis from a potentially destructive corrective action. Specify required privileges, working hours, customer impact, change authorization, required backups and expected system state before touching production. Privilege or environment verification failure terminates the procedure and triggers escalation; do not recommend bypassing enterprise controls to “unblock” recovery.
+
+### Executable sequence and checkpoints
+
+| Step | Action class | Observable success criterion | Abort condition |
+|---|---|---|---|
+| 1 | Read-only identify | Correct environment, service and incident ID | Scope mismatch |
+| 2 | Read-only baseline | Fresh telemetry and consistent state | Missing/contradictory signals |
+| 3 | Authorized change | Named change approval and controlled execution | Approval missing |
+| 4 | Verification | Business transaction and integrity tests pass | Any critical mismatch |
+| 5 | Closure | Evidence captured and on-call handoff accepted | Open severe issue |
+

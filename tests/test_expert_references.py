@@ -44,12 +44,12 @@ def _put(root, raw, name='simple.md'):
     return path
 
 
-def test_supplied_collection_has_30_unique_verified_slots(library):
+def test_supplied_collection_has_96_unique_verified_slots(library):
     """Manifest bytes, all ten family IDs and every mandatory anchor agree."""
     result = library.validate_all()
     assert result['status'] == 'PASS'
-    assert result['reference_count'] == 30
-    assert len({(entry['document_kind'], entry['complexity']) for entry in result['results']}) == 30
+    assert result['reference_count'] == 96
+    assert len({(entry['document_kind'], entry['complexity']) for entry in result['results']}) == 96
     assert all(entry['professional_acceptance'] == 'NOT_APPROVED' for entry in result['results'])
     assert all(entry['content_adequacy'] == 'NOT_EVALUATED' for entry in result['results'])
     assert all(entry['evidence_and_rationale_quality'] == 'NOT_EVALUATED' for entry in result['results'])
@@ -261,16 +261,17 @@ def test_pages_not_guessed_and_word_excess_advisory(library, original, tmp_path)
     (registry / 'document_kinds').mkdir(parents=True)
     (registry / 'document_kinds/adr.yaml').write_text(json.dumps(dcs))
     library.specs.base = registry
+    library.specs.specs = dict(library.specs.specs)
+    library.specs.specs['kind/adr'] = dcs
     result = library.validate(source)
     assert result['structural_coverage'] == 'PASS'
     assert result['size_budget']['excess']
     assert result['findings'] == [{'rule': 'size.soft_max_exceeded', 'severity': 'advisory', 'blocking': False}]
 
 
-@pytest.mark.parametrize('field,value', [('path', '../adr/simple.md'), ('reference_id', 'forged'), ('language', 'de'), ('provenance', 'human-gold'), ('dcs_required_units', ['adr.decision_context'])])
+@pytest.mark.parametrize('field,value', [('path', '../adr/simple.md'), ('reference_id', 'forged'), ('language', 'de'), ('provenance', 'human-gold'), ('anchor_ids', ['adr.decision_context'])])
 def test_manifest_metadata_consistency(library, field, value):
     """A correct raw checksum cannot hide inconsistent manifest identity fields."""
-    # The first manifest entry belongs to decision-paper/simple.
     library.entries[0][field] = value
     with pytest.raises(ReferenceError):
         library.validate_all()
@@ -320,6 +321,118 @@ def test_outline_unsupported_family_is_explicit(library, tmp_path):
     """Families without supplied examples retain usable unfilled outlines."""
     from content_spec import ContentSpec
     engine = ContentSpec(ROOT)
-    contract = next(key for key, binding in engine.bindings.items() if binding.get('semantic_family') not in library.families)
+    unsupported = []
+    for key, binding in engine.bindings.items():
+        try:
+            library.canonical_family(binding.get('semantic_family', binding['document_kind']), contract_id=key)
+        except ReferenceError as exc:
+            if str(exc) == 'REFERENCE_SLOT_UNSUPPORTED':
+                unsupported.append(key)
+    contract = unsupported[0]
     result = engine.outline(contract, user_root=tmp_path / 'missing')
     assert result['expert_reference']['status'] == 'NOT_APPLICABLE'
+
+
+@pytest.mark.parametrize('alias,family', [('strategy','it-digital-strategy'), ('implementation-specification','implementation-specification-lld'), ('test-strategy','test-strategy-plan'), ('service-design','service-design-sla'), ('benefits-review','benefits-realisation-review'), ('roadmap','transformation-roadmap')])
+def test_registered_kind_alias_resolves_original_reference_family(library, tmp_path, alias, family):
+    """Canonical DCS aliases select original bytes and stable reference identity."""
+    path, report = library.resolve(alias, 'simple', user_root=tmp_path)
+    assert path == library.base / family / 'simple.md'
+    assert report['reference_family'] == family
+    assert report['canonical_document_kind'] == alias
+    assert report['mapping_status'] == 'proposed'
+    assert report['professional_acceptance'] == 'NOT_APPROVED'
+
+
+def test_all96_anchor_bindings_match_registered_required_units(library):
+    """Every distributed source anchor maps onto an actual kind-owned MUST unit."""
+    result = library.validate_all()
+    assert result['family_count'] == 32
+    assert result['proposal_reference_count'] == 30
+    assert len(library.bindings) == 32
+    for report in result['results']:
+        assert set(report['present_units']) == set(report['required_units'])
+        definition = library.specs.specs[report['spec_ref']]
+        required = {unit['id'] for unit in definition['required_information'] if unit['obligation'] == 'MUST'}
+        assert set(report['required_units']) == required
+
+
+@pytest.mark.parametrize('before,after,diagnostic', [
+    (b'dcs_status: proposed-not-mapped', b'dcs_status: approved', 'METADATA_SCHEMA_INVALID'),
+    (b'dcs_status: proposed-not-mapped\n', b'', 'PROPOSED_DCS_STATUS_REQUIRED'),
+    (b'proposed/kind/client-proposal', b'proposed/kind/commercial-proposal', 'DCS_IDENTITY_MISMATCH'),
+    (b'dcs-proposed-client-proposal.customer_need', b'dcs-client-proposal.customer_need', 'anchor.missing'),
+    (b'content_revision: 2.1.0', b'content_revision: approved', 'METADATA_SCHEMA_INVALID'),
+    (b'proposal_pack_id:', b'authority_signature:', 'METADATA_SCHEMA_INVALID'),
+])
+def test_proposed_metadata_and_anchor_errors_cannot_promote_rules(library, tmp_path, before, after, diagnostic):
+    """Proposed source namespaces stay explicit and cannot masquerade as approval."""
+    raw = (library.base / 'client-proposal/simple.md').read_bytes()
+    assert before in raw
+    source = tmp_path / 'proposal.md'
+    source.write_bytes(raw.replace(before, after))
+    with pytest.raises(ReferenceError, match=diagnostic):
+        library.validate(source, 'client-proposal', 'simple')
+
+
+def test_invalid_selected_proposal_override_never_falls_back(library, tmp_path):
+    """All newly supported families retain strict higher-precedence failure."""
+    source = tmp_path / 'client-proposal/simple.md'
+    source.parent.mkdir()
+    raw = (library.base / 'client-proposal/simple.md').read_bytes()
+    source.write_bytes(raw.replace(b'dcs-proposed-client-proposal.customer_need', b'dcs-proposed-client-proposal.unknown'))
+    with pytest.raises(ReferenceError, match='SELECTED_REFERENCE_INVALID:engagement'):
+        library.resolve('client-proposal', 'simple', engagement_root=tmp_path)
+
+
+def test_context_and_audience_selection_is_explicit_and_redacted(library, original, tmp_path):
+    """Explicit selectors distinguish same-slot audience variants without guessing."""
+    marker = b'approval_status: not-human-approved'
+    finance = original.replace(marker, marker + b'\ntarget_audiences: [finance]\napplicability_context: {sector: private-example}')
+    engineering = original.replace(marker, marker + b'\ntarget_audiences: [engineering]\napplicability_context: {sector: private-example}')
+    _put(tmp_path, finance)
+    alternative = _put(tmp_path, engineering, 'engineering.md')
+    _, report = library.resolve('adr', 'simple', user_root=tmp_path)
+    assert report['scope'] == 'bundled'
+    path, report = library.resolve('adr', 'simple', user_root=tmp_path, audience='engineering', context={'sector':'private-example'})
+    assert path == alternative
+    assert report['scope'] == 'user'
+    assert report['selection_context'] == {'context_supplied':True,'audience_supplied':True}
+    assert 'private-example' not in json.dumps(report)
+    assert 'engineering' not in json.dumps(report)
+    assert str(tmp_path) not in json.dumps(report)
+
+
+def test_context_selector_cannot_turn_invalid_override_into_fallback(library, original, tmp_path):
+    """Malformed metadata cannot hide behind a nonmatching audience selector."""
+    raw = original.replace(b'language: en', b'language: unsupported\ntarget_audiences: [finance]')
+    _put(tmp_path, raw)
+    with pytest.raises(ReferenceError, match='SELECTED_REFERENCE_INVALID:user'):
+        library.resolve('adr','simple',user_root=tmp_path,audience='engineering')
+
+
+@pytest.mark.parametrize('contract,family', [('delivery-manager:1','delivery-proposal'), ('bid-proposal-manager:1','rfp-response'), ('bid-proposal-manager:3','client-proposal')])
+def test_colliding_role_mappings_have_explicit_authoring_defaults(library, tmp_path, contract, family):
+    """Registered explicit choices resolve genuine overlapping role associations."""
+    from content_spec import ContentSpec
+    assert library.authoring_defaults[contract] == family
+    engine = ContentSpec(ROOT)
+    result = engine.outline(contract, user_root=tmp_path / 'missing')
+    assert result['expert_reference']['reference_family'] == family
+    assert result['expert_reference']['professional_acceptance'] == 'NOT_APPROVED'
+
+
+def test_nonfinite_context_and_unknown_audience_types_fail_safely(library, tmp_path):
+    """Selectors cannot accept malformed JSON or echo private context values."""
+    for context, audience in [({'secret': float('nan')}, None), (['private'], None), ({}, ['private'])]:
+        with pytest.raises(ReferenceError) as caught:
+            library.resolve('adr','simple',user_root=tmp_path,context=context,audience=audience)
+        assert 'private' not in str(caught.value)
+
+
+def test_context_filters_cannot_hide_canonical_identity_errors(library, original, tmp_path):
+    """Wrong-slot metadata fails before applicability can mask a selected override."""
+    raw = original.replace(b'document_kind: adr', b'document_kind: hld').replace(b'approval_status: not-human-approved', b'approval_status: not-human-approved\ntarget_audiences: [finance]')
+    _put(tmp_path, raw)
+    with pytest.raises(ReferenceError, match='SELECTED_REFERENCE_INVALID:user'):
+        library.resolve('adr','simple',user_root=tmp_path,audience='engineering')

@@ -1,0 +1,4235 @@
+{
+  "schema_version": "1.0.0",
+  "profile": "commercial-delivery/1",
+  "package_kind": "proposal-authoring-input/1",
+  "package_id": "synthetic-proposal-complex",
+  "classification": "public-synthetic",
+  "complexity": "complex",
+  "audience": "buying sponsor and procurement",
+  "selection_context": {
+    "industry": "fictional enterprise services",
+    "domain": "integration"
+  },
+  "dcs_context": {},
+  "sources": [
+    {
+      "id": "synthetic-proposal-baseline",
+      "version": "2.1.0",
+      "classification": "public-synthetic",
+      "provenance": "synthetic",
+      "summary": "AI-authored hypothetical instructional baseline. No customer discovery, pricing approval or test execution has occurred."
+    }
+  ],
+  "narrative": {
+    "situation": {
+      "text": "The fictional operations team experiences delayed and duplicated service updates across scheduling and downstream dispatch. No actual customer baseline has been measured.",
+      "knowledge_status": "assumption",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    },
+    "objectives": {
+      "text": "Propose a controlled service integration with explicit reconciliation ownership, measurable duplicate handling and documented recovery acceptance.",
+      "knowledge_status": "assumption",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    },
+    "value_hypothesis": {
+      "text": "Reduced manual reconciliation may improve service reliability; measure current effort during discovery before claiming any financial benefit or ROI.",
+      "knowledge_status": "assumption",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    },
+    "technical_approach": {
+      "text": "Use a versioned event contract, idempotency keys, durable retry queue and reconciliation dashboard; retain SSO and a separately reviewed trust boundary.",
+      "knowledge_status": "assumption",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    },
+    "security_constraints": {
+      "text": "Minimize personal data, restrict production access and retain audit events. Legal basis, hosting location and any certification remain unverified and require competent review.",
+      "knowledge_status": "assumption",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    },
+    "delivery_approach": {
+      "text": "Discover and baseline first; deliver controlled integration increments; rehearse failure and recovery; transfer only after receiving-owner acceptance.",
+      "knowledge_status": "assumption",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    },
+    "decision_request": {
+      "text": "Authorize a bounded discovery and confirm accountable scope, technical, commercial and receiving-service owners. No contract or production release is authorized by this proposal.",
+      "knowledge_status": "assumption",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    },
+    "risks": {
+      "text": "Incomplete source data, unavailable client decisions and integration permissions may delay delivery. Hold the affected milestone for impact review rather than imply unconditional completion.",
+      "knowledge_status": "assumption",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    },
+    "alternatives": {
+      "text": "Compare retaining the current workflow, a bounded integration pilot and a full replacement. Select only after validated baseline, dependency and total-cost review.",
+      "knowledge_status": "assumption",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    },
+    "contract_terms": {
+      "text": "Commercial and legal terms remain a negotiation draft: no signed instrument, binding service guarantee or agreed liability allocation exists.",
+      "knowledge_status": "assumption",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    }
+  },
+  "scope": {
+    "description": "Fictional scheduling-to-dispatch integration, reconciliation, verification and operational handover; excludes separate optional cybersecurity and monitoring services.",
+    "deliverable_ids": [
+      "D1",
+      "D2",
+      "D3",
+      "D4",
+      "D5"
+    ]
+  },
+  "deliverables": [
+    {
+      "id": "D1",
+      "title": "Discovery baseline",
+      "description": "Source inventory, agreed scope and measurable acceptance objectives.",
+      "acceptance_id": "A1",
+      "owner": "Supplier delivery lead (proposed)",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    },
+    {
+      "id": "D2",
+      "title": "Architecture and interfaces",
+      "description": "Versioned design, data boundaries and interface contract.",
+      "acceptance_id": "A2",
+      "owner": "Supplier delivery lead (proposed)",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    },
+    {
+      "id": "D3",
+      "title": "Implementation increment",
+      "description": "Versioned configuration and duplicate-safe connector.",
+      "acceptance_id": "A3",
+      "owner": "Supplier delivery lead (proposed)",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    },
+    {
+      "id": "D4",
+      "title": "Verification and recovery",
+      "description": "Independent test plan, defect disposition and recovery rehearsal records.",
+      "acceptance_id": "A4",
+      "owner": "Supplier delivery lead (proposed)",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    },
+    {
+      "id": "D5",
+      "title": "Operational transfer",
+      "description": "Runbook, telemetry, training and receiving-owner acceptance proposal.",
+      "acceptance_id": "A5",
+      "owner": "Supplier delivery lead (proposed)",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    }
+  ],
+  "technical_commitments": [
+    {
+      "id": "TC1",
+      "description": "Propose the versioned duplicate-safe connector and observable reconciliation boundary, subject to interface validation.",
+      "deliverable_ids": [
+        "D2",
+        "D3"
+      ],
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ],
+      "knowledge_status": "assumption"
+    }
+  ],
+  "delivery_commitments": [
+    {
+      "id": "DC1",
+      "description": "Propose phased work packages with an independently reviewed evidence handoff before operational transfer.",
+      "deliverable_ids": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5"
+      ],
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ],
+      "knowledge_status": "assumption"
+    }
+  ],
+  "pricing": {
+    "currency": "EUR",
+    "period_months": 36,
+    "labour": [
+      {
+        "id": "W1",
+        "days": "300",
+        "day_rate": "1500",
+        "line_total": "450000",
+        "currency": "EUR",
+        "deliverable_ids": [
+          "D1"
+        ]
+      },
+      {
+        "id": "W2",
+        "days": "550",
+        "day_rate": "1500",
+        "line_total": "825000",
+        "currency": "EUR",
+        "deliverable_ids": [
+          "D2"
+        ]
+      },
+      {
+        "id": "W3",
+        "days": "900",
+        "day_rate": "1500",
+        "line_total": "1350000",
+        "currency": "EUR",
+        "deliverable_ids": [
+          "D3"
+        ]
+      },
+      {
+        "id": "W4",
+        "days": "500",
+        "day_rate": "1500",
+        "line_total": "750000",
+        "currency": "EUR",
+        "deliverable_ids": [
+          "D4"
+        ]
+      },
+      {
+        "id": "W5",
+        "days": "450",
+        "day_rate": "1500",
+        "line_total": "675000",
+        "currency": "EUR",
+        "deliverable_ids": [
+          "D5"
+        ]
+      },
+      {
+        "id": "W6",
+        "days": "300",
+        "day_rate": "1500",
+        "line_total": "450000",
+        "currency": "EUR",
+        "deliverable_ids": [
+          "D5"
+        ]
+      }
+    ],
+    "supplier_fee": "4500000",
+    "third_party": "1500000",
+    "customer_internal": "800000",
+    "programme_total": "6800000",
+    "taxes": "Excluded; tax treatment requires competent confirmation.",
+    "valid_until": "2026-11-19",
+    "source_ids": [
+      "synthetic-proposal-baseline"
+    ]
+  },
+  "dependencies": [
+    {
+      "id": "DEP1",
+      "description": "Authorized test access and an accountable customer decision owner.",
+      "owner": "Client sponsor (proposed)",
+      "required_by_day": 0,
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    }
+  ],
+  "acceptance": [
+    {
+      "id": "A1",
+      "criteria": "Review the versioned discovery baseline against agreed scope; reject missing or contradictory evidence.",
+      "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+      "recipient": "Receiving discipline authority (proposed)",
+      "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+      "status": "NOT_EXECUTED",
+      "deliverable_ids": [
+        "D1"
+      ]
+    },
+    {
+      "id": "A2",
+      "criteria": "Review the versioned architecture and interfaces against agreed scope; reject missing or contradictory evidence.",
+      "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+      "recipient": "Receiving discipline authority (proposed)",
+      "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+      "status": "NOT_EXECUTED",
+      "deliverable_ids": [
+        "D2"
+      ]
+    },
+    {
+      "id": "A3",
+      "criteria": "Review the versioned implementation increment against agreed scope; reject missing or contradictory evidence.",
+      "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+      "recipient": "Receiving discipline authority (proposed)",
+      "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+      "status": "NOT_EXECUTED",
+      "deliverable_ids": [
+        "D3"
+      ]
+    },
+    {
+      "id": "A4",
+      "criteria": "Review the versioned verification and recovery against agreed scope; reject missing or contradictory evidence.",
+      "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+      "recipient": "Receiving discipline authority (proposed)",
+      "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+      "status": "NOT_EXECUTED",
+      "deliverable_ids": [
+        "D4"
+      ]
+    },
+    {
+      "id": "A5",
+      "criteria": "Review the versioned operational transfer against agreed scope; reject missing or contradictory evidence.",
+      "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+      "recipient": "Receiving service owner (proposed)",
+      "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+      "status": "NOT_EXECUTED",
+      "deliverable_ids": [
+        "D5"
+      ]
+    }
+  ],
+  "milestones": [
+    {
+      "id": "M1",
+      "start_day": 0,
+      "end_day": 78,
+      "deliverable_ids": [
+        "D1",
+        "D2"
+      ],
+      "dependency_ids": [
+        "DEP1"
+      ],
+      "acceptance_ids": [
+        "A1",
+        "A2"
+      ],
+      "predecessor_ids": [],
+      "payment_percent": "15",
+      "payment_amount": "675000"
+    },
+    {
+      "id": "M2",
+      "start_day": 78,
+      "end_day": 234,
+      "deliverable_ids": [
+        "D3"
+      ],
+      "dependency_ids": [
+        "DEP1"
+      ],
+      "acceptance_ids": [
+        "A3"
+      ],
+      "predecessor_ids": [
+        "M1"
+      ],
+      "payment_percent": "35",
+      "payment_amount": "1575000"
+    },
+    {
+      "id": "M3",
+      "start_day": 234,
+      "end_day": 312,
+      "deliverable_ids": [
+        "D4"
+      ],
+      "dependency_ids": [
+        "DEP1"
+      ],
+      "acceptance_ids": [
+        "A4"
+      ],
+      "predecessor_ids": [
+        "M2"
+      ],
+      "payment_percent": "30",
+      "payment_amount": "1350000"
+    },
+    {
+      "id": "M4",
+      "start_day": 312,
+      "end_day": 390,
+      "deliverable_ids": [
+        "D5"
+      ],
+      "dependency_ids": [
+        "DEP1"
+      ],
+      "acceptance_ids": [
+        "A5"
+      ],
+      "predecessor_ids": [
+        "M3"
+      ],
+      "payment_percent": "20",
+      "payment_amount": "900000"
+    }
+  ],
+  "assumptions": [
+    {
+      "id": "AS1",
+      "text": "Client access, data permission and decision availability will be confirmed before implementation.",
+      "owner": "Contracting owner (proposed)",
+      "validation_gate": "Discovery baseline review; block dependent work if unresolved.",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    }
+  ],
+  "exclusions": [
+    "Separate optional cybersecurity transformation and managed security services.",
+    "Unapproved production access, legal opinions, taxes and unsupported certification claims."
+  ],
+  "responsibilities": [
+    {
+      "id": "RS1",
+      "party": "supplier",
+      "description": "Produce the scoped design, implementation and test/handover evidence; remediate independent findings.",
+      "deliverable_ids": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5"
+      ],
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    },
+    {
+      "id": "RS2",
+      "party": "client",
+      "description": "Provide authorized access, decisions and independent receiving-role acceptance.",
+      "deliverable_ids": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5"
+      ],
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    }
+  ],
+  "rfp_requirements": [
+    {
+      "id": "RFP1",
+      "text": "Explain duplicate-safe integration and reconciliation evidence.",
+      "mandatory": true,
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    },
+    {
+      "id": "RFP2",
+      "text": "Explain controlled service handover and rejection of missing recovery evidence.",
+      "mandatory": true,
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ]
+    }
+  ],
+  "rfp_answers": [
+    {
+      "requirement_id": "RFP1",
+      "status": "CONDITIONAL",
+      "response": "Propose versioned events, idempotency and reconciliation; effectiveness remains to be tested.",
+      "conditions": [
+        "Validate interfaces and acceptance cases during discovery."
+      ],
+      "deliverable_ids": [
+        "D2",
+        "D3"
+      ],
+      "evidence_ids": [
+        "EV1"
+      ]
+    },
+    {
+      "requirement_id": "RFP2",
+      "status": "PROPOSED",
+      "response": "Require recovery observations, defect disposition and receiving-owner review before transfer.",
+      "conditions": [],
+      "deliverable_ids": [
+        "D4",
+        "D5"
+      ],
+      "evidence_ids": [
+        "EV1"
+      ]
+    }
+  ],
+  "evidence": [
+    {
+      "id": "EV1",
+      "status": "NOT_EXECUTED",
+      "summary": "Planned verification only. No test or recovery rehearsal has occurred.",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ],
+      "version": "1"
+    }
+  ],
+  "optional_offerings": [
+    {
+      "kind": "cybersecurity-transformation-proposal",
+      "selected": false,
+      "included_in_base": false,
+      "fee": "950000",
+      "currency": "EUR",
+      "period": "one-off proposed work package",
+      "scope": "Separate security baseline and control-uplift design, subject to explicit discovery and approval.",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ],
+      "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+      "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+      "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+      "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+      "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+      "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+    },
+    {
+      "kind": "managed-security-services-proposal",
+      "selected": false,
+      "included_in_base": false,
+      "fee": "990000",
+      "currency": "EUR",
+      "period": "first 12 months including onboarding",
+      "scope": "Separate monitoring and escalation service; hours, clock boundaries and client action rights require explicit agreement.",
+      "source_ids": [
+        "synthetic-proposal-baseline"
+      ],
+      "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+      "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+      "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+      "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+      "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+      "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+    }
+  ],
+  "documents": {
+    "client-proposal": {
+      "technical_commitments": [
+        {
+          "id": "TC1",
+          "description": "Propose the versioned duplicate-safe connector and observable reconciliation boundary, subject to interface validation.",
+          "deliverable_ids": [
+            "D2",
+            "D3"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "knowledge_status": "assumption"
+        }
+      ],
+      "delivery_commitments": [
+        {
+          "id": "DC1",
+          "description": "Propose phased work packages with an independently reviewed evidence handoff before operational transfer.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "knowledge_status": "assumption"
+        }
+      ],
+      "milestones": [
+        {
+          "id": "M1",
+          "start_day": 0,
+          "end_day": 78,
+          "deliverable_ids": [
+            "D1",
+            "D2"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A1",
+            "A2"
+          ],
+          "predecessor_ids": [],
+          "payment_percent": "15",
+          "payment_amount": "675000"
+        },
+        {
+          "id": "M2",
+          "start_day": 78,
+          "end_day": 234,
+          "deliverable_ids": [
+            "D3"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A3"
+          ],
+          "predecessor_ids": [
+            "M1"
+          ],
+          "payment_percent": "35",
+          "payment_amount": "1575000"
+        },
+        {
+          "id": "M3",
+          "start_day": 234,
+          "end_day": 312,
+          "deliverable_ids": [
+            "D4"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A4"
+          ],
+          "predecessor_ids": [
+            "M2"
+          ],
+          "payment_percent": "30",
+          "payment_amount": "1350000"
+        },
+        {
+          "id": "M4",
+          "start_day": 312,
+          "end_day": 390,
+          "deliverable_ids": [
+            "D5"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A5"
+          ],
+          "predecessor_ids": [
+            "M3"
+          ],
+          "payment_percent": "20",
+          "payment_amount": "900000"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "DEP1",
+          "description": "Authorized test access and an accountable customer decision owner.",
+          "owner": "Client sponsor (proposed)",
+          "required_by_day": 0,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "A1",
+          "criteria": "Review the versioned discovery baseline against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D1"
+          ]
+        },
+        {
+          "id": "A2",
+          "criteria": "Review the versioned architecture and interfaces against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D2"
+          ]
+        },
+        {
+          "id": "A3",
+          "criteria": "Review the versioned implementation increment against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D3"
+          ]
+        },
+        {
+          "id": "A4",
+          "criteria": "Review the versioned verification and recovery against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D4"
+          ]
+        },
+        {
+          "id": "A5",
+          "criteria": "Review the versioned operational transfer against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving service owner (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D5"
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "AS1",
+          "text": "Client access, data permission and decision availability will be confirmed before implementation.",
+          "owner": "Contracting owner (proposed)",
+          "validation_gate": "Discovery baseline review; block dependent work if unresolved.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "exclusions": [
+        "Separate optional cybersecurity transformation and managed security services.",
+        "Unapproved production access, legal opinions, taxes and unsupported certification claims."
+      ],
+      "responsibilities": [
+        {
+          "id": "RS1",
+          "party": "supplier",
+          "description": "Produce the scoped design, implementation and test/handover evidence; remediate independent findings.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "RS2",
+          "party": "client",
+          "description": "Provide authorized access, decisions and independent receiving-role acceptance.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "rfp_requirements": [
+        {
+          "id": "RFP1",
+          "text": "Explain duplicate-safe integration and reconciliation evidence.",
+          "mandatory": true,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "RFP2",
+          "text": "Explain controlled service handover and rejection of missing recovery evidence.",
+          "mandatory": true,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "rfp_answers": [
+        {
+          "requirement_id": "RFP1",
+          "status": "CONDITIONAL",
+          "response": "Propose versioned events, idempotency and reconciliation; effectiveness remains to be tested.",
+          "conditions": [
+            "Validate interfaces and acceptance cases during discovery."
+          ],
+          "deliverable_ids": [
+            "D2",
+            "D3"
+          ],
+          "evidence_ids": [
+            "EV1"
+          ]
+        },
+        {
+          "requirement_id": "RFP2",
+          "status": "PROPOSED",
+          "response": "Require recovery observations, defect disposition and receiving-owner review before transfer.",
+          "conditions": [],
+          "deliverable_ids": [
+            "D4",
+            "D5"
+          ],
+          "evidence_ids": [
+            "EV1"
+          ]
+        }
+      ],
+      "supplier_fee": "4500000",
+      "programme_total": "6800000",
+      "currency": "EUR",
+      "deliverable_ids": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5"
+      ],
+      "scope": {
+        "description": "Fictional scheduling-to-dispatch integration, reconciliation, verification and operational handover; excludes separate optional cybersecurity and monitoring services.",
+        "deliverable_ids": [
+          "D1",
+          "D2",
+          "D3",
+          "D4",
+          "D5"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "D1",
+          "title": "Discovery baseline",
+          "description": "Source inventory, agreed scope and measurable acceptance objectives.",
+          "acceptance_id": "A1",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D2",
+          "title": "Architecture and interfaces",
+          "description": "Versioned design, data boundaries and interface contract.",
+          "acceptance_id": "A2",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D3",
+          "title": "Implementation increment",
+          "description": "Versioned configuration and duplicate-safe connector.",
+          "acceptance_id": "A3",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D4",
+          "title": "Verification and recovery",
+          "description": "Independent test plan, defect disposition and recovery rehearsal records.",
+          "acceptance_id": "A4",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D5",
+          "title": "Operational transfer",
+          "description": "Runbook, telemetry, training and receiving-owner acceptance proposal.",
+          "acceptance_id": "A5",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "pricing": {
+        "currency": "EUR",
+        "period_months": 36,
+        "labour": [
+          {
+            "id": "W1",
+            "days": "300",
+            "day_rate": "1500",
+            "line_total": "450000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D1"
+            ]
+          },
+          {
+            "id": "W2",
+            "days": "550",
+            "day_rate": "1500",
+            "line_total": "825000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D2"
+            ]
+          },
+          {
+            "id": "W3",
+            "days": "900",
+            "day_rate": "1500",
+            "line_total": "1350000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D3"
+            ]
+          },
+          {
+            "id": "W4",
+            "days": "500",
+            "day_rate": "1500",
+            "line_total": "750000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D4"
+            ]
+          },
+          {
+            "id": "W5",
+            "days": "450",
+            "day_rate": "1500",
+            "line_total": "675000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D5"
+            ]
+          },
+          {
+            "id": "W6",
+            "days": "300",
+            "day_rate": "1500",
+            "line_total": "450000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D5"
+            ]
+          }
+        ],
+        "supplier_fee": "4500000",
+        "third_party": "1500000",
+        "customer_internal": "800000",
+        "programme_total": "6800000",
+        "taxes": "Excluded; tax treatment requires competent confirmation.",
+        "valid_until": "2026-11-19",
+        "source_ids": [
+          "synthetic-proposal-baseline"
+        ]
+      },
+      "source_versions": {
+        "synthetic-proposal-baseline": "2.1.0"
+      },
+      "optional_offerings": [
+        {
+          "kind": "cybersecurity-transformation-proposal",
+          "included_in_base": false,
+          "fee": "950000",
+          "currency": "EUR",
+          "period": "one-off proposed work package",
+          "scope": "Separate security baseline and control-uplift design, subject to explicit discovery and approval.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+          "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+          "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+          "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+          "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+          "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+        },
+        {
+          "kind": "managed-security-services-proposal",
+          "included_in_base": false,
+          "fee": "990000",
+          "currency": "EUR",
+          "period": "first 12 months including onboarding",
+          "scope": "Separate monitoring and escalation service; hours, clock boundaries and client action rights require explicit agreement.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+          "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+          "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+          "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+          "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+          "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+        }
+      ]
+    },
+    "executive-proposal": {
+      "technical_commitments": [
+        {
+          "id": "TC1",
+          "description": "Propose the versioned duplicate-safe connector and observable reconciliation boundary, subject to interface validation.",
+          "deliverable_ids": [
+            "D2",
+            "D3"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "knowledge_status": "assumption"
+        }
+      ],
+      "delivery_commitments": [
+        {
+          "id": "DC1",
+          "description": "Propose phased work packages with an independently reviewed evidence handoff before operational transfer.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "knowledge_status": "assumption"
+        }
+      ],
+      "milestones": [
+        {
+          "id": "M1",
+          "start_day": 0,
+          "end_day": 78,
+          "deliverable_ids": [
+            "D1",
+            "D2"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A1",
+            "A2"
+          ],
+          "predecessor_ids": [],
+          "payment_percent": "15",
+          "payment_amount": "675000"
+        },
+        {
+          "id": "M2",
+          "start_day": 78,
+          "end_day": 234,
+          "deliverable_ids": [
+            "D3"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A3"
+          ],
+          "predecessor_ids": [
+            "M1"
+          ],
+          "payment_percent": "35",
+          "payment_amount": "1575000"
+        },
+        {
+          "id": "M3",
+          "start_day": 234,
+          "end_day": 312,
+          "deliverable_ids": [
+            "D4"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A4"
+          ],
+          "predecessor_ids": [
+            "M2"
+          ],
+          "payment_percent": "30",
+          "payment_amount": "1350000"
+        },
+        {
+          "id": "M4",
+          "start_day": 312,
+          "end_day": 390,
+          "deliverable_ids": [
+            "D5"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A5"
+          ],
+          "predecessor_ids": [
+            "M3"
+          ],
+          "payment_percent": "20",
+          "payment_amount": "900000"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "DEP1",
+          "description": "Authorized test access and an accountable customer decision owner.",
+          "owner": "Client sponsor (proposed)",
+          "required_by_day": 0,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "A1",
+          "criteria": "Review the versioned discovery baseline against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D1"
+          ]
+        },
+        {
+          "id": "A2",
+          "criteria": "Review the versioned architecture and interfaces against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D2"
+          ]
+        },
+        {
+          "id": "A3",
+          "criteria": "Review the versioned implementation increment against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D3"
+          ]
+        },
+        {
+          "id": "A4",
+          "criteria": "Review the versioned verification and recovery against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D4"
+          ]
+        },
+        {
+          "id": "A5",
+          "criteria": "Review the versioned operational transfer against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving service owner (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D5"
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "AS1",
+          "text": "Client access, data permission and decision availability will be confirmed before implementation.",
+          "owner": "Contracting owner (proposed)",
+          "validation_gate": "Discovery baseline review; block dependent work if unresolved.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "exclusions": [
+        "Separate optional cybersecurity transformation and managed security services.",
+        "Unapproved production access, legal opinions, taxes and unsupported certification claims."
+      ],
+      "responsibilities": [
+        {
+          "id": "RS1",
+          "party": "supplier",
+          "description": "Produce the scoped design, implementation and test/handover evidence; remediate independent findings.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "RS2",
+          "party": "client",
+          "description": "Provide authorized access, decisions and independent receiving-role acceptance.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "rfp_requirements": [
+        {
+          "id": "RFP1",
+          "text": "Explain duplicate-safe integration and reconciliation evidence.",
+          "mandatory": true,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "RFP2",
+          "text": "Explain controlled service handover and rejection of missing recovery evidence.",
+          "mandatory": true,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "rfp_answers": [
+        {
+          "requirement_id": "RFP1",
+          "status": "CONDITIONAL",
+          "response": "Propose versioned events, idempotency and reconciliation; effectiveness remains to be tested.",
+          "conditions": [
+            "Validate interfaces and acceptance cases during discovery."
+          ],
+          "deliverable_ids": [
+            "D2",
+            "D3"
+          ],
+          "evidence_ids": [
+            "EV1"
+          ]
+        },
+        {
+          "requirement_id": "RFP2",
+          "status": "PROPOSED",
+          "response": "Require recovery observations, defect disposition and receiving-owner review before transfer.",
+          "conditions": [],
+          "deliverable_ids": [
+            "D4",
+            "D5"
+          ],
+          "evidence_ids": [
+            "EV1"
+          ]
+        }
+      ],
+      "supplier_fee": "4500000",
+      "programme_total": "6800000",
+      "currency": "EUR",
+      "deliverable_ids": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5"
+      ],
+      "scope": {
+        "description": "Fictional scheduling-to-dispatch integration, reconciliation, verification and operational handover; excludes separate optional cybersecurity and monitoring services.",
+        "deliverable_ids": [
+          "D1",
+          "D2",
+          "D3",
+          "D4",
+          "D5"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "D1",
+          "title": "Discovery baseline",
+          "description": "Source inventory, agreed scope and measurable acceptance objectives.",
+          "acceptance_id": "A1",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D2",
+          "title": "Architecture and interfaces",
+          "description": "Versioned design, data boundaries and interface contract.",
+          "acceptance_id": "A2",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D3",
+          "title": "Implementation increment",
+          "description": "Versioned configuration and duplicate-safe connector.",
+          "acceptance_id": "A3",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D4",
+          "title": "Verification and recovery",
+          "description": "Independent test plan, defect disposition and recovery rehearsal records.",
+          "acceptance_id": "A4",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D5",
+          "title": "Operational transfer",
+          "description": "Runbook, telemetry, training and receiving-owner acceptance proposal.",
+          "acceptance_id": "A5",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "pricing": {
+        "currency": "EUR",
+        "period_months": 36,
+        "labour": [
+          {
+            "id": "W1",
+            "days": "300",
+            "day_rate": "1500",
+            "line_total": "450000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D1"
+            ]
+          },
+          {
+            "id": "W2",
+            "days": "550",
+            "day_rate": "1500",
+            "line_total": "825000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D2"
+            ]
+          },
+          {
+            "id": "W3",
+            "days": "900",
+            "day_rate": "1500",
+            "line_total": "1350000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D3"
+            ]
+          },
+          {
+            "id": "W4",
+            "days": "500",
+            "day_rate": "1500",
+            "line_total": "750000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D4"
+            ]
+          },
+          {
+            "id": "W5",
+            "days": "450",
+            "day_rate": "1500",
+            "line_total": "675000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D5"
+            ]
+          },
+          {
+            "id": "W6",
+            "days": "300",
+            "day_rate": "1500",
+            "line_total": "450000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D5"
+            ]
+          }
+        ],
+        "supplier_fee": "4500000",
+        "third_party": "1500000",
+        "customer_internal": "800000",
+        "programme_total": "6800000",
+        "taxes": "Excluded; tax treatment requires competent confirmation.",
+        "valid_until": "2026-11-19",
+        "source_ids": [
+          "synthetic-proposal-baseline"
+        ]
+      },
+      "source_versions": {
+        "synthetic-proposal-baseline": "2.1.0"
+      },
+      "optional_offerings": [
+        {
+          "kind": "cybersecurity-transformation-proposal",
+          "included_in_base": false,
+          "fee": "950000",
+          "currency": "EUR",
+          "period": "one-off proposed work package",
+          "scope": "Separate security baseline and control-uplift design, subject to explicit discovery and approval.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+          "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+          "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+          "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+          "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+          "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+        },
+        {
+          "kind": "managed-security-services-proposal",
+          "included_in_base": false,
+          "fee": "990000",
+          "currency": "EUR",
+          "period": "first 12 months including onboarding",
+          "scope": "Separate monitoring and escalation service; hours, clock boundaries and client action rights require explicit agreement.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+          "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+          "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+          "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+          "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+          "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+        }
+      ]
+    },
+    "technical-proposal": {
+      "technical_commitments": [
+        {
+          "id": "TC1",
+          "description": "Propose the versioned duplicate-safe connector and observable reconciliation boundary, subject to interface validation.",
+          "deliverable_ids": [
+            "D2",
+            "D3"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "knowledge_status": "assumption"
+        }
+      ],
+      "delivery_commitments": [
+        {
+          "id": "DC1",
+          "description": "Propose phased work packages with an independently reviewed evidence handoff before operational transfer.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "knowledge_status": "assumption"
+        }
+      ],
+      "milestones": [
+        {
+          "id": "M1",
+          "start_day": 0,
+          "end_day": 78,
+          "deliverable_ids": [
+            "D1",
+            "D2"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A1",
+            "A2"
+          ],
+          "predecessor_ids": [],
+          "payment_percent": "15",
+          "payment_amount": "675000"
+        },
+        {
+          "id": "M2",
+          "start_day": 78,
+          "end_day": 234,
+          "deliverable_ids": [
+            "D3"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A3"
+          ],
+          "predecessor_ids": [
+            "M1"
+          ],
+          "payment_percent": "35",
+          "payment_amount": "1575000"
+        },
+        {
+          "id": "M3",
+          "start_day": 234,
+          "end_day": 312,
+          "deliverable_ids": [
+            "D4"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A4"
+          ],
+          "predecessor_ids": [
+            "M2"
+          ],
+          "payment_percent": "30",
+          "payment_amount": "1350000"
+        },
+        {
+          "id": "M4",
+          "start_day": 312,
+          "end_day": 390,
+          "deliverable_ids": [
+            "D5"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A5"
+          ],
+          "predecessor_ids": [
+            "M3"
+          ],
+          "payment_percent": "20",
+          "payment_amount": "900000"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "DEP1",
+          "description": "Authorized test access and an accountable customer decision owner.",
+          "owner": "Client sponsor (proposed)",
+          "required_by_day": 0,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "A1",
+          "criteria": "Review the versioned discovery baseline against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D1"
+          ]
+        },
+        {
+          "id": "A2",
+          "criteria": "Review the versioned architecture and interfaces against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D2"
+          ]
+        },
+        {
+          "id": "A3",
+          "criteria": "Review the versioned implementation increment against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D3"
+          ]
+        },
+        {
+          "id": "A4",
+          "criteria": "Review the versioned verification and recovery against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D4"
+          ]
+        },
+        {
+          "id": "A5",
+          "criteria": "Review the versioned operational transfer against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving service owner (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D5"
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "AS1",
+          "text": "Client access, data permission and decision availability will be confirmed before implementation.",
+          "owner": "Contracting owner (proposed)",
+          "validation_gate": "Discovery baseline review; block dependent work if unresolved.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "exclusions": [
+        "Separate optional cybersecurity transformation and managed security services.",
+        "Unapproved production access, legal opinions, taxes and unsupported certification claims."
+      ],
+      "responsibilities": [
+        {
+          "id": "RS1",
+          "party": "supplier",
+          "description": "Produce the scoped design, implementation and test/handover evidence; remediate independent findings.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "RS2",
+          "party": "client",
+          "description": "Provide authorized access, decisions and independent receiving-role acceptance.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "rfp_requirements": [
+        {
+          "id": "RFP1",
+          "text": "Explain duplicate-safe integration and reconciliation evidence.",
+          "mandatory": true,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "RFP2",
+          "text": "Explain controlled service handover and rejection of missing recovery evidence.",
+          "mandatory": true,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "rfp_answers": [
+        {
+          "requirement_id": "RFP1",
+          "status": "CONDITIONAL",
+          "response": "Propose versioned events, idempotency and reconciliation; effectiveness remains to be tested.",
+          "conditions": [
+            "Validate interfaces and acceptance cases during discovery."
+          ],
+          "deliverable_ids": [
+            "D2",
+            "D3"
+          ],
+          "evidence_ids": [
+            "EV1"
+          ]
+        },
+        {
+          "requirement_id": "RFP2",
+          "status": "PROPOSED",
+          "response": "Require recovery observations, defect disposition and receiving-owner review before transfer.",
+          "conditions": [],
+          "deliverable_ids": [
+            "D4",
+            "D5"
+          ],
+          "evidence_ids": [
+            "EV1"
+          ]
+        }
+      ],
+      "supplier_fee": "4500000",
+      "programme_total": "6800000",
+      "currency": "EUR",
+      "deliverable_ids": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5"
+      ],
+      "scope": {
+        "description": "Fictional scheduling-to-dispatch integration, reconciliation, verification and operational handover; excludes separate optional cybersecurity and monitoring services.",
+        "deliverable_ids": [
+          "D1",
+          "D2",
+          "D3",
+          "D4",
+          "D5"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "D1",
+          "title": "Discovery baseline",
+          "description": "Source inventory, agreed scope and measurable acceptance objectives.",
+          "acceptance_id": "A1",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D2",
+          "title": "Architecture and interfaces",
+          "description": "Versioned design, data boundaries and interface contract.",
+          "acceptance_id": "A2",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D3",
+          "title": "Implementation increment",
+          "description": "Versioned configuration and duplicate-safe connector.",
+          "acceptance_id": "A3",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D4",
+          "title": "Verification and recovery",
+          "description": "Independent test plan, defect disposition and recovery rehearsal records.",
+          "acceptance_id": "A4",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D5",
+          "title": "Operational transfer",
+          "description": "Runbook, telemetry, training and receiving-owner acceptance proposal.",
+          "acceptance_id": "A5",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "pricing": {
+        "currency": "EUR",
+        "period_months": 36,
+        "labour": [
+          {
+            "id": "W1",
+            "days": "300",
+            "day_rate": "1500",
+            "line_total": "450000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D1"
+            ]
+          },
+          {
+            "id": "W2",
+            "days": "550",
+            "day_rate": "1500",
+            "line_total": "825000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D2"
+            ]
+          },
+          {
+            "id": "W3",
+            "days": "900",
+            "day_rate": "1500",
+            "line_total": "1350000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D3"
+            ]
+          },
+          {
+            "id": "W4",
+            "days": "500",
+            "day_rate": "1500",
+            "line_total": "750000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D4"
+            ]
+          },
+          {
+            "id": "W5",
+            "days": "450",
+            "day_rate": "1500",
+            "line_total": "675000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D5"
+            ]
+          },
+          {
+            "id": "W6",
+            "days": "300",
+            "day_rate": "1500",
+            "line_total": "450000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D5"
+            ]
+          }
+        ],
+        "supplier_fee": "4500000",
+        "third_party": "1500000",
+        "customer_internal": "800000",
+        "programme_total": "6800000",
+        "taxes": "Excluded; tax treatment requires competent confirmation.",
+        "valid_until": "2026-11-19",
+        "source_ids": [
+          "synthetic-proposal-baseline"
+        ]
+      },
+      "source_versions": {
+        "synthetic-proposal-baseline": "2.1.0"
+      },
+      "optional_offerings": [
+        {
+          "kind": "cybersecurity-transformation-proposal",
+          "included_in_base": false,
+          "fee": "950000",
+          "currency": "EUR",
+          "period": "one-off proposed work package",
+          "scope": "Separate security baseline and control-uplift design, subject to explicit discovery and approval.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+          "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+          "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+          "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+          "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+          "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+        },
+        {
+          "kind": "managed-security-services-proposal",
+          "included_in_base": false,
+          "fee": "990000",
+          "currency": "EUR",
+          "period": "first 12 months including onboarding",
+          "scope": "Separate monitoring and escalation service; hours, clock boundaries and client action rights require explicit agreement.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+          "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+          "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+          "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+          "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+          "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+        }
+      ]
+    },
+    "delivery-proposal": {
+      "technical_commitments": [
+        {
+          "id": "TC1",
+          "description": "Propose the versioned duplicate-safe connector and observable reconciliation boundary, subject to interface validation.",
+          "deliverable_ids": [
+            "D2",
+            "D3"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "knowledge_status": "assumption"
+        }
+      ],
+      "delivery_commitments": [
+        {
+          "id": "DC1",
+          "description": "Propose phased work packages with an independently reviewed evidence handoff before operational transfer.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "knowledge_status": "assumption"
+        }
+      ],
+      "milestones": [
+        {
+          "id": "M1",
+          "start_day": 0,
+          "end_day": 78,
+          "deliverable_ids": [
+            "D1",
+            "D2"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A1",
+            "A2"
+          ],
+          "predecessor_ids": [],
+          "payment_percent": "15",
+          "payment_amount": "675000"
+        },
+        {
+          "id": "M2",
+          "start_day": 78,
+          "end_day": 234,
+          "deliverable_ids": [
+            "D3"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A3"
+          ],
+          "predecessor_ids": [
+            "M1"
+          ],
+          "payment_percent": "35",
+          "payment_amount": "1575000"
+        },
+        {
+          "id": "M3",
+          "start_day": 234,
+          "end_day": 312,
+          "deliverable_ids": [
+            "D4"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A4"
+          ],
+          "predecessor_ids": [
+            "M2"
+          ],
+          "payment_percent": "30",
+          "payment_amount": "1350000"
+        },
+        {
+          "id": "M4",
+          "start_day": 312,
+          "end_day": 390,
+          "deliverable_ids": [
+            "D5"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A5"
+          ],
+          "predecessor_ids": [
+            "M3"
+          ],
+          "payment_percent": "20",
+          "payment_amount": "900000"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "DEP1",
+          "description": "Authorized test access and an accountable customer decision owner.",
+          "owner": "Client sponsor (proposed)",
+          "required_by_day": 0,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "A1",
+          "criteria": "Review the versioned discovery baseline against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D1"
+          ]
+        },
+        {
+          "id": "A2",
+          "criteria": "Review the versioned architecture and interfaces against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D2"
+          ]
+        },
+        {
+          "id": "A3",
+          "criteria": "Review the versioned implementation increment against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D3"
+          ]
+        },
+        {
+          "id": "A4",
+          "criteria": "Review the versioned verification and recovery against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D4"
+          ]
+        },
+        {
+          "id": "A5",
+          "criteria": "Review the versioned operational transfer against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving service owner (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D5"
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "AS1",
+          "text": "Client access, data permission and decision availability will be confirmed before implementation.",
+          "owner": "Contracting owner (proposed)",
+          "validation_gate": "Discovery baseline review; block dependent work if unresolved.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "exclusions": [
+        "Separate optional cybersecurity transformation and managed security services.",
+        "Unapproved production access, legal opinions, taxes and unsupported certification claims."
+      ],
+      "responsibilities": [
+        {
+          "id": "RS1",
+          "party": "supplier",
+          "description": "Produce the scoped design, implementation and test/handover evidence; remediate independent findings.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "RS2",
+          "party": "client",
+          "description": "Provide authorized access, decisions and independent receiving-role acceptance.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "rfp_requirements": [
+        {
+          "id": "RFP1",
+          "text": "Explain duplicate-safe integration and reconciliation evidence.",
+          "mandatory": true,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "RFP2",
+          "text": "Explain controlled service handover and rejection of missing recovery evidence.",
+          "mandatory": true,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "rfp_answers": [
+        {
+          "requirement_id": "RFP1",
+          "status": "CONDITIONAL",
+          "response": "Propose versioned events, idempotency and reconciliation; effectiveness remains to be tested.",
+          "conditions": [
+            "Validate interfaces and acceptance cases during discovery."
+          ],
+          "deliverable_ids": [
+            "D2",
+            "D3"
+          ],
+          "evidence_ids": [
+            "EV1"
+          ]
+        },
+        {
+          "requirement_id": "RFP2",
+          "status": "PROPOSED",
+          "response": "Require recovery observations, defect disposition and receiving-owner review before transfer.",
+          "conditions": [],
+          "deliverable_ids": [
+            "D4",
+            "D5"
+          ],
+          "evidence_ids": [
+            "EV1"
+          ]
+        }
+      ],
+      "supplier_fee": "4500000",
+      "programme_total": "6800000",
+      "currency": "EUR",
+      "deliverable_ids": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5"
+      ],
+      "scope": {
+        "description": "Fictional scheduling-to-dispatch integration, reconciliation, verification and operational handover; excludes separate optional cybersecurity and monitoring services.",
+        "deliverable_ids": [
+          "D1",
+          "D2",
+          "D3",
+          "D4",
+          "D5"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "D1",
+          "title": "Discovery baseline",
+          "description": "Source inventory, agreed scope and measurable acceptance objectives.",
+          "acceptance_id": "A1",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D2",
+          "title": "Architecture and interfaces",
+          "description": "Versioned design, data boundaries and interface contract.",
+          "acceptance_id": "A2",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D3",
+          "title": "Implementation increment",
+          "description": "Versioned configuration and duplicate-safe connector.",
+          "acceptance_id": "A3",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D4",
+          "title": "Verification and recovery",
+          "description": "Independent test plan, defect disposition and recovery rehearsal records.",
+          "acceptance_id": "A4",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D5",
+          "title": "Operational transfer",
+          "description": "Runbook, telemetry, training and receiving-owner acceptance proposal.",
+          "acceptance_id": "A5",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "pricing": {
+        "currency": "EUR",
+        "period_months": 36,
+        "labour": [
+          {
+            "id": "W1",
+            "days": "300",
+            "day_rate": "1500",
+            "line_total": "450000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D1"
+            ]
+          },
+          {
+            "id": "W2",
+            "days": "550",
+            "day_rate": "1500",
+            "line_total": "825000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D2"
+            ]
+          },
+          {
+            "id": "W3",
+            "days": "900",
+            "day_rate": "1500",
+            "line_total": "1350000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D3"
+            ]
+          },
+          {
+            "id": "W4",
+            "days": "500",
+            "day_rate": "1500",
+            "line_total": "750000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D4"
+            ]
+          },
+          {
+            "id": "W5",
+            "days": "450",
+            "day_rate": "1500",
+            "line_total": "675000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D5"
+            ]
+          },
+          {
+            "id": "W6",
+            "days": "300",
+            "day_rate": "1500",
+            "line_total": "450000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D5"
+            ]
+          }
+        ],
+        "supplier_fee": "4500000",
+        "third_party": "1500000",
+        "customer_internal": "800000",
+        "programme_total": "6800000",
+        "taxes": "Excluded; tax treatment requires competent confirmation.",
+        "valid_until": "2026-11-19",
+        "source_ids": [
+          "synthetic-proposal-baseline"
+        ]
+      },
+      "source_versions": {
+        "synthetic-proposal-baseline": "2.1.0"
+      },
+      "optional_offerings": [
+        {
+          "kind": "cybersecurity-transformation-proposal",
+          "included_in_base": false,
+          "fee": "950000",
+          "currency": "EUR",
+          "period": "one-off proposed work package",
+          "scope": "Separate security baseline and control-uplift design, subject to explicit discovery and approval.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+          "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+          "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+          "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+          "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+          "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+        },
+        {
+          "kind": "managed-security-services-proposal",
+          "included_in_base": false,
+          "fee": "990000",
+          "currency": "EUR",
+          "period": "first 12 months including onboarding",
+          "scope": "Separate monitoring and escalation service; hours, clock boundaries and client action rights require explicit agreement.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+          "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+          "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+          "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+          "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+          "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+        }
+      ]
+    },
+    "commercial-proposal": {
+      "technical_commitments": [
+        {
+          "id": "TC1",
+          "description": "Propose the versioned duplicate-safe connector and observable reconciliation boundary, subject to interface validation.",
+          "deliverable_ids": [
+            "D2",
+            "D3"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "knowledge_status": "assumption"
+        }
+      ],
+      "delivery_commitments": [
+        {
+          "id": "DC1",
+          "description": "Propose phased work packages with an independently reviewed evidence handoff before operational transfer.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "knowledge_status": "assumption"
+        }
+      ],
+      "milestones": [
+        {
+          "id": "M1",
+          "start_day": 0,
+          "end_day": 78,
+          "deliverable_ids": [
+            "D1",
+            "D2"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A1",
+            "A2"
+          ],
+          "predecessor_ids": [],
+          "payment_percent": "15",
+          "payment_amount": "675000"
+        },
+        {
+          "id": "M2",
+          "start_day": 78,
+          "end_day": 234,
+          "deliverable_ids": [
+            "D3"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A3"
+          ],
+          "predecessor_ids": [
+            "M1"
+          ],
+          "payment_percent": "35",
+          "payment_amount": "1575000"
+        },
+        {
+          "id": "M3",
+          "start_day": 234,
+          "end_day": 312,
+          "deliverable_ids": [
+            "D4"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A4"
+          ],
+          "predecessor_ids": [
+            "M2"
+          ],
+          "payment_percent": "30",
+          "payment_amount": "1350000"
+        },
+        {
+          "id": "M4",
+          "start_day": 312,
+          "end_day": 390,
+          "deliverable_ids": [
+            "D5"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A5"
+          ],
+          "predecessor_ids": [
+            "M3"
+          ],
+          "payment_percent": "20",
+          "payment_amount": "900000"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "DEP1",
+          "description": "Authorized test access and an accountable customer decision owner.",
+          "owner": "Client sponsor (proposed)",
+          "required_by_day": 0,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "A1",
+          "criteria": "Review the versioned discovery baseline against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D1"
+          ]
+        },
+        {
+          "id": "A2",
+          "criteria": "Review the versioned architecture and interfaces against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D2"
+          ]
+        },
+        {
+          "id": "A3",
+          "criteria": "Review the versioned implementation increment against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D3"
+          ]
+        },
+        {
+          "id": "A4",
+          "criteria": "Review the versioned verification and recovery against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D4"
+          ]
+        },
+        {
+          "id": "A5",
+          "criteria": "Review the versioned operational transfer against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving service owner (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D5"
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "AS1",
+          "text": "Client access, data permission and decision availability will be confirmed before implementation.",
+          "owner": "Contracting owner (proposed)",
+          "validation_gate": "Discovery baseline review; block dependent work if unresolved.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "exclusions": [
+        "Separate optional cybersecurity transformation and managed security services.",
+        "Unapproved production access, legal opinions, taxes and unsupported certification claims."
+      ],
+      "responsibilities": [
+        {
+          "id": "RS1",
+          "party": "supplier",
+          "description": "Produce the scoped design, implementation and test/handover evidence; remediate independent findings.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "RS2",
+          "party": "client",
+          "description": "Provide authorized access, decisions and independent receiving-role acceptance.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "rfp_requirements": [
+        {
+          "id": "RFP1",
+          "text": "Explain duplicate-safe integration and reconciliation evidence.",
+          "mandatory": true,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "RFP2",
+          "text": "Explain controlled service handover and rejection of missing recovery evidence.",
+          "mandatory": true,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "rfp_answers": [
+        {
+          "requirement_id": "RFP1",
+          "status": "CONDITIONAL",
+          "response": "Propose versioned events, idempotency and reconciliation; effectiveness remains to be tested.",
+          "conditions": [
+            "Validate interfaces and acceptance cases during discovery."
+          ],
+          "deliverable_ids": [
+            "D2",
+            "D3"
+          ],
+          "evidence_ids": [
+            "EV1"
+          ]
+        },
+        {
+          "requirement_id": "RFP2",
+          "status": "PROPOSED",
+          "response": "Require recovery observations, defect disposition and receiving-owner review before transfer.",
+          "conditions": [],
+          "deliverable_ids": [
+            "D4",
+            "D5"
+          ],
+          "evidence_ids": [
+            "EV1"
+          ]
+        }
+      ],
+      "supplier_fee": "4500000",
+      "programme_total": "6800000",
+      "currency": "EUR",
+      "deliverable_ids": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5"
+      ],
+      "scope": {
+        "description": "Fictional scheduling-to-dispatch integration, reconciliation, verification and operational handover; excludes separate optional cybersecurity and monitoring services.",
+        "deliverable_ids": [
+          "D1",
+          "D2",
+          "D3",
+          "D4",
+          "D5"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "D1",
+          "title": "Discovery baseline",
+          "description": "Source inventory, agreed scope and measurable acceptance objectives.",
+          "acceptance_id": "A1",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D2",
+          "title": "Architecture and interfaces",
+          "description": "Versioned design, data boundaries and interface contract.",
+          "acceptance_id": "A2",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D3",
+          "title": "Implementation increment",
+          "description": "Versioned configuration and duplicate-safe connector.",
+          "acceptance_id": "A3",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D4",
+          "title": "Verification and recovery",
+          "description": "Independent test plan, defect disposition and recovery rehearsal records.",
+          "acceptance_id": "A4",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D5",
+          "title": "Operational transfer",
+          "description": "Runbook, telemetry, training and receiving-owner acceptance proposal.",
+          "acceptance_id": "A5",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "pricing": {
+        "currency": "EUR",
+        "period_months": 36,
+        "labour": [
+          {
+            "id": "W1",
+            "days": "300",
+            "day_rate": "1500",
+            "line_total": "450000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D1"
+            ]
+          },
+          {
+            "id": "W2",
+            "days": "550",
+            "day_rate": "1500",
+            "line_total": "825000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D2"
+            ]
+          },
+          {
+            "id": "W3",
+            "days": "900",
+            "day_rate": "1500",
+            "line_total": "1350000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D3"
+            ]
+          },
+          {
+            "id": "W4",
+            "days": "500",
+            "day_rate": "1500",
+            "line_total": "750000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D4"
+            ]
+          },
+          {
+            "id": "W5",
+            "days": "450",
+            "day_rate": "1500",
+            "line_total": "675000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D5"
+            ]
+          },
+          {
+            "id": "W6",
+            "days": "300",
+            "day_rate": "1500",
+            "line_total": "450000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D5"
+            ]
+          }
+        ],
+        "supplier_fee": "4500000",
+        "third_party": "1500000",
+        "customer_internal": "800000",
+        "programme_total": "6800000",
+        "taxes": "Excluded; tax treatment requires competent confirmation.",
+        "valid_until": "2026-11-19",
+        "source_ids": [
+          "synthetic-proposal-baseline"
+        ]
+      },
+      "source_versions": {
+        "synthetic-proposal-baseline": "2.1.0"
+      },
+      "optional_offerings": [
+        {
+          "kind": "cybersecurity-transformation-proposal",
+          "included_in_base": false,
+          "fee": "950000",
+          "currency": "EUR",
+          "period": "one-off proposed work package",
+          "scope": "Separate security baseline and control-uplift design, subject to explicit discovery and approval.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+          "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+          "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+          "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+          "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+          "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+        },
+        {
+          "kind": "managed-security-services-proposal",
+          "included_in_base": false,
+          "fee": "990000",
+          "currency": "EUR",
+          "period": "first 12 months including onboarding",
+          "scope": "Separate monitoring and escalation service; hours, clock boundaries and client action rights require explicit agreement.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+          "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+          "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+          "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+          "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+          "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+        }
+      ]
+    },
+    "statement-of-work": {
+      "technical_commitments": [
+        {
+          "id": "TC1",
+          "description": "Propose the versioned duplicate-safe connector and observable reconciliation boundary, subject to interface validation.",
+          "deliverable_ids": [
+            "D2",
+            "D3"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "knowledge_status": "assumption"
+        }
+      ],
+      "delivery_commitments": [
+        {
+          "id": "DC1",
+          "description": "Propose phased work packages with an independently reviewed evidence handoff before operational transfer.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "knowledge_status": "assumption"
+        }
+      ],
+      "milestones": [
+        {
+          "id": "M1",
+          "start_day": 0,
+          "end_day": 78,
+          "deliverable_ids": [
+            "D1",
+            "D2"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A1",
+            "A2"
+          ],
+          "predecessor_ids": [],
+          "payment_percent": "15",
+          "payment_amount": "675000"
+        },
+        {
+          "id": "M2",
+          "start_day": 78,
+          "end_day": 234,
+          "deliverable_ids": [
+            "D3"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A3"
+          ],
+          "predecessor_ids": [
+            "M1"
+          ],
+          "payment_percent": "35",
+          "payment_amount": "1575000"
+        },
+        {
+          "id": "M3",
+          "start_day": 234,
+          "end_day": 312,
+          "deliverable_ids": [
+            "D4"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A4"
+          ],
+          "predecessor_ids": [
+            "M2"
+          ],
+          "payment_percent": "30",
+          "payment_amount": "1350000"
+        },
+        {
+          "id": "M4",
+          "start_day": 312,
+          "end_day": 390,
+          "deliverable_ids": [
+            "D5"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A5"
+          ],
+          "predecessor_ids": [
+            "M3"
+          ],
+          "payment_percent": "20",
+          "payment_amount": "900000"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "DEP1",
+          "description": "Authorized test access and an accountable customer decision owner.",
+          "owner": "Client sponsor (proposed)",
+          "required_by_day": 0,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "A1",
+          "criteria": "Review the versioned discovery baseline against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D1"
+          ]
+        },
+        {
+          "id": "A2",
+          "criteria": "Review the versioned architecture and interfaces against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D2"
+          ]
+        },
+        {
+          "id": "A3",
+          "criteria": "Review the versioned implementation increment against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D3"
+          ]
+        },
+        {
+          "id": "A4",
+          "criteria": "Review the versioned verification and recovery against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D4"
+          ]
+        },
+        {
+          "id": "A5",
+          "criteria": "Review the versioned operational transfer against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving service owner (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D5"
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "AS1",
+          "text": "Client access, data permission and decision availability will be confirmed before implementation.",
+          "owner": "Contracting owner (proposed)",
+          "validation_gate": "Discovery baseline review; block dependent work if unresolved.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "exclusions": [
+        "Separate optional cybersecurity transformation and managed security services.",
+        "Unapproved production access, legal opinions, taxes and unsupported certification claims."
+      ],
+      "responsibilities": [
+        {
+          "id": "RS1",
+          "party": "supplier",
+          "description": "Produce the scoped design, implementation and test/handover evidence; remediate independent findings.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "RS2",
+          "party": "client",
+          "description": "Provide authorized access, decisions and independent receiving-role acceptance.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "rfp_requirements": [
+        {
+          "id": "RFP1",
+          "text": "Explain duplicate-safe integration and reconciliation evidence.",
+          "mandatory": true,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "RFP2",
+          "text": "Explain controlled service handover and rejection of missing recovery evidence.",
+          "mandatory": true,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "rfp_answers": [
+        {
+          "requirement_id": "RFP1",
+          "status": "CONDITIONAL",
+          "response": "Propose versioned events, idempotency and reconciliation; effectiveness remains to be tested.",
+          "conditions": [
+            "Validate interfaces and acceptance cases during discovery."
+          ],
+          "deliverable_ids": [
+            "D2",
+            "D3"
+          ],
+          "evidence_ids": [
+            "EV1"
+          ]
+        },
+        {
+          "requirement_id": "RFP2",
+          "status": "PROPOSED",
+          "response": "Require recovery observations, defect disposition and receiving-owner review before transfer.",
+          "conditions": [],
+          "deliverable_ids": [
+            "D4",
+            "D5"
+          ],
+          "evidence_ids": [
+            "EV1"
+          ]
+        }
+      ],
+      "supplier_fee": "4500000",
+      "programme_total": "6800000",
+      "currency": "EUR",
+      "deliverable_ids": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5"
+      ],
+      "scope": {
+        "description": "Fictional scheduling-to-dispatch integration, reconciliation, verification and operational handover; excludes separate optional cybersecurity and monitoring services.",
+        "deliverable_ids": [
+          "D1",
+          "D2",
+          "D3",
+          "D4",
+          "D5"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "D1",
+          "title": "Discovery baseline",
+          "description": "Source inventory, agreed scope and measurable acceptance objectives.",
+          "acceptance_id": "A1",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D2",
+          "title": "Architecture and interfaces",
+          "description": "Versioned design, data boundaries and interface contract.",
+          "acceptance_id": "A2",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D3",
+          "title": "Implementation increment",
+          "description": "Versioned configuration and duplicate-safe connector.",
+          "acceptance_id": "A3",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D4",
+          "title": "Verification and recovery",
+          "description": "Independent test plan, defect disposition and recovery rehearsal records.",
+          "acceptance_id": "A4",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D5",
+          "title": "Operational transfer",
+          "description": "Runbook, telemetry, training and receiving-owner acceptance proposal.",
+          "acceptance_id": "A5",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "pricing": {
+        "currency": "EUR",
+        "period_months": 36,
+        "labour": [
+          {
+            "id": "W1",
+            "days": "300",
+            "day_rate": "1500",
+            "line_total": "450000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D1"
+            ]
+          },
+          {
+            "id": "W2",
+            "days": "550",
+            "day_rate": "1500",
+            "line_total": "825000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D2"
+            ]
+          },
+          {
+            "id": "W3",
+            "days": "900",
+            "day_rate": "1500",
+            "line_total": "1350000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D3"
+            ]
+          },
+          {
+            "id": "W4",
+            "days": "500",
+            "day_rate": "1500",
+            "line_total": "750000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D4"
+            ]
+          },
+          {
+            "id": "W5",
+            "days": "450",
+            "day_rate": "1500",
+            "line_total": "675000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D5"
+            ]
+          },
+          {
+            "id": "W6",
+            "days": "300",
+            "day_rate": "1500",
+            "line_total": "450000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D5"
+            ]
+          }
+        ],
+        "supplier_fee": "4500000",
+        "third_party": "1500000",
+        "customer_internal": "800000",
+        "programme_total": "6800000",
+        "taxes": "Excluded; tax treatment requires competent confirmation.",
+        "valid_until": "2026-11-19",
+        "source_ids": [
+          "synthetic-proposal-baseline"
+        ]
+      },
+      "source_versions": {
+        "synthetic-proposal-baseline": "2.1.0"
+      },
+      "optional_offerings": [
+        {
+          "kind": "cybersecurity-transformation-proposal",
+          "included_in_base": false,
+          "fee": "950000",
+          "currency": "EUR",
+          "period": "one-off proposed work package",
+          "scope": "Separate security baseline and control-uplift design, subject to explicit discovery and approval.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+          "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+          "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+          "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+          "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+          "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+        },
+        {
+          "kind": "managed-security-services-proposal",
+          "included_in_base": false,
+          "fee": "990000",
+          "currency": "EUR",
+          "period": "first 12 months including onboarding",
+          "scope": "Separate monitoring and escalation service; hours, clock boundaries and client action rights require explicit agreement.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+          "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+          "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+          "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+          "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+          "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+        }
+      ]
+    },
+    "rfp-response": {
+      "technical_commitments": [
+        {
+          "id": "TC1",
+          "description": "Propose the versioned duplicate-safe connector and observable reconciliation boundary, subject to interface validation.",
+          "deliverable_ids": [
+            "D2",
+            "D3"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "knowledge_status": "assumption"
+        }
+      ],
+      "delivery_commitments": [
+        {
+          "id": "DC1",
+          "description": "Propose phased work packages with an independently reviewed evidence handoff before operational transfer.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "knowledge_status": "assumption"
+        }
+      ],
+      "milestones": [
+        {
+          "id": "M1",
+          "start_day": 0,
+          "end_day": 78,
+          "deliverable_ids": [
+            "D1",
+            "D2"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A1",
+            "A2"
+          ],
+          "predecessor_ids": [],
+          "payment_percent": "15",
+          "payment_amount": "675000"
+        },
+        {
+          "id": "M2",
+          "start_day": 78,
+          "end_day": 234,
+          "deliverable_ids": [
+            "D3"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A3"
+          ],
+          "predecessor_ids": [
+            "M1"
+          ],
+          "payment_percent": "35",
+          "payment_amount": "1575000"
+        },
+        {
+          "id": "M3",
+          "start_day": 234,
+          "end_day": 312,
+          "deliverable_ids": [
+            "D4"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A4"
+          ],
+          "predecessor_ids": [
+            "M2"
+          ],
+          "payment_percent": "30",
+          "payment_amount": "1350000"
+        },
+        {
+          "id": "M4",
+          "start_day": 312,
+          "end_day": 390,
+          "deliverable_ids": [
+            "D5"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A5"
+          ],
+          "predecessor_ids": [
+            "M3"
+          ],
+          "payment_percent": "20",
+          "payment_amount": "900000"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "DEP1",
+          "description": "Authorized test access and an accountable customer decision owner.",
+          "owner": "Client sponsor (proposed)",
+          "required_by_day": 0,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "A1",
+          "criteria": "Review the versioned discovery baseline against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D1"
+          ]
+        },
+        {
+          "id": "A2",
+          "criteria": "Review the versioned architecture and interfaces against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D2"
+          ]
+        },
+        {
+          "id": "A3",
+          "criteria": "Review the versioned implementation increment against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D3"
+          ]
+        },
+        {
+          "id": "A4",
+          "criteria": "Review the versioned verification and recovery against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D4"
+          ]
+        },
+        {
+          "id": "A5",
+          "criteria": "Review the versioned operational transfer against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving service owner (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D5"
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "AS1",
+          "text": "Client access, data permission and decision availability will be confirmed before implementation.",
+          "owner": "Contracting owner (proposed)",
+          "validation_gate": "Discovery baseline review; block dependent work if unresolved.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "exclusions": [
+        "Separate optional cybersecurity transformation and managed security services.",
+        "Unapproved production access, legal opinions, taxes and unsupported certification claims."
+      ],
+      "responsibilities": [
+        {
+          "id": "RS1",
+          "party": "supplier",
+          "description": "Produce the scoped design, implementation and test/handover evidence; remediate independent findings.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "RS2",
+          "party": "client",
+          "description": "Provide authorized access, decisions and independent receiving-role acceptance.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "rfp_requirements": [
+        {
+          "id": "RFP1",
+          "text": "Explain duplicate-safe integration and reconciliation evidence.",
+          "mandatory": true,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "RFP2",
+          "text": "Explain controlled service handover and rejection of missing recovery evidence.",
+          "mandatory": true,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "rfp_answers": [
+        {
+          "requirement_id": "RFP1",
+          "status": "CONDITIONAL",
+          "response": "Propose versioned events, idempotency and reconciliation; effectiveness remains to be tested.",
+          "conditions": [
+            "Validate interfaces and acceptance cases during discovery."
+          ],
+          "deliverable_ids": [
+            "D2",
+            "D3"
+          ],
+          "evidence_ids": [
+            "EV1"
+          ]
+        },
+        {
+          "requirement_id": "RFP2",
+          "status": "PROPOSED",
+          "response": "Require recovery observations, defect disposition and receiving-owner review before transfer.",
+          "conditions": [],
+          "deliverable_ids": [
+            "D4",
+            "D5"
+          ],
+          "evidence_ids": [
+            "EV1"
+          ]
+        }
+      ],
+      "supplier_fee": "4500000",
+      "programme_total": "6800000",
+      "currency": "EUR",
+      "deliverable_ids": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5"
+      ],
+      "scope": {
+        "description": "Fictional scheduling-to-dispatch integration, reconciliation, verification and operational handover; excludes separate optional cybersecurity and monitoring services.",
+        "deliverable_ids": [
+          "D1",
+          "D2",
+          "D3",
+          "D4",
+          "D5"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "D1",
+          "title": "Discovery baseline",
+          "description": "Source inventory, agreed scope and measurable acceptance objectives.",
+          "acceptance_id": "A1",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D2",
+          "title": "Architecture and interfaces",
+          "description": "Versioned design, data boundaries and interface contract.",
+          "acceptance_id": "A2",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D3",
+          "title": "Implementation increment",
+          "description": "Versioned configuration and duplicate-safe connector.",
+          "acceptance_id": "A3",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D4",
+          "title": "Verification and recovery",
+          "description": "Independent test plan, defect disposition and recovery rehearsal records.",
+          "acceptance_id": "A4",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D5",
+          "title": "Operational transfer",
+          "description": "Runbook, telemetry, training and receiving-owner acceptance proposal.",
+          "acceptance_id": "A5",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "pricing": {
+        "currency": "EUR",
+        "period_months": 36,
+        "labour": [
+          {
+            "id": "W1",
+            "days": "300",
+            "day_rate": "1500",
+            "line_total": "450000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D1"
+            ]
+          },
+          {
+            "id": "W2",
+            "days": "550",
+            "day_rate": "1500",
+            "line_total": "825000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D2"
+            ]
+          },
+          {
+            "id": "W3",
+            "days": "900",
+            "day_rate": "1500",
+            "line_total": "1350000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D3"
+            ]
+          },
+          {
+            "id": "W4",
+            "days": "500",
+            "day_rate": "1500",
+            "line_total": "750000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D4"
+            ]
+          },
+          {
+            "id": "W5",
+            "days": "450",
+            "day_rate": "1500",
+            "line_total": "675000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D5"
+            ]
+          },
+          {
+            "id": "W6",
+            "days": "300",
+            "day_rate": "1500",
+            "line_total": "450000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D5"
+            ]
+          }
+        ],
+        "supplier_fee": "4500000",
+        "third_party": "1500000",
+        "customer_internal": "800000",
+        "programme_total": "6800000",
+        "taxes": "Excluded; tax treatment requires competent confirmation.",
+        "valid_until": "2026-11-19",
+        "source_ids": [
+          "synthetic-proposal-baseline"
+        ]
+      },
+      "source_versions": {
+        "synthetic-proposal-baseline": "2.1.0"
+      },
+      "optional_offerings": [
+        {
+          "kind": "cybersecurity-transformation-proposal",
+          "included_in_base": false,
+          "fee": "950000",
+          "currency": "EUR",
+          "period": "one-off proposed work package",
+          "scope": "Separate security baseline and control-uplift design, subject to explicit discovery and approval.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+          "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+          "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+          "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+          "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+          "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+        },
+        {
+          "kind": "managed-security-services-proposal",
+          "included_in_base": false,
+          "fee": "990000",
+          "currency": "EUR",
+          "period": "first 12 months including onboarding",
+          "scope": "Separate monitoring and escalation service; hours, clock boundaries and client action rights require explicit agreement.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+          "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+          "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+          "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+          "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+          "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+        }
+      ]
+    },
+    "proposal-compliance-matrix": {
+      "technical_commitments": [
+        {
+          "id": "TC1",
+          "description": "Propose the versioned duplicate-safe connector and observable reconciliation boundary, subject to interface validation.",
+          "deliverable_ids": [
+            "D2",
+            "D3"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "knowledge_status": "assumption"
+        }
+      ],
+      "delivery_commitments": [
+        {
+          "id": "DC1",
+          "description": "Propose phased work packages with an independently reviewed evidence handoff before operational transfer.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "knowledge_status": "assumption"
+        }
+      ],
+      "milestones": [
+        {
+          "id": "M1",
+          "start_day": 0,
+          "end_day": 78,
+          "deliverable_ids": [
+            "D1",
+            "D2"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A1",
+            "A2"
+          ],
+          "predecessor_ids": [],
+          "payment_percent": "15",
+          "payment_amount": "675000"
+        },
+        {
+          "id": "M2",
+          "start_day": 78,
+          "end_day": 234,
+          "deliverable_ids": [
+            "D3"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A3"
+          ],
+          "predecessor_ids": [
+            "M1"
+          ],
+          "payment_percent": "35",
+          "payment_amount": "1575000"
+        },
+        {
+          "id": "M3",
+          "start_day": 234,
+          "end_day": 312,
+          "deliverable_ids": [
+            "D4"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A4"
+          ],
+          "predecessor_ids": [
+            "M2"
+          ],
+          "payment_percent": "30",
+          "payment_amount": "1350000"
+        },
+        {
+          "id": "M4",
+          "start_day": 312,
+          "end_day": 390,
+          "deliverable_ids": [
+            "D5"
+          ],
+          "dependency_ids": [
+            "DEP1"
+          ],
+          "acceptance_ids": [
+            "A5"
+          ],
+          "predecessor_ids": [
+            "M3"
+          ],
+          "payment_percent": "20",
+          "payment_amount": "900000"
+        }
+      ],
+      "dependencies": [
+        {
+          "id": "DEP1",
+          "description": "Authorized test access and an accountable customer decision owner.",
+          "owner": "Client sponsor (proposed)",
+          "required_by_day": 0,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "acceptance": [
+        {
+          "id": "A1",
+          "criteria": "Review the versioned discovery baseline against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D1"
+          ]
+        },
+        {
+          "id": "A2",
+          "criteria": "Review the versioned architecture and interfaces against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D2"
+          ]
+        },
+        {
+          "id": "A3",
+          "criteria": "Review the versioned implementation increment against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D3"
+          ]
+        },
+        {
+          "id": "A4",
+          "criteria": "Review the versioned verification and recovery against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving discipline authority (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D4"
+          ]
+        },
+        {
+          "id": "A5",
+          "criteria": "Review the versioned operational transfer against agreed scope; reject missing or contradictory evidence.",
+          "evidence_expected": "Versioned artifacts and independent observations; no evidence has been executed in this example.",
+          "recipient": "Receiving service owner (proposed)",
+          "rejection_path": "Return findings to the author; escalate unresolved scope or risk through existing JAI authority.",
+          "status": "NOT_EXECUTED",
+          "deliverable_ids": [
+            "D5"
+          ]
+        }
+      ],
+      "assumptions": [
+        {
+          "id": "AS1",
+          "text": "Client access, data permission and decision availability will be confirmed before implementation.",
+          "owner": "Contracting owner (proposed)",
+          "validation_gate": "Discovery baseline review; block dependent work if unresolved.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "exclusions": [
+        "Separate optional cybersecurity transformation and managed security services.",
+        "Unapproved production access, legal opinions, taxes and unsupported certification claims."
+      ],
+      "responsibilities": [
+        {
+          "id": "RS1",
+          "party": "supplier",
+          "description": "Produce the scoped design, implementation and test/handover evidence; remediate independent findings.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "RS2",
+          "party": "client",
+          "description": "Provide authorized access, decisions and independent receiving-role acceptance.",
+          "deliverable_ids": [
+            "D1",
+            "D2",
+            "D3",
+            "D4",
+            "D5"
+          ],
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "rfp_requirements": [
+        {
+          "id": "RFP1",
+          "text": "Explain duplicate-safe integration and reconciliation evidence.",
+          "mandatory": true,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "RFP2",
+          "text": "Explain controlled service handover and rejection of missing recovery evidence.",
+          "mandatory": true,
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "rfp_answers": [
+        {
+          "requirement_id": "RFP1",
+          "status": "CONDITIONAL",
+          "response": "Propose versioned events, idempotency and reconciliation; effectiveness remains to be tested.",
+          "conditions": [
+            "Validate interfaces and acceptance cases during discovery."
+          ],
+          "deliverable_ids": [
+            "D2",
+            "D3"
+          ],
+          "evidence_ids": [
+            "EV1"
+          ]
+        },
+        {
+          "requirement_id": "RFP2",
+          "status": "PROPOSED",
+          "response": "Require recovery observations, defect disposition and receiving-owner review before transfer.",
+          "conditions": [],
+          "deliverable_ids": [
+            "D4",
+            "D5"
+          ],
+          "evidence_ids": [
+            "EV1"
+          ]
+        }
+      ],
+      "supplier_fee": "4500000",
+      "programme_total": "6800000",
+      "currency": "EUR",
+      "deliverable_ids": [
+        "D1",
+        "D2",
+        "D3",
+        "D4",
+        "D5"
+      ],
+      "scope": {
+        "description": "Fictional scheduling-to-dispatch integration, reconciliation, verification and operational handover; excludes separate optional cybersecurity and monitoring services.",
+        "deliverable_ids": [
+          "D1",
+          "D2",
+          "D3",
+          "D4",
+          "D5"
+        ]
+      },
+      "deliverables": [
+        {
+          "id": "D1",
+          "title": "Discovery baseline",
+          "description": "Source inventory, agreed scope and measurable acceptance objectives.",
+          "acceptance_id": "A1",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D2",
+          "title": "Architecture and interfaces",
+          "description": "Versioned design, data boundaries and interface contract.",
+          "acceptance_id": "A2",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D3",
+          "title": "Implementation increment",
+          "description": "Versioned configuration and duplicate-safe connector.",
+          "acceptance_id": "A3",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D4",
+          "title": "Verification and recovery",
+          "description": "Independent test plan, defect disposition and recovery rehearsal records.",
+          "acceptance_id": "A4",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        },
+        {
+          "id": "D5",
+          "title": "Operational transfer",
+          "description": "Runbook, telemetry, training and receiving-owner acceptance proposal.",
+          "acceptance_id": "A5",
+          "owner": "Supplier delivery lead (proposed)",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ]
+        }
+      ],
+      "pricing": {
+        "currency": "EUR",
+        "period_months": 36,
+        "labour": [
+          {
+            "id": "W1",
+            "days": "300",
+            "day_rate": "1500",
+            "line_total": "450000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D1"
+            ]
+          },
+          {
+            "id": "W2",
+            "days": "550",
+            "day_rate": "1500",
+            "line_total": "825000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D2"
+            ]
+          },
+          {
+            "id": "W3",
+            "days": "900",
+            "day_rate": "1500",
+            "line_total": "1350000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D3"
+            ]
+          },
+          {
+            "id": "W4",
+            "days": "500",
+            "day_rate": "1500",
+            "line_total": "750000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D4"
+            ]
+          },
+          {
+            "id": "W5",
+            "days": "450",
+            "day_rate": "1500",
+            "line_total": "675000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D5"
+            ]
+          },
+          {
+            "id": "W6",
+            "days": "300",
+            "day_rate": "1500",
+            "line_total": "450000",
+            "currency": "EUR",
+            "deliverable_ids": [
+              "D5"
+            ]
+          }
+        ],
+        "supplier_fee": "4500000",
+        "third_party": "1500000",
+        "customer_internal": "800000",
+        "programme_total": "6800000",
+        "taxes": "Excluded; tax treatment requires competent confirmation.",
+        "valid_until": "2026-11-19",
+        "source_ids": [
+          "synthetic-proposal-baseline"
+        ]
+      },
+      "source_versions": {
+        "synthetic-proposal-baseline": "2.1.0"
+      },
+      "optional_offerings": [
+        {
+          "kind": "cybersecurity-transformation-proposal",
+          "included_in_base": false,
+          "fee": "950000",
+          "currency": "EUR",
+          "period": "one-off proposed work package",
+          "scope": "Separate security baseline and control-uplift design, subject to explicit discovery and approval.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+          "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+          "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+          "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+          "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+          "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+        },
+        {
+          "kind": "managed-security-services-proposal",
+          "included_in_base": false,
+          "fee": "990000",
+          "currency": "EUR",
+          "period": "first 12 months including onboarding",
+          "scope": "Separate monitoring and escalation service; hours, clock boundaries and client action rights require explicit agreement.",
+          "source_ids": [
+            "synthetic-proposal-baseline"
+          ],
+          "service_boundary": "Separate proposed service boundary only; no base-programme work is accepted by this offering.",
+          "service_hours": "Proposed staffed business hours; timezone and holiday coverage require client agreement.",
+          "response_clock": "Proposed clock starts on authenticated in-scope alert receipt; pauses and handoff criteria require explicit service-owner approval.",
+          "decision_rights": "Client retains authority for containment, residual risk and production changes; supplier proposes and escalates.",
+          "acceptance_criteria": "Separate service-owner review of scoped design, rehearsal evidence and operational responsibilities before activation.",
+          "exclusions": "Base-programme deliverables, unapproved offensive testing and unilateral production containment are excluded."
+        }
+      ]
+    }
+  }
+}

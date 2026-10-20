@@ -81,12 +81,31 @@ def files(root, excluded_directory=None):
 
 
 def check_ready(root):
+    """Require current-release executed A-H evidence before a qualified build.
+
+    Args:
+        root: Distribution source containing VERSION and qualification evidence.
+    Returns:
+        None only when release policy and every actual current gate pass.
+    Raises:
+        SystemExit: If policy, identity, gate coverage or execution is non-passing.
+        OSError, ValueError: If required local evidence cannot be processed.
+    """
+    from qualification_core import gate_report_problems
     root=Path(root)
     if subprocess.run([PY,str(TOOLS/'release_policy.py'),'check','--final'],cwd=root).returncode:
         raise SystemExit('release policy is not final-ready')
     q=json.loads((root/'QUALIFICATION-A-H.json').read_text())
-    if not q.get('all_pass') or set(q.get('gates',{})) != set('ABCDEFGH') or not all(q['gates'].values()):
-        raise SystemExit('QUALIFICATION-A-H.json is not all PASS')
+    release=(root/'VERSION').read_text().strip()
+    if (not isinstance(q,dict) or q.get('all_pass') is not True
+            or q.get('release')!=release or not isinstance(q.get('gates'),dict)
+            or not isinstance(q.get('checks'),dict)
+            or set(q['gates'])!=set('ABCDEFGH') or set(q['checks'])!=set('ABCDEFGH')):
+        raise SystemExit('QUALIFICATION-A-H.json is not current-release all PASS')
+    for gate in 'ABCDEFGH':
+        if gate_report_problems({'gate':gate,'release':q['release'],'pass':q['gates'][gate],
+                                 'checks':q['checks'][gate]},gate,release):
+            raise SystemExit('QUALIFICATION-A-H.json lacks current-release all PASS execution')
 
 
 def build_zip(root,out,prefix):
@@ -123,6 +142,17 @@ def build_zip(root,out,prefix):
 
 
 def build(root,dist):
+    """Build an exclusive deterministic qualified archive and companion digest.
+
+    Args:
+        root: Source distribution with current executed qualification evidence.
+        dist: Output directory excluded from archive input discovery.
+    Returns:
+        Zero after writing the archive and its SHA-256 companion.
+    Raises:
+        SystemExit: If qualification fails or the artifact already exists.
+        OSError, ValueError: If sources or destinations cannot be processed.
+    """
     root=Path(root).resolve(); dist=Path(dist).resolve(); check_ready(root)
     version=(root/'VERSION').read_text().strip(); prefix=f'ai-it-house-{version}'; base=f'ai-it-house-universal-{version}'
     dist.mkdir(parents=True,exist_ok=True)
@@ -138,6 +168,13 @@ def build(root,dist):
 
 
 def main():
+    """Dispatch explicit build arguments without publication or authority acts.
+
+    Returns:
+        Build exit status.
+    Raises:
+        SystemExit: For invalid arguments or unmet qualification prerequisites.
+    """
     ap=argparse.ArgumentParser(); ap.add_argument('cmd',choices=['build']); ap.add_argument('--root',required=True); ap.add_argument('--dist',required=True); a=ap.parse_args(); return build(a.root,a.dist)
 
 

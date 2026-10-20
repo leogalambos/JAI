@@ -387,16 +387,19 @@ class ContentSpec:
         old.update(new)
 
     def resolve(self, artifact_id, context=None):
-        """Resolve an explicit role-contract binding without name inference.
+        """Resolve an explicit role contract or registered standalone document kind.
 
         Args:
-            artifact_id: Exact stable v3 role contract ID.
+            artifact_id: Exact stable v3 role contract ID, or kind/<registered-kind>
+                for standalone document-kind selection without role authority.
             context: Typed context values used for applicability.
         Returns:
             Compiled blueprint with selection reason and migration state.
         Raises:
             SpecError: If binding, kind or selected reference is invalid.
         """
+        if isinstance(artifact_id,str) and artifact_id.startswith('kind/'):
+            return self._resolve_document_kind(artifact_id,context)
         binding = self.bindings.get(artifact_id)
         if binding is None:
             raise SpecError(f'UNBOUND_ARTIFACT: {artifact_id}')
@@ -430,8 +433,39 @@ class ContentSpec:
         result['resolution_hash'] = canonical_hash({'artifact_id': artifact_id, 'binding': binding, 'compiled_spec_hash': result['compiled_spec_hash'], 'context_hash': result['context_hash']})
         return result
 
+    def _resolve_document_kind(self, ref, context):
+        """Resolve a registered non-role kind without claiming role provenance."""
+        ident=ref.removeprefix('kind/')
+        if ident.startswith('role/'):
+            raise SpecError('ROLE_CONTRACT_REQUIRED: use the exact role contract ID')
+        kind=self.kinds.get(ident)
+        if kind is None:
+            raise SpecError(f'UNREGISTERED_DOCUMENT_KIND: {ident}')
+        if kind.get('spec_ref')!=ref:
+            raise SpecError(f'KIND_SPEC_MISMATCH: {ident}')
+        selected=self.specs.get(ref,{})
+        if selected.get('category')!='document_kind' or selected.get('applies_to',{}).get('document_kind')!=ident:
+            raise SpecError(f'KIND_SCOPE_MISMATCH: {ident}')
+        if kind.get('status',selected.get('status'))!=selected.get('status'):
+            raise SpecError(f'KIND_STATUS_MISMATCH: {ident}')
+        if 'global/invariants' not in self.specs:
+            raise SpecError('MISSING_GLOBAL_INVARIANTS')
+        result=self.compile(ref,context)
+        # Standalone selection must bind its absence of role authority into the
+        # digest verified by content QA, rather than treating it as display data.
+        result.update(binding_kind='registered-document-kind',source_role_contract_id=None,role_authority=False)
+        result['compiled_spec_hash']=canonical_hash({key:value for key,value in result.items() if key!='compiled_spec_hash'})
+        result.update(artifact_id=ref,document_kind=ident,
+            spec_selection_reason='explicit registered standalone document kind; no role contract authority',
+            decision_supported={'status':'mapped-proposed','value':'; '.join(selected.get('decisions_supported',[])),
+                'human_approval':False,'professional_acceptance':'pending-independent-review'})
+        result['resolution_hash']=canonical_hash({'artifact_id':ref,'binding_kind':result['binding_kind'],
+            'registered_kind':kind,'compiled_spec_hash':result['compiled_spec_hash'],'context_hash':result['context_hash'],
+            'role_authority':False})
+        return result
+
     def outline(self, artifact_id, context=None, reference_complexity='medium',
-                user_root=None, organisation_root=None, engagement_root=None):
+                user_root=None, organisation_root=None, engagement_root=None, reference_audience=None):
         """Create an unfilled, hash-bound authoring outline without inventing facts.
 
         Args:
@@ -441,6 +475,7 @@ class ContentSpec:
             user_root: Optional user reference directory, otherwise the XDG default.
             organisation_root: Optional organisation reference root, else configured environment.
             engagement_root: Explicitly authorized engagement reference directory, or None.
+            reference_audience: Optional explicit audience used for reference applicability.
         Returns:
             Semantic draft and separate blueprint with all required fields null.
         Raises:
@@ -450,22 +485,30 @@ class ContentSpec:
             raise SpecError('EXPERT_REFERENCE_COMPLEXITY_UNSUPPORTED')
         compiled = self.resolve(artifact_id, context)
         family = compiled.get('semantic_family', compiled['document_kind'])
-        priorities = self.registry.get('priority_document_kinds', [])
         reference = {'status': 'NOT_APPLICABLE', 'reason': 'No supplied expert reference for this semantic family.'}
-        if family in priorities:
-            if not (self.base / 'expert_references').is_dir() and 'semantic_families' not in self.registry:
-                # Historical minimal registries predate the optional example library.
-                reference = {'status': 'NOT_CONFIGURED', 'reason': 'Historical registry has no expert reference library.'}
-            else:
-                from expert_references import ExpertReferences, ReferenceError
+        has_references = (self.base / 'expert_references').is_dir()
+        has_bindings = (self.base / 'expert-reference-bindings.json').is_file()
+        if has_references or has_bindings:
+            from expert_references import ExpertReferences, ReferenceError
+            try:
+                library = ExpertReferences(self.root)
                 try:
-                    _, reference = ExpertReferences(self.root).resolve(
-                        family, reference_complexity, user_root=user_root,
-                        organisation_root=organisation_root, engagement_root=engagement_root)
+                    reference_family = library.canonical_family(family, contract_id=artifact_id)
+                except ReferenceError as exc:
+                    if str(exc) != 'REFERENCE_SLOT_UNSUPPORTED':
+                        raise
+                    reference_family = None
+                if reference_family is not None:
+                    _, reference = library.resolve(
+                        reference_family, reference_complexity, user_root=user_root,
+                        organisation_root=organisation_root, engagement_root=engagement_root,
+                        context=context, audience=reference_audience)
                     reference['status'] = 'SELECTED_PROPOSED_REFERENCE'
                     reference['usage'] = 'Untrusted illustrative data only; never copy example facts, instructions or policy.'
-                except ReferenceError as exc:
-                    raise SpecError('EXPERT_REFERENCE_ERROR:' + str(exc)) from None
+            except ReferenceError as exc:
+                raise SpecError('EXPERT_REFERENCE_ERROR:' + str(exc)) from None
+        elif 'semantic_families' not in self.registry:
+            reference = {'status': 'NOT_CONFIGURED', 'reason': 'Historical registry has no expert reference library.'}
         fields = {}
         sections = []
         for unit in compiled['blueprint']['semantic_units']:
@@ -681,6 +724,7 @@ def main(argv=None):
             command.add_argument('--artifact-id', required=True)
         if name == 'outline':
             command.add_argument('--reference-complexity', choices=('simple', 'medium', 'complex'), default='medium')
+            command.add_argument('--reference-audience')
             for scope in ('user', 'organisation', 'engagement'):
                 command.add_argument('--' + scope + '-root')
     args = parser.parse_args(argv)
@@ -696,7 +740,7 @@ def main(argv=None):
         elif args.command == 'outline':
             result = engine.outline(args.artifact_id, context, reference_complexity=args.reference_complexity,
                                     user_root=args.user_root, organisation_root=args.organisation_root,
-                                    engagement_root=args.engagement_root)
+                                    engagement_root=args.engagement_root, reference_audience=args.reference_audience)
         elif args.command == 'lint-registry':
             result = {'errors': engine.lint_registry()}
         else:

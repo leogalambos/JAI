@@ -1,0 +1,1377 @@
+{
+  "schema_version": "1.0.0",
+  "status": "proposed",
+  "professional_approval": "not-human-approved",
+  "authoring_defaults": {
+    "delivery-manager:1": "delivery-proposal",
+    "bid-proposal-manager:1": "rfp-response",
+    "bid-proposal-manager:3": "client-proposal"
+  },
+  "families": [
+    {
+      "reference_family": "decision-paper",
+      "document_kind": "decision-paper",
+      "spec_ref": "kind/decision-paper",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-decision-paper.decision_request",
+          "unit_id": "decision-paper.decision_request"
+        },
+        {
+          "source_anchor": "dcs-decision-paper.baseline",
+          "unit_id": "decision-paper.baseline"
+        },
+        {
+          "source_anchor": "dcs-decision-paper.options",
+          "unit_id": "decision-paper.options"
+        },
+        {
+          "source_anchor": "dcs-decision-paper.tradeoffs",
+          "unit_id": "decision-paper.tradeoffs"
+        },
+        {
+          "source_anchor": "dcs-decision-paper.recommendation",
+          "unit_id": "decision-paper.recommendation"
+        }
+      ],
+      "status": "proposed",
+      "registration": "reused-priority-kind",
+      "role_contract_ids": [
+        "enterprise-applications-architect:2"
+      ],
+      "source_applicable_dcs": "kind/decision-paper",
+      "source_binding_status": "existing-verified",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "adr",
+      "document_kind": "adr",
+      "spec_ref": "kind/adr",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-adr.decision_context",
+          "unit_id": "adr.decision_context"
+        },
+        {
+          "source_anchor": "dcs-adr.architecture_options",
+          "unit_id": "adr.architecture_options"
+        },
+        {
+          "source_anchor": "dcs-adr.architecture_choice",
+          "unit_id": "adr.architecture_choice"
+        },
+        {
+          "source_anchor": "dcs-adr.consequences",
+          "unit_id": "adr.consequences"
+        },
+        {
+          "source_anchor": "dcs-adr.supersession",
+          "unit_id": "adr.supersession"
+        }
+      ],
+      "status": "proposed",
+      "registration": "reused-priority-kind",
+      "role_contract_ids": [
+        "enterprise-architect:4"
+      ],
+      "source_applicable_dcs": "kind/adr",
+      "source_binding_status": "existing-verified",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "business-case",
+      "document_kind": "business-case",
+      "spec_ref": "kind/business-case",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-business-case.investment_request",
+          "unit_id": "business-case.investment_request"
+        },
+        {
+          "source_anchor": "dcs-business-case.investment_options",
+          "unit_id": "business-case.investment_options"
+        },
+        {
+          "source_anchor": "dcs-business-case.financial_model",
+          "unit_id": "business-case.financial_model"
+        },
+        {
+          "source_anchor": "dcs-business-case.sensitivity",
+          "unit_id": "business-case.sensitivity"
+        },
+        {
+          "source_anchor": "dcs-business-case.benefit_realisation",
+          "unit_id": "business-case.benefit_realisation"
+        }
+      ],
+      "status": "proposed",
+      "registration": "reused-priority-kind",
+      "role_contract_ids": [
+        "it-financial-management-tbm-manager:2"
+      ],
+      "source_applicable_dcs": "kind/business-case",
+      "source_binding_status": "existing-verified",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "risk-assessment",
+      "document_kind": "risk-assessment",
+      "spec_ref": "kind/risk-assessment",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-risk-assessment.assessment_scope",
+          "unit_id": "risk-assessment.assessment_scope"
+        },
+        {
+          "source_anchor": "dcs-risk-assessment.scoring_method",
+          "unit_id": "risk-assessment.scoring_method"
+        },
+        {
+          "source_anchor": "dcs-risk-assessment.risk_scenarios",
+          "unit_id": "risk-assessment.risk_scenarios"
+        },
+        {
+          "source_anchor": "dcs-risk-assessment.risk_evaluation",
+          "unit_id": "risk-assessment.risk_evaluation"
+        },
+        {
+          "source_anchor": "dcs-risk-assessment.risk_treatment",
+          "unit_id": "risk-assessment.risk_treatment"
+        }
+      ],
+      "status": "proposed",
+      "registration": "reused-priority-kind",
+      "role_contract_ids": [
+        "it-risk-manager:2"
+      ],
+      "source_applicable_dcs": "kind/risk-assessment",
+      "source_binding_status": "existing-verified",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "assurance-report",
+      "document_kind": "assurance-report",
+      "spec_ref": "kind/assurance-report",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-assurance-report.assurance_scope",
+          "unit_id": "assurance-report.assurance_scope"
+        },
+        {
+          "source_anchor": "dcs-assurance-report.assurance_method",
+          "unit_id": "assurance-report.assurance_method"
+        },
+        {
+          "source_anchor": "dcs-assurance-report.control_tests",
+          "unit_id": "assurance-report.control_tests"
+        },
+        {
+          "source_anchor": "dcs-assurance-report.assurance_findings",
+          "unit_id": "assurance-report.assurance_findings"
+        },
+        {
+          "source_anchor": "dcs-assurance-report.assurance_conclusion",
+          "unit_id": "assurance-report.assurance_conclusion"
+        }
+      ],
+      "status": "proposed",
+      "registration": "reused-priority-kind",
+      "role_contract_ids": [
+        "secure-delivery-devsecops-architect:3"
+      ],
+      "source_applicable_dcs": "kind/assurance-report",
+      "source_binding_status": "existing-verified",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "architecture-definition",
+      "document_kind": "architecture-definition",
+      "spec_ref": "kind/architecture-definition",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-architecture-definition.architecture_context",
+          "unit_id": "architecture-definition.architecture_context"
+        },
+        {
+          "source_anchor": "dcs-architecture-definition.architecture_drivers",
+          "unit_id": "architecture-definition.architecture_drivers"
+        },
+        {
+          "source_anchor": "dcs-architecture-definition.architecture_viewpoints",
+          "unit_id": "architecture-definition.architecture_viewpoints"
+        },
+        {
+          "source_anchor": "dcs-architecture-definition.architecture_relations",
+          "unit_id": "architecture-definition.architecture_relations"
+        },
+        {
+          "source_anchor": "dcs-architecture-definition.architecture_evolution",
+          "unit_id": "architecture-definition.architecture_evolution"
+        }
+      ],
+      "status": "proposed",
+      "registration": "reused-priority-kind",
+      "role_contract_ids": [
+        "enterprise-architect:1"
+      ],
+      "source_applicable_dcs": "kind/architecture-definition",
+      "source_binding_status": "existing-verified",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "hld",
+      "document_kind": "hld",
+      "spec_ref": "kind/hld",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-hld.solution_scope",
+          "unit_id": "hld.solution_scope"
+        },
+        {
+          "source_anchor": "dcs-hld.quality_requirements",
+          "unit_id": "hld.quality_requirements"
+        },
+        {
+          "source_anchor": "dcs-hld.solution_components",
+          "unit_id": "hld.solution_components"
+        },
+        {
+          "source_anchor": "dcs-hld.solution_interfaces",
+          "unit_id": "hld.solution_interfaces"
+        },
+        {
+          "source_anchor": "dcs-hld.delivery_strategy",
+          "unit_id": "hld.delivery_strategy"
+        }
+      ],
+      "status": "proposed",
+      "registration": "reused-priority-kind",
+      "role_contract_ids": [
+        "solution-architect:1"
+      ],
+      "source_applicable_dcs": "kind/hld",
+      "source_binding_status": "existing-verified",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "operational-handover",
+      "document_kind": "operational-handover",
+      "spec_ref": "kind/operational-handover",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-operational-handover.service_boundary",
+          "unit_id": "operational-handover.service_boundary"
+        },
+        {
+          "source_anchor": "dcs-operational-handover.readiness_evidence",
+          "unit_id": "operational-handover.readiness_evidence"
+        },
+        {
+          "source_anchor": "dcs-operational-handover.support_arrangements",
+          "unit_id": "operational-handover.support_arrangements"
+        },
+        {
+          "source_anchor": "dcs-operational-handover.handover_inventory",
+          "unit_id": "operational-handover.handover_inventory"
+        },
+        {
+          "source_anchor": "dcs-operational-handover.acceptance_decision",
+          "unit_id": "operational-handover.acceptance_decision"
+        }
+      ],
+      "status": "proposed",
+      "registration": "reused-priority-kind",
+      "role_contract_ids": [
+        "implementation-consultant:3"
+      ],
+      "source_applicable_dcs": "kind/operational-handover",
+      "source_binding_status": "existing-verified",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "runbook",
+      "document_kind": "runbook",
+      "spec_ref": "kind/runbook",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-runbook.operational_trigger",
+          "unit_id": "runbook.operational_trigger"
+        },
+        {
+          "source_anchor": "dcs-runbook.prerequisites",
+          "unit_id": "runbook.prerequisites"
+        },
+        {
+          "source_anchor": "dcs-runbook.procedure_steps",
+          "unit_id": "runbook.procedure_steps"
+        },
+        {
+          "source_anchor": "dcs-runbook.failure_recovery",
+          "unit_id": "runbook.failure_recovery"
+        },
+        {
+          "source_anchor": "dcs-runbook.operational_validation",
+          "unit_id": "runbook.operational_validation"
+        }
+      ],
+      "status": "proposed",
+      "registration": "reused-priority-kind",
+      "role_contract_ids": [
+        "linux-systems-administrator:4"
+      ],
+      "source_applicable_dcs": "kind/runbook",
+      "source_binding_status": "existing-verified",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "test-report",
+      "document_kind": "test-report",
+      "spec_ref": "kind/test-report",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-test-report.test_scope",
+          "unit_id": "test-report.test_scope"
+        },
+        {
+          "source_anchor": "dcs-test-report.test_environment",
+          "unit_id": "test-report.test_environment"
+        },
+        {
+          "source_anchor": "dcs-test-report.execution_results",
+          "unit_id": "test-report.execution_results"
+        },
+        {
+          "source_anchor": "dcs-test-report.defect_analysis",
+          "unit_id": "test-report.defect_analysis"
+        },
+        {
+          "source_anchor": "dcs-test-report.test_conclusion",
+          "unit_id": "test-report.test_conclusion"
+        }
+      ],
+      "status": "proposed",
+      "registration": "reused-priority-kind",
+      "role_contract_ids": [
+        "test-analyst:2"
+      ],
+      "source_applicable_dcs": "kind/test-report",
+      "source_binding_status": "existing-verified",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "it-digital-strategy",
+      "document_kind": "strategy",
+      "spec_ref": "kind/strategy",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-it-digital-strategy.strategic_mandate",
+          "unit_id": "strategy.strategic_mandate"
+        },
+        {
+          "source_anchor": "dcs-proposed-it-digital-strategy.current_capabilities",
+          "unit_id": "strategy.current_capabilities"
+        },
+        {
+          "source_anchor": "dcs-proposed-it-digital-strategy.target_portfolio",
+          "unit_id": "strategy.target_portfolio"
+        },
+        {
+          "source_anchor": "dcs-proposed-it-digital-strategy.investment_waves",
+          "unit_id": "strategy.investment_waves"
+        },
+        {
+          "source_anchor": "dcs-proposed-it-digital-strategy.governance_measures",
+          "unit_id": "strategy.governance_measures"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind-reusing-shared-foundation",
+      "role_contract_ids": [
+        "chief-information-officer:1",
+        "chief-technology-officer:1",
+        "chief-data-officer:1",
+        "chief-digital-officer:2",
+        "chief-product-officer:1",
+        "chief-ai-officer:1",
+        "staff-engineer:1"
+      ],
+      "source_applicable_dcs": "proposed/kind/it-digital-strategy",
+      "source_binding_status": "proposed-unmapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "requirements-specification",
+      "document_kind": "requirements-specification",
+      "spec_ref": "kind/requirements-specification",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-requirements-specification.business_problem",
+          "unit_id": "requirements-specification.business_problem"
+        },
+        {
+          "source_anchor": "dcs-proposed-requirements-specification.functional_requirements",
+          "unit_id": "requirements-specification.functional_requirements"
+        },
+        {
+          "source_anchor": "dcs-proposed-requirements-specification.quality_constraints",
+          "unit_id": "requirements-specification.quality_constraints"
+        },
+        {
+          "source_anchor": "dcs-proposed-requirements-specification.traceability_priorities",
+          "unit_id": "requirements-specification.traceability_priorities"
+        },
+        {
+          "source_anchor": "dcs-proposed-requirements-specification.acceptance_model",
+          "unit_id": "requirements-specification.acceptance_model"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind-reusing-shared-foundation",
+      "role_contract_ids": [
+        "business-analyst:1",
+        "systems-engineer-incose:1"
+      ],
+      "source_applicable_dcs": "proposed/kind/requirements-specification",
+      "source_binding_status": "proposed-unmapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "policy-standard",
+      "document_kind": "policy-standard",
+      "spec_ref": "kind/policy-standard",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-policy-standard.policy_scope",
+          "unit_id": "policy-standard.policy_scope"
+        },
+        {
+          "source_anchor": "dcs-proposed-policy-standard.control_obligations",
+          "unit_id": "policy-standard.control_obligations"
+        },
+        {
+          "source_anchor": "dcs-proposed-policy-standard.implementation_guidance",
+          "unit_id": "policy-standard.implementation_guidance"
+        },
+        {
+          "source_anchor": "dcs-proposed-policy-standard.exceptions",
+          "unit_id": "policy-standard.exceptions"
+        },
+        {
+          "source_anchor": "dcs-proposed-policy-standard.lifecycle",
+          "unit_id": "policy-standard.lifecycle"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind-reusing-shared-foundation",
+      "role_contract_ids": [],
+      "source_applicable_dcs": "proposed/kind/policy-standard",
+      "source_binding_status": "proposed-unmapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "implementation-specification-lld",
+      "document_kind": "implementation-specification",
+      "spec_ref": "kind/implementation-specification",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-implementation-specification-lld.implementation_scope",
+          "unit_id": "implementation-specification.implementation_scope"
+        },
+        {
+          "source_anchor": "dcs-proposed-implementation-specification-lld.configuration_contract",
+          "unit_id": "implementation-specification.configuration_contract"
+        },
+        {
+          "source_anchor": "dcs-proposed-implementation-specification-lld.deployment_sequence",
+          "unit_id": "implementation-specification.deployment_sequence"
+        },
+        {
+          "source_anchor": "dcs-proposed-implementation-specification-lld.technical_validation",
+          "unit_id": "implementation-specification.technical_validation"
+        },
+        {
+          "source_anchor": "dcs-proposed-implementation-specification-lld.handover",
+          "unit_id": "implementation-specification.handover"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind-reusing-shared-foundation",
+      "role_contract_ids": [
+        "chief-information-security-officer:2",
+        "vp-of-engineering:3",
+        "technical-product-manager:2",
+        "technical-product-manager:4",
+        "project-manager:1",
+        "pmo-lead:1",
+        "technical-lead:3",
+        "systems-analyst:1",
+        "requirements-engineer:1",
+        "requirements-engineer:3",
+        "solution-architect:3",
+        "domain-architect:4",
+        "data-architect:4",
+        "integration-architect:2",
+        "network-architect:4",
+        "security-architect:4",
+        "staff-engineer:4",
+        "api-developer:2",
+        "erp-and-crm-consultant-developer:1",
+        "build-engineer:3",
+        "gitops-and-continuous-delivery-engineer:3",
+        "open-source-program-office-engineer:1",
+        "performance-test-engineer:4",
+        "database-reliability-engineer:3",
+        "data-modeller:4",
+        "data-owner:2",
+        "data-governance-lead:2",
+        "ai-governance-officer:4",
+        "windows-systems-administrator:1",
+        "site-reliability-engineer:1",
+        "kubernetes-platform-engineer:2",
+        "infrastructure-as-code-engineer:3",
+        "container-platform-engineer:2",
+        "container-platform-engineer:4",
+        "environment-manager:4",
+        "observability-engineer:1",
+        "observability-engineer:4",
+        "sd-wan-and-edge-engineer:3",
+        "change-manager:4",
+        "knowledge-manager:1",
+        "configuration-manager:1",
+        "threat-intelligence-analyst:1",
+        "cryptography-and-pki-engineer:4",
+        "cloud-security-engineer:1",
+        "application-security-engineer:1",
+        "purple-team-lead:4",
+        "bug-bounty-programme-manager:1",
+        "vulnerability-disclosure-coordinator:1",
+        "it-governance-manager:3",
+        "third-party-risk-manager:3",
+        "policy-author:1",
+        "policy-author:2",
+        "policy-author:4",
+        "interaction-designer:1",
+        "accessibility-specialist:1",
+        "it-procurement-specialist:1",
+        "standards-body-representative:3",
+        "high-performance-computing-engineer:1",
+        "physical-security-solution-builder-sabsa-builder-s-view:2",
+        "physical-security-solution-builder-sabsa-builder-s-view:4",
+        "security-component-specialist-sabsa-tradesman-s-view:1",
+        "security-domain-authority:1",
+        "secure-delivery-devsecops-architect:4"
+      ],
+      "source_applicable_dcs": "proposed/kind/implementation-specification-lld",
+      "source_binding_status": "proposed-unmapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "migration-cutover-plan",
+      "document_kind": "migration-cutover-plan",
+      "spec_ref": "kind/migration-cutover-plan",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-migration-cutover-plan.migration_scope",
+          "unit_id": "migration-cutover-plan.migration_scope"
+        },
+        {
+          "source_anchor": "dcs-proposed-migration-cutover-plan.mapping_reconciliation",
+          "unit_id": "migration-cutover-plan.mapping_reconciliation"
+        },
+        {
+          "source_anchor": "dcs-proposed-migration-cutover-plan.cutover_schedule",
+          "unit_id": "migration-cutover-plan.cutover_schedule"
+        },
+        {
+          "source_anchor": "dcs-proposed-migration-cutover-plan.rollback_contingency",
+          "unit_id": "migration-cutover-plan.rollback_contingency"
+        },
+        {
+          "source_anchor": "dcs-proposed-migration-cutover-plan.readiness_acceptance",
+          "unit_id": "migration-cutover-plan.readiness_acceptance"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind-reusing-shared-foundation",
+      "role_contract_ids": [],
+      "source_applicable_dcs": "proposed/kind/migration-cutover-plan",
+      "source_binding_status": "proposed-unmapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "test-strategy-plan",
+      "document_kind": "test-strategy",
+      "spec_ref": "kind/test-strategy",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-test-strategy-plan.test_objectives",
+          "unit_id": "test-strategy.test_objectives"
+        },
+        {
+          "source_anchor": "dcs-proposed-test-strategy-plan.levels_techniques",
+          "unit_id": "test-strategy.levels_techniques"
+        },
+        {
+          "source_anchor": "dcs-proposed-test-strategy-plan.environment_data",
+          "unit_id": "test-strategy.environment_data"
+        },
+        {
+          "source_anchor": "dcs-proposed-test-strategy-plan.coverage_metrics",
+          "unit_id": "test-strategy.coverage_metrics"
+        },
+        {
+          "source_anchor": "dcs-proposed-test-strategy-plan.execution_governance",
+          "unit_id": "test-strategy.execution_governance"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind-reusing-shared-foundation",
+      "role_contract_ids": [
+        "test-automation-engineer:4",
+        "performance-test-engineer:1",
+        "test-manager:1",
+        "penetration-tester-web-application:1",
+        "penetration-tester-mobile:1",
+        "penetration-tester-api:1",
+        "penetration-tester-cloud:1",
+        "penetration-tester-wireless:1",
+        "penetration-tester-thick-client:1",
+        "usability-tester:1"
+      ],
+      "source_applicable_dcs": "proposed/kind/test-strategy-plan",
+      "source_binding_status": "proposed-unmapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "operational-readiness-assessment",
+      "document_kind": "operational-readiness-assessment",
+      "spec_ref": "kind/operational-readiness-assessment",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-operational-readiness-assessment.operating_scope",
+          "unit_id": "operational-readiness-assessment.operating_scope"
+        },
+        {
+          "source_anchor": "dcs-proposed-operational-readiness-assessment.technical_readiness",
+          "unit_id": "operational-readiness-assessment.technical_readiness"
+        },
+        {
+          "source_anchor": "dcs-proposed-operational-readiness-assessment.service_dependencies",
+          "unit_id": "operational-readiness-assessment.service_dependencies"
+        },
+        {
+          "source_anchor": "dcs-proposed-operational-readiness-assessment.readiness_findings",
+          "unit_id": "operational-readiness-assessment.readiness_findings"
+        },
+        {
+          "source_anchor": "dcs-proposed-operational-readiness-assessment.go_live",
+          "unit_id": "operational-readiness-assessment.go_live"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind-reusing-shared-foundation",
+      "role_contract_ids": [
+        "service-transition-and-operational-readiness-manager:1",
+        "service-transition-and-operational-readiness-manager:4",
+        "enterprise-release-manager:2"
+      ],
+      "source_applicable_dcs": "proposed/kind/operational-readiness-assessment",
+      "source_binding_status": "proposed-unmapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "service-design-sla",
+      "document_kind": "service-design",
+      "spec_ref": "kind/service-design",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-service-design-sla.service_value",
+          "unit_id": "service-design.service_value"
+        },
+        {
+          "source_anchor": "dcs-proposed-service-design-sla.sli_slo",
+          "unit_id": "service-design.sli_slo"
+        },
+        {
+          "source_anchor": "dcs-proposed-service-design-sla.support_operating_model",
+          "unit_id": "service-design.support_operating_model"
+        },
+        {
+          "source_anchor": "dcs-proposed-service-design-sla.continuity_security",
+          "unit_id": "service-design.continuity_security"
+        },
+        {
+          "source_anchor": "dcs-proposed-service-design-sla.service_acceptance",
+          "unit_id": "service-design.service_acceptance"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind-reusing-shared-foundation",
+      "role_contract_ids": [
+        "it-service-owner:1",
+        "domain-architect:2",
+        "service-catalogue-manager:2",
+        "siam-manager:1"
+      ],
+      "source_applicable_dcs": "proposed/kind/service-design-sla",
+      "source_binding_status": "proposed-unmapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "incident-postmortem",
+      "document_kind": "incident-postmortem",
+      "spec_ref": "kind/incident-postmortem",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-incident-postmortem.incident_boundary",
+          "unit_id": "incident-postmortem.incident_boundary"
+        },
+        {
+          "source_anchor": "dcs-proposed-incident-postmortem.contain_recovery",
+          "unit_id": "incident-postmortem.contain_recovery"
+        },
+        {
+          "source_anchor": "dcs-proposed-incident-postmortem.causal_analysis",
+          "unit_id": "incident-postmortem.causal_analysis"
+        },
+        {
+          "source_anchor": "dcs-proposed-incident-postmortem.action_plan",
+          "unit_id": "incident-postmortem.action_plan"
+        },
+        {
+          "source_anchor": "dcs-proposed-incident-postmortem.lessons_followup",
+          "unit_id": "incident-postmortem.lessons_followup"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind",
+      "role_contract_ids": [],
+      "source_applicable_dcs": "proposed/kind/incident-postmortem",
+      "source_binding_status": "proposed-unmapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "compliance-gap-analysis",
+      "document_kind": "compliance-gap-analysis",
+      "spec_ref": "kind/compliance-gap-analysis",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-compliance-gap-analysis.applicability",
+          "unit_id": "compliance-gap-analysis.applicability"
+        },
+        {
+          "source_anchor": "dcs-proposed-compliance-gap-analysis.mapping",
+          "unit_id": "compliance-gap-analysis.mapping"
+        },
+        {
+          "source_anchor": "dcs-proposed-compliance-gap-analysis.gap_analysis",
+          "unit_id": "compliance-gap-analysis.gap_analysis"
+        },
+        {
+          "source_anchor": "dcs-proposed-compliance-gap-analysis.remediation",
+          "unit_id": "compliance-gap-analysis.remediation"
+        },
+        {
+          "source_anchor": "dcs-proposed-compliance-gap-analysis.closure",
+          "unit_id": "compliance-gap-analysis.closure"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind-reusing-shared-foundation",
+      "role_contract_ids": [],
+      "source_applicable_dcs": "proposed/kind/compliance-gap-analysis",
+      "source_binding_status": "proposed-unmapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "benefits-realisation-review",
+      "document_kind": "benefits-review",
+      "spec_ref": "kind/benefits-review",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-benefits-realisation-review.benefit_baseline",
+          "unit_id": "benefits-review.benefit_baseline"
+        },
+        {
+          "source_anchor": "dcs-proposed-benefits-realisation-review.actuals",
+          "unit_id": "benefits-review.actuals"
+        },
+        {
+          "source_anchor": "dcs-proposed-benefits-realisation-review.variance_drivers",
+          "unit_id": "benefits-review.variance_drivers"
+        },
+        {
+          "source_anchor": "dcs-proposed-benefits-realisation-review.corrective_actions",
+          "unit_id": "benefits-review.corrective_actions"
+        },
+        {
+          "source_anchor": "dcs-proposed-benefits-realisation-review.closure_value",
+          "unit_id": "benefits-review.closure_value"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind-reusing-shared-foundation",
+      "role_contract_ids": [
+        "benefits-realisation-manager:4"
+      ],
+      "source_applicable_dcs": "proposed/kind/benefits-realisation-review",
+      "source_binding_status": "proposed-unmapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "transformation-roadmap",
+      "document_kind": "roadmap",
+      "spec_ref": "kind/roadmap",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-transformation-roadmap.transformation_objectives",
+          "unit_id": "roadmap.transformation_objectives"
+        },
+        {
+          "source_anchor": "dcs-proposed-transformation-roadmap.current_target",
+          "unit_id": "roadmap.current_target"
+        },
+        {
+          "source_anchor": "dcs-proposed-transformation-roadmap.waves_dependencies",
+          "unit_id": "roadmap.waves_dependencies"
+        },
+        {
+          "source_anchor": "dcs-proposed-transformation-roadmap.risk_change",
+          "unit_id": "roadmap.risk_change"
+        },
+        {
+          "source_anchor": "dcs-proposed-transformation-roadmap.investment_governance",
+          "unit_id": "roadmap.investment_governance"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind-reusing-shared-foundation",
+      "role_contract_ids": [
+        "chief-information-officer:4",
+        "chief-technology-officer:3",
+        "chief-information-security-officer:1",
+        "chief-digital-officer:1",
+        "chief-digital-officer:3",
+        "chief-product-officer:4",
+        "it-chief-of-staff:1",
+        "vp-of-engineering:2",
+        "head-of-platform:1",
+        "it-service-owner:3",
+        "product-manager:1",
+        "product-manager:4",
+        "technical-product-manager:1",
+        "agile-coach:2",
+        "delivery-manager:1",
+        "delivery-manager:4",
+        "release-train-engineer:1",
+        "release-train-engineer:2",
+        "safe-system-architect:1",
+        "programme-manager:1",
+        "programme-manager:2",
+        "programme-manager:3",
+        "pmo-lead:4",
+        "engineering-manager:1",
+        "engineering-manager:3",
+        "transformation-manager:2",
+        "finops-analyst:3",
+        "configuration-analyst:4",
+        "enterprise-architect:3",
+        "business-architect:3",
+        "application-architect:3",
+        "domain-architect:3",
+        "mainframe-developer:1",
+        "mainframe-developer:2",
+        "blockchain-and-smart-contract-developer:3",
+        "release-engineer:1",
+        "software-modernisation-engineer:1",
+        "test-manager:4",
+        "test-architect:2",
+        "user-acceptance-test-coordinator:1",
+        "chaos-and-resilience-engineer:2",
+        "database-reliability-engineer:4",
+        "data-governance-lead:4",
+        "mlops-engineer:3",
+        "ai-solutions-engineer:2",
+        "kubernetes-platform-engineer:3",
+        "environment-manager:2",
+        "virtualisation-engineer:3",
+        "backup-and-recovery-engineer:1",
+        "capacity-manager:1",
+        "availability-manager:1",
+        "sustainable-it-engineer:2",
+        "wireless-and-rf-engineer:2",
+        "dns-dhcp-and-ipam-specialist:3",
+        "change-manager:2",
+        "service-level-manager:3",
+        "configuration-manager:4",
+        "it-asset-manager:3",
+        "business-relationship-manager:1",
+        "business-relationship-manager:4",
+        "soc-manager:1",
+        "soc-manager:4",
+        "security-awareness-and-training-manager:1",
+        "insider-threat-analyst:4",
+        "purple-team-lead:1",
+        "red-team-operator:1",
+        "social-engineering-specialist:1",
+        "physical-intrusion-specialist:1",
+        "open-source-intelligence-investigator:1",
+        "adversary-emulation-engineer:1",
+        "breach-and-attack-simulation-engineer:1",
+        "bug-bounty-programme-manager:4",
+        "hardware-and-iot-security-researcher:1",
+        "compliance-officer-technology:4",
+        "internal-it-auditor:1",
+        "external-auditor-and-assessor:1",
+        "records-manager:1",
+        "business-continuity-manager:2",
+        "business-continuity-manager:3",
+        "disaster-recovery-coordinator:2",
+        "third-party-risk-manager:4",
+        "crisis-manager:1",
+        "ux-researcher:1",
+        "accessibility-specialist:3",
+        "pre-sales-solution-consultant:3",
+        "customer-success-engineer:2",
+        "technical-account-manager:1",
+        "technical-recruiter:2",
+        "resource-manager:1",
+        "resource-manager:4",
+        "systems-engineer-incose:3",
+        "quantum-computing-engineer:3",
+        "conceptual-security-architect-sabsa-architect-s-view:4",
+        "security-service-manager-sabsa-service-management-view:4",
+        "security-assurance-and-measurement-architect:4",
+        "organisational-change-and-adoption-manager:2",
+        "organisational-change-and-adoption-manager:3",
+        "benefits-realisation-manager:2",
+        "service-transition-and-operational-readiness-manager:2",
+        "enterprise-applications-architect:3",
+        "enterprise-release-manager:1",
+        "demand-and-intake-manager:4",
+        "application-portfolio-manager:3",
+        "bid-proposal-manager:1",
+        "estimation-cost-engineering-specialist:2"
+      ],
+      "source_applicable_dcs": "proposed/kind/transformation-roadmap",
+      "source_binding_status": "proposed-unmapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "client-proposal",
+      "document_kind": "client-proposal",
+      "spec_ref": "kind/client-proposal",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-client-proposal.customer_need",
+          "unit_id": "client-proposal.customer_need"
+        },
+        {
+          "source_anchor": "dcs-proposed-client-proposal.proposed_solution",
+          "unit_id": "client-proposal.proposed_solution"
+        },
+        {
+          "source_anchor": "dcs-proposed-client-proposal.scope_deliverables",
+          "unit_id": "client-proposal.scope_deliverables"
+        },
+        {
+          "source_anchor": "dcs-proposed-client-proposal.delivery_plan",
+          "unit_id": "client-proposal.delivery_plan"
+        },
+        {
+          "source_anchor": "dcs-proposed-client-proposal.commercial_overview",
+          "unit_id": "client-proposal.commercial_overview"
+        },
+        {
+          "source_anchor": "dcs-proposed-client-proposal.decision_request",
+          "unit_id": "client-proposal.decision_request"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind",
+      "role_contract_ids": [
+        "bid-proposal-manager:3"
+      ],
+      "source_applicable_dcs": "proposed/kind/client-proposal",
+      "source_binding_status": "proposed-not-mapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "executive-proposal",
+      "document_kind": "executive-proposal",
+      "spec_ref": "kind/executive-proposal",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-executive-proposal.executive_ask",
+          "unit_id": "executive-proposal.executive_ask"
+        },
+        {
+          "source_anchor": "dcs-proposed-executive-proposal.business_case",
+          "unit_id": "executive-proposal.business_case"
+        },
+        {
+          "source_anchor": "dcs-proposed-executive-proposal.solution_value",
+          "unit_id": "executive-proposal.solution_value"
+        },
+        {
+          "source_anchor": "dcs-proposed-executive-proposal.alternatives",
+          "unit_id": "executive-proposal.alternatives"
+        },
+        {
+          "source_anchor": "dcs-proposed-executive-proposal.risk_dependencies",
+          "unit_id": "executive-proposal.risk_dependencies"
+        },
+        {
+          "source_anchor": "dcs-proposed-executive-proposal.next_decision",
+          "unit_id": "executive-proposal.next_decision"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind",
+      "role_contract_ids": [
+        "bid-proposal-manager:3"
+      ],
+      "source_applicable_dcs": "proposed/kind/executive-proposal",
+      "source_binding_status": "proposed-not-mapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "technical-proposal",
+      "document_kind": "technical-proposal",
+      "spec_ref": "kind/technical-proposal",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-technical-proposal.architecture_context",
+          "unit_id": "technical-proposal.architecture_context"
+        },
+        {
+          "source_anchor": "dcs-proposed-technical-proposal.solution_design",
+          "unit_id": "technical-proposal.solution_design"
+        },
+        {
+          "source_anchor": "dcs-proposed-technical-proposal.interfaces_security",
+          "unit_id": "technical-proposal.interfaces_security"
+        },
+        {
+          "source_anchor": "dcs-proposed-technical-proposal.nonfunctional_requirements",
+          "unit_id": "technical-proposal.nonfunctional_requirements"
+        },
+        {
+          "source_anchor": "dcs-proposed-technical-proposal.verification_strategy",
+          "unit_id": "technical-proposal.verification_strategy"
+        },
+        {
+          "source_anchor": "dcs-proposed-technical-proposal.technical_assumptions",
+          "unit_id": "technical-proposal.technical_assumptions"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind",
+      "role_contract_ids": [
+        "pre-sales-solution-consultant:1"
+      ],
+      "source_applicable_dcs": "proposed/kind/technical-proposal",
+      "source_binding_status": "proposed-not-mapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "delivery-proposal",
+      "document_kind": "delivery-proposal",
+      "spec_ref": "kind/delivery-proposal",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-delivery-proposal.delivery_scope",
+          "unit_id": "delivery-proposal.delivery_scope"
+        },
+        {
+          "source_anchor": "dcs-proposed-delivery-proposal.work_packages",
+          "unit_id": "delivery-proposal.work_packages"
+        },
+        {
+          "source_anchor": "dcs-proposed-delivery-proposal.resources_governance",
+          "unit_id": "delivery-proposal.resources_governance"
+        },
+        {
+          "source_anchor": "dcs-proposed-delivery-proposal.schedule_dependencies",
+          "unit_id": "delivery-proposal.schedule_dependencies"
+        },
+        {
+          "source_anchor": "dcs-proposed-delivery-proposal.quality_acceptance",
+          "unit_id": "delivery-proposal.quality_acceptance"
+        },
+        {
+          "source_anchor": "dcs-proposed-delivery-proposal.transition_controls",
+          "unit_id": "delivery-proposal.transition_controls"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind",
+      "role_contract_ids": [
+        "delivery-manager:1",
+        "bid-proposal-manager:4"
+      ],
+      "source_applicable_dcs": "proposed/kind/delivery-proposal",
+      "source_binding_status": "proposed-not-mapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "commercial-proposal",
+      "document_kind": "commercial-proposal",
+      "spec_ref": "kind/commercial-proposal",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-commercial-proposal.price_basis",
+          "unit_id": "commercial-proposal.price_basis"
+        },
+        {
+          "source_anchor": "dcs-proposed-commercial-proposal.cost_breakdown",
+          "unit_id": "commercial-proposal.cost_breakdown"
+        },
+        {
+          "source_anchor": "dcs-proposed-commercial-proposal.assumptions_exclusions",
+          "unit_id": "commercial-proposal.assumptions_exclusions"
+        },
+        {
+          "source_anchor": "dcs-proposed-commercial-proposal.payment_terms",
+          "unit_id": "commercial-proposal.payment_terms"
+        },
+        {
+          "source_anchor": "dcs-proposed-commercial-proposal.commercial_risks",
+          "unit_id": "commercial-proposal.commercial_risks"
+        },
+        {
+          "source_anchor": "dcs-proposed-commercial-proposal.approval_boundary",
+          "unit_id": "commercial-proposal.approval_boundary"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind",
+      "role_contract_ids": [
+        "commercial-pricing-deal-finance-specialist:2"
+      ],
+      "source_applicable_dcs": "proposed/kind/commercial-proposal",
+      "source_binding_status": "proposed-not-mapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "statement-of-work",
+      "document_kind": "statement-of-work",
+      "spec_ref": "kind/statement-of-work",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-statement-of-work.parties_scope",
+          "unit_id": "statement-of-work.parties_scope"
+        },
+        {
+          "source_anchor": "dcs-proposed-statement-of-work.deliverables",
+          "unit_id": "statement-of-work.deliverables"
+        },
+        {
+          "source_anchor": "dcs-proposed-statement-of-work.responsibilities",
+          "unit_id": "statement-of-work.responsibilities"
+        },
+        {
+          "source_anchor": "dcs-proposed-statement-of-work.milestones_acceptance",
+          "unit_id": "statement-of-work.milestones_acceptance"
+        },
+        {
+          "source_anchor": "dcs-proposed-statement-of-work.commercial_change",
+          "unit_id": "statement-of-work.commercial_change"
+        },
+        {
+          "source_anchor": "dcs-proposed-statement-of-work.legal_reservations",
+          "unit_id": "statement-of-work.legal_reservations"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind",
+      "role_contract_ids": [
+        "supplier-commercial-deal-manager:2"
+      ],
+      "source_applicable_dcs": "proposed/kind/statement-of-work",
+      "source_binding_status": "proposed-not-mapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "rfp-response",
+      "document_kind": "rfp-response",
+      "spec_ref": "kind/rfp-response",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-rfp-response.response_context",
+          "unit_id": "rfp-response.response_context"
+        },
+        {
+          "source_anchor": "dcs-proposed-rfp-response.requirement_mapping",
+          "unit_id": "rfp-response.requirement_mapping"
+        },
+        {
+          "source_anchor": "dcs-proposed-rfp-response.solution_response",
+          "unit_id": "rfp-response.solution_response"
+        },
+        {
+          "source_anchor": "dcs-proposed-rfp-response.compliance_qualification",
+          "unit_id": "rfp-response.compliance_qualification"
+        },
+        {
+          "source_anchor": "dcs-proposed-rfp-response.commercial_schedules",
+          "unit_id": "rfp-response.commercial_schedules"
+        },
+        {
+          "source_anchor": "dcs-proposed-rfp-response.clarifications",
+          "unit_id": "rfp-response.clarifications"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind",
+      "role_contract_ids": [
+        "pre-sales-solution-consultant:2",
+        "bid-proposal-manager:1"
+      ],
+      "source_applicable_dcs": "proposed/kind/rfp-response",
+      "source_binding_status": "proposed-not-mapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "proposal-compliance-matrix",
+      "document_kind": "proposal-compliance-matrix",
+      "spec_ref": "kind/proposal-compliance-matrix",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-proposal-compliance-matrix.requirement_source",
+          "unit_id": "proposal-compliance-matrix.requirement_source"
+        },
+        {
+          "source_anchor": "dcs-proposed-proposal-compliance-matrix.response_classification",
+          "unit_id": "proposal-compliance-matrix.response_classification"
+        },
+        {
+          "source_anchor": "dcs-proposed-proposal-compliance-matrix.evidence_mapping",
+          "unit_id": "proposal-compliance-matrix.evidence_mapping"
+        },
+        {
+          "source_anchor": "dcs-proposed-proposal-compliance-matrix.exceptions_dependencies",
+          "unit_id": "proposal-compliance-matrix.exceptions_dependencies"
+        },
+        {
+          "source_anchor": "dcs-proposed-proposal-compliance-matrix.closure_governance",
+          "unit_id": "proposal-compliance-matrix.closure_governance"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind",
+      "role_contract_ids": [
+        "bid-proposal-manager:2"
+      ],
+      "source_applicable_dcs": "proposed/kind/proposal-compliance-matrix",
+      "source_binding_status": "proposed-not-mapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "cybersecurity-transformation-proposal",
+      "document_kind": "cybersecurity-transformation-proposal",
+      "spec_ref": "kind/cybersecurity-transformation-proposal",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-cybersecurity-transformation-proposal.security_baseline",
+          "unit_id": "cybersecurity-transformation-proposal.security_baseline"
+        },
+        {
+          "source_anchor": "dcs-proposed-cybersecurity-transformation-proposal.target_control_architecture",
+          "unit_id": "cybersecurity-transformation-proposal.target_control_architecture"
+        },
+        {
+          "source_anchor": "dcs-proposed-cybersecurity-transformation-proposal.transformation_waves",
+          "unit_id": "cybersecurity-transformation-proposal.transformation_waves"
+        },
+        {
+          "source_anchor": "dcs-proposed-cybersecurity-transformation-proposal.assurance_roadmap",
+          "unit_id": "cybersecurity-transformation-proposal.assurance_roadmap"
+        },
+        {
+          "source_anchor": "dcs-proposed-cybersecurity-transformation-proposal.resourcing_cost",
+          "unit_id": "cybersecurity-transformation-proposal.resourcing_cost"
+        },
+        {
+          "source_anchor": "dcs-proposed-cybersecurity-transformation-proposal.risk_acceptance",
+          "unit_id": "cybersecurity-transformation-proposal.risk_acceptance"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind-reusing-shared-foundation",
+      "role_contract_ids": [],
+      "source_applicable_dcs": "proposed/kind/cybersecurity-transformation-proposal",
+      "source_binding_status": "proposed-not-mapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    },
+    {
+      "reference_family": "managed-security-services-proposal",
+      "document_kind": "managed-security-services-proposal",
+      "spec_ref": "kind/managed-security-services-proposal",
+      "anchor_bindings": [
+        {
+          "source_anchor": "dcs-proposed-managed-security-services-proposal.service_boundary",
+          "unit_id": "managed-security-services-proposal.service_boundary"
+        },
+        {
+          "source_anchor": "dcs-proposed-managed-security-services-proposal.service_catalogue",
+          "unit_id": "managed-security-services-proposal.service_catalogue"
+        },
+        {
+          "source_anchor": "dcs-proposed-managed-security-services-proposal.slo_escalation",
+          "unit_id": "managed-security-services-proposal.slo_escalation"
+        },
+        {
+          "source_anchor": "dcs-proposed-managed-security-services-proposal.client_supplier_raci",
+          "unit_id": "managed-security-services-proposal.client_supplier_raci"
+        },
+        {
+          "source_anchor": "dcs-proposed-managed-security-services-proposal.commercial_service_model",
+          "unit_id": "managed-security-services-proposal.commercial_service_model"
+        },
+        {
+          "source_anchor": "dcs-proposed-managed-security-services-proposal.transition_acceptance",
+          "unit_id": "managed-security-services-proposal.transition_acceptance"
+        }
+      ],
+      "status": "proposed",
+      "registration": "new-proposed-kind-reusing-shared-foundation",
+      "role_contract_ids": [],
+      "source_applicable_dcs": "proposed/kind/managed-security-services-proposal",
+      "source_binding_status": "proposed-not-mapped",
+      "coverage_scope": "Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.",
+      "professional_approval": "not-human-approved"
+    }
+  ]
+}

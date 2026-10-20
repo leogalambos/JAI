@@ -1,5 +1,19 @@
 # Changelog
 
+## 26.10.10 — Expert References and Proposal Production (candidate)
+
+- Integrates the complete 96-document English expert reference library
+  across 32 families, preserving supplied document bytes and stable IDs.
+- Maps proposed reference anchors to registered advisory DCS
+  specializations without granting professional or human approval.
+- Adds proposal-package preparation and cross-document consistency
+  checks to the existing commercial-delivery profile and publication
+  path.
+- Documents colleague pilot evaluation, synthetic evidence limitations
+  and separation of optional security offerings from baseline pricing.
+- Preserves existing override precedence, independent review, human
+  authority and mandatory offline release qualification.
+
 ## 26.10.9 — Expert References and Offline Readiness (candidate)
 
 - Adds source-attributed proposed purposes and shared semantic families,

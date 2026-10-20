@@ -9,6 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/architecture-definition
 approval_status: not-human-approved
+content_revision: 2.0.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -87,3 +88,22 @@ Illustrative evidence IDs are internal cross-references, **not accessible custom
 This is a proposed, non-authoritative reference. `HFS-FAR-DR-01` must be reviewed by the accountable authority and bound to a hash of the final canonical semantic record; no implied approval arises from the presence of an approval field. The owner must close material evidence gaps before using the document as the basis for deployment or risk acceptance.
 
 **Downstream references:** HFS-FAR-HLD-01, HFS-FAR-RA-01, HFS-FAR-OPS-01. Revalidate when scope, data classification, controlling evidence or major dependencies change.
+
+
+
+
+## Professional deepening: decision rationale and practical checks
+
+### Stakeholders and architecture viewpoints
+
+Identify stakeholders, concerns, viewpoints and views as separate concepts. A component inventory is not a set of architecture viewpoints. Map business processes to application services and technology dependencies, and explain why each selected view supports a particular decision. Define repository ownership and model revision so diagrams, tables and narrative can be traced to the same semantic identities.
+
+### Cross-domain architecture traceability
+
+| Architecture concern | Viewpoint | Canonical relation | Acceptance evidence |
+|---|---|---|---|
+| Business capability | Capability-to-service | Capability → service | Owner review of coverage |
+| Trust and information | Trust-boundary/data flow | Actor → flow → control | Threat/risk assessment |
+| Operational resilience | Failure-domain/dependency | Component → dependency → location | Recovery rehearsal |
+| Transformation | Current/target/transition | Baseline → change → target | Migration and cutover plan |
+

@@ -12,13 +12,13 @@ this format does not alter Artifact Contract v3 or the DCS specification schema.
 | --- | --- |
 | `reference_id` | Stable reference identifier, preserved for bundled documents. |
 | `schema_version` | Literal string `1.0.0`. |
-| `document_kind` | Registered supported family, for example `decision-paper`. |
+| `document_kind` | Supported reference family, for example `decision-paper`. |
 | `complexity` | `simple`, `medium` or `complex`. |
 | `language` | Currently `en`. |
 | `classification` | `public-synthetic`, `internal`, `confidential` or `restricted`. |
 | `provenance` | `ai-authored-proposed` or `user-supplied-proposed`. |
 | `fictional_context` | Boolean identifying illustrative rather than actual context. |
-| `applicable_dcs` | Exact `kind/<document-kind>` registry reference. |
+| `applicable_dcs` | Preserved source binding, resolved through the registered mapping. |
 | `approval_status` | `not-human-approved`; import cannot grant JAI L0 approval. |
 
 A valid bundled example has metadata equivalent to:
@@ -43,12 +43,29 @@ a valid complete reference. Setting `approval_status: approved`, using a
 string instead of a Boolean, or mismatching the selected family is invalid.
 A plausible reference identifier does not establish authority.
 
+The complete library also carries supported `content_revision`, `dcs_status`
+and proposal-pack metadata where supplied. A proposed source binding may use
+`proposed/kind/<family>` and `dcs-proposed-*` anchors. These declarations remain
+proposed after import. The maintained
+`content/expert-reference-bindings.json` maps reference families and source
+anchors to actual registered JAI kinds and information units. Unknown or
+inconsistent mappings fail; import cannot approve or activate a rule.
+
+| Optional field | Meaning |
+| --- | --- |
+| `content_revision` | Supplied content revision, independent of the product version. |
+| `dcs_status` | Source binding status; proposed values never grant approval. |
+| `proposal_pack_id` | Synthetic pack association, not a customer engagement identity. |
+| `target_audiences` | Explicit audience constraints for an override. |
+| `applicability_context` | Explicit flat scalar constraints for reference selection. |
+
 ## Stable DCS anchors
 
-Content sections identify exact DCS information-unit IDs. Human-readable
+Content sections identify DCS information units directly or through an
+explicit registered mapping for preserved proposed anchors. Human-readable
 headings and visual presentation may vary. Preserve the supplied anchor
-syntax and identifiers when editing; consult the registered kind rather than
-inventing identifiers. Duplicate, missing, unknown and inconsistent anchors
+syntax and identifiers when editing; consult the registered mapping rather
+than inventing identifiers. Duplicate, missing, unknown and inconsistent anchors
 are findings with the affected document and rule.
 
 Validation distinguishes four levels:
@@ -74,3 +91,46 @@ python3 .ai/runtime/tools/expert_references.py validate --root . \
 
 See [override configuration](../configuration/expert-document-overrides.md)
 for selection and restoration behavior.
+
+## Registered family mappings
+
+The reference family is a library slot; the document kind is the explicit
+DCS selection. All new registrations remain proposed and advisory. Source
+anchors are preserved and translated by the maintained binding map;
+inherited global, type, domain and role obligations remain additional
+authoring requirements. Reference coverage is not complete project approval.
+
+| Reference family | Registered document kind | Registration |
+| --- | --- | --- |
+| `decision-paper` | `decision-paper` | Existing priority kind |
+| `adr` | `adr` | Existing priority kind |
+| `business-case` | `business-case` | Existing priority kind |
+| `risk-assessment` | `risk-assessment` | Existing priority kind |
+| `assurance-report` | `assurance-report` | Existing priority kind |
+| `architecture-definition` | `architecture-definition` | Existing priority kind |
+| `hld` | `hld` | Existing priority kind |
+| `operational-handover` | `operational-handover` | Existing priority kind |
+| `runbook` | `runbook` | Existing priority kind |
+| `test-report` | `test-report` | Existing priority kind |
+| `it-digital-strategy` | `strategy` | Proposed specialization |
+| `requirements-specification` | `requirements-specification` | Proposed specialization |
+| `policy-standard` | `policy-standard` | Proposed specialization |
+| `implementation-specification-lld` | `implementation-specification` | Proposed specialization |
+| `migration-cutover-plan` | `migration-cutover-plan` | Proposed specialization |
+| `test-strategy-plan` | `test-strategy` | Proposed specialization |
+| `operational-readiness-assessment` | `operational-readiness-assessment` | Proposed specialization |
+| `service-design-sla` | `service-design` | Proposed specialization |
+| `incident-postmortem` | `incident-postmortem` | Proposed specialization |
+| `compliance-gap-analysis` | `compliance-gap-analysis` | Proposed specialization |
+| `benefits-realisation-review` | `benefits-review` | Proposed specialization |
+| `transformation-roadmap` | `roadmap` | Proposed specialization |
+| `client-proposal` | `client-proposal` | Proposed specialization |
+| `executive-proposal` | `executive-proposal` | Proposed specialization |
+| `technical-proposal` | `technical-proposal` | Proposed specialization |
+| `delivery-proposal` | `delivery-proposal` | Proposed specialization |
+| `commercial-proposal` | `commercial-proposal` | Proposed specialization |
+| `statement-of-work` | `statement-of-work` | Proposed specialization |
+| `rfp-response` | `rfp-response` | Proposed specialization |
+| `proposal-compliance-matrix` | `proposal-compliance-matrix` | Proposed specialization |
+| `cybersecurity-transformation-proposal` | `cybersecurity-transformation-proposal` | Proposed specialization |
+| `managed-security-services-proposal` | `managed-security-services-proposal` | Proposed specialization |

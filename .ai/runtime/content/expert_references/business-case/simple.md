@@ -9,6 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/business-case
 approval_status: not-human-approved
+content_revision: 2.0.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -78,3 +79,17 @@ Illustrative evidence IDs are internal cross-references, **not accessible custom
 This is a proposed, non-authoritative reference. `HFS-FAR-DR-01` must be reviewed by the accountable authority and bound to a hash of the final canonical semantic record; no implied approval arises from the presence of an approval field. The owner must close material evidence gaps before using the document as the basis for deployment or risk acceptance.
 
 **Downstream references:** HFS-FAR-DR-01, HFS-FAR-FIN-01, HFS-FAR-OPS-01. Revalidate when scope, data classification, controlling evidence or major dependencies change.
+
+
+
+
+## Professional deepening: decision rationale and practical checks
+
+### Accounting and model integrity
+
+Present incremental cash flows relative to a clearly declared baseline, with explicit horizon, currency, nominal/real basis, tax treatment and discount convention. Separate cost avoidance, cash-releasing savings, productivity capacity, revenue uplift and risk reduction; these categories must not be added together without checks for overlap. Assign each cost and benefit line to a named accountable function. A planning model is not an approved forecast.
+
+### Discounted economics and scenario bounds
+
+Illustrative evaluation can use an 8% year-end discount rate if Finance has not supplied an authoritative rate, clearly marked as an assumption. Apply NPV = sum(net cash flow in year t / (1+r)^t) and do not silently mix the capital approval envelope with benefit realisation. Show base, downside and upside scenarios with both benefits and supplier costs changing; identify the break-even adoption level. A sensitivity table only varying one driver at a time understates correlated downside.
+

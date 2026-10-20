@@ -9,6 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/operational-handover
 approval_status: not-human-approved
+content_revision: 2.0.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -74,3 +75,23 @@ Illustrative evidence IDs are internal cross-references, **not accessible custom
 This is a proposed, non-authoritative reference. `HFS-FAR-DR-01` must be reviewed by the accountable authority and bound to a hash of the final canonical semantic record; no implied approval arises from the presence of an approval field. The owner must close material evidence gaps before using the document as the basis for deployment or risk acceptance.
 
 **Downstream references:** HFS-FAR-RB-01, HFS-FAR-TEST-01, HFS-FAR-ITSM-01. Revalidate when scope, data classification, controlling evidence or major dependencies change.
+
+
+
+
+## Professional deepening: decision rationale and practical checks
+
+### Service acceptance versus implementation completion
+
+Separate the build team’s assertion that a feature is complete from the operations team’s ability to run the service. The receiving Service Owner accepts an explicit boundary: components, users, data, locations, vendors and support hours. A handover with no staffed owner, escalation rota or restoration proof must remain conditional, even when functional tests pass.
+
+### Readiness evidence by service function
+
+| Area | Evidence required | Receiving role | Example of rejection |
+|---|---|---|---|
+| Monitoring | SLI dashboards and tested alert routing | On-call lead | Alerts go to an unstaffed queue |
+| Recovery | Restore drill and integrity validation | Resilience owner | Restore exceeds RTO |
+| Identity | Access recertification and break-glass test | IAM owner | Shared credentials in production |
+| Supplier | Escalation and OLA evidence | Vendor manager | Undefined support boundary |
+| Documentation | Runbook with rollback and owner | Service manager | Unreproducible procedure |
+

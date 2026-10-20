@@ -9,6 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/decision-paper
 approval_status: not-human-approved
+content_revision: 2.0.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -73,3 +74,32 @@ Illustrative evidence IDs are internal cross-references, **not accessible custom
 This is a proposed, non-authoritative reference. `MRG-OEI-DR-01` must be reviewed by the accountable authority and bound to a hash of the final canonical semantic record; no implied approval arises from the presence of an approval field. The owner must close material evidence gaps before using the document as the basis for deployment or risk acceptance.
 
 **Downstream references:** MRG-OEI-ADR-01, MRG-OEI-HLD-01, MRG-OEI-RA-01, MRG-OEI-BC-01. Revalidate when scope, data classification, controlling evidence or major dependencies change.
+
+
+
+
+## Professional deepening: decision rationale and practical checks
+
+### Decision-quality and authority boundary
+
+The decision statement must distinguish authorisation to explore, commitment of funds, authority to process sensitive data and permission to deploy. These are different decisions with different approvers. Record the decision's reversibility, expiry and triggers for renewal. Identify which alternative is selected when a prerequisite fails rather than treating every open condition as a generic action item. In the illustrative decision, an architecture preference can be agreed while release approval remains blocked on verified reconciliation, recovery and named risk acceptance.
+
+### Comparable alternative evaluation
+
+Normalise options against the same three-year service boundary and show separate operating costs, transition costs, control exposure and exit liabilities. The do-nothing baseline includes its own remediation and risk cost; it is not assumed to be zero. Score security and control performance as gates rather than allowing a cheap unsafe option to win on a weighted average. Record the criterion owner and sensitivity to changes in weights. A weighted result is explanatory evidence, never a substitute for an accountable choice.
+
+### Decision matrix and challenge
+
+| Review question | Evidence to inspect | Failure response |
+|---|---|---|
+| Are options genuinely comparable? | Scope and excluded costs for each candidate | Rework comparison before decision |
+| Can the proposed outcome be measured? | Baseline, SLI definitions and target owner | Defer benefits claim |
+| Have non-negotiable controls been met? | Control applicability and risk decisions | Do not authorise production |
+| Is exit/reversibility credible? | Contract terms, rollback rehearsal and migration dependencies | Restrict commitment to reversible stage |
+
+The analyst should record a reasoned dissent from Security, Operations or Finance alongside the sponsor recommendation, including why the dissent is or is not material.
+
+### Conditional decision record
+
+Provide an explicit disposition table: *approved in principle*, *deferred pending evidence* or *rejected*, each with scope, constraints, authority and timestamp. An illustrative acceptance condition should identify an owner, a deadline, a verifiable predicate and an escalation if missed; “address security risks” is not verifiable. A change of jurisdiction, design boundary, external processor or accepted risk invalidates the previous advice and prompts decision renewal.
+

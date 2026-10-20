@@ -9,6 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/hld
 approval_status: not-human-approved
+content_revision: 2.0.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -73,3 +74,17 @@ Illustrative evidence IDs are internal cross-references, **not accessible custom
 This is a proposed, non-authoritative reference. `HFS-FAR-DR-01` must be reviewed by the accountable authority and bound to a hash of the final canonical semantic record; no implied approval arises from the presence of an approval field. The owner must close material evidence gaps before using the document as the basis for deployment or risk acceptance.
 
 **Downstream references:** HFS-FAR-ADR-01, HFS-FAR-TEST-01, HFS-FAR-OPS-01. Revalidate when scope, data classification, controlling evidence or major dependencies change.
+
+
+
+
+## Professional deepening: decision rationale and practical checks
+
+### Service boundary and responsibility model
+
+For each runtime component, declare responsibilities, data authority, upstream/downstream interfaces, scaling unit and failure response. Security responsibilities must be explicit at trust boundaries: which service authenticates the caller, enforces the business authorization and issues an audit event. A high-level design should not substitute vague terms such as “secure API” for enforceable controls.
+
+### Interfaces, consistency and error semantics
+
+Specify request IDs, idempotency keys, schema compatibility, ordering needs, timeouts, retries, dead-letter handling and retention boundaries. Define whether a response means acceptance, persistence or final business processing. If an asynchronous consumer fails after acknowledging a message, demonstrate how the source of truth and replay mechanism prevent permanent loss and duplicate business effects.
+

@@ -9,6 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/runbook
 approval_status: not-human-approved
+content_revision: 2.0.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -74,3 +75,31 @@ Illustrative evidence IDs are internal cross-references, **not accessible custom
 This is a proposed, non-authoritative reference. `MRG-OEI-DR-01` must be reviewed by the accountable authority and bound to a hash of the final canonical semantic record; no implied approval arises from the presence of an approval field. The owner must close material evidence gaps before using the document as the basis for deployment or risk acceptance.
 
 **Downstream references:** MRG-OEI-OPS-01, MRG-OEI-RA-01, MRG-OEI-INC-01. Revalidate when scope, data classification, controlling evidence or major dependencies change.
+
+
+
+
+## Professional deepening: decision rationale and practical checks
+
+### Preflight and safe operating envelope
+
+Distinguish read-only diagnosis from a potentially destructive corrective action. Specify required privileges, working hours, customer impact, change authorization, required backups and expected system state before touching production. Privilege or environment verification failure terminates the procedure and triggers escalation; do not recommend bypassing enterprise controls to “unblock” recovery.
+
+### Executable sequence and checkpoints
+
+| Step | Action class | Observable success criterion | Abort condition |
+|---|---|---|---|
+| 1 | Read-only identify | Correct environment, service and incident ID | Scope mismatch |
+| 2 | Read-only baseline | Fresh telemetry and consistent state | Missing/contradictory signals |
+| 3 | Authorized change | Named change approval and controlled execution | Approval missing |
+| 4 | Verification | Business transaction and integrity tests pass | Any critical mismatch |
+| 5 | Closure | Evidence captured and on-call handoff accepted | Open severe issue |
+
+### Error classification and branching
+
+Document decisions for transient dependency failure, permanent data inconsistency, authorization failure and unknown condition. Repetition without causal understanding may amplify an outage. A timeout does not prove an action failed: verify side effects before retrying. If a duplicate execution could alter money, access or customer records, stop and escalate rather than blindly repeating a command.
+
+### Rollback and data integrity guard
+
+Rollback includes application state, infrastructure, configuration and business data. A prior binary cannot safely be restored if a new schema or protocol has created incompatible records. Identify the last known-good checkpoint, irreversible actions, reprocessing and reconciliation steps. Validate both customer-facing functionality and background processing before declaring restoration.
+

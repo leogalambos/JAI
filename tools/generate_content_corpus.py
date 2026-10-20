@@ -197,12 +197,16 @@ def enterprise_cases(resolver):
 
     resolver is the real registered content resolver. Returns canonical case
     paths mapped to synthetic data with positive, negative and borderline
-    recipes. Every role kind is exercised; overlays have three complexity
-    scenarios. Professional meaning remains an independent review obligation.
+    recipes. Every role kind is exercised; standalone registered kinds and
+    overlays each have three complexity scenarios. Professional meaning remains an independent review obligation.
     """
     result = {}
     selections = [(cid, [], 'medium') for cid in sorted(resolver.bindings)
                   if cid not in BINDINGS]
+    bound_kinds={row['document_kind'] for row in resolver.bindings.values()}
+    selections.extend(('kind/'+kind,[],complexity)
+                      for kind in sorted(set(resolver.kinds)-bound_kinds)
+                      for complexity in SCENARIOS)
     anchor = 'enterprise-architect:1'
     for category in ('archetypes', 'sabsa_views'):
         for ref in sorted(resolver.registry['mappings'][category].values()):

@@ -2,7 +2,7 @@
   "profile": "content",
   "version": "1.0.0",
   "status": "proposed",
-  "phase": "26.10.9-offline-content-readiness",
+  "phase": "26.10.10-proposal-production",
   "compatibility": {
     "read": [
       "ArtifactContract-v3"

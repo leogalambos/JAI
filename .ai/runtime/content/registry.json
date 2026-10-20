@@ -1,6 +1,6 @@
 {
   "schema_version": "1.0.0",
-  "version": "26.10.9",
+  "version": "26.10.10",
   "status": "proposed",
   "calibration_status": "synthetic-only",
   "specifications": [
@@ -9443,6 +9443,182 @@
       "status": "proposed",
       "completeness": "complete",
       "path": "document_kinds/roles/supplier-commercial-deal-manager-3.yaml"
+    },
+    {
+      "id": "kind/strategy",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/strategy.yaml"
+    },
+    {
+      "id": "kind/requirements-specification",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/requirements-specification.yaml"
+    },
+    {
+      "id": "kind/policy-standard",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/policy-standard.yaml"
+    },
+    {
+      "id": "kind/implementation-specification",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/implementation-specification.yaml"
+    },
+    {
+      "id": "kind/migration-cutover-plan",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/migration-cutover-plan.yaml"
+    },
+    {
+      "id": "kind/test-strategy",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/test-strategy.yaml"
+    },
+    {
+      "id": "kind/operational-readiness-assessment",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/operational-readiness-assessment.yaml"
+    },
+    {
+      "id": "kind/service-design",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/service-design.yaml"
+    },
+    {
+      "id": "kind/incident-postmortem",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/incident-postmortem.yaml"
+    },
+    {
+      "id": "kind/compliance-gap-analysis",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/compliance-gap-analysis.yaml"
+    },
+    {
+      "id": "kind/benefits-review",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/benefits-review.yaml"
+    },
+    {
+      "id": "kind/roadmap",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/roadmap.yaml"
+    },
+    {
+      "id": "kind/client-proposal",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/client-proposal.yaml"
+    },
+    {
+      "id": "kind/executive-proposal",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/executive-proposal.yaml"
+    },
+    {
+      "id": "kind/technical-proposal",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/technical-proposal.yaml"
+    },
+    {
+      "id": "kind/delivery-proposal",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/delivery-proposal.yaml"
+    },
+    {
+      "id": "kind/commercial-proposal",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/commercial-proposal.yaml"
+    },
+    {
+      "id": "kind/statement-of-work",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/statement-of-work.yaml"
+    },
+    {
+      "id": "kind/rfp-response",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/rfp-response.yaml"
+    },
+    {
+      "id": "kind/proposal-compliance-matrix",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/proposal-compliance-matrix.yaml"
+    },
+    {
+      "id": "kind/cybersecurity-transformation-proposal",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/cybersecurity-transformation-proposal.yaml"
+    },
+    {
+      "id": "kind/managed-security-services-proposal",
+      "version": "1.1.0",
+      "category": "document_kind",
+      "status": "proposed",
+      "completeness": "complete",
+      "path": "document_kinds/references/managed-security-services-proposal.yaml"
     },
     {
       "id": "archetype/architecture-definition",
@@ -19952,6 +20128,160 @@
       "spec_ref": "kind/role/supplier-commercial-deal-manager:3",
       "completeness": "complete",
       "status": "proposed"
+    },
+    {
+      "id": "strategy",
+      "artifact_types": [],
+      "spec_ref": "kind/strategy",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "requirements-specification",
+      "artifact_types": [],
+      "spec_ref": "kind/requirements-specification",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "policy-standard",
+      "artifact_types": [],
+      "spec_ref": "kind/policy-standard",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "implementation-specification",
+      "artifact_types": [],
+      "spec_ref": "kind/implementation-specification",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "migration-cutover-plan",
+      "artifact_types": [],
+      "spec_ref": "kind/migration-cutover-plan",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "test-strategy",
+      "artifact_types": [],
+      "spec_ref": "kind/test-strategy",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "operational-readiness-assessment",
+      "artifact_types": [],
+      "spec_ref": "kind/operational-readiness-assessment",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "service-design",
+      "artifact_types": [],
+      "spec_ref": "kind/service-design",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "incident-postmortem",
+      "artifact_types": [],
+      "spec_ref": "kind/incident-postmortem",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "compliance-gap-analysis",
+      "artifact_types": [],
+      "spec_ref": "kind/compliance-gap-analysis",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "benefits-review",
+      "artifact_types": [],
+      "spec_ref": "kind/benefits-review",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "roadmap",
+      "artifact_types": [],
+      "spec_ref": "kind/roadmap",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "client-proposal",
+      "artifact_types": [],
+      "spec_ref": "kind/client-proposal",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "executive-proposal",
+      "artifact_types": [],
+      "spec_ref": "kind/executive-proposal",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "technical-proposal",
+      "artifact_types": [],
+      "spec_ref": "kind/technical-proposal",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "delivery-proposal",
+      "artifact_types": [],
+      "spec_ref": "kind/delivery-proposal",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "commercial-proposal",
+      "artifact_types": [],
+      "spec_ref": "kind/commercial-proposal",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "statement-of-work",
+      "artifact_types": [],
+      "spec_ref": "kind/statement-of-work",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "rfp-response",
+      "artifact_types": [],
+      "spec_ref": "kind/rfp-response",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "proposal-compliance-matrix",
+      "artifact_types": [],
+      "spec_ref": "kind/proposal-compliance-matrix",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "cybersecurity-transformation-proposal",
+      "artifact_types": [],
+      "spec_ref": "kind/cybersecurity-transformation-proposal",
+      "completeness": "complete",
+      "status": "proposed"
+    },
+    {
+      "id": "managed-security-services-proposal",
+      "artifact_types": [],
+      "spec_ref": "kind/managed-security-services-proposal",
+      "completeness": "complete",
+      "status": "proposed"
     }
   ],
   "mappings": {
@@ -20226,6 +20556,76 @@
       "id": "deployment-automation",
       "spec_ref": "family/deployment-automation",
       "basis": "Authored exact contract-ID refinements."
+    },
+    {
+      "id": "policy-standard",
+      "spec_ref": "kind/policy-standard",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "migration-cutover-plan",
+      "spec_ref": "kind/migration-cutover-plan",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "incident-postmortem",
+      "spec_ref": "kind/incident-postmortem",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "compliance-gap-analysis",
+      "spec_ref": "kind/compliance-gap-analysis",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "client-proposal",
+      "spec_ref": "kind/client-proposal",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "executive-proposal",
+      "spec_ref": "kind/executive-proposal",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "technical-proposal",
+      "spec_ref": "kind/technical-proposal",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "delivery-proposal",
+      "spec_ref": "kind/delivery-proposal",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "commercial-proposal",
+      "spec_ref": "kind/commercial-proposal",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "statement-of-work",
+      "spec_ref": "kind/statement-of-work",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "rfp-response",
+      "spec_ref": "kind/rfp-response",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "proposal-compliance-matrix",
+      "spec_ref": "kind/proposal-compliance-matrix",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "cybersecurity-transformation-proposal",
+      "spec_ref": "kind/cybersecurity-transformation-proposal",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
+    },
+    {
+      "id": "managed-security-services-proposal",
+      "spec_ref": "kind/managed-security-services-proposal",
+      "basis": "Authored proposed reference-family information obligations; not professional approval."
     }
   ],
   "kind_aliases": [

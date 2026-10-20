@@ -13,6 +13,7 @@ import hashlib
 import json
 import argparse
 import importlib.util
+from content_reference_definitions import REFERENCE_KINDS, REFERENCE_ROLE_LINKS
 from content_catalog_definitions import (TYPE_REQUIREMENTS, DOMAIN_REQUIREMENTS,
     TYPE_DOMAINS, SABSA_REQUIREMENTS, ARCHETYPE_REQUIREMENTS,
     SEMANTIC_FAMILIES, SEMANTIC_REFINEMENTS, ADDITIONAL_FAMILIES,
@@ -258,10 +259,56 @@ def decision_mapping(contract, source, priority=None):
         'professional_acceptance':'pending-independent-review','human_approval':False}
 
 
+def validate_reference_bindings(document, specifications, contract_ids):
+    """Validate the explicit reference-to-DCS mapping without reading examples.
+
+    Args:
+        document: Proposed public binding sidecar with exact source anchor IDs.
+        specifications: Mapping from registered spec ID to its policy object.
+        contract_ids: Existing canonical role-contract ID collection.
+    Returns:
+        None when every family and kind-owned required unit maps exactly once.
+    Raises:
+        ValueError: For missing, duplicate, unknown or inconsistent mappings,
+            fabricated approval or a role link outside the existing catalogue.
+    """
+    expected=set(FAMILIES)|set(REFERENCE_KINDS)
+    records=document.get('families',[])
+    actual=[record.get('reference_family') for record in records]
+    if len(actual)!=len(expected) or set(actual)!=expected:
+        raise ValueError('REFERENCE_BINDING_FAMILY_CONFLICT')
+    if document.get('status')!='proposed' or document.get('professional_approval')!='not-human-approved':
+        raise ValueError('REFERENCE_BINDING_APPROVAL_INVALID')
+    for record in records:
+        family=record['reference_family'];kind=family if family in FAMILIES else REFERENCE_KINDS[family][0]
+        ref=record.get('spec_ref');policy=specifications.get(ref,{})
+        if record.get('document_kind')!=kind or ref!='kind/'+kind or policy.get('applies_to',{}).get('document_kind')!=kind:
+            raise ValueError(f'REFERENCE_BINDING_KIND_MISMATCH: {family}')
+        if record.get('status')!='proposed' or record.get('professional_approval')!='not-human-approved' or policy.get('status')!='proposed':
+            raise ValueError(f'REFERENCE_BINDING_APPROVAL_INVALID: {family}')
+        required={row['id'] for row in policy['required_information']}
+        translations=record.get('anchor_bindings',[])
+        source=[row.get('source_anchor') for row in translations]
+        targets=[row.get('unit_id') for row in translations]
+        fields=[row[0] for row in FAMILIES[family]] if family in FAMILIES else list(REFERENCE_KINDS[family][2])
+        prefix='dcs-' if family in FAMILIES else 'dcs-proposed-'
+        expected_source={prefix+family+'.'+field for field in fields}
+        if len(source)!=len(set(source)) or len(targets)!=len(set(targets)) or set(source)!=expected_source or set(targets)!=required:
+            raise ValueError(f'REFERENCE_BINDING_ANCHOR_CONFLICT: {family}')
+        if any(row['unit_id']!=kind+'.'+row['source_anchor'].split('.',1)[1] for row in translations):
+            raise ValueError(f'REFERENCE_BINDING_UNIT_MISMATCH: {family}')
+        if any(cid not in contract_ids for cid in record.get('role_contract_ids',[])):
+            raise ValueError(f'REFERENCE_BINDING_UNKNOWN_ROLE: {family}')
+    by_family={row['reference_family']:row for row in records}
+    for cid,family in document.get('authoring_defaults',{}).items():
+        if cid not in contract_ids or family not in by_family or cid not in by_family[family].get('role_contract_ids',[]):
+            raise ValueError(f'REFERENCE_BINDING_DEFAULT_INVALID: {cid}')
+
+
 def build():
     """Return every reproducible catalogue file without mutating canonical contracts."""
     files={}
-    registry={'schema_version':'1.0.0','version':'26.10.9','status':'proposed','calibration_status':'synthetic-only','specifications':[],
+    registry={'schema_version':'1.0.0','version':'26.10.10','status':'proposed','calibration_status':'synthetic-only','specifications':[],
       'document_kinds':[],'mappings':{'artifact_types':{},'archetypes':{},'sabsa_views':{},'domains':{}},
       'context_fields':{'processes_personal_data':{'type':'boolean'},'regulatory_requirement':{'type':'boolean'}},
       'priority_document_kinds':list(FAMILIES),'binding_map_ref':'migrations/26.10.5-binding-map.json'}
@@ -357,6 +404,48 @@ def build():
           'jai_extension':{'semantics.content_spec_ref':'kind/'+kind,'design.content_profile_ref':'kind/'+kind,'justification.content_acceptance_ref':'kind/'+kind},
           'classification_basis':'Reviewed explicit contract ID; original artifact type preserved.' if purpose else 'Exact stable contract ID and explicit shared family with a bounded role overlay; no runtime name inference.'})
     files[CONTENT/'migrations/26.10.5-binding-map.json']={'schema_version':'1.0.0','source_release':'26.10.5','source_ref':'artifacts/contracts/role-deliverables.v3.json','canonical_contracts_unchanged':True,'bindings':bindings}
+    reference_bindings=[]
+    for family in list(FAMILIES)+list(REFERENCE_KINDS):
+        if family in FAMILIES:
+            kind=family;fields={entry[0]:entry[2] for entry in FAMILIES[family]}
+            registration='reused-priority-kind'
+            role_ids=[cid for cid,assigned in BINDINGS.items() if assigned==family]
+            parents=[]
+        else:
+            kind,parents,fields=REFERENCE_KINDS[family]
+            registration='new-proposed-kind-reusing-shared-foundation' if parents else 'new-proposed-kind'
+            role_ids=REFERENCE_ROLE_LINKS.get(family,[])
+            if not role_ids:
+                role_ids=[row['artifact_id'] for row in bindings if row.get('semantic_family')==kind]
+            value=spec('kind/'+kind,'document_kind',f'Provide the proposed {family} information required for a bounded receiving-role decision or operational action.','complete',inherits=parents)
+            value['applies_to']={'document_kind':kind}
+            value['semantic_family']=kind
+            value['target_audience']=['competent independent domain reviewer','accountable receiving role and existing JAI authority']
+            array_fields={'functional_requirements','traceability_priorities','control_obligations','configuration_contract','deployment_sequence','technical_validation','handover','mapping_reconciliation','cutover_schedule','levels_techniques','coverage_metrics','service_dependencies','readiness_findings','action_plan','mapping','gap_analysis','remediation','actuals','corrective_actions','waves_dependencies','scope_deliverables','work_packages','resources_governance','schedule_dependencies','cost_breakdown','payment_terms','deliverables','responsibilities','milestones_acceptance','requirement_mapping','commercial_schedules','response_classification','evidence_mapping','exceptions_dependencies','transformation_waves','assurance_roadmap','service_catalogue','client_supplier_raci'}
+            value['required_information']=[unit(kind,name,'array' if name in array_fields else 'object',reason) for name,reason in fields.items()]
+            for entry in value['required_information']:
+                entry['rationale']['source_refs']=[f'content/expert_references/{family}/simple.md',f'content/expert_references/{family}/medium.md',f'content/expert_references/{family}/complex.md','content/rules/global-invariants.yaml']
+                entry['provenance']['origin']='AI-authored proposed professional reference integration'
+            complete_policy(value,kind)
+            value['decisions_supported']=[f'Use the evidenced {family} scope, analysis and limitations to determine the stated next action; approval remains with existing competent JAI authority.']
+            value['reference_integration']={'reference_family':family,'structural_coverage_only':True,'inherited_obligations_remain_required':True,'professional_approval':'not-human-approved'}
+            if family in REFERENCE_ROLE_LINKS:
+                value['forbidden_information'].append(unit(kind,'unapproved_commitment','object','Do not present illustrative fees, supplier commitments, legal terms, compliance claims or synthetic tests as authorised, executed or verified facts.','MUST NOT')|{'category':'existing-mandatory-gate','severity':'critical'})
+                value['commercial_integration']={'profile':'commercial-delivery/1','authority':'Existing JAI L0 and delegated supplier/client authorities only','source_role_contract_ids':role_ids,'optional_offerings':'Keep separately priced cybersecurity and managed services outside base programme totals unless explicitly included by authorised scope.'}
+            add(value,f'document_kinds/references/{kind}.yaml')
+            registry['document_kinds'].append({'id':kind,'artifact_types':[],'spec_ref':value['id'],'completeness':'complete','status':'proposed'})
+            if kind not in family_records:
+                family_records[kind]={'id':kind,'spec_ref':value['id'],'basis':'Authored proposed reference-family information obligations; not professional approval.'}
+                registry['semantic_families'].append(family_records[kind])
+        proposal_prefix='' if family in FAMILIES else 'proposed-'
+        reference_bindings.append({'reference_family':family,'document_kind':kind,'spec_ref':'kind/'+kind,
+            'anchor_bindings':[{'source_anchor':f'dcs-{proposal_prefix}{family}.{name}','unit_id':f'{kind}.{name}'} for name in fields],
+            'status':'proposed','registration':registration,'role_contract_ids':role_ids,
+            'source_applicable_dcs':('kind/' if family in FAMILIES else 'proposed/kind/')+family,
+            'source_binding_status':'existing-verified' if family in FAMILIES else 'proposed-not-mapped' if family in REFERENCE_ROLE_LINKS else 'proposed-unmapped',
+            'coverage_scope':'Reference anchors identify the kind-owned required information; inherited global, type, domain and role obligations remain additional authoring requirements.',
+            'professional_approval':'not-human-approved'})
+    files[CONTENT/'expert-reference-bindings.json']={'schema_version':'1.0.0','status':'proposed','professional_approval':'not-human-approved','authoring_defaults':{'delivery-manager:1':'delivery-proposal','bid-proposal-manager:1':'rfp-response','bid-proposal-manager:3':'client-proposal'},'families':reference_bindings}
     for path in sorted((RUNTIME/'publication/archetypes').glob('*.json')):
         original=json.loads(path.read_text());name=path.stem
         value=spec('archetype/'+name,'archetype',f'Audience and presentation overlay for {name}.','complete')
@@ -379,6 +468,7 @@ def build():
             value['inherits']=['kind/risk-assessment','domain/security']
         registry['mappings']['sabsa_views'][name]=value['id'];add(value,f'sabsa/{name}.yaml')
     files[CONTENT/'registry.json']=registry
+    validate_reference_bindings(files[CONTENT/'expert-reference-bindings.json'],{value['id']:value for value in files.values() if 'id' in value},{row['id'] for row in contracts})
     return files
 
 

@@ -48,7 +48,7 @@ class ContentCatalogueTests(unittest.TestCase):
         registry=read(CONTENT/'registry.json')
         self.assertEqual([len(registry['mappings'][key]) for key in ['artifact_types','archetypes','sabsa_views']],[28,13,19])
         complete=[s for s in registry['specifications'] if s['completeness']=='complete']
-        self.assertEqual(len(complete),1211)
+        self.assertEqual(len(complete),1233)
         self.assertEqual(len(registry['mappings']['domains']),6)
         fieldsets=[]
         for entry in complete:
@@ -72,7 +72,7 @@ class ContentCatalogueTests(unittest.TestCase):
         sys.path.insert(0,str(ROOT/'.ai/runtime/tools'))
         from content_spec import ContentSpec
         report=ContentSpec(ROOT).coverage()
-        expected={'type':28,'archetype':13,'sabsa':19,'domain':12,'document_kind':1139}
+        expected={'type':28,'archetype':13,'sabsa':19,'domain':12,'document_kind':1161}
         for category,count in expected.items():
             dimension=report['coverage_dimensions'][category]
             self.assertEqual(dimension['registered'],count)
@@ -241,7 +241,7 @@ class SemanticTaxonomyTests(unittest.TestCase):
     def test_every_historical_kind_alias_has_one_shared_family(self):
         engine=self.engine()
         self.assertEqual(len(engine.registry['kind_aliases']),1139)
-        self.assertEqual(len(engine.registry['semantic_families']),35)
+        self.assertEqual(len(engine.registry['semantic_families']),49)
         self.assertEqual(engine._taxonomy_errors(),[])
         for binding in engine.bindings.values():
             family=binding['semantic_family']
@@ -410,3 +410,144 @@ class CompiledPurposeConsistencyTests(unittest.TestCase):
             engine.specs[ref]['semantic_family']=value
             with self.assertRaisesRegex(SpecError,'UNREGISTERED_SEMANTIC_FAMILY'):
                 engine.compile(ref)
+
+
+class CatalogGeneratorBehaviorTests(unittest.TestCase):
+    """Exercise public generator contracts, including source-specific derivation."""
+
+    def generator(self):
+        import sys
+        sys.path.insert(0,str(ROOT/'tools'))
+        import generate_content_catalog
+        return generate_content_catalog
+
+    def test_canonical_bytes_and_modality_boundaries(self):
+        generator=self.generator()
+        self.assertEqual(generator.canonical({'z':2,'a':1}),b'{"a":1,"z":2}')
+        with self.assertRaises(TypeError):
+            generator.canonical({'unsupported':{1,2}})
+        for artifact,metric in [('dataset','rows'),('model','elements'),('prototype','typed'),
+                                ('presentation','slides'),('document','semantic_units')]:
+            self.assertEqual(generator.modality(artifact),metric)
+
+    def test_complete_policy_preserves_approval_boundary_and_required_content(self):
+        generator=self.generator()
+        policy=generator.spec('kind/synthetic-check','document_kind','Synthetic check','complete')
+        required=generator.unit('synthetic-check','scope','object','Identify the explicit scope and evidence boundary.')
+        policy['required_information']=[required]
+        generator.complete_policy(policy,'synthetic-check')
+        self.assertEqual(policy['required_information'],[required])
+        self.assertEqual(policy['forbidden_information'][0]['obligation'],'MUST NOT')
+        self.assertEqual(policy['conditional_information'][0]['when']['field'],'processes_personal_data')
+        self.assertIsNone(policy['approval']['authority_ref'])
+        self.assertEqual(policy['status'],'proposed')
+
+    def test_contract_units_and_purposes_keep_specific_source_inputs_and_authorities(self):
+        generator=self.generator()
+        contract=read(ROOT/'.ai/runtime/artifacts/contracts/role-deliverables.v3.json')['contracts'][0]
+        source={'deliverable':{'name':'Synthetic source deliverable','format':'Versioned JSON',
+                'acceptance_criterion':'Trace concrete entries to versioned evidence'},
+                'role':{'path':'skills/synthetic-role.md'},'gates':[{'id':'G1','criterion':'Evidence is attributable'}]}
+        units=generator.contract_units(contract,'synthetic-check',source)
+        inputs=[u['source_input'] for u in units if 'source_input' in u]
+        self.assertEqual([u['value'] for u in inputs],contract['jai']['semantics']['required_inputs'])
+        self.assertTrue(all(u['contract_id']==contract['id'] for u in inputs))
+        purpose=generator.decision_mapping(contract,source)
+        self.assertIn(source['deliverable']['name'],purpose['value'])
+        self.assertEqual(purpose['receiving_roles'],contract['jai']['intent']['audience'])
+        self.assertEqual(purpose['status'],'mapped-proposed')
+        self.assertFalse(purpose['human_approval'])
+        priority=generator.decision_mapping(contract,source,'Choose a bounded synthetic option')
+        self.assertEqual(priority['value'],'Choose a bounded synthetic option')
+        self.assertFalse(priority['human_approval'])
+
+    def test_build_reproduces_registered_kinds_and_exact_legacy_binding_population(self):
+        generator=self.generator()
+        generated=generator.build()
+        bindings=generated[CONTENT/'migrations/26.10.5-binding-map.json']['bindings']
+        self.assertEqual(len(bindings),1139)
+        self.assertEqual(len(generated[CONTENT/'expert-reference-bindings.json']['families']),32)
+        registry=generated[CONTENT/'registry.json']
+        self.assertEqual(len(registry['document_kinds']),1161)
+        self.assertTrue(all(row['status']=='proposed' for row in registry['document_kinds']))
+
+
+class CorpusGeneratorBehaviorTests(unittest.TestCase):
+    """Direct behavioral contracts for the synthetic corpus generator APIs."""
+
+    @classmethod
+    def setUpClass(cls):
+        import sys
+        sys.path.insert(0,str(ROOT/'tools'))
+        sys.path.insert(0,str(ROOT/'.ai/runtime/tools'))
+        import generate_content_corpus
+        from content_spec import ContentSpec
+        cls.generator=generate_content_corpus
+        cls.resolver=ContentSpec(ROOT)
+
+    def test_populated_units_keep_financial_horizons_and_reject_unknown_inputs(self):
+        for complexity in ('simple','medium','complex'):
+            scenario=self.generator.SCENARIOS[complexity]
+            units=self.generator.populated_units('business-case',complexity,scenario)
+            self.assertIn('financial_model',units)
+            self.assertTrue(units['investment_options'])
+            self.assertTrue(units['financial_model'])
+        with self.assertRaises(ValueError):
+            self.generator.populated_units('business-case','invalid',self.generator.SCENARIOS['simple'])
+        with self.assertRaises(KeyError):
+            self.generator.populated_units('unknown','simple',self.generator.SCENARIOS['simple'])
+
+    def test_compiled_case_preserves_standalone_and_role_identity_and_overlay_controls(self):
+        standalone=self.generator.compiled_case(self.resolver,'kind/client-proposal',{})
+        self.assertEqual(standalone['binding_kind'],'registered-document-kind')
+        self.assertFalse(standalone['role_authority'])
+        self.assertIsNone(standalone['source_role_contract_id'])
+        role=self.generator.compiled_case(self.resolver,'enterprise-architect:1',{})
+        overlay=self.generator.compiled_case(self.resolver,'enterprise-architect:1',{},['archetype/architecture-definition'])
+        for key in ('artifact_id','document_kind','decision_supported'):
+            self.assertEqual(role[key],overlay[key])
+        self.assertNotEqual(role['compiled_spec_hash'],overlay['compiled_spec_hash'])
+        with self.assertRaises(ValueError):
+            self.generator.compiled_case(self.resolver,'missing:1',{})
+        with self.assertRaises(ValueError):
+            self.generator.compiled_case(self.resolver,'enterprise-architect:1',{},['archetype/missing'])
+
+    def test_synthetic_value_respects_types_and_explicit_matrix_boundaries(self):
+        unit={'datatype':'object','acceptance_criteria':['Identify the synthetic subject and criterion.']}
+        scenario=self.generator.SCENARIOS['simple']
+        value=self.generator.synthetic_value(unit,scenario,'new_subject')
+        self.assertEqual(value['knowledge_status'],'synthetic-assumption')
+        self.assertEqual(value['evidence_refs'],['SYN-01'])
+        for datatype,expected_type in [('array',list),('string',str),('reference',str),
+                                     ('integer',int),('number',int),('boolean',bool)]:
+            self.assertIsInstance(self.generator.synthetic_value(dict(unit,datatype=datatype),scenario,'new_subject'),expected_type)
+        matrix=self.generator.synthetic_value(dict(unit,datatype='array'),scenario,'matrix_coverage')
+        self.assertEqual(len(matrix),36)
+        self.assertEqual(len({(cell['row'],cell['column']) for cell in matrix}),36)
+        with self.assertRaisesRegex(ValueError,'Unsupported synthetic datatype'):
+            self.generator.synthetic_value(dict(unit,datatype='unsupported'),scenario,'new_subject')
+
+    def test_enrich_case_preserves_authored_values_and_omits_inapplicable_or_optional_fields(self):
+        document={'scenario':self.generator.SCENARIOS['simple'],'semantic_units':{'preserved':{'owner':'Authored synthetic owner'}}}
+        required={'category':'required_information','applicability':True,'semantic_fields':['preserved','added'],
+                  'datatype':'object','acceptance_criteria':['Identify the synthetic subject.']}
+        excluded=dict(required,semantic_fields=['excluded'],applicability=False)
+        optional=dict(required,semantic_fields=['optional'],category='optional_information')
+        self.generator.enrich_case(document,{'blueprint':{'semantic_units':[required,excluded,optional]}})
+        self.assertEqual(document['semantic_units']['preserved'],{'owner':'Authored synthetic owner'})
+        self.assertIn('added',document['semantic_units'])
+        self.assertNotIn('excluded',document['semantic_units'])
+        self.assertNotIn('optional',document['semantic_units'])
+
+    def test_enterprise_cases_include_all_standalone_complexities_and_real_binding_selection(self):
+        cases=self.generator.enterprise_cases(self.resolver)
+        self.assertEqual(len(cases),1291)
+        standalone=[case for case in cases.values() if case['contract_id'].startswith('kind/')]
+        self.assertEqual(len(standalone),66)
+        for case in standalone:
+            resolved=self.resolver.resolve(case['contract_id'],case['context'])
+            self.assertEqual(case['document_kind'],resolved['document_kind'])
+            self.assertTrue(case['structural_probe'])
+            self.assertEqual(len(case['variants']),9)
+        legacy=next(case for case in cases.values() if case['contract_id']=='chief-information-officer:1')
+        self.assertEqual(legacy['document_kind'],'role/chief-information-officer:1')

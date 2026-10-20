@@ -121,6 +121,7 @@ nav:
       - Commands and direct tools: using/commands.md
       - Working with deliverables: using/deliverables.md
       - Expert reference documents: using/expert-reference-documents.md
+      - Proposal production: using/proposal-production.md
       - Roles and disciplines: using/roles.md
       - Enterprise workflows: using/workflows.md
       - Learning with the demo estate: using/demo-estate.md
@@ -174,6 +175,7 @@ nav:
       - Operate and govern:
           - Validation and release controls: operations/validation.md
           - Offline content qualification: validation/offline-content-qualification.md
+          - Proposal colleague pilot: validation/proposal-pilot.md
           - Optional provider evaluation: validation/optional-provider-evaluation.md
           - Human authority and escalation: operations/human-authority.md
           - Operating controls: operations/operating-controls.md

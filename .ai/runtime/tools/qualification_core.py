@@ -42,6 +42,7 @@ NEW_WORKFLOWS = {
 
 
 def now():
+    """Return the current UTC instant as an explicitly zoned ISO timestamp."""
     return dt.datetime.now(dt.timezone.utc).isoformat().replace("+00:00", "Z")
 
 
@@ -74,6 +75,13 @@ def command(name, args, timeout=120):
 
 
 def governance_check():
+    """Check required roles, workflows and native contracts in local catalogues.
+
+    Returns:
+        A non-passing located result when mandatory governance wiring is absent.
+    Raises:
+        OSError, ValueError: If a maintained catalogue cannot be read or parsed.
+    """
     problems = []
     roles = {
         role["slug"]: role
@@ -144,6 +152,7 @@ def governance_check():
         return {
             "name": "GA authorities/workflow governance",
             "ok": False,
+            "state": "FAIL",
             "detail": "; ".join(problems),
         }
     print(
@@ -153,6 +162,7 @@ def governance_check():
     return {
         "name": "GA authorities/workflow governance",
         "ok": True,
+        "state": "PASS",
         "detail": "",
     }
 
@@ -163,7 +173,7 @@ def gate_a():
     Returns:
         Located check results, including real corpus evaluation and reproducible
         generated policy/workflow/calibration evidence. DCS regressions have a
-        bounded 10-minute allowance for the full 12,550-case enterprise corpus.
+        bounded 10-minute allowance for the full extended enterprise corpus.
         Passing this gate does not provide human domain or release approval.
     """
     return [
@@ -189,7 +199,12 @@ def gate_a():
              str(PACKAGE / "tests/test_evaluation_package.py"),
              str(PACKAGE / "tests/test_content_scenarios.py"),
              str(PACKAGE / "tests/test_offline_guard.py"),
-             str(PACKAGE / "tests/test_qualification_dependencies.py")],
+             str(PACKAGE / "tests/test_qualification_dependencies.py"),
+             str(PACKAGE / "tests/test_qualification_core.py"),
+             str(PACKAGE / "tests/test_release_ga.py"),
+             str(PACKAGE / "tests/test_release_bundle.py"),
+             str(PACKAGE / "tests/test_reference_bindings.py"),
+             str(PACKAGE / "tests/test_commercial_proposal.py")],
             timeout=600,
         ),
         command(
@@ -209,6 +224,11 @@ def gate_a():
             "required local extended evaluation payload integrity",
             [PY, str(TOOLS / "evaluation_package.py"), "check", "--root", str(PACKAGE)],
         ),
+        *[command(
+            "proposal package consistency: " + level,
+            [PY, str(TOOLS / "commercial.py"), "--profile", "commercial-delivery/1",
+             "proposal-validate", str(RUNTIME / "commercial/fixtures" / ("proposal-" + level + ".json"))],
+        ) for level in ("simple", "medium", "complex")],
         command(
             "Unified Lifecycle GA native enforcement",
             [PY, str(TOOLS / "native_enforcement_26104.py")],
@@ -254,6 +274,7 @@ def gate_a():
 
 
 def gate_b():
+    """Return executed semantic, SABSA and repository checks without waivers."""
     return [
         command("SABSA semantic runtime", [PY, str(TOOLS / "sabsa.py"), "selftest"]),
         command(
@@ -272,6 +293,7 @@ def gate_b():
 
 
 def gate_c():
+    """Return governance, immutable-record and service-level check results."""
     return [
         governance_check(),
         command(
@@ -282,6 +304,7 @@ def gate_c():
 
 
 def gate_d():
+    """Return authority, provider-parity and mutation enforcement checks."""
     return [
         command(
             "agent authority enforcement",
@@ -316,6 +339,7 @@ def publication_renderer_check():
 
 
 def gate_e():
+    """Return publication checks; unavailable required rendering cannot pass."""
     return [
         command(
             "publication projection contract",
@@ -330,6 +354,7 @@ def gate_e():
 
 
 def gate_f():
+    """Return actual render-based visual QA, preserving execution failures."""
     return [
         command(
             "render-based visual QA",
@@ -339,6 +364,7 @@ def gate_f():
 
 
 def gate_g():
+    """Return deterministic behavioral checks without a live-provider claim."""
     return [
         command(
             "behavioral adversarial harness",
@@ -363,16 +389,38 @@ GATES = {
 
 
 def gate_payload(gate, checks):
+    """Bind executed check results to the current release and gate identity.
+
+    Args:
+        gate: Gate identifier supplied by the orchestrator.
+        checks: Executed result mappings containing an explicit ok Boolean.
+    Returns:
+        Timestamped payload; any non-passing check prevents success.
+    Raises:
+        KeyError: If an execution result omits its required ok field.
+        OSError: If the release identity cannot be read.
+    """
     return {
         "release": (PACKAGE / "VERSION").read_text().strip(),
         "gate": gate,
         "generated_at": now(),
         "checks": checks,
-        "pass": all(item["ok"] for item in checks),
+        "pass": bool(checks) and all(item["ok"] is True and item.get("state") == "PASS" for item in checks),
     }
 
 
 def run_gate(gate, out=None):
+    """Execute one registered gate and persist its actual result.
+
+    Args:
+        gate: Registered identifier A through G.
+        out: Optional JSON destination; defaults to the internal gate directory.
+    Returns:
+        Zero for passing execution, one for failed or unexecuted checks.
+    Raises:
+        KeyError: If the requested gate is unknown.
+        OSError: If its report cannot be persisted.
+    """
     checks = GATES[gate]()
     payload = gate_payload(gate, checks)
     target = Path(out) if out else GATE_DIR / f"gate-{gate}.json"
@@ -382,21 +430,63 @@ def run_gate(gate, out=None):
     return 0 if payload["pass"] else 1
 
 
+def gate_report_problems(report, gate, release):
+    """Validate release identity and actual executed checks in a gate report.
+
+    Args:
+        report: Untrusted decoded report, never an authority or approval record.
+        gate: Exact expected gate identifier.
+        release: Exact current product identity.
+    Returns:
+        Diagnostic codes; empty only for a matching, nonempty, executed PASS.
+        Stored pass flags cannot override contradictory or unavailable checks.
+    """
+    if not isinstance(report, dict):
+        return ['REPORT_NOT_OBJECT']
+    problems = []
+    if report.get('gate') != gate:
+        problems.append('GATE_IDENTITY_MISMATCH')
+    if report.get('release') != release:
+        problems.append('RELEASE_IDENTITY_MISMATCH')
+    if report.get('pass') is not True:
+        problems.append('GATE_NOT_PASS')
+    checks = report.get('checks')
+    if not isinstance(checks, list) or not checks:
+        return problems + ['EXECUTED_CHECKS_REQUIRED']
+    for index, check in enumerate(checks):
+        if (not isinstance(check, dict) or not isinstance(check.get('name'), str)
+                or not check['name'].strip() or check.get('ok') is not True
+                or check.get('state') != 'PASS'):
+            problems.append(f'CHECK_NOT_EXECUTED_PASS:{index}')
+    return problems
+
+
 def assemble(gate_dir=GATE_DIR, out=None):
+    """Assemble complete matching gate identities without waiving missing data.
+
+    Args:
+        gate_dir: Directory containing gate-A.json through gate-G.json.
+        out: Optional summary destination; otherwise internal qualification JSON.
+    Returns:
+        Zero only when all seven matching gate identities report success.
+    Raises:
+        OSError, ValueError: If existing reports are unreadable or malformed.
+    """
     gate_dir = Path(gate_dir)
     checks = {}
     gates = {}
     problems = []
+    release = (PACKAGE / "VERSION").read_text().strip()
     for gate in "ABCDEFG":
         path = gate_dir / f"gate-{gate}.json"
         if not path.is_file():
             problems.append(f"missing {path}")
             continue
         data = json.loads(path.read_text())
-        if data.get("gate") != gate:
-            problems.append(f"{path}: wrong gate identity")
-        checks[gate] = data.get("checks", [])
-        gates[gate] = bool(data.get("pass"))
+        issues = gate_report_problems(data, gate, release)
+        problems.extend(f"Gate {gate}: {issue}" for issue in issues)
+        checks[gate] = data.get("checks", []) if isinstance(data, dict) else []
+        gates[gate] = not issues
     payload = {
         "release": (PACKAGE / "VERSION").read_text().strip(),
         "qualification": "enterprise-release-gates-A-G",
@@ -419,6 +509,11 @@ def assemble(gate_dir=GATE_DIR, out=None):
 
 
 def run_all():
+    """Execute A through G, stopping on failure before producing a success claim.
+
+    Returns:
+        Zero only after all gates and their assembly pass; otherwise one.
+    """
     for gate in "ABCDEFG":
         if run_gate(gate):
             return 1
@@ -429,6 +524,13 @@ def run_all():
 
 
 def main():
+    """Dispatch an explicit qualification CLI operation using process arguments.
+
+    Returns:
+        The selected gate or qualification exit status.
+    Raises:
+        SystemExit: If CLI syntax is invalid.
+    """
     parser = argparse.ArgumentParser()
     sub = parser.add_subparsers(dest="cmd", required=True)
     sub.add_parser("qualify")

@@ -9,6 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/hld
 approval_status: not-human-approved
+content_revision: 2.0.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -75,3 +76,40 @@ Illustrative evidence IDs are internal cross-references, **not accessible custom
 This is a proposed, non-authoritative reference. `OPG-RSM-DR-01` must be reviewed by the accountable authority and bound to a hash of the final canonical semantic record; no implied approval arises from the presence of an approval field. The owner must close material evidence gaps before using the document as the basis for deployment or risk acceptance.
 
 **Downstream references:** OPG-RSM-ADR-01, OPG-RSM-TEST-01, OPG-RSM-OPS-01. Revalidate when scope, data classification, controlling evidence or major dependencies change.
+
+
+
+
+## Professional deepening: decision rationale and practical checks
+
+### Service boundary and responsibility model
+
+For each runtime component, declare responsibilities, data authority, upstream/downstream interfaces, scaling unit and failure response. Security responsibilities must be explicit at trust boundaries: which service authenticates the caller, enforces the business authorization and issues an audit event. A high-level design should not substitute vague terms such as “secure API” for enforceable controls.
+
+### Interfaces, consistency and error semantics
+
+Specify request IDs, idempotency keys, schema compatibility, ordering needs, timeouts, retries, dead-letter handling and retention boundaries. Define whether a response means acceptance, persistence or final business processing. If an asynchronous consumer fails after acknowledging a message, demonstrate how the source of truth and replay mechanism prevent permanent loss and duplicate business effects.
+
+### NFR and observability allocation
+
+| Requirement | Design allocation | Observable signal | Verification |
+|---|---|---|---|
+| Availability | Isolated failure domains | Dependency SLI and synthetic health | Fault injection |
+| Data integrity | Durable state + reconciliation | Unmatched records and checksum variance | Replay, corruption and balance tests |
+| Access control | Service identity + least privilege | Denied action rate and policy audit | Negative entitlement tests |
+| Recoverability | Restorable checkpoints | Restore time and consistency proof | Timed recovery rehearsal |
+
+### Deployment and cutover strategy
+
+Describe environment separation, infrastructure ownership, configuration provenance, secret injection, progressive traffic shifting and rollback boundary. A rollback must explain what happens to data created in the new path. Provide an order of operations consistent with migration dependencies, and name the release authority who decides whether to resume or abort after a partial failure.
+
+### Security and operability review
+
+Document service-level threat assumptions, trust-zone crossings, encryption and key ownership, monitoring responsibilities, capacity bounds and incident escalation. Challenge single shared identity, policy or telemetry services as possible correlated failure sources. HLD approval permits detailed implementation planning only; it does not substitute for penetration testing or production acceptance.
+
+### Enterprise review challenge and operational hand-off
+
+The reviewer should challenge the weakest evidence source before accepting the proposed conclusion, including dependency coupling, supplier exit conditions and whether ownership survives organizational change. If a required artifact is missing, record an unresolved gap rather than generating plausible-looking completion text. Translate each material concern into a downstream receiving artifact with stable ID, explicit owner and verification condition.
+
+The following review disposition is intentionally **OPEN**: professional approval absent; operating evidence not provided; example cannot be repurposed as a production release, financial authorization or safety assurance.
+

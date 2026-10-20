@@ -1,0 +1,121 @@
+---
+reference_id: example:commercial-proposal:complex
+schema_version: '1.0.0'
+content_revision: 2.1.0
+document_kind: commercial-proposal
+complexity: complex
+language: en
+classification: public-synthetic
+provenance: ai-authored-proposed
+fictional_context: true
+applicable_dcs: proposed/kind/commercial-proposal
+dcs_status: proposed-not-mapped
+approval_status: not-human-approved
+proposal_pack_id: OPG-RSM-PROPOSAL-EXAMPLE
+---
+
+> **SYNTHETIC, NON-BINDING PROFESSIONAL REFERENCE — NOT AN OFFER OR APPROVED CUSTOMER RECORD.** All named organisations, assumptions, workloads, fees, evidence identifiers, service levels and commercial terms are invented for educational purposes. No work, tests, negotiations, contractual signing or statutory assessments have occurred. Reuse document structure and reasoning only, never the synthetic facts or commitments.
+
+# Commercial and pricing proposal — Regulated Settlement Modernisation
+
+**Client:** Orion Payments Group · **Reference:** `OPG-RSM-COMMERCIAL_PROPOSAL-01` · **Complexity:** complex · **Status:** non-binding illustration · **Basis:** unverified synthetic scenario · **Decision forum:** Group Investment Committee, Payments Architecture Board, Risk and Legal Authorities.
+
+<a id="dcs-proposed-commercial-proposal.price_basis"></a>
+
+## Price basis, scope and authorization
+
+This is an **illustrative commercial estimate** for Multi-Jurisdiction Settlement Control and Resilience under the scope of the accompanying technical and delivery proposals. Currency: **EUR**; rates are synthetic planning assumptions and exclude VAT/sales taxes. The supplier-services price is not equal to the programme TCO: customer effort and third-party subscriptions are separately identified.
+
+Indicative capped programme envelope €6,800,000 over three years: €4,500,000 supplier professional services (3,000 person-days at model blended €1,500/day), €1,500,000 assumed tooling/infrastructure and €800,000 client transition/operations effort. These are planning assumptions, not a firm fixed-price commitment. No party is bound by these terms until the existing authorized commercial/legal approvals and an executed contractual instrument.
+
+<a id="dcs-proposed-commercial-proposal.cost_breakdown"></a>
+
+## Itemized effort, third-party and total-cost reconciliation
+
+| Workstream | Model basis | Illustrative cost |
+| --- | --- | --- |
+| Regulatory and business discovery | 300 days × €1,500/day | €450,000 |
+| Architecture, controls and assurance | 550 days × €1,500/day | €825,000 |
+| Settlement platform and journal integration | 900 days × €1,500/day | €1,350,000 |
+| Regional connectors and wave migration | 500 days × €1,500/day | €750,000 |
+| Resilience, security and acceptance testing | 450 days × €1,500/day | €675,000 |
+| Transition and operational transfer | 300 days × €1,500/day | €450,000 |
+| Supplier professional services total | Calculated from person-days | €4,500,000 |
+| Indicative licences / platform (36 months) | Separate third-party estimate | €1,500,000 |
+| Client internal effort / transition | Not part of supplier invoice | €800,000 |
+| Indicative programme envelope | Services + third-party + internal | €6,800,000 |
+
+
+**Arithmetic control:** the person-days multiplied by their rates must sum to €4,500,000; supplier services + platform assumptions + client internal effort must sum to **€6,800,000**. Every alternative scope must have its own table, not change totals invisibly.
+
+Pricing excludes legal opinion fees, taxes, financing and change requests unless separately confirmed. Third-party estimates are not supplier-priced products, guarantees or order forms.
+
+<a id="dcs-proposed-commercial-proposal.assumptions_exclusions"></a>
+
+## Inclusions, pricing dependencies and exclusions
+
+The supplier rate includes engineering and planned QA effort for the work packages described in the associated delivery proposal. Risks from client delays, incomplete data migration or altered regulatory requirements require impact assessment; these are not blanket grounds for arbitrary price increases.
+
+- **A1:** Legal entity owners determine applicable financial, data and outsourcing obligations before target design is frozen.
+- **A2:** The client provides settlement message specifications, test ledgers, HSM/PKI policies and independent treasury sign-off authority.
+- **A3:** Regional rollout is conditioned on dual-run evidence; unresolved cut-off reconciliation prevents release.
+- **A4:** External clearing-house simulation and settlement counterparty test rights are obtained before resilience rehearsal.
+
+Exclusions:
+- Guarantees about requirements in jurisdictions not validated by counsel
+- Automated reversal of already-final settlements
+- Unrestricted cross-border failover or replication
+- External financial system modifications without signed interfaces
+- Customer regulatory approvals or legal opinions
+
+Procurement must verify intellectual property rights, licence measurements, supplier exit costs, support windows, subcontractor access and personal data processing obligations.
+
+<a id="dcs-proposed-commercial-proposal.payment_terms"></a>
+
+## Illustrative milestone payments and invoicing protections
+
+Milestone payments apply only to the **supplier-services subtotal**, not to third-party or internal amounts. Proposed schedule: 15% upon accepted discovery/design baseline; 35% upon accepted platform and integration build; 30% upon independent test and controlled pilot acceptance; 20% upon receiving service-owner handover.
+
+| Invoice milestone | Percent of supplier fee | Illustrative amount | Condition |
+| --- | --- | --- | --- |
+| Discovery baseline | 15% | €675,000 | Written acceptance of scoped requirements |
+| Build milestone | 35% | €1,575,000 | Versioned source/config and integration evidence |
+| Test / pilot | 30% | €1,350,000 | Defect disposition and test evidence |
+| Operational handover | 20% | €900,000 | Service owner receives artifacts and responsibilities |
+
+
+All payment conditions remain subject to negotiation, credit terms and applicable law. A delivery claim without corresponding evidence must not automatically trigger invoice acceptance.
+
+<a id="dcs-proposed-commercial-proposal.commercial_risks"></a>
+
+## Variance, optional services and commercial risk treatment
+
+| ID | Exposure and reason it matters | Treatment and evidence gate | Owner |
+| --- | --- | --- | --- |
+| R1 | Settlement-finality mismatch or irreversibility | Parallel ledger and dual-control compensating workflow | Treasury Control Owner |
+| R2 | Cross-border processing outside authorized legal scope | Per-entity jurisdiction rules and independent privacy/legal approval | Group Compliance |
+| R3 | Correlated regional or identity-plane outage | Failure-domain separation, cut-off-safe contingency | Resilience Architect |
+| R4 | Unrecoverable reconciliation evidence | Append-only signed checkpoints and independently tested evidence chain | Assurance Lead |
+
+
+**Explicit optional scope:** Separate optional security transformation planning envelope €950,000 (proposed 500 specialist days at €1,900), excluded from the €6,800,000 core settlement programme unless formally rebaselined; overlap must be assessed to prevent double counting. Separate optional managed detection and response illustrative annual recurring €780,000 plus €210,000 transition/onboarding; first-year €990,000 excluding taxes and third-party feeds, outside the core settlement investment. These are separate offers. They are **not included** in the base supplier fee or base programme envelope and must not be added without a formal scope and cost decision.
+
+Quote validity for this illustrative sample is 30 calendar days after a hypothetical date of issue; no actual price hold exists. Specify inflation/indexation only after client procurement agrees the indices, cap and effective date. Price a change against an approved baseline and record new dates, impacts and acceptance predicates.
+
+<a id="dcs-proposed-commercial-proposal.approval_boundary"></a>
+
+## Commercial approval, signature and validity
+
+Commercial negotiation is authorized only by the designated delegated authority. Prior to offer execution, Finance verifies the cost model, Procurement confirms supplier/procurement constraints, Legal approves contract language, and relevant risk owners accept residual exposures within their authority.
+
+Required sign-off record contains party identifiers, versioned proposal/SoW, agreed price schedule, exceptions, offer-validity date and formal signatures. Do not imply any customer reference, guaranteed savings or regulatory certification from this demonstration.
+
+## Evidence register, reservations and governance
+
+The proposal is based on a **fictional, unconfirmed scenario**. Open evidence obligations are `OPG-RSM-E-SCOPE` (signed requirements), `OPG-RSM-E-COST` (validated rate-card and cost owner), `OPG-RSM-E-SEC` (risk/legal applicability), and `OPG-RSM-E-TEST` (observed qualification and acceptance results). All remain **NOT PROVIDED / NOT EXECUTED**. A future contract must replace them with authorized evidence, source revisions and dates.
+
+**Authority boundaries:** A commercial specialist may recommend scope and estimate but may not sign for the client, bind the supplier, make unverified assurance claims, accept residual business risk or bypass procurement/Legal/JAI L0 approval. A technically complete narrative is not contractual acceptance. Required independent reviewers: domain architect, security/risk, delivery authority, finance and client procurement as appropriate.
+
+**Synthetic-fact containment:** Do not copy the organisation name, budget, performance numbers, vendor assertions, customer reference, regulatory conclusions or illustrative pass/fail statements into a live proposal. For a real opportunity, retrieve confirmed customer facts from authorized inputs, record uncertainty and rerun pricing and approval validations.
+
+**Status:** `ai-authored-proposed`, `not-human-approved`; professional peer review and all customer approvals remain pending. **Applicable JAI context:** `OPG-RSM`; **document kind:** `commercial-proposal`; **scenario:** `complex`.

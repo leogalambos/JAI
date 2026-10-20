@@ -2,13 +2,16 @@
 
 Owner: JAI maintainers · Last reviewed: 2026-10-20
 
-JAI includes 30 complete English Markdown examples: three complexity levels
-for each of ten document families. They work immediately after installation;
+JAI includes 96 complete English Markdown examples: three complexity levels
+for each of 32 document families. They work immediately after installation;
 customer documents and provider accounts are optional.
 
-The families are `decision-paper`, `adr`, `business-case`, `risk-assessment`,
-`assurance-report`, `architecture-definition`, `hld`, `operational-handover`,
-`runbook` and `test-report`. Each has `simple`, `medium` and `complex` examples.
+The library covers decisions, architecture, requirements, strategy, policy,
+implementation, migration, testing, operations, assurance and proposals.
+Ten proposal families provide 30 examples for executive, technical, delivery,
+commercial, contractual, RFP and optional security-service components.
+The installed `list` command reports the complete family inventory.
+Each family has `simple`, `medium` and `complex` examples.
 Select complexity for the number of dependencies, alternatives and risks,
 rather than a target document length.
 
@@ -24,6 +27,12 @@ Use an example to understand information depth, reasoning and useful
 presentation. Establish project facts separately, resolve the registered DCS
 contract and retain independent review and existing JAI human authority.
 Replacing a reference never changes DCS MUST, MAY or MUST NOT obligations.
+
+The complete library replaces the earlier bundled collection. Existing
+reference IDs remain stable; revised supplied documents have new integrity
+hashes. Updates do not overwrite separately stored user overrides.
+See [proposal production](proposal-production.md) for coherent packages and
+[colleague evaluation](../validation/proposal-pilot.md) for the pilot rubric.
 
 ## Inspect the installed library
 

@@ -9,6 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/adr
 approval_status: not-human-approved
+content_revision: 2.0.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -69,3 +70,17 @@ Illustrative evidence IDs are internal cross-references, **not accessible custom
 This is a proposed, non-authoritative reference. `HFS-FAR-DR-01` must be reviewed by the accountable authority and bound to a hash of the final canonical semantic record; no implied approval arises from the presence of an approval field. The owner must close material evidence gaps before using the document as the basis for deployment or risk acceptance.
 
 **Downstream references:** HFS-FAR-HLD-01, HFS-FAR-TEST-01, HFS-FAR-OPS-01. Revalidate when scope, data classification, controlling evidence or major dependencies change.
+
+
+
+
+## Professional deepening: decision rationale and practical checks
+
+### Decision invariants and boundary
+
+Describe the invariant the design must preserve, the architecture element being changed and what falls outside the ADR. For event and ledger designs, at-least-once delivery implies deduplication and replay design; exactly-once business effects are not a transport guarantee. For simpler components, identify consistency guarantees, failure-domain boundaries and ownership. State which downstream designs consume the ADR and which earlier decisions constrain it.
+
+### Option mechanics and fitness functions
+
+Do not compare products by name alone. Compare failure behaviour under unavailability, schema evolution, operational load and permissions. Express testable fitness functions such as idempotent replay preserving one business state transition, tenant segregation surviving incorrect routing metadata, and recovery under the agreed RTO/RPO. Record baseline measurements as unknown until actually collected.
+

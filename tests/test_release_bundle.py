@@ -35,7 +35,9 @@ class ReleaseBundleTest(unittest.TestCase):
             '.ai/runtime/sabsa/publication/profiles/logical.json': '{"layer":"logical"}',
             '.ai/runtime/templates/sabsa/latex/enterprise.tex': 'Maintained template',
             '.env.example': 'Public environment example',
-            'QUALIFICATION-A-H.json': json.dumps({'all_pass': True, 'gates': dict.fromkeys('ABCDEFGH', True)})}
+            'QUALIFICATION-A-H.json': json.dumps({'release': '26.10.4', 'all_pass': True,
+                'gates': dict.fromkeys('ABCDEFGH', True),
+                'checks': {gate: [{'name': 'executed fixture', 'ok': True, 'state': 'PASS'}] for gate in 'ABCDEFGH'}})}
         for name, data in self.resources.items(): self.write(name, data)
 
     def write(self, name, data):
@@ -121,6 +123,29 @@ class ReleaseBundleTest(unittest.TestCase):
             with self.assertRaisesRegex(SystemExit, 'already exists'): bundle.build(self.root, self.outputs)
         self.assertTrue((self.outputs / 'ai-it-house-universal-26.10.4.zip').is_file())
         self.assertTrue((self.outputs / 'ai-it-house-universal-26.10.4.sha256').is_file())
+
+    def test_current_release_and_actual_executed_checks_are_mandatory(self):
+        original = json.loads(self.resources['QUALIFICATION-A-H.json'])
+        cases = []
+        for field, value in [('release', '26.10.5'), ('release', None), ('all_pass', 'true')]:
+            report = json.loads(json.dumps(original)); report[field] = value; cases.append(report)
+        for checks in ([], None, [{'name': 'unavailable', 'ok': True, 'state': 'NOT_EXECUTED'}],
+                       [{'name': 'false flag', 'ok': False, 'state': 'FAIL'}]):
+            report = json.loads(json.dumps(original)); report['checks']['H'] = checks; cases.append(report)
+        report = json.loads(json.dumps(original)); report['gates']['H'] = 1; cases.append(report)
+        cases.extend([[], {'all_pass': True, 'gates': dict.fromkeys('ABCDEFGH', True)}])
+        with patch.object(bundle.subprocess, 'run', return_value=SimpleNamespace(returncode=0)):
+            for report in cases:
+                with self.subTest(report=report):
+                    self.write('QUALIFICATION-A-H.json', json.dumps(report))
+                    with self.assertRaises(SystemExit): bundle.check_ready(self.root)
+                    with self.assertRaises(SystemExit): bundle.build(self.root, self.outputs)
+                    self.assertEqual([], list(self.outputs.iterdir()))
+
+    def test_cli_dispatch_keeps_explicit_root_and_output(self):
+        with patch.object(sys, 'argv', ['release_bundle.py', 'build', '--root', str(self.root), '--dist', str(self.outputs)]), patch.object(bundle, 'build', return_value=7) as build:
+            self.assertEqual(7, bundle.main())
+            build.assert_called_once_with(str(self.root), str(self.outputs))
 
 
 if __name__ == '__main__':

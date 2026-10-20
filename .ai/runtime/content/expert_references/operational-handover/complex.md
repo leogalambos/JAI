@@ -9,6 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/operational-handover
 approval_status: not-human-approved
+content_revision: 2.0.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -76,3 +77,41 @@ Illustrative evidence IDs are internal cross-references, **not accessible custom
 This is a proposed, non-authoritative reference. `OPG-RSM-DR-01` must be reviewed by the accountable authority and bound to a hash of the final canonical semantic record; no implied approval arises from the presence of an approval field. The owner must close material evidence gaps before using the document as the basis for deployment or risk acceptance.
 
 **Downstream references:** OPG-RSM-RB-01, OPG-RSM-TEST-01, OPG-RSM-ITSM-01. Revalidate when scope, data classification, controlling evidence or major dependencies change.
+
+
+
+
+## Professional deepening: decision rationale and practical checks
+
+### Service acceptance versus implementation completion
+
+Separate the build team’s assertion that a feature is complete from the operations team’s ability to run the service. The receiving Service Owner accepts an explicit boundary: components, users, data, locations, vendors and support hours. A handover with no staffed owner, escalation rota or restoration proof must remain conditional, even when functional tests pass.
+
+### Readiness evidence by service function
+
+| Area | Evidence required | Receiving role | Example of rejection |
+|---|---|---|---|
+| Monitoring | SLI dashboards and tested alert routing | On-call lead | Alerts go to an unstaffed queue |
+| Recovery | Restore drill and integrity validation | Resilience owner | Restore exceeds RTO |
+| Identity | Access recertification and break-glass test | IAM owner | Shared credentials in production |
+| Supplier | Escalation and OLA evidence | Vendor manager | Undefined support boundary |
+| Documentation | Runbook with rollback and owner | Service manager | Unreproducible procedure |
+
+### SLO error-budget handling
+
+Define availability and latency service-level indicators with exact populations, exclusions and observation windows. Record alert thresholds and error-budget response: an exhausted budget should trigger a deployment review, not an automatic assumption that the operating team can absorb higher risk. An indicative SLO must be superseded by a contracted target and demonstrated monitoring before service acceptance.
+
+### Handover inventory and ownership
+
+Track ownership for dashboards, configuration, secrets procedures, backup policy, CMDB, supplier contracts, deployment pipelines, data-retention handling and access recertification. Each handover item needs status, location, maintainer, review cadence and a recipient acknowledgement. Link each technical document to the currently approved build revision to avoid orphaned runbooks after a deployment.
+
+### Conditional acceptance and stabilization
+
+Provide explicit accept / accept-with-conditions / reject decisions with named owner and expiry. Stabilization needs heightened monitoring, incident thresholds, rollback or remediation authority and a defined exit point. Handover does not transfer responsibility for unresolved defects to an unaware receiving team; the sponsor retains accountability for documented residual risks.
+
+### Enterprise review challenge and operational hand-off
+
+The reviewer should challenge the weakest evidence source before accepting the proposed conclusion, including dependency coupling, supplier exit conditions and whether ownership survives organizational change. If a required artifact is missing, record an unresolved gap rather than generating plausible-looking completion text. Translate each material concern into a downstream receiving artifact with stable ID, explicit owner and verification condition.
+
+The following review disposition is intentionally **OPEN**: professional approval absent; operating evidence not provided; example cannot be repurposed as a production release, financial authorization or safety assurance.
+

@@ -9,6 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/test-report
 approval_status: not-human-approved
+content_revision: 2.0.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -71,3 +72,41 @@ Illustrative evidence IDs are internal cross-references, **not accessible custom
 This is a proposed, non-authoritative reference. `OPG-RSM-DR-01` must be reviewed by the accountable authority and bound to a hash of the final canonical semantic record; no implied approval arises from the presence of an approval field. The owner must close material evidence gaps before using the document as the basis for deployment or risk acceptance.
 
 **Downstream references:** OPG-RSM-OPS-01, OPG-RSM-DR-01, OPG-RSM-RA-01. Revalidate when scope, data classification, controlling evidence or major dependencies change.
+
+
+
+
+## Professional deepening: decision rationale and practical checks
+
+### Coverage model and test oracle
+
+Separate requirements covered from test cases executed and from criteria actually passed. Explain the oracle: what exact business observation constitutes a pass and how it differs from a superficially healthy HTTP response. Trace each important requirement to positive, negative, resilience and permission scenarios. In a distributed system, a message arrival alone does not establish correct final business state.
+
+### Execution provenance and environment constraints
+
+Every executable result requires a timestamp, build digest, data-set reference, expected/observed values and responsible runner. A simulated PASS in a training example is never proof of an executed product test. Environmental limitations such as mocked suppliers, nonrepresentative load or untested recovery locations must appear alongside the headline outcome.
+
+### Results by test class
+
+| Test class | Required assertion | Evidence type | Gate impact |
+|---|---|---|---|
+| Functional | Business state and invariants | Transaction record pair | Product acceptance |
+| Security negative | Access denied at boundary | Policy decision and audit trace | Security release gate |
+| Resilience | State restored within objective | Timed failover and reconciliation | Operations acceptance |
+| Performance | p95/p99 under defined workload | Raw histogram and load profile | Capacity decision |
+| Regression | Unchanged contract behaviour | Baseline diff with known exclusions | Compatibility |
+
+### Defect triage and risk acceptance
+
+A failed or not-executed critical test remains a blocker unless a competent owner accepts a narrowly scoped risk through the established authority mechanism. Record severity, reproducibility, affected release and retest evidence. A waiver does not turn a failure into a pass. Avoid reporting an aggregate success percentage that hides a single catastrophic defect.
+
+### Decision-oriented conclusion
+
+Report readiness as a bounded recommendation with unresolved items and the precise evidence missing. Explain whether tested scope matches the deployment scope, whether suppliers and credentials were representative, and whether business owners accepted observed limitations. A green technical test report does not itself approve production; it informs the existing go/no-go process.
+
+### Enterprise review challenge and operational hand-off
+
+The reviewer should challenge the weakest evidence source before accepting the proposed conclusion, including dependency coupling, supplier exit conditions and whether ownership survives organizational change. If a required artifact is missing, record an unresolved gap rather than generating plausible-looking completion text. Translate each material concern into a downstream receiving artifact with stable ID, explicit owner and verification condition.
+
+The following review disposition is intentionally **OPEN**: professional approval absent; operating evidence not provided; example cannot be repurposed as a production release, financial authorization or safety assurance.
+

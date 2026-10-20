@@ -24,9 +24,6 @@ import sys
 import tempfile
 import time
 
-FAMILIES = ('decision-paper', 'adr', 'business-case', 'risk-assessment',
-            'assurance-report', 'architecture-definition', 'hld',
-            'operational-handover', 'runbook', 'test-report')
 LEVELS = ('simple', 'medium', 'complex')
 
 
@@ -78,14 +75,15 @@ def prepare_plan(root, provider, family, cases=3, model=None):
     Raises:
         ValueError, OSError: For invalid arguments or invalid bundled references.
     """
-    if provider not in ('codex', 'claude') or family not in FAMILIES:
-        raise ValueError('unsupported provider or family')
+    if provider not in ('codex', 'claude'):
+        raise ValueError('unsupported provider')
     if type(cases) is not int or not 1 <= cases <= 3:
         raise ValueError('cases must be an integer from 1 through 3')
     if model is not None and _identifier(model) != model:
         raise ValueError('invalid model selector')
     from expert_references import ExpertReferences
     references = ExpertReferences(root)
+    family = references.canonical_family(family)
     runtime = _runtime(root)
     selected = []
     from content_spec import ContentSpec
@@ -104,7 +102,7 @@ def prepare_plan(root, provider, family, cases=3, model=None):
         if metadata.get('classification') != 'public-synthetic' or not metadata.get('fictional_context'):
             raise ValueError('provider export requires public-synthetic fictional input')
         selected.append({'complexity': level, 'reference_hash': hashlib.sha256(path.read_bytes()).hexdigest(),
-                         'compiled_spec_hash': specifications.compile('kind/' + family, {})['compiled_spec_hash']})
+                         'compiled_spec_hash': specifications.compile(references.bindings[family]['spec_ref'], {})['compiled_spec_hash']})
     plan = {'schema_version': '1.0.0', 'provider': provider, 'family': family,
             'model_selector': model, 'reasoning_effort': None, 'cases': selected, 'invocations': len(selected),
             'classification': 'public-synthetic', 'context_fingerprint': _digest({'family': family, 'cases': selected}),
@@ -276,7 +274,7 @@ def main(argv=None):
     parser.add_argument('command', choices=('preflight', 'plan', 'run', 'report'))
     parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument('--provider', choices=('codex', 'claude'))
-    parser.add_argument('--family', choices=FAMILIES)
+    parser.add_argument('--family', help='Bundled reference family or explicitly mapped canonical document kind.')
     parser.add_argument('--cases', type=int, default=3)
     parser.add_argument('--model')
     parser.add_argument('--executable')

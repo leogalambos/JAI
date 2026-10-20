@@ -24,6 +24,23 @@ there is no silent fallback. Ambiguous same-level candidates fail, and
 references are never silently merged. Missing every applicable reference
 also fails.
 
+Optional `target_audiences` and `applicability_context` metadata constrain
+which audience and explicit scalar business-context values a reference
+supports. An unconstrained bundled reference remains applicable by default.
+Selection does not infer professional fitness from a title or industry name.
+A valid non-applicable override is skipped; invalid selected metadata is an
+error, not permission to fall back. Two applicable candidates at the same
+level remain an explicit conflict.
+
+```bash
+python3 .ai/runtime/tools/expert_references.py resolve --root . \
+  --kind technical-proposal --complexity medium --audience architecture-review
+```
+
+Use `--context ./reference-context.json` for explicit business qualifiers.
+Keep context values private. DCS applicability context is a separate typed
+contract: business qualifiers do not override security or governance rules.
+
 ## Replace one reference
 
 Start with a copy of the bundled English fictional example. Edit its body,

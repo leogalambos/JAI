@@ -9,6 +9,7 @@ provenance: ai-authored-proposed
 fictional_context: true
 applicable_dcs: kind/assurance-report
 approval_status: not-human-approved
+content_revision: 2.0.0
 ---
 
 > **SYNTHETIC EXPERT EXAMPLE — NOT AN APPROVED PROJECT RECORD.** Every organisation, date, amount, performance result, evidence reference and approval below is invented for demonstration. Frameworks guide professional structure, but this document claims neither regulatory conformance nor independent expert certification. Never reuse facts as production evidence.
@@ -72,3 +73,40 @@ Illustrative evidence IDs are internal cross-references, **not accessible custom
 This is a proposed, non-authoritative reference. `OPG-RSM-DR-01` must be reviewed by the accountable authority and bound to a hash of the final canonical semantic record; no implied approval arises from the presence of an approval field. The owner must close material evidence gaps before using the document as the basis for deployment or risk acceptance.
 
 **Downstream references:** OPG-RSM-RA-01, OPG-RSM-TEST-01, OPG-RSM-OPS-01. Revalidate when scope, data classification, controlling evidence or major dependencies change.
+
+
+
+
+## Professional deepening: decision rationale and practical checks
+
+### Assurance objective versus management assertion
+
+Separate the management statement (“control is designed to operate”) from independently observed evidence (“control operated successfully in a defined sample”). Fix the assurance period, tested populations, sampling method and independence limitations. Avoid absolute phrases such as “fully compliant” unless scope, criteria, sufficient evidence and authority support that conclusion.
+
+### Test design and evidence sufficiency
+
+Map criterion → control objective → test procedure → expected outcome → actual observation → finding. Evidence should be current, attributable, tamper-evident and relevant to the population. An interview alone rarely substantiates continuous operational effectiveness. Where the evidence is absent, classify *not tested* or *unable to conclude*, not PASS.
+
+### Assurance sample and exceptions
+
+| Procedure | Population | Selection | Expected proof | Exception handling |
+|---|---|---|---|---|
+| Privileged access recertification | All active privileged accounts | Complete population for high-risk identities | Approval and expiry | Unapproved access is a finding |
+| Backup restore | Recovery jobs for in-scope services | Representative critical datasets | Successful restored integrity | Failed recovery blocks resilience assurance |
+| Security-event lineage | Critical transactions in review window | Risk-based sample plus exceptions | Correlated trace across layers | Gaps require impact analysis |
+| Vendor obligation check | Material suppliers | Each critical contract | Current obligation mapping | Unknown obligation is an open scope item |
+
+### Finding severity and remediation
+
+Distinguish design deficiency, operating deficiency, missing evidence and out-of-scope area. Severity depends on exposure and compensating controls, not on the reviewer’s preferred wording. Each finding must have a factual observation, criterion, causal analysis, business effect, accountable owner, action date and verification plan. Closure requires new evidence and retest, not only management attestation.
+
+### Opinion boundary and subsequent events
+
+State explicitly which controls were tested, which were not, and which external reports were relied on. Record the level of assurance, methodological limitations and any material event after the evidence cut-off. If a critical control was untested, qualify the conclusion rather than carrying forward a synthetic pass percentage. A report that cannot support an opinion must say so plainly.
+
+### Enterprise review challenge and operational hand-off
+
+The reviewer should challenge the weakest evidence source before accepting the proposed conclusion, including dependency coupling, supplier exit conditions and whether ownership survives organizational change. If a required artifact is missing, record an unresolved gap rather than generating plausible-looking completion text. Translate each material concern into a downstream receiving artifact with stable ID, explicit owner and verification condition.
+
+The following review disposition is intentionally **OPEN**: professional approval absent; operating evidence not provided; example cannot be repurposed as a production release, financial authorization or safety assurance.
+
