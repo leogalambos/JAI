@@ -31,9 +31,17 @@ The role/workflow router can choose the relevant specialist capabilities.
 
 Example:
 
-```text
-/review path/to/repository
-```
+=== "Claude Code"
+
+    ```text
+    /review path/to/repository
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-review path/to/repository
+    ```
 
 Use this when you want the canonical procedure rather than a free-form answer.
 

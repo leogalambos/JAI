@@ -10,11 +10,21 @@ The maintained catalog contains 29 scenario packs spanning the 24 enterprise
 workflow chains. Browse [commented task walkthroughs](../examples/index.md)
 or ask `/hint` (`$workflow-hint` in Codex) to recommend a starting procedure.
 
-```text
-/demo scenarios
-/guide proposal
-/demo scenario proposal --to /tmp/acme-proposal
-```
+=== "Claude Code"
+
+    ```text
+    /demo scenarios
+    /guide proposal
+    /demo scenario proposal --to /tmp/acme-proposal
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-demo scenarios
+    $workflow-guide proposal
+    $workflow-demo scenario proposal --to /tmp/acme-proposal
+    ```
 
 In Codex, use `$workflow-demo` and `$workflow-guide` with the same arguments.
 Open the prepared project's `START.md`: it explains the fictional inputs,

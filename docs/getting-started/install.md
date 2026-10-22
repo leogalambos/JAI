@@ -83,10 +83,17 @@ By default, both provider surfaces are installed.
 
 ### Provider-specific installation
 
-```bash
-./install.sh --claude-only
-./install.sh --codex-only
-```
+=== "Claude Code"
+
+    ```bash
+    ./install.sh --claude-only
+    ```
+
+=== "Codex CLI"
+
+    ```bash
+    ./install.sh --codex-only
+    ```
 
 ## Installer options
 
@@ -121,17 +128,17 @@ Provider-facing assets are discovered at session start. After installation, open
 
 ## Step 4 — verify the installation
 
-Claude:
+=== "Claude Code"
 
-```text
-/demo check
-```
+    ```text
+    /demo check
+    ```
 
-Codex:
+=== "Codex CLI"
 
-```text
-$workflow-demo check
-```
+    ```text
+    $workflow-demo check
+    ```
 
 **Optional administrator/developer diagnostics** (these are **not** required after every successful provider command):
 

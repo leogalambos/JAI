@@ -51,17 +51,17 @@ paths if the workflow reports a different location from `working/`.
 
 ### 1. Understand the baseline and choices
 
-**Claude**
+=== "Claude Code"
 
-```text
-/analyse inputs/ for the scheduling investment. Separate actual costs, estimates, benefit hypotheses and missing baseline evidence.
-```
+    ```text
+    /analyse inputs/ for the scheduling investment. Separate actual costs, estimates, benefit hypotheses and missing baseline evidence.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse inputs/ for the scheduling investment. Separate actual costs, estimates, benefit hypotheses and missing baseline evidence.
-```
+    ```text
+    $workflow-analyse inputs/ for the scheduling investment. Separate actual costs, estimates, benefit hypotheses and missing baseline evidence.
+    ```
 
 Inspect units, dates, currencies and whether figures describe cash,
 accounting expense or capacity. Releasing staff time can improve service
@@ -70,17 +70,17 @@ scope and validity period.
 
 ### 2. Prepare the business case
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Prepare the scheduling business case using inputs/. Compare options, costs, sensitivity, dependencies and benefit ownership; keep proposed artefacts in working/.
-```
+    ```text
+    /layered Prepare the scheduling business case using inputs/. Compare options, costs, sensitivity, dependencies and benefit ownership; keep proposed artefacts in working/.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Prepare the scheduling business case using inputs/. Compare options, costs, sensitivity, dependencies and benefit ownership; keep proposed artefacts in working/.
-```
+    ```text
+    $workflow-layered Prepare the scheduling business case using inputs/. Compare options, costs, sensitivity, dependencies and benefit ownership; keep proposed artefacts in working/.
+    ```
 
 Inspect the assumptions behind totals and the treatment of recurring
 cost. A single return number should not hide uncertainty. Benefits need
@@ -93,17 +93,17 @@ When review presents the criteria and their hash, inspect them and
 answer YES only if they match this task. The review then proceeds; that
 confirmation authorises the review, not the deliverable or a risk.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/review working/ against inputs/estimate-basis.md and the investment criteria; check totals, time horizons, baseline evidence and double-counted benefits.
-```
+    ```text
+    /review working/ against inputs/estimate-basis.md and the investment criteria; check totals, time horizons, baseline evidence and double-counted benefits.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review working/ against inputs/estimate-basis.md and the investment criteria; check totals, time horizons, baseline evidence and double-counted benefits.
-```
+    ```text
+    $workflow-review working/ against inputs/estimate-basis.md and the investment criteria; check totals, time horizons, baseline evidence and double-counted benefits.
+    ```
 
 Read the findings alongside the workbook. Check that narrative savings
 match the actual model and do not combine capacity and cash benefits
@@ -117,19 +117,19 @@ returned by the preceding review. Keep this same ledger through rework
 and independent verification; do not invent one or mark findings closed
 without verification.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger>
-Use the current findings ledger to retain the unsupported payroll-saving claim as a finding and revise the options and sensitivity accordingly.
-```
+    ```text
+    /rework <reported-ledger>
+    Use the current findings ledger to retain the unsupported payroll-saving claim as a finding and revise the options and sensitivity accordingly.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger>
-Use the current findings ledger to retain the unsupported payroll-saving claim as a finding and revise the options and sensitivity accordingly.
-```
+    ```text
+    $workflow-rework <reported-ledger>
+    Use the current findings ledger to retain the unsupported payroll-saving claim as a finding and revise the options and sensitivity accordingly.
+    ```
 
 Suppose the case assumes staff reduction while operations plans to
 redeploy the same people. Alice replies: "Present capacity improvement
@@ -140,17 +140,17 @@ procedure.
 
 ### 5. Continue the existing benefits decision
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Continue the existing investment engagement using the measured follow-up inputs when available. Compare actual results with the recorded baseline without rewriting the original approved case.
-```
+    ```text
+    /layered Continue the existing investment engagement using the measured follow-up inputs when available. Compare actual results with the recorded baseline without rewriting the original approved case.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Continue the existing investment engagement using the measured follow-up inputs when available. Compare actual results with the recorded baseline without rewriting the original approved case.
-```
+    ```text
+    $workflow-layered Continue the existing investment engagement using the measured follow-up inputs when available. Compare actual results with the recorded baseline without rewriting the original approved case.
+    ```
 
 If adoption is delayed, add the new observation and update the forecast
 and corrective options. Do not retrospectively alter the signed baseline

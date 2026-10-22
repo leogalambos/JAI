@@ -47,33 +47,33 @@ actually reported. Never invent its identifier or erase open findings.
 
 ### 1. Map the system without a verdict
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/analyse input/source/ with input/handover.md and input/service-map.md. Explain entry points, deployment boundaries and unanswered takeover questions in working/.
-```
+    ```text
+    /analyse input/source/ with input/handover.md and input/service-map.md. Explain entry points, deployment boundaries and unanswered takeover questions in working/.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse input/source/ with input/handover.md and input/service-map.md. Explain entry points, deployment boundaries and unanswered takeover questions in working/.
-```
+    ```text
+    $workflow-analyse input/source/ with input/handover.md and input/service-map.md. Explain entry points, deployment boundaries and unanswered takeover questions in working/.
+    ```
 
 Inspect whether the report identifies real files and build entry points. Ask it to distinguish observed dependencies from integrations merely mentioned in notes. Missing source for a deployed component is a handover gap; it must not be treated as a clean component because no code was available.
 
 ### 2. Agree what takeover must establish
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/criteria .
-```
+    ```text
+    /criteria .
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-criteria .
-```
+    ```text
+    $workflow-criteria .
+    ```
 
 This displays or initializes the project criteria. Then ask:
 
@@ -85,49 +85,49 @@ Read these criteria before the review starts. Decide which checks are feasible l
 
 ### 3. Review against the fixed criteria
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/review input/source/ against the takeover criteria and supplied operational records. Locate findings and separate verified failures from unanswered questions.
-```
+    ```text
+    /review input/source/ against the takeover criteria and supplied operational records. Locate findings and separate verified failures from unanswered questions.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review input/source/ against the takeover criteria and supplied operational records. Locate findings and separate verified failures from unanswered questions.
-```
+    ```text
+    $workflow-review input/source/ against the takeover criteria and supplied operational records. Locate findings and separate verified failures from unanswered questions.
+    ```
 
 Check a sample of findings against their cited source locations. A missing test suite, an unexecuted build and a failing build are different findings. Dependency age alone does not establish a vulnerability; licence uncertainty needs a document request rather than an invented legal conclusion.
 
 ### 4. Repair a bounded takeover blocker
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/develop Develop a local fix for the selected reproducible-build finding only. Preserve application behavior and document the supported build invocation.
-```
+    ```text
+    /develop Develop a local fix for the selected reproducible-build finding only. Preserve application behavior and document the supported build invocation.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-develop Develop a local fix for the selected reproducible-build finding only. Preserve application behavior and document the supported build invocation.
-```
+    ```text
+    $workflow-develop Develop a local fix for the selected reproducible-build finding only. Preserve application behavior and document the supported build invocation.
+    ```
 
 Inspect the changed files and the recorded build output. A successful build on one workstation still leaves deployment configuration and data recovery to their respective owners. Ask the reviewer to verify the original failure condition rather than merely accept the new instructions.
 
 ### 5. Plan ownership and remaining work
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/govern input/source/ Prepare a proposed ownership and maintenance model from the verified takeover findings. Name unresolved supplier inputs and the receiving team's review responsibilities.
-```
+    ```text
+    /govern input/source/ Prepare a proposed ownership and maintenance model from the verified takeover findings. Name unresolved supplier inputs and the receiving team's review responsibilities.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-govern input/source/ Prepare a proposed ownership and maintenance model from the verified takeover findings. Name unresolved supplier inputs and the receiving team's review responsibilities.
-```
+    ```text
+    $workflow-govern input/source/ Prepare a proposed ownership and maintenance model from the verified takeover findings. Name unresolved supplier inputs and the receiving team's review responsibilities.
+    ```
 
 Inspect whether every critical component has a proposed owner and an escalation route. Governance proposals are not automatically accepted assignments. Put the recommended backlog and verified handover evidence under output/ only after reading them for unsupported readiness claims.
 

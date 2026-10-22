@@ -22,13 +22,21 @@ Use an installation that includes the commercial extension and start a new provi
 
 Identify the human commercial owner, the existing engagement if applicable, input locations and intended internal and client audiences. Explicitly request profile activation. Keep confidential sources in a protected workspace.
 
-For example, in Claude Code:
+For example, choose your provider:
 
-```text
-/commercial Prepare a supplier proposal using ./client-input/. Reuse the existing engagement and establish the commercial owner and authorised profile scope. Maintain separate internal and client outputs. Record unanswered discovery questions before estimating.
-```
+=== "Claude Code"
 
-In Codex, use the same instruction after `$workflow-commercial`. The text following the command is a natural-language instruction, not a fixed subcommand grammar. There are no documented conversational `/commercial prepare` or `/commercial approve` subcommands.
+    ```text
+    /commercial Prepare a supplier proposal using ./client-input/. Reuse the existing engagement and establish the commercial owner and authorised profile scope. Maintain separate internal and client outputs. Record unanswered discovery questions before estimating.
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-commercial Prepare a supplier proposal using ./client-input/. Reuse the existing engagement and establish the commercial owner and authorised profile scope. Maintain separate internal and client outputs. Record unanswered discovery questions before estimating.
+    ```
+
+The text following the command is a natural-language instruction, not a fixed subcommand grammar. There are no documented conversational `/commercial prepare` or `/commercial approve` subcommands.
 
 The expected sequence is:
 
@@ -53,15 +61,31 @@ In the current commercial engagement, incorporate the client's answers from ./cl
 
 For layered creation from the start, use Claude `/layered` or Codex `$workflow-layered`:
 
-```text
-/layered Prepare the supplier proposal using commercial-delivery/1. Establish adjacent execution contracts from intent through evidence, use commercial specialists, and return unsupported work for bounded rework before escalating unresolved conflicts.
-```
+=== "Claude Code"
+
+    ```text
+    /layered Prepare the supplier proposal using commercial-delivery/1. Establish adjacent execution contracts from intent through evidence, use commercial specialists, and return unsupported work for bounded rework before escalating unresolved conflicts.
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-layered Prepare the supplier proposal using commercial-delivery/1. Establish adjacent execution contracts from intent through evidence, use commercial specialists, and return unsupported work for bounded rework before escalating unresolved conflicts.
+    ```
 
 For a subsequent bid decision, start a new decision scope:
 
-```text
-/layered Decide whether the reviewed proposal is ready for submission. Use its exact snapshot and supporting evidence; assess unresolved estimates, margin exposure, staffing commitments and contractual risks. Present authority decisions to the commercial owner.
-```
+=== "Claude Code"
+
+    ```text
+    /layered Decide whether the reviewed proposal is ready for submission. Use its exact snapshot and supporting evidence; assess unresolved estimates, margin exposure, staffing commitments and contractual risks. Present authority decisions to the commercial owner.
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-layered Decide whether the reviewed proposal is ready for submission. Use its exact snapshot and supporting evidence; assess unresolved estimates, margin exposure, staffing commitments and contractual risks. Present authority decisions to the commercial owner.
+    ```
 
 The last example does not retrospectively establish that creation followed layered contracts. Direct `/commercial` does not automatically start a complete six-layer execution chain. Conversely, `/layered` needs the commercial methodology and specialists; it cannot replace their domain knowledge.
 
@@ -87,7 +111,7 @@ If policy requires justification of the creation process, start here **instead o
     binding commitments or proposal issue.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-layered Prepare the managed integration service proposal using
@@ -111,7 +135,7 @@ The following stages then become checkpoints inside that engagement, rather than
     information separate and do not assume missing service volumes.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-commercial Qualify the managed integration service opportunity
@@ -163,7 +187,7 @@ Stop before proposal issue or binding commitment.
     risk acceptance and binding commitments for the human commercial owner.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-layered Assess whether proposal snapshot <reference and digest>

@@ -53,17 +53,17 @@ paths if the workflow reports a different location from `working/`.
 
 ### 1. Establish a comparable evidence base
 
-**Claude**
+=== "Claude Code"
 
-```text
-/analyse inputs/ for the managed-network sourcing decision. Separate mandatory requirements, evaluation criteria, supplier assertions and missing responses.
-```
+    ```text
+    /analyse inputs/ for the managed-network sourcing decision. Separate mandatory requirements, evaluation criteria, supplier assertions and missing responses.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse inputs/ for the managed-network sourcing decision. Separate mandatory requirements, evaluation criteria, supplier assertions and missing responses.
-```
+    ```text
+    $workflow-analyse inputs/ for the managed-network sourcing decision. Separate mandatory requirements, evaluation criteria, supplier assertions and missing responses.
+    ```
 
 Inspect whether each bid covers the same estate, hours and transition
 scope. Preserve the original responses and distinguish clarification
@@ -72,17 +72,17 @@ supporting evidence and qualifications.
 
 ### 2. Prepare sourcing options
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Prepare the sourcing and contract recommendation from inputs/. Compare service coverage, lifecycle cost, delivery risk, responsibilities and unresolved terms in working/.
-```
+    ```text
+    /layered Prepare the sourcing and contract recommendation from inputs/. Compare service coverage, lifecycle cost, delivery risk, responsibilities and unresolved terms in working/.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Prepare the sourcing and contract recommendation from inputs/. Compare service coverage, lifecycle cost, delivery risk, responsibilities and unresolved terms in working/.
-```
+    ```text
+    $workflow-layered Prepare the sourcing and contract recommendation from inputs/. Compare service coverage, lifecycle cost, delivery risk, responsibilities and unresolved terms in working/.
+    ```
 
 Inspect the recommendation for exclusions and dependencies, including
 what ACME must provide. Distinguish estimated transition cost from
@@ -95,17 +95,17 @@ When review presents the criteria and their hash, inspect them and
 answer YES only if they match this task. The review then proceeds; that
 confirmation authorises the review, not the deliverable or a risk.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/review working/ against inputs/evaluation-criteria.md and inputs/service-requirements.md; check fairness, pricing scope, exit and operational responsibilities.
-```
+    ```text
+    /review working/ against inputs/evaluation-criteria.md and inputs/service-requirements.md; check fairness, pricing scope, exit and operational responsibilities.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review working/ against inputs/evaluation-criteria.md and inputs/service-requirements.md; check fairness, pricing scope, exit and operational responsibilities.
-```
+    ```text
+    $workflow-review working/ against inputs/evaluation-criteria.md and inputs/service-requirements.md; check fairness, pricing scope, exit and operational responsibilities.
+    ```
 
 Read findings against the actual schedules. A low unit price may coexist
 with expensive mandatory changes. Ensure the service owner can see how
@@ -119,19 +119,19 @@ returned by the preceding review. Keep this same ledger through rework
 and independent verification; do not invent one or mark findings closed
 without verification.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger>
-Use the current findings ledger to retain the disputed liability and exit terms and prepare bounded negotiation or alternative-supplier options.
-```
+    ```text
+    /rework <reported-ledger>
+    Use the current findings ledger to retain the disputed liability and exit terms and prepare bounded negotiation or alternative-supplier options.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger>
-Use the current findings ledger to retain the disputed liability and exit terms and prepare bounded negotiation or alternative-supplier options.
-```
+    ```text
+    $workflow-rework <reported-ledger>
+    Use the current findings ledger to retain the disputed liability and exit terms and prepare bounded negotiation or alternative-supplier options.
+    ```
 
 The illustrative preferred supplier refuses a required exit-assistance
 commitment. Alice replies: "Keep award pending and obtain a qualified
@@ -147,17 +147,17 @@ by the workflow, then follow its manifest and rendering steps. If those
 prerequisites are absent, stop before rendering. Approval for publication
 does not itself approve the business, deployment or risk decision.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/publish Prepare a publication from the reviewed semantic sourcing artefact in working/ for output/. Preserve negotiation issues, conditions and actual award state.
-```
+    ```text
+    /publish Prepare a publication from the reviewed semantic sourcing artefact in working/ for output/. Preserve negotiation issues, conditions and actual award state.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-publish Prepare a publication from the reviewed semantic sourcing artefact in working/ for output/. Preserve negotiation issues, conditions and actual award state.
-```
+    ```text
+    $workflow-publish Prepare a publication from the reviewed semantic sourcing artefact in working/ for output/. Preserve negotiation issues, conditions and actual award state.
+    ```
 
 If a supplier changes a price or subcontracts service operations,
 register the revision and reopen affected comparisons. Inspect the final

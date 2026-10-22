@@ -50,17 +50,17 @@ paths if the workflow reports a different location from `working/`.
 
 ### 1. Understand and validate the baseline
 
-**Claude**
+=== "Claude Code"
 
-```text
-/repository Inspect and validate the current model in inputs/current-model/ before proposing changes. Identify canonical repository identity and affected identity-service elements.
-```
+    ```text
+    /repository Inspect and validate the current model in inputs/current-model/ before proposing changes. Identify canonical repository identity and affected identity-service elements.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-repository Inspect and validate the current model in inputs/current-model/ before proposing changes. Identify canonical repository identity and affected identity-service elements.
-```
+    ```text
+    $workflow-repository Inspect and validate the current model in inputs/current-model/ before proposing changes. Identify canonical repository identity and affected identity-service elements.
+    ```
 
 Inspect the validation findings and existing identifiers before any
 mutation. Confirm whether the supplied material is the canonical
@@ -69,17 +69,17 @@ element simply because a display name changed.
 
 ### 2. Prepare the bounded model update
 
-**Claude**
+=== "Claude Code"
 
-```text
-/repository Prepare the identity-service transition change in working/ using the validated baseline and inputs/change-request.md. Preserve stable identifiers and source traceability.
-```
+    ```text
+    /repository Prepare the identity-service transition change in working/ using the validated baseline and inputs/change-request.md. Preserve stable identifiers and source traceability.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-repository Prepare the identity-service transition change in working/ using the validated baseline and inputs/change-request.md. Preserve stable identifiers and source traceability.
-```
+    ```text
+    $workflow-repository Prepare the identity-service transition change in working/ using the validated baseline and inputs/change-request.md. Preserve stable identifiers and source traceability.
+    ```
 
 Inspect changed elements and relationships, ownership and lifecycle
 states. Proposed facts need a source and review status. A generated
@@ -88,17 +88,17 @@ become an independent source of truth.
 
 ### 3. Request independent consistency review
 
-**Claude**
+=== "Claude Code"
 
-```text
-/repository Review the proposed repository change in working/ independently for broken references, ownership gaps, affected projects and premature retirement.
-```
+    ```text
+    /repository Review the proposed repository change in working/ independently for broken references, ownership gaps, affected projects and premature retirement.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-repository Review the proposed repository change in working/ independently for broken references, ownership gaps, affected projects and premature retirement.
-```
+    ```text
+    $workflow-repository Review the proposed repository change in working/ independently for broken references, ownership gaps, affected projects and premature retirement.
+    ```
 
 Read the findings before accepting the visual result. A valid model can
 still miss an affected project; compare the impact view with the
@@ -107,17 +107,17 @@ their own review findings as independently verified.
 
 ### 4. Resolve a retirement conflict
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Prepare the decision on retiring the old identity service using inputs/ and the repository review findings. Preserve unresolved consumer dependencies.
-```
+    ```text
+    /layered Prepare the decision on retiring the old identity service using inputs/ and the repository review findings. Preserve unresolved consumer dependencies.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Prepare the decision on retiring the old identity service using inputs/ and the repository review findings. Preserve unresolved consumer dependencies.
-```
+    ```text
+    $workflow-layered Prepare the decision on retiring the old identity service using inputs/ and the repository review findings. Preserve unresolved consumer dependencies.
+    ```
 
 Suppose a business unit still depends on the old authentication
 endpoint. Alice replies: "Keep the service in transition; identify a
@@ -127,17 +127,17 @@ must be made by the named human using the emitted trusted procedure.
 
 ### 5. Reconcile and exchange the reviewed model
 
-**Claude**
+=== "Claude Code"
 
-```text
-/repository Update only the affected model facts after the recorded decision and independent review. Validate and prepare the required Open Exchange export and views in output/.
-```
+    ```text
+    /repository Update only the affected model facts after the recorded decision and independent review. Validate and prepare the required Open Exchange export and views in output/.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-repository Update only the affected model facts after the recorded decision and independent review. Validate and prepare the required Open Exchange export and views in output/.
-```
+    ```text
+    $workflow-repository Update only the affected model facts after the recorded decision and independent review. Validate and prepare the required Open Exchange export and views in output/.
+    ```
 
 If a new consumer is discovered, register its evidence and reopen the
 impact analysis. Inspect exported identity and relationships against the

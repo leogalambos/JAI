@@ -52,17 +52,17 @@ paths if the workflow reports a different location from `working/`.
 
 ### 1. Understand the release boundary
 
-**Claude**
+=== "Claude Code"
 
-```text
-/analyse inputs/ for the portal release. Identify component versions, dependencies, evidence scope, unresolved defects and required authorities.
-```
+    ```text
+    /analyse inputs/ for the portal release. Identify component versions, dependencies, evidence scope, unresolved defects and required authorities.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse inputs/ for the portal release. Identify component versions, dependencies, evidence scope, unresolved defects and required authorities.
-```
+    ```text
+    $workflow-analyse inputs/ for the portal release. Identify component versions, dependencies, evidence scope, unresolved defects and required authorities.
+    ```
 
 Inspect whether the evidence belongs to the versions actually proposed
 for release. A test report from an earlier build is not current evidence
@@ -71,17 +71,17 @@ from completed checks.
 
 ### 2. Prepare the coordinated decision
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Prepare the portal release decision using inputs/. Include rollout sequencing, go/no-go criteria, rollback ownership, service readiness and evidence gaps in working/.
-```
+    ```text
+    /layered Prepare the portal release decision using inputs/. Include rollout sequencing, go/no-go criteria, rollback ownership, service readiness and evidence gaps in working/.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Prepare the portal release decision using inputs/. Include rollout sequencing, go/no-go criteria, rollback ownership, service readiness and evidence gaps in working/.
-```
+    ```text
+    $workflow-layered Prepare the portal release decision using inputs/. Include rollout sequencing, go/no-go criteria, rollback ownership, service readiness and evidence gaps in working/.
+    ```
 
 Inspect cross-team dependencies and the point after which reversal
 changes data or customer behaviour. A rollback plan should identify who
@@ -94,17 +94,17 @@ When review presents the criteria and their hash, inspect them and
 answer YES only if they match this task. The review then proceeds; that
 confirmation authorises the review, not the deliverable or a risk.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/review working/ against inputs/readiness-criteria.md; check evidence identity, unmet prerequisites, recovery and operational handoff.
-```
+    ```text
+    /review working/ against inputs/readiness-criteria.md; check evidence identity, unmet prerequisites, recovery and operational handoff.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review working/ against inputs/readiness-criteria.md; check evidence identity, unmet prerequisites, recovery and operational handoff.
-```
+    ```text
+    $workflow-review working/ against inputs/readiness-criteria.md; check evidence identity, unmet prerequisites, recovery and operational handoff.
+    ```
 
 Read the findings with the component owners. Distinguish a known defect
 with an authorised disposition from one merely mentioned in a status
@@ -118,19 +118,19 @@ returned by the preceding review. Keep this same ledger through rework
 and independent verification; do not invent one or mark findings closed
 without verification.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger>
-Use the current findings ledger to preserve the failed identity-service rehearsal and prepare resequencing or deferral options for the release authority.
-```
+    ```text
+    /rework <reported-ledger>
+    Use the current findings ledger to preserve the failed identity-service rehearsal and prepare resequencing or deferral options for the release authority.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger>
-Use the current findings ledger to preserve the failed identity-service rehearsal and prepare resequencing or deferral options for the release authority.
-```
+    ```text
+    $workflow-rework <reported-ledger>
+    Use the current findings ledger to preserve the failed identity-service rehearsal and prepare resequencing or deferral options for the release authority.
+    ```
 
 The illustrative sponsor asks to proceed despite the failure. Alice
 replies: "Keep the go decision pending; obtain a corrected rehearsal or
@@ -146,17 +146,17 @@ by the workflow, then follow its manifest and rendering steps. If those
 prerequisites are absent, stop before rendering. Approval for publication
 does not itself approve the business, deployment or risk decision.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/publish Prepare a publication from the reviewed semantic release artefact in working/ for output/. Preserve actual readiness, defects, pending decisions and rollback conditions.
-```
+    ```text
+    /publish Prepare a publication from the reviewed semantic release artefact in working/ for output/. Preserve actual readiness, defects, pending decisions and rollback conditions.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-publish Prepare a publication from the reviewed semantic release artefact in working/ for output/. Preserve actual readiness, defects, pending decisions and rollback conditions.
-```
+    ```text
+    $workflow-publish Prepare a publication from the reviewed semantic release artefact in working/ for output/. Preserve actual readiness, defects, pending decisions and rollback conditions.
+    ```
 
 If a component is rebuilt, register its new identity and reassess
 affected evidence before continuing the same engagement. Inspect the

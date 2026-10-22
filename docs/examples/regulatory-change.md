@@ -52,17 +52,17 @@ paths if the workflow reports a different location from `working/`.
 
 ### 1. Inventory obligations and sources
 
-**Claude**
+=== "Claude Code"
 
-```text
-/analyse inputs/ for the reporting change. Separate quoted obligations, internal interpretations, assumptions and missing applicability decisions.
-```
+    ```text
+    /analyse inputs/ for the reporting change. Separate quoted obligations, internal interpretations, assumptions and missing applicability decisions.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse inputs/ for the reporting change. Separate quoted obligations, internal interpretations, assumptions and missing applicability decisions.
-```
+    ```text
+    $workflow-analyse inputs/ for the reporting change. Separate quoted obligations, internal interpretations, assumptions and missing applicability decisions.
+    ```
 
 Inspect source dates and amendments before making an impact list. Record
 where the meaning is uncertain and who can resolve it. A familiar
@@ -71,17 +71,17 @@ an obligation is satisfied.
 
 ### 2. Trace the impact into proposed changes
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Assess the reporting change using inputs/. Map affected services, controls, owners, delivery dependencies and required evidence. Keep proposed material in working/.
-```
+    ```text
+    /layered Assess the reporting change using inputs/. Map affected services, controls, owners, delivery dependencies and required evidence. Keep proposed material in working/.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Assess the reporting change using inputs/. Map affected services, controls, owners, delivery dependencies and required evidence. Keep proposed material in working/.
-```
+    ```text
+    $workflow-layered Assess the reporting change using inputs/. Map affected services, controls, owners, delivery dependencies and required evidence. Keep proposed material in working/.
+    ```
 
 Check whether each proposed change traces to an applicable requirement.
 Inspect dependencies on supplier data and operational reporting
@@ -94,17 +94,17 @@ When review presents the criteria and their hash, inspect them and
 answer YES only if they match this task. The review then proceeds; that
 confirmation authorises the review, not the deliverable or a risk.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/review working/ against inputs/applicability.md and the recorded interpretation; check omissions, evidence claims and control ownership.
-```
+    ```text
+    /review working/ against inputs/applicability.md and the recorded interpretation; check omissions, evidence claims and control ownership.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review working/ against inputs/applicability.md and the recorded interpretation; check omissions, evidence claims and control ownership.
-```
+    ```text
+    $workflow-review working/ against inputs/applicability.md and the recorded interpretation; check omissions, evidence claims and control ownership.
+    ```
 
 Inspect the findings for entities or data flows left out of scope. A
 complete-looking matrix can still carry an unsupported interpretation.
@@ -118,19 +118,19 @@ returned by the preceding review. Keep this same ledger through rework
 and independent verification; do not invent one or mark findings closed
 without verification.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger>
-Use the current findings ledger to preserve the disputed retention requirement and prepare alternatives for the qualified legal and policy owners.
-```
+    ```text
+    /rework <reported-ledger>
+    Use the current findings ledger to preserve the disputed retention requirement and prepare alternatives for the qualified legal and policy owners.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger>
-Use the current findings ledger to preserve the disputed retention requirement and prepare alternatives for the qualified legal and policy owners.
-```
+    ```text
+    $workflow-rework <reported-ledger>
+    Use the current findings ledger to preserve the disputed retention requirement and prepare alternatives for the qualified legal and policy owners.
+    ```
 
 Suppose the draft assumes a retention period that conflicts with the
 existing privacy schedule. Alice replies: "Keep both constraints visible
@@ -141,17 +141,17 @@ trusted command.
 
 ### 5. Resume the delivery proposal
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Update the impact and delivery proposal using the authorised interpretation now recorded in inputs/. Reassess affected controls and evidence requirements before handoff.
-```
+    ```text
+    /layered Update the impact and delivery proposal using the authorised interpretation now recorded in inputs/. Reassess affected controls and evidence requirements before handoff.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Update the impact and delivery proposal using the authorised interpretation now recorded in inputs/. Reassess affected controls and evidence requirements before handoff.
-```
+    ```text
+    $workflow-layered Update the impact and delivery proposal using the authorised interpretation now recorded in inputs/. Reassess affected controls and evidence requirements before handoff.
+    ```
 
 A later amendment is a changed input, not a clerical update to the
 conclusion. Reopen the relevant interpretation, policy and design steps.

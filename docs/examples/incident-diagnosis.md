@@ -45,81 +45,81 @@ ledger actually returned by review; the placeholder is not a real ledger.
 
 ### 1. Understand the service boundary
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/analyse input/source/ with input/payment-contract.md. Map authorization, retries and decline handling. Identify missing observations; do not contact the live payment provider.
-```
+    ```text
+    /analyse input/source/ with input/payment-contract.md. Map authorization, retries and decline handling. Identify missing observations; do not contact the live payment provider.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse input/source/ with input/payment-contract.md. Map authorization, retries and decline handling. Identify missing observations; do not contact the live payment provider.
-```
+    ```text
+    $workflow-analyse input/source/ with input/payment-contract.md. Map authorization, retries and decline handling. Identify missing observations; do not contact the live payment provider.
+    ```
 
 Inspect whether the account of the failing path names actual functions and test fixtures. If the sanitized record omits whether the response was late or negative, ask Bob for that distinction. Avoid spending the first session rewriting unrelated payment code.
 
 ### 2. Establish the root cause
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/diagnose Diagnose the intermittent payment authorization failure recorded in input/failure-record.md. Compare last known good, a working authorization path and timeout ordering. Use local evidence only.
-```
+    ```text
+    /diagnose Diagnose the intermittent payment authorization failure recorded in input/failure-record.md. Compare last known good, a working authorization path and timeout ordering. Use local evidence only.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-diagnose Diagnose the intermittent payment authorization failure recorded in input/failure-record.md. Compare last known good, a working authorization path and timeout ordering. Use local evidence only.
-```
+    ```text
+    $workflow-diagnose Diagnose the intermittent payment authorization failure recorded in input/failure-record.md. Compare last known good, a working authorization path and timeout ordering. Use local evidence only.
+    ```
 
 Read the reproduced command, repetitions and competing explanations. One successful run cannot refute an intermittent failure. Timing checks should explain which event wins and under what conditions. If the cause remains uncertain, continue diagnosis rather than describing a plausible race as confirmed.
 
 ### 3. Develop only the confirmed correction
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/develop Develop a local fix for the confirmed authorization defect. Preserve business-decline semantics and add a regression covering the observed ordering.
-```
+    ```text
+    /develop Develop a local fix for the confirmed authorization defect. Preserve business-decline semantics and add a regression covering the observed ordering.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-develop Develop a local fix for the confirmed authorization defect. Preserve business-decline semantics and add a regression covering the observed ordering.
-```
+    ```text
+    $workflow-develop Develop a local fix for the confirmed authorization defect. Preserve business-decline semantics and add a regression covering the observed ordering.
+    ```
 
 Inspect the change against the diagnosis. A test should fail for the original ordering and pass after correction, while genuine declines stay declines. Check whether retries could charge twice or create duplicate requests. Development evidence must identify which local checks actually ran.
 
 ### 4. Review the behavioral change
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/review <reported-review-target> the authorization change against the payment contract and diagnosis. Check timeout ordering, idempotency, legitimate declines and regression strength.
-```
+    ```text
+    /review <reported-review-target> the authorization change against the payment contract and diagnosis. Check timeout ordering, idempotency, legitimate declines and regression strength.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review <reported-review-target> the authorization change against the payment contract and diagnosis. Check timeout ordering, idempotency, legitimate declines and regression strength.
-```
+    ```text
+    $workflow-review <reported-review-target> the authorization change against the payment contract and diagnosis. Check timeout ordering, idempotency, legitimate declines and regression strength.
+    ```
 
 Read located findings rather than only an overall verdict. Ask whether the regression controls timing deliberately or merely retries a flaky assertion. Keep actual live-provider behavior unverified unless separately authorized evidence exists; mocked approval fixtures are not customer transactions.
 
 ### 5. Rework and prepare the change handoff
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger> Rework the open diagnosis and implementation review findings. Prepare the proposed change handoff under output/, preserving missing production observations.
-```
+    ```text
+    /rework <reported-ledger> Rework the open diagnosis and implementation review findings. Prepare the proposed change handoff under output/, preserving missing production observations.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger> Rework the open diagnosis and implementation review findings. Prepare the proposed change handoff under output/, preserving missing production observations.
-```
+    ```text
+    $workflow-rework <reported-ledger> Rework the open diagnosis and implementation review findings. Prepare the proposed change handoff under output/, preserving missing production observations.
+    ```
 
 Inspect the verification against the original failure and the contract. A local fix may be ready for normal release handling while customer-impact analysis remains open. Record both statuses. Do not mark the deployed defect resolved simply because the source test now passes.
 

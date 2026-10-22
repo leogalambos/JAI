@@ -47,11 +47,21 @@ does not claim that every action in that recipe runs automatically.
 To practise with fictional inputs, use `/demo scenarios` or
 `$workflow-demo scenarios` to discover all 29 scenario IDs. For example:
 
-```text
-/guide proposal
-/demo describe proposal --step 1
-/demo scenario proposal --to /tmp/acme-proposal
-```
+=== "Claude Code"
+
+    ```text
+    /guide proposal
+    /demo describe proposal --step 1
+    /demo scenario proposal --to /tmp/acme-proposal
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-guide proposal
+    $workflow-demo describe proposal --step 1
+    $workflow-demo scenario proposal --to /tmp/acme-proposal
+    ```
 
 The Codex equivalents are `$workflow-guide proposal`,
 `$workflow-demo describe proposal --step 1` and

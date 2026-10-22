@@ -54,17 +54,17 @@ paths if the workflow reports a different location from `working/`.
 
 ### 1. Separate observations from hypotheses
 
-**Claude**
+=== "Claude Code"
 
-```text
-/analyse inputs/ for the supplier-account incident. Describe confirmed observations, hypotheses, missing evidence and immediate decision needs.
-```
+    ```text
+    /analyse inputs/ for the supplier-account incident. Describe confirmed observations, hypotheses, missing evidence and immediate decision needs.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse inputs/ for the supplier-account incident. Describe confirmed observations, hypotheses, missing evidence and immediate decision needs.
-```
+    ```text
+    $workflow-analyse inputs/ for the supplier-account incident. Describe confirmed observations, hypotheses, missing evidence and immediate decision needs.
+    ```
 
 Inspect the timeline for timezone, provenance and source consistency.
 Distinguish an alert from a confirmed event and avoid naming a cause
@@ -73,17 +73,17 @@ establish which data was accessed.
 
 ### 2. Prepare coordinated response options
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Coordinate the incident response using inputs/. Prepare bounded containment, business-impact and recovery options, with owners and evidence needs in working/.
-```
+    ```text
+    /layered Coordinate the incident response using inputs/. Prepare bounded containment, business-impact and recovery options, with owners and evidence needs in working/.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Coordinate the incident response using inputs/. Prepare bounded containment, business-impact and recovery options, with owners and evidence needs in working/.
-```
+    ```text
+    $workflow-layered Coordinate the incident response using inputs/. Prepare bounded containment, business-impact and recovery options, with owners and evidence needs in working/.
+    ```
 
 Inspect the operational consequences of each option. Disabling the
 supplier identity may stop legitimate bookings, so the incident
@@ -97,17 +97,17 @@ When review presents the criteria and their hash, inspect them and
 answer YES only if they match this task. The review then proceeds; that
 confirmation authorises the review, not the deliverable or a risk.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/review working/ against inputs/response-authority.md; check evidence boundaries, timeline consistency, response ownership and unsupported statements of containment.
-```
+    ```text
+    /review working/ against inputs/response-authority.md; check evidence boundaries, timeline consistency, response ownership and unsupported statements of containment.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review working/ against inputs/response-authority.md; check evidence boundaries, timeline consistency, response ownership and unsupported statements of containment.
-```
+    ```text
+    $workflow-review working/ against inputs/response-authority.md; check evidence boundaries, timeline consistency, response ownership and unsupported statements of containment.
+    ```
 
 Read findings without delaying emergency action mandated by the existing
 response procedure. Ensure the report distinguishes actions planned,
@@ -121,19 +121,19 @@ returned by the preceding review. Keep this same ledger through rework
 and independent verification; do not invent one or mark findings closed
 without verification.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger>
-Use the current findings ledger to preserve the booking-service availability conflict and prepare the decision for Alice without weakening the containment requirement.
-```
+    ```text
+    /rework <reported-ledger>
+    Use the current findings ledger to preserve the booking-service availability conflict and prepare the decision for Alice without weakening the containment requirement.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger>
-Use the current findings ledger to preserve the booking-service availability conflict and prepare the decision for Alice without weakening the containment requirement.
-```
+    ```text
+    $workflow-rework <reported-ledger>
+    Use the current findings ledger to preserve the booking-service availability conflict and prepare the decision for Alice without weakening the containment requirement.
+    ```
 
 The illustrative conflict is that disabling the account would interrupt
 a critical shipment window. Alice replies: "Use the approved manual
@@ -144,17 +144,17 @@ emitted trusted command, not an invented approval.
 
 ### 5. Reassess recovery with observed evidence
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Reassess recovery using the authorised action results added to inputs/. Keep unverified persistence and data-access questions open and prepare the receiving-team handoff.
-```
+    ```text
+    /layered Reassess recovery using the authorised action results added to inputs/. Keep unverified persistence and data-access questions open and prepare the receiving-team handoff.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Reassess recovery using the authorised action results added to inputs/. Keep unverified persistence and data-access questions open and prepare the receiving-team handoff.
-```
+    ```text
+    $workflow-layered Reassess recovery using the authorised action results added to inputs/. Keep unverified persistence and data-access questions open and prepare the receiving-team handoff.
+    ```
 
 If fresh logs show another identity, extend scope through the incident
 process and revisit containment. Inspect the updated dependencies and

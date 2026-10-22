@@ -45,49 +45,49 @@ ledger actually returned by review; the placeholder is not a real ledger.
 
 ### 1. Understand the service to be received
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/analyse input/ for notification-service onboarding. Identify receiving roles, dependency owners and missing operating evidence. Keep delivery demonstration separate from acceptance.
-```
+    ```text
+    /analyse input/ for notification-service onboarding. Identify receiving roles, dependency owners and missing operating evidence. Keep delivery demonstration separate from acceptance.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse input/ for notification-service onboarding. Identify receiving roles, dependency owners and missing operating evidence. Keep delivery demonstration separate from acceptance.
-```
+    ```text
+    $workflow-analyse input/ for notification-service onboarding. Identify receiving roles, dependency owners and missing operating evidence. Keep delivery demonstration separate from acceptance.
+    ```
 
 Inspect the boundary between message acceptance and actual delivery. A success response may only mean a message entered a queue. Ask Bob how failures reach the support team and whether personal information could appear in logs or support tickets.
 
 ### 2. Frame the introduction
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/layered Prepare the service-onboarding plan for the notification service. Identify required handoffs, receiving-owner decisions, support access and unresolved acceptance conditions.
-```
+    ```text
+    /layered Prepare the service-onboarding plan for the notification service. Identify required handoffs, receiving-owner decisions, support access and unresolved acceptance conditions.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Prepare the service-onboarding plan for the notification service. Identify required handoffs, receiving-owner decisions, support access and unresolved acceptance conditions.
-```
+    ```text
+    $workflow-layered Prepare the service-onboarding plan for the notification service. Identify required handoffs, receiving-owner decisions, support access and unresolved acceptance conditions.
+    ```
 
 Check whether proposed responsibilities have actual named receiving owners. A delivery team's promise to write a runbook later does not establish operational capability. The plan should distinguish service introduction from the authority to launch a particular production release.
 
 ### 3. Set handover criteria
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/criteria .
-```
+    ```text
+    /criteria .
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-criteria .
-```
+    ```text
+    $workflow-criteria .
+    ```
 
 This displays or initializes the project criteria. Then ask:
 
@@ -99,33 +99,33 @@ Read the criteria with a new on-call operator in mind. Can that person identify 
 
 ### 4. Review the handover material
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/review <reported-review-target> the notification-service handover against the fixed criteria. Locate missing receiving-team evidence, unsafe procedures and unclear support boundaries.
-```
+    ```text
+    /review <reported-review-target> the notification-service handover against the fixed criteria. Locate missing receiving-team evidence, unsafe procedures and unclear support boundaries.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review <reported-review-target> the notification-service handover against the fixed criteria. Locate missing receiving-team evidence, unsafe procedures and unclear support boundaries.
-```
+    ```text
+    $workflow-review <reported-review-target> the notification-service handover against the fixed criteria. Locate missing receiving-team evidence, unsafe procedures and unclear support boundaries.
+    ```
 
 Inspect whether the runbook explains what to do when a supplier endpoint is unavailable. A procedure that simply says 'retry' may amplify duplicate messages. Keep untested recovery steps visible and ask the receiving team for an authorized rehearsal where needed.
 
 ### 5. Rework the receiving packet
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger> Rework the open onboarding findings using actual owner responses and results. Prepare a proposed operating handoff under output/ without claiming acceptance.
-```
+    ```text
+    /rework <reported-ledger> Rework the open onboarding findings using actual owner responses and results. Prepare a proposed operating handoff under output/ without claiming acceptance.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger> Rework the open onboarding findings using actual owner responses and results. Prepare a proposed operating handoff under output/ without claiming acceptance.
-```
+    ```text
+    $workflow-rework <reported-ledger> Rework the open onboarding findings using actual owner responses and results. Prepare a proposed operating handoff under output/ without claiming acceptance.
+    ```
 
 Inspect the final responsibility map, procedures and outstanding actions together. A finding about missing support access closes with evidence of appropriate access and verification, not with a sentence in the handover. Alice's actual acceptance remains separate from AI review.
 

@@ -44,6 +44,26 @@ TOOLS = re.compile(r"\b(fabric|findings)\.py\b")
 KEY = "justifiable-fabric"
 
 
+KEY_DIRECTORY = re.compile(
+    r"(^|[\s/\\'\"=])\.config[/\\]+" + re.escape(KEY)
+    + r"(?=$|[/\\\s'\";|&<>()`])"
+)
+
+
+def _contains_signing_directory(text):
+    """Recognize protected directory paths in command or path text without I/O.
+
+    Args:
+        text: Command or path string, with POSIX or Windows separators.
+
+    Returns:
+        True for the complete protected configuration directory or descendants;
+        false for bare name tokens, documentation names and component lookalikes.
+        This string-level guard does not parse shell expansions.
+    """
+    return KEY_DIRECTORY.search(text) is not None
+
+
 def decide(decision, reason, payload=None):
     # Claude Code supports permissionDecision="ask". Codex PreToolUse intentionally does not;
     # for authority acts Codex therefore fails closed and asks the human to run the command manually.
@@ -65,6 +85,13 @@ def decide(decision, reason, payload=None):
 
 
 def main():
+    """Process one stdin tool payload and emit a permission decision when needed.
+
+    Returns:
+        Zero after processing; invalid JSON is ignored. Signing-directory reads
+        and writes are denied without opening paths. Authority and append-only
+        rules apply independently and retain their existing behavior.
+    """
     try:
         p = json.load(sys.stdin)
     except ValueError:
@@ -75,7 +102,7 @@ def main():
 
     if tool in ("Bash", "PowerShell", "shell", "shell_command", "exec_command", "apply_patch"):             # Claude Code on Windows falls back to PowerShell
         cmd = ti.get("command", "")
-        if KEY in cmd:
+        if _contains_signing_directory(cmd):
             return decide("deny", "The signing key is read only by fabric.py itself.", p)
         for rx, what in AUTHORITY:
             if rx.search(cmd):
@@ -93,10 +120,10 @@ def main():
         return 0
 
     path = (ti.get("file_path") or ti.get("path") or ti.get("notebook_path") or "").replace("\\", "/")
-    if tool == "Read" and KEY in path:
+    if tool == "Read" and _contains_signing_directory(path):
         return decide("deny", "The signing key is read only by fabric.py itself.", p)
     if tool in ("Write", "Edit", "MultiEdit", "NotebookEdit"):
-        if KEY in path:
+        if _contains_signing_directory(path):
             return decide("deny", "The signing key is managed by fabric.py.", p)
         if "/.fabric/" in path or path.startswith(".fabric/") or "/.findings/" in path or path.startswith(".findings/"):
             return decide("deny", f"{path} is an append-only, hash-chained record; write it only through "

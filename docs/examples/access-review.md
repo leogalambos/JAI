@@ -49,33 +49,33 @@ actually reported. Never invent its identifier or erase open findings.
 
 ### 1. Check the review population
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/analyse input/ for the purchasing-service access review. Identify population gaps, extraction dates and identifiers that cannot be reconciled. Keep personal data within this project.
-```
+    ```text
+    /analyse input/ for the purchasing-service access review. Identify population gaps, extraction dates and identifiers that cannot be reconciled. Keep personal data within this project.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse input/ for the purchasing-service access review. Identify population gaps, extraction dates and identifiers that cannot be reconciled. Keep personal data within this project.
-```
+    ```text
+    $workflow-analyse input/ for the purchasing-service access review. Identify population gaps, extraction dates and identifiers that cannot be reconciled. Keep personal data within this project.
+    ```
 
 Inspect whether service accounts, privileged groups and indirect memberships are represented. An export of direct application roles may omit privileges inherited from a directory group. Ask Bob for the missing export rather than letting an apparently empty comparison imply that no elevated access exists.
 
 ### 2. Fix the comparison rules
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/criteria .
-```
+    ```text
+    /criteria .
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-criteria .
-```
+    ```text
+    $workflow-criteria .
+    ```
 
 This displays or initializes the project criteria. Then ask:
 
@@ -87,49 +87,49 @@ Review how stale accounts, privileged access and incompatible duties will be ass
 
 ### 3. Review the evidence
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/review <reported-review-target> the access population against the fixed criteria. Locate each exception by a safe internal identifier and cite the supporting records. Do not change access.
-```
+    ```text
+    /review <reported-review-target> the access population against the fixed criteria. Locate each exception by a safe internal identifier and cite the supporting records. Do not change access.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review <reported-review-target> the access population against the fixed criteria. Locate each exception by a safe internal identifier and cite the supporting records. Do not change access.
-```
+    ```text
+    $workflow-review <reported-review-target> the access population against the fixed criteria. Locate each exception by a safe internal identifier and cite the supporting records. Do not change access.
+    ```
 
 Inspect several exception rows yourself. A missing employment match could indicate a supplier identity, a changed identifier or a real leaver account. Keep those alternatives visible until confirmed. Avoid copying personal details into general examples or a public report.
 
 ### 4. Resolve a disputed exception
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/layered Prepare the decision on the purchasing service's conflicting requester and approver roles. Include the service owner's rationale, alternatives and missing transaction evidence.
-```
+    ```text
+    /layered Prepare the decision on the purchasing service's conflicting requester and approver roles. Include the service owner's rationale, alternatives and missing transaction evidence.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Prepare the decision on the purchasing service's conflicting requester and approver roles. Include the service owner's rationale, alternatives and missing transaction evidence.
-```
+    ```text
+    $workflow-layered Prepare the decision on the purchasing service's conflicting requester and approver roles. Include the service owner's rationale, alternatives and missing transaction evidence.
+    ```
 
 Check whether the decision distinguishes a technical role combination from demonstrated misuse. Compensating controls need actual owners and evidence; a proposed monthly check is not an operating control. The resulting packet should allow Alice to accept, reject or ask for stronger controls.
 
 ### 5. Rework and prepare the review record
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger> Rework the open access-review findings using the supplied owner responses. Preserve unresolved exceptions and prepare a proposed review record under output/.
-```
+    ```text
+    /rework <reported-ledger> Rework the open access-review findings using the supplied owner responses. Preserve unresolved exceptions and prepare a proposed review record under output/.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger> Rework the open access-review findings using the supplied owner responses. Preserve unresolved exceptions and prepare a proposed review record under output/.
-```
+    ```text
+    $workflow-rework <reported-ledger> Rework the open access-review findings using the supplied owner responses. Preserve unresolved exceptions and prepare a proposed review record under output/.
+    ```
 
 Inspect whether owner responses actually answer each exception. 'Still needed' without purpose, scope or expiry is weak evidence. Keep a separate action for Bob to execute any approved entitlement changes and obtain a fresh export afterward; the report itself does not revoke access.
 

@@ -47,49 +47,49 @@ actually reported. Never invent its identifier or erase open findings.
 
 ### 1. Identify what still depends on the service
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/analyse input/ for the reporting-service retirement. Identify consumers, scheduled integrations, retained records and uncertain ownership. Do not operate or delete the service.
-```
+    ```text
+    /analyse input/ for the reporting-service retirement. Identify consumers, scheduled integrations, retained records and uncertain ownership. Do not operate or delete the service.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse input/ for the reporting-service retirement. Identify consumers, scheduled integrations, retained records and uncertain ownership. Do not operate or delete the service.
-```
+    ```text
+    $workflow-analyse input/ for the reporting-service retirement. Identify consumers, scheduled integrations, retained records and uncertain ownership. Do not operate or delete the service.
+    ```
 
 Inspect whether the inventory includes monthly and annual reporting jobs. A quiet week of traffic does not establish that no one needs a quarterly export. Ask Bob to obtain owner responses for infrequent consumers and preserve nonresponses as open dependencies.
 
 ### 2. Prepare the retirement decision
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/layered Prepare a bounded retirement decision with dependency closure, data handling, rollback or recovery limits and the proposed shutdown sequence.
-```
+    ```text
+    /layered Prepare a bounded retirement decision with dependency closure, data handling, rollback or recovery limits and the proposed shutdown sequence.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Prepare a bounded retirement decision with dependency closure, data handling, rollback or recovery limits and the proposed shutdown sequence.
-```
+    ```text
+    $workflow-layered Prepare a bounded retirement decision with dependency closure, data handling, rollback or recovery limits and the proposed shutdown sequence.
+    ```
 
 Check whether the plan distinguishes disabling access, stopping compute and deleting records. Those actions have different reversal paths. The draft should explain when recovery would require rebuilding infrastructure or restoring archived data, and who is entitled to accept that limitation.
 
 ### 3. Set exit criteria
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/criteria .
-```
+    ```text
+    /criteria .
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-criteria .
-```
+    ```text
+    $workflow-criteria .
+    ```
 
 This displays or initializes the project criteria. Then ask:
 
@@ -101,33 +101,33 @@ Read the criteria before reviewing the closure pack. A replacement demo is not c
 
 ### 4. Review the closure evidence
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/review <reported-review-target> the proposed retirement pack against the fixed criteria. Locate missing migration evidence, retention controls and unresolved contracts.
-```
+    ```text
+    /review <reported-review-target> the proposed retirement pack against the fixed criteria. Locate missing migration evidence, retention controls and unresolved contracts.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review <reported-review-target> the proposed retirement pack against the fixed criteria. Locate missing migration evidence, retention controls and unresolved contracts.
-```
+    ```text
+    $workflow-review <reported-review-target> the proposed retirement pack against the fixed criteria. Locate missing migration evidence, retention controls and unresolved contracts.
+    ```
 
 Inspect a sample of report mappings and retrieval instructions. An archive that nobody can decrypt or search may not satisfy the stated obligation. If a retrieval rehearsal has not happened, record NOT_EXECUTED and request an authorized exercise instead of describing the archive as usable.
 
 ### 5. Rework and hand over the shutdown plan
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger> Rework retirement findings and prepare the proposed shutdown and observation handoff under output/. Preserve deletion and execution as pending human-controlled actions.
-```
+    ```text
+    /rework <reported-ledger> Rework retirement findings and prepare the proposed shutdown and observation handoff under output/. Preserve deletion and execution as pending human-controlled actions.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger> Rework retirement findings and prepare the proposed shutdown and observation handoff under output/. Preserve deletion and execution as pending human-controlled actions.
-```
+    ```text
+    $workflow-rework <reported-ledger> Rework retirement findings and prepare the proposed shutdown and observation handoff under output/. Preserve deletion and execution as pending human-controlled actions.
+    ```
 
 Inspect who monitors for late consumer failures, how long rollback remains possible and what evidence closes the service record. A cost saving can be proposed from the inventory; realized savings require actual billing or accounting evidence after retirement.
 

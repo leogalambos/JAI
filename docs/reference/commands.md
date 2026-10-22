@@ -18,25 +18,49 @@ In Codex, `/commercial` maps to `$workflow-commercial` in an installation genera
 
 ## High-level workflow commands
 
-```text
-/demo setup|list|reset|check
-/guide [command|topic]
-/hint <natural-language project question>
-/analyse <path or description>
-/criteria <path>
-/review <path> [against <criteria>]
-/rework [ledger]
-/diagnose <symptom, failing test or issue>
-/develop <what to build or change>
-/govern <target>
-/research <question>
-/sabsa <prepare|create|update|review|suggest|questions|approve|approval|document|template> ...
-/publish <semantic model> [archetype] [formats]
-/repository <init|validate|import|export|views|portfolio|impact|decommission> ...
-/commercial <opportunity, bid or delivery scope>
-/layered <consequential intent>
-/fabric-report [engagement]
-```
+=== "Claude Code"
+
+    ```text
+    /demo setup|list|reset|check
+    /guide [command|topic]
+    /hint <natural-language project question>
+    /analyse <path or description>
+    /criteria <path>
+    /review <path> [against <criteria>]
+    /rework [ledger]
+    /diagnose <symptom, failing test or issue>
+    /develop <what to build or change>
+    /govern <target>
+    /research <question>
+    /sabsa <prepare|create|update|review|suggest|questions|approve|approval|document|template> ...
+    /publish <semantic model> [archetype] [formats]
+    /repository <init|validate|import|export|views|portfolio|impact|decommission> ...
+    /commercial <opportunity, bid or delivery scope>
+    /layered <consequential intent>
+    /fabric-report [engagement]
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-demo setup|list|reset|check
+    $workflow-guide [command|topic]
+    $workflow-hint <natural-language project question>
+    $workflow-analyse <path or description>
+    $workflow-criteria <path>
+    $workflow-review <path> [against <criteria>]
+    $workflow-rework [ledger]
+    $workflow-diagnose <symptom, failing test or issue>
+    $workflow-develop <what to build or change>
+    $workflow-govern <target>
+    $workflow-research <question>
+    $workflow-sabsa <prepare|create|update|review|suggest|questions|approve|approval|document|template> ...
+    $workflow-publish <semantic model> [archetype] [formats]
+    $workflow-repository <init|validate|import|export|views|portfolio|impact|decommission> ...
+    $workflow-commercial <opportunity, bid or delivery scope>
+    $workflow-layered <consequential intent>
+    $workflow-fabric-report [engagement]
+    ```
 
 Codex provides the corresponding `$workflow-<command>` surfaces. For command-by-command prerequisites, demos and expected verification, consult the [full installed CLI guide](installed-cli-guide.md) or the [extended example walkthroughs](command-walkthroughs.md). The installed `GUIDE.md` is generated from that single Markdown source.
 
@@ -72,9 +96,17 @@ for the command contract.
 
 ## Commercial delivery
 
-**Claude Code:** `/commercial <opportunity, bid or delivery scope>`
+=== "Claude Code"
 
-**Codex:** `$workflow-commercial <opportunity, bid or delivery scope>`
+    ```text
+    /commercial <opportunity, bid or delivery scope>
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-commercial <opportunity, bid or delivery scope>
+    ```
 
 Use this opt-in command to add supplier-side qualification, discovery, estimation, staffing, costing/pricing, terms, dual publication and delivery/service monitoring to an existing JAI engagement, or to establish that scope for a new one. Supply the source material, commercial owner, intended outputs and disclosure/commitment boundaries. The argument is a scoped request; there are no documented `/commercial prepare`, `review` or `approve` subcommands.
 

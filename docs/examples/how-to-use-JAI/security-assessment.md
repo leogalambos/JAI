@@ -71,7 +71,7 @@ If your policy requires layered justification of **creation itself**, choose thi
     use adjacent contracts and keep owner decisions outside agent authority.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-layered Create and independently review the monitoring-platform
@@ -120,7 +120,7 @@ The SABSA `prepare` activity should produce a source register, contextual busine
     from vendor defaults or public descriptions.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa prepare assessment/sabsa — use PROJECT.md and the supplied
@@ -153,7 +153,7 @@ For example, “privileged actions are attributable” needs a measurement metho
     dependency stage before advancing.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa create assessment/sabsa — develop only the Contextual,
@@ -182,7 +182,7 @@ Use `questions` to prepare discovery, then `review` for independent judgement. T
     without inventing deployment facts.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa questions assessment/sabsa — prepare discovery questions
@@ -202,7 +202,7 @@ After inspecting that agenda, request the independent review:
     rework. Keep unresolved owner decisions explicit.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa review assessment/sabsa — review provenance, business
@@ -231,7 +231,7 @@ For example, the reference might mediate privileged action execution, specify an
     without copying licensed text.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa create assessment/sabsa — derive the reference Physical,
@@ -262,7 +262,7 @@ The as-built baseline records configuration and operating practices with evidenc
     dates, deployment scope and limitations.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa review assessment/sabsa — establish comparison criteria
@@ -292,7 +292,7 @@ Trace the affected component through its mechanism, service, objective and attri
     independent reviewer verify the result.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa review assessment/sabsa — compare the current baseline
@@ -322,7 +322,7 @@ Use dependency tracing before changing model entries. Preserve the observed base
     until the actual owner decides them.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa update assessment/sabsa — trace affected elements and
@@ -353,7 +353,7 @@ CSV is useful for maintaining structured catalogues: export, retain IDs and sche
     pending where required.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa document assessment/sabsa — prepare the six English
@@ -381,7 +381,7 @@ After the human action, check whether the recorded snapshot still matches the mo
     fresh review or approval.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa approval assessment/sabsa — verify that the recorded owner
@@ -406,7 +406,7 @@ If the next task is a consequential decision, use the reviewed assessment as inp
     owner. Do not authorise implementation or invent earlier creation records.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-layered Assess whether the reviewed monitoring-platform
@@ -431,17 +431,17 @@ environment; do not infer that our recovery target has been met.”
 Continue the current domain conversation with that evidence request.
 If a review ledger already exists, use its actual identifier:
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger> Incorporate Bob's supplied restoration evidence into the assessment. Preserve the recoverability finding if the evidence does not demonstrate the stated target.
-```
+    ```text
+    /rework <reported-ledger> Incorporate Bob's supplied restoration evidence into the assessment. Preserve the recoverability finding if the evidence does not demonstrate the stated target.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger> Incorporate Bob's supplied restoration evidence into the assessment. Preserve the recoverability finding if the evidence does not demonstrate the stated target.
-```
+    ```text
+    $workflow-rework <reported-ledger> Incorporate Bob's supplied restoration evidence into the assessment. Preserve the recoverability finding if the evidence does not demonstrate the stated target.
+    ```
 
 Replace the placeholder with the ledger returned by review. Ask an
 independent reviewer to verify the finding against the actual result;

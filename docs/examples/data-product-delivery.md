@@ -54,17 +54,17 @@ paths if the workflow reports a different location from `working/`.
 
 ### 1. Understand consumers and sources
 
-**Claude**
+=== "Claude Code"
 
-```text
-/analyse inputs/ for the inventory data product. Identify consumers, source limitations, disputed definitions and required freshness.
-```
+    ```text
+    /analyse inputs/ for the inventory data product. Identify consumers, source limitations, disputed definitions and required freshness.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse inputs/ for the inventory data product. Identify consumers, source limitations, disputed definitions and required freshness.
-```
+    ```text
+    $workflow-analyse inputs/ for the inventory data product. Identify consumers, source limitations, disputed definitions and required freshness.
+    ```
 
 Inspect whether the source schema actually contains the fields needed
 for the proposed measure. Separate source-system timestamps from
@@ -73,17 +73,17 @@ every record is current.
 
 ### 2. Define the product and evidence
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Prepare the inventory data-product delivery from inputs/. Trace definitions, quality rules, access constraints, ownership and acceptance evidence into proposed material in working/.
-```
+    ```text
+    /layered Prepare the inventory data-product delivery from inputs/. Trace definitions, quality rules, access constraints, ownership and acceptance evidence into proposed material in working/.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Prepare the inventory data-product delivery from inputs/. Trace definitions, quality rules, access constraints, ownership and acceptance evidence into proposed material in working/.
-```
+    ```text
+    $workflow-layered Prepare the inventory data-product delivery from inputs/. Trace definitions, quality rules, access constraints, ownership and acceptance evidence into proposed material in working/.
+    ```
 
 Inspect the contract between producer and consumer. It should make
 exclusions and latency visible and say who handles a broken feed. Avoid
@@ -92,17 +92,17 @@ complete source coverage.
 
 ### 3. Implement the bounded change
 
-**Claude**
+=== "Claude Code"
 
-```text
-/develop Implement the agreed inventory transformation and checks using the reviewed design in working/ and authorised sample inputs. Keep unapproved definition choices explicit.
-```
+    ```text
+    /develop Implement the agreed inventory transformation and checks using the reviewed design in working/ and authorised sample inputs. Keep unapproved definition choices explicit.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-develop Implement the agreed inventory transformation and checks using the reviewed design in working/ and authorised sample inputs. Keep unapproved definition choices explicit.
-```
+    ```text
+    $workflow-develop Implement the agreed inventory transformation and checks using the reviewed design in working/ and authorised sample inputs. Keep unapproved definition choices explicit.
+    ```
 
 Inspect the actual changed code and evidence returned by the development
 workflow. The intended checks should expose duplicate items, missing
@@ -115,17 +115,17 @@ When review presents the criteria and their hash, inspect them and
 answer YES only if they match this task. The review then proceeds; that
 confirmation authorises the review, not the deliverable or a risk.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/review working/ against inputs/definitions.md and inputs/quality-expectations.md; check traceability, consumer meaning and evidence limitations.
-```
+    ```text
+    /review working/ against inputs/definitions.md and inputs/quality-expectations.md; check traceability, consumer meaning and evidence limitations.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review working/ against inputs/definitions.md and inputs/quality-expectations.md; check traceability, consumer meaning and evidence limitations.
-```
+    ```text
+    $workflow-review working/ against inputs/definitions.md and inputs/quality-expectations.md; check traceability, consumer meaning and evidence limitations.
+    ```
 
 The illustrative escalation is that two systems count transferred stock
 differently. Alice replies: "Keep transfer stock separate until the data
@@ -140,19 +140,19 @@ returned by the preceding review. Keep this same ledger through rework
 and independent verification; do not invent one or mark findings closed
 without verification.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger>
-Use the current findings ledger to revise the inventory product documentation and implementation as appropriate. Preserve the unresolved transfer definition and request independent verification.
-```
+    ```text
+    /rework <reported-ledger>
+    Use the current findings ledger to revise the inventory product documentation and implementation as appropriate. Preserve the unresolved transfer definition and request independent verification.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger>
-Use the current findings ledger to revise the inventory product documentation and implementation as appropriate. Preserve the unresolved transfer definition and request independent verification.
-```
+    ```text
+    $workflow-rework <reported-ledger>
+    Use the current findings ledger to revise the inventory product documentation and implementation as appropriate. Preserve the unresolved transfer definition and request independent verification.
+    ```
 
 If a source adds a new reservation state, register the schema revision
 and revisit definitions, transformations and checks. Inspect the updated

@@ -47,49 +47,49 @@ actually reported. Never invent its identifier or erase open findings.
 
 ### 1. Understand the affected work
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/analyse input/ for the service-desk practice change. Identify affected roles, ambiguous categories and evidence missing from the pilot. Do not infer adoption from attendance.
-```
+    ```text
+    /analyse input/ for the service-desk practice change. Identify affected roles, ambiguous categories and evidence missing from the pilot. Do not infer adoption from attendance.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse input/ for the service-desk practice change. Identify affected roles, ambiguous categories and evidence missing from the pilot. Do not infer adoption from attendance.
-```
+    ```text
+    $workflow-analyse input/ for the service-desk practice change. Identify affected roles, ambiguous categories and evidence missing from the pilot. Do not infer adoption from attendance.
+    ```
 
 Inspect whether the analysis distinguishes office differences from individual mistakes. If a category depends on information agents never receive, more training will not fix the process. Ask Bob for representative anonymized tickets and the decision points used by experienced staff.
 
 ### 2. Frame the adoption outcome
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/layered Prepare a bounded adoption plan for the participating service desks. Connect desired outcomes to training, local support, exception handling and measurable observations.
-```
+    ```text
+    /layered Prepare a bounded adoption plan for the participating service desks. Connect desired outcomes to training, local support, exception handling and measurable observations.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Prepare a bounded adoption plan for the participating service desks. Connect desired outcomes to training, local support, exception handling and measurable observations.
-```
+    ```text
+    $workflow-layered Prepare a bounded adoption plan for the participating service desks. Connect desired outcomes to training, local support, exception handling and measurable observations.
+    ```
 
 Check that success is expressed as changed work, such as correct handoffs or fewer avoidable recategorizations. Course completion and guide downloads are supporting measures. The plan should name who owns category clarification after launch and who can pause rollout.
 
 ### 3. Set material-review criteria
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/criteria .
-```
+    ```text
+    /criteria .
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-criteria .
-```
+    ```text
+    $workflow-criteria .
+    ```
 
 This displays or initializes the project criteria. Then ask:
 
@@ -101,33 +101,33 @@ Read the proposed criteria from a new team member's position. Decide whether an 
 
 ### 4. Prepare the guide
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/develop Develop the adoption guidance and practice examples as documentation only, using the agreed plan and actual pilot feedback. Keep draft outcomes separate from observed results.
-```
+    ```text
+    /develop Develop the adoption guidance and practice examples as documentation only, using the agreed plan and actual pilot feedback. Keep draft outcomes separate from observed results.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-develop Develop the adoption guidance and practice examples as documentation only, using the agreed plan and actual pilot feedback. Keep draft outcomes separate from observed results.
-```
+    ```text
+    $workflow-develop Develop the adoption guidance and practice examples as documentation only, using the agreed plan and actual pilot feedback. Keep draft outcomes separate from observed results.
+    ```
 
 Inspect whether each lesson explains the task, a decision and the consequence of choosing incorrectly. Use fictional tickets for illustration and label them as such. Do not copy confidential customer reports into a broadly distributed training pack.
 
 ### 5. Review, rework and prepare handoff
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/review <reported-review-target> the adoption guidance against the agreed criteria. Record confusing examples and missing exception routes before distribution.
-```
+    ```text
+    /review <reported-review-target> the adoption guidance against the agreed criteria. Record confusing examples and missing exception routes before distribution.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review <reported-review-target> the adoption guidance against the agreed criteria. Record confusing examples and missing exception routes before distribution.
-```
+    ```text
+    $workflow-review <reported-review-target> the adoption guidance against the agreed criteria. Record confusing examples and missing exception routes before distribution.
+    ```
 
 Read the findings with Alice and use rework for corrections. If no representative learner has tried the guide, preserve that limitation. Put the reviewed guidance and the proposed feedback process under output/; publishing it does not establish successful rollout.
 

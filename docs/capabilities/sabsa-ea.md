@@ -33,18 +33,35 @@ In a **Claude Code** session use the `/sabsa` and `/repository` commands shown b
 
 ## Main commands
 
-```text
-/sabsa prepare <library>
-/sabsa create <library>
-/sabsa update <element> <library>
-/sabsa review <library>
-/sabsa suggest <library>
-/sabsa questions <library>
-/sabsa approve <library>
-/sabsa approval <library>
-/sabsa document <library> [as docx]
-/sabsa template <library>
-```
+=== "Claude Code"
+
+    ```text
+    /sabsa prepare <library>
+    /sabsa create <library>
+    /sabsa update <element> <library>
+    /sabsa review <library>
+    /sabsa suggest <library>
+    /sabsa questions <library>
+    /sabsa approve <library>
+    /sabsa approval <library>
+    /sabsa document <library> [as docx]
+    /sabsa template <library>
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-sabsa prepare <library>
+    $workflow-sabsa create <library>
+    $workflow-sabsa update <element> <library>
+    $workflow-sabsa review <library>
+    $workflow-sabsa suggest <library>
+    $workflow-sabsa questions <library>
+    $workflow-sabsa approve <library>
+    $workflow-sabsa approval <library>
+    $workflow-sabsa document <library> [as docx]
+    $workflow-sabsa template <library>
+    ```
 
 ## Enterprise architecture repository
 
@@ -60,12 +77,23 @@ semantic_identity_authority: JAI
 
 That means the repository is authoritative for architecture-domain projection state, lifecycle, views, relationships and related EA governance; it does not create a second global identity for an object that already exists in JAI/SABSA semantics.
 
-```text
-/repository validate architecture-repository.json
-/repository views architecture-repository.json all
-/repository portfolio architecture-repository.json
-/repository export architecture-repository.json model.xml
-```
+=== "Claude Code"
+
+    ```text
+    /repository validate architecture-repository.json
+    /repository views architecture-repository.json all
+    /repository portfolio architecture-repository.json
+    /repository export architecture-repository.json model.xml
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-repository validate architecture-repository.json
+    $workflow-repository views architecture-repository.json all
+    $workflow-repository portfolio architecture-repository.json
+    $workflow-repository export architecture-repository.json model.xml
+    ```
 
 Legacy repository versions `26.10`, `26.10.1`, `26.10.2` and `26.10.3` are accepted for read/migrate; current writes use the JAI-scoped profile-native model.
 
@@ -101,7 +129,7 @@ The document workflow selects a viewpoint and presents its reviewed semantic con
     status explicit.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa document project/sabsa — generate the Logical Security

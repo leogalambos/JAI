@@ -6,13 +6,21 @@ First choose the assurance boundary using [the methodical workflow guide](method
 
 Use a layered engagement when the output is consequential: somebody may act on it, approve it, publish it, change a production system because of it, or later need to defend why it was allowed.
 
-The high-level entry point in Claude Code is:
+Choose the high-level entry point for your provider:
 
-```text
-/layered <consequential intent>
-```
+=== "Claude Code"
 
-On Codex, use the corresponding `$workflow-layered <consequential intent>` skill in the Codex conversation (not in a system shell).
+    ```text
+    /layered <consequential intent>
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-layered <consequential intent>
+    ```
+
+Enter the selected command in the provider conversation, not in a system shell.
 
 The runtime then uses six JAI responsibility layers plus the external L0 Human Authority boundary. The layers are not six mandatory LLM calls: deterministic checks, several agents or human specialists may exist inside a layer. What is mandatory inside a layered engagement is preservation of the relevant contracts, evidence, review and authority boundaries.
 

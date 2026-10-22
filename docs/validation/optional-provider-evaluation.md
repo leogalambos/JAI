@@ -15,12 +15,23 @@ Use an explicit model selector appropriate for that provider. Preflight only
 locates an executable; it does not inspect credentials, authenticate, execute
 the CLI or claim that the account is usable.
 
-```bash
-python3 .ai/runtime/tools/optional_provider_eval.py preflight \
-  --provider codex --root .
-python3 .ai/runtime/tools/optional_provider_eval.py plan \
-  --provider codex --root . --family adr --cases 3 --model MODEL_ID
-```
+=== "Claude Code"
+
+    ```bash
+    python3 .ai/runtime/tools/optional_provider_eval.py preflight \
+      --provider claude --root .
+    python3 .ai/runtime/tools/optional_provider_eval.py plan \
+      --provider claude --root . --family adr --cases 3 --model MODEL_ID
+    ```
+
+=== "Codex CLI"
+
+    ```bash
+    python3 .ai/runtime/tools/optional_provider_eval.py preflight \
+      --provider codex --root .
+    python3 .ai/runtime/tools/optional_provider_eval.py plan \
+      --provider codex --root . --family adr --cases 3 --model MODEL_ID
+    ```
 
 `plan` is the dry-run command. It validates the bundled inputs and records
 scope without subprocess execution or inference. Missing executables produce
@@ -32,15 +43,26 @@ CLI installation; there is no automatic installation or fallback provider.
 Run from a normal operator terminal outside nested coding-agent execution,
 only after reviewing the plan and authorizing the expense:
 
-```bash
-python3 .ai/runtime/tools/optional_provider_eval.py run \
-  --provider codex --root . --family adr --cases 3 --model MODEL_ID \
-  --max-invocations 3 --timeout 60 --consent-live \
-  --output build/optional-provider-run.json
-```
+=== "Claude Code"
 
-Substitute `--provider claude` and a valid Claude model selector for that
-provider. One to three cases select the bundled complexity levels in order.
+    ```bash
+    python3 .ai/runtime/tools/optional_provider_eval.py run \
+      --provider claude --root . --family adr --cases 3 --model MODEL_ID \
+      --max-invocations 3 --timeout 60 --consent-live \
+      --output build/optional-provider-run.json
+    ```
+
+=== "Codex CLI"
+
+    ```bash
+    python3 .ai/runtime/tools/optional_provider_eval.py run \
+      --provider codex --root . --family adr --cases 3 --model MODEL_ID \
+      --max-invocations 3 --timeout 60 --consent-live \
+      --output build/optional-provider-run.json
+    ```
+
+Use a valid model selector for the selected provider in place of `MODEL_ID`.
+One to three cases select the bundled complexity levels in order.
 Codex uses its read-only sandbox; Claude tools are disabled. These flags
 limit this evaluation to text assessment. No retries or provider fallback
 occur. A failure stops remaining cases.

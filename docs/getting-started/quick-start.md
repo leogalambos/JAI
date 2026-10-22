@@ -15,7 +15,7 @@ and the limits of experimental capture.
 
 These are short exercises across the demo estate, not a single governed engagement. For a complete reader journey, continue to [How to use JAI](../examples/how-to-use-JAI/index.md): choose the assurance arrangement, then follow the security-assessment, Android-development or commercial-proposal case. A final `/layered` exercise here does not recreate a layered history for preceding exercises.
 
-**Run the examples inside your Claude Code or Codex CLI session** in the demo workspace; do not paste these into a system shell. Except where shown explicitly, examples below use the **Claude** `/command` notation; Codex uses the corresponding **`$workflow-command`** skill with the same intent. The provider agent is responsible for calling the internal Python helpers. Manual shell work is normally limited to installation/maintenance and the special Codex **L0 human-authority** action; see [the interaction model](../using/interaction-model.md).
+**Run the examples inside your Claude Code or Codex CLI session** in the demo workspace; do not paste these into a system shell. Choose the Claude Code or Codex CLI tab for each example; both variants express the same intent. The provider agent is responsible for calling the internal Python helpers. Manual shell work is normally limited to installation/maintenance and the special Codex **L0 human-authority** action; see [the interaction model](../using/interaction-model.md).
 
 | User intent | Claude command | Codex skill |
 | --- | --- | --- |
@@ -30,17 +30,17 @@ These are short exercises across the demo estate, not a single governed engageme
 
 ## 1. Create the demo estate
 
-Claude:
+=== "Claude Code"
 
-```text
-/demo setup
-```
+    ```text
+    /demo setup
+    ```
 
-Codex:
+=== "Codex CLI"
 
-```text
-$workflow-demo setup
-```
+    ```text
+    $workflow-demo setup
+    ```
 
 This creates three practice workspaces under `~/it-role-demo/`.
 
@@ -52,9 +52,17 @@ This creates three practice workspaces under `~/it-role-demo/`.
 
 ## 2. Analyse before judging
 
-```text
-/analyse invoice-service
-```
+=== "Claude Code"
+
+    ```text
+    /analyse invoice-service
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-analyse invoice-service
+    ```
 
 ### Expected shape of the answer
 
@@ -74,10 +82,19 @@ A good result first explains what the system is and where complexity lies.
 
 ## 3. Establish criteria, then review
 
-```text
-/criteria invoice-service
-/review invoice-service
-```
+=== "Claude Code"
+
+    ```text
+    /criteria invoice-service
+    /review invoice-service
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-criteria invoice-service
+    $workflow-review invoice-service
+    ```
 
 ### What to expect
 
@@ -89,19 +106,37 @@ A good result first explains what the system is and where complexity lies.
 
 ## 4. Diagnose an intermittent defect
 
-```text
-/diagnose test_charge_is_approved in tests/test_payments.py fails now and then.
-```
+=== "Claude Code"
+
+    ```text
+    /diagnose test_charge_is_approved in tests/test_payments.py fails now and then.
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-diagnose test_charge_is_approved in tests/test_payments.py fails now and then.
+    ```
 
 The defect workflow must compare the last known good state, a working analogue and timing/order effects. That is materially stronger than a shallow “guess a fix” answer.
 
 ## 5. Build and inspect a SABSA library
 
-```text
-/sabsa prepare acme-pay/sabsa -- source material is in acme-pay/client-material
-/sabsa create acme-pay/sabsa
-/sabsa questions acme-pay/sabsa
-```
+=== "Claude Code"
+
+    ```text
+    /sabsa prepare acme-pay/sabsa -- source material is in acme-pay/client-material
+    /sabsa create acme-pay/sabsa
+    /sabsa questions acme-pay/sabsa
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-sabsa prepare acme-pay/sabsa -- source material is in acme-pay/client-material
+    $workflow-sabsa create acme-pay/sabsa
+    $workflow-sabsa questions acme-pay/sabsa
+    ```
 
 ### What to expect
 
@@ -115,14 +150,30 @@ The six viewpoint documents include authored narrative, full specifications and 
 
 ## 6. Run a consequential decision
 
-```text
-/layered Decide whether invoice-service is ready to be exposed to external partners. It must be secure enough for partner traffic and its money calculations must be exact.
-```
+=== "Claude Code"
+
+    ```text
+    /layered Decide whether invoice-service is ready to be exposed to external partners. It must be secure enough for partner traffic and its money calculations must be exact.
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-layered Decide whether invoice-service is ready to be exposed to external partners. It must be secure enough for partner traffic and its money calculations must be exact.
+    ```
 
 Then request an independent report **in the same provider conversation** (not a Fabric shell invocation):
 
-```text
-/fabric-report
-```
+=== "Claude Code"
 
-This is the fastest way to experience what makes the Justifiable Fabric different from a normal AI-generated recommendation. In Codex the corresponding call is `$workflow-fabric-report`. The report should cite actual engagement IDs, evidence and blockers; if a risk/authority escalation reaches L0, Codex cannot perform the guarded approval for you. A trusted human action may be required before the result becomes releasable.
+    ```text
+    /fabric-report
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-fabric-report
+    ```
+
+This is the fastest way to experience what makes the Justifiable Fabric different from a normal AI-generated recommendation. The report should cite actual engagement IDs, evidence and blockers; if a risk/authority escalation reaches L0, Codex cannot perform the guarded approval for you. A trusted human action may be required before the result becomes releasable.

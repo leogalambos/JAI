@@ -52,17 +52,17 @@ paths if the workflow reports a different location from `working/`.
 
 ### 1. Understand the service and evidence
 
-**Claude**
+=== "Claude Code"
 
-```text
-/analyse inputs/ for appointment-message supplier onboarding. Describe information flows, service dependencies, assurance coverage and missing evidence.
-```
+    ```text
+    /analyse inputs/ for appointment-message supplier onboarding. Describe information flows, service dependencies, assurance coverage and missing evidence.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse inputs/ for appointment-message supplier onboarding. Describe information flows, service dependencies, assurance coverage and missing evidence.
-```
+    ```text
+    $workflow-analyse inputs/ for appointment-message supplier onboarding. Describe information flows, service dependencies, assurance coverage and missing evidence.
+    ```
 
 Inspect the scope before scoring the questionnaire. A supplier may
 provide satisfactory evidence for one product and none for the product
@@ -71,17 +71,17 @@ in the service description.
 
 ### 2. Prepare the onboarding decision
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Assess the supplier using inputs/. Prepare risk, contractual, privacy and operational acceptance needs, including exit and monitoring, in working/.
-```
+    ```text
+    /layered Assess the supplier using inputs/. Prepare risk, contractual, privacy and operational acceptance needs, including exit and monitoring, in working/.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Assess the supplier using inputs/. Prepare risk, contractual, privacy and operational acceptance needs, including exit and monitoring, in working/.
-```
+    ```text
+    $workflow-layered Assess the supplier using inputs/. Prepare risk, contractual, privacy and operational acceptance needs, including exit and monitoring, in working/.
+    ```
 
 Inspect how each concern affects a concrete decision or contract
 requirement. Avoid a single unexplained risk score. The proposed
@@ -94,17 +94,17 @@ When review presents the criteria and their hash, inspect them and
 answer YES only if they match this task. The review then proceeds; that
 confirmation authorises the review, not the deliverable or a risk.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/review working/ against the supplied onboarding policies; check evidence scope, unresolved contract clauses and receiving-service responsibilities.
-```
+    ```text
+    /review working/ against the supplied onboarding policies; check evidence scope, unresolved contract clauses and receiving-service responsibilities.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review working/ against the supplied onboarding policies; check evidence scope, unresolved contract clauses and receiving-service responsibilities.
-```
+    ```text
+    $workflow-review working/ against the supplied onboarding policies; check evidence scope, unresolved contract clauses and receiving-service responsibilities.
+    ```
 
 Read located findings and compare contract schedules with the technical
 scope. A statement that encryption is available does not establish how
@@ -118,19 +118,19 @@ returned by the preceding review. Keep this same ledger through rework
 and independent verification; do not invent one or mark findings closed
 without verification.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger>
-Use the current findings ledger to keep the supplier's unverified support-access controls open and prepare evidence and contract options for the responsible owners.
-```
+    ```text
+    /rework <reported-ledger>
+    Use the current findings ledger to keep the supplier's unverified support-access controls open and prepare evidence and contract options for the responsible owners.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger>
-Use the current findings ledger to keep the supplier's unverified support-access controls open and prepare evidence and contract options for the responsible owners.
-```
+    ```text
+    $workflow-rework <reported-ledger>
+    Use the current findings ledger to keep the supplier's unverified support-access controls open and prepare evidence and contract options for the responsible owners.
+    ```
 
 The illustrative supplier declines to disclose support-access evidence
 before signature. Alice replies: "Do not treat the questionnaire as
@@ -140,17 +140,17 @@ records its act using the exact runtime-emitted trusted command.
 
 ### 5. Reassess onboarding conditions
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Reassess the supplier after the new evidence or negotiated terms in inputs/. Update conditions, monitoring ownership and operational handoff before a recommendation.
-```
+    ```text
+    /layered Reassess the supplier after the new evidence or negotiated terms in inputs/. Update conditions, monitoring ownership and operational handoff before a recommendation.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Reassess the supplier after the new evidence or negotiated terms in inputs/. Update conditions, monitoring ownership and operational handoff before a recommendation.
-```
+    ```text
+    $workflow-layered Reassess the supplier after the new evidence or negotiated terms in inputs/. Update conditions, monitoring ownership and operational handoff before a recommendation.
+    ```
 
 If a new subprocessor appears, register it as a changed input and
 revisit privacy, trust and exit implications. Inspect whether conditions

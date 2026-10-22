@@ -47,49 +47,49 @@ actually reported. Never invent its identifier or erase open findings.
 
 ### 1. Map the customer journey and handoffs
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/analyse input/ for employee-portal service integration. Identify ownership gaps between hosting, identity and application suppliers, using actual handoff records.
-```
+    ```text
+    /analyse input/ for employee-portal service integration. Identify ownership gaps between hosting, identity and application suppliers, using actual handoff records.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse input/ for employee-portal service integration. Identify ownership gaps between hosting, identity and application suppliers, using actual handoff records.
-```
+    ```text
+    $workflow-analyse input/ for employee-portal service integration. Identify ownership gaps between hosting, identity and application suppliers, using actual handoff records.
+    ```
 
 Inspect whether the map follows a user login through every dependency. Separate measured transfer delays from opinions about supplier performance. If incident clocks use different time zones or pause rules, reconcile them before comparing elapsed times or blaming one supplier.
 
 ### 2. Frame the operating improvement
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/layered Prepare a bounded service-integration proposal for incident coordination, shared observations and escalation. Preserve contractual boundaries and identify changes requiring negotiation.
-```
+    ```text
+    /layered Prepare a bounded service-integration proposal for incident coordination, shared observations and escalation. Preserve contractual boundaries and identify changes requiring negotiation.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Prepare a bounded service-integration proposal for incident coordination, shared observations and escalation. Preserve contractual boundaries and identify changes requiring negotiation.
-```
+    ```text
+    $workflow-layered Prepare a bounded service-integration proposal for incident coordination, shared observations and escalation. Preserve contractual boundaries and identify changes requiring negotiation.
+    ```
 
 Check whether one person coordinates the end-to-end incident without pretending to own every supplier's technology. A proposed shared bridge needs participation hours and a fallback when a supplier cannot join. Do not describe a suggested handoff time as an existing contractual commitment.
 
 ### 3. Agree review criteria
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/criteria .
-```
+    ```text
+    /criteria .
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-criteria .
-```
+    ```text
+    $workflow-criteria .
+    ```
 
 This displays or initializes the project criteria. Then ask:
 
@@ -101,33 +101,33 @@ Read the criteria against the actual employee service hours. A sequence that wai
 
 ### 4. Review the proposed agreement
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/review <reported-review-target> the integration proposal against the supplied obligations and fixed criteria. Locate ambiguous ownership, conflicting clocks and unsupported performance claims.
-```
+    ```text
+    /review <reported-review-target> the integration proposal against the supplied obligations and fixed criteria. Locate ambiguous ownership, conflicting clocks and unsupported performance claims.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review <reported-review-target> the integration proposal against the supplied obligations and fixed criteria. Locate ambiguous ownership, conflicting clocks and unsupported performance claims.
-```
+    ```text
+    $workflow-review <reported-review-target> the integration proposal against the supplied obligations and fixed criteria. Locate ambiguous ownership, conflicting clocks and unsupported performance claims.
+    ```
 
 Inspect examples of a failed login and an infrastructure alarm. Each should identify who coordinates, who investigates and who confirms restoration to the user. If no party can observe the whole journey, retain the gap instead of drawing a dashboard that does not exist.
 
 ### 5. Rework and prepare negotiation handoff
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger> Rework open integration findings and prepare a proposed supplier discussion pack under output/. Keep unagreed responsibilities and service levels explicitly proposed.
-```
+    ```text
+    /rework <reported-ledger> Rework open integration findings and prepare a proposed supplier discussion pack under output/. Keep unagreed responsibilities and service levels explicitly proposed.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger> Rework open integration findings and prepare a proposed supplier discussion pack under output/. Keep unagreed responsibilities and service levels explicitly proposed.
-```
+    ```text
+    $workflow-rework <reported-ledger> Rework open integration findings and prepare a proposed supplier discussion pack under output/. Keep unagreed responsibilities and service levels explicitly proposed.
+    ```
 
 Read the pack from each supplier's boundary as well as ACME's. A useful draft makes disagreements visible enough to negotiate. Record actual supplier responses separately; the agent's reconstruction of a likely response is not evidence that a supplier accepted the model.
 

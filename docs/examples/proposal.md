@@ -43,21 +43,21 @@ output appears automatically. Inspect the returned files and findings.
 
 ### 1. Establish the bid engagement
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Establish the ACME portal bid engagement from inputs/. Identify
-intent, boundaries, human commercial owner and authority. Keep proposed
-working material in working/; do not commit an offer.
-```
+    ```text
+    /layered Establish the ACME portal bid engagement from inputs/. Identify
+    intent, boundaries, human commercial owner and authority. Keep proposed
+    working material in working/; do not commit an offer.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Establish the ACME portal bid engagement from inputs/.
-Identify intent, boundaries, human commercial owner and authority. Keep
-proposed working material in working/; do not commit an offer.
-```
+    ```text
+    $workflow-layered Establish the ACME portal bid engagement from inputs/.
+    Identify intent, boundaries, human commercial owner and authority. Keep
+    proposed working material in working/; do not commit an offer.
+    ```
 
 Use layered delivery because the offer crosses technical, commercial and
 approval boundaries. Inspect the returned engagement identifier, scope
@@ -66,23 +66,23 @@ the commercial command extends an existing engagement.
 
 ### 2. Add the supplier commercial profile
 
-**Claude**
+=== "Claude Code"
 
-```text
-/commercial Extend the existing portal bid engagement with the supplier
-commercial profile. Alice is the proposed human commercial owner.
-Scope the bid, estimates, pricing and separate commercial assurance.
-Use inputs/ and keep proposed deliverables in working/.
-```
+    ```text
+    /commercial Extend the existing portal bid engagement with the supplier
+    commercial profile. Alice is the proposed human commercial owner.
+    Scope the bid, estimates, pricing and separate commercial assurance.
+    Use inputs/ and keep proposed deliverables in working/.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-commercial Extend the existing portal bid engagement with the
-supplier commercial profile. Alice is the proposed human commercial
-owner. Scope the bid, estimates, pricing and separate commercial
-assurance. Use inputs/ and keep proposed deliverables in working/.
-```
+    ```text
+    $workflow-commercial Extend the existing portal bid engagement with the
+    supplier commercial profile. Alice is the proposed human commercial
+    owner. Scope the bid, estimates, pricing and separate commercial
+    assurance. Use inputs/ and keep proposed deliverables in working/.
+    ```
 
 Use the actual engagement identifier returned in step 1 if prompted.
 Inspect the proposed profile change and its required authority before
@@ -96,21 +96,21 @@ When review presents the criteria and their hash, inspect them and
 answer YES only if they match this task. The review then proceeds; that
 confirmation authorises the review, not the deliverable or a risk.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/review working/ against inputs/customer-rfp.pdf and the recorded bid
-criteria; check requirement coverage, financial consistency and the
-visibility of unresolved contractual exceptions.
-```
+    ```text
+    /review working/ against inputs/customer-rfp.pdf and the recorded bid
+    criteria; check requirement coverage, financial consistency and the
+    visibility of unresolved contractual exceptions.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review working/ against inputs/customer-rfp.pdf and the recorded
-bid criteria; check requirement coverage, financial consistency and the
-visibility of unresolved contractual exceptions.
-```
+    ```text
+    $workflow-review working/ against inputs/customer-rfp.pdf and the recorded
+    bid criteria; check requirement coverage, financial consistency and the
+    visibility of unresolved contractual exceptions.
+    ```
 
 This document review complements the commercial assurance in the
 engagement; it does not substitute for professional or customer
@@ -125,23 +125,23 @@ options. Alice's illustrative reply is: "Do not offer continuous support
 at the current price. Request a customer clarification and keep the bid
 pending." That reply narrows the work; it is not a signed authority act.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger>
-Use the current findings ledger. Record the support-hours
-conflict as unresolved, prepare the clarification and revise the
-affected scope and price assumptions without inventing customer consent.
-```
+    ```text
+    /rework <reported-ledger>
+    Use the current findings ledger. Record the support-hours
+    conflict as unresolved, prepare the clarification and revise the
+    affected scope and price assumptions without inventing customer consent.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger>
-Use the current findings ledger. Record the support-hours
-conflict as unresolved, prepare the clarification and revise the
-affected scope and price assumptions without inventing customer consent.
-```
+    ```text
+    $workflow-rework <reported-ledger>
+    Use the current findings ledger. Record the support-hours
+    conflict as unresolved, prepare the clarification and revise the
+    affected scope and price assumptions without inventing customer consent.
+    ```
 
 If JAI emits a protected authority command, the named human runs that
 exact command through the documented trusted path. Never ask the agent
@@ -155,21 +155,21 @@ by the workflow, then follow its manifest and rendering steps. If those
 prerequisites are absent, stop before rendering. Approval for publication
 does not itself approve the business, deployment or risk decision.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/publish Prepare the proposal publication from the reviewed semantic
-artefact in working/ for output/. Preserve qualifications, evidence
-references and the actual approval state.
-```
+    ```text
+    /publish Prepare the proposal publication from the reviewed semantic
+    artefact in working/ for output/. Preserve qualifications, evidence
+    references and the actual approval state.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-publish Prepare the proposal publication from the reviewed
-semantic artefact in working/ for output/. Preserve qualifications,
-evidence references and the actual approval state.
-```
+    ```text
+    $workflow-publish Prepare the proposal publication from the reviewed
+    semantic artefact in working/ for output/. Preserve qualifications,
+    evidence references and the actual approval state.
+    ```
 
 Use publication only when its input and approval prerequisites are
 satisfied. Inspect rendered tables, totals, exception visibility and

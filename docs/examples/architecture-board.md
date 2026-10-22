@@ -53,17 +53,17 @@ paths if the workflow reports a different location from `working/`.
 
 ### 1. Understand the decision boundary
 
-**Claude**
+=== "Claude Code"
 
-```text
-/analyse inputs/ for the integration decision. Separate binding constraints, preferences, evidence and unresolved questions.
-```
+    ```text
+    /analyse inputs/ for the integration decision. Separate binding constraints, preferences, evidence and unresolved questions.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse inputs/ for the integration decision. Separate binding constraints, preferences, evidence and unresolved questions.
-```
+    ```text
+    $workflow-analyse inputs/ for the integration decision. Separate binding constraints, preferences, evidence and unresolved questions.
+    ```
 
 Inspect the scope before analysing products. The current platform owner
 may be a valuable source and still have a preference that deserves
@@ -72,17 +72,17 @@ affected service owners are represented.
 
 ### 2. Build an evidence-based option set
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Prepare the integration decision from inputs/. Compare the shared platform and direct connections, including security, operability, cost basis and reversibility. Use working/ for proposed artefacts.
-```
+    ```text
+    /layered Prepare the integration decision from inputs/. Compare the shared platform and direct connections, including security, operability, cost basis and reversibility. Use working/ for proposed artefacts.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Prepare the integration decision from inputs/. Compare the shared platform and direct connections, including security, operability, cost basis and reversibility. Use working/ for proposed artefacts.
-```
+    ```text
+    $workflow-layered Prepare the integration decision from inputs/. Compare the shared platform and direct connections, including security, operability, cost basis and reversibility. Use working/ for proposed artefacts.
+    ```
 
 Look for a meaningful alternative, explicit assumptions and consequences
 over the service lifecycle. An unsupported numerical score should not
@@ -95,17 +95,17 @@ When review presents the criteria and their hash, inspect them and
 answer YES only if they match this task. The review then proceeds; that
 confirmation authorises the review, not the deliverable or a risk.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/review working/ against inputs/decision-remit.md and inputs/architecture-principles.md; check option fairness and traceable rationale.
-```
+    ```text
+    /review working/ against inputs/decision-remit.md and inputs/architecture-principles.md; check option fairness and traceable rationale.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review working/ against inputs/decision-remit.md and inputs/architecture-principles.md; check option fairness and traceable rationale.
-```
+    ```text
+    $workflow-review working/ against inputs/decision-remit.md and inputs/architecture-principles.md; check option fairness and traceable rationale.
+    ```
 
 Inspect the findings and ensure the proposed recommendation remains
 visibly proposed. A reviewer should identify gaps without rewriting the
@@ -119,19 +119,19 @@ returned by the preceding review. Keep this same ledger through rework
 and independent verification; do not invent one or mark findings closed
 without verification.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger>
-Use the current findings ledger to revise the decision paper. Keep the data-location exception open and prepare its options for the responsible authority.
-```
+    ```text
+    /rework <reported-ledger>
+    Use the current findings ledger to revise the decision paper. Keep the data-location exception open and prepare its options for the responsible authority.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger>
-Use the current findings ledger to revise the decision paper. Keep the data-location exception open and prepare its options for the responsible authority.
-```
+    ```text
+    $workflow-rework <reported-ledger>
+    Use the current findings ledger to revise the decision paper. Keep the data-location exception open and prepare its options for the responsible authority.
+    ```
 
 Suppose the preferred partner connection crosses a jurisdiction boundary
 prohibited by the existing policy. Alice replies: "Do not waive the
@@ -147,17 +147,17 @@ by the workflow, then follow its manifest and rendering steps. If those
 prerequisites are absent, stop before rendering. Approval for publication
 does not itself approve the business, deployment or risk decision.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/publish Prepare a publication from the reviewed semantic artefact in working/ for output/. Preserve alternatives, pending exceptions and the recorded decision status.
-```
+    ```text
+    /publish Prepare a publication from the reviewed semantic artefact in working/ for output/. Preserve alternatives, pending exceptions and the recorded decision status.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-publish Prepare a publication from the reviewed semantic artefact in working/ for output/. Preserve alternatives, pending exceptions and the recorded decision status.
-```
+    ```text
+    $workflow-publish Prepare a publication from the reviewed semantic artefact in working/ for output/. Preserve alternatives, pending exceptions and the recorded decision status.
+    ```
 
 If the partner revises its hosting location, register the new source and
 reopen affected analysis before publication. Inspect the rendered

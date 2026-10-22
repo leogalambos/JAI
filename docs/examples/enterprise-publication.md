@@ -47,33 +47,33 @@ actually reported. Never invent its identifier or erase open findings.
 
 ### 1. Inspect source readiness
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/analyse input/ for publication readiness. Identify the decision's actual status, evidence boundaries and unresolved semantic questions before choosing presentation treatments.
-```
+    ```text
+    /analyse input/ for publication readiness. Identify the decision's actual status, evidence boundaries and unresolved semantic questions before choosing presentation treatments.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse input/ for publication readiness. Identify the decision's actual status, evidence boundaries and unresolved semantic questions before choosing presentation treatments.
-```
+    ```text
+    $workflow-analyse input/ for publication readiness. Identify the decision's actual status, evidence boundaries and unresolved semantic questions before choosing presentation treatments.
+    ```
 
 Inspect whether statements such as 'approved' identify a real authority record. A draft labelled final by its author is still insufficient. Ask Alice to clarify status and the exact source version; Bob must not use layout work to settle a disputed option. If the semantic snapshot is not approved or the profile is not registered, stop before publication and return to the semantic owner. A Markdown filename alone is not a publication-ready snapshot.
 
 ### 2. Set the audience and publication contract
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/criteria .
-```
+    ```text
+    /criteria .
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-criteria .
-```
+    ```text
+    $workflow-criteria .
+    ```
 
 This displays or initializes the project criteria. Then ask:
 
@@ -85,49 +85,49 @@ Read what the management audience needs to decide or understand. If the brief as
 
 ### 3. Prepare the publication set
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/publish Prepare publication from the approved semantic snapshot reported for this project, using its registered publication profile. Preserve its meaning, evidence links and unresolved status. Report the manifest and draft output paths.
-```
+    ```text
+    /publish Prepare publication from the approved semantic snapshot reported for this project, using its registered publication profile. Preserve its meaning, evidence links and unresolved status. Report the manifest and draft output paths.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-publish Prepare publication from the approved semantic snapshot reported for this project, using its registered publication profile. Preserve its meaning, evidence links and unresolved status. Report the manifest and draft output paths.
-```
+    ```text
+    $workflow-publish Prepare publication from the approved semantic snapshot reported for this project, using its registered publication profile. Preserve its meaning, evidence links and unresolved status. Report the manifest and draft output paths.
+    ```
 
 Inspect the proposed source-to-publication mapping and draft outputs. File destinations depend on the actual publication workflow and should be reported by the run. The illustrative output/ directory is your handoff location, not a promise that the command creates a specific PDF or slide deck.
 
 ### 4. Review meaning and presentation
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/review <reported-review-target> the publication set against the fixed criteria and source decision. Check whether financial caveats, rejected alternatives and evidence limitations survived transformation.
-```
+    ```text
+    /review <reported-review-target> the publication set against the fixed criteria and source decision. Check whether financial caveats, rejected alternatives and evidence limitations survived transformation.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review <reported-review-target> the publication set against the fixed criteria and source decision. Check whether financial caveats, rejected alternatives and evidence limitations survived transformation.
-```
+    ```text
+    $workflow-review <reported-review-target> the publication set against the fixed criteria and source decision. Check whether financial caveats, rejected alternatives and evidence limitations survived transformation.
+    ```
 
 Inspect text, tables and any generated graphics together. A red status rendered only through colour may be inaccessible, while a reordered table can change the perceived recommendation. If renderers are unavailable, retain visual checks as NOT_EXECUTED rather than accepting the Markdown preview as equivalent.
 
 ### 5. Rework and release the proposed set
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger> Rework the publication findings without changing the source decision. Prepare the reviewed files and their actual check results for the publication owner.
-```
+    ```text
+    /rework <reported-ledger> Rework the publication findings without changing the source decision. Prepare the reviewed files and their actual check results for the publication owner.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger> Rework the publication findings without changing the source decision. Prepare the reviewed files and their actual check results for the publication owner.
-```
+    ```text
+    $workflow-rework <reported-ledger> Rework the publication findings without changing the source decision. Prepare the reviewed files and their actual check results for the publication owner.
+    ```
 
 Check that a presentational fix has not quietly become a semantic amendment. If Alice changes the decision itself, establish a new source identity and repeat affected checks. Distribution authorization remains with the named owner; a successful render does not authorize sending the files.
 

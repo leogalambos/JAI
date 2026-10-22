@@ -13,17 +13,20 @@ project.
 
 ## Start with your intended outcome
 
-In Claude, enter a request such as:
+Choose your provider and enter a request such as:
 
-```text
-/hint I need to assess the security of an architecture and establish a recurring process for resolving findings.
-```
+=== "Claude Code"
 
-In Codex, use the equivalent skill:
+    ```text
+    /hint I need to assess the security of an architecture and establish a recurring process for resolving findings.
+    ```
 
-```text
-$workflow-hint I need to assess the security of an architecture and establish a recurring process for resolving findings.
-```
+=== "Codex CLI"
+
+    ```text
+    $workflow-hint I need to assess the security of an architecture and establish a recurring process for resolving findings.
+    ```
+
 
 State the intended deliverable, available inputs, project phase and material
 constraints. Describe sensitive material by category until its use is

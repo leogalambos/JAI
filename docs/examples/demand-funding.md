@@ -51,17 +51,17 @@ paths if the workflow reports a different location from `working/`.
 
 ### 1. Normalise the incoming demand
 
-**Claude**
+=== "Claude Code"
 
-```text
-/analyse inputs/ for the funding round. Identify incomplete submissions, dependencies, existing commitments and incomparable assumptions.
-```
+    ```text
+    /analyse inputs/ for the funding round. Identify incomplete submissions, dependencies, existing commitments and incomparable assumptions.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse inputs/ for the funding round. Identify incomplete submissions, dependencies, existing commitments and incomparable assumptions.
-```
+    ```text
+    $workflow-analyse inputs/ for the funding round. Identify incomplete submissions, dependencies, existing commitments and incomparable assumptions.
+    ```
 
 Inspect whether demand is expressed as an outcome or merely a preferred
 solution. A mandated deadline differs from a sponsor's desired date.
@@ -70,17 +70,17 @@ scores that imply they were fully assessed.
 
 ### 2. Prepare feasible portfolio options
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Prepare the funding-round recommendation from inputs/. Compare capacity-constrained options, dependency sequencing, funding conditions and deferred demands in working/.
-```
+    ```text
+    /layered Prepare the funding-round recommendation from inputs/. Compare capacity-constrained options, dependency sequencing, funding conditions and deferred demands in working/.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Prepare the funding-round recommendation from inputs/. Compare capacity-constrained options, dependency sequencing, funding conditions and deferred demands in working/.
-```
+    ```text
+    $workflow-layered Prepare the funding-round recommendation from inputs/. Compare capacity-constrained options, dependency sequencing, funding conditions and deferred demands in working/.
+    ```
 
 Inspect scenarios rather than a single artificial optimum. A request may
 be valuable and still depend on an unfunded platform change. Make the
@@ -93,17 +93,17 @@ When review presents the criteria and their hash, inspect them and
 answer YES only if they match this task. The review then proceeds; that
 confirmation authorises the review, not the deliverable or a risk.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/review working/ against inputs/funding-policy.md and inputs/strategy.md; check criteria consistency, capacity realism and treatment of incomplete demand.
-```
+    ```text
+    /review working/ against inputs/funding-policy.md and inputs/strategy.md; check criteria consistency, capacity realism and treatment of incomplete demand.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review working/ against inputs/funding-policy.md and inputs/strategy.md; check criteria consistency, capacity realism and treatment of incomplete demand.
-```
+    ```text
+    $workflow-review working/ against inputs/funding-policy.md and inputs/strategy.md; check criteria consistency, capacity realism and treatment of incomplete demand.
+    ```
 
 Read findings for inconsistent scoring and unrecorded exceptions.
 Independent review should challenge how the recommendation was reached,
@@ -117,19 +117,19 @@ returned by the preceding review. Keep this same ledger through rework
 and independent verification; do not invent one or mark findings closed
 without verification.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger>
-Use the current findings ledger to retain the portal's identity-platform dependency and prepare funding options that do not hide its cost.
-```
+    ```text
+    /rework <reported-ledger>
+    Use the current findings ledger to retain the portal's identity-platform dependency and prepare funding options that do not hide its cost.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger>
-Use the current findings ledger to retain the portal's identity-platform dependency and prepare funding options that do not hide its cost.
-```
+    ```text
+    $workflow-rework <reported-ledger>
+    Use the current findings ledger to retain the portal's identity-platform dependency and prepare funding options that do not hide its cost.
+    ```
 
 The illustrative conflict is that the portal is ranked first but its
 prerequisite is outside the requested budget. Alice replies: "Show a
@@ -145,17 +145,17 @@ by the workflow, then follow its manifest and rendering steps. If those
 prerequisites are absent, stop before rendering. Approval for publication
 does not itself approve the business, deployment or risk decision.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/publish Prepare a publication from the reviewed semantic recommendation in working/ for output/. Preserve deferred items, conditions and the actual funding status.
-```
+    ```text
+    /publish Prepare a publication from the reviewed semantic recommendation in working/ for output/. Preserve deferred items, conditions and the actual funding status.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-publish Prepare a publication from the reviewed semantic recommendation in working/ for output/. Preserve deferred items, conditions and the actual funding status.
-```
+    ```text
+    $workflow-publish Prepare a publication from the reviewed semantic recommendation in working/ for output/. Preserve deferred items, conditions and the actual funding status.
+    ```
 
 If the budget ceiling changes, register the revised source and reassess
 feasibility rather than merely changing the first page. Inspect the

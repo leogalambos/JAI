@@ -134,17 +134,17 @@ python3 ~/.ai/it-role-house/fabric/fabric.py release <engagement> <fragment-id>
 
 ## Human-friendly and direct inspection
 
-Claude:
+=== "Claude Code"
 
-```text
-/fabric-report [engagement]
-```
+    ```text
+    /fabric-report [engagement]
+    ```
 
-Codex:
+=== "Codex CLI"
 
-```text
-$workflow-fabric-report [engagement]
-```
+    ```text
+    $workflow-fabric-report [engagement]
+    ```
 
 Direct CLI:
 

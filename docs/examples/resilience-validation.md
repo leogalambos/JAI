@@ -47,49 +47,49 @@ actually reported. Never invent its identifier or erase open findings.
 
 ### 1. Understand the failure boundary
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/analyse input/ for a supplier-connection loss exercise. Identify business effects, hidden dependencies and gaps in prior evidence. Do not induce failures.
-```
+    ```text
+    /analyse input/ for a supplier-connection loss exercise. Identify business effects, hidden dependencies and gaps in prior evidence. Do not induce failures.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse input/ for a supplier-connection loss exercise. Identify business effects, hidden dependencies and gaps in prior evidence. Do not induce failures.
-```
+    ```text
+    $workflow-analyse input/ for a supplier-connection loss exercise. Identify business effects, hidden dependencies and gaps in prior evidence. Do not induce failures.
+    ```
 
 Inspect whether the service continues accepting orders when supplier acknowledgments stop. A service-health endpoint may remain green while orders accumulate. Ask for queue behavior, retry limits and reconciliation ownership so the exercise tests the business service rather than only a process monitor.
 
 ### 2. Prepare the exercise plan
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/layered Prepare a bounded resilience exercise for the environment in input/exercise-scope.md. Include observable outcomes, stop conditions, restoration and evidence capture.
-```
+    ```text
+    /layered Prepare a bounded resilience exercise for the environment in input/exercise-scope.md. Include observable outcomes, stop conditions, restoration and evidence capture.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Prepare a bounded resilience exercise for the environment in input/exercise-scope.md. Include observable outcomes, stop conditions, restoration and evidence capture.
-```
+    ```text
+    $workflow-layered Prepare a bounded resilience exercise for the environment in input/exercise-scope.md. Include observable outcomes, stop conditions, restoration and evidence capture.
+    ```
 
 Check that the scope identifies who may stop the exercise and how participants contact that person if the service channel fails. A planning document does not grant permission to disconnect a supplier. Unavailable authorization or environment access must remain a prerequisite.
 
 ### 3. Fix the evidence criteria
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/criteria .
-```
+    ```text
+    /criteria .
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-criteria .
-```
+    ```text
+    $workflow-criteria .
+    ```
 
 This displays or initializes the project criteria. Then ask:
 
@@ -101,33 +101,33 @@ Read what each observation can establish. A tabletop answer explains a proposed 
 
 ### 4. Review readiness to exercise
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/review <reported-review-target> the exercise plan against the fixed criteria and supplied scope. Locate safety, observation and restoration gaps before any operator acts.
-```
+    ```text
+    /review <reported-review-target> the exercise plan against the fixed criteria and supplied scope. Locate safety, observation and restoration gaps before any operator acts.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review <reported-review-target> the exercise plan against the fixed criteria and supplied scope. Locate safety, observation and restoration gaps before any operator acts.
-```
+    ```text
+    $workflow-review <reported-review-target> the exercise plan against the fixed criteria and supplied scope. Locate safety, observation and restoration gaps before any operator acts.
+    ```
 
 Inspect the stop procedure and the expected steady state after restoration. If duplicate orders are possible, the plan needs reconciliation evidence. Do not accept a generic 'rollback available' assertion when the exercise changes business data that routing reversal cannot undo.
 
 ### 5. Rework and assess actual observations
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger> Rework exercise-readiness findings using supplied evidence. If operators later provide results, preserve observations separately from proposed steps and prepare the follow-up under output/.
-```
+    ```text
+    /rework <reported-ledger> Rework exercise-readiness findings using supplied evidence. If operators later provide results, preserve observations separately from proposed steps and prepare the follow-up under output/.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger> Rework exercise-readiness findings using supplied evidence. If operators later provide results, preserve observations separately from proposed steps and prepare the follow-up under output/.
-```
+    ```text
+    $workflow-rework <reported-ledger> Rework exercise-readiness findings using supplied evidence. If operators later provide results, preserve observations separately from proposed steps and prepare the follow-up under output/.
+    ```
 
 Read the actual exercise log before accepting a recovery claim. Record whether the exercise was tabletop, staging or production and which planned steps were not executed. An unexpected stop is useful evidence; it should not be rewritten as a completed scenario to improve the score.
 

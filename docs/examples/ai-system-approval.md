@@ -52,17 +52,17 @@ paths if the workflow reports a different location from `working/`.
 
 ### 1. Bound the proposed use
 
-**Claude**
+=== "Claude Code"
 
-```text
-/analyse inputs/ for the claims-drafting assistant. Separate intended and excluded uses, actual evaluation evidence, assumptions and missing owner decisions.
-```
+    ```text
+    /analyse inputs/ for the claims-drafting assistant. Separate intended and excluded uses, actual evaluation evidence, assumptions and missing owner decisions.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse inputs/ for the claims-drafting assistant. Separate intended and excluded uses, actual evaluation evidence, assumptions and missing owner decisions.
-```
+    ```text
+    $workflow-analyse inputs/ for the claims-drafting assistant. Separate intended and excluded uses, actual evaluation evidence, assumptions and missing owner decisions.
+    ```
 
 Inspect whether the system merely drafts text or can take actions. A
 change from suggestion to automatic claim disposition changes the
@@ -71,17 +71,17 @@ human reviewer can realistically verify.
 
 ### 2. Prepare the approval package
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Prepare the AI service decision from inputs/. Include control objectives, evaluation limitations, human oversight, release conditions and monitoring; use working/ for proposed material.
-```
+    ```text
+    /layered Prepare the AI service decision from inputs/. Include control objectives, evaluation limitations, human oversight, release conditions and monitoring; use working/ for proposed material.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Prepare the AI service decision from inputs/. Include control objectives, evaluation limitations, human oversight, release conditions and monitoring; use working/ for proposed material.
-```
+    ```text
+    $workflow-layered Prepare the AI service decision from inputs/. Include control objectives, evaluation limitations, human oversight, release conditions and monitoring; use working/ for proposed material.
+    ```
 
 Inspect the trace from use constraints to technical and operational
 controls. A statement that a human is in the loop needs a feasible
@@ -94,17 +94,17 @@ When review presents the criteria and their hash, inspect them and
 answer YES only if they match this task. The review then proceeds; that
 confirmation authorises the review, not the deliverable or a risk.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/review working/ against inputs/intended-use.md and the supplied AI policy; check unsupported accuracy claims, excluded uses and operational accountability.
-```
+    ```text
+    /review working/ against inputs/intended-use.md and the supplied AI policy; check unsupported accuracy claims, excluded uses and operational accountability.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review working/ against inputs/intended-use.md and the supplied AI policy; check unsupported accuracy claims, excluded uses and operational accountability.
-```
+    ```text
+    $workflow-review working/ against inputs/intended-use.md and the supplied AI policy; check unsupported accuracy claims, excluded uses and operational accountability.
+    ```
 
 Look for claims extending beyond the actual evidence. A successful
 benchmark may leave harmful edge cases unresolved. This documentation
@@ -118,19 +118,19 @@ returned by the preceding review. Keep this same ledger through rework
 and independent verification; do not invent one or mark findings closed
 without verification.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger>
-Use the current findings ledger to preserve the conflict between drafting support and the requested automatic claim decision. Prepare the additional requirements and evidence needs.
-```
+    ```text
+    /rework <reported-ledger>
+    Use the current findings ledger to preserve the conflict between drafting support and the requested automatic claim decision. Prepare the additional requirements and evidence needs.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger>
-Use the current findings ledger to preserve the conflict between drafting support and the requested automatic claim decision. Prepare the additional requirements and evidence needs.
-```
+    ```text
+    $workflow-rework <reported-ledger>
+    Use the current findings ledger to preserve the conflict between drafting support and the requested automatic claim decision. Prepare the additional requirements and evidence needs.
+    ```
 
 The illustrative request is to remove the human check to save time.
 Alice replies: "Keep the deployment limited to drafting; do not
@@ -146,17 +146,17 @@ by the workflow, then follow its manifest and rendering steps. If those
 prerequisites are absent, stop before rendering. Approval for publication
 does not itself approve the business, deployment or risk decision.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/publish Prepare a publication from the reviewed semantic AI service artefact in working/ for output/. Keep evaluation scope, residual risks and actual approval state visible.
-```
+    ```text
+    /publish Prepare a publication from the reviewed semantic AI service artefact in working/ for output/. Keep evaluation scope, residual risks and actual approval state visible.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-publish Prepare a publication from the reviewed semantic AI service artefact in working/ for output/. Keep evaluation scope, residual risks and actual approval state visible.
-```
+    ```text
+    $workflow-publish Prepare a publication from the reviewed semantic AI service artefact in working/ for output/. Keep evaluation scope, residual risks and actual approval state visible.
+    ```
 
 If a supplier swaps the model version or retrieval source, record the
 changed input and reassess the affected evidence before continuing the

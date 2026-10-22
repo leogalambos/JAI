@@ -50,17 +50,17 @@ paths if the workflow reports a different location from `working/`.
 
 ### 1. Clarify the starting point
 
-**Claude**
+=== "Claude Code"
 
-```text
-/analyse inputs/ for the field-service replacement. Describe the decision boundary, stakeholders, evidence gaps and competing objectives.
-```
+    ```text
+    /analyse inputs/ for the field-service replacement. Describe the decision boundary, stakeholders, evidence gaps and competing objectives.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse inputs/ for the field-service replacement. Describe the decision boundary, stakeholders, evidence gaps and competing objectives.
-```
+    ```text
+    $workflow-analyse inputs/ for the field-service replacement. Describe the decision boundary, stakeholders, evidence gaps and competing objectives.
+    ```
 
 Inspect whether the summary expresses a decision rather than an already
 selected product. If the sponsor's preferred option is a constraint,
@@ -69,17 +69,17 @@ conclusion.
 
 ### 2. Establish the governed decision
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Prepare the field-service replacement decision from inputs/. Preserve L0 authority, independent review and explicit uncertainty. Keep proposed deliverables in working/.
-```
+    ```text
+    /layered Prepare the field-service replacement decision from inputs/. Preserve L0 authority, independent review and explicit uncertainty. Keep proposed deliverables in working/.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Prepare the field-service replacement decision from inputs/. Preserve L0 authority, independent review and explicit uncertainty. Keep proposed deliverables in working/.
-```
+    ```text
+    $workflow-layered Prepare the field-service replacement decision from inputs/. Preserve L0 authority, independent review and explicit uncertainty. Keep proposed deliverables in working/.
+    ```
 
 Inspect the contracts and fragments produced by the engagement.
 Requirements should remain traceable as they pass through layers; an
@@ -89,17 +89,17 @@ entitlement to use its conclusions.
 
 ### 3. Inspect justifiability independently
 
-**Claude**
+=== "Claude Code"
 
-```text
-/fabric-report Independently report on the traceability fabric for this engagement. Explain supported fragments, failures and the effect of missing evidence without recording authority acts.
-```
+    ```text
+    /fabric-report Independently report on the traceability fabric for this engagement. Explain supported fragments, failures and the effect of missing evidence without recording authority acts.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-fabric-report Independently report on the traceability fabric for this engagement. Explain supported fragments, failures and the effect of missing evidence without recording authority acts.
-```
+    ```text
+    $workflow-fabric-report Independently report on the traceability fabric for this engagement. Explain supported fragments, failures and the effect of missing evidence without recording authority acts.
+    ```
 
 Read the report's scope and rule failures. Integrity and well-typedness
 are different from the truth of every business claim. Do not translate a
@@ -108,17 +108,17 @@ record is equivalent to an authority signature.
 
 ### 4. Handle the escalation
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Continue the existing replacement engagement with the unresolved conflict between the required outage boundary and the proposed migration approach. Prepare options for the appropriate authority.
-```
+    ```text
+    /layered Continue the existing replacement engagement with the unresolved conflict between the required outage boundary and the proposed migration approach. Prepare options for the appropriate authority.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Continue the existing replacement engagement with the unresolved conflict between the required outage boundary and the proposed migration approach. Prepare options for the appropriate authority.
-```
+    ```text
+    $workflow-layered Continue the existing replacement engagement with the unresolved conflict between the required outage boundary and the proposed migration approach. Prepare options for the appropriate authority.
+    ```
 
 The illustrative reply from Alice is: "Keep the outage requirement;
 compare a phased transition and an interim operating procedure before a
@@ -134,17 +134,17 @@ by the workflow, then follow its manifest and rendering steps. If those
 prerequisites are absent, stop before rendering. Approval for publication
 does not itself approve the business, deployment or risk decision.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/publish Prepare a publication from the reviewed semantic decision artefact in working/ for output/. Preserve source references, alternatives, uncertainty and actual authority state.
-```
+    ```text
+    /publish Prepare a publication from the reviewed semantic decision artefact in working/ for output/. Preserve source references, alternatives, uncertainty and actual authority state.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-publish Prepare a publication from the reviewed semantic decision artefact in working/ for output/. Preserve source references, alternatives, uncertainty and actual authority state.
-```
+    ```text
+    $workflow-publish Prepare a publication from the reviewed semantic decision artefact in working/ for output/. Preserve source references, alternatives, uncertainty and actual authority state.
+    ```
 
 If new cost or service evidence changes the recommendation, return to
 the affected engagement work and independent review. Do not patch only

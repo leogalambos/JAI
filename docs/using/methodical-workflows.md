@@ -66,13 +66,25 @@ Follow the [worked proposal](../capabilities/commercial-delivery.md#worked-propo
 
 The architectural pattern is:
 
-```text
-Direct creation: /commercial → reviewed proposal snapshot
-New decision:   /layered → readiness to issue that snapshot → human decision
+=== "Claude Code"
 
-Alternative chosen before creation:
-/layered with commercial-delivery → controlled proposal creation → decision dossier
-```
+    ```text
+    Direct creation: /commercial → reviewed proposal snapshot
+    New decision:   /layered → readiness to issue that snapshot → human decision
+
+    Alternative chosen before creation:
+    /layered with commercial-delivery → controlled proposal creation → decision dossier
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    Direct creation: $workflow-commercial → reviewed proposal snapshot
+    New decision:   $workflow-layered → readiness to issue that snapshot → human decision
+
+    Alternative chosen before creation:
+    $workflow-layered with commercial-delivery → controlled proposal creation → decision dossier
+    ```
 
 Strict commercial dispatch remains blocked until the deployment supplies current qualification evidence for the required controls. Shipped live capability states are `not_run` for both providers; a teaching sequence does not override them.
 

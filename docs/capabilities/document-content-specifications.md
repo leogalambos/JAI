@@ -115,8 +115,27 @@ python3 .ai/runtime/tools/content_spec.py resolve --root . \
   --artifact-id enterprise-architect:4 > compiled.json
 python3 .ai/runtime/tools/content_spec.py outline --root . \
   --artifact-id enterprise-architect:4 --output outline.json
-python3 .ai/runtime/tools/content_lint.py check semantic.json \
-  --spec compiled.json --output content-qa.json --provider codex
+```
+
+Check the semantic source through the selected provider adapter:
+
+=== "Claude Code"
+
+    ```sh
+    python3 .ai/runtime/tools/content_lint.py check semantic.json \
+      --spec compiled.json --output content-qa.json --provider claude
+    ```
+
+=== "Codex CLI"
+
+    ```sh
+    python3 .ai/runtime/tools/content_lint.py check semantic.json \
+      --spec compiled.json --output content-qa.json --provider codex
+    ```
+
+Then run the shared metrics and evaluation tools:
+
+```sh
 python3 .ai/runtime/tools/content_metrics.py analyze semantic.json
 python3 .ai/runtime/tools/content_eval.py run --root . \
   --output build/dcs-26.10.8-pilot.json

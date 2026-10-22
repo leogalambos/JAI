@@ -53,17 +53,17 @@ paths if the workflow reports a different location from `working/`.
 
 ### 1. Read the existing estate
 
-**Claude**
+=== "Claude Code"
 
-```text
-/analyse inputs/ for the portal migration. Describe dependencies, source gaps and constraints without selecting a target solution.
-```
+    ```text
+    /analyse inputs/ for the portal migration. Describe dependencies, source gaps and constraints without selecting a target solution.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse inputs/ for the portal migration. Describe dependencies, source gaps and constraints without selecting a target solution.
-```
+    ```text
+    $workflow-analyse inputs/ for the portal migration. Describe dependencies, source gaps and constraints without selecting a target solution.
+    ```
 
 Inspect the estate summary against the inventory. Look for a payment
 connection, scheduled batch job or identity dependency omitted from the
@@ -72,17 +72,17 @@ replacement.
 
 ### 2. Develop the migration decision
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Plan the portal migration using inputs/. Compare feasible target options, migration waves, cutover, verification and rollback. Keep proposed material in working/.
-```
+    ```text
+    /layered Plan the portal migration using inputs/. Compare feasible target options, migration waves, cutover, verification and rollback. Keep proposed material in working/.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Plan the portal migration using inputs/. Compare feasible target options, migration waves, cutover, verification and rollback. Keep proposed material in working/.
-```
+    ```text
+    $workflow-layered Plan the portal migration using inputs/. Compare feasible target options, migration waves, cutover, verification and rollback. Keep proposed material in working/.
+    ```
 
 Inspect the derived requirements and acceptance evidence. A wave plan
 should say what moves together and why. A rollback plan needs a trigger,
@@ -95,17 +95,17 @@ When review presents the criteria and their hash, inspect them and
 answer YES only if they match this task. The review then proceeds; that
 confirmation authorises the review, not the deliverable or a risk.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/review working/ against inputs/change-window.md; check dependency coverage, data reconciliation, recovery evidence and receiving-team ownership.
-```
+    ```text
+    /review working/ against inputs/change-window.md; check dependency coverage, data reconciliation, recovery evidence and receiving-team ownership.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review working/ against inputs/change-window.md; check dependency coverage, data reconciliation, recovery evidence and receiving-team ownership.
-```
+    ```text
+    $workflow-review working/ against inputs/change-window.md; check dependency coverage, data reconciliation, recovery evidence and receiving-team ownership.
+    ```
 
 Read findings as concrete problems to resolve. Confirm that success
 means a working business service, not merely successful infrastructure
@@ -119,19 +119,19 @@ returned by the preceding review. Keep this same ledger through rework
 and independent verification; do not invent one or mark findings closed
 without verification.
 
-**Claude**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger>
-Use the current findings ledger to revise working/. Preserve the unresolved data-recovery conflict and identify the evidence needed before cutover.
-```
+    ```text
+    /rework <reported-ledger>
+    Use the current findings ledger to revise working/. Preserve the unresolved data-recovery conflict and identify the evidence needed before cutover.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger>
-Use the current findings ledger to revise working/. Preserve the unresolved data-recovery conflict and identify the evidence needed before cutover.
-```
+    ```text
+    $workflow-rework <reported-ledger>
+    Use the current findings ledger to revise working/. Preserve the unresolved data-recovery conflict and identify the evidence needed before cutover.
+    ```
 
 The illustrative escalation is that replication lag could exceed the
 agreed data-loss boundary. Alice replies: "Keep cutover pending; obtain
@@ -142,17 +142,17 @@ required.
 
 ### 5. Resume with fresh evidence
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Reassess the portal migration using the new rehearsal evidence in inputs/. Reopen affected acceptance criteria and prepare the cutover decision for the actual authority.
-```
+    ```text
+    /layered Reassess the portal migration using the new rehearsal evidence in inputs/. Reopen affected acceptance criteria and prepare the cutover decision for the actual authority.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Reassess the portal migration using the new rehearsal evidence in inputs/. Reopen affected acceptance criteria and prepare the cutover decision for the actual authority.
-```
+    ```text
+    $workflow-layered Reassess the portal migration using the new rehearsal evidence in inputs/. Reopen affected acceptance criteria and prepare the cutover decision for the actual authority.
+    ```
 
 If a supplier changes the database migration method, treat it as a
 changed input and repeat the affected design and evidence work. Inspect

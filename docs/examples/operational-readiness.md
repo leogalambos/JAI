@@ -49,33 +49,33 @@ actually reported. Never invent its identifier or erase open findings.
 
 ### 1. Establish the service boundary
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/analyse input/ for the ordering API's operational readiness. Identify dependencies, support boundaries and absent evidence. Do not infer a successful recovery from a backup schedule.
-```
+    ```text
+    /analyse input/ for the ordering API's operational readiness. Identify dependencies, support boundaries and absent evidence. Do not infer a successful recovery from a backup schedule.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-analyse input/ for the ordering API's operational readiness. Identify dependencies, support boundaries and absent evidence. Do not infer a successful recovery from a backup schedule.
-```
+    ```text
+    $workflow-analyse input/ for the ordering API's operational readiness. Identify dependencies, support boundaries and absent evidence. Do not infer a successful recovery from a backup schedule.
+    ```
 
 Inspect whether the service map includes identity, messaging, supplier endpoints and monitoring ownership. A runbook referring to a team that no longer exists is an actionable handover gap. Ask Alice which team actually receives alerts and holds the necessary access.
 
 ### 2. Set readiness criteria
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/criteria .
-```
+    ```text
+    /criteria .
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-criteria .
-```
+    ```text
+    $workflow-criteria .
+    ```
 
 This displays or initializes the project criteria. Then ask:
 
@@ -87,49 +87,49 @@ Read the criteria with the intended operating hours in mind. A weekday support a
 
 ### 3. Review the operating evidence
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/review <reported-review-target> the supplied readiness materials against the agreed criteria. Record each unresolved prerequisite and the evidence required to close it.
-```
+    ```text
+    /review <reported-review-target> the supplied readiness materials against the agreed criteria. Record each unresolved prerequisite and the evidence required to close it.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-review <reported-review-target> the supplied readiness materials against the agreed criteria. Record each unresolved prerequisite and the evidence required to close it.
-```
+    ```text
+    $workflow-review <reported-review-target> the supplied readiness materials against the agreed criteria. Record each unresolved prerequisite and the evidence required to close it.
+    ```
 
 Inspect dated results and the environment they describe. A restoration test against a small developer dataset may not support the production recovery target. Ask for the measured data size and restore duration rather than treating a PASS label as sufficient.
 
 ### 4. Prepare the go-live decision
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/layered Prepare a bounded readiness decision for the ordering API. Present unresolved recovery and support conditions, options to defer or limit launch, and named receiving owners.
-```
+    ```text
+    /layered Prepare a bounded readiness decision for the ordering API. Present unresolved recovery and support conditions, options to defer or limit launch, and named receiving owners.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Prepare a bounded readiness decision for the ordering API. Present unresolved recovery and support conditions, options to defer or limit launch, and named receiving owners.
-```
+    ```text
+    $workflow-layered Prepare a bounded readiness decision for the ordering API. Present unresolved recovery and support conditions, options to defer or limit launch, and named receiving owners.
+    ```
 
 Check whether conditions have deadlines and a way to verify closure. A condition phrased 'operations will handle this' hides both ownership and evidence. Keep business launch pressure visible as context without turning it into authority to accept unmeasured recovery risk.
 
 ### 5. Close findings and hand over
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger> Rework readiness findings using actual new evidence. Prepare the receiving-service handoff under output/, preserving any conditions that remain open.
-```
+    ```text
+    /rework <reported-ledger> Rework readiness findings using actual new evidence. Prepare the receiving-service handoff under output/, preserving any conditions that remain open.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger> Rework readiness findings using actual new evidence. Prepare the receiving-service handoff under output/, preserving any conditions that remain open.
-```
+    ```text
+    $workflow-rework <reported-ledger> Rework readiness findings using actual new evidence. Prepare the receiving-service handoff under output/, preserving any conditions that remain open.
+    ```
 
 Read the handoff as the on-call operator would: which signal triggers action, where the procedure is and who can authorize rollback. If the receiving team has not accepted ownership, keep that status explicit. Document preparation does not constitute service acceptance.
 

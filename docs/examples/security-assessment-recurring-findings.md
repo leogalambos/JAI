@@ -42,17 +42,17 @@ Start the provider in this project and confirm which files it may read.
 
 ### 1. Ask for a starting procedure
 
-Claude:
+=== "Claude Code"
 
-```text
-/hint Assess the security architecture of ACME's monitoring platform and propose a recurring process for detecting changes, resolving findings and verifying corrections. Use only authorised project inputs. Identify missing evidence and any unsupported parts of the recommendation.
-```
+    ```text
+    /hint Assess the security architecture of ACME's monitoring platform and propose a recurring process for detecting changes, resolving findings and verifying corrections. Use only authorised project inputs. Identify missing evidence and any unsupported parts of the recommendation.
+    ```
 
-Codex:
+=== "Codex CLI"
 
-```text
-$workflow-hint Assess the security architecture of ACME's monitoring platform and propose a recurring process for detecting changes, resolving findings and verifying corrections. Use only authorised project inputs. Identify missing evidence and any unsupported parts of the recommendation.
-```
+    ```text
+    $workflow-hint Assess the security architecture of ACME's monitoring platform and propose a recurring process for detecting changes, resolving findings and verifying corrections. Use only authorised project inputs. Identify missing evidence and any unsupported parts of the recommendation.
+    ```
 
 Check the English interpretation, source examples and unmatched goals.
 A selected assessment example may cover only the first outcome. Ask the
@@ -61,17 +61,17 @@ rather than pretending that a single maintained example covers everything.
 
 ### 2. Understand the sources before judging them
 
-Claude:
+=== "Claude Code"
 
-```text
-/analyse .
-```
+    ```text
+    /analyse .
+    ```
 
-Codex:
+=== "Codex CLI"
 
-```text
-$workflow-analyse .
-```
+    ```text
+    $workflow-analyse .
+    ```
 
 Inspect the source inventory and scope description. The desired result is a
 map of what is known and missing, not an early assertion that the platform
@@ -81,17 +81,17 @@ continues with a bounded scope.
 
 ### 3. Establish review criteria
 
-Claude:
+=== "Claude Code"
 
-```text
-/criteria .
-```
+    ```text
+    /criteria .
+    ```
 
-Codex:
+=== "Codex CLI"
 
-```text
-$workflow-criteria .
-```
+    ```text
+    $workflow-criteria .
+    ```
 
 Have the responsible owner confirm applicable requirements and criteria
 through the project's actual process. Include traceability, evidence
@@ -101,17 +101,17 @@ organisational standard. Resolve conflicting requirements before assessment.
 
 ### 4. Produce the assessment and recurring-process proposal
 
-Claude:
+=== "Claude Code"
 
-```text
-/layered Assess the monitoring platform using the authorised inputs and confirmed criteria. Produce a traceable architecture security assessment and a proposed recurring findings process. Distinguish observations, assumptions and recommendations. Define triggers, owners, evidence refresh, escalation and independent closure verification; do not claim monitoring or scheduling has been installed.
-```
+    ```text
+    /layered Assess the monitoring platform using the authorised inputs and confirmed criteria. Produce a traceable architecture security assessment and a proposed recurring findings process. Distinguish observations, assumptions and recommendations. Define triggers, owners, evidence refresh, escalation and independent closure verification; do not claim monitoring or scheduling has been installed.
+    ```
 
-Codex:
+=== "Codex CLI"
 
-```text
-$workflow-layered Assess the monitoring platform using the authorised inputs and confirmed criteria. Produce a traceable architecture security assessment and a proposed recurring findings process. Distinguish observations, assumptions and recommendations. Define triggers, owners, evidence refresh, escalation and independent closure verification; do not claim monitoring or scheduling has been installed.
-```
+    ```text
+    $workflow-layered Assess the monitoring platform using the authorised inputs and confirmed criteria. Produce a traceable architecture security assessment and a proposed recurring findings process. Distinguish observations, assumptions and recommendations. Define triggers, owners, evidence refresh, escalation and independent closure verification; do not claim monitoring or scheduling has been installed.
+    ```
 
 Retain the actual engagement and output identifiers returned by the runtime.
 Inspect the finding-to-evidence links and the proposed hand-offs. If a
@@ -127,19 +127,19 @@ requires an additional assessment of the combined outputs against its
 criteria, or the proposed operating procedure needs a distinct review scope;
 do not repeat an already completed review merely to run another command.
 
-Claude:
+=== "Claude Code"
 
-```text
-/review <actual-assessment-and-process-output>
-/rework <actual-findings-ledger>
-```
+    ```text
+    /review <actual-assessment-and-process-output>
+    /rework <actual-findings-ledger>
+    ```
 
-Codex:
+=== "Codex CLI"
 
-```text
-$workflow-review <actual-assessment-and-process-output>
-$workflow-rework <actual-findings-ledger>
-```
+    ```text
+    $workflow-review <actual-assessment-and-process-output>
+    $workflow-rework <actual-findings-ledger>
+    ```
 
 Replace both placeholders with observed paths or identifiers. Run review
 first, inspect its findings and use the ledger it actually reports for

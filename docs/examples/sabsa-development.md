@@ -43,19 +43,19 @@ JAI L1–L6 execution layers.
 
 ### 1. Prepare sources before designing controls
 
-**Claude**
+=== "Claude Code"
 
-```text
-/sabsa prepare working/security-library using inputs/ for the online
-ordering service. Identify source gaps and business owners.
-```
+    ```text
+    /sabsa prepare working/security-library using inputs/ for the online
+    ordering service. Identify source gaps and business owners.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-sabsa prepare working/security-library using inputs/ for the
-online ordering service. Identify source gaps and business owners.
-```
+    ```text
+    $workflow-sabsa prepare working/security-library using inputs/ for the
+    online ordering service. Identify source gaps and business owners.
+    ```
 
 Inspect the prepared source area and inventory, including the workflow's
 `00-sources` convention. Check that received facts retain their origins
@@ -64,21 +64,21 @@ mean every source has been accepted as current or authoritative.
 
 ### 2. Build from business drivers
 
-**Claude**
+=== "Claude Code"
 
-```text
-/sabsa create working/security-library from the prepared sources.
-Trace online-ordering drivers through attributes, risks and control
-objectives; leave unsupported values pending.
-```
+    ```text
+    /sabsa create working/security-library from the prepared sources.
+    Trace online-ordering drivers through attributes, risks and control
+    objectives; leave unsupported values pending.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-sabsa create working/security-library from the prepared sources.
-Trace online-ordering drivers through attributes, risks and control
-objectives; leave unsupported values pending.
-```
+    ```text
+    $workflow-sabsa create working/security-library from the prepared sources.
+    Trace online-ordering drivers through attributes, risks and control
+    objectives; leave unsupported values pending.
+    ```
 
 Read the resulting entries from the business layer downward. A proposed
 attribute such as availability needs a business owner and an observable
@@ -88,19 +88,19 @@ Examples in bundled references provide structure, not ACME evidence.
 
 ### 3. Review completeness and meaning separately
 
-**Claude**
+=== "Claude Code"
 
-```text
-/sabsa review working/security-library for upward traceability,
-measurable attributes, ownership and unsupported security claims.
-```
+    ```text
+    /sabsa review working/security-library for upward traceability,
+    measurable attributes, ownership and unsupported security claims.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-sabsa review working/security-library for upward traceability,
-measurable attributes, ownership and unsupported security claims.
-```
+    ```text
+    $workflow-sabsa review working/security-library for upward traceability,
+    measurable attributes, ownership and unsupported security claims.
+    ```
 
 The independent reviewer should record located findings rather than edit
 the design. Inspect both broken links and substantive questions: a
@@ -116,21 +116,21 @@ business risk merely by choosing a shorter outage target. Alice's
 illustrative reply is: "Prepare the cost and service-impact options;
 keep the continuity target pending until the service owner decides."
 
-**Claude**
+=== "Claude Code"
 
-```text
-/layered Resolve the continuity conflict recorded in
-working/security-library. Compare degraded operation and integration
-resilience using inputs/; preserve the pending business decision.
-```
+    ```text
+    /layered Resolve the continuity conflict recorded in
+    working/security-library. Compare degraded operation and integration
+    resilience using inputs/; preserve the pending business decision.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-layered Resolve the continuity conflict recorded in
-working/security-library. Compare degraded operation and integration
-resilience using inputs/; preserve the pending business decision.
-```
+    ```text
+    $workflow-layered Resolve the continuity conflict recorded in
+    working/security-library. Compare degraded operation and integration
+    resilience using inputs/; preserve the pending business decision.
+    ```
 
 Inspect the conflict, alternatives, evidence limitations and named human
 authority. L0 is external to the six execution layers. If a protected
@@ -140,21 +140,21 @@ act.
 
 ### 5. Update only after the decision is available
 
-**Claude**
+=== "Claude Code"
 
-```text
-/sabsa update <affected-entry-id> working/security-library using the
-recorded continuity decision. Preserve stable identifiers and request
-independent review of the changed traceability.
-```
+    ```text
+    /sabsa update <affected-entry-id> working/security-library using the
+    recorded continuity decision. Preserve stable identifiers and request
+    independent review of the changed traceability.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-sabsa update <affected-entry-id> working/security-library using
-the recorded continuity decision. Preserve stable identifiers and request
-independent review of the changed traceability.
-```
+    ```text
+    $workflow-sabsa update <affected-entry-id> working/security-library using
+    the recorded continuity decision. Preserve stable identifiers and request
+    independent review of the changed traceability.
+    ```
 
 Replace `<affected-entry-id>` with a concrete identifier observed in the
 library; repeat for each affected entry instead of inventing an ID.

@@ -72,7 +72,7 @@ If the creation process must itself have a six-layer history, choose this altern
     for the named human owners.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-layered Create the security architecture and realise the bounded
@@ -115,7 +115,7 @@ The SABSA `prepare` activity inventories the brief, current code, documentation 
     platform claims into explicit questions.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa prepare app/sabsa — use PROJECT.md, the app repository and
@@ -145,7 +145,7 @@ Logical services translate those outcomes into technology-independent responsibi
     independently review each dependency stage.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa create app/sabsa — derive the attributes, risks,
@@ -175,7 +175,7 @@ Connect model IDs to code locations, normal behaviour, failure cases and accepta
     current code and identify decisions needed before implementation.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa create app/sabsa — propose the Physical, Component and
@@ -206,7 +206,7 @@ A UI test can support a consent-flow claim, and a persistence test can support a
     different reviewer assess the change before proposing it as complete.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-develop Implement the reviewed consent increment in the app
@@ -237,7 +237,7 @@ The architecture update identifies affected requirements and the realisation pla
     status until implementation evidence is checked.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa update app/sabsa — trace the monitoring and consent
@@ -268,7 +268,7 @@ The reviewer identifies the discrepancy. The appropriate owner decides the inten
     relevant authors rework them, then independently verify the changes.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa review app/sabsa — independently compare the architecture
@@ -301,7 +301,7 @@ A legitimate result may be “not ready” or a proposal conditional on further 
     authority actions where required.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-layered Assess release readiness for the identified app
@@ -333,7 +333,7 @@ Start with Markdown for content review, then request LaTeX/PDF or Word for the i
     and rendered-QA status separately from product release readiness.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa document app/sabsa — prepare English viewpoint documents
@@ -362,7 +362,7 @@ This records hash-bound SABSA owner approval, not a Fabric release authority act
     release decision.
     ```
 
-=== "Codex"
+=== "Codex CLI"
 
     ```text
     $workflow-sabsa approval app/sabsa — verify that the recorded
@@ -381,17 +381,17 @@ sign-out finding open until the account-switching case is verified.”
 
 Use the actual review ledger for the bounded correction:
 
-**Claude Code**
+=== "Claude Code"
 
-```text
-/rework <reported-ledger> Correct the account-switching finding in app/. Preserve authorized notification behavior and add a local regression for access to cached contact data after sign-out. Report checks actually executed.
-```
+    ```text
+    /rework <reported-ledger> Correct the account-switching finding in app/. Preserve authorized notification behavior and add a local regression for access to cached contact data after sign-out. Report checks actually executed.
+    ```
 
-**Codex**
+=== "Codex CLI"
 
-```text
-$workflow-rework <reported-ledger> Correct the account-switching finding in app/. Preserve authorized notification behavior and add a local regression for access to cached contact data after sign-out. Report checks actually executed.
-```
+    ```text
+    $workflow-rework <reported-ledger> Correct the account-switching finding in app/. Preserve authorized notification behavior and add a local regression for access to cached contact data after sign-out. Report checks actually executed.
+    ```
 
 Replace the placeholder with the reported ledger. Have the reviewer
 verify the original account-switching condition, including failure and

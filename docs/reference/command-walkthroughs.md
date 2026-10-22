@@ -22,10 +22,19 @@ use the [command reference](commands.md) and
 
 **Try it.**
 
-```
-/analyse invoice-service
-/analyse policy-docs
-```
+=== "Claude Code"
+
+    ```
+    /analyse invoice-service
+    /analyse policy-docs
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-analyse invoice-service
+    $workflow-analyse policy-docs
+    ```
 
 **What to expect.**
 
@@ -53,9 +62,17 @@ visible before review. For syntax and criteria precedence, use the
 
 **Try it.**
 
-```
-/criteria invoice-service
-```
+=== "Claude Code"
+
+    ```
+    /criteria invoice-service
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-criteria invoice-service
+    ```
 
 Accept the offer to create the file. Then add a criterion of your
 own, either by asking Claude ("add a criterion C9 on money handling:
@@ -91,12 +108,23 @@ projects, and checks that the library works.
 
 **Syntax.**
 
-```
-/demo setup            copy the demo projects to ~/it-role-demo
-/demo list             what each demo project is for
-/demo reset <project>  put one project back to its starting state, to repeat a demo
-/demo check            verify the demos and tools work, without using Claude's judgement (about ten seconds)
-```
+=== "Claude Code"
+
+    ```
+    /demo setup            copy the demo projects to ~/it-role-demo
+    /demo list             what each demo project is for
+    /demo reset <project>  put one project back to its starting state, to repeat a demo
+    /demo check            verify the demos and tools work, without using Claude's judgement (about ten seconds)
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-demo setup            copy the demo projects to ~/it-role-demo
+    $workflow-demo list             what each demo project is for
+    $workflow-demo reset <project>  put one project back to its starting state, to repeat a demo
+    $workflow-demo check            verify the demos and tools work, without using Claude's judgement (about ten seconds)
+    ```
 
 **Try it.** `/demo check`, then
 `/demo setup`.
@@ -122,9 +150,17 @@ For the current change workflow and command syntax, use the
 
 **Try it.**
 
-```
-/develop add the CSV export of invoices that the invoice-service README promises, with tests
-```
+=== "Claude Code"
+
+    ```
+    /develop add the CSV export of invoices that the invoice-service README promises, with tests
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-develop add the CSV export of invoices that the invoice-service README promises, with tests
+    ```
 
 **What to expect.** A new branch with an export function
 — documented with a docstring that states its parameters, result and
@@ -192,11 +228,21 @@ often save hours.
 **Try it.** In
 `~/it-role-demo/invoice-service`, one at a time:
 
-```
-/diagnose An order of exactly 1000 EUR gets no discount, though the README promises 5% from 1000. It was right when the API was first written.
-/diagnose Bob can delete Alice's invoice, although he cannot read it.
-/diagnose test_charge_is_approved in tests/test_payments.py fails now and then.
-```
+=== "Claude Code"
+
+    ```
+    /diagnose An order of exactly 1000 EUR gets no discount, though the README promises 5% from 1000. It was right when the API was first written.
+    /diagnose Bob can delete Alice's invoice, although he cannot read it.
+    /diagnose test_charge_is_approved in tests/test_payments.py fails now and then.
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-diagnose An order of exactly 1000 EUR gets no discount, though the README promises 5% from 1000. It was right when the API was first written.
+    $workflow-diagnose Bob can delete Alice's invoice, although he cannot read it.
+    $workflow-diagnose test_charge_is_approved in tests/test_payments.py fails now and then.
+    ```
 
 Show what to expect — the answer key. Run the demo first.
 
@@ -258,10 +304,19 @@ sized to it. It changes nothing.
 
 **Try it.**
 
-```
-/govern invoice-service
-/govern policy-docs
-```
+=== "Claude Code"
+
+    ```
+    /govern invoice-service
+    /govern policy-docs
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-govern invoice-service
+    $workflow-govern policy-docs
+    ```
 
 Show what to expect — the answer key. Run the demo first.
 
@@ -344,9 +399,17 @@ decision; not for routine changes.
 **Try it.** In `~/it-role-demo` (expect 20–40
 minutes; it is the most thorough command):
 
-```
-/layered Decide whether invoice-service is ready to be exposed to external partners. It must be secure enough for partner traffic and its money calculations must be exact.
-```
+=== "Claude Code"
+
+    ```
+    /layered Decide whether invoice-service is ready to be exposed to external partners. It must be secure enough for partner traffic and its money calculations must be exact.
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-layered Decide whether invoice-service is ready to be exposed to external partners. It must be secure enough for partner traffic and its money calculations must be exact.
+    ```
 
 **What to expect.** The evidence layer finds the
 injection, authorisation and secret problems; the policy layer cannot
@@ -372,9 +435,17 @@ Publish a reviewed semantic artifact into enterprise-ready views without changin
 4. Apply the Publication Gate after the Semantic Gate.
 5. Preserve the semantic SHA-256 in generated outputs for traceability.
 
-```
-/publish architecture-review.json architecture-review-pack docx,pptx,html
-```
+=== "Claude Code"
+
+    ```
+    /publish architecture-review.json architecture-review-pack docx,pptx,html
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-publish architecture-review.json architecture-review-pack docx,pptx,html
+    ```
 
 **Self-test.** `python3 ~/.ai/it-role-house/tools/publication.py self-test`.
 
@@ -389,12 +460,23 @@ Maintain the scoped EA-domain projection repository, exchange ArchiMate models, 
 
 The JSON repository is authoritative only for the EA-domain projection; JAI owns global semantic identity. ArchiMate Open Exchange is an explicit interchange boundary. Stable IDs are preserved across views and exchange.
 
-```
-/repository validate architecture-repository.json
-/repository views architecture-repository.json all
-/repository portfolio architecture-repository.json
-/repository export architecture-repository.json model.xml
-```
+=== "Claude Code"
+
+    ```
+    /repository validate architecture-repository.json
+    /repository views architecture-repository.json all
+    /repository portfolio architecture-repository.json
+    /repository export architecture-repository.json model.xml
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-repository validate architecture-repository.json
+    $workflow-repository views architecture-repository.json all
+    $workflow-repository portfolio architecture-repository.json
+    $workflow-repository export architecture-repository.json model.xml
+    ```
 
 Validation covers referential integrity, lifecycle state, portfolio links, view coverage and cross-project dependencies. Decommission is blocked while active dependencies remain unless a governed waiver exists.
 
@@ -431,9 +513,17 @@ for current syntax and the research contract.
 **Try it.** In
 `~/it-role-demo/invoice-service`:
 
-```
-/research Should invoice-service compute money with float, Decimal or integer cents? Settle it with a correctness test and a timing benchmark.
-```
+=== "Claude Code"
+
+    ```
+    /research Should invoice-service compute money with float, Decimal or integer cents? Settle it with a correctness test and a timing benchmark.
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-research Should invoice-service compute money with float, Decimal or integer cents? Settle it with a correctness test and a timing benchmark.
+    ```
 
 **What to expect.** Sources on floating-point
 representation of money; an experiment showing float sums that drift
@@ -472,11 +562,21 @@ For current syntax and reviewer boundaries, use the
 
 **Try it.**
 
-```
-/review invoice-service
-/review policy-docs
-/review policy-docs against accuracy and consistency only
-```
+=== "Claude Code"
+
+    ```
+    /review invoice-service
+    /review policy-docs
+    /review policy-docs against accuracy and consistency only
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-review invoice-service
+    $workflow-review policy-docs
+    $workflow-review policy-docs against accuracy and consistency only
+    ```
 
 Show what to expect — the answer key. Run the demo first.
 
@@ -547,9 +647,17 @@ findings ledger. For current syntax and non-convergence handling, use the
 **Try it.** After
 `/review invoice-service`:
 
-```
-/rework
-```
+=== "Claude Code"
+
+    ```
+    /rework
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-rework
+    ```
 
 **What to expect.** Parameterised SQL, an ownership
 check on delete and list, the key moved to an environment variable, the
@@ -587,11 +695,19 @@ available sources, existing engagement/canonical model, intended stage and
 client/internal disclosure boundary. The coordinator routes expertise; it does
 not sign a contract, grant a specialist authority or itself implement a change.
 
-**Try it in Claude Code, one checkpoint at a time:**
+**Try it in your provider conversation, one checkpoint at a time:**
 
-```text
-/commercial Qualify the managed integration service opportunity from the supplied sources. Reuse the existing engagement where present, identify the commercial owner, and prepare the discovery questions, explicit unknowns and bid/no-bid considerations.
-```
+=== "Claude Code"
+
+    ```text
+    /commercial Qualify the managed integration service opportunity from the supplied sources. Reuse the existing engagement where present, identify the commercial owner, and prepare the discovery questions, explicit unknowns and bid/no-bid considerations.
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-commercial Qualify the managed integration service opportunity from the supplied sources. Reuse the existing engagement where present, identify the commercial owner, and prepare the discovery questions, explicit unknowns and bid/no-bid considerations.
+    ```
 
 After answering discovery questions, continue in ordinary conversation:
 
@@ -607,13 +723,21 @@ Continue engagement <ID>. Prepare separate internal and client proposal projecti
 
 If a justified bid-issue decision is required, start a distinct engagement:
 
-```text
-/layered Decide whether proposal snapshot <reference and digest> is ready to issue, using commercial-delivery. Independently assess its evidence, economics, disclosures and residual exposure; reserve commercial commitments for the human owner.
-/fabric-report <decision-engagement-ID>
-```
+=== "Claude Code"
 
-In Codex replace the slash commands with `$workflow-commercial`,
-`$workflow-layered` and `$workflow-fabric-report`. Continuation is a
+    ```text
+    /layered Decide whether proposal snapshot <reference and digest> is ready to issue, using commercial-delivery. Independently assess its evidence, economics, disclosures and residual exposure; reserve commercial commitments for the human owner.
+    /fabric-report <decision-engagement-ID>
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-layered Decide whether proposal snapshot <reference and digest> is ready to issue, using commercial-delivery. Independently assess its evidence, economics, disclosures and residual exposure; reserve commercial commitments for the human owner.
+    $workflow-fabric-report <decision-engagement-ID>
+    ```
+
+Continuation is a
 natural-language request against an existing ID, not an implemented `resume`
 subcommand. For six-layer control of **creation itself**, start with
 `/layered` or `$workflow-layered` and explicitly request `commercial-delivery`
@@ -656,18 +780,35 @@ document is generated.
 
 **Syntax.**
 
-```
-/sabsa prepare <library>        start from client material
-/sabsa create <library>         derive the architecture in dependency order; complete all six questions per layer
-/sabsa update <element> <library>
-/sabsa review <library>         findings against the SABSA criteria
-/sabsa suggest <library>        ranked gaps, each with the next step
-/sabsa questions <library>      the open assumptions, as questions for the client
-/sabsa approve <library>        owner-approve the exact clean snapshot
-/sabsa approval <library>       verify the current snapshot still matches the approval
-/sabsa document <library> [as docx]
-/sabsa template <library>       which document template applies; set up the client's own
-```
+=== "Claude Code"
+
+    ```
+    /sabsa prepare <library>        start from client material
+    /sabsa create <library>         derive the architecture in dependency order; complete all six questions per layer
+    /sabsa update <element> <library>
+    /sabsa review <library>         findings against the SABSA criteria
+    /sabsa suggest <library>        ranked gaps, each with the next step
+    /sabsa questions <library>      the open assumptions, as questions for the client
+    /sabsa approve <library>        owner-approve the exact clean snapshot
+    /sabsa approval <library>       verify the current snapshot still matches the approval
+    /sabsa document <library> [as docx]
+    /sabsa template <library>       which document template applies; set up the client's own
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-sabsa prepare <library>        start from client material
+    $workflow-sabsa create <library>         derive the architecture in dependency order; complete all six questions per layer
+    $workflow-sabsa update <element> <library>
+    $workflow-sabsa review <library>         findings against the SABSA criteria
+    $workflow-sabsa suggest <library>        ranked gaps, each with the next step
+    $workflow-sabsa questions <library>      the open assumptions, as questions for the client
+    $workflow-sabsa approve <library>        owner-approve the exact clean snapshot
+    $workflow-sabsa approval <library>       verify the current snapshot still matches the approval
+    $workflow-sabsa document <library> [as docx]
+    $workflow-sabsa template <library>       which document template applies; set up the client's own
+    ```
 
 **What happens in prepare and create.**
 
@@ -685,19 +826,39 @@ document is generated.
 
 **Try it.** In `~/it-role-demo`:
 
-```
-/sabsa prepare acme-pay/sabsa — the client material is in acme-pay/client-material
-/sabsa create acme-pay/sabsa
-/sabsa questions acme-pay/sabsa
-/sabsa document acme-pay/sabsa
-```
+=== "Claude Code"
+
+    ```
+    /sabsa prepare acme-pay/sabsa — the client material is in acme-pay/client-material
+    /sabsa create acme-pay/sabsa
+    /sabsa questions acme-pay/sabsa
+    /sabsa document acme-pay/sabsa
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-sabsa prepare acme-pay/sabsa — the client material is in acme-pay/client-material
+    $workflow-sabsa create acme-pay/sabsa
+    $workflow-sabsa questions acme-pay/sabsa
+    $workflow-sabsa document acme-pay/sabsa
+    ```
 
 Then try a client's own format:
 
-```
-/sabsa document acme-pay/sabsa as docx
-/sabsa template acme-pay/sabsa — copy the default so I can change the section titles
-```
+=== "Claude Code"
+
+    ```
+    /sabsa document acme-pay/sabsa as docx
+    /sabsa template acme-pay/sabsa — copy the default so I can change the section titles
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-sabsa document acme-pay/sabsa as docx
+    $workflow-sabsa template acme-pay/sabsa — copy the default so I can change the section titles
+    ```
 
 **What to expect.**
 

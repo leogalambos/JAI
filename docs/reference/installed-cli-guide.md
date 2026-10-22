@@ -140,12 +140,23 @@ checks that the library works.
 
 **Syntax.**
 
-```
-/demo setup            copy the demo projects to ~/it-role-demo
-/demo list             what each demo project is for
-/demo reset <project>  put one project back to its starting state, to repeat a demo
-/demo check            verify the demos and tools work, without using Claude's judgement (about ten seconds)
-```
+=== "Claude Code"
+
+    ```
+    /demo setup            copy the demo projects to ~/it-role-demo
+    /demo list             what each demo project is for
+    /demo reset <project>  put one project back to its starting state, to repeat a demo
+    /demo check            verify the demos and tools work, without using Claude's judgement (about ten seconds)
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-demo setup            copy the demo projects to ~/it-role-demo
+    $workflow-demo list             what each demo project is for
+    $workflow-demo reset <project>  put one project back to its starting state, to repeat a demo
+    $workflow-demo check            verify the demos and tools work, without using Claude's judgement (about ten seconds)
+    ```
 
 **Try it.** `/demo check`, then `/demo setup`.
 
@@ -162,11 +173,21 @@ scenarios across the supported workflow domains. Use `/demo scenarios`
 for this catalogue; legacy `/demo list` lists the three tour projects.
 For example:
 
-```text
-/demo describe proposal
-/demo describe proposal --step 2
-/demo scenario proposal --to /tmp/acme-proposal
-```
+=== "Claude Code"
+
+    ```text
+    /demo describe proposal
+    /demo describe proposal --step 2
+    /demo scenario proposal --to /tmp/acme-proposal
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-demo describe proposal
+    $workflow-demo describe proposal --step 2
+    $workflow-demo scenario proposal --to /tmp/acme-proposal
+    ```
 
 In Codex, use the same arguments with `$workflow-demo`. Open the active
 AI CLI in the newly created directory and read `START.md` before running
@@ -331,10 +352,19 @@ Nothing is changed, and no verdicts are given.
 
 **Try it.**
 
-```
-/analyse invoice-service
-/analyse policy-docs
-```
+=== "Claude Code"
+
+    ```
+    /analyse invoice-service
+    /analyse policy-docs
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-analyse invoice-service
+    $workflow-analyse policy-docs
+    ```
 
 **What to expect.**
 - *invoice-service:* a Python service of about 80 lines in `app/`, with
@@ -363,9 +393,17 @@ shows you the file and offers to tailor it.
 
 **Try it.**
 
-```
-/criteria invoice-service
-```
+=== "Claude Code"
+
+    ```
+    /criteria invoice-service
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-criteria invoice-service
+    ```
 
 Accept the offer to create the file. Then add a criterion of your own,
 either by asking Claude ("add a criterion C9 on money handling: amounts
@@ -394,10 +432,19 @@ ledger.
 
 **Syntax.**
 
-```
-/review <path>
-/review <path> against <criteria file, or the criteria in words>
-```
+=== "Claude Code"
+
+    ```
+    /review <path>
+    /review <path> against <criteria file, or the criteria in words>
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-review <path>
+    $workflow-review <path> against <criteria file, or the criteria in words>
+    ```
 
 **What happens.**
 1. The agent resolves the criteria (see [review
@@ -410,11 +457,21 @@ recommendation.
 
 **Try it.**
 
-```
-/review invoice-service
-/review policy-docs
-/review policy-docs against accuracy and consistency only
-```
+=== "Claude Code"
+
+    ```
+    /review invoice-service
+    /review policy-docs
+    /review policy-docs against accuracy and consistency only
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-review invoice-service
+    $workflow-review policy-docs
+    $workflow-review policy-docs against accuracy and consistency only
+    ```
 
 **What to expect — invoice-service.** The planted flaws, by criterion:
 
@@ -477,9 +534,17 @@ requirement.
 
 **Try it.** After `/review invoice-service`:
 
-```
-/rework
-```
+=== "Claude Code"
+
+    ```
+    /rework
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-rework
+    ```
 
 **What to expect.** Parameterised SQL, an ownership check on delete and
 list, the key moved to an environment variable, the discount boundary
@@ -543,11 +608,21 @@ verifies.
 
 **Try it.** In `~/it-role-demo/invoice-service`, one at a time:
 
-```
-/diagnose An order of exactly 1000 EUR gets no discount, though the README promises 5% from 1000. It was right when the API was first written.
-/diagnose Bob can delete Alice's invoice, although he cannot read it.
-/diagnose test_charge_is_approved in tests/test_payments.py fails now and then.
-```
+=== "Claude Code"
+
+    ```
+    /diagnose An order of exactly 1000 EUR gets no discount, though the README promises 5% from 1000. It was right when the API was first written.
+    /diagnose Bob can delete Alice's invoice, although he cannot read it.
+    /diagnose test_charge_is_approved in tests/test_payments.py fails now and then.
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-diagnose An order of exactly 1000 EUR gets no discount, though the README promises 5% from 1000. It was right when the API was first written.
+    $workflow-diagnose Bob can delete Alice's invoice, although he cannot read it.
+    $workflow-diagnose test_charge_is_approved in tests/test_payments.py fails now and then.
+    ```
 
 **What to expect.**
 
@@ -578,9 +653,17 @@ the right role and agent; works on a branch; has the change reviewed as
 
 **Try it.**
 
-```
-/develop add the CSV export of invoices that the invoice-service README promises, with tests
-```
+=== "Claude Code"
+
+    ```
+    /develop add the CSV export of invoices that the invoice-service README promises, with tests
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-develop add the CSV export of invoices that the invoice-service README promises, with tests
+    ```
 
 **What to expect.** A new branch with an export function — documented
 with a docstring that states its parameters, result and exceptions —
@@ -603,10 +686,19 @@ it. It changes nothing.
 
 **Try it.**
 
-```
-/govern invoice-service
-/govern policy-docs
-```
+=== "Claude Code"
+
+    ```
+    /govern invoice-service
+    /govern policy-docs
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-govern invoice-service
+    $workflow-govern policy-docs
+    ```
 
 **What to expect — invoice-service.** No CODEOWNERS, no changelog, no
 version tags; a feature branch merged by its own author two minutes
@@ -645,9 +737,17 @@ At most three experiments per question.
 
 **Try it.** In `~/it-role-demo/invoice-service`:
 
-```
-/research Should invoice-service compute money with float, Decimal or integer cents? Settle it with a correctness test and a timing benchmark.
-```
+=== "Claude Code"
+
+    ```
+    /research Should invoice-service compute money with float, Decimal or integer cents? Settle it with a correctness test and a timing benchmark.
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-research Should invoice-service compute money with float, Decimal or integer cents? Settle it with a correctness test and a timing benchmark.
+    ```
 
 **What to expect.** Sources on floating-point representation of money;
 an experiment showing float sums that drift (for example 0.1 + 0.2), and
@@ -668,18 +768,35 @@ generated.
 
 **Syntax.**
 
-```
-/sabsa prepare <library>        start from client material
-/sabsa create <library>         derive the architecture in dependency order; complete all six questions per layer
-/sabsa update <element> <library>
-/sabsa review <library>         findings against the SABSA criteria
-/sabsa suggest <library>        ranked gaps, each with the next step
-/sabsa questions <library>      the open assumptions, as questions for the client
-/sabsa approve <library>         owner-approve the exact clean snapshot
-/sabsa approval <library>        verify that the current snapshot still matches the approval
-/sabsa document <library> [as docx]
-/sabsa template <library>       which document template applies; set up the client's own
-```
+=== "Claude Code"
+
+    ```
+    /sabsa prepare <library>        start from client material
+    /sabsa create <library>         derive the architecture in dependency order; complete all six questions per layer
+    /sabsa update <element> <library>
+    /sabsa review <library>         findings against the SABSA criteria
+    /sabsa suggest <library>        ranked gaps, each with the next step
+    /sabsa questions <library>      the open assumptions, as questions for the client
+    /sabsa approve <library>         owner-approve the exact clean snapshot
+    /sabsa approval <library>        verify that the current snapshot still matches the approval
+    /sabsa document <library> [as docx]
+    /sabsa template <library>       which document template applies; set up the client's own
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-sabsa prepare <library>        start from client material
+    $workflow-sabsa create <library>         derive the architecture in dependency order; complete all six questions per layer
+    $workflow-sabsa update <element> <library>
+    $workflow-sabsa review <library>         findings against the SABSA criteria
+    $workflow-sabsa suggest <library>        ranked gaps, each with the next step
+    $workflow-sabsa questions <library>      the open assumptions, as questions for the client
+    $workflow-sabsa approve <library>         owner-approve the exact clean snapshot
+    $workflow-sabsa approval <library>        verify that the current snapshot still matches the approval
+    $workflow-sabsa document <library> [as docx]
+    $workflow-sabsa template <library>       which document template applies; set up the client's own
+    ```
 
 **What happens in prepare and create.**
 1. The library is created, with `00-sources/` for material and `matrix/`
@@ -704,19 +821,39 @@ approval.
 
 **Try it.** In `~/it-role-demo`:
 
-```
-/sabsa prepare acme-pay/sabsa — the client material is in acme-pay/client-material
-/sabsa create acme-pay/sabsa
-/sabsa questions acme-pay/sabsa
-/sabsa document acme-pay/sabsa
-```
+=== "Claude Code"
+
+    ```
+    /sabsa prepare acme-pay/sabsa — the client material is in acme-pay/client-material
+    /sabsa create acme-pay/sabsa
+    /sabsa questions acme-pay/sabsa
+    /sabsa document acme-pay/sabsa
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-sabsa prepare acme-pay/sabsa — the client material is in acme-pay/client-material
+    $workflow-sabsa create acme-pay/sabsa
+    $workflow-sabsa questions acme-pay/sabsa
+    $workflow-sabsa document acme-pay/sabsa
+    ```
 
 Then try a client's own format:
 
-```
-/sabsa document acme-pay/sabsa as docx
-/sabsa template acme-pay/sabsa — copy the default so I can change the section titles
-```
+=== "Claude Code"
+
+    ```
+    /sabsa document acme-pay/sabsa as docx
+    /sabsa template acme-pay/sabsa — copy the default so I can change the section titles
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-sabsa document acme-pay/sabsa as docx
+    $workflow-sabsa template acme-pay/sabsa — copy the default so I can change the section titles
+    ```
 
 **Choose the viewpoint and format in ordinary language.** Markdown is
 the SABSA workflow default. For example, ask `/sabsa document
@@ -811,9 +948,17 @@ verify that presentation did not silently change the substance.
 **Try it.** Publish an architecture decision or review pack that has
 already passed semantic review:
 
-```
-/publish architecture-review.json architecture-review-pack docx,pptx,html
-```
+=== "Claude Code"
+
+    ```
+    /publish architecture-review.json architecture-review-pack docx,pptx,html
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-publish architecture-review.json architecture-review-pack docx,pptx,html
+    ```
 
 **Optional technical self-test (agent or maintainer, not approval of
 this document).** `python3 ~/.ai/it-role-house/tools/publication.py
@@ -844,12 +989,23 @@ explicit governed waiver is recorded.
 
 **Try it.**
 
-```
-/repository validate architecture-repository.json
-/repository views architecture-repository.json all
-/repository portfolio architecture-repository.json
-/repository export architecture-repository.json model.xml
-```
+=== "Claude Code"
+
+    ```
+    /repository validate architecture-repository.json
+    /repository views architecture-repository.json all
+    /repository portfolio architecture-repository.json
+    /repository export architecture-repository.json model.xml
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-repository validate architecture-repository.json
+    $workflow-repository views architecture-repository.json all
+    $workflow-repository portfolio architecture-repository.json
+    $workflow-repository export architecture-repository.json model.xml
+    ```
 
 **Optional technical self-test (agent or maintainer, not repository
 sign-off).** `python3 ~/.ai/it-role-house/tools/repository.py
@@ -888,9 +1044,17 @@ command for **you** to run separately in a trusted terminal.
 **Try it.** In `~/it-role-demo` (expect 20–40 minutes; it is the most
 thorough command):
 
-```
-/layered Decide whether invoice-service is ready to be exposed to external partners. It must be secure enough for partner traffic and its money calculations must be exact.
-```
+=== "Claude Code"
+
+    ```
+    /layered Decide whether invoice-service is ready to be exposed to external partners. It must be secure enough for partner traffic and its money calculations must be exact.
+    ```
+
+=== "Codex CLI"
+
+    ```
+    $workflow-layered Decide whether invoice-service is ready to be exposed to external partners. It must be secure enough for partner traffic and its money calculations must be exact.
+    ```
 
 **What to expect.** The evidence layer finds the injection,
 authorisation and secret problems; the policy layer cannot accept them;
@@ -1155,14 +1319,32 @@ python3 ~/.ai/it-role-house/tools/content_spec.py outline \
   --artifact-id enterprise-architect:4 --output outline.json
 python3 ~/.ai/it-role-house/tools/content_spec.py resolve \
   --artifact-id enterprise-architect:4 > compiled.json
-python3 ~/.ai/it-role-house/tools/content_lint.py check semantic.json \
-  --spec compiled.json --output content-qa.json --provider codex
+```
+
+Check the semantic source through the selected provider adapter:
+
+=== "Claude Code"
+
+    ```sh
+    python3 ~/.ai/it-role-house/tools/content_lint.py check semantic.json \
+      --spec compiled.json --output content-qa.json --provider claude
+    ```
+
+=== "Codex CLI"
+
+    ```sh
+    python3 ~/.ai/it-role-house/tools/content_lint.py check semantic.json \
+      --spec compiled.json --output content-qa.json --provider codex
+    ```
+
+Then run the shared metrics and evaluation tools:
+
+```sh
 python3 ~/.ai/it-role-house/tools/content_metrics.py analyze semantic.json
 python3 ~/.ai/it-role-house/tools/content_eval.py run
 ```
 
-Use `--provider claude` to exercise the same engine through the Claude
-adapter. Reports are hash-bound and immutable; a different source or
+Both adapters use the same engine. Reports are hash-bound and immutable; a different source or
 specification needs a new report path. The corpus is synthetic-only.
 A draft report is not professional acceptance or human authority.
 

@@ -9,12 +9,21 @@ procedure you have refined. Tell JAI what to remember in ordinary language.
 You do not need to reconstruct the individual steps or prepare a technical
 record yourself.
 
-```text
-/hint Remember the assessment approach we developed here, including how we
-handled missing architecture evidence and verified the remediation findings.
-```
+=== "Claude Code"
 
-In Codex, use `$workflow-hint` with the same request. In an active JAI
+    ```text
+    /hint Remember the assessment approach we developed here, including how we
+    handled missing architecture evidence and verified the remediation findings.
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-hint Remember the assessment approach we developed here, including how we
+    handled missing architecture evidence and verified the remediation findings.
+    ```
+
+In an active JAI
 conversation you can also ask directly: “Remember this approach in our
 knowledge library.” Identify the useful part if the conversation covers several
 unrelated tasks. These are instructions to the active provider; capture does
