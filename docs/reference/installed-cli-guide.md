@@ -1344,7 +1344,8 @@ python3 ~/.ai/it-role-house/tools/content_metrics.py analyze semantic.json
 python3 ~/.ai/it-role-house/tools/content_eval.py run
 ```
 
-Both adapters use the same engine. Reports are hash-bound and immutable; a different source or
+Both adapters use the same engine. Reports are hash-bound and immutable;
+a different source or
 specification needs a new report path. The corpus is synthetic-only.
 A draft report is not professional acceptance or human authority.
 
