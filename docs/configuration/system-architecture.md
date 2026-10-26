@@ -65,7 +65,7 @@ The common runtime includes:
 - SABSA semantic tooling;
 - scoped EA repository and ArchiMate/Open Exchange tooling;
 - publication projection, rendering and visual QA;
-- policy/agent enforcement and immutable Execution Records;
+- policy/agent enforcement and content-hashed Execution Records (not immutable custody);
 - behavioral evaluation and A–H release qualification;
 - Justifiable Fabric supervision runtime.
 

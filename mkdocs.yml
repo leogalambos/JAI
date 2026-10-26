@@ -103,7 +103,8 @@ nav:
       - Product orientation:
           - Product overview: overview/product-overview.md
           - Execution and context assembly: overview/execution-context-algorithm.md
-          - What's new in 26.10.4: overview/release-26-10-4.md
+          - What's new in 26.10.14: release/compatible-ga-26.10.14.md
+          - Historical 26.10.4 announcement: overview/release-26-10-4.md
           - Coverage matrix: overview/coverage-matrix.md
           - Delivery model: overview/delivery-model.md
       - Installation: getting-started/install.md
@@ -218,6 +219,7 @@ nav:
           - Offline content qualification: validation/offline-content-qualification.md
           - Proposal colleague pilot: validation/proposal-pilot.md
           - Engineering and security review: validation/engineering-security-review.md
+          - Supported product and operator workflows: security/product-operations.md
           - Expert reference editorial review: validation/expert-reference-review.md
           - Optional provider evaluation: validation/optional-provider-evaluation.md
           - Human authority and escalation: operations/human-authority.md
@@ -230,6 +232,7 @@ nav:
       - Full role catalogue: reference/roles.md
       - Command reference: reference/commands.md
       - Complete installed CLI guide: reference/installed-cli-guide.md
+      - Exact operator walkthrough: operations/operator-walkthrough.md
       - Documentation authority and installed CLI help: runtime-reference/current-help.md
       - Product version and release tags: reference/versioning.md
       - Extended command walkthroughs: reference/command-walkthroughs.md
@@ -238,6 +241,7 @@ nav:
       - Expert reference format: reference/expert-reference-format.md
       - Reference selection and context delivery: reference/reference-selection-context.md
       - Compatibility matrix: reference/compatibility.md
+      - Historical 26.10.4 validation: reference/validation-26-10-4-history.md
       - Historical 26.10.4 baseline: reference/release-migration.md
       - Boundaries and limitations: reference/limitations.md
       - Glossary: reference/glossary.md

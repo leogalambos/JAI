@@ -1,10 +1,36 @@
 {
   "name": "gate-auditor",
   "provider": "codex",
+  "jai": {
+    "core_version": "1.0.0",
+    "layer": 3,
+    "layer_name": "Reasoning, Policy and Control",
+    "profile": "runtime",
+    "responsibility": "gate-auditor authority boundary",
+    "input_refs": [
+      "policy:managed-policy"
+    ],
+    "output_refs": [
+      "execution:agent:gate-auditor"
+    ],
+    "authority_ref": "human-authority:read-only-review",
+    "acceptance_question": "Are decisions, policy constraints, evidence obligations, trade-offs and escalation rules justified?",
+    "evidence_obligations": [
+      "ExecutionRecord"
+    ]
+  },
   "workload_class": "standard",
   "selection_strategy": "project-managed-explicit-class-routing",
   "strategy_scope": "project-internal",
   "model_selector": "gpt-6.1-sol",
+  "runtime_boundary": {
+    "scope": "GA_COMPATIBLE/2",
+    "live_verified": false,
+    "hardened_privileged_enabled": false,
+    "protected_resources": "deny",
+    "git_authority": "human",
+    "enforcement": "effective-provider-sandbox-and-host"
+  },
   "reasoning_effort": "medium",
   "fallbacks": [
     {
@@ -15,17 +41,30 @@
       "model_selector": "inherit"
     }
   ],
+  "local_execution": {
+    "requires_effective_native_sandbox": true,
+    "contract_is_host_enforcement": false,
+    "reviewer_source_write": false,
+    "qa_output": "only explicitly native-writable scratch; never widen source access",
+    "shell_available": false,
+    "host_mount_isolation_required": true,
+    "limitation": "Native settings must actually be loaded; no live confinement claim"
+  },
   "sandbox_mode": "read-only",
   "workspace_write": false,
-  "network": "provider-managed",
+  "network": false,
   "allowed_tools": [
     "Read",
     "Grep",
     "Glob"
   ],
   "denied_tools": [
-    "Write",
-    "Edit"
+    "Agent",
+    "Bash",
+    "Edit",
+    "Shell",
+    "WebFetch",
+    "Write"
   ],
   "approval_required_for": [
     "policy-change",
@@ -33,6 +72,8 @@
   ],
   "native_codex": {
     "model": "gpt-6.1-sol",
-    "model_reasoning_effort": "medium"
+    "model_reasoning_effort": "medium",
+    "sandbox_mode": "read-only",
+    "approval_policy": "on-request"
   }
 }

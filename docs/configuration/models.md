@@ -11,7 +11,7 @@ AI IT House does not hard-code provider model names into the role knowledge. Ins
 | `heavy` | high-complexity work | architecture, policy, diagnosis, consequential synthesis |
 | `research` | highest-complexity exploratory work | deep investigation, novel methods, high uncertainty |
 
-## Default mapping in 26.10.4
+## Default mapping from the current model registry
 
 | Workload | Claude | Codex/OpenAI | Codex reasoning effort |
 | --- | --- | --- | --- |

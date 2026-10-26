@@ -20,6 +20,27 @@ spec.loader.exec_module(installer)
 
 
 class InstallerProjectionTests(unittest.TestCase):
+    def test_content_profile_bindings_preserved_without_permission_expansion(self):
+        registry = json.loads((ROOT / '.ai/runtime/models/model-registry.json').read_text())
+        for name, shell in (('role-engineer', True), ('codebase-reviewer', False)):
+            rendered = installer.render_claude_agent(ROOT / '.ai/agents' / (name + '.md'), registry).decode()
+            tools = next(line for line in rendered.splitlines() if line.startswith('tools:'))
+            self.assertEqual('Bash' in tools, shell)
+        profile=json.loads((ROOT/'.ai/runtime/jai/profiles/content-profile.json').read_text())
+        registry=json.loads((ROOT/'.ai/runtime/models/model-registry.json').read_text())
+        for name in profile['agent_bindings']:
+            contract=agent_runtime.contracts()[name]
+            for provider in ('claude','codex'):
+                expected=agent_runtime.provider_config(contract,provider)
+                installed=installer.provider_contract_config(contract,provider,registry,profile)
+                self.assertEqual(installed,expected)
+                self.assertEqual(installed['content_profile_ref'],'jai/profiles/content-profile.json')
+                self.assertFalse(installed['runtime_boundary']['live_verified'])
+        unsafe=copy.deepcopy(profile)
+        unsafe['agent_bindings']['role-author']={'workspace_write':True}
+        with self.assertRaises(ValueError):
+            installer.provider_contract_config(agent_runtime.contracts()['role-author'],'codex',registry,unsafe)
+
     def test_desired_outputs_preserve_exact_canonical_provider_contracts(self):
         contract = agent_runtime.contracts()['codebase-reviewer']
         registry = json.loads((ROOT / '.ai/runtime/models/model-registry.json').read_text())
@@ -28,8 +49,14 @@ class InstallerProjectionTests(unittest.TestCase):
             package = home / 'package'
             for section in ('runtime/agents', 'skills', 'agents', 'commands'):
                 (package / '.ai' / section).mkdir(parents=True)
+            (package/'.ai/runtime/schema').mkdir()
+            (package/'.ai/runtime/schema/release-scope.schema.json').write_bytes((ROOT/'.ai/runtime/schema/release-scope.schema.json').read_bytes())
+            (package/'RELEASE-SCOPE.json').write_bytes((ROOT/'RELEASE-SCOPE.json').read_bytes())
             (package / '.ai/runtime/agents/agent-contracts.json').write_text(json.dumps({'contracts': [contract]}))
+            (package/'.ai/runtime/tools').mkdir()
+            (package/'.ai/runtime/tools/runtime_service.py').write_text('raise RuntimeError("not shipped")')
             outputs, modes = installer.desired_outputs(package, {'codex', 'claude'}, home / 'house', home / 'claude', home / 'codex', registry)
+            self.assertNotIn(str(home/'house/tools/runtime_service.py'),outputs)
             for provider in ('codex', 'claude'):
                 path = str(home / 'house/providers' / provider / 'codebase-reviewer.json')
                 expected = agent_runtime.provider_config(contract, provider)
@@ -39,6 +66,11 @@ class InstallerProjectionTests(unittest.TestCase):
                 actual = installer.provider_contract_config(contract, provider, registry)
                 actual['jai']['profile'] = 'changed'
                 self.assertEqual(contract['jai']['profile'], 'runtime')
+            changed=json.loads((package/'RELEASE-SCOPE.json').read_text())
+            name,revision=changed['scope'].rsplit('/',1)
+            changed['scope']=name+'/'+str(int(revision)+1)
+            (package/'RELEASE-SCOPE.json').write_text(json.dumps(changed))
+            self.assertEqual(installer.provider_contract_config(contract,'codex',registry,scope_root=package)['runtime_boundary']['scope'],changed['scope'])
 
     def test_provider_contract_rejects_unsupported_provider_and_missing_binding(self):
         contract = copy.deepcopy(agent_runtime.contracts()['codebase-reviewer'])

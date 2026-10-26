@@ -28,6 +28,55 @@ versioning = module('scripts/versioning.py', 'jai_versioning')
 
 
 class VersionDecoupling(unittest.TestCase):
+    def test_generated_help_and_compatibility_have_one_canonical_source(self):
+        import shutil
+        g = module('.ai/runtime/tools/generate_docs.py', 'closure_generate_docs')
+        self.assertEqual(g.inventory(ROOT)['release_scope'], g.load(ROOT/'RELEASE-SCOPE.json'))
+        self.assertEqual(g.root_from(ROOT)[0], ROOT)
+        inv = g.inventory(ROOT)
+        self.assertIn('WeasyPrint', g.md_block(inv))
+        self.assertIn('QUALIFICATION-A-H.json', g.validation_doc(inv))
+        self.assertEqual(g.replace_block('# Example\n', 'block').count('block'), 1)
+        self.assertEqual(g.outputs(ROOT)[2]['release'], (ROOT/'VERSION').read_text().strip())
+        with tempfile.TemporaryDirectory() as directory:
+            target = Path(directory)
+            with self.assertRaises(SystemExit): g.root_from(target)
+            for relative in ['VERSION', 'RELEASE-SCOPE.json', '.ai/runtime/schema/release-scope.schema.json', 'README.md', 'docs/reference/installed-cli-guide.md',
+                             'docs/reference/compatibility.md', '.ai/runtime/roles.json',
+                             '.ai/runtime/workflows.json', '.ai/runtime/artifacts/schema/artifact-types.json',
+                             '.ai/runtime/schema/schema-registry.json', '.ai/runtime/_meta/release-manifest.json']:
+                dest=target/relative; dest.parent.mkdir(parents=True, exist_ok=True)
+                shutil.copy2(ROOT/relative, dest)
+            with contextlib.redirect_stdout(io.StringIO()):
+                self.assertEqual(g.run(target), 0)
+                self.assertEqual(g.run(target, check=True), 0)
+                (target/'.ai/runtime/GUIDE.md').write_text('drift')
+                self.assertEqual(g.run(target, check=True), 1)
+                self.assertEqual(g.run(target), 0)
+            self.assertEqual((target/'.ai/runtime/GUIDE.md').read_bytes(), (target/'docs/reference/installed-cli-guide.md').read_bytes())
+            with patch.object(sys,'argv',['generate_docs.py','--check','--root',str(target)]), contextlib.redirect_stdout(io.StringIO()):
+                with self.assertRaises(SystemExit) as result: g.main()
+                self.assertEqual(result.exception.code, 0)
+
+    def test_descriptor_projection_tracks_product_without_touching_pins(self):
+        relative='.ai/runtime/content/evaluation-package.json'
+        original=(ROOT/relative).read_text()
+        projected=versioning.catalog_projection(original,'release','99.12.999',relative)
+        before=json.loads(original); after=json.loads(projected)
+        self.assertEqual(after.pop('release'),'99.12.999')
+        before.pop('release'); self.assertEqual(before,after)
+        self.assertEqual(versioning.to_tuple('99.12.999'),(99,12,999))
+        with self.assertRaises(ValueError): versioning.to_tuple('invalid')
+        self.assertIn(ROOT/relative,versioning.expected_catalogs(ROOT,'99.12.999'))
+        self.assertEqual(versioning.verify_tag(ROOT,'release@'+versioning.source_version(ROOT)),versioning.source_version(ROOT))
+        with self.assertRaises(ValueError): versioning.verify_tag(ROOT,'release@99.12.999')
+        with self.assertRaises(ValueError): versioning.catalog_projection('{}','release','99.12.999',relative)
+        with tempfile.TemporaryDirectory() as directory:
+            with self.assertRaises(ValueError): versioning.source_version(Path(directory))
+            self.assertTrue(versioning.check(Path(directory)))
+        with patch.object(sys,'argv',['versioning.py','check','--root',str(ROOT)]), contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(versioning.main(),0)
+
     def test_contracts_are_not_bound_to_product_release(self):
         root = ROOT / '.ai/runtime'
         roles = json.loads((root / 'roles.json').read_text(encoding='utf-8'))['roles']
@@ -140,7 +189,8 @@ class VersionDecoupling(unittest.TestCase):
                              f'PASS synchronized product identity {(temp / "VERSION").read_text().strip()}; historical identities unchanged')
             self.assertEqual(before, {p.relative_to(temp): p.read_bytes() for p in temp.rglob('*') if p.is_file()})
 
-    def test_cannot_downgrade_or_use_malformed_tag(self):
+    def test_rejects_version_override_and_malformed_tag(self):
+        # Fixed tag/override fixtures are independent of the active product release.
         self.assertEqual(versioning.identity_from_tag('release@26.10.5'), '26.10.5')
         for bad in ('release@26.13.0', 'release@26.10.5-rc1', 'v26.10.5',
                     'release@26.10.5/x'):
@@ -161,6 +211,8 @@ class VersionDecoupling(unittest.TestCase):
 
     def test_active_evidence_schemas_accept_next_release(self):
         import re
+        year, month, revision = versioning.to_tuple(versioning.source_version(ROOT))
+        next_version = f"{year:02d}.{month:02d}.{revision + 1}"
         runtime = ROOT / '.ai/runtime'
         reg = json.loads((runtime / 'schema/schema-registry.json').read_text())
         names = {row['name']: row for row in reg['schemas']}
@@ -170,7 +222,7 @@ class VersionDecoupling(unittest.TestCase):
                 self.assertTrue(path.startswith('schema/contracts/'))
                 spec = json.loads((runtime / path).read_text())
                 pattern = spec['properties']['release']['pattern']
-                self.assertIsNotNone(re.fullmatch(pattern, '26.10.5'))
+                self.assertIsNotNone(re.fullmatch(pattern, next_version))
                 self.assertIsNone(re.fullmatch(pattern, 'not-a-version'))
 
     def test_adapter_model_origin_does_not_track_package_release(self):

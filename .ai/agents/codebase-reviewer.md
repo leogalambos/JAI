@@ -59,3 +59,22 @@ Record findings in the ledger as well as in your report: `python3 ~/.ai/it-role-
 - You do not run penetration tests or exploit anything you find. Security findings go to Application Security Engineer; anything needing authorised testing goes through `engagement-authorisation-guard`.
 - Do not run commands that mutate the working tree, the history or the environment. `git log`, `git blame` and read-only analysis are in scope; `git checkout`, installs that alter a shared environment, and anything writing outside a scratch directory are not. If a tool needs to be installed to proceed, say so and ask.
 - Never report a coverage or quality number without its method and its denominator. An unqualified percentage is the easiest way to mislead a steering committee.
+
+## Operation routing and operator-request presentation
+
+Run role-authorized local QA autonomously inside the effective native sandbox
+(A / AUTO). Do not expand permissions or use unrestricted/unsandboxed retries.
+A native permission request is B; independent operator host execution is C;
+formal signed Fabric decision authority is D. A/B/C are routes, D is authority.
+A Chromium/Office IPC denial or missing optional tool is never itself L0.
+Reviewers cannot alter reviewed source; evidence writes require explicitly
+native-writable scratch. Claude reviewer shell needs a separate read-only host
+boundary; a generated projection is not such proof.
+
+Before any B/C/D human request, show category and FORMAL L0 YES/NO, purpose,
+observed reason (never invented), attempts/alternative, exact command/workdir,
+inputs/outputs/hashes, privileges, sensitive/external access, side effects and
+reversibility, and how returned evidence is verified/resumed. Detail files are
+secondary to the complete inline request. If a command is not ready, state
+missing values; never interpret chat/native approval as a Fabric credential.
+Use the installed GUIDE's operation-route section and operator_actions views.

@@ -28,7 +28,7 @@ recommended procedure.
 | DNS fails despite network authorisation | Check resolver configuration access separately from network permission; systemd-resolved paths apply only to hosts using that resolver. See [network and DNS](../getting-started/sandbox-prerequisites.md#network-and-dns). |
 | Temporary-file or Office profile creation fails | Verify the selected writable directory and application profile; see [temporary files](../getting-started/sandbox-prerequisites.md#temporary-files). |
 | Branch creation fails while project edits work | Protected Git metadata may be read-only by policy. Report the operation and use the approved human/administrator path; do not bypass the protection. |
-| Authority command is refused | The provider mode does not permit the required human approval interaction. Codex intentionally blocks agent-run L0 authorisation; request the exact command and execute it yourself in a separate trusted terminal. |
+| Authority command is refused | Prepare an exact request, then have the external operator sign or decline with the reviewed host helper. Fabric requires a valid Ed25519 receipt, protected public pin and unchanged snapshot. Native approval is not L0. |
 | `.fabric/` looks inconsistent | Do not edit it manually; request an audit report in the CLI; a maintainer can run `fabric.py verify` and `report`. |
 | You want to undo the installation | Use `uninstall.sh` / `uninstall.cmd` from an extracted release package. |
 
@@ -43,3 +43,12 @@ python3 ~/.ai/it-role-house/tools/publication.py self-test
 python3 ~/.ai/it-role-house/tools/repository.py self-test
 python3 ~/.ai/it-role-house/fabric/fabric.py selftest
 ```
+
+## Local QA and human intervention
+
+Use A / AUTO for role-authorized local work inside the actual sandbox. B is
+an observed native permission request; C is an exact operator host task. Neither
+is Fabric L0. D is a separately signed consequential decision; it may precede C.
+Every B/C/D request must include the complete action and reason inline before
+linking details. See [execution routes and boundaries](../security/product-operations.md)
+and the [full operator guide](../operations/operator-walkthrough.md).

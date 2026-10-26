@@ -137,7 +137,7 @@ def check(root: Path) -> list[str]:
         'capabilities/justifiable-fabric.md': ('## What the operator uses', 'Behind the scenes'),
         'reference/installed-cli-guide.md': ('## Operator versus runtime:', '## 5. Direct tools for maintainers'),
         'reference/runtime-tools-detailed.md': ('## Intended reader and invocation boundary', 'developer/maintainer'),
-        'getting-started/quick-start.md': ('Claude command | Codex skill', 'special Codex'),
+        'getting-started/quick-start.md': ('Claude command | Codex skill', 'external signed **L0 human-authority** decisions in either provider'),
         'runtime-reference/current-help.md': ('## Editorial contract:', 'operator → behind-the-scenes'),
     }
     for name, markers in boundary_markers.items():

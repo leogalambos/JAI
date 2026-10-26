@@ -18,6 +18,18 @@ _SPEC.loader.exec_module(docs_contract)
 
 
 class DocumentationScenarioContractTests(unittest.TestCase):
+    def test_quickstart_rejects_provider_prompt_as_external_authority_boundary(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            target = root / 'docs/getting-started/quick-start.md'
+            target.parent.mkdir(parents=True)
+            (root / 'mkdocs.yml').write_text('nav:\n  - Quick start: getting-started/quick-start.md\n')
+            target.write_text('Claude command | Codex skill\nexternal signed **L0 human-authority** decisions in either provider\n')
+            message = 'docs/getting-started/quick-start.md: missing CLI-user versus runtime boundary'
+            self.assertNotIn(message, docs_contract.check(root))
+            target.write_text('Claude command | Codex skill\nspecial Codex approval; Claude native prompt\n')
+            self.assertIn(message, docs_contract.check(root))
+
     def _scenario_problems(self, pages: dict[str, str]) -> list[str]:
         # The fixture isolates scenario classification; global manual requirements
         # remain enabled and their unrelated findings are not part of this test.

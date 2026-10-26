@@ -7,6 +7,7 @@ import io
 import importlib.util
 import hashlib
 import json
+import os
 from pathlib import Path
 import tempfile
 import unittest
@@ -20,57 +21,15 @@ _SPEC.loader.exec_module(runtime)
 
 
 class CommercialRuntimeTests(unittest.TestCase):
-    def test_usr_merged_mounts_preserve_loader_alias_destinations(self):
-        aliases = {'/usr': '/usr', '/lib': '/usr/lib', '/lib64': '/usr/lib64'}
-        with patch.object(runtime.Path, 'exists', return_value=True), patch.object(
-                runtime.Path, 'resolve', autospec=True,
-                side_effect=lambda path: Path(aliases[str(path)])):
-            dispatcher = runtime.TrustedDispatcher(b'x' * 32, [('/usr/bin/true',)])
-        worker = unittest.mock.Mock(pid=1001, returncode=1)
-        worker.communicate.return_value = ('', 'deliberately failed launch')
-        with patch.object(runtime.shutil, 'which', return_value='/usr/bin/bwrap'), patch.object(
-                runtime.subprocess, 'Popen', return_value=worker) as launch:
-            result = dispatcher.run(('/usr/bin/true',), {}, 'a' * 64,
-                                    {'history_policy': 'fresh', 'injected_instructions': ['policy:1']})
-        argv = launch.call_args.args[0]
-        mounts = [tuple(argv[index + 1:index + 3]) for index, arg in enumerate(argv) if arg == '--ro-bind']
-        self.assertEqual(mounts, [('/usr/lib', '/lib'), ('/usr/lib64', '/lib64'), ('/usr', '/usr')])
-        self.assertIsNone(result['attestation'])
 
-    def test_runtime_roots_reject_unapproved_alias_even_into_system_tree(self):
-        with patch.object(runtime.Path, 'exists', return_value=True), patch.object(
-                runtime.Path, 'resolve', return_value=Path('/usr')):
-            with self.assertRaises(ValueError):
-                runtime.TrustedDispatcher(b'x' * 32, [('/usr/bin/true',)], ['/workspace/runtime'])
 
-    def test_runtime_roots_reject_system_alias_resolving_outside_system_tree(self):
-        with patch.object(runtime.Path, 'exists', return_value=True), patch.object(
-                runtime.Path, 'resolve', return_value=Path('/workspace/runtime')):
-            with self.assertRaises(ValueError):
-                runtime.TrustedDispatcher(b'x' * 32, [('/usr/bin/true',)], ['/lib64'])
 
-    def test_runtime_roots_keep_custom_subset_and_deduplicate_targets(self):
-        with patch.object(runtime.Path, 'exists', return_value=True), patch.object(
-                runtime.Path, 'resolve', autospec=True, side_effect=lambda path: path):
-            dispatcher = runtime.TrustedDispatcher(b'x' * 32, [('/usr/bin/true',)], ['/usr', '/usr'])
-        worker = unittest.mock.Mock(pid=1001, returncode=1)
-        worker.communicate.return_value = ('', 'deliberately failed launch')
-        with patch.object(runtime.shutil, 'which', return_value='/usr/bin/bwrap'), patch.object(
-                runtime.subprocess, 'Popen', return_value=worker) as launch:
-            dispatcher.run(('/usr/bin/true',), {}, 'a' * 64,
-                           {'history_policy': 'fresh', 'injected_instructions': ['policy:1']})
-        argv = launch.call_args.args[0]
-        self.assertEqual(argv.count('--ro-bind'), 1)
-        index = argv.index('--ro-bind')
-        self.assertEqual(argv[index + 1:index + 3], ['/usr', '/usr'])
 
-    def test_absent_approved_runtime_root_is_omitted(self):
-        with patch.object(runtime.Path, 'exists', return_value=False):
-            dispatcher = runtime.TrustedDispatcher(b'x' * 32, [('/usr/bin/true',)], ['/lib64'])
-        self.assertEqual(dispatcher._roots, ())
+
+
 
     def test_untrusted_identity_and_provider_flags_are_not_qualification(self):
-        dispatcher = runtime.TrustedDispatcher(b'x' * 32, [('/usr/bin/true',)])
+        dispatcher = runtime.TrustedDispatcher(b'x' * 32, [])
         self.assertIsNone(dispatcher.verify({'principal': 'reviewer'}))
         callbacks = runtime.verification_callbacks(dispatcher, 'a' * 64, 'b' * 64)
         self.assertIsNone(callbacks['identity_verifier']({'principal': 'forged'}))
@@ -83,128 +42,11 @@ class CommercialRuntimeTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             runtime.provider_boundary('unknown')
 
-    def test_host_rejects_shell_unknown_commands_and_history(self):
-        with self.assertRaises(ValueError):
-            runtime.TrustedDispatcher(b'x' * 32, [('/usr/bin/bash', '-c', 'true')])
-        dispatcher = runtime.TrustedDispatcher(b'x' * 32, [('/usr/bin/true',)])
-        with self.assertRaisesRegex(ValueError, 'allowlist'):
-            dispatcher.run(('/usr/bin/false',), {}, 'a' * 64, {})
-        with self.assertRaisesRegex(ValueError, 'fresh'):
-            dispatcher.run(('/usr/bin/true',), {}, 'a' * 64, {'history_policy': 'fork'})
 
-    def test_real_runner_reports_enforcement_or_explicit_not_run(self):
-        command = ('/usr/bin/true',)
-        dispatcher = runtime.TrustedDispatcher(b'x' * 32, [command])
-        result = dispatcher.run(command, {'id': 'subject'}, 'a' * 64,
-                                {'history_policy': 'fresh', 'injected_instructions': ['host-policy:1']})
-        self.assertIn(result['status'], ('tested', 'unsupported', 'not_run'))
-        if result['status'] != 'tested':
-            self.assertIsNone(result['attestation'])
-            self.assertIsNone(dispatcher.verify(result['attestation']))
-            print('bwrap isolation qualification:', result['status'], result.get('stderr', result.get('reason')))
-            return
-        payload = dispatcher.verify(result['attestation'])
-        self.assertEqual(payload['snapshot_digest'], 'a' * 64)
-        result['attestation']['payload']['subject_digest'] = 'b' * 64
-        self.assertIsNone(dispatcher.verify(result['attestation']))
 
-    def test_real_runner_negative_mount_context_and_write_boundaries(self):
-        # The host-approved diagnostic is deterministic; it never receives host directories.
-        code = ('import os,pathlib; p=pathlib.Path("/inputs/0"); '
-                'assert p.read_text()=="public"; '
-                'assert not pathlib.Path("/home/sibling-marker").exists(); '
-                'assert "INHERITED_MARKER" not in os.environ; '
-                '\ntry: p.write_text("changed")\nexcept OSError: pass\nelse: raise AssertionError("writable reviewer mount")')
-        command = ('/usr/bin/python3', '-c', code)
-        dispatcher = runtime.TrustedDispatcher(b'x' * 32, [command])
-        with tempfile.TemporaryDirectory() as directory:
-            source = Path(directory) / 'product.txt'
-            source.write_text('public')
-            result = dispatcher.run(command, {}, 'a' * 64,
-                                    {'history_policy': 'fresh', 'injected_instructions': ['policy:1']}, inputs=[source])
-            self.assertIn(result['status'], ('tested', 'not_run', 'unsupported'))
-            self.assertEqual(source.read_text(), 'public')
-            if result['status'] == 'tested':
-                self.assertIsNotNone(dispatcher.verify(result['attestation']))
-            else:
-                self.assertIsNone(result['attestation'])
 
-    def test_two_host_dispatches_bind_distinct_real_worker_launches(self):
-        command = ('/usr/bin/true',)
-        dispatcher = runtime.TrustedDispatcher(b'x' * 32, [command])
-        context = {'history_policy': 'fresh', 'injected_instructions': ['policy:1']}
-        class Worker:
-            def __init__(self, pid):
-                self.pid, self.returncode = pid, 0
-            def communicate(self, timeout=None):
-                return '', ''
-        with patch.object(runtime.shutil, 'which', return_value='/usr/bin/bwrap'), patch.object(runtime.subprocess, 'Popen', side_effect=[Worker(1001), Worker(1002)]):
-            maker = dispatcher.run(command, {'kind': 'maker'}, 'a' * 64, context, reviewer=False)
-            checker = dispatcher.run(command, {'kind': 'review'}, 'a' * 64, context)
-        first, second = [dispatcher.verify(item['attestation']) for item in (maker, checker)]
-        self.assertNotEqual(first['principal'], second['principal'])
-        self.assertEqual(first['worker_execution']['pid'], 1001)
-        self.assertEqual(second['worker_execution']['pid'], 1002)
-        self.assertTrue(second['worker_execution']['readonly_inputs'])
-        callbacks = runtime.verification_callbacks(dispatcher, 'a' * 64, runtime._digest(context))
-        self.assertEqual(callbacks['identity_verifier'](checker['attestation'])['principal'], second['principal'])
-        self.assertFalse(callbacks['enforcement_verifier']('operational_recovery', checker['attestation']))
-        checker['attestation']['payload']['worker_execution']['pid'] = 9999
-        self.assertIsNone(dispatcher.verify(checker['attestation']))
 
-    def test_signed_worker_executions_satisfy_core_independence_without_granting_authority(self):
-        from test_commercial_core import complete_snapshot, core
-        data, _ = complete_snapshot()
-        index = {item['version_id']: item for item in data['entities']}
-        claim, review = index['claim@1'], index['review@1']
-        del claim['data']['producer_attestation']
-        del review['data']['attestation']
-        command = ('/usr/bin/true',)
-        context = {'history_policy': 'fresh', 'injected_instructions': ['policy:1']}
-        dispatcher = runtime.TrustedDispatcher(b'x' * 32, [command])
-        class Worker:
-            def __init__(self, pid):
-                self.pid, self.returncode = pid, 0
-            def communicate(self, timeout=None):
-                return '', ''
-        # This is a process-boundary fake, not deployment/provider qualification.
-        with patch.object(runtime.shutil, 'which', return_value='/usr/bin/bwrap'), patch.object(runtime.subprocess, 'Popen', side_effect=[Worker(1001), Worker(1002)]):
-            claim['data']['producer_attestation'] = dispatcher.run(command, claim, 'a' * 64, context, reviewer=False)['attestation']
-            review['data']['reviewed_digest'] = core.digest(claim)
-            review['data']['attestation'] = dispatcher.run(command, review, 'a' * 64, context)['attestation']
-        callbacks = runtime.verification_callbacks(dispatcher, 'a' * 64, runtime._digest(context))
-        result = core.readiness(data, identity_verifier=callbacks['identity_verifier'],
-                                fabric_resolver=lambda entity, snapshot: True,
-                                enforcement_verifier=lambda control, record: True)
-        self.assertTrue(result['ready'], result['blockers'])
-        self.assertFalse(result['authority_granted'])
-        review['data']['attestation'] = claim['data']['producer_attestation']
-        self.assertFalse(core.readiness(data, identity_verifier=callbacks['identity_verifier'],
-                         fabric_resolver=lambda entity, snapshot: True,
-                         enforcement_verifier=lambda control, record: True)['ready'])
 
-    def test_worker_launch_timeout_and_failure_never_attest(self):
-        from unittest.mock import Mock
-        command = ('/usr/bin/true',)
-        context = {'history_policy': 'fresh', 'injected_instructions': ['policy:1']}
-        dispatcher = runtime.TrustedDispatcher(b'x' * 32, [command])
-        with patch.object(runtime.shutil, 'which', return_value=None):
-            self.assertIsNone(dispatcher.run(command, {}, 'a' * 64, context)['attestation'])
-        with patch.object(runtime.shutil, 'which', return_value='/usr/bin/bwrap'):
-            with patch.object(runtime.subprocess, 'Popen', side_effect=OSError('launch refused')):
-                self.assertEqual(dispatcher.run(command, {}, 'a' * 64, context)['status'], 'not_run')
-            worker = Mock(pid=1001, returncode=-9)
-            worker.communicate.side_effect = [runtime.subprocess.TimeoutExpired(command, 1), ('', '')]
-            with patch.object(runtime.subprocess, 'Popen', return_value=worker):
-                result = dispatcher.run(command, {}, 'a' * 64, context, timeout=1)
-            self.assertIsNone(result['attestation'])
-            worker.kill.assert_called_once_with()
-            failed = Mock(pid=1002, returncode=1)
-            failed.communicate.return_value = ('', 'namespace denied')
-            with patch.object(runtime.subprocess, 'Popen', return_value=failed):
-                result = dispatcher.run(command, {}, 'a' * 64, context)
-            self.assertEqual(result['status'], 'not_run')
-            self.assertIsNone(result['attestation'])
 
     def test_actual_fabric_binding_requires_exact_claim_and_hash(self):
         spec = importlib.util.spec_from_file_location('fixture_fabric', _PATH.parents[1] / 'fabric/fabric.py')

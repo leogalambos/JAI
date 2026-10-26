@@ -1,67 +1,27 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: BSD-4-Clause
 # Copyright (c) 2026 Leo Galambos and the Egothor team
-# https://www.egothor.org
-"""Host-owned commercial dispatch attestations and read-only Fabric binding.
+"""Legacy host-attestation verification and Fabric bindings, without execution.
 
-Trust starts at the embedding host: configure its key, command allowlist and
-mount policy outside model-controlled workspace. Never accept these from agent
-JSON. The local bwrap runner executes deterministic commands, not a live LLM
-provider; Codex/Claude live isolation remains unqualified until separately tested.
+TrustedDispatcher is retained as a compatibility name for the existing verifier.
+It cannot launch tools or prove human L0 identity. Keys belong to an independently
+trusted review integration; caller-created signatures do not establish independence.
 """
 from __future__ import annotations
-
-import copy
-import hashlib
-import hmac
-import importlib.util
-import json
-import os
+import copy, hashlib, hmac, importlib.util, json
 from pathlib import Path
-import shutil
-import subprocess
-import uuid
-
 
 def _digest(value):
-    return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':'), ensure_ascii=False).encode()).hexdigest()
-
+    return hashlib.sha256(json.dumps(value,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest()
 
 class TrustedDispatcher:
-    """Host-only HMAC verifier/runner; key custody is the embedding host's duty.
-
-    Args:
-        key: At least 32 random bytes held outside agent context and mounts.
-        allowed_commands: Exact tuples of executable/arguments the host approved.
-        executable_roots: Approved read-only system runtime paths. Logical mount
-            destinations are preserved, including /lib and /lib64 on usr-merged
-            hosts; their resolved sources must also be approved system paths.
-            Missing approved paths are omitted; duplicates are mounted once.
-    Raises:
-        ValueError: Weak key or unsafe runtime roots/commands.
-    """
-
-    def __init__(self, key, allowed_commands, executable_roots=('/usr', '/lib', '/lib64')):
-        if not isinstance(key, bytes) or len(key) < 32:
-            raise ValueError('host key requires at least 32 random bytes')
-        self._key = key
-        self._commands = {tuple(command) for command in allowed_commands}
-        approved_roots = {'/usr', '/usr/lib', '/usr/lib64', '/lib', '/lib64'}
-        mounts = set()
-        for requested in executable_roots:
-            target = Path(requested)
-            if str(target) not in approved_roots:
-                raise ValueError('runtime roots must contain executables only, never workspace/history')
-            if not target.exists():
-                continue
-            source = target.resolve()
-            if str(source) not in approved_roots:
-                raise ValueError('resolved runtime roots must remain approved system paths')
-            mounts.add((source, target))
-        self._roots = tuple(sorted(mounts, key=lambda mount: str(mount[1])))
-        for command in self._commands:
-            if not command or not Path(command[0]).is_absolute() or Path(command[0]).name in {'sh', 'bash', 'dash', 'zsh', 'fish'}:
-                raise ValueError('exact absolute non-shell commands required')
+    """Verify existing review attestations; privileged command dispatch is retired."""
+    def __init__(self,key,allowed_commands=(),executable_roots=()):
+        if not isinstance(key,bytes) or len(key)<32:
+            raise ValueError('host verification key requires at least 32 bytes')
+        if allowed_commands or executable_roots:
+            raise ValueError('worker execution is not supported; use an operator action')
+        self._key=key
 
     def verify(self, attestation):
         """Verify a dispatcher record and return its authenticated subject binding.
@@ -88,85 +48,6 @@ class TrustedDispatcher:
             return None
         return copy.deepcopy(payload)
 
-    def run(self, command, subject, snapshot_digest, context_manifest, inputs=(), writable_output=None, reviewer=True, timeout=30):
-        """Run an approved command in an empty-history, networkless mount namespace.
-
-        Args:
-            command: Exact host-approved argv, never shell text.
-            subject: Exact entity excluding its attestation; hashed before dispatch.
-            snapshot_digest: Exact immutable snapshot digest.
-            context_manifest: Exact context metadata, including provider instructions.
-            inputs: Explicit readable individual files; directories are rejected.
-            writable_output: Optional empty dedicated evidence directory, not product.
-            reviewer: If true every input is mounted read-only, as for authors too.
-            timeout: Positive bounded execution timeout seconds.
-        Returns:
-            Status, captured output and signed execution attestation on success.
-            Principal identifies the actual child execution, not a human identity;
-            its host-issued execution ID disambiguates operating-system PID reuse.
-            A successful namespace launch proves local boundaries only, never live
-            provider qualification or organisational independence.
-            Unsupported/not_run never produce a usable attestation.
-        Raises:
-            ValueError: Command/mount/context policy violations before execution.
-        """
-        command = tuple(command)
-        if command not in self._commands:
-            raise ValueError('command outside host allowlist')
-        if not isinstance(context_manifest, dict) or context_manifest.get('history_policy') != 'fresh' or not context_manifest.get('injected_instructions'):
-            raise ValueError('exact fresh context and injected instruction inventory required')
-        if not isinstance(snapshot_digest, str) or len(snapshot_digest) != 64:
-            raise ValueError('snapshot digest required')
-        if timeout <= 0 or timeout > 300:
-            raise ValueError('timeout outside bounded dispatch policy')
-        bwrap = shutil.which('bwrap')
-        if not bwrap:
-            return {'status': 'unsupported', 'reason': 'bwrap unavailable', 'attestation': None}
-        args = [bwrap, '--unshare-all', '--die-with-parent', '--new-session', '--clearenv', '--setenv', 'PATH', '/usr/bin', '--setenv', 'HOME', '/home/worker', '--tmpfs', '/tmp', '--dir', '/home', '--dir', '/home/worker', '--proc', '/proc', '--dev', '/dev', '--dir', '/inputs', '--chdir', '/home/worker']
-        for source, target in self._roots:
-            args += ['--ro-bind', str(source), str(target)]
-        mounted = []
-        for number, source in enumerate(inputs):
-            path = Path(source).resolve(strict=True)
-            if not path.is_file() or path.is_symlink():
-                raise ValueError('input allowlist accepts regular individual files only')
-            target = f'/inputs/{number}'
-            args += ['--ro-bind', str(path), target]
-            mounted.append({'target': target, 'digest': hashlib.sha256(path.read_bytes()).hexdigest()})
-        if writable_output is not None:
-            output = Path(writable_output).resolve(strict=True)
-            if not output.is_dir() or any(output.iterdir()):
-                raise ValueError('evidence sink must be an empty dedicated directory')
-            if any(output == Path(source).resolve().parent for source in inputs):
-                raise ValueError('evidence sink must not contain product inputs')
-            args += ['--bind', str(output), '/evidence']
-        args += ['--', *command]
-        execution_id = str(uuid.uuid4())
-        process = None
-        try:
-            process = subprocess.Popen(args, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, env={})
-            stdout, stderr = process.communicate(timeout=timeout)
-        except subprocess.TimeoutExpired as exc:
-            process.kill()
-            process.communicate()
-            return {'status': 'not_run', 'reason': str(exc), 'attestation': None}
-        except OSError as exc:
-            return {'status': 'not_run', 'reason': str(exc), 'attestation': None}
-        if process.returncode:
-            return {'status': 'not_run', 'exit_code': process.returncode, 'stdout': stdout, 'stderr': stderr, 'attestation': None}
-        worker = {'uid': os.getuid(), 'pid': process.pid, 'execution_id': execution_id,
-                  'readonly_inputs': True, 'fresh_namespace': True}
-        payload = {'principal': f"uid:{worker['uid']}:worker:{worker['pid']}:execution:{execution_id}",
-                   'dispatch_id': execution_id, 'worker_execution': worker,
-                   'subject_digest': _digest(subject), 'snapshot_digest': snapshot_digest,
-                   'context_digest': _digest(context_manifest), 'input_manifest': mounted,
-                   'command': list(command), 'reviewer': reviewer, 'enforcement': 'bwrap-tested',
-                   'exit_code': 0, 'stdout_digest': hashlib.sha256(stdout.encode()).hexdigest()}
-        signature = hmac.new(self._key, _digest(payload).encode(), 'sha256').hexdigest()
-        return {'status': 'tested', 'stdout': stdout, 'stderr': stderr,
-                'attestation': {'payload': payload, 'signature': signature}}
-
-
 
 def verification_callbacks(dispatcher, snapshot_digest, context_digest):
     """Create host callbacks pinned to one exact snapshot and execution context.
@@ -187,7 +68,7 @@ def verification_callbacks(dispatcher, snapshot_digest, context_digest):
 
     def enforcement(control, attestation):
         payload = identity(attestation)
-        return bool(payload and control in {'identity', 'tool_permissions', 'mount_isolation', 'context_isolation'})
+        return False  # An attested claim does not independently measure host enforcement.
     return {'identity_verifier': identity, 'enforcement_verifier': enforcement}
 
 
@@ -217,7 +98,7 @@ def append_commercial_binding(fabric, mapping):
         mapping: Exact domain/claim digests, contract or L1 requirement ID/digest,
             and fragment IDs/digests to bind. Independent review is still required.
     Returns:
-        New evidence node containing the immutable mapping; never edits old nodes.
+        New evidence node containing the content-hashed mapping; never edits old nodes.
     Raises:
         ValueError: Missing fields or a node hash/layer/type mismatch.
     """
@@ -235,7 +116,7 @@ def append_commercial_binding(fabric, mapping):
         node = fabric.nodes.get(fragment['id'], {})
         if node.get('type') != 'frag' or node.get('layer') != mapping['layer'] or _digest(node) != fragment['digest'] or (target['id'], 'requests', node['id']) not in fabric.edges:
             raise ValueError('fragment must answer the exact target with matching hash')
-    return fabric.add_node('evd', mapping['layer'], 'commercial per-claim immutable binding',
+    return fabric.add_node('evd', mapping['layer'], 'commercial per-claim content-hashed binding',
                            confidence='interpretation', commercial_binding=copy.deepcopy(mapping))
 
 
@@ -243,7 +124,7 @@ def fabric_binding_resolver(ledger_path):
     """Build a verifier resolving each commercial binding against exact Fabric nodes.
 
     Args:
-        ledger_path: Trusted host-selected immutable JSONL log, never agent path.
+        ledger_path: Trusted host-selected hash-checked local JSONL log, never agent path.
     Returns:
         Callback(entity, snapshot) validating actual ledger and append-only binding
         created by append_commercial_binding. Historical nodes are never modified.

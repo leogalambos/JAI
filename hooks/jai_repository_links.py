@@ -16,6 +16,7 @@ import json
 import os
 import re
 import subprocess
+import sys
 from html import escape
 from pathlib import Path
 from urllib.parse import urlsplit
@@ -274,6 +275,10 @@ def on_page_markdown(markdown, *, page, config, files):
         markdown = markdown.replace("{{ JAI_DISCIPLINE_COVERAGE }}", render_discipline_coverage(root))
     if "{{ JAI_SCHEMA_COUNT }}" in markdown:
         markdown = markdown.replace("{{ JAI_SCHEMA_COUNT }}", render_schema_count(root))
+    if '{{ JAI_SCOPE }}' in markdown:
+        sys.path.insert(0,str(root/'.ai/runtime/tools'))
+        from schema_resolver import release_scope
+        markdown=markdown.replace('{{ JAI_SCOPE }}',release_scope(root)['scope'])
     if PRODUCT_VERSION_TOKEN in markdown:
         version = (root / "VERSION").read_text(encoding="utf-8").strip()
         if not PRODUCT_VERSION_RE.fullmatch(version):

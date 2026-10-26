@@ -1,5 +1,42 @@
 # Changelog
 
+## 26.10.14 — Product repair and operator-assisted release
+
+- Make RELEASE-SCOPE.json the sole validated release capability
+  declaration. Runtime, installer, documentation and provenance consume
+  the same source.
+- Remove duplicate scope constants and public internal finding
+  identifiers;
+  unsupported privileged activation remains independently denied.
+
+- Constrain optional renderer Pyphen to the supported 0.17 series and
+  diagnose older installations without importing deprecated
+  pkg_resources.
+- Clarify isolated renderer setup, optional tools and external L0 keys;
+  correct legacy installer-key and local-evidence wording.
+
+- Restores role-authorized sandboxed local shell QA without a blanket
+  Bash
+  prohibition; reviewer write restrictions remain provider-dependent.
+- Separates A/B/C execution routes from signed D decision authority and
+  presents complete inline operator requests without a command executor.
+
+
+- Removes unfinished privileged services from maintained executable
+  source; preserves policy and protected-resource denials.
+- Ships verification-only commercial compatibility code and checks
+  distribution dependency closure.
+- Restores local Fabric L0 with exact operator-signed Ed25519 receipts,
+  snapshot/expiry/replay checks and atomic application.
+- Adds typed operator render/resume data and honest capability checks;
+  no general privileged command executor is provided.
+- Adds constrained WeasyPrint HTML/PDF and actual Office render
+  receipts, preserved diagram meaning and printable workbooks.
+- Retains L1–L6, external L0, SABSA/EA, Fabric and all A–H gates.
+  Privileged deployment is unavailable; host confinement is not
+  certified.
+- Publication, signing and Git changes remain owner-controlled.
+
 ## 26.10.13 — Guided Scenarios and Knowledge Assistance (candidate)
 
 - Adds 29 commented task walkthroughs covering the 24 enterprise
@@ -330,3 +367,8 @@ release. Pre-production development builds are intentionally omitted.
 - Retain provider parity, reviewer isolation, managed policy, immutable
   execution records, SPDX SBOM, interoperability conformance and
   generated-document drift controls as release gates.
+
+Documentation closure: synchronized installed help, current release
+navigation,
+canonical rendering dependencies and explicit operator request/receipt
+examples.

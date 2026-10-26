@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: BSD-4-Clause
 # Copyright (c) 2026 Leo Galambos and the Egothor team
 # https://www.egothor.org
-"""Claude/Codex parity suite for Agent Contract and workload-class routing."""
+"""Contract parity with explicit, restrictive provider capability differences."""
 from agent_runtime import authorize, contracts, provider_config
 
 
@@ -11,6 +11,15 @@ def main():
     for contract in contracts().values():
         claude = provider_config(contract, "claude")
         codex = provider_config(contract, "codex")
+        # Claude has no established read-only shell boundary in this profile.
+        # Codex may project contract-declared Bash into its native read-only mode;
+        # this checks configuration consistency, never actual host confinement.
+        expected_codex = set(claude["tools"])
+        reviewer_shell = (contract["authority_boundary"] == "read-only-review"
+                          and "Bash" in contract["allowed_tools"]
+                          and "Bash" not in contract.get("denied_tools", []))
+        if reviewer_shell:
+            expected_codex.add("Bash")
         tests += [
             (
                 contract["id"] + ":mutation-parity",
@@ -18,8 +27,12 @@ def main():
                 == bool(codex["workspace_write"]),
             ),
             (
-                contract["id"] + ":tool-parity",
-                set(claude["tools"]) == set(codex["allowed_tools"]),
+                contract["id"] + ":role-scoped-tool-projection",
+                expected_codex == set(codex["allowed_tools"])
+                and (not reviewer_shell or (
+                    "Bash" in claude["deny"]
+                    and codex["native_codex"]["sandbox_mode"] == "read-only"
+                    and not codex["workspace_write"])),
             ),
             (
                 contract["id"] + ":approval-parity",

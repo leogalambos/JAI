@@ -2,12 +2,12 @@
 # SPDX-License-Identifier: BSD-4-Clause
 # Copyright (c) 2026 Leo Galambos and the Egothor team
 # https://www.egothor.org
-"""PreToolUse hook: the library is immutable unless a change has been approved.
+"""Advisory PreToolUse defense; operating-system isolation is separately required.
 
 Agent frontmatter restricts tool *types*, not *targets*. An agent holding Write can write
-anywhere, so "staging only" in a prompt is an instruction, not a control. This hook is the
-control: it reads the tool call before it runs and refuses writes into the live library
-unless a current approval record covers them.
+anywhere, so prompts and this bypassable hook cannot establish a security boundary.
+Live writes are refused; releases require the trusted external host service. A local
+approval JSON file never proves human identity or authorizes a mutation.
 
 Install via settings.json:
     "hooks": {"PreToolUse": [{"matcher": "Write|Edit|MultiEdit|NotebookEdit",
@@ -20,7 +20,6 @@ import json
 import os
 import re
 import sys
-import time
 for _s in (sys.stdin, sys.stdout, sys.stderr):  # Windows consoles default to a code page, not UTF-8
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
@@ -59,6 +58,11 @@ def owned():
 
 
 def protected(path):
+    # This remains defense in depth, never a replacement for native sandbox/DAC.
+    parts=set(os.path.normpath(path).replace('\\','/').split('/'))
+    if parts & {'.git','.fabric','.findings','.codex','.claude','.agents',
+                'policy','policies','approvals','APPROVAL.json'}:
+        return True
     if under(path, LIB):
         return True
     files, skill_dirs = owned()
@@ -101,18 +105,14 @@ def under(path, root):
 
 
 def approval_covers(path):
-    if not os.path.isfile(APPROVAL):
-        return False, "no approval record at it-role-house/staging/APPROVAL.json"
-    try:
-        rec = json.load(open(APPROVAL, encoding="utf-8"))
-    except (OSError, ValueError) as exc:
-        return False, f"approval record unreadable: {exc}"
-    if time.time() > float(rec.get("expires_epoch", 0)):
-        return False, f"approval expired at {rec.get('expires')} (approver {rec.get('approver')})"
-    scopes = [os.path.realpath(os.path.expanduser(s)) for s in rec.get("scope", [])]
-    if not any(under(path, s) for s in scopes):
-        return False, f"approval covers {rec.get('scope')}, not this path"
-    return True, f"approved by {rec.get('approver')} until {rec.get('expires')}"
+    """Deny local approval files; only an isolated external release service may act.
+
+    Args:
+        path: Requested target, never authorized by a local JSON record.
+    Returns:
+        False with a stable integration requirement. This hook has no authority.
+    """
+    return False, 'local approval files are untrusted; isolated host release service required'
 
 
 def main():
@@ -124,6 +124,10 @@ def main():
     if not paths:
         return 0
     for path in paths:
+        if set(path.replace('\\','/').split('/')) & {'.git','.fabric','.findings',
+                'policy','policies','approvals','APPROVAL.json'}:
+            sys.stderr.write('Blocked: protected metadata requires an independent owner operation.\n')
+            return 2
         if under(path, STAGING):
             continue
         if not protected(path):

@@ -1,26 +1,88 @@
 {
   "name": "gate-auditor",
   "provider": "claude",
+  "jai": {
+    "core_version": "1.0.0",
+    "layer": 3,
+    "layer_name": "Reasoning, Policy and Control",
+    "profile": "runtime",
+    "responsibility": "gate-auditor authority boundary",
+    "input_refs": [
+      "policy:managed-policy"
+    ],
+    "output_refs": [
+      "execution:agent:gate-auditor"
+    ],
+    "authority_ref": "human-authority:read-only-review",
+    "acceptance_question": "Are decisions, policy constraints, evidence obligations, trade-offs and escalation rules justified?",
+    "evidence_obligations": [
+      "ExecutionRecord"
+    ]
+  },
   "workload_class": "standard",
   "selection_strategy": "explicit-per-agent",
   "strategy_scope": "project-internal",
   "model_selector": "sonnet",
+  "runtime_boundary": {
+    "scope": "GA_COMPATIBLE/2",
+    "live_verified": false,
+    "hardened_privileged_enabled": false,
+    "protected_resources": "deny",
+    "git_authority": "human",
+    "enforcement": "effective-provider-sandbox-and-host"
+  },
+  "local_execution": {
+    "requires_effective_native_sandbox": true,
+    "contract_is_host_enforcement": false,
+    "reviewer_source_write": false,
+    "qa_output": "only explicitly native-writable scratch; never widen source access",
+    "shell_available": false,
+    "host_mount_isolation_required": true,
+    "limitation": "Claude reviewer shell requires an independently established read-only boundary"
+  },
   "tools": [
     "Read",
     "Grep",
     "Glob"
   ],
   "deny": [
-    "Write",
-    "Edit"
+    "Agent",
+    "Bash",
+    "Edit",
+    "Shell",
+    "WebFetch",
+    "Write"
   ],
   "sandbox": {
     "mode": "read-only",
     "workspace_write": false,
-    "network": "provider-managed"
+    "network": false
   },
   "approval_required_for": [
     "policy-change",
     "release-approval"
-  ]
+  ],
+  "native_claude": {
+    "permissionMode": "default",
+    "allowedTools": [
+      "Read",
+      "Grep",
+      "Glob"
+    ],
+    "disallowedTools": [
+      "Agent",
+      "Bash",
+      "Edit",
+      "Shell",
+      "WebFetch",
+      "Write"
+    ],
+    "sandbox": {
+      "enabled": true,
+      "failIfUnavailable": true,
+      "autoAllowBashIfSandboxed": false,
+      "allowUnsandboxedCommands": false,
+      "excludedCommands": []
+    }
+  }
 }

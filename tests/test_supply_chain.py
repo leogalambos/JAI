@@ -9,6 +9,7 @@ import tempfile
 import unittest
 from unittest import mock
 import zipfile
+import hashlib
 
 TOOLS = Path(__file__).resolve().parents[1] / '.ai/runtime/tools'
 sys.path.insert(0, str(TOOLS))
@@ -51,10 +52,13 @@ class SupplyChainTests(unittest.TestCase):
         self.assertNotEqual(supply_chain.tree_digest(self.root), before)
 
     def test_sbom_and_provenance_verify_extracted_distribution(self):
+        (self.root/'.ai/runtime/schema').mkdir(parents=True)
+        (self.root/'.ai/runtime/schema/release-scope.schema.json').write_bytes((TOOLS.parent/'schema/release-scope.schema.json').read_bytes())
+        (self.root/'RELEASE-SCOPE.json').write_bytes((TOOLS.parents[2]/'RELEASE-SCOPE.json').read_bytes())
         (self.root / 'INBOX').mkdir()
         (self.root / 'INBOX/private.md').write_text('Private fixture')
         meta = self.root / '.ai/runtime/_meta'
-        meta.mkdir(parents=True)
+        meta.mkdir(parents=True,exist_ok=True)
         qualification = meta / 'qualification-A-G.json'
         qualification.write_text(json.dumps({'gates': dict.fromkeys('ABCDEFG', True)}))
         sbom = self.root / 'SBOM.spdx.json'
@@ -70,6 +74,11 @@ class SupplyChainTests(unittest.TestCase):
             bundle.extractall(extracted)
         package = extracted / 'package'
         self.assertTrue(supply_chain.verify(package, package / sbom.name, package / prov.name))
+        saved=(package/prov.name).read_text();bad=json.loads(saved);bad['supported_capabilities']={}
+        (package/prov.name).write_text(json.dumps(bad))
+        with self.assertRaisesRegex(ValueError,'release scope mismatch'):
+            supply_chain.verify(package,package/sbom.name,package/prov.name)
+        (package/prov.name).write_text(saved)
         (package / 'public.md').write_text('Tampered')
         with self.assertRaisesRegex(ValueError, 'digest mismatch'):
             supply_chain.verify(package, package / sbom.name, package / prov.name)
@@ -104,3 +113,21 @@ class SupplyChainTests(unittest.TestCase):
             self.assertEqual({row['fileName'] for row in document['files']}, {'./VERSION', './public.md'})
         finally:
             os.chdir(previous)
+
+    def test_sbom_dependencies_follow_declared_requirements_not_stale_constants(self):
+        (self.root / 'requirements.txt').write_text('jsonschema>=4.26,<5\nlxml>=6,<7\n')
+        (self.root / 'requirements-ci.txt').write_text('-r requirements.txt\nlxml==6.1.3\npytest==8.4.2\n')
+        document = supply_chain.sbom(self.root, self.root / 'SBOM.spdx.json')
+        dependencies = [p for p in document['packages'] if p['SPDXID'] != 'SPDXRef-Package']
+        self.assertEqual({p['name'] for p in dependencies}, {'jsonschema', 'lxml', 'pytest'})
+        self.assertTrue(all(p['licenseDeclared'] == 'NOASSERTION' and not p['filesAnalyzed'] for p in dependencies))
+        lxml = next(p for p in dependencies if p['name'] == 'lxml')
+        self.assertEqual(lxml['versionInfo'], '6.1.3')
+        self.assertNotIn('lxml 5.x', document['annotations'][0]['comment'])
+        self.assertTrue(any(row['relationshipType'] == 'DEPENDS_ON' for row in document['relationships']))
+
+    def test_hash_boundaries_and_existing_integrity_selftest(self):
+        self.assertEqual(supply_chain.sha(b''), 'e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855')
+        self.assertEqual(supply_chain.sha(b'abc'), 'ba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad')
+        with self.assertRaises(TypeError): supply_chain.sha('not bytes')
+        self.assertEqual(supply_chain.self_test(), 0)

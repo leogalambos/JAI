@@ -190,7 +190,9 @@ class CanonicalNavigationTests(unittest.TestCase):
         self.assertLess(paths.index('using/methodical-workflows.md'), paths.index('examples/how-to-use-JAI/security-assessment.md'))
         self.assertLess(paths.index('using/layered-engagement.md'), paths.index('examples/how-to-use-JAI/android-development.md'))
         home = (ROOT / 'docs/index.md').read_text()
-        sidebar = home.split('<nav class="ai-sidebar-nav-v31"', 1)[1].split('</nav>', 1)[0]
+        sidebars = re.findall(r'<nav\b[^>]*\bclass="ai-sidebar-nav-v31"[^>]*>(.*?)</nav>', home, re.S)
+        self.assertEqual(len(sidebars), 1)
+        sidebar = sidebars[0]
         self.assertIn(links.HOME_NAV_TOKEN, sidebar)
         self.assertNotIn('<a ', sidebar)
 

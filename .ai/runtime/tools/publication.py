@@ -97,6 +97,15 @@ def markdown_text(m):
             out.append('')
     return '\n'.join(out)
 
+
+def diagram_lines(diagram):
+    """Preserve diagram meaning as editable topology in text-oriented Office outputs."""
+    if not diagram:return []
+    problems=validate_diagram(diagram)
+    if problems:raise ValueError('; '.join(problems))
+    return [diagram['title']]+[str(n['id'])+': '+str(n['label'])+(' — '+str(n['description']) if n.get('description') else '') for n in diagram['nodes']]+[str(e['from'])+' -> '+str(e['to'])+': '+str(e.get('label','')) for e in diagram.get('edges',[])]
+
+
 def render_html(m,out,theme):
     h=semantic_hash(m); sections=[]
     for s in m['sections']:
@@ -106,9 +115,13 @@ def render_html(m,out,theme):
         if t.get('headers'):
             th=''.join(f'<th>{esc(x)}</th>' for x in t['headers'])
             tr=''.join('<tr>'+''.join(f'<td>{esc(x)}</td>' for x in row)+'</tr>' for row in t.get('rows',[]))
-            table=f'<table><thead><tr>{th}</tr></thead><tbody>{tr}</tbody></table>'
-        sections.append(f"<section><h2>{esc(s['heading'])}</h2>{body}{bullets}{table}</section>")
-    css="""body{font-family:Arial,sans-serif;max-width:1120px;margin:36px auto;padding:0 28px;line-height:1.45;color:#171717}header{border-bottom:2px solid #333;padding-bottom:18px;margin-bottom:26px}.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 20px;font-size:13px}h1{font-size:32px;margin-bottom:6px}h2{font-size:22px;margin-top:30px;border-bottom:1px solid #ddd;padding-bottom:6px}table{border-collapse:collapse;width:100%;font-size:13px}th,td{border:1px solid #bbb;padding:7px;vertical-align:top}th{background:#eee}footer{margin-top:40px;border-top:1px solid #bbb;padding-top:10px;font-size:11px}@media print{body{max-width:none;margin:0}.no-print{display:none}}"""
+            table=f'<table width="100%"><colgroup>'+''.join(f'<col width="{100/len(t["headers"]):.2f}%">' for _ in t['headers'])+f'</colgroup><thead><tr>{th}</tr></thead><tbody>{tr}</tbody></table>'
+        diagram=''
+        if s.get('diagram'):
+            with tempfile.TemporaryDirectory() as directory:
+                graphic=Path(directory)/'diagram.svg';render_svg_diagram(s['diagram'],graphic,theme if theme.get('diagram') else load_json(DEFAULT_THEME));diagram=graphic.read_text()
+        sections.append(f"<section><h2>{esc(s['heading'])}</h2>{body}{bullets}{table}{diagram}</section>")
+    css="""body{font-family:Arial,sans-serif;max-width:1120px;margin:36px auto;padding:0 28px;line-height:1.45;color:#171717}header{border-bottom:2px solid #333;padding-bottom:18px;margin-bottom:26px}.meta{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 20px;font-size:13px}h1{font-size:32px;margin-bottom:6px}h2{font-size:22px;margin-top:30px;border-bottom:1px solid #ddd;padding-bottom:6px}svg{max-width:100%;height:auto}table{border-collapse:collapse;width:100%;font-size:13px}th,td{border:1px solid #bbb;padding:7px;vertical-align:top}th{background:#eee}footer{margin-top:40px;border-top:1px solid #bbb;padding-top:10px;font-size:11px}@media print{body{max-width:none;margin:0}.no-print{display:none}}"""
     doc=f'''<!doctype html><html><head><meta charset="utf-8"><title>{esc(m['title'])}</title><style>{css}</style><meta name="semantic-sha256" content="{h}"></head><body><header><h1>{esc(m['title'])}</h1><div>{esc(m.get('subtitle',''))}</div><div class="meta"><div><b>Artifact:</b> {esc(m['artifact_id'])}</div><div><b>Owner:</b> {esc(m['owner'])}</div><div><b>Audience:</b> {esc(', '.join(m['audience']))}</div><div><b>Classification:</b> {esc(m['classification'])}</div><div><b>Version:</b> {esc(m.get('version',''))}</div><div><b>Semantic hash:</b> {h[:16]}…</div></div></header>{''.join(sections)}<footer>{esc(m['classification'])} · {esc(m['artifact_id'])} · semantic SHA-256 {h}</footer></body></html>'''
     Path(out).write_text(doc,encoding='utf-8')
 
@@ -135,11 +148,13 @@ def render_docx(m,out,theme):
         body.append(docx_para(s['heading'],'Heading1'))
         if s.get('body'): body.append(docx_para(s['body']))
         for b in s.get('bullets',[]): body.append(docx_para('• '+b))
+        for line in diagram_lines(s.get('diagram')):body.append(docx_para(line))
         t=s.get('table') or {}
         if t.get('headers'):
             tbl=Element('w:tbl'); rows=[t['headers']]+t.get('rows',[])
             for ri,row in enumerate(rows):
                 tr=SubElement(tbl,'w:tr')
+                if ri==0:SubElement(SubElement(tr,'w:trPr'),'w:tblHeader')
                 for cell in row:
                     tc=SubElement(tr,'w:tc'); tc.append(docx_para(str(cell),bold=(ri==0)))
             body.append(tbl)
@@ -185,6 +200,7 @@ def render_pptx(m,out,theme):
         lines=[]
         if s.get('body'): lines += [x.strip() for x in re.split(r'(?<=[.!?])\s+',s['body']) if x.strip()]
         lines += ['• '+x for x in s.get('bullets',[])]
+        lines += diagram_lines(s.get('diagram'))
         t=s.get('table') or {}
         if t.get('headers'): lines.append(' | '.join(map(str,t['headers']))); lines += [' | '.join(map(str,r)) for r in t.get('rows',[])]
         lines=[wrapped for line in lines for paragraph in str(line).splitlines() for wrapped in (textwrap.wrap(paragraph,width=80,replace_whitespace=False,drop_whitespace=False) or [''])]
@@ -225,12 +241,13 @@ def render_xlsx(m,out,theme):
         t=s.get('table') or {}
         if s.get('body'): sheets.append((f'Content {i}',[['Section','Content'],[s['heading'],s['body']]]))
         if t.get('headers'): sheets.append(((s['heading'][:28] or f'Section{i}'),[t['headers']]+t.get('rows',[])))
+        if s.get('diagram'):sheets.append((f'Diagram {i}',[['Diagram topology']]+[[line] for line in diagram_lines(s['diagram'])]))
     types=['''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/xl/workbook.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet.main+xml"/>''']
     for i in range(1,len(sheets)+1): types.append(f'<Override PartName="/xl/worksheets/sheet{i}.xml" ContentType="application/vnd.openxmlformats-officedocument.spreadsheetml.worksheet+xml"/>')
     types.append('</Types>')
     rootrels='''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="xl/workbook.xml"/></Relationships>'''
     sh=''.join(f'<sheet name="{esc(name)}" sheetId="{i}" r:id="rId{i}"/>' for i,(name,_) in enumerate(sheets,1))
-    wb=f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><sheets>{sh}</sheets></workbook>'''
+    wb=f'''<?xml version="1.0" encoding="UTF-8" standalone="yes"?><workbook xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main" xmlns:r="http://schemas.openxmlformats.org/officeDocument/2006/relationships"><bookViews><workbookView/></bookViews><sheets>{sh}</sheets></workbook>'''
     wrels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+''.join(f'<Relationship Id="rId{i}" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/worksheet" Target="worksheets/sheet{i}.xml"/>' for i in range(1,len(sheets)+1))+'</Relationships>'
     with zipfile.ZipFile(out,'w',zipfile.ZIP_DEFLATED) as z:
         z.writestr('[Content_Types].xml',''.join(types)); z.writestr('_rels/.rels',rootrels); z.writestr('xl/workbook.xml',wb); z.writestr('xl/_rels/workbook.xml.rels',wrels)
@@ -240,13 +257,15 @@ def render_xlsx(m,out,theme):
                 cells=[]
                 for ci,val in enumerate(row,1): cells.append(f'<c r="{colname(ci)}{ri}" t="inlineStr"><is><t>{esc(val)}</t></is></c>')
                 rs.append(f'<row r="{ri}">'+''.join(cells)+'</row>')
-            sx='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetData>'+''.join(rs)+'</sheetData></worksheet>'
+            widths=[24,68] if max(map(len,rows))<=2 else [max(14,min(28,100/max(map(len,rows))))]*max(map(len,rows))
+            cols=''.join(f'<col min="{i}" max="{i}" width="{width}" customWidth="1"/>' for i,width in enumerate(widths,1))
+            sx='<?xml version="1.0" encoding="UTF-8" standalone="yes"?><worksheet xmlns="http://schemas.openxmlformats.org/spreadsheetml/2006/main"><sheetPr><pageSetUpPr fitToPage="1"/></sheetPr><cols>'+cols+'</cols><sheetData>'+''.join(rs)+'</sheetData><pageMargins left="0.3" right="0.3" top="0.4" bottom="0.4" header="0.2" footer="0.2"/><pageSetup paperSize="9" orientation="landscape" fitToWidth="1" fitToHeight="0"/></worksheet>'
             z.writestr(f'xl/worksheets/sheet{si}.xml',sx)
 
 def render_svg_diagram(d,out,theme):
     probs=validate_diagram(d)
     if probs: raise ValueError('; '.join(probs))
-    nodes=d.get('nodes',[]); edges=d.get('edges',[]); W=theme['diagram']['node_width']; H=theme['diagram']['node_height']; hg=theme['diagram']['h_gap']; vg=theme['diagram']['v_gap']; cols=max(1,math.ceil(math.sqrt(len(nodes))))
+    nodes=d.get('nodes',[]); edges=d.get('edges',[]); W=theme['diagram']['node_width']; H=theme['diagram']['node_height']; hg=max(theme['diagram']['h_gap'],120); vg=theme['diagram']['v_gap']; cols=max(1,math.ceil(math.sqrt(len(nodes))))
     pos={}
     for i,n in enumerate(nodes):
         x=40+(i%cols)*(W+hg); y=80+(i//cols)*(H+vg); pos[n['id']]=(x,y)
@@ -254,8 +273,12 @@ def render_svg_diagram(d,out,theme):
     parts=[f'<svg xmlns="http://www.w3.org/2000/svg" width="{width}" height="{height}" viewBox="0 0 {width} {height}"><defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#444"/></marker></defs><style>text{{font-family:Arial,sans-serif;fill:#111}}.node{{fill:#fff;stroke:#444;stroke-width:1.5}}.edge{{stroke:#555;stroke-width:1.5;marker-end:url(#arrow)}}</style><text x="40" y="35" font-size="24" font-weight="bold">{esc(d["title"])}</text>']
     for e in edges:
         x1,y1=pos[e['from']]; x2,y2=pos[e['to']]; x1+=W/2; y1+=H/2; x2+=W/2; y2+=H/2
+        dx,dy=x2-x1,y2-y1
+        factors=([W/(2*abs(dx))] if dx else [])+([H/(2*abs(dy))] if dy else [])
+        clip=min(factors) if factors else 0
+        x1+=dx*clip;y1+=dy*clip;x2-=dx*clip;y2-=dy*clip
         parts.append(f'<line class="edge" x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}"/>')
-        if e.get('label'): parts.append(f'<text x="{(x1+x2)/2}" y="{(y1+y2)/2-5}" font-size="11">{esc(e["label"])}</text>')
+        if e.get('label'): parts.append(f'<text x="{(x1+x2)/2}" y="{(y1+y2)/2-5}" text-anchor="middle" font-size="11">{esc(e["label"])}</text>')
     for n in nodes:
         x,y=pos[n['id']]; parts.append(f'<rect class="node" x="{x}" y="{y}" width="{W}" height="{H}" rx="8"/><text x="{x+12}" y="{y+28}" font-size="14" font-weight="bold">{esc(n["label"])}</text>')
         if n.get('description'): parts.append(f'<text x="{x+12}" y="{y+49}" font-size="11">{esc(n["description"][:45])}</text>')
@@ -289,26 +312,28 @@ def render_svg(m,out,theme):
 
 
 def render_pdf(m,out,theme):
-    """Convert a DOCX draft using an isolated, writable LibreOffice profile.
+    """Render the actual HTML publication as PDF, without requiring Office.
 
-    Args:
-        m: Verified draft publication model.
-        out: PDF destination path.
-        theme: Document theme.
-    Raises:
-        RuntimeError: If LibreOffice is unavailable or conversion fails.
-        subprocess.TimeoutExpired: If conversion exceeds ninety seconds.
-        OSError: If temporary files or output cannot be written.
+    WeasyPrint is preferred when installed. The explicit Office fallback renders
+    HTML, never substitutes HTML PDF for visual QA of editable Office bytes.
     """
-    with tempfile.TemporaryDirectory() as td:
-        td=Path(td); docx=td/'source.docx'; render_docx(m,docx,theme)
-        exe=shutil.which('libreoffice') or shutil.which('soffice')
-        if not exe: raise RuntimeError('PDF renderer requires LibreOffice/soffice')
-        import subprocess
-        r=subprocess.run([exe,'-env:UserInstallation='+(td/'libreoffice-profile').as_uri(),'--headless','--convert-to','pdf','--outdir',str(td),str(docx)],stdout=subprocess.PIPE,stderr=subprocess.PIPE,text=True,timeout=90)
-        pdf=td/'source.pdf'
-        if r.returncode or not pdf.exists(): raise RuntimeError('PDF render failed: '+r.stderr[-500:])
+    from office_renderer import html_pdf
+    with tempfile.TemporaryDirectory() as directory:
+        source=Path(directory)/'source.html';render_html(m,source,theme)
+        try:
+            pdf=html_pdf(source,Path(directory)/'converted')
+        except RuntimeError as exc:
+            import operator_actions
+            parent=Path(out).absolute().parent/'operator-actions';parent.mkdir(parents=True,exist_ok=True)
+            snapshot=parent/(semantic_hash(m)+'.html')
+            if snapshot.exists() and snapshot.read_bytes()!=source.read_bytes():raise ValueError('operator snapshot collision')
+            if not snapshot.exists():snapshot.write_bytes(source.read_bytes())
+            req=operator_actions.request('render','Complete the paused PDF publication from exact HTML bytes',snapshot,parent/'outputs',{'backend':'libreoffice','completion_target':str(Path(out).absolute())})
+            request_path=parent/(req['request_id']+'.json')
+            with request_path.open('x') as stream:json.dump(req,stream,indent=2);stream.write('\n')
+            raise RuntimeError(operator_actions.request_message(req,request_path,reason='Local HTML/PDF conversion did not complete: '+str(exc))) from exc
         shutil.copyfile(pdf,out)
+
 
 def _render_format(m,fmt,out,theme):
     {'html':render_html,'docx':render_docx,'pdf':render_pdf,'pptx':render_pptx,'xlsx':render_xlsx,'svg':render_svg}[fmt](m,out,theme)

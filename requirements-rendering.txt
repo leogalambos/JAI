@@ -1,0 +1,5 @@
+# Optional HTML/CSS PDF backend, evaluated on Fedora.
+weasyprint>=70,<71
+
+# Old Fedora Pyphen 0.13.x imports deprecated pkg_resources.
+Pyphen>=0.17,<0.18

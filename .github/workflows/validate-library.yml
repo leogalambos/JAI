@@ -76,6 +76,9 @@ jobs:
           mapfile -t modules < "$RUNNER_TEMP/jai-quick-tests.txt"
           python3 .ai/runtime/tools/offline_guard.py run --stream --root . --timeout 180 -- python3 -u -m pytest -vv -s "${modules[@]}"
 
+      - name: P0 runtime security application regression (host coverage reported separately)
+        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . --timeout 120 -- python3 -u -m pytest -vv -rs tests/test_agent_runtime.py tests/test_integration_adapters.py tests/test_guard_library_write.py tests/test_fabric_authority_boundary.py tests/test_commercial_runtime.py
+
       - name: Gate checker positive and negative regression
         run: |
           printf 'G1: pass\nG2: pass\nG3: pass\nG4: pass\nG5: pass\n' > /tmp/gc-pass.txt

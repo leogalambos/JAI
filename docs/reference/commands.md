@@ -120,3 +120,11 @@ Resolution and compilation accept `--context FILE`. These inspect proposed
 content obligations; they do not approve standards or run 26.10.7 content QA.
 See [Document Content Specifications](../capabilities/document-content-specifications.md)
 for scope, compatibility and the human acceptance boundary.
+
+## Current operator boundary
+
+For 26.10.14 {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
+Native provider approval is not Fabric L0; external Ed25519 receipts require
+protected trust and matching state. Actual Office QA is OPERATOR_ASSISTED;
+WeasyPrint HTML/PDF does not inspect Office bytes. Privileged worker/API
+mutation is NOT_SUPPORTED; optional host confinement is NOT_VERIFIED.

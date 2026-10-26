@@ -141,7 +141,7 @@ python3 .ai/runtime/tools/offline_guard.py run --root . --timeout "$qualificatio
 ```
 
 The regression ceiling is 13,320 seconds: 22 module ceilings plus 120 seconds
-for orchestration. The complete A–H ceiling is 19,440 seconds: all individual
+for orchestration. The complete A–H ceiling is 19,560 seconds: all individual
 command ceilings, including evidence generation and the final policy check,
 plus the same margin. These are maximum resource budgets, not expected run
 times. A regression test checks their relationship to the actual gate commands.

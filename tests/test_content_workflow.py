@@ -120,6 +120,8 @@ def signed_fabric_acceptance(bound,tmp_path,monkeypatch):
     entry('node',{'id':'rev-l0','type':'rev','layer':0,'state':'accepts','reviewer':'Synthetic workflow authority'},True)
     entry('edge',{'src':'evd-workflow','label':'supports','dst':'frag-acceptance'})
     entry('edge',{'src':'frag-acceptance','label':'reviewed_by','dst':'rev-l0'})
+    from test_content_lint import operator_attested_fixture
+    operator_attested_fixture(module,entries,tmp_path,monkeypatch)
     return SimpleNamespace(fabric=module.Fabric('synthetic-workflow-test',entries),fragment_id='frag-acceptance'),entries
 
 
@@ -149,7 +151,7 @@ def test_every_handoff_executes_positive_and_missing_receiver_or_authority_check
             authority,entries=signed_fabric_acceptance(bound,tmp_path,monkeypatch)
             kwargs['authority']=authority
             assert check(row['handoff_id'],model,report,ROOT,**kwargs)['status']=='ACCEPTANCE_VERIFIED',row['handoff_id']
-            entries[2]['sig']='0'*64
+            entries[2]['operator_authority']['receipt']['signature']='AA=='
             assert 'EXISTING_SIGNED_L0_ACCEPTANCE_REQUIRED' in check(row['handoff_id'],model,report,ROOT,**kwargs)['findings']
         else:
             subject={**bound,'verdict':'PASS','evidence':'Reviewed the exact scoped workflow gate and evidence in the canonical source.',

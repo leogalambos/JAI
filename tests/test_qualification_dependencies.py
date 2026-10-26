@@ -2,6 +2,7 @@
 # Copyright (c) 2026 Leo Galambos and the Egothor team
 """Missing mandatory execution dependencies are explicit non-passing states."""
 from pathlib import Path
+import importlib.util
 import subprocess
 import sys
 from types import SimpleNamespace
@@ -20,12 +21,12 @@ def test_missing_executable_is_not_executed_and_never_passes():
 
 
 def test_missing_renderer_does_not_execute_or_pass():
-    with patch.object(qualification.shutil, 'which', return_value=None), patch.object(
+    with patch.object(importlib.util, 'find_spec', return_value=None), patch.object(qualification.shutil, 'which', return_value=None), patch.object(
             qualification, 'run_offline', side_effect=AssertionError('unavailable renderer')):
         result = qualification.publication_renderer_check()
     assert not result['ok']
     assert result['state'] == 'NOT_EXECUTED'
-    assert 'LibreOffice' in result['detail']
+    assert 'PDF backend unavailable' in result['detail']
 
 
 def test_renderer_presence_still_requires_successful_execution():

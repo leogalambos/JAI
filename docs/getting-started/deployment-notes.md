@@ -2,7 +2,7 @@
 
 ## Operating model for an enterprise deployment
 
-Once installed, **users interact with Claude/Codex**, not a library of manually invoked scripts. Administrators own configuration, permissions, credentials and release qualification. The provider orchestrates specialist agents and authorised internal tool calls; the organisation supplies accountable decision owners and a trusted L0 approval channel. The Codex implementation intentionally requires human-run protected L0 actions outside the agent's tool path. A pilot should verify these distinctions with real provider sessions and representative denial/approval cases, in addition to structural package tests.
+Once installed, **users interact with Claude/Codex**, not a library of manually invoked scripts. Administrators own configuration, permissions, credentials and release qualification. The provider orchestrates specialist agents and authorised internal tool calls; the organisation supplies accountable decision owners and a trusted L0 approval channel. Both providers use external operator signing and exact-state receipt verification for Fabric L0; native permission prompts are distinct. A pilot should verify these distinctions with real provider sessions and representative denial/approval cases, in addition to structural package tests.
 
 ## Recommended adoption path
 
@@ -74,3 +74,11 @@ release is still published with a SHA-256 checksum and embedded evidence;
 this does **not** constitute a cryptographically signed provenance claim.
 Protect `release@*` tags and use branch protection on `main`. GitHub Pages
 is public where permitted, so assess documentation classification.
+
+## Current operator boundary
+
+For 26.10.14 {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
+Native provider approval is not Fabric L0; external Ed25519 receipts require
+protected trust and matching state. Actual Office QA is OPERATOR_ASSISTED;
+WeasyPrint HTML/PDF does not inspect Office bytes. Privileged worker/API
+mutation is NOT_SUPPORTED; optional host confinement is NOT_VERIFIED.

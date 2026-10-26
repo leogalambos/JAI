@@ -8,7 +8,7 @@ Publication is a controlled projection of approved semantics, not a free-standin
 <img src="../../assets/diagrams/publication-chain.svg" alt="Enterprise publication chain from semantic source through projection, renderer and visual QA to approval">
 </div>
 
-26.10.4 makes the chain profile-native:
+The publication profile connects the six layers:
 
 ```text
 L1 intended audience / decision / authorised use
@@ -37,7 +37,7 @@ The manifest binds the publication to both JAI lineage and content identity. It 
 - semantic/projection/render hashes.
 
 The current content-aware renderer validates the matching DCS-bound v4
-manifest and immutable QA sidecars. Historical v3 lineage remains readable
+manifest and hash-bound QA sidecars. Historical v3 lineage remains readable
 for compatibility; it does not satisfy the current render boundary. See
 [DCS publication integrity](../capabilities/document-content-specifications.md).
 
@@ -84,3 +84,61 @@ The separation is essential for detecting both content omission and post-render 
 ## Visual QA
 
 Render-based visual QA checks the visible result after rendering. It complements, rather than replaces, semantic review and ProjectionManifest coverage checks.
+
+## 26.10.14 actual-format rendering
+
+HTML/PDF prefers optional WeasyPrint 70 with URL fetches and custom font-face
+loads denied. System fonts remain host dependencies. Host LibreOffice is a
+reference/fallback, not a required in-sandbox service. Actual DOCX/PPTX/XLSX
+bytes receive their own native PDF/raster evidence; HTML PDF is not their QA.
+Receipts bind hashes, tool/version, profile, command and actual pages.
+
+Office retains editable text/tables and diagram topology; HTML/PDF/SVG provides
+vector diagrams. Native Office vector shape embedding is not claimed. Layout
+and pagination differ by backend; inspect actual outputs. The evaluated corpus
+covers diacritics, long tables, multipage output, document control, a diagram,
+substantive slides and a workbook. LibreOffice HTML import flattens inline SVG
+and paginates differently; WeasyPrint is preferred for HTML/PDF fidelity.
+
+See [operator walkthrough](../operations/operator-walkthrough.md) for prepare, render,
+verify and resume. Critical QA thresholds and hashes remain mandatory. Missing
+rendering produces an explicit handoff, never a fake PASS.
+
+## Dependencies by task
+
+Do not install every optional tool to start core authoring. Python package
+imports use the interpreter invoking JAI, not whichever `pip` happens to be
+on PATH. For a clean renderer venv, follow [installation](../getting-started/install.md#a-clean-optional-renderer-environment).
+
+| Task | Dependency | Where / prerequisite | Scope |
+| --- | --- | --- | --- |
+| Core contracts, Fabric and structured workflows | Python 3.10+, jsonschema and PyYAML from requirements.txt | JAI's Python interpreter | Required for applicable core validation |
+| Build the documentation website | MkDocs, Material and pymdown-extensions; mistune for Markdown processing | Maintainer/docs environment; requirements.txt includes these convenience dependencies | Development/documentation, not a native provider prerequisite |
+| HTML/CSS to PDF | WeasyPrint 70, Pyphen 0.17.x; Pango/HarfBuzz/Fontconfig libraries and usable fonts | Same Python/venv as JAI render command, plus host libraries | Optional; no Office fidelity claim |
+| Actual DOCX/PPTX/XLSX visual review | LibreOffice or qualified Office renderer, usable fonts and writable temporary profile | Agent sandbox if available, otherwise reviewed host C action | Optional; actual Office bytes must be rendered |
+| PDF page images/text | Poppler pdftoppm / pdftotext, Pillow for image analysis | Renderer/QA host; executables on PATH | Applicable visual QA |
+| SVG visual QA | CairoSVG, Cairo libraries, Pillow | QA Python interpreter and host libraries | Optional diagram QA |
+| SABSA DOCX / LaTeX source | Pandoc | Publication host PATH | Optional; standard publication DOCX generation itself does not require Pandoc |
+| Compile LaTeX PDF | XeLaTeX, TeX packages and document fonts | Publication host PATH | Optional; not required for HTML PDF |
+| Local browser screenshots | Chromium and writable disposable profile | Effective native sandbox or explicit host C task | Optional; no unsafe sandbox-disabling flags |
+| Signed Fabric L0 | OpenSSL with Ed25519 support, separate operator key and protected public pin | Signer outside agent access; verifier needs only trusted public key | Optional formal decisions, not first-run authoring |
+| EA XSD conformance | lxml | JAI validation interpreter | Task-specific validation |
+| Qualification regression | requirements-ci.txt | Disposable developer/release environment | Development only |
+
+Example Fedora host packages, for the human operator to review and install
+only when that task is needed:
+
+```sh
+sudo dnf install libreoffice poppler-utils dejavu-sans-fonts
+```
+
+For browser QA, `chromium` is a separate optional Fedora package. Pandoc and
+`texlive-xetex` serve the SABSA/LaTeX path; they are not PDF backend substitutes
+for actual Office visual review. Other systems use their native package tools.
+The agent never runs package installation as an implicit authorization grant.
+
+Host rendering of untrusted documents requires appropriate containment.
+Never use sudo just to render, widen provider permissions, or interpret a
+renderer failure as FORMAL_L0. A/B/C are execution routes; D remains a
+separate signed decision requirement. See the
+[operator walkthrough](../operations/operator-walkthrough.md).

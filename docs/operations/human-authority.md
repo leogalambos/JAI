@@ -1,139 +1,66 @@
 # Human authority and escalation
 
-AI IT House treats **Human Authority (L0)** as an external decision boundary. It is not another agent and not a seventh JAI layer.
+L0 is external human authority, not another JAI layer. Agents prepare dossiers
+and requests; they cannot synthesize approvals or signer credentials.
 
-The authority model states the rule directly: JAI agents may prepare, review, recommend and record, but they cannot synthesize L0 authority.
+## What the human does
 
-## What the human does in Claude/Codex
+In Codex CLI and Claude Code, the human inspects and executes host signing.
+The agent/runtime prepares requests and verifies returned evidence inside its
+existing sandbox. Neither provider approval UI nor chat is an L0 credential.
 
-**Operator workflow:** request the consequential work with `/layered` (Claude) or `$workflow-layered` (Codex), inspect the escalation dossier delivered in the conversation, and specify one of the five supported decisions below with its scope/rationale. This is a **decision**, not consent for the assistant to invent a signer or bypass a tool restriction.
+1. Inspect the verified dossier and actual object IDs.
+2. Authority decisions and layer-0 reviews produce an exact request and return
+   OPERATOR_ACTION_REQUIRED; they do not silently sign records.
+3. In a HOST console, the human reviews that request using a reviewed signer,
+   external Ed25519 private key and protected public trust pin.
+4. Type APPROVE or DENY with the exact request ID after inspecting the engagement,
+   target, ledger snapshot, policy digest, rationale and consequences.
+5. apply-operator verifies signature, scope, expiry and current state. Approved
+   effects commit atomically; declining leaves the ledger intact.
+6. Run Fabric verify/justify. Signed acceptance is not proof of all lower-layer
+   evidence, professional correctness or release readiness by itself.
 
-**Claude interactive mode:** an authority operation can be put through the managed provider permission prompt (`ask`), where the human inspects the complete proposed command and approves or denies it. If an interactive prompt is unavailable, the operation is denied.
+Decisions retain accept, exception, revise, reject and terminate. Exceptions
+remain scoped and expiring. Revision creates a new L1 generation without erasing
+history. A domain REJECT differs from declining an operation.
 
-**Codex CLI:** the agent **must not** execute the L0 operation itself: the managed guard refuses it because this provider path cannot generate the required trusted interactive approval. Ask Codex to display the exact command and dossier, then **run that command yourself in a separate trusted system terminal** after verifying signer, decision, record IDs, rationale, scope and expiry. Return to Codex and request a fresh `/fabric-report`-equivalent (`$workflow-fabric-report`) to verify that the authority record and release state actually changed. Typing "approved" in chat is not itself an authority event.
+## Enrollment and limits
 
-The same principle applies to final L0 acceptance of a product: do not interpret a favourable review or a chat acknowledgement as a recorded authority act. If no supported trusted human action is available, stop with an explicit pending-authority status.
+The operator generates the private key outside agent mounts and exports only
+the public key. An administrator enrolls `~/.ai/jai-operator-trust.json`.
+The installer creates no keys. Copy the reviewed signer outside agent writes
+and use isolated Python imports, not workspace-controlled signing code.
 
-## When work reaches L0
+Trust JSON uses schema_version 1, policy_version
+`local-operator-attestation/1`, public_key (Ed25519 PEM) and key_id (SHA-256 of that
+exact PEM). Fabric reads only protected public material. Do not return private
+keys or treat environment flags, labels, same UID or keypresses alone as proof.
 
-An escalation eventually requires the operator when one or more of these conditions apply:
+This is LOCAL OPERATOR ATTESTATION. If model tools can read the private key or
+replace trusted runtime/pin, leave authority unavailable. Enterprise identity
+and rollback-resistant audit custody are not claimed. Historical HMAC records
+remain verification-compatible only.
 
-- an authority matter such as risk acceptance, scope change, removal of a mandatory control or reinterpretation of intent;
-- the responsible JAI layer cannot find a viable reformulation;
-- the reformulation or shared episode budget is exhausted;
-- a round reaches its autonomous termination condition;
-- a final consequential product requires authority acceptance before release.
+## Providers and Git
 
-The system preserves the escalation chain. A lower-layer authority problem cannot be converted into an ordinary technical issue by relaying it upward.
+Native tool approval, Fabric L0 and Git/release ownership remain distinct.
+Provider prompts and chat cannot replace a signed Fabric receipt. Signing stays
+in the human host console; hooks additionally deny agent signing and protected
+record/key writes. Agent sandbox permissions never expand through a receipt.
 
-## Decision dossier
+Human Git remains legitimate outside the sandbox. JAI does not relax .git
+protection or provide a privileged Git service. Signing, push and publication
+require a separate explicit owner action.
 
-Before a human decision, **the orchestrating agent normally generates** the dossier (or a maintainer can reproduce it using the read-only runtime API):
+See [product boundaries](../security/product-operations.md) for commands,
+render/resume behavior, prerequisites and optional hardening.
 
-```bash
-python3 ~/.ai/it-role-house/fabric/fabric.py dossier <engagement> <escalation-id>
-```
+## Do not confuse execution with authority
 
-The dossier is mechanically compiled from the fabric and should expose:
-
-- original operator intent;
-- requirement/contract lineage;
-- failed attempts and their states;
-- evidence and review rationale;
-- unresolved conflict;
-- proposals and their trade-offs;
-- the exact authority action available to the operator.
-
-`authority-liaison` may prepare a cover note and make the dossier easier to read. It cannot decide.
-
-## Authority decisions
-
-The `authorise` command supports:
-
-| Decision | Meaning |
-| --- | --- |
-| `accept` | accept the authority decision within its bound scope |
-| `exception` | permit a constrained exception, normally with rationale and expiry |
-| `revise` | require a revised L1 generation and a new round |
-| `reject` | refuse the proposal/use |
-| `terminate` | end the engagement without further autonomous work |
-
-Example **protected human authority action** (not a general-purpose command for the agent to run; in Codex it is executed by the human in a separate trusted terminal):
-
-```bash
-python3 ~/.ai/it-role-house/fabric/fabric.py authorise sdlc esc-0003 \
-  --decision exception \
-  --signer "J. Novak, risk owner" \
-  --expires 90 \
-  --rationale "Manual review for critical applications until SCA is procured"
-```
-
-**Final product acceptance is distinct from an escalation decision.** The Fabric also has an L0 product-review operation. If a final product requires human acceptance, the actual decision owner reviews the specific fragment and the provider must not fabricate that review. The following is an illustrative **human-controlled** API call (real IDs and decision must be taken from the verified dossier; the authority guard must permit the authenticated human path):
-
-```bash
-python3 ~/.ai/it-role-house/fabric/fabric.py review <engagement> <fragment-id> \
-  --layer 0 --state accepts --reviewer "<actual human approver>" \
-  --model human --rationale "<decision basis and accepted constraints>"
-```
-
-In Codex, the human performs this protected action separately; Claude may prompt through the trusted interactive mechanism. **Neither a natural-language approval in chat nor a Fabric self-test records this acceptance.** Confirm the new record and strict release eligibility afterwards.
-
-A `revise` decision does not edit history. It creates a new L1 requirement generation and starts a new round while retaining the earlier attempts, evidence, reviews and authority record.
-
-## Provider behavior
-
-### Claude Code
-
-The managed authority hook can return `ask` for an authority command in normal interactive permission mode. The operator sees the proposed authority action and may approve or deny it.
-
-In non-interactive permission modes where an approval prompt would not reliably be shown, the hook fails closed instead of silently allowing the authority act.
-
-### Codex
-
-The corresponding PreToolUse path cannot elevate an authority command into an interactive approval prompt. The hook therefore denies the attempted authority command and instructs the human to run it manually.
-
-This difference is intentional: provider convenience must not become authority impersonation.
-
-## Protected records
-
-The authority hook also protects:
-
-- `.fabric/` logs;
-- `.findings/` ledgers;
-- the Fabric authority key under `~/.config/justifiable-fabric/`.
-
-Ordinary file-write tools are denied for protected Fabric/findings records. They are expected to be changed only through the controlling runtime tools.
-
-## Important security boundary
-
-`guard_authority.py` explicitly describes itself as a **string-level guard**. It protects the ordinary provider/tool path and makes bypass deliberate, but it is not a complete operating-system sandbox against a determined adversary with unrestricted shell access.
-
-For higher-assurance deployments combine it with host-level controls such as:
-
-- least-privilege service identities;
-- read-only mounts for evidence-only execution roles;
-- sandboxed execution;
-- restricted shells/commands;
-- network allowlists;
-- centrally managed provider/tool policy;
-- audit collection independent of the model session.
-
-## Human authority is not a truth oracle
-
-A person may accept a stated residual risk or approve a bounded use. That act does not prove the technical premises are true. Evidence, qualification and authority are separate responsibilities.
-
-The operator interface should therefore foreground blockers, missing evidence, dissent and consequences rather than show only a polished recommendation.
-
-## Operational metrics
-
-A healthy human-oversight process monitors at least:
-
-- number and age of open escalations;
-- percentage of escalations caused by evidence gaps versus authority boundaries;
-- operator decision latency;
-- expired exceptions;
-- revisited/revised decisions;
-- repeated escalations caused by the same policy or requirement;
-- escalation queue growth and backpressure.
-
-A queue that never resolves is not successful human oversight simply because no unsafe release occurred.
+Routine role-authorized QA is A inside the effective sandbox. A native
+permission request is B; unavailable host execution is C. Neither is formal
+L0. Only a consequential signed Fabric decision is D. D can precede a C action,
+but a screenshot, package installation or tool prompt never becomes D merely
+because a human participates. Agents must explain every B/C/D request fully
+inline before linking evidence; use the [operator walkthrough](operator-walkthrough.md).

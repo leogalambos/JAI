@@ -129,7 +129,7 @@ applies inherited Linux network denial, terminates the process group on
 timeout and retains captured output. Timeout is `FAIL`, not a benign
 skip. Explicit `--stream` displays progress; it does not make checks
 faster or change the default captured API. The complete regression
-budget is 13,320 seconds; the A–H outer budget is 19,440 seconds. Both
+budget is 13,320 seconds; the A–H outer budget is 19,560 seconds. Both
 are ceilings, not measured or promised durations.
 
 The optimized source workflow runs bounded smoke/structural checks on

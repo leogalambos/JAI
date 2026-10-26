@@ -50,11 +50,13 @@ in the compact installed offline runtime.
   script does **not** establish that it was executed in a given run.
 - **Your approvals:** risk acceptance, scope/mandatory-control
   exceptions, approval and protected releases remain organisational
-  authority actions. Claude can use an interactive managed approval
-  prompt where supported. In Codex the agent is **denied** permission to
-  execute protected L0 authority commands; it must show you the dossier
-  and exact command, which **you** execute in a separate trusted
-  terminal.
+  authority actions. Both providers prepare an exact request. The
+  external human signs or
+  declines it in a host console; Fabric verifies the Ed25519 receipt
+  against
+  protected public trust and matching ledger state. Provider tool
+  approval
+  is a separate permission mechanism, never an L0 credential.
 - **Verification:** ask for artifact and evidence IDs, actual test
   status, blockers and review state. `/fabric-report` /
   `$workflow-fabric-report` is an audit interface, **not** an implicit
@@ -100,9 +102,9 @@ a review that misses the high-severity ones is worth reporting.
 **Two things you will see often.**
 - *Approval prompts.* Some acts are yours alone: accepting a finding as
 a risk instead of fixing it, granting an exception, accepting a product.
-Claude can ask you to approve the exact command; Codex deliberately
-blocks it and requires you to run the authority command yourself. Read
-the command before approving or executing it.
+Both providers require external human review/signing of the exact Fabric
+request and runtime validation of its Ed25519 receipt. A native command
+approval is separate, not an L0 credential.
 - *Confirmation before work starts.* Reviews show you their criteria and
 wait for your yes. That is deliberate: criteria chosen after reading
 cannot be defended.
@@ -412,7 +414,8 @@ must be integer cents or Decimal, never float") or by editing
 
 ```markdown
 ## C9 Money handling
-Monetary amounts are integer cents or Decimal, never binary floating point.
+Monetary amounts are integer cents or Decimal, never binary floating
+point.
 - High if money is computed or stored as float
 ```
 
@@ -1036,9 +1039,10 @@ them; nothing is built on unreviewed work.
 budget — or escalates. Escalations climb one layer at a time.
 5. **When one reaches you**, the agent shows you a decision packet built
 from the record: what was tried, real examples of why it failed, and the
-the options found. You choose. Claude may propose the guarded operation
-for your explicit interactive approval; Codex must show the exact
-command for **you** to run separately in a trusted terminal.
+the options found. You choose. Both providers prepare the same exact
+operator request. **You** review
+and sign or decline externally; Fabric verifies the matching receipt.
+A native tool prompt is not Fabric L0.
 6. The result is released only if the record shows it is justified.
 
 **Try it.** In `~/it-role-demo` (expect 20–40 minutes; it is the most
@@ -1123,31 +1127,38 @@ Every review records its findings in `.findings/<name>.jsonl` in the
 project. Each finding is open, resolved, verified, stuck, accepted or
 withdrawn. The reviewer never fixes, and the fixer never verifies — the
 ledger refuses both. After three failed fixes a finding is stuck and
-comes to you. The ledger is append-only and tamper-evident: do not edit
-it by hand.
+comes to you. The application appends and hash-checks local records:
+do not edit
+them by hand. This is not immutable or rollback-resistant custody.
 
 ### Approvals
 
 Some acts are reserved for you: accepting a risk, granting an exception,
 accepting a product, approving a change to the library itself. They
-require a trusted human action. Claude may expose the exact command in
-an
-interactive permission prompt; when no trusted prompt can appear, that
-action is refused. Codex does not turn the denied agent command into a
-trusted approval prompt, so it must hand the exact command to the human
-for execution in a separate terminal. A chat statement alone is not
-a recorded authority event.
+require a trusted human action. In BOTH providers, formal Fabric L0
+uses an exact request signed externally with an Ed25519 operator key.
+The runtime verifies the protected public pin, receipt and matching
+state before application. Native permission prompts are separate tool
+permissions, not L0 credentials; chat is not a recorded authority act.
+Use the [operator walkthrough](../operations/operator-walkthrough.md).
+
 
 ### SABSA library layout
 
 ```
 <library>/
-├── library.md          name, organisation, scope, owner, version; its text is the executive summary
-├── 00-sources/         what is known about the client; every claim cites a file here
-├── 01-contextual/ … 06-service-management/    the elements, by SABSA layer
-├── matrix/             36 files: each layer's six questions, answered or marked not applicable
-├── narratives/         authored viewpoint chapters with basis/source/author/language provenance
-└── templates/          optional: the client's own document template and reference.docx
+├── library.md          name, organisation, scope, owner, version; its
+text is the executive summary
+├── 00-sources/         what is known about the client; every claim
+cites a file here
+├── 01-contextual/ … 06-service-management/    the elements, by SABSA
+layer
+├── matrix/             36 files: each layer's six questions, answered
+or marked not applicable
+├── narratives/         authored viewpoint chapters with
+basis/source/author/language provenance
+└── templates/          optional: the client's own document template
+and reference.docx
 ```
 
 `~/.ai/it-role-house/skills/sabsa-library/references/structure.md`
@@ -1262,23 +1273,33 @@ The installed guide reproduces this maintained Markdown page.
 Each tool has `--help`. For example:
 
 ```
-python3 ~/.ai/it-role-house/tools/doc_survey.py ~/it-role-demo/policy-docs
-python3 ~/.ai/it-role-house/tools/sabsa.py matrix ~/it-role-demo/acme-pay/sabsa
+python3 ~/.ai/it-role-house/tools/doc_survey.py
+~/it-role-demo/policy-docs
+python3 ~/.ai/it-role-house/tools/sabsa.py matrix
+~/it-role-demo/acme-pay/sabsa
 ```
 
 For a maintainer reproducing SABSA publication operations:
 
 ```sh
-python3 ~/.ai/it-role-house/tools/sabsa.py narrative-init LIB --layer logical
+python3 ~/.ai/it-role-house/tools/sabsa.py narrative-init LIB --layer
+logical
 # Author and review LIB/narratives/logical/ and the canonical elements before rendering.
-python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer logical --out logical.md
-python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer logical --out logical.tex
-python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer logical --out logical.pdf --latex
-python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer logical --out logical.docx
-python3 ~/.ai/it-role-house/tools/sabsa.py catalogues LIB export --directory CSV
+python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer
+logical --out logical.md
+python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer
+logical --out logical.tex
+python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer
+logical --out logical.pdf --latex
+python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer
+logical --out logical.docx
+python3 ~/.ai/it-role-house/tools/sabsa.py catalogues LIB export
+--directory CSV
 # Edit existing local entries in CSV while retaining schema and stable IDs.
-python3 ~/.ai/it-role-house/tools/sabsa.py catalogues LIB validate --directory CSV
-python3 ~/.ai/it-role-house/tools/sabsa.py catalogues LIB import --directory CSV
+python3 ~/.ai/it-role-house/tools/sabsa.py catalogues LIB validate
+--directory CSV
+python3 ~/.ai/it-role-house/tools/sabsa.py catalogues LIB import
+--directory CSV
 ```
 
 `--layer` accepts `contextual`, `conceptual`, `logical`, `physical`,
@@ -1340,11 +1361,13 @@ Check the semantic source through the selected provider adapter:
 Then run the shared metrics and evaluation tools:
 
 ```sh
-python3 ~/.ai/it-role-house/tools/content_metrics.py analyze semantic.json
+python3 ~/.ai/it-role-house/tools/content_metrics.py analyze
+semantic.json
 python3 ~/.ai/it-role-house/tools/content_eval.py run
 ```
 
-Both adapters use the same engine. Reports are hash-bound and immutable;
+Both adapters use the same engine. Reports are hash-bound local
+evidence;
 a different source or
 specification needs a new report path. The corpus is synthetic-only.
 A draft report is not professional acceptance or human authority.
@@ -1354,8 +1377,10 @@ proposed size calibration and review-pending historical migration:
 
 ```sh
 python3 ~/.ai/it-role-house/tools/content_workflow.py list
-python3 ~/.ai/it-role-house/tools/content_metrics.py trends snapshots.json
-python3 ~/.ai/it-role-house/tools/content_metrics.py calibrate samples.json
+python3 ~/.ai/it-role-house/tools/content_metrics.py trends
+snapshots.json
+python3 ~/.ai/it-role-house/tools/content_metrics.py calibrate
+samples.json
 python3 ~/.ai/it-role-house/tools/content_migrate.py historical.json \
   --contract-id enterprise-architect:4 --artifact-id migrated/adr-1
 ```
@@ -1366,3 +1391,69 @@ Final human steps retain existing signed JAI L0 authority. Calibration
 candidates remain proposed and synthetic-only until enterprise evidence
 and competent approval exist. Migration preserves the historical source,
 records explicit field mappings and never transfers old approvals.
+
+## Supported operator workflow in 26.10.14
+
+See [the complete operator
+walkthrough](../operations/operator-walkthrough.md)
+for external L0, real Office rendering, HTML/PDF, Git and dependency
+handoffs.
+The installed copy of this guide is generated verbatim from this page;
+website
+relative links refer to the maintained documentation tree in the release
+ZIP.
+Local receipts are LOCAL_OPERATOR_ATTESTATION, not enterprise identity
+or
+immutable custody. Privileged worker/broker/API mutation is
+NOT_SUPPORTED.
+
+## Operation routes and human requests
+
+A / AUTO: role-permitted local tests, builds, approved screenshots and
+rendering
+inside the effective sandbox. B / PROVIDER_APPROVAL: actual native
+permission
+request, no automatic escalation. C / OPERATOR_EXECUTION: exact
+independent
+host task when unavailable/inappropriate inside. D / FORMAL_L0:
+consequential
+external signed decision. A/B/C are execution routes; D is authority,
+not a
+higher shell permission. C never implies D; D may precede a separate C
+action.
+
+Try authorized local tools first. Shell follows the role contract and
+native
+containment. Codex reviewers retain read-only source; scratch writes
+require
+explicit real native support. Claude reviewer shell is unavailable
+without an
+independently established read-only boundary. Generated settings are not
+proof.
+
+Every human request states category, FORMAL L0 YES/NO, objective,
+verified reason,
+attempts/alternatives, full command/workdir/input/output/privileges,
+risks and
+side effects, and returned evidence/verification/resumption INLINE. A
+detail
+link cannot replace it. If a command is not ready, identify missing
+values;
+never invent it or accept chat as signed approval. See the
+[complete operator guide](../operations/operator-walkthrough.md).
+
+
+### Optional renderer Python environment
+
+Install `requirements-rendering.txt` in a separate reviewed venv with
+the
+core requirements. Use that venv's Python for doctor and render
+commands.
+WeasyPrint 70 needs Pyphen 0.17.x for the supported warning-free setup;
+Fedora's older Pyphen may still import deprecated `pkg_resources`.
+Doctor reports that dependency mismatch without importing the legacy
+package.
+It does not suppress warnings, install packages, or certify host
+confinement.
+See the [dependency matrix](../configuration/publication-stack.md)
+and installed package installation guide for the exact setup steps.

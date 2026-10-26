@@ -55,7 +55,7 @@ These decisions are not ordinary model outputs. See [Human authority and escalat
 
 ## Authority-hook behavior
 
-`guard_authority.py` protects common authority commands and protected records. In normal Claude interactive mode it can ask the operator to approve an authority command. In Codex the same path fails closed and asks the human to run the authority command manually because the hook cannot elevate to an interactive approval prompt.
+`guard_authority.py` is an additional string-level denial guard. Neither Claude nor Codex native approval is a Fabric L0 credential. The human signs the exact request externally; Fabric validates its Ed25519 receipt, protected public pin and unchanged state. See [operator actions](../operations/operator-walkthrough.md).
 
 In non-interactive modes that would hide the approval question, authority acts are denied.
 
@@ -65,7 +65,7 @@ Managed hooks are useful enforcement but are not the whole sandbox. The authorit
 
 ## Data classification and network behavior
 
-The default managed policy assumes enterprise caution: network access is deny-by-default and permitted through controlled/provider contract paths. Organisations must adapt classification, network, evidence-retention and provider-use rules for their environment.
+The managed policy declares network restrictions; actual enforcement depends on the effective native sandbox and host controls, not this declaration alone. Organisations must adapt classification, network, evidence-retention and provider-use rules for their environment.
 
 ## Implementation details
 

@@ -1,17 +1,15 @@
-<div align="center">
-
 # JAI · Justifiable AI
 
-### Enterprise intent. Explainable decisions. Reproducible evidence.
+### Human-Governed AI Augmentation for Enterprise IS/IT
 
 **A governed, provider-neutral AI delivery system for enterprise
 architecture, cybersecurity and the full IS/IT lifecycle.**
 
-**Enterprise GA** · **Provider-neutral** · **Human-governed** ·
+**Specialist workflows** · **Provider-neutral** · **Human-governed** ·
 **Evidence-led**
 
 JAI brings a six-layer justifiability model together with the **AI IT
-House** runtime: specialist roles, executable agent contracts,
+House** runtime: specialist roles, typed agent contracts,
 enterprise workflows, structured artifacts and release assurance.
 
 [**Understand the model**](#the-six-layer-model) · [**Explore
@@ -20,9 +18,46 @@ started**](#documentation-and-runtime-entry-points) · [**Find the
 documentation**](#documentation-and-runtime-entry-points) · [**Release
 assurance**](#quality-provenance-and-release-assurance)
 
-</div>
-
 ---
+
+## Human-Governed AI Augmentation
+
+JAI helps architects, engineers and security teams produce specialist
+work
+with traceable reasoning, reviewable evidence and professional
+deliverables.
+AI prepares; accountable humans keep consequential decisions.
+
+Start with [installation](docs/getting-started/install.md), then choose
+a
+[workflow](docs/getting-started/quick-start.md) in Codex or Claude. Core
+workspace authoring needs neither L0 keys nor an Office renderer.
+
+- **Evidence-backed work:** L1–L6 connect intent, meaning, policy,
+design,
+  realisation and execution evidence. Outputs still need appropriate
+review.
+- **Formal human decisions:** when configured and required, external L0
+  uses an exact-state signed receipt and protected public trust. A
+provider
+  permission prompt is not a Fabric L0 decision.
+- **Operator-assisted tasks:** if a sandbox cannot render a Word
+document,
+  JAI prepares an exact request. The human runs the reviewed host
+renderer;
+  JAI verifies returned hashes and actual pages before continuing.
+Running
+  a host tool does not automatically approve a Fabric decision.
+- **Limits:** JAI does not certify general OS confinement, provide
+  enterprise IAM or autonomously perform privileged host/API/MCP
+mutations.
+  Native sandbox and host permissions remain deployment
+responsibilities.
+
+See [security boundaries](docs/security/product-operations.md) for the
+current limits and [the full operator
+guide](docs/operations/operator-walkthrough.md)
+for signed L0, real Office rendering and human Git actions.
 
 ## Why JAI exists
 
@@ -267,6 +302,12 @@ This block is generated from canonical package sources by
 `.ai/runtime/tools/generate_docs.py`. Manual count edits are not
 authoritative.
 
+Supported scope: **GA_COMPATIBLE/2**.
+
+Enabled features: `role-workflows`, `workspace-authoring`,
+`local-publication`, `human-git`, `operator-handoff`,
+`operator-attested-local-l0`.
+
 - Roles: **286**
 - Agents: **34**
 - Skills: **24**
@@ -280,13 +321,16 @@ authoritative.
 ### Compatibility matrix
 
 - **Claude Code**
-  - Minimum: provider-supported
-  - Tested: adapter contract
-  - Supported: yes
+  - Minimum: provider-supported strict sandbox
+  - Tested: not installed on reference host; projections only, live
+    NOT_VERIFIED
+  - Supported: contract-scoped tools; reviewer shell unavailable without
+    read-only isolation
 - **Codex CLI**
   - Minimum: provider-supported
-  - Tested: adapter contract
-  - Supported: yes
+  - Tested: 0.164.0 host CLI help confirms sandbox/on-request values;
+    live role confinement NOT_VERIFIED
+  - Supported: role-authorized local QA in effective native sandbox
 - **Python**
   - Minimum: 3.10
   - Tested: 3.12 release CI target
@@ -295,10 +339,35 @@ authoritative.
   - Minimum: optional
   - Tested: publication tool detects at runtime
   - Supported: optional
+- **WeasyPrint**
+  - Minimum: 70.x optional
+  - Tested: actual HTML/PDF conversion; constrained resource fetching
+  - Supported: SUPPORTED optional HTML/PDF; not Office fidelity
+- **Pyphen**
+  - Minimum: 0.17.x optional
+  - Tested: clean optional renderer environment required; metadata
+    inspection avoids legacy pkg_resources import
+  - Supported: WeasyPrint transitive dependency constrained in
+    requirements-rendering.txt
 - **LibreOffice**
-  - Minimum: optional
-  - Tested: publication tool detects at runtime
-  - Supported: publication
+  - Minimum: Office-compatible host renderer
+  - Tested: actual DOCX/PPTX/XLSX operator renders on Fedora
+  - Supported: AUTO when native sandbox permits; otherwise
+    OPERATOR_ASSISTED actual Office QA
+- **Poppler**
+  - Minimum: pdftoppm on PATH
+  - Tested: actual PDF page rasterization
+  - Supported: visual QA raster prerequisite
+- **OpenSSL**
+  - Minimum: Ed25519 pkeyutl -rawin
+  - Tested: external receipts verified with fixed /usr/bin/openssl on
+    Linux
+  - Supported: OPERATOR_ASSISTED local L0; other trust adapters
+    NOT_VERIFIED
+- **Fonts/system libraries**
+  - Minimum: DejaVu Sans; renderer-native text/layout libraries
+  - Tested: Fedora reference glyph/layout corpus
+  - Supported: host prerequisite; other platforms NOT_VERIFIED
 - **lxml**
   - Minimum: 5.x
   - Tested: XSD conformance suite
@@ -329,3 +398,6 @@ started](#documentation-and-runtime-entry-points) · [Quality &
 releases](#quality-provenance-and-release-assurance)
 
 </div>
+
+
+Documentation owner: JAI maintainers. Last reviewed: 2026-10-26.

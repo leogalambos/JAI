@@ -591,7 +591,9 @@
           "read:workspace",
           "write:workspace"
         ],
-        "shell": [],
+        "shell": [
+          "sandboxed-local-workspace"
+        ],
         "network": [
           "provider-managed"
         ],
@@ -607,7 +609,8 @@
         "Grep",
         "Glob",
         "Write",
-        "Edit"
+        "Edit",
+        "Bash"
       ],
       "denied_tools": [
         "policy-mutation",
@@ -656,7 +659,9 @@
           "read:workspace",
           "write:workspace"
         ],
-        "shell": [],
+        "shell": [
+          "sandboxed-local-workspace"
+        ],
         "network": [
           "provider-managed"
         ],
@@ -672,7 +677,8 @@
         "Grep",
         "Glob",
         "Write",
-        "Edit"
+        "Edit",
+        "Bash"
       ],
       "denied_tools": [
         "policy-mutation",
@@ -897,6 +903,74 @@
         ],
         "output_refs": [
           "execution:agent:migration-author"
+        ],
+        "authority_ref": "human-authority:write-authoring",
+        "acceptance_question": "Is the design implemented through permitted tools and bounded execution mechanisms?",
+        "evidence_obligations": [
+          "ExecutionRecord"
+        ]
+      }
+    },
+    {
+      "id": "role-engineer",
+      "purpose": "Execute-tier engineering within authorized workspace and effective native sandbox",
+      "provider": "provider-neutral",
+      "authority_boundary": "write-authoring",
+      "skills": [],
+      "permissions": {
+        "filesystem": [
+          "read:workspace",
+          "write:workspace"
+        ],
+        "shell": [
+          "sandboxed-local-workspace"
+        ],
+        "network": [
+          "provider-managed"
+        ],
+        "git": [
+          "read"
+        ],
+        "mcp": [
+          "allowlisted"
+        ]
+      },
+      "allowed_tools": [
+        "Read",
+        "Grep",
+        "Glob",
+        "Write",
+        "Edit",
+        "Bash"
+      ],
+      "denied_tools": [
+        "policy-mutation",
+        "approval-self-grant"
+      ],
+      "sandbox": {
+        "mode": "workspace-write",
+        "workspace_write": true,
+        "network": "provider-managed"
+      },
+      "mutation_allowed": true,
+      "escalation": "human approval",
+      "approval_required_for": [
+        "policy-change",
+        "release-approval"
+      ],
+      "audit_level": "standard",
+      "workload_class": "standard",
+      "jai": {
+        "core_version": "1.0.0",
+        "layer": 5,
+        "layer_name": "Realisation and Tooling",
+        "profile": "runtime",
+        "responsibility": "Execute-tier engineering within authorized workspace and effective native sandbox",
+        "input_refs": [
+          "policy:managed-policy"
+        ],
+        "output_refs": [
+          "execution:agent:role-engineer"
         ],
         "authority_ref": "human-authority:write-authoring",
         "acceptance_question": "Is the design implemented through permitted tools and bounded execution mechanisms?",

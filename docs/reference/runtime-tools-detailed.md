@@ -6,7 +6,7 @@
 
 This is the **developer/maintainer API reference**, not the default user journey. In normal work, the user enters `/layered`, `/review`, `/sabsa`, etc. in Claude Code, or `$workflow-layered`, `$workflow-review`, `$workflow-sabsa`, etc. in Codex CLI. The provider agent then selects supported helpers and executes authorised operations. The commands and help output preserved below explain the actual implementation and allow reproducible diagnosis; they are **not a mandatory series of manual operator steps**. A runtime self-test only verifies its own invariants, not the correctness or release approval of a particular enterprise artefact.
 
-The important exception is L0: Codex intentionally cannot execute guarded human authority acts; those are performed by the human in a separate trusted terminal after examining the dossier. Claude may use a real interactive approval prompt when supported. Agents must not bypass the boundary to make an example "work". See [interaction patterns](../using/interaction-model.md), [human authority](../operations/human-authority.md) and [CLI guide](installed-cli-guide.md). Runtime usage/help and current contracts take precedence over historical examples.
+L0 uses exact external operator signing and runtime receipt verification in both providers. Native tool approval is a separate mechanism, not Fabric authority. See [the operator walkthrough](../operations/operator-walkthrough.md) for host actions and diagnostics.
 
 ## Agent contract reference
 
@@ -1187,3 +1187,20 @@ options:
   --top TOP
   --json
 ```
+
+## Current operator boundary
+
+For 26.10.14 {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
+Native provider approval is not Fabric L0; external Ed25519 receipts require
+protected trust and matching state. Actual Office QA is OPERATOR_ASSISTED;
+WeasyPrint HTML/PDF does not inspect Office bytes. Privileged worker/API
+mutation is NOT_SUPPORTED; optional host confinement is NOT_VERIFIED.
+
+## Local QA and human intervention
+
+Use A / AUTO for role-authorized local work inside the actual sandbox. B is
+an observed native permission request; C is an exact operator host task. Neither
+is Fabric L0. D is a separately signed consequential decision; it may precede C.
+Every B/C/D request must include the complete action and reason inline before
+linking details. See [execution routes and boundaries](../security/product-operations.md)
+and the [full operator guide](../operations/operator-walkthrough.md).

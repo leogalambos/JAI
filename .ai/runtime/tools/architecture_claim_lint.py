@@ -6,8 +6,8 @@ from __future__ import annotations
 from pathlib import Path
 import re
 PACKAGE=Path(__file__).resolve().parents[3]
-RUNTIME=PACKAGE/'.ai/runtime'
-RELEASE=(PACKAGE/'VERSION').read_text().strip()
+RUNTIME=Path(__file__).resolve().parents[1]
+RELEASE=((PACKAGE/'VERSION') if (PACKAGE/'VERSION').is_file() else RUNTIME/'VERSION').read_text().strip()
 
 STATIC=[
  PACKAGE/'README.md', RUNTIME/'README.md', RUNTIME/'ea/README.md', RUNTIME/'ea/adapters/README.md', RUNTIME/'publication/README.md',

@@ -8,6 +8,7 @@ from __future__ import annotations
 import argparse, json
 from pathlib import Path
 import qualification_core as core
+from agent_runtime import release_scope
 
 PACKAGE=Path(__file__).resolve().parents[3]
 RUNTIME=PACKAGE/'.ai/runtime'
@@ -69,7 +70,9 @@ def gate_payload(gate,checks):
         KeyError, OSError: If required result fields or release metadata are absent.
     """
     result=core.gate_payload(gate,checks)
-    result.update(release=(PACKAGE/'VERSION').read_text().strip(),qualification_profile='enterprise-ga-unified-lifecycle')
+    result.update(release=(PACKAGE/'VERSION').read_text().strip(),qualification_profile=release_scope(PACKAGE)['scope'],supported_capabilities=release_scope(PACKAGE))
+    observed=PACKAGE/'build/operator-acceptance.json'
+    if observed.is_file() and gate in 'DEF':result['reference_operator_evidence']={'sha256':__import__('hashlib').sha256(observed.read_bytes()).hexdigest(),'scope':'observed operator-assisted reference workflow; not host confinement'}
     return result
 
 def run_gate(gate,out=None):
@@ -83,7 +86,13 @@ def run_gate(gate,out=None):
     Raises:
         KeyError, OSError: For unknown gates or unavailable report storage.
     """
-    checks=GATES[gate](); payload=gate_payload(gate,checks); target=Path(out) if out else GATE_DIR/f'gate-{gate}.json'; target.parent.mkdir(parents=True,exist_ok=True); target.write_text(json.dumps(payload,indent=2,ensure_ascii=False)+'\n'); print(('PASS' if payload['pass'] else 'FAIL'),f'Gate {gate}'); return 0 if payload['pass'] else 1
+    before=core.source_fingerprint(PACKAGE)
+    checks=GATES[gate](); payload=gate_payload(gate,checks)
+    payload['source_binding']=core.source_binding(before,core.source_fingerprint(PACKAGE))
+    payload['pass']=payload['pass'] and payload['source_binding']['stable']
+    if not payload['source_binding']['stable']:
+        payload['problems']=['SOURCE_CHANGED_DURING_GATE_EXECUTION']
+    target=Path(out) if out else GATE_DIR/f'gate-{gate}.json'; target.parent.mkdir(parents=True,exist_ok=True); target.write_text(json.dumps(payload,indent=2,ensure_ascii=False)+'\n'); print(('PASS' if payload['pass'] else 'FAIL'),f'Gate {gate}'); return 0 if payload['pass'] else 1
 
 def assemble(gate_dir=GATE_DIR,out=AG):
     """Validate and assemble current-release executed gate evidence.
@@ -96,15 +105,22 @@ def assemble(gate_dir=GATE_DIR,out=AG):
     Raises:
         OSError, ValueError: For unreadable or malformed existing JSON.
     """
-    gate_dir=Path(gate_dir); checks={}; gates={}; problems=[]
+    gate_dir=Path(gate_dir); checks={}; gates={}; problems=[]; bindings={};operator_evidence={}
+    fingerprint=core.source_fingerprint(PACKAGE)
     for gate in 'ABCDEFG':
         path=gate_dir/f'gate-{gate}.json'
         if not path.is_file(): problems.append(f'missing {path}'); continue
         data=json.loads(path.read_text())
-        issues=core.gate_report_problems(data,gate,(PACKAGE/'VERSION').read_text().strip())
+        issues=core.gate_report_problems(data,gate,(PACKAGE/'VERSION').read_text().strip(),fingerprint)
+        if isinstance(data,dict) and (data.get('supported_capabilities')!=release_scope(PACKAGE) or data.get('qualification_profile')!=release_scope(PACKAGE)['scope']):
+            issues.append('release scope mismatch')
+        bindings[gate]=data.get('source_binding') if isinstance(data,dict) else None
+        if isinstance(data,dict) and data.get('reference_operator_evidence'):operator_evidence[gate]=data['reference_operator_evidence']
         problems.extend(f'Gate {gate}: {issue}' for issue in issues)
         checks[gate]=data.get('checks',[]) if isinstance(data,dict) else []; gates[gate]=not issues
-    payload={'release':(PACKAGE/'VERSION').read_text().strip(),'qualification':'enterprise-ga-gates-A-G','generated_at':core.now(),'gates':gates,'checks':checks,'all_pass':not problems and set(gates)==set('ABCDEFG') and all(gates.values())}
+    payload={'release':(PACKAGE/'VERSION').read_text().strip(),'qualification':'enterprise-ga-gates-A-G','generated_at':core.now(),'gates':gates,'checks':checks,'source_bindings':bindings,'all_pass':not problems and set(gates)==set('ABCDEFG') and all(gates.values())}
+    payload['supported_capabilities']=release_scope(PACKAGE)
+    payload['reference_operator_evidence']=operator_evidence
     Path(out).write_text(json.dumps(payload,indent=2,ensure_ascii=False)+'\n')
     for problem in problems: print('FAIL',problem)
     for gate in 'ABCDEFG':
@@ -115,15 +131,17 @@ def _summary_problems(source):
     """Recheck actual A-G evidence before H can consume an existing summary."""
     if not isinstance(source,dict): return ['qualification summary is not an object']
     release=(PACKAGE/'VERSION').read_text().strip()
+    fingerprint=core.source_fingerprint(PACKAGE)
     problems=[]
+    if source.get('supported_capabilities')!=release_scope(PACKAGE):problems.append('summary release scope mismatch')
     if source.get('release')!=release: problems.append('qualification release identity mismatch')
     if source.get('all_pass') is not True: problems.append('A-G summary is not all PASS')
     gates=source.get('gates'); checks=source.get('checks')
     if not isinstance(gates,dict) or not isinstance(checks,dict): return problems+['qualification evidence maps missing']
     if set(gates)!=set('ABCDEFG') or set(checks)!=set('ABCDEFG'): problems.append('qualification gate coverage mismatch')
     for gate in 'ABCDEFG':
-        report={'gate':gate,'release':source.get('release'),'pass':gates.get(gate),'checks':checks.get(gate)}
-        problems.extend(f'Gate {gate}: {issue}' for issue in core.gate_report_problems(report,gate,release))
+        report={'gate':gate,'release':source.get('release'),'pass':gates.get(gate),'checks':checks.get(gate),'source_binding':source.get('source_bindings',{}).get(gate)}
+        problems.extend(f'Gate {gate}: {issue}' for issue in core.gate_report_problems(report,gate,release,fingerprint))
     return problems
 
 
@@ -171,11 +189,12 @@ def h_checks(generate=True):
     checks += [prep_check(),command('BSD-4-Clause license policy',[PY,str(TOOLS/'license_check.py'),str(PACKAGE)]),command('supply-chain integrity self-test',[PY,str(TOOLS/'supply_chain.py'),'self-test']),command('provenance/SBOM/compatibility verification',[PY,str(TOOLS/'supply_chain.py'),'verify','--root',str(PACKAGE),'--sbom',str(PACKAGE/'SBOM.spdx.json'),'--provenance',str(PACKAGE/'PROVENANCE.json'),'--compatibility',str(PACKAGE/'COMPATIBILITY.json')])]
     return checks
 
-def write_final(checks):
+def write_final(checks, binding=None):
     """Persist current qualification only after rechecking source execution.
 
     Args:
         checks: Actual H results with explicit Boolean ok and execution state.
+        binding: Source stability measured by the actual H execution wrapper.
     Returns:
         Final report; stale or contradictory A-G evidence always blocks success.
     Raises:
@@ -186,9 +205,13 @@ def write_final(checks):
     source_gates=source.get('gates') if isinstance(source.get('gates'),dict) else {}
     source_checks=source.get('checks') if isinstance(source.get('checks'),dict) else {}
     release=(PACKAGE/'VERSION').read_text().strip()
-    gates={gate:not core.gate_report_problems({'gate':gate,'release':source.get('release'),'pass':source_gates.get(gate),'checks':source_checks.get(gate)},gate,release) for gate in 'ABCDEFG'}
-    gates['H']=not _summary_problems(source) and bool(checks) and all(x.get('ok') is True and x.get('state')=='PASS' for x in checks)
-    payload={'release':release,'qualification':'enterprise-ga-gates-A-H','generated_at':core.now(),'gates':gates,'checks':{**source_checks,'H':checks},'behavioral_qualification':{'universal_release_scope':'harness + golden corpus + thresholds + adversarial evaluator','provider_model_claim':False,'deployment_requirement':'live provider/model results + qualification evidence manifest'},'archive_signing':'GitHub OIDC attestation when available','build_signing':'keyless-ci','publication_state':'qualified-for-ci-publication' if all(gates.values()) else 'blocked','all_pass':set(gates)==set('ABCDEFGH') and all(gates.values())}
+    bindings=source.get('source_bindings',{})
+    fingerprint=core.source_fingerprint(PACKAGE)
+    gates={gate:not core.gate_report_problems({'gate':gate,'release':source.get('release'),'pass':source_gates.get(gate),'checks':source_checks.get(gate),'source_binding':bindings.get(gate)},gate,release,fingerprint) for gate in 'ABCDEFG'}
+    gates['H']=not core.binding_problems(binding,fingerprint) and not _summary_problems(source) and bool(checks) and all(x.get('ok') is True and x.get('state')=='PASS' for x in checks)
+    payload={'release':release,'qualification':'enterprise-ga-gates-A-H','generated_at':core.now(),'gates':gates,'source_bindings':{**bindings,'H':binding},'checks':{**source_checks,'H':checks},'behavioral_qualification':{'universal_release_scope':'harness + golden corpus + thresholds + adversarial evaluator','provider_model_claim':False,'deployment_requirement':'live provider/model results + qualification evidence manifest'},'archive_signing':'GitHub OIDC attestation when available','build_signing':'keyless-ci','publication_state':'qualified-for-ci-publication' if all(gates.values()) else 'blocked','all_pass':set(gates)==set('ABCDEFGH') and all(gates.values())}
+    payload['supported_capabilities']=release_scope(PACKAGE)
+    payload['reference_operator_evidence']=source.get('reference_operator_evidence',{})
     (PACKAGE/'QUALIFICATION-A-H.json').write_text(json.dumps(payload,indent=2,ensure_ascii=False)+'\n'); return payload
 
 def run_h(generate=True):
@@ -199,7 +222,8 @@ def run_h(generate=True):
     Returns:
         Zero only when all eight gates and final policy pass.
     """
-    checks=h_checks(generate); final=write_final(checks); policy=command('final GA release-policy completeness',[PY,str(TOOLS/'release_policy.py'),'check','--final']); checks.append(policy); final=write_final(checks); passed=final['all_pass']; print(('PASS' if passed else 'FAIL'),'Gate H'); print(f"{(PACKAGE/'VERSION').read_text().strip()} qualification: {sum(final['gates'].values())}/8 gates PASS"); return 0 if passed else 1
+    before=core.source_fingerprint(PACKAGE)
+    checks=h_checks(generate); final=write_final(checks,core.source_binding(before,core.source_fingerprint(PACKAGE))); policy=command('final GA release-policy completeness',[PY,str(TOOLS/'release_policy.py'),'check','--final']); checks.append(policy); final=write_final(checks,core.source_binding(before,core.source_fingerprint(PACKAGE))); passed=final['all_pass']; print(('PASS' if passed else 'FAIL'),'Gate H'); print(f"{(PACKAGE/'VERSION').read_text().strip()} qualification: {sum(final['gates'].values())}/8 gates PASS"); return 0 if passed else 1
 
 def run_all(through_g=False):
     """Execute the full release sequence, stopping at any failed prerequisite.

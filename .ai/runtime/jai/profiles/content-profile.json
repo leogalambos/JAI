@@ -1,5 +1,14 @@
 {
   "profile": "content",
+  "agent_bindings": {
+    "artifact-author": {"content_profile_ref": "jai/profiles/content-profile.json"},
+    "role-author": {"content_profile_ref": "jai/profiles/content-profile.json"},
+    "enterprise-publication-editor": {"content_profile_ref": "jai/profiles/content-profile.json"},
+    "evidence-rationale-reviewer": {"content_profile_ref": "jai/profiles/content-profile.json"},
+    "visual-quality-reviewer": {"content_profile_ref": "jai/profiles/content-profile.json"},
+    "architecture-reviewer": {"content_profile_ref": "jai/profiles/content-profile.json"},
+    "sabsa-reviewer": {"content_profile_ref": "jai/profiles/content-profile.json"}
+  },
   "version": "1.0.0",
   "status": "proposed",
   "phase": "26.10.12-expert-editorial-review",

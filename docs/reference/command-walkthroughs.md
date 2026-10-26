@@ -8,7 +8,7 @@ Use this page to look up a single command's exercise and expected outputs. For a
 
 ## Reading the examples in Codex and Claude
 
-The legacy examples use `/name` notation because they were written for Claude. In **Claude Code**, enter them as shown in the Claude conversation. In **Codex CLI**, invoke `$workflow-name` instead (`/analyse` → `$workflow-analyse`, `/review` → `$workflow-review`, `/layered` → `$workflow-layered`). A prompt/request shown here is not a Bash command. Behind the scenes the provider may call the matching survey, registry, Fabric or publication Python tool; you do not execute each script manually. Run such tools directly only for maintainer automation/diagnostics. **Codex human-authority events remain a deliberate exception** and require a separately executed human command. The older examples are retained for their content, not as a claim that every provider has identical approval interactions; refer to [Human authority](../operations/human-authority.md) and the [current installed guide](installed-cli-guide.md).
+The legacy examples use `/name` notation because they were written for Claude. In **Claude Code**, enter them as shown in the Claude conversation. In **Codex CLI**, invoke `$workflow-name` instead (`/analyse` → `$workflow-analyse`, `/review` → `$workflow-review`, `/layered` → `$workflow-layered`). A prompt/request shown here is not a Bash command. Behind the scenes the provider may call the matching survey, registry, Fabric or publication Python tool; you do not execute each script manually. Run such tools directly only for maintainer automation/diagnostics. **Fabric human-authority events in both providers require external signed receipts**, independently of native tool approval. The older examples are retained for their content, not as a claim that every provider has identical approval interactions; refer to [Human authority](../operations/human-authority.md) and the [current installed guide](installed-cli-guide.md).
 
 ## commands : analyse
 
@@ -879,3 +879,11 @@ Then try a client's own format:
 **Check it worked.**
 `python3 ~/.ai/it-role-house/tools/sabsa.py check acme-pay/sabsa`
 reports the structural state; `sabsa.py matrix acme-pay/sabsa` shows the 36 cells and how many are settled. A release-ready library also has zero warnings and `sabsa.py approval acme-pay/sabsa` reports `APPROVED`.
+
+## Current operator boundary
+
+For 26.10.14 {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
+Native provider approval is not Fabric L0; external Ed25519 receipts require
+protected trust and matching state. Actual Office QA is OPERATOR_ASSISTED;
+WeasyPrint HTML/PDF does not inspect Office bytes. Privileged worker/API
+mutation is NOT_SUPPORTED; optional host confinement is NOT_VERIFIED.

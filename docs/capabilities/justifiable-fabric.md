@@ -53,13 +53,14 @@ Default engagement record:
 
 Override the record directory with `FABRIC_HOME`.
 
-Authority key:
-
-```text
-~/.config/justifiable-fabric/authority.key
-```
-
-The authority key is managed/read by the Fabric runtime and protected from ordinary model-driven file reads/writes by the managed authority hook.
+Formal L0 uses a separately protected Ed25519 operator key, never an
+agent-accessible signing secret. The verifier reads a protected public trust
+pin; it validates the exact request/state-bound receipt before applying it.
+See [human authority](../operations/human-authority.md) and the
+[operator walkthrough](../operations/operator-walkthrough.md) for enrollment,
+approval and rejection. Legacy HMAC verification remains compatibility only;
+a managed hook or provider tool approval does not establish independent L0.
+Local ledger hashes do not prevent rollback without separate protected custody.
 
 ## Context binding
 

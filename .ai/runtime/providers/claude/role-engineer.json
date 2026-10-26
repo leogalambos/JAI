@@ -1,0 +1,90 @@
+{
+  "name": "role-engineer",
+  "provider": "claude",
+  "jai": {
+    "core_version": "1.0.0",
+    "layer": 5,
+    "layer_name": "Realisation and Tooling",
+    "profile": "runtime",
+    "responsibility": "Execute-tier engineering within authorized workspace and effective native sandbox",
+    "input_refs": [
+      "policy:managed-policy"
+    ],
+    "output_refs": [
+      "execution:agent:role-engineer"
+    ],
+    "authority_ref": "human-authority:write-authoring",
+    "acceptance_question": "Is the design implemented through permitted tools and bounded execution mechanisms?",
+    "evidence_obligations": [
+      "ExecutionRecord"
+    ]
+  },
+  "workload_class": "standard",
+  "selection_strategy": "explicit-per-agent",
+  "strategy_scope": "project-internal",
+  "model_selector": "sonnet",
+  "runtime_boundary": {
+    "scope": "GA_COMPATIBLE/2",
+    "live_verified": false,
+    "hardened_privileged_enabled": false,
+    "protected_resources": "deny",
+    "git_authority": "human",
+    "enforcement": "effective-provider-sandbox-and-host"
+  },
+  "local_execution": {
+    "requires_effective_native_sandbox": true,
+    "contract_is_host_enforcement": false,
+    "reviewer_source_write": false,
+    "qa_output": "only explicitly native-writable scratch; never widen source access",
+    "shell_available": true,
+    "host_mount_isolation_required": true,
+    "limitation": "Native settings must actually be loaded; no live confinement claim"
+  },
+  "tools": [
+    "Read",
+    "Grep",
+    "Glob",
+    "Write",
+    "Edit",
+    "Bash"
+  ],
+  "deny": [
+    "Agent",
+    "WebFetch",
+    "approval-self-grant",
+    "policy-mutation"
+  ],
+  "sandbox": {
+    "mode": "workspace-write",
+    "workspace_write": true,
+    "network": false
+  },
+  "approval_required_for": [
+    "policy-change",
+    "release-approval"
+  ],
+  "native_claude": {
+    "permissionMode": "default",
+    "allowedTools": [
+      "Read",
+      "Grep",
+      "Glob",
+      "Write",
+      "Edit",
+      "Bash"
+    ],
+    "disallowedTools": [
+      "Agent",
+      "WebFetch",
+      "approval-self-grant",
+      "policy-mutation"
+    ],
+    "sandbox": {
+      "enabled": true,
+      "failIfUnavailable": true,
+      "autoAllowBashIfSandboxed": false,
+      "allowUnsandboxedCommands": false,
+      "excludedCommands": []
+    }
+  }
+}

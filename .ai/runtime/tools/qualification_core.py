@@ -6,6 +6,7 @@
 from __future__ import annotations
 
 import argparse
+import hashlib
 import datetime as dt
 import json
 import os
@@ -52,7 +53,7 @@ REGRESSION_MODULES = (
 )
 AGGREGATE_HEADROOM = 120
 # All non-regression A-H command bounds, including generated evidence/final policy.
-OTHER_QUALIFICATION_TIMEOUTS = 6120
+OTHER_QUALIFICATION_TIMEOUTS = 6600
 
 
 def aggregate_budget(scope):
@@ -248,6 +249,7 @@ def gate_a():
         *[command("DCS generated " + name + " reproducibility",
                   [PY, str(PACKAGE / "tools" / ("generate_content_" + name + ".py")), "--check"])
           for name in ("catalog", "corpus", "workflows", "calibration")],
+        command('distribution Python dependency closure',[PY,str(TOOLS/'release_bundle.py'),'check-closure','--root',str(PACKAGE)]),
         *regression_checks(),
         command(
             "DCS deterministic synthetic pilot (not human-gold)",
@@ -339,15 +341,28 @@ def gate_c():
     return [
         governance_check(),
         command(
-            "immutable execution record",
+            "hash-chained local execution record (mutable storage)",
             [PY, str(TOOLS / "execution_record.py"), "self-test"],
         ),
     ]
 
 
 def gate_d():
-    """Return authority, provider-parity and mutation enforcement checks."""
-    return [
+    """Qualify enabled compatible-release features, without qualifying deployment.
+
+    Hardened host tests remain required for HARDENED_PRIVILEGED, which is not
+    enabled or shipped in this component. Historical failures remain evidence;
+    this versioned scope never translates those failures into host assurance.
+    """
+    checks = [
+        command(
+            'enabled GA permissions, protected-resource denials and adapter regression',
+            [PY, '-m', 'pytest', '-q', str(PACKAGE/'tests/test_agent_runtime.py'),
+             str(PACKAGE/'tests/test_integration_adapters.py'),
+             str(PACKAGE/'tests/test_guard_library_write.py'),
+             str(PACKAGE/'tests/test_fabric_authority_boundary.py'),str(PACKAGE/'tests/test_operator_actions.py')],
+            timeout=120,
+        ),
         command(
             "agent authority enforcement",
             [PY, str(TOOLS / "agent_runtime.py"), "self-test"],
@@ -364,18 +379,24 @@ def gate_d():
         ),
     ]
 
+    observed=PACKAGE/'build/operator-acceptance.json'
+    if observed.is_file():
+        checks.append(command('actual operator accept/decline and actual Office reference pages',
+            [PY,str(TOOLS/'operator_actions.py'),'check-acceptance',str(observed)],timeout=120))
+    return checks
+
 
 def publication_renderer_check():
-    """Run renderer validation only when the required PDF executable is present.
+    """Run renderer validation when an applicable PDF backend is available.
 
     Returns:
-        Mandatory non-passing NOT_EXECUTED record if LibreOffice is missing;
+        Mandatory non-passing NOT_EXECUTED record if both backends are missing;
         otherwise the actual renderer self-test outcome. Presence is not PASS.
     """
-    if not (shutil.which('libreoffice') or shutil.which('soffice')):
+    if not (__import__('importlib.util',fromlist=['find_spec']).find_spec('weasyprint') or shutil.which('libreoffice') or shutil.which('soffice')):
         return {'name': 'enterprise publication renderers', 'ok': False,
                 'state': 'NOT_EXECUTED',
-                'detail': 'Required PDF renderer dependency LibreOffice is unavailable.'}
+                'detail': 'Required PDF backend unavailable: use WeasyPrint or an operator-assisted renderer.'}
     return command('enterprise publication renderers',
                    [PY, str(TOOLS / 'publication.py'), 'self-test'])
 
@@ -397,12 +418,18 @@ def gate_e():
 
 def gate_f():
     """Return actual render-based visual QA, preserving execution failures."""
-    return [
+    checks = [
         command(
             "render-based visual QA",
             [PY, str(TOOLS / "visual_qa.py"), "self-test"],
         )
     ]
+
+    observed=PACKAGE/'build/operator-acceptance.json'
+    if observed.is_file():
+        checks.append(command('actual-format operator render provenance and page QA',
+            [PY,str(TOOLS/'operator_actions.py'),'check-acceptance',str(observed)],timeout=120))
+    return checks
 
 
 def gate_g():
@@ -451,6 +478,60 @@ def gate_payload(gate, checks):
     }
 
 
+def source_fingerprint(root):
+    """Hash canonical maintained distribution inputs.
+
+    Args:
+        root: Distribution source directory selected by release packaging.
+    Returns:
+        SHA-256 path/content/safe-mode fingerprint excluding established generated integrity
+        and qualification outputs. This unsigned consistency value is not
+        authority, operator approval or independent execution attestation.
+    Raises:
+        OSError, ValueError: If maintained inputs cannot be safely enumerated/read.
+    """
+    from supply_chain import tree_files
+    from release_bundle import _read_resource
+    source = Path(root)
+    digest = hashlib.sha256()
+    for path in tree_files(source):
+        relative = path.relative_to(source).as_posix()
+        content, mode = _read_resource(source, relative)
+        digest.update(relative.encode('utf-8') + b'\0')
+        digest.update(mode.to_bytes(2, 'big'))
+        digest.update(hashlib.sha256(content).digest())
+    return digest.hexdigest()
+
+
+def source_binding(before, after):
+    """Describe source stability across actual execution.
+
+    Args:
+        before: Canonical source fingerprint measured before executing checks.
+        after: Canonical source fingerprint measured after executing checks.
+    Returns:
+        Unsigned consistency mapping; never an operator approval credential.
+    """
+    return {'algorithm': 'sha256-distribution-inputs-modes-v2', 'before': before,
+            'after': after, 'stable': before == after}
+
+
+def binding_problems(binding, expected):
+    """Validate execution-source consistency for fresh qualification.
+
+    Args:
+        binding: Untrusted decoded source binding, possibly missing.
+        expected: Independently recomputed current canonical fingerprint.
+    Returns:
+        Diagnostic codes for missing, stale, malformed or unstable evidence;
+        empty only for an exact current stable binding, not proof of authority.
+    """
+    if (not isinstance(binding, dict)
+            or binding != source_binding(expected, expected)):
+        return ['EXECUTION_SOURCE_BINDING_MISMATCH']
+    return []
+
+
 def run_gate(gate, out=None):
     """Execute one registered gate and persist its actual result.
 
@@ -463,8 +544,13 @@ def run_gate(gate, out=None):
         KeyError: If the requested gate is unknown.
         OSError: If its report cannot be persisted.
     """
+    before = source_fingerprint(PACKAGE)
     checks = GATES[gate]()
     payload = gate_payload(gate, checks)
+    payload["source_binding"] = source_binding(before, source_fingerprint(PACKAGE))
+    payload["pass"] = payload["pass"] and payload["source_binding"]["stable"]
+    if not payload["source_binding"]["stable"]:
+        payload["problems"] = ["SOURCE_CHANGED_DURING_GATE_EXECUTION"]
     target = Path(out) if out else GATE_DIR / f"gate-{gate}.json"
     target.parent.mkdir(parents=True, exist_ok=True)
     target.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n")
@@ -472,20 +558,22 @@ def run_gate(gate, out=None):
     return 0 if payload["pass"] else 1
 
 
-def gate_report_problems(report, gate, release):
+def gate_report_problems(report, gate, release, expected_source=None):
     """Validate release identity and actual executed checks in a gate report.
 
     Args:
         report: Untrusted decoded report, never an authority or approval record.
         gate: Exact expected gate identifier.
         release: Exact current product identity.
+        expected_source: Optional current fingerprint required for fresh qualification.
     Returns:
         Diagnostic codes; empty only for a matching, nonempty, executed PASS.
         Stored pass flags cannot override contradictory or unavailable checks.
     """
     if not isinstance(report, dict):
         return ['REPORT_NOT_OBJECT']
-    problems = []
+    problems = ([] if expected_source is None else
+                binding_problems(report.get('source_binding'), expected_source))
     if report.get('gate') != gate:
         problems.append('GATE_IDENTITY_MISMATCH')
     if report.get('release') != release:
@@ -517,6 +605,8 @@ def assemble(gate_dir=GATE_DIR, out=None):
     gate_dir = Path(gate_dir)
     checks = {}
     gates = {}
+    bindings = {}
+    fingerprint = source_fingerprint(PACKAGE)
     problems = []
     release = (PACKAGE / "VERSION").read_text().strip()
     for gate in "ABCDEFG":
@@ -525,7 +615,8 @@ def assemble(gate_dir=GATE_DIR, out=None):
             problems.append(f"missing {path}")
             continue
         data = json.loads(path.read_text())
-        issues = gate_report_problems(data, gate, release)
+        issues = gate_report_problems(data, gate, release, fingerprint)
+        bindings[gate] = data.get("source_binding") if isinstance(data, dict) else None
         problems.extend(f"Gate {gate}: {issue}" for issue in issues)
         checks[gate] = data.get("checks", []) if isinstance(data, dict) else []
         gates[gate] = not issues
@@ -534,6 +625,7 @@ def assemble(gate_dir=GATE_DIR, out=None):
         "qualification": "enterprise-release-gates-A-G",
         "generated_at": now(),
         "gates": gates,
+        "source_bindings": bindings,
         "checks": checks,
         "all_pass": not problems
         and set(gates) == set("ABCDEFG")

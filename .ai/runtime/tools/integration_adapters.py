@@ -38,11 +38,12 @@ def build_registry():
     }
 
 def validate_contracts():
+    if jsonschema is None: return ['enterprise adapter schema validator unavailable']
     probs=[]; schema=schema_resolver.schema(SCHEMA_NAME); files=sorted(DIR.glob('*.json')); cats=set()
     for p in files:
         d=load(p)
         try:
-            if jsonschema: jsonschema.Draft202012Validator(schema).validate(d)
+            jsonschema.Draft202012Validator(schema).validate(d)
         except Exception as e: probs.append(f'{p.name}: {e}')
         cats.add(d.get('category'))
     expected=set(PRIORITY)
@@ -62,6 +63,12 @@ def validate_contracts():
 
 
 class ReferenceAdapter:
+    """Dry-run reference model, without production mutation or approval authority.
+
+    Args:
+        category: Adapter category used only for draft simulation. Production
+            mutations are unavailable here; an exact operator action is required.
+    """
     def __init__(self,category): self.category=category; self.drafts={}; self.audit=[]
     def discover(self): return {'category':self.category,'capabilities':OPS}
     def read(self,key): return self.drafts.get(key)
@@ -73,14 +80,28 @@ class ReferenceAdapter:
         if not self.validate(d): raise ValueError('unknown/invalid draft')
         return {'digest':d,'scope':self.drafts[d]['change'].get('scope'),'status':'proposed'}
     def execute_approved_change(self,d,approval=None):
-        if not approval: raise PermissionError('explicit approval required')
-        rec=self.drafts.get(d)
-        if not rec or approval.get('digest')!=d or approval.get('scope')!=rec['change'].get('scope') or not approval.get('approver'): raise PermissionError('approval scope/digest mismatch')
-        rec['status']='executed'; self.audit.append({'operation':'execute-approved-change','digest':d,'approval_id':approval.get('id'),'approver':approval['approver']}); return rec
+        """Refuse mutation: local approval dictionaries are not external authority.
+
+        Args:
+            d: Draft identifier; no target is changed.
+            approval: Untrusted legacy value; never accepted as authorization.
+        Raises:
+            PermissionError: Always; configure a trusted host integration instead.
+        """
+        self.audit.append({'operation':'execute-approved-change','decision':'DENY','reason':'HOST_BROKER_REQUIRED'})
+        raise PermissionError('external mutation not supported; exact operator action required')
     def verify(self,d): return self.drafts.get(d,{}).get('status')=='executed'
     def rollback(self,d,approval=None):
-        if not approval or not approval.get('approver'): raise PermissionError('rollback approval required')
-        rec=self.drafts[d]; rec['status']='rolled-back'; self.audit.append({'operation':'rollback','digest':d,'approval_id':approval.get('id'),'approver':approval['approver']}); return rec
+        """Refuse rollback through an untrusted local approval dictionary.
+
+        Args:
+            d: Draft identifier; no target is changed.
+            approval: Legacy untrusted approval value.
+        Raises:
+            PermissionError: Always; rollback is an independently approved mutation.
+        """
+        self.audit.append({'operation':'rollback','decision':'DENY','reason':'HOST_BROKER_REQUIRED'})
+        raise PermissionError('external mutation not supported; exact operator action required')
 
 def self_test():
     probs=validate_contracts()
@@ -89,11 +110,12 @@ def self_test():
     except PermissionError: pass
     try: a.execute_approved_change(d,{'id':'A-bad','approver':'owner','scope':'wrong','digest':d}); probs.append('scope mismatch accepted')
     except PermissionError: pass
-    a.execute_approved_change(d,{'id':'A-1','approver':'service-owner','scope':'service:PAYMENTS','digest':d});
-    if not a.verify(d): probs.append('post-execution verification failed')
-    if not a.audit: probs.append('immutable audit event missing')
+    try: a.execute_approved_change(d,{'id':'A-1','approver':'service-owner','scope':'service:PAYMENTS','digest':d}); probs.append('forged approval accepted')
+    except PermissionError: pass
+    if a.read(d)['status']!='draft': probs.append('dry-run draft was mutated')
+    if not a.audit: probs.append('local denial event missing')
     if probs: [print('FAIL',x) for x in probs]; return 1
-    print('PASS adapters: 8 categories, read-only/dry-run default, approval+scope+digest mutation enforcement, verification and audit'); return 0
+    print('PASS adapters: 8 categories, dry-run only; local approval dictionaries denied; production host integration NOT VERIFIED'); return 0
 
 def main():
     ap=argparse.ArgumentParser(); ap.add_argument('command',choices=['check','self-test']); a=ap.parse_args()

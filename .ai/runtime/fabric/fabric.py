@@ -15,11 +15,12 @@ Free text from agents is stored as opaque data and never interpreted, so an inje
 "please escalate" string cannot become an escalation node (threat T3b, T8).
 
 Storage: one append-only JSONL log per engagement, hash-chained (assumption A1). Authority
-acts (layer-0 reviews and authority decisions) are signed with an HMAC key kept outside
-~/.claude, created automatically, and run only when a person confirms them: in their own
-terminal, or through the Claude Code approval prompt the library's hook raises. Each act
-records which. That approximates assumption A2; it is a confirmation gate, not a proof of
-human presence.
+acts use exact-plan external Ed25519 operator receipts. Historical HMAC records
+remain readable, but HMAC is not a new human approval mechanism. Local signing
+runs explicitly outside agent mounts, with protected public trust and an external
+private key. This is LOCAL OPERATOR ATTESTATION, not enterprise identity or immutable
+custody. Terminal presence, environment flags and local JSON do not prove authority.
+The legacy selftest authorizes only its disposable temporary ledger and key.
 
 Usage summary (run with -h on any command for details):
     fabric.py init ENG --intent TEXT --owner NAME
@@ -50,6 +51,10 @@ import sys
 import tempfile
 import time
 from collections import defaultdict, deque
+from pathlib import Path
+import contextlib, io, copy
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"tools"))
+import operator_actions
 for _s in (sys.stdin, sys.stdout, sys.stderr):  # Windows consoles default to a code page, not UTF-8
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
@@ -181,7 +186,10 @@ def edge_layer_ok(label, a, b):
 def log_path(eng):
     if not eng or any(c in eng for c in "/\\.") or len(eng) > 64:
         raise FabricError("engagement name must be a simple identifier (no dots or slashes)")
-    return os.path.join(FABRIC_DIR, f"{eng}.jsonl")
+    path=os.path.abspath(os.path.join(FABRIC_DIR,f'{eng}.jsonl'))
+    if {part.casefold() for part in Path(path).parts}&{'.git','.ai','.codex','.claude','.agents','.findings','policy','policies','approvals','.ssh','.gnupg','keys','secrets'}:
+        raise FabricError('protected resources cannot be Fabric storage')
+    return path
 
 
 def load(eng):
@@ -197,6 +205,8 @@ def load(eng):
 
 
 def authority_key(create=True):
+    if create:
+        require_human("create or access authority signing capability")
     if os.path.isfile(KEY_PATH):
         with open(KEY_PATH, "rb") as stream:
             return stream.read()
@@ -226,19 +236,30 @@ def confirmation_gate_active():
     return False
 
 
+_SELFTEST_AUTHORITY_ROOT = None
+_AUTHORITY_CAPTURE = None
+
+
 def require_human(act):
-    """-> how the act was confirmed. An authority act runs only where a person confirms it: in their own
-    terminal, or through Claude's approval prompt raised by the library's hook. Codex uses explicit human terminal execution."""
-    if os.environ.get("FABRIC_TEST_AUTHORITY") == "1":
-        return "test"
-    if sys.stdin.isatty() and sys.stdout.isatty():
-        return "terminal"
-    if confirmation_gate_active():
-        return "claude-code-approval-prompt"
-    raise FabricError(
-        f"{act} is an authority act, and no confirmation gate is active: the library's hook is not "
-        "registered in settings.json, so nobody would be asked to approve it. Install the library, or run "
-        "the command in your own terminal. A generative recommendation is not authority.")
+    """Require independent external authority; local flags and terminals never grant it.
+
+    Args:
+        act: Description of the requested L0 authority act.
+    Returns:
+        Test marker only inside cmd_selftest's isolated temporary ledger and key.
+    Raises:
+        FabricError: Production external identity integration is not installed.
+            Broker integration must bind the full authority act, exact ledger
+            version and policy before invoking any signing operation.
+    """
+    if _AUTHORITY_CAPTURE is not None:
+        return operator_actions.ASSURANCE  # append is memory-only while planning
+    if (_SELFTEST_AUTHORITY_ROOT is not None
+            and os.path.realpath(FABRIC_DIR) == os.path.join(_SELFTEST_AUTHORITY_ROOT, 'fab')
+            and os.path.realpath(KEY_PATH) == os.path.join(_SELFTEST_AUTHORITY_ROOT, 'authority.key')):
+        return 'isolated-selftest-only'
+    raise FabricError(f'{act}: external authority verifier unavailable; terminal, hook configuration '
+                      'and local approval files are not authority. Deployment integration NOT VERIFIED.')
 
 
 class Fabric:
@@ -268,16 +289,49 @@ class Fabric:
         return f"{typ}-{n:04d}"
 
     def append(self, op, data, sign=False):
+        # Persisted L0 topology is authority material even when unsigned. A caller
+        # importing this module must not bypass the CLI's external-human gate.
+        if op == "node":
+            typ, layer = data.get("type"), data.get("layer")
+            if typ not in TYPES or layer not in LAYERS:
+                raise FabricError("invalid persisted node type or layer")
+            identifier = data.get("id")
+            if not isinstance(identifier, str) or not identifier.strip() or len(identifier) > 256 or any(ord(c) < 32 or ord(c) == 127 for c in identifier):
+                raise FabricError("invalid persisted node identity")
+            if identifier in self.nodes:
+                raise FabricError("persisted node identity is immutable and cannot be reused")
+            if (typ == "auth") != (layer == 0) and not (typ == "rev" and layer == 0):
+                raise FabricError("invalid persisted authority node placement")
+        authority_effect = op == "node" and (data.get("layer") == 0 or data.get("type") == "auth")
+        if op == "edge":
+            authority_effect = any(self.nodes.get(data.get(k), {}).get("layer") == 0
+                                   for k in ("src", "dst"))
+        if sign or authority_effect:
+            require_human("persist authority act or authority topology")
         prev = self.entries[-1]["hash"] if self.entries else "0" * 64
         seq = len(self.entries) + 1
         entry = {"seq": seq, "ts": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "op": op, "data": data,
                  "prev": prev}
         entry["hash"] = hashlib.sha256((prev + canonical(data) + str(seq)).encode()).hexdigest()
-        if sign:
-            entry["sig"] = hmac.new(authority_key(), entry["hash"].encode(), "sha256").hexdigest()
-        os.makedirs(FABRIC_DIR, exist_ok=True)
-        with open(log_path(self.eng), "a", encoding="utf-8") as fh:
-            fh.write(canonical(entry) + "\n")
+        if _AUTHORITY_CAPTURE is not None:
+            _AUTHORITY_CAPTURE.append(copy.deepcopy(entry))
+        else:
+            if sign:
+                entry["sig"] = hmac.new(authority_key(), entry["hash"].encode(), "sha256").hexdigest()
+            os.makedirs(FABRIC_DIR, exist_ok=True)
+            lock=log_path(self.eng)+'.lock'
+            descriptor=os.open(lock,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
+            try:
+                current=load(self.eng) if os.path.exists(log_path(self.eng)) else []
+                if canonical(current)!=canonical(self.entries):raise FabricError('engagement changed; reload before append')
+                flags=os.O_WRONLY|os.O_APPEND|os.O_CREAT|os.O_NOFOLLOW
+                output=os.open(log_path(self.eng),flags,0o600)
+                try:
+                    if os.fstat(output).st_nlink!=1:raise FabricError('hardlinked ledger denied')
+                    with os.fdopen(output,'a',encoding='utf-8',closefd=False) as fh:fh.write(canonical(entry)+'\n')
+                finally:os.close(output)
+            finally:
+                os.close(descriptor);os.unlink(lock)
         self.entries.append(entry)
         if op == "node":
             self.nodes[data["id"]] = data
@@ -295,6 +349,8 @@ class Fabric:
         if (typ == "auth") != (layer == 0) and not (typ == "rev" and layer == 0):
             raise FabricError("only authority decisions and authority reviews live at layer 0")
         node = {"id": self.next_id(typ), "type": typ, "layer": layer, "text": str(text)}
+        if set(meta) & {"id", "type", "layer", "text"}:
+            raise FabricError("node identity fields cannot be overridden by metadata")
         node.update({k: v for k, v in meta.items() if v is not None})
         # 26.10.3 Native JAI Enforcement: fabric is an assurance ledger, never a
         # second semantic identity system. Every material fragment/evidence write is
@@ -448,6 +504,18 @@ class Fabric:
         return None
 
     # ------------------------------------------------------------- justifiability
+    def authority_verified(self, identifier):
+        """Check external attestation, not a caller-selected legacy HMAC secret."""
+        entry=self.entries[self.seq_of[identifier]-1]
+        if 'operator_authority' in entry:
+            try:return verify_operator_entry(entry,self.entries)
+            except (OSError,ValueError,KeyError,TypeError):return False
+        # The legacy synthetic fixture is explicitly scoped to selftest only.
+        if _SELFTEST_AUTHORITY_ROOT is not None and os.path.realpath(FABRIC_DIR)==os.path.join(_SELFTEST_AUTHORITY_ROOT,'fab'):
+            try:return hmac.compare_digest(entry.get('sig',''),hmac.new(authority_key(False),entry['hash'].encode(),'sha256').hexdigest())
+            except (OSError,FabricError):return False
+        return False
+
     def latest_review(self, f):
         revs = [d for p, d in self.out[f] if p == "reviewed_by"]
         if not revs:
@@ -497,6 +565,8 @@ class Fabric:
             why.append("no review recorded")
         else:
             st = self.nodes[v]["state"]
+            if self.nodes[v]['layer']==0 and not self.authority_verified(v):
+                why.append('layer-0 review lacks independent operator attestation')
             allowed = STRICT_JUSTIFYING if strict else JUSTIFYING
             if st not in allowed:
                 why.append(f"latest review {v} (L{self.nodes[v]['layer']}) is '{st}'")
@@ -505,6 +575,7 @@ class Fabric:
             if a is None:
                 why.append(f"conflict {c} has no authority decision")
             elif strict:
+                if not self.authority_verified(a['id']):why.append('authority decision lacks independent operator attestation')
                 if a["decision"] in ("reject", "terminate", "revise"):
                     why.append(f"conflict {c} resolved by {a['id']} as '{a['decision']}'")
                 elif a["decision"] == "exception" and float(a.get("expires_epoch", 0)) < time.time():
@@ -535,12 +606,22 @@ class Fabric:
 
     # ------------------------------------------------------------------- integrity
     def verify(self):
+        """Check graph, evidence and every authority signature without failing open.
+
+        Returns:
+            Problems and warnings. Missing authority verification material is a
+            blocking problem, because an unverifiable L0 act cannot justify use.
+        Raises:
+            OSError: An existing authority verification key cannot be read.
+        """
         problems, warnings = [], []
         prev = "0" * 64
         key = None
-        if os.path.isfile(KEY_PATH):
+        legacy_signed=any(e.get('op')=='node' and e.get('data',{}).get('layer')==0 and 'operator_authority' not in e for e in self.entries)
+        if legacy_signed and os.path.isfile(KEY_PATH):
             with open(KEY_PATH, "rb") as stream:
                 key = stream.read()
+        seen_node_ids = set()
         for i, e in enumerate(self.entries, start=1):
             if e["seq"] != i or e["prev"] != prev:
                 problems.append(f"seq {i}: chain broken (entry reordered, removed or inserted)")
@@ -548,15 +629,29 @@ class Fabric:
             if h != e["hash"]:
                 problems.append(f"seq {i}: content hash mismatch (entry edited after append)")
             d = e["data"]
+            if e["op"] == "node":
+                identifier = d.get("id")
+                typ = d.get("type")
+                if not isinstance(identifier, str) or not identifier.strip() or len(identifier) > 256 or any(ord(c) < 32 or ord(c) == 127 for c in identifier):
+                    problems.append(f"seq {i}: invalid node identity")
+                elif identifier in seen_node_ids:
+                    problems.append(f"seq {i}: duplicate node identity {identifier}")
+                seen_node_ids.add(identifier if isinstance(identifier, str) else None)
             needs_sig = e["op"] == "node" and d.get("layer") == 0
-            if needs_sig:
+            if 'operator_authority' in e:
+                try: verify_operator_entry(e,self.entries)
+                except (ValueError,OSError,KeyError,TypeError) as exc:
+                    problems.append(f"seq {i}: operator attestation invalid: {exc}")
+            elif needs_sig:
                 if "sig" not in e:
                     problems.append(f"{d['id']}: authority act without signature")
                 elif key is None:
-                    warnings.append(f"{d['id']}: signature present, key unavailable to verify")
+                    problems.append(f"{d['id']}: signature present, key unavailable to verify")
                 elif not hmac.compare_digest(
                         e["sig"], hmac.new(key, e["hash"].encode(), "sha256").hexdigest()):
                     problems.append(f"{d['id']}: authority signature invalid")
+                elif _SELFTEST_AUTHORITY_ROOT is None:
+                    warnings.append(f"legacy L0 {d['id']}: HMAC integrity only; new operator attestation required")
             prev = e["hash"]
         for s, p, d in self.edges:
             a, b = self.nodes[s], self.nodes[d]
@@ -1213,8 +1308,9 @@ def cmd_dossier(a):
 
     cmd = f"python3 ~/.ai/it-role-house/fabric/fabric.py authorise {fb.eng} {x['id']}"
     over = " --beyond-round-limit" if fb.round_no() >= MAX_ROUNDS else ""
-    L += ["## Your decision", "", "Tell the orchestrator which you choose: it runs that command and Claude Code asks "
-          "you to approve it. Or run it yourself in a terminal.", "", "```bash"]
+    L += ["## Your decision", "", "The commands below describe the requested authority act. They remain denied until "
+          "an independently authenticated external authority integration is installed. Chat, native "
+          "provider approval and a terminal are not L0 credentials.", "", "```bash"]
     for n in props:
         if norm_text(fb.nodes[n]["text"]) not in tried:
             L.append(f"{cmd} --decision revise --adopt {n}{over} --signer \"<you>\" --rationale \"<why>\"")
@@ -1256,6 +1352,8 @@ def cmd_evidence(a):
 
 
 def cmd_review(a):
+    if a.layer==0 and _SELFTEST_AUTHORITY_ROOT is None and _AUTHORITY_CAPTURE is None:
+        return operator_request(a,'fabric-review')
     fb = open_fabric(a.engagement)
     f = fb.nodes.get(a.fragment)
     if not f or f["type"] != "frag":
@@ -1454,6 +1552,8 @@ def cmd_reformulate(a):
 
 
 def cmd_authorise(a):
+    if _SELFTEST_AUTHORITY_ROOT is None and _AUTHORITY_CAPTURE is None:
+        return operator_request(a,'fabric-authorise')
     via = require_human("an authority decision")
     fb = open_fabric(a.engagement)
     x = fb.nodes.get(a.escalation)
@@ -1499,6 +1599,82 @@ def cmd_authorise(a):
               + (f" (adopted {a.adopt})" if a.adopt else ""))
 
 
+def operator_request(a,kind):
+    """Plan an exact authority transaction without modifying the engagement."""
+    global _AUTHORITY_CAPTURE
+    before=load(a.engagement)
+    planned=[];_AUTHORITY_CAPTURE=planned
+    try:
+        with contextlib.redirect_stdout(io.StringIO()):
+            (cmd_review if kind=='fabric-review' else cmd_authorise)(a)
+    finally:_AUTHORITY_CAPTURE=None
+    if not planned:raise FabricError('empty authority transaction')
+    parameters={'engagement':a.engagement,'entries':planned,
+        'entries_sha256':operator_actions.sha(operator_actions.canonical(before)),
+        'policy_digest':operator_actions.sha(operator_actions.regular(POLICY_PATH)),
+        'policy_version':supervision_policy().get('schema'),
+        'object_ids':[getattr(a,'fragment',None) or getattr(a,'escalation',None)]}
+    req=operator_actions.request(kind,'Review exact Fabric authority decision and consequences',
+        log_path(a.engagement),getattr(a,'fragment',None) or a.escalation,parameters,
+        risk='Appends the displayed authority transaction only; no external mutation')
+    output=Path(getattr(a,'request_out',None) or (Path.cwd()/'build/operator-actions'/f"{req['request_id']}.json"))
+    output.parent.mkdir(parents=True,exist_ok=True)
+    with output.open('x') as stream:json.dump(req,stream,indent=2);stream.write('\n')
+    print(operator_actions.request_message(req,output))
+    return 3
+
+
+def verify_operator_entry(entry,entries):
+    """Verify external signature, exact plan and the immutable prior snapshot."""
+    proof=entry['operator_authority'];req=proof['request'];step=proof['step']
+    if type(step) is not int or not 0<=step<len(req['parameters']['entries']):raise ValueError('invalid transaction step')
+    decision=operator_actions.verify_receipt(req,proof['receipt'],live=False)
+    if not decision['accepted'] or decision['performed']:raise ValueError('not an approval for a pending effect')
+    original=dict(entry);original.pop('operator_authority');original.pop('sig',None)
+    if original!=req['parameters']['entries'][step]:raise ValueError('authority effect differs from signed plan')
+    start=entry['seq']-1-step
+    if start<0 or operator_actions.sha(operator_actions.canonical(entries[:start]))!=req['parameters']['entries_sha256']:raise ValueError('authority snapshot mismatch or replay')
+    if any(e.get('operator_authority',{}).get('request',{}).get('request_id')==req['request_id'] for e in entries[:start]):raise ValueError('operator request replay')
+    return True
+
+
+def cmd_apply_operator(a):
+    """Atomically append a genuinely operator-approved exact Fabric transaction."""
+    req=json.loads(operator_actions.regular(a.request));receipt=json.loads(operator_actions.regular(a.receipt))
+    decision=operator_actions.verify_receipt(req,receipt)
+    if not decision['accepted']:
+        print('DENIED: operator rejected; ledger unchanged');return 2
+    if decision['performed'] or req['kind'] not in {'fabric-review','fabric-authorise'}:raise FabricError('not a pending Fabric authority approval')
+    parameters=req['parameters'];eng=parameters['engagement'];path=Path(log_path(eng)).absolute()
+    if str(path)!=req['source']['path']:raise FabricError('cross-engagement approval')
+    if set(path.parts)&{'.git','.ai','.agents','.codex','.claude','policy','policies','approvals','.ssh'}:raise FabricError('protected storage cannot be an engagement target')
+    if operator_actions.sha(operator_actions.regular(POLICY_PATH))!=parameters['policy_digest']:raise FabricError('policy changed; reapproval required')
+    lock=str(path)+'.lock';descriptor=os.open(lock,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
+    temporary=None
+    try:
+        raw=operator_actions.regular(path)
+        if operator_actions.sha(raw)!=req['source']['sha256']:raise FabricError('ledger changed or receipt replay; new approval required')
+        before=load(eng)
+        if operator_actions.sha(operator_actions.canonical(before))!=parameters['entries_sha256']:raise FabricError('snapshot mismatch')
+        planned=copy.deepcopy(parameters['entries'])
+        for step,entry in enumerate(planned):
+            entry['operator_authority']={'request':req,'receipt':receipt,'step':step}
+        candidate=Fabric(eng,before+planned);problems,warnings=candidate.verify()
+        if problems or any(not warning.startswith('legacy L0 ') for warning in warnings):raise FabricError('invalid approved transaction: '+str(problems+warnings))
+        with tempfile.NamedTemporaryFile(dir=path.parent,prefix='.operator-',delete=False) as stream:
+            temporary=Path(stream.name);stream.write(raw+b''.join((canonical(e)+'\n').encode() for e in planned));stream.flush();os.fsync(stream.fileno())
+        if operator_actions.sha(operator_actions.regular(path))!=req['source']['sha256']:raise FabricError('ledger changed during verification')
+        os.replace(temporary,path);temporary=None
+        directory=os.open(path.parent,os.O_RDONLY|os.O_DIRECTORY)
+        try:os.fsync(directory)
+        finally:os.close(directory)
+    finally:
+        if temporary is not None:temporary.unlink(missing_ok=True)
+        os.close(descriptor);os.unlink(lock)
+    print('COMPLETED',req['request_id'],operator_actions.ASSURANCE)
+    return 0
+
+
 def cmd_keygen(a):
     """Not normally needed: the installer creates the signing key, and signing creates one if absent."""
     if os.path.isfile(KEY_PATH):
@@ -1521,7 +1697,7 @@ def cmd_verify(a):
             print(f"  - {p}")
         return 1
     print("OK: chain intact, well-typed, adjacency respected, forward chain acyclic, "
-          "authority acts signed, contracts complete.")
+          "record integrity checked, contracts complete; L0 eligibility is verified separately.")
     return 0
 
 
@@ -1619,11 +1795,9 @@ def cmd_report(a):
 
 
 # ------------------------------------------------------------------------ selftest
-def cmd_selftest(a):
+def _cmd_selftest(a, tmp):
     global FABRIC_DIR, KEY_PATH
-    tmp = tempfile.mkdtemp(prefix="fabric-selftest-")
     FABRIC_DIR, KEY_PATH = os.path.join(tmp, "fab"), os.path.join(tmp, "authority.key")
-    os.environ["FABRIC_TEST_AUTHORITY"] = "1"
     authority_key(create=True)
     checks = []
 
@@ -2029,6 +2203,25 @@ def cmd_selftest(a):
     return 1 if failed else 0
 
 
+def cmd_selftest(a):
+    """Run the existing fabric selftest in a disposable, scoped authority fixture.
+
+    Args:
+        a: Existing CLI namespace, unused by the isolated fixture.
+    Returns:
+        Existing selftest exit status, restoring all authority globals afterward.
+        No environment variable enables authority in a normal invocation.
+    """
+    global FABRIC_DIR, KEY_PATH, _SELFTEST_AUTHORITY_ROOT
+    original = FABRIC_DIR, KEY_PATH, _SELFTEST_AUTHORITY_ROOT
+    try:
+        with tempfile.TemporaryDirectory(prefix='fabric-selftest-') as tmp:
+            _SELFTEST_AUTHORITY_ROOT = os.path.realpath(tmp)
+            return _cmd_selftest(a, tmp)
+    finally:
+        FABRIC_DIR, KEY_PATH, _SELFTEST_AUTHORITY_ROOT = original
+
+
 # --------------------------------------------------------------------------- main
 def main():
     if hasattr(signal, "SIGPIPE"):
@@ -2093,7 +2286,7 @@ def main():
     p = sp.add_parser("review"); p.add_argument("engagement"); p.add_argument("fragment")
     p.add_argument("--layer", type=int, required=True); p.add_argument("--state", choices=STATES, required=True)
     p.add_argument("--rationale", required=True); p.add_argument("--reviewer", required=True)
-    p.add_argument("--model", required=True); p.add_argument("--constraints")
+    p.add_argument("--model", required=True); p.add_argument("--constraints"); p.add_argument("--request-out")
     p.set_defaults(fn=cmd_review)
 
     p = sp.add_parser("consolidate"); p.add_argument("engagement"); p.add_argument("fragment")
@@ -2126,7 +2319,9 @@ def main():
     p.add_argument("--decision", choices=DECISIONS, required=True); p.add_argument("--signer", required=True)
     p.add_argument("--rationale"); p.add_argument("--expires", type=float)
     p.add_argument("--revise-text"); p.add_argument("--supersedes"); p.add_argument("--adopt")
-    p.add_argument("--beyond-round-limit", action="store_true"); p.set_defaults(fn=cmd_authorise)
+    p.add_argument("--beyond-round-limit", action="store_true"); p.add_argument("--request-out"); p.set_defaults(fn=cmd_authorise)
+
+    p=sp.add_parser("apply-operator");p.add_argument("request");p.add_argument("receipt");p.set_defaults(fn=cmd_apply_operator)
 
     sp.add_parser("keygen").set_defaults(fn=cmd_keygen)
     for name, fn in (("verify", cmd_verify), ("status", cmd_status), ("report", cmd_report)):
@@ -2139,7 +2334,7 @@ def main():
     a = ap.parse_args()
     try:
         return a.fn(a) or 0
-    except FabricError as exc:
+    except (FabricError,ValueError,OSError,KeyError) as exc:
         print(f"fabric: {exc}", file=sys.stderr)
         return 2
 

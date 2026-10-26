@@ -1,10 +1,37 @@
 {
   "name": "enterprise-publication-editor",
   "provider": "codex",
+  "jai": {
+    "core_version": "1.0.0",
+    "layer": 5,
+    "layer_name": "Realisation and Tooling",
+    "profile": "runtime",
+    "responsibility": "enterprise-publication-editor authority boundary",
+    "input_refs": [
+      "policy:managed-policy"
+    ],
+    "output_refs": [
+      "execution:agent:enterprise-publication-editor"
+    ],
+    "authority_ref": "human-authority:write-authoring",
+    "acceptance_question": "Is the design implemented through permitted tools and bounded execution mechanisms?",
+    "evidence_obligations": [
+      "ExecutionRecord"
+    ]
+  },
   "workload_class": "standard",
   "selection_strategy": "project-managed-explicit-class-routing",
   "strategy_scope": "project-internal",
   "model_selector": "gpt-6.1-sol",
+  "content_profile_ref": "jai/profiles/content-profile.json",
+  "runtime_boundary": {
+    "scope": "GA_COMPATIBLE/2",
+    "live_verified": false,
+    "hardened_privileged_enabled": false,
+    "protected_resources": "deny",
+    "git_authority": "human",
+    "enforcement": "effective-provider-sandbox-and-host"
+  },
   "reasoning_effort": "medium",
   "fallbacks": [
     {
@@ -15,19 +42,31 @@
       "model_selector": "inherit"
     }
   ],
+  "local_execution": {
+    "requires_effective_native_sandbox": true,
+    "contract_is_host_enforcement": false,
+    "reviewer_source_write": false,
+    "qa_output": "only explicitly native-writable scratch; never widen source access",
+    "shell_available": true,
+    "host_mount_isolation_required": true,
+    "limitation": "Native settings must actually be loaded; no live confinement claim"
+  },
   "sandbox_mode": "workspace-write",
   "workspace_write": true,
-  "network": "provider-managed",
+  "network": false,
   "allowed_tools": [
     "Read",
     "Grep",
     "Glob",
     "Write",
-    "Edit"
+    "Edit",
+    "Bash"
   ],
   "denied_tools": [
-    "policy-mutation",
-    "approval-self-grant"
+    "Agent",
+    "WebFetch",
+    "approval-self-grant",
+    "policy-mutation"
   ],
   "approval_required_for": [
     "policy-change",
@@ -35,7 +74,8 @@
   ],
   "native_codex": {
     "model": "gpt-6.1-sol",
-    "model_reasoning_effort": "medium"
-  },
-  "content_profile_ref": "jai/profiles/content-profile.json"
+    "model_reasoning_effort": "medium",
+    "sandbox_mode": "workspace-write",
+    "approval_policy": "on-request"
+  }
 }

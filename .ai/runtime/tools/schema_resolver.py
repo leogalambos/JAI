@@ -26,6 +26,40 @@ def schema_path(name):
 
 def schema(name): return load(schema_path(name))
 
+def release_scope(root=None):
+    """Read the sole release capability declaration using its required schema.
+
+    Args:
+        root: Trusted source-package or installed-runtime root; defaults to this
+            module's runtime, never the current workspace or an environment flag.
+    Returns:
+        Fresh validated RELEASE-SCOPE.json data; schema vocabulary describes
+        implemented features, not a second list of enabled capabilities.
+    Raises:
+        OSError, ValueError: Missing, malformed or symlinked manifest/schema.
+        ImportError: Required validator unavailable; no permissive fallback.
+        jsonschema.ValidationError: Unsupported or structurally invalid scope.
+        jsonschema.SchemaError: Invalid required validation schema.
+    """
+    import jsonschema
+    base=Path(root) if root is not None else RUNTIME
+    if base.name=='runtime' and base.parent.name=='.ai' and (base.parent/'setup/installer.py').is_file():
+        base=base.parent.parent
+    if (base/'.ai/runtime').is_dir():
+        runtime=base/'.ai/runtime';manifest=base/'RELEASE-SCOPE.json'
+    elif base.name=='runtime' and base.parent.name=='.ai' and (base/'RELEASE-SCOPE.json').exists() and (base.parent.parent/'RELEASE-SCOPE.json').exists():
+        raise ValueError('ambiguous source and installed release scope roots')
+    else:
+        runtime=base;manifest=base/'RELEASE-SCOPE.json'
+    spec=runtime/'schema/release-scope.schema.json'
+    if manifest.is_symlink() or spec.is_symlink():
+        raise ValueError('release scope and validation schema must be regular resources')
+    data=load(manifest);rules=load(spec)
+    jsonschema.Draft202012Validator.check_schema(rules)
+    jsonschema.Draft202012Validator(rules).validate(data)
+    return data
+
+
 def self_test():
     problems=[]
     try: r=registry()

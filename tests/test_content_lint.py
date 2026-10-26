@@ -328,6 +328,29 @@ def test_actual_dispatcher_hmac_verification_supports_review_and_rejects_tamper(
     assert evaluate(model,spec,reviewer=review,trusted_executions=dispatcher)['gate_verdict']=='CONTENT_FAIL'
 
 
+
+def operator_attested_fixture(module,entries,tmp_path,monkeypatch):
+    """Real Ed25519 on disposable data; not host/operator authenticity evidence."""
+    import subprocess,base64,copy
+    import operator_actions as op
+    start=next(i for i,e in enumerate(entries) if e['op']=='node' and e['data'].get('layer')==0)
+    for entry in entries:
+        entry.pop('sig',None);entry.pop('operator_authority',None)
+    source=tmp_path/'synthetic-operator-prefix.jsonl'
+    source.write_text(''.join(module.canonical(e)+'\n' for e in entries[:start]))
+    req=op.request('fabric-review','Synthetic test fixture only',source,'fixture',{'entries':copy.deepcopy(entries[start:]),'entries_sha256':op.sha(op.canonical(entries[:start]))})
+    key=tmp_path/'synthetic-private.pem';public=tmp_path/'synthetic-public.pem'
+    subprocess.run(['/usr/bin/openssl','genpkey','-algorithm','ED25519','-out',str(key)],check=True,capture_output=True)
+    subprocess.run(['/usr/bin/openssl','pkey','-in',str(key),'-pubout','-out',str(public)],check=True,capture_output=True)
+    trust={'key_id':op.sha(public.read_bytes()),'public_key':public.read_text()}
+    monkeypatch.setattr(op,'trusted_key',lambda:trust)
+    receipt=op.response(req,True);receipt.update(key_id=trust['key_id'],assurance=op.ASSURANCE)
+    payload=tmp_path/'synthetic-payload';payload.write_bytes(op.canonical(receipt));signature=tmp_path/'synthetic-signature'
+    subprocess.run(['/usr/bin/openssl','pkeyutl','-sign','-inkey',str(key),'-rawin','-in',str(payload),'-out',str(signature)],check=True,capture_output=True)
+    receipt['signature']=base64.b64encode(signature.read_bytes()).decode()
+    for i,entry in enumerate(entries[start:]):entry['operator_authority']={'request':req,'receipt':receipt,'step':i}
+
+
 def test_existing_fabric_adapter_reads_signed_acceptance_without_mutations(tmp_path, monkeypatch):
     import datetime as dt
     import hashlib
@@ -354,6 +377,7 @@ def test_existing_fabric_adapter_reads_signed_acceptance_without_mutations(tmp_p
     entry('node',{'id':'rev-test','type':'rev','layer':0,'state':'accepts','reviewer':'Synthetic human authority'},sign=True)
     entry('edge',{'src':'evd-test','label':'supports','dst':'frag-test'})
     entry('edge',{'src':'frag-test','label':'reviewed_by','dst':'rev-test'})
+    operator_attested_fixture(module,entries,tmp_path,monkeypatch)
     fabric=module.Fabric('synthetic-read-only-test',entries)
     adapter=ExistingFabricAuthority(fabric,'frag-test',clock=lambda:dt.datetime(2026,10,19,tzinfo=dt.timezone.utc))
     result=adapter.verify(adapter.proof)
@@ -368,6 +392,7 @@ def test_existing_fabric_adapter_reads_signed_acceptance_without_mutations(tmp_p
             item['hash']=hashlib.sha256((previous+module.canonical(item['data'])+str(item['seq'])).encode()).hexdigest()
             if 'sig' in item:item['sig']=hmac.new(key,item['hash'].encode(),hashlib.sha256).hexdigest()
             previous=item['hash']
+        operator_attested_fixture(module,entries,tmp_path,monkeypatch)
     for malformed in ('{"profile":"content-enforcement","profile":"content-enforcement","dcs_activation":{}}',
                       '{"profile":"content-enforcement","dcs_activation":{"critical_recall":Infinity}}'):
         entries[0]['data']['text']=malformed
@@ -378,10 +403,11 @@ def test_existing_fabric_adapter_reads_signed_acceptance_without_mutations(tmp_p
         assert rejected.verify(rejected.proof) is None
     entries[0]['data']['text']=original_text
     resign_fixture()
-    entries[2]['sig']='0'*64
+    entries[2]['operator_authority']['receipt']['signature']='AA=='
     assert adapter.verify(adapter.proof) is None
-    entries[2]['sig']=hmac.new(key,entries[2]['hash'].encode(),hashlib.sha256).hexdigest()
-    key_path.unlink()
+    resign_fixture()
+    import operator_actions as op
+    monkeypatch.setattr(op,'trusted_key',lambda: (_ for _ in ()).throw(ValueError('no public pin')))
     assert adapter.verify(adapter.proof) is None
 
 
@@ -461,6 +487,7 @@ def test_registered_approved_policy_activates_via_actual_existing_signed_fabric(
     entry('node',{'id':'rev-l0','type':'rev','layer':0,'state':'accepts','reviewer':'Synthetic domain authority'},True)
     entry('edge',{'src':'evd-corpus','label':'supports','dst':'frag-policy'})
     entry('edge',{'src':'frag-policy','label':'reviewed_by','dst':'rev-l0'})
+    operator_attested_fixture(module,entries,tmp_path,monkeypatch)
     fabric=module.Fabric('synthetic-registered-policy-test',entries)
     authority=ExistingFabricAuthority(fabric,'frag-policy',clock=lambda:dt.datetime(2026,10,19,tzinfo=dt.timezone.utc))
     report=evaluate(model,spec,mode='blocking',reviewer=review,trusted_executions=dispatcher,authority=authority)

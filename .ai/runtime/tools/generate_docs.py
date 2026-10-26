@@ -4,14 +4,18 @@
 # https://www.egothor.org
 """Generate release inventory/documentation from canonical package sources."""
 from __future__ import annotations
-import argparse, json, re, sys
+import argparse, json, re, sys, textwrap
+from schema_resolver import release_scope
 from pathlib import Path
 
 START='<!-- GENERATED-INVENTORY:START -->'
 END='<!-- GENERATED-INVENTORY:END -->'
 
-def load(p): return json.loads(Path(p).read_text(encoding='utf-8'))
+def load(p):
+    """Read canonical JSON; malformed or missing input raises without fallback."""
+    return json.loads(Path(p).read_text(encoding='utf-8'))
 def root_from(root: Path):
+    """Resolve a source or installed runtime; reject unknown layouts."""
     root=root.resolve()
     # Source bundle: canonical surface is <bundle>/.ai and runtime is <bundle>/.ai/runtime.
     if (root/'.ai/runtime/roles.json').is_file():
@@ -28,6 +32,7 @@ def root_from(root: Path):
     raise SystemExit('package/runtime root not found')
 
 def inventory(root: Path):
+    """Derive counts and scoped compatibility claims from maintained resources."""
     package,rt,surface=root_from(root)
     roles=load(rt/'roles.json'); workflows=load(rt/'workflows.json'); taxonomy=load(rt/'artifacts/schema/artifact-types.json'); schemas=load(rt/'schema/schema-registry.json')
     agents=sorted(p.stem for p in (surface/'agents').glob('*.md'))
@@ -51,15 +56,21 @@ def inventory(root: Path):
     version=(package/'VERSION').read_text().strip()
     return {
       'manifest_version':'1.0.0','release':version,
+      'release_scope':release_scope(package),
       'counts':{'roles':len(roles.get('roles',[])),'agents':len(agents),'skills':len(skills),'workflows':len(workflows.get('workflows',[])),'artifact_types':len(taxonomy.get('artifact_types',{})),'schemas':len(schemas.get('schemas',[])),'renderers':len(renderers),'tests':len(tests),'provider_adapters':len(adapters)},
       'roles_source':'runtime/roles.json','workflows_source':'runtime/workflows.json','artifact_taxonomy_source':'runtime/artifacts/schema/artifact-types.json','schema_registry_source':'runtime/schema/schema-registry.json',
       'agents':agents,'skills':skills,'provider_adapters':adapters,'renderers':renderers,'tests':tests,
       'compatibility':[
-        {'component':'Claude Code','minimum':'provider-supported','tested':'adapter contract','supported':'yes'},
-        {'component':'Codex CLI','minimum':'provider-supported','tested':'adapter contract','supported':'yes'},
+        {'component':'Claude Code','minimum':'provider-supported strict sandbox','tested':'not installed on reference host; projections only, live NOT_VERIFIED','supported':'contract-scoped tools; reviewer shell unavailable without read-only isolation'},
+        {'component':'Codex CLI','minimum':'provider-supported','tested':'0.164.0 host CLI help confirms sandbox/on-request values; live role confinement NOT_VERIFIED','supported':'role-authorized local QA in effective native sandbox'},
         {'component':'Python','minimum':'3.10','tested':'3.12 release CI target','supported':'yes'},
         {'component':'Pandoc','minimum':'optional','tested':'publication tool detects at runtime','supported':'optional'},
-        {'component':'LibreOffice','minimum':'optional','tested':'publication tool detects at runtime','supported':'publication'},
+        {'component':'WeasyPrint','minimum':'70.x optional','tested':'actual HTML/PDF conversion; constrained resource fetching','supported':'SUPPORTED optional HTML/PDF; not Office fidelity'},
+        {'component':'Pyphen','minimum':'0.17.x optional','tested':'clean optional renderer environment required; metadata inspection avoids legacy pkg_resources import','supported':'WeasyPrint transitive dependency constrained in requirements-rendering.txt'},
+        {'component':'LibreOffice','minimum':'Office-compatible host renderer','tested':'actual DOCX/PPTX/XLSX operator renders on Fedora','supported':'AUTO when native sandbox permits; otherwise OPERATOR_ASSISTED actual Office QA'},
+        {'component':'Poppler','minimum':'pdftoppm on PATH','tested':'actual PDF page rasterization','supported':'visual QA raster prerequisite'},
+        {'component':'OpenSSL','minimum':'Ed25519 pkeyutl -rawin','tested':'external receipts verified with fixed /usr/bin/openssl on Linux','supported':'OPERATOR_ASSISTED local L0; other trust adapters NOT_VERIFIED'},
+        {'component':'Fonts/system libraries','minimum':'DejaVu Sans; renderer-native text/layout libraries','tested':'Fedora reference glyph/layout corpus','supported':'host prerequisite; other platforms NOT_VERIFIED'},
         {'component':'lxml','minimum':'5.x','tested':'XSD conformance suite','supported':'EA conformance'},
         {'component':'jsonschema','minimum':'4.x','tested':'Draft 2020-12','supported':'semantic schemas'},
         {'component':'Pillow','minimum':'runtime-supported','tested':'visual QA fixture rendering','supported':'visual QA'},
@@ -68,6 +79,7 @@ def inventory(root: Path):
     }
 
 def md_block(inv):
+    """Render the canonical inventory as a bounded generated Markdown block."""
     c=inv['counts']
     count_lines='\n'.join(
         f"- {k.replace('_',' ').title()}: **{v}**"
@@ -81,13 +93,18 @@ def md_block(inv):
             f"  - Tested: {item['tested']}",
             f"  - Supported: {item['supported']}",
         ])
-    compat='\n'.join(compat_lines)
+    features=textwrap.fill('Enabled features: '+', '.join('`'+name+'`' for name in inv['release_scope']['enabled'])+'.',width=70,break_long_words=False,break_on_hyphens=False)
+    compat='\n'.join(textwrap.fill(line,width=72,subsequent_indent='    ',break_long_words=False,break_on_hyphens=False) for line in compat_lines)
     return f"""{START}
 ## Current generated release inventory
 
 This block is generated from canonical package sources by
 `.ai/runtime/tools/generate_docs.py`. Manual count edits are not
 authoritative.
+
+Supported scope: **{inv['release_scope']['scope']}**.
+
+{features}
 
 {count_lines}
 
@@ -97,6 +114,7 @@ authoritative.
 {END}"""
 
 def replace_block(text,block):
+    """Replace marked generated content, or insert it without losing prose."""
     if START in text and END in text:
         return text[:text.index(START)] + block + text[text.index(END)+len(END):]
     # Place after first top-level heading/lede area.
@@ -106,6 +124,7 @@ def replace_block(text,block):
     return '\n'.join(lines[:at]).rstrip()+'\n\n'+block+'\n\n'+'\n'.join(lines[at:]).lstrip()
 
 def validation_doc(inv):
+    """Describe current qualification commands without asserting gate results."""
     release=inv['release']
     return f"""# Validation — AI IT House {release}
 
@@ -129,7 +148,8 @@ The independent release gates are:
 - **B — Semantic:** SABSA, scoped EA projection, ArchiMate
   interoperability and repository consistency.
 - **C — Governance:** authorities/workflows, v3 governance contracts,
-  immutable execution records and service objectives.
+  content-hashed execution records and service objectives
+  (not immutable custody).
 - **D — Runtime Security:** authority enforcement, model routing,
   provider parity, adapter mutation controls and regression tests.
 - **E — Publication:** JAI-lineaged ProjectionManifest v3, enterprise
@@ -183,12 +203,14 @@ Verified carry-over reviews are recorded in:
 """
 
 def outputs(root: Path):
+    """Prepare generated resources from canonical inputs without writing them."""
     package,rt,_surface=root_from(root); inv=inventory(root); manifest=json.dumps(inv,indent=2,ensure_ascii=False)+'\n'; block=md_block(inv)
     readmes={package/'README.md',rt/'README.md'}
     readme_text={p:replace_block(p.read_text(encoding='utf-8'),block) for p in readmes if p.is_file()}
     return package,rt,inv,manifest,readme_text,validation_doc(inv)
 
 def run(root: Path,check=False):
+    """Generate projections or return nonzero on any exact-byte drift."""
     package,rt,inv,manifest,readmes,validation=outputs(root); mismatches=[]
     targets={rt/'_meta/release-manifest.json':manifest,package/'VALIDATION.md':validation,**readmes}
     # The CLI-facing GUIDE.md is a generated Markdown deployment projection.
@@ -196,6 +218,9 @@ def run(root: Path,check=False):
     guide_source=package/'docs/reference/installed-cli-guide.md'
     if guide_source.is_file():
         targets[rt/'GUIDE.md']=guide_source.read_text(encoding='utf-8')
+    compatibility_source=package/'docs/reference/compatibility.md'
+    if compatibility_source.is_file():
+        targets[compatibility_source]=replace_block(compatibility_source.read_text(encoding='utf-8'),md_block(inv))
     if check:
         for p,content in targets.items():
             if not p.is_file() or p.read_text(encoding='utf-8')!=content: mismatches.append(str(p))
@@ -206,5 +231,6 @@ def run(root: Path,check=False):
     print(f"wrote generated manifest/docs for {inv['release']}: {inv['counts']}"); return 0
 
 def main():
+    """Dispatch the source/installed documentation generation CLI."""
     ap=argparse.ArgumentParser(); ap.add_argument('--root',default='.'); ap.add_argument('--check',action='store_true'); a=ap.parse_args(); raise SystemExit(run(Path(a.root),a.check))
 if __name__=='__main__': main()

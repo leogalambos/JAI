@@ -28,6 +28,7 @@ MIRRORS = ("VERSION", ".ai/VERSION", ".ai/runtime/VERSION")
 PRODUCT_CATALOGS = {
     ".ai/runtime/roles.json": "version",
     ".ai/runtime/workflows.json": "version",
+    ".ai/runtime/content/evaluation-package.json": "release",
 }
 GENERATED_MANIFEST = ".ai/runtime/_meta/release-manifest.json"
 NATIVE_WRITE = "ArtifactContract-v3"
@@ -75,6 +76,10 @@ def catalog_projection(text: str, key: str, version: str, rel: str) -> str:
     # All current catalogues begin with the version property. Do not touch
     # identically named fields of nested roles, workflows or contracts.
     pattern = re.compile(r'\A(\{\s*"' + re.escape(key) + r'"\s*:\s*)"[^"]+"')
+    if rel == '.ai/runtime/content/evaluation-package.json':
+        # Descriptor metadata follows schema identity; match only its top-level
+        # two-space release field, never pinned file hashes or nested baselines.
+        pattern = re.compile(r'^(  "release"\s*:\s*)"[^"]+"', re.MULTILINE)
     replaced, count = pattern.subn(lambda m: m.group(1) + json.dumps(version), text, count=1)
     if count != 1:
         raise ValueError(f"cannot safely project top-level {key} in {rel}")

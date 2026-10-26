@@ -62,3 +62,10 @@ A successful render is not a content pass. Pilot content checks remain
 advisory; security, evidence and human authority gates remain mandatory.
 Production acceptance and human-gold classification require existing JAI
 L0 human authority; neither another agent nor a synthetic test grants it.
+
+Run authorized local generation/QA within the existing sandbox first (A).
+If a native permission is actually requested use B; if host rendering is needed
+use C with a complete inline command, reason, input/output hashes, privileges,
+risks and verification/resume plan. Say FORMAL L0: NO for rendering. Formal
+consequential acceptance is D and uses existing signed Fabric receipts; it is
+not implied by a provider prompt or the operator running LibreOffice.

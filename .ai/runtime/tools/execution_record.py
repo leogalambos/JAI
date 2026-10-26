@@ -12,7 +12,7 @@ RUNTIME=Path(__file__).resolve().parents[1]
 import schema_resolver
 SCHEMA_NAME='ExecutionRecord'
 PACKAGE=RUNTIME.parents[1]
-RELEASE=(PACKAGE/'VERSION').read_text().strip()
+RELEASE=((PACKAGE/'VERSION') if (PACKAGE/'VERSION').is_file() else RUNTIME/'VERSION').read_text().strip()
 L6_ACCEPTANCE='Is the observable result evidenced, attributable, reproducible and suitable for authority review?'
 
 def jai_binding(agent, input_refs, outputs):
@@ -69,7 +69,7 @@ def self_test():
         lines=p.read_text().splitlines(); x=json.loads(lines[0]); x['agent']='tampered'; lines[0]=json.dumps(x); p.write_text('\n'.join(lines)+'\n')
         try: verify(p); raise AssertionError('tamper not detected')
         except ValueError: pass
-    print('PASS execution-record: JAI L6 profile + immutable-write discipline + hash-chain tamper detection'); return 0
+    print('PASS execution-record: JAI L6 profile + hash-chain tamper detection; local storage remains mutable'); return 0
 
 def main():
     ap=argparse.ArgumentParser(); sub=ap.add_subparsers(dest='cmd',required=True); sub.add_parser('self-test'); v=sub.add_parser('verify-log'); v.add_argument('log')

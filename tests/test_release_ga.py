@@ -13,13 +13,24 @@ import release_ga as ga
 
 
 def prepared(tmp_path, monkeypatch):
+    (tmp_path/'.ai/runtime/schema').mkdir(parents=True,exist_ok=True)
+    (tmp_path/'.ai/runtime/schema/release-scope.schema.json').write_bytes((ROOT/'.ai/runtime/schema/release-scope.schema.json').read_bytes())
+    (tmp_path/'RELEASE-SCOPE.json').write_bytes((ROOT/'RELEASE-SCOPE.json').read_bytes())
     version = (ROOT/'VERSION').read_text().strip()
     (tmp_path/'VERSION').write_text(version+'\n')
-    summary = {'release': version, 'all_pass': True, 'gates': {}, 'checks': {}}
+    # Fixture report files are orchestration inputs, not maintained product sources.
+    source = tmp_path/'build/source'; source.mkdir(parents=True)
+    (source/'VERSION').write_text(version)
+    fingerprint = ga.core.source_fingerprint(source)
+    monkeypatch.setattr(ga.core, 'source_fingerprint', lambda root: fingerprint)
+    binding = ga.core.source_binding(fingerprint, fingerprint)
+    summary = {'release': version, 'all_pass': True, 'gates': {}, 'checks': {}, 'source_bindings': {}}
+    summary['supported_capabilities']=__import__('schema_resolver').release_scope(tmp_path)
     for gate in 'ABCDEFG':
         checks = [{'name': 'executed fixture', 'ok': True, 'state': 'PASS'}]
-        report = {'release': version, 'gate': gate, 'pass': True, 'checks': checks}
+        report = {'release': version, 'gate': gate, 'pass': True, 'checks': checks, 'source_binding': binding, 'supported_capabilities':summary['supported_capabilities'],'qualification_profile':summary['supported_capabilities']['scope']}
         (tmp_path/f'gate-{gate}.json').write_text(json.dumps(report))
+        summary['source_bindings'][gate] = binding
         summary['gates'][gate] = True
         summary['checks'][gate] = checks
     ag = tmp_path/'summary.json'
@@ -58,15 +69,15 @@ def test_h_rechecks_summary_instead_of_relabelling_it(tmp_path, monkeypatch):
     summary = prepared(tmp_path, monkeypatch)
     assert ga.prep_check()['ok']
     passed = [{'name': 'actual H check', 'state': 'PASS', 'ok': True}]
-    assert ga.write_final(passed)['all_pass']
+    assert ga.write_final(passed, summary['source_bindings']['A'])['all_pass']
     summary['release'] = '26.10.8'
     ga.AG.write_text(json.dumps(summary))
     assert not ga.prep_check()['ok']
-    assert not ga.write_final(passed)['all_pass']
+    assert not ga.write_final(passed, summary['source_bindings']['A'])['all_pass']
     summary['release'] = (tmp_path/'VERSION').read_text().strip()
     summary['checks']['A'][0]['state'] = 'NOT_EXECUTED'
     ga.AG.write_text(json.dumps(summary))
-    assert not ga.write_final(passed)['all_pass']
+    assert not ga.write_final(passed, summary['source_bindings']['A'])['all_pass']
     ga.AG.unlink()
     assert not ga.prep_check()['ok']
 
@@ -115,3 +126,23 @@ def test_cli_and_command_use_existing_offline_execution(monkeypatch):
     monkeypatch.setattr(sys, 'argv', ['release_ga.py', 'unknown'])
     with pytest.raises(SystemExit):
         ga.main()
+
+
+def test_native_gate_records_actual_source_drift(tmp_path, monkeypatch):
+    (tmp_path/'.ai/runtime/schema').mkdir(parents=True)
+    (tmp_path/'.ai/runtime/schema/release-scope.schema.json').write_bytes((ROOT/'.ai/runtime/schema/release-scope.schema.json').read_bytes())
+    (tmp_path/'RELEASE-SCOPE.json').write_bytes((ROOT/'RELEASE-SCOPE.json').read_bytes())
+    (tmp_path/'VERSION').write_text('26.10.13')
+    monkeypatch.setattr(ga, 'PACKAGE', tmp_path)
+    output = tmp_path/'.ai/runtime/_meta/gates/gate-A.json'
+    good = {'name': 'fixture execution', 'ok': True, 'state': 'PASS'}
+    monkeypatch.setitem(ga.GATES, 'A', lambda: [good])
+    assert ga.run_gate('A', output) == 0
+    assert json.loads(output.read_text())['source_binding']['stable']
+    def mutate():
+        (tmp_path/'source.txt').write_text('changed by executor')
+        return [good]
+    monkeypatch.setitem(ga.GATES, 'A', mutate)
+    assert ga.run_gate('A', output) == 1
+    report = json.loads(output.read_text())
+    assert not report['pass'] and not report['source_binding']['stable']

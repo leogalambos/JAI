@@ -14,8 +14,8 @@ Start with [Choosing and running a methodical workflow](methodical-workflows.md)
 | --- | --- | --- |
 | Start | State purpose, intended outcome, scope, constraints and acceptance conditions; select `/layered` or `$workflow-layered` for consequential work. | Provider command/skill invokes the orchestrator, routes specialist agents and uses approved runtime tools. |
 | Observe | Ask for current status, blocked gates, findings and required evidence; examine actual artefacts. | Agent obtains tool results, performs allowed checks and records contract, review and evidence references. |
-| Decide | Clarify intent and make real organisational decisions; do not approve an exception by accepting a plausible narrative. | Fabric/approval controls distinguish proposed decisions from authorised ones; Codex requires a separately executed human authority command. |
-| Verify | Ask `/fabric-report` (Claude) or `$workflow-fabric-report` (Codex), and request exact unresolved record IDs. | Audit agent queries/verifies the append-only fabric; reporting is not an approval or release operation. |
+| Decide | Clarify intent and make real organisational decisions; do not approve an exception by accepting a plausible narrative. | Fabric/approval controls distinguish proposed decisions from authorised ones; both providers require an external signed exact-state receipt. |
+| Verify | Ask `/fabric-report` (Claude) or `$workflow-fabric-report` (Codex), and request exact unresolved record IDs. | Audit agent queries/verifies the local hash-chained fabric (not immutable custody); reporting is not an approval or release operation. |
 
 **Important limit:** provider commands guide model-driven orchestration; they do not constitute a wholly deterministic workflow engine. Agent tool calls must actually execute and succeed. If delegation, tools, permissions or evidence are unavailable, the assistant must report the gap rather than claim a completed gate. The direct Python API is documented in [runtime tools](../reference/runtime-tools-detailed.md) for developers and recovery, **not** as a prerequisite for a normal operator session. Human L0 decisions remain outside agent authority; see [Human authority](../operations/human-authority.md).
 
@@ -96,3 +96,20 @@ The current runtime provides the first two when deployed with an appropriate ope
 
 [Execution and context assembly](../overview/execution-context-algorithm.md) describes the inspected implementation.
 Follow the complete operating flow, including where automatic enforcement ends.
+
+## Current operator boundary
+
+For 26.10.14 {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
+Native provider approval is not Fabric L0; external Ed25519 receipts require
+protected trust and matching state. Actual Office QA is OPERATOR_ASSISTED;
+WeasyPrint HTML/PDF does not inspect Office bytes. Privileged worker/API
+mutation is NOT_SUPPORTED; optional host confinement is NOT_VERIFIED.
+
+## Local QA and human intervention
+
+Use A / AUTO for role-authorized local work inside the actual sandbox. B is
+an observed native permission request; C is an exact operator host task. Neither
+is Fabric L0. D is a separately signed consequential decision; it may precede C.
+Every B/C/D request must include the complete action and reason inline before
+linking details. See [execution routes and boundaries](../security/product-operations.md)
+and the [full operator guide](../operations/operator-walkthrough.md).

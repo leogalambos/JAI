@@ -59,11 +59,14 @@ def test_payload_and_persisted_gate_cannot_hide_failed_check(tmp_path, monkeypat
         qualification.run_gate('Z', output)
 
 
-def test_assembly_requires_complete_matching_gate_identities(tmp_path):
+def test_assembly_requires_complete_matching_gate_identities(tmp_path, monkeypatch):
+    source = tmp_path/"build/source"; source.mkdir(parents=True)
+    (source/"VERSION").write_text((ROOT/"VERSION").read_text())
+    monkeypatch.setattr(qualification, "PACKAGE", source)
     output = tmp_path / 'summary.json'
     assert qualification.assemble(tmp_path, output) == 1
     for gate in 'ABCDEFG':
-        (tmp_path / f'gate-{gate}.json').write_text(json.dumps({'release': (ROOT/'VERSION').read_text().strip(), 'gate': gate, 'pass': True, 'checks': [{'name': 'executed', 'state': 'PASS', 'ok': True}]}))
+        (tmp_path / f'gate-{gate}.json').write_text(json.dumps({'release': (ROOT/'VERSION').read_text().strip(), 'gate': gate, 'pass': True, 'source_binding': qualification.source_binding(qualification.source_fingerprint(source), qualification.source_fingerprint(source)), 'checks': [{'name': 'executed', 'state': 'PASS', 'ok': True}]}))
     assert qualification.assemble(tmp_path, output) == 0
     (tmp_path / 'gate-G.json').write_text(json.dumps({'gate': 'F', 'pass': True}))
     assert qualification.assemble(tmp_path, output) == 1
@@ -174,7 +177,8 @@ def test_aggregate_budgets_cover_all_a_h_command_ceilings(monkeypatch, capsys):
     release_ga.h_checks(generate=True)
     execute('final policy', [])
     assert qualification.aggregate_budget('regression') == 22 * 600 + 120 == 13320
-    assert qualification.aggregate_budget('qualification') == sum(timeouts) + 120 == 19440
+    assert qualification.aggregate_budget('qualification') >= sum(timeouts) + 120
+    assert qualification.aggregate_budget('qualification') == 19920
     assert qualification.aggregate_budget('qualification') <= 21600
     with pytest.raises(ValueError, match='UNKNOWN_QUALIFICATION'):
         qualification.aggregate_budget('unknown')
@@ -197,3 +201,32 @@ def test_streamed_failure_keeps_evidence_without_replaying_output(monkeypatch, c
     output = capsys.readouterr().out
     assert 'FAIL streamed negative check' in output
     assert 'already-streamed-marker' not in output
+
+
+def test_actual_gate_binds_source_before_and_after_and_rejects_drift(tmp_path, monkeypatch):
+    source = tmp_path/'source'; source.mkdir(); (source/'VERSION').write_text('26.10.13')
+    monkeypatch.setattr(qualification, 'PACKAGE', source)
+    output = source/'.ai/runtime/_meta/gates/gate-A.json'
+    good = {'name': 'actual fixture execution', 'ok': True, 'state': 'PASS'}
+    monkeypatch.setitem(qualification.GATES, 'A', lambda: [good])
+    assert qualification.run_gate('A', output) == 0
+    report = json.loads(output.read_text())
+    assert not qualification.binding_problems(report['source_binding'], qualification.source_fingerprint(source))
+    def change_during_execution():
+        (source/'fixture.txt').write_text('changed during actual executor')
+        return [good]
+    monkeypatch.setitem(qualification.GATES, 'A', change_during_execution)
+    assert qualification.run_gate('A', output) == 1
+    assert not json.loads(output.read_text())['source_binding']['stable']
+    assert qualification.binding_problems(None, qualification.source_fingerprint(source))
+
+
+def test_source_binding_tracks_archive_permission_bits(tmp_path):
+    source = tmp_path/'runner.sh'; source.write_text('echo fixture\n')
+    source.chmod(0o644)
+    before = qualification.source_fingerprint(tmp_path)
+    assert before == qualification.source_fingerprint(tmp_path)
+    source.chmod(0o755)
+    after = qualification.source_fingerprint(tmp_path)
+    assert before != after
+    assert qualification.binding_problems(qualification.source_binding(before, before), after)

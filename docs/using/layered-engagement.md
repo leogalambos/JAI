@@ -52,7 +52,7 @@ The operator and the provider have different responsibilities:
 | Decompose | Answer questions about missing inputs; approve only the tool permissions you intend to grant. | Issue adjacent-layer typed contracts and context packets; delegate within the available tool/agent boundaries. |
 | Execute and test | Make required workspaces and evidence accessible; do not substitute a verbal success claim for a test result. | Separate L5 authoring from L6 checking; record observations, failures, hashes and upward reviews. |
 | Resolve failure | Clarify desired outcome when asked; decide whether a business/policy constraint may change. | Apply bounded rework or owner-controlled reformulation; relay matters outside authority upward without hiding failed attempts. |
-| L0 authority | Examine the exact decision dossier and make the decision yourself. In Codex **run the supplied authority command in a separate trusted terminal**; Codex cannot run it on your behalf. In Claude an interactive permission prompt may be offered for an exact operation; verify it before authorising. | Prepare dossier and proposal; **never** forge approval, run a denied Codex authority operation, or silently bypass the gate. |
+| L0 authority | Examine the exact decision dossier and make the decision yourself. In either provider, review/sign the exact request externally; Fabric verifies the Ed25519 receipt and current state. Native permission prompts are not L0. | Prepare dossier and proposal; **never** forge approval, run a denied Codex authority operation, or silently bypass the gate. |
 | Review result | Inspect outputs and request an independent report, then decide on their use. | Run strict eligibility checks and preserve the distinction between produced, evidenced, reviewed and authorised outputs. |
 
 After the engagement, ask for the assurance record:
@@ -75,7 +75,7 @@ Ask the assistant to report **engagement ID, artefact/fragment IDs, failing or a
 
 ## Behind the scenes: implementation and diagnostic trace
 
-The remaining sections explain **what the installed agent and Fabric runtime do**, using the actual Python CLI interface so engineers can reproduce and diagnose the state transitions. **The `python3` examples are not additional steps required of a normal Codex/Claude user.** Do not run example commands with literal `<engagement>` or `<contract-id>` placeholders. The only manual exception is a protected L0 authority operation executed by the human where the provider cannot obtain an interactive approval.
+The remaining sections explain **what the installed agent and Fabric runtime do**, using the actual Python CLI interface so engineers can reproduce and diagnose the state transitions. **The `python3` examples are not additional steps required of a normal Codex/Claude user.** Do not run example commands with literal `<engagement>` or `<contract-id>` placeholders. External operator steps use the same signed-receipt flow in both providers; native approval UI is not Fabric authority. See the [operator walkthrough](../operations/operator-walkthrough.md).
 
 ### 1. Start with the operator's intent
 

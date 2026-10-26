@@ -12,7 +12,7 @@ except Exception:
 
 R=Path(__file__).resolve().parents[1]
 P=R.parents[1]
-RELEASE=(P/'VERSION').read_text().strip()
+RELEASE=((P/'VERSION') if (P/'VERSION').is_file() else R/'VERSION').read_text().strip()
 
 def load(p): return json.loads(Path(p).read_text(encoding='utf-8'))
 def h(v): return hashlib.sha256(json.dumps(v,sort_keys=True,separators=(',',':'),ensure_ascii=False).encode()).hexdigest()

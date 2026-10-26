@@ -16,7 +16,12 @@
   },
   "commands": {
     "default": "deny",
-    "allow": "contract-only"
+    "allow": "contract-only",
+    "runtime_boundary": {
+      "version": "1",
+      "grants": [],
+      "commands": {}
+    }
   },
   "network": {
     "default": "deny",

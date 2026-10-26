@@ -13,6 +13,9 @@ from __future__ import annotations
 import argparse, copy, hashlib, json, os, re, shutil, subprocess, sys, tempfile, time
 from pathlib import Path
 
+sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'runtime/tools'))
+from schema_resolver import release_scope
+
 SCHEMA=1
 MARKERS={
  "claude":("<!-- BEGIN ai-it-house:claude -->","<!-- END ai-it-house:claude -->"),
@@ -95,21 +98,43 @@ def model_selector(registry,provider,workload_class):
     return model_mapping(registry,provider,workload_class)['model_selector']
 
 def render_claude_agent(src,registry):
+    """Render declared author tools within the inherited native sandbox.
+
+    Args:
+        src: Canonical agent source file, preserving its behavioral body.
+        registry: Trusted model routing configuration.
+    Returns:
+        UTF-8 agent with role tools; Bash requires a source author/execute tier.
+        Reviewer shell stays unavailable without a read-only host boundary.
+        This does not
+        replace host mount/network isolation or prove live provider enforcement.
+    """
     text=Path(src).read_text(encoding='utf-8'); fm,_=split_frontmatter(text)
     workload=fm.get('model_class',registry.get('fallback_class','standard')); selector=model_selector(registry,'claude',workload)
     line=re.compile(r'^model_class:\s*[^\n]+$',re.MULTILINE)
     replacement='' if selector=='inherit' else f'model: {selector}'
-    return line.sub(replacement,text).encode()
+    text=line.sub(replacement,text)
+    declared={tool.strip() for tool in fm.get('tools','').split(',')}
+    permitted={'Read','Grep','Glob','Write','Edit'}|({'Bash'} if declared&{'Write','Edit'} else set())
+    safe=[tool.strip() for tool in fm.get('tools','').split(',') if tool.strip() in permitted]
+    text=re.sub(r'^tools:\s*[^\n]+$', 'tools: '+', '.join(safe), text, flags=re.MULTILINE)
+    return text.encode()
 
-def provider_contract_config(contract,provider,registry):
+def provider_contract_config(contract,provider,registry,content_profile=None,scope_root=None):
     """Render a detached provider projection preserving canonical JAI obligations.
 
     Args:
         contract: Canonical AgentContract including its runtime JAI binding.
         provider: Supported adapter, codex or claude.
         registry: Effective install-time model routing registry.
+        scope_root: Trusted package root; defaults to this installer package.
+        content_profile: Optional canonical content-profile mapping from the
+            package being installed. None reads this source package's mapping.
+            Only recognized profile-reference metadata may extend the projection.
     Returns:
-        Provider configuration with the exact independent JAI binding copy.
+        Role-scoped, network-denied projection with the exact JAI binding.
+        Authorized local QA can remain autonomous under the actual native sandbox;
+        only unavailable execution needs an operator. Projection is not enforcement.
     Raises:
         ValueError: Unsupported provider or missing canonical JAI binding.
         SystemExit: Registry lacks the requested workload mapping.
@@ -118,13 +143,35 @@ def provider_contract_config(contract,provider,registry):
         raise ValueError('supported provider and canonical JAI binding required')
     workload=contract.get('workload_class',registry.get('fallback_class','standard')); mapping=model_mapping(registry,provider,workload); selector=mapping['model_selector']
     common={'name':contract['id'],'provider':provider,'jai':copy.deepcopy(contract['jai']),'workload_class':workload,'selection_strategy':registry['providers'][provider].get('selection_strategy'),'strategy_scope':registry['providers'][provider].get('strategy_scope','project-internal'),'model_selector':selector}
+    if content_profile is None:
+        profile_path=Path(__file__).resolve().parents[1]/'runtime/jai/profiles/content-profile.json'
+        content_profile=json.loads(profile_path.read_text(encoding='utf-8')) if profile_path.exists() else {}
+    extensions=content_profile.get('agent_bindings',{}).get(contract['id'],{})
+    if extensions:
+        if extensions!={'content_profile_ref':'jai/profiles/content-profile.json'}:
+            raise ValueError('unsupported or unsafe provider profile extension')
+        common.update(copy.deepcopy(extensions))
+    scope=release_scope(scope_root or Path(__file__).resolve().parents[2])
+    common['runtime_boundary']={'scope':scope['scope'],'live_verified':False,
+        'hardened_privileged_enabled':scope['hardened_privileged']['enabled'],'protected_resources':'deny',
+        'git_authority':'human','enforcement':'effective-provider-sandbox-and-host'}
     if mapping.get('reasoning_effort'): common['reasoning_effort']=mapping['reasoning_effort']
     if mapping.get('fallbacks'): common['fallbacks']=copy.deepcopy(mapping['fallbacks'])
+    author=bool(contract['mutation_allowed'])
+    shell_allowed='Bash' in contract['allowed_tools'] and 'Bash' not in contract['denied_tools'] and (author or provider=='codex')
+    permitted={'Read','Grep','Glob'}|({'Write','Edit'} if author else set())|({'Bash'} if shell_allowed else set())
+    safe_tools=[tool for tool in contract['allowed_tools'] if tool in permitted and tool not in contract['denied_tools']]
+    denied_tools=sorted(set(contract['denied_tools'])|{'Agent','WebFetch'}|(set() if shell_allowed else {'Bash','Shell'})|(set() if author else {'Write','Edit'}))
+    common['local_execution']={'requires_effective_native_sandbox':True,'contract_is_host_enforcement':False,
+        'reviewer_source_write':False,'qa_output':'only explicitly native-writable scratch; never widen source access',
+        'shell_available':shell_allowed,'host_mount_isolation_required':True,'limitation':'Claude reviewer shell requires an independently established read-only boundary' if not author and provider=='claude' else 'Native settings must actually be loaded; no live confinement claim'}
+    mode='workspace-write' if author else 'read-only'
     if provider=='codex':
-        common.update({'sandbox_mode':contract['sandbox']['mode'],'workspace_write':contract['sandbox']['workspace_write'],'network':contract['sandbox'].get('network'),'allowed_tools':contract['allowed_tools'],'denied_tools':contract['denied_tools'],'approval_required_for':contract.get('approval_required_for',[])})
-        common['native_codex']={'model':selector,'model_reasoning_effort':mapping.get('reasoning_effort')} if selector!='inherit' else {'model':'inherit-session','model_reasoning_effort':mapping.get('reasoning_effort')}
+        common.update({'sandbox_mode':mode,'workspace_write':author,'network':False,'allowed_tools':safe_tools,'denied_tools':denied_tools,'approval_required_for':contract.get('approval_required_for',[])})
+        common['native_codex']={'model':selector if selector!='inherit' else 'inherit-session','model_reasoning_effort':mapping.get('reasoning_effort'),'sandbox_mode':mode,'approval_policy':'on-request'}
         return common
-    common.update({'tools':contract['allowed_tools'],'deny':contract['denied_tools'],'sandbox':contract['sandbox'],'approval_required_for':contract.get('approval_required_for',[])})
+    common.update({'tools':safe_tools,'deny':denied_tools,'sandbox':{'mode':mode,'workspace_write':author,'network':False},'approval_required_for':contract.get('approval_required_for',[])})
+    common['native_claude']={'permissionMode':'default','allowedTools':safe_tools,'disallowedTools':denied_tools,'sandbox':{'enabled':True,'failIfUnavailable':True,'autoAllowBashIfSandboxed':False,'allowUnsandboxedCommands':False,'excludedCommands':[]}}
     return common
 
 def skill_doc(name,desc,body,source_kind,source_name,tools=''):
@@ -133,7 +180,7 @@ def skill_doc(name,desc,body,source_kind,source_name,tools=''):
           f"`~/.ai/it-role-house/{source_kind}s/`." if source_kind!='command' else
           f"> Rendered from provider-neutral workflow command `/{source_name}`. The canonical source is under `~/.ai/it-role-house/commands/`.")
     if tools:
-        note += f"\n> Source tool ceiling: `{tools}`. Treat it as an authority boundary even when the current provider session exposes more tools."
+        note += f"\n> Source tool ceiling: `{tools}`. This is behavioral guidance only: Codex skills do not enforce tools, mounts or network permissions. The effective native sandbox and host access controls enforce permissions; operator actions remain external."
     return f"---\nname: {name}\ndescription: {json.dumps(desc,ensure_ascii=False)}\n---\n\n{note}\n\n{body.lstrip()}".encode()
 
 def render_codex_skill(src,kind,name,registry):
@@ -229,22 +276,32 @@ def validate_package(pkg):
     if errs: raise SystemExit('error: package validation failed:\n  '+'\n  '.join(errs))
 
 def desired_outputs(pkg,providers,ai_house,claude_home,codex_home,model_registry):
+    release_scope(pkg)  # Required before producing any installation output.
     out={}; modes={}
     # Shared runtime + canonical sources; setup source is not installed into the protected runtime.
     for section in ('runtime','skills','agents','commands'):
         root=pkg/'.ai'/section
         for p in files_under(root):
             rel=p.relative_to(root)
+            if section=='runtime' and (rel.parts[0]=='deployments' or
+                    (rel.parent==Path('tools') and rel.name in {
+                        'runtime_security.py','runtime_linux.py','runtime_service.py',
+                        'operator_approval.py','runtime_staging.py','runtime_qualification.py',
+                        'git_operation.py'})):
+                continue
             dest=ai_house/(rel if section=='runtime' else Path(section)/rel)
             out[str(dest)]=p.read_bytes(); modes[str(dest)]=0o755 if p.suffix in ('.py','.sh') else 0o644
+    out[str(ai_house/'RELEASE-SCOPE.json')]=(pkg/'RELEASE-SCOPE.json').read_bytes()
+    modes[str(ai_house/'RELEASE-SCOPE.json')]=0o644
     # Install-time effective model routing and provider-native agent configs.
     effective=json.dumps(model_registry,indent=2,ensure_ascii=False)+'\n'
     out[str(ai_house/'models/effective-model-registry.json')]=effective.encode(); modes[str(ai_house/'models/effective-model-registry.json')]=0o644
     contracts=json_load(pkg/'.ai/runtime/agents/agent-contracts.json',{}).get('contracts',[])
+    content_profile=json_load(pkg/'.ai/runtime/jai/profiles/content-profile.json',{})
     for contract in contracts:
         for provider in ('claude','codex'):
             dest=ai_house/'providers'/provider/(contract['id']+'.json')
-            out[str(dest)]=(json.dumps(provider_contract_config(contract,provider,model_registry),indent=2,ensure_ascii=False)+'\n').encode(); modes[str(dest)]=0o644
+            out[str(dest)]=(json.dumps(provider_contract_config(contract,provider,model_registry,content_profile,pkg),indent=2,ensure_ascii=False)+'\n').encode(); modes[str(dest)]=0o644
     # Generated common manifest used by the live-tree guard.
     rels=[]
     for path in out:
@@ -407,19 +464,14 @@ def main():
             except OSError:
                 pass
 
-    # Signing key: never rotate during update.
-    key=Path(os.path.expanduser(os.environ.get('FABRIC_AUTHORITY_KEY','~/.config/justifiable-fabric/authority.key')))
-    key_created=bool(state.get('key_created'))
-    if not key.exists():
-        key.parent.mkdir(parents=True,exist_ok=True)
-        fd=os.open(str(key),os.O_WRONLY|os.O_CREAT|os.O_EXCL,0o600)
-        with os.fdopen(fd,'wb') as f: f.write(os.urandom(32))
-        key_created=True
+    # Operator keys are never provisioned by an agent-run installer. Preserve
+    # historical state; enrollment is an explicit independent host action.
+    key_created=state.get('key_created')
     # State is last: if we fail earlier, old state continues to describe the previous owned hashes.
     newstate={
       'schema':SCHEMA,'version':version,'installed_at':ts,'providers':sorted(set(state.get('providers',[])) | providers),
       'files':{p:sha_bytes(d) for p,d in sorted(desired.items())},'mutable':newmutable,
-      'key_created':str(key) if key_created else None,'backup_last':str(backup) if backup.exists() else None
+      'key_created':key_created if key_created else None,'backup_last':str(backup) if backup.exists() else None
     }
     atomic_write(state_path,(json.dumps(newstate,indent=2,ensure_ascii=False)+'\n').encode(),0o600)
     print('\nInstallation/update complete.')

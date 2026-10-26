@@ -204,7 +204,8 @@
           "Grep",
           "Glob",
           "Write",
-          "Edit"
+          "Edit",
+          "Bash"
         ]
       },
       "l6_evidence": "ExecutionRecord"
@@ -226,7 +227,8 @@
           "Grep",
           "Glob",
           "Write",
-          "Edit"
+          "Edit",
+          "Bash"
         ]
       },
       "l6_evidence": "ExecutionRecord"
@@ -293,6 +295,29 @@
           "Glob",
           "Write",
           "Edit"
+        ]
+      },
+      "l6_evidence": "ExecutionRecord"
+    },
+    "role-engineer": {
+      "primary_layer": 5,
+      "profile": "runtime",
+      "purpose_ref": "agent:role-engineer",
+      "authority_boundary": "write-authoring",
+      "l5_enforcement": {
+        "provider": "provider-neutral",
+        "sandbox": {
+          "mode": "workspace-write",
+          "workspace_write": true,
+          "network": "provider-managed"
+        },
+        "allowed_tools": [
+          "Read",
+          "Grep",
+          "Glob",
+          "Write",
+          "Edit",
+          "Bash"
         ]
       },
       "l6_evidence": "ExecutionRecord"

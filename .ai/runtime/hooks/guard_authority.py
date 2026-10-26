@@ -61,7 +61,7 @@ def _contains_signing_directory(text):
         false for bare name tokens, documentation names and component lookalikes.
         This string-level guard does not parse shell expansions.
     """
-    return KEY_DIRECTORY.search(text) is not None
+    return KEY_DIRECTORY.search(text) is not None or re.search(r'(^|[\s/\\\"\'=])\.local[/\\]+share[/\\]+jai-operator(?:-[A-Za-z0-9.-]+)?(?:[/\\]|$)',text) is not None
 
 
 def decide(decision, reason, payload=None):
@@ -103,7 +103,9 @@ def main():
     if tool in ("Bash", "PowerShell", "shell", "shell_command", "exec_command", "apply_patch"):             # Claude Code on Windows falls back to PowerShell
         cmd = ti.get("command", "")
         if _contains_signing_directory(cmd):
-            return decide("deny", "The signing key is read only by fabric.py itself.", p)
+            return decide("deny", "Private operator signing material is outside agent access.", p)
+        if re.search(r'operator_actions\.py[\'\"]?\s+sign\b',cmd):
+            return decide('deny','Operator signing must be initiated in the human host console, with a key outside agent mounts.',p)
         for rx, what in AUTHORITY:
             if rx.search(cmd):
                 if mode in NONINTERACTIVE:
@@ -121,10 +123,10 @@ def main():
 
     path = (ti.get("file_path") or ti.get("path") or ti.get("notebook_path") or "").replace("\\", "/")
     if tool == "Read" and _contains_signing_directory(path):
-        return decide("deny", "The signing key is read only by fabric.py itself.", p)
+        return decide("deny", "Private operator signing material is outside agent access.", p)
     if tool in ("Write", "Edit", "MultiEdit", "NotebookEdit"):
-        if _contains_signing_directory(path):
-            return decide("deny", "The signing key is managed by fabric.py.", p)
+        if _contains_signing_directory(path) or path.endswith('/.ai/jai-operator-trust.json'):
+            return decide("deny", "Operator private keys and trusted public pins are not agent-writable.", p)
         if "/.fabric/" in path or path.startswith(".fabric/") or "/.findings/" in path or path.startswith(".findings/"):
             return decide("deny", f"{path} is an append-only, hash-chained record; write it only through "
                                   "fabric.py or findings.py.", p)

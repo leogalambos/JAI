@@ -1,5 +1,251 @@
 # Changelog
 
+## 26.10.14 — Product repair and operator-assisted release
+
+- Make RELEASE-SCOPE.json the sole validated release capability
+  declaration. Runtime, installer, documentation and provenance consume
+  the same source.
+- Remove duplicate scope constants and public internal finding
+  identifiers;
+  unsupported privileged activation remains independently denied.
+
+- Constrain optional renderer Pyphen to the supported 0.17 series and
+  diagnose older installations without importing deprecated
+  pkg_resources.
+- Clarify isolated renderer setup, optional tools and external L0 keys;
+  correct legacy installer-key and local-evidence wording.
+
+- Restores role-authorized sandboxed local shell QA without a blanket
+  Bash
+  prohibition; reviewer write restrictions remain provider-dependent.
+- Separates A/B/C execution routes from signed D decision authority and
+  presents complete inline operator requests without a command executor.
+
+
+- Removes unfinished privileged services from maintained executable
+  source; preserves policy and protected-resource denials.
+- Ships verification-only commercial compatibility code and checks
+  distribution dependency closure.
+- Restores local Fabric L0 with exact operator-signed Ed25519 receipts,
+  snapshot/expiry/replay checks and atomic application.
+- Adds typed operator render/resume data and honest capability checks;
+  no general privileged command executor is provided.
+- Adds constrained WeasyPrint HTML/PDF and actual Office render
+  receipts, preserved diagram meaning and printable workbooks.
+- Retains L1–L6, external L0, SABSA/EA, Fabric and all A–H gates.
+  Privileged deployment is unavailable; host confinement is not
+  certified.
+- Publication, signing and Git changes remain owner-controlled.
+
+## 26.10.13 — Guided Scenarios and Knowledge Assistance (candidate)
+
+- Adds 29 commented task walkthroughs covering the 24 enterprise
+  workflows, with paired Claude and Codex instructions, input
+  preparation, inspection points and escalation guidance. Extends
+  existing guide and demo commands with maintained fictional
+  practice packs and safe workspace handling.
+
+- Adds experimental hint assistance using deterministic local
+  candidate selection and active-provider explanation.
+  Recommendations distinguish maintained procedures, adaptations,
+  missing evidence and human decisions.
+
+- Adds explicitly requested conversational knowledge capture, asking
+  for missing essential metadata before storage and continuing the
+  original save request after clarification. Only selected visible
+  context is captured.
+
+- Supports opt-in local knowledge retrieval, provenance and
+  applicability disclosure, immutable revisions, explicit exports,
+  recoverable withdrawal and restoration. Preserves confidentiality,
+  independent review and authority boundaries; stored claims and
+  historical outcomes do not establish approval.
+
+- Fixes knowledge writer/reader capacity compatibility, concurrent
+  admission, complete supported-command validation and source
+  licensing headers.
+
+- Clarifies execution, context assembly, hooks, runtime controls and
+  release policy in MkDocs; consolidates current guidance and labels
+  historical pages.
+
+- Keeps reference identities, DCS obligations, Expert Reference
+  Library v2.3.0 and mandatory A–H release gates unchanged. Feature
+  tests use offline local fixtures; live model usability and human
+  approval are not implied.
+
+## 26.10.12 — Expert Reference Editorial Review (candidate)
+
+- Integrates complete Expert Reference Library v2.3.0: all 135 English
+  documents revised across 45 families. Preserves reference identities,
+  complexity slots, stable DCS anchors and existing registry
+  relationships.
+
+- Adds technical, management and presentation decision/evidence review
+  supplements as AI editorial guidance, without implying independent
+  human approval, executed evidence or new normative DCS enforcement.
+
+- Retains proposal production, override precedence, signed human
+  authority, segregation of duties and existing mandatory release gates.
+
+- Repairs CI regression time budgeting through shared mandatory module
+  execution, individual offline bounds and calculated aggregate
+  ceilings. Timeout failures retain diagnostics and remain non-passing.
+
+- Documents editorial review status, evidence boundaries and
+  professional review guidance; qualifies offline using synthetic
+  fixtures and mocks.
+
+## 26.10.11 — Engineering and Security Expert References (candidate)
+
+- Integrates complete Expert Reference Library v2.2.0: 135 English
+  examples across 45 families. Preserves all 96 established documents,
+  their hashes, reference identities and existing DCS relationships,
+  including all 30 proposal examples and proposal-package production
+  capabilities. - Adds 39 engineering, transformation, security
+  assessment, DevSecOps and AppSec references through 13 explicit
+  proposed standalone specializations. Source anchors remain proposed;
+  no existing role contract acquires new normative obligations or
+  approval authority from this import. - Extends shared reference
+  selection and offline regression coverage while preserving override
+  precedence and explicit invalid-override failures. - Adds an
+  engineering/security casebook and optional professional review rubric
+  to MkDocs, distinguishing synthetic plans, executed evidence,
+  specialist recommendations and existing JAI L0 human approval. -
+  Retains mandatory offline A–H qualification, publication controls and
+  separation of core distribution from extended synthetic evaluation
+  data.
+
+## 26.10.10 — Expert References and Proposal Production (candidate)
+
+- Integrates the complete 96-document English expert reference library
+  across 32 families, preserving supplied document bytes and stable IDs.
+- Maps proposed reference anchors to registered advisory DCS
+  specializations without granting professional or human approval.
+- Adds proposal-package preparation and cross-document consistency
+  checks to the existing commercial-delivery profile and publication
+  path.
+- Documents colleague pilot evaluation, synthetic evidence limitations
+  and separation of optional security offerings from baseline pricing.
+- Preserves existing override precedence, independent review, human
+  authority and mandatory offline release qualification.
+
+## 26.10.9 — Expert References and Offline Readiness (candidate)
+
+- Adds source-attributed proposed purposes and shared semantic families,
+  preserving historical role contract identities and compatibility.
+  Semantic foundations match actual deliverables while retaining global
+  controls, original domain obligations and source role gates.
+- Integrates thirty English AI-authored proposed Markdown examples with
+  integrity metadata, stable DCS anchors and structural content checks.
+- Adds engagement, organisation, user and bundled reference precedence.
+  Invalid selected overrides fail explicitly without silent fallback,
+  changes to normative DCS rules or fabricated professional approval.
+- Adds deterministic offline workflow scenarios and an optional provider
+  evaluation harness tested with fake CLI processes and sanitized
+  reports.
+  Live execution requires explicit consent and is outside mandatory CI.
+- Separates the core runtime and expert references from digest-pinned
+  optional extended synthetic evaluation data. Excludes private inputs,
+  caches, working files and execution reports from distribution.
+- Documents implemented reference, override, qualification and
+  evaluation
+  commands in MkDocs. Missing required data or renderers cannot pass.
+- Keeps synthetic regression evidence, professional human acceptance and
+  live provider qualification distinct. Existing JAI L0 authority and
+  mandatory release gates remain unchanged; no activation is implied.
+
+## 26.10.8 — Enterprise Content Quality (implementation candidate)
+
+- Extends proposed content contracts across all existing artifact types,
+  role bindings, publication archetypes, domains and SABSA views.
+- Adds receiving-role workflow acceptance checks and quality trends,
+  contextual size calibration and read-only migration assessment.
+- Expands reproducible positive, negative and borderline evaluations
+  through the shared production validator and release regression checks.
+- Preserves synthetic-only calibration, advisory defaults and existing
+  JAI human authority. GA qualification and professional acceptance are
+  evidence-dependent; this version does not grant production approval.
+
+## 26.10.7 — Authoring and Content QA (implementation candidate)
+
+- Adds typed content outlines, semantic validation and located findings.
+  Hash-bound content QA reports preserve existing JAI authority.
+- Integrates content QA with projection and publication integrity while
+  retaining independent visual QA and historical compatibility.
+- Evaluates actual synthetic mutations through the shared content engine
+  and checks Claude/Codex behavior against the same policy catalogue.
+- Keeps specifications proposed, calibration synthetic-only and new
+  content checks advisory. Professional acceptance, human-gold and
+  production enforcement remain pending existing JAI L0 approval.
+
+## 26.10.6 — Semantic Content Foundation (implementation candidate)
+
+- Adds a shared Document Content Specification catalogue, explicit
+  document kinds and sidecar bindings without changing historical
+  Artifact Contract v3 records or existing authorization, evidence and
+  security gates.
+- Adds deterministic resolution, compilation, conflict lint and
+  catalogue coverage for 28 types, 13 publication archetypes and 19
+  SABSA mappings.
+- Provides ten detailed priority-family proposals and synthetic
+  reference scenarios for development and regression; calibration is
+  synthetic-only.
+- Adds shared Claude/Codex profile references and structural source/CI
+  checks. Specific standards remain proposed and require competent human
+  domain approval through existing JAI L0. No human-gold, production
+  content approval, 26.10.7 content QA enforcement or release
+  publication is claimed here.
+
+## 26.10.5 — Supplier Commercial Delivery and Methodical Guidance
+
+- Adds dedicated supplier Bid / Proposal Manager, Estimation / Cost
+  Engineering Specialist, Commercial Pricing / Deal Finance Specialist,
+  Supplier Commercial / Deal Manager and Independent Commercial
+  Assurance Reviewer role contracts. The working catalogue now contains
+  286 roles across the existing 17 domains. Shared Claude/Codex routing
+  requires these specialisms for their full scopes; independent
+  assurance remains read-only and separate from authorship.
+- Generates integrity-checked commercial discovery projections from the
+  canonical role registry and derives homepage role/domain coverage from
+  registry rows.
+
+- Adds supplier-side commercial delivery from discovery and proposal
+  through estimation, pricing, phased delivery and operational feedback,
+  with hierarchical cross-domain routing and traceable internal and
+  client publication boundaries.
+- Reorganises public documentation around method selection and adjacent
+  worked guides; derives homepage navigation and current inventory from
+  canonical data.
+- Corrects process-based worker identity assignment, provider
+  installation bindings, readiness CLI exit status and extensible
+  contract-count regression checks.
+- Makes commercial implementation guidance self-contained for public
+  readers and corrects stale role/schema counts in the public coverage
+  matrix.
+
+- SABSA: six authored English narrative viewpoint profiles, complete
+  source-backed specifications and typed business paths, semantic
+  narrative approval coverage, a reusable populated example, and
+  controlled LaTeX/PDF publication, deterministic editable CSV catalogue
+  exchange with preflight validation, and landscape proportional Word
+  catalogue tables.
+- Adds "How to use JAI" tutorials for a security assessment and Android
+  development, with complete Claude Code and Codex prompts in native
+  tabs, explanatory checkpoints and expected artefacts.
+- Fixes duplicate navigation markers on expandable tutorial sections
+  while preserving nested links, toggle controls and keyboard focus.
+- Documents task-specific sandbox and publication prerequisites,
+  including TeX resources, fonts, temporary files and resolver access.
+- Clarifies default runtime paths and installer destination overrides;
+  ordinary installation needs no path exports, and overrides do not
+  establish complete runtime relocation or migrate existing files.
+- Adds archival of completed private finding ledgers under exclusive
+  maintenance, preserving event and hash bytes without changing
+  authority.
+- Excludes private inputs and local audit and build outputs from release
+  bundles.
+
 ## 26.10.4 — Unified Lifecycle GA
 
 - Corrective repack: synchronizes `roles.json` and `workflows.json`
@@ -121,3 +367,8 @@ release. Pre-production development builds are intentionally omitted.
 - Retain provider parity, reviewer isolation, managed policy, immutable
   execution records, SPDX SBOM, interoperability conformance and
   generated-document drift controls as release gates.
+
+Documentation closure: synchronized installed help, current release
+navigation,
+canonical rendering dependencies and explicit operator request/receipt
+examples.

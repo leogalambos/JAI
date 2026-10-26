@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Release scope: implemented nonprivileged feature vocabulary",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "scope",
+    "enabled",
+    "hardened_privileged",
+    "agent_git_required"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "scope": {
+      "type": "string",
+      "pattern": "^GA_COMPATIBLE/[1-9][0-9]*$"
+    },
+    "enabled": {
+      "type": "array",
+      "uniqueItems": true,
+      "items": {
+        "enum": [
+          "role-workflows",
+          "workspace-authoring",
+          "local-publication",
+          "human-git",
+          "operator-handoff",
+          "operator-attested-local-l0"
+        ]
+      }
+    },
+    "hardened_privileged": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "qualification"
+      ],
+      "properties": {
+        "enabled": {
+          "const": false
+        },
+        "qualification": {
+          "const": "NOT QUALIFIED"
+        }
+      }
+    },
+    "agent_git_required": {
+      "const": false
+    }
+  }
+}

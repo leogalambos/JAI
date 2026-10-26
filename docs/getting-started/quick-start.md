@@ -15,7 +15,7 @@ and the limits of experimental capture.
 
 These are short exercises across the demo estate, not a single governed engagement. For a complete reader journey, continue to [How to use JAI](../examples/how-to-use-JAI/index.md): choose the assurance arrangement, then follow the security-assessment, Android-development or commercial-proposal case. A final `/layered` exercise here does not recreate a layered history for preceding exercises.
 
-**Run the examples inside your Claude Code or Codex CLI session** in the demo workspace; do not paste these into a system shell. Choose the Claude Code or Codex CLI tab for each example; both variants express the same intent. The provider agent is responsible for calling the internal Python helpers. Manual shell work is normally limited to installation/maintenance and the special Codex **L0 human-authority** action; see [the interaction model](../using/interaction-model.md).
+**Run the examples inside your Claude Code or Codex CLI session** in the demo workspace; do not paste these into a system shell. Choose the Claude Code or Codex CLI tab for each example; both variants express the same intent. The provider agent is responsible for calling the internal Python helpers. Manual host work covers installation/maintenance, restricted operator tasks and external signed **L0 human-authority** decisions in either provider; native tool approval is separate; see [the interaction model](../using/interaction-model.md).
 
 | User intent | Claude command | Codex skill |
 | --- | --- | --- |
@@ -177,3 +177,20 @@ Then request an independent report **in the same provider conversation** (not a 
     ```
 
 This is the fastest way to experience what makes the Justifiable Fabric different from a normal AI-generated recommendation. The report should cite actual engagement IDs, evidence and blockers; if a risk/authority escalation reaches L0, Codex cannot perform the guarded approval for you. A trusted human action may be required before the result becomes releasable.
+
+## Current operator boundary
+
+For 26.10.14 {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
+Native provider approval is not Fabric L0; external Ed25519 receipts require
+protected trust and matching state. Actual Office QA is OPERATOR_ASSISTED;
+WeasyPrint HTML/PDF does not inspect Office bytes. Privileged worker/API
+mutation is NOT_SUPPORTED; optional host confinement is NOT_VERIFIED.
+
+## Local QA and human intervention
+
+Use A / AUTO for role-authorized local work inside the actual sandbox. B is
+an observed native permission request; C is an exact operator host task. Neither
+is Fabric L0. D is a separately signed consequential decision; it may precede C.
+Every B/C/D request must include the complete action and reason inline before
+linking details. See [execution routes and boundaries](../security/product-operations.md)
+and the [full operator guide](../operations/operator-walkthrough.md).

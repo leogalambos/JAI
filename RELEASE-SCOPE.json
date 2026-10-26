@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "scope": "GA_COMPATIBLE/2",
+  "enabled": [
+    "role-workflows",
+    "workspace-authoring",
+    "local-publication",
+    "human-git",
+    "operator-handoff",
+    "operator-attested-local-l0"
+  ],
+  "hardened_privileged": {
+    "enabled": false,
+    "qualification": "NOT QUALIFIED"
+  },
+  "agent_git_required": false
+}

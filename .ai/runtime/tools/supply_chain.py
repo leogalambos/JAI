@@ -15,6 +15,7 @@ import hashlib
 import importlib.util
 import json
 import platform
+import re
 import tempfile
 from pathlib import Path
 
@@ -64,7 +65,52 @@ def tree_digest(root) -> str:
     return digest.hexdigest()
 
 
+def _declared_dependencies(root):
+    rows = {}
+    sources = []
+    for name in ('requirements.txt', 'requirements-ci.txt','requirements-rendering.txt'):
+        path = Path(root) / name
+        if not path.is_file() or path.is_symlink():
+            continue
+        data = path.read_bytes()
+        sources.append({'file': name, 'sha256': sha(data)})
+        for line in data.decode('utf-8').splitlines():
+            line = line.split('#', 1)[0].strip()
+            if not line or line.startswith('-'):
+                continue
+            match = re.fullmatch(r'([A-Za-z0-9][A-Za-z0-9_.-]*)([<>=!~0-9A-Za-z.,+*\-]*)', line)
+            if match is None:
+                continue
+            canonical = re.sub(r'[-_.]+', '-', match[1]).lower()
+            item = rows.setdefault(canonical, {'name': match[1], 'constraints': set(), 'sources': set()})
+            item['constraints'].add(match[2]); item['sources'].add(name)
+    dependencies = []
+    for canonical, item in sorted(rows.items()):
+        doc = {'SPDXID': 'SPDXRef-Dependency-' + canonical, 'name': item['name'],
+            'downloadLocation': 'NOASSERTION', 'filesAnalyzed': False,
+            'licenseDeclared': 'NOASSERTION', 'licenseConcluded': 'NOASSERTION',
+            'comment': 'Declared requirements only, not measured installed/transitive closure: '
+                + json.dumps({'constraints': sorted(item['constraints']), 'sources': sorted(item['sources'])}, sort_keys=True)}
+        pins = {value[2:] for value in item['constraints'] if re.fullmatch(r'==[A-Za-z0-9][A-Za-z0-9.+\-]*', value)}
+        if len(pins) == 1:
+            doc['versionInfo'] = next(iter(pins))
+        dependencies.append(doc)
+    return dependencies, sources
+
+
 def sbom(root, out):
+    """Generate file-integrity SPDX plus declared Python dependency inventory.
+
+    Args:
+        root: Public distribution source selected by maintained packaging rules.
+        out: Generated SPDX destination, excluded from circular file hashing.
+    Returns:
+        SPDX document with exact source-file checksums and dependency declarations
+        derived from maintained requirements. Unknown dependency licenses remain
+        NOASSERTION; installed/transitive resolution is not fabricated.
+    Raises:
+        OSError, ValueError: Public source, requirements or output is unavailable.
+    """
     root = Path(root)
     files = []
     for index, path in enumerate(tree_files(root), 1):
@@ -76,6 +122,7 @@ def sbom(root, out):
             "licenseInfoInFiles": ["BSD-4-Clause"],
         })
     version = (root / "VERSION").read_text().strip()
+    dependencies, declaration_sources = _declared_dependencies(root)
     now = dt.datetime.now(dt.timezone.utc).isoformat().replace("+00:00", "Z")
     doc = {
         "spdxVersion": "SPDX-2.3",
@@ -92,17 +139,19 @@ def sbom(root, out):
             "filesAnalyzed": True,
             "licenseDeclared": "BSD-4-Clause",
             "licenseConcluded": "BSD-4-Clause",
-        }],
+        }, *dependencies],
         "files": files,
         "relationships": [
             {"spdxElementId": "SPDXRef-DOCUMENT", "relationshipType": "DESCRIBES", "relatedSpdxElement": "SPDXRef-Package"},
             *[{"spdxElementId": "SPDXRef-Package", "relationshipType": "CONTAINS", "relatedSpdxElement": item["SPDXID"]} for item in files],
+            *[{"spdxElementId": "SPDXRef-Package", "relationshipType": "DEPENDS_ON", "relatedSpdxElement": item["SPDXID"]} for item in dependencies],
         ],
         "annotations": [{
             "annotationType": "OTHER",
             "annotator": "Tool: AI IT House supply_chain.py",
             "annotationDate": now,
-            "comment": "Runtime dependencies: Python >=3.10; jsonschema 4.x; lxml 5.x; Pillow; optional Pandoc/LibreOffice/Graphviz. GitHub Actions publishes after A-H checks; Sigstore/OIDC attestation is used where supported.",
+            "comment": "Declared dependency input files: " + json.dumps(declaration_sources, sort_keys=True)
+                + "; installed and transitive dependency/license closure requires separate qualified environment evidence. GitHub OIDC attestation, when available, is external to this unsigned source inventory.",
         }],
     }
     Path(out).write_text(json.dumps(doc, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
@@ -110,18 +159,24 @@ def sbom(root, out):
 
 
 def compatibility(root, out):
+    from schema_resolver import release_scope
     root = Path(root)
     manifest = json.loads((root / ".ai/runtime/_meta/release-manifest.json").read_text())
     doc = {
         "release": (root / "VERSION").read_text().strip(),
         "generated_from": "runtime/_meta/release-manifest.json",
         "components": manifest.get("compatibility", []),
+        "supported_capabilities": release_scope(root),
+        "rendering": {'html_pdf':'WeasyPrint 70 (optional, resource fetches denied) or operator LibreOffice',
+            'docx_pptx_xlsx_visual':'actual Office bytes: local native-sandbox renderer when available, otherwise operator LibreOffice; HTML PDF is not a substitute',
+            'operator_assurance':'LOCAL_OPERATOR_ATTESTATION; no enterprise identity or immutable audit claim'},
     }
     Path(out).write_text(json.dumps(doc, indent=2) + "\n")
     return doc
 
 
 def provenance(root, sbom_path, qualification_path, out):
+    from schema_resolver import release_scope
     root = Path(root)
     sbom_file = Path(sbom_path)
     qualification_file = Path(qualification_path)
@@ -136,6 +191,7 @@ def provenance(root, sbom_path, qualification_path, out):
         "build_environment": {"python": platform.python_version(), "platform": platform.platform()},
         "build_workflow": "AI IT House GA qualification A-G followed by supply-chain Gate H and CI publication on a protected release tag.",
         "builder_identity": "AI IT House deterministic release build",
+        "supported_capabilities": release_scope(root),
         "timestamp": now,
         "test_results": json.loads(qualification_file.read_text()),
         "sbom_digest": sha(sbom_file.read_bytes()),
@@ -153,12 +209,15 @@ def provenance(root, sbom_path, qualification_path, out):
 
 
 def verify(root, sbom_path, prov_path, compat_path=None):
+    from schema_resolver import release_scope
     root = Path(root)
     sbom_doc = json.loads(Path(sbom_path).read_text())
     provenance_doc = json.loads(Path(prov_path).read_text())
     problems = []
     if provenance_doc.get("artifact_digest") != tree_digest(root):
         problems.append("artifact/source tree digest mismatch")
+    if provenance_doc.get('supported_capabilities') != release_scope(root):
+        problems.append('provenance release scope mismatch')
     if provenance_doc.get("sbom_digest") != sha(Path(sbom_path).read_bytes()):
         problems.append("SBOM digest mismatch")
     if provenance_doc.get("build_signing_status") != "no-private-key-in-build":
@@ -168,6 +227,9 @@ def verify(root, sbom_path, prov_path, compat_path=None):
         problems.append("CI publication integrity policy missing")
     if sbom_doc.get("packages", [{}])[0].get("licenseDeclared") != "BSD-4-Clause":
         problems.append("SBOM licence mismatch")
+    dependencies, _ = _declared_dependencies(root)
+    if [row for row in sbom_doc.get('packages', []) if row.get('SPDXID') != 'SPDXRef-Package'] != dependencies:
+        problems.append('SBOM declared dependency inventory mismatch')
     # The file catalogue is a working integrity control, not a decorative inventory.
     # Compare all declared paths and checksums with the authoritative release tree.
     observed = {}
@@ -189,6 +251,8 @@ def verify(root, sbom_path, prov_path, compat_path=None):
         compat = json.loads(Path(compat_path).read_text())
         if compat.get("release") != (root / "VERSION").read_text().strip():
             problems.append("compatibility release mismatch")
+        if compat.get("supported_capabilities")!=release_scope(root):
+            problems.append("compatibility release scope mismatch")
     qualifications = provenance_doc.get("test_results", {})
     gates = qualifications.get("gates", {})
     if set(gates) != set("ABCDEFG") or not all(gates.values()):
@@ -199,12 +263,16 @@ def verify(root, sbom_path, prov_path, compat_path=None):
 
 
 def self_test():
+    from schema_resolver import release_scope
     with tempfile.TemporaryDirectory() as td:
         root = Path(td)
         (root / "VERSION").write_text("26.10.0\n")
         (root / "LICENSE").write_text("BSD\n")
         (root / "x.py").write_text("# x\n")
         (root / ".ai/runtime/_meta").mkdir(parents=True)
+        (root/'.ai/runtime/schema').mkdir()
+        (root/'.ai/runtime/schema/release-scope.schema.json').write_bytes((RUNTIME/'schema/release-scope.schema.json').read_bytes())
+        (root/'RELEASE-SCOPE.json').write_text(json.dumps(release_scope(RUNTIME)))
         (root / ".ai/runtime/_meta/release-manifest.json").write_text(json.dumps({"compatibility": []}))
         qualification = root / ".ai/runtime/_meta/qualification-A-G.json"
         qualification.write_text(json.dumps({"gates": {gate: True for gate in "ABCDEFG"}}))

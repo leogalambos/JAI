@@ -14,7 +14,8 @@ The provider selects authorised tools from your natural-language request. Markdo
 | Generate SABSA `.tex` source or DOCX | Pandoc | Pandoc executable and its installed resources; writable output and temporary files |
 | Compile SABSA LaTeX to PDF | Pandoc, XeLaTeX, required TeX packages and DejaVu Serif | TeX trees, configuration, compiled formats and fonts |
 | Inspect PDF pages as images or text | Poppler tools such as `pdftoppm` and `pdftotext` | Readable PDF and writable inspection output |
-| Inspect rendered Office output | LibreOffice or a suitable Office application | Office libraries/resources, fonts, writable application profile and output |
+| Generate HTML/PDF | Optional WeasyPrint 70, Pyphen 0.17.x and host fonts/libraries | Constrained URL fetching; not Office fidelity |
+| Inspect rendered Office output | Host LibreOffice or a suitable Office application, Poppler | Office libraries/resources, fonts, writable application profile and output |
 | Run full release/development qualification | Dependencies required by the selected release gates | The complete controlled build environment, described in [deployment notes](deployment-notes.md) |
 
 Pandoc generates DOCX without LibreOffice. LibreOffice is optional for Office rendering and applicable HTML visual QA; it is not a prerequisite for every JAI workflow. Installing dependencies is an administrator task. Local rendering with installed TeX packages and fonts does not require unrestricted internet access or downloading remote TeX content.
@@ -151,3 +152,18 @@ The policy snippets are documentation examples reviewed against those sources, n
 
 [Tool hooks, runtime controls and release gates](../configuration/hooks-gates-verification.md) describes the inspected implementation.
 Hooks depend on host event delivery and do not replace sandbox or filesystem controls.
+
+## Current operator boundary
+
+For 26.10.14 {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
+Native provider approval is not Fabric L0; external Ed25519 receipts require
+protected trust and matching state. Actual Office QA is AUTO when the role and effective sandbox permit it;
+otherwise it needs an explicit OPERATOR_EXECUTION handoff;
+WeasyPrint HTML/PDF does not inspect Office bytes. Privileged worker/API
+mutation is NOT_SUPPORTED; optional host confinement is NOT_VERIFIED.
+
+
+For supported Python renderer dependencies, use the
+[clean optional venv setup](install.md#a-clean-optional-renderer-environment).
+Doctor checks dependency metadata before importing a legacy Pyphen version;
+OPERATOR_ACTION_REQUIRED is not formal L0 or an assertion of sandbox denial.

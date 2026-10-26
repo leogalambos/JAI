@@ -253,4 +253,14 @@ body:has(.ai-home-shell-v31) .md-content__inner::before,body:has(.ai-home-shell-
 .ai-home-learning h2{color:#fff;margin:0 0 10px;font-size:1.15rem}
 .ai-home-learning a{color:#efc45c!important}
 .ai-home-learning-links{display:flex;flex-wrap:wrap;gap:10px 24px;margin:0;font-weight:650}
-@media(max-width:1060px){.ai-sidebar-nav-v31{display:block!important;padding:8px}.ai-sidebar-nav-v31 a{border-bottom:0}.md-typeset .ai-sidebar-nav-v31 details>summary{padding:12px 30px 12px 15px!important}}
+@media(max-width:1060px){.ai-sidebar-nav-v31{display:block;padding:8px}.ai-sidebar-nav-v31 a{border-bottom:0}.md-typeset .ai-sidebar-nav-v31 details>summary{padding:12px 30px 12px 15px!important}}
+
+/* Keep the human/operator distinction readable without another hero panel. */
+.ai-home-mechanism-v31{color:#e1ebf1;max-width:545px;font-size:.85rem;line-height:1.45;margin:12px 0 0}
+.ai-home-nav-toggle,.ai-home-nav-label{display:none}
+@media(max-width:1060px){
+  .ai-home-nav-toggle{display:block;position:absolute;width:1px;height:1px;opacity:0}
+  .ai-home-nav-label{display:block;padding:12px 20px;color:#efc45c;cursor:pointer;font-weight:700}
+  .ai-home-nav-toggle:focus-visible+.ai-home-nav-label{outline:3px solid #efc45c;outline-offset:-3px}
+  .ai-home-nav-toggle:not(:checked)~.ai-sidebar-nav-v31{display:none}
+}

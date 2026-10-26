@@ -13,13 +13,15 @@ title: AI IT House Universal
       <img src="assets/images/logo-mark.svg" alt="AI IT House logo">
       <span><strong>AI IT HOUSE</strong><em>UNIVERSAL</em></span>
     </a>
-    <nav class="ai-sidebar-nav-v31" aria-label="Documentation sections">
+    <input class="ai-home-nav-toggle" type="checkbox" id="ai-home-nav-toggle" aria-controls="ai-home-documentation-nav">
+    <label class="ai-home-nav-label" for="ai-home-nav-toggle">Explore documentation</label>
+    <nav id="ai-home-documentation-nav" class="ai-sidebar-nav-v31" aria-label="Documentation sections">
       <!-- JAI_CANONICAL_NAVIGATION -->
     </nav>
     <div class="ai-sidebar-promo-v31">
       <div>From Understanding<br>to Justifiable Decisions.</div>
       <a href="https://doi.org/10.13140/RG.2.2.29244.19843" target="_blank" rel="noopener">▱ &nbsp; Read the Article</a>
-      <small>Unified Lifecycle GA</small>
+      <small>26.10.14 · {{ JAI_SCOPE }}</small>
     </div>
   </aside>
 
@@ -29,13 +31,14 @@ title: AI IT House Universal
       <div class="ai-hero-shade-v31"></div>
       <div class="ai-hero-copy-v31">
         <div class="ai-brand-sub-v31">ARCHITECTURE · SECURITY · GOVERNANCE · DELIVERED</div>
-        <div class="ai-home-kicker-v31">A JUSTIFIABLE AI FABRIC FOR ENTERPRISE IS/IT AND SECURITY</div>
+        <div class="ai-home-kicker-v31">HUMAN-GOVERNED AI AUGMENTATION</div>
         <h1>Turn complexity into<br><span>justifiable progress.</span></h1>
-        <p class="ai-home-lead-v31">AI IT House Universal helps enterprise teams design, analyse and document IS/IT and security solutions with traceable reasoning, structured knowledge and professional deliverables — aligned with SABSA and leading practices.</p>
+        <p class="ai-home-lead-v31">Specialist AI workflows, traceable reasoning and professional deliverables for enterprise IS/IT and security — with consequential decisions kept under human authority.</p>
+        <p class="ai-home-mechanism-v31">AI prepares. Humans decide. Operators execute restricted tasks outside the agent sandbox.</p>
         <div class="ai-home-actions-v31" aria-label="Get started and obtain JAI">
           <a class="ai-btn-v31 ai-primary-v31" href="getting-started/quick-start/">Get Started →</a>
           <a class="ai-btn-v31 ai-download-v31" href="https://github.com/__JAI_GITHUB_REPOSITORY__/releases" target="_blank" rel="noopener noreferrer" aria-label="Download a published JAI release from GitHub">↓ Download JAI</a>
-          <a class="ai-btn-v31 ai-github-v31" href="https://github.com/__JAI_GITHUB_REPOSITORY__" target="_blank" rel="noopener noreferrer" aria-label="View the JAI source repository on GitHub">↗ View on GitHub</a>
+          <a class="ai-btn-v31 ai-github-v31" href="security/product-operations/">Human Authority &amp; Workflows →</a>
         </div>
         <div class="ai-justifiable-link-v31"><span class="ai-book-v31">▱</span><div>Built on the principles of Justifiable AI<br><a href="https://doi.org/10.13140/RG.2.2.29244.19843" target="_blank" rel="noopener">https://doi.org/10.13140/RG.2.2.29244.19843 ↗</a></div></div>
       </div>
@@ -48,6 +51,7 @@ title: AI IT House Universal
         <a href="examples/how-to-use-JAI/">Follow the worked guides →</a>
         <a href="using/commands/">Look up commands →</a>
         <a href="overview/product-overview/">Explore the product overview →</a>
+        <a href="https://github.com/__JAI_GITHUB_REPOSITORY__" target="_blank" rel="noopener noreferrer">View the source repository →</a>
       </div>
     </section>
 
