@@ -292,6 +292,77 @@ def sign(req,key):
         body['signature']=base64.b64encode((p/'sig').read_bytes()).decode()
     verify_receipt(req,body);return body
 
+def tool_inventory():
+    """Discover optional executables with bounded offline version probes.
+
+    Returns a fresh observation, never permission or persisted configuration.
+    Version success proves discovery only; each real operation must still run
+    inside its effective sandbox. No tool is installed or host policy changed.
+    """
+    import shutil
+    tools = {
+        'office': ('libreoffice', 'soffice'), 'pdf_pages': ('pdftoppm',),
+        'document_conversion': ('pandoc',), 'latex': ('xelatex',),
+        'browser': ('chromium', 'chromium-browser', 'google-chrome', 'msedge'),
+        'openssl': ('openssl',), 'codex': ('codex',), 'claude': ('claude',),
+        'tests': ('pytest',), 'documentation': ('mkdocs',),
+    }
+    result = {}
+    for capability, names in tools.items():
+        executable = next((path for name in names if (path := shutil.which(name))), None)
+        item = {'executable': executable, 'status': 'UNAVAILABLE',
+                'functional_readiness': 'NOT_VERIFIED', 'sandbox_access': 'NOT_VERIFIED',
+                'operator_alternative': 'C: independently execute on a suitably equipped host; not formal L0'}
+        if executable:
+            try:
+                argument = {'pdf_pages':'-v', 'openssl':'version'}.get(capability,'--version')
+                probe = subprocess.run([executable, argument],
+                                       capture_output=True, text=True, timeout=2)
+                item['status'] = 'AVAILABLE' if probe.returncode == 0 else 'UNAVAILABLE'
+                item['version'] = (probe.stdout or probe.stderr).strip()[:300]
+            except (OSError, subprocess.SubprocessError) as exc:
+                item['reason'] = type(exc).__name__
+        else:
+            item['reason'] = 'Optional tool absent from this interpreter process PATH'
+        result[capability] = item
+    return result
+
+
+def configure(previous=None):
+    """Refresh current capabilities without writing settings or cached authority.
+
+    Run doctor in a bounded child so optional renderer imports/conversion cannot
+    indefinitely block installation. Automatic selection remains point-of-use;
+    explicit API backend/executable arguments are preserved. No snapshot is
+    persisted. Args: previous is an optional explicit earlier JSON observation,
+    used only to explain changes, never to select tools or grant permission.
+    Returns fresh discovery with optional availability differences. Invalid
+    comparison files raise ValueError or OSError before probing.
+    """
+    import schema_resolver
+    baseline = None
+    if previous is not None:
+        baseline = json.loads(regular(previous))
+        if not isinstance(baseline,dict) or baseline.get('schema_version') != 1 or not isinstance(baseline.get('tools'),dict):
+            raise ValueError('previous capability observation required')
+    scope = schema_resolver.release_scope()
+    try:
+        probe = subprocess.run([sys.executable, str(Path(__file__).resolve()), 'doctor'],
+                               capture_output=True, text=True, timeout=25)
+        capabilities = json.loads(probe.stdout) if probe.returncode == 0 else {'status': 'UNAVAILABLE', 'reason': 'doctor failed'}
+    except (OSError, ValueError, subprocess.SubprocessError):
+        capabilities = {'status': 'UNAVAILABLE', 'reason': 'bounded doctor unavailable or timed out'}
+    tools = tool_inventory()
+    changes = None if baseline is None else {
+        'newly_available': [name for name,item in tools.items() if item['status']=='AVAILABLE' and baseline['tools'].get(name,{}).get('status')!='AVAILABLE'],
+        'became_unavailable': [name for name,item in tools.items() if item['status']!='AVAILABLE' and baseline['tools'].get(name,{}).get('status')=='AVAILABLE']}
+    return {'schema_version': 1, 'scope': scope['scope'], 'python': sys.executable,
+            'platform': sys.platform, 'configuration_changed': False,
+            'selection': 'automatic at point of use; explicit backend arguments take precedence',
+            'capabilities': capabilities, 'tools': tools, 'changes': changes,
+            'refresh': 'Re-run configure --refresh after PATH, interpreter or tool changes; no previous readiness is trusted'}
+
+
 def doctor():
     """Report prerequisites and actual rendering without asserting confinement.
 
@@ -328,9 +399,14 @@ def doctor():
                 html_state='READY: actual WeasyPrint PDF conversion verified' if regular(result).startswith(b'%PDF-') else 'UNAVAILABLE'
         except (OSError,RuntimeError,ValueError):html_state='UNAVAILABLE: actual HTML conversion failed'
     office_present=bool(shutil.which('libreoffice') or shutil.which('soffice'))
+    office_state='NOT VERIFIED: binary present; actual document conversion required' if office_present else 'UNAVAILABLE: optional Office renderer absent here; a host renderer may provide C'
+    if office_present:
+        from office_renderer import prerequisites
+        if not prerequisites()['available']:
+            office_state='OPERATOR_ACTION_REQUIRED: observed local IPC prerequisite denial; use C host rendering, not formal L0'
     return {'base_workflow':base_state,'html_pdf':html_state,
         'local_shell':'role-engineer contract permits local QA; actual native sandbox determines A/B/C',
-        'office_visual':'NOT VERIFIED: binary present; try role-authorized A, use C only for an observed limitation' if office_present else 'UNAVAILABLE: optional Office renderer absent here; a host renderer may provide C',
+        'office_visual':office_state,
         'libreoffice_binary_present':office_present,'local_l0':l0,'host_provider_confinement':'NOT VERIFIED','privileged_external_mutation':'NOT SUPPORTED','renderer_dependencies':dependencies}
 
 
@@ -371,6 +447,10 @@ def main():
     """Dispatch typed operator verbs; never evaluate supplied commands."""
     p=argparse.ArgumentParser(description=__doc__);sp=p.add_subparsers(dest='cmd',required=True)
     sp.add_parser('doctor')
+    a=sp.add_parser('configure',help='Refresh optional tool discovery; never install tools or alter provider settings')
+    a.add_argument('--refresh',action='store_true',help='Re-detect the current environment (always performed)')
+    a.add_argument('--dry-run',action='store_true',help='Preview discovery; no persistent settings are written in either mode')
+    a.add_argument('--compare',help='Compare with an explicitly saved earlier configure JSON report (advisory only)')
     a=sp.add_parser('check-acceptance');a.add_argument('manifest')
     a=sp.add_parser('prepare-render');a.add_argument('source');a.add_argument('--out',required=True);a.add_argument('--backend',choices=['libreoffice','html-auto'],default='libreoffice');a.add_argument('--reason',default='Explicit host rendering requested; no in-sandbox denial has been established')
     a=sp.add_parser('decline');a.add_argument('request')
@@ -381,6 +461,7 @@ def main():
     a=sp.add_parser('resume-render');a.add_argument('request');a.add_argument('receipt');a.add_argument('--workspace',required=True)
     args=p.parse_args()
     if args.cmd=='doctor':print(json.dumps(doctor(),indent=2));return 0
+    if args.cmd=='configure':print(json.dumps(configure(args.compare),indent=2));return 0
     if args.cmd=='check-acceptance':print(json.dumps(check_acceptance(args.manifest),indent=2));return 0
     if args.cmd=='prepare-render':
         output=Path(args.out).absolute();req=request('render','Render exact produced file and inspect its actual pages',args.source,output.parent/'outputs',{'backend':args.backend})

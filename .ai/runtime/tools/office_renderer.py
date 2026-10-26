@@ -108,13 +108,22 @@ def html_pdf(source,output_directory,backend='auto'):
     fetches and custom font loads deny; an attempted fetch fails the render rather
     than silently replacing content. HTML PDF is never Office visual evidence.
     """
-    import importlib.util,re,hashlib
+    import importlib.util,importlib.metadata,re,hashlib
     source=Path(source).resolve(strict=True);out=Path(output_directory);out.mkdir(parents=True,exist_ok=True)
     if backend not in {'auto','weasyprint','libreoffice'} or source.suffix.lower()!='.html':raise ValueError('explicit HTML backend required')
-    if backend=='libreoffice' or (backend=='auto' and importlib.util.find_spec('weasyprint') is None):
+    try:
+        compatible=(importlib.metadata.version('weasyprint').split('.')[0]=='70'
+                    and importlib.util.find_spec('weasyprint') is not None)
+    except importlib.metadata.PackageNotFoundError:
+        compatible=False
+    if backend=='libreoffice' or (backend=='auto' and not compatible):
         return convert_office(source,out)
     if importlib.util.find_spec('weasyprint') is None:raise RendererUnavailable('WeasyPrint unavailable; operator dependency action required')
-    from weasyprint import HTML,CSS,__version__
+    try:
+        from weasyprint import HTML,CSS,__version__
+    except (ImportError,OSError) as exc:
+        if backend=='auto':return convert_office(source,out)
+        raise RendererUnavailable('WeasyPrint dependencies unavailable in this interpreter') from exc
     text=source.read_text(encoding='utf-8')
     from weasyprint.urls import URLFetcher
     from weasyprint.urls import FatalURLFetchingError

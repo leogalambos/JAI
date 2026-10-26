@@ -32,7 +32,9 @@ import time
 _PROVIDERS = {'codex', 'claude', 'codex.exe', 'claude.exe', 'codex.cmd', 'claude.cmd'}
 _ALLOWED_ENV = ('PATH', 'HOME', 'USER', 'LOGNAME', 'TMPDIR', 'TMP', 'TEMP',
                 'LANG', 'LC_ALL', 'TZ', 'SYSTEMROOT', 'COMSPEC', 'PATHEXT',
-                'FONTCONFIG_PATH', 'FONTCONFIG_FILE')
+                'FONTCONFIG_PATH', 'FONTCONFIG_FILE',
+                # Public documentation identity, never a token or permission.
+                'GITHUB_REPOSITORY', 'JAI_GITHUB_REPOSITORY')
 
 
 def _provider_command(command):
@@ -114,7 +116,9 @@ def safe_environment(root):
         root: Trusted project root, used only to locate the guard bootstrap.
     Returns:
         New environment containing selected operating-system settings and fixed
-        offline controls, including the explicit streaming preference when set.
+        offline controls, public documentation repository identity, and the
+        explicit streaming preference when set. Repository identity is still
+        validated by the documentation consumer; it grants no permissions.
         Arbitrary parent variables and credential keys are
         neither copied nor inspected. Credential-file access is not sandboxed.
     """

@@ -90,9 +90,15 @@ def test_guard_does_not_forward_credential_environment_values(monkeypatch):
     from offline_guard import safe_environment
     monkeypatch.setenv('OPENAI_API_KEY', 'synthetic-credential-sentinel')
     monkeypatch.setenv('ANTHROPIC_API_KEY', 'synthetic-credential-sentinel')
+    monkeypatch.setenv('GH_TOKEN', 'synthetic-credential-sentinel')
+    monkeypatch.setenv('GITHUB_REPOSITORY', 'example/JAI')
+    monkeypatch.setenv('JAI_GITHUB_REPOSITORY', 'example/docs-preview')
     environment = safe_environment(ROOT)
     assert 'OPENAI_API_KEY' not in environment
     assert 'ANTHROPIC_API_KEY' not in environment
+    assert 'GH_TOKEN' not in environment
+    assert environment['GITHUB_REPOSITORY'] == 'example/JAI'
+    assert environment['JAI_GITHUB_REPOSITORY'] == 'example/docs-preview'
     assert 'synthetic-credential-sentinel' not in str(environment)
 
 

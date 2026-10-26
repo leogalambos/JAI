@@ -9,6 +9,35 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'.ai/runtime/tools'))
 import operator_actions as op
 
 
+def test_capability_refresh_observes_changes_without_writing_configuration(tmp_path):
+    manifest = Path(__file__).resolve().parents[1] / 'RELEASE-SCOPE.json'
+    original = manifest.read_bytes()
+    completed = subprocess.CompletedProcess([], 0, stdout='{"base_workflow":"READY"}', stderr='')
+    with patch('shutil.which', return_value=None), patch.object(op.subprocess, 'run', return_value=completed):
+        absent = op.configure()
+        assert absent['tools']['browser']['status'] == 'UNAVAILABLE'
+        assert absent['configuration_changed'] is False
+    with patch('shutil.which', return_value='/optional/tool'), patch.object(op.subprocess, 'run', return_value=completed):
+        present = op.tool_inventory()
+        assert present['browser']['status'] == 'AVAILABLE'
+        assert present['browser']['functional_readiness'] == 'NOT_VERIFIED'
+        assert present['browser']['sandbox_access'] == 'NOT_VERIFIED'
+    with patch('shutil.which', return_value='/optional/tool'), patch.object(op.subprocess, 'run', side_effect=subprocess.TimeoutExpired('probe', 2)):
+        failed = op.configure()
+        assert failed['capabilities']['status'] == 'UNAVAILABLE'
+        assert failed['tools']['browser']['status'] == 'UNAVAILABLE'
+    assert manifest.read_bytes() == original
+    assert list(tmp_path.iterdir()) == []
+    baseline=tmp_path/'previous.json';baseline.write_text(json.dumps(absent))
+    with patch('shutil.which',return_value='/optional/tool'), patch.object(op.subprocess,'run',return_value=completed):
+        assert 'browser' in op.configure(baseline)['changes']['newly_available']
+    baseline.write_text(json.dumps({'schema_version':1,'tools':present}))
+    with patch('shutil.which',return_value=None), patch.object(op.subprocess,'run',return_value=completed):
+        assert 'browser' in op.configure(baseline)['changes']['became_unavailable']
+    baseline.write_text('{}')
+    with pytest.raises(ValueError):op.configure(baseline)
+
+
 def test_request_exact_hash_expiry_and_no_arbitrary_command_transport(tmp_path):
     source=tmp_path/'draft.html';source.write_text('<h1>Fixture</h1>')
     req=op.request('render','fixture',source,tmp_path/'outputs',{'backend':'libreoffice'})
@@ -85,6 +114,8 @@ def test_protected_pin_doctor_and_incomplete_acceptance(tmp_path):
     state=op.doctor()
     assert state['privileged_external_mutation']=='NOT SUPPORTED'
     assert state['host_provider_confinement']=='NOT VERIFIED'
+    with patch('shutil.which',return_value='/optional/office'), patch('office_renderer.prerequisites',return_value={'available':False}):
+        assert op.doctor()['office_visual'].startswith('OPERATOR_ACTION_REQUIRED: observed local IPC')
     with patch.object(sys,'argv',['operator_actions.py','doctor']):assert op.main()==0
 
 

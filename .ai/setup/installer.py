@@ -10,7 +10,7 @@ an untouched package file from a locally modified file. Nothing is overwritten o
 on a conflict unless --force is explicit; forced changes are backed up first.
 """
 from __future__ import annotations
-import argparse, copy, hashlib, json, os, re, shutil, subprocess, sys, tempfile, time
+import argparse, copy, hashlib, json, os, re, shlex, shutil, subprocess, sys, tempfile, time
 from pathlib import Path
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'runtime/tools'))
@@ -475,6 +475,22 @@ def main():
     }
     atomic_write(state_path,(json.dumps(newstate,indent=2,ensure_ascii=False)+'\n').encode(),0o600)
     print('\nInstallation/update complete.')
+    # Optional discovery cannot change managed hashes, provider settings or trust.
+    refresh=[sys.executable,str(ai_house/'tools/operator_actions.py'),'configure','--refresh']
+    try:
+        probe=subprocess.run(refresh,capture_output=True,text=True,timeout=55)
+        report=json.loads(probe.stdout) if probe.returncode==0 else {}
+        capabilities=report.get('capabilities',{})
+        for label,key in [('Core workflows','base_workflow'),('HTML/PDF','html_pdf'),
+                          ('Office visual QA','office_visual'),('Local L0','local_l0'),
+                          ('Host confinement','host_provider_confinement'),
+                          ('Privileged mutations','privileged_external_mutation')]:
+            print(f'{label}: {capabilities.get(key,"UNAVAILABLE: optional discovery incomplete")}')
+        for name,item in report.get('tools',{}).items():
+            print(f'{name}: {item["status"]} (functional/sandbox readiness NOT VERIFIED)')
+    except (OSError,ValueError,subprocess.SubprocessError):
+        print('Optional capability discovery unavailable; core installation remains complete.')
+    print('Refresh optional capabilities with: '+(subprocess.list2cmdline(refresh) if os.name=='nt' else shlex.join(refresh)))
     if 'codex' in providers and not a.no_hooks:
         print('Codex: review/approve the installed hook configuration in Codex before relying on enforcement.')
     return 0

@@ -1,5 +1,56 @@
 # Installation
 
+## Reconfigure JAI after installing additional tools
+
+Installation and updates automatically run bounded, offline optional-tool
+discovery after the managed files have been installed. Missing optional tools
+do not invalidate a successful core installation. `--dry-run` writes nothing
+and does not run the post-install probes.
+
+After installing, upgrading or removing a tool, run with the Python environment
+you intend to use for JAI:
+
+```sh
+python3 ~/.ai/it-role-house/tools/operator_actions.py configure --refresh
+python3 ~/.ai/it-role-house/tools/operator_actions.py configure --refresh --dry-run
+```
+
+Both commands produce JSON without writing preferences or readiness caches.
+`configuration_changed: false` is expected: automatic defaults are resolved at
+use time, so no configuration file is needed. Keep an earlier report yourself
+if you need a before/after comparison: save output with `> capabilities.json`,
+then use `configure --refresh --compare capabilities.json` on the next run.
+The optional `changes` lists are observations only, never input to selection.
+The `python` field identifies the actual
+interpreter; packages installed into a different virtual environment are not
+available to it. Run the same command with that environment's Python to switch.
+
+For example, a compatible WeasyPrint environment can report
+`html_pdf: READY: actual WeasyPrint PDF conversion verified`, while a discovered
+browser reports `AVAILABLE` with functional/sandbox readiness `NOT_VERIFIED`.
+Executable version discovery alone is never READY. An unsuccessful optional
+probe reports UNAVAILABLE or an operator action, not an installation failure.
+
+- **Add WeasyPrint:** install the optional renderer requirements in your chosen
+  virtual environment, then use its Python for refresh and publication.
+- **Add LibreOffice:** refresh discovers `libreoffice` or `soffice` on PATH.
+  Actual Office conversion is checked when rendering the real document.
+- **Add Chromium:** refresh discovers the browser version; a real screenshot
+  still must succeed inside the role's native sandbox before it counts as A.
+- **Sandbox denial:** a detected tool does not grant access. After an observed
+  failure, request exact category C host execution, not formal L0 approval.
+- **Remove/upgrade tools:** refresh reports current availability. HTML auto
+  selection rechecks WeasyPrint compatibility and can select LibreOffice for
+  HTML when WeasyPrint is missing or incompatible; it never substitutes HTML
+  rendering for native Office QA. Explicit backend/executable arguments remain
+  explicit; remove those arguments or select `auto` to restore automatic choice.
+
+Discovery includes Poppler, Pandoc, supported LaTeX engines, OpenSSL, provider
+CLIs, pytest and MkDocs. Tools are optional for their respective functions.
+No packages, keys, trust pins or provider settings are installed by refresh.
+Release support remains defined solely by `RELEASE-SCOPE.json`. Discovery does
+not authorize an agent, certify confinement or activate privileged mutations.
+
 ## Audience
 
 This section is written for an engineer, architect or administrator who needs a predictable local installation of AI IT House {{ JAI_VERSION }}.

@@ -1,5 +1,12 @@
 # Publication stack
 
+After changing optional tools or Python environments, use
+`python3 ~/.ai/it-role-house/tools/operator_actions.py configure --refresh`.
+See [automatic discovery and refresh](../getting-started/install.md#reconfigure-jai-after-installing-additional-tools).
+Explicit backend arguments take precedence over automatic selection. Every
+conversion checks the actual selected tool again; discovery is not a render
+receipt or permission to leave the sandbox.
+
 Publication is a controlled projection of approved semantics, not a free-standing writing step.
 
 ## Chain of custody

@@ -1,5 +1,25 @@
 # AI IT House — installed CLI guide
 
+## Refresh optional supporting tools
+
+Installation runs bounded discovery without installing optional
+packages.
+After tool, PATH or virtual-environment changes, run:
+
+```sh
+python3 ~/.ai/it-role-house/tools/operator_actions.py configure --refresh
+```
+
+Add `--dry-run` for a non-mutating preview.
+Both modes are observational.
+The JSON identifies the interpreter, versions and current renderer
+checks. No status cache, provider settings or trust material is written.
+Automatic backend selection is re-evaluated at use time. Explicit API
+backend or executable arguments remain in force until removed.
+AVAILABLE is not functional readiness or sandbox permission. Missing
+optional tools do not prevent core workflows. Host tasks are category C,
+not formal L0.
+
 Owner: JAI maintainers · Last reviewed: 2026-10-20
 
 This guide explains the workflows exposed by the library to Claude Code

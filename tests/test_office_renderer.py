@@ -15,6 +15,22 @@ import office_renderer as renderer
 
 
 class OfficeRendererTests(unittest.TestCase):
+    def test_auto_rechecks_backend_versions_and_preserves_explicit_selection(self):
+        import importlib.metadata
+        with tempfile.TemporaryDirectory() as directory:
+            root=Path(directory);source=root/'source.html';source.write_text('<h1>Local</h1>')
+            for version in ('69.0', importlib.metadata.PackageNotFoundError('weasyprint')):
+                with patch.object(importlib.metadata,'version',side_effect=version if isinstance(version,Exception) else None,return_value=version), patch.object(renderer,'convert_office',return_value=root/'native.pdf') as native:
+                    self.assertEqual(renderer.html_pdf(source,root/'out'),root/'native.pdf')
+                    native.assert_called_once()
+            with patch.object(renderer,'convert_office',return_value=root/'explicit.pdf') as native:
+                self.assertEqual(renderer.html_pdf(source,root/'out',backend='libreoffice'),root/'explicit.pdf')
+                native.assert_called_once()
+            with patch.object(importlib.metadata,'version',return_value='70.0'), patch.dict(sys.modules,{'weasyprint':None}), patch.object(renderer,'convert_office',return_value=root/'fallback.pdf'):
+                self.assertEqual(renderer.html_pdf(source,root/'out'),root/'fallback.pdf')
+                with self.assertRaises(renderer.RendererUnavailable):
+                    renderer.html_pdf(source,root/'out',backend='weasyprint')
+
     def test_svg_and_html_resources_fail_closed_without_relaxing_visual_rules(self):
         import importlib.util
         with tempfile.TemporaryDirectory() as directory:

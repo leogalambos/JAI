@@ -1,5 +1,14 @@
 # Troubleshooting
 
+## Tools installed later or missing after an upgrade
+
+Run `python3 ~/.ai/it-role-house/tools/operator_actions.py configure --refresh`.
+Check the reported `python` and PATH-resolved executables before reinstalling
+anything. For virtual environments, invoke that environment's Python explicitly.
+No stale discovery cache needs deleting. AVAILABLE means version discovery,
+not verified rendering or sandbox access. See the
+[refresh examples](../getting-started/install.md#reconfigure-jai-after-installing-additional-tools).
+
 ## Experimental hint recommendations
 
 See [the hint guide](../using/experimental-hint.md) for the recommendation

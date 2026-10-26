@@ -1,5 +1,10 @@
 # Compatibility matrix
 
+Local availability is separate from product support. The installer runs bounded
+optional discovery; [refresh it after tool changes](../getting-started/install.md#reconfigure-jai-after-installing-additional-tools).
+Version probes use portable Python subprocesses, but actual rendering and
+provider confinement remain environment-dependent and are not certified by discovery.
+
 <!-- GENERATED-INVENTORY:START -->
 ## Current generated release inventory
 
