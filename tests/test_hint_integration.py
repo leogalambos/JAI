@@ -28,10 +28,18 @@ def test_hint_projects_identical_advisory_body_to_both_providers(tmp_path):
     package = tmp_path / 'package'
     for section in ('runtime', 'skills', 'agents', 'commands'):
         (package / '.ai' / section).mkdir(parents=True)
+    # Scope validation needs both canonical resources, without checkout fallback.
+    for relative in ('RELEASE-SCOPE.json', '.ai/runtime/schema/release-scope.schema.json'):
+        destination = package / relative
+        destination.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copy2(ROOT / relative, destination)
     shutil.copy2(source, package / '.ai/commands/hint.md')
     registry = json.loads((ROOT / '.ai/runtime/models/model-registry.json').read_text())
     house, claude, codex = (tmp_path / name for name in ('house', 'claude', 'codex'))
     outputs, _ = installer.desired_outputs(package, {'claude', 'codex'}, house, claude, codex, registry)
+    assert outputs[str(house / 'RELEASE-SCOPE.json')] == (ROOT / 'RELEASE-SCOPE.json').read_bytes()
+    assert outputs[str(house / 'schema/release-scope.schema.json')] == (
+        ROOT / '.ai/runtime/schema/release-scope.schema.json').read_bytes()
     assert outputs[str(claude / 'commands/hint.md')].decode() == text
     projected = outputs[str(codex / 'skills/workflow-hint/SKILL.md')].decode()
     assert body in projected
@@ -43,6 +51,17 @@ def test_hint_projects_identical_advisory_body_to_both_providers(tmp_path):
                      'Adaptation', 'Boundaries', 'NO_MATCH', 'PARTIAL_MATCH', 'ERROR',
                      'argument array', 'independent review', 'No nested', 'selected', 'read', 'delivered'):
         assert required in body
+
+    schema = package / '.ai/runtime/schema/release-scope.schema.json'
+    schema.unlink()
+    with pytest.raises(FileNotFoundError):
+        installer.desired_outputs(package, {'claude', 'codex'}, house, claude, codex, registry)
+    shutil.copy2(ROOT / '.ai/runtime/schema/release-scope.schema.json', schema)
+    (package / 'RELEASE-SCOPE.json').write_text('{}')
+    from jsonschema import ValidationError
+    with pytest.raises(ValidationError):
+        installer.desired_outputs(package, {'claude', 'codex'}, house, claude, codex, registry)
+    assert not house.exists() and not claude.exists() and not codex.exists()
 
 
 def test_installed_hint_then_selected_description_works_without_docs_or_project_reads(tmp_path):
