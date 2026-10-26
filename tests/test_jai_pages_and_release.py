@@ -32,13 +32,15 @@ class SourceHomeCtaTests(unittest.TestCase):
         raw = (ROOT / 'docs/index.md').read_text(encoding='utf-8')
         self.assertIn('ai-home-actions-v31', raw)
         self.assertIn('Download JAI', raw)
-        self.assertIn('View on GitHub', raw)
+        repository_href = 'href="https://github.com/__JAI_GITHUB_REPOSITORY__"'
+        self.assertEqual(raw.count(repository_href), 1)
         rendered = links.expand_homepage(raw, 'some-owner/JAI')
         self.assertIn('href="https://github.com/some-owner/JAI/releases"', rendered)
         self.assertIn('href="https://github.com/some-owner/JAI"', rendered)
         self.assertNotIn('__JAI_GITHUB_', rendered)
         self.assertIn('href="getting-started/quick-start/"', rendered)
         self.assertIn('href="overview/product-overview/"', rendered)
+        self.assertIn('href="security/product-operations/"', rendered)
 
     def test_strictly_rejects_invalid_repository_values(self):
         raw = (ROOT / 'docs/index.md').read_text(encoding='utf-8')
@@ -48,8 +50,10 @@ class SourceHomeCtaTests(unittest.TestCase):
 
     def test_requires_both_explicit_source_links(self):
         raw = (ROOT / 'docs/index.md').read_text(encoding='utf-8')
-        with self.assertRaisesRegex(ValueError, 'exactly one'):
-            links.expand_homepage(raw.replace('https://github.com/__JAI_GITHUB_REPOSITORY__/releases', ''), 'owner/JAI')
+        for url in ('https://github.com/__JAI_GITHUB_REPOSITORY__/releases',
+                    'https://github.com/__JAI_GITHUB_REPOSITORY__'):
+            with self.subTest(url=url), self.assertRaisesRegex(ValueError, 'exactly one'):
+                links.expand_homepage(raw.replace('href="'+url+'"', 'href=""'), 'owner/JAI')
 
     def test_github_actions_repo_context(self):
         with patch.object(links, 'repository_from_remote', return_value=None):

@@ -17,6 +17,7 @@ on:
       - '.ai/runtime/tools/docs_contract.py'
       - '.ai/runtime/tools/generate_docs.py'
       - 'VERSION'
+      - 'RELEASE-SCOPE.json'
       - '.ai/runtime/roles.json'
       - '.ai/runtime/workflows.json'
       - '.ai/runtime/artifacts/schema/artifact-types.json'
@@ -45,6 +46,7 @@ on:
       - '.ai/skills/**'
       - '.ai/adapters/**'
       - 'VERSION'
+      - 'RELEASE-SCOPE.json'
 permissions:
   contents: read
 concurrency:

@@ -23,6 +23,7 @@ on:
       - 'README.md'
       - 'CHANGELOG.md'
       - 'VERSION'
+      - 'RELEASE-SCOPE.json'
   push:
     branches: [main]
   workflow_dispatch:
