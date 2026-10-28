@@ -15,6 +15,28 @@ from generate_content_catalog import validate_reference_bindings
 from content_spec import ContentSpec
 
 
+# Literal wording is an editorial publication contract, not semantic review evidence.
+SUPPLEMENT_HEADING = '## Evidence-led expert review supplement (v2.3.0)'
+STANDARD_DISCLOSURE_PHRASES = (
+    'fictional', 'OPEN until attributable evidence exists',
+    'NOT_EXECUTED if no actual test or review', 'PENDING, never inferred approval',
+    'Human-approved status remains **false**', 'Missing renderer = NOT_EXECUTED, not PASS',
+    'DEFER external commitment or release', 'Source fidelity',
+    'Cross-artifact consistency', 'No underlying customer system',
+)
+SECURITY_DISCLOSURE_PHRASES = (
+    'planned negative scenario', 'required technical trace and control owner',
+    'absent observed evidence is NOT_EXECUTED',
+    'Separate design review from observed operating effectiveness',
+)
+
+
+def _publication_supplement(text):
+    """Extract the single standardized supplement; its wording does not prove adequacy."""
+    assert text.count(SUPPLEMENT_HEADING) == 1
+    return text.partition(SUPPLEMENT_HEADING)[2]
+
+
 class ReferenceBindingTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
@@ -23,37 +45,29 @@ class ReferenceBindingTests(unittest.TestCase):
         cls.contracts=json.loads((ROOT/'.ai/runtime/artifacts/contracts/role-deliverables.v3.json').read_text())['contracts']
         cls.contract_ids={row['id'] for row in cls.contracts}
 
-    def test_all_reference_review_supplements_preserve_unexecuted_evidence_and_external_authority(self):
+    def test_all_reference_supplements_include_standard_publication_disclosures(self):
         manifest=json.loads((ROOT/'.ai/runtime/content/expert_references/index.json').read_text())
         for entry in manifest['entries']:
             path=ROOT/'.ai/runtime/content/expert_references'/entry['path']
             text=path.read_text()
             with self.subTest(reference_id=entry['reference_id']):
-                supplement=text.split('## Evidence-led expert review supplement (v2.3.0)',1)[1]
-                self.assertIn('fictional',supplement)
-                self.assertIn('OPEN until attributable evidence exists',supplement)
-                self.assertIn('NOT_EXECUTED if no actual test or review',supplement)
-                self.assertIn('PENDING, never inferred approval',supplement)
-                self.assertIn('Human-approved status remains **false**',supplement)
-                self.assertIn('Missing renderer = NOT_EXECUTED, not PASS',supplement)
-                self.assertIn('DEFER external commitment or release',supplement)
-                self.assertIn('Source fidelity',supplement)
-                self.assertIn('Cross-artifact consistency',supplement)
-                self.assertIn('No underlying customer system',supplement)
+                supplement=_publication_supplement(text)
+                for phrase in STANDARD_DISCLOSURE_PHRASES:
+                    self.assertIn(phrase,supplement)
 
-    def test_security_review_supplements_require_observed_negative_test_evidence(self):
+
+    def test_security_supplements_include_standard_negative_test_disclosures(self):
         families=('security-architecture-assessment','threat-model','security-control-assessment',
                   'devsecops-pipeline-design','cicd-pipeline-assurance','appsec-verification-report',
                   'software-supply-chain-assessment')
         for family in families:
             for level in ('simple','medium','complex'):
                 text=(ROOT/'.ai/runtime/content/expert_references'/family/(level+'.md')).read_text()
-                supplement=text.split('## Evidence-led expert review supplement (v2.3.0)',1)[1]
+                supplement=_publication_supplement(text)
                 with self.subTest(family=family,complexity=level):
-                    self.assertIn('planned negative scenario',supplement)
-                    self.assertIn('required technical trace and control owner',supplement)
-                    self.assertIn('absent observed evidence is NOT_EXECUTED',supplement)
-                    self.assertIn('Separate design review from observed operating effectiveness',supplement)
+                    for phrase in SECURITY_DISCLOSURE_PHRASES:
+                        self.assertIn(phrase,supplement)
+
 
     def test_all_135_manifest_documents_have_exact_one_to_one_registered_anchor_mappings(self):
         manifest=json.loads((ROOT/'.ai/runtime/content/expert_references/index.json').read_text())

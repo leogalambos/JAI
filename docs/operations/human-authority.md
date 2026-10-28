@@ -32,15 +32,20 @@ the public key. An administrator enrolls `~/.ai/jai-operator-trust.json`.
 The installer creates no keys. Copy the reviewed signer outside agent writes
 and use isolated Python imports, not workspace-controlled signing code.
 
-Trust JSON uses schema_version 1, policy_version
-`local-operator-attestation/1`, public_key (Ed25519 PEM) and key_id (SHA-256 of that
-exact PEM). Fabric reads only protected public material. Do not return private
+Trust JSON uses schema_version 2, policy_version
+`local-operator-attestation/2`, public_key (Ed25519 PEM), key_id (SHA-256 of that
+exact PEM), nonempty signer identity and explicit capabilities. Known capabilities
+are `authorise` (escalation decisions), `lifecycle-update` (scoped continuation)
+and `accept` (exact-output acceptance). No capability implies another; absent or
+unknown capabilities deny. Only external trust administration assigns them.
+Fresh trust has no schema-1 fallback or automatic migration.
+Fabric reads only protected public material. Do not return private
 keys or treat environment flags, labels, same UID or keypresses alone as proof.
 
 This is LOCAL OPERATOR ATTESTATION. If model tools can read the private key or
 replace trusted runtime/pin, leave authority unavailable. Enterprise identity
-and rollback-resistant audit custody are not claimed. Historical HMAC records
-remain verification-compatible only.
+and rollback-resistant audit custody are not claimed. Unsupported historical
+ledgers are archive-only, never executable engagements or imported acceptance.
 
 ## Providers and Git
 

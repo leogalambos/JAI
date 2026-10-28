@@ -1,5 +1,21 @@
 # AI IT House runtime
 
+## Fresh lifecycle format
+
+New engagements use immutable format-2 transactions and one shared
+lifecycle engine. Unsupported/unmarked ledgers are archives, never
+executable inputs. Use
+`fabric.py lifecycle-plan ENG --spec FILE --out PLAN`
+to prepare an exact
+scoped update. The protected human apply uses
+`lifecycle-apply --request PLAN --receipt RECEIPT`. Read-only inspection
+uses `lifecycle-status ENG --scope default`.
+Update capability does not grant acceptance.
+Reinstatement requires fresh
+verification and review; cancelled acceptance never revives. The
+maintained public guide is `docs/operations/lifecycle-recovery.md`
+in the release source.
+
 This directory is the provider-neutral common runtime for AI IT House.
 Canonical roles, schemas, policies and workflows are shared by Claude
 Code and Codex adapters.

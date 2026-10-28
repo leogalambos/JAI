@@ -190,8 +190,11 @@ def main():
         fb=fabric.Fabric('native-check',[])
         frag=fb.add_node('frag',3,'material claim',kind='claim',contract='ctr-0001')
         evd=fb.add_node('evd',3,'source record',confidence='observation',contract='ctr-0001')
-        needed={'object_ref','object_hash','contract_ref','context_digest'}
-        ok=all(needed<=set(x) and str(x['object_ref']).split(':',1)[0] in ('semantic','evidence') for x in (frag,evd))
+        needed={'version_id','object_ref','object_hash','contract_ref','context_digest'}
+        ok=all(needed<=set(x) and x['object_ref']=='lifecycle:'+x['id']
+               and x['object_hash']=='sha256:'+x['version_id']
+               and fabric.lifecycle.version_id(fb.lifecycle.versions[x['version_id']])==x['version_id']
+               for x in (frag,evd))
         check(ok,'fabric-semantic-ref-runtime-test',problems)
 
     projection=module_from(R/'tools/projection.py','projection26104')

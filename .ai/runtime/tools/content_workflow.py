@@ -126,10 +126,12 @@ def _human_accepted(authority, bound):
             return False
         fragment=fabric.nodes[fragment_id]
         justified,reasons=fabric.justify(fragment_id,strict=True)
-        review=fabric.nodes.get(fabric.latest_review(fragment_id),{})
+        accepted=fabric.lifecycle.evaluate(fragment['version_id'],release=True)
+        acceptance_version=fabric.lifecycle.proofs.get(('default',fragment['version_id'],'accept'))
+        review=next((node for node in fabric.nodes.values() if node['version_id']==acceptance_version),{})
         policy=json.loads(fragment.get('text',''),object_pairs_hook=content_spec._pairs,
                           parse_constant=lambda value: (_ for _ in ()).throw(ValueError('NONFINITE')))
-        return (fragment.get('type')=='frag' and fragment.get('layer')==1 and justified and not reasons
+        return (fragment.get('type')=='frag' and fragment.get('layer')==1 and justified and not reasons and accepted['eligible']
                 and review.get('layer')==0 and review.get('state')=='accepts' and bool(review.get('reviewer'))
                 and policy.get('profile')=='workflow-acceptance' and policy.get('acceptance')==bound)
     except (ValueError,TypeError,KeyError,OSError):

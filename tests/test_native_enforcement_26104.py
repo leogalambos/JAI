@@ -21,6 +21,28 @@ spec.loader.exec_module(gate)
 
 
 class NativeEnforcementTests(unittest.TestCase):
+    def test_current_fabric_identities_replay_with_the_shared_manifest_formula(self):
+        """Native probes must bind exact versions, not former semantic aliases."""
+        fabric = gate.module_from(gate.R / 'fabric/fabric.py', 'native_identity_fixture')
+        with tempfile.TemporaryDirectory() as directory, mock.patch.object(fabric, 'FABRIC_DIR', directory):
+            graph = fabric.Fabric('native-identity', [])
+            fragment = graph.add_node('frag', 3, 'Material claim', kind='claim', contract='ctr-0001')
+            evidence = graph.add_node('evd', 3, 'Source record', confidence='observation', contract='ctr-0001')
+            replayed = fabric.Fabric('native-identity', fabric.load('native-identity'))
+            for node in (fragment, evidence):
+                with self.subTest(kind=node['type']):
+                    manifest = replayed.lifecycle.versions[node['version_id']]
+                    self.assertEqual(fabric.lifecycle.version_id(manifest), node['version_id'])
+                    self.assertEqual(node['object_ref'], 'lifecycle:' + node['id'])
+                    self.assertEqual(node['object_hash'], 'sha256:' + node['version_id'])
+                    self.assertEqual(manifest['content']['context_digest'], node['context_digest'])
+                    self.assertEqual(manifest['content']['contract_ref'], 'ctr-0001')
+                    self.assertEqual(replayed.nodes[node['id']], node)
+            broken = copy.deepcopy(graph.transactions)
+            broken[-1]['operations'][-1]['data']['object_hash'] = 'sha256:' + '0' * 64
+            with self.assertRaises(ValueError):
+                fabric.Fabric('native-identity', broken)
+
     def setUp(self):
         self.roles = json.loads((gate.R / 'roles.json').read_text())
         self.old = json.loads((gate.R / 'artifacts/contracts/role-deliverables.v2.json').read_text())

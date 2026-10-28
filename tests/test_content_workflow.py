@@ -99,30 +99,19 @@ def test_human_authority_step_cannot_be_approved_by_receiver_json():
 
 
 def signed_fabric_acceptance(bound,tmp_path,monkeypatch):
-    """Use real read-only Fabric hash-chain/signature verification on synthetic data."""
-    import hashlib,hmac,importlib.util
+    """Use real fresh-format qualification and synthetic Ed25519 acceptance."""
+    import importlib.util
     from types import SimpleNamespace
+    from lifecycle_fixtures import accepted_graph
     loader=importlib.util.spec_from_file_location('workflow_content_fabric_fixture',ROOT/'.ai/runtime/fabric/fabric.py')
     module=importlib.util.module_from_spec(loader);loader.loader.exec_module(module)
-    key=b'synthetic-workflow-L0-test-key-only-000000000'
-    key_path=tmp_path/'synthetic-workflow-verification-key';key_path.write_bytes(key)
-    monkeypatch.setattr(module,'KEY_PATH',str(key_path))
-    entries=[]
-    def entry(op,data,sign=False):
-        previous=entries[-1]['hash'] if entries else '0'*64
-        sequence=len(entries)+1
-        digest=hashlib.sha256((previous+module.canonical(data)+str(sequence)).encode()).hexdigest()
-        item={'op':op,'data':data,'seq':sequence,'prev':previous,'hash':digest}
-        if sign:item['sig']=hmac.new(key,digest.encode(),hashlib.sha256).hexdigest()
-        entries.append(item)
-    entry('node',{'id':'frag-acceptance','type':'frag','layer':1,'text':json.dumps({'profile':'workflow-acceptance','acceptance':bound})})
-    entry('node',{'id':'evd-workflow','type':'evd','layer':1,'text':'Synthetic gate evidence fixture','confidence':'deterministic'})
-    entry('node',{'id':'rev-l0','type':'rev','layer':0,'state':'accepts','reviewer':'Synthetic workflow authority'},True)
-    entry('edge',{'src':'evd-workflow','label':'supports','dst':'frag-acceptance'})
-    entry('edge',{'src':'frag-acceptance','label':'reviewed_by','dst':'rev-l0'})
-    from test_content_lint import operator_attested_fixture
-    operator_attested_fixture(module,entries,tmp_path,monkeypatch)
-    return SimpleNamespace(fabric=module.Fabric('synthetic-workflow-test',entries),fragment_id='frag-acceptance'),entries
+    # Each handoff gets a distinct disposable ledger and key fixture.
+    import hashlib
+    directory=tmp_path/hashlib.sha256(json.dumps(bound,sort_keys=True).encode()).hexdigest()
+    directory.mkdir()
+    graph,fragment_id,_=accepted_graph(module,directory,monkeypatch,
+        json.dumps({'profile':'workflow-acceptance','acceptance':bound}))
+    return SimpleNamespace(fabric=graph,fragment_id=fragment_id),graph.transactions
 
 
 def test_every_handoff_executes_positive_and_missing_receiver_or_authority_checks(tmp_path,monkeypatch):
@@ -151,7 +140,7 @@ def test_every_handoff_executes_positive_and_missing_receiver_or_authority_check
             authority,entries=signed_fabric_acceptance(bound,tmp_path,monkeypatch)
             kwargs['authority']=authority
             assert check(row['handoff_id'],model,report,ROOT,**kwargs)['status']=='ACCEPTANCE_VERIFIED',row['handoff_id']
-            entries[2]['operator_authority']['receipt']['signature']='AA=='
+            entries[-1]['proof']['receipt']['signature']='AA=='
             assert 'EXISTING_SIGNED_L0_ACCEPTANCE_REQUIRED' in check(row['handoff_id'],model,report,ROOT,**kwargs)['findings']
         else:
             subject={**bound,'verdict':'PASS','evidence':'Reviewed the exact scoped workflow gate and evidence in the canonical source.',

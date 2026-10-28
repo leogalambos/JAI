@@ -86,8 +86,7 @@ def prepare_plan(root, provider, family, cases=3, model=None):
     family = references.canonical_family(family)
     runtime = _runtime(root)
     selected = []
-    from content_spec import ContentSpec
-    specifications = ContentSpec(root)
+    specifications = references.specs
     for level in LEVELS[:cases]:
         path = runtime / 'content/expert_references' / family / (level + '.md')
         result = references.validate(path, kind=family, complexity=level, bundled=True)

@@ -30,13 +30,15 @@ def rules(report):
     return {item['rule_id'] for item in report['findings']}
 
 
-def reviewed(model, spec, same_principal=False):
+def reviewed(model, spec, same_principal=False, declared_aliases=False):
     # This fake is a host boundary contract test, not live dispatcher qualification.
     registry = {}
     def verifier(token):
         return copy.deepcopy(registry.get(token))
     model = copy.deepcopy(model)
     model['producer'] = {'context_manifest': {'history_policy': 'fresh'}}
+    if declared_aliases:
+        model['producer']['name'] = 'Producer Alias'
     producer_hash = canonical_hash(model)
     registry['producer-token'] = {'principal': 'host:producer', 'reviewer': False,
         'subject_digest': producer_hash, 'snapshot_digest': producer_hash,
@@ -47,6 +49,8 @@ def reviewed(model, spec, same_principal=False):
               'unit_reviews': [{'unit_id': 'decision-paper.core', 'verdict': 'PASS',
                                'rationale': 'The specific platform decision has a bounded pending condition.',
                                'evidence': 'Reviewed canonical core decision at $.semantic_units.core.'}], 'findings': []}
+    if declared_aliases:
+        review['name'] = 'Reviewer Alias'
     registry['review-token'] = {'principal': 'host:producer' if same_principal else 'host:reviewer', 'reviewer': True,
         'subject_digest': canonical_hash(review), 'snapshot_digest': canonical_hash(model),
         'context_digest': canonical_hash(review['context_manifest'])}
@@ -157,10 +161,14 @@ def test_independent_host_verified_review_is_bound_to_exact_source():
 
 def test_same_principal_rejected_even_with_different_declared_names():
     model, spec = sample()
-    model, review, verifier, _ = reviewed(model, spec, same_principal=True)
-    model['producer']['name'] = 'Producer Alias'
-    review['name'] = 'Reviewer Alias'
+    model, review, verifier, _ = reviewed(model, spec, same_principal=True, declared_aliases=True)
     assert 'REVIEW_IDENTITY_UNVERIFIED' in rules(evaluate(model, spec, reviewer=review, trusted_executions=verifier))
+
+
+def test_different_authenticated_principals_pass_with_distinct_declared_aliases():
+    model, spec = sample()
+    model, review, verifier, _ = reviewed(model, spec, declared_aliases=True)
+    assert evaluate(model, spec, reviewer=review, trusted_executions=verifier)['gate_verdict'] == 'CONTENT_PASS'
 
 
 def test_review_without_unit_evidence_is_not_semantic_acceptance():
@@ -329,84 +337,36 @@ def test_actual_dispatcher_hmac_verification_supports_review_and_rejects_tamper(
 
 
 
-def operator_attested_fixture(module,entries,tmp_path,monkeypatch):
-    """Real Ed25519 on disposable data; not host/operator authenticity evidence."""
-    import subprocess,base64,copy
-    import operator_actions as op
-    start=next(i for i,e in enumerate(entries) if e['op']=='node' and e['data'].get('layer')==0)
-    for entry in entries:
-        entry.pop('sig',None);entry.pop('operator_authority',None)
-    source=tmp_path/'synthetic-operator-prefix.jsonl'
-    source.write_text(''.join(module.canonical(e)+'\n' for e in entries[:start]))
-    req=op.request('fabric-review','Synthetic test fixture only',source,'fixture',{'entries':copy.deepcopy(entries[start:]),'entries_sha256':op.sha(op.canonical(entries[:start]))})
-    key=tmp_path/'synthetic-private.pem';public=tmp_path/'synthetic-public.pem'
-    subprocess.run(['/usr/bin/openssl','genpkey','-algorithm','ED25519','-out',str(key)],check=True,capture_output=True)
-    subprocess.run(['/usr/bin/openssl','pkey','-in',str(key),'-pubout','-out',str(public)],check=True,capture_output=True)
-    trust={'key_id':op.sha(public.read_bytes()),'public_key':public.read_text()}
-    monkeypatch.setattr(op,'trusted_key',lambda:trust)
-    receipt=op.response(req,True);receipt.update(key_id=trust['key_id'],assurance=op.ASSURANCE)
-    payload=tmp_path/'synthetic-payload';payload.write_bytes(op.canonical(receipt));signature=tmp_path/'synthetic-signature'
-    subprocess.run(['/usr/bin/openssl','pkeyutl','-sign','-inkey',str(key),'-rawin','-in',str(payload),'-out',str(signature)],check=True,capture_output=True)
-    receipt['signature']=base64.b64encode(signature.read_bytes()).decode()
-    for i,entry in enumerate(entries[start:]):entry['operator_authority']={'request':req,'receipt':receipt,'step':i}
-
-
 def test_existing_fabric_adapter_reads_signed_acceptance_without_mutations(tmp_path, monkeypatch):
     import datetime as dt
-    import hashlib
-    import hmac
     import importlib.util
     from content_lint import ExistingFabricAuthority
+    from lifecycle_fixtures import accepted_graph
     path=Path(__file__).resolve().parents[1]/'.ai/runtime/fabric/fabric.py'
     module_spec=importlib.util.spec_from_file_location('content_test_readonly_fabric',path)
     module=importlib.util.module_from_spec(module_spec);module_spec.loader.exec_module(module)
-    key=b'synthetic-fabric-test-key-only-00000000000'
-    key_path=tmp_path/'test-public-boundary-key';key_path.write_bytes(key)
-    monkeypatch.setattr(module,'KEY_PATH',str(key_path))
-    entries=[]
-    def entry(op,data,sign=False):
-        previous=entries[-1]['hash'] if entries else '0'*64
-        sequence=len(entries)+1
-        digest=hashlib.sha256((previous+module.canonical(data)+str(sequence)).encode()).hexdigest()
-        item={'op':op,'data':data,'seq':sequence,'prev':previous,'hash':digest}
-        if sign:item['sig']=hmac.new(key,digest.encode(),hashlib.sha256).hexdigest()
-        entries.append(item)
-    # These are isolated data fixtures, never authority commands or live fabric writes.
-    entry('node',{'id':'frag-test','type':'frag','layer':1,'text':json.dumps({'profile':'content-enforcement','dcs_activation':{'scope':'dcs-content-enforcement'}})})
-    entry('node',{'id':'evd-test','type':'evd','layer':1,'text':'Synthetic deterministic corpus','confidence':'deterministic'})
-    entry('node',{'id':'rev-test','type':'rev','layer':0,'state':'accepts','reviewer':'Synthetic human authority'},sign=True)
-    entry('edge',{'src':'evd-test','label':'supports','dst':'frag-test'})
-    entry('edge',{'src':'frag-test','label':'reviewed_by','dst':'rev-test'})
-    operator_attested_fixture(module,entries,tmp_path,monkeypatch)
-    fabric=module.Fabric('synthetic-read-only-test',entries)
-    adapter=ExistingFabricAuthority(fabric,'frag-test',clock=lambda:dt.datetime(2026,10,19,tzinfo=dt.timezone.utc))
+    fabric,fragment_id,_=accepted_graph(module,tmp_path,monkeypatch,
+        json.dumps({'profile':'content-enforcement','dcs_activation':{'scope':'dcs-content-enforcement'}}))
+    adapter=ExistingFabricAuthority(fabric,fragment_id,clock=lambda:dt.datetime(2026,10,19,tzinfo=dt.timezone.utc))
+    original_bytes=Path(module.log_path(fabric.eng)).read_bytes()
     result=adapter.verify(adapter.proof)
-    assert result['authority_ref']=='rev-test'
+    assert result['authority_ref']==next(n['id'] for n in fabric.nodes.values() if n['type']=='rev' and n['layer']==0)
     assert result['signature_verified']
-    assert len(entries)==5
-    original_text=entries[0]['data']['text']
-    def resign_fixture():
-        previous='0'*64
-        for item in entries:
-            item['prev']=previous
-            item['hash']=hashlib.sha256((previous+module.canonical(item['data'])+str(item['seq'])).encode()).hexdigest()
-            if 'sig' in item:item['sig']=hmac.new(key,item['hash'].encode(),hashlib.sha256).hexdigest()
-            previous=item['hash']
-        operator_attested_fixture(module,entries,tmp_path,monkeypatch)
+    assert Path(module.log_path(fabric.eng)).read_bytes()==original_bytes
     for malformed in ('{"profile":"content-enforcement","profile":"content-enforcement","dcs_activation":{}}',
                       '{"profile":"content-enforcement","dcs_activation":{"critical_recall":Infinity}}'):
-        entries[0]['data']['text']=malformed
-        resign_fixture()
-        signed=module.Fabric('synthetic-malformed-signed-policy',entries)
-        rejected=ExistingFabricAuthority(signed,'frag-test')
-        assert signed.verify()==([],[])
-        assert rejected.verify(rejected.proof) is None
-    entries[0]['data']['text']=original_text
-    resign_fixture()
-    entries[2]['operator_authority']['receipt']['signature']='AA=='
-    assert adapter.verify(adapter.proof) is None
-    resign_fixture()
+        directory=tmp_path/('malformed-'+str(len(malformed)));directory.mkdir()
+        # Restore both ledger location and external trust together on scope exit.
+        with monkeypatch.context() as isolated:
+            signed,subject,_=accepted_graph(module,directory,isolated,malformed)
+            rejected=ExistingFabricAuthority(signed,subject)
+            assert signed.verify()==([],[])
+            assert rejected.verify(rejected.proof) is None
     import operator_actions as op
+    assert Path(module.log_path(fabric.eng)).read_bytes()==original_bytes
+    fabric.transactions[-1]['proof']['receipt']['signature']='AA=='
+    assert adapter.verify(adapter.proof) is None
+    fabric.transactions=module.load(fabric.eng)
     monkeypatch.setattr(op,'trusted_key',lambda: (_ for _ in ()).throw(ValueError('no public pin')))
     assert adapter.verify(adapter.proof) is None
 
@@ -470,26 +430,9 @@ def test_registered_approved_policy_activates_via_actual_existing_signed_fabric(
     module_path=Path(__file__).resolve().parents[1]/'.ai/runtime/fabric/fabric.py'
     loader=importlib.util.spec_from_file_location('registered_content_fabric_fixture',module_path)
     module=importlib.util.module_from_spec(loader);loader.loader.exec_module(module)
-    key=b'synthetic-qualified-path-key-only-000000000'
-    key_path=tmp_path/'test-only-verification-key';key_path.write_bytes(key)
-    monkeypatch.setattr(module,'KEY_PATH',str(key_path))
-    entries=[]
-    def entry(op,data,sign=False):
-        previous=entries[-1]['hash'] if entries else '0'*64
-        sequence=len(entries)+1
-        digest=hashlib.sha256((previous+module.canonical(data)+str(sequence)).encode()).hexdigest()
-        item={'op':op,'data':data,'seq':sequence,'prev':previous,'hash':digest}
-        if sign:item['sig']=hmac.new(key,digest.encode(),hashlib.sha256).hexdigest()
-        entries.append(item)
-    # Signed data fixtures exercise read-only verification, never live authority acts.
-    entry('node',{'id':'frag-policy','type':'frag','layer':1,'text':json.dumps(policy)})
-    entry('node',{'id':'evd-corpus','type':'evd','layer':1,'text':'Synthetic qualification fixture','confidence':'deterministic'})
-    entry('node',{'id':'rev-l0','type':'rev','layer':0,'state':'accepts','reviewer':'Synthetic domain authority'},True)
-    entry('edge',{'src':'evd-corpus','label':'supports','dst':'frag-policy'})
-    entry('edge',{'src':'frag-policy','label':'reviewed_by','dst':'rev-l0'})
-    operator_attested_fixture(module,entries,tmp_path,monkeypatch)
-    fabric=module.Fabric('synthetic-registered-policy-test',entries)
-    authority=ExistingFabricAuthority(fabric,'frag-policy',clock=lambda:dt.datetime(2026,10,19,tzinfo=dt.timezone.utc))
+    from lifecycle_fixtures import accepted_graph
+    fabric,fragment_id,_=accepted_graph(module,tmp_path,monkeypatch,json.dumps(policy))
+    authority=ExistingFabricAuthority(fabric,fragment_id,clock=lambda:dt.datetime(2026,10,19,tzinfo=dt.timezone.utc))
     report=evaluate(model,spec,mode='blocking',reviewer=review,trusted_executions=dispatcher,authority=authority)
     assert report['gate_verdict']==('CONTENT_FAIL' if hard_constraint else 'CONTENT_PASS')
     if hard_constraint:
@@ -497,9 +440,9 @@ def test_registered_approved_policy_activates_via_actual_existing_signed_fabric(
         advisory=evaluate(model,spec,reviewer=review,trusted_executions=dispatcher)
         assert not next(f for f in advisory['findings'] if f['rule_id']=='HARD_SIZE_CONSTRAINT')['blocking']
         assert advisory['gate_verdict']=='DRAFT_INCOMPLETE'
-    assert report['approval_refs']==['rev-l0']
+    assert report['approval_refs']==[next(n['id'] for n in fabric.nodes.values() if n['type']=='rev' and n['layer']==0)]
     assert not verify_report(report,model,spec,trusted_executions=dispatcher,authority=authority)
-    assert len(entries)==5
+    assert all(transaction['format']==2 for transaction in fabric.transactions)
     # The metadata alone never activates enforcement, even when declared approved.
     with pytest.raises(ValueError,match='HUMAN_L0'):
         evaluate(model,spec,mode='blocking',reviewer=review,trusted_executions=dispatcher)

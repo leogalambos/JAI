@@ -1,7 +1,53 @@
-# Method: one complete engagement
+# Method: current execution rules and an SDLC illustration
 
-A worked run of the paper's Case 1 — adapting a generic secure SDLC library to a client that has CI/CD but no
-dependency-scanning (SCA) tool. Every command is real; the IDs are what the runtime prints.
+## Current ordinary execution requirements
+
+The operative complete recipe is the product manual's
+`docs/operations/normal-layered-workflow.md`. It runs actual source
+registration, explicit obligations, six layers, independent review,
+human acceptance and a governed source replacement with fresh output.
+Apply these requirements before using any conceptual example below:
+
+1. Register actual applicable source bytes with `record-input`; read
+   exact current source and policy version IDs through `lifecycle-status`.
+   Replacing a governing selection requires a signed lifecycle plan.
+2. The issuer explicitly declares applicable category obligations and
+   evidence/reviewer roles. Issue `contract ... --obligations FILE` with
+   all nine contract fields. Every derived child contract carries its
+   own `contract.obligations`; no invented universal category defaults.
+3. Dispatch only the sanitised contract brief: core context packet,
+   declared obligations, current exact contract/source/policy version
+   IDs and the other inputs actually required. Echo the original
+   `context_digest`. Do not add conversation or sibling-branch context.
+4. The producer supplies `bindings` on every fragment and evidence
+   record. Each declared category references its exact versions through
+   `{"refs": ["exact-version-id"]}`. Capture real observation bytes and
+   bind their actual source; a path or display label is not an identity.
+5. Request independent adjacent review of the exact fragment and full
+   dependency closure before upward use. Return both `supported_by`
+   accepted children and explicit bindings on the upward fragment.
+   Do not rewrite replies to fill missing fields; re-request or escalate.
+6. Finish with `answer ... --bindings FILE`, using the contract issued
+   from that same L1 requirement and accepted L2 support. Routine
+   qualification grants no human acceptance, release or continuation.
+   The human signs/applies exact L0 effects through external Ed25519 trust.
+
+After a signed replacement, the identical fresh pending selected input
+may be recaptured with `record-input` at its recorded locator. Produce
+new observations, fragments and reviews; cancelled conclusions and
+acceptance cannot be revived by routine verification. Obtain new exact
+human acceptance before release eligibility.
+
+## Historical conceptual SDLC illustration
+
+The remaining story illustrates the paper's Case 1: adapting a secure
+SDLC library to a client with CI/CD but no dependency-scanning tool.
+It is not a complete current executable workflow. Its abbreviated
+commands and JSON omit lifecycle obligations, exact bindings and some
+context digests; those omissions are ineligible under current rules.
+Do not run them as a completion recipe. Apply the current requirements
+above and the complete operative walkthrough instead. IDs in this story
+are illustrative and must never substitute for actual runtime output.
 
 ```bash
 # `fabric` below means:  python3 ~/.ai/it-role-house/fabric/fabric.py   (write it out in full; never store it in a shell variable)
@@ -165,8 +211,15 @@ rendering.
 When a dependency later changes:
 
 ```bash
-fabric invalidate sdlc --changed evd-0007 --reason 'inventory export superseded by a new snapshot'
+fabric invalidate sdlc --changed evd-0007 --reason 'inventory export superseded by a new snapshot' --request-out invalidation-plan.json
 ```
 
-Every dependent fragment gets a blocking conflict. Re-run only the affected branch; do not regenerate the whole
-engagement unless the changed dependency reaches the top-level requirement.
+This prepares a pending plan without changing ledger state. The external human
+reviews and signs it with `lifecycle-update` capability, then performs protected
+`fabric lifecycle-apply --request invalidation-plan.json --receipt RECEIPT`.
+Exact effects cancel affected conclusions and dependent reviews, acceptance and
+permissions, including cross-scope dependents. Re-run the allowed fresh
+verification path, obtain independent current reviews and request new separate
+human acceptance. Reinstatement never revives cancelled proofs. Retain unrelated
+branches. Unsupported ledgers are archive-only; reconstruct a new engagement
+from maintained public specifications rather than executing or importing them.

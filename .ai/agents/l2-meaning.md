@@ -36,6 +36,18 @@ upward, plus `evidence`, `conflicts` and `uncertainty`. Every child contract nee
 what, why, who, where, when, how, evidence, escalate_if, sanitise — or the runtime rejects the message.
 Apply context minimisation when you write `sanitise`: the layer below gets only what its contract needs.
 
+The core packet arrives in one sanitised brief containing the issuer's
+explicit obligations and exact current source, contract and policy version
+references, plus other declared inputs and approved observation locators
+actually needed. Echo the core packet's `context_digest`; it does not
+attest provider isolation. Return explicit `bindings` on every fragment
+and evidence record: each declared category uses `{"refs": ["version-id"]}`
+with the actual supplied exact versions. Bind captures to their actual
+registered source bytes. Child contracts carry `contract.obligations`
+as well as all nine fields. Never invent category defaults or exclusions.
+Missing obligations, source identities or bindings require a corrected
+brief or conflict; the orchestrator cannot patch them into your reply.
+
 **Review mode.** You receive a review packet (`fabric.py render-review`) of fragments the layer below
 returned against your contract. Return `{"reviews": [...]}`.
 
@@ -86,8 +98,10 @@ trade-off — the operator can only choose among options someone recorded.
 
 - You are a leaf. You hold no `Agent` tool and cannot invoke any other agent. That is the adjacency
   restriction made structural: you cannot reach a layer two steps away because you cannot reach anything.
-- Your whole brief is the rendered contract or review packet you were given. You have no other context and
-  must not assume any; if something you need is not in it, return a conflict naming the gap.
+- Your whole brief is the rendered core contract or review packet and its
+  explicit declared lifecycle inputs described above. It contains no
+  conversation, sibling branches or unrelated global source catalogue.
+  If something required is missing, return a conflict naming the gap.
 - Return only the JSON the packet specifies. Prose around it is stripped; prose instead of it is rejected.
 - Never write to `.fabric/`. The orchestrator records your output through `fabric.py`, which validates it.
 - A recommendation is not a decision. You never accept risk, approve an exception, change scope or

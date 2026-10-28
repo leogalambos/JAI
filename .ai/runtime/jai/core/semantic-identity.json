@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "2.0.0",
   "release": "26.10.4",
   "namespaces": [
     "intent",
@@ -16,12 +16,18 @@
     "agent",
     "policy",
     "execution",
-    "fabric"
+    "fabric",
+    "lifecycle"
   ],
   "rules": [
     "one canonical identity per semantic object",
     "profile objects reference canonical identity",
-    "assurance records bind object_ref and object_hash",
+    "assurance records bind object_ref lifecycle:<logical_id> and object_hash sha256:<version_id>",
+    "version_id is SHA-256 of jai.lifecycle.version.v2 followed by a NUL byte and the canonical jai.lifecycle.manifest/2 JSON bytes produced by lifecycle.manifest and lifecycle.version_id",
+    "canonical manifests recursively NFC-normalize strings and keys, reject duplicate normalized keys and floats, sort keys, preserve array order and exclude locators",
+    "composite members are sorted by role and logical_id and bind exact member version_id values",
+    "content blobs use exact bytes with the jai.lifecycle.blob.v2 NUL-terminated SHA-256 domain",
+    "contract_ref and context_digest belong to the immutable semantic manifest; display labels and file locators do not define identity",
     "profile-local identifiers must declare canonical_ref when representing an existing semantic object"
   ]
 }

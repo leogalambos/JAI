@@ -69,29 +69,26 @@ def test_no_follow_files_and_returned_output_scope(tmp_path):
     with pytest.raises(ValueError):op.verify_outputs(req,result)
 
 
-def test_real_ed25519_verification_tamper_cross_request_and_decline(tmp_path):
+def test_real_ed25519_verification_tamper_cross_request_and_decline(tmp_path,monkeypatch):
     # Disposable synthetic crypto fixture ONLY; production trust is not patched
     # by the application, and this is not evidence of a real operator action.
-    key=tmp_path/'synthetic-private.pem';pub=tmp_path/'synthetic-public.pem'
-    subprocess.run(['openssl','genpkey','-algorithm','ED25519','-out',str(key)],check=True,capture_output=True)
-    subprocess.run(['openssl','pkey','-in',str(key),'-pubout','-out',str(pub)],check=True,capture_output=True)
+    from lifecycle_fixtures import SyntheticOperator
+    signer=SyntheticOperator(tmp_path,monkeypatch)
     source=tmp_path/'ledger';source.write_text('fixture')
     req=op.request('fabric-review','fixture',source,'frag-1',{})
-    trust={'key_id':op.sha(pub.read_bytes()),'public_key':pub.read_text()}
-    body=op.response(req,True);body.update(key_id=trust['key_id'],assurance=op.ASSURANCE)
-    payload=tmp_path/'payload';payload.write_bytes(op.canonical(body));signature=tmp_path/'sig'
-    subprocess.run(['openssl','pkeyutl','-sign','-inkey',str(key),'-rawin','-in',str(payload),'-out',str(signature)],check=True,capture_output=True)
-    receipt=dict(body,signature=base64.b64encode(signature.read_bytes()).decode())
-    with patch.object(op,'trusted_key',return_value=trust):
-        assert op.verify_receipt(req,receipt)['accepted']
-        altered=dict(receipt,accepted=False)
-        with pytest.raises(ValueError):op.verify_receipt(req,altered)
-        other=op.request('fabric-review','other',source,'frag-2',{})
-        with pytest.raises(ValueError):op.verify_receipt(other,receipt)
+    receipt=signer.sign(req)
+    assert op.verify_receipt(req,receipt)['accepted']
+    assert not op.verify_receipt(req,signer.sign(req,accepted=False))['accepted']
+    altered=dict(receipt,accepted=False)
+    with pytest.raises(ValueError):op.verify_receipt(req,altered)
+    other=op.request('fabric-review','other',source,'frag-2',{})
+    with pytest.raises(ValueError):op.verify_receipt(other,receipt)
+    signer.trust['capabilities']=['lifecycle-update']
+    with pytest.raises(ValueError,match='capability'):op.verify_receipt(req,receipt)
     with patch.object(op,'trusted_key',side_effect=ValueError('missing protected trust')):
         with pytest.raises(ValueError):op.verify_receipt(req,receipt)
     with patch.object(op.sys.stdin,'isatty',return_value=False):
-        with pytest.raises(ValueError):op.sign(req,key)
+        with pytest.raises(ValueError):op.sign(req,signer.private)
 
 
 def test_protected_pin_doctor_and_incomplete_acceptance(tmp_path):
@@ -119,39 +116,38 @@ def test_protected_pin_doctor_and_incomplete_acceptance(tmp_path):
     with patch.object(sys,'argv',['operator_actions.py','doctor']):assert op.main()==0
 
 
-def test_exact_fabric_transaction_positive_decline_replay_and_tamper(tmp_path):
+def test_exact_fabric_transaction_positive_decline_replay_and_tamper(tmp_path,monkeypatch):
     import importlib.util,types,contextlib,io
-    from unittest.mock import patch
+    from lifecycle_fixtures import accepted_graph
     path=Path(__file__).resolve().parents[1]/'.ai/runtime/fabric/fabric.py'
     spec=importlib.util.spec_from_file_location('operator_transaction_unit',path);fabric=importlib.util.module_from_spec(spec);spec.loader.exec_module(fabric)
-    fabric.FABRIC_DIR=str(tmp_path/'fabric');fabric.KEY_PATH=str(tmp_path/'unused-legacy-key')
-    with contextlib.redirect_stdout(io.StringIO()):fabric.cmd_init(types.SimpleNamespace(engagement='fixture',intent='synthetic test only',owner='fixture',success='test',boundary='no external effects'))
-    graph=fabric.open_fabric('fixture');fragment=graph.add_node('frag',1,'synthetic target',kind='claim')
-    key=tmp_path/'synthetic-private.pem';public=tmp_path/'synthetic-public.pem'
-    subprocess.run(['/usr/bin/openssl','genpkey','-algorithm','ED25519','-out',str(key)],check=True,capture_output=True)
-    subprocess.run(['/usr/bin/openssl','pkey','-in',str(key),'-pubout','-out',str(public)],check=True,capture_output=True)
-    trust={'public_key':public.read_text(),'key_id':op.sha(public.read_bytes())}
-    with patch.object(op,'trusted_key',return_value=trust):
-        for accepted in (True,False):
-            request_file=tmp_path/('accept.json' if accepted else 'decline.json')
-            args=types.SimpleNamespace(engagement='fixture',fragment=fragment['id'],layer=0,state='accepts',rationale='unit test only',reviewer='synthetic key',model='test',constraints=None,request_out=str(request_file))
-            before=op.sha(op.regular(fabric.log_path('fixture')))
-            with contextlib.redirect_stdout(io.StringIO()):assert fabric.operator_request(args,'fabric-review')==3
-            assert before==op.sha(op.regular(fabric.log_path('fixture')))
-            req=json.loads(request_file.read_text());body=op.response(req,accepted);body.update(key_id=trust['key_id'],assurance=op.ASSURANCE)
-            payload=tmp_path/'payload';payload.write_bytes(op.canonical(body));signature=tmp_path/'signature'
-            subprocess.run(['/usr/bin/openssl','pkeyutl','-sign','-inkey',str(key),'-rawin','-in',str(payload),'-out',str(signature)],check=True,capture_output=True)
-            body['signature']=base64.b64encode(signature.read_bytes()).decode();receipt=tmp_path/('accept-receipt.json' if accepted else 'decline-receipt.json');receipt.write_text(json.dumps(body))
-            command=types.SimpleNamespace(request=str(request_file),receipt=str(receipt))
-            with contextlib.redirect_stdout(io.StringIO()):assert fabric.cmd_apply_operator(command)==(0 if accepted else 2)
-            if accepted:
-                graph=fabric.open_fabric('fixture');entry=next(e for e in graph.entries if 'operator_authority' in e)
-                assert fabric.verify_operator_entry(entry,graph.entries)
-                assert graph.authority_verified(entry['data']['id'])
-                with pytest.raises(fabric.FabricError):fabric.cmd_apply_operator(command)
-                altered=copy.deepcopy(entry);altered['operator_authority']['receipt']['signature']='AA=='
-                with pytest.raises(ValueError):fabric.verify_operator_entry(altered,graph.entries)
-            else:assert before==op.sha(op.regular(fabric.log_path('fixture')))
+    with contextlib.redirect_stdout(io.StringIO()):
+        graph,fragment_id,signer=accepted_graph(fabric,tmp_path,monkeypatch,'Synthetic exact target',
+            engagement='fixture',acceptance_state=None)
+    fragment=graph.nodes[fragment_id]
+    assert graph.lifecycle.evaluate(fragment['version_id'])['eligible']
+    assert not graph.lifecycle.evaluate(fragment['version_id'],release=True)['eligible']
+    for accepted in (False,True):
+        request_file=tmp_path/('accept.json' if accepted else 'decline.json')
+        args=types.SimpleNamespace(engagement='fixture',fragment=fragment['id'],layer=0,state='accepts',rationale='unit test only',reviewer='synthetic key',model='test',constraints=None,request_out=str(request_file))
+        before=op.sha(op.regular(fabric.log_path('fixture')))
+        with contextlib.redirect_stdout(io.StringIO()):assert fabric.operator_request(args,'fabric-review')==3
+        assert before==op.sha(op.regular(fabric.log_path('fixture')))
+        req=json.loads(request_file.read_text())
+        receipt=tmp_path/('accept-receipt.json' if accepted else 'decline-receipt.json')
+        receipt.write_text(json.dumps(signer.sign(req,accepted=accepted)))
+        command=types.SimpleNamespace(request=str(request_file),receipt=str(receipt))
+        with contextlib.redirect_stdout(io.StringIO()):assert fabric.cmd_apply_operator(command)==(0 if accepted else 2)
+        if accepted:
+            graph=fabric.open_fabric('fixture');transaction=graph.transactions[-1]
+            assert fabric.verify_lifecycle_proof(transaction,graph.transactions[:-1])
+            review=next(node for node in graph.nodes.values() if node['layer']==0)
+            assert graph.authority_verified(review['id'])
+            assert graph.lifecycle.evaluate(fragment['version_id'],release=True)['eligible']
+            with pytest.raises(fabric.FabricError):fabric.cmd_apply_operator(command)
+            altered=copy.deepcopy(transaction);altered['proof']['receipt']['signature']='AA=='
+            with pytest.raises(ValueError):fabric.verify_lifecycle_proof(altered,graph.transactions[:-1])
+        else:assert before==op.sha(op.regular(fabric.log_path('fixture')))
 
 
 def test_execution_route_is_separate_from_formal_authority_and_never_executes(tmp_path):
@@ -314,17 +310,70 @@ def test_doctor_distinguishes_weasyprint_cli_from_python_module():
     assert not report['html_pdf'].startswith('READY')
 
 
-@pytest.mark.parametrize('platform', ['linux','darwin','win32'])
-def test_doctor_reports_cli_selection_without_current_python_module(platform):
-    import shutil
-    executable=shutil.which('weasyprint')
-    with patch.object(op.sys,'platform',platform), patch('importlib.util.find_spec',return_value=None), patch('shutil.which',side_effect=lambda name:executable if name=='weasyprint' else None):
-        report=op.doctor()
+def _controlled_weasyprint_cli(tmp_path, version='70.0', render_exit=0):
+    # This executable is a synthetic edge collaborator, never native renderer evidence.
+    executable = tmp_path / 'weasyprint'
+    executable.write_text(
+        '#!' + sys.executable + '\n'
+        'import pathlib, sys\n'
+        'if sys.argv[1:] == ["--version"]:\n'
+        f'    print("WeasyPrint version {version}")\n'
+        '    raise SystemExit(0)\n'
+        'assert sys.argv[1:3] == ["--allowed-protocols", ""]\n'
+        'assert "--no-http-redirects" in sys.argv\n'
+        'assert "--fail-on-http-errors" in sys.argv\n'
+        'assert "JAI renderer capability check" in sys.stdin.read()\n'
+        f'if {render_exit}: raise SystemExit({render_exit})\n'
+        'pathlib.Path(sys.argv[-1]).write_bytes(b"%PDF-synthetic-fixture")\n'
+    )
+    executable.chmod(0o755)
+    return str(executable)
+
+
+@pytest.mark.parametrize('platform_label', ['linux', 'darwin', 'win32'])
+def test_doctor_controlled_cli_selection_provenance_for_simulated_platform_labels(tmp_path, platform_label):
+    executable = _controlled_weasyprint_cli(tmp_path)
+    with patch.object(op.sys, 'platform', platform_label), patch('importlib.util.find_spec', return_value=None), patch('shutil.which', side_effect=lambda name: executable if name == 'weasyprint' else None):
+        report = op.doctor()
     assert report['html_pdf'].startswith('READY: actual WeasyPrint')
-    selected=report['renderer_dependencies']['selected_renderer']
-    assert selected['execution']=='cli'
-    assert selected['executable']==executable
-    assert selected['version'].split('.')[0]=='70'
+    selected = report['renderer_dependencies']['selected_renderer']
+    assert selected['execution'] == 'cli'
+    assert selected['executable'] == executable
+    assert selected['version'] == '70.0'
+    assert selected['python'] is None and selected['pyphen'] is None
+
+
+@pytest.mark.parametrize('state', ['absent', 'unqualified', 'conversion-failed'])
+def test_doctor_controlled_cli_rejects_missing_unqualified_and_failed_rendering(tmp_path, state):
+    executable = None if state == 'absent' else _controlled_weasyprint_cli(
+        tmp_path, version='69.0' if state == 'unqualified' else '70.0',
+        render_exit=7 if state == 'conversion-failed' else 0)
+    with patch('importlib.util.find_spec', return_value=None), patch('shutil.which', side_effect=lambda name: executable if name == 'weasyprint' else None):
+        report = op.doctor()
+    assert not report['html_pdf'].startswith('READY')
+    assert 'selected_renderer' not in report['renderer_dependencies']
+    if state != 'absent':
+        assert report['html_pdf'].startswith('UNAVAILABLE: actual HTML conversion failed')
+        diagnostic = report['html_pdf_diagnostic']['message']
+        assert ('version not qualified' if state == 'unqualified' else 'exit=7') in diagnostic
+
+
+def test_real_qualified_weasyprint_cli_integration_reports_conversion_provenance():
+    import re
+    import shutil
+    executable = shutil.which('weasyprint')
+    if executable is None:
+        pytest.skip('Core-only environment: optional WeasyPrint CLI absent; full qualification requires real renderer checks')
+    probe = subprocess.run([executable, '--version'], capture_output=True, text=True, timeout=10)
+    if probe.returncode or re.fullmatch(r'WeasyPrint(?: version)?\s+(70(?:\.[0-9]+)*)', probe.stdout.strip()) is None:
+        pytest.skip('Core-only environment: optional CLI is not qualified WeasyPrint 70; full qualification requires real renderer checks')
+    # A qualified available renderer must really convert; failure is never skipped.
+    report = op.doctor()
+    assert report['html_pdf'].startswith('READY: actual WeasyPrint')
+    selected = report['renderer_dependencies']['selected_renderer']
+    assert selected['execution'] == 'cli'
+    assert selected['executable'] == executable
+    assert selected['version'].split('.')[0] == '70'
     assert selected['python'] is None and selected['pyphen'] is None
 
 

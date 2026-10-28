@@ -8,6 +8,9 @@ from pathlib import Path
 import tempfile
 import unittest
 from unittest.mock import patch
+from argparse import Namespace
+import pytest
+from lifecycle_fixtures import SyntheticOperator
 
 SOURCE = Path(__file__).resolve().parents[1] / '.ai/runtime/fabric/fabric.py'
 SPEC = importlib.util.spec_from_file_location('fabric_helper_test', SOURCE)
@@ -17,21 +20,43 @@ SPEC.loader.exec_module(fabric)
 
 class FabricHelperTests(unittest.TestCase):
     def _memory_graph(self, rows=(), edges=()):
-        # Raw synthetic replay data exercises traversal/counters without invoking
-        # persistence, authority signing or real engagement operations.
-        entries = [{'op': 'node', 'seq': number, 'data': {'id': name, 'type': kind, 'layer': layer, **extra}}
-                   for number, (name, kind, layer, extra) in enumerate(rows, 1)]
-        entries.extend({'op': 'edge', 'seq': len(entries) + number,
-                        'data': {'src': src, 'label': label, 'dst': dst}}
-                       for number, (src, label, dst) in enumerate(edges, 1))
-        return fabric.Fabric('pure-memory-fixture', entries)
+        """Replay actual fresh transactions; L0 nodes use synthetic signed requests."""
+        temporary=tempfile.TemporaryDirectory();self.addCleanup(temporary.cleanup)
+        directory=Path(temporary.name)
+        isolated=pytest.MonkeyPatch();self.addCleanup(isolated.undo)
+        isolated.setattr(fabric,'FABRIC_DIR',str(directory))
+        isolated.setattr(fabric,'open_fabric',lambda engagement: fabric.Fabric(engagement,fabric.load(engagement)))
+        signer=SyntheticOperator(directory,isolated)
+        graph=fabric.Fabric('fresh-fixture',[])
+        for name,kind,layer,extra in rows:
+            if layer==0:
+                subject=next((source for source,label,target in edges
+                              if label=='resolved_by' and target==name),None)
+                escalation=graph.nodes[subject] if subject else graph.add_node('esc',1,'Synthetic authority fixture')
+                request=directory/(name+'.request.json')
+                decision=extra.get('decision','exception')
+                fabric.cmd_authorise(Namespace(engagement=graph.eng,escalation=escalation['id'],
+                    decision=decision,signer='Synthetic test operator',rationale='Disposable graph fixture',
+                    expires=1,revise_text='Fresh synthetic formulation',supersedes=None,
+                    adopt=None,beyond_round_limit=False,request_out=str(request)))
+                signer.apply(fabric,request)
+                graph=fabric.open_fabric(graph.eng)
+                if name not in graph.nodes:
+                    raise AssertionError('fixture must name the generated authority identity')
+            else:
+                graph.append('node',{'id':name,'type':kind,'layer':layer,'text':'Synthetic '+name,**extra})
+        for source,label,target in edges:
+            if label=='resolved_by':
+                continue  # Already part of the exact signed authority transaction.
+            graph.add_edge(source,label,target)
+        return fabric.Fabric(graph.eng,fabric.load(graph.eng)) if rows else graph
 
     def test_round_no_counts_only_human_revisions_and_rejects_malformed_nodes(self):
         model = self._memory_graph()
         self.assertEqual(model.round_no(), 1)
-        model = self._memory_graph([('exception', 'auth', 0, {'decision': 'exception'}),
-            ('revision1', 'auth', 0, {'decision': 'revise'}),
-            ('revision2', 'auth', 0, {'decision': 'revise'})])
+        model = self._memory_graph([('auth-0001', 'auth', 0, {'decision': 'exception'}),
+            ('auth-0002', 'auth', 0, {'decision': 'revise'}),
+            ('auth-0003', 'auth', 0, {'decision': 'revise'})])
         self.assertEqual(model.round_no(), 3)
         model.nodes['broken'] = {}
         with self.assertRaises(KeyError):
@@ -40,10 +65,10 @@ class FabricHelperTests(unittest.TestCase):
     def test_contracts_this_round_resets_at_latest_revision_and_ignores_noncontracts(self):
         self.assertEqual(self._memory_graph().contracts_this_round(), 0)
         model = self._memory_graph([('old', 'ctr', 1, {}),
-            ('revision', 'auth', 0, {'decision': 'revise'}), ('new1', 'ctr', 1, {}),
+            ('auth-0001', 'auth', 0, {'decision': 'revise'}), ('new1', 'ctr', 1, {}),
             ('noise', 'req', 2, {}), ('new2', 'ctr', 2, {})])
         self.assertEqual(model.contracts_this_round(), 2)
-        model.seq_of['new1'] = model.seq_of['revision']
+        model.seq_of['new1'] = model.seq_of['auth-0001']
         self.assertEqual(model.contracts_this_round(), 1)
         del model.seq_of['new2']
         with self.assertRaises(KeyError):
@@ -52,10 +77,10 @@ class FabricHelperTests(unittest.TestCase):
     def test_steps_this_round_counts_episode_transitions_but_not_requirements(self):
         self.assertEqual(self._memory_graph().steps_this_round(), 0)
         model = self._memory_graph([('old', 'att', 2, {}),
-            ('revision', 'auth', 0, {'decision': 'revise'}), ('req', 'req', 2, {}),
+            ('auth-0001', 'auth', 0, {'decision': 'revise'}), ('req', 'req', 2, {}),
             ('attempt', 'att', 2, {}), ('evidence', 'evd', 6, {}), ('review', 'rev', 1, {})])
         self.assertEqual(model.steps_this_round(), 3)
-        model.seq_of['attempt'] = model.seq_of['revision']
+        model.seq_of['attempt'] = model.seq_of['auth-0001']
         self.assertEqual(model.steps_this_round(), 2)
         del model.seq_of['evidence']
         with self.assertRaises(KeyError):
@@ -64,7 +89,7 @@ class FabricHelperTests(unittest.TestCase):
     def test_reformulations_this_round_separates_layer_and_round_budget(self):
         self.assertEqual(self._memory_graph().reformulations_this_round(2), 0)
         model = self._memory_graph([('old', 'req', 2, {'reformulates': 'old-escalation'}),
-            ('revision', 'auth', 0, {'decision': 'revise'}),
+            ('auth-0001', 'auth', 0, {'decision': 'revise'}),
             ('plain', 'req', 2, {}), ('different-layer', 'req', 3, {'reformulates': 'esc-3'}),
             ('current', 'req', 2, {'reformulates': 'esc-2'})])
         self.assertEqual(model.reformulations_this_round(2), 1)
@@ -74,16 +99,18 @@ class FabricHelperTests(unittest.TestCase):
             model.reformulations_this_round(2)
 
     def test_esc_open_closes_on_relay_resolution_or_reformulation(self):
-        rows = [('escalation', 'esc', 2, {}), ('upward', 'esc', 1, {}), ('authority', 'auth', 0, {})]
+        rows = [('escalation', 'esc', 2, {}), ('upward', 'esc', 1, {})]
         self.assertTrue(self._memory_graph(rows).esc_open('escalation'))
-        for relation, target in [('escalates', 'upward'), ('resolved_by', 'authority')]:
-            model = self._memory_graph(rows, [('escalation', relation, target)])
-            self.assertFalse(model.esc_open('escalation'))
+        model=self._memory_graph(rows,[('escalation','escalates','upward')])
+        self.assertFalse(model.esc_open('escalation'))
+        resolved=self._memory_graph([('escalation','esc',1,{}),('auth-0001','auth',0,{})],
+                                    [('escalation','resolved_by','auth-0001')])
+        self.assertFalse(resolved.esc_open('escalation'))
         model = self._memory_graph(rows + [('new-req', 'req', 2, {'reformulates': 'escalation'})])
         self.assertFalse(model.esc_open('escalation'))
 
     def test_esc_chain_follows_relays_to_conflicts_and_rejects_missing_nodes(self):
-        model = self._memory_graph([('conflict', 'conf', 3, {}), ('lower', 'esc', 2, {}), ('upper', 'esc', 1, {})],
+        model = self._memory_graph([('conflict', 'conf', 3, {}), ('lower', 'esc', 3, {}), ('upper', 'esc', 2, {})],
             [('conflict', 'escalates', 'lower'), ('lower', 'escalates', 'upper')])
         self.assertEqual(model.esc_chain('conflict'), ([], ['conflict']))
         self.assertEqual(model.esc_chain('upper'), (['upper', 'lower'], ['conflict']))
@@ -93,7 +120,7 @@ class FabricHelperTests(unittest.TestCase):
     def test_origin_req_traces_evidence_conflict_and_escalation_without_inventing_origin(self):
         rows = [('requirement', 'req', 2, {}), ('contract', 'ctr', 2, {}),
             ('fragment', 'frag', 3, {}), ('conflict', 'conf', 3, {}),
-            ('escalation', 'esc', 2, {}), ('evidence', 'evd', 3, {}), ('unrelated', 'intent', 1, {})]
+            ('escalation', 'esc', 3, {}), ('evidence', 'evd', 3, {}), ('unrelated', 'intent', 1, {})]
         edges = [('requirement', 'derives', 'contract'), ('contract', 'requests', 'fragment'),
             ('fragment', 'may_create', 'conflict'), ('conflict', 'escalates', 'escalation'),
             ('evidence', 'supports', 'fragment')]
@@ -113,16 +140,22 @@ class FabricHelperTests(unittest.TestCase):
         self.assertEqual(model.ancestry('parent'), ['parent'])
         self.assertEqual(model.ancestry('newest'), ['newest', 'earlier', 'parent'])
         self.assertEqual(self._memory_graph(rows, [('contract', 'refines', 'earlier')]).ancestry('earlier'), ['earlier'])
-        cycle = self._memory_graph(rows, [('earlier', 'refines', 'newest'), ('newest', 'refines', 'earlier')])
-        self.assertEqual(cycle.ancestry('newest'), ['newest', 'earlier'])
+        # A persisted causal cycle now fails at the authoritative write boundary.
+        cycle = self._memory_graph(rows, [('earlier', 'refines', 'newest')])
+        before=Path(fabric.log_path(cycle.eng)).read_bytes()
+        with self.assertRaises((ValueError,fabric.FabricError)):
+            cycle.add_edge('newest','refines','earlier')
+        self.assertEqual(Path(fabric.log_path(cycle.eng)).read_bytes(),before)
 
     def test_owned_formulation_is_at_escalating_layer_and_missing_owner_stays_missing(self):
         rows = [('parent', 'req', 1, {}), ('parent-contract', 'ctr', 1, {}), ('local', 'req', 2, {}),
             ('contract', 'ctr', 2, {}), ('fragment', 'frag', 3, {}), ('conflict', 'conf', 3, {}),
-            ('local-escalation', 'esc', 2, {}), ('top-escalation', 'esc', 1, {}), ('orphan', 'esc', 4, {})]
+            ('leaf-escalation', 'esc', 3, {}), ('local-escalation', 'esc', 2, {}),
+            ('top-escalation', 'esc', 1, {}), ('orphan', 'esc', 4, {})]
         edges = [('parent', 'derives', 'parent-contract'), ('parent-contract', 'refines', 'local'),
             ('local', 'derives', 'contract'), ('contract', 'requests', 'fragment'),
-            ('fragment', 'may_create', 'conflict'), ('conflict', 'escalates', 'local-escalation'),
+            ('fragment', 'may_create', 'conflict'), ('conflict', 'escalates', 'leaf-escalation'),
+            ('leaf-escalation', 'escalates', 'local-escalation'),
             ('local-escalation', 'escalates', 'top-escalation')]
         model = self._memory_graph(rows, edges)
         self.assertEqual(model.owned_formulation('local-escalation'), 'local')
@@ -131,16 +164,31 @@ class FabricHelperTests(unittest.TestCase):
         with self.assertRaises(KeyError):
             model.owned_formulation('absent')
 
-    def test_latest_review_prefers_highest_layer_then_newest_and_rejects_broken_reference(self):
-        rows = [('fragment', 'frag', 3, {}), ('same-layer', 'rev', 3, {}),
-                ('higher-old', 'rev', 2, {}), ('higher-new', 'rev', 2, {})]
+    def test_latest_review_uses_governed_exact_selection_instead_of_chronology(self):
+        rows = [('fragment', 'frag', 3, {})]
         self.assertIsNone(self._memory_graph(rows).latest_review('fragment'))
-        model = self._memory_graph(rows, [('fragment', 'reviewed_by', 'same-layer'),
-            ('fragment', 'reviewed_by', 'higher-old'), ('fragment', 'reviewed_by', 'higher-new')])
-        self.assertEqual(model.latest_review('fragment'), 'higher-new')
-        del model.nodes['higher-new']
-        with self.assertRaises(KeyError):
-            model.latest_review('fragment')
+        model = self._memory_graph(rows)
+        for name,layer in [('same-layer',3),('higher-old',2),('higher-new',2)]:
+            model.append('node',{'id':name,'type':'rev','layer':layer,'text':'Independent fixture review',
+                                 'subject':model.nodes['fragment']['version_id'],'state':'accepts'})
+            if layer==2:model.add_edge('fragment','reviewed_by',name)
+        self.assertIsNone(model.latest_review('fragment'))
+        directory=Path(fabric.FABRIC_DIR)
+        with pytest.MonkeyPatch.context() as isolated:
+            signer=SyntheticOperator(directory,isolated)
+            spec={'scope':'default','reason':'Select exact independent review', 'proposed':[],
+                  'selections':[],'reinstatements':[],'invalidations':[],'verification':[],
+                  'allowed_verification_path':'synthetic-check',
+                  'proofs':[{'subject':model.nodes['fragment']['version_id'],'role':'reviewer',
+                             'proof':model.nodes['higher-old']['version_id']}]}
+            spec_path=directory/'proof-selection.json';spec_path.write_text(json.dumps(spec))
+            request_path=directory/'proof-request.json'
+            fabric.cmd_lifecycle_plan(Namespace(engagement=model.eng,spec=str(spec_path),out=str(request_path)))
+            signer.apply(fabric,request_path)
+            model=fabric.open_fabric(model.eng)
+            self.assertEqual(model.latest_review('fragment'),'higher-old')
+            del model.nodes['higher-old']
+            self.assertIsNone(model.latest_review('fragment'))
 
     def test_supervision_policy_normal_and_missing_invalid_empty_rules(self):
         self.assertEqual(fabric.supervision_policy()['schema'], 1)
@@ -196,29 +244,28 @@ class FabricHelperTests(unittest.TestCase):
                 with self.assertRaises(fabric.FabricError):
                     fabric.log_path(engagement)
 
-    def test_load_missing_empty_blank_lines_and_malformed_ledger(self):
+    def test_load_missing_empty_unmarked_blank_lines_and_malformed_ledger_fail_closed(self):
         with tempfile.TemporaryDirectory() as directory, patch.object(fabric, 'FABRIC_DIR', directory):
             with self.assertRaises(fabric.FabricError):
                 fabric.load('fixture')
             path = Path(directory) / 'fixture.jsonl'
-            path.write_text(' \n')
-            self.assertEqual(fabric.load('fixture'), [])
-            path.write_text('\n' + json.dumps({'seq': 1}) + '\n\n')
-            self.assertEqual(fabric.load('fixture'), [{'seq': 1}])
+            for raw in ('',' \n','\n'+json.dumps({'seq':1})+'\n\n'):
+                path.write_text(raw)
+                with self.assertRaises(ValueError):
+                    fabric.load('fixture')
             path.write_text('{')
             with self.assertRaises(json.JSONDecodeError):
                 fabric.load('fixture')
 
-    def test_synthetic_authority_key_never_reads_real_configuration(self):
+    def test_local_authority_key_creation_denies_even_with_selftest_marker(self):
         with tempfile.TemporaryDirectory() as directory:
             path = Path(directory) / 'authority.key'
             with patch.object(fabric, 'KEY_PATH', str(path)), patch.object(fabric, 'FABRIC_DIR', str(Path(directory) / 'fab')), patch.object(fabric, '_SELFTEST_AUTHORITY_ROOT', directory):
                 with self.assertRaises(fabric.FabricError):
                     fabric.authority_key(create=False)
-                key = fabric.authority_key()
-                self.assertEqual(len(key), 32)
-                self.assertEqual(fabric.authority_key(create=False), key)
-                self.assertEqual(path.stat().st_mode & 0o777, 0o600)
+                with self.assertRaises(fabric.FabricError):
+                    fabric.authority_key()
+                self.assertFalse(path.exists())
 
     def test_authority_persistence_and_keygen_default_deny_before_effect(self):
         from argparse import Namespace
@@ -269,15 +316,53 @@ class FabricHelperTests(unittest.TestCase):
                 ledger.add_node('unknown', 1)
             self.assertEqual(ledger.next_id('req'), 'req-0002')
 
+    def test_flush_commits_complete_batch_and_rejects_a_concurrent_head(self):
+        with tempfile.TemporaryDirectory() as directory, patch.object(fabric,'FABRIC_DIR',directory):
+            empty=fabric.Fabric('empty',[])
+            empty.flush()
+            self.assertFalse(Path(fabric.log_path('empty')).exists())
+            with patch.object(fabric,'_COMMAND_FABRICS',[]):
+                graph=fabric.Fabric('batch',[])
+                graph.add_node('req',1,'First member')
+                graph.add_node('req',1,'Second member')
+                self.assertFalse(Path(fabric.log_path('batch')).exists())
+                graph.flush()
+                self.assertEqual(len(fabric.load('batch')),1)
+                self.assertEqual(len(fabric.Fabric('batch',fabric.load('batch')).nodes),2)
+                self.assertEqual(graph.pending,[])
+                stale=fabric.Fabric('batch',fabric.load('batch'))
+                graph.add_node('req',1,'Winning update')
+                stale.add_node('req',1,'Stale competing update')
+                graph.flush()
+                committed=Path(fabric.log_path('batch')).read_bytes()
+                with self.assertRaises(ValueError):
+                    stale.flush()
+                self.assertEqual(Path(fabric.log_path('batch')).read_bytes(),committed)
+                self.assertTrue(stale.pending)
+
+    def test_verify_integrity_accepts_fresh_transactions_and_rejects_semantic_tamper(self):
+        with tempfile.TemporaryDirectory() as directory, patch.object(fabric,'FABRIC_DIR',directory):
+            graph=fabric.Fabric('integrity',[])
+            graph.add_node('req',1,'Exact immutable subject')
+            state=graph.verify_integrity()
+            self.assertTrue(state.initialized)
+            self.assertEqual(set(state.graph_ids),set(graph.nodes))
+            before=Path(fabric.log_path('integrity')).read_bytes()
+            graph.transactions[-1]['operations'][-1]['data']['text']='Substituted subject'
+            with self.assertRaises(ValueError):
+                graph.verify_integrity()
+            self.assertEqual(Path(fabric.log_path('integrity')).read_bytes(),before)
+
     def test_round_start_tracks_latest_revision_and_ignores_other_decisions(self):
-        # Synthetic replay data exercises counters without issuing authority acts.
-        ledger = fabric.Fabric('fixture', [])
-        self.assertEqual(ledger.round_start(), 0)
-        for sequence, decision in ((1, 'exception'), (2, 'revise'), (3, 'accept'), (4, 'revise')):
-            identifier = 'auth-' + str(sequence)
-            ledger.nodes[identifier] = {'type': 'auth', 'decision': decision}
-            ledger.seq_of[identifier] = sequence
-            self.assertEqual(ledger.round_start(), 0 if sequence == 1 else 2 if sequence < 4 else 4)
+        self.assertEqual(self._memory_graph().round_start(),0)
+        rows=[]
+        latest=None
+        for number,decision in enumerate(('exception','revise','reject','revise'),1):
+            identifier='auth-'+str(number).zfill(4)
+            rows.append((identifier,'auth',0,{'decision':decision}))
+            ledger=self._memory_graph(rows)
+            if decision=='revise':latest=identifier
+            self.assertEqual(ledger.round_start(),ledger.seq_of[latest] if latest else 0)
 
 
 class FabricReleaseSecurityTests(unittest.TestCase):
@@ -323,8 +408,8 @@ class FabricReleaseSecurityTests(unittest.TestCase):
         self.assertEqual(model.conflicts_of('absent'), set())
 
     def test_resolution(self):
-        model = self._memory_graph([('c', 'conf', 1, {}), ('x', 'esc', 1, {}), ('a', 'auth', 0, {})], [('c', 'escalates', 'x'), ('x', 'resolved_by', 'a')])
-        self.assertEqual(model.resolution('c')['id'], 'a')
+        model = self._memory_graph([('c', 'conf', 1, {}), ('x', 'esc', 1, {}), ('auth-0001', 'auth', 0, {})], [('c', 'escalates', 'x'), ('x', 'resolved_by', 'auth-0001')])
+        self.assertEqual(model.resolution('c')['id'], 'auth-0001')
         self.assertIsNone(model.resolution('absent'))
 
     def test_justify(self):
@@ -339,6 +424,21 @@ class FabricReleaseSecurityTests(unittest.TestCase):
         with self.assertRaises(fabric.FabricError):
             fabric.check_contract_budget(self.fb, fabric.MAX_CONTRACTS + 1)
         self.assertFalse(self.fb.entries)
+        model = self._memory_graph([('spent-1', 'ctr', 1, {}), ('spent-2', 'ctr', 2, {})])
+        before = json.dumps(model.entries, sort_keys=True)
+        fabric.check_contract_budget(model, fabric.MAX_CONTRACTS - 2)
+        with self.assertRaisesRegex(fabric.FabricError, 'contract budget'):
+            fabric.check_contract_budget(model, fabric.MAX_CONTRACTS - 1)
+        self.assertEqual(json.dumps(model.entries, sort_keys=True), before)
+
+    def test_check_contract_budget_resets_only_after_governed_revision(self):
+        model = self._memory_graph([('spent', 'ctr', 1, {}),
+            ('auth-0001', 'auth', 0, {'decision': 'revise'}), ('current', 'ctr', 1, {})])
+        before = json.dumps(model.entries, sort_keys=True)
+        fabric.check_contract_budget(model, fabric.MAX_CONTRACTS - 1)
+        with self.assertRaisesRegex(fabric.FabricError, 'contract budget'):
+            fabric.check_contract_budget(model, fabric.MAX_CONTRACTS)
+        self.assertEqual(json.dumps(model.entries, sort_keys=True), before)
 
     def test_check_episode_budget(self):
         fabric.check_episode_budget(self.fb, fabric.MAX_STEPS)
@@ -389,8 +489,13 @@ class FabricReleaseSecurityTests(unittest.TestCase):
         self.missing(fabric.cmd_invalidate, changed='missing', reason='changed')
         node = self.fb.add_node('req', 1, 'no dependents')
         before = list(self.fb.entries)
-        self.assertEqual(self.invoke(fabric.cmd_invalidate, changed=node['id'], reason='changed')[0], 0)
+        request=Path(self.temp.name)/'invalidation-request.json'
+        self.invoke(fabric.cmd_invalidate, changed=node['id'], reason='changed',request_out=str(request))
         self.assertEqual(self.fb.entries, before)
+        plan=json.loads(request.read_text())
+        self.assertEqual(plan['kind'],'lifecycle-update')
+        self.assertIn(node['version_id'],plan['parameters']['effects']['affected'])
+        self.assertEqual(self.fb.lifecycle.states[node['version_id']]['validity'],'pending')
 
     def test_cmd_answer(self):
         self.missing(fabric.cmd_answer, requirement='missing')
@@ -399,10 +504,9 @@ class FabricReleaseSecurityTests(unittest.TestCase):
         child = self.fb.add_node('frag', 2, 'qualified child')
         review = self.fb.add_node('rev', 1, 'evidence reviewed', state='accepts')
         self.fb.add_edge(child['id'], 'reviewed_by', review['id'])
-        self.invoke(fabric.cmd_answer, requirement=node['id'], supported_by=[child['id']], text='product')
+        self.missing(fabric.cmd_answer, requirement=node['id'], supported_by=[child['id']], text='product')
         products = [n for n in self.fb.nodes.values() if n.get('kind') == 'product']
-        self.assertEqual(len(products), 1)
-        self.assertIn(('supports', products[0]['id']), self.fb.out[child['id']])
+        self.assertEqual(products, [])
 
     def test_cmd_release(self):
         node = self.fb.add_node('frag', 1, 'unqualified product')
@@ -458,8 +562,9 @@ class FabricReleaseSecurityTests(unittest.TestCase):
             review = self.fb.add_node('rev', 1, 'independent rationale', state=state)
             self.fb.add_edge(node['id'], 'reviewed_by', review['id'])
         self.invoke(fabric.cmd_consolidate, fragment=node['id'], layer=1)
-        review = self.fb.nodes[self.fb.latest_review(node['id'])]
+        review = next(value for value in self.fb.nodes.values() if value.get('consolidated'))
         self.assertEqual(review['state'], 'conflicts')
+        self.assertIsNone(self.fb.latest_review(node['id']))
         self.assertTrue(self.fb.conflicts_of(node['id']))
 
     def test_cmd_conflict(self):
@@ -516,7 +621,6 @@ class FabricReleaseSecurityTests(unittest.TestCase):
 
     def test_persisted_node_identity_is_immutable_and_replayed_duplicates_block(self):
         import copy
-        import hashlib
         node = self.fb.add_node('req', 1, 'reviewed original')
         before = copy.deepcopy(self.fb.entries)
         original_bytes = Path(fabric.log_path('case')).read_bytes()
@@ -526,13 +630,12 @@ class FabricReleaseSecurityTests(unittest.TestCase):
             self.assertEqual(self.fb.entries, before)
             self.assertEqual(self.fb.nodes[node['id']]['text'], 'reviewed original')
             self.assertEqual(Path(fabric.log_path('case')).read_bytes(), original_bytes)
-        duplicate = {'seq': 2, 'op': 'node', 'data': {**node, 'text': 'substitution'},
-                     'prev': before[-1]['hash']}
-        duplicate['hash'] = hashlib.sha256((duplicate['prev'] + fabric.canonical(duplicate['data']) + '2').encode()).hexdigest()
-        replay = fabric.Fabric('replayed', before + [duplicate])
-        problems, _ = replay.verify()
-        self.assertTrue(any('duplicate node identity' in problem for problem in problems))
-        self.assertEqual(replay.entries[-1]['hash'], duplicate['hash'])
+        transactions=copy.deepcopy(self.fb.transactions)
+        duplicate=fabric.lifecycle.envelope('case',transactions[-1]['hash'],len(transactions)+1,
+            [{'op':'node','data':copy.deepcopy(node)}])
+        with self.assertRaises(ValueError):
+            fabric.Fabric('case',transactions+[duplicate])
+        self.assertEqual(Path(fabric.log_path('case')).read_bytes(),original_bytes)
 
     def test_historical_opaque_node_identity_remains_accepted_and_unique(self):
         node = {'id': 'req-historical-opaque', 'type': 'req', 'layer': 1, 'text': 'historical subject'}
@@ -547,7 +650,7 @@ class FabricReleaseSecurityTests(unittest.TestCase):
     def test_cmd_verify(self):
         self.assertEqual(self.invoke(fabric.cmd_verify)[0], 0)
         self.fb.add_node('req', 1, 'original')
-        self.fb.entries[0]['data']['text'] = 'tampered'
+        self.fb.transactions[-1]['operations'][-1]['data']['text'] = 'tampered'
         self.assertEqual(self.invoke(fabric.cmd_verify)[0], 1)
 
     def test_cmd_justify(self):

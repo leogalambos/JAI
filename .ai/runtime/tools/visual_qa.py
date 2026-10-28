@@ -174,16 +174,18 @@ def self_test():
 
     Returns:
         Zero only when all checks pass; required unavailable renderers return one.
+        The three iterations exercise three fixed fixture definitions; rates are
+        synthetic smoke measurements, not independent samples or accuracy.
         Fixtures never establish provider, host or operator qualification.
     """
     tests=[]; tp=fp=fn=tn=0
     with tempfile.TemporaryDirectory() as td:
         td=Path(td)
-        # 120 valid + 120 seeded defects: acceptance corpus required by the GA baseline.
-        for i in range(120):
+        # Each deterministic fixture is classified once; repeats add no input coverage.
+        for i in range(1):
             p=td/f'valid-{i}.png'; make_seed(p,'valid',True); fs=image_findings(p); pred=any(s=='critical' for _,s,_ in fs); tn+=not pred; fp+=pred
         kinds=['blank','edge-clipping']
-        for i in range(120):
+        for i in range(2):
             kind=kinds[i%2]; p=td/f'defect-{i}.png'; make_seed(p,kind,False); fs=image_findings(p); pred=any(s=='critical' for _,s,_ in fs); tp+=pred; fn+=not pred
         recall=tp/(tp+fn); fpr=fp/(fp+tn)
         tests += [('critical-defect-recall>=95%',recall>=.95),('false-positive<=10%',fpr<=.10)]
@@ -206,6 +208,9 @@ def self_test():
         # SVG render smoke
         svg=td/'x.svg'; svg.write_text('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><text x="40" y="80">Architecture</text><rect x="40" y="120" width="700" height="400" fill="none" stroke="black"/></svg>')
         fs=qa(svg); tests.append(('svg-render',not any(severity=='critical' for _,severity,_ in fs)))
+    print('visual-smoke-corpus: iterations=3 distinct_fixture_definitions=3 '
+          'valid=1 blank=1 edge-clipping=1; fixed synthetic fixtures, '
+          'not independent samples or real-world accuracy')
     for n,v in tests: print(('PASS' if v else 'FAIL'),n)
     print(f'recall={recall:.3f} fpr={fpr:.3f}'); print(f"{sum(v for _,v in tests)}/{len(tests)} PASS")
     return 0 if all(v for _,v in tests) else 1

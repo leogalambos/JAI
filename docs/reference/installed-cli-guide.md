@@ -1,5 +1,38 @@
 # AI IT House — installed CLI guide
 
+## Lifecycle updates and recovery
+
+Fresh engagements use format 2. Unsupported ledgers are archive-only:
+reconstruct from maintained public specifications with a new `init`,
+fresh evidence and new human acceptance. Never execute an old ledger
+or import its authority acts.
+
+Prepare an exact update with
+`fabric.py lifecycle-plan ENG --spec FILE --out PLAN`;
+inspect with `fabric.py lifecycle-status ENG --scope default`.
+An external human with explicit `lifecycle-update` capability signs
+the reviewed plan and performs
+`fabric.py lifecycle-apply --request PLAN --receipt RECEIPT`.
+Agents cannot perform protected human acts. Trust separately grants
+`accept`; update approval grants no acceptance or release. Obtain
+fresh verification and independent review after an update, then
+request new exact-output acceptance. Reinstatement never revives
+cancelled conclusions or proofs. Synthetic gate checks are not
+human acceptance.
+Installed tools live under `~/.ai/it-role-house/fabric/` and
+`~/.ai/it-role-house/tools/`. See the release source's
+`docs/operations/lifecycle-recovery.md`
+for deployment and command details.
+
+Ordinary completion uses explicit relevant contract obligations and
+exact input bindings. Register fresh byte-bound inputs with
+`fabric.py record-input ENG --logical-id ID --kind source --file FILE`.
+The same command recaptures an identical current pending replacement
+after its signed selection; it cannot replace a slot or revive a
+cancelled version. Fixed routine verification grants no L0 rights.
+See `docs/operations/normal-layered-workflow.md` for a complete
+six-layer CLI example through preacceptance eligibility.
+
 ## Refresh optional supporting tools
 
 Installation runs bounded discovery without installing optional

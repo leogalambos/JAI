@@ -26,7 +26,7 @@ not against it: most surfaced only because a self-test failed.
 | T3b typed cross-layer communication; T8 opaque values | `ingest` accepts fixed keys only; text is stored, never interpreted |
 | T6 single-model bias | adjacent layers alternate heavy and standard workload classes; provider-specific selectors are resolved independently and the validator rejects an invalid class assignment |
 | A1 append-only, tamper-evident store | SHA-256 hash chain; `verify` detects edits, reorders and insertions |
-| A2 authority identity | the operator approves each authority act in Claude Code's prompt (raised by a hook that refuses them in non-interactive modes) or runs it in a terminal; the record says which, and is HMAC-signed |
+| A2 authority identity | external human signs exact requests using Ed25519; protected schema-2 public trust binds signer and explicit capability; native provider approval is not Fabric authority |
 | A3 model per call | `--model` recorded on every review |
 | Appendix B minimal record | `report`, one row per fragment |
 
@@ -127,7 +127,10 @@ again, so no layer is bypassed even by an authorised change.
 - Cross-provider model independence (A4). Only Claude models are available here, so T6 is mitigated by
   alternating Claude model families, which is weaker than the article's cross-provider setting.
 - Delegated authority. Every authority act is human; no decision type can be delegated to a layer.
-- Cryptographic proof of human presence. The approval prompt is a confirmation gate: it guarantees a person saw and approved the exact command in an interactive session, not who that person was. The HMAC signature makes authority records tamper-evident; it is not an identity credential.
+- Cryptographic proof of human presence. External Ed25519 receipts and protected
+  capability-bearing trust provide local operator attestation, not enterprise
+  identity or independent proof that a particular person was present. Native
+  prompts, keypresses and agent-accessible secrets cannot grant Fabric authority.
 - Adjudication of evidence-source honesty (A5) and adversarial robustness of the models themselves — out of
   scope in the article, and here.
 
@@ -166,9 +169,13 @@ ascend, escalations are monotone toward L1, and authority remains adjacent only 
 on insertion and by `verify`.
 
 **21. Dependency change did not force layered revalidation.** The SABSA repository had dependency invalidation,
-but the per-engagement fabric did not. `fabric invalidate --changed REF --reason ...` now walks explicit support,
-consolidation and request dependencies and creates blocking conflicts on affected fragments. An old release
-therefore loses eligibility until the affected branches are re-evaluated.
+but the per-engagement fabric did not. Current format 2 uses
+`fabric invalidate ENG --changed REF --reason TEXT --request-out PLAN` to prepare
+the same exact lifecycle plan used by replacement. It grants nothing and changes
+no ledger bytes. Human signing with explicit `lifecycle-update` capability and
+protected apply cancel affected conclusions, reviews, acceptance and permissions
+across scopes. Fresh verification, independent review and new human acceptance
+are required. Unsupported ledgers remain archives; no old acceptance is imported.
 
 ### Prolog substitution boundary
 

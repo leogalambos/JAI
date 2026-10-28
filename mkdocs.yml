@@ -233,6 +233,9 @@ nav:
       - Command reference: reference/commands.md
       - Complete installed CLI guide: reference/installed-cli-guide.md
       - Exact operator walkthrough: operations/operator-walkthrough.md
+      - Lifecycle deployment and recovery: operations/lifecycle-recovery.md
+      - Complete ordinary layered workflow: operations/normal-layered-workflow.md
+      - Immutable scoped lifecycle decision: reference/lifecycle-format-2.md
       - Documentation authority and installed CLI help: runtime-reference/current-help.md
       - Product version and release tags: reference/versioning.md
       - Extended command walkthroughs: reference/command-walkthroughs.md

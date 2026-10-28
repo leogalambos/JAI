@@ -58,8 +58,9 @@ def test_hint_projects_identical_advisory_body_to_both_providers(tmp_path):
         installer.desired_outputs(package, {'claude', 'codex'}, house, claude, codex, registry)
     shutil.copy2(ROOT / '.ai/runtime/schema/release-scope.schema.json', schema)
     (package / 'RELEASE-SCOPE.json').write_text('{}')
-    from jsonschema import ValidationError
-    with pytest.raises(ValidationError):
+    # The maintained resolver's standard-library validator rejects this exact
+    # missing-properties case without depending on a third-party exception type.
+    with pytest.raises(ValueError, match='missing or unexpected release scope properties'):
         installer.desired_outputs(package, {'claude', 'codex'}, house, claude, codex, registry)
     assert not house.exists() and not claude.exists() and not codex.exists()
 
@@ -88,7 +89,10 @@ def test_installed_hint_then_selected_description_works_without_docs_or_project_
 
 def test_literal_hostile_goal_is_data_and_no_match_does_not_create_workspace(tmp_path):
     marker = tmp_path / 'must-not-exist'
-    query = 'unrelated $(touch ' + str(marker) + ') `touch ' + str(marker) + '`'
+    # Relative targets preserve shell-injection sensitivity without coupling the
+    # bounded goal to pytest's temporary-directory path length.
+    query = 'unrelated $(touch ' + marker.name + ') `touch ' + marker.name + '`'
+    assert len(query) <= 300
     result = subprocess.run([sys.executable, str(ROOT / '.ai/runtime/demo/hint.py'), '--goal', query],
                             cwd=tmp_path, capture_output=True, text=True)
     assert result.returncode == 0

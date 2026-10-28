@@ -137,6 +137,10 @@ python3 ~/.ai/it-role-house/fabric/fabric.py ingest-reviews <engagement> \
 
 A layer may answer its parent only from child fragments it has accepted. Unsupported or rejected child work cannot simply be promoted upward by a persuasive summary.
 
+The [complete ordinary CLI example](../operations/normal-layered-workflow.md)
+shows explicit relevant input obligations, exact source bindings and the
+full six-layer path. Missing obligations or bindings remain ineligible.
+
 #### Review states
 
 | State | Strict release meaning | Typical response |
@@ -234,10 +238,16 @@ If a depended-on observation is superseded, revoked or otherwise invalidated:
 
 ```bash
 python3 ~/.ai/it-role-house/fabric/fabric.py invalidate <engagement> \
-  --changed <record-id> --reason '<reason>'
+  --changed <record-id> --reason '<reason>' --request-out invalidation-plan.json
 ```
 
-Dependent products receive blocking conflicts and must be requalified before later use.
+This only prepares a pending lifecycle plan. The external human signs with
+`lifecycle-update` capability and performs protected `lifecycle-apply` with its
+exact request and returned receipt. Applied effects cancel dependent conclusions,
+reviews, acceptance and permissions across scopes. Obtain fresh verification,
+independent review and new separate human acceptance before later use. See
+[lifecycle recovery](../operations/lifecycle-recovery.md) for commands and receipt
+paths; no cancelled proof or historical acceptance is inherited.
 
 ### 10. Inspect and audit
 

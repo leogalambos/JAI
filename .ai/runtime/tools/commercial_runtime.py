@@ -130,13 +130,15 @@ def fabric_binding_resolver(ledger_path):
         created by append_commercial_binding. Historical nodes are never modified.
     Raises:
         OSError: Log or Fabric implementation cannot be read.
+        ValueError: Empty, unsupported, corrupt or unauthenticated lifecycle ledger.
     """
     module_path = Path(__file__).resolve().parents[1] / 'fabric/fabric.py'
     spec = importlib.util.spec_from_file_location('commercial_fabric_reader', module_path)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    entries = [json.loads(line) for line in Path(ledger_path).read_text().splitlines() if line.strip()]
-    fabric = module.Fabric('commercial-binding-readonly', entries)
+    transactions = module.lifecycle.read(
+        ledger_path, engagement=None, proof_verifier=module.verify_lifecycle_proof)
+    fabric = module.Fabric(transactions[0]['engagement'], transactions)
 
     def resolve(entity, snapshot):
         try:
@@ -169,10 +171,7 @@ def fabric_binding_resolver(ledger_path):
                 if (contract['id'], 'requests', node['id']) not in fabric.edges:
                     return False
                 expected['fragments'].append({'id': node['id'], 'digest': fd['fabric_fragment_digest']})
-                if top:
-                    if not fabric._evidence_path(node['id'], {}):
-                        return False
-                elif not fabric.justify(node['id'], strict=True)[0]:
+                if not fabric.justify(node['id'], strict=True)[0]:
                     return False
             return bool(data['fragment_ids']) and binding_node.get('commercial_binding') == expected
         except (KeyError, TypeError, ValueError, OSError, module.FabricError):

@@ -30,7 +30,7 @@ Destination overrides do not establish support for complete runtime relocation: 
 | Variable | Default | Meaning |
 | --- | ---: | --- |
 | `FABRIC_HOME` | `./.fabric` | Engagement JSONL location |
-| `FABRIC_AUTHORITY_KEY` | `~/.config/justifiable-fabric/authority.key` | Legacy HMAC verification only; not new L0 approval |
+| `FABRIC_AUTHORITY_KEY` | `~/.config/justifiable-fabric/authority.key` | Retired historical setting; grants no authority and enables no legacy-ledger execution |
 | `FABRIC_MAX_REWORK` | `3` | Rework attempts per contract lineage |
 | `FABRIC_MAX_REFORMULATE` | `2` | Reformulations per layer/round |
 | `FABRIC_MAX_CONTRACTS` | `40` | Contracts per round |
@@ -46,7 +46,8 @@ Treat these environment variables as governance controls, not as mere performanc
 [Tool hooks, runtime controls and release gates](hooks-gates-verification.md) describes the inspected implementation.
 Inspect the shipped provider event registrations and their enforcement limits.
 
-Local Ed25519 operator trust is separate from legacy HMAC compatibility.
+Fresh Ed25519 operator trust uses schema 2 with signer and explicit capabilities.
+Unsupported historical ledgers are archive-only, with no executable fallback.
 See [operator workflows](../security/product-operations.md). The installer
 creates no signing keys and does not alter provider configuration silently.
 

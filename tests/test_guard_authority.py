@@ -49,6 +49,44 @@ class GuardAuthorityTests(unittest.TestCase):
             with self.subTest(command=command):
                 self.assertEqual("deny", self._decision("Bash", command))
 
+    def test_patch_command_examples_are_data_and_protected_patch_targets_are_denied(self):
+        import io
+        from unittest.mock import patch
+        signing = ' '.join(('python3', 'operator_actions.py', 'sign', 'synthetic-request.json'))
+        acceptance = ' '.join(('python3', 'fabric.py', 'review', 'synthetic', 'frag-1', '--layer', '0'))
+        applying = ' '.join(('python3', 'fabric.py', 'lifecycle-apply', '--request', 'synthetic.json'))
+        for command in (signing, acceptance, applying):
+            edit = '\n'.join(('*** Begin Patch', '*** Update File: docs/reference/lifecycle.md', '@@', '+' + command, '*** End Patch'))
+            for payload in (edit, {'command': edit}, {'patch': edit}, {'input': edit}):
+                event = {'tool_name': 'apply_patch', 'tool_input': payload}
+                with patch.object(sys, 'stdin', io.StringIO(json.dumps(event))), patch.object(sys, 'stdout', io.StringIO()) as output:
+                    self.assertEqual(GUARD.main(), 0)
+                    self.assertEqual(output.getvalue(), '')
+            self.assertEqual(self._decision('exec_command', command), 'deny')
+        for path in ('.fabric/case.jsonl', '.findings/review.jsonl', '.ai/jai-operator-trust.json', '/synthetic/.ai/jai-operator-trust.json',
+                     '/synthetic/.config/' + GUARD.KEY + '/key'):
+            edit = '\n'.join(('*** Begin Patch', '*** Update File: ' + path, '@@', '+data', '*** End Patch'))
+            event = {'tool_name': 'apply_patch', 'tool_input': {'patch': edit}}
+            with patch.object(sys, 'stdin', io.StringIO(json.dumps(event))), patch.object(sys, 'stdout', io.StringIO()) as output:
+                self.assertEqual(GUARD.main(), 0)
+                self.assertEqual(json.loads(output.getvalue())['hookSpecificOutput']['permissionDecision'], 'deny')
+
+    def test_relative_and_absolute_trust_pin_edit_targets_are_denied(self):
+        for path in ('.ai/jai-operator-trust.json', '/synthetic/.ai/jai-operator-trust.json'):
+            for tool in ('Write', 'Edit', 'MultiEdit', 'NotebookEdit'):
+                self.assertEqual(self._decision(tool, path), 'deny')
+
+    def test_malformed_patch_fails_closed_and_cmd_alias_is_guarded(self):
+        import io
+        from unittest.mock import patch
+        events = [
+            {'tool_name': 'apply_patch', 'tool_input': {'patch': 'unstructured text'}},
+            {'tool_name': 'exec_command', 'tool_input': {'cmd': ' '.join(('python3', 'operator_actions.py', 'sign', 'synthetic.json'))}}]
+        for event in events:
+            with patch.object(sys, 'stdin', io.StringIO(json.dumps(event))), patch.object(sys, 'stdout', io.StringIO()) as output:
+                self.assertEqual(GUARD.main(), 0)
+                self.assertEqual(json.loads(output.getvalue())['hookSpecificOutput']['permissionDecision'], 'deny')
+
 
 if __name__ == "__main__":
     unittest.main()

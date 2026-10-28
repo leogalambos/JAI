@@ -26,11 +26,14 @@ def select_tests(scope: str, root: Path = ROOT) -> list[str]:
 
     Args:
         scope: ``quick`` smoke coverage or ``supplementary`` complete coverage
-            outside Gate A's canonical inventory.
+            outside Gate A's canonical inventory. Gate D modules intentionally
+            remain included; gate-local qualification executes them again.
         root: Checkout whose tests directory is inspected without mutation.
     Returns:
         Sorted paths; supplementary selection includes new test modules
-        automatically and never repeats a Gate A module.
+        automatically and never repeats a Gate A module. This is not a
+        partition of all A-H gate executions; Gate D repeats retain its own
+        source-bound execution evidence and incur another test invocation.
     Raises:
         ValueError: If the scope is unknown or a smoke module is missing.
     """

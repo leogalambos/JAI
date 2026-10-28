@@ -73,24 +73,45 @@ def test_assembly_requires_complete_matching_gate_identities(tmp_path, monkeypat
     assert not json.loads(output.read_text())['all_pass']
 
 
-@pytest.mark.parametrize('changes', [
-    {'release': '26.10.8'}, {'release': None}, {'pass': 'true'},
-    {'pass': 1}, {'checks': []}, {'checks': {}}, {'checks': [None]},
-    {'checks': [{'name': 'unexecuted', 'state': 'NOT_EXECUTED', 'ok': True}]},
-    {'checks': [{'name': 'failed', 'state': 'FAIL', 'ok': False}]},
-    {'checks': [{'name': 'untyped', 'state': 'PASS', 'ok': 'true'}]},
-    {'checks': [{'name': 'no execution state', 'ok': True}]},
+@pytest.mark.parametrize('changes,diagnostic', [
+    ({'release': '26.10.8'}, 'RELEASE_IDENTITY_MISMATCH'),
+    ({'release': None}, 'RELEASE_IDENTITY_MISMATCH'),
+    ({'pass': 'true'}, 'GATE_NOT_PASS'),
+    ({'pass': 1}, 'GATE_NOT_PASS'),
+    ({'checks': []}, 'EXECUTED_CHECKS_REQUIRED'),
+    ({'checks': {}}, 'EXECUTED_CHECKS_REQUIRED'),
+    ({'checks': [None]}, 'CHECK_NOT_EXECUTED_PASS:0'),
+    ({'checks': [{'name': 'unexecuted', 'state': 'NOT_EXECUTED', 'ok': True}]}, 'CHECK_NOT_EXECUTED_PASS:0'),
+    ({'checks': [{'name': 'failed', 'state': 'FAIL', 'ok': False}]}, 'CHECK_NOT_EXECUTED_PASS:0'),
+    ({'checks': [{'name': 'untyped', 'state': 'PASS', 'ok': 'true'}]}, 'CHECK_NOT_EXECUTED_PASS:0'),
+    ({'checks': [{'name': 'no execution state', 'ok': True}]}, 'CHECK_NOT_EXECUTED_PASS:0'),
 ])
-def test_assembly_rejects_stale_or_contradictory_claims(tmp_path, changes):
-    version = (ROOT/'VERSION').read_text().strip()
+def test_assembly_rejects_stale_or_contradictory_claims(tmp_path, monkeypatch, capsys, changes, diagnostic):
+    source = tmp_path/'source'
+    source.mkdir()
+    (source/'VERSION').write_text((ROOT/'VERSION').read_text())
+    monkeypatch.setattr(qualification, 'PACKAGE', source)
+    fingerprint = qualification.source_fingerprint(source)
+    version = (source/'VERSION').read_text().strip()
     for gate in 'ABCDEFG':
         report = {'release': version, 'gate': gate, 'pass': True,
+                  'source_binding': qualification.source_binding(fingerprint, fingerprint),
                   'checks': [{'name': 'actual check', 'state': 'PASS', 'ok': True}]}
-        if gate == 'G':
-            report.update(changes)
         (tmp_path/f'gate-{gate}.json').write_text(json.dumps(report))
-    assert qualification.assemble(tmp_path, tmp_path/'summary.json') == 1
-    assert not json.loads((tmp_path/'summary.json').read_text())['all_pass']
+    output = tmp_path/'summary.json'
+    assert qualification.assemble(tmp_path, output) == 0
+    assert json.loads(output.read_text())['all_pass'] is True
+    capsys.readouterr()
+    target = tmp_path/'gate-G.json'
+    report = json.loads(target.read_text())
+    report.update(changes)
+    target.write_text(json.dumps(report))
+    assert qualification.assemble(tmp_path, output) == 1
+    summary = json.loads(output.read_text())
+    assert summary['all_pass'] is False
+    assert summary['gates'] == {gate: gate != 'G' for gate in 'ABCDEFG'}
+    failures = [line for line in capsys.readouterr().out.splitlines() if line.startswith('FAIL Gate G: ')]
+    assert failures == ['FAIL Gate G: ' + diagnostic]
 
 
 def test_shared_gate_report_validation_requires_real_complete_execution():

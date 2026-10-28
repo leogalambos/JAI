@@ -6,6 +6,20 @@ allowed-tools: Read, Grep, Glob, Bash, Task, Agent
 
 # Library lifecycle: analyse, review, develop, rework, govern
 
+## Governed input evolution
+
+During develop, rework and review, do not overwrite an accepted input or reuse
+acceptance after its required closure changes. Use the shared Fabric lifecycle
+engine and exact governing versions. Prepare
+`lifecycle-plan ENG --spec FILE --out PLAN`; the external human signs and performs
+protected `lifecycle-apply --request PLAN --receipt RECEIPT` with explicit
+`lifecycle-update` capability. Then follow the allowed fresh verification path,
+obtain new independent review proofs and request separate exact-output human
+acceptance using `accept` capability. Reinstatement cannot revive cancelled
+conclusions or proofs. Unsupported ledgers remain archive-only; reconstruct from
+maintained public specifications under a new engagement rather than importing
+authority acts. Synthetic checks are never human acceptance or release.
+
 > **Agents named here** are subagents: delegate them through the active provider's operator/delegation mechanism — `artefact-governor`, `codebase-reviewer`, `docs-author`, `document-reviewer`, `library-approver`, `library-author`, `library-release`, `role-author`, `role-engineer`, `role-router`, `source-docs-engineer`.
 
 `tool-tier: orchestrate` (`Read, Grep, Glob, Bash, Task, Agent`) · `version: 1.0.0`

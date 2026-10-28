@@ -9,6 +9,8 @@ import sys
 import tempfile
 import unittest
 from unittest.mock import patch
+import pytest
+from lifecycle_fixtures import accepted_graph
 
 PATH = Path(__file__).resolve().parents[1] / '.ai/runtime/fabric/fabric.py'
 SPEC = importlib.util.spec_from_file_location('fabric_authority_test', PATH)
@@ -18,17 +20,25 @@ SPEC.loader.exec_module(fabric)
 
 class FabricAuthorityBoundaryTests(unittest.TestCase):
     def test_unavailable_authority_verification_key_is_blocking_not_a_warning(self):
-        import hashlib
-        authority = {'id': 'review-1', 'type': 'rev', 'layer': 0}
-        previous = '0' * 64
-        checksum = hashlib.sha256((previous + fabric.canonical(authority) + '1').encode()).hexdigest()
-        entries = [{'seq': 1, 'op': 'node', 'data': authority, 'prev': previous,
-                    'hash': checksum, 'sig': 'synthetic-untrusted-signature'}]
-        model = fabric.Fabric('synthetic-test', entries)
-        with tempfile.TemporaryDirectory() as directory, patch.object(fabric, 'KEY_PATH', str(Path(directory) / 'absent.key')):
-            problems, warnings = model.verify()
-        self.assertTrue(any('key unavailable' in problem for problem in problems), (problems, warnings))
-        self.assertFalse(any('key unavailable' in warning for warning in warnings))
+        import operator_actions as op
+        with tempfile.TemporaryDirectory() as directory, pytest.MonkeyPatch.context() as isolated:
+            model,subject,_=accepted_graph(fabric,Path(directory),isolated,'Synthetic accepted product')
+            self.assertTrue(model.lifecycle.evaluate(model.nodes[subject]['version_id'],release=True)['eligible'])
+            isolated.setattr(op,'trusted_key',lambda: (_ for _ in ()).throw(ValueError('public key unavailable')))
+            problems,warnings=model.verify()
+            self.assertTrue(any('key unavailable' in problem for problem in problems),(problems,warnings))
+            self.assertFalse(any('key unavailable' in warning for warning in warnings))
+            review=next(node['id'] for node in model.nodes.values() if node['layer']==0)
+            self.assertFalse(model.authority_verified(review))
+
+    def test_current_trust_capability_revocation_blocks_historical_acceptance(self):
+        with tempfile.TemporaryDirectory() as directory, pytest.MonkeyPatch.context() as isolated:
+            model,_,signer=accepted_graph(fabric,Path(directory),isolated,'Synthetic accepted product')
+            self.assertEqual(model.verify(),([],[]))
+            signer.trust['capabilities']=['lifecycle-update']
+            problems,warnings=model.verify()
+            self.assertTrue(any('capability' in problem for problem in problems))
+            self.assertEqual(warnings,[])
 
     def test_agent_environment_tty_hook_and_json_never_authorize(self):
         with patch.dict(os.environ, {'FABRIC_TEST_AUTHORITY': '1'}), patch.object(
@@ -54,13 +64,9 @@ class FabricAuthorityBoundaryTests(unittest.TestCase):
             node('edge',{'src':'e','label':'supports','dst':'f'})
             node('edge',{'src':'f','label':'reviewed_by','dst':'r'})
             with patch.object(fabric,'KEY_PATH',str(key)):
-                graph=fabric.Fabric('synthetic',entries);problems,warnings=graph.verify()
-                self.assertEqual(problems,[])
-                self.assertTrue(any('HMAC integrity only' in w for w in warnings))
-                self.assertFalse(graph.authority_verified('r'))
-                accepted,reasons=graph.justify('f',strict=True)
-                self.assertFalse(accepted)
-                self.assertTrue(any('independent operator attestation' in reason for reason in reasons))
+                with self.assertRaises(ValueError):
+                    fabric.Fabric('synthetic',entries)
+                self.assertEqual(key.read_bytes(),b'synthetic-test-key-not-human-authority')
 
     def test_fabric_selftest_cannot_export_authority_to_later_calls(self):
         program = '''import importlib.util, os, sys

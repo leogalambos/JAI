@@ -131,9 +131,13 @@ class ExistingFabricAuthority:
             if content_spec.canonical_hash(fragment) != proof['fragment_hash'] or fragment.get('type') != 'frag' or fragment.get('layer') != 1:
                 return None
             accepted, reasons = self.fabric.justify(self.fragment_id, strict=True)
-            review_id = self.fabric.latest_review(self.fragment_id)
+            acceptance = self.fabric.lifecycle.evaluate(fragment['version_id'], release=True)
+            acceptance_version = self.fabric.lifecycle.proofs.get(
+                ('default', fragment['version_id'], 'accept'))
+            review_id = next((identifier for identifier, node in self.fabric.nodes.items()
+                              if node['version_id'] == acceptance_version), None)
             review = self.fabric.nodes.get(review_id, {})
-            if not accepted or reasons or review.get('layer') != 0 or review.get('state') != 'accepts' or not review.get('reviewer'):
+            if not accepted or reasons or not acceptance['eligible'] or review.get('layer') != 0 or review.get('state') != 'accepts' or not review.get('reviewer'):
                 return None
             policy = json.loads(fragment.get('text', ''), object_pairs_hook=content_spec._pairs,
                                 parse_constant=lambda value: (_ for _ in ()).throw(ValueError('NONFINITE')))

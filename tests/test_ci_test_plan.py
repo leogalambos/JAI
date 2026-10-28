@@ -13,7 +13,7 @@ plan = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(plan)
 
 
-def test_full_partition_covers_every_test_exactly_once():
+def test_gate_a_and_supplementary_partition_covers_every_module_exactly_once():
     supplementary = set(plan.select_tests('supplementary'))
     gate_a = {'tests/' + name for name in plan.REGRESSION_MODULES}
     all_tests = {str(path.relative_to(ROOT)) for path in (ROOT / 'tests').glob('test_*.py')}
@@ -42,3 +42,12 @@ def test_cli_prints_the_actual_partition(capsys):
     with pytest.raises(SystemExit) as error:
         plan.main(['invalid'])
     assert error.value.code == 2
+
+
+def test_supplementary_retains_gate_d_modules_for_separate_gate_local_evidence():
+    gate_d = {
+        'tests/test_agent_runtime.py', 'tests/test_integration_adapters.py',
+        'tests/test_guard_library_write.py', 'tests/test_fabric_authority_boundary.py',
+        'tests/test_operator_actions.py',
+    }
+    assert gate_d <= set(plan.select_tests('supplementary'))

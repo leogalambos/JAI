@@ -67,8 +67,34 @@ class VisualQaTests(unittest.TestCase):
         self.assertIn('Decision scope',sources[0])
         self.assertIn('Options and evidence',sources[0])
         self.assertIn('<table',sources[0])
+        self.assertIn('iterations=3 distinct_fixture_definitions=3', output.getvalue())
+        self.assertIn('valid=1 blank=1 edge-clipping=1', output.getvalue())
+        self.assertIn('not independent samples or real-world accuracy', output.getvalue())
         self.assertIn('FAIL html-render', output.getvalue())
         self.assertIn('PASS svg-render', output.getvalue())
+
+
+class VisualSmokeIterationEquivalenceTests(unittest.TestCase):
+    def test_all_fixed_fixture_classifications_preserve_legacy_threshold_verdicts(self):
+        import itertools
+        for valid_critical, blank_critical, clipping_critical in itertools.product((False, True), repeat=3):
+            with self.subTest(valid=valid_critical, blank=blank_critical, clipping=clipping_critical):
+                classified = []
+                def findings(path):
+                    classified.append(Path(path).name)
+                    critical = valid_critical if Path(path).name.startswith('valid-') else (blank_critical if Path(path).name == 'defect-0.png' else clipping_critical)
+                    return [('fixture', 'critical', 'controlled classifier')] if critical else []
+                with patch.object(visual_qa, 'image_findings', side_effect=findings), patch.object(visual_qa, 'qa', return_value=[]) as native_checks, contextlib.redirect_stdout(io.StringIO()) as output:
+                    result = visual_qa.self_test()
+                # Legacy weights: 120 identical valid, 60 blank and 60 clipping.
+                legacy_recall = (60 * blank_critical + 60 * clipping_critical) / 120
+                legacy_fpr = float(valid_critical)
+                expected = legacy_recall >= .95 and legacy_fpr <= .10
+                self.assertEqual(result, 0 if expected else 1)
+                self.assertEqual(classified, ['valid-0.png', 'defect-0.png', 'defect-1.png'])
+                self.assertIn(('PASS' if legacy_recall >= .95 else 'FAIL') + ' critical-defect-recall>=95%', output.getvalue())
+                self.assertIn(('PASS' if legacy_fpr <= .10 else 'FAIL') + ' false-positive<=10%', output.getvalue())
+                self.assertEqual([Path(call.args[0]).suffix for call in native_checks.call_args_list], ['.html', '.svg'])
 
 
 if __name__ == '__main__':

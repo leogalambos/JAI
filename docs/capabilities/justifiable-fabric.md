@@ -58,7 +58,7 @@ agent-accessible signing secret. The verifier reads a protected public trust
 pin; it validates the exact request/state-bound receipt before applying it.
 See [human authority](../operations/human-authority.md) and the
 [operator walkthrough](../operations/operator-walkthrough.md) for enrollment,
-approval and rejection. Legacy HMAC verification remains compatibility only;
+approval and rejection. Unsupported historical ledgers are archive-only;
 a managed hook or provider tool approval does not establish independent L0.
 Local ledger hashes do not prevent rollback without separate protected custody.
 
@@ -110,10 +110,16 @@ When a depended-on Fabric record is superseded or invalidated, the orchestrator 
 
 ```bash
 python3 ~/.ai/it-role-house/fabric/fabric.py invalidate <engagement> \
-  --changed <record-id> --reason '<reason>'
+  --changed <record-id> --reason '<reason>' --request-out invalidation-plan.json
 ```
 
-Affected dependent outputs receive blocking conflicts until they are re-evaluated.
+This prepares a pending lifecycle plan without mutating the ledger. The external
+human signs with `lifecycle-update` capability and performs protected
+`lifecycle-apply --request invalidation-plan.json --receipt RECEIPT`. Exact effects
+cancel affected conclusions and dependent reviews, acceptance and permissions
+across scopes. Fresh verification, independent review and new human acceptance
+are required; unrelated branches remain. See [recovery](../operations/lifecycle-recovery.md)
+for exact installed signing and receipt handling.
 
 ## Release eligibility
 

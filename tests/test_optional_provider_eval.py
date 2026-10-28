@@ -158,3 +158,39 @@ def test_plan_supports_mapped_and_proposed_families_without_inference(family, ex
     assert record['invocations'] == 1
     assert record['professional_qualification'] is False
     assert len(record['cases'][0]['compiled_spec_hash']) == 64
+
+
+def test_prepare_constructs_one_resolver_per_request_and_never_reuses_it():
+    import content_spec
+    import expert_references
+    original = content_spec.ContentSpec
+    constructed = []
+    def construct(root):
+        instance = original(root)
+        constructed.append(instance)
+        return instance
+    with patch.object(content_spec, 'ContentSpec', side_effect=construct), patch.object(expert_references, 'ContentSpec', side_effect=construct):
+        first = plan()
+        assert len(constructed) == 1
+        second = plan()
+        assert len(constructed) == 2
+    assert first == second
+    assert len(constructed) == 2
+    assert constructed[0] is not constructed[1]
+    assert all(instance.root == ROOT for instance in constructed)
+
+
+def test_registry_changes_are_observed_by_next_prepare_and_run_revalidation(tmp_path):
+    import shutil
+    runtime = tmp_path / 'runtime'
+    shutil.copytree(ROOT / '.ai/runtime/content', runtime / 'content')
+    selected = provider.prepare_plan(runtime, 'codex', 'adr', 1, 'fake-model')
+    registry = runtime / 'content/registry.json'
+    metadata = json.loads(registry.read_text())
+    metadata['schema_version'] = 'unsupported-after-plan'
+    registry.write_text(json.dumps(metadata))
+    with patch.object(provider.subprocess, 'Popen', side_effect=AssertionError('changed registry must prevent provider execution')):
+        with pytest.raises(ValueError):
+            provider.prepare_plan(runtime, 'codex', 'adr', 1, 'fake-model')
+        with pytest.raises(ValueError):
+            provider.run_plan(runtime, selected, True, 1)

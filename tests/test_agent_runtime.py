@@ -25,7 +25,10 @@ class AgentRuntimeTests(unittest.TestCase):
             with self.assertRaises(OSError):
                 runtime.load(Path(directory) / 'missing')
             runtime.generate(directory)
+            expected_names = {identity + '.json' for identity in runtime.contracts()}
             for provider in ('codex', 'claude'):
+                self.assertEqual({path.name for path in (Path(directory) / provider).glob('*.json')},
+                                 expected_names, provider)
                 for path in (Path(directory) / provider).glob('*.json'):
                     config = json.loads(path.read_text())
                     self.assertEqual(config['runtime_boundary'], runtime.load(runtime.ROOT/'providers'/provider/path.name)['runtime_boundary'])

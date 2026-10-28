@@ -35,6 +35,24 @@ Use it when an output will be acted on and someone must later be able to say why
 
 ## Setup
 
+### Scoped lifecycle updates
+
+Use only fresh format-2 engagements. Unsupported ledgers are private archives,
+never executable sources or imported acceptance. Reconstruct from maintained
+public specifications under a fresh engagement when required.
+
+For develop/rework/review, bind evidence, conclusions and proofs to exact current
+versions. Governing contract/policy obligations determine required slots; a caller
+cannot omit slots or authorize its own exclusions. Use `lifecycle-plan` to prepare
+the complete update and cross-scope dependent cancellations. Plans grant nothing.
+Only the external human with explicit `lifecycle-update` capability signs and
+performs protected `lifecycle-apply`. A blocked but integral engagement may be
+planned; corruption cannot be waived. Execute the allowed fresh verification
+path, obtain independent current review proofs, and request new human acceptance
+with separate `accept` capability. Reinstatement revives no cancelled proof.
+Never treat synthetic signer/gate checks as acceptance or release. Use exact
+governing proof selections, not latest-by-time or a single supporting path.
+
 The fabric lives in `./.fabric/` of the current workspace (set `FABRIC_HOME` to move it), with the work, never in a provider configuration directory such as `~/.claude` or `~/.codex`.
 
 ```bash
@@ -45,15 +63,77 @@ fabric req  <engagement> --layer 1 --from intent-0001 --label derives --text "<t
 
 Record the intent **verbatim**. Paraphrasing it here is the first place meaning drifts, and nothing below ever sees it again except through contracts.
 
+### Required ordinary input and binding setup
+
+Before dispatch, register each actual applicable byte-bound input with
+`fabric record-input <eng> --logical-id <id> --kind source --file <file>`.
+Use the actual category for other inputs. Read current exact version IDs
+from `fabric lifecycle-status <eng> --scope default`. Paths, display names
+and a digest copied from another engagement are not version IDs.
+
+The issuer must explicitly supply `obligations.json`: `categories` maps
+each relevant category to `minimum` and `allow_exclusion`; `evidence_roles`
+and `review_roles` declare the required roles. Include exact `contract`
+and `policy` bindings and actual observation sources. Declare additional
+source, test, configuration, environment or assumption inputs when relevant.
+Do not fabricate category inputs, universal defaults or exclusion reasons.
+Missing obligations or bindings make a record ineligible.
+
+Issue every normal contract with all nine fields **and**
+`--obligations obligations.json`. Derived child contracts must carry their
+own explicit `contract.obligations` object as well as the nine fields.
+Rework must preserve the governed obligations; do not silently weaken them.
+
+After issuance, construct a sanitised contract brief from the rendered
+contract or canonical `context-packet`, its explicit obligations, and the
+current exact input bindings. Each applicable binding has the shape
+`"category": {"refs": ["exact-version-id"]}`. The `contract` reference is
+this issued contract's version, `policy` is the current governing policy,
+and `source` identifies the actual registered source versions. Include
+only the inputs and approved observation locators this contract needs.
+The original packet's `context_digest` binds the core contract; explicit
+bindings separately bind the declared lifecycle inputs. Neither imports
+the conversation or a sibling branch.
+
+The producer returns those explicit `bindings` on every fragment and
+evidence record. L6 cites actual captured bytes plus its exact source
+bindings; an observation does not need a fabricated review of itself.
+If the brief lacks required facts or identities, re-request the brief or
+return a conflict. Never invent bindings or repair an agent's reply in
+the orchestrator. At L1 use `answer ... --bindings bindings.json`, bound
+to the exact contract issued from that same requirement and accepted L2
+support. Routine verification grants no L0 acceptance or permission.
+
+The complete executable ordinary setup, six-layer return and governed
+source-change recipe is `docs/operations/normal-layered-workflow.md` in
+the product manual. The installed CLI guide names that same recipe.
+
 ## The cycle
 
-Read `references/method.md` before the first run; it walks a complete engagement. In outline:
+Read `references/method.md` before the first run; its current-input rules
+are normative, while its older SDLC story illustrates the method only.
+Use the complete ordinary recipe named above for operative CLI inputs.
+In outline:
 
-**Down (k = 1…5).** Issue a contract from the layer-k requirement with `fabric contract … --what --why --who --where --when --how --evidence --escalate-if --sanitise` (all nine fields, or the runtime refuses: a layer sends a contract, never a free-form prompt). Render it with `fabric render-contract <eng> <ctr>` and dispatch `l{k+1}` with **that packet and nothing else** — not the conversation, not the strategy, not sibling branches. The packet carries a SHA-256 context digest which the agent must echo; `fabric ingest` rejects a result bound to another packet. This does not prove the provider supplied no extra context, but it makes the intended dependency boundary explicit and auditable. `fabric context-packet` emits the canonical machine-readable packet.
+**Down (k = 1…5).** Issue a contract from the layer-k requirement with
+`fabric contract ... --what --why --who --where --when --how --evidence
+--escalate-if --sanitise --obligations obligations.json`: supply all nine
+fields and the explicit obligations. Render with `fabric render-contract`
+and dispatch `l{k+1}` with **only the sanitised contract brief defined
+above**. The packet's SHA-256 context digest must be echoed; `fabric ingest`
+rejects a result bound to another packet. `fabric context-packet` emits
+the canonical core packet. Explicit lifecycle bindings remain required;
+the digest alone does not establish those inputs or provider isolation.
 
 **Produce.** Layer 5 writes artefacts and contracts layer 6 for the evidence that would show they work. Layer 6 runs the checks, writes command output to files, and returns observations citing them; `fabric.py` hashes each file at recording time.
 
-**Up (k = 5…1).** Render the children with `fabric render-review <eng> <ctr>`, dispatch `l{k}` in review mode, record with `fabric ingest-reviews <eng> --layer k --reviewer l{k} --model <resolved provider model or workload class> reviews.json`. Then `l{k}` answers its own parent contract with a fragment `supported_by` the children it accepted; the runtime refuses to build on anything this layer has not accepted. At the top, `l1-intent` answers the engagement requirement with `fabric answer`.
+**Up (k = 5…1).** Render children with `fabric render-review <eng> <ctr>`,
+dispatch `l{k}` independently in review mode, and record its actual
+verdict through `fabric ingest-reviews`. Accepted reviews bind the exact
+issuer contract, maintained role profile and all assessed dependencies;
+`--reviewer` is attribution, not a self-granted role. The upward fragment
+carries both `supported_by` accepted children and its own exact `bindings`.
+At the top, `l1-intent` uses `fabric answer ... --bindings bindings.json`.
 
 **Failure, rework, reformulation, escalation — the ladder.** Every rung is bounded by the runtime, not by good intentions. A tool/model/delegation failure is first-class: record it with `fabric failure <eng> --contract <ctr> --state failed|unavailable|timeout|ambiguous|insufficient|contradicted|conflicting --reason ...`. The deterministic policy kernel in `runtime/fabric/supervision-policy.json` chooses whether the legal next move is local repair or escalation; no LLM decides its own retry budget.
 
@@ -82,7 +162,14 @@ Three rules the runtime enforces and you should understand rather than discover:
 - **A layer that says it cannot reformulate is not offered a reformulation.** The layer above it is.
 - **Rework cannot smuggle in a reformulation.** `what`, `why`, the evidence obligation and `escalate_if` must remain semantically identical to the previous contract. Change those only with `reformulate` at the layer that owns the requirement.
 
-If recorded evidence or an accepted lower-layer fragment later changes, use `fabric invalidate <eng> --changed <ref> --reason ...`. The runtime walks explicit dependency edges and creates blocking conflicts on every affected fragment; old release eligibility is intentionally lost until those branches are revalidated.
+If recorded evidence or an accepted lower-layer fragment later changes, prepare
+`fabric invalidate <eng> --changed <ref> --reason TEXT --request-out PLAN`.
+This writes a pending lifecycle plan, never a ledger mutation. The external
+human signs with `lifecycle-update` capability and performs protected
+`lifecycle-apply --request PLAN --receipt RECEIPT`. Applying exact effects cancels
+affected conclusions and dependent reviews, acceptance and permissions across
+scopes. Obtain fresh verification, independent review and new human acceptance;
+unrelated branches remain intact. Corrupt history cannot be waived.
 
 **At L1, stop.** When `status` says `OPERATOR`, dispatch `authority-liaison`, show the operator the dossier
 **unaltered** with the liaison's cover note, and wait. The dossier is compiled from the fabric: the verbatim
@@ -117,7 +204,9 @@ Dispatch `fabric-auditor` for an independent verdict before presenting anything.
 
 - Never record anything a layer agent did not return. You may decline to ingest; you may not author.
 - Never edit `.fabric/` by hand. The log is hash-chained, `verify` detects edits, and a hook blocks them.
-- Never send a layer more than its rendered contract, and never summarise one layer's output into a non-adjacent layer's prompt — that routes around the adjacency the runtime enforces.
+- Send only the sanitised contract brief defined above; never add strategy,
+  sibling-branch context or summaries of another layer's output to a
+  non-adjacent layer's prompt. Preserve the mediated adjacency boundary.
 - Never collapse producer and reviewer into one dispatch. The layer above reviews; the same call never does both.
 - A schema mismatch is re-requested, not repaired. If an agent returns prose, ask again for the JSON.
 - `ingest` is atomic. A rejected message changes nothing, so re-requesting is always safe.

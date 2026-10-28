@@ -17,7 +17,7 @@ No path-variable exports are needed for the standard installation. These install
 | Variable | Default | Purpose |
 | --- | --- | --- |
 | `FABRIC_HOME` | `./.fabric` | Fabric record location |
-| `FABRIC_AUTHORITY_KEY` | `~/.config/justifiable-fabric/authority.key` | HMAC authority key |
+| `FABRIC_AUTHORITY_KEY` | `~/.config/justifiable-fabric/authority.key` | Retired historical setting; grants no authority and enables no legacy-ledger execution |
 | `FABRIC_MAX_REWORK` | `3` | Rework bound |
 | `FABRIC_MAX_REFORMULATE` | `2` | Reformulation bound |
 | `FABRIC_MAX_CONTRACTS` | `40` | Contract bound |

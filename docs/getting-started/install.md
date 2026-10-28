@@ -1,5 +1,9 @@
 # Installation
 
+For format-2 deployment and fresh reconstruction of a blocked or unsupported
+engagement, follow [lifecycle recovery](../operations/lifecycle-recovery.md).
+Installation does not import old acceptance or provision operator trust.
+
 ## Reconfigure JAI after installing additional tools
 
 Installation and updates automatically run bounded, offline optional-tool
@@ -432,9 +436,9 @@ By default, both provider surfaces are installed.
 ~/.codex/skills/        Codex-native skills and compatibility surfaces
 ```
 
-The installer does not generate approval keys. Legacy Fabric HMAC records
-remain readable for compatibility; their old key is not a credential for a
-new formal L0 decision. Configure separate Ed25519 operator signing and
+The installer does not generate approval keys. Unsupported historical Fabric
+ledgers are archive-only, never executable or imported acceptance. Configure
+fresh schema-2 capability-bearing Ed25519 operator signing and
 protected public trust only when needed, following
 [human authority](../operations/human-authority.md).
 

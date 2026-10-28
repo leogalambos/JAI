@@ -171,11 +171,17 @@ Superseded source runs are cancelled for the same branch or pull request.
 Use the workflow dispatch full-qualification option for a complete candidate
 preflight. A release tag always executes the complete A–H qualification with
 required renderers, independent of the fast source result. A–H runs once per
-full job; supplementary tests cover only modules outside its canonical
-regression inventory. Full jobs do not repeat the same generators, full corpus
-evaluation or regression modules before qualification, and do not run an
-overlapping unittest discovery pass. Publication still requires successful
-qualification, release identity checks and supply-chain verification.
+full job. Supplementary selection excludes Gate A's canonical regression
+inventory only; it is not a partition of every A–H execution. The five Gate D
+modules (agent runtime, integration adapters, library-write guard, Fabric
+authority boundary and operator actions) run in supplementary coverage and
+again within Gate D. The gate-local invocation retains Gate D's own source-bound
+execution evidence, at the cost of repeated test execution; that cost has not
+been measured. No scheduling reduction or evidence reuse is implied. Full jobs
+do not repeat the same generators or full corpus evaluation before
+qualification and do not run an overlapping unittest discovery pass.
+Publication still requires successful qualification, release identity checks
+and supply-chain verification.
 
 Commands print progress during execution. A failed check remains non-passing;
 streaming does not remove captured failure details or relax offline controls.

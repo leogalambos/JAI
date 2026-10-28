@@ -32,6 +32,7 @@ for _s in (sys.stdin, sys.stdout, sys.stderr):  # Windows consoles default to a 
 sys.argv = [a.encode("utf-8", "surrogateescape").decode("utf-8", "replace") for a in sys.argv]
 
 AUTHORITY = [
+    (re.compile(r"fabric\.py['\"]?\s+(?:lifecycle-apply|apply-operator)\b"), "applying independently signed governed effects"),
     (re.compile(r"fabric\.py['\"]?\s+authorise\b"), "an authority decision on a layered engagement"),
     (re.compile(r"fabric\.py['\"]?\s+review\b[^|;&]*--layer[ =]0\b"), "accepting a product as its authority"),
     (re.compile(r"findings\.py['\"]?\s+accept-risk\b"), "accepting a review finding as a risk instead of fixing it"),
@@ -100,8 +101,21 @@ def main():
     ti = p.get("tool_input") or {}
     mode = p.get("permission_mode", "default")
 
-    if tool in ("Bash", "PowerShell", "shell", "shell_command", "exec_command", "apply_patch"):             # Claude Code on Windows falls back to PowerShell
-        cmd = ti.get("command", "")
+    if tool == 'apply_patch':
+        patch = ti if isinstance(ti, str) else ti.get('patch', ti.get('input', ti.get('command', '')))
+        paths = re.findall(r'^\*\*\* (?:Add File|Update File|Delete File|Move to): (.+)$', patch, re.MULTILINE)
+        if not paths:
+            return decide('deny', 'A patch must name its exact edited file paths.', p)
+        for path in paths:
+            normalized = path.replace('\\', '/')
+            if (_contains_signing_directory(path) or normalized == '.ai/jai-operator-trust.json' or normalized.endswith('/.ai/jai-operator-trust.json') or
+                    '/.fabric/' in normalized or normalized.startswith('.fabric/') or
+                    '/.findings/' in normalized or normalized.startswith('.findings/')):
+                return decide('deny', 'Protected operator material and immutable records are not patch targets.', p)
+        return 0
+
+    if tool in ("Bash", "PowerShell", "shell", "shell_command", "exec_command"):
+        cmd = ti.get("command", ti.get('cmd', ''))
         if _contains_signing_directory(cmd):
             return decide("deny", "Private operator signing material is outside agent access.", p)
         if re.search(r'operator_actions\.py[\'\"]?\s+sign\b',cmd):
@@ -125,7 +139,7 @@ def main():
     if tool == "Read" and _contains_signing_directory(path):
         return decide("deny", "Private operator signing material is outside agent access.", p)
     if tool in ("Write", "Edit", "MultiEdit", "NotebookEdit"):
-        if _contains_signing_directory(path) or path.endswith('/.ai/jai-operator-trust.json'):
+        if _contains_signing_directory(path) or path == '.ai/jai-operator-trust.json' or path.endswith('/.ai/jai-operator-trust.json'):
             return decide("deny", "Operator private keys and trusted public pins are not agent-writable.", p)
         if "/.fabric/" in path or path.startswith(".fabric/") or "/.findings/" in path or path.startswith(".findings/"):
             return decide("deny", f"{path} is an append-only, hash-chained record; write it only through "

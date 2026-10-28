@@ -15,7 +15,7 @@ from runtime_dependencies import jsonschema_status
 CRYPTO='/usr/bin/openssl'
 CRYPTO_ENV={'PATH':'/usr/bin:/bin','LANG':'C.UTF-8','OPENSSL_CONF':'/dev/null'}
 
-KINDS={'render','fabric-authorise','fabric-review','dependency-install','git-maintenance'}
+KINDS={'render','fabric-authorise','fabric-review','lifecycle-update','dependency-install','git-maintenance'}
 ASSURANCE='LOCAL_OPERATOR_ATTESTATION'
 
 def canonical(value):
@@ -195,7 +195,8 @@ def trusted_key():
         raw=os.read(fd,65537)
     finally:os.close(fd)
     d=json.loads(raw)
-    if set(d)!={'schema_version','policy_version','key_id','public_key'} or d['schema_version']!=1 or d['policy_version']!='local-operator-attestation/1':raise ValueError('invalid trust schema')
+    if set(d)!={'schema_version','policy_version','key_id','public_key','signer','capabilities'} or d['schema_version']!=2 or d['policy_version']!='local-operator-attestation/2':raise ValueError('fresh capability-bearing trust schema required')
+    if not isinstance(d['signer'],str) or not d['signer'].strip() or not isinstance(d['capabilities'],list) or not d['capabilities'] or set(d['capabilities'])-{'lifecycle-update','accept','authorise'}:raise ValueError('explicit known signer capabilities required')
     if sha(d['public_key'].encode())!=d['key_id']:raise ValueError('public key pin mismatch')
     der=base64.b64decode(''.join(line for line in d['public_key'].splitlines() if not line.startswith('---')),validate=True)
     if len(der)!=44 or not der.startswith(bytes.fromhex('302a300506032b6570032100')):raise ValueError('Ed25519 public key required')
@@ -204,6 +205,8 @@ def trusted_key():
 def verify_receipt(req,receipt,live=True):
     """Verify an external Ed25519 receipt against protected trust and exact request."""
     validate(req,live);trust=trusted_key();body=dict(receipt);signature=body.pop('signature',None)
+    capability={'lifecycle-update':'lifecycle-update','fabric-review':'accept','fabric-authorise':'authorise'}.get(req['kind'])
+    if capability is not None and capability not in trust['capabilities']:raise ValueError('signer lacks required capability '+capability)
     if set(body)!={'schema_version','request_id','request_hash','accepted','performed','issued_at','expires_at','key_id','assurance','outputs'}:raise ValueError('invalid receipt schema')
     if (body['schema_version']!=1 or body['request_id']!=req['request_id'] or body['request_hash']!=req['request_hash'] or body['key_id']!=trust['key_id'] or body['assurance']!=ASSURANCE or type(body['accepted']) is not bool or type(body['performed']) is not bool or body['expires_at']!=req['expires_at'] or not req['created_at']<=body['issued_at']<req['expires_at']):raise ValueError('receipt binding mismatch')
     with tempfile.TemporaryDirectory(prefix='jai-public-verify-') as directory:
@@ -280,9 +283,16 @@ def perform_render(req,request_path,workspace):
 def sign(req,key):
     """Sign only an exact reviewed Fabric request in an interactive host console."""
     validate(req)
-    if req['kind'] not in {'fabric-authorise','fabric-review'}:raise ValueError('not a Fabric authority request')
+    if req['kind'] not in {'fabric-authorise','fabric-review','lifecycle-update'}:raise ValueError('not a governed Fabric request')
     if not sys.stdin.isatty():raise ValueError('host operator console required; stdin/flags cannot approve')
     if sha(regular(req['source']['path']))!=req['source']['sha256']:raise ValueError('stale ledger')
+    import importlib.util
+    module_path = Path(__file__).resolve().parents[1] / 'fabric/fabric.py'
+    spec = importlib.util.spec_from_file_location('governed_request_preflight', module_path)
+    fabric = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(fabric)
+    fabric.FABRIC_DIR = str(Path(req['source']['path']).parent)
+    fabric.validate_governed_request(req)
     print(json.dumps(req,indent=2,ensure_ascii=False));print('Assurance:',ASSURANCE,'; private key must be outside all agent-accessible mounts.')
     answer=input('Type APPROVE '+req['request_id']+' or DENY '+req['request_id']+': ')
     if answer not in {'APPROVE '+req['request_id'],'DENY '+req['request_id']}:raise ValueError('cancelled; no signature issued')
@@ -512,7 +522,17 @@ def check_acceptance(path):
             entries=[json.loads(line) for line in raw.splitlines() if line.strip()];graph=fabric.Fabric(req['parameters']['engagement'],entries)
             problems,warnings=graph.verify()
             if problems or warnings:raise ValueError('actual approved ledger invalid')
-            if not any(e.get('operator_authority',{}).get('request',{}).get('request_id')==req['request_id'] for e in entries):raise ValueError('approved effect absent')
+            applied = [transaction for transaction in entries
+                       if transaction.get('proof', {}).get('request', {}).get('request_id') == req['request_id']]
+            if len(applied) != 1 or canonical(applied[0]['proof']['request']) != canonical(req) or canonical(applied[0]['proof']['receipt']) != canonical(receipt):
+                raise ValueError('approved exact transaction effect absent or mismatched')
+            if req['kind'] == 'fabric-review':
+                target = graph.nodes.get(req['target'])
+                acceptance = next((operation['data']['version_id'] for operation in applied[0]['operations']
+                                   if operation['op'] == 'version' and operation['data']['manifest']['kind'] == 'rev'), None)
+                if (target is None or graph.lifecycle.proofs.get(('default', target['version_id'], 'accept')) != acceptance or
+                        not graph.lifecycle.evaluate(target['version_id'], release=True)['eligible']):
+                    raise ValueError('approved acceptance is no longer applicable to the exact current closure')
         elif sha(raw)!=req['source']['sha256']:raise ValueError('declined ledger changed')
     for item in manifest['render']:
         req=json.loads(regular(item['request']));receipt=json.loads(regular(item['receipt']))

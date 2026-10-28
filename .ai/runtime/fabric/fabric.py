@@ -4,23 +4,26 @@
 # https://www.egothor.org
 """Traceability fabric runtime for layered, justifiable agent engagements.
 
-Implements the formal model of "Towards Justifiable AI Systems" (Galambos, 2026, sec. 5):
-a fabric T = (N, tau, L, rho, s) of typed nodes and labelled edges, a six-layer stack with
-an authority level above it, the ordered review states S, and the justifiability predicate
-of Definition 2 as a linear-time graph check.
+Preserves the typed six-layer graph and authority level of "Towards Justifiable AI
+Systems" (Galambos, 2026). Current justification evaluates the exact required scoped
+reliance closure, selected independent proofs and separate human acceptance.
 
 It is the only well-formed transformation procedure on the fabric (Clark-Wilson sense):
 agents never write the log; they return typed JSON, and this tool validates and appends.
 Free text from agents is stored as opaque data and never interpreted, so an injected
 "please escalate" string cannot become an escalation node (threat T3b, T8).
 
-Storage: one append-only JSONL log per engagement, hash-chained (assumption A1). Authority
-acts use exact-plan external Ed25519 operator receipts. Historical HMAC records
-remain readable, but HMAC is not a new human approval mechanism. Local signing
-runs explicitly outside agent mounts, with protected public trust and an external
-private key. This is LOCAL OPERATOR ATTESTATION, not enterprise identity or immutable
-custody. Terminal presence, environment flags and local JSON do not prove authority.
-The legacy selftest authorizes only its disposable temporary ledger and key.
+Storage: one immutable JSONL ledger of complete format-2 transactions per engagement.
+Each command validates its full batch before atomic replacement of the unchanged
+prefix plus one hash-chained envelope. Unmarked/raw ledgers are archives and are
+never executable. Authority acts use exact-plan external Ed25519 receipts with
+protected public trust and explicit capabilities; private signing keys remain
+outside agent mounts. Signed review and authorisation requests archive exact policy,
+configuration budgets and assessment time for historical reconstruction. Current
+eligibility and application still enforce current policy and expiry. This is LOCAL
+OPERATOR ATTESTATION, not enterprise identity or immutable custody. Terminal presence,
+environment flags and local JSON do not prove authority. Selftest uses disposable
+state and grants no authority.
 
 Usage summary (run with -h on any command for details):
     fabric.py init ENG --intent TEXT --owner NAME
@@ -31,7 +34,10 @@ Usage summary (run with -h on any command for details):
     fabric.py context-packet ENG CTR
     fabric.py ingest ENG --contract CTR RESULT.json
     fabric.py failure ENG --contract CTR --state timeout|failed|... --reason TEXT
-    fabric.py invalidate ENG --changed REF --reason TEXT
+    fabric.py invalidate ENG --changed REF --reason TEXT --request-out PLAN
+    fabric.py lifecycle-plan ENG --spec FILE --out PLAN
+    fabric.py lifecycle-apply --request PLAN --receipt RECEIPT
+    fabric.py lifecycle-status ENG --scope SCOPE
     fabric.py policy
     fabric.py evidence ENG --layer N --supports FRAG --source S --confidence C [--file PATH]
     fabric.py review ENG FRAG --layer N --state STATE --rationale R --reviewer WHO --model M
@@ -55,6 +61,7 @@ from pathlib import Path
 import contextlib, io, copy
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/"tools"))
 import operator_actions
+import lifecycle
 for _s in (sys.stdin, sys.stdout, sys.stderr):  # Windows consoles default to a code page, not UTF-8
     if hasattr(_s, "reconfigure"):
         _s.reconfigure(encoding="utf-8", errors="replace")
@@ -119,7 +126,7 @@ KEY_PATH = os.environ.get("FABRIC_AUTHORITY_KEY",
 POLICY_PATH = os.path.join(os.path.dirname(__file__), "supervision-policy.json")
 
 
-class FabricError(Exception):
+class FabricError(ValueError):
     pass
 
 
@@ -196,12 +203,7 @@ def load(eng):
     path = log_path(eng)
     if not os.path.isfile(path):
         raise FabricError(f"no engagement '{eng}' at {path}")
-    entries = []
-    with open(path, encoding="utf-8") as fh:
-        for line in fh:
-            if line.strip():
-                entries.append(json.loads(line))
-    return entries
+    return lifecycle.read(path, eng, verify_lifecycle_proof)
 
 
 def authority_key(create=True):
@@ -238,6 +240,8 @@ def confirmation_gate_active():
 
 _SELFTEST_AUTHORITY_ROOT = None
 _AUTHORITY_CAPTURE = None
+_COMMAND_FABRICS = None
+_VERIFIED_PROOFS = {}
 
 
 def require_human(act):
@@ -246,38 +250,64 @@ def require_human(act):
     Args:
         act: Description of the requested L0 authority act.
     Returns:
-        Test marker only inside cmd_selftest's isolated temporary ledger and key.
+        A planning marker only while an exact authority request is constructed
+        in memory. The marker grants no authority and cannot replace a verified
+        external receipt.
     Raises:
-        FabricError: Production external identity integration is not installed.
-            Broker integration must bind the full authority act, exact ledger
-            version and policy before invoking any signing operation.
+        FabricError: Direct authority persistence or local key creation is
+            attempted outside the in-memory planning boundary. Human-controlled
+            signing and protected application require an externally trusted
+            exact receipt.
     """
     if _AUTHORITY_CAPTURE is not None:
         return operator_actions.ASSURANCE  # append is memory-only while planning
-    if (_SELFTEST_AUTHORITY_ROOT is not None
-            and os.path.realpath(FABRIC_DIR) == os.path.join(_SELFTEST_AUTHORITY_ROOT, 'fab')
-            and os.path.realpath(KEY_PATH) == os.path.join(_SELFTEST_AUTHORITY_ROOT, 'authority.key')):
-        return 'isolated-selftest-only'
     raise FabricError(f'{act}: external authority verifier unavailable; terminal, hook configuration '
                       'and local approval files are not authority. Deployment integration NOT VERIFIED.')
 
 
 class Fabric:
+    """Typed graph projection of one authoritative format-2 lifecycle ledger."""
     def __init__(self, eng, entries):
         self.eng = eng
-        self.entries = entries
+        self.transactions = copy.deepcopy(entries)
+        self.lifecycle = lifecycle.replay(entries, eng, verify_lifecycle_proof)
+        self.pending = []
+        self.entries = []
+        for transaction in entries:
+            for operation in transaction['operations']:
+                if operation['op'] in ('node', 'edge'):
+                    self.entries.append({**operation, 'seq': len(self.entries) + 1,
+                                         'hash': transaction['hash'], 'transaction': transaction['transaction_id']})
         self.nodes = {}
         self.edges = []
         self.out = defaultdict(list)
         self.inc = defaultdict(list)
         self.seq_of = {}
-        for e in entries:
+        for e in self.entries:
             d = e["data"]
             if e["op"] == "node":
                 self.nodes[d["id"]] = d
                 self.seq_of[d["id"]] = e["seq"]
             elif e["op"] == "edge":
                 self._index(d["src"], d["label"], d["dst"])
+        for identifier, node in list(self.nodes.items()):
+            selected = self.lifecycle.selections.get(('default', identifier))
+            if selected is not None and selected != node['version_id']:
+                value = self.lifecycle.versions[selected]
+                content = value['content']
+                if content.get('id') != identifier or content.get('type') != node['type'] or content.get('layer') != node['layer']:
+                    raise FabricError('governing graph replacement changes identity/type/layer')
+                self.nodes[identifier] = {**content, 'bindings': value['bindings'],
+                                          'version_id': selected, 'object_ref': 'lifecycle:' + identifier,
+                                          'object_hash': 'sha256:' + selected}
+                if selected in self.lifecycle.locators:
+                    self.nodes[identifier]['file'] = self.lifecycle.locators[selected]
+        for source, label, target in self.edges:
+            a, b = self.nodes[source], self.nodes[target]
+            if (a['type'], b['type']) not in RHO.get(label, ()) or not edge_layer_ok(label, a, b) or abs(a['layer'] - b['layer']) > 1:
+                raise FabricError('invalid replayed typed graph edge')
+        if _COMMAND_FABRICS is not None and _AUTHORITY_CAPTURE is None:
+            _COMMAND_FABRICS.append(self)
 
     def _index(self, s, p, d):
         self.edges.append((s, p, d))
@@ -289,6 +319,18 @@ class Fabric:
         return f"{typ}-{n:04d}"
 
     def append(self, op, data, sign=False):
+        """Stage a typed graph operation and its exact lifecycle bindings atomically.
+
+        Args:
+            op: Node or typed edge operation.
+            data: Immutable graph payload.
+            sign: Require external authority capture, never a local signing key.
+        Returns:
+            In-memory graph projection row.
+        Raises:
+            FabricError: Invalid graph identity or unauthorized authority operation.
+            ValueError: Invalid lifecycle semantic payload or concurrent head.
+        """
         # Persisted L0 topology is authority material even when unsigned. A caller
         # importing this module must not bypass the CLI's external-human gate.
         if op == "node":
@@ -308,37 +350,95 @@ class Fabric:
                                    for k in ("src", "dst"))
         if sign or authority_effect:
             require_human("persist authority act or authority topology")
-        prev = self.entries[-1]["hash"] if self.entries else "0" * 64
         seq = len(self.entries) + 1
-        entry = {"seq": seq, "ts": time.strftime("%Y-%m-%dT%H:%M:%S%z"), "op": op, "data": data,
-                 "prev": prev}
-        entry["hash"] = hashlib.sha256((prev + canonical(data) + str(seq)).encode()).hexdigest()
+        operations = []
+        if not self.lifecycle.initialized:
+            operations.append({'op': 'init', 'data': {'scope': 'default', 'policy': lifecycle.policy()}})
+        if op == 'node':
+            content = {key: value for key, value in data.items() if key not in
+                       {'object_ref', 'object_hash', 'version_id', 'file', 'bindings'}}
+            if data.get('file'):
+                content['blob'] = lifecycle.blob(operator_actions.regular(data['file']))
+            value = lifecycle.manifest(data['id'], data['type'], content, data.get('bindings'))
+            identifier = lifecycle.version_id(value)
+            data.update(version_id=identifier, object_ref='lifecycle:' + data['id'], object_hash='sha256:' + identifier)
+            operations.extend([
+                {'op': 'version', 'data': {'version_id': identifier, 'manifest': value}},
+                {'op': 'select', 'data': {'scope': 'default', 'logical_id': data['id'], 'version_id': identifier, 'previous': None}}])
+            if data.get('file'):
+                operations.append({'op': 'locate', 'data': {'version_id': identifier, 'path': data['file']}})
+            if data.get('target') in self.nodes:
+                target = self.nodes[data['target']]['version_id']
+                operations.append({'op': 'rely', 'data': {'dependent': identifier, 'prerequisite': target, 'scope': 'default', 'role': 'subject'}})
+            for category, bound in data.get('bindings', {}).items():
+                for prerequisite in bound.get('refs', []):
+                    operations.append({'op': 'rely', 'data': {'dependent': identifier, 'prerequisite': prerequisite, 'scope': 'default', 'role': category}})
+            governing = self.lifecycle.selections.get(('default', 'lifecycle-policy'))
+            if governing:
+                operations.append({'op': 'rely', 'data': {'dependent': identifier, 'prerequisite': governing, 'scope': 'default', 'role': 'governing-policy'}})
+        elif op == 'edge':
+            source, target = self.nodes[data['src']], self.nodes[data['dst']]
+            required = lifecycle.graph_reliance(data)
+            if required is not None:
+                operations.append({'op': 'rely', 'data': required})
+            if data['label'] == 'reviewed_by' and _AUTHORITY_CAPTURE is not None:
+                role = 'accept' if target['layer'] == 0 else 'reviewer'
+                old = self.lifecycle.proofs.get(('default', source['version_id'], role))
+                operations.append({'op': 'proof-select', 'data': {'scope': 'default', 'subject': source['version_id'], 'role': role, 'proof': target['version_id'], 'previous': old}})
+        operations.append({'op': op, 'data': copy.deepcopy(data)})
+        candidate = copy.deepcopy(self.lifecycle)
+        for operation in operations:
+            candidate.apply(operation, authorized=_AUTHORITY_CAPTURE is not None)
+        candidate.check_cycles()
+        if _COMMAND_FABRICS is not None and _AUTHORITY_CAPTURE is None and self not in _COMMAND_FABRICS:
+            _COMMAND_FABRICS.append(self)
+        self.lifecycle = candidate
+        self.pending.extend(operations)
+        entry = {'seq': seq, 'op': op, 'data': data}
         if _AUTHORITY_CAPTURE is not None:
-            _AUTHORITY_CAPTURE.append(copy.deepcopy(entry))
-        else:
-            if sign:
-                entry["sig"] = hmac.new(authority_key(), entry["hash"].encode(), "sha256").hexdigest()
-            os.makedirs(FABRIC_DIR, exist_ok=True)
-            lock=log_path(self.eng)+'.lock'
-            descriptor=os.open(lock,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
-            try:
-                current=load(self.eng) if os.path.exists(log_path(self.eng)) else []
-                if canonical(current)!=canonical(self.entries):raise FabricError('engagement changed; reload before append')
-                flags=os.O_WRONLY|os.O_APPEND|os.O_CREAT|os.O_NOFOLLOW
-                output=os.open(log_path(self.eng),flags,0o600)
-                try:
-                    if os.fstat(output).st_nlink!=1:raise FabricError('hardlinked ledger denied')
-                    with os.fdopen(output,'a',encoding='utf-8',closefd=False) as fh:fh.write(canonical(entry)+'\n')
-                finally:os.close(output)
-            finally:
-                os.close(descriptor);os.unlink(lock)
+            _AUTHORITY_CAPTURE.extend(copy.deepcopy(operations))
         self.entries.append(entry)
         if op == "node":
             self.nodes[data["id"]] = data
             self.seq_of[data["id"]] = seq
         else:
             self._index(data["src"], data["label"], data["dst"])
+        if _COMMAND_FABRICS is None and _AUTHORITY_CAPTURE is None:
+            self.flush()
         return entry
+
+    def flush(self):
+        """Commit the entire staged command batch; raise on validation or head drift."""
+        if not self.pending:
+            return
+        for node in self.nodes.values():
+            if (node['type'] in {'intent', 'req', 'ctr', 'att'}
+                    and self.lifecycle.predicates(node['version_id'])['validity'] == 'pending'):
+                try:
+                    self._qualify('structure', node['version_id'])
+                except lifecycle.LifecycleError:
+                    # Incomplete standalone records remain pending until their
+                    # required typed parent relation has actually been recorded.
+                    pass
+        head = self.transactions[-1]['hash'] if self.transactions else lifecycle.ZERO
+        tx = lifecycle.commit(log_path(self.eng), self.eng, head, self.pending, verify_lifecycle_proof,
+                              candidate_validator=lambda transactions: Fabric(self.eng, transactions))
+        self.transactions.append(tx)
+        self.pending = []
+
+    def _qualify(self, family, subject):
+        """Stage a fixed-rule initial verification event, never authority effects."""
+        operation = {'op': 'routine', 'data': {
+            'family': family, 'subject': subject, 'scope': 'default'}}
+        self.lifecycle.apply(operation)
+        self.pending.append(operation)
+
+    def _qualify_structures(self):
+        """Qualify complete structural ancestors before an in-command assessment."""
+        for node in self.nodes.values():
+            if (node['type'] in {'intent', 'req', 'ctr', 'att'}
+                    and self.lifecycle.predicates(node['version_id'])['validity'] == 'pending'):
+                self._qualify('structure', node['version_id'])
 
     # -------------------------------------------------------------- guarded mutations
     def add_node(self, typ, layer, text="", sign=False, **meta):
@@ -352,25 +452,10 @@ class Fabric:
         if set(meta) & {"id", "type", "layer", "text"}:
             raise FabricError("node identity fields cannot be overridden by metadata")
         node.update({k: v for k, v in meta.items() if v is not None})
-        # 26.10.3 Native JAI Enforcement: fabric is an assurance ledger, never a
-        # second semantic identity system. Every material fragment/evidence write is
-        # bound to a deterministic canonical object identity plus the contract/context.
-        if typ in ("frag", "evd"):
-            if typ == "frag":
-                payload = {"type": "semantic", "kind": node.get("kind", "claim"), "text": node["text"]}
-                prefix = "semantic:" + str(node.get("kind", "claim")) + ":"
-            else:
-                payload = {"type": "evidence", "source": node["text"],
-                           "confidence": node.get("confidence"), "sha256": node.get("sha256")}
-                prefix = "evidence:"
-            digest = hashlib.sha256(canonical(payload).encode()).hexdigest()
-            node.setdefault("object_ref", prefix + digest)
-            node.setdefault("object_hash", "sha256:" + digest)
-            contract_ref = node.get("contract") or node.get("requirement") or f"fabric:{self.eng}"
-            node.setdefault("contract_ref", str(contract_ref))
-            if not node.get("context_digest"):
-                ctx = hashlib.sha256(canonical({"contract_ref": str(contract_ref), "layer": layer}).encode()).hexdigest()
-                node["context_digest"] = ctx
+        if typ in ('frag', 'evd'):
+            contract_ref = node.get('contract') or node.get('requirement') or f'fabric:{self.eng}'
+            node.setdefault('contract_ref', str(contract_ref))
+            node.setdefault('context_digest', hashlib.sha256(lifecycle.canonical({'contract_ref': contract_ref, 'layer': layer})).hexdigest())
         self.append("node", node, sign=sign)
         return node
 
@@ -379,6 +464,10 @@ class Fabric:
             if x not in self.nodes:
                 raise FabricError(f"unknown node {x}")
         a, b = self.nodes[src], self.nodes[dst]
+        if a.get('layer') == 0 or b.get('layer') == 0:
+            require_human('persist authority topology')
+        if not a.get('version_id') or not b.get('version_id'):
+            raise FabricError('typed graph endpoints must bind exact lifecycle versions')
         if label not in RHO:
             raise FabricError(f"unknown relation {label}")
         if (a["type"], b["type"]) not in RHO[label]:
@@ -400,7 +489,8 @@ class Fabric:
                 (n.get("gen", 0) for n in self.nodes.values() if n["type"] == "req"
                  and n["id"] == b.get("supersedes")), default=-1):
             raise FabricError("revision must strictly increase the generation index (Prop. 4)")
-        return self.append("edge", {"src": src, "label": label, "dst": dst})
+        return self.append("edge", {"src": src, "label": label, "dst": dst,
+                                    'src_version': a['version_id'], 'dst_version': b['version_id']})
 
     def _reaches(self, start, goal):
         seen, q = {start}, deque([start])
@@ -505,23 +595,25 @@ class Fabric:
 
     # ------------------------------------------------------------- justifiability
     def authority_verified(self, identifier):
-        """Check external attestation, not a caller-selected legacy HMAC secret."""
-        entry=self.entries[self.seq_of[identifier]-1]
-        if 'operator_authority' in entry:
-            try:return verify_operator_entry(entry,self.entries)
-            except (OSError,ValueError,KeyError,TypeError):return False
-        # The legacy synthetic fixture is explicitly scoped to selftest only.
-        if _SELFTEST_AUTHORITY_ROOT is not None and os.path.realpath(FABRIC_DIR)==os.path.join(_SELFTEST_AUTHORITY_ROOT,'fab'):
-            try:return hmac.compare_digest(entry.get('sig',''),hmac.new(authority_key(False),entry['hash'].encode(),'sha256').hexdigest())
-            except (OSError,FabricError):return False
+        """Resolve exact independently verified operator transaction for identifier."""
+        for tx in self.transactions:
+            if any(op['op'] == 'node' and op['data'].get('id') == identifier and op['data'].get('version_id') == self.nodes[identifier]['version_id'] for op in tx['operations']):
+                if 'proof' not in tx:
+                    return False
+                try:
+                    verify_lifecycle_proof(tx, self.transactions[:tx['sequence'] - 1])
+                    return True
+                except (OSError, ValueError, KeyError, TypeError):
+                    return False
         return False
 
     def latest_review(self, f):
-        revs = [d for p, d in self.out[f] if p == "reviewed_by"]
-        if not revs:
-            return None
-        # Definition 1: highest layer (smallest index); ties -> most recently asserted.
-        return min(revs, key=lambda r: (self.nodes[r]["layer"], -self.seq_of[r]))
+        """Resolve the explicit exact-subject proof selection; never use chronology."""
+        subject = self.nodes[f]['version_id']
+        selected = self.lifecycle.proofs.get(('default', subject, 'reviewer'))
+        if selected is None:
+            selected = self.lifecycle.proofs.get(('default', subject, 'accept'))
+        return next((key for key, value in self.nodes.items() if value['version_id'] == selected), None)
 
     def support_graph(self, f):
         g = {f}
@@ -552,57 +644,30 @@ class Fabric:
         return None
 
     def justify(self, f, strict=False, _memo=None):
-        """-> (bool, [reasons]). Paper mode is Definition 2 exactly; strict adds T1's evidence
-        requirement and checks what the authority actually decided."""
-        memo = {} if _memo is None else _memo
-        key = (f, strict)
-        if key in memo:
-            return memo[key]
-        memo[key] = (False, ["cycle guard"])
-        why = []
-        v = self.latest_review(f)
-        if v is None:
-            why.append("no review recorded")
-        else:
-            st = self.nodes[v]["state"]
-            if self.nodes[v]['layer']==0 and not self.authority_verified(v):
-                why.append('layer-0 review lacks independent operator attestation')
-            allowed = STRICT_JUSTIFYING if strict else JUSTIFYING
-            if st not in allowed:
-                why.append(f"latest review {v} (L{self.nodes[v]['layer']}) is '{st}'")
-        for c in sorted(self.conflicts_of(f)):
-            a = self.resolution(c)
-            if a is None:
-                why.append(f"conflict {c} has no authority decision")
-            elif strict:
-                if not self.authority_verified(a['id']):why.append('authority decision lacks independent operator attestation')
-                if a["decision"] in ("reject", "terminate", "revise"):
-                    why.append(f"conflict {c} resolved by {a['id']} as '{a['decision']}'")
-                elif a["decision"] == "exception" and float(a.get("expires_epoch", 0)) < time.time():
-                    why.append(f"exception {a['id']} expired {a.get('expires')}")
-        if strict:
-            if not self._evidence_path(f, memo):
-                ai_only = any(p == "supports" and self.nodes[x]["type"] == "evd"
-                              for x, p in self.inc[f])
-                why.append("only AI-derived or interpretive evidence (section 10: an AI output is "
-                           "evidential, not a fact)" if ai_only else
-                           "no supports path to evidence (threat T1: unsupported fragment)")
-        result = (not why, why)
-        memo[key] = result
-        return result
+        """Return exact closure eligibility and reasons for fragment f.
 
-    def _evidence_path(self, f, memo):
-        """Section 10: a subordinate AI output is an evidential fragment, not a fact. Strict mode
-        therefore needs deterministic or observed evidence somewhere beneath the fragment."""
-        for s, p in self.inc[f]:
-            if p != "supports":
-                continue
-            if self.nodes[s]["type"] == "evd" and \
-                    self.nodes[s].get("confidence") in ("deterministic", "observation"):
-                return True
-            if self.nodes[s]["type"] == "frag" and self.justify(s, True, memo)[0]:
-                return True
-        return False
+        Args:
+            f: Logical graph fragment identifier.
+            strict: Retained graph API parameter; all current gates are conjunctive.
+            _memo: Retained internal traversal parameter, unused by phased evaluator.
+        Returns:
+            Boolean eligibility and all blocking reasons.
+        Raises:
+            KeyError: Unknown fragment.
+            ValueError: Corrupt immutable ledger or reliance cycle.
+        """
+        self.verify_integrity()
+        result = self.lifecycle.evaluate(self.nodes[f]['version_id'])
+        reasons = list(result['reasons'])
+        return not reasons, reasons
+
+    def verify_integrity(self):
+        """Validate immutable envelope structure without reading mutable locators."""
+        state = lifecycle.replay(self.transactions, self.eng, verify_lifecycle_proof)
+        expected = [{'op': row['op'], 'data': row['data']} for row in self.entries]
+        if lifecycle.canonical(expected) != lifecycle.canonical(state.rows):
+            raise FabricError('graph projection differs from immutable transaction replay')
+        return state
 
     # ------------------------------------------------------------------- integrity
     def verify(self):
@@ -615,19 +680,12 @@ class Fabric:
             OSError: An existing authority verification key cannot be read.
         """
         problems, warnings = [], []
-        prev = "0" * 64
-        key = None
-        legacy_signed=any(e.get('op')=='node' and e.get('data',{}).get('layer')==0 and 'operator_authority' not in e for e in self.entries)
-        if legacy_signed and os.path.isfile(KEY_PATH):
-            with open(KEY_PATH, "rb") as stream:
-                key = stream.read()
+        try:
+            self.verify_integrity()
+        except (ValueError, OSError, KeyError) as exc:
+            problems.append(str(exc))
         seen_node_ids = set()
         for i, e in enumerate(self.entries, start=1):
-            if e["seq"] != i or e["prev"] != prev:
-                problems.append(f"seq {i}: chain broken (entry reordered, removed or inserted)")
-            h = hashlib.sha256((e["prev"] + canonical(e["data"]) + str(e["seq"])).encode()).hexdigest()
-            if h != e["hash"]:
-                problems.append(f"seq {i}: content hash mismatch (entry edited after append)")
             d = e["data"]
             if e["op"] == "node":
                 identifier = d.get("id")
@@ -637,22 +695,8 @@ class Fabric:
                 elif identifier in seen_node_ids:
                     problems.append(f"seq {i}: duplicate node identity {identifier}")
                 seen_node_ids.add(identifier if isinstance(identifier, str) else None)
-            needs_sig = e["op"] == "node" and d.get("layer") == 0
-            if 'operator_authority' in e:
-                try: verify_operator_entry(e,self.entries)
-                except (ValueError,OSError,KeyError,TypeError) as exc:
-                    problems.append(f"seq {i}: operator attestation invalid: {exc}")
-            elif needs_sig:
-                if "sig" not in e:
-                    problems.append(f"{d['id']}: authority act without signature")
-                elif key is None:
-                    problems.append(f"{d['id']}: signature present, key unavailable to verify")
-                elif not hmac.compare_digest(
-                        e["sig"], hmac.new(key, e["hash"].encode(), "sha256").hexdigest()):
-                    problems.append(f"{d['id']}: authority signature invalid")
-                elif _SELFTEST_AUTHORITY_ROOT is None:
-                    warnings.append(f"legacy L0 {d['id']}: HMAC integrity only; new operator attestation required")
-            prev = e["hash"]
+            if e['op'] == 'node' and d.get('layer') == 0 and not self.authority_verified(d['id']):
+                problems.append(f"{d['id']}: authority act without independently verified receipt")
         for s, p, d in self.edges:
             a, b = self.nodes[s], self.nodes[d]
             if (a["type"], b["type"]) not in RHO.get(p, ()):
@@ -686,18 +730,19 @@ class Fabric:
                     problems.append(f"{n['id']}: invalid attempt state {n.get('state')}")
                 if not n.get("contract") or not n.get("context_digest"):
                     problems.append(f"{n['id']}: attempt is not bound to contract/context")
-            if n["type"] == "evd" and n.get("file"):
-                try:
-                    with open(n["file"], "rb") as stream:
-                        cur = hashlib.sha256(stream.read()).hexdigest()
-                    if cur != n.get("sha256"):
-                        warnings.append(f"{n['id']}: evidence file {n['file']} changed since recorded")
-                except OSError:
-                    warnings.append(f"{n['id']}: evidence file {n['file']} no longer readable")
         return problems, warnings
 
 
 # ------------------------------------------------------------------------ commands
+def _optional_semantics(arguments, field):
+    """Read explicit strict JSON binding/obligation file, or an empty mapping."""
+    path = getattr(arguments, field, None)
+    value = lifecycle.loads(operator_actions.regular(path)) if path else {}
+    if not isinstance(value, dict):
+        raise FabricError(field + ' must be a JSON object')
+    return value
+
+
 def open_fabric(eng):
     return Fabric(eng, load(eng))
 
@@ -721,6 +766,47 @@ def cmd_req(a):
     n = fb.add_node("req", a.layer, a.text, gen=gen)
     fb.add_edge(src["id"], a.label, n["id"])
     print(n["id"])
+
+
+def cmd_record_input(a):
+    """Register or recapture exact-byte inputs without replacing governing history.
+
+    Args:
+        a: Engagement, logical identity, input category and observed file path.
+            An occupied slot must be the identical current pending version at
+            its recorded locator; cancelled versions cannot be recaptured.
+    Returns:
+        None; prints the immutable version identity.
+    Raises:
+        ValueError: Changed occupied slot, cancelled version or unsupported kind.
+        OSError: Input cannot be securely read or command cannot be persisted.
+    """
+    fb = open_fabric(a.engagement)
+    state = fb.lifecycle
+    value = lifecycle.manifest(a.logical_id, a.kind, {
+        'blob': lifecycle.blob(operator_actions.regular(a.file)),
+        'capture_profile': 'jai.byte-observation/1'})
+    identifier = lifecycle.version_id(value)
+    existing = state.selections.get(('default', a.logical_id))
+    if existing is not None:
+        if (existing != identifier or state.versions[existing] != value
+                or state.locators.get(existing) != str(Path(a.file).resolve())
+                or state.predicates(existing)['validity'] != 'pending'):
+            raise FabricError('input replacement requires a governed lifecycle plan; '
+                              'recapture only the same pending version and locator')
+        fb._qualify('input', existing)
+        print(existing)
+        return
+    operations = [
+        {'op': 'version', 'data': {'version_id': identifier, 'manifest': value}},
+        {'op': 'select', 'data': {'scope': 'default', 'logical_id': a.logical_id,
+                                'version_id': identifier, 'previous': None}},
+        {'op': 'locate', 'data': {'version_id': identifier, 'path': str(Path(a.file).resolve())}}]
+    for operation in operations:
+        state.apply(operation)
+        fb.pending.append(operation)
+    fb._qualify('input', identifier)
+    print(identifier)
 
 
 def cmd_contract(a):
@@ -773,7 +859,8 @@ def cmd_contract(a):
     check_contract_budget(fb, 1)
     check_episode_budget(fb, 1)
     n = fb.add_node("ctr", src["layer"], a.what, target_layer=src["layer"] + 1, fields=fields,
-                    rework_of=a.rework_of, rework_n=rework_n, change=getattr(a, "change", None))
+                    rework_of=a.rework_of, rework_n=rework_n, change=getattr(a, "change", None),
+                    obligations=_optional_semantics(a, 'obligations'))
     fb.add_edge(src["id"], "derives", n["id"])
     print(n["id"])
 
@@ -787,9 +874,10 @@ def check_contract_budget(fb, needed):
             "'escalate <conf|esc> --to-top --code budget', then hand the operator the dossier.")
 
 
-def check_episode_budget(fb, needed=1):
+def check_episode_budget(fb, needed=1, assessment=None):
     used = fb.steps_this_round()
-    if used + needed > MAX_STEPS:
+    limit = assessment['budgets']['steps'] if assessment else MAX_STEPS
+    if used + needed > limit:
         raise FabricError(
             f"shared episode budget for round {fb.round_no()} is spent ({used}/{MAX_STEPS}). "
             "All continuation-capable transitions share this budget; do not hide retries in tool calls. "
@@ -916,7 +1004,7 @@ def cmd_ingest(a):
             if not ch or ch["type"] != "frag" or ch["layer"] != layer + 1:
                 raise FabricError(f"supported_by {child}: must be a fragment from L{layer + 1}")
             v = fb.latest_review(child)
-            if v is None or fb.nodes[v]["layer"] != layer or fb.nodes[v]["state"] not in JUSTIFYING:
+            if not fb.justify(child, strict=True)[0] or (v is not None and fb.nodes[v]['layer'] != layer):
                 raise FabricError(
                     f"{child} has not been accepted by this layer's review, so it cannot support "
                     "an upward fragment. Review it first; build only on qualified outputs.")
@@ -948,13 +1036,14 @@ def cmd_ingest(a):
         r = fb.add_node("req", layer, dr.get("text", ""), gen=0)
         fb.add_edge(c["id"], "refines", r["id"])
         child = fb.add_node("ctr", layer, cf["what"], target_layer=layer + 1,
-                            fields={f: str(cf[f]) for f in CONTRACT_FIELDS}, rework_n=0)
+                            fields={f: str(cf[f]) for f in CONTRACT_FIELDS}, rework_n=0,
+                            obligations=cf.get('obligations'))
         fb.add_edge(r["id"], "derives", child["id"])
         print(f"{r['id']}  derived requirement  L{layer}  ->  {child['id']}  contract for L{layer + 1}")
     keymap = {}
     for fr in doc.get("fragments", []):
         n = fb.add_node("frag", layer, fr.get("text", ""), kind=fr.get("kind", "claim"),
-                        contract=c["id"], uncertainty=doc.get("uncertainty"))
+                        contract=c["id"], uncertainty=doc.get("uncertainty"), bindings=fr.get('bindings', {}))
         fb.add_edge(c["id"], "requests", n["id"])
         # No implements edge back to the same contract: requests already records the causal
         # link, and both labels are forward-chain, so the pair would be a 2-cycle (Prop. 3).
@@ -964,7 +1053,13 @@ def cmd_ingest(a):
         print(f"{n['id']}  fragment  L{layer}")
     for ev in doc.get("evidence", []):
         e = make_evidence(fb, layer, ev.get("source", ""), ev.get("confidence", "ai_derived"),
-                          ev.get("file"))
+                          ev.get("file"), ev.get('bindings'))
+        if ev.get('bindings') and ev.get('file'):
+            fb._qualify_structures()
+            assessment = fb.lifecycle._evaluate(e['version_id'], routine_subject=e['version_id'])
+            if not assessment['eligible']:
+                raise FabricError('observation inputs unqualified: ' + str(assessment['reasons']))
+            fb._qualify('observation', e['version_id'])
         for k in ev.get("supports", []):
             fb.add_edge(e["id"], "supports", keymap[k])
         for k in ev.get("contradicts", []):
@@ -1051,21 +1146,18 @@ def impact_dependents(fb, changed):
 
 
 def cmd_invalidate(a):
+    """Prepare governed invalidation with complete causal effects; never mutate directly."""
     fb = open_fabric(a.engagement)
     if a.changed not in fb.nodes:
         raise FabricError(f"unknown changed reference {a.changed}")
-    affected = impact_dependents(fb, a.changed)
-    if not affected:
-        print(f"no dependent fragments for {a.changed}")
-        return 0
-    for f in affected:
-        layer = fb.nodes[f]["layer"]
-        k = fb.add_node("conf", layer, f"dependency {a.changed} changed: {a.reason}",
-                        changed_ref=a.changed, invalidation=True)
-        fb.add_edge(f, "may_create", k["id"])
-        print(f"{f} INVALIDATED by {a.changed} -> {k['id']}")
-    print("Revalidate affected branches; prior release eligibility is intentionally lost until the new "
-          "evidence/review chain resolves these conflicts.")
+    spec = {'scope': getattr(a, 'scope', 'default'), 'reason': a.reason,
+            'proposed': [], 'selections': [], 'reinstatements': [], 'verification': [],
+            'invalidations': [fb.nodes[a.changed]['version_id']], 'proofs': [],
+            'allowed_verification_path': 'fresh-invalidation-verification'}
+    with tempfile.TemporaryDirectory(prefix='jai-invalidation-spec-') as directory:
+        path = Path(directory) / 'spec.json'
+        path.write_bytes(lifecycle.canonical(spec))
+        return cmd_lifecycle_plan(argparse.Namespace(engagement=a.engagement, spec=str(path), out=a.request_out))
 
 
 def cmd_answer(a):
@@ -1081,12 +1173,17 @@ def cmd_answer(a):
         v = fb.latest_review(child) if ch else None
         if not ch or ch["type"] != "frag" or ch["layer"] != layer + 1:
             raise FabricError(f"{child}: must be a fragment from L{layer + 1}")
-        if v is None or fb.nodes[v]["layer"] != layer or fb.nodes[v]["state"] not in JUSTIFYING:
+        if not fb.justify(child, strict=True)[0] or (v is not None and fb.nodes[v]['layer'] != layer):
             raise FabricError(f"{child} is not accepted by an L{layer} review; build only on qualified outputs")
-    n = fb.add_node("frag", layer, a.text, kind="product", requirement=r["id"])
+    n = fb.add_node("frag", layer, a.text, kind="product", requirement=r["id"],
+                    profile=lifecycle.policy()['top_output_profile'],
+                    bindings=_optional_semantics(a, 'bindings'))
     fb.add_edge(r["id"], "requests", n["id"])
     for child in a.supported_by:
         fb.add_edge(child, "supports", n["id"])
+    if n.get('bindings'):
+        fb._qualify_structures()
+        fb._qualify('answer', n['version_id'])
     print(f"{n['id']}  product fragment  L{layer}")
 
 
@@ -1097,7 +1194,8 @@ def cmd_release(a):
     if not f or f["type"] != "frag":
         raise FabricError("release names a fragment")
     problems, warnings = fb.verify()
-    ok, why = fb.justify(f["id"], strict=True)
+    result = fb.lifecycle.evaluate(f['version_id'], release=True)
+    why = result['reasons']
     # A product justified on evidence that no longer matches its recorded hash has lost its
     # justification: drift blocks release rather than merely warning.
     why += [f"evidence drift: {w}" for w in warnings if "changed since recorded" in w
@@ -1105,16 +1203,13 @@ def cmd_release(a):
     v = fb.latest_review(f["id"])
     if f["layer"] != 1:
         why.append(f"only an Intent-layer product can be released (this is L{f['layer']})")
-    if v is None or fb.nodes[v]["layer"] != 0 or fb.nodes[v]["state"] not in STRICT_JUSTIFYING:
-        why.append("no signed authority acceptance (layer-0 review) of this product")
     why += [f"fabric integrity: {p}" for p in problems]
     if why:
         print(f"NOT RELEASABLE  {f['id']}")
         for w in why:
             print(f"  - {w}")
         return 1
-    print(f"RELEASABLE  {f['id']}: strict-justifiable, authority-accepted by "
-          f"{fb.nodes[v].get('reviewer')}, fabric verified.")
+    print(f"RELEASABLE  {f['id']}: exact closure and human acceptance verified; read-only eligibility.")
     return 0
 
 
@@ -1324,17 +1419,32 @@ def cmd_dossier(a):
     print("\n".join(L))
 
 
-def make_evidence(fb, layer, source, confidence, path):
+def make_evidence(fb, layer, source, confidence, path, bindings=None):
+    """Record an observation with exact bytes and input-context version bindings.
+
+    Args:
+        fb: Mutable in-memory Fabric command projection.
+        layer: Layer issuing the observation.
+        source: Human-readable observation description.
+        confidence: Declared observation provenance class, never qualification.
+        path: Optional bounded nonsymlink single-link file locator.
+        bindings: Exact seven-category lifecycle input references/exclusions.
+    Returns:
+        Pending evidence graph node with shared immutable version identity.
+    Raises:
+        FabricError: Unknown confidence or deterministic observation without file.
+        ValueError: Unsafe file or unsupported semantic data.
+        OSError: Unreadable file.
+    """
     if confidence not in CONFIDENCE:
         raise FabricError(f"confidence must be one of {CONFIDENCE}")
-    meta = {"source": source, "confidence": confidence}
+    meta = {"source": source, "confidence": confidence, 'bindings': bindings or {}}
     if path:
         p = os.path.abspath(path)
         if not os.path.isfile(p):
             raise FabricError(f"evidence file {p} does not exist: evidence is not a description of a file")
-        with open(p, "rb") as stream:
-            meta.update(file=p, sha256=hashlib.sha256(stream.read()).hexdigest(),
-                        size=os.path.getsize(p))
+        observed = operator_actions.regular(p)
+        meta.update(file=p, sha256=hashlib.sha256(observed).hexdigest(), size=len(observed))
     elif confidence == "deterministic":
         raise FabricError("deterministic evidence must point at a file or output the tool can hash")
     return fb.add_node("evd", layer, source, **meta)
@@ -1343,7 +1453,13 @@ def make_evidence(fb, layer, source, confidence, path):
 def cmd_evidence(a):
     fb = open_fabric(a.engagement)
     check_episode_budget(fb, 1)
-    e = make_evidence(fb, a.layer, a.source, a.confidence, a.file)
+    e = make_evidence(fb, a.layer, a.source, a.confidence, a.file,
+                      _optional_semantics(a, 'bindings'))
+    if e.get('bindings') and a.file:
+        assessment = fb.lifecycle._evaluate(e['version_id'], routine_subject=e['version_id'])
+        if not assessment['eligible']:
+            raise FabricError('observation inputs unqualified: ' + str(assessment['reasons']))
+        fb._qualify('observation', e['version_id'])
     for f in a.supports or []:
         fb.add_edge(e["id"], "supports", f)
     for f in a.contradicts or []:
@@ -1352,9 +1468,14 @@ def cmd_evidence(a):
 
 
 def cmd_review(a):
-    if a.layer==0 and _SELFTEST_AUTHORITY_ROOT is None and _AUTHORITY_CAPTURE is None:
-        return operator_request(a,'fabric-review')
-    fb = open_fabric(a.engagement)
+    """Prepare human acceptance or stage a pending adjacent-layer review."""
+    if a.layer == 0 and _AUTHORITY_CAPTURE is None:
+        return operator_request(a, 'fabric-review')
+    return _record_review(open_fabric(a.engagement), a)
+
+
+def _record_review(fb, a, historical=False, assessment=None):
+    """Build exact review effects in memory; historical replay omits locator reads."""
     f = fb.nodes.get(a.fragment)
     if not f or f["type"] != "frag":
         raise FabricError("review targets a fragment")
@@ -1365,11 +1486,58 @@ def cmd_review(a):
     if a.state == "accepts_with_constraints" and not a.constraints:
         raise FabricError("accepts_with_constraints needs --constraints: the conditions are the point")
     sign = a.layer == 0
+    accepting = sign and a.state in STRICT_JUSTIFYING
     via = require_human("an authority review") if sign else None
-    check_episode_budget(fb, 1)
+    closure = fb.lifecycle._evaluate(f['version_id'], historical=historical, assessment=assessment)
+    if accepting and not closure['eligible']:
+        raise FabricError('preacceptance closure is not eligible: ' + str(closure['reasons']))
+    check_episode_budget(fb, 1, assessment)
+    routine = not sign and a.state in STRICT_JUSTIFYING and bool(f.get('bindings'))
+    review_meta = {}
+    if routine:
+        fb._qualify_structures()
+        checked = fb.lifecycle._evaluate(f['version_id'], routine_subject=f['version_id'])
+        if not checked['eligible']:
+            raise FabricError('review inputs unqualified: ' + str(checked['reasons']))
+        refs = f['bindings'].get('contract', {}).get('refs', [])
+        review_meta = {'issuer_contract': refs[0] if len(refs) == 1 else None,
+                       'profile': lifecycle.policy()['routine_profile'],
+                       'assessed_closure': checked['contexts'], 'assessed_hash': checked['closure_hash']}
     r = fb.add_node("rev", a.layer, a.rationale, state=a.state, reviewer=a.reviewer, model=a.model,
-                    constraints=a.constraints, target=f["id"], sign=sign, approved_via=via)
+                    constraints=a.constraints, target=f["id"], sign=sign, approved_via=via,
+                    subject=f['version_id'], closure_hash=closure['closure_hash'] if accepting else None,
+                    **review_meta)
+    previous_acceptance = fb.lifecycle.proofs.get(('default', f['version_id'], 'accept')) if sign else None
     fb.add_edge(f["id"], "reviewed_by", r["id"])
+    if routine:
+        fb._qualify('review', r['version_id'])
+    if previous_acceptance:
+        cancellations = [{'op': 'state', 'data': {**point,
+                          'changes': {'validity': 'invalid', 'applicable': False, 'sufficient': False, 'reviewed': False}}}
+                         for point in fb.lifecycle.affected_contexts([previous_acceptance], 'default')]
+        for operation in cancellations:
+            fb.lifecycle.apply(operation, authorized=True)
+        fb.pending.extend(cancellations)
+        _AUTHORITY_CAPTURE.extend(copy.deepcopy(cancellations))
+    if accepting:
+        permission = lifecycle.manifest('permission:' + r['id'], 'permission', {'subject': f['version_id'], 'acceptance': r['version_id']})
+        identifier = lifecycle.version_id(permission)
+        changes = [
+            {'op': 'state', 'data': {'version_id': r['version_id'], 'scope': 'default', 'changes': {'validity': 'valid', 'applicable': True, 'reviewed': True, 'sufficient': True}}},
+            {'op': 'version', 'data': {'version_id': identifier, 'manifest': permission}},
+            {'op': 'select', 'data': {'scope': 'default', 'logical_id': permission['logical_id'], 'version_id': identifier, 'previous': None}},
+            {'op': 'state', 'data': {'version_id': identifier, 'scope': 'default', 'changes': {'validity': 'valid', 'applicable': True}}},
+            {'op': 'rely', 'data': {'dependent': identifier, 'prerequisite': r['version_id'], 'scope': 'default', 'role': 'acceptance'}},
+            {'op': 'proof-select', 'data': {'scope': 'default', 'subject': f['version_id'], 'role': 'permission', 'proof': identifier,
+                                          'previous': fb.lifecycle.proofs.get(('default', f['version_id'], 'permission'))}}]
+        for point in closure['contexts']:
+            if point['version_id'] != r['version_id']:
+                changes.append({'op': 'rely', 'data': {'dependent': r['version_id'], 'prerequisite': point['version_id'],
+                                'scope': 'default', 'prerequisite_scope': point['scope'], 'role': 'accepted-closure'}})
+        for operation in changes:
+            fb.lifecycle.apply(operation, authorized=True)
+        fb.pending.extend(changes)
+        _AUTHORITY_CAPTURE.extend(copy.deepcopy(changes))
     print(f"{r['id']}  {a.state}")
     if a.state in ("conflicts", "escalate"):
         k = fb.add_node("conf", a.layer, f"review {r['id']}: {a.rationale}")
@@ -1552,10 +1720,15 @@ def cmd_reformulate(a):
 
 
 def cmd_authorise(a):
-    if _SELFTEST_AUTHORITY_ROOT is None and _AUTHORITY_CAPTURE is None:
-        return operator_request(a,'fabric-authorise')
+    """Prepare an exact operator decision; no local key or flag grants authority."""
+    if _AUTHORITY_CAPTURE is None:
+        return operator_request(a, 'fabric-authorise')
+    return _record_authorise(open_fabric(a.engagement), a)
+
+
+def _record_authorise(fb, a, assessment=None):
+    """Build a deterministic time-bound authority decision in memory."""
     via = require_human("an authority decision")
-    fb = open_fabric(a.engagement)
     x = fb.nodes.get(a.escalation)
     if not x or x["type"] != "esc":
         raise FabricError("authorise resolves an escalation")
@@ -1571,19 +1744,20 @@ def cmd_authorise(a):
         if a.decision != "revise":
             raise FabricError("adopting a proposal is a revise decision")
         a.revise_text = p["text"]
-    if a.decision == "revise" and fb.round_no() >= MAX_ROUNDS and not a.beyond_round_limit:
+    round_limit = assessment['budgets']['rounds'] if assessment else MAX_ROUNDS
+    if a.decision == "revise" and fb.round_no() >= round_limit and not a.beyond_round_limit:
         raise FabricError(
             f"this would start round {fb.round_no() + 1}; the limit is {MAX_ROUNDS}. Repeated revision "
             "that does not converge is itself information. If you still want another round, say so "
             "explicitly with --beyond-round-limit and give the reason in --rationale.")
     if a.decision == "exception" and not a.expires:
         raise FabricError("an exception must be time-bound: pass --expires DAYS")
-    exp = time.time() + a.expires * 86400 if a.expires else None
+    exp = a.planned_epoch + a.expires * 86400 if a.expires else None
     auth = fb.add_node("auth", 0, a.rationale or a.decision, decision=a.decision, signer=a.signer,
                        round=fb.round_no(), adopted=a.adopt, beyond_round_limit=a.beyond_round_limit or None,
                        approved_via=via,
                        expires_epoch=exp,
-                       expires=time.strftime("%Y-%m-%d", time.localtime(exp)) if exp else None,
+                       expires=a.planned_expires_date if exp else None,
                        sign=True)
     fb.add_edge(x["id"], "resolved_by", auth["id"])
     print(f"{auth['id']}  {a.decision} by {a.signer}")
@@ -1599,17 +1773,74 @@ def cmd_authorise(a):
               + (f" (adopted {a.adopt})" if a.adopt else ""))
 
 
+def _assessment_context(before, engagement):
+    """Capture immutable policy, configuration and clock inputs for one decision."""
+    state = lifecycle.replay(before, engagement, verify_lifecycle_proof)
+    identifier = state.selections.get(('default', 'lifecycle-policy'))
+    if identifier is None:
+        raise FabricError('governing assessment policy missing')
+    return {'schema': 'jai.fabric.assessment/2', 'timestamp': int(time.time() * 1000),
+            'governing_policy': {'version_id': identifier, 'manifest': state.versions[identifier]},
+            'supervision_source': operator_actions.regular(POLICY_PATH).decode('utf-8'),
+            'budgets': {'rework': MAX_REWORK, 'reformulate': MAX_REFORMULATE,
+                        'contracts': MAX_CONTRACTS, 'rounds': MAX_ROUNDS, 'steps': MAX_STEPS}}
+
+
+def _validate_assessment(context, before, request, live=False):
+    """Bind the archived assessment to exact prefix/policy and optionally current controls."""
+    if set(context) != {'schema', 'timestamp', 'governing_policy', 'supervision_source', 'budgets'} or context['schema'] != 'jai.fabric.assessment/2':
+        raise FabricError('complete typed immutable assessment context required')
+    if type(context['timestamp']) is not int or not 0 <= request['created_at'] * 1000 - context['timestamp'] <= 10000:
+        raise FabricError('assessment time is not bound to request creation')
+    if set(context['budgets']) != {'rework', 'reformulate', 'contracts', 'rounds', 'steps'} or any(type(value) is not int or value < 1 for value in context['budgets'].values()):
+        raise FabricError('complete positive assessment budget configuration required')
+    state = lifecycle.replay(before, request['parameters']['engagement'], verify_lifecycle_proof)
+    governing = context['governing_policy']
+    if set(governing) != {'version_id', 'manifest'} or state.selections.get(('default', 'lifecycle-policy')) != governing['version_id'] or state.versions.get(governing['version_id']) != governing['manifest']:
+        raise FabricError('assessment governing policy differs from exact prefix')
+    if operator_actions.sha(context['supervision_source'].encode('utf-8')) != request['parameters']['policy_digest']:
+        raise FabricError('assessment supervision bytes differ from signed policy digest')
+    if live:
+        current = _assessment_context(before, request['parameters']['engagement'])
+        if {key: value for key, value in current.items() if key != 'timestamp'} != {key: value for key, value in context.items() if key != 'timestamp'}:
+            raise FabricError('assessment configuration changed; new approval required')
+
+
+def _capture_authority(before, engagement, kind, action, historical=False, assessment=None):
+    """Derive exact authority operations against one immutable in-memory prefix."""
+    global _AUTHORITY_CAPTURE
+    prior, planned = _AUTHORITY_CAPTURE, []
+    _AUTHORITY_CAPTURE = planned
+    try:
+        context = assessment if assessment is not None else _assessment_context(before, engagement)
+        graph = Fabric(engagement, before)
+        args = argparse.Namespace(**action)
+        with contextlib.redirect_stdout(io.StringIO()):
+            if kind == 'fabric-review':
+                _record_review(graph, args, historical, context)
+            elif kind == 'fabric-authorise':
+                _record_authorise(graph, args, context)
+            else:
+                raise FabricError('unknown authority action')
+        return planned
+    finally:
+        _AUTHORITY_CAPTURE = prior
+
+
 def operator_request(a,kind):
     """Plan an exact authority transaction without modifying the engagement."""
-    global _AUTHORITY_CAPTURE
     before=load(a.engagement)
-    planned=[];_AUTHORITY_CAPTURE=planned
-    try:
-        with contextlib.redirect_stdout(io.StringIO()):
-            (cmd_review if kind=='fabric-review' else cmd_authorise)(a)
-    finally:_AUTHORITY_CAPTURE=None
+    assessment = _assessment_context(before, a.engagement)
+    if kind == 'fabric-authorise':
+        a.planned_epoch = assessment['timestamp'] // 1000
+        a.planned_expires_date = time.strftime('%Y-%m-%d', time.localtime(a.planned_epoch + a.expires * 86400)) if a.expires else None
+    action = {key: value for key, value in vars(a).items() if key != 'fn'}
+    planned = _capture_authority(before, a.engagement, kind, action, assessment=assessment)
     if not planned:raise FabricError('empty authority transaction')
     parameters={'engagement':a.engagement,'entries':planned,
+        'expected_head': before[-1]['hash'],
+        'action': action,
+        'assessment': assessment,
         'entries_sha256':operator_actions.sha(operator_actions.canonical(before)),
         'policy_digest':operator_actions.sha(operator_actions.regular(POLICY_PATH)),
         'policy_version':supervision_policy().get('schema'),
@@ -1624,18 +1855,136 @@ def operator_request(a,kind):
     return 3
 
 
-def verify_operator_entry(entry,entries):
-    """Verify external signature, exact plan and the immutable prior snapshot."""
-    proof=entry['operator_authority'];req=proof['request'];step=proof['step']
-    if type(step) is not int or not 0<=step<len(req['parameters']['entries']):raise ValueError('invalid transaction step')
-    decision=operator_actions.verify_receipt(req,proof['receipt'],live=False)
-    if not decision['accepted'] or decision['performed']:raise ValueError('not an approval for a pending effect')
-    original=dict(entry);original.pop('operator_authority');original.pop('sig',None)
-    if original!=req['parameters']['entries'][step]:raise ValueError('authority effect differs from signed plan')
-    start=entry['seq']-1-step
-    if start<0 or operator_actions.sha(operator_actions.canonical(entries[:start]))!=req['parameters']['entries_sha256']:raise ValueError('authority snapshot mismatch or replay')
-    if any(e.get('operator_authority',{}).get('request',{}).get('request_id')==req['request_id'] for e in entries[:start]):raise ValueError('operator request replay')
+def verify_lifecycle_proof(transaction, before):
+    """Verify exact external effects, immutable prefix and application-time expiry.
+
+    Args:
+        transaction: Complete format-2 envelope with request/receipt proof.
+        before: Exact previously committed format-2 prefix.
+    Returns:
+        True when independent signature and all signed effects match.
+    Raises:
+        ValueError: Signature, capability, expiry, prefix, policy or effect mismatch.
+    """
+    proof = transaction['proof']
+    if set(proof) != {'request', 'receipt'}:
+        raise FabricError('unknown operator proof fields')
+    req, receipt = proof['request'], proof['receipt']
+    unsigned = {key: value for key, value in transaction.items() if key not in {'hash', 'proof'}}
+    if hashlib.sha256(lifecycle.TRANSACTION_DOMAIN + lifecycle.canonical(unsigned)).hexdigest() != transaction['hash']:
+        raise FabricError('operator transaction semantic hash mismatch')
+    if operator_actions.sha(operator_actions.canonical(proof)) != transaction['proof_digest']:
+        raise FabricError('operator proof digest mismatch')
+    trust = operator_actions.trusted_key()
+    trust_digest = operator_actions.sha(operator_actions.canonical(trust))
+    prefix_digest = operator_actions.sha(operator_actions.canonical(before))
+    cache_key = (transaction['hash'], transaction['proof_digest'], prefix_digest, trust_digest)
+    if cache_key in _VERIFIED_PROOFS:
+        return True
+    body = operator_actions.verify_receipt(req, receipt, live=False)
+    if operator_actions.canonical(trust) != operator_actions.canonical(operator_actions.trusted_key()):
+        raise FabricError('operator trust changed during verification')
+    if not body['accepted'] or body['performed']:
+        raise FabricError('receipt is not pending-effect authorization')
+    applied = transaction['timestamp'] / 1000
+    if not req['created_at'] - 0.001 <= applied < req['expires_at'] or applied < body['issued_at'] - 0.001:
+        raise FabricError('receipt not valid at application time')
+    parameters = req['parameters']
+    if transaction['transaction_id'] != req['request_id'] or parameters['engagement'] != transaction['engagement']:
+        raise FabricError('request replay or cross-engagement proof')
+    if parameters['expected_head'] != transaction['previous'] or parameters['entries_sha256'] != operator_actions.sha(operator_actions.canonical(before)):
+        raise FabricError('signed prefix mismatch')
+    source_bytes = b''.join(operator_actions.canonical(item) + b'\n' for item in before)
+    if operator_actions.sha(source_bytes) != req['source']['sha256']:
+        raise FabricError('signed source bytes do not bind the immutable ledger prefix')
+    if lifecycle.canonical(parameters['entries']) != lifecycle.canonical(transaction['operations']):
+        raise FabricError('unknown, missing or extra effects')
+    if req['kind'] == 'lifecycle-update':
+        state = lifecycle.replay(before, transaction['engagement'], verify_lifecycle_proof)
+        actual = state.effects(parameters['spec'], read_content=False)
+        if lifecycle.canonical(actual) != lifecycle.canonical(parameters['effects']):
+            raise FabricError('lifecycle effects do not match independent derivation')
+    elif req['kind'] not in {'fabric-review', 'fabric-authorise'}:
+        raise FabricError('unsupported governed proof kind')
+    else:
+        _validate_assessment(parameters['assessment'], before, req)
+        expected = _capture_authority(before, transaction['engagement'], req['kind'], parameters['action'], historical=True, assessment=parameters['assessment'])
+        if lifecycle.canonical(expected) != lifecycle.canonical(transaction['operations']):
+            raise FabricError('signed authority effect differs from deterministic action')
+    if len(_VERIFIED_PROOFS) > 4096:
+        _VERIFIED_PROOFS.clear()
+    _VERIFIED_PROOFS[cache_key] = True
     return True
+
+
+def validate_governed_request(req):
+    """Recompute a pending request from current immutable state before signing/apply.
+
+    Args:
+        req: Exact unsigned operator request; this function grants no authority.
+    Returns:
+        None after current head, policy and complete effects have matched.
+    Raises:
+        ValueError: Stale policy/head, source substitution or unknown effects.
+    """
+    operator_actions.validate(req)
+    parameters = req['parameters']
+    before = load(parameters['engagement'])
+    if operator_actions.sha(operator_actions.regular(req['source']['path'])) != req['source']['sha256']:
+        raise FabricError('signed source bytes changed; new request required')
+    if (parameters['expected_head'] != before[-1]['hash'] or
+            operator_actions.sha(operator_actions.canonical(before)) != parameters['entries_sha256'] or
+            parameters['policy_digest'] != operator_actions.sha(operator_actions.regular(POLICY_PATH))):
+        raise FabricError('changed head or policy; new request required')
+    if str(Path(log_path(parameters['engagement'])).absolute()) != req['source']['path']:
+        raise FabricError('cross-engagement source substitution')
+    if req['kind'] == 'lifecycle-update':
+        state = lifecycle.replay(before, parameters['engagement'], verify_lifecycle_proof)
+        effects = state.effects(parameters['spec'])
+        if lifecycle.canonical(effects) != lifecycle.canonical(parameters['effects']) or effects['operations'] != parameters['entries']:
+            raise FabricError('unknown, omitted or extra lifecycle effects')
+    else:
+        _validate_assessment(parameters['assessment'], before, req, live=True)
+        expected = _capture_authority(before, parameters['engagement'], req['kind'], parameters['action'])
+        if lifecycle.canonical(expected) != lifecycle.canonical(parameters['entries']):
+            raise FabricError('authority action/effects mismatch')
+
+
+def cmd_lifecycle_plan(a):
+    """Prepare exact governed effects from a typed spec without changing the ledger."""
+    before = load(a.engagement)
+    state = lifecycle.replay(before, a.engagement, verify_lifecycle_proof)
+    spec = lifecycle.loads(operator_actions.regular(a.spec))
+    effects = state.effects(spec)
+    candidate = copy.deepcopy(state)
+    for operation in effects['operations']:
+        candidate.apply(operation, authorized=True)
+    candidate.check_cycles()
+    parameters = {'engagement': a.engagement, 'expected_head': before[-1]['hash'],
+                  'entries_sha256': operator_actions.sha(operator_actions.canonical(before)),
+                  'policy_digest': operator_actions.sha(operator_actions.regular(POLICY_PATH)),
+                  'policy_version': 'jai.lifecycle.policy/2', 'spec': spec,
+                  'effects': effects, 'entries': effects['operations']}
+    req = operator_actions.request('lifecycle-update', spec['reason'], log_path(a.engagement),
+                                   spec['scope'], parameters, risk='Exact scoped update; acceptance and release are not granted')
+    Path(a.out).parent.mkdir(parents=True, exist_ok=True)
+    with Path(a.out).open('x', encoding='utf-8') as stream:
+        json.dump(req, stream, indent=2, ensure_ascii=False)
+        stream.write('\n')
+    print('PENDING', req['request_id'], a.out)
+
+
+def cmd_lifecycle_status(a):
+    """Report exact scoped selections and current closure eligibility read-only."""
+    fb = open_fabric(a.engagement)
+    result = []
+    for (scope, logical), version in sorted(fb.lifecycle.selections.items()):
+        if scope == a.scope:
+            result.append({'logical_id': logical, 'version_id': version,
+                           'predicates': fb.lifecycle.predicates(version, scope),
+                           'manifest': fb.lifecycle.versions[version],
+                           'gate': fb.lifecycle.evaluate(version, scope)})
+    print(json.dumps(result, indent=2, ensure_ascii=False))
 
 
 def cmd_apply_operator(a):
@@ -1644,39 +1993,32 @@ def cmd_apply_operator(a):
     decision=operator_actions.verify_receipt(req,receipt)
     if not decision['accepted']:
         print('DENIED: operator rejected; ledger unchanged');return 2
-    if decision['performed'] or req['kind'] not in {'fabric-review','fabric-authorise'}:raise FabricError('not a pending Fabric authority approval')
+    if decision['performed'] or req['kind'] not in {'fabric-review','fabric-authorise','lifecycle-update'}:raise FabricError('not a pending Fabric authority approval')
+    validate_governed_request(req)
     parameters=req['parameters'];eng=parameters['engagement'];path=Path(log_path(eng)).absolute()
     if str(path)!=req['source']['path']:raise FabricError('cross-engagement approval')
     if set(path.parts)&{'.git','.ai','.agents','.codex','.claude','policy','policies','approvals','.ssh'}:raise FabricError('protected storage cannot be an engagement target')
     if operator_actions.sha(operator_actions.regular(POLICY_PATH))!=parameters['policy_digest']:raise FabricError('policy changed; reapproval required')
-    lock=str(path)+'.lock';descriptor=os.open(lock,os.O_CREAT|os.O_EXCL|os.O_WRONLY,0o600)
-    temporary=None
-    try:
-        raw=operator_actions.regular(path)
-        if operator_actions.sha(raw)!=req['source']['sha256']:raise FabricError('ledger changed or receipt replay; new approval required')
-        before=load(eng)
-        if operator_actions.sha(operator_actions.canonical(before))!=parameters['entries_sha256']:raise FabricError('snapshot mismatch')
-        planned=copy.deepcopy(parameters['entries'])
-        for step,entry in enumerate(planned):
-            entry['operator_authority']={'request':req,'receipt':receipt,'step':step}
-        candidate=Fabric(eng,before+planned);problems,warnings=candidate.verify()
-        if problems or any(not warning.startswith('legacy L0 ') for warning in warnings):raise FabricError('invalid approved transaction: '+str(problems+warnings))
-        with tempfile.NamedTemporaryFile(dir=path.parent,prefix='.operator-',delete=False) as stream:
-            temporary=Path(stream.name);stream.write(raw+b''.join((canonical(e)+'\n').encode() for e in planned));stream.flush();os.fsync(stream.fileno())
-        if operator_actions.sha(operator_actions.regular(path))!=req['source']['sha256']:raise FabricError('ledger changed during verification')
-        os.replace(temporary,path);temporary=None
-        directory=os.open(path.parent,os.O_RDONLY|os.O_DIRECTORY)
-        try:os.fsync(directory)
-        finally:os.close(directory)
-    finally:
-        if temporary is not None:temporary.unlink(missing_ok=True)
-        os.close(descriptor);os.unlink(lock)
+    if operator_actions.sha(operator_actions.regular(path)) != req['source']['sha256']:
+        raise FabricError('ledger changed or receipt replay; new approval required')
+    lifecycle.commit(path, eng, parameters['expected_head'], parameters['entries'],
+                     verify_lifecycle_proof, {'request': req, 'receipt': receipt}, req['request_id'],
+                     candidate_validator=lambda transactions: Fabric(eng, transactions))
     print('COMPLETED',req['request_id'],operator_actions.ASSURANCE)
     return 0
 
 
 def cmd_keygen(a):
-    """Not normally needed: the installer creates the signing key, and signing creates one if absent."""
+    """Report the historical local-key path without granting signing authority.
+
+    Args:
+        a: CLI namespace; no key or trust identity can be supplied here.
+    Returns:
+        Zero when the historical path exists; its presence is not trusted authority.
+    Raises:
+        FabricError: Local key creation is attempted outside the in-memory planning
+            boundary. The installer does not provision private keys or public trust.
+    """
     if os.path.isfile(KEY_PATH):
         print(f"signing key already present at {KEY_PATH}")
         return 0
@@ -1729,8 +2071,9 @@ def cmd_status(a):
     by = defaultdict(lambda: defaultdict(int))
     for n in fb.nodes.values():
         if n["type"] == "frag" and n.get("kind") != "reformulation":
-            v = fb.latest_review(n["id"])
-            by[n["layer"]][fb.nodes[v]["state"] if v else "unreviewed"] += 1
+            proof = fb.lifecycle.proofs.get(('default', n['version_id'], 'reviewer'))
+            state = 'unreviewed' if proof is None else 'qualified' if fb.justify(n['id'], strict=True)[0] else 'blocked'
+            by[n["layer"]][state] += 1
     print(f"engagement {fb.eng}")
     for layer in sorted(by):
         print(f"  L{layer} {LAYERS[layer]:<30} " + ", ".join(f"{k}={v}" for k, v in sorted(by[layer].items())))
@@ -1795,434 +2138,60 @@ def cmd_report(a):
 
 
 # ------------------------------------------------------------------------ selftest
-def _cmd_selftest(a, tmp):
-    global FABRIC_DIR, KEY_PATH
-    FABRIC_DIR, KEY_PATH = os.path.join(tmp, "fab"), os.path.join(tmp, "authority.key")
-    authority_key(create=True)
-    checks = []
-
-    def expect(name, cond):
-        checks.append((name, bool(cond)))
-
-    def raises(fn):
-        try:
-            fn()
-            return False
-        except FabricError:
-            return True
-
-    fb = Fabric("t", [])
-    i = fb.add_node("intent", 1, "adapt the secure SDLC library to the client")
-    r1 = fb.add_node("req", 1, "preserve the open-source dependency risk objective")
-    fb.add_edge(i["id"], "derives", r1["id"])
-    c12 = fb.add_node("ctr", 1, "interpret", target_layer=2,
-                      fields={k: "x" for k in CONTRACT_FIELDS})
-    fb.add_edge(r1["id"], "derives", c12["id"])
-    r2 = fb.add_node("req", 2, "client term: SCA = dependency scanning in GitLab CI")
-    fb.add_edge(c12["id"], "refines", r2["id"])
-    c23 = fb.add_node("ctr", 2, "classify", target_layer=3, fields={k: "x" for k in CONTRACT_FIELDS})
-    fb.add_edge(r2["id"], "derives", c23["id"])
-    f3 = fb.add_node("frag", 3, "SCA is mandatory; client has no SCA tool")
-    fb.add_edge(c23["id"], "requests", f3["id"])
-    expect("unreviewed fragment is not justifiable", not fb.justify(f3["id"])[0])
-    expect("adjacency: L6 evidence cannot support an L3 fragment directly",
-           raises(lambda: fb.add_edge(fb.add_node("evd", 6, "scan", confidence="observation",
-                                                  source="s")["id"], "supports", f3["id"])))
-    expect("typing: supports cannot point at a requirement",
-           raises(lambda: fb.add_edge(f3["id"], "supports", r2["id"])))
-    e3 = fb.add_node("evd", 3, "tool inventory export", confidence="observation", source="cmdb")
-    fb.add_edge(e3["id"], "supports", f3["id"])
-    v2 = fb.add_node("rev", 2, "consistent with inventory", state="accepts", reviewer="l2", model="m",
-                     target=f3["id"])
-    fb.add_edge(f3["id"], "reviewed_by", v2["id"])
-    expect("reviewed and evidenced fragment is justifiable (paper mode)", fb.justify(f3["id"])[0])
-    expect("... and in strict mode", fb.justify(f3["id"], strict=True)[0])
-    k = fb.add_node("conf", 3, "risk persists without SCA")
-    fb.add_edge(e3["id"], "may_create", k["id"])
-    expect("unresolved conflict blocks justifiability", not fb.justify(f3["id"])[0])
-    x3 = fb.add_node("esc", 3, "removal of a control needs authority")
-    fb.add_edge(k["id"], "escalates", x3["id"])
-    expect("authority cannot resolve an escalation below L1",
-           raises(lambda: fb.add_edge(x3["id"], "resolved_by",
-                                      fb.add_node("auth", 0, "no", decision="accept", sign=True)["id"])))
-    x2 = fb.add_node("esc", 2, "relay")
-    fb.add_edge(x3["id"], "escalates", x2["id"])
-    x1 = fb.add_node("esc", 1, "relay")
-    fb.add_edge(x2["id"], "escalates", x1["id"])
-    au = fb.add_node("auth", 0, "temporary exception", decision="exception",
-                     expires_epoch=time.time() + 86400, expires="tomorrow", signer="risk owner", sign=True)
-    fb.add_edge(x1["id"], "resolved_by", au["id"])
-    expect("conflict resolved by a signed time-bound exception: justifiable", fb.justify(f3["id"], True)[0])
-    w = fb.add_node("rev", 4, "lower layer tries to upgrade", state="conflicts", reviewer="l4", model="m",
-                    target=f3["id"])
-    expect("layer direction: a lower layer cannot review upward",
-           raises(lambda: fb.add_edge(f3["id"], "reviewed_by", w["id"])))
-    expect("rejected lower-layer review does not change status", fb.justify(f3["id"])[0])
-    f_bare = fb.add_node("frag", 3, "fluent but unsupported claim")
-    fb.add_edge(c23["id"], "requests", f_bare["id"])
-    v_res = fb.add_node("rev", 2, "sounds right", state="resonates", reviewer="l2", model="m",
-                        target=f_bare["id"])
-    fb.add_edge(f_bare["id"], "reviewed_by", v_res["id"])
-    expect("'resonates' passes Definition 2 (i) as written", fb.justify(f_bare["id"])[0])
-    expect("... but strict mode rejects it: no evidence, and resonates is not evidence",
-           not fb.justify(f_bare["id"], strict=True)[0])
-    expect("cycle in the forward chain is rejected",
-           raises(lambda: fb.add_edge(r2["id"], "refines", r1["id"]) or
-                  fb.add_edge(r1["id"], "refines", r2["id"])))
-    p, _ = Fabric("t", load("t")).verify()
-    expect("verify passes on the untampered log", not p)
-    with open(log_path("t"), encoding="utf-8") as stream:
-        lines = stream.read().splitlines()
-    d = json.loads(lines[3]); d["data"]["text"] = "edited after the fact"; lines[3] = canonical(d)
-    with open(log_path("t"), "w", encoding="utf-8") as stream:
-        stream.write("\n".join(lines) + "\n")
-    p, _ = Fabric("t", load("t")).verify()
-    expect("verify detects an edited entry", any("hash mismatch" in x for x in p))
-
-    # ---- regression and ported cases ---------------------------------------------
-    NS = argparse.Namespace
-    full = {f: "x" for f in CONTRACT_FIELDS}
-    cmd_init(NS(engagement="r", intent="regression", owner="t", success=None, boundary=None))
-    cmd_req(NS(engagement="r", layer=1, text="top", label="derives", **{"from": "intent-0001"}))
-    cmd_contract(NS(engagement="r", rework_of=None, **full, **{"from": "req-0001"}))
-    msg = os.path.join(tmp, "m.json")
-
-    def ingest(doc, ctr="ctr-0001"):
-        fbx = open_fabric("r")
-        doc = dict(doc)
-        doc["context_digest"] = contract_context_packet(fbx, fbx.nodes[ctr])[1]
-        with open(msg, "w", encoding="utf-8") as stream:
-            stream.write(json.dumps(doc))
-        cmd_ingest(NS(engagement="r", contract=ctr, result=msg))
-
-    before = len(load("r"))
-    expect("atomic ingest: a rejected message appends nothing (regression)",
-           raises(lambda: ingest({"fragments": [{"key": "a", "text": "t", "supported_by": ["frag-9999"]}]}))
-           and len(load("r")) == before)
-    ingest({"fragments": [{"key": "a", "text": "AI says the control exists"}],
-            "evidence": [{"supports": ["a"], "source": "another model", "confidence": "ai_derived"}]})
-    fr = Fabric("r", load("r"))
-    expect("no implements back-edge from ingest, so no requests/implements 2-cycle (regression)",
-           not any(p == "implements" for _, p, _ in fr.edges))
-    cmd_review(NS(engagement="r", fragment="frag-0001", layer=1, state="accepts", rationale="ok",
-                  reviewer="t", model="m", constraints=None))
-    fr = Fabric("r", load("r"))
-    expect("section 10: AI-derived evidence alone passes Definition 2 ...", fr.justify("frag-0001")[0])
-    expect("... but not strict mode", not fr.justify("frag-0001", strict=True)[0])
-
-    for i in range(MAX_REWORK):
-        cmd_contract(NS(engagement="r", rework_of=f"ctr-{i + 1:04d}", change=f"repair {i+1}", **full, **{"from": "req-0001"}))
-    rc = cmd_contract(NS(engagement="r", rework_of=f"ctr-{MAX_REWORK + 1:04d}", change="repair exhausted", **full,
-                         **{"from": "req-0001"}))
-    fr = Fabric("r", load("r"))
-    expect("Prop. 4 extended: exhausted rework becomes a conflict and an escalation, not a loop",
-           rc == 3 and any(n["type"] == "esc" for n in fr.nodes.values()))
-
-    probe = os.path.join(tmp, "probe.txt")
-    with open(probe, "w", encoding="utf-8") as stream:
-        stream.write("p95=241ms")
-    cmd_contract(NS(engagement="r", rework_of=None, **full, **{"from": "req-0001"}))
-    ctr_last = sorted(i for i in Fabric("r", load("r")).nodes if i.startswith("ctr-"))[-1]
-    ingest({"fragments": [{"key": "m", "text": "measured p95 241ms"}],
-            "evidence": [{"supports": ["m"], "source": "load test", "confidence": "deterministic",
-                          "file": probe}]}, ctr=ctr_last)
-    fr = Fabric("r", load("r"))
-    mf = sorted(i for i in fr.nodes if i.startswith("frag-"))[-1]
-    cmd_review(NS(engagement="r", fragment=mf, layer=1, state="accepts", rationale="measured",
-                  reviewer="t", model="m", constraints=None))
-    cmd_answer(NS(engagement="r", requirement="req-0001", text="ready", supported_by=[mf]))
-    prod = sorted(i for i in Fabric("r", load("r")).nodes if i.startswith("frag-"))[-1]
-    cmd_review(NS(engagement="r", fragment=prod, layer=0, state="accepts", rationale="approved",
-                  reviewer="owner", model="human", constraints=None))
-    import io, contextlib
-    with contextlib.redirect_stdout(io.StringIO()):
-        ok_release = cmd_release(NS(engagement="r", fragment=prod)) == 0
-    with open(probe, "w", encoding="utf-8") as stream:
-        stream.write("p95=480ms")
-    with contextlib.redirect_stdout(io.StringIO()):
-        drift_blocks = cmd_release(NS(engagement="r", fragment=prod)) == 1
-    expect("release gate passes a strict-justified, authority-accepted product", ok_release)
-    expect("evidence drift after recording blocks release", drift_blocks)
-
-    # Proposition 1: linear-time decision, measured on a large fabric
-    big = Fabric("big", [])
-    big.entries = []
-    t0 = time.time()
-    root = {"id": "req-0", "type": "req", "layer": 2, "text": "", "gen": 0}
-    big.nodes[root["id"]] = root; big.seq_of[root["id"]] = 0
-    for i in range(1700):
-        f, e, v = f"frag-{i}", f"evd-{i}", f"rev-{i}"
-        big.nodes[f] = {"id": f, "type": "frag", "layer": 3, "text": ""}
-        big.nodes[e] = {"id": e, "type": "evd", "layer": 3, "text": "", "confidence": "observation"}
-        big.nodes[v] = {"id": v, "type": "rev", "layer": 2, "text": "", "state": "accepts"}
-        for n in (f, e, v):
-            big.seq_of[n] = i
-        big._index(root["id"], "requests", f); big._index(e, "supports", f); big._index(f, "reviewed_by", v)
-    memo = {}
-    n_ok = sum(big.justify(f"frag-{i}", strict=True, _memo=memo)[0] for i in range(1700))
-    elapsed = time.time() - t0
-    expect(f"Prop. 1: {len(big.nodes)} nodes, 1700 fragments decided in {elapsed:.2f}s (< 2s)",
-           n_ok == 1700 and elapsed < 2.0)
-
-    # ---- the escalation ladder ------------------------------------------------------
-    import io, contextlib
-    quiet = lambda: contextlib.redirect_stdout(io.StringIO())
-
-    def ladder_setup(eng):
-        with quiet():
-            cmd_init(NS(engagement=eng, intent="ladder test", owner="t", success=None, boundary=None))
-            cmd_req(NS(engagement=eng, layer=1, text="top", label="derives", **{"from": "intent-0001"}))
-            cmd_contract(NS(engagement=eng, rework_of=None, **full, **{"from": "req-0001"}))
-            ingest_to(eng, "ctr-0001", {"derived_requirements": [{"key": "r", "text": "L2 req", "contract": full}]})
-            ingest_to(eng, "ctr-0002", {"fragments": [{"key": "f", "text": "attempt fails"}],
-                                        "proposals": [{"text": "a different L2 requirement", "tradeoff": "costs X"}]})
-            cmd_review(NS(engagement=eng, fragment="frag-0001", layer=2, state="conflicts",
-                          rationale="cannot meet the L2 requirement", reviewer="t", model="m", constraints=None))
-
-    def ingest_to(eng, ctr, doc):
-        fbx = open_fabric(eng)
-        doc = dict(doc)
-        doc["context_digest"] = contract_context_packet(fbx, fbx.nodes[ctr])[1]
-        with open(msg, "w", encoding="utf-8") as stream:
-            stream.write(json.dumps(doc))
-        cmd_ingest(NS(engagement=eng, contract=ctr, result=msg))
-
-    def esc(eng, src, layer, code):
-        with quiet():
-            return cmd_escalate(NS(engagement=eng, layer=layer, code=code, reason="r", to_top=False,
-                                   **{"from": src}))
-
-    def last(eng, typ):
-        return sorted((i for i, d in Fabric(eng, load(eng)).nodes.items() if d["type"] == typ),
-                      key=lambda i: int(i.split("-")[1]))[-1]
-
-    def reform(eng, x, text):
-        with quiet():
-            return cmd_reformulate(NS(engagement=eng, escalation=x, text=text, change="different", **full))
-
-    ladder_setup("l")                                   # conf-0001 at L2, raised by an L2 review
-    esc("l", "conf-0001", 2, "exhausted")               # esc-0001 at L2
-    expect("ladder: an escalation may not move sideways", raises(lambda: esc("l", "esc-0001", 2, "relay")))
-    expect("ladder: an escalation may not move downward", raises(lambda: esc("l", "esc-0001", 3, "relay")))
-    expect("ladder: a conflict escalates first at its own layer", raises(lambda: esc("l", "conf-0001", 1, "exhausted")))
-    expect("ladder: a reformulation must differ from every earlier wording",
-           raises(lambda: reform("l", "esc-0001", "L2 req")))
-    reform("l", "esc-0001", "L2 req, second wording")
-    expect("ladder: the owning layer may reformulate within budget",
-           any(d.get("reformulates") == "esc-0001" for d in Fabric("l", load("l")).nodes.values()))
-
-    ladder_setup("oa")
-    esc("oa", "conf-0001", 2, "outside_authority")
-    expect("authority matter: no layer may reformulate it", raises(lambda: reform("oa", "esc-0001", "x")))
-    expect("authority matter: no relay may downgrade it", raises(lambda: esc("oa", "esc-0001", 1, "exhausted")))
-    esc("oa", "esc-0001", 1, "relay")
-    expect("authority matter: the status survives the relay",
-           Fabric("oa", load("oa")).nodes["esc-0002"]["effective"] == "outside_authority")
-
-    ladder_setup("nv")
-    esc("nv", "conf-0001", 2, "no_viable_reformulation")
-    expect("a layer that declared it cannot reformulate is not offered a reformulation",
-           raises(lambda: reform("nv", "esc-0001", "x")))
-    esc("nv", "esc-0001", 1, "relay")
-    expect("... but the layer it passes to may reformulate its own requirement",
-           next_action(Fabric("nv", load("nv")), "esc-0002")[0])
-
-    ladder_setup("bud")
-    esc("bud", "conf-0001", 2, "exhausted")
-    for i in range(MAX_REFORMULATE):
-        reform("bud", last("bud", "esc"), f"wording {i}")
-        with quiet():
-            ingest_to("bud", last("bud", "ctr"), {"fragments": [{"key": "f", "text": "fails again"}]})
-            cmd_review(NS(engagement="bud", fragment=last("bud", "frag"), layer=2, state="conflicts",
-                          rationale="still fails", reviewer="t", model="m", constraints=None))
-        esc("bud", last("bud", "conf"), 2, "exhausted")
-    rc = reform("bud", last("bud", "esc"), "one more wording")
-    fb_b = Fabric("bud", load("bud"))
-    up = fb_b.nodes[last("bud", "esc")]
-    expect(f"reformulation budget ({MAX_REFORMULATE}/layer/round) spent: the runtime passes it up itself",
-           rc == 3 and up["layer"] == 1 and up["code"] == "exhausted")
-
-    ladder_setup("dos")
-    esc("dos", "conf-0001", 2, "no_viable_reformulation")
-    esc("dos", "esc-0001", 1, "relay")
-    buf = io.StringIO()
-    with contextlib.redirect_stdout(buf):
-        cmd_dossier(NS(engagement="dos", escalation="esc-0002", examples=6))
-    d = buf.getvalue()
-    expect("dossier carries the verbatim intent, a real failed attempt and its review rationale",
-           "ladder test" in d and "attempt fails" in d and "cannot meet the L2 requirement" in d)
-    expect("dossier lists each proposal with its trade-off and an --adopt command",
-           "a different L2 requirement" in d and "costs X" in d and "--adopt frag-0002" in d)
-    with quiet():
-        cmd_authorise(NS(engagement="dos", escalation="esc-0002", decision="revise", signer="op",
-                         rationale="adopt", expires=None, revise_text=None, supersedes=None,
-                         adopt="frag-0002", beyond_round_limit=False))
-    fb_d = Fabric("dos", load("dos"))
-    newreq = fb_d.nodes[last("dos", "req")]
-    expect("operator adopts a proposal: it re-enters at L1 as the next generation, round 2 begins",
-           newreq["layer"] == 1 and newreq["text"] == "a different L2 requirement" and fb_d.round_no() == 2)
-    expect("a decided escalation cannot be decided again",
-           raises(lambda: cmd_authorise(NS(engagement="dos", escalation="esc-0002", decision="reject",
-                                           signer="op", rationale="x", expires=None, revise_text=None,
-                                           supersedes=None, adopt=None, beyond_round_limit=False))))
-
-    # ---- termination under an adversarial orchestrator ------------------------------
-    # Every attempt fails. At every step the orchestrator takes whichever legal action creates
-    # the most further work: rework before reformulation, reformulation before relaying.
-    def adversary(eng):
-        with quiet():
-            cmd_init(NS(engagement=eng, intent="always fails", owner="t", success=None, boundary=None))
-            cmd_req(NS(engagement=eng, layer=1, text="top", label="derives", **{"from": "intent-0001"}))
-            cmd_contract(NS(engagement=eng, rework_of=None, **full, **{"from": "req-0001"}))
-        steps, uniq = 0, [0]
-
-        def descend(ctr):                               # contracts flow to L6, which fails; L5 rejects it
-            nonlocal steps
-            fb = Fabric(eng, load(eng))
-            while fb.nodes[ctr]["target_layer"] < 6:
-                uniq[0] += 1
-                with quiet():
-                    ingest_to(eng, ctr, {"derived_requirements": [{"key": "r", "text": f"req {uniq[0]}",
-                                                                   "contract": full}]})
-                steps += 1
-                ctr = last(eng, "ctr")
-                fb = Fabric(eng, load(eng))
-            with quiet():
-                ingest_to(eng, ctr, {"fragments": [{"key": "f", "text": "fails"}]})
-                cmd_review(NS(engagement=eng, fragment=last(eng, "frag"), layer=5, state="insufficient",
-                              rationale="fails", reviewer="t", model="m", constraints=None))
-            steps += 2
-            return ctr
-
-        def to_top(src):
-            nonlocal steps
-            with quiet():
-                cmd_escalate(NS(engagement=eng, layer=None, code="budget", reason="budget", to_top=True,
-                                **{"from": src}))
-            steps += 1
-
-        try:
-            cur = descend("ctr-0001")
-            while steps < 5000:
-                fb = Fabric(eng, load(eng))
-                opens = [x for x, d in fb.nodes.items() if d["type"] == "esc" and fb.esc_open(x)]
-                if opens:
-                    x = max(opens, key=lambda i: fb.seq_of[i])
-                    ok, _ = next_action(fb, x)
-                    if fb.nodes[x]["layer"] == 1 and not ok:
-                        break                                   # only the operator can act now
-                    if ok:
-                        uniq[0] += 1
-                        rc = reform(eng, x, f"wording {uniq[0]}")
-                        steps += 1
-                        if rc != 3:
-                            cur = descend(last(eng, "ctr"))
-                    else:
-                        esc(eng, x, fb.nodes[x]["layer"] - 1, "relay")
-                        steps += 1
-                    continue
-                owner = next(s2 for s2, p in fb.inc[cur] if p == "derives")
-                with quiet():
-                    rc = cmd_contract(NS(engagement=eng, rework_of=cur, change="repair same requirement", **full, **{"from": owner}))
-                steps += 1
-                if rc != 3:
-                    cur = descend(last(eng, "ctr"))
-        except FabricError as exc:
-            if "budget" not in str(exc):
-                raise
-            fb = Fabric(eng, load(eng))
-            opens = [x for x, d in fb.nodes.items() if d["type"] == "esc" and fb.esc_open(x)]
-            if opens:
-                x = max(opens, key=lambda i: fb.seq_of[i])
-                if fb.nodes[x]["layer"] > 1:
-                    to_top(x)
-            else:
-                with quiet():
-                    cmd_conflict(NS(engagement=eng, layer=5, text="budget spent", **{"from": last(eng, "rev")}))
-                to_top(last(eng, "conf"))
-        fb = Fabric(eng, load(eng))
-        opens = [x for x, d in fb.nodes.items() if d["type"] == "esc" and fb.esc_open(x)]
-        autonomous_left = [x for x in opens if next_action(fb, x)[0] or fb.nodes[x]["layer"] > 1]
-        return steps, fb.contracts_this_round(), opens, autonomous_left
-
-    steps, ctrs, opens, left = adversary("adv")
-    expect(f"termination: a worst-case orchestrator reaches the operator in {steps} autonomous steps "
-           f"({ctrs} contracts, budget {MAX_CONTRACTS}) with no autonomous action left",
-           steps < 5000 and ctrs <= MAX_CONTRACTS and opens and not left)
-    saved = (MAX_CONTRACTS, MAX_REFORMULATE)
-    globals()["MAX_CONTRACTS"], globals()["MAX_REFORMULATE"] = 1000, 2
-    steps2, ctrs2, opens2, left2 = adversary("adv2")
-    globals()["MAX_CONTRACTS"], globals()["MAX_REFORMULATE"] = saved
-    expect(f"termination without the contract cap: reformulation budgets alone stop it in {steps2} steps "
-           f"({ctrs2} contracts)", steps2 < 5000 and opens2 and not left2)
-
-    # ---- 3.3 supervision hardening -------------------------------------------------
-    expect("policy kernel classifies timeout as retryable and contradiction as non-retryable",
-           failure_class("timeout") == "retryable" and failure_class("contradicted") == "contradictory")
-
-    with quiet():
-        cmd_init(NS(engagement="f33", intent="failure test", owner="t", success=None, boundary=None))
-        cmd_req(NS(engagement="f33", layer=1, text="top", label="derives", **{"from": "intent-0001"}))
-        cmd_contract(NS(engagement="f33", rework_of=None, change=None, **full, **{"from": "req-0001"}))
-        rc33 = cmd_failure(NS(engagement="f33", contract="ctr-0001", state="timeout",
-                              reason="provider timeout", actor="l2", model="m"))
-    ff = Fabric("f33", load("f33"))
-    expect("first-class failure stays local while repair budget remains",
-           rc33 == 0 and any(d["type"] == "att" and d.get("state") == "timeout" for d in ff.nodes.values())
-           and not any(d["type"] == "esc" for d in ff.nodes.values()))
-    bad = dict(full); bad["what"] = "different meaning"
-    expect("rework cannot silently reformulate semantic fields",
-           raises(lambda: cmd_contract(NS(engagement="f33", rework_of="ctr-0001", change="retry",
-                                         **bad, **{"from": "req-0001"}))))
-
-    dg = contract_context_packet(ff, ff.nodes["ctr-0001"])[1]
-    with open(msg, "w", encoding="utf-8") as stream:
-        stream.write(json.dumps({"context_digest": "wrong",
-                                 "fragments": [{"key": "x", "text": "x"}]}))
-    expect("context digest mismatch is rejected before append",
-           raises(lambda: cmd_ingest(NS(engagement="f33", contract="ctr-0001", result=msg))))
-    with open(msg, "w", encoding="utf-8") as stream:
-        stream.write(json.dumps({"context_digest": dg,
-                                 "fragments": [{"key": "x", "text": "x"}],
-                                 "evidence": [{"supports": ["x"], "source": "obs",
-                                               "confidence": "observation"}]}))
-    with quiet():
-        cmd_ingest(NS(engagement="f33", contract="ctr-0001", result=msg))
-        cmd_review(NS(engagement="f33", fragment="frag-0001", layer=1, state="accepts",
-                      rationale="ok", reviewer="l1", model="m", constraints=None))
-        cmd_invalidate(NS(engagement="f33", changed="evd-0001", reason="superseded"))
-    ff = Fabric("f33", load("f33"))
-    expect("dependency invalidation creates a blocking conflict on affected output",
-           not ff.justify("frag-0001", strict=True)[0] and bool(ff.conflicts_of("frag-0001")))
-
-    width = max(len(n) for n, _ in checks)
-    for name, ok in checks:
-        print(f"  {'pass' if ok else 'FAIL'}  {name}")
-    failed = sum(1 for _, ok in checks if not ok)
-    print(f"\n{len(checks) - failed} of {len(checks)} checks passed")
-    return 1 if failed else 0
-
-
 def cmd_selftest(a):
-    """Run the existing fabric selftest in a disposable, scoped authority fixture.
+    """Exercise fresh format persistence and graph guards without authority simulation."""
+    global FABRIC_DIR
+    old_directory = FABRIC_DIR
+    with tempfile.TemporaryDirectory(prefix='jai-fabric-selftest-') as directory:
+        FABRIC_DIR = directory
+        try:
+            fb = Fabric('selftest', [])
+            intent = fb.add_node('intent', 1, 'Synthetic lifecycle selftest')
+            requirement = fb.add_node('req', 1, 'Synthetic governed requirement')
+            fb.add_edge(intent['id'], 'derives', requirement['id'])
+            reopened = open_fabric('selftest')
+            if reopened.verify() != ([], []):
+                raise FabricError('fresh format graph verification failed')
+            if not all(tx['format'] == 2 for tx in reopened.transactions):
+                raise FabricError('fresh format marker missing')
+            before = operator_actions.regular(log_path('selftest'))
+            try:
+                reopened.add_edge(requirement['id'], 'derives', intent['id'])
+            except FabricError:
+                pass
+            else:
+                raise FabricError('graph accepted an invalid edge')
+            if operator_actions.regular(log_path('selftest')) != before:
+                raise FabricError('rejected mutation changed bytes')
+            print('PASS: format-2 replay, typed graph, immutable versions and rollback')
+            return 0
+        finally:
+            FABRIC_DIR = old_directory
 
-    Args:
-        a: Existing CLI namespace, unused by the isolated fixture.
-    Returns:
-        Existing selftest exit status, restoring all authority globals afterward.
-        No environment variable enables authority in a normal invocation.
-    """
-    global FABRIC_DIR, KEY_PATH, _SELFTEST_AUTHORITY_ROOT
-    original = FABRIC_DIR, KEY_PATH, _SELFTEST_AUTHORITY_ROOT
-    try:
-        with tempfile.TemporaryDirectory(prefix='fabric-selftest-') as tmp:
-            _SELFTEST_AUTHORITY_ROOT = os.path.realpath(tmp)
-            return _cmd_selftest(a, tmp)
-    finally:
-        FABRIC_DIR, KEY_PATH, _SELFTEST_AUTHORITY_ROOT = original
+
+def _atomic_command(function):
+    """Wrap one CLI mutation as a complete in-memory batch before persistence."""
+    def run(arguments):
+        global _COMMAND_FABRICS
+        if _COMMAND_FABRICS is not None or _AUTHORITY_CAPTURE is not None:
+            return function(arguments)
+        objects = []
+        _COMMAND_FABRICS = objects
+        try:
+            result = function(arguments)
+            for graph in objects:
+                graph.flush()
+            return result
+        finally:
+            _COMMAND_FABRICS = None
+    return run
 
 
-# --------------------------------------------------------------------------- main
+for _command_name in ('init', 'req', 'record_input', 'contract', 'ingest', 'failure', 'answer',
+                      'ingest_reviews', 'evidence', 'review', 'consolidate', 'conflict',
+                      'escalate', 'propose', 'reformulate', 'authorise'):
+    _function_name = 'cmd_' + _command_name
+    globals()[_function_name] = _atomic_command(globals()[_function_name])
 def main():
     if hasattr(signal, "SIGPIPE"):
         signal.signal(signal.SIGPIPE, signal.SIG_DFL)   # quiet when piped into head
@@ -2234,6 +2203,12 @@ def main():
     p.add_argument("--owner", required=True); p.add_argument("--success"); p.add_argument("--boundary")
     p.set_defaults(fn=cmd_init)
 
+    p = sp.add_parser('record-input')
+    p.add_argument('engagement'); p.add_argument('--logical-id', required=True)
+    p.add_argument('--kind', choices=tuple(set(lifecycle.CATEGORIES) - {'contract', 'policy'}), required=True)
+    p.add_argument('--file', required=True)
+    p.set_defaults(fn=cmd_record_input)
+
     p = sp.add_parser("req"); p.add_argument("engagement"); p.add_argument("--layer", type=int, required=True)
     p.add_argument("--from", required=True); p.add_argument("--label", choices=("derives", "refines"),
                                                             required=True)
@@ -2242,7 +2217,9 @@ def main():
     p = sp.add_parser("contract"); p.add_argument("engagement"); p.add_argument("--from", required=True)
     for f in CONTRACT_FIELDS:
         p.add_argument(f"--{f.replace('_', '-')}", dest=f)
-    p.add_argument("--rework-of"); p.add_argument("--change"); p.set_defaults(fn=cmd_contract)
+    p.add_argument("--rework-of"); p.add_argument("--change")
+    p.add_argument('--obligations', help='Strict JSON governed input/evidence/reviewer obligations')
+    p.set_defaults(fn=cmd_contract)
 
     p = sp.add_parser("render-contract"); p.add_argument("engagement"); p.add_argument("contract")
     p.set_defaults(fn=cmd_render)
@@ -2259,12 +2236,14 @@ def main():
     p.add_argument("--actor"); p.add_argument("--model"); p.set_defaults(fn=cmd_failure)
 
     p = sp.add_parser("invalidate"); p.add_argument("engagement"); p.add_argument("--changed", required=True)
-    p.add_argument("--reason", required=True); p.set_defaults(fn=cmd_invalidate)
+    p.add_argument("--reason", required=True); p.add_argument('--scope',default='default')
+    p.add_argument('--request-out',required=True);p.set_defaults(fn=cmd_invalidate)
 
     sp.add_parser("policy").set_defaults(fn=cmd_policy)
 
     p = sp.add_parser("answer"); p.add_argument("engagement"); p.add_argument("--requirement", required=True)
     p.add_argument("--text", required=True); p.add_argument("--supported-by", nargs="+", default=[])
+    p.add_argument('--bindings',help='Strict JSON exact-version input-category bindings')
     p.set_defaults(fn=cmd_answer)
 
     p = sp.add_parser("release"); p.add_argument("engagement"); p.add_argument("fragment")
@@ -2281,7 +2260,8 @@ def main():
     p = sp.add_parser("evidence"); p.add_argument("engagement"); p.add_argument("--layer", type=int, required=True)
     p.add_argument("--supports", nargs="*"); p.add_argument("--contradicts", nargs="*")
     p.add_argument("--source", required=True); p.add_argument("--confidence", choices=CONFIDENCE, required=True)
-    p.add_argument("--file"); p.set_defaults(fn=cmd_evidence)
+    p.add_argument("--file"); p.add_argument('--bindings',help='Strict JSON exact-version input-category bindings')
+    p.set_defaults(fn=cmd_evidence)
 
     p = sp.add_parser("review"); p.add_argument("engagement"); p.add_argument("fragment")
     p.add_argument("--layer", type=int, required=True); p.add_argument("--state", choices=STATES, required=True)
@@ -2317,11 +2297,18 @@ def main():
 
     p = sp.add_parser("authorise"); p.add_argument("engagement"); p.add_argument("escalation")
     p.add_argument("--decision", choices=DECISIONS, required=True); p.add_argument("--signer", required=True)
-    p.add_argument("--rationale"); p.add_argument("--expires", type=float)
+    p.add_argument("--rationale"); p.add_argument("--expires", type=int)
     p.add_argument("--revise-text"); p.add_argument("--supersedes"); p.add_argument("--adopt")
     p.add_argument("--beyond-round-limit", action="store_true"); p.add_argument("--request-out"); p.set_defaults(fn=cmd_authorise)
 
     p=sp.add_parser("apply-operator");p.add_argument("request");p.add_argument("receipt");p.set_defaults(fn=cmd_apply_operator)
+    p=sp.add_parser('lifecycle-plan', help='Prepare exact scoped update; grants no authority')
+    p.add_argument('engagement');p.add_argument('--spec',required=True);p.add_argument('--out',required=True)
+    p.set_defaults(fn=cmd_lifecycle_plan)
+    p=sp.add_parser('lifecycle-apply', help='Protected human-only application of signed effects')
+    p.add_argument('--request',required=True);p.add_argument('--receipt',required=True);p.set_defaults(fn=cmd_apply_operator)
+    p=sp.add_parser('lifecycle-status', help='Report exact governing selection and closure')
+    p.add_argument('engagement');p.add_argument('--scope',required=True);p.set_defaults(fn=cmd_lifecycle_status)
 
     sp.add_parser("keygen").set_defaults(fn=cmd_keygen)
     for name, fn in (("verify", cmd_verify), ("status", cmd_status), ("report", cmd_report)):

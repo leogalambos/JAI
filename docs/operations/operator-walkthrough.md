@@ -108,8 +108,9 @@ recipe's execution or isolation on a new host. Verify the target before use.
 The installer creates no key. Generate a NEW Ed25519 key outside agent mounts,
 export only its public PEM and have the administrator enroll a root-owned,
 non-group/world-writable public pin at `~/.ai/jai-operator-trust.json`.
-Its JSON fields are schema_version=1, policy_version=local-operator-attestation/1,
-public_key (exact PEM) and key_id (SHA-256 of those PEM bytes). Protect directory
+Its JSON fields are schema_version=2, policy_version=local-operator-attestation/2,
+public_key (exact PEM), key_id (SHA-256 of those PEM bytes), signer (nonempty
+human identity) and capabilities (explicit permitted operations). Protect directory
 containment too. Existing enrollment must not be overwritten for an example.
 Private-key/trust separation must be independently established, not inferred
 from a path, same UID, environment flag or conversation. Otherwise L0 is UNAVAILABLE.
@@ -128,12 +129,23 @@ python3 - "$HOST_KEY_DIRECTORY" <<'PY'
 import hashlib, json, pathlib, sys
 directory = pathlib.Path(sys.argv[1])
 public = (directory / 'public.pem').read_text()
-pin = {'schema_version': 1, 'policy_version': 'local-operator-attestation/1',
-       'key_id': hashlib.sha256(public.encode()).hexdigest(), 'public_key': public}
+pin = {'schema_version': 2, 'policy_version': 'local-operator-attestation/2',
+       'key_id': hashlib.sha256(public.encode()).hexdigest(), 'public_key': public,
+       'signer': 'Named authorized human operator',
+       'capabilities': ['accept']}
 (directory / 'trust.json').write_text(json.dumps(pin, indent=2) + '\n')
 PY
 test ! -e "$HOME/.ai/jai-operator-trust.json"
 ```
+
+Before enrollment, replace the illustrative signer with the authorized human
+identity and explicitly select the capabilities approved for this key.
+`authorise` permits escalation decisions, `lifecycle-update` permits scoped
+continuation, and `accept` permits exact-output acceptance. None implies another.
+The example grants only `accept`, matching the exact-output review above; add
+other capabilities only by an explicit
+external trust-administration decision. Missing or unknown capabilities fail.
+Fresh trust uses schema 2 only; this recipe does not migrate existing trust.
 
 The final test must succeed before administrator enrollment. The administrator
 reviews the public JSON, then explicitly runs this ONE public-pin install:

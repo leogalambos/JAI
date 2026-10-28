@@ -92,7 +92,10 @@ def test_installed_cli_is_read_only_without_docs_from_any_cwd(tmp_path):
     shutil.copy2(RUNTIME / 'workflows.json', target / 'workflows.json')
     before = {p.relative_to(target): p.read_bytes() for p in target.rglob('*') if p.is_file()}
     marker = tmp_path / 'must-not-exist'
-    hostile = f'bake bread; touch {marker}; $(touch {marker}) `touch {marker}`'
+    # Relative targets keep all shell forms within the goal-length contract
+    # regardless of pytest's temporary-root length; execution uses that cwd.
+    hostile = f'bake bread; touch {marker.name}; $(touch {marker.name}) `touch {marker.name}`'
+    assert len(hostile) <= 300
     cmd = [sys.executable, '-B', str(target / 'demo/hint.py'), '--goal', hostile]
     proc = subprocess.run(cmd, cwd=tmp_path, text=True, capture_output=True, check=True)
     assert json.loads(proc.stdout)['status'] == 'NO_MATCH'
