@@ -106,11 +106,11 @@ def test_protected_pin_doctor_and_incomplete_acceptance(tmp_path):
     manifest=tmp_path/'observations.json';manifest.write_text(json.dumps({'l0':[],'render':[]}))
     with pytest.raises(ValueError):op.check_acceptance(manifest)
     import importlib.metadata
-    with patch.object(importlib.metadata, 'version', return_value='0.13.2'), patch('office_renderer.html_pdf') as render:
+    with patch.object(importlib.metadata, 'version', return_value='0.13.2'), patch('importlib.util.find_spec', return_value=True), patch('office_renderer.html_pdf', side_effect=RuntimeError('fixture rendering failure')) as render:
         legacy=op.doctor()
-        assert legacy['html_pdf'].startswith('OPERATOR_ACTION_REQUIRED')
+        assert legacy['html_pdf'].startswith('UNAVAILABLE: actual HTML conversion failed')
         assert legacy['renderer_dependencies']['pyphen']=='0.13.2'
-        render.assert_not_called()
+        render.assert_called_once()
     state=op.doctor()
     assert state['privileged_external_mutation']=='NOT SUPPORTED'
     assert state['host_provider_confinement']=='NOT VERIFIED'
@@ -204,3 +204,144 @@ def test_intervention_is_self_contained_and_command_text_is_display_only(tmp_pat
     with pytest.raises(ValueError):op.intervention_message({'execution_route':'C','formal_l0_required':True,'effect':'local-qa'},**arguments)
     changed=dict(req);changed['purpose']='tampered'
     with pytest.raises(ValueError):op.request_message(changed,tmp_path/'request.json')
+
+
+def test_inventory_reports_probe_diagnostics_and_ten_second_budget():
+    failed = subprocess.CompletedProcess([], 7, stdout='partial version', stderr='startup failed')
+    with patch('shutil.which', return_value='/optional/tool'), patch.object(op.subprocess, 'run', return_value=failed) as run:
+        item = op.tool_inventory()['office']
+    assert item['command'] == ['/optional/tool', '--version']
+    assert item['timeout_seconds'] == 10
+    assert item['returncode'] == 7
+    assert item['stdout'] == 'partial version'
+    assert item['stderr'] == 'startup failed'
+    assert item['duration_seconds'] >= 0
+    assert item['reason'] == 'Probe exited with code 7'
+    assert all(call.kwargs['timeout'] == 10 for call in run.call_args_list)
+    with patch('shutil.which', return_value='/optional/tool'), patch.object(op.subprocess, 'run', side_effect=subprocess.TimeoutExpired('probe', 10, output=b'partial', stderr=b'pending')):
+        item = op.tool_inventory()['office']
+    assert item['reason'] == 'TimeoutExpired'
+    assert item['stdout'] == 'partial'
+    assert item['stderr'] == 'pending'
+    assert item['returncode'] is None
+
+
+def test_configure_preserves_environment_and_doctor_failure_diagnostics():
+    failed = subprocess.CompletedProcess([], 2, stdout='partial doctor', stderr='native library missing')
+    with patch('shutil.which', return_value=None), patch.object(op.subprocess, 'run', return_value=failed), patch.dict(op.os.environ, {'PATH': '/fixture/bin', 'SECRET_FIXTURE': 'must-not-report'}):
+        report = op.configure()
+    assert report['environment']['path'] == '/fixture/bin'
+    assert report['environment']['python_prefix'] == sys.prefix
+    assert 'SECRET_FIXTURE' not in json.dumps(report)
+    assert report['doctor_probe']['stderr'] == 'native library missing'
+    assert report['doctor_probe']['returncode'] == 2
+
+
+def test_doctor_reports_underlying_html_error_and_optional_setup():
+    import importlib.metadata
+    with patch.object(importlib.metadata, 'version', return_value='0.17.2'), patch('importlib.util.find_spec', return_value=True), patch('office_renderer.html_pdf', side_effect=RuntimeError('native renderer failed')):
+        state = op.doctor()
+    assert state['html_pdf_diagnostic']['type'] == 'RuntimeError'
+    assert state['html_pdf_diagnostic']['message'] == 'native renderer failed'
+    assert any('optional' in notice.lower() for notice in state['setup_notices'])
+
+
+def test_inventory_real_executable_preserves_both_output_streams(tmp_path):
+    executable = tmp_path / 'claude'
+    executable.write_text('#!/bin/sh\nprintf "fixture version\\n"\nprintf "fixture warning\\n" >&2\nexit 4\n')
+    executable.chmod(0o755)
+    with patch.dict(op.os.environ, {'PATH': str(tmp_path)}):
+        report = op.tool_inventory()
+    item = report['claude']
+    assert item['executable'] == str(executable)
+    assert item['stdout'] == 'fixture version\n'
+    assert item['stderr'] == 'fixture warning\n'
+    assert item['returncode'] == 4
+    assert item['status'] == 'UNAVAILABLE'
+    assert report['office']['executable'] is None
+    assert report['office']['searched_names'] == ['libreoffice', 'soffice']
+
+
+def test_configure_parses_complete_doctor_json_before_bounding_diagnostics():
+    payload = {'base_workflow': 'READY', 'html_pdf_diagnostic': {'message': 'x' * 8000}}
+    completed = subprocess.CompletedProcess([], 0, json.dumps(payload), '')
+    with patch('shutil.which', return_value=None), patch.object(op.subprocess, 'run', return_value=completed):
+        report = op.configure()
+    assert report['capabilities'] == payload
+    assert len(report['doctor_probe']['stdout']) == 8000
+    assert report['doctor_probe']['output_truncated'] is True
+
+
+def test_doctor_preserves_chained_native_renderer_failure():
+    import importlib.metadata
+    def failed_renderer(*args, **kwargs):
+        try:
+            raise ImportError('cannot load /fixture/native.dylib')
+        except ImportError as exc:
+            raise RuntimeError('WeasyPrint dependencies unavailable in this interpreter') from exc
+    with patch.object(importlib.metadata, 'version', return_value='0.17.2'), patch('importlib.util.find_spec', return_value=True), patch('office_renderer.html_pdf', side_effect=failed_renderer):
+        report = op.doctor()
+    assert report['html_pdf_diagnostic']['chain'][1]['type'] == 'ImportError'
+    assert '/fixture/native.dylib' in report['html_pdf_diagnostic']['chain'][1]['message']
+
+
+@pytest.mark.parametrize('pyphen', ['0.13.2', '0.17.2', None])
+def test_doctor_uses_conversion_not_pyphen_version_as_readiness_gate(pyphen):
+    import importlib.metadata
+    def version(name):
+        if name == 'pyphen':
+            if pyphen is None:
+                raise importlib.metadata.PackageNotFoundError(name)
+            return pyphen
+        return '70.0'
+    def render(source, directory, backend):
+        result = Path(directory) / 'fixture.pdf'
+        result.parent.mkdir(parents=True, exist_ok=True)
+        result.write_bytes(b'%PDF-fixture')
+        return result
+    with patch.object(importlib.metadata, 'version', side_effect=version), patch('importlib.util.find_spec', return_value=True), patch('office_renderer.html_pdf', side_effect=render):
+        report = op.doctor()
+    assert report['html_pdf'].startswith('READY: actual WeasyPrint')
+    assert report['renderer_dependencies']['pyphen'] == (pyphen or 'not installed')
+    assert report['setup_notices'] == []
+
+
+def test_doctor_distinguishes_weasyprint_cli_from_python_module():
+    with patch('importlib.util.find_spec', return_value=None), patch('shutil.which', side_effect=lambda name: '/fixture/weasyprint' if name == 'weasyprint' else None):
+        report = op.doctor()
+    assert report['renderer_dependencies']['weasyprint_executable'] == '/fixture/weasyprint'
+    assert any('CLI found' in notice for notice in report['setup_notices'])
+    assert not report['html_pdf'].startswith('READY')
+
+
+@pytest.mark.parametrize('platform', ['linux','darwin','win32'])
+def test_doctor_reports_cli_selection_without_current_python_module(platform):
+    import shutil
+    executable=shutil.which('weasyprint')
+    with patch.object(op.sys,'platform',platform), patch('importlib.util.find_spec',return_value=None), patch('shutil.which',side_effect=lambda name:executable if name=='weasyprint' else None):
+        report=op.doctor()
+    assert report['html_pdf'].startswith('READY: actual WeasyPrint')
+    selected=report['renderer_dependencies']['selected_renderer']
+    assert selected['execution']=='cli'
+    assert selected['executable']==executable
+    assert selected['version'].split('.')[0]=='70'
+    assert selected['python'] is None and selected['pyphen'] is None
+
+
+def test_macos_setup_notice_explains_uniform_cli_first_selection():
+    with patch.object(op.sys,'platform','darwin'), patch('importlib.util.find_spec',return_value=None), patch('office_renderer.html_pdf',side_effect=RuntimeError('fixture conversion error')):
+        report=op.doctor()
+    notice=next(item for item in report['setup_notices'] if item.startswith('macOS:'))
+    assert 'CLI' in notice and 'automatically' in notice
+    assert 'brew install weasyprint' in notice
+    assert 'optional' in notice and 'no venv' in notice
+
+
+def test_doctor_exception_chain_retains_timeout_streams():
+    timeout=subprocess.TimeoutExpired('fixture',20,output=b'partial render',stderr=b'native loading')
+    error=RuntimeError('CLI timeout');error.__cause__=timeout
+    with patch('shutil.which',return_value='/fixture/weasyprint'), patch('office_renderer.html_pdf',side_effect=error):
+        report=op.doctor()
+    cause=report['html_pdf_diagnostic']['chain'][1]
+    assert cause['stdout']=='partial render'
+    assert cause['stderr']=='native loading'

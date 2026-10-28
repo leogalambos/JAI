@@ -61,3 +61,22 @@ is Fabric L0. D is a separately signed consequential decision; it may precede C.
 Every B/C/D request must include the complete action and reason inline before
 linking details. See [execution routes and boundaries](../security/product-operations.md)
 and the [full operator guide](../operations/operator-walkthrough.md).
+
+The installer prints the full capability observation, including the interpreter,
+PATH and probe failures. Keep both stdout and stderr when reproducing an install
+problem. A detected executable can still report `UNAVAILABLE` if its version
+probe exits nonzero or exceeds ten seconds; this is distinct from a missing
+executable. `doctor_probe` retains subprocess diagnostics and
+`html_pdf_diagnostic` retains a failed conversion's exception type/message.
+Output streams are limited to 8000 characters each. Reports contain local paths;
+review them before sharing. See the [macOS renderer environment guidance](../getting-started/install.md#macos-and-separate-python-environments)
+for optional WeasyPrint/Pyphen setup without global shell activation.
+
+Check `renderer_dependencies.selected_renderer` for the actual execution mode
+and CLI executable/version or Python used by doctor. Every OS tries the CLI on
+PATH first, then the current Python module if its CLI version/startup probe is
+unavailable or incompatible. CLI-managed Python/Pyphen metadata is unknown;
+caller metadata does not describe the CLI environment. Version probes have ten
+seconds and CLI conversion has twenty seconds. Resource denials and conversion
+failures remain diagnostic and never trigger a weaker fallback. No packages are
+installed and OS-specific Python discovery is not required.

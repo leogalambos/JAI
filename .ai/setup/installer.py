@@ -330,6 +330,53 @@ def desired_outputs(pkg,providers,ai_house,claude_home,codex_home,model_registry
             out[str(dest)]=render_codex_skill(p,'command',name,model_registry); modes[str(dest)]=0o644
     return out,modes
 
+def optional_discovery(ai_house):
+    """Print advisory discovery and diagnostic data for the installed runtime.
+
+    Args:
+        ai_house: Installed runtime directory containing tools/operator_actions.py.
+    Returns:
+        None. Prints selected interpreter, PATH, complete capability JSON and any
+        outer probe errors; never changes configuration or aborts installation.
+        Each tool has ten seconds, doctor has 35, and the outer budget is 150.
+    """
+    refresh=[sys.executable,str(ai_house/'tools/operator_actions.py'),'configure','--refresh']
+    print('Discovery environment: '+json.dumps({'python':sys.executable,
+          'python_version':sys.version,'platform':sys.platform,
+          'path':os.environ.get('PATH',''),'python_prefix':sys.prefix,
+          'python_base_prefix':sys.base_prefix},ensure_ascii=True))
+    started=time.monotonic()
+    try:
+        probe=subprocess.run(refresh,capture_output=True,text=True,timeout=150)
+        print('Discovery process: '+json.dumps({'command':refresh,'returncode':probe.returncode,
+              'duration_seconds':round(time.monotonic()-started,3),'timeout_seconds':150}))
+        if probe.stderr:print('Discovery stderr: '+json.dumps(probe.stderr,ensure_ascii=True))
+        if probe.returncode:raise ValueError('configure exited with code '+str(probe.returncode))
+        report=json.loads(probe.stdout)
+        capabilities=report.get('capabilities',{})
+        for label,key in [('Core workflows','base_workflow'),('HTML/PDF','html_pdf'),
+                          ('Office visual QA','office_visual'),('Local L0','local_l0'),
+                          ('Host confinement','host_provider_confinement'),
+                          ('Privileged mutations','privileged_external_mutation')]:
+            print(f'{label}: {capabilities.get(key,"UNAVAILABLE: optional discovery incomplete")}')
+        for name,item in report.get('tools',{}).items():
+            print(f'{name}: {item["status"]} (functional/sandbox readiness NOT VERIFIED)')
+        for notice in capabilities.get('setup_notices',[]):print('Optional renderer: '+notice)
+        print('Capability diagnostics (JSON; includes local paths; review before sharing):')
+        print(json.dumps(report,indent=2,ensure_ascii=True))
+    except (OSError,ValueError,subprocess.SubprocessError) as exc:
+        print('Optional capability discovery unavailable; core installation remains complete.')
+        detail={'type':type(exc).__name__,'message':str(exc),
+                'duration_seconds':round(time.monotonic()-started,3),'timeout_seconds':150}
+        for stream in ('stdout','stderr'):
+            value=getattr(exc,stream,None)
+            if value is None and 'probe' in locals():value=getattr(probe,stream,None)
+            if isinstance(value,bytes):value=value.decode('utf-8',errors='replace')
+            detail[stream]=(value or '')[:100000]
+        print('Discovery failure: '+json.dumps(detail,ensure_ascii=True))
+    print('Refresh optional capabilities with: '+(subprocess.list2cmdline(refresh) if os.name=='nt' else shlex.join(refresh)))
+
+
 def main():
     ap=argparse.ArgumentParser(description='Install/update the universal Claude + Codex AI IS/IT house')
     g=ap.add_mutually_exclusive_group(); g.add_argument('--claude-only',action='store_true'); g.add_argument('--codex-only',action='store_true')
@@ -475,22 +522,7 @@ def main():
     }
     atomic_write(state_path,(json.dumps(newstate,indent=2,ensure_ascii=False)+'\n').encode(),0o600)
     print('\nInstallation/update complete.')
-    # Optional discovery cannot change managed hashes, provider settings or trust.
-    refresh=[sys.executable,str(ai_house/'tools/operator_actions.py'),'configure','--refresh']
-    try:
-        probe=subprocess.run(refresh,capture_output=True,text=True,timeout=55)
-        report=json.loads(probe.stdout) if probe.returncode==0 else {}
-        capabilities=report.get('capabilities',{})
-        for label,key in [('Core workflows','base_workflow'),('HTML/PDF','html_pdf'),
-                          ('Office visual QA','office_visual'),('Local L0','local_l0'),
-                          ('Host confinement','host_provider_confinement'),
-                          ('Privileged mutations','privileged_external_mutation')]:
-            print(f'{label}: {capabilities.get(key,"UNAVAILABLE: optional discovery incomplete")}')
-        for name,item in report.get('tools',{}).items():
-            print(f'{name}: {item["status"]} (functional/sandbox readiness NOT VERIFIED)')
-    except (OSError,ValueError,subprocess.SubprocessError):
-        print('Optional capability discovery unavailable; core installation remains complete.')
-    print('Refresh optional capabilities with: '+(subprocess.list2cmdline(refresh) if os.name=='nt' else shlex.join(refresh)))
+    optional_discovery(ai_house)
     if 'codex' in providers and not a.no_hooks:
         print('Codex: review/approve the installed hook configuration in Codex before relying on enforcement.')
     return 0

@@ -14,7 +14,7 @@ The provider selects authorised tools from your natural-language request. Markdo
 | Generate SABSA `.tex` source or DOCX | Pandoc | Pandoc executable and its installed resources; writable output and temporary files |
 | Compile SABSA LaTeX to PDF | Pandoc, XeLaTeX, required TeX packages and DejaVu Serif | TeX trees, configuration, compiled formats and fonts |
 | Inspect PDF pages as images or text | Poppler tools such as `pdftoppm` and `pdftotext` | Readable PDF and writable inspection output |
-| Generate HTML/PDF | Optional WeasyPrint 70, Pyphen 0.17.x and host fonts/libraries | Constrained URL fetching; not Office fidelity |
+| Generate HTML/PDF | Optional WeasyPrint 70 with its dependencies and host fonts/libraries | Constrained URL fetching; not Office fidelity |
 | Inspect rendered Office output | Host LibreOffice or a suitable Office application, Poppler | Office libraries/resources, fonts, writable application profile and output |
 | Run full release/development qualification | Dependencies required by the selected release gates | The complete controlled build environment, described in [deployment notes](deployment-notes.md) |
 
@@ -165,5 +165,11 @@ mutation is NOT_SUPPORTED; optional host confinement is NOT_VERIFIED.
 
 For supported Python renderer dependencies, use the
 [clean optional venv setup](install.md#a-clean-optional-renderer-environment).
-Doctor checks dependency metadata before importing a legacy Pyphen version;
+Doctor reports dependency metadata and uses actual conversion to assess readiness;
 OPERATOR_ACTION_REQUIRED is not formal L0 or an assertion of sandbox denial.
+
+On every OS, the WeasyPrint 70 CLI on PATH is tried first with deny-all resource
+options. The current Python module is the fallback for an unavailable CLI.
+No venv or duplicate Python packages are required for a working CLI. This does
+not change the effective sandbox or permit external resource fetching. A resource
+denial or conversion failure does not trigger another backend.

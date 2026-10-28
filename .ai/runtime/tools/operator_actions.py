@@ -292,10 +292,41 @@ def sign(req,key):
         body['signature']=base64.b64encode((p/'sig').read_bytes()).decode()
     verify_receipt(req,body);return body
 
+def _probe(command, timeout, output_limit=8000):
+    """Return bounded subprocess diagnostics without trusting tool readiness."""
+    def output(value):
+        if isinstance(value, bytes):
+            value = value.decode('utf-8', errors='replace')
+        value = value or ''
+        if output_limit is not None and len(value)>output_limit:
+            result['output_truncated'] = True
+        return value[:output_limit]
+    started = time.monotonic()
+    result = {'command': command, 'timeout_seconds': timeout, 'returncode': None,
+              'stdout': '', 'stderr': '', 'output_truncated': False}
+    try:
+        completed = subprocess.run(command, capture_output=True, text=True, timeout=timeout)
+        result.update(returncode=completed.returncode, stdout=output(completed.stdout),
+                      stderr=output(completed.stderr))
+        if completed.returncode:
+            result['reason'] = f'Probe exited with code {completed.returncode}'
+    except (OSError, subprocess.SubprocessError) as exc:
+        result.update(reason=type(exc).__name__, error=str(exc),
+                      stdout=output(getattr(exc, 'stdout', None)),
+                      stderr=output(getattr(exc, 'stderr', None)))
+    result['duration_seconds'] = round(time.monotonic() - started, 3)
+    result['output_limit_characters'] = output_limit
+    return result
+
+
 def tool_inventory():
     """Discover optional executables with bounded offline version probes.
 
-    Returns a fresh observation, never permission or persisted configuration.
+    Returns a fresh observation including searched names, executable, command,
+    exit status, duration, separate bounded output streams and failure reason.
+    Each detected executable receives up to ten seconds. No arguments.
+    Returns diagnostics rather than raising subprocess errors; never permission
+    or persisted configuration.
     Version success proves discovery only; each real operation must still run
     inside its effective sandbox. No tool is installed or host policy changed.
     """
@@ -310,18 +341,14 @@ def tool_inventory():
     result = {}
     for capability, names in tools.items():
         executable = next((path for name in names if (path := shutil.which(name))), None)
-        item = {'executable': executable, 'status': 'UNAVAILABLE',
+        item = {'searched_names': list(names), 'executable': executable, 'status': 'UNAVAILABLE',
                 'functional_readiness': 'NOT_VERIFIED', 'sandbox_access': 'NOT_VERIFIED',
                 'operator_alternative': 'C: independently execute on a suitably equipped host; not formal L0'}
         if executable:
-            try:
-                argument = {'pdf_pages':'-v', 'openssl':'version'}.get(capability,'--version')
-                probe = subprocess.run([executable, argument],
-                                       capture_output=True, text=True, timeout=2)
-                item['status'] = 'AVAILABLE' if probe.returncode == 0 else 'UNAVAILABLE'
-                item['version'] = (probe.stdout or probe.stderr).strip()[:300]
-            except (OSError, subprocess.SubprocessError) as exc:
-                item['reason'] = type(exc).__name__
+            argument = {'pdf_pages':'-v', 'openssl':'version'}.get(capability,'--version')
+            item.update(_probe([executable, argument], 10))
+            item['status'] = 'AVAILABLE' if item['returncode'] == 0 else 'UNAVAILABLE'
+            item['version'] = (item['stdout'] or item['stderr']).strip()[:300]
         else:
             item['reason'] = 'Optional tool absent from this interpreter process PATH'
         result[capability] = item
@@ -336,7 +363,9 @@ def configure(previous=None):
     explicit API backend/executable arguments are preserved. No snapshot is
     persisted. Args: previous is an optional explicit earlier JSON observation,
     used only to explain changes, never to select tools or grant permission.
-    Returns fresh discovery with optional availability differences. Invalid
+    Returns fresh discovery, selected interpreter/PATH metadata and bounded
+    doctor stdout/stderr (up to 8000 characters per stream), with optional
+    availability differences. No complete environment dump is collected. Invalid
     comparison files raise ValueError or OSError before probing.
     """
     import schema_resolver
@@ -346,18 +375,26 @@ def configure(previous=None):
         if not isinstance(baseline,dict) or baseline.get('schema_version') != 1 or not isinstance(baseline.get('tools'),dict):
             raise ValueError('previous capability observation required')
     scope = schema_resolver.release_scope()
+    probe = _probe([sys.executable, str(Path(__file__).resolve()), 'doctor'], 35, output_limit=None)
     try:
-        probe = subprocess.run([sys.executable, str(Path(__file__).resolve()), 'doctor'],
-                               capture_output=True, text=True, timeout=25)
-        capabilities = json.loads(probe.stdout) if probe.returncode == 0 else {'status': 'UNAVAILABLE', 'reason': 'doctor failed'}
-    except (OSError, ValueError, subprocess.SubprocessError):
-        capabilities = {'status': 'UNAVAILABLE', 'reason': 'bounded doctor unavailable or timed out'}
+        capabilities = json.loads(probe['stdout']) if probe['returncode'] == 0 else {'status': 'UNAVAILABLE', 'reason': 'doctor failed; see doctor_probe'}
+    except ValueError as exc:
+        capabilities = {'status': 'UNAVAILABLE', 'reason': 'invalid doctor JSON; see doctor_probe'}
+        probe['parse_error'] = str(exc)
+    probe['output_truncated'] = any(len(probe[stream])>8000 for stream in ('stdout','stderr'))
+    for stream in ('stdout','stderr'):probe[stream]=probe[stream][:8000]
+    probe['output_limit_characters']=8000
     tools = tool_inventory()
     changes = None if baseline is None else {
         'newly_available': [name for name,item in tools.items() if item['status']=='AVAILABLE' and baseline['tools'].get(name,{}).get('status')!='AVAILABLE'],
         'became_unavailable': [name for name,item in tools.items() if item['status']!='AVAILABLE' and baseline['tools'].get(name,{}).get('status')=='AVAILABLE']}
     return {'schema_version': 1, 'scope': scope['scope'], 'python': sys.executable,
             'platform': sys.platform, 'configuration_changed': False,
+            'environment': {'path': os.environ.get('PATH', ''),
+                            'python_version': sys.version, 'python_prefix': sys.prefix,
+                            'python_base_prefix': sys.base_prefix,
+                            'virtual_environment': sys.prefix != sys.base_prefix},
+            'doctor_probe': probe,
             'selection': 'automatic at point of use; explicit backend arguments take precedence',
             'capabilities': capabilities, 'tools': tools, 'changes': changes,
             'refresh': 'Re-run configure --refresh after PATH, interpreter or tool changes; no previous readiness is trusted'}
@@ -368,8 +405,8 @@ def doctor():
 
     Returns:
         Existing capability strings plus renderer_dependencies version metadata.
-        Only the supported optional Pyphen series is imported for a PDF probe;
-        a legacy/missing dependency requests an isolated renderer environment.
+        Pyphen metadata is informational; actual conversion determines readiness.
+        Exceptions include a bounded cause/context chain and truncation markers.
         No warnings are filtered, packages installed or host settings changed.
     """
     import importlib.util,importlib.metadata,shutil
@@ -382,22 +419,54 @@ def doctor():
     except (OSError,ValueError,KeyError):base_state='UNAVAILABLE: core contract validation failed'
     html_state='OPERATOR_ACTION_REQUIRED: install optional WeasyPrint or use host LibreOffice'
     dependencies={'python':sys.executable}
+    html_diagnostic=None
+    notices=[]
     try:
         dependencies['pyphen']=importlib.metadata.version('pyphen')
-        release=re.match(r'^(\d+)\.(\d+)',dependencies['pyphen'])
-        clean_pyphen=bool(release and tuple(map(int,release.groups()))==(0,17))
     except importlib.metadata.PackageNotFoundError:
-        dependencies['pyphen']='not installed';clean_pyphen=False
-    if importlib.util.find_spec('weasyprint') and not clean_pyphen:
-        html_state='OPERATOR_ACTION_REQUIRED: use the optional renderer environment (WeasyPrint 70, Pyphen 0.17.x); legacy/missing Pyphen is not imported or render-tested'
-    elif importlib.util.find_spec('weasyprint'):
+        dependencies['pyphen']='not installed'
+    try:dependencies['weasyprint']=importlib.metadata.version('weasyprint')
+    except importlib.metadata.PackageNotFoundError:dependencies['weasyprint']='not installed'
+    dependencies['weasyprint_executable']=shutil.which('weasyprint')
+    if dependencies['weasyprint_executable'] or importlib.util.find_spec('weasyprint'):
         try:
             from office_renderer import html_pdf
             with tempfile.TemporaryDirectory(prefix='jai-doctor-') as directory:
                 source=Path(directory)/'doctor.html';source.write_text('<html><h1>JAI renderer capability check</h1><p>Local deterministic rendering.</p></html>')
                 result=html_pdf(source,Path(directory)/'pdf',backend='weasyprint')
                 html_state='READY: actual WeasyPrint PDF conversion verified' if regular(result).startswith(b'%PDF-') else 'UNAVAILABLE'
-        except (OSError,RuntimeError,ValueError):html_state='UNAVAILABLE: actual HTML conversion failed'
+                sidecar=Path(result).with_suffix('.renderer.json')
+                if sidecar.is_file():
+                    selected=json.loads(regular(sidecar))
+                    dependencies['selected_renderer']={key:selected[key] for key in ('python','version','pyphen','execution','executable') if key in selected}
+
+        except (ImportError,OSError,RuntimeError,ValueError) as exc:
+            html_state='UNAVAILABLE: actual HTML conversion failed'
+            chain=[]
+            current=exc
+            seen=set()
+            while current is not None and id(current) not in seen and len(chain)<8:
+                seen.add(id(current))
+                message=str(current)
+                entry={'type':type(current).__name__,'message':message[:2000],
+                       'message_truncated':len(message)>2000}
+                for stream in ('stdout','stderr'):
+                    value=getattr(current,stream,None)
+                    if value is not None:
+                        if isinstance(value,bytes):value=value.decode('utf-8',errors='replace')
+                        entry[stream]=value[:8000]
+                        entry[stream+'_truncated']=len(value)>8000
+                chain.append(entry)
+                current=current.__cause__ or (None if current.__suppress_context__ else current.__context__)
+            html_diagnostic={'type':type(exc).__name__,'message':str(exc)[:8000],
+                             'message_truncated':len(str(exc))>8000,'chain':chain,
+                             'chain_truncated':current is not None}
+    if not html_state.startswith('READY'):
+        notices.append('HTML/PDF rendering is optional; core workflows do not require WeasyPrint or Pyphen. A working OS-provided WeasyPrint package is acceptable; Pyphen is normally supplied automatically. Diagnose html_pdf_diagnostic and doctor_probe before changing packages. LibreOffice is an alternative. See docs/getting-started/install.md, A clean optional renderer environment.')
+        if dependencies['weasyprint_executable'] and not importlib.util.find_spec('weasyprint'):
+            notices.append('WeasyPrint CLI found; it runs independently of this interpreter and is tried first with deny-all resource flags. Inspect html_pdf_diagnostic for its version/startup/conversion failure. The current Python module is only a fallback for an unavailable CLI.')
+        if sys.platform=='darwin':
+            notices.append('macOS: JAI automatically uses the WeasyPrint CLI on PATH, including brew install weasyprint; no venv or duplicate packages are required for a working CLI. All operating systems use CLI first, then the current Python module if the CLI is unavailable. A pip venv is an optional alternative; no .bash_profile activation or migration of unrelated packages is required.')
     office_present=bool(shutil.which('libreoffice') or shutil.which('soffice'))
     office_state='NOT VERIFIED: binary present; actual document conversion required' if office_present else 'UNAVAILABLE: optional Office renderer absent here; a host renderer may provide C'
     if office_present:
@@ -407,7 +476,8 @@ def doctor():
     return {'base_workflow':base_state,'html_pdf':html_state,
         'local_shell':'role-engineer contract permits local QA; actual native sandbox determines A/B/C',
         'office_visual':office_state,
-        'libreoffice_binary_present':office_present,'local_l0':l0,'host_provider_confinement':'NOT VERIFIED','privileged_external_mutation':'NOT SUPPORTED','renderer_dependencies':dependencies}
+        'libreoffice_binary_present':office_present,'local_l0':l0,'host_provider_confinement':'NOT VERIFIED','privileged_external_mutation':'NOT SUPPORTED','renderer_dependencies':dependencies,
+        'html_pdf_diagnostic':html_diagnostic,'setup_notices':notices}
 
 
 def check_acceptance(path):

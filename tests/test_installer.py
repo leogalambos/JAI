@@ -221,3 +221,35 @@ class InstallerSafetyTests(unittest.TestCase):
             module.write_text('def invalid syntax\n')
             with self.assertRaisesRegex(SystemExit, 'python compile failed'):
                 installer.validate_package(package)
+
+
+def test_optional_discovery_prints_full_report_and_failure_streams(capsys):
+    from unittest.mock import patch
+    import subprocess
+    report = {'capabilities': {'setup_notices': ['Optional renderer setup']},
+              'tools': {'office': {'status': 'UNAVAILABLE', 'reason': 'TimeoutExpired'}},
+              'environment': {'path': '/fixture/bin'}}
+    with patch.object(installer.subprocess, 'run', return_value=subprocess.CompletedProcess([], 0, json.dumps(report), 'native warning')) as run:
+        installer.optional_discovery(Path('/fixture/house'))
+    output = capsys.readouterr().out
+    assert 'TimeoutExpired' in output and '/fixture/bin' in output
+    assert 'Optional renderer setup' in output and 'native warning' in output
+    assert run.call_args.kwargs['timeout'] >= 125
+    with patch.object(installer.subprocess, 'run', side_effect=subprocess.TimeoutExpired('configure', 150, output=b'partial JSON', stderr=b'load failure')):
+        installer.optional_discovery(Path('/fixture/house'))
+    output = capsys.readouterr().out
+    assert 'TimeoutExpired' in output and 'partial JSON' in output and 'load failure' in output
+
+
+def test_shell_installer_selects_explicit_python_and_preserves_path(tmp_path):
+    import os
+    import shutil
+    import subprocess
+    interpreter = tmp_path / 'selected python'
+    interpreter.write_text('#!/bin/sh\nprintf "%s\\n" "$PATH" "$@"\nexit 23\n')
+    interpreter.chmod(0o755)
+    environment = dict(os.environ, JAI_PYTHON=str(interpreter), PATH='/fixture/bin:/usr/bin:/bin')
+    result = subprocess.run([shutil.which('bash'), str(ROOT / 'install.sh'), '--dry-run'],
+                            env=environment, capture_output=True, text=True)
+    assert result.returncode == 23
+    assert result.stdout.splitlines() == [environment['PATH'], str(ROOT / '.ai/setup/installer.py'), '--dry-run']

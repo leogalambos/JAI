@@ -190,9 +190,17 @@ Local hash-chained records are not rollback-resistant/immutable custody.
 
 ## Render actual files
 
-For optional HTML/PDF, use the [clean renderer environment](../getting-started/install.md#a-clean-optional-renderer-environment)
-with WeasyPrint 70 and Pyphen 0.17.x. Use its Python for `html-auto` requests;
-the source format alone does not choose your interpreter or venv.
+For optional HTML/PDF, use a Python interpreter with a working WeasyPrint 70
+package and its dependencies. A working OS-provided package is acceptable;
+Pyphen is normally installed automatically. The [clean renderer environment](../getting-started/install.md#a-clean-optional-renderer-environment)
+is an optional pip recipe if isolation is needed. Use the selected Python for
+`html-auto` requests if the CLI is unavailable. Every OS first tries the
+WeasyPrint 70 CLI on PATH with deny-all resource options; the current Python
+module is the fallback for CLI absence, incompatible version or startup failure.
+No OS-specific interpreter discovery or duplicate packages are needed. Doctor
+uses actual conversion and reports the selected execution mode. A Pyphen
+version is informational; resource denials and conversion failures never cause
+a weaker fallback.
 
 Portable requirements: renderer libraries/fonts, Poppler pdftoppm, and an actual
 Office renderer for Office files. Fedora host package proposal (operator only):

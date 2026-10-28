@@ -121,7 +121,7 @@ on PATH. For a clean renderer venv, follow [installation](../getting-started/ins
 | --- | --- | --- | --- |
 | Core contracts, Fabric and structured workflows | Python 3.10+, jsonschema and PyYAML from requirements.txt | JAI's Python interpreter | Required for applicable core validation |
 | Build the documentation website | MkDocs, Material and pymdown-extensions; mistune for Markdown processing | Maintainer/docs environment; requirements.txt includes these convenience dependencies | Development/documentation, not a native provider prerequisite |
-| HTML/CSS to PDF | WeasyPrint 70, Pyphen 0.17.x; Pango/HarfBuzz/Fontconfig libraries and usable fonts | Same Python/venv as JAI render command, plus host libraries | Optional; no Office fidelity claim |
+| HTML/CSS to PDF | WeasyPrint 70 with its dependencies (including Pyphen); Pango/HarfBuzz/Fontconfig libraries and usable fonts | WeasyPrint CLI on PATH first; current Python module fallback, plus host libraries | Optional; no Office fidelity claim |
 | Actual DOCX/PPTX/XLSX visual review | LibreOffice or qualified Office renderer, usable fonts and writable temporary profile | Agent sandbox if available, otherwise reviewed host C action | Optional; actual Office bytes must be rendered |
 | PDF page images/text | Poppler pdftoppm / pdftotext, Pillow for image analysis | Renderer/QA host; executables on PATH | Applicable visual QA |
 | SVG visual QA | CairoSVG, Cairo libraries, Pillow | QA Python interpreter and host libraries | Optional diagram QA |
@@ -149,3 +149,11 @@ Never use sudo just to render, widen provider permissions, or interpret a
 renderer failure as FORMAL_L0. A/B/C are execution routes; D remains a
 separate signed decision requirement. See the
 [operator walkthrough](../operations/operator-walkthrough.md).
+
+On all operating systems, JAI tries the WeasyPrint 70 CLI on PATH first, then
+the current Python module when the CLI is absent/incompatible or its startup
+probe fails. The CLI uses stdin HTML, a trusted fixed stylesheet and deny-all
+resource options. Both backends reject external CSS, custom font loading and
+entities. Resource denials and conversion failures do not trigger fallback.
+Doctor reports the selected execution mode and executable/version. CLI-managed
+Python/Pyphen versions are unknown; no duplicate package installation is needed.

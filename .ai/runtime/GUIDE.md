@@ -1465,14 +1465,20 @@ never invent it or accept chat as signed approval. See the
 
 ### Optional renderer Python environment
 
-Install `requirements-rendering.txt` in a separate reviewed venv with
-the
-core requirements. Use that venv's Python for doctor and render
-commands.
-WeasyPrint 70 needs Pyphen 0.17.x for the supported warning-free setup;
-Fedora's older Pyphen may still import deprecated `pkg_resources`.
-Doctor reports that dependency mismatch without importing the legacy
-package.
+A working OS-provided WeasyPrint 70 Python package is acceptable; Pyphen is
+normally installed as its dependency. Doctor reports Pyphen metadata and tests
+actual conversion rather than rejecting a Pyphen version. If an isolated pip
+setup is needed, install `requirements-rendering.txt` plus `jsonschema>=4.26,<5`
+in a user-owned venv and invoke its Python explicitly for doctor/render commands.
+No shell-profile activation or migration of unrelated Python packages is needed.
+The optional pip requirements select Pyphen 0.17.x to avoid a legacy Fedora
+`pkg_resources` warning. On every OS, JAI first uses the WeasyPrint 70 CLI on
+PATH with deny-all resource options, stdin HTML and a fixed trusted stylesheet.
+If its version/startup probe is unavailable or incompatible, JAI tries the current
+Python module. No OS-specific interpreter lookup or duplicate package installation
+is needed. Doctor reports the selected execution mode and executable/version;
+CLI-managed Python/Pyphen versions are unknown rather than inferred from the
+caller. Resource denials and conversion failures never trigger fallback.
 It does not suppress warnings, install packages, or certify host
 confinement.
 See the [dependency matrix](../configuration/publication-stack.md)

@@ -47,6 +47,18 @@ probe reports UNAVAILABLE or an operator action, not an installation failure.
 
 Discovery includes Poppler, Pandoc, supported LaTeX engines, OpenSSL, provider
 CLIs, pytest and MkDocs. Tools are optional for their respective functions.
+Each version probe has a ten-second budget. Installation prints the full
+capability JSON, selected Python and PATH, probe commands, durations, return
+codes, separate stdout/stderr (up to 8000 characters each) and timeout/error
+reasons. Doctor includes the underlying HTML conversion exception. The outer
+installer budget is 150 seconds so ten slow tool probes and the 35-second doctor budget fit.
+Missing programs and programs whose version probe failed both remain
+`UNAVAILABLE`; use `executable` and `reason` to distinguish them. Browser
+lookup currently uses CLI names on PATH, not macOS application bundles.
+Reports include local paths; review them before sharing. No full environment
+dump is collected. Redirect installation output to a local file when preserving
+an observation for later comparison.
+
 No packages, keys, trust pins or provider settings are installed by refresh.
 Release support remains defined solely by `RELEASE-SCOPE.json`. Discovery does
 not authorize an agent, certify confinement or activate privileged mutations.
@@ -93,7 +105,7 @@ Some advanced capabilities require additional tools or an action performed by a 
 
 | Tool | When do you need it? | Installation requirement |
 | --- | --- | --- |
-| **WeasyPrint 70 + Pyphen 0.17.x** | Generate PDF documents directly from JAI-produced HTML | Optional; recommended for HTML/PDF publication |
+| **WeasyPrint 70** | Generate PDF documents directly from JAI-produced HTML | Optional; recommended for HTML/PDF publication |
 | **LibreOffice** | Render actual Word, PowerPoint and Excel files for visual quality review | Optional; can run outside the AI sandbox |
 | **Chromium** | Browser screenshots of approved local pages | Optional; use a disposable profile and the effective sandbox |
 | **Poppler** | Convert PDF pages to images for visual inspection | Optional; required for applicable page-image QA |
@@ -105,19 +117,51 @@ Task-specific validation also uses lxml for EA XSD conformance and Pillow for im
 
 #### A clean optional renderer environment
 
-Use the same Python interpreter for installation, doctor and publication.
-A system package can provide WeasyPrint 70 with an older Pyphen that still
-imports deprecated `pkg_resources`. Checking WeasyPrint alone is insufficient.
-JAI's optional requirements select Pyphen 0.17.x; doctor reports the detected
-version without importing an older series. It requests setup rather than
-claiming that an untested renderer is READY. No warning filters are applied.
+Pyphen is a transitive WeasyPrint dependency for hyphenation, not a requirement
+for installation or core workflows. A normal `pip install weasyprint` installs
+Pyphen automatically as a dependency; no separate manual installation is normally
+needed. An OS-provided package with working dependencies is acceptable. Doctor
+reports the Pyphen version for diagnosis but does not reject a renderer merely
+because that version differs from 0.17.x; actual HTML/PDF conversion determines
+readiness. The current Python API backend requires WeasyPrint 70.
+LibreOffice rendering does not need either Python package.
+
+You may keep your existing Python for core work. A separate renderer interpreter
+is an option when you need isolated packages, not an installation prerequisite.
+On every platform, JAI first tries the WeasyPrint 70 CLI on PATH. This works
+with the Fedora `weasyprint` CLI package (which depends on `python3-weasyprint`)
+and macOS Homebrew `weasyprint`, even when the caller's Python cannot import
+their packages. On Fedora, use `dnf install weasyprint` for the CLI; installing
+only `python3-weasyprint` supplies the Python library and may not supply the CLI.
+The CLI receives HTML through stdin, a fixed trusted stylesheet and deny-all
+resource options (`--allowed-protocols ''`, `--no-http-redirects`,
+`--fail-on-http-errors`). External CSS, custom font loading and entities are
+also rejected before rendering. A fixed non-sensitive base URI ensures relative
+resources resolve into URLs and are denied too, rather than silently skipped.
+Its version probe has ten seconds and actual
+conversion has twenty seconds.
+
+If the CLI is absent, incompatible or cannot complete its version/startup probe,
+JAI falls back to WeasyPrint 70 in the current Python interpreter. There is no
+OS-specific interpreter discovery. Doctor uses the same selection and reports
+the selected execution mode, CLI executable/version or Python version under
+`renderer_dependencies.selected_renderer`. CLI-managed Python/Pyphen versions
+are reported as unknown (`null`), rather than guessed from caller packages.
+No venv or duplicate Python packages are needed for a working CLI.
+Explicit LibreOffice bypasses WeasyPrint discovery. Automatic mode can use
+LibreOffice if both WeasyPrint backends are unavailable. Resource denials,
+conversion failures and conversion timeouts never trigger a weaker fallback.
+
+The optional pip requirements select Pyphen 0.17.x to avoid an older Fedora
+package's deprecated `pkg_resources` import. This clean-environment recipe is
+an option, not a requirement to replace a working macOS package.
 
 From the extracted package root, a human operator may create a disposable
 virtual environment (normal user, no sudo):
 
 ```sh
 python3 -m venv build/render-venv
-build/render-venv/bin/python -m pip install -r requirements.txt -r requirements-rendering.txt
+build/render-venv/bin/python -m pip install -r requirements-rendering.txt "jsonschema>=4.26,<5"
 build/render-venv/bin/python .ai/runtime/tools/operator_actions.py doctor
 ```
 
@@ -126,11 +170,14 @@ On Windows, use `build\render-venv\Scripts\python.exe` instead of
 virtual environment, downloading from the configured Python package index.
 The `build/` location is excluded from release packaging; do not place
 custom virtual environments among maintained distribution resources.
+The additional `jsonschema` package lets JAI validate its core contracts and run
+`configure --refresh` in this renderer environment. The documentation-building
+packages in `requirements.txt` are not needed just to render HTML/PDF.
 Review the requirements first. They do not modify system Python or JAI's
 installed files. Use this interpreter for subsequent Python render commands;
 creating a venv does not switch an already running provider's interpreter.
 
-Doctor should report actual HTML/PDF conversion READY and Pyphen 0.17.x.
+Doctor should report actual HTML/PDF conversion READY; Pyphen metadata is informational.
 This package-local command checks the selected candidate, not an older public
 installation. After installing that candidate, the same venv Python can invoke
 `~/.ai/it-role-house/tools/operator_actions.py doctor` instead.
@@ -139,6 +186,53 @@ If native libraries or fonts are absent, consult the Fedora examples in
 Fedora package versions vary; installing `python3-weasyprint` alone is not a
 promise that its transitive Python dependencies match the supported environment.
 Do not downgrade setuptools or edit system site-packages to hide a warning.
+
+##### macOS and separate Python environments
+
+If WeasyPrint is already installed through Homebrew and its CLI is on PATH,
+JAI automatically uses it first, using the same selection as every other OS. No venv or
+duplicate package installation is required. For a new optional HTML/PDF setup on
+macOS, prefer the Homebrew package:
+
+```sh
+brew install weasyprint
+python3 "$HOME/.ai/it-role-house/tools/operator_actions.py" configure --refresh
+```
+
+Homebrew supplies the formula's Python dependencies and native libraries.
+If the CLI is unavailable but the current Python provides a working WeasyPrint
+70 module, JAI uses that fallback and no additional setup is needed.
+
+A separate pip environment is an **optional alternative if you do not choose
+Homebrew**. Homebrew Python may refuse global `pip install` because it is
+externally managed. In that case, create a user-owned renderer environment
+from the extracted package root:
+
+```sh
+python3 -m venv "$HOME/.venvs/jai-render"
+"$HOME/.venvs/jai-render/bin/python" -m pip install -r requirements-rendering.txt "jsonschema>=4.26,<5"
+"$HOME/.venvs/jai-render/bin/python" "$HOME/.ai/it-role-house/tools/operator_actions.py" configure --refresh
+```
+
+WeasyPrint also requires native libraries such as Pango and usable fonts;
+with Homebrew, install the host dependency using `brew install pango`. A venv
+isolates Python packages; it does not supply native libraries or repair their
+loader paths. Keep the reported conversion exception and doctor stderr if
+conversion still fails.
+
+A normal venv cannot see packages installed into the base Python. Install only
+the packages required for the tasks you run inside it, including their transitive
+dependencies. You do **not** need to copy all existing packages or move unrelated
+tools into it. External programs such as LibreOffice, Pandoc and XeLaTeX remain
+host programs discovered through the inherited PATH. `--system-site-packages`
+can expose base Python packages, but weakens isolation and can reintroduce the
+version conflicts this clean environment avoids.
+
+No `activate` command or `.bash_profile` modification is required: explicit
+interpreter paths work in any shell. If you choose to run installation with
+this interpreter too, use `JAI_PYTHON="$HOME/.venvs/jai-render/bin/python" bash ./install.sh`.
+This selects Python for that invocation only; it does not change the interpreter
+used by an already running provider or by future bare `python3` commands.
 
 WeasyPrint renders HTML/CSS, not DOCX/PPTX/XLSX. Actual Office visual QA
 still needs an Office-compatible renderer and page images. It can use an

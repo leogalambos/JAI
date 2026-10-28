@@ -15,6 +15,12 @@ import office_renderer as renderer
 
 
 class OfficeRendererTests(unittest.TestCase):
+    def setUp(self):
+        # These existing tests exercise the current-Python fallback in isolation.
+        cli = patch.object(renderer, '_html_pdf_cli', side_effect=renderer.RendererUnavailable('CLI absent'))
+        cli.start()
+        self.addCleanup(cli.stop)
+
     def test_auto_rechecks_backend_versions_and_preserves_explicit_selection(self):
         import importlib.metadata
         with tempfile.TemporaryDirectory() as directory:
@@ -42,7 +48,7 @@ class OfficeRendererTests(unittest.TestCase):
             if importlib.util.find_spec('weasyprint') is None:return
             html=root/'source.html';html.write_text('<html><h1>Safe local PDF</h1><p>Classification: public synthetic</p></html>')
             self.assertTrue(renderer.html_pdf(html,root/'safe',backend='weasyprint').read_bytes().startswith(b'%PDF-'))
-            for unsafe in ('<img src="file:///unapproved">','<img src="https://example.invalid/image.png">','<style>@font-face {font-family:x;src:url(file:///font)}</style>'):
+            for unsafe in ('<img src="file:///unapproved">','<img src="relative.png">','<style>body{background:url(relative.png)}</style>','<img src="https://example.invalid/image.png">','<style>@font-face {font-family:x;src:url(file:///font)}</style>'):
                 html.write_text('<html><h1>Resource denial</h1>'+unsafe+'</html>')
                 with self.assertRaises(ValueError):renderer.html_pdf(html,root/'unsafe',backend='weasyprint')
                 self.assertFalse((root/'unsafe/source.pdf').exists())
@@ -104,3 +110,72 @@ class OfficeRendererTests(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+def test_successful_local_render_does_not_require_pyphen_metadata(tmp_path):
+    import importlib.metadata
+    import json
+    original = importlib.metadata.version
+    def version(name):
+        if name == 'pyphen':raise importlib.metadata.PackageNotFoundError(name)
+        return original(name)
+    source=tmp_path/'source.html';source.write_text('<h1>Safe local fixture</h1>')
+    with patch.object(importlib.metadata,'version',side_effect=version), patch.object(renderer,'_html_pdf_cli',side_effect=renderer.RendererUnavailable('CLI absent')):
+        pdf=renderer.html_pdf(source,tmp_path/'out',backend='weasyprint')
+    assert pdf.read_bytes().startswith(b'%PDF-')
+    assert json.loads(pdf.with_suffix('.renderer.json').read_text())['pyphen']=='metadata unavailable'
+
+
+def test_cli_first_renders_without_importing_current_python_packages(tmp_path):
+    import json
+    source=tmp_path/'source.html';source.write_text('<h1>Safe CLI fixture</h1>')
+    with patch.object(renderer,'_html_pdf_local',side_effect=AssertionError('must not import caller packages')):
+        pdf=renderer.html_pdf(source,tmp_path/'out',backend='weasyprint')
+    evidence=json.loads(pdf.with_suffix('.renderer.json').read_text())
+    assert pdf.read_bytes().startswith(b'%PDF-')
+    assert evidence['execution']=='cli'
+    assert evidence['executable']
+    assert evidence['python'] is None and evidence['pyphen'] is None
+
+
+def test_cli_denied_resources_never_fall_back_to_python_or_office(tmp_path):
+    source=tmp_path/'source.html'
+    for unsafe in ('<img src="file:///unapproved">','<img src="https://example.invalid/image.png">','<img src="relative.png">','<style>body{background:url(relative.png)}</style>','<style>@import "https://example.invalid/x.css";</style>','<style>@font-face{font-family:x;src:url(file:///font)}</style>'):
+        source.write_text(unsafe)
+        with patch.object(renderer,'_html_pdf_local',side_effect=AssertionError('no weaker fallback')), patch.object(renderer,'convert_office',side_effect=AssertionError('no Office fallback')), unittest.TestCase().assertRaises(ValueError):
+            renderer.html_pdf(source,tmp_path/'out',backend='auto')
+        assert not (tmp_path/'out/source.pdf').exists()
+
+
+def test_unavailable_cli_version_falls_back_to_current_python(tmp_path):
+    source=tmp_path/'source.html';source.write_text('<h1>Local</h1>')
+    for probe in (subprocess.TimeoutExpired('version',10), FileNotFoundError('missing'), subprocess.CompletedProcess([],1,'','startup failure'), subprocess.CompletedProcess([],0,'WeasyPrint version 69.0',''), subprocess.CompletedProcess([],0,'malformed version',''), subprocess.CompletedProcess([],0,'WeasyPrint version 700.0','')):
+        with patch.object(renderer.shutil,'which',return_value='/fixture/weasyprint'), patch.object(renderer.subprocess,'run',side_effect=probe if isinstance(probe,Exception) else None,return_value=probe), patch.object(renderer,'_html_pdf_local',return_value=tmp_path/'local.pdf') as local:
+            assert renderer.html_pdf(source,tmp_path/'out',backend='weasyprint')==tmp_path/'local.pdf'
+            local.assert_called_once()
+    with patch.object(renderer.shutil,'which',return_value=None), patch.object(renderer,'_html_pdf_local',return_value=tmp_path/'local.pdf'):
+        assert renderer.html_pdf(source,tmp_path/'out')==tmp_path/'local.pdf'
+
+
+def test_cli_conversion_errors_do_not_fall_back_or_accept_stale_pdf(tmp_path):
+    source=tmp_path/'source.html';source.write_text('<h1>Local</h1>')
+    out=tmp_path/'out';out.mkdir();pdf=out/'source.pdf';pdf.write_bytes(b'%PDF-stale')
+    version=subprocess.CompletedProcess([],0,'WeasyPrint version 70.0','')
+    for conversion in (subprocess.TimeoutExpired('conversion',20), subprocess.CompletedProcess([],2,'','render failure'), subprocess.CompletedProcess([],0,'','no PDF')):
+        with patch.object(renderer.shutil,'which',return_value='/fixture/weasyprint'), patch.object(renderer.subprocess,'run',side_effect=[version,conversion]), patch.object(renderer,'_html_pdf_local',side_effect=AssertionError('no fallback')), unittest.TestCase().assertRaises(RuntimeError):
+            renderer.html_pdf(source,out,backend='auto')
+        assert pdf.read_bytes()==b'%PDF-stale'
+    with patch.object(renderer,'_html_pdf_cli') as cli, patch.object(renderer,'convert_office',return_value=pdf):
+        assert renderer.html_pdf(source,out,backend='libreoffice')==pdf
+        cli.assert_not_called()
+
+
+def test_cli_timeout_preserves_partial_output(tmp_path):
+    source=tmp_path/'source.html';source.write_text('<h1>Local</h1>')
+    version=subprocess.CompletedProcess([],0,'WeasyPrint version 70.0','')
+    timeout=subprocess.TimeoutExpired('fixture',20,output=b'partial stdout',stderr=b'native library pending')
+    for results in ([timeout],[version,timeout]):
+        with patch.object(renderer.shutil,'which',return_value='/fixture/weasyprint'), patch.object(renderer.subprocess,'run',side_effect=results), unittest.TestCase().assertRaises(RuntimeError) as error:
+            renderer._html_pdf_cli(source,tmp_path/'out')
+        assert 'partial stdout' in str(error.exception)
+        assert 'native library pending' in str(error.exception)
