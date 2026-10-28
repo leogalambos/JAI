@@ -345,3 +345,16 @@ def test_doctor_exception_chain_retains_timeout_streams():
     cause=report['html_pdf_diagnostic']['chain'][1]
     assert cause['stdout']=='partial render'
     assert cause['stderr']=='native loading'
+
+
+@pytest.mark.parametrize('version,compatible',[('4.23.0',False),('4.26.0',True),('4.99.0',True),('5.0.0',False),('invalid',False)])
+def test_doctor_reports_runtime_validator_version_compatibility(version,compatible):
+    with patch('importlib.util.find_spec',side_effect=lambda name:True if name=='jsonschema' else None), patch('importlib.metadata.version',return_value=version), patch('shutil.which',return_value=None):
+        report=op.doctor()
+    dependency=report['runtime_dependencies']['jsonschema']
+    assert dependency['available'] is True
+    assert dependency['compatible'] is compatible
+    assert dependency['version']==version
+    if not compatible:
+        assert 'OPERATOR_ACTION_REQUIRED' in report['base_workflow']
+        assert 'installation complete' in report['base_workflow']

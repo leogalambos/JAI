@@ -101,11 +101,13 @@ class AgentRuntimeTests(unittest.TestCase):
                 self.assertFalse(runtime.authorize(actor,'privileged-execute')[0])
             for corrupt in [dict(changed,enabled=['root-shell']),dict(changed,hardened_privileged={**changed['hardened_privileged'],'enabled':True}),dict(changed,agent_git_required=True)]:
                 manifest.write_text(json.dumps(corrupt))
-                with self.assertRaises(jsonschema.ValidationError):runtime.release_scope(root)
+                with self.assertRaises(ValueError):runtime.release_scope(root)
                 with patch.object(runtime,'ROOT',root):self.assertFalse(runtime.authorize(actor,'write')[0])
             manifest.write_text(json.dumps(changed))
-            with patch.dict(sys.modules,{'jsonschema':None}):
-                with self.assertRaises(ImportError):runtime.release_scope(root)
+            with patch.dict(sys.modules,{'jsonschema':None}), patch.object(runtime,'jsonschema',None):
+                self.assertEqual(runtime.release_scope(root),changed)
+                with self.assertRaisesRegex(ValueError,'validator unavailable'):runtime.contracts()
+                self.assertFalse(runtime.authorize(actor,'write')[0])
             nested=root/'nested/.ai/runtime';(nested/'schema').mkdir(parents=True)
             (nested/'schema/release-scope.schema.json').write_bytes((root/'schema/release-scope.schema.json').read_bytes())
             (nested/'RELEASE-SCOPE.json').write_text(json.dumps(changed))

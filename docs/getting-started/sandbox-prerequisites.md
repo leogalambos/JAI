@@ -10,7 +10,8 @@ The provider selects authorised tools from your natural-language request. Markdo
 
 | Task | Required local components | Additional access to consider |
 | --- | --- | --- |
-| Use installed JAI workflows and Markdown documentation | Python 3.10+, installed provider surface and JAI runtime | Installed skills, runtime Python files, schemas and the working project |
+| Install/update JAI | Python 3.10+ standard library only; no preinstalled Python packages | Package resources and intended installation paths |
+| Use installed JAI contract workflows | Python 3.10+, jsonschema>=4.26,<5, installed provider surface and JAI runtime | Installed skills, runtime Python files, schemas and the working project |
 | Generate SABSA `.tex` source or DOCX | Pandoc | Pandoc executable and its installed resources; writable output and temporary files |
 | Compile SABSA LaTeX to PDF | Pandoc, XeLaTeX, required TeX packages and DejaVu Serif | TeX trees, configuration, compiled formats and fonts |
 | Inspect PDF pages as images or text | Poppler tools such as `pdftoppm` and `pdftotext` | Readable PDF and writable inspection output |

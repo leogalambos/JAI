@@ -9,6 +9,7 @@ from pathlib import Path
 import sys
 import tempfile
 import unittest
+import pytest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / '.ai/runtime/tools'))
@@ -253,3 +254,43 @@ def test_shell_installer_selects_explicit_python_and_preserves_path(tmp_path):
                             env=environment, capture_output=True, text=True)
     assert result.returncode == 23
     assert result.stdout.splitlines() == [environment['PATH'], str(ROOT / '.ai/setup/installer.py'), '--dry-run']
+
+
+def test_bare_python_installs_without_third_party_packages_and_reports_runtime_dependency(tmp_path):
+    import os
+    import subprocess
+    environment=dict(os.environ, HOME=str(tmp_path/'home'),
+                     AI_IT_HOME=str(tmp_path/'home/.ai'),
+                     AI_IT_HOUSE=str(tmp_path/'home/.ai/it-role-house'),
+                     CODEX_HOME=str(tmp_path/'home/.codex'), CLAUDE_HOME=str(tmp_path/'home/.claude'),
+                     PATH=os.defpath)
+    command=[sys.executable,'-S',str(ROOT/'.ai/setup/installer.py'),'--codex-only']
+    dry=subprocess.run([*command,'--dry-run'],env=environment,capture_output=True,text=True,timeout=30)
+    assert dry.returncode==0, dry.stdout+dry.stderr
+    assert 'nothing written' in dry.stdout
+    assert not (tmp_path/'home').exists()
+    installed=subprocess.run(command,env=environment,capture_output=True,text=True,timeout=150)
+    assert installed.returncode==0, installed.stdout+installed.stderr
+    assert (tmp_path/'home/.ai/it-role-house/install-state.json').is_file()
+    assert 'Installation/update complete.' in installed.stdout
+    assert 'installation complete; runtime dependency jsonschema>=4.26,<5 is missing' in installed.stdout
+    assert '"available": false' in installed.stdout
+    assert 'Traceback' not in installed.stdout+installed.stderr
+    assert '"no_site": true' in installed.stdout
+
+
+@pytest.mark.parametrize('platform,ready,expected',[('darwin',False,True),('darwin',True,False),('linux',False,False),('win32',False,False)])
+def test_runtime_setup_completion_limits_macos_venv_commands_to_missing_dependency(tmp_path,capsys,platform,ready,expected):
+    from unittest.mock import patch
+    capabilities={'runtime_dependencies':{'jsonschema':{'available':ready,'compatible':ready}}}
+    with patch.object(installer.sys,'platform',platform), patch.object(installer.Path,'home',return_value=tmp_path/'home with space'):
+        installer.runtime_setup_instructions(tmp_path/'house with space',capabilities)
+    output=capsys.readouterr().out
+    assert ('-m venv' in output)==expected
+    if expected:
+        assert "-m pip install 'jsonschema>=4.26,<5'" in output
+        assert 'operator_actions.py' in output and 'configure --refresh' in output
+        assert 'PATH=' in output and 'codex' in output and 'claude' in output
+        assert 'does not persist' in output
+    elif not ready:
+        assert 'jsonschema>=4.26,<5' in output

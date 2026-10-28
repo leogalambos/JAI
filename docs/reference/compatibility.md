@@ -43,8 +43,10 @@ Enabled features: `role-workflows`, `workspace-authoring`,
   - Supported: role-authorized local QA in effective native sandbox
 - **Python**
   - Minimum: 3.10
-  - Tested: 3.12 release CI target
-  - Supported: yes
+  - Tested: 3.12 release CI target; bare interpreter installation tested
+    with site packages disabled
+  - Supported: standard-library-only installation; runtime contract
+    workflows need their dependencies
 - **Pandoc**
   - Minimum: optional
   - Tested: publication tool detects at runtime
@@ -87,9 +89,11 @@ Enabled features: `role-workflows`, `workspace-authoring`,
   - Tested: XSD conformance suite
   - Supported: EA conformance
 - **jsonschema**
-  - Minimum: 4.x
-  - Tested: Draft 2020-12
-  - Supported: semantic schemas
+  - Minimum: >=4.26,<5 for runtime contract workflows
+  - Tested: Draft 2020-12; narrow release-scope bootstrap validation
+    uses only the standard library
+  - Supported: required for Agent/Policy, DCS and Artifact validation;
+    not required for installation
 - **Pillow**
   - Minimum: runtime-supported
   - Tested: visual QA fixture rendering

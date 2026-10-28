@@ -25,8 +25,9 @@ def release_scope(root=None):
     Returns:
         The selected RELEASE-SCOPE.json, validated without any generated fallback.
     Raises:
-        OSError, ValueError, ImportError: Missing or malformed required resources.
-        jsonschema.ValidationError, jsonschema.SchemaError: Invalid scope/schema.
+        OSError, ValueError: Missing/malformed resources or unsupported release
+            scope schema. This narrow metadata validator uses the standard
+            library; runtime Agent/Policy contracts still require jsonschema.
     """
     return schema_resolver.release_scope(ROOT if root is None else root)
 

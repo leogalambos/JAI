@@ -73,7 +73,7 @@ def inventory(root: Path):
       'compatibility':[
         {'component':'Claude Code','minimum':'provider-supported strict sandbox','tested':'not installed on reference host; projections only, live NOT_VERIFIED','supported':'contract-scoped tools; reviewer shell unavailable without read-only isolation'},
         {'component':'Codex CLI','minimum':'provider-supported','tested':'0.164.0 host CLI help confirms sandbox/on-request values; live role confinement NOT_VERIFIED','supported':'role-authorized local QA in effective native sandbox'},
-        {'component':'Python','minimum':'3.10','tested':'3.12 release CI target','supported':'yes'},
+        {'component':'Python','minimum':'3.10','tested':'3.12 release CI target; bare interpreter installation tested with site packages disabled','supported':'standard-library-only installation; runtime contract workflows need their dependencies'},
         {'component':'Pandoc','minimum':'optional','tested':'publication tool detects at runtime','supported':'optional'},
         {'component':'WeasyPrint','minimum':'70.x optional','tested':'actual HTML/PDF conversion; constrained resource fetching; uniform CLI-first/current-Python fallback covered by real CLI subprocess tests','supported':'SUPPORTED optional HTML/PDF; not Office fidelity'},
         {'component':'Pyphen','minimum':'determined by the installed WeasyPrint dependency requirements','tested':'metadata reported; actual HTML/PDF conversion determines readiness','supported':'WeasyPrint transitive dependency; optional pip recipe selects 0.17.x in requirements-rendering.txt, without rejecting working OS packages'},
@@ -82,7 +82,7 @@ def inventory(root: Path):
         {'component':'OpenSSL','minimum':'Ed25519 pkeyutl -rawin','tested':'external receipts verified with fixed /usr/bin/openssl on Linux','supported':'OPERATOR_ASSISTED local L0; other trust adapters NOT_VERIFIED'},
         {'component':'Fonts/system libraries','minimum':'DejaVu Sans; renderer-native text/layout libraries','tested':'Fedora reference glyph/layout corpus','supported':'host prerequisite; other platforms NOT_VERIFIED'},
         {'component':'lxml','minimum':'5.x','tested':'XSD conformance suite','supported':'EA conformance'},
-        {'component':'jsonschema','minimum':'4.x','tested':'Draft 2020-12','supported':'semantic schemas'},
+        {'component':'jsonschema','minimum':'>=4.26,<5 for runtime contract workflows','tested':'Draft 2020-12; narrow release-scope bootstrap validation uses only the standard library','supported':'required for Agent/Policy, DCS and Artifact validation; not required for installation'},
         {'component':'Pillow','minimum':'runtime-supported','tested':'visual QA fixture rendering','supported':'visual QA'},
         {'component':'GitHub Actions','minimum':'release workflow','tested':'tag, A-H gates, ZIP SHA-256, CI publication','supported':'automatic release publication'}
       ]

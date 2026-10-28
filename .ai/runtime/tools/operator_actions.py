@@ -375,7 +375,7 @@ def configure(previous=None):
         if not isinstance(baseline,dict) or baseline.get('schema_version') != 1 or not isinstance(baseline.get('tools'),dict):
             raise ValueError('previous capability observation required')
     scope = schema_resolver.release_scope()
-    probe = _probe([sys.executable, str(Path(__file__).resolve()), 'doctor'], 35, output_limit=None)
+    probe = _probe([sys.executable, *(['-S'] if sys.flags.no_site else []), str(Path(__file__).resolve()), 'doctor'], 35, output_limit=None)
     try:
         capabilities = json.loads(probe['stdout']) if probe['returncode'] == 0 else {'status': 'UNAVAILABLE', 'reason': 'doctor failed; see doctor_probe'}
     except ValueError as exc:
@@ -393,7 +393,8 @@ def configure(previous=None):
             'environment': {'path': os.environ.get('PATH', ''),
                             'python_version': sys.version, 'python_prefix': sys.prefix,
                             'python_base_prefix': sys.base_prefix,
-                            'virtual_environment': sys.prefix != sys.base_prefix},
+                            'virtual_environment': sys.prefix != sys.base_prefix,
+                            'no_site': bool(sys.flags.no_site)},
             'doctor_probe': probe,
             'selection': 'automatic at point of use; explicit backend arguments take precedence',
             'capabilities': capabilities, 'tools': tools, 'changes': changes,
@@ -404,7 +405,9 @@ def doctor():
     """Report prerequisites and actual rendering without asserting confinement.
 
     Returns:
-        Existing capability strings plus renderer_dependencies version metadata.
+        Existing capability strings, renderer metadata and runtime jsonschema
+        availability/version compatibility. Missing runtime validation is reported
+        separately from successful standard-library installation.
         Pyphen metadata is informational; actual conversion determines readiness.
         Exceptions include a bounded cause/context chain and truncation markers.
         No warnings are filtered, packages installed or host settings changed.
@@ -412,13 +415,23 @@ def doctor():
     import importlib.util,importlib.metadata,shutil
     try:trusted_key();l0='READY for receipt verification; signing separation NOT VERIFIED'
     except (OSError,ValueError):l0='OPERATOR_ACTION_REQUIRED: enroll protected public trust'
-    try:
-        import agent_runtime
-        contracts=agent_runtime.contracts()
-        base_state='READY: contract/schema and author/reviewer denial checks' if agent_runtime.authorize(contracts['artifact-author'],'write','Write')[0] and not agent_runtime.authorize(contracts['codebase-reviewer'],'write','Write')[0] else 'UNAVAILABLE'
-    except (OSError,ValueError,KeyError):base_state='UNAVAILABLE: core contract validation failed'
+    validator_present=importlib.util.find_spec('jsonschema') is not None
+    try:validator_version=importlib.metadata.version('jsonschema') if validator_present else 'not installed'
+    except importlib.metadata.PackageNotFoundError:validator_version='metadata unavailable'
+    version_match=re.fullmatch(r'(\d+)\.(\d+)(?:\.\d+)*',validator_version)
+    validator_compatible=bool(validator_present and version_match and (4,26)<=tuple(map(int,version_match.groups()))<(5,0))
+    if not validator_compatible:
+        state='missing' if not validator_present else 'incompatible or unverified ('+validator_version+')'
+        base_state='OPERATOR_ACTION_REQUIRED: installation complete; runtime dependency jsonschema>=4.26,<5 is '+state+' in this interpreter. Install it in the Python environment used for contract workflows; release-scope installation validation uses only the standard library.'
+    else:
+        try:
+            import agent_runtime
+            contracts=agent_runtime.contracts()
+            base_state='READY: contract/schema and author/reviewer denial checks' if agent_runtime.authorize(contracts['artifact-author'],'write','Write')[0] and not agent_runtime.authorize(contracts['codebase-reviewer'],'write','Write')[0] else 'UNAVAILABLE'
+        except (OSError,ValueError,KeyError):base_state='UNAVAILABLE: core contract validation failed'
     html_state='OPERATOR_ACTION_REQUIRED: install optional WeasyPrint or use host LibreOffice'
     dependencies={'python':sys.executable}
+    runtime_dependencies={'jsonschema':{'available':validator_present,'compatible':validator_compatible,'version':validator_version,'required':'jsonschema>=4.26,<5','scope':'runtime contract validation; not installation'}}
     html_diagnostic=None
     notices=[]
     try:
@@ -477,6 +490,7 @@ def doctor():
         'local_shell':'role-engineer contract permits local QA; actual native sandbox determines A/B/C',
         'office_visual':office_state,
         'libreoffice_binary_present':office_present,'local_l0':l0,'host_provider_confinement':'NOT VERIFIED','privileged_external_mutation':'NOT SUPPORTED','renderer_dependencies':dependencies,
+        'runtime_dependencies':runtime_dependencies,
         'html_pdf_diagnostic':html_diagnostic,'setup_notices':notices}
 
 

@@ -155,8 +155,8 @@
     {
       "component": "Python",
       "minimum": "3.10",
-      "tested": "3.12 release CI target",
-      "supported": "yes"
+      "tested": "3.12 release CI target; bare interpreter installation tested with site packages disabled",
+      "supported": "standard-library-only installation; runtime contract workflows need their dependencies"
     },
     {
       "component": "Pandoc",
@@ -208,9 +208,9 @@
     },
     {
       "component": "jsonschema",
-      "minimum": "4.x",
-      "tested": "Draft 2020-12",
-      "supported": "semantic schemas"
+      "minimum": ">=4.26,<5 for runtime contract workflows",
+      "tested": "Draft 2020-12; narrow release-scope bootstrap validation uses only the standard library",
+      "supported": "required for Agent/Policy, DCS and Artifact validation; not required for installation"
     },
     {
       "component": "Pillow",

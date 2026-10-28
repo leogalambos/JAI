@@ -80,18 +80,69 @@ See [the interaction guide](../using/interaction-model.md) for normal work and [
 
 ## Prerequisites
 
-### Required
+### Installation: standard library only
 
-- Python **3.10 or newer**.
-- `jsonschema>=4.26,<5` for packaged DCS and Artifact Contract validation.
-  Install requirements.txt into a reviewed virtual environment using that
-  environment's `python -m pip`, from the extracted package root.
-  DCS schema checks fail closed
-  if this dependency is absent; they are never silently skipped.
-- A supported provider surface:
-  - **Claude Code**, and/or
-  - **Codex CLI / compatible OpenAI-oriented execution surface**.
-- An extracted AI IT House {{ JAI_VERSION }} release package.
+The installer needs **Python 3.10 or newer and an extracted release package**.
+No preinstalled Python packages, `pip`, virtual environment or activated shell
+profile are required to run `install.sh`, `install.cmd` or the Python installer.
+Installation never installs dependencies or changes the host Python environment.
+This applies to macOS as well as Linux and Windows.
+
+Before writing files, installation validates `RELEASE-SCOPE.json` against the
+maintained release-scope schema using a narrow standard-library validator.
+It supports exactly that schema's const/enum, closed-object, unique-array and
+patterned-string vocabulary. Malformed schemas or unsupported schema keywords
+fail closed; validation is never skipped when a package is unavailable.
+
+### Runtime workflows: additional dependencies
+
+A successful copy/install does **not** mean contract workflows are ready.
+Before running installed Agent/Policy, DCS or Artifact Contract validation,
+provide `jsonschema>=4.26,<5` in the Python interpreter used by those workflows.
+These broader schemas still use the full JSON Schema validator and fail closed
+if it is absent. Doctor/installer discovery reports the missing runtime package
+explicitly while retaining successful installation status.
+
+Use an existing suitable OS package or Python environment. If you choose `pip`,
+install only the needed runtime package with that interpreter's
+`python -m pip install 'jsonschema>=4.26,<5'`, following its package-management
+policy. A user-owned venv is an option when system Python is externally managed;
+it is not an installation prerequisite, and unrelated packages need not migrate.
+`requirements.txt` additionally contains documentation/build dependencies and is
+not necessary just to copy/install JAI. No package is installed automatically.
+
+Normal workflow use also needs **Claude Code and/or a supported Codex CLI**.
+Use the same intended workflow interpreter when running `configure --refresh`;
+installer discovery preserves `-S` when installation was explicitly run with
+site packages disabled, and identifies this mode in its diagnostics.
+
+#### macOS: finish runtime setup when the validator is missing
+
+Installation completion prints the following steps only when its selected
+Python lacks a compatible runtime validator. They install the validator and its
+dependencies, not your unrelated Python packages. From a terminal:
+
+```sh
+python3 -m venv "$HOME/.venvs/jai"
+"$HOME/.venvs/jai/bin/python" -m pip install 'jsonschema>=4.26,<5'
+"$HOME/.venvs/jai/bin/python" "$HOME/.ai/it-role-house/tools/operator_actions.py" configure --refresh
+```
+
+Then start a **new** session with the venv first on PATH; choose your provider:
+
+```sh
+PATH="$HOME/.venvs/jai/bin:$PATH" codex
+PATH="$HOME/.venvs/jai/bin:$PATH" claude
+```
+
+The installed `python3` hooks and commands inherit that PATH. An already running
+or GUI-launched provider may have a different environment; restart it with this
+PATH before relying on those hooks. No `.bash_profile` edit is needed.
+`JAI_PYTHON` selects the installer interpreter for that invocation only; it does
+not persistently select the interpreter used by provider hooks. For a custom
+installation destination, use the exact refresh path printed by the installer.
+Linux and Windows need the same runtime dependency in their selected interpreter;
+the installer gives a concise dependency notice rather than these macOS steps.
 
 ## Optional capabilities and additional setup
 
@@ -170,8 +221,9 @@ On Windows, use `build\render-venv\Scripts\python.exe` instead of
 virtual environment, downloading from the configured Python package index.
 The `build/` location is excluded from release packaging; do not place
 custom virtual environments among maintained distribution resources.
-The additional `jsonschema` package lets JAI validate its core contracts and run
-`configure --refresh` in this renderer environment. The documentation-building
+The additional `jsonschema` package lets JAI validate runtime contracts in this
+renderer environment. Installation and `configure --refresh` themselves do not
+require it; doctor will report those runtime contracts as not ready without it. The documentation-building
 packages in `requirements.txt` are not needed just to render HTML/PDF.
 Review the requirements first. They do not modify system Python or JAI's
 installed files. Use this interpreter for subsequent Python render commands;

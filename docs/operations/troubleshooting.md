@@ -80,3 +80,12 @@ caller metadata does not describe the CLI environment. Version probes have ten
 seconds and CLI conversion has twenty seconds. Resource denials and conversion
 failures remain diagnostic and never trigger a weaker fallback. No packages are
 installed and OS-specific Python discovery is not required.
+
+Installation needs only Python 3.10+ standard library. A successful installation
+can report `OPERATOR_ACTION_REQUIRED` for the runtime `jsonschema>=4.26,<5`
+dependency. Install/provide it in the interpreter used for contract workflows,
+then refresh discovery with that interpreter. Full Agent/Policy, DCS and Artifact
+validation is never skipped. The installer validates its small release-scope
+schema separately without a third-party package. It does not install packages,
+require a venv or change shell profiles. Diagnostics preserve explicit `-S`
+site-package isolation and report it as `no_site`.

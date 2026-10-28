@@ -330,6 +330,33 @@ def desired_outputs(pkg,providers,ai_house,claude_home,codex_home,model_registry
             out[str(dest)]=render_codex_skill(p,'command',name,model_registry); modes[str(dest)]=0o644
     return out,modes
 
+def runtime_setup_instructions(ai_house, capabilities):
+    """Print platform-appropriate steps only for an observed unready validator.
+
+    Args:
+        ai_house: Installed runtime path used in the exact refresh command.
+        capabilities: Doctor observation with runtime_dependencies.jsonschema.
+    Returns:
+        None. Prints no setup steps for a ready or unobserved dependency. On macOS,
+        prints quoted user-venv setup and provider PATH launch commands; elsewhere
+        prints a concise dependency notice. Does not execute or persist commands.
+    """
+    dependency=capabilities.get('runtime_dependencies',{}).get('jsonschema',{})
+    if dependency.get('available') is not False and dependency.get('compatible') is not False:return
+    print('Runtime setup required: provide jsonschema>=4.26,<5 in the Python used by contract workflows, then refresh. Installation is complete; contract workflows are not ready yet.')
+    if sys.platform!='darwin':return
+    venv=Path.home()/'.venvs/jai';python=venv/'bin/python'
+    commands=[[sys.executable,'-m','venv',str(venv)],
+              [str(python),'-m','pip','install','jsonschema>=4.26,<5'],
+              [str(python),str(ai_house/'tools/operator_actions.py'),'configure','--refresh']]
+    print('macOS: run these commands in your terminal (only the runtime validator and its dependencies are installed):')
+    for command in commands:print('  '+shlex.join(command))
+    print('Then start a NEW provider session with that venv first on PATH (choose the provider you use):')
+    for provider in ('codex','claude'):
+        print('  PATH='+shlex.quote(str(venv/'bin'))+':"$PATH" '+provider)
+    print('Provider python3 hooks inherit this PATH. JAI_PYTHON selects the installer only and does not persist a runtime interpreter. Do not move unrelated packages or edit .bash_profile; for GUI sessions, use an environment with the same PATH.')
+
+
 def optional_discovery(ai_house):
     """Print advisory discovery and diagnostic data for the installed runtime.
 
@@ -340,11 +367,11 @@ def optional_discovery(ai_house):
         outer probe errors; never changes configuration or aborts installation.
         Each tool has ten seconds, doctor has 35, and the outer budget is 150.
     """
-    refresh=[sys.executable,str(ai_house/'tools/operator_actions.py'),'configure','--refresh']
+    refresh=[sys.executable,*(['-S'] if sys.flags.no_site else []),str(ai_house/'tools/operator_actions.py'),'configure','--refresh']
     print('Discovery environment: '+json.dumps({'python':sys.executable,
           'python_version':sys.version,'platform':sys.platform,
           'path':os.environ.get('PATH',''),'python_prefix':sys.prefix,
-          'python_base_prefix':sys.base_prefix},ensure_ascii=True))
+          'python_base_prefix':sys.base_prefix,'no_site':bool(sys.flags.no_site)},ensure_ascii=True))
     started=time.monotonic()
     try:
         probe=subprocess.run(refresh,capture_output=True,text=True,timeout=150)
@@ -354,6 +381,7 @@ def optional_discovery(ai_house):
         if probe.returncode:raise ValueError('configure exited with code '+str(probe.returncode))
         report=json.loads(probe.stdout)
         capabilities=report.get('capabilities',{})
+        runtime_setup_instructions(ai_house,capabilities)
         for label,key in [('Core workflows','base_workflow'),('HTML/PDF','html_pdf'),
                           ('Office visual QA','office_visual'),('Local L0','local_l0'),
                           ('Host confinement','host_provider_confinement'),

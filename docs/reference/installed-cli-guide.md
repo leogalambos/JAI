@@ -1463,23 +1463,72 @@ never invent it or accept chat as signed approval. See the
 [complete operator guide](../operations/operator-walkthrough.md).
 
 
+### Installer and workflow Python dependencies
+
+Installation/update requires only Python 3.10+ standard library and the
+package. It validates the maintained release-scope schema before writing
+files using a narrow fail-closed validator, with no pip install or
+mandatory venv/profile setup. Unsupported schema keywords are rejected
+rather than ignored.
+
+Contract workflows still require `jsonschema>=4.26,<5` in their selected
+Python. A completed installation can therefore report the runtime
+validator missing; provide the package with the environment's normal
+package manager and refresh. Full Agent/Policy, DCS and Artifact
+validation still fails closed without it. No migration of unrelated
+Python packages is required. Documentation-building requirements are
+separate from copying/installing the product.
+
+#### macOS runtime setup if the validator is missing
+
+Installation completion prints the following steps only when its
+selected Python lacks a compatible runtime validator. They install the
+validator and its dependencies, not your unrelated Python packages. From
+a terminal:
+
+```sh
+python3 -m venv "$HOME/.venvs/jai"
+"$HOME/.venvs/jai/bin/python" -m pip install 'jsonschema>=4.26,<5'
+"$HOME/.venvs/jai/bin/python" "$HOME/.ai/it-role-house/tools/operator_actions.py" configure --refresh
+```
+
+Then start a **new** session with the venv first on PATH; choose your
+provider:
+
+```sh
+PATH="$HOME/.venvs/jai/bin:$PATH" codex
+PATH="$HOME/.venvs/jai/bin:$PATH" claude
+```
+
+The installed `python3` hooks and commands inherit that PATH. An already
+running or GUI-launched provider may have a different environment;
+restart it with this PATH before relying on those hooks. No
+`.bash_profile` edit is needed. `JAI_PYTHON` selects the installer
+interpreter for that invocation only; it does not persistently select
+the interpreter used by provider hooks. For a custom installation
+destination, use the exact refresh path printed by the installer. Linux
+and Windows need the same runtime dependency in their selected
+interpreter; the installer gives a concise dependency notice rather than
+these macOS steps.
+
 ### Optional renderer Python environment
 
-A working OS-provided WeasyPrint 70 Python package is acceptable; Pyphen is
-normally installed as its dependency. Doctor reports Pyphen metadata and tests
-actual conversion rather than rejecting a Pyphen version. If an isolated pip
-setup is needed, install `requirements-rendering.txt` plus `jsonschema>=4.26,<5`
-in a user-owned venv and invoke its Python explicitly for doctor/render commands.
-No shell-profile activation or migration of unrelated Python packages is needed.
-The optional pip requirements select Pyphen 0.17.x to avoid a legacy Fedora
-`pkg_resources` warning. On every OS, JAI first uses the WeasyPrint 70 CLI on
-PATH with deny-all resource options, stdin HTML and a fixed trusted stylesheet.
-If its version/startup probe is unavailable or incompatible, JAI tries the current
-Python module. No OS-specific interpreter lookup or duplicate package installation
-is needed. Doctor reports the selected execution mode and executable/version;
-CLI-managed Python/Pyphen versions are unknown rather than inferred from the
-caller. Resource denials and conversion failures never trigger fallback.
-It does not suppress warnings, install packages, or certify host
-confinement.
-See the [dependency matrix](../configuration/publication-stack.md)
-and installed package installation guide for the exact setup steps.
+A working OS-provided WeasyPrint 70 Python package is acceptable; Pyphen
+is normally installed as its dependency. Doctor reports Pyphen metadata
+and tests actual conversion rather than rejecting a Pyphen version. If
+an isolated pip setup is needed, install `requirements-rendering.txt`
+plus `jsonschema>=4.26,<5` in a user-owned venv and invoke its Python
+explicitly for doctor/render commands. No shell-profile activation or
+migration of unrelated Python packages is needed. The optional pip
+requirements select Pyphen 0.17.x to avoid a legacy Fedora
+`pkg_resources` warning. On every OS, JAI first uses the WeasyPrint 70
+CLI on PATH with deny-all resource options, stdin HTML and a fixed
+trusted stylesheet. If its version/startup probe is unavailable or
+incompatible, JAI tries the current Python module. No OS-specific
+interpreter lookup or duplicate package installation is needed. Doctor
+reports the selected execution mode and executable/version; CLI-managed
+Python/Pyphen versions are unknown rather than inferred from the caller.
+Resource denials and conversion failures never trigger fallback. It does
+not suppress warnings, install packages, or certify host confinement.
+See the [dependency matrix](../configuration/publication-stack.md) and
+installed package installation guide for the exact setup steps.
