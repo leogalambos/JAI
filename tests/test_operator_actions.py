@@ -347,7 +347,7 @@ def test_doctor_exception_chain_retains_timeout_streams():
     assert cause['stderr']=='native loading'
 
 
-@pytest.mark.parametrize('version,compatible',[('4.23.0',False),('4.26.0',True),('4.99.0',True),('5.0.0',False),('invalid',False)])
+@pytest.mark.parametrize('version,compatible',[('4.23.0',False),('4.26.0',True),('4.99.0',True),('5.0.0',False),('invalid',None)])
 def test_doctor_reports_runtime_validator_version_compatibility(version,compatible):
     with patch('importlib.util.find_spec',side_effect=lambda name:True if name=='jsonschema' else None), patch('importlib.metadata.version',return_value=version), patch('shutil.which',return_value=None):
         report=op.doctor()

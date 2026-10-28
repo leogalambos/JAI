@@ -10,6 +10,8 @@ from __future__ import annotations
 import argparse, base64, hashlib, json, os, re, shlex, stat, subprocess, sys, tempfile, time, uuid
 from pathlib import Path
 
+from runtime_dependencies import jsonschema_status
+
 CRYPTO='/usr/bin/openssl'
 CRYPTO_ENV={'PATH':'/usr/bin:/bin','LANG':'C.UTF-8','OPENSSL_CONF':'/dev/null'}
 
@@ -415,13 +417,10 @@ def doctor():
     import importlib.util,importlib.metadata,shutil
     try:trusted_key();l0='READY for receipt verification; signing separation NOT VERIFIED'
     except (OSError,ValueError):l0='OPERATOR_ACTION_REQUIRED: enroll protected public trust'
-    validator_present=importlib.util.find_spec('jsonschema') is not None
-    try:validator_version=importlib.metadata.version('jsonschema') if validator_present else 'not installed'
-    except importlib.metadata.PackageNotFoundError:validator_version='metadata unavailable'
-    version_match=re.fullmatch(r'(\d+)\.(\d+)(?:\.\d+)*',validator_version)
-    validator_compatible=bool(validator_present and version_match and (4,26)<=tuple(map(int,version_match.groups()))<(5,0))
-    if not validator_compatible:
-        state='missing' if not validator_present else 'incompatible or unverified ('+validator_version+')'
+    validator=jsonschema_status()
+    if validator['compatible'] is not True:
+        state=('missing' if validator['status']=='missing' else
+               'incompatible or unverified ('+validator['version']+')')
         base_state='OPERATOR_ACTION_REQUIRED: installation complete; runtime dependency jsonschema>=4.26,<5 is '+state+' in this interpreter. Install it in the Python environment used for contract workflows; release-scope installation validation uses only the standard library.'
     else:
         try:
@@ -431,7 +430,7 @@ def doctor():
         except (OSError,ValueError,KeyError):base_state='UNAVAILABLE: core contract validation failed'
     html_state='OPERATOR_ACTION_REQUIRED: install optional WeasyPrint or use host LibreOffice'
     dependencies={'python':sys.executable}
-    runtime_dependencies={'jsonschema':{'available':validator_present,'compatible':validator_compatible,'version':validator_version,'required':'jsonschema>=4.26,<5','scope':'runtime contract validation; not installation'}}
+    runtime_dependencies={'jsonschema':validator}
     html_diagnostic=None
     notices=[]
     try:

@@ -294,3 +294,52 @@ def test_runtime_setup_completion_limits_macos_venv_commands_to_missing_dependen
         assert 'does not persist' in output
     elif not ready:
         assert 'jsonschema>=4.26,<5' in output
+
+
+@pytest.mark.parametrize('discovery',['success','doctor-unavailable','timeout'])
+def test_main_prints_macos_runtime_setup_after_all_diagnostics_and_codex_notice(tmp_path,monkeypatch,capsys,discovery):
+    import importlib.metadata
+    import subprocess
+    from unittest.mock import patch
+    for key,value in {'HOME':tmp_path/'home with space','AI_IT_HOME':tmp_path/'home with space/.ai','AI_IT_HOUSE':tmp_path/'home with space/.ai/it-role-house','CODEX_HOME':tmp_path/'home with space/.codex','CLAUDE_HOME':tmp_path/'home with space/.claude'}.items():
+        monkeypatch.setenv(key,str(value))
+    real_run=subprocess.run
+    def run(command,**kwargs):
+        if 'configure' not in command:return real_run(command,**kwargs)
+        if discovery=='timeout':raise subprocess.TimeoutExpired(command,150,stderr=b'optional renderer timeout')
+        capabilities=({'runtime_dependencies':{'jsonschema':{'available':True,'compatible':False}}}
+                      if discovery=='success' else {'status':'UNAVAILABLE','reason':'doctor failed'})
+        return subprocess.CompletedProcess(command,0,json.dumps({'capabilities':capabilities,'tools':{}}),'')
+    with patch.object(installer.sys,'argv',['installer.py','--codex-only']), patch.object(installer.sys,'platform','darwin'), patch.object(installer.subprocess,'run',side_effect=run), patch('importlib.util.find_spec',return_value=True), patch.object(importlib.metadata,'version',return_value='4.23.0'):
+        assert installer.main()==0
+    output=capsys.readouterr().out
+    assert (tmp_path/'home with space/.ai/it-role-house/install-state.json').is_file()
+    assert output.index('Runtime setup required:')>output.index('Codex: review/approve')
+    assert output.index('Runtime setup required:')>output.index('Refresh optional capabilities with:')
+    assert output.rstrip().endswith('for GUI sessions, use an environment with the same PATH.')
+    assert "-m pip install 'jsonschema>=4.26,<5'" in output
+
+
+@pytest.mark.parametrize('state',['unknown','ready'])
+def test_main_uses_independent_runtime_observation_after_doctor_failure(tmp_path,monkeypatch,capsys,state):
+    import subprocess
+    from unittest.mock import patch
+    for key,value in {'HOME':tmp_path/'home','AI_IT_HOME':tmp_path/'home/.ai','AI_IT_HOUSE':tmp_path/'home/.ai/it-role-house','CODEX_HOME':tmp_path/'home/.codex','CLAUDE_HOME':tmp_path/'home/.claude'}.items():
+        monkeypatch.setenv(key,str(value))
+    real_run=subprocess.run
+    def run(command,**kwargs):
+        if 'configure' in command:raise subprocess.TimeoutExpired(command,150)
+        return real_run(command,**kwargs)
+    observed={'status':state,'available':True if state=='ready' else None,'compatible':True if state=='ready' else None}
+    with patch.object(installer.sys,'argv',['installer.py','--codex-only']), patch.object(installer.sys,'platform','darwin'), patch.object(installer.subprocess,'run',side_effect=run), patch.object(installer,'jsonschema_status',return_value=observed):
+        assert installer.main()==0
+    output=capsys.readouterr().out
+    if state=='ready':
+        assert '-m venv' not in output
+        assert output.rstrip().endswith('Codex: review/approve the installed hook configuration in Codex before relying on enforcement.')
+    else:
+        assert output.index('Runtime readiness NOT VERIFIED:')>output.index('Codex: review/approve')
+        assert 'Runtime setup required:' not in output
+        assert 'does not mean the package is missing' in output
+        assert output.index('verify first')<output.index('-m venv')
+        assert output.rstrip().endswith('for GUI sessions, use an environment with the same PATH.')

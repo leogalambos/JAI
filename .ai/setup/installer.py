@@ -15,6 +15,7 @@ from pathlib import Path
 
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'runtime/tools'))
 from schema_resolver import release_scope
+from runtime_dependencies import jsonschema_status
 
 SCHEMA=1
 MARKERS={
@@ -331,21 +332,33 @@ def desired_outputs(pkg,providers,ai_house,claude_home,codex_home,model_registry
     return out,modes
 
 def runtime_setup_instructions(ai_house, capabilities):
-    """Print platform-appropriate steps only for an observed unready validator.
+    """Print the final platform-appropriate runtime verification/setup block.
 
     Args:
         ai_house: Installed runtime path used in the exact refresh command.
-        capabilities: Doctor observation with runtime_dependencies.jsonschema.
+        capabilities: Independent local observation with runtime_dependencies.jsonschema.
     Returns:
-        None. Prints no setup steps for a ready or unobserved dependency. On macOS,
-        prints quoted user-venv setup and provider PATH launch commands; elsewhere
-        prints a concise dependency notice. Does not execute or persist commands.
+        None. Ready dependencies emit no redundant steps. Missing/incompatible
+        dependencies receive setup advice; unknown status is explicitly not verified
+        and asks for verification before optional setup. macOS receives quoted
+        user-venv/provider PATH commands; other platforms receive concise notices.
+        Does not execute or persist commands.
     """
     dependency=capabilities.get('runtime_dependencies',{}).get('jsonschema',{})
-    if dependency.get('available') is not False and dependency.get('compatible') is not False:return
-    print('Runtime setup required: provide jsonschema>=4.26,<5 in the Python used by contract workflows, then refresh. Installation is complete; contract workflows are not ready yet.')
+    if dependency.get('compatible') is True:return
+    unknown=(dependency.get('status')=='unknown' or
+             (dependency.get('available') is not False and dependency.get('compatible') is not False))
+    if unknown:
+        print('Runtime readiness NOT VERIFIED: the jsonschema>=4.26,<5 observation is unknown; this does not mean the package is missing. Verify with the selected interpreter before changing packages.')
+    else:
+        print('Runtime setup required: provide jsonschema>=4.26,<5 in the Python used by contract workflows, then refresh. Installation is complete; contract workflows are not ready yet.')
     if sys.platform!='darwin':return
     venv=Path.home()/'.venvs/jai';python=venv/'bin/python'
+    if unknown:
+        verify=[sys.executable,*(['-S'] if sys.flags.no_site else []),str(ai_house/'tools/operator_actions.py'),'configure','--refresh']
+        print('macOS: verify first with this command:')
+        print('  '+shlex.join(verify))
+        print('Only if the runtime validator is missing or incompatible, use the optional setup below; a ready result needs no package changes.')
     commands=[[sys.executable,'-m','venv',str(venv)],
               [str(python),'-m','pip','install','jsonschema>=4.26,<5'],
               [str(python),str(ai_house/'tools/operator_actions.py'),'configure','--refresh']]
@@ -381,7 +394,6 @@ def optional_discovery(ai_house):
         if probe.returncode:raise ValueError('configure exited with code '+str(probe.returncode))
         report=json.loads(probe.stdout)
         capabilities=report.get('capabilities',{})
-        runtime_setup_instructions(ai_house,capabilities)
         for label,key in [('Core workflows','base_workflow'),('HTML/PDF','html_pdf'),
                           ('Office visual QA','office_visual'),('Local L0','local_l0'),
                           ('Host confinement','host_provider_confinement'),
@@ -406,6 +418,17 @@ def optional_discovery(ai_house):
 
 
 def main():
+    """Install/update the CLI-selected providers and print final runtime guidance.
+
+    Returns:
+        Zero after successful installation or dry run; two for managed-file
+        conflicts. Uses sys.argv for installer options. Successful real installs
+        print runtime verification/setup after all optional diagnostics and provider
+        notices, using an independent lightweight observation of this interpreter.
+    Raises:
+        SystemExit: Invalid CLI options or package validation failure.
+        OSError, ValueError: Required resources or managed outputs cannot be used.
+    """
     ap=argparse.ArgumentParser(description='Install/update the universal Claude + Codex AI IS/IT house')
     g=ap.add_mutually_exclusive_group(); g.add_argument('--claude-only',action='store_true'); g.add_argument('--codex-only',action='store_true')
     ap.add_argument('--dry-run',action='store_true'); ap.add_argument('--force',action='store_true',help='back up and replace locally modified/colliding managed files')
@@ -553,6 +576,7 @@ def main():
     optional_discovery(ai_house)
     if 'codex' in providers and not a.no_hooks:
         print('Codex: review/approve the installed hook configuration in Codex before relying on enforcement.')
+    runtime_setup_instructions(ai_house,{'runtime_dependencies':{'jsonschema':jsonschema_status()}})
     return 0
 
 if __name__=='__main__': raise SystemExit(main())

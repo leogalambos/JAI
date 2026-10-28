@@ -118,9 +118,16 @@ site packages disabled, and identifies this mode in its diagnostics.
 
 #### macOS: finish runtime setup when the validator is missing
 
-Installation completion prints the following steps only when its selected
-Python lacks a compatible runtime validator. They install the validator and its
-dependencies, not your unrelated Python packages. From a terminal:
+At the literal end of installation output, after diagnostics and provider hook
+notices, the installer independently checks its Python's runtime-validator
+metadata. A missing or incompatible validator produces the setup block below.
+Optional renderer/doctor failure cannot suppress this final check. If readiness
+is unknown, the final block explicitly says **NOT VERIFIED**, gives a verification
+command first, and makes setup conditional on its result; it does not claim the
+package is missing. A compatible validator produces no redundant setup block.
+
+The setup commands install the validator and its dependencies, not your unrelated
+Python packages. From a terminal:
 
 ```sh
 python3 -m venv "$HOME/.venvs/jai"

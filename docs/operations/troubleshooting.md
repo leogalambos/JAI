@@ -89,3 +89,11 @@ validation is never skipped. The installer validates its small release-scope
 schema separately without a third-party package. It does not install packages,
 require a venv or change shell profiles. Diagnostics preserve explicit `-S`
 site-package isolation and report it as `no_site`.
+
+The final installer block checks runtime-validator metadata independently after
+all capability diagnostics and provider notices. Optional doctor/rendering errors
+cannot hide missing/incompatible-validator instructions. If the metadata check
+itself is unknown, macOS receives a **NOT VERIFIED** explanation, an exact
+verification command and conditional setup/provider-launch commands. This is not
+an assertion that the package is absent. A compatible observed validator needs
+no redundant setup. Linux/Windows retain concise dependency notices.
