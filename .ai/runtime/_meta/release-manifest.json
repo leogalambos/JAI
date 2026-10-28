@@ -167,14 +167,14 @@
     {
       "component": "WeasyPrint",
       "minimum": "70.x optional",
-      "tested": "actual HTML/PDF conversion; constrained resource fetching",
+      "tested": "actual HTML/PDF conversion; constrained resource fetching; uniform CLI-first/current-Python fallback covered by real CLI subprocess tests",
       "supported": "SUPPORTED optional HTML/PDF; not Office fidelity"
     },
     {
       "component": "Pyphen",
-      "minimum": "0.17.x optional",
-      "tested": "clean optional renderer environment required; metadata inspection avoids legacy pkg_resources import",
-      "supported": "WeasyPrint transitive dependency constrained in requirements-rendering.txt"
+      "minimum": "determined by the installed WeasyPrint dependency requirements",
+      "tested": "metadata reported; actual HTML/PDF conversion determines readiness",
+      "supported": "WeasyPrint transitive dependency; optional pip recipe selects 0.17.x in requirements-rendering.txt, without rejecting working OS packages"
     },
     {
       "component": "LibreOffice",

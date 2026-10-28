@@ -341,14 +341,18 @@ Enabled features: `role-workflows`, `workspace-authoring`,
   - Supported: optional
 - **WeasyPrint**
   - Minimum: 70.x optional
-  - Tested: actual HTML/PDF conversion; constrained resource fetching
+  - Tested: actual HTML/PDF conversion; constrained resource fetching;
+    uniform CLI-first/current-Python fallback covered by real CLI
+    subprocess tests
   - Supported: SUPPORTED optional HTML/PDF; not Office fidelity
 - **Pyphen**
-  - Minimum: 0.17.x optional
-  - Tested: clean optional renderer environment required; metadata
-    inspection avoids legacy pkg_resources import
-  - Supported: WeasyPrint transitive dependency constrained in
-    requirements-rendering.txt
+  - Minimum: determined by the installed WeasyPrint dependency
+    requirements
+  - Tested: metadata reported; actual HTML/PDF conversion determines
+    readiness
+  - Supported: WeasyPrint transitive dependency; optional pip recipe
+    selects 0.17.x in requirements-rendering.txt, without rejecting
+    working OS packages
 - **LibreOffice**
   - Minimum: Office-compatible host renderer
   - Tested: actual DOCX/PPTX/XLSX operator renders on Fedora

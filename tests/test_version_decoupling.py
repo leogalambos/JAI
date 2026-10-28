@@ -58,6 +58,19 @@ class VersionDecoupling(unittest.TestCase):
                 with self.assertRaises(SystemExit) as result: g.main()
                 self.assertEqual(result.exception.code, 0)
 
+    def test_canonical_renderer_compatibility_matches_cli_first_readiness(self):
+        with patch.object(sys, 'path', [str(ROOT / '.ai/runtime/tools'), *sys.path]):
+            generator = module('.ai/runtime/tools/generate_docs.py', 'renderer_compatibility_generator')
+        compatibility = {entry['component']: entry for entry in generator.inventory(ROOT)['compatibility']}
+        weasyprint = compatibility['WeasyPrint']
+        self.assertIn('CLI-first/current-Python fallback', weasyprint['tested'])
+        self.assertIn('constrained resource fetching', weasyprint['tested'])
+        pyphen = compatibility['Pyphen']
+        self.assertEqual(pyphen['minimum'], 'determined by the installed WeasyPrint dependency requirements')
+        self.assertIn('actual HTML/PDF conversion determines readiness', pyphen['tested'])
+        self.assertNotIn('required', pyphen['tested'])
+        self.assertIn('without rejecting working OS packages', pyphen['supported'])
+
     def test_descriptor_projection_tracks_product_without_touching_pins(self):
         relative='.ai/runtime/content/evaluation-package.json'
         original=(ROOT/relative).read_text()

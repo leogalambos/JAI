@@ -32,7 +32,17 @@ def root_from(root: Path):
     raise SystemExit('package/runtime root not found')
 
 def inventory(root: Path):
-    """Derive counts and scoped compatibility claims from maintained resources."""
+    """Derive the canonical release inventory and compatibility claims.
+
+    Args:
+        root: Source package or installed runtime root accepted by root_from.
+    Returns:
+        Fresh manifest mapping, including CLI-first WeasyPrint compatibility and
+        informational Pyphen metadata; generated projections must use these claims.
+    Raises:
+        OSError, ValueError: Required resources are missing or malformed.
+        SystemExit: The root does not identify a supported package/runtime layout.
+    """
     package,rt,surface=root_from(root)
     roles=load(rt/'roles.json'); workflows=load(rt/'workflows.json'); taxonomy=load(rt/'artifacts/schema/artifact-types.json'); schemas=load(rt/'schema/schema-registry.json')
     agents=sorted(p.stem for p in (surface/'agents').glob('*.md'))
@@ -65,8 +75,8 @@ def inventory(root: Path):
         {'component':'Codex CLI','minimum':'provider-supported','tested':'0.164.0 host CLI help confirms sandbox/on-request values; live role confinement NOT_VERIFIED','supported':'role-authorized local QA in effective native sandbox'},
         {'component':'Python','minimum':'3.10','tested':'3.12 release CI target','supported':'yes'},
         {'component':'Pandoc','minimum':'optional','tested':'publication tool detects at runtime','supported':'optional'},
-        {'component':'WeasyPrint','minimum':'70.x optional','tested':'actual HTML/PDF conversion; constrained resource fetching','supported':'SUPPORTED optional HTML/PDF; not Office fidelity'},
-        {'component':'Pyphen','minimum':'0.17.x optional','tested':'clean optional renderer environment required; metadata inspection avoids legacy pkg_resources import','supported':'WeasyPrint transitive dependency constrained in requirements-rendering.txt'},
+        {'component':'WeasyPrint','minimum':'70.x optional','tested':'actual HTML/PDF conversion; constrained resource fetching; uniform CLI-first/current-Python fallback covered by real CLI subprocess tests','supported':'SUPPORTED optional HTML/PDF; not Office fidelity'},
+        {'component':'Pyphen','minimum':'determined by the installed WeasyPrint dependency requirements','tested':'metadata reported; actual HTML/PDF conversion determines readiness','supported':'WeasyPrint transitive dependency; optional pip recipe selects 0.17.x in requirements-rendering.txt, without rejecting working OS packages'},
         {'component':'LibreOffice','minimum':'Office-compatible host renderer','tested':'actual DOCX/PPTX/XLSX operator renders on Fedora','supported':'AUTO when native sandbox permits; otherwise OPERATOR_ASSISTED actual Office QA'},
         {'component':'Poppler','minimum':'pdftoppm on PATH','tested':'actual PDF page rasterization','supported':'visual QA raster prerequisite'},
         {'component':'OpenSSL','minimum':'Ed25519 pkeyutl -rawin','tested':'external receipts verified with fixed /usr/bin/openssl on Linux','supported':'OPERATOR_ASSISTED local L0; other trust adapters NOT_VERIFIED'},
