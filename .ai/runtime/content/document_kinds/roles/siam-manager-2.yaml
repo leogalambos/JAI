@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/siam-manager:2",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -196,7 +196,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'End-to-end SLA and OLA responsibility matrix', provide verifiable evidence satisfying: Every customer-facing commitment decomposes into measurable underpinning responsibilities with no gaps or contradictory ownership.. Required delivery form: Governed register/matrix linking service outcomes, SLAs, OLAs, suppliers, owners, evidence and escalation.",
+        "For the specific output 'End-to-end SLA and OLA responsibility matrix', provide verifiable evidence satisfying: Every customer-facing commitment decomposes into measurable underpinning responsibilities with no gaps or contradictory ownership. Required delivery form: Governed register/matrix linking service outcomes, SLAs, OLAs, suppliers, owners, evidence and escalation.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -211,7 +211,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'End-to-end SLA and OLA responsibility matrix', provide verifiable evidence satisfying: Every customer-facing commitment decomposes into measurable underpinning responsibilities with no gaps or contradictory ownership.. Required delivery form: Governed register/matrix linking service outcomes, SLAs, OLAs, suppliers, owners, evidence and escalation.",
+        "reason": "For the specific output 'End-to-end SLA and OLA responsibility matrix', provide verifiable evidence satisfying: Every customer-facing commitment decomposes into measurable underpinning responsibilities with no gaps or contradictory ownership. Required delivery form: Governed register/matrix linking service outcomes, SLAs, OLAs, suppliers, owners, evidence and escalation.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:2",
           "content/types/register.yaml"
@@ -729,6 +729,28 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "SIAM Manager",
+        "frameworks": [
+          "ITIL 4",
+          "ISO/IEC 20000-1",
+          "SIAM professional practice principles",
+          "COBIT governance concepts"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -754,13 +776,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {

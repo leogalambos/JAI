@@ -1,9 +1,5 @@
-# Exact operator actions in 26.10.14
+# Exact operator actions
 
-Owner: JAI maintainers. Scope: {{ JAI_SCOPE }}. The prompts, host commands and
-developer diagnostics below are separate surfaces. Work in a disposable project;
-replace JAI_RUNTIME with the reviewed installed runtime, normally
-`$HOME/.ai/it-role-house`. Never return a private key or provider credentials.
 
 ```mermaid
 flowchart LR
@@ -78,25 +74,28 @@ This prompt is not authorization. Both providers remain in their native sandbox.
 
 ## Fabric: external operator L0
 
-Use a synthetic engagement from the layered workflow; obtain actual engagement,
-fragment and escalation IDs from status/report. Do not invent IDs. Diagnostic:
+Use an actual engagement from the layered workflow; obtain its exact engagement
+and escalation IDs from JAI's current status and human-handoff dossier. Ask JAI
+to show these through its native session operations; do not invent IDs or query
+files. Set the installed runtime location in the host terminal:
 
 ```sh
 JAI_RUNTIME="$HOME/.ai/it-role-house"
-python3 "$JAI_RUNTIME/fabric/fabric.py" status DEMO_ENGAGEMENT
-python3 "$JAI_RUNTIME/fabric/fabric.py" report DEMO_ENGAGEMENT
 ```
 
-Replace DEMO_ENGAGEMENT and FRAGMENT_ID with reported IDs of an L1 fragment.
-The following command plans a request; it does not commit human authority.
+When a change requires L0, JAI presents its dossier and uses the existing
+`prepare_human` native operation
+with the proposed effects. The user does not construct bootstrap JSON or invent
+message IDs. With matching public enrollment, JAI returns a prepared package
+containing unsigned-message.json, intent.json, request.json and exact
+`external_actions` commands. Without enrollment it reports a readiness gap and
+does not fabricate a signing package. Preparing a package grants no authority.
 
-```sh
-python3 "$JAI_RUNTIME/fabric/fabric.py" review DEMO_ENGAGEMENT FRAGMENT_ID --layer 0 --state accepts --rationale "Synthetic owner review" --reviewer "Demo operator" --model human --request-out review-request.json
-```
-
-Expected result: OPERATOR_ACTION_REQUIRED, with an exact request JSON. Inspect
-request_id, all planned entries/object IDs, snapshot/hash, policy digest/version,
-rationale, consequences and expiry. No L0 entry is committed by planning.
+Inspect request_id, the planned effects and references, expected journal head,
+policy digest, rationale and expiry. In the host terminal, set HUMAN_PACKAGE and
+HUMAN_WORKSPACE to the exact package and workspace from JAI's handoff; set
+FABRIC_HOME and ENGAGEMENT to its supplied journal directory and engagement.
+These are actual values, not new directories or invented identifiers.
 
 ### Enrollment and signing: host operator only
 
@@ -105,108 +104,102 @@ administrator review, not unattended setup. Existing reference enrollment and
 signed decisions have been exercised separately; they do not establish this
 recipe's execution or isolation on a new host. Verify the target before use.
 
-The installer creates no key. Generate a NEW Ed25519 key outside agent mounts,
-export only its public PEM and have the administrator enroll a root-owned,
-non-group/world-writable public pin at `~/.ai/jai-operator-trust.json`.
-Its JSON fields are schema_version=2, policy_version=local-operator-attestation/2,
-public_key (exact PEM), key_id (SHA-256 of those PEM bytes), signer (nonempty
-human identity) and capabilities (explicit permitted operations). Protect directory
-containment too. Existing enrollment must not be overwritten for an example.
-Private-key/trust separation must be independently established, not inferred
-from a path, same UID, environment flag or conversation. Otherwise L0 is UNAVAILABLE.
+The installer offers confirmed creation of the default Ed25519 private key at
+`~/.local/share/jai-operator/private.pem`. Existing keys are preserved;
+`--force-genkey` requires confirmation and retains a private backup. Neither
+normal installation nor key replacement changes public enrollment. See
+[human authority](human-authority.md) for confirmation, default/override signing,
+public export and rotation behavior.
 
-For NEW enrollment only, set HOST_KEY_DIRECTORY in the host console to a
-new directory outside every agent-readable/writable mount. Do not use the
-project directory. These operator-only commands create persistent key material;
-review them and never overwrite an existing enrollment:
+For current Gen2 decisions, the human separately enrolls purpose-specific public
+keyrings under `$JAI_RUNTIME/trust/`: `jai-delivery-change-trust.json`,
+`jai-delivery-accept-trust.json` and `jai-delivery-release-trust.json`. Their
+schema is `schema_version: 3`, `policy_version: governed-keyring/1`, with the
+exact purpose, approved authority/routing policy IDs and explicit key entries.
+Each key needs a public PEM and its SHA-256 identity, signer, capabilities,
+state, engagement/scope grants and validity window. Exactly one key is active
+per purpose. The respective capabilities are `lifecycle-update`, `accept` and
+`release`; none implies another. Choose actual policy IDs, grants and human
+identity; an illustrative setup cannot decide them for you.
 
-```sh
-umask 077
-mkdir -m 700 "$HOST_KEY_DIRECTORY"
-openssl genpkey -algorithm ED25519 -out "$HOST_KEY_DIRECTORY/private.pem"
-openssl pkey -in "$HOST_KEY_DIRECTORY/private.pem" -pubout -out "$HOST_KEY_DIRECTORY/public.pem"
-python3 - "$HOST_KEY_DIRECTORY" <<'PY'
-import hashlib, json, pathlib, sys
-directory = pathlib.Path(sys.argv[1])
-public = (directory / 'public.pem').read_text()
-pin = {'schema_version': 2, 'policy_version': 'local-operator-attestation/2',
-       'key_id': hashlib.sha256(public.encode()).hexdigest(), 'public_key': public,
-       'signer': 'Named authorized human operator',
-       'capabilities': ['accept']}
-(directory / 'trust.json').write_text(json.dumps(pin, indent=2) + '\n')
-PY
-test ! -e "$HOME/.ai/jai-operator-trust.json"
-```
+Existing enrollment must not be overwritten by an example or key generation.
+Only public material is shared with JAI. Keep the private key and backups
+outside agent mounts, and protect public enrollment against agent replacement
+using the host's existing controls. A path, same UID or chat approval does not
+establish that boundary. Missing enrollment leaves signed authority unavailable;
+it does not prevent JAI from showing the actual dossier.
 
-Before enrollment, replace the illustrative signer with the authorized human
-identity and explicitly select the capabilities approved for this key.
-`authorise` permits escalation decisions, `lifecycle-update` permits scoped
-continuation, and `accept` permits exact-output acceptance. None implies another.
-The example grants only `accept`, matching the exact-output review above; add
-other capabilities only by an explicit
-external trust-administration decision. Missing or unknown capabilities fail.
-Fresh trust uses schema 2 only; this recipe does not migrate existing trust.
-
-The final test must succeed before administrator enrollment. The administrator
-reviews the public JSON, then explicitly runs this ONE public-pin install:
+Review the installed signing helper before using JAI's exact host command:
 
 ```sh
-sudo install -o root -g root -m 0644 "$HOST_KEY_DIRECTORY/trust.json" "$HOME/.ai/jai-operator-trust.json"
+python3 "$JAI_RUNTIME/tools/operator_actions.py" sign "$HUMAN_PACKAGE/request.json" --workspace "$HUMAN_WORKSPACE"
 ```
 
-This is a persistent trust change, not permission for agent enrollment. If an
-existing pin is present, stop and use an independently reviewed rotation plan.
-Return only public key ID/tool version and public ownership metadata. Removing
-a newly unused key/pin is an operator decision; never delete established keys
-as an automatic rollback. No agent performs enrollment.
+It uses the default key; append `--key "$OPERATOR_KEY"` for an explicitly chosen
+alternative. Signing produces a public receipt, not a submitted journal decision.
+Follow the prepared package's bind and submit commands afterward. No agent signs
+or performs human trust enrollment.
 
-Review SHA-256 of installed operator_actions.py, office_renderer.py and
-visual_qa.py, then copy them to a host-only reviewed helper directory. In the
-HOST terminal set REVIEWED_HELPER to that directory and OPERATOR_KEY to the
-external private key; neither is an agent-provided privilege grant.
+Read the preview; type APPROVE followed by the displayed UUID, or DENY followed
+by that UUID. Return only the public receipt path/hash. The receipt is written
+beside the request under receipts/UUID.json. Set HUMAN_RECEIPT to the actual
+printed receipt path. Use the package's exact bind and submit commands:
+
+```sh
+python3 "$JAI_RUNTIME/tools/governed_layered.py" bind-human --package "$HUMAN_PACKAGE" --receipt "$HUMAN_RECEIPT"
+FABRIC_HOME="$FABRIC_HOME" python3 "$JAI_RUNTIME/fabric/fabric.py" submit "$ENGAGEMENT" --message "$HUMAN_PACKAGE/message.json" --authority-proof "$HUMAN_PACKAGE/proof.json"
+```
+
+Substitute actual UUID/IDs. Declining leaves the ledger unchanged; signing a
+domain REJECT instead authorizes recording a rejection. Tamper, expiry, stale
+snapshot/policy and replay deny; request again rather than editing signed data.
+Binding verifies the public receipt without submitting a decision. After
+submission, ask JAI to show the resulting native-session checkpoint and current
+basis, or run its independent audit workflow. Missing relevant evidence still
+blocks acceptance or release.
+Assurance: LOCAL_OPERATOR_ATTESTATION, not enterprise IAM or nonrepudiation.
+Local hash-chained records are not rollback-resistant/immutable custody.
+
+## Render actual files
+
+For the optional rendering examples below, review and copy the five helper
+modules into a host-only directory. In the HOST terminal set REVIEWED_HELPER to
+that directory. This minimal copy supports the `render` command only. Use the
+installed runtime for `verify` and `resume-render`, as shown below; those
+commands have additional dependencies. The rendering copy does not substitute
+for the installed signer's purpose-specific trust configuration.
+
+Provide Pillow in the host Python environment used by the helper: its visual-QA
+module imports Pillow even when the renderer is an external program. Native
+Office rendering also needs an Office-compatible renderer and Poppler for page
+images. For HTML, provide the dependencies of the selected backend: a supported
+WeasyPrint 70 CLI or Python module, or LibreOffice. SVG rendering uses CairoSVG.
+Install the dependencies for the formats you will
+render, following the [publication dependency matrix](../configuration/publication-stack.md#dependencies-by-task).
+Copying these modules does not install their Python packages or host programs.
 
 After choosing a NEW host-only REVIEWED_HELPER directory, the operator runs:
 
 ```sh
 mkdir -m 700 "$REVIEWED_HELPER"
-for module in operator_actions office_renderer visual_qa; do
+for module in operator_actions operator_keys runtime_dependencies office_renderer visual_qa; do
   sha256sum "$JAI_RUNTIME/tools/$module.py"
   cp -- "$JAI_RUNTIME/tools/$module.py" "$REVIEWED_HELPER/$module.py"
   sha256sum "$REVIEWED_HELPER/$module.py"
 done
 ```
 
-Compare each pair with the reviewed release's source inventory before signing.
+Compare each pair with the reviewed release's source inventory before rendering.
 The copy has no key and must not remain writable by model-controlled tools.
 
-```sh
-python3 -I -c 'import sys;sys.path.insert(0,sys.argv.pop(1));import operator_actions;sys.exit(operator_actions.main())' "$REVIEWED_HELPER" sign "$PWD/review-request.json" --workspace "$PWD" --key "$OPERATOR_KEY"
-```
-
-Read the preview; type APPROVE followed by the displayed UUID, or DENY followed
-by that UUID. Return only the public receipt path/hash. The receipt is written
-beside the request under receipts/UUID.json. Runtime continuation:
-
-```sh
-python3 "$JAI_RUNTIME/fabric/fabric.py" apply-operator review-request.json receipts/UUID.json
-python3 "$JAI_RUNTIME/fabric/fabric.py" verify DEMO_ENGAGEMENT
-python3 "$JAI_RUNTIME/fabric/fabric.py" justify DEMO_ENGAGEMENT FRAGMENT_ID --strict --json
-```
-
-Substitute actual UUID/IDs. Declining leaves the ledger unchanged; signing a
-domain REJECT instead authorizes recording a rejection. Tamper, expiry, stale
-snapshot/policy and replay deny; request again rather than editing signed data.
-Strict justification may still fail for incomplete lower-layer evidence.
-Assurance: LOCAL_OPERATOR_ATTESTATION, not enterprise IAM or nonrepudiation.
-Local hash-chained records are not rollback-resistant/immutable custody.
-
-## Render actual files
-
-For optional HTML/PDF, use a Python interpreter with a working WeasyPrint 70
-package and its dependencies. A working OS-provided package is acceptable;
-Pyphen is normally installed automatically. The [clean renderer environment](../getting-started/install.md#a-clean-optional-renderer-environment)
-is an optional pip recipe if isolation is needed. Use the selected Python for
-`html-auto` requests if the CLI is unavailable. Every OS first tries the
+If HTML/PDF rendering uses the WeasyPrint Python-module fallback, provide
+WeasyPrint 70 and its dependencies in that interpreter. A working OS-provided
+package is acceptable; Pyphen is normally installed automatically. The
+[clean renderer environment](../getting-started/install.md#a-clean-optional-renderer-environment)
+is an optional pip recipe if isolation is needed. A working CLI needs no
+duplicate Python packages; `html-auto` can select LibreOffice when WeasyPrint
+is unavailable. Use the selected Python for `html-auto` requests when the
+Python-module fallback is needed. Every OS first tries the
 WeasyPrint 70 CLI on PATH with deny-all resource options; the current Python
 module is the fallback for CLI absence, incompatible version or startup failure.
 No OS-specific interpreter discovery or duplicate packages are needed. Doctor

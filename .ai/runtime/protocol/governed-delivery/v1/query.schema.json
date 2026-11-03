@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Read-only exact current-basis request and response",
+  "$defs": {
+    "request": {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "subject": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "assessment_scope": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "protocol",
+        "subject",
+        "assessment_scope"
+      ],
+      "additionalProperties": false
+    },
+    "response": {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "subject": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "assessment_scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assessed_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "selected": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "slot": {
+                "$ref": "common.schema.json#/$defs/selection_slot"
+              },
+              "version": {
+                "$ref": "common.schema.json#/$defs/reference"
+              },
+              "use_scope": {
+                "$ref": "common.schema.json#/$defs/key"
+              }
+            },
+            "required": [
+              "slot",
+              "version",
+              "use_scope"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "closure": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/use_point"
+          },
+          "uniqueItems": true
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/use_point"
+          },
+          "uniqueItems": true
+        },
+        "proofs": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/use_point"
+          },
+          "uniqueItems": true
+        },
+        "established_by": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/use_point"
+          },
+          "uniqueItems": true
+        },
+        "cancelled_by": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/use_point"
+          },
+          "uniqueItems": true
+        },
+        "conflicts": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/use_point"
+          },
+          "uniqueItems": true
+        },
+        "eligibility": {
+          "type": "object",
+          "properties": {
+            "qualified": {
+              "type": "boolean"
+            },
+            "accepted": {
+              "type": "boolean"
+            },
+            "release_eligible": {
+              "type": "boolean"
+            },
+            "reasons": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "code": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "message": {
+                    "type": "string",
+                    "minLength": 1
+                  }
+                },
+                "required": [
+                  "code",
+                  "message"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "qualified",
+            "accepted",
+            "release_eligible",
+            "reasons"
+          ],
+          "additionalProperties": false
+        },
+        "review_dispositions": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "subject": {
+                "$ref": "common.schema.json#/$defs/use_point"
+              },
+              "assessment": {
+                "$ref": "common.schema.json#/$defs/use_point"
+              },
+              "verdict": {
+                "anyOf": [
+                  {
+                    "$ref": "common.schema.json#/$defs/review_verdict"
+                  },
+                  {
+                    "$ref": "common.schema.json#/$defs/receiving_verdict"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "subject",
+              "assessment",
+              "verdict"
+            ],
+            "additionalProperties": false
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "protocol",
+        "subject",
+        "assessment_scope",
+        "assessed_at_ms",
+        "head",
+        "selected",
+        "closure",
+        "evidence",
+        "proofs",
+        "established_by",
+        "cancelled_by",
+        "conflicts",
+        "eligibility",
+        "review_dispositions"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/request"
+    },
+    {
+      "$ref": "#/$defs/response"
+    }
+  ]
+}

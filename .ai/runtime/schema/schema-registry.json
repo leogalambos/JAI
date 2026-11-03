@@ -1,45 +1,6 @@
 {
   "schema_registry_version": "3.3.0",
   "release": "26.10.4",
-  "backward_compatibility_policy": "26.10.0 ArtifactContract v2 and 26.10.1-26.10.4 JAI/v3 remain readable via explicit migrations. The normative write contract is ArtifactContract-v3 independently of the package release. Schemas are versioned by contract and never rewritten for product-only releases.",
-  "migration_rules": [
-    {
-      "from": "26.10.0",
-      "to": "26.10.4",
-      "mode": "forward-only",
-      "script": "jai/migrations/migrate-26.10.0.py",
-      "preserve_ids": true,
-      "preserve_source_hashes": true,
-      "preserve_execution_history": true
-    },
-    {
-      "from": "26.10.1",
-      "to": "26.10.4",
-      "mode": "forward-only",
-      "script": "jai/migrations/migrate-26.10.1.py",
-      "preserve_ids": true,
-      "preserve_source_hashes": true,
-      "preserve_execution_history": true
-    },
-    {
-      "from": "26.10.2",
-      "to": "26.10.4",
-      "mode": "forward-only",
-      "script": "jai/migrations/migrate-26.10.2.py",
-      "preserve_ids": true,
-      "preserve_source_hashes": true,
-      "preserve_execution_history": true
-    },
-    {
-      "from": "26.10.3",
-      "to": "26.10.4",
-      "mode": "forward-only",
-      "script": "jai/migrations/migrate-26.10.3.py",
-      "preserve_ids": true,
-      "preserve_source_hashes": true,
-      "preserve_execution_history": true
-    }
-  ],
   "schemas": [
     {
       "name": "AssuranceRecord",

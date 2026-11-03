@@ -101,10 +101,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Test conditions and cases | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
-| 2 | executed test evidence | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 1 | Test conditions and cases | Versioned test conditions and cases | Each case identifies requirement or risk, preconditions, data, actions, expected observations and execution method; manual cases need not be automated |
+| 2 | executed test evidence | Versioned assessment results with traceable evidence | Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations |
 | 3 | defect reports with business impact | Structured document with executive summary and evidence annex | Conclusions are traceable to dated evidence; opinion is visibly separated from fact |
-| 4 | test completion summary | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 4 | test completion summary | Versioned assessment results with traceable evidence | Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations |
 
 ## 7. Output gates (blocking)
 
@@ -115,7 +115,7 @@ An output that fails any gate is not released. A gate may be waived only by the 
 - [ ] **G3.** No production personal data is used in test environments without an approved lawful basis and masking.
 - [ ] **G4.** An intermittent test failure is investigated as a timing, ordering or shared-state defect, never retried or quarantined away without a ticket and an analysis (it-role-library/standards/defect-analysis.md).
 - [ ] **G5.** Automated tests are deterministic, test one behaviour each, mock only collaborators and run integration tests against real dependencies (it-role-library/standards/testing.md).
-- [ ] **G6.** Test conditions and cases distinguishes what was tested, what was not tested and what cannot be tested.
+- [ ] **G6.** The primary deliverable ("Test conditions and cases") distinguishes what was tested, what was not tested and what cannot be tested.
 - [ ] **G7.** Every defect report contains reproduction steps, environment, build version and observed-versus-expected behaviour
 
 Verify the gate-check block from section 5 with the bundled checker rather than by eye:
@@ -144,7 +144,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Test conditions and cases has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Test conditions and cases") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

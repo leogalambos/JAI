@@ -1,0 +1,69 @@
+{
+  "format": "jai-sabsa-content/1",
+  "units": [
+    {
+      "key": "conceptual-why",
+      "group": "conceptual.why",
+      "title": "Fictional continuity protection principle",
+      "statements": [
+        "The fictional design uses a redundant service path to support its stated continuity attribute."
+      ],
+      "properties": {},
+      "classification": "public"
+    },
+    {
+      "key": "availability-attribute",
+      "group": "conceptual.attributes",
+      "title": "Fictional availability attribute",
+      "statements": [
+        "The sample target is a requested quality, not an observed achievement."
+      ],
+      "properties": {
+        "business_justification": "Support the fictional continuity driver.",
+        "target": "99.5",
+        "unit": "percent",
+        "measurement_method": "Completed successful service probes divided by scheduled probes.",
+        "accountable_owner": "Fictional service owner",
+        "evaluation_horizon": "Monthly"
+      },
+      "classification": "public"
+    }
+  ],
+  "relations": [
+    {
+      "key": "principle-attribute",
+      "type": "justifies",
+      "from": {
+        "product": null,
+        "unit": "conceptual-why"
+      },
+      "to": {
+        "product": null,
+        "unit": "availability-attribute"
+      },
+      "rationale": "The design principle addresses the explicitly requested business quality."
+    }
+  ],
+  "view_bindings": [
+    {
+      "view": "architecture",
+      "units": [
+        {
+          "product": null,
+          "unit": "conceptual-why"
+        },
+        {
+          "product": null,
+          "unit": "availability-attribute"
+        }
+      ],
+      "relations": [
+        {
+          "product": null,
+          "relation": "principle-attribute"
+        }
+      ]
+    }
+  ],
+  "acceptance": "PASS"
+}

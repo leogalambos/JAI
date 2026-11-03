@@ -21,7 +21,7 @@ def jsonschema_status():
         jsonschema or any rendering backend. It does not raise lookup exceptions.
     """
     result={'available':None,'compatible':None,'version':'not verified',
-            'required':'jsonschema>=4.26,<5',
+            'required':'jsonschema>=4.18,<5',
             'scope':'runtime contract validation; not installation','status':'unknown'}
     try:
         result['available']=importlib.util.find_spec('jsonschema') is not None
@@ -37,7 +37,7 @@ def jsonschema_status():
         if match is None:
             result['reason']='package version is not a verified stable release'
             return result
-        result['compatible']=(4,26)<=tuple(map(int,match.groups()))<(5,0)
+        result['compatible']=(4,18)<=tuple(map(int,match.groups()))<(5,0)
         result['status']='ready' if result['compatible'] else 'incompatible'
     except Exception as exc:
         result['reason']=type(exc).__name__+': '+str(exc)[:2000]

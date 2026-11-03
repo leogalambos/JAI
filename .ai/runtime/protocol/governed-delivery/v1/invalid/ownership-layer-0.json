@@ -1,0 +1,83 @@
+{
+  "owner": {
+    "layer": 0,
+    "work_kind": "question",
+    "question": "how",
+    "work_item": "service-controls"
+  },
+  "responsibility": "author",
+  "assigned_actor": "author-actor",
+  "profile": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "profile",
+    "version_id": "b0519b9fbd91854cbe44a508a24434902d4296b100862b3f0acc5374550990ef"
+  },
+  "inherited": [
+    {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "input-A",
+      "version_id": "2af7d6aa53ba2874a2f9b80c4318fbcd4467065cf86eab873c45acc82e53f92a"
+    }
+  ],
+  "inputs": [
+    {
+      "slot_id": "source",
+      "refs": [
+        {
+          "engagement": "synthetic-protocol",
+          "scope": "default",
+          "logical_id": "input-A",
+          "version_id": "2af7d6aa53ba2874a2f9b80c4318fbcd4467065cf86eab873c45acc82e53f92a"
+        }
+      ]
+    }
+  ],
+  "criteria": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "criteria",
+    "version_id": "c7a744ce9482a3ff9901d128f8aa6a51da67eb82a4108276aad95897a2b51619"
+  },
+  "effects": [
+    {
+      "operation": "read",
+      "owner": {
+        "layer": 0,
+        "work_kind": "question",
+        "question": "how",
+        "work_item": "service-controls"
+      },
+      "targets": [
+        {
+          "engagement": "synthetic-protocol",
+          "scope": "default",
+          "logical_id": "input-A",
+          "version_id": "2af7d6aa53ba2874a2f9b80c4318fbcd4467065cf86eab873c45acc82e53f92a"
+        }
+      ],
+      "destination_handle": null,
+      "tool_policy": null
+    }
+  ],
+  "limits": [
+    {
+      "metric": "tokens",
+      "ceiling": 2000,
+      "unit": "governed-token"
+    }
+  ],
+  "deadline_ms": 10000,
+  "use_scope": "default",
+  "issued_under": null,
+  "input_uses": [],
+  "routing": {
+    "policy": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "role-routing",
+      "version_id": "ef6032c6fdc3ccd3a06b10519658dbcba6dcd697995b5021e6ce3a2105616e9a"
+    }
+  }
+}

@@ -35,7 +35,7 @@ The product also contains executable, provider-facing **command contracts** in `
 
 Author new workflow pages with this **operator → behind-the-scenes → evidence/authority** distinction. Maintained examples must not imply that Codex can run the protected L0 authorisation command. A generated Markdown `GUIDE.md` and provider command/skill contracts are separate *execution surfaces*, not competing documentation trees.
 
-## Validation and synchronization
+## Validation and single-source help
 
 From the repository root:
 
@@ -46,14 +46,16 @@ python3 -m mkdocs build --strict
 python3 .ai/runtime/scripts/check_agent_policy.py --fast .
 ```
 
-`docs_contract.py` checks that the Markdown navigation includes every authored page, that Markdown, HTML navigation and local assets resolve, that every command has a documented entry, that operator-vs-runtime sections remain present in user scenarios/workflows, that no runtime HTML is bundled and that obsolete generated-help dependencies have not reappeared. `generate_docs.py` verifies that release numbers and inventories are derived from canonical runtime registries, not hand-maintained counts, and that the installed `GUIDE.md` exactly matches the maintained CLI-guide Markdown. A pull request must pass both checks. A Pages push additionally builds the site; the runtime itself has no HTML regeneration stage.
+`docs_contract.py` checks that the Markdown navigation includes every authored page, that Markdown, HTML navigation and local assets resolve, that every command has a documented entry, that operator-vs-runtime sections remain present in user scenarios/workflows, that no runtime HTML is bundled and that obsolete generated-help dependencies have not reappeared. `generate_docs.py` verifies that release numbers and inventories are derived from canonical runtime registries, not hand-maintained counts. A pull request must pass both checks. A Pages push additionally builds the site; the runtime itself has no HTML regeneration stage.
+
+The repository's `.ai/runtime/GUIDE.md` is a relative Git symlink to `docs/reference/installed-cli-guide.md`. Edit only the canonical page; no synchronization or copying step is needed. The documentation checks validate this declared alias. Packaging and installation materialize the same source as an ordinary `GUIDE.md` file, so offline help works without the repository or symlink support, including Windows checkouts that represent Git symlinks as text stubs. This one declared alias does not permit packaging arbitrary symlink targets.
 
 ## Operational boundaries
 
 - **Knowledge is not authority.** Markdown, `GUIDE.md`, and a rendered website cannot bypass an Agent Contract, sandbox, provider-specific permission boundary, policy approval or execution evidence requirement.
 - **Treat examples as examples.** The extended walkthroughs originated with the original product and retain their explanatory value. Use current installed command contracts and `--help` as the source for supported options. For an irreversible operation, inspect the exact action and its authority gate first.
-- **Release compatibility is not a documentation version.** Older schema identifiers such as `26.10.0` remain where they define real migration inputs or historical records. Current product instructions and the documentation site correspond to `VERSION` (**{{ JAI_VERSION }}**).
-- **Distribution authenticity is separate.** Published releases include SHA-256, provenance and SBOM. Where GitHub artifact attestations are available, verify the attestation for the exact ZIP. A checksum alone does not authenticate the publisher; semantic evidence checks remain independent.
+- **Contract identity is not a product version.** Older schema identifiers such as `26.10.0` can identify versioned contracts or historical records; they do not imply a migration path for an engagement. Current product instructions and the documentation site correspond to `VERSION` (**{{ JAI_VERSION }}**).
+- **Distribution authenticity is separate.** Compare the exact package with its published checksum. A checksum alone does not authenticate the publisher; inspect any publisher attestations separately when supplied. Semantic evidence checks remain independent.
 
 ## Common diagnostics
 

@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Design strategy for the product area | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
+| 1 | Design strategy for the product area | Product-area design strategy | Traces user/business outcomes to research, design principles, priorities, constraints and measurable evaluation |
 | 2 | end-to-end designs and prototypes | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
-| 3 | research-backed design rationale | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
-| 4 | measured design outcomes | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
+| 3 | research-backed design rationale | Research-backed design rationale | Links design choices and rejected alternatives to attributable user research, assumptions and validation limits |
+| 4 | measured design outcomes | Design-outcome evaluation report | Compares measured user outcomes against baseline and targets, reporting methods, uncertainty and next actions |
 
 ## 7. Output gates (blocking)
 
@@ -140,7 +140,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Design strategy for the product area has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Design strategy for the product area") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

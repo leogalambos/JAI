@@ -1,6 +1,5 @@
 # Prepare an enterprise release decision
 
-Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
 ACME Commerce is coordinating a portal update across application,
 identity and support teams. Alice owns release coordination, Bob owns
@@ -25,8 +24,8 @@ procedures, support readiness and known defects. Include the release
 authority and the receiving service owner's acceptance criteria.
 
 Use names such as `inputs/release-scope.md`,
-`inputs/component-evidence/`, `inputs/rollout-plan.md and
-inputs/readiness-criteria.md`. Keep source dates, versions and owners in
+`inputs/component-evidence/`, `inputs/rollout-plan.md` and
+`inputs/readiness-criteria.md`. Keep source dates, versions and owners in
 `inputs/source-register.md`. Missing rehearsal evidence stays missing.
 Do not infer operational readiness from a generated checklist or an
 unrelated component's passing test.
@@ -40,9 +39,9 @@ JAI library itself.
 ## Run this scenario in the provider CLI
 
 Use layered delivery to coordinate the release decision and domain
-handoffs. This does not invoke JAI A–H qualification: those gates
-qualify the JAI package, whereas this scenario concerns ACME's service
-release.
+handoffs. This scenario concerns ACME's service release, not publication
+of the JAI software package. Component checks, service readiness and the
+release authority's decision remain specific to the proposed service versions.
 
 Enter these instructions in the provider conversation, not a shell. The
 Claude slash command and Codex skill request the same work. They are

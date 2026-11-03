@@ -99,7 +99,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Delivery method and standards | Controlled document referencing the parent policy | Requirements are specific, measurable and technology-explicit |
+| 1 | Delivery method and standards | Controlled delivery method and standards | Defines applicable lifecycle stages, roles, mandatory artefacts, decision gates, exceptions and measurable adoption criteria |
 | 2 | stage gate and assurance model | Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON) | The model is validated against real observed behaviour or data, not only interviews |
 | 3 | portfolio reporting pack | Structured document with executive summary and evidence annex | Conclusions are traceable to dated evidence; opinion is visibly separated from fact |
 | 4 | delivery capability plan | Document with milestones, owners, dependencies and assumptions | Every milestone has an acceptance test and a named accountable owner |
@@ -111,7 +111,7 @@ An output that fails any gate is not released. A gate may be waived only by the 
 - [ ] **G1.** Intake is rejected unless all mandatory inputs are present or a named owner and date exist for each gap.
 - [ ] **G2.** No commitment is made beyond demonstrated capacity for the period.
 - [ ] **G3.** Every deviation from the documented process is logged with its reason and its expiry.
-- [ ] **G4.** Delivery method and standards is published on the agreed cadence even when the news is bad.
+- [ ] **G4.** The primary deliverable ("Delivery method and standards") is published on the agreed cadence, including adverse results.
 - [ ] **G5.** Stage gates test evidence, not attendance
 - [ ] **G6.** a gate passed without evidence is recorded as a gate failure
 
@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Delivery method and standards has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Delivery method and standards") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

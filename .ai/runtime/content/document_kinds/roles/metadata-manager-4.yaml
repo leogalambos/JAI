@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/metadata-manager:4",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -61,7 +61,8 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: catalogue adoption and coverage reporting.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#metadata-manager:4",
-          "content/types/catalogue.yaml"
+          "content/types/catalogue.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/"
         ]
       },
       "provenance": {
@@ -99,7 +100,8 @@
         "reason": "For each receiving role (Data Analyst; Business Intelligence Analyst), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#metadata-manager:4",
-          "content/types/catalogue.yaml"
+          "content/types/catalogue.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/"
         ]
       },
       "provenance": {
@@ -137,7 +139,8 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#metadata-manager:4",
-          "content/types/catalogue.yaml"
+          "content/types/catalogue.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/"
         ]
       },
       "provenance": {
@@ -175,7 +178,8 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#metadata-manager:4",
-          "content/types/catalogue.yaml"
+          "content/types/catalogue.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/"
         ]
       },
       "provenance": {
@@ -213,7 +217,8 @@
         "reason": "For the specific output 'catalogue adoption and coverage reporting', provide verifiable evidence satisfying: Conclusions are traceable to dated evidence; opinion is visibly separated from fact. Required delivery form: Structured document with executive summary and evidence annex.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#metadata-manager:4",
-          "content/types/catalogue.yaml"
+          "content/types/catalogue.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/"
         ]
       },
       "provenance": {
@@ -244,7 +249,7 @@
         "G1: Intake is rejected unless all mandatory inputs are present or a named owner and date exist for each gap.",
         "G2: No commitment is made beyond demonstrated capacity for the period.",
         "G3: Every deviation from the documented process is logged with its reason and its expiry.",
-        "G4: Metadata catalogue content and standards is published on the agreed cadence even when the news is bad.",
+        "G4: The primary deliverable (\"Metadata catalogue content and standards\") is published on the agreed cadence, including adverse results.",
         "G5: Catalogue entries carry an owner, a classification and a last-verified date",
         "G6: stale entries are marked as unverified rather than silently trusted"
       ],
@@ -263,7 +268,8 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#metadata-manager:4",
-          "content/types/catalogue.yaml"
+          "content/types/catalogue.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/"
         ]
       },
       "provenance": {
@@ -309,7 +315,8 @@
         "reason": "Analyse the specific input \"Technical metadata\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#metadata-manager:4",
-          "content/types/catalogue.yaml"
+          "content/types/catalogue.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/"
         ]
       },
       "provenance": {
@@ -352,7 +359,8 @@
         "reason": "Analyse the specific input \"Business definitions\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#metadata-manager:4",
-          "content/types/catalogue.yaml"
+          "content/types/catalogue.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/"
         ]
       },
       "provenance": {
@@ -395,7 +403,8 @@
         "reason": "Analyse the specific input \"Lineage from pipelines\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#metadata-manager:4",
-          "content/types/catalogue.yaml"
+          "content/types/catalogue.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/"
         ]
       },
       "provenance": {
@@ -438,7 +447,8 @@
         "reason": "Analyse the specific input \"Classification and sensitivity labels\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#metadata-manager:4",
-          "content/types/catalogue.yaml"
+          "content/types/catalogue.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/"
         ]
       },
       "provenance": {
@@ -483,7 +493,8 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/"
         ]
       },
       "provenance": {
@@ -526,7 +537,8 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/"
         ]
       },
       "provenance": {
@@ -571,7 +583,8 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/"
         ]
       },
       "provenance": {
@@ -685,6 +698,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "data-catalogue",
+        "title": "W3C Data Catalog Vocabulary Version 3 (DCAT 3)",
+        "url": "https://www.w3.org/TR/vocab-dcat-3/",
+        "scope": "Dataset/catalogue identity, distributions, provenance, access and descriptive metadata.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Metadata Manager",
+        "frameworks": [
+          "ISO/IEC 11179",
+          "DAMA-DMBOK 2 metadata management",
+          "data catalogue practice"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -710,13 +744,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {

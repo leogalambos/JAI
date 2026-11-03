@@ -15,12 +15,13 @@ import json
 from pathlib import Path
 import content_spec
 import content_lint
+import lifecycle
 
 
 # Numbers are editorial selections of canonical role deliverables, not title matching.
 SELECTIONS = {
 'access-request-to-review': ['1','2','2,3','1,2','1','3'],
-'ai-system-approval': ['1','2','1,2','1,4','1,2,3','1,2','2,4','3'],
+'ai-system-approval': ['1','2','1,2','1,4','1,2,3','source','1,2','2,4','3'],
 'architecture-model-to-repository-governance': ['1,4','1,3','3','4','1,4','1,2,3'],
 'business-case-to-benefits': ['1,2','1','1,2,3','1','2,3','1,2','4'],
 'codebase-takeover': ['1','1,3','1,2','2','1','1,2','4','1,4'],
@@ -30,19 +31,23 @@ SELECTIONS = {
 'design-to-operational-readiness': ['1,4','1,4','1,2,4','1','1,3','1','1'],
 'enterprise-release-orchestration': ['1','3,4','3','2,3','4','2,4','3','1,2','3','3,4','1,3','1'],
 'idea-to-production': ['2','1,3','1','1,4','2,4','4','1,2,4','2,4','2,4','1','3,4','1','1,2'],
-'incident-to-problem': ['1','1,2,4','3','1,2,3','1,2','1,4','1','1,2','2'],
-'migration-and-cutover': ['1,3','1,2,4','1,3','2,3','3','2,4','1','1,4'],
+'incident-to-problem': ['1','1,2,4','3','1,2,3','1,2','1,4','1,2,4','1','1,4','1,2','1,2','2'],
+'migration-and-cutover': ['1,3','1,2,4','1,3','2,3','3','2,4','1','1,3','2,4','2,3','1,4'],
 'new-service-onboarding': ['1','1,3','1,4','1,3,4','2,3','1,2,3','1','2,3','1','2','3','1'],
 'organisational-change-and-adoption': ['1,3','1,2','2,4','4','4','4'],
 'production-change': ['1,4','1,3','2,4','2','1,2','3,4','1,3','1,3'],
 'regulatory-change-to-assurance': ['1','2','1,3','1','1,3','1','1,2','2','3','2'],
 'resilience-validation': ['1,4','2','2,3','1,3','1','1,2','3','4','2','1'],
 'semantic-to-enterprise-publication': ['source','source','source','source','source'],
-'service-retirement-and-decommission': ['1','1,2','1,2','3','1','1,3','3,4','4'],
+'service-retirement-and-decommission': ['1','1,2','1,2','1','3','3','1,3','3,4','4'],
 'siam-multi-supplier': ['1','1,4','3','1','1','1','3','1'],
 'source-to-contract-to-service': ['1','1,2','1','1,3','2,4','2,3','1','1,3','3,4','1,2'],
 'supplier-onboarding': ['1,2,3','1','4','1','1,2','1,4','2,3'],
-'vulnerability-to-remediation': ['1,2','2','3','1,4','1','1','4','4']}
+'vulnerability-to-remediation': [
+    '1,2', '2', '3', '1,4',
+    '1',  # Change Manager: change authorisation precedes deployment.
+    '1',  # Software Engineer: deploy the authorised remediation.
+    '4', '4']}
 ALIASES = {'Demand & Intake Manager':'demand-and-intake-manager',
 'IT Financial Management / TBM Manager':'it-financial-management-tbm-manager',
 'Architecture Repository Engineer':'agent:architecture-repository-engineer',
@@ -116,30 +121,58 @@ def load_bindings(root=None):
 
 
 def _human_accepted(authority, bound):
-    fabric=getattr(authority,'fabric',None)
-    fragment_id=getattr(authority,'fragment_id',None)
-    if fabric is None or not fragment_id:
+    store = getattr(authority, 'store', None)
+    subject = getattr(authority, 'subject', None)
+    use_scope = getattr(authority, 'use_scope', None)
+    if not isinstance(store, lifecycle.Store) or not isinstance(subject, dict) or not isinstance(use_scope, str) or not use_scope:
         return False
     try:
-        problems,warnings=fabric.verify()
-        if problems or warnings:
+        product = store.read().resolve(subject, 'product')
+        accepted = store.evaluate(subject, scope=use_scope)
+        if not accepted['qualified'] or not accepted['accepted'] or len(product['material']) != 1:
             return False
-        fragment=fabric.nodes[fragment_id]
-        justified,reasons=fabric.justify(fragment_id,strict=True)
-        accepted=fabric.lifecycle.evaluate(fragment['version_id'],release=True)
-        acceptance_version=fabric.lifecycle.proofs.get(('default',fragment['version_id'],'accept'))
-        review=next((node for node in fabric.nodes.values() if node['version_id']==acceptance_version),{})
-        policy=json.loads(fragment.get('text',''),object_pairs_hook=content_spec._pairs,
-                          parse_constant=lambda value: (_ for _ in ()).throw(ValueError('NONFINITE')))
-        return (fragment.get('type')=='frag' and fragment.get('layer')==1 and justified and not reasons and accepted['eligible']
-                and review.get('layer')==0 and review.get('state')=='accepts' and bool(review.get('reviewer'))
-                and policy.get('profile')=='workflow-acceptance' and policy.get('acceptance')==bound)
-    except (ValueError,TypeError,KeyError,OSError):
+        policy = json.loads(store._blob(product['material'][0]),
+                            object_pairs_hook=content_spec._pairs,
+                            parse_constant=lambda value: (_ for _ in ()).throw(ValueError('NONFINITE')))
+        return (policy.get('profile') == 'workflow-acceptance'
+                and policy.get('acceptance') == bound and bool(accepted['acceptances']))
+    except (ValueError, TypeError, KeyError, OSError):
         return False
 
 
 def check(handoff_id, model, report, root=None, acceptance=None, trusted_executions=None,
-          receiving_assignments=None, authority=None, resolver=None):
+          receiving_assignments=None, authority=None, resolver=None, governed=None):
+    """Check existing workflow acceptance with optional exact Gen2 provenance.
+
+    Args:
+        handoff_id: Exact registered workflow step.
+        model: Complete canonical semantic source.
+        report: Existing immutable QA report.
+        root: Optional shared runtime root.
+        acceptance: Actual receiving body; no PASS is supplied by this adapter.
+        trusted_executions: Host verifier for ordinary workflow checks.
+        receiving_assignments: Host-owned role assignments for ordinary checks.
+        authority: Existing L0 acceptance adapter.
+        resolver: Optional already-pinned ContentSpec resolver.
+        governed: Host-pinned Gen2 adapter; actual captured identity does not
+            replace the host's existing functional receiving designation.
+    Returns:
+        Existing receiving status; never production acceptance or release.
+    Raises:
+        ValueError: Registry, exact source or current justification is invalid.
+    """
+    import contextlib
+    with governed.action() if governed is not None else contextlib.nullcontext():
+        if governed is not None:
+            if not governed.publication_status(model,model.get('audience'))['eligible']:
+                raise ValueError('Current Gen2 workflow source justification is unavailable')
+            trusted_executions=governed
+        return _check(handoff_id,model,report,root,acceptance,trusted_executions,
+                      receiving_assignments,authority,resolver)
+
+
+def _check(handoff_id, model, report, root=None, acceptance=None, trusted_executions=None,
+           receiving_assignments=None, authority=None, resolver=None):
     """Return a hash-bound receiving acceptance result without granting release.
 
     Args:
@@ -211,7 +244,7 @@ def check(handoff_id, model, report, root=None, acceptance=None, trusted_executi
 
 
 def main(argv=None):
-    """List bindings or check a draft; the CLI cannot authenticate receiver JSON.
+    """List bindings or check a draft with optional host-pinned Gen2 evidence.
 
     Args:
         argv: Optional CLI arguments.
@@ -224,11 +257,22 @@ def main(argv=None):
     sub.add_parser('list')
     command=sub.add_parser('check')
     command.add_argument('handoff_id');command.add_argument('model');command.add_argument('report')
+    command.add_argument('--acceptance')
+    command.add_argument('--receiving-assignments',help='Existing host principal-to-functional-role mapping')
+    import governed_domain
+    governed_domain.add_arguments(command,operations=('draft',))
     args=parser.parse_args(argv)
     try:
-        result=load_bindings(args.root) if args.command=='list' else check(args.handoff_id,content_spec.load_json(args.model),content_spec.load_json(args.report),root=args.root)
+        if args.command=='list':
+            result=load_bindings(args.root)
+        else:
+            adapter,authority=governed_domain.from_arguments(args)
+            result=check(args.handoff_id,content_spec.load_json(args.model),content_spec.load_json(args.report),
+                root=args.root,acceptance=content_spec.load_json(args.acceptance) if args.acceptance else None,
+                receiving_assignments=content_spec.load_json(args.receiving_assignments) if args.receiving_assignments else None,
+                governed=adapter,authority=authority)
         print(json.dumps(result,indent=2))
-        return 0 if args.command=='list' else 2
+        return 0 if args.command=='list' or result.get('status')=='ACCEPTANCE_VERIFIED' else 2
     except (ValueError,TypeError,KeyError,OSError) as exc:
         print(json.dumps({'error':str(exc)}));return 1
 

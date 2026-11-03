@@ -16,3 +16,12 @@ Review $ARGUMENTS. If I named criteria or a criteria file, use those. Otherwise 
 **Acceptance and escalation.** Review status is distinct from approval; record blockers and do not change the reviewed baseline.
 
 **Documentation.** The current product manual is authored in repository `docs/` (see `docs/reference/commands.md` and `docs/reference/command-walkthroughs.md`). For installed offline assistance use `~/.ai/it-role-house/GUIDE.md` or `/guide`. Provider commands and skills are native runtime contracts; no separate runtime HTML help site is required.
+
+## Consequential Gen2 use
+
+For a result requiring governed layered justification, use the canonical
+`layered-justifiable-delivery` skill and its `references/domain-handoff.md`
+native handoff with the actual request, exact criteria/candidate and evidence.
+Ordinary bounded work keeps this command's scope and independent responsibilities;
+the parent handles runtime transport without user-authored JSON. This command
+itself grants no human acceptance or release permission.

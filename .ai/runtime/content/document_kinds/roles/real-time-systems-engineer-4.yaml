@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/real-time-systems-engineer:4",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -61,7 +61,8 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: determinism test results.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#real-time-systems-engineer:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -99,7 +100,8 @@
         "reason": "For each receiving role (Test Analyst; Embedded Firmware Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#real-time-systems-engineer:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -137,7 +139,8 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#real-time-systems-engineer:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -175,7 +178,8 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#real-time-systems-engineer:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -195,7 +199,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'determinism test results', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "For the specific output 'determinism test results', provide verifiable evidence satisfying: Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations. Required delivery form: Versioned assessment results with traceable evidence.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,10 +214,11 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'determinism test results', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "reason": "For the specific output 'determinism test results', provide verifiable evidence satisfying: Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations. Required delivery form: Versioned assessment results with traceable evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#real-time-systems-engineer:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -223,8 +228,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "determinism test results",
-        "format": "Executable suite in version control plus a coverage statement",
-        "acceptance_criterion": "States what is covered, what is not, and what the suite cannot detect",
+        "format": "Versioned assessment results with traceable evidence",
+        "acceptance_criterion": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
         "role_path": "skills/it-roles-software-development-and-engineering/references/real-time-systems-engineer.md"
       }
     },
@@ -265,7 +270,8 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#real-time-systems-engineer:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -313,7 +319,8 @@
         "reason": "Analyse the specific input \"Timing and deadline requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#real-time-systems-engineer:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -356,7 +363,8 @@
         "reason": "Analyse the specific input \"Hardware platform characteristics\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#real-time-systems-engineer:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -399,7 +407,8 @@
         "reason": "Analyse the specific input \"Failure mode analysis\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#real-time-systems-engineer:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -442,7 +451,8 @@
         "reason": "Analyse the specific input \"Certification requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#real-time-systems-engineer:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -487,7 +497,8 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -530,7 +541,8 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -575,7 +587,8 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -689,6 +702,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "software-testing",
+        "title": "ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation",
+        "url": "https://www.iso.org/standard/79429.html",
+        "scope": "Test planning, test specifications and reporting information needs.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Real-time Systems Engineer",
+        "frameworks": [
+          "rate-monotonic and deadline scheduling analysis",
+          "IEC 61508",
+          "DO-178C where applicable"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -714,13 +748,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -753,8 +788,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "real-time-systems-engineer:4",
-    "source_fingerprint": "b329eefa1e6cc94461a4f629caba8cd253283601664207a3ce50399d2fd2b10b",
-    "source_hash": "bfce49339d5754b7ec515d48834663f05345f8af220b0d6a5e9c16be50cd5a67"
+    "source_fingerprint": "844bc4354fc33a1415824f6b6672c0bb2983f504ad1744d2ce42424f00d91611",
+    "source_hash": "d0dad83720b00bd46363a9d5410158b5a0ef38660b5ed699352ed7970d0cc250"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

@@ -1,6 +1,5 @@
 # Prepare an AI system approval decision
 
-Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
 ACME Insurance wants an assistant that drafts answers for human claims
 handlers. Alice owns the service, Bob owns the data platform and John

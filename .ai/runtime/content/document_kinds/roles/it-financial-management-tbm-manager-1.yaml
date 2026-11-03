@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/it-financial-management-tbm-manager:1",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -62,7 +62,10 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: IT financial and TBM cost model.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-financial-management-tbm-manager:1",
-          "content/types/dataset.yaml"
+          "content/types/dataset.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -100,7 +103,10 @@
         "reason": "For each receiving role (FinOps Engineer; Vendor Manager; Benefits Realisation Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-financial-management-tbm-manager:1",
-          "content/types/dataset.yaml"
+          "content/types/dataset.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -138,7 +144,10 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required; exceptions -> owner + expiry/review.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-financial-management-tbm-manager:1",
-          "content/types/dataset.yaml"
+          "content/types/dataset.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -176,7 +185,10 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-financial-management-tbm-manager:1",
-          "content/types/dataset.yaml"
+          "content/types/dataset.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -196,7 +208,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'IT financial and TBM cost model', provide verifiable evidence satisfying: Costs reconcile to authoritative finance data and allocation rules are explainable, repeatable and governed.. Required delivery form: Versioned dataset/model with cost pools, towers/services/products, allocation rules, drivers and reconciliation controls.",
+        "For the specific output 'IT financial and TBM cost model', provide verifiable evidence satisfying: Costs reconcile to authoritative finance data and allocation rules are explainable, repeatable and governed. Required delivery form: Versioned dataset/model with cost pools, towers/services/products, allocation rules, drivers and reconciliation controls.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -211,10 +223,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'IT financial and TBM cost model', provide verifiable evidence satisfying: Costs reconcile to authoritative finance data and allocation rules are explainable, repeatable and governed.. Required delivery form: Versioned dataset/model with cost pools, towers/services/products, allocation rules, drivers and reconciliation controls.",
+        "reason": "For the specific output 'IT financial and TBM cost model', provide verifiable evidence satisfying: Costs reconcile to authoritative finance data and allocation rules are explainable, repeatable and governed. Required delivery form: Versioned dataset/model with cost pools, towers/services/products, allocation rules, drivers and reconciliation controls.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-financial-management-tbm-manager:1",
-          "content/types/dataset.yaml"
+          "content/types/dataset.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -264,7 +279,10 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-financial-management-tbm-manager:1",
-          "content/types/dataset.yaml"
+          "content/types/dataset.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -310,7 +328,10 @@
         "reason": "Analyse the specific input \"Finance actuals, budget and forecast\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-financial-management-tbm-manager:1",
-          "content/types/dataset.yaml"
+          "content/types/dataset.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -353,7 +374,10 @@
         "reason": "Analyse the specific input \"Service/application/product ownership and consumption drivers\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-financial-management-tbm-manager:1",
-          "content/types/dataset.yaml"
+          "content/types/dataset.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -396,7 +420,10 @@
         "reason": "Analyse the specific input \"Asset/licence/supplier/cloud cost data\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-financial-management-tbm-manager:1",
-          "content/types/dataset.yaml"
+          "content/types/dataset.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -439,7 +466,10 @@
         "reason": "Analyse the specific input \"Portfolio/project investment baselines\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-financial-management-tbm-manager:1",
-          "content/types/dataset.yaml"
+          "content/types/dataset.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -482,7 +512,10 @@
         "reason": "Analyse the specific input \"Benefits and business capability context\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-financial-management-tbm-manager:1",
-          "content/types/dataset.yaml"
+          "content/types/dataset.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -495,6 +528,129 @@
         "json_pointer": "/jai/semantics/required_inputs/4",
         "value": "Benefits and business capability context"
       }
+    },
+    {
+      "id": "role/it-financial-management-tbm-manager:1.cost_model_boundary",
+      "semantic_fields": [
+        "cost_model_boundary"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "State model purpose, service/portfolio boundary, accounting period, currency and price basis, source ledger extracts and accountable financial owner; identify actuals, commitments and forecasts separately.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "State model purpose, service/portfolio boundary, accounting period, currency and price basis, source ledger extracts and accountable financial owner; identify actuals, commitments and forecasts separately.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#it-financial-management-tbm-manager:1",
+          "content/types/dataset.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/it-financial-management-tbm-manager:1.cost_allocation_model",
+      "semantic_fields": [
+        "cost_allocation_model"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Define the selected cost taxonomy, source cost pools, allocation drivers, units, formulas and mappings through resources/services to consuming products or business units; disclose shared, unallocated and excluded costs.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Define the selected cost taxonomy, source cost pools, allocation drivers, units, formulas and mappings through resources/services to consuming products or business units; disclose shared, unallocated and excluded costs.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#it-financial-management-tbm-manager:1",
+          "content/types/dataset.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/it-financial-management-tbm-manager:1.cost_reconciliation_sensitivity",
+      "semantic_fields": [
+        "cost_reconciliation_sensitivity"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Reconcile source totals to allocated outputs without double counting; identify rounding, missing inputs and material assumptions, and show how uncertain volumes/rates affect unit costs and proposed decisions.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Reconcile source totals to allocated outputs without double counting; identify rounding, missing inputs and material assumptions, and show how uncertain volumes/rates affect unit costs and proposed decisions.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#it-financial-management-tbm-manager:1",
+          "content/types/dataset.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
     }
   ],
   "conditional_information": [
@@ -527,7 +683,10 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -570,7 +729,10 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -615,7 +777,10 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -729,6 +894,52 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "data-catalogue",
+        "title": "W3C Data Catalog Vocabulary Version 3 (DCAT 3)",
+        "url": "https://www.w3.org/TR/vocab-dcat-3/",
+        "scope": "Dataset/catalogue identity, distributions, provenance, access and descriptive metadata.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "data-quality",
+        "title": "W3C Data Quality Vocabulary",
+        "url": "https://www.w3.org/TR/vocab-dqv/",
+        "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "business-appraisal",
+        "title": "HM Treasury, The Green Book",
+        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "IT Financial Management / TBM Manager",
+        "frameworks": [
+          "Technology Business Management (TBM) taxonomy",
+          "FinOps Framework",
+          "COBIT financial management concepts",
+          "IAS/IFRS or local accounting policy as applicable"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -754,13 +965,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {

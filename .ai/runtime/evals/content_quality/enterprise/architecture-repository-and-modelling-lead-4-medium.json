@@ -213,7 +213,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Model quality and traceability report', provide verifiable evidence satisfying: Quality metrics are reproducible from repository state and identify owners for defects.. Required delivery form: Assessment report with machine-generated quality metrics.",
+        "criterion_under_review": "For the specific output 'Model quality and traceability report', provide verifiable evidence satisfying: Quality metrics are reproducible from repository state and identify owners for defects. Required delivery form: Assessment report with machine-generated quality metrics.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

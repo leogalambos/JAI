@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Controlled client proposal and internal bid dossier', provide verifiable evidence satisfying: Offer is responsive and authorised; sensitive internal evidence is retained without being exposed.. Required delivery form: Client offer plus separately protected cost, rationale, assumptions and review history.",
+        "criterion_under_review": "For the specific output 'Controlled client proposal and internal bid dossier', provide verifiable evidence satisfying: Offer is responsive and authorised; sensitive internal evidence is retained without being exposed. Required delivery form: Client offer plus separately protected cost, rationale, assumptions and review history.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

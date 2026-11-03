@@ -2,15 +2,15 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/business-relationship-manager:2",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/prototype",
-    "domain/delivery"
+    "type/register",
+    "domain/data"
   ],
   "applies_to": {
     "document_kind": "role/business-relationship-manager:2",
@@ -195,7 +195,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'demand pipeline for the business area', provide verifiable evidence satisfying: Reproducible from a clean checkout; no manual step required for a standard run. Required delivery form: Declarative pipeline definition in version control.",
+        "For the specific output 'demand pipeline for the business area', provide verifiable evidence satisfying: Each demand has business outcome, sponsor, status, dependencies and next qualification or portfolio decision. Required delivery form: Prioritised demand register.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,7 +210,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'demand pipeline for the business area', provide verifiable evidence satisfying: Reproducible from a clean checkout; no manual step required for a standard run. Required delivery form: Declarative pipeline definition in version control.",
+        "reason": "For the specific output 'demand pipeline for the business area', provide verifiable evidence satisfying: Each demand has business outcome, sponsor, status, dependencies and next qualification or portfolio decision. Required delivery form: Prioritised demand register.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-relationship-manager:2",
           "content/types/prototype.yaml"
@@ -223,8 +223,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "demand pipeline for the business area",
-        "format": "Declarative pipeline definition in version control",
-        "acceptance_criterion": "Reproducible from a clean checkout; no manual step required for a standard run",
+        "format": "Prioritised demand register",
+        "acceptance_criterion": "Each demand has business outcome, sponsor, status, dependencies and next qualification or portfolio decision",
         "role_path": "skills/it-roles-service-management-and-support/references/business-relationship-manager.md"
       }
     },
@@ -666,7 +666,7 @@
     }
   ],
   "size_budget": {
-    "metric": "typed",
+    "metric": "rows",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -685,6 +685,26 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Business Relationship Manager",
+        "frameworks": [
+          "ITIL 4 relationship management",
+          "BRM Institute practice"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -710,13 +730,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -735,12 +756,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/register",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "prototype",
+  "semantic_family": "register",
   "role_overlay": {
     "contract_id": "business-relationship-manager:2",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -749,8 +772,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "business-relationship-manager:2",
-    "source_fingerprint": "dec10ae644e80cfbfca2801d1852f8efc0ca5f9560601f4fa81d907244b8d375",
-    "source_hash": "749142fc3b10198e67b37e856c8e1ba0c7ba6df7c03c08ff426bf46bfc1e13b0"
+    "source_fingerprint": "1fe0a4985dbe8ce8182810ea9a25bcb1e1f03f5213a4a9821d91ac902b547f55",
+    "source_hash": "5d14b360d480fc6a3ff710d2b4b80fa352d4fa5cfa67aa5cd9305b273a95d927"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

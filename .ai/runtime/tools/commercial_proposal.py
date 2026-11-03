@@ -487,6 +487,9 @@ def _semantic_model(data, kind, resolver):
         'Decision record': 'DRAFT — authorization pending; no approval recorded.'}
     semantic['sections'] = [{'heading': name, 'body': body} for name, body in aliases.items()] + copy.deepcopy(sections)
     semantic['publication_profile'] = 'decision-paper'
+    producer = data.get('documents', {}).get(kind, {}).get('producer')
+    if producer is not None:
+        semantic['producer'] = copy.deepcopy(producer)
     return semantic, spec, sections
 
 
@@ -617,7 +620,42 @@ def validate_prepared(manifest_path, root=ROOT):
 
 
 def publication_handoff(manifest_path, kind, output, root=ROOT, reviewer=None,
-                        trusted_executions=None, authority=None, readiness_verifiers=None, producer=None):
+                        trusted_executions=None, authority=None, readiness_verifiers=None, producer=None,
+                        governed=None, operation='draft'):
+    """Project the existing proposal through disclosure and exact Gen2 gates.
+
+    Args:
+        manifest_path: Exact prepared draft manifest.
+        kind: Selected proposal component.
+        output: New immutable projection destination.
+        root: Existing shared runtime root.
+        reviewer: Actual independent content-review body.
+        trusted_executions: Existing host verifier for ordinary draft use.
+        authority: Existing L0 acceptance adapter, never an agent flag.
+        readiness_verifiers: Host callbacks, including explicit policy requirements.
+        producer: Optional producer metadata; governed sources must already match it.
+        governed: Optional host-pinned Gen2 domain adapter.
+        operation: draft, accepted or release; never a new permission grant.
+    Returns:
+        Existing draft projection result or BLOCKED; no acceptance or release.
+    Raises:
+        ValueError, OSError: Selected prepared content or local resources are invalid.
+    """
+    if operation not in {'draft','accepted','release'} or (operation!='draft' and governed is None):
+        raise ValueError('A supported publication operation and current Gen2 pin are required')
+    import contextlib
+    with governed.action() if governed is not None else contextlib.nullcontext():
+        if governed is not None:
+            callbacks = dict(readiness_verifiers or {})
+            callbacks.update(governed.commercial_callbacks())
+            readiness_verifiers, trusted_executions = callbacks, governed
+        return _publication_handoff(manifest_path,kind,output,root,reviewer,
+            trusted_executions,authority,readiness_verifiers,producer,governed,operation)
+
+
+def _publication_handoff(manifest_path, kind, output, root=ROOT, reviewer=None,
+                        trusted_executions=None, authority=None, readiness_verifiers=None, producer=None,
+                        governed=None, operation='draft'):
     """Enter existing commercial disclosure/readiness and publication gates.
 
     Args:
@@ -665,7 +703,11 @@ def publication_handoff(manifest_path, kind, output, root=ROOT, reviewer=None,
     import projection
     import tempfile
     model = json.loads(contents[kind][0].read_text())
-    if producer is not None:
+    if producer is not None and governed is not None and producer != model.get('producer'):
+        return {'profile': core.PROFILE, 'status': 'BLOCKED',
+                'blockers': ['Governed source producer metadata cannot be changed after admission.'],
+                'authority_granted': False, 'release_ready': False}
+    if producer is not None and governed is None:
         model['producer'] = copy.deepcopy(producer)
     profile_path = Path(root) / 'publication/archetypes/decision-paper.json'
     if not profile_path.is_file():
@@ -685,7 +727,8 @@ def publication_handoff(manifest_path, kind, output, root=ROOT, reviewer=None,
         source = Path(directory) / 'semantic-source.json'
         source.write_text(json.dumps(model))
         problems, _, manifest = projection.build(source, profile_path, output,
-            reviewer=reviewer, trusted_executions=trusted_executions, authority=authority)
+            reviewer=reviewer, trusted_executions=trusted_executions, authority=authority,
+            governed=governed,operation=operation)
     return {'profile': core.PROFILE, 'status': 'BLOCKED' if problems else 'DRAFT_PROJECTED',
             'blockers': ['Existing projection/content gates rejected the handoff.'] if problems else [],
             'content_status': manifest.get('content_status'), 'authority_granted': False, 'release_ready': False}

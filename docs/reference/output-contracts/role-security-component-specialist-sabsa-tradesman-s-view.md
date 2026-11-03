@@ -1,0 +1,679 @@
+<!-- JAI:OUTPUT-CONTRACTS:START -->
+# Security Component Specialist (SABSA Tradesman's View): output contracts
+
+Select, configure and integrate the specific products, standards and tools that realise the design
+
+[Full catalogue](index.md)
+
+<a id="output-security-component-specialist-sabsa-tradesman-s-view-1"></a>
+
+## Component configuration specifications
+
+**At a glance**
+
+- **Purpose:** Produce and govern the role deliverable: Component configuration specifications.
+- **Mandatory examples:** Specify deployment, verification, rollback and reproducible acceptance tests. Specify schemas, error states, concurrency and compatibility requirements. Define typed configuration values, units, versions and permitted ranges without secrets.
+- **Conditions to resolve:** personal data are processed; an applicable regulatory requirement exists. Unknown applicability remains unresolved.
+- **Optional example:** Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Review:** assess substantive content, evidence and gaps against the full selected contract; acceptance and release remain separate.
+
+This orientation gives selected examples. The complete local and linked foundation requirements, prohibitions and evidence duties below remain applicable.
+
+**Contract ID:** `security-component-specialist-sabsa-tradesman-s-view:1`.
+
+**Required inputs:**
+
+- Solution specification
+- Product capabilities and limitations
+- Existing estate and standards
+- Licensing and support constraints
+
+**Specification:** `kind/role/security-component-specialist-sabsa-tradesman-s-view:1`; **content version:** `1.2.0`.
+
+Produce and govern the role deliverable: Component configuration specifications.
+
+**Status:** proposed/advisory; publication of this contract does not approve it, certify a delivered output or grant acceptance/release. MUST describes the stated JAI content obligation, not a claim that an external standard mandates it.
+
+**Also applicable:** all requirements in these linked foundations and overlays form part of this contract, subject to their explicit conditions:
+
+- [`global/invariants`](spec-global-invariants.md)
+- [`type/implementation-specification`](spec-type-implementation-specification.md)
+- [`domain/architecture`](spec-domain-architecture.md)
+
+Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
+
+**Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
+
+### Required information (MUST)
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:1.delivery_scope`** — `object`
+
+- Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Component configuration specifications.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:1.receiving_acceptance`** — `array`
+
+- For each receiving role (Security Engineer; Platform Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:1.contract_relations`** — `array`
+
+- Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:1.decision_purpose_correction`** — `object`
+
+- Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:1.delivery_verification`** — `array`
+
+- For the specific output 'Component configuration specifications', provide verifiable evidence satisfying: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Versioned specification with numbered, traceable requirements.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:1.role_gate_observations`** — `array`
+
+- Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.
+- G1: No change merges without passing automated tests and peer review by someone who did not write it.
+- G2: A defect is fixed only after its root cause is established by comparing against the last known good state, a working analogue and timing factors, and a regression test reproduces it first (it-role-library/standards/defect-analysis.md).
+- G3: Verification is appropriate to the component/mechanism technology: automated tests for software, configuration/hardening/interoperability tests for platforms and products, and operational acceptance evidence where runtime behaviour matters; the applicable verification set passed after the last change.
+- G4: Secrets, credentials and personal data never appear in source, logs or fixtures.
+- G5: Every externally relied-on interface and configuration contract is documented at the appropriate level; software APIs use code-level contracts, while platform/product controls use versioned configuration and operational documentation.
+- G6: The change ships with the telemetry needed to tell whether it is working in production.
+- G7: A rollback or forward-fix path is defined and has been tried at least once for high-risk changes.
+- G8: Component selection documents what the product does not do relative to the specification
+- G9: gaps are escalated as design issues rather than quietly absorbed into configuration
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:1.contract_input_1`** — `object`
+
+- Analyse the specific input "Solution specification" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:1.contract_input_2`** — `object`
+
+- Analyse the specific input "Product capabilities and limitations" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:1.contract_input_3`** — `object`
+
+- Analyse the specific input "Existing estate and standards" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:1.contract_input_4`** — `object`
+
+- Analyse the specific input "Licensing and support constraints" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+### Conditionally required information
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:1.privacy_analysis`** — `object`
+
+Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
+
+- Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:1.regulatory_analysis`** — `object`
+
+Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
+
+- Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+### Optional information (MAY)
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:1.supporting_annex`** — `object`
+
+- Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+### Prohibited content (MUST NOT)
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:1.unsupported_material_claim`** — `object`
+
+- Do not assert material conclusions without dated evidence or an explicitly labelled assumption.
+
+### Content to omit unless justified
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:1.irrelevant_detail`** — `object`
+
+- Remove material unrelated to the stated purpose, required input analysis or receiving-role action.
+
+### Proportionate scope
+
+Inherited size guidance is reproduced below. It is not evidence of substantive completeness; verbosity is not a quality measure.
+
+```json
+{
+  "semantic_units": {
+    "metric": "semantic_units",
+    "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
+    "minimum_is_quality_gate": false,
+    "calibration_status": "synthetic-only",
+    "allowance_rules": [
+      "Document complexity and audience need; excess requires review, not automatic rejection."
+    ],
+    "annex_rules": [
+      "Reference canonical detail rather than repeat it."
+    ]
+  },
+  "typed": {
+    "metric": "typed",
+    "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
+    "minimum_is_quality_gate": false,
+    "calibration_status": "synthetic-only",
+    "allowance_rules": [
+      "Document complexity and audience need; excess requires review, not automatic rejection."
+    ],
+    "annex_rules": [
+      "Reference canonical detail rather than repeat it."
+    ]
+  }
+}
+```
+
+### Professional sources and their limits
+
+- **[NIST SP 800-218, Secure Software Development Framework Version 1.1](https://doi.org/10.6028/NIST.SP.800-218)** — Secure development practices, protected source/build inputs, verification and vulnerability response. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[NIST SP 800-128, Guide for Security-Focused Configuration Management of Information Systems](https://doi.org/10.6028/NIST.SP.800-128)** — Configuration baselines, controlled changes, impact analysis and monitoring. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+
+### Role framework context
+
+- **Security Component Specialist (SABSA Tradesman's View):** SABSA component layer; CIS Benchmarks; vendor hardening guides; relevant protocol standards. Canonical role context; not proof that every listed framework applies to this output.
+
+
+<a id="output-security-component-specialist-sabsa-tradesman-s-view-2"></a>
+
+## product selection and compatibility assessments
+
+**At a glance**
+
+- **Purpose:** Produce and govern the role deliverable: product selection and compatibility assessments.
+- **Mandatory examples:** Identify the specific choice, accountable authority and decision deadline. Explain cost, benefit, dependencies, uncertainty and residual risks of the recommendation. Compare viable options including the do-nothing baseline against common criteria.
+- **Conditions to resolve:** personal data are processed; an applicable regulatory requirement exists. Unknown applicability remains unresolved.
+- **Optional example:** Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Review:** assess substantive content, evidence and gaps against the full selected contract; acceptance and release remain separate.
+
+This orientation gives selected examples. The complete local and linked foundation requirements, prohibitions and evidence duties below remain applicable.
+
+**Contract ID:** `security-component-specialist-sabsa-tradesman-s-view:2`.
+
+**Required inputs:**
+
+- Solution specification
+- Product capabilities and limitations
+- Existing estate and standards
+- Licensing and support constraints
+
+**Specification:** `kind/role/security-component-specialist-sabsa-tradesman-s-view:2`; **content version:** `1.2.0`.
+
+Produce and govern the role deliverable: product selection and compatibility assessments.
+
+**Status:** proposed/advisory; publication of this contract does not approve it, certify a delivered output or grant acceptance/release. MUST describes the stated JAI content obligation, not a claim that an external standard mandates it.
+
+**Also applicable:** all requirements in these linked foundations and overlays form part of this contract, subject to their explicit conditions:
+
+- [`global/invariants`](spec-global-invariants.md)
+- [`type/decision-paper`](spec-type-decision-paper.md)
+- [`domain/delivery`](spec-domain-delivery.md)
+
+Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
+
+**Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
+
+### Required information (MUST)
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:2.delivery_scope`** — `object`
+
+- Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: product selection and compatibility assessments.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:2.receiving_acceptance`** — `array`
+
+- For each receiving role (Security Engineer; Platform Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:2.contract_relations`** — `array`
+
+- Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:2.decision_purpose_correction`** — `object`
+
+- Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:2.delivery_verification`** — `array`
+
+- For the specific output 'product selection and compatibility assessments', provide verifiable evidence satisfying: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Structured assessment document with scoring method stated.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:2.role_gate_observations`** — `array`
+
+- Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.
+- G1: No change merges without passing automated tests and peer review by someone who did not write it.
+- G2: A defect is fixed only after its root cause is established by comparing against the last known good state, a working analogue and timing factors, and a regression test reproduces it first (it-role-library/standards/defect-analysis.md).
+- G3: Verification is appropriate to the component/mechanism technology: automated tests for software, configuration/hardening/interoperability tests for platforms and products, and operational acceptance evidence where runtime behaviour matters; the applicable verification set passed after the last change.
+- G4: Secrets, credentials and personal data never appear in source, logs or fixtures.
+- G5: Every externally relied-on interface and configuration contract is documented at the appropriate level; software APIs use code-level contracts, while platform/product controls use versioned configuration and operational documentation.
+- G6: The change ships with the telemetry needed to tell whether it is working in production.
+- G7: A rollback or forward-fix path is defined and has been tried at least once for high-risk changes.
+- G8: Component selection documents what the product does not do relative to the specification
+- G9: gaps are escalated as design issues rather than quietly absorbed into configuration
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:2.contract_input_1`** — `object`
+
+- Analyse the specific input "Solution specification" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:2.contract_input_2`** — `object`
+
+- Analyse the specific input "Product capabilities and limitations" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:2.contract_input_3`** — `object`
+
+- Analyse the specific input "Existing estate and standards" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:2.contract_input_4`** — `object`
+
+- Analyse the specific input "Licensing and support constraints" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+
+### Conditionally required information
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:2.privacy_analysis`** — `object`
+
+Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
+
+- Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:2.regulatory_analysis`** — `object`
+
+Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
+
+- Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+
+### Optional information (MAY)
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:2.supporting_annex`** — `object`
+
+- Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+
+### Prohibited content (MUST NOT)
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:2.unsupported_material_claim`** — `object`
+
+- Do not assert material conclusions without dated evidence or an explicitly labelled assumption.
+
+### Content to omit unless justified
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:2.irrelevant_detail`** — `object`
+
+- Remove material unrelated to the stated purpose, required input analysis or receiving-role action.
+
+### Proportionate scope
+
+Inherited size guidance is reproduced below. It is not evidence of substantive completeness; verbosity is not a quality measure.
+
+```json
+{
+  "semantic_units": {
+    "metric": "semantic_units",
+    "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
+    "minimum_is_quality_gate": false,
+    "calibration_status": "synthetic-only",
+    "allowance_rules": [
+      "Document complexity and audience need; excess requires review, not automatic rejection."
+    ],
+    "annex_rules": [
+      "Reference canonical detail rather than repeat it."
+    ]
+  }
+}
+```
+
+### Professional sources and their limits
+
+- **[HM Treasury, The Green Book](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government)** — Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+
+### Role framework context
+
+- **Security Component Specialist (SABSA Tradesman's View):** SABSA component layer; CIS Benchmarks; vendor hardening guides; relevant protocol standards. Canonical role context; not proof that every listed framework applies to this output.
+
+
+<a id="output-security-component-specialist-sabsa-tradesman-s-view-3"></a>
+
+## component hardening baselines
+
+**At a glance**
+
+- **Purpose:** Produce and govern the role deliverable: component hardening baselines.
+- **Mandatory examples:** Identify managed assets, tool/schema versions and authorised configuration scope. Provide typed desired settings, permitted ranges and secret-manager references. Evidence reproducibility, drift checks, deployment validation and rollback to a known baseline.
+- **Conditions to resolve:** personal data are processed; an applicable regulatory requirement exists. Unknown applicability remains unresolved.
+- **Optional example:** Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Review:** assess substantive content, evidence and gaps against the full selected contract; acceptance and release remain separate.
+
+This orientation gives selected examples. The complete local and linked foundation requirements, prohibitions and evidence duties below remain applicable.
+
+**Contract ID:** `security-component-specialist-sabsa-tradesman-s-view:3`.
+
+**Required inputs:**
+
+- Solution specification
+- Product capabilities and limitations
+- Existing estate and standards
+- Licensing and support constraints
+
+**Specification:** `kind/role/security-component-specialist-sabsa-tradesman-s-view:3`; **content version:** `1.2.0`.
+
+Produce and govern the role deliverable: component hardening baselines.
+
+**Status:** proposed/advisory; publication of this contract does not approve it, certify a delivered output or grant acceptance/release. MUST describes the stated JAI content obligation, not a claim that an external standard mandates it.
+
+**Also applicable:** all requirements in these linked foundations and overlays form part of this contract, subject to their explicit conditions:
+
+- [`global/invariants`](spec-global-invariants.md)
+- [`type/configuration-baseline`](spec-type-configuration-baseline.md)
+- [`domain/operations`](spec-domain-operations.md)
+
+Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
+
+**Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
+
+### Required information (MUST)
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:3.delivery_scope`** — `object`
+
+- Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: component hardening baselines.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:3.receiving_acceptance`** — `array`
+
+- For each receiving role (Security Engineer; Platform Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:3.contract_relations`** — `array`
+
+- Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:3.decision_purpose_correction`** — `object`
+
+- Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:3.delivery_verification`** — `array`
+
+- For the specific output 'component hardening baselines', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:3.role_gate_observations`** — `array`
+
+- Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.
+- G1: No change merges without passing automated tests and peer review by someone who did not write it.
+- G2: A defect is fixed only after its root cause is established by comparing against the last known good state, a working analogue and timing factors, and a regression test reproduces it first (it-role-library/standards/defect-analysis.md).
+- G3: Verification is appropriate to the component/mechanism technology: automated tests for software, configuration/hardening/interoperability tests for platforms and products, and operational acceptance evidence where runtime behaviour matters; the applicable verification set passed after the last change.
+- G4: Secrets, credentials and personal data never appear in source, logs or fixtures.
+- G5: Every externally relied-on interface and configuration contract is documented at the appropriate level; software APIs use code-level contracts, while platform/product controls use versioned configuration and operational documentation.
+- G6: The change ships with the telemetry needed to tell whether it is working in production.
+- G7: A rollback or forward-fix path is defined and has been tried at least once for high-risk changes.
+- G8: Component selection documents what the product does not do relative to the specification
+- G9: gaps are escalated as design issues rather than quietly absorbed into configuration
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:3.contract_input_1`** — `object`
+
+- Analyse the specific input "Solution specification" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:3.contract_input_2`** — `object`
+
+- Analyse the specific input "Product capabilities and limitations" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:3.contract_input_3`** — `object`
+
+- Analyse the specific input "Existing estate and standards" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:3.contract_input_4`** — `object`
+
+- Analyse the specific input "Licensing and support constraints" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+### Conditionally required information
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:3.privacy_analysis`** — `object`
+
+Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
+
+- Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:3.regulatory_analysis`** — `object`
+
+Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
+
+- Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+### Optional information (MAY)
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:3.supporting_annex`** — `object`
+
+- Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128) (informed-by; not a verbatim standard requirement).
+
+### Prohibited content (MUST NOT)
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:3.unsupported_material_claim`** — `object`
+
+- Do not assert material conclusions without dated evidence or an explicitly labelled assumption.
+
+### Content to omit unless justified
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:3.irrelevant_detail`** — `object`
+
+- Remove material unrelated to the stated purpose, required input analysis or receiving-role action.
+
+### Proportionate scope
+
+Inherited size guidance is reproduced below. It is not evidence of substantive completeness; verbosity is not a quality measure.
+
+```json
+{
+  "semantic_units": {
+    "metric": "semantic_units",
+    "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
+    "minimum_is_quality_gate": false,
+    "calibration_status": "synthetic-only",
+    "allowance_rules": [
+      "Document complexity and audience need; excess requires review, not automatic rejection."
+    ],
+    "annex_rules": [
+      "Reference canonical detail rather than repeat it."
+    ]
+  },
+  "typed": {
+    "metric": "typed",
+    "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
+    "minimum_is_quality_gate": false,
+    "calibration_status": "synthetic-only",
+    "allowance_rules": [
+      "Document complexity and audience need; excess requires review, not automatic rejection."
+    ],
+    "annex_rules": [
+      "Reference canonical detail rather than repeat it."
+    ]
+  }
+}
+```
+
+### Professional sources and their limits
+
+- **[NIST SP 800-128, Guide for Security-Focused Configuration Management of Information Systems](https://doi.org/10.6028/NIST.SP.800-128)** — Configuration baselines, controlled changes, impact analysis and monitoring. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+
+### Role framework context
+
+- **Security Component Specialist (SABSA Tradesman's View):** SABSA component layer; CIS Benchmarks; vendor hardening guides; relevant protocol standards. Canonical role context; not proof that every listed framework applies to this output.
+
+
+<a id="output-security-component-specialist-sabsa-tradesman-s-view-4"></a>
+
+## integration and interoperability evidence
+
+**At a glance**
+
+- **Purpose:** Produce and govern the role deliverable: integration and interoperability evidence.
+- **Mandatory examples:** Identify decisions or downstream uses, accountable recipients and verifiable next actions. Provide attributable substantive findings, reasoning and limitations for the specific subject. Identify document purpose, audience, subject boundary and authoritative source versions.
+- **Conditions to resolve:** personal data are processed; an applicable regulatory requirement exists. Unknown applicability remains unresolved.
+- **Optional example:** Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Review:** assess substantive content, evidence and gaps against the full selected contract; acceptance and release remain separate.
+
+This orientation gives selected examples. The complete local and linked foundation requirements, prohibitions and evidence duties below remain applicable.
+
+**Contract ID:** `security-component-specialist-sabsa-tradesman-s-view:4`.
+
+**Required inputs:**
+
+- Solution specification
+- Product capabilities and limitations
+- Existing estate and standards
+- Licensing and support constraints
+
+**Specification:** `kind/role/security-component-specialist-sabsa-tradesman-s-view:4`; **content version:** `1.2.0`.
+
+Produce and govern the role deliverable: integration and interoperability evidence.
+
+**Status:** proposed/advisory; publication of this contract does not approve it, certify a delivered output or grant acceptance/release. MUST describes the stated JAI content obligation, not a claim that an external standard mandates it.
+
+**Also applicable:** all requirements in these linked foundations and overlays form part of this contract, subject to their explicit conditions:
+
+- [`global/invariants`](spec-global-invariants.md)
+- [`type/document`](spec-type-document.md)
+- [`domain/delivery`](spec-domain-delivery.md)
+
+Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
+
+**Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
+
+### Required information (MUST)
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:4.delivery_scope`** — `object`
+
+- Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: integration and interoperability evidence.
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:4.receiving_acceptance`** — `array`
+
+- For each receiving role (Security Engineer; Platform Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:4.contract_relations`** — `array`
+
+- Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:4.decision_purpose_correction`** — `object`
+
+- Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:4.delivery_verification`** — `array`
+
+- For the specific output 'integration and interoperability evidence', provide verifiable evidence satisfying: Chain of custody is unbroken and the set is reproducible from the record. Required delivery form: Immutable evidence set with hashes, timestamps and custody record.
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:4.role_gate_observations`** — `array`
+
+- Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.
+- G1: No change merges without passing automated tests and peer review by someone who did not write it.
+- G2: A defect is fixed only after its root cause is established by comparing against the last known good state, a working analogue and timing factors, and a regression test reproduces it first (it-role-library/standards/defect-analysis.md).
+- G3: Verification is appropriate to the component/mechanism technology: automated tests for software, configuration/hardening/interoperability tests for platforms and products, and operational acceptance evidence where runtime behaviour matters; the applicable verification set passed after the last change.
+- G4: Secrets, credentials and personal data never appear in source, logs or fixtures.
+- G5: Every externally relied-on interface and configuration contract is documented at the appropriate level; software APIs use code-level contracts, while platform/product controls use versioned configuration and operational documentation.
+- G6: The change ships with the telemetry needed to tell whether it is working in production.
+- G7: A rollback or forward-fix path is defined and has been tried at least once for high-risk changes.
+- G8: Component selection documents what the product does not do relative to the specification
+- G9: gaps are escalated as design issues rather than quietly absorbed into configuration
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:4.contract_input_1`** — `object`
+
+- Analyse the specific input "Solution specification" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:4.contract_input_2`** — `object`
+
+- Analyse the specific input "Product capabilities and limitations" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:4.contract_input_3`** — `object`
+
+- Analyse the specific input "Existing estate and standards" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:4.contract_input_4`** — `object`
+
+- Analyse the specific input "Licensing and support constraints" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+
+### Conditionally required information
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:4.privacy_analysis`** — `object`
+
+Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
+
+- Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:4.regulatory_analysis`** — `object`
+
+Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
+
+- Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+
+### Optional information (MAY)
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:4.supporting_annex`** — `object`
+
+- Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+
+### Prohibited content (MUST NOT)
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:4.unsupported_material_claim`** — `object`
+
+- Do not assert material conclusions without dated evidence or an explicitly labelled assumption.
+
+### Content to omit unless justified
+
+**`role/security-component-specialist-sabsa-tradesman-s-view:4.irrelevant_detail`** — `object`
+
+- Remove material unrelated to the stated purpose, required input analysis or receiving-role action.
+
+### Proportionate scope
+
+Inherited size guidance is reproduced below. It is not evidence of substantive completeness; verbosity is not a quality measure.
+
+```json
+{
+  "semantic_units": {
+    "metric": "semantic_units",
+    "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
+    "minimum_is_quality_gate": false,
+    "calibration_status": "synthetic-only",
+    "allowance_rules": [
+      "Document complexity and audience need; excess requires review, not automatic rejection."
+    ],
+    "annex_rules": [
+      "Reference canonical detail rather than repeat it."
+    ]
+  }
+}
+```
+
+### Professional sources and their limits
+
+- **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+
+### Role framework context
+
+- **Security Component Specialist (SABSA Tradesman's View):** SABSA component layer; CIS Benchmarks; vendor hardening guides; relevant protocol standards. Canonical role context; not proof that every listed framework applies to this output.
+<!-- JAI:OUTPUT-CONTRACTS:END -->

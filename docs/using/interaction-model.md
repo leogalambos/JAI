@@ -1,6 +1,5 @@
 # Interaction patterns
 
-Owner: JAI maintainers · Last reviewed: 2026-10-16
 
 AI IT House exposes several working modes because not every task needs the same assurance intensity.
 
@@ -99,11 +98,15 @@ Follow the complete operating flow, including where automatic enforcement ends.
 
 ## Current operator boundary
 
-For 26.10.14 {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
+Use the [operator walkthrough](../operations/operator-walkthrough.md) for its
+explicit human-only procedures and the
+[layered delivery](layered-engagement.md) for ordinary startup.
 Native provider approval is not Fabric L0; external Ed25519 receipts require
-protected trust and matching state. Actual Office QA is OPERATOR_ASSISTED;
+protected trust and matching state. Actual Office QA uses route A when a working native Office renderer is available
+within the permitted environment, or route C through the operator when required;
 WeasyPrint HTML/PDF does not inspect Office bytes. Privileged worker/API
-mutation is NOT_SUPPORTED; optional host confinement is NOT_VERIFIED.
+deployment is separate from the native Gen2 workflow; unobserved physical
+confinement remains unverified rather than being inferred from tool declarations.
 
 ## Local QA and human intervention
 

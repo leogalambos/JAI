@@ -2,14 +2,14 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/product-designer:3",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/prototype",
+    "type/document",
     "domain/delivery"
   ],
   "applies_to": {
@@ -196,7 +196,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'research-backed design rationale', provide verifiable evidence satisfying: Loading, empty, partial, error, offline and success states are all specified. Required delivery form: Prototype plus annotated specification of all states.",
+        "For the specific output 'research-backed design rationale', provide verifiable evidence satisfying: Links design choices and rejected alternatives to attributable user research, assumptions and validation limits. Required delivery form: Research-backed design rationale.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -211,7 +211,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'research-backed design rationale', provide verifiable evidence satisfying: Loading, empty, partial, error, offline and success states are all specified. Required delivery form: Prototype plus annotated specification of all states.",
+        "reason": "For the specific output 'research-backed design rationale', provide verifiable evidence satisfying: Links design choices and rejected alternatives to attributable user research, assumptions and validation limits. Required delivery form: Research-backed design rationale.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:3",
           "content/types/prototype.yaml"
@@ -224,8 +224,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "research-backed design rationale",
-        "format": "Prototype plus annotated specification of all states",
-        "acceptance_criterion": "Loading, empty, partial, error, offline and success states are all specified",
+        "format": "Research-backed design rationale",
+        "acceptance_criterion": "Links design choices and rejected alternatives to attributable user research, assumptions and validation limits",
         "role_path": "skills/it-roles-design-and-user-experience/references/product-designer.md"
       }
     },
@@ -665,7 +665,7 @@
     }
   ],
   "size_budget": {
-    "metric": "typed",
+    "metric": "semantic_units",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -684,6 +684,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Product Designer",
+        "frameworks": [
+          "ISO 9241-210",
+          "WCAG 2.2 AA",
+          "design system governance"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -709,13 +730,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -734,12 +756,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/document",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "prototype",
+  "semantic_family": "document",
   "role_overlay": {
     "contract_id": "product-designer:3",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -748,8 +772,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "product-designer:3",
-    "source_fingerprint": "3e74c1dbc78c5e3a93962454d2b994e15ea7b1bdbe519c901d3874bb11ce55e4",
-    "source_hash": "03005b0f93bf996fb275fb46e0a61e9e5d381c50e7b67fa73362c093c8436651"
+    "source_fingerprint": "c20da5cebc24679c947871ee5abac2792224d3a2a8d4663cbb0e3c69d7d71e7e",
+    "source_hash": "45b38dba9997be04a8ba1306e8868245221dd2489d7a76c4e898dbaccb110ed5"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

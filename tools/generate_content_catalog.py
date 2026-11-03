@@ -17,7 +17,11 @@ from content_reference_definitions import REFERENCE_KINDS, REFERENCE_ROLE_LINKS,
 from content_catalog_definitions import (TYPE_REQUIREMENTS, DOMAIN_REQUIREMENTS,
     TYPE_DOMAINS, SABSA_REQUIREMENTS, ARCHETYPE_REQUIREMENTS,
     SEMANTIC_FAMILIES, SEMANTIC_REFINEMENTS, ADDITIONAL_FAMILIES,
-    REFINED_PURPOSE_ACTIONS, CONTRACT_PURPOSE_ACTIONS)
+    REFINED_PURPOSE_ACTIONS, CONTRACT_PURPOSE_ACTIONS,
+    PROFESSIONAL_REFERENCES, TYPE_PROFESSIONAL_REFERENCES,
+    FAMILY_PROFESSIONAL_REFERENCES, TYPE_ACCEPTANCE_DETAILS,
+    FAMILY_ACCEPTANCE_DETAILS, CONTRACT_CONTENT_REQUIREMENTS,
+    CONTRACT_PROFESSIONAL_REFERENCES)
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / '.ai/runtime'
@@ -99,7 +103,7 @@ FAMILIES = {
  ('test_conclusion','object','Compare achieved coverage with exit criteria and explain limitations and residual release risk.')],
 }
 DECISIONS = {
- 'decision-paper':'Choose an application platform and rationalisation option against explicit evaluation criteria.',
+ 'decision-paper':'Choose, defer or reject a bounded course of action against explicit evaluation criteria, alternatives, evidence and consequences.',
  'adr':'Accept or reject an architectural design choice and its documented consequences.',
  'business-case':'Approve, defer or reject the proposed technology investment and benefit accountability.',
  'risk-assessment':'Select treatments and decide whether residual change risks are acceptable.',
@@ -144,7 +148,7 @@ def spec(identifier, category, purpose, completeness='skeleton', inherits=None):
     completeness marks authored coverage and inherits lists parent IDs.
     Defaults deliberately preserve proposed status and pending human approval.
     """
-    return {'license':'SPDX-License-Identifier: BSD-4-Clause','copyright':'Copyright (c) 2026 Leo Galambos and the Egothor team','id':identifier,'version':'1.1.0','owner':'Content Standards Owner','status':'proposed',
+    return {'license':'SPDX-License-Identifier: BSD-4-Clause','copyright':'Copyright (c) 2026 Leo Galambos and the Egothor team','id':identifier,'version':'1.2.0','owner':'Content Standards Owner','status':'proposed',
       'effective_from':None,'category':category,'completeness':completeness,'inherits':inherits or [],
       'applies_to':{},'purpose':purpose,'target_audience':['competent independent domain reviewer'],
       'decisions_supported':[],'intended_usage':'Advisory content contract; professional approval pending',
@@ -155,7 +159,7 @@ def spec(identifier, category, purpose, completeness='skeleton', inherits=None):
       'sources':{'evidence_grade':'AI-derived proposal','provenance':['Approved implementation direction; content specifics remain proposed.'],'freshness':'review on source or policy change','claim_to_evidence_rules':['Material claims reference dated, versioned evidence or explicit uncertainty.']},
       'overlap':{'excluded_content':['Unrelated material'],'deduplication_rules':['Reference canonical claims by stable ID.'],'canonical_reference_rules':['Preserve source version and hash.']},
       'runtime':{'validators':['content_spec.py lint-registry'],'judge_rubric':['Evaluate actual meaning, applicability, evidence and contradictions.'],'gate':'advisory','reviewer_class':'independent competent domain reviewer','waiver_policy':'Existing JAI L0 authority only; no legal/security bypass.'},
-      'lifecycle':{'effective_version':'1.1.0','deprecation':None,'migration':'26.10.5 explicit sidecar binding','golden_case_refs':[],'change_history':['Initial proposed foundation; no professional approval asserted.']},
+      'lifecycle':{'effective_version':'1.2.0','deprecation':None,'migration':'26.10.5 explicit sidecar binding','golden_case_refs':[],'change_history':['Initial proposed foundation; no professional approval asserted.']},
       'jai':{'L1':'purpose, audience and decision_supported','L2':'typed semantic information units','L3':'global invariants, precedence and acceptance','L4':'content blueprint and profile reference','L5':'canonical artifact source; existing producer','L6':'evidence and independent review; existing fabric authority references','L0':'Human professional approval through existing JAI authority acts; never AI self-approval'},
       'approval':{'status':'pending','authority_ref':None,'independent_of_author':True,'mechanism':'Existing JAI L0 / fabric authority process'},'calibration_status':'synthetic-only'}
 
@@ -211,7 +215,9 @@ def contract_units(contract, kind, source):
     jai=contract['jai'];cid=contract['id']
     result=[unit(kind,'delivery_scope','object',f"Identify the subject entities, boundaries, outcomes and versioned sources for: {jai['intent']['purpose']}"),unit(kind,'receiving_acceptance','array',f"For each receiving role ({'; '.join(jai['intent']['audience'])}), identify the concrete downstream use, requested action, acceptance measure and accountable recipient."),unit(kind,'contract_relations','array',f"Identify actual entity IDs and relationship instances for: {'; '.join(jai['semantics']['required_relations'])}."),unit(kind,'decision_purpose_correction','object','Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.')]
     delivery=source['deliverable']
-    verification=unit(kind,'delivery_verification','array',f"For the specific output '{delivery['name']}', provide verifiable evidence satisfying: {delivery['acceptance_criterion']}. Required delivery form: {delivery['format']}.")
+    acceptance = delivery['acceptance_criterion'].rstrip().rstrip('.')
+    delivery_form = delivery['format'].rstrip().rstrip('.')
+    verification=unit(kind,'delivery_verification','array',f"For the specific output '{delivery['name']}', provide verifiable evidence satisfying: {acceptance}. Required delivery form: {delivery_form}.")
     verification['source_deliverable']={'name':delivery['name'],'format':delivery['format'],'acceptance_criterion':delivery['acceptance_criterion'],'role_path':source['role']['path']}
     gate=unit(kind,'role_gate_observations','array','Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.')
     gate['acceptance_criteria'] += [row['id']+': '+row['criterion'] for row in source['gates']]
@@ -221,6 +227,8 @@ def contract_units(contract, kind, source):
         item=unit(kind,f'contract_input_{index}','object',f'Analyse the specific input "{input_name}" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.')
         item['source_input']={'contract_id':cid,'json_pointer':f'/jai/semantics/required_inputs/{index-1}','value':input_name}
         result.append(item)
+    for entry in CONTRACT_CONTENT_REQUIREMENTS.get(cid, []):
+        result.append(unit(kind, *entry))
     for item in result:
         item['rationale']['source_refs']=[f'artifacts/contracts/role-deliverables.v3.json#{cid}', 'content/types/'+jai['semantics']['artifact_type']+'.yaml']
     return result
@@ -305,10 +313,83 @@ def validate_reference_bindings(document, specifications, contract_ids):
             raise ValueError(f'REFERENCE_BINDING_DEFAULT_INVALID: {cid}')
 
 
+
+def enrich_professional_guidance(files, roles, bindings):
+    """Attach scoped professional sources and sharpen existing acceptance units.
+
+    Args:
+        files: Generated specification objects keyed by destination path.
+        roles: Canonical role declarations with exact professional frameworks.
+        bindings: Explicit role-contract to specification mappings.
+    Returns:
+        None; updates only the supplied proposed specifications, preserving IDs,
+        approval status, semantic fields and executable validation boundaries.
+    Raises:
+        KeyError: An authored family/source assignment names an unknown record.
+        ValueError: A type/family acceptance list does not match its existing units.
+    """
+    role_index = {role['slug']: role for role in roles}
+    by_spec = {}
+    for binding in bindings:
+        by_spec.setdefault(binding['content_spec_ref'], []).append(binding)
+    for value in files.values():
+        if 'required_information' not in value:
+            continue
+        identifier = value['id']
+        namespace, name = identifier.split('/', 1)
+        details = None
+        start = 0
+        if namespace == 'type':
+            reference_ids = TYPE_PROFESSIONAL_REFERENCES[name]
+            details = TYPE_ACCEPTANCE_DETAILS[name]
+            start = 1  # The identity unit precedes the three modality units.
+        elif namespace == 'family':
+            reference_ids = FAMILY_PROFESSIONAL_REFERENCES[name]
+            details = FAMILY_ACCEPTANCE_DETAILS[name]
+        else:
+            role_bindings = by_spec.get(identifier, [])
+            family = value.get('semantic_family', name)
+            if role_bindings:
+                family = role_bindings[0]['semantic_family']
+            reference_ids = FAMILY_PROFESSIONAL_REFERENCES.get(
+                family, TYPE_PROFESSIONAL_REFERENCES.get(family, ['jai-practice']))
+        exact_ids = [binding['artifact_id'] for binding in by_spec.get(identifier, [])]
+        for contract_id in exact_ids:
+            reference_ids = list(dict.fromkeys(reference_ids +
+                CONTRACT_PROFESSIONAL_REFERENCES.get(contract_id, [])))
+        references = []
+        for reference_id in reference_ids:
+            source = PROFESSIONAL_REFERENCES[reference_id]
+            references.append({'id': reference_id, **source,
+                'basis': 'jai-practice' if reference_id == 'jai-practice' else 'informed-by',
+                'limits': 'JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.'})
+        value['sources']['professional_references'] = references
+        role_bindings = by_spec.get(identifier, [])
+        if role_bindings:
+            value['sources']['role_framework_context'] = [
+                {'role': role_index[binding['artifact_id'].rsplit(':', 1)[0]]['name'],
+                 'frameworks': role_index[binding['artifact_id'].rsplit(':', 1)[0]]['reference_frameworks'],
+                 'basis': 'Canonical role context; not proof that every listed framework applies to this output.'}
+                for binding in role_bindings]
+        if details is not None:
+            selected = value['required_information'][start:]
+            if len(selected) != len(details):
+                raise ValueError('Acceptance refinement does not match ' + identifier)
+            for item, detail in zip(selected, details):
+                item['acceptance_criteria'].append(detail)
+        for category in ('required_information', 'conditional_information', 'optional_information'):
+            for item in value[category]:
+                for reference in references:
+                    if reference['url'] and reference['url'] not in item['rationale']['source_refs']:
+                        item['rationale']['source_refs'].append(reference['url'])
+        value['lifecycle']['change_history'].append(
+            '26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate.')
+
+
 def build():
     """Return every reproducible catalogue file without mutating canonical contracts."""
     files={}
-    registry={'schema_version':'1.0.0','version':'26.10.10','status':'proposed','calibration_status':'synthetic-only','specifications':[],
+    registry={'schema_version':'1.0.0','version':'26.11.0','status':'proposed','calibration_status':'synthetic-only','specifications':[],
       'document_kinds':[],'mappings':{'artifact_types':{},'archetypes':{},'sabsa_views':{},'domains':{}},
       'context_fields':{'processes_personal_data':{'type':'boolean'},'regulatory_requirement':{'type':'boolean'}},
       'priority_document_kinds':list(FAMILIES),'binding_map_ref':'migrations/26.10.5-binding-map.json'}
@@ -379,7 +460,11 @@ def build():
         proposed=decision_mapping(c,live[cid],DECISIONS.get(kind))
         if cid not in BINDINGS:
             foundation=family_records[family]['spec_ref'] if cid in SEMANTIC_REFINEMENTS else 'type/'+legacy
-            value=spec('kind/'+kind,'document_kind',c['jai']['intent']['purpose'],'complete',inherits=[foundation,'domain/'+TYPE_DOMAINS[legacy]])
+            # A compatibility modality cannot reintroduce an unrelated domain
+            # after the exact semantic foundation has been corrected.
+            semantic_type = next((key for key, target in SEMANTIC_FAMILIES.items() if target == family), None)
+            domain = TYPE_DOMAINS[semantic_type] if semantic_type else 'testing' if family == 'automated-tests' else 'delivery'
+            value=spec('kind/'+kind,'document_kind',c['jai']['intent']['purpose'],'complete',inherits=[foundation,'domain/'+domain])
             if cid in SEMANTIC_REFINEMENTS:
                 value['semantic_foundation_ref']=foundation
                 value['semantic_foundation_basis']='Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.'
@@ -469,6 +554,7 @@ def build():
         if name=='risk-treatment-plan':
             value['inherits']=['kind/risk-assessment','domain/security']
         registry['mappings']['sabsa_views'][name]=value['id'];add(value,f'sabsa/{name}.yaml')
+    enrich_professional_guidance(files, roles, bindings)
     files[CONTENT/'registry.json']=registry
     validate_reference_bindings(files[CONTENT/'expert-reference-bindings.json'],{value['id']:value for value in files.values() if 'id' in value},{row['id'] for row in contracts})
     return files

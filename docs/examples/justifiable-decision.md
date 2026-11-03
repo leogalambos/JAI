@@ -1,6 +1,5 @@
 # Make a consequential decision with traceability
 
-Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
 ACME Utilities must choose how to replace an ageing field-service
 application. Alice is the business sponsor, Bob owns operations and John

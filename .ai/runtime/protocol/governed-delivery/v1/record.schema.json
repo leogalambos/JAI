@@ -1,0 +1,1111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Closed source, profile, assignment, context, product and assessment records",
+  "$defs": {
+    "source": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "oneOf": [
+            {
+              "$ref": "common.schema.json#/$defs/ownership"
+            },
+            {
+              "$ref": "common.schema.json#/$defs/authority"
+            }
+          ]
+        },
+        "source_role": {
+          "enum": [
+            "input",
+            "criteria",
+            "policy",
+            "assumption"
+          ]
+        },
+        "origin": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "material": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "criteria": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/criterion"
+          }
+        },
+        "inherited": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "owner",
+        "source_role",
+        "origin",
+        "material",
+        "criteria",
+        "inherited"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "source_role": {
+                "const": "criteria"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "criteria": {
+                "minItems": 1
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "criteria": {
+                "maxItems": 0
+              }
+            }
+          }
+        }
+      ]
+    },
+    "profile": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "oneOf": [
+            {
+              "$ref": "common.schema.json#/$defs/authority"
+            },
+            {
+              "$ref": "common.schema.json#/$defs/controller"
+            }
+          ]
+        },
+        "profile_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "source_profiles": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        },
+        "obligations": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/obligation"
+          }
+        },
+        "max_clock_skew_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "max_request_duration_ms": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "authority_policy_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "routing_policy_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scheduling": {
+          "type": "object",
+          "properties": {
+            "collection_window_ms": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            "control_limits": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/budget_limit"
+              },
+              "uniqueItems": true
+            },
+            "max_search_steps": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "max_escalation_rounds": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "initial_deadline_ms": {
+              "anyOf": [
+                {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 9007199254740991
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "collection_window_ms",
+            "control_limits",
+            "max_search_steps",
+            "max_escalation_rounds",
+            "initial_deadline_ms"
+          ],
+          "additionalProperties": false
+        },
+        "content_profile": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "logical_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "use_scope": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "logical_id",
+                "use_scope"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "local_budget": {
+          "type": "object",
+          "properties": {
+            "iteration_ms": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 9007199254740991
+            },
+            "max_reworks": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "iteration_ms",
+            "max_reworks"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "owner",
+        "profile_id",
+        "protocol",
+        "source_profiles",
+        "obligations",
+        "max_clock_skew_ms",
+        "max_request_duration_ms",
+        "authority_policy_id",
+        "routing_policy_id",
+        "scheduling",
+        "content_profile",
+        "local_budget"
+      ],
+      "additionalProperties": false
+    },
+    "assignment": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "$ref": "common.schema.json#/$defs/ownership"
+        },
+        "responsibility": {
+          "enum": [
+            "setter",
+            "author",
+            "reviewer",
+            "integrator",
+            "integration_reviewer",
+            "receiver",
+            "measurement"
+          ]
+        },
+        "assigned_actor": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "inherited": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/binding"
+          }
+        },
+        "criteria": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/effect_grant"
+          }
+        },
+        "limits": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/budget_limit"
+          }
+        },
+        "deadline_ms": {
+          "anyOf": [
+            {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "use_scope": {
+          "$ref": "common.schema.json#/$defs/key"
+        },
+        "issued_under": {
+          "oneOf": [
+            {
+              "$ref": "common.schema.json#/$defs/reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "input_uses": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/prerequisite_use"
+          },
+          "uniqueItems": true
+        },
+        "routing": {
+          "type": "object",
+          "properties": {
+            "policy": {
+              "$ref": "common.schema.json#/$defs/reference"
+            }
+          },
+          "required": [
+            "policy"
+          ],
+          "additionalProperties": false
+        },
+        "handling": {
+          "type": "object",
+          "properties": {
+            "episode": {
+              "$ref": "common.schema.json#/$defs/reference"
+            },
+            "package": {
+              "$ref": "common.schema.json#/$defs/reference"
+            },
+            "task": {
+              "enum": [
+                "collect",
+                "relay",
+                "resolve",
+                "reconcile"
+              ]
+            }
+          },
+          "required": [
+            "episode",
+            "package",
+            "task"
+          ],
+          "additionalProperties": false
+        },
+        "procedure_task": {
+          "type": "object",
+          "properties": {
+            "procedure": {
+              "$ref": "common.schema.json#/$defs/reference"
+            },
+            "path": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "procedure",
+            "path"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "owner",
+        "responsibility",
+        "assigned_actor",
+        "profile",
+        "inherited",
+        "inputs",
+        "criteria",
+        "effects",
+        "limits",
+        "deadline_ms",
+        "use_scope",
+        "issued_under",
+        "input_uses",
+        "routing"
+      ],
+      "additionalProperties": false
+    },
+    "context": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "oneOf": [
+            {
+              "$ref": "common.schema.json#/$defs/ownership"
+            },
+            {
+              "$ref": "common.schema.json#/$defs/controller"
+            }
+          ]
+        },
+        "assignment": {
+          "anyOf": [
+            {
+              "$ref": "common.schema.json#/$defs/reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "purpose": {
+          "enum": [
+            "setter",
+            "author",
+            "reviewer",
+            "integrator",
+            "integration_reviewer",
+            "receiver",
+            "measurement",
+            "controller"
+          ]
+        },
+        "run_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "issued_to": {
+          "type": "string",
+          "minLength": 1
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/binding"
+          }
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/effect_grant"
+          }
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "execution": {
+          "oneOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "object",
+              "properties": {
+                "phase": {
+                  "const": "selection"
+                }
+              },
+              "required": [
+                "phase"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "phase": {
+                  "const": "work"
+                },
+                "selection": {
+                  "$ref": "common.schema.json#/$defs/reference"
+                }
+              },
+              "required": [
+                "phase",
+                "selection"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        },
+        "speculation": {
+          "anyOf": [
+            {
+              "$ref": "common.schema.json#/$defs/reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "ready_basis": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "minItems": 0
+        }
+      },
+      "required": [
+        "owner",
+        "assignment",
+        "profile",
+        "purpose",
+        "run_id",
+        "issued_to",
+        "inputs",
+        "attachments",
+        "effects",
+        "expires_at_ms",
+        "execution",
+        "speculation",
+        "ready_basis"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "purpose": {
+                "const": "controller"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "assignment": {
+                "type": "null"
+              },
+              "owner": {
+                "$ref": "common.schema.json#/$defs/controller"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "assignment": {
+                "$ref": "common.schema.json#/$defs/reference"
+              },
+              "owner": {
+                "$ref": "common.schema.json#/$defs/ownership"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "product": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "$ref": "common.schema.json#/$defs/ownership"
+        },
+        "product_kind": {
+          "enum": [
+            "answer",
+            "observation",
+            "bundle",
+            "handoff",
+            "escalation",
+            "final_result",
+            "finding"
+          ]
+        },
+        "assignment": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/binding"
+          }
+        },
+        "material": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true,
+          "description": "References to additional observation products that must be qualified before use. Do not cite request, criteria, assignment or other source records here. Ordinary document-derived work uses []; its input and criteria provenance is already bound by the host. Source citations may remain in the actual material."
+        },
+        "related": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/binding"
+          }
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "episode": {
+          "type": "object",
+          "properties": {
+            "root": {
+              "anyOf": [
+                {
+                  "$ref": "common.schema.json#/$defs/reference"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "previous": {
+              "anyOf": [
+                {
+                  "$ref": "common.schema.json#/$defs/reference"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            },
+            "collection_head": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            "unfinished": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/reference"
+              },
+              "uniqueItems": true,
+              "minItems": 0
+            },
+            "decisive": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "root",
+            "previous",
+            "collection_head",
+            "unfinished",
+            "decisive"
+          ],
+          "additionalProperties": false
+        },
+        "outcome": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "verified_candidate",
+                "demonstrated_contradiction",
+                "insufficient_information",
+                "search_exhausted",
+                "human_termination"
+              ]
+            },
+            "attempt": {
+              "$ref": "common.schema.json#/$defs/reference"
+            },
+            "evidence": {
+              "type": "array",
+              "items": {
+                "$ref": "common.schema.json#/$defs/reference"
+              },
+              "uniqueItems": true,
+              "minItems": 0,
+              "description": "References to additional observation products that must be qualified before use. Do not cite request, criteria, assignment or other source records here. Ordinary document-derived work uses []; its input and criteria provenance is already bound by the host. Source citations may remain in the actual material."
+            }
+          },
+          "required": [
+            "kind",
+            "attempt",
+            "evidence"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "owner",
+        "product_kind",
+        "assignment",
+        "profile",
+        "inputs",
+        "material",
+        "evidence",
+        "related",
+        "limitations"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "product_kind": {
+                "const": "finding"
+              }
+            },
+            "required": [
+              "product_kind"
+            ]
+          },
+          "then": {
+            "properties": {
+              "related": {
+                "type": "array",
+                "items": {
+                  "$ref": "common.schema.json#/$defs/binding"
+                },
+                "minItems": 2,
+                "maxItems": 2,
+                "allOf": [
+                  {
+                    "contains": {
+                      "type": "object",
+                      "properties": {
+                        "slot_id": {
+                          "const": "subject"
+                        },
+                        "refs": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "common.schema.json#/$defs/reference"
+                          },
+                          "minItems": 1,
+                          "maxItems": 1
+                        }
+                      },
+                      "required": [
+                        "slot_id",
+                        "refs"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  },
+                  {
+                    "contains": {
+                      "type": "object",
+                      "properties": {
+                        "slot_id": {
+                          "type": "string",
+                          "pattern": "^criterion:.+$"
+                        },
+                        "refs": {
+                          "type": "array",
+                          "items": {
+                            "$ref": "common.schema.json#/$defs/reference"
+                          },
+                          "minItems": 1,
+                          "maxItems": 1
+                        }
+                      },
+                      "required": [
+                        "slot_id",
+                        "refs"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "minContains": 1,
+                    "maxContains": 1
+                  }
+                ]
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "product_kind": {
+                "const": "escalation"
+              }
+            },
+            "required": [
+              "product_kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "episode"
+            ]
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "product_kind": {
+                "const": "final_result"
+              }
+            },
+            "required": [
+              "product_kind"
+            ]
+          },
+          "then": {
+            "required": [
+              "outcome"
+            ]
+          }
+        }
+      ]
+    },
+    "assessment": {
+      "type": "object",
+      "properties": {
+        "owner": {
+          "$ref": "common.schema.json#/$defs/ownership"
+        },
+        "assessment_kind": {
+          "enum": [
+            "professional",
+            "integration",
+            "receiving"
+          ]
+        },
+        "assignment": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "subject": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "criteria": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "assessed_closure": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/use_point"
+          },
+          "uniqueItems": true
+        },
+        "assessed_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "verdict": {
+          "enum": [
+            "supported",
+            "supported_with_conditions",
+            "rework_required",
+            "blocked",
+            "accepted",
+            "information_required",
+            "change_required"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "owner",
+        "assessment_kind",
+        "assignment",
+        "subject",
+        "criteria",
+        "profile",
+        "assessed_closure",
+        "assessed_hash",
+        "verdict",
+        "findings",
+        "conditions"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "assessment_kind": {
+                "const": "receiving"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "verdict": {
+                "enum": [
+                  "accepted",
+                  "information_required",
+                  "change_required"
+                ]
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "verdict": {
+                "enum": [
+                  "supported",
+                  "supported_with_conditions",
+                  "rework_required",
+                  "blocked"
+                ]
+              }
+            }
+          }
+        }
+      ]
+    },
+    "proposal": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "logical_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "record_type": {
+              "const": "source"
+            },
+            "record": {
+              "$ref": "record.schema.json#/$defs/source"
+            }
+          },
+          "required": [
+            "logical_id",
+            "record_type",
+            "record"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "logical_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "record_type": {
+              "const": "profile"
+            },
+            "record": {
+              "$ref": "record.schema.json#/$defs/profile"
+            }
+          },
+          "required": [
+            "logical_id",
+            "record_type",
+            "record"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "logical_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "record_type": {
+              "const": "assignment"
+            },
+            "record": {
+              "$ref": "record.schema.json#/$defs/assignment"
+            }
+          },
+          "required": [
+            "logical_id",
+            "record_type",
+            "record"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "logical_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "record_type": {
+              "const": "context"
+            },
+            "record": {
+              "$ref": "record.schema.json#/$defs/context"
+            }
+          },
+          "required": [
+            "logical_id",
+            "record_type",
+            "record"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "logical_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "record_type": {
+              "const": "product"
+            },
+            "record": {
+              "$ref": "record.schema.json#/$defs/product"
+            }
+          },
+          "required": [
+            "logical_id",
+            "record_type",
+            "record"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "logical_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "record_type": {
+              "const": "assessment"
+            },
+            "record": {
+              "$ref": "record.schema.json#/$defs/assessment"
+            }
+          },
+          "required": [
+            "logical_id",
+            "record_type",
+            "record"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  },
+  "oneOf": [
+    {
+      "$ref": "#/$defs/source"
+    },
+    {
+      "$ref": "#/$defs/profile"
+    },
+    {
+      "$ref": "#/$defs/assignment"
+    },
+    {
+      "$ref": "#/$defs/context"
+    },
+    {
+      "$ref": "#/$defs/product"
+    },
+    {
+      "$ref": "#/$defs/assessment"
+    }
+  ]
+}

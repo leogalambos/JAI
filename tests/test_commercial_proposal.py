@@ -298,15 +298,14 @@ def test_existing_credential_blocker_prevents_any_draft_files(tmp_path):
     assert not target.exists()
 
 
-def test_existing_trusted_host_can_project_exact_draft_without_granting_authority(prepared,tmp_path):
-    from test_commercial_core import complete_snapshot
-    from test_content_lint import authenticated_dispatcher_review
-    from content_spec import ContentSpec
+def test_existing_trusted_host_can_project_exact_draft_without_granting_authority(prepared,tmp_path,monkeypatch):
+    from test_governed_domain import _commercial_fixture, _qualified
+    import governed_domain
     import commercial_core as core
     directory,_ = prepared
     data = fixture()
     markdown = (directory/'client-proposal.md').read_text()
-    snapshot, trusted = complete_snapshot()
+    host, snapshot, _, existing = _commercial_fixture(tmp_path,monkeypatch)
     publication = next(entity for entity in snapshot['entities'] if entity['version_id']=='publication@1')
     publication['classification'] = 'client-contract'
     publication['data'].update({field:'Synthetic contractual disclosure; no real authority or deployment claim.' for field in core.MANDATORY})
@@ -315,18 +314,19 @@ def test_existing_trusted_host_can_project_exact_draft_without_granting_authorit
               'surfaces':['json-payload'],'fields':{'Publication':[*sorted(core.MANDATORY),'proposal_markdown']}}
     data['canonical_snapshot'],data['disclosure_policy'] = snapshot,policy
     staged = tmp_path/'source'
-    proposal.prepare_package(data,staged,ROOT)
-    model = json.loads((staged/'client-proposal.semantic.json').read_text())
-    spec = ContentSpec(ROOT).resolve(model['contract_id'],model['context'])
-    signed,review,dispatcher = authenticated_dispatcher_review(model,spec)
-    # Existing commercial fixture models a trusted host boundary only; it is not
-    # evidence of live isolation, professional human acceptance or JAI L0 action.
-    callbacks = {'identity_verifier':trusted.get,
-                 'fabric_resolver':lambda contract,graph: contract['data']['layer'] in range(1,7),
-                 'enforcement_verifier':lambda control,record: True}
-    assert core.readiness(snapshot,**callbacks)['ready']
+    # Capture the actual prepared component; provenance cannot be added to a
+    # different source after its governed admission.
+    def component(_, token, manifest):
+        data['documents']['client-proposal']['producer'] = {'attestation':token,'context_manifest':manifest}
+        proposal.prepare_package(data,staged,ROOT)
+        return json.loads((staged/'client-proposal.semantic.json').read_text())
+    subject, token, model, _, review = _qualified(host,'commercial-draft',model_factory=component,question='why')
+    assert model['producer']['attestation'] == token
+    adapter = governed_domain.GovernedDomain(host.store,[*existing.producers,{'ref':subject,'use_scope':host.scope}])
+    with adapter.action():
+        assert core.readiness(snapshot,**adapter.commercial_callbacks())['ready']
     result = proposal.publication_handoff(staged/'proposal-package.json','client-proposal',tmp_path/'projection',ROOT,
-        reviewer=review,trusted_executions=dispatcher.verify,readiness_verifiers=callbacks,producer=signed['producer'])
+        reviewer=review,governed=adapter)
     assert result['status'] == 'DRAFT_PROJECTED',result
     assert (tmp_path/'projection/projection-manifest.json').is_file()
     assert not result['authority_granted'] and not result['release_ready']

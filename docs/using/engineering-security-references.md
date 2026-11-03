@@ -1,6 +1,5 @@
 # Engineering and security references
 
-Owner: JAI maintainers · Last reviewed: 2026-10-20
 
 Library v2.3.0 contains 135 English synthetic examples, including 39 across
 13 engineering, transformation and security families. Each family has
@@ -9,7 +8,7 @@ AI editorial decision/evidence supplements; stable identities and production
 commands remain unchanged. These examples are authoring inputs, not a second semantic record,
 security assessment, release approval or record of executed tests.
 
-See [editorial review status](../validation/expert-reference-review.md) for
+See [review and release readiness](../operations/validation.md) for
 the scope of the three review lenses. They do not replace the professional
 review rubric below or existing human authority.
 
@@ -125,6 +124,6 @@ Run local structural and integrity validation with:
 python3 .ai/runtime/tools/expert_references.py validate --root . --all
 ```
 
-Mandatory [offline qualification](../validation/offline-content-qualification.md)
+Mandatory [content and governed views](../architecture/governed-sabsa-content.md)
 uses fixtures and mocks, without live LLMs. Obtain optional competent feedback
-using the [engineering and security review rubric](../validation/engineering-security-review.md).
+using the [review and release readiness](../operations/validation.md).

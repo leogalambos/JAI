@@ -1,0 +1,68 @@
+{
+  "protocol": "jai.governed-delivery/1",
+  "message_type": "review",
+  "message_id": "c08ebfeb7d476584e3f924a83ccd1ab2e89caa491e4ec67f8007b3c80c8c0df1",
+  "request_id": "request-review",
+  "correlation_id": "question-service-controls",
+  "engagement": "synthetic-protocol",
+  "scope": "default",
+  "sender": {
+    "kind": "assignment",
+    "ref": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "author-assignment",
+      "version_id": "1870591329732c4cdd7c57d9f45bf9cf132d728ca1fed89d25570d7d8879a622"
+    }
+  },
+  "recipient": {
+    "kind": "controller",
+    "id": "trusted-controller"
+  },
+  "context": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "author-context",
+    "version_id": "29fe898b447be535d3a3bec50aaec15039fb96c4edee43d3a1adf488f9c9f42f"
+  },
+  "profile": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "profile",
+    "version_id": "b0519b9fbd91854cbe44a508a24434902d4296b100862b3f0acc5374550990ef"
+  },
+  "expected_head": "0379d6138bfe05e3382401e0af27527da375e9eaab21d9f744a4b333647120af",
+  "issued_at_ms": 1000,
+  "expires_at_ms": 8000,
+  "causes": [],
+  "attachments": [],
+  "payload": {
+    "assignment": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "reviewer-assignment",
+      "version_id": "a88637ec46aa3a02dfa9047d07ed7f2ae77b9c1a985fabb57b1e8deeb1f00371"
+    },
+    "assessment": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "professional-assessment-A",
+      "version_id": "c0a9632cd595e9fea689e64901e3dee594a1f9dea3301341dcd9d18b452e9554"
+    },
+    "subject": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "candidate-A",
+      "version_id": "afd1cb19ba756d70d355f71e0047a0518ece554d525734137920aa9f4bdcf2c6"
+    },
+    "criteria": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "criteria",
+      "version_id": "c7a744ce9482a3ff9901d128f8aa6a51da67eb82a4108276aad95897a2b51619"
+    },
+    "verdict": "supported",
+    "findings": [],
+    "conditions": []
+  }
+}

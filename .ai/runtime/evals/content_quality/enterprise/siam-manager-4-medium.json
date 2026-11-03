@@ -233,7 +233,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Multi-supplier service assurance report', provide verifiable evidence satisfying: The report distinguishes individual supplier performance from end-to-end service performance and assigns systemic remediation owners.. Required delivery form: Assurance report covering service performance, handoff defects, supplier interactions, systemic issues and remediation.",
+        "criterion_under_review": "For the specific output 'Multi-supplier service assurance report', provide verifiable evidence satisfying: The report distinguishes individual supplier performance from end-to-end service performance and assigns systemic remediation owners. Required delivery form: Assurance report covering service performance, handoff defects, supplier interactions, systemic issues and remediation.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

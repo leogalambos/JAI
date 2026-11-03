@@ -222,6 +222,61 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
+    "dispute_disposition": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-DISPUTE-DISPOSITION",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Record positions, negotiation/decision status, authorised settlement or remedy where actually agreed, outstanding actions, implementation evidence and closure conditions; a recommendation is not an executed settlement.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "dispute_factual_record": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-DISPUTE-FACTUAL-RECORD",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Identify dispute/claim ID, parties, operative contract/clause and relevant governing-law reference, asserted event, dated chronology, evidence, amounts/remedies claimed and disputed versus agreed facts.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "notice_remedy_control": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-NOTICE-REMEDY-CONTROL",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Record applicable contractual notice/cure/escalation deadlines, required delivery method, notices actually issued, rights reserved, proposed remedies and accountable commercial/legal owners; do not fabricate authority or a legal entitlement.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
     "receiving_acceptance": [
       {
         "element_id": "SYN-APP-1",
@@ -418,6 +473,9 @@
         "role/contract-manager:4.decision_purpose_correction",
         "role/contract-manager:4.delivery_scope",
         "role/contract-manager:4.delivery_verification",
+        "role/contract-manager:4.dispute_disposition",
+        "role/contract-manager:4.dispute_factual_record",
+        "role/contract-manager:4.notice_remedy_control",
         "role/contract-manager:4.receiving_acceptance",
         "role/contract-manager:4.role_gate_observations",
         "type/register.identity",

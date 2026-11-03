@@ -100,7 +100,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
 | 1 | Relationship and engagement plan | Document with milestones, owners, dependencies and assumptions | Every milestone has an acceptance test and a named accountable owner |
-| 2 | demand pipeline for the business area | Declarative pipeline definition in version control | Reproducible from a clean checkout; no manual step required for a standard run |
+| 2 | demand pipeline for the business area | Prioritised demand register | Each demand has business outcome, sponsor, status, dependencies and next qualification or portfolio decision |
 | 3 | value and satisfaction reporting | Structured document with executive summary and evidence annex | Conclusions are traceable to dated evidence; opinion is visibly separated from fact |
 | 4 | joint improvement roadmap | Time-phased view with named owners per horizon | Each item carries a dependency set, a cost band and a decision date |
 
@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Relationship and engagement plan has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Relationship and engagement plan") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

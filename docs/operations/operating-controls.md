@@ -26,7 +26,9 @@ Enforce that rule through the host/orchestration entry boundary where possible r
 Pay particular attention to:
 
 - generation vs evidence qualification;
-- L5 realisation vs L6 evidence collection;
+- L5 Component detail and implementation vs L6 Management governance, assurance
+  and operation; evidence supports every perspective, and management concerns
+  apply across the other perspectives;
 - review vs authoring;
 - publication editing vs semantic ownership;
 - library author vs library approver/release;
@@ -40,13 +42,19 @@ Pay particular attention to:
 
 For long-running consequential work:
 
-- run `fabric.py status` at every open escalation;
+- request `/fabric-report` in Claude Code or `$workflow-fabric-report` in Codex
+  when an escalation needs an independent account of the current basis;
 - do not retry failed provider/tool calls invisibly — record the failure first;
 - invalidate depended-on records when evidence changes materially;
 - keep the shared episode budget finite;
 - preserve the original intent and all failed/rejected attempts;
 - close or explicitly disposition stale escalation queues;
-- use `verify` and `justify --strict` before consequential release.
+- obtain current integrity and justification evidence before consequential
+  release; the supported native audit route is `/fabric-report` or
+  `$workflow-fabric-report`, and its report does not itself grant release
+  permission. Direct maintainer calls to `fabric.py verify`, `justify`, `status`
+  or `report` require the exact engagement and `--query` JSON supplied for the
+  assessment. See [validation](validation.md) for the evidence boundary.
 
 ## Human oversight quality
 

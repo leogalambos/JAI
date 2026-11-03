@@ -100,7 +100,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
 | 1 | Role definition and competency profile | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 2 | sourcing strategy and pipeline | Declarative pipeline definition in version control | Reproducible from a clean checkout; no manual step required for a standard run |
+| 2 | sourcing strategy and pipeline | Sourcing plan and candidate pipeline register | Identifies target skills, sourcing channels, stages, accountable recruiters, candidate consent constraints and measured conversion gaps |
 | 3 | structured interview scorecards | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 4 | offer and market rate analysis | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 
@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Role definition and competency profile has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Role definition and competency profile") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

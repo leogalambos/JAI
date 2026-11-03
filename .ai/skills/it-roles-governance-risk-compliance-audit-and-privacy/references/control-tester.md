@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Test scripts and sampling rationale | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
-| 2 | test execution evidence | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 1 | Test scripts and sampling rationale | Test procedures and sampling rationale | Defines control objectives, population, sampling method, ordered test actions, expected evidence and limits of inference |
+| 2 | test execution evidence | Versioned assessment results with traceable evidence | Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations |
 | 3 | exception findings with impact | Finding record with reproducible evidence and risk rating | Reproduction steps are complete enough for an independent party to confirm |
-| 4 | testing summary for each cycle | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 4 | testing summary for each cycle | Versioned assessment results with traceable evidence | Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations |
 
 ## 7. Output gates (blocking)
 
@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Test scripts and sampling rationale has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Test scripts and sampling rationale") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

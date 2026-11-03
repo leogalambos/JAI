@@ -23,26 +23,27 @@
     "privacy": true
   },
   "semantic_units": {
-    "architecture_change_impact": [
-      {
-        "element_id": "SYN-APP-1",
-        "responsibility": "Accept transaction IDs and persist each committed event once",
-        "interface_ref": "SYN-IF-1",
-        "deployment": "Managed Linux service with PostgreSQL standby",
-        "failure_handling": "Retry twice using the same event ID, then reject and alert",
-        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
-        "record_id": "SYN-ARCHITECTURE-CHANGE-IMPACT",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Identify cross-domain dependencies, affected owners and compatibility constraints.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "architecture_source_trace": [
+    "data_accountability": {
+      "source_id": "SYN-LEDGER-1",
+      "source_version": "1",
+      "extracted_at": "2026-10-19T10:00:00Z",
+      "transformation": "Group committed records by event_id and compare counts before/after restore",
+      "input_records": 10,
+      "output_records": 10,
+      "classification": "Synthetic non-customer data",
+      "retention": "Delete rehearsal extracts after regression investigation closes",
+      "permitted_use": "Development regression only",
+      "record_id": "SYN-DATA-ACCOUNTABILITY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify data owner, stewardship, lawful use, classification and lifecycle obligations.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "data_lineage_quality": [
       {
         "source_id": "SYN-LEDGER-1",
         "source_version": "1",
@@ -53,10 +54,10 @@
         "classification": "Synthetic non-customer data",
         "retention": "Delete rehearsal extracts after regression investigation closes",
         "permitted_use": "Development regression only",
-        "record_id": "SYN-ARCHITECTURE-SOURCE-TRACE",
+        "record_id": "SYN-DATA-LINEAGE-QUALITY",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Link design claims to versioned source elements, stakeholder concerns and measurable requirements.",
+        "criterion_under_review": "Trace source-to-output transformations, quality constraints and evidenced reconciliation.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -259,43 +260,41 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
-    "identity": {
-      "element_id": "SYN-APP-1",
-      "responsibility": "Accept transaction IDs and persist each committed event once",
-      "interface_ref": "SYN-IF-1",
-      "deployment": "Managed Linux service with PostgreSQL standby",
-      "failure_handling": "Retry twice using the same event ID, then reject and alert",
-      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
-      "record_id": "SYN-IDENTITY",
+    "dataset_lineage": {
+      "source_id": "SYN-LEDGER-1",
+      "source_version": "1",
+      "extracted_at": "2026-10-19T10:00:00Z",
+      "transformation": "Group committed records by event_id and compare counts before/after restore",
+      "input_records": 10,
+      "output_records": 10,
+      "classification": "Synthetic non-customer data",
+      "retention": "Delete rehearsal extracts after regression investigation closes",
+      "permitted_use": "Development regression only",
+      "record_id": "SYN-DATASET-LINEAGE",
       "service": "Regional order integration",
       "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify stable artifact ID, owner, source version and intended usage.",
+      "criterion_under_review": "Record source versions, extraction time, transformations, lawful access and retention.",
       "accountable_role": "Synthetic receiving service owner",
       "evidence_refs": [
         "SYN-01"
       ],
       "knowledge_status": "synthetic-assumption"
     },
-    "implementation_acceptance": [
+    "dataset_quality": [
       {
-        "test_id": "SYN-T1",
-        "requirement_ref": "SYN-REC1",
-        "build": "candidate-1.0",
-        "environment": "Isolated recovery rehearsal",
-        "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
-        "expected_max_minutes": 30,
-        "observed_minutes": 27,
-        "expected_duplicate_count": 0,
-        "observed_duplicate_count": 0,
-        "sample_size": 10,
-        "exclusions": [
-          "Peak-load recovery"
-        ],
-        "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
-        "record_id": "SYN-IMPLEMENTATION-ACCEPTANCE",
+        "source_id": "SYN-LEDGER-1",
+        "source_version": "1",
+        "extracted_at": "2026-10-19T10:00:00Z",
+        "transformation": "Group committed records by event_id and compare counts before/after restore",
+        "input_records": 10,
+        "output_records": 10,
+        "classification": "Synthetic non-customer data",
+        "retention": "Delete rehearsal extracts after regression investigation closes",
+        "permitted_use": "Development regression only",
+        "record_id": "SYN-DATASET-QUALITY",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Specify deployment, verification, rollback and reproducible acceptance tests.",
+        "criterion_under_review": "Evidence completeness, uniqueness, consistency, drift and permitted-use limitations.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -303,26 +302,7 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
-    "implementation_interfaces": [
-      {
-        "element_id": "SYN-APP-1",
-        "responsibility": "Accept transaction IDs and persist each committed event once",
-        "interface_ref": "SYN-IF-1",
-        "deployment": "Managed Linux service with PostgreSQL standby",
-        "failure_handling": "Retry twice using the same event ID, then reject and alert",
-        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
-        "record_id": "SYN-IMPLEMENTATION-INTERFACES",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Specify schemas, error states, concurrency and compatibility requirements.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "implementation_parameters": [
+    "dataset_schema": [
       {
         "schema_version": "1.0",
         "entity_id": "SYN-APP-1",
@@ -346,17 +326,34 @@
         },
         "uniqueness_observed": "10 of 10 event IDs unique",
         "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
-        "record_id": "SYN-IMPLEMENTATION-PARAMETERS",
+        "record_id": "SYN-DATASET-SCHEMA",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Define typed configuration values, units, versions and permitted ranges without secrets.",
+        "criterion_under_review": "Define fields, datatypes, units, keys, null handling and allowed values.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
         ],
         "knowledge_status": "synthetic-assumption"
       }
-    ]
+    ],
+    "identity": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-IDENTITY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify stable artifact ID, owner, source version and intended usage.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    }
   },
   "evaluation_selection": {
     "overlays": []
@@ -385,8 +382,8 @@
       "id": "headings-only",
       "operation": "headings_only",
       "expected_rule_ids": [
-        "domain/architecture.architecture_change_impact",
-        "domain/architecture.architecture_source_trace",
+        "domain/data.data_accountability",
+        "domain/data.data_lineage_quality",
         "role/performance-test-engineer:4.contract_input_1",
         "role/performance-test-engineer:4.contract_input_2",
         "role/performance-test-engineer:4.contract_input_3",
@@ -397,10 +394,10 @@
         "role/performance-test-engineer:4.delivery_verification",
         "role/performance-test-engineer:4.receiving_acceptance",
         "role/performance-test-engineer:4.role_gate_observations",
-        "type/implementation-specification.identity",
-        "type/implementation-specification.implementation_acceptance",
-        "type/implementation-specification.implementation_interfaces",
-        "type/implementation-specification.implementation_parameters"
+        "type/dataset.dataset_lineage",
+        "type/dataset.dataset_quality",
+        "type/dataset.dataset_schema",
+        "type/dataset.identity"
       ],
       "expected_category": "critical-content"
     },

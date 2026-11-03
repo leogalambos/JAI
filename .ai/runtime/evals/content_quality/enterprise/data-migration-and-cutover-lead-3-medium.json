@@ -224,7 +224,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Migration reconciliation and acceptance pack', provide verifiable evidence satisfying: Business and technical reconciliation thresholds are met or explicitly waived.. Required delivery form: Test evidence plus signed reconciliation results.",
+        "criterion_under_review": "For the specific output 'Migration reconciliation and acceptance pack', provide verifiable evidence satisfying: Business and technical reconciliation thresholds are met or explicitly waived. Required delivery form: Test evidence plus signed reconciliation results.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

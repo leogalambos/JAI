@@ -1,0 +1,11 @@
+{
+  "status": "rejected",
+  "receipt": null,
+  "error": {
+    "code": "P_SCOPE",
+    "message": "The requested operation is outside the assigned scope.",
+    "message_id": null,
+    "request_id": null,
+    "field": null
+  }
+}

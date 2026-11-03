@@ -1,6 +1,5 @@
 # Expert reference format
 
-Owner: JAI maintainers · Last reviewed: 2026-10-20
 
 Expert references are UTF-8 Markdown documents with YAML front matter.
 The separate runtime schema is `content/schema/expert-reference.schema.json`;
@@ -66,7 +65,7 @@ the v2.3.0 editorial revision. These are manifest metadata, not required new
 front-matter fields or an authority record. The recorded status is
 `tri-lens-ai-review-applied-not-human-approved`. All three lenses used the
 same AI system; neither this status nor a successful integrity check proves
-independent human review. See the [review guide](../validation/expert-reference-review.md).
+independent human review. See the [review and release readiness](../operations/validation.md).
 
 ## Stable DCS anchors
 

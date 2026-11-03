@@ -1,6 +1,5 @@
 # Plan a cloud migration
 
-Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
 ACME Manufacturing wants to move its customer portal from a data-centre
 virtual machine estate to a managed cloud platform. Alice owns the

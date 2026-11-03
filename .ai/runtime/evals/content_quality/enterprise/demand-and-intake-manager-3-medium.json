@@ -231,7 +231,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Prioritisation and routing decision paper', provide verifiable evidence satisfying: The recommendation is reproducible from declared criteria and records conflicts, assumptions and authority.. Required delivery form: Decision paper comparing value, risk, obligation, capacity, dependencies and strategic fit.",
+        "criterion_under_review": "For the specific output 'Prioritisation and routing decision paper', provide verifiable evidence satisfying: The recommendation is reproducible from declared criteria and records conflicts, assumptions and authority. Required delivery form: Decision paper comparing value, risk, obligation, capacity, dependencies and strategic fit.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

@@ -9,93 +9,27 @@ A suspected or confirmed cyber incident may affect systems, data, customers, reg
 The incident is contained and eradicated, evidence is preserved, recovery is accepted by the business, notification decisions are traceable, and control remediation is closed or owned.
 
 
-<div class="ai-diagram ai-diagram-inline" role="img" aria-label="Cyber incident / breach to recovery workflow">
-<svg class="ai-inline-diagram-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 919 930" role="img" aria-labelledby="t d">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e3859"/><stop offset="1" stop-color="#0b6b9a"/></linearGradient><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3ba9d6"/></marker></defs>
-<title id="t">Cyber incident / breach to recovery</title>
-<desc id="d">The incident is contained and eradicated, evidence is preserved, recovery is accepted by the business, notification decisions are traceable, and control remediation is closed or owned.</desc>
-<rect width="100%" height="100%" rx="24" fill="#f6fafc" stroke="#d6e6ee"/>
-<text x="42" y="38" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="700" fill="#0b1f33">Cyber incident / breach to recovery</text>
-<path d="M 277 116.0 L 334 116.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 577 116.0 L 634 116.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 759.5 162 L 759.5 192 L 759.5 192 L 759.5 236" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 642 290.0 L 585 290.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 342 290.0 L 285 290.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 159.5 336 L 159.5 366 L 159.5 366 L 159.5 410" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 277 464.0 L 334 464.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 577 464.0 L 634 464.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 759.5 510 L 759.5 540 L 759.5 540 L 759.5 584" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 642 638.0 L 585 638.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 342 638.0 L 285 638.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 159.5 684 L 159.5 714 L 159.5 714 L 159.5 758" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<rect x="42" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">1 · Security Analyst</text>
-<text x="159.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Tier 1 — detects and</text>
-<text x="159.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">records the</text>
-<text x="159.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">alert/incident with</text>
-<rect x="342" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">2 · Incident Responder —</text>
-<text x="459.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">triages severity, scope,</text>
-<text x="459.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">likely attack path and</text>
-<text x="459.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">immediate priorities</text>
-<rect x="642" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">3 · Incident Responder —</text>
-<text x="759.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">contains affected</text>
-<text x="759.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">assets/accounts while</text>
-<text x="759.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">preserving reversibility</text>
-<rect x="642" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">4 · Digital Forensics</text>
-<text x="759.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Examiner — preserves and</text>
-<text x="759.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">validates forensic</text>
-<text x="759.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">evidence, chain of</text>
-<rect x="342" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">5 · IT Risk Manager —</text>
-<text x="459.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">business, service,</text>
-<text x="459.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">security and regulatory</text>
-<text x="459.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">impact using verified</text>
-<rect x="42" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">6 · Data Protection</text>
-<text x="159.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Officer — performs</text>
-<text x="159.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">privacy/breach</text>
-<text x="159.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">assessment and</text>
-<rect x="42" y="418" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="431.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">7 · Incident Responder —</text>
-<text x="159.5" y="453.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">eradicates malicious</text>
-<text x="159.5" y="475.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">persistence/root causes</text>
-<text x="159.5" y="497.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">and verifies the</text>
-<rect x="342" y="418" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="431.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">8 · Disaster Recovery</text>
-<text x="459.5" y="453.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Coordinator — recovery</text>
-<text x="459.5" y="475.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">sequencing, integrity</text>
-<text x="459.5" y="497.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">validation and</text>
-<rect x="642" y="418" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="431.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">9 · IT Service Owner —</text>
-<text x="759.5" y="453.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">business/service</text>
-<text x="759.5" y="475.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">recovery and accepts</text>
-<text x="759.5" y="497.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">restored operating state</text>
-<rect x="642" y="592" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="605.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">10 · Crisis Manager —</text>
-<text x="759.5" y="627.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">customer/regulator/executive</text>
-<text x="759.5" y="649.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">communications decision</text>
-<text x="759.5" y="671.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">and timing where</text>
-<rect x="342" y="592" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="605.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">11 · Problem Manager —</text>
-<text x="459.5" y="627.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">runs lessons</text>
-<text x="459.5" y="649.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">learned/root-cause</text>
-<text x="459.5" y="671.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">analysis across</text>
-<rect x="42" y="592" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="605.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">12 · Control Owner —</text>
-<text x="159.5" y="627.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">owns control</text>
-<text x="159.5" y="649.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">remediation, target</text>
-<text x="159.5" y="671.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">dates and evidence of</text>
-<rect x="42" y="766" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="779.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">13 · Internal IT Auditor</text>
-<text x="159.5" y="801.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">— independently verifies</text>
-<text x="159.5" y="823.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">closure evidence for</text>
-<text x="159.5" y="845.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">material incidents where</text>
-</svg>
-<div class="ai-diagram-caption">Canonical workflow sequence from release 26.10.4 (workflow semantics unchanged from the 26.10.0 GA baseline).</div>
+<!-- JAI:WORKFLOW-DIAGRAM:START -->
+<div class="ai-workflow-overview">
+<ol class="ai-workflow-steps" role="list" aria-label="Cyber incident / breach to recovery workflow steps">
+<li data-step="1"><span class="ai-workflow-step-number" aria-hidden="true">1</span><div><strong>Security Analyst Tier 1</strong><p>detects and records the alert/incident with initial facts and provenance</p></div></li>
+<li data-step="2"><span class="ai-workflow-step-number" aria-hidden="true">2</span><div><strong>Incident Responder</strong><p>triages severity, scope, likely attack path and immediate priorities</p></div></li>
+<li data-step="3"><span class="ai-workflow-step-number" aria-hidden="true">3</span><div><strong>Incident Responder</strong><p>contains affected assets/accounts while preserving reversibility and evidence</p></div></li>
+<li data-step="4"><span class="ai-workflow-step-number" aria-hidden="true">4</span><div><strong>Digital Forensics Examiner</strong><p>preserves and validates forensic evidence, chain of custody and timeline facts</p></div></li>
+<li data-step="5"><span class="ai-workflow-step-number" aria-hidden="true">5</span><div><strong>IT Risk Manager</strong><p>assesses business, service, security and regulatory impact using verified facts</p></div></li>
+<li data-step="6"><span class="ai-workflow-step-number" aria-hidden="true">6</span><div><strong>Data Protection Officer</strong><p>performs privacy/breach assessment and coordinates legal/regulatory decision inputs</p></div></li>
+<li data-step="7"><span class="ai-workflow-step-number" aria-hidden="true">7</span><div><strong>Incident Responder</strong><p>eradicates malicious persistence/root causes and verifies the environment</p></div></li>
+<li data-step="8"><span class="ai-workflow-step-number" aria-hidden="true">8</span><div><strong>Disaster Recovery Coordinator</strong><p>coordinates recovery sequencing, integrity validation and rollback/fallback readiness</p></div></li>
+<li data-step="9"><span class="ai-workflow-step-number" aria-hidden="true">9</span><div><strong>IT Service Owner</strong><p>validates business/service recovery and accepts restored operating state</p></div></li>
+<li data-step="10"><span class="ai-workflow-step-number" aria-hidden="true">10</span><div><strong>Crisis Manager</strong><p>coordinates customer/regulator/executive communications decision and timing where required</p></div></li>
+<li data-step="11"><span class="ai-workflow-step-number" aria-hidden="true">11</span><div><strong>Problem Manager</strong><p>runs lessons learned/root-cause analysis across people/process/technology</p></div></li>
+<li data-step="12"><span class="ai-workflow-step-number" aria-hidden="true">12</span><div><strong>Control Owner</strong><p>owns control remediation, target dates and evidence of completion</p></div></li>
+<li data-step="13"><span class="ai-workflow-step-number" aria-hidden="true">13</span><div><strong>Internal IT Auditor</strong><p>independently verifies closure evidence for material incidents where governance requires</p></div></li>
+</ol>
 </div>
+
+[Open the full-size workflow diagram](../assets/diagrams/workflow-cyber-incident-breach-to-recovery.svg). Follow the numbered order. The table below specifies the outputs and receiving conditions for each handoff.
+<!-- JAI:WORKFLOW-DIAGRAM:END -->
 
 ## Workflow steps and gates
 

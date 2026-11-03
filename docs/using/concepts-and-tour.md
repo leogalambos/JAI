@@ -1,8 +1,3 @@
----
-owner: JAI documentation maintainers
-review_due: 2027-01-16
----
-
 # Concepts, demonstrations and review controls
 
 Use this page to look up the concepts shared by JAI workflows. For a first engagement, follow [How to use JAI](../examples/how-to-use-JAI/index.md): method, interaction, then a complete case. For a short installation exercise use the [20-minute quick start](../getting-started/quick-start.md).

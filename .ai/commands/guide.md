@@ -11,6 +11,12 @@ For a task scenario ID, read its maintained demonstration description:
 Use `--step N` for a requested numbered step. Explain required inputs,
 the Claude slash command and Codex `$workflow-...` equivalent, why the
 step belongs in the sequence, and what the reader should inspect.
+For native Gen2 startup, audit and continuation, explain `/layered` /
+`$workflow-layered` and `/fabric-report` / `$workflow-fabric-report` from the
+maintained guide. Routine users do not prepare bootstrap JSON or process workers.
+The original `policy-docs` tour project has a fictional `GEN2-EXERCISE.md` with
+paired prompts; setup creates inputs, not executed work or acceptance. Report
+actual installed availability separately from source qualification.
 Do not execute the scenario or claim a step has completed merely because
 its description was shown. Use `scenarios` to resolve a scenario ID instead
 of inventing one. Preserve the review-demo answer-key rule above.

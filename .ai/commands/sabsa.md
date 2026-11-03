@@ -13,7 +13,11 @@ For lifecycle, show or maintain current/transition/target and lifecycle state us
 
 **Preconditions and boundary.** Identify business drivers, assets, attributes, threats, risks and decision scope before selecting contextual/conceptual/logical/physical/component/service-management viewpoints.
 
-**Execution and required evidence.** Maintain stable model IDs and the 6×6 SABSA questions independently from JAI L1–L6; demonstrate cross-layer traceability, owner and evidence.
+**Execution and required evidence.** Maintain stable model IDs and the 6×6 SABSA
+content with typed cross-layer traceability, owner and evidence. Governed work
+uses the current Gen2 SABSA layer registry; library cell identifiers and runtime
+owner coordinates remain distinct identities, not an old fixed author/reviewer
+layer scheme. Use the `sabsa-library` skill's native Gen2 handoff when required.
 
 **Acceptance and escalation.** Treat incomplete typed semantics, orphan relations or unsupported ArchiMate mappings as findings, not as a complete architecture.
 

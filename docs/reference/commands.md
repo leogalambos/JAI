@@ -1,6 +1,5 @@
 # Command reference
 
-Owner: JAI maintainers · Last reviewed: 2026-10-20
 
 ## Operator syntax versus implementation API
 
@@ -17,6 +16,29 @@ First-time readers should follow [How to use JAI](../examples/how-to-use-JAI/ind
 In Codex, `/commercial` maps to `$workflow-commercial` in an installation generated from the commercial command source. Continuation instructions such as “Continue engagement <ID>” are natural-language requests, not implemented `resume` subcommands. Preserve and inspect existing engagement state before proceeding.
 
 ## High-level workflow commands
+
+`/layered` uses the Gen2 native bridge and the current SABSA layer model. Each
+question has a local setter, author and independent reviewer; the layer then
+integrates reviewed results before an adjacent handoff. Professions and models
+are chosen locally from the retained catalogue. See the
+[layered delivery](../using/layered-engagement.md) for the
+implemented source boundary and actual activation evidence. Completion does not
+grant human acceptance or release permission.
+
+`/fabric-report` (`$workflow-fabric-report` in Codex) independently explains the
+recorded current basis of exact Gen2 output versions. It distinguishes historical
+integrity, relevant supporting material, qualification, human acceptance and
+release. Missing or ambiguous outputs are reported explicitly; the audit does
+not select replacements or grant permission. See the
+[review and release readiness](../operations/validation.md) for scope and
+activation limits.
+
+Retained library, research and domain commands preserve their ordinary native
+workflows. Their consequential branches use the shared Gen2 native handoff;
+commercial and publication callbacks bind actual recorded work to exact scoped
+outputs. Draft preparation grants no acceptance or release. See the
+[review and release readiness](../operations/validation.md)
+for the seventeen-command wiring scope and qualification limits.
 
 === "Claude Code"
 
@@ -123,8 +145,9 @@ for scope, compatibility and the human acceptance boundary.
 
 ## Current operator boundary
 
-For 26.10.14 {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
+For {{ JAI_VERSION }} {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
 Native provider approval is not Fabric L0; external Ed25519 receipts require
-protected trust and matching state. Actual Office QA is OPERATOR_ASSISTED;
+protected trust and matching state. Actual Office QA uses route A when a working native Office renderer is available
+within the permitted environment, or route C through the operator when required;
 WeasyPrint HTML/PDF does not inspect Office bytes. Privileged worker/API
 mutation is NOT_SUPPORTED; optional host confinement is NOT_VERIFIED.

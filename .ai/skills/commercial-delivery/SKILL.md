@@ -14,11 +14,26 @@ Read the installed `commercial/catalog.json` compact root first, then selected `
 
 Commercial work retains the full internal chain from business need and source passage to effort, resources, cost, price and operations. Client projections retain required contractual disclosures while excluding internal rates, margins and confidential rationale unless an explicit disclosure policy requires them. Commercial domain matrix questions are separate from JAI execution layers.
 
-Use independent adjacent L1–L6 contracts, maker/checker execution identities, bounded rework and human escalation. `/sabsa` alone is not `/layered`. Estimate unknowns remain unknown; use discovery, pilot, stages or alternative contract models instead of fabricating precision. Apply CTB/RTB or explicitly mapped source taxonomies to both hours and costs.
+Use the current six SABSA content layers, local setter/author/independent-reviewer
+responsibilities, receiving handoffs, bounded rework and human escalation through
+the canonical `layered-justifiable-delivery` skill and its
+`references/domain-handoff.md` contract. Local entities choose their professionals
+and models from the complete catalogue. `/sabsa` library approval alone does not
+establish Gen2 justification. Estimate unknowns remain unknown; use discovery,
+pilot, stages or alternative contract models instead of fabricating precision.
+Apply CTB/RTB or explicitly mapped source taxonomies to both hours and costs.
 
 Cross-domain expertise is requested by the orchestrator using typed consultations, minimal classified inputs, bounded budget/deadline and unchanged contracting owner. Leaves cannot delegate. Response incorporation needs exact-digest independent review and a new canonical dependency version. No consultation grants technical or commercial authority.
 
-Before strict dispatch, require actual deployment evidence for identity, context/tool/source/mount boundaries and delegation denial. Read the versioned capability matrix: shipped Codex and Claude local controls are `not_run`, so strict provider dispatch is blocked. Metadata validation is not proof that a runtime enforced the controls.
+For governed readiness, the trusted parent supplies current scoped product,
+actual native execution and selected independent review through the shared
+`governed_domain.GovernedDomain` callbacks. Retain evidence, disclosure and budget
+requirements; metadata or echoed context tokens alone prove no execution.
+Unmeasured physical isolation remains explicitly unverified, and a specifically
+required security policy must still be satisfied. Existing native sandbox
+controls remain authoritative; missing generic hardening attestations do not
+disable ordinary native commercial workflows. Only L0 signs reserved decisions,
+and neither commercial readiness nor a successful render grants release.
 
 ## Mandatory supplier specialisms
 

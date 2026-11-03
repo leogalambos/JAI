@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/performance-test-engineer:2",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -61,7 +61,8 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: load and stress test results with bottleneck analysis.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#performance-test-engineer:2",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -99,7 +100,8 @@
         "reason": "For each receiving role (Site Reliability Engineer; Capacity Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#performance-test-engineer:2",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -137,7 +139,8 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#performance-test-engineer:2",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -175,7 +178,8 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#performance-test-engineer:2",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -195,7 +199,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'load and stress test results with bottleneck analysis', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "For the specific output 'load and stress test results with bottleneck analysis', provide verifiable evidence satisfying: Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations. Required delivery form: Versioned assessment results with traceable evidence.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,10 +214,11 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'load and stress test results with bottleneck analysis', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "reason": "For the specific output 'load and stress test results with bottleneck analysis', provide verifiable evidence satisfying: Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations. Required delivery form: Versioned assessment results with traceable evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#performance-test-engineer:2",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -223,8 +228,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "load and stress test results with bottleneck analysis",
-        "format": "Executable suite in version control plus a coverage statement",
-        "acceptance_criterion": "States what is covered, what is not, and what the suite cannot detect",
+        "format": "Versioned assessment results with traceable evidence",
+        "acceptance_criterion": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
         "role_path": "skills/it-roles-quality-and-testing/references/performance-test-engineer.md"
       }
     },
@@ -246,7 +251,7 @@
         "G3: No production personal data is used in test environments without an approved lawful basis and masking.",
         "G4: An intermittent test failure is investigated as a timing, ordering or shared-state defect, never retried or quarantined away without a ticket and an analysis (it-role-library/standards/defect-analysis.md).",
         "G5: Automated tests are deterministic, test one behaviour each, mock only collaborators and run integration tests against real dependencies (it-role-library/standards/testing.md).",
-        "G6: Performance test strategy and workload model distinguishes what was tested, what was not tested and what cannot be tested.",
+        "G6: The primary deliverable (\"Performance test strategy and workload model\") distinguishes what was tested, what was not tested and what cannot be tested.",
         "G7: Results state the environment's ratio to production",
         "G8: extrapolating from a scaled-down environment without stating the factor is reported as unusable"
       ],
@@ -265,7 +270,8 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#performance-test-engineer:2",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -313,7 +319,8 @@
         "reason": "Analyse the specific input \"Non-functional requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#performance-test-engineer:2",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -356,7 +363,8 @@
         "reason": "Analyse the specific input \"Production traffic profiles\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#performance-test-engineer:2",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -399,7 +407,8 @@
         "reason": "Analyse the specific input \"Environment specification\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#performance-test-engineer:2",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -442,7 +451,8 @@
         "reason": "Analyse the specific input \"Business peak forecasts\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#performance-test-engineer:2",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -487,7 +497,8 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -530,7 +541,8 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -575,7 +587,8 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -689,6 +702,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "software-testing",
+        "title": "ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation",
+        "url": "https://www.iso.org/standard/79429.html",
+        "scope": "Test planning, test specifications and reporting information needs.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Performance Test Engineer",
+        "frameworks": [
+          "ISO/IEC 25010 performance efficiency",
+          "load modelling practice",
+          "USE and RED methods"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -714,13 +748,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -739,6 +774,8 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/test-report",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
@@ -753,8 +790,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "performance-test-engineer:2",
-    "source_fingerprint": "e6e1218f884cf30b1f8488d18ae8f3d255ced1a5fc1fa91722952bc8dd22e31a",
-    "source_hash": "45dd2d5866ea1dc099daa3fbc440764b7fa7051dce97ae68093663a74edc6a27"
+    "source_fingerprint": "62eda9d63092735a2ce595743e203c10b60087102ff392ad7a6fa167ebbe09c9",
+    "source_hash": "2751db6f984399990871f8140bb7f1a0ea512e7d785b3fe0be18c694dcb5858d"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

@@ -73,15 +73,19 @@ class SupplyChainTests(unittest.TestCase):
         with zipfile.ZipFile(archive) as bundle:
             bundle.extractall(extracted)
         package = extracted / 'package'
-        self.assertTrue(supply_chain.verify(package, package / sbom.name, package / prov.name))
-        saved=(package/prov.name).read_text();bad=json.loads(saved);bad['supported_capabilities']={}
-        (package/prov.name).write_text(json.dumps(bad))
+        self.assertFalse((package / sbom.name).exists())
+        self.assertFalse((package / prov.name).exists())
+        supply_chain.sbom(package, sbom)
+        supply_chain.provenance(package, sbom, qualification, prov)
+        self.assertTrue(supply_chain.verify(package, sbom, prov))
+        saved=prov.read_text();bad=json.loads(saved);bad['supported_capabilities']={}
+        prov.write_text(json.dumps(bad))
         with self.assertRaisesRegex(ValueError,'release scope mismatch'):
-            supply_chain.verify(package,package/sbom.name,package/prov.name)
-        (package/prov.name).write_text(saved)
+            supply_chain.verify(package,sbom,prov)
+        prov.write_text(saved)
         (package / 'public.md').write_text('Tampered')
         with self.assertRaisesRegex(ValueError, 'digest mismatch'):
-            supply_chain.verify(package, package / sbom.name, package / prov.name)
+            supply_chain.verify(package, sbom, prov)
 
     def test_symlinks_and_circular_evidence_are_excluded(self):
         (self.root / 'alias.md').symlink_to(self.root / 'public.md')

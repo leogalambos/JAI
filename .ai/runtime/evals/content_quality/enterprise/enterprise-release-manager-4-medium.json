@@ -233,7 +233,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Post-release validation and release performance report', provide verifiable evidence satisfying: The release is closed only when agreed validation signals are met or a named authority accepts residual issues with actions.. Required delivery form: Assurance/test report covering outcomes, incidents, reversals, customer/business impact and improvement actions.",
+        "criterion_under_review": "For the specific output 'Post-release validation and release performance report', provide verifiable evidence satisfying: The release is closed only when agreed validation signals are met or a named authority accepts residual issues with actions. Required delivery form: Assurance/test report covering outcomes, incidents, reversals, customer/business impact and improvement actions.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

@@ -1,0 +1,73 @@
+{
+  "protocol": "jai.governed-delivery/1",
+  "message_type": "handoff",
+  "message_id": "e4b7a178afcbef8b1a1914a203d29c4730df31ee5ca557558578cf6434ced20e",
+  "request_id": "request-handoff",
+  "correlation_id": "question-service-controls",
+  "engagement": "synthetic-protocol",
+  "scope": "default",
+  "sender": {
+    "kind": "assignment",
+    "ref": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "author-assignment",
+      "version_id": "1870591329732c4cdd7c57d9f45bf9cf132d728ca1fed89d25570d7d8879a622"
+    }
+  },
+  "recipient": {
+    "kind": "controller",
+    "id": "trusted-controller"
+  },
+  "context": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "author-context",
+    "version_id": "29fe898b447be535d3a3bec50aaec15039fb96c4edee43d3a1adf488f9c9f42f"
+  },
+  "profile": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "profile",
+    "version_id": "b0519b9fbd91854cbe44a508a24434902d4296b100862b3f0acc5374550990ef"
+  },
+  "expected_head": "0379d6138bfe05e3382401e0af27527da375e9eaab21d9f744a4b333647120af",
+  "issued_at_ms": 1000,
+  "expires_at_ms": 8000,
+  "causes": [],
+  "attachments": [],
+  "payload": {
+    "assignment": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "handoff-assignment",
+      "version_id": "4257cb75a99ba8518add9287c16e12a6742b5022b26f34f37c4ab0d9645087a2"
+    },
+    "handoff": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "handoff",
+      "version_id": "172bf5215770e08b4f65f0d3dbed75f4cab6e0b6adb6e2815888abc43d7e7c24"
+    },
+    "bundle": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "layer-bundle",
+      "version_id": "4d152570c4804c6e26bc9a862beaeded7954787fc7a6ab17dd2f4f493fe49c59"
+    },
+    "interface": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "interface",
+      "version_id": "e775302eefa9db630cb3489d8039d8693adc9c97e344c58ab8de50de937fbeab"
+    },
+    "obligations": [
+      {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "input-A",
+        "version_id": "2af7d6aa53ba2874a2f9b80c4318fbcd4467065cf86eab873c45acc82e53f92a"
+      }
+    ]
+  }
+}

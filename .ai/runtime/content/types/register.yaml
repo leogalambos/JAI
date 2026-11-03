@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "type/register",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -77,7 +77,8 @@
       },
       "acceptance_criteria": [
         "Define required columns, datatypes, identifiers, allowed states and ownership.",
-        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations.",
+        "Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules."
       ],
       "evidence_policy": {
         "material_claims": "versioned source reference or explicitly labelled assumption",
@@ -115,7 +116,8 @@
       },
       "acceptance_criteria": [
         "Provide actual uniquely identified records with source, owner, status and review date.",
-        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations.",
+        "Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population."
       ],
       "evidence_policy": {
         "material_claims": "versioned source reference or explicitly labelled assumption",
@@ -153,7 +155,8 @@
       },
       "acceptance_criteria": [
         "Evidence uniqueness, referential integrity, completeness and lifecycle reconciliation checks.",
-        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations.",
+        "Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness."
       ],
       "evidence_policy": {
         "material_claims": "versioned source reference or explicitly labelled assumption",
@@ -412,6 +415,16 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
     ]
   },
   "overlap": {
@@ -437,13 +450,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {

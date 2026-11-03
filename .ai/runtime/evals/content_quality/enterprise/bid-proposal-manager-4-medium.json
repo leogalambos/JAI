@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Bid-to-delivery handover record', provide verifiable evidence satisfying: Delivery and service owners accept the same version the client was offered.. Required delivery form: Commitments, baselines, residual risks, service obligations and receiving-owner acceptance.",
+        "criterion_under_review": "For the specific output 'Bid-to-delivery handover record', provide verifiable evidence satisfying: Delivery and service owners accept the same version the client was offered. Required delivery form: Commitments, baselines, residual risks, service obligations and receiving-owner acceptance.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

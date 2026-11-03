@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Bid qualification and response plan', provide verifiable evidence satisfying: Decision owner can approve or decline with costs, constraints and evidence visible.. Required delivery form: Qualification rationale, responsibilities, milestones, review strategy and authority map.",
+        "criterion_under_review": "For the specific output 'Bid qualification and response plan', provide verifiable evidence satisfying: Decision owner can approve or decline with costs, constraints and evidence visible. Required delivery form: Qualification rationale, responsibilities, milestones, review strategy and authority map.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

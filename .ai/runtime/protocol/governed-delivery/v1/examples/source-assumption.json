@@ -1,0 +1,16 @@
+{
+  "owner": {
+    "kind": "authority",
+    "id": "human-owner"
+  },
+  "source_role": "assumption",
+  "origin": {
+    "kind": "authority",
+    "id": "human-owner"
+  },
+  "material": [
+    "3d8f4b545013865bc63eab5f302092092a62cbd3c9c0301273995acef5cfed09"
+  ],
+  "criteria": [],
+  "inherited": []
+}

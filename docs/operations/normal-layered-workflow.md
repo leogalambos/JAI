@@ -1,256 +1,283 @@
-# Complete an ordinary layered workflow
+# Operate a layer-local workflow
 
-The example below checks exact bytes of a maintained public specification
-through all six layers. It records real source bytes and a reproducible
-capture. It makes no claim about the specification's semantic correctness.
-Replace the public source with the actual input your requirement concerns.
-Never use private inputs in a public example or released output.
 
-Initial input registration occupies an empty logical slot. Changing an
-existing governing selection still requires a signed lifecycle plan.
-Routine observation and adjacent review qualification grant no human
-acceptance, permission or authority continuation.
-Replay derives each actual graph edge's exact causal dependency rule and
-rejects missing or substituted reliance. A routine capture cannot replace
-an existing version's recorded locator; relocation needs governed effects.
-Edges touching L0 require exact signed effects, including edges to an
-already signed authority decision; its authority cannot be reused by a
-new unsigned edge.
+For ordinary operator use, request `/layered <intent>` in Claude or
+`$workflow-layered <intent>` in Codex. The native parent handles bootstrap,
+selection, fresh professional contexts and continuation through the existing
+Gen2 bridge. See the [layered delivery](../using/layered-engagement.md)
+and [installed command guide](../reference/installed-cli-guide.md#layered).
+Users do not prepare JSON packets or write workers for that route.
 
-Run from a deployed project with a fresh engagement name. The local script
-uses ordinary CLI commands; it does not write ledger files. Keep the work
-directory and its observation files until retention permits their removal.
+The explicit commands below remain the maintainer reference for the configured
+local-process transport and shared structural workflow operations. A process
+worker configuration is required for that transport; it is not a prerequisite
+for native Claude/Codex delegation. Both routes use the same ownership,
+applicability, budget and decision rules.
 
-```sh
-mkdir -p build/normal-layered
-python3 - <<'PY'
-import hashlib
-import json
-from pathlib import Path
-import subprocess
-import sys
+The host provides explicit operations and a bounded driver around the existing
+Store and dispatcher. It does not invent a solving strategy or retry indefinitely. The
+[layer model](../architecture/sabsa-layer-model.md) defines the six content
+layers. Incoming work addresses a layer as a whole: outcomes, requirements and
+interfaces enter the layer, which formulates its own questions and hires its own
+professional specialties. A neighbor cannot choose its internal author,
+reviewer, model or method.
 
-runtime = Path.home() / '.ai/it-role-house'
-program = runtime / 'fabric/fabric.py'
-work = Path('build/normal-layered').resolve()
-source = Path('docs/reference/lifecycle-format-2.md').resolve()
-eng = 'normal-public-spec'
+## Prerequisites
 
-def run(*args):
-    result = subprocess.run(
-        [sys.executable, str(program), *args],
-        check=True, text=True, capture_output=True)
-    return result.stdout
+Use a bootstrapped journal-format-9 engagement in the controlled workspace.
+Its current L0 sources include the explicit input/criterion manifest and global
+capability policy; its profile declares the relevant ownership and obligations.
+The policy captures the complete common role catalogue and instruction bytes,
+explicit model availability, functional chooser and finite global capabilities.
+The [startup and recovery boundary](lifecycle-recovery.md) explains the host-adapter
+prerequisite. Ordinary recording and queries do not require a key or proof.
+Only an explicit reserved L0 decision uses its known public key and external
+human signature, as defined by [runtime recording](../architecture/governed-runtime-recording.md).
 
-def write(name, value):
-    path = work / name
-    path.write_text(json.dumps(value), encoding='utf-8')
-    return str(path)
+The host configuration contains `workers`, destinations, tools and byte bounds
+as described in [process dispatch](governed-dispatch.md). It enrolls both the
+functional chooser and the available work executables. Actual argv and asset
+identities must match the captured policy/choice. No internal dispatch private key
+exists. L0's private key is used only by the external human signing companion.
 
-run('init', eng, '--intent', 'Trace exact public source bytes',
-    '--owner', 'Project owner')
-source_id = run('record-input', eng, '--logical-id', 'public-spec',
-                '--kind', 'source', '--file', str(source)).strip()
-status = json.loads(run('lifecycle-status', eng, '--scope', 'default'))
-policy_id = next(row['version_id'] for row in status
-                 if row['logical_id'] == 'lifecycle-policy')
-obligations = {
-    'categories': {
-        key: {'minimum': 1, 'allow_exclusion': False}
-        for key in ('source', 'contract', 'policy')},
-    'evidence_roles': ['evidence'], 'review_roles': ['reviewer']}
-fields = dict(
-    what='Establish the exact public source capture',
-    why='Demonstrate traceable ordinary completion',
-    who='Assigned layer role', where='Local project workspace',
-    when='Before human acceptance', how='Check exact source digest',
-    evidence='Captured SHA-256 observation of source bytes',
-    escalate_if='Source or capture cannot be checked',
-    sanitise='Maintained public source only')
-run('req', eng, '--layer', '1', '--from', 'intent-0001',
-    '--label', 'derives', '--text', fields['what'])
-flags = [item for key, value in fields.items()
-         for item in ('--' + key.replace('_', '-'), value)]
-run('contract', eng, '--from', 'req-0001', *flags,
-    '--obligations', write('obligations.json', obligations))
+The following source-checkout commands use illustrative operator-owned paths.
+Replace them with actual files. This example deliberately supplies an optional
+overall stop. Set `JAI_DEADLINE_MS` to that explicitly approved absolute
+UTC-millisecond deadline; `limits.json` contains finite limits such as
+`[{"metric":"elapsed_ms","unit":"ms","ceiling":60000}]` within the existing
+aggregate allowance. Ordinary layered entry may instead omit the overall stop
+and use local iteration windows. Do not enlarge limits merely to make a failed
+result pass.
 
-def binding(contract):
-    rows = json.loads(run('lifecycle-status', eng, '--scope', 'default'))
-    contract_id = next(row['version_id'] for row in rows
-                       if row['logical_id'] == contract)
-    return {key: {'refs': [value]} for key, value in {
-        'source': source_id, 'policy': policy_id,
-        'contract': contract_id}.items()}
-
-def ingest(contract, **values):
-    packet = json.loads(run('context-packet', eng, contract))
-    payload = {'context_digest': packet['context_digest'], **values}
-    run('ingest', eng, '--contract', contract,
-        write('reply.json', payload))
-
-for index in range(1, 5):
-    ingest(f'ctr-{index:04}', derived_requirements=[{
-        'key': 'child', 'text': fields['what'],
-        'contract': {**fields, 'obligations': obligations}}])
-capture = work / 'source-capture.txt'
-capture.write_text(hashlib.sha256(source.read_bytes()).hexdigest()
-                   + '\n', encoding='utf-8')
-ingest('ctr-0005', fragments=[{
-    'key': 'capture', 'text': 'The exact source digest is captured',
-    'bindings': binding('ctr-0005')}], evidence=[{
-    'supports': ['capture'], 'source': 'SHA-256 capture of source bytes',
-    'confidence': 'deterministic', 'file': str(capture),
-    'bindings': binding('ctr-0005')}])
-child = 'frag-0001'
-for layer in range(5, 0, -1):
-    review = {'reviews': [{
-        'fragment': child, 'state': 'accepts',
-        'rationale': 'Checked exact source, capture and dependency closure'}]}
-    run('ingest-reviews', eng, '--layer', str(layer),
-        '--reviewer', f'Assigned layer {layer} reviewer',
-        '--model', 'record-actual-model', write('review.json', review))
-    if layer > 1:
-        parent = f'ctr-{layer - 1:04}'
-        ingest(parent, fragments=[{
-            'key': 'upward', 'text': 'Reviewed child establishes capture',
-            'supported_by': [child], 'bindings': binding(parent)}])
-        child = f'frag-{7 - layer:04}'
-run('answer', eng, '--requirement', 'req-0001',
-    '--text', 'The public source capture is established',
-    '--supported-by', child,
-    '--bindings', write('bindings.json', binding('ctr-0001')))
-print(run('status', eng))
-print(run('verify', eng))
-PY
-```
-
-The review loop is an executable interface example. In real delivery the
-assigned independent reviewer must assess each packet and supply its actual
-verdict, rationale and model. A display name supplies attribution; the
-qualifying role comes from the exact contract issuer, adjacent layer and
-maintained review profile. Do not accept a packet solely to advance a loop.
-
-The resulting L1 output is `frag-0006`. Preacceptance eligibility does not
-grant release. Prepare its exact L0 review request, then have the human sign
-and apply it using the [external signing procedure](lifecycle-recovery.md).
-`release` reports eligibility and performs no external publication.
-
-After a source change, use a governed selection plan. Old dependent
-conclusions, reviews and acceptance remain cancelled. Capture fresh bytes,
-produce new fragments through the same contracts where still applicable,
-obtain independent reviews, answer again and obtain new exact acceptance.
-See [source replacement and recovery](lifecycle-recovery.md).
-
-For the example engagement, prepare the exact source replacement after the
-approved edit to the public specification:
+## Create the L1 gateway
 
 ```sh
-python3 - <<'PY'
-import json
-from pathlib import Path
-import sys
-
-runtime = Path.home() / '.ai/it-role-house'
-sys.path.insert(0, str(runtime / 'tools'))
-import lifecycle
-
-source = Path('docs/reference/lifecycle-format-2.md').resolve()
-value = lifecycle.manifest('public-spec', 'source', {
-    'blob': lifecycle.blob(source.read_bytes()),
-    'capture_profile': 'jai.byte-observation/1'})
-spec = {
-    'scope': 'default', 'reason': 'Maintained public source changed',
-    'proposed': [{'manifest': value, 'locator': str(source)}],
-    'selections': [{'logical_id': 'public-spec',
-                    'version_id': lifecycle.version_id(value)}],
-    'reinstatements': [], 'verification': [],
-    'invalidations': [], 'proofs': [],
-    'allowed_verification_path': 'jai.byte-observation/1'}
-Path('build/normal-layered/update-spec.json').write_text(
-    json.dumps(spec), encoding='utf-8')
-PY
-python3 ~/.ai/it-role-house/fabric/fabric.py lifecycle-plan \
-  normal-public-spec --spec build/normal-layered/update-spec.json \
-  --out build/normal-layered/update-plan.json
+python3 .ai/runtime/tools/governed_workflow.py \
+  --store /operator/engagement.jsonl --engagement engagement-id \
+  --config /operator/host-config.json \
+  entry --scope default --work-item service-controls \
+  --limits /operator/limits.json --deadline-ms "$JAI_DEADLINE_MS"
 ```
 
-Have the human review, sign and apply `update-plan.json` through the
-[source-update signing procedure](lifecycle-recovery.md). After that actual
-apply, the following script recaptures the same pending current source and
-produces fresh conclusions. Use it only while the existing contracts remain
-applicable. Independent workers must supply the actual review verdicts.
+This derives the structural L1 coordinating setter from the current attributable
+L0 manifest. It does not author domain questions, criteria or answers. Save the
+returned `assignment` VersionRef as `entry-ref.json`. The Store rejects arbitrary
+L2–L6 roots or a reissued cancelled generation with no entitled restoration.
+
+## Execute the entity's choice, then its work
 
 ```sh
-python3 - <<'PY'
-import hashlib
-import json
-from pathlib import Path
-import subprocess
-import sys
+python3 .ai/runtime/tools/governed_workflow.py \
+  --store /operator/engagement.jsonl --engagement engagement-id \
+  --config /operator/host-config.json \
+  preview /operator/entry-ref.json
 
-program = Path.home() / '.ai/it-role-house/fabric/fabric.py'
-eng = 'normal-public-spec'
-work = Path('build/normal-layered').resolve()
-source = Path('docs/reference/lifecycle-format-2.md').resolve()
-
-def run(*args):
-    return subprocess.run(
-        [sys.executable, str(program), *args],
-        check=True, text=True, capture_output=True).stdout
-
-def write(name, value):
-    path = work / name
-    path.write_text(json.dumps(value), encoding='utf-8')
-    return str(path)
-
-source_id = run('record-input', eng, '--logical-id', 'public-spec',
-                '--kind', 'source', '--file', str(source)).strip()
-rows = json.loads(run('lifecycle-status', eng, '--scope', 'default'))
-current = {row['logical_id']: row['version_id'] for row in rows}
-
-def binding(contract):
-    return {key: {'refs': [value]} for key, value in {
-        'source': source_id, 'contract': current[contract],
-        'policy': current['lifecycle-policy']}.items()}
-
-def ingest(contract, **values):
-    packet = json.loads(run('context-packet', eng, contract))
-    reply = {'context_digest': packet['context_digest'], **values}
-    run('ingest', eng, '--contract', contract,
-        write('fresh-reply.json', reply))
-
-capture = work / 'fresh-source-capture.txt'
-capture.write_text(hashlib.sha256(source.read_bytes()).hexdigest()
-                   + '\n', encoding='utf-8')
-ingest('ctr-0005', fragments=[{
-    'key': 'fresh', 'text': 'The changed source digest is captured',
-    'bindings': binding('ctr-0005')}], evidence=[{
-    'supports': ['fresh'], 'source': 'Fresh exact source digest',
-    'confidence': 'deterministic', 'file': str(capture),
-    'bindings': binding('ctr-0005')}])
-child = 'frag-0007'
-for layer in range(5, 0, -1):
-    run('review', eng, child, '--layer', str(layer),
-        '--state', 'accepts', '--reviewer', f'Layer {layer} reviewer',
-        '--model', 'record-actual-model', '--rationale',
-        'Checked fresh source, capture and exact dependency closure')
-    if layer > 1:
-        parent = f'ctr-{layer - 1:04}'
-        ingest(parent, fragments=[{
-            'key': 'upward', 'text': 'Fresh reviewed child establishes capture',
-            'supported_by': [child], 'bindings': binding(parent)}])
-        child = f'frag-{13 - layer:04}'
-run('answer', eng, '--requirement', 'req-0001',
-    '--text', 'The changed public source capture is established',
-    '--supported-by', child,
-    '--bindings', write('fresh-bindings.json', binding('ctr-0001')))
-print(run('status', eng))
-print(run('verify', eng))
-PY
+python3 .ai/runtime/tools/governed_workflow.py \
+  --store /operator/engagement.jsonl --engagement engagement-id \
+  --config /operator/host-config.json \
+  run /operator/entry-ref.json --phase selection
 ```
 
-Prepare new human acceptance for `frag-0012`, sign and apply that exact
-request, then run `release` for `frag-0012`. The earlier acceptance cannot
-authorize this changed output. These identifiers assume only the commands
-shown above ran; inspect actual command output if the engagement has other
-work. Do not increase the shared step budget to fit an example.
+The actual functional chooser reads its mandate and intrinsic common catalogue.
+Its captured return has no records and one `select_execution` decision for its
+own assignment. It chooses specialties, provider, workload and an available exact
+model. This phase cannot create a domain result, materialize, measure, accept or
+release anything. Save the intrinsic decision VersionRef returned in
+`completion.receipt.created_versions` as `choice-ref.json`; do not manufacture a
+choice from chat or a proposed JSON result.
+
+```sh
+python3 .ai/runtime/tools/governed_workflow.py \
+  --store /operator/engagement.jsonl --engagement engagement-id \
+  --config /operator/host-config.json \
+  run /operator/entry-ref.json --phase work --selection /operator/choice-ref.json
+```
+
+Work uses a fresh context for the same assignment and functional actor. Its exact
+unrevoked professional plan remains reusable while the assignment is unchanged;
+each invocation grant is single-use. Both phases share the local iteration
+window and any explicitly configured cumulative cap. A terminal physical run is never
+reopened; a completed or cancelled logical task needs an entitled new mandate.
+An executing setter may return sequential typed local assignments/decisions
+before its permitted terminal intent; each is checked in order and the whole
+return is rejected atomically if any part is invalid.
+
+Every entity can read `/catalogue/catalogue.json` and all
+`/catalogue/instructions/<slug>.md` without a neighbor request. Selected prompt
+instructions reduce context size; they are not a catalogue access restriction.
+Task inputs and another entity's private work are still governed separately.
+
+## Local quality and the next layer
+
+The local coordinating setter delegates its questions. Each question has a
+setter, author and independent same-layer reviewer. The setter selects exact
+reviews and bases through its own captured decisions; the host does not turn an
+actor's PASS statement into acceptance. A complete-layer bundle requires the
+six current selected answers and independent integration review. The integration
+reviewer differs from the bundle producer and every answer producer. A profile
+that declares only transport obligations cannot claim complete-layer work.
+
+After an actual offered handoff exists, save its exact UsePoint as
+`handoff-use.json`, for example `{"ref": {"…": "exact VersionRef"},
+"use_scope": "default"}`. The illustrative ellipsis is not executable data.
+
+```sh
+python3 .ai/runtime/tools/governed_workflow.py \
+  --store /operator/engagement.jsonl --engagement engagement-id \
+  --config /operator/host-config.json \
+  local-entry /operator/handoff-use.json --phase receiver
+```
+
+The host derives a local receiving gateway from that exact adjacent interface,
+L0 obligations and global capabilities. The upstream layer supplies no staffing
+fields or local tool template. Execute the receiver's selection/work phases as
+above. After its actual receiving assessment is accepted and selected in the
+required proof slot, save that assessment VersionRef as `acceptance-ref.json`:
+
+```sh
+python3 .ai/runtime/tools/governed_workflow.py \
+  --store /operator/engagement.jsonl --engagement engagement-id \
+  --config /operator/host-config.json \
+  local-entry /operator/handoff-use.json --phase setter \
+  --acceptance /operator/acceptance-ref.json
+```
+
+The receiving layer's coordinating entity now chooses its own professionals and
+formulates its local work. A receiving assessment is separate from professional
+review, human result acceptance and permission to release.
+
+## Inspect the result and handle unsuccessful work
+
+```sh
+python3 .ai/runtime/tools/governed_workflow.py \
+  --store /operator/engagement.jsonl --engagement engagement-id \
+  --config /operator/host-config.json \
+  status /operator/output-use.json
+```
+
+`output-use.json` contains an exact output UsePoint. Status reports current
+justification and `complete_layer`; it performs no acceptance or publication.
+The same owner/profile/criteria and governing input generation retain the
+reviewer instance across revisions. Slot aliases or repeated references cannot
+reset that generation. Replacing a reviewer requires a traceable entitled owner
+decision preserving the prior findings.
+
+Fresh contexts deliver bounded facts: exact review closure, published owned child
+outcomes, current slot references and explicitly historical revision feedback.
+An invalid current slot keeps its raw selected reference for compare-and-swap;
+it is not displayed as an empty slot or replaced by an older PASS. These facts
+do not create new governing inputs or change the actual author's result.
+
+Return missing information or a changed requirement through the typed owner
+route. Existing rework/reformulation limits still apply. The bounded coordination
+operations below handle existing assignments; substantive content generation is
+the assigned entities' work. Native Codex/Claude execution and external retrieval are
+unsupported by this process adapter; that technical limit is not a policy
+forbidding common public knowledge. Acceptance, release permission and actual
+publication remain separate gates.
+
+## Bounded coordination and escalation
+
+Use the same controlled-workspace Store and host configuration as above.
+These Bash examples name actual operator-owned input files, with illustrative
+paths to replace before running:
+
+```sh
+JAI_WORKFLOW=(python3 .ai/runtime/tools/governed_workflow.py
+  --store /operator/engagement.jsonl --engagement engagement-id
+  --config /operator/host-config.json)
+
+"${JAI_WORKFLOW[@]}" ready --scope default
+"${JAI_WORKFLOW[@]}" step --scope default
+"${JAI_WORKFLOW[@]}" drive --scope default --max-steps 4
+"${JAI_WORKFLOW[@]}" attempt-status /operator/attempt-ref.json
+```
+
+`ready` reports eligible phases and wait reasons. `step` executes one eligible
+phase; `drive` executes at most its declared phase count and stops on waiting,
+blocked work or actual resource exhaustion. Finishing a bounded driver call is
+not itself proof that the whole attempt exhausted its resources. An open setter
+waits for relevant new facts; its own audits and unrelated journal changes do not
+cause repeated execution. Facts arriving after the run's delivered basis remain
+eligible for its next step.
+
+An explicit escalation immediately pauses the affected layer and dependent work,
+including future productive admission. Collection does not delay that pause.
+Packages preserve individual conflicts and original provenance. Later findings
+produce immutable revisions; owner responses cover the exact revision/conflicts.
+An intermediate layer may relay a request but cannot change the actual owner's
+requirement.
+
+```sh
+"${JAI_WORKFLOW[@]}" handling-entry /operator/episode-ref.json --task collect
+```
+
+The same command supports `relay`, `resolve` and `reconcile`, optionally naming
+the entitled layer with `--layer`. The runtime derives the narrow control mandate;
+this is not a way to mark arbitrary productive work exempt from pause. Execute its
+returned assignment through the ordinary selection/work phases. Historical
+conflict material is labeled separately from current justification, so an owner's
+input change does not disable the work needed to reconcile its consequences.
+
+## Explicit speculative permission and reconciliation
+
+Without an actual grant, productive work stays paused. Speculation requires one
+externally signed L0 `delivery-change` decision naming the episode, existing
+assignments, exact governing inputs, finite shared limits and expiry. The native
+adapter meters `elapsed_ms`; token or currency ceilings are not supported meters.
+The grant does not approve a result, choose local staff or authorize release.
+
+```sh
+"${JAI_WORKFLOW[@]}" prepare-decision /operator/speculate-payload.json \
+  --scope default > /operator/prepared.json
+```
+
+The closed payload follows the maintained [protocol](../reference/governed-delivery-protocol.md).
+Preparation returns `message`, `intent`, `parameters`, `purpose` and `target`.
+Save the exact message and intent separately. Create the existing operator request
+with `operator_actions.request`, using the intent file as its source and the
+returned purpose, target and parameters unchanged. Request creation grants nothing.
+Only the operator signs it outside the agent sandbox, supplying the actual
+private key to the existing companion:
+
+```sh
+python3 .ai/runtime/tools/operator_actions.py sign /operator/request.json \
+  --workspace /operator --key /outside-agent/keys/operator-private.pem
+```
+
+The signing key must be outside the agent workspace and mounts. Combine the
+unchanged request and actual returned receipt as `{"request": ..., "receipt": ...}`
+in the proof file. The host then ingests that proof:
+
+```sh
+"${JAI_WORKFLOW[@]}" submit-decision /operator/message.json \
+  --authority-proof /operator/proof.json
+```
+
+The host fills only the proof binding; it does not sign human consent or rewrite
+the approved meaning. Changed intent, expired approval or a stale predecessor
+requires a new exact request, not a force option. The returned grant reference
+can be supplied as `--speculation /operator/grant-ref.json` to `run`, `ready`,
+`step` or `drive`. Actual phases consume the shared allowance once; cancellation
+and late returns retain actual measured costs.
+
+Authorized speculative records remain held and non-governing until complete
+owner impact reconciliation. Expiry ends new execution permission; it does not
+erase authentic execution history. Equal hashes alone do not prove that new
+requirements have no impact. Explicitly retained unchanged work returns to its
+ordinary pending/review state without obligatory producer reexecution. Required
+proof selection and independent review still govern its use. Changed or unknown
+impact cancels affected applicability and requires the necessary new work.
+
+Prepare the controller's complete `resume` payload with `prepare-decision`, then
+submit its exact message through `submit-decision`. Ordinary reconciliation
+reopens eligible unfinished work atomically; a fresh context is issued afterward.
+Completed work is not reopened. The actual owner's semantic resolution must
+already exist; the host cannot write that reasoning. Reserved L0 resolutions use
+the existing externally attested protocol ingress described in the
+[startup and recovery guide](lifecycle-recovery.md).
+
+`attempt-status` distinguishes a verified candidate, adequately supported
+contradiction, insufficient information, actual search/resource exhaustion and
+human termination. Exhausted search does not mean that no solution exists.
+None of these observations silently creates L0 result acceptance or release.

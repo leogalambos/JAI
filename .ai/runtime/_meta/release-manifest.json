@@ -1,6 +1,6 @@
 {
   "manifest_version": "1.0.0",
-  "release": "26.10.14",
+  "release": "26.11.0",
   "release_scope": {
     "schema_version": 1,
     "scope": "GA_COMPATIBLE/2",
@@ -20,13 +20,12 @@
   },
   "counts": {
     "roles": 286,
-    "agents": 34,
+    "agents": 27,
     "skills": 24,
     "workflows": 24,
     "artifact_types": 28,
     "schemas": 33,
     "renderers": 4,
-    "tests": 32,
     "provider_adapters": 2
   },
   "roles_source": "runtime/roles.json",
@@ -36,7 +35,6 @@
   "agents": [
     "architecture-repository-engineer",
     "artefact-governor",
-    "authority-liaison",
     "codebase-reviewer",
     "commercial-coordinator",
     "defect-analyst",
@@ -48,12 +46,6 @@
     "experiment-engineer",
     "fabric-auditor",
     "gate-auditor",
-    "l1-intent",
-    "l2-meaning",
-    "l3-policy",
-    "l4-design",
-    "l5-realisation",
-    "l6-evidence",
     "library-approver",
     "library-author",
     "library-release",
@@ -105,124 +97,76 @@
     "tools/publication.py",
     "tools/repository.py generate-views"
   ],
-  "tests": [
-    "fabric/fabric.py self-test",
-    "tools/publication.py self-test",
-    "tools/projection.py self-test",
-    "tools/publication_integrity.py self-test",
-    "tools/visual_qa.py self-test",
-    "tools/agent_runtime.py self-test",
-    "tools/repository.py self-test",
-    "tools/sabsa_ea.py self-test",
-    "tools/ea_conformance.py self-test",
-    "tools/schema_check.py self-test",
-    "tools/behavioral_eval.py self-test",
-    "tools/integration_adapters.py self-test",
-    "tools/execution_record.py self-test",
-    "tools/supply_chain.py self-test",
-    "tools/model_router.py self-test",
-    "tools/service_levels.py self-test",
-    "tools/release_policy.py self-test",
-    "tools/provider_parity.py",
-    "tools/docs_contract.py --root .",
-    "tools/schema_resolver.py self-test",
-    "tools/architecture_claim_lint.py",
-    "tools/native_enforcement_26103.py",
-    "tools/artifacts.py check",
-    "tools/artifacts.py golden-test",
-    "tools/license_check.py",
-    "tools/human_text_width.py --root .",
-    "tools/performance_budget.py --profile fast",
-    "tools/qualification_regression.py regression",
-    "tools/qualification_core.py A-G qualification",
-    "tools/release_ga.py qualify",
-    "tools/release_bundle.py build",
-    "tools/generate_docs.py --check"
-  ],
   "compatibility": [
     {
       "component": "Claude Code",
-      "minimum": "provider-supported strict sandbox",
-      "tested": "not installed on reference host; projections only, live NOT_VERIFIED",
-      "supported": "contract-scoped tools; reviewer shell unavailable without read-only isolation"
+      "minimum": "provider-supported",
+      "supported": "Native role and workflow projections; effective isolation depends on the host sandbox."
     },
     {
       "component": "Codex CLI",
       "minimum": "provider-supported",
-      "tested": "0.164.0 host CLI help confirms sandbox/on-request values; live role confinement NOT_VERIFIED",
-      "supported": "role-authorized local QA in effective native sandbox"
+      "supported": "Native role and workflow skills; effective isolation depends on the host sandbox."
     },
     {
       "component": "Python",
       "minimum": "3.10",
-      "tested": "3.12 release CI target; bare interpreter installation tested with site packages disabled",
-      "supported": "standard-library-only installation; runtime contract workflows need their dependencies"
+      "supported": "Standard-library installation; runtime contract workflows also require their declared dependencies."
     },
     {
       "component": "Pandoc",
       "minimum": "optional",
-      "tested": "publication tool detects at runtime",
-      "supported": "optional"
+      "supported": "Optional document conversion."
     },
     {
       "component": "WeasyPrint",
       "minimum": "70.x optional",
-      "tested": "actual HTML/PDF conversion; constrained resource fetching; uniform CLI-first/current-Python fallback covered by real CLI subprocess tests",
-      "supported": "SUPPORTED optional HTML/PDF; not Office fidelity"
+      "supported": "HTML/PDF publication using a CLI-first/current-Python fallback with constrained resource fetching; not Office fidelity."
     },
     {
       "component": "Pyphen",
       "minimum": "determined by the installed WeasyPrint dependency requirements",
-      "tested": "metadata reported; actual HTML/PDF conversion determines readiness",
-      "supported": "WeasyPrint transitive dependency; optional pip recipe selects 0.17.x in requirements-rendering.txt, without rejecting working OS packages"
+      "supported": "WeasyPrint transitive dependency; the optional pip recipe selects 0.17.x without rejecting working OS packages."
     },
     {
       "component": "LibreOffice",
       "minimum": "Office-compatible host renderer",
-      "tested": "actual DOCX/PPTX/XLSX operator renders on Fedora",
-      "supported": "AUTO when native sandbox permits; otherwise OPERATOR_ASSISTED actual Office QA"
+      "supported": "Office document rendering in the native sandbox when available, otherwise through an explicit operator handoff."
     },
     {
       "component": "Poppler",
       "minimum": "pdftoppm on PATH",
-      "tested": "actual PDF page rasterization",
-      "supported": "visual QA raster prerequisite"
+      "supported": "PDF page rasterization for visual inspection."
     },
     {
       "component": "OpenSSL",
-      "minimum": "Ed25519 pkeyutl -rawin",
-      "tested": "external receipts verified with fixed /usr/bin/openssl on Linux",
-      "supported": "OPERATOR_ASSISTED local L0; other trust adapters NOT_VERIFIED"
+      "minimum": "Ed25519 genpkey and pkeyutl -rawin",
+      "supported": "Host-confirmed key creation and explicit human signing; private keys stay outside agent access."
     },
     {
       "component": "Fonts/system libraries",
-      "minimum": "DejaVu Sans; renderer-native text/layout libraries",
-      "tested": "Fedora reference glyph/layout corpus",
-      "supported": "host prerequisite; other platforms NOT_VERIFIED"
+      "minimum": "DejaVu Sans and renderer-native layout libraries",
+      "supported": "Required by the selected rendering tools."
     },
     {
       "component": "lxml",
       "minimum": "5.x",
-      "tested": "XSD conformance suite",
-      "supported": "EA conformance"
+      "supported": "Architecture exchange conformance checks."
     },
     {
       "component": "jsonschema",
-      "minimum": ">=4.26,<5 for runtime contract workflows",
-      "tested": "Draft 2020-12; narrow release-scope bootstrap validation uses only the standard library",
-      "supported": "required for Agent/Policy, DCS and Artifact validation; not required for installation"
+      "minimum": ">=4.18,<5",
+      "supported": "Required for runtime contract validation; not required for installation."
     },
     {
       "component": "Pillow",
       "minimum": "runtime-supported",
-      "tested": "visual QA fixture rendering",
-      "supported": "visual QA"
+      "supported": "Image inspection and visual QA."
     },
     {
       "component": "GitHub Actions",
-      "minimum": "release workflow",
-      "tested": "tag, A-H gates, ZIP SHA-256, CI publication",
-      "supported": "automatic release publication"
+      "minimum": "release@YY.MM.VV tag workflow",
+      "supported": "Validated source archives and checksums are published only after a matching release tag is pushed."
     }
   ]
 }

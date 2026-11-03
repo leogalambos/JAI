@@ -1,11 +1,5 @@
----
-owner: JAI documentation maintainers
-review_due: 2027-01-16
----
-
 # Keep Android development aligned with SABSA
 
-Owner: JAI maintainers. Last reviewed: 2026-10-20.
 
 ## Set up the development workspace
 

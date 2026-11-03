@@ -4,7 +4,6 @@ Current support is declared only in the package `RELEASE-SCOPE.json`.
 Generated release inventories derive their scope and feature list from it;
 these workflow explanations do not create additional capabilities or grants.
 
-Owner: JAI maintainers. Last reviewed: 2026-10-26.
 
 JAI augments enterprise IS/IT work with specialist workflows, traceable evidence
 and editable deliverables. AI prepares; people retain consequential decisions.
@@ -98,7 +97,9 @@ ledger unchanged; approving a domain REJECT decision instead records a rejection
 
 Keep the private key and reviewed signer outside agent-accessible/writable
 mounts. The administrator-enrolled public pin is protected against replacement;
-it is verification data, not an API key. The installer generates no L0 key.
+it is verification data, not an API key. The installer offers host-confirmed
+creation of the default operator key; it does not enroll public trust or grant
+L0 permissions. See [key setup](../operations/human-authority.md).
 A chat message, native tool prompt, signer label, environment flag, same OS UID
 or keypress alone is not an authorization credential.
 

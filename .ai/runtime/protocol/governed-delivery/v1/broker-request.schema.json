@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Closed shared process and native broker requests",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "operation": {
+          "const": "read"
+        },
+        "handle": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "id",
+        "operation",
+        "handle"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "operation": {
+          "const": "propose"
+        },
+        "data": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "operation",
+        "data"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "operation": {
+          "const": "materialize"
+        },
+        "subject": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "blob_id": {
+          "$ref": "common.schema.json#/$defs/digest"
+        },
+        "destination_handle": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "id",
+        "operation",
+        "subject",
+        "blob_id",
+        "destination_handle"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "operation": {
+          "const": "measure"
+        },
+        "tool_policy": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "id",
+        "operation",
+        "tool_policy",
+        "targets"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "operation": {
+          "const": "return"
+        },
+        "value": {
+          "$ref": "run-return.schema.json"
+        }
+      },
+      "required": [
+        "id",
+        "operation",
+        "value"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "operation": {
+          "const": "reference"
+        },
+        "logical_id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "record_type": {
+          "enum": [
+            "source",
+            "profile",
+            "assignment",
+            "context",
+            "product",
+            "assessment"
+          ]
+        },
+        "record": {
+          "type": "object"
+        }
+      },
+      "required": [
+        "id",
+        "operation",
+        "logical_id",
+        "record_type",
+        "record"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

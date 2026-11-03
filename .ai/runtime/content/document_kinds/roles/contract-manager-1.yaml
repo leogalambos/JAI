@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/contract-manager:1",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -244,7 +244,7 @@
         "G1: Intake is rejected unless all mandatory inputs are present or a named owner and date exist for each gap.",
         "G2: No commitment is made beyond demonstrated capacity for the period.",
         "G3: Every deviation from the documented process is logged with its reason and its expiry.",
-        "G4: Contract repository and obligation register is published on the agreed cadence even when the news is bad.",
+        "G4: The primary deliverable (\"Contract repository and obligation register\") is published on the agreed cadence, including adverse results.",
         "G5: Every obligation on both sides is extracted into a tracked register with an owner",
         "G6: obligations that live only in the contract document are not managed"
       ],
@@ -451,6 +451,120 @@
         "json_pointer": "/jai/semantics/required_inputs/3",
         "value": "Regulatory requirements for contracts"
       }
+    },
+    {
+      "id": "role/contract-manager:1.contract_repository_identity",
+      "semantic_fields": [
+        "contract_repository_identity"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Identify contracting parties, operative signed contract/version, applicable jurisdiction or governing-law reference, effective/expiry dates and authoritative record location; preserve draft and superseded status explicitly.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Identify contracting parties, operative signed contract/version, applicable jurisdiction or governing-law reference, effective/expiry dates and authoritative record location; preserve draft and superseded status explicitly.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#contract-manager:1",
+          "content/types/register.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/contract-manager:1.contract_obligation_records",
+      "semantic_fields": [
+        "contract_obligation_records"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "For each tracked obligation, identify contract/clause, responsible party and owner, deliverable or performance measure, due/renewal/notice dates, dependencies, acceptance evidence and current status.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "For each tracked obligation, identify contract/clause, responsible party and owner, deliverable or performance measure, due/renewal/notice dates, dependencies, acceptance evidence and current status.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#contract-manager:1",
+          "content/types/register.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/contract-manager:1.contract_lifecycle_integrity",
+      "semantic_fields": [
+        "contract_lifecycle_integrity"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Define access/classification, authorised variation links, renewal/termination triggers and reconciliation of the obligation register with operative contract versions; expose missing documents or unresolved interpretations.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Define access/classification, authorised variation links, renewal/termination triggers and reconciliation of the obligation register with operative contract versions; expose missing documents or unresolved interpretations.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#contract-manager:1",
+          "content/types/register.yaml"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
     }
   ],
   "conditional_information": [
@@ -685,6 +799,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Contract Manager",
+        "frameworks": [
+          "organisational contract standards",
+          "DORA contractual requirements where applicable",
+          "IACCM/WorldCC practice"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -710,13 +845,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {

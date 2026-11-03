@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Adoption measurement and reinforcement report', provide verifiable evidence satisfying: Measures are defined before rollout and below-target adoption has an owned action.. Required delivery form: Dashboard-backed report with trend and corrective actions.",
+        "criterion_under_review": "For the specific output 'Adoption measurement and reinforcement report', provide verifiable evidence satisfying: Measures are defined before rollout and below-target adoption has an owned action. Required delivery form: Dashboard-backed report with trend and corrective actions.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

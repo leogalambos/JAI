@@ -248,7 +248,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Dependency impact and retirement plan', provide verifiable evidence satisfying: Every material inbound/outbound dependency has an owned disposition and sequencing decision.. Required delivery form: Versioned plan plus architecture dependency/view set and migration/disposition actions.",
+        "criterion_under_review": "For the specific output 'Dependency impact and retirement plan', provide verifiable evidence satisfying: Every material inbound/outbound dependency has an owned disposition and sequencing decision. Required delivery form: Versioned plan plus architecture dependency/view set and migration/disposition actions.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/ci-cd-platform-engineer:3",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -63,7 +63,9 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: pipeline identity and OIDC federation design.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:3",
-          "content/types/solution-design.yaml"
+          "content/types/solution-design.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "reason": "For each receiving role (DevOps Engineer; Build Engineer; Release Engineer; Software Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:3",
-          "content/types/solution-design.yaml"
+          "content/types/solution-design.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -139,7 +143,9 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:3",
-          "content/types/solution-design.yaml"
+          "content/types/solution-design.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -177,7 +183,9 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:3",
-          "content/types/solution-design.yaml"
+          "content/types/solution-design.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -197,7 +205,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'pipeline identity and OIDC federation design', provide verifiable evidence satisfying: Reproducible from a clean checkout; no manual step required for a standard run. Required delivery form: Declarative pipeline definition in version control.",
+        "For the specific output 'pipeline identity and OIDC federation design', provide verifiable evidence satisfying: Defines trust relationships, token claims, least-privilege permissions, expiry, failure handling and verification. Required delivery form: Pipeline identity and federation design.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -212,10 +220,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'pipeline identity and OIDC federation design', provide verifiable evidence satisfying: Reproducible from a clean checkout; no manual step required for a standard run. Required delivery form: Declarative pipeline definition in version control.",
+        "reason": "For the specific output 'pipeline identity and OIDC federation design', provide verifiable evidence satisfying: Defines trust relationships, token claims, least-privilege permissions, expiry, failure handling and verification. Required delivery form: Pipeline identity and federation design.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:3",
-          "content/types/solution-design.yaml"
+          "content/types/solution-design.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -225,8 +235,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "pipeline identity and OIDC federation design",
-        "format": "Declarative pipeline definition in version control",
-        "acceptance_criterion": "Reproducible from a clean checkout; no manual step required for a standard run",
+        "format": "Pipeline identity and federation design",
+        "acceptance_criterion": "Defines trust relationships, token claims, least-privilege permissions, expiry, failure handling and verification",
         "role_path": "skills/it-roles-software-development-and-engineering/references/ci-cd-platform-engineer.md"
       }
     },
@@ -271,7 +281,9 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:3",
-          "content/types/solution-design.yaml"
+          "content/types/solution-design.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -323,7 +335,9 @@
         "reason": "Analyse the specific input \"Team build requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:3",
-          "content/types/solution-design.yaml"
+          "content/types/solution-design.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -366,7 +380,9 @@
         "reason": "Analyse the specific input \"Supply chain and scanning requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:3",
-          "content/types/solution-design.yaml"
+          "content/types/solution-design.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -409,7 +425,9 @@
         "reason": "Analyse the specific input \"Runner infrastructure capability\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:3",
-          "content/types/solution-design.yaml"
+          "content/types/solution-design.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -452,7 +470,9 @@
         "reason": "Analyse the specific input \"Delivery metrics\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:3",
-          "content/types/solution-design.yaml"
+          "content/types/solution-design.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -497,7 +517,9 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -540,7 +562,9 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -585,7 +609,9 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -699,6 +725,36 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "architecture-description",
+        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
+        "url": "https://www.iso.org/standard/74393.html",
+        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "systems-security-engineering",
+        "title": "NIST SP 800-160 Volume 1 Revision 1, Engineering Trustworthy Secure Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+        "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "CI/CD Platform Engineer",
+        "frameworks": [
+          "SLSA supply chain levels",
+          "NIST SSDF (SP 800-218)",
+          "OIDC workload identity federation",
+          "DORA metrics"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -724,13 +780,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -749,6 +806,8 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/solution-design",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
@@ -763,8 +822,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "ci-cd-platform-engineer:3",
-    "source_fingerprint": "2a39be03af52b694f52094758e025d4081c3979a2bfe87fab45fec0324be657c",
-    "source_hash": "38201ce0c3e9de264634f76be9de2cf3360c73cebda72a2ae3f17993bf882978"
+    "source_fingerprint": "ad433f3e81088531a8a461fd745d968b61828dcbe2dd0ac8fe5188e4f3e13fe0",
+    "source_hash": "809c4d23eecb1017421760b37aefce9b3ee76b5f519e2405e4094e505e2e3e9a"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

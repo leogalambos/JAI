@@ -1,20 +1,21 @@
 ---
-description: Run a consequential task through the six-layer justifiable delivery method
-argument-hint: <intent, stated as you would to an accountable team>
+description: Run a consequential task through Gen2 layered native delivery
+argument-hint: <intent, or a request to resume an existing engagement>
 allowed-tools: Read, Grep, Glob, Bash, Task, Agent
 ---
 
-Use the `layered-justifiable-delivery` skill for the following intent. Record it verbatim as the intent node, initialise a fabric under `.fabric/` in the current workspace, and run the layer cycle down and back up. Stop and hand over to me whenever an escalation reaches layer 1.
+Use the `layered-justifiable-delivery` skill for this request:
 
-Intent: $ARGUMENTS
+$ARGUMENTS
 
+The user interface is this natural-language request. Handle runtime transport,
+record identities, enrollment files and native delegation internally; do not ask
+the user to construct JSON or invoke workflow runtime functions. Preserve the
+request verbatim as the attributable initial input. Local setters formulate
+measurable criteria; the orchestrating parent supplies no professional verdict.
 
-## Operational specification — Six-layer execution contract
-
-**Preconditions and boundary.** Retain the verbatim intent; L1 defines authority and scope, L2 fixes meaning, L3 evaluates controls and rationale, L4 specifies design, L5 realizes it, and L6 records observed evidence.
-
-**Execution and required evidence.** Use typed downward transitions and evidence-backed upward review; classify rework, reformulation and escalation separately and respect episode/revision budgets.
-
-**Acceptance and escalation.** Escalate to L0 human authority when required. A completed run is not synonymous with independently approved release.
-
-**Documentation.** The current product manual is authored in repository `docs/` (see `docs/reference/commands.md` and `docs/reference/command-walkthroughs.md`). For installed offline assistance use `~/.ai/it-role-house/GUIDE.md` or `/guide`. Provider commands and skills are native runtime contracts; no separate runtime HTML help site is required.
+Use the current Gen2 Store and the active provider's existing native subagents.
+Do not execute archived Gen1 evaluation logic or start additional model clients.
+Keep work within each functional owner and pass only scoped adjacent interfaces.
+Escalation pauses the affected layer by default. A completed attempt is distinct
+from professional review, human acceptance and release permission.

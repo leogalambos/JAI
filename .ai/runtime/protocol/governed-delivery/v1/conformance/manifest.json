@@ -1,0 +1,637 @@
+{
+  "protocol": "jai.governed-delivery/1",
+  "structural": {
+    "positive": [
+      {
+        "id": "bootstrap",
+        "file": "examples/bootstrap.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "assignment",
+        "file": "examples/assignment.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "submission",
+        "file": "examples/submission.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "observation",
+        "file": "examples/observation.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "review",
+        "file": "examples/review.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "integration",
+        "file": "examples/integration.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "handoff",
+        "file": "examples/handoff.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "handoff_acceptance",
+        "file": "examples/handoff_acceptance.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "information_request",
+        "file": "examples/information_request.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "information_response",
+        "file": "examples/information_response.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "change_request",
+        "file": "examples/change_request.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "escalation",
+        "file": "examples/escalation.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "relay",
+        "file": "examples/relay.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "record-source",
+        "file": "examples/record-source.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "record-profile",
+        "file": "examples/record-profile.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "record-assignment",
+        "file": "examples/record-assignment.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "record-context",
+        "file": "examples/record-context.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "record-product",
+        "file": "examples/record-product.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "record-assessment",
+        "file": "examples/record-assessment.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "product-answer",
+        "file": "examples/product-answer.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "product-observation",
+        "file": "examples/product-observation.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "product-bundle",
+        "file": "examples/product-bundle.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "product-handoff",
+        "file": "examples/product-handoff.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "product-escalation",
+        "file": "examples/product-escalation.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "product-final_result",
+        "file": "examples/product-final_result.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "assessment-professional",
+        "file": "examples/assessment-professional.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "assessment-integration",
+        "file": "examples/assessment-integration.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "assessment-receiving",
+        "file": "examples/assessment-receiving.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "source-input",
+        "file": "examples/source-input.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "source-criteria",
+        "file": "examples/source-criteria.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "source-policy",
+        "file": "examples/source-policy.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "source-assumption",
+        "file": "examples/source-assumption.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "decision-rework",
+        "file": "examples/decision-rework.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "decision-reformulate",
+        "file": "examples/decision-reformulate.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "decision-select",
+        "file": "examples/decision-select.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "decision-continue",
+        "file": "examples/decision-continue.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "decision-speculate",
+        "file": "examples/decision-speculate.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "decision-resume",
+        "file": "examples/decision-resume.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "decision-invalidate",
+        "file": "examples/decision-invalidate.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "decision-reinstate",
+        "file": "examples/decision-reinstate.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "decision-accept",
+        "file": "examples/decision-accept.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "decision-release",
+        "file": "examples/decision-release.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "decision-terminate",
+        "file": "examples/decision-terminate.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "select-proof",
+        "file": "examples/select-proof.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "controller-context",
+        "file": "examples/controller-context.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "response-committed",
+        "file": "examples/response-committed.json",
+        "schema": "response.schema.json"
+      },
+      {
+        "id": "response-already_committed",
+        "file": "examples/response-already_committed.json",
+        "schema": "response.schema.json"
+      },
+      {
+        "id": "response-rejected",
+        "file": "examples/response-rejected.json",
+        "schema": "response.schema.json"
+      },
+      {
+        "id": "basis-query",
+        "file": "examples/basis-query.json",
+        "schema": "query.schema.json"
+      },
+      {
+        "id": "basis-response",
+        "file": "examples/basis-response.json",
+        "schema": "query.schema.json"
+      },
+      {
+        "id": "effect-propose",
+        "file": "examples/effect-propose.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "effect-materialize",
+        "file": "examples/effect-materialize.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "effect-measure",
+        "file": "examples/effect-measure.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "actual-run-return",
+        "file": "examples/actual-run-return.json",
+        "schema": "run-return.schema.json"
+      },
+      {
+        "id": "control-renew_control",
+        "file": "examples/control-renew_control.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "control-run_started",
+        "file": "examples/control-run_started.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "control-run_completed",
+        "file": "examples/control-run_completed.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "control-run_cancelled",
+        "file": "examples/control-run_cancelled.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "control-usage_audit",
+        "file": "examples/control-usage_audit.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "product-finding",
+        "file": "examples/product-finding.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "owned-product-reinstatement-return",
+        "file": "examples/owned-product-reinstatement-return.json",
+        "schema": "run-return.schema.json"
+      },
+      {
+        "id": "select_execution",
+        "file": "examples/select_execution.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "record-work-context",
+        "file": "examples/record-work-context.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "run-return-selection",
+        "file": "examples/run-return-selection.json",
+        "schema": "run-return.schema.json"
+      },
+      {
+        "id": "record-episode-control",
+        "file": "examples/record-episode-control.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "record-speculative-context",
+        "file": "examples/record-speculative-context.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "resolve-escalation",
+        "file": "examples/decision-resolve-escalation.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "sabsa-content-profile",
+        "file": "examples/sabsa-content-profile.json",
+        "schema": "sabsa-content-profile.schema.json"
+      },
+      {
+        "id": "sabsa-content",
+        "file": "examples/sabsa-content.json",
+        "schema": "sabsa-content.schema.json"
+      }
+    ],
+    "negative": [
+      {
+        "id": "unknown-envelope-field",
+        "file": "invalid/unknown-envelope-field.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "unsupported-protocol",
+        "file": "invalid/unsupported-protocol.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "unknown-message-type",
+        "file": "invalid/unknown-message-type.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "missing-context",
+        "file": "invalid/missing-context.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "ordinary-null-context",
+        "file": "invalid/ordinary-null-context.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "safe-integer-overflow",
+        "file": "invalid/safe-integer-overflow.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "negative-time",
+        "file": "invalid/negative-time.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "request-id-too-long",
+        "file": "invalid/request-id-too-long.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "uppercase-digest",
+        "file": "invalid/uppercase-digest.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "payload-type-confusion",
+        "file": "invalid/payload-type-confusion.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "duplicate-cause",
+        "file": "invalid/duplicate-cause.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "unknown-payload-field",
+        "file": "invalid/unknown-payload-field.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "ownership-layer-0",
+        "file": "invalid/ownership-layer-0.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "ownership-layer-7",
+        "file": "invalid/ownership-layer-7.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "unknown-action",
+        "file": "invalid/unknown-action.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "foreign-action-fields",
+        "file": "invalid/foreign-action-fields.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "empty-replacements",
+        "file": "invalid/empty-replacements.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "arbitrary-operations",
+        "file": "invalid/arbitrary-operations.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "empty-bootstrap-inputs",
+        "file": "invalid/empty-bootstrap-inputs.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "professional-receiving-verdict",
+        "file": "invalid/professional-receiving-verdict.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "empty-criteria-source",
+        "file": "invalid/empty-criteria-source.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "unknown-effect-operation",
+        "file": "invalid/unknown-effect-operation.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "read-without-targets",
+        "file": "invalid/read-without-targets.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "empty-required-material",
+        "file": "invalid/empty-required-material.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "generic-manifest-escape",
+        "file": "invalid/generic-manifest-escape.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "rejection-with-receipt",
+        "file": "invalid/rejection-with-receipt.json",
+        "schema": "response.schema.json"
+      },
+      {
+        "id": "query-cannot-select",
+        "file": "invalid/query-cannot-select.json",
+        "schema": "query.schema.json"
+      },
+      {
+        "id": "delivery-cannot-grant-effects",
+        "file": "invalid/delivery-cannot-grant-effects.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "ordinary-context-null-assignment",
+        "file": "invalid/ordinary-context-null-assignment.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "materialize-missing-boundary",
+        "file": "invalid/materialize-missing-boundary.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "measure-missing-boundary",
+        "file": "invalid/measure-missing-boundary.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "zero-budget-ceiling",
+        "file": "invalid/zero-budget-ceiling.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "unknown-control-event",
+        "file": "invalid/unknown-control-event.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "control-cannot-grant-rights",
+        "file": "invalid/control-cannot-grant-rights.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "ordinary-control-null-context",
+        "file": "invalid/ordinary-control-null-context.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "renew-control-with-old-context",
+        "file": "invalid/renew-control-with-old-context.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "usage-audit-empty",
+        "file": "invalid/usage-audit-empty.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "run-return-arbitrary-operations",
+        "file": "invalid/run-return-arbitrary-operations.json",
+        "schema": "run-return.schema.json"
+      },
+      {
+        "id": "run-return-missing-terminal",
+        "file": "invalid/run-return-missing-terminal.json",
+        "schema": "run-return.schema.json"
+      },
+      {
+        "id": "run-return-human-acceptance",
+        "file": "invalid/run-return-human-acceptance.json",
+        "schema": "run-return.schema.json"
+      },
+      {
+        "id": "finding-without-criterion",
+        "file": "invalid/finding-without-criterion.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "assignment-missing-mandate",
+        "file": "invalid/assignment-missing-mandate.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "assignment-empty-use-scope",
+        "file": "invalid/assignment-empty-use-scope.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "assignment-invalid-use-selector",
+        "file": "invalid/assignment-invalid-use-selector.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "assignment-use-selector-extra-grant",
+        "file": "invalid/assignment-use-selector-extra-grant.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "no-generic-activation",
+        "file": "invalid/no-generic-activation.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "review-disposition-unknown-verdict",
+        "file": "invalid/review-disposition-unknown-verdict.json",
+        "schema": "query.schema.json"
+      },
+      {
+        "id": "leaf-return-cannot-supply-human-authority",
+        "file": "invalid/leaf-return-cannot-supply-human-authority.json",
+        "schema": "run-return.schema.json"
+      },
+      {
+        "id": "context-missing-execution",
+        "file": "invalid/context-missing-execution.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "assignment-missing-routing",
+        "file": "invalid/assignment-missing-routing.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "speculation-missing-human-proof",
+        "file": "invalid/speculation-missing-human-proof.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "reconciliation-missing-impact",
+        "file": "invalid/reconciliation-missing-impact.json",
+        "schema": "message.schema.json"
+      },
+      {
+        "id": "escalation-missing-episode",
+        "file": "invalid/escalation-missing-episode.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "unsupported-search-outcome",
+        "file": "invalid/unsupported-search-outcome.json",
+        "schema": "record.schema.json"
+      },
+      {
+        "id": "sabsa-profile-unknown-authority-field",
+        "file": "invalid/sabsa-profile-unknown-authority-field.json",
+        "schema": "sabsa-content-profile.schema.json"
+      },
+      {
+        "id": "sabsa-content-unknown-acceptance-field",
+        "file": "invalid/sabsa-content-unknown-acceptance-field.json",
+        "schema": "sabsa-content.schema.json"
+      }
+    ]
+  },
+  "raw_canonical": "conformance/raw-canonical.json",
+  "semantic": "conformance/semantic-vectors.json",
+  "semantic_execution_status": "specified-not-executed-P03"
+}

@@ -231,7 +231,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Application lifecycle and modernisation roadmap', provide verifiable evidence satisfying: The roadmap reconciles with enterprise/application architecture and does not schedule retirement before dependency/data obligations are addressed.. Required delivery form: Roadmap with target dispositions, migration/replacement dependencies, transition states, retirement conditions and owners.",
+        "criterion_under_review": "For the specific output 'Application lifecycle and modernisation roadmap', provide verifiable evidence satisfying: The roadmap reconciles with enterprise/application architecture and does not schedule retirement before dependency/data obligations are addressed. Required delivery form: Roadmap with target dispositions, migration/replacement dependencies, transition states, retirement conditions and owners.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

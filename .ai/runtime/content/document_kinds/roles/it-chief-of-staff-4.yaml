@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/it-chief-of-staff:4",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -61,7 +61,8 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: executive briefing pack.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
-          "content/types/presentation.yaml"
+          "content/types/presentation.yaml",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -99,7 +100,8 @@
         "reason": "For each receiving role (PMO Lead; Programme Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
-          "content/types/presentation.yaml"
+          "content/types/presentation.yaml",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -137,7 +139,8 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
-          "content/types/presentation.yaml"
+          "content/types/presentation.yaml",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -175,7 +178,8 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
-          "content/types/presentation.yaml"
+          "content/types/presentation.yaml",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -213,7 +217,8 @@
         "reason": "For the specific output 'executive briefing pack', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
-          "content/types/presentation.yaml"
+          "content/types/presentation.yaml",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -244,7 +249,7 @@
         "G1: Intake is rejected unless all mandatory inputs are present or a named owner and date exist for each gap.",
         "G2: No commitment is made beyond demonstrated capacity for the period.",
         "G3: Every deviation from the documented process is logged with its reason and its expiry.",
-        "G4: Leadership operating calendar is published on the agreed cadence even when the news is bad.",
+        "G4: The primary deliverable (\"Leadership operating calendar\") is published on the agreed cadence, including adverse results.",
         "G5: Every leadership decision is recorded with its rationale, its owner and its review date before the meeting closes"
       ],
       "evidence_policy": {
@@ -262,7 +267,8 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
-          "content/types/presentation.yaml"
+          "content/types/presentation.yaml",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -307,7 +313,8 @@
         "reason": "Analyse the specific input \"Leadership objectives\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
-          "content/types/presentation.yaml"
+          "content/types/presentation.yaml",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -350,7 +357,8 @@
         "reason": "Analyse the specific input \"Status and risk reporting\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
-          "content/types/presentation.yaml"
+          "content/types/presentation.yaml",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -393,7 +401,8 @@
         "reason": "Analyse the specific input \"Budget position\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
-          "content/types/presentation.yaml"
+          "content/types/presentation.yaml",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -436,7 +445,8 @@
         "reason": "Analyse the specific input \"Escalations\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
-          "content/types/presentation.yaml"
+          "content/types/presentation.yaml",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -481,7 +491,8 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -524,7 +535,8 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -569,7 +581,8 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -683,6 +696,34 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "accessibility",
+        "title": "W3C Web Content Accessibility Guidelines (WCAG) 2.2",
+        "url": "https://www.w3.org/TR/WCAG22/",
+        "scope": "Perceivable and understandable content, text alternatives and accessible navigation; applicability depends on the delivered medium.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "IT Chief of Staff",
+        "frameworks": [
+          "OKR practice",
+          "COBIT 2019 reporting guidance"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -708,13 +749,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {

@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "type/control-design",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -56,7 +56,9 @@
         "reason": "Identify stable artifact ID, owner, source version and intended usage.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -77,7 +79,8 @@
       },
       "acceptance_criteria": [
         "Link control objectives to risks, business requirements and accountable owners.",
-        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations.",
+        "Trace each control objective to a risk or obligation and identify accountable owner, protected outcome and operating scope."
       ],
       "evidence_policy": {
         "material_claims": "versioned source reference or explicitly labelled assumption",
@@ -94,7 +97,9 @@
         "reason": "Link control objectives to risks, business requirements and accountable owners.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -115,7 +120,8 @@
       },
       "acceptance_criteria": [
         "Define preventive/detective/corrective actions, triggers, inputs and failure behaviour.",
-        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations.",
+        "Specify trigger, actor/system, required inputs, action, expected observable result, exceptions and response when the control fails."
       ],
       "evidence_policy": {
         "material_claims": "versioned source reference or explicitly labelled assumption",
@@ -132,7 +138,9 @@
         "reason": "Define preventive/detective/corrective actions, triggers, inputs and failure behaviour.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -153,7 +161,8 @@
       },
       "acceptance_criteria": [
         "Define measurable effectiveness tests, evidence collection and exception handling.",
-        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations.",
+        "Define design/operating-effectiveness checks, population or sampling, expected evidence, acceptance threshold and disposition of exceptions."
       ],
       "evidence_policy": {
         "material_claims": "versioned source reference or explicitly labelled assumption",
@@ -170,7 +179,9 @@
         "reason": "Define measurable effectiveness tests, evidence collection and exception handling.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -210,7 +221,9 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -253,7 +266,9 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -298,7 +313,9 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -412,6 +429,24 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "systems-security-engineering",
+        "title": "NIST SP 800-160 Volume 1 Revision 1, Engineering Trustworthy Secure Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+        "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
     ]
   },
   "overlap": {
@@ -437,13 +472,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {

@@ -67,7 +67,7 @@ Taking on out-of-scope work is not helpfulness; it removes the second pair of ey
 
 **Step 1 — Define the analysis question and its boundary.** State precisely what must be understood or specified, for whom, and by when. Also state what is deliberately out of scope, so the analysis does not expand silently.
 
-**Step 2 — Identify stakeholders and their stake.** Map who is affected, who decides, who supplies information and who will be blamed if it goes wrong. Missing a silent stakeholder is the most common cause of late-stage requirement churn.
+**Step 2 — Identify stakeholders and their stake.** Map who is affected, who decides, who supplies information and who will be blamed if it goes wrong. An omitted stakeholder can introduce late requirements or conflicts; record how stakeholder coverage was checked.
 
 **Step 3 — Elicit from Observed process execution>process participants, Event log data>process mining tooling, Control requirements>Control Owner, Volume and cost data>Finance.** Use more than one technique (interview, workshop, observation, document analysis, data profiling). Single-technique elicitation reproduces the biases of whoever was in the room.
 
@@ -111,7 +111,7 @@ An output that fails any gate is not released. A gate may be waived only by the 
 - [ ] **G1.** Every requirement is atomic, testable, prioritised and traced to a named source.
 - [ ] **G2.** Conflicting stakeholder positions are recorded as open conflicts, never averaged into a vague compromise.
 - [ ] **G3.** Assumptions and constraints are listed separately from requirements and each has an owner.
-- [ ] **G4.** As-is and to-be process models has been walked through with the people who will build, test and operate the result.
+- [ ] **G4.** The primary deliverable ("As-is and to-be process models") has been walked through with the people who will build, test and operate the result.
 - [ ] **G5.** The as-is model is validated against event data or direct observation, never against what management believes the process to be
 
 Verify the gate-check block from section 5 with the bundled checker rather than by eye:
@@ -140,7 +140,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- As-is and to-be process models has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("As-is and to-be process models") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

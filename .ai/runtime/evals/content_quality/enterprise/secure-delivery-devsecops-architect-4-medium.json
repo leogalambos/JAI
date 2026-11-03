@@ -230,7 +230,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Software supply-chain implementation specification', provide verifiable evidence satisfying: Engineering teams can implement the controls deterministically without inventing authority or weakening required segregation of duties.. Required delivery form: Implementation specification for policy-as-code, signing, SBOM, provenance, scanning and deployment gates.",
+        "criterion_under_review": "For the specific output 'Software supply-chain implementation specification', provide verifiable evidence satisfying: Engineering teams can implement the controls deterministically without inventing authority or weakening required segregation of duties. Required delivery form: Implementation specification for policy-as-code, signing, SBOM, provenance, scanning and deployment gates.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

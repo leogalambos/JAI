@@ -150,6 +150,42 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
+    "contract_lifecycle_integrity": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-CONTRACT-LIFECYCLE-INTEGRITY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Define access/classification, authorised variation links, renewal/termination triggers and reconciliation of the obligation register with operative contract versions; expose missing documents or unresolved interpretations.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "contract_obligation_records": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-CONTRACT-OBLIGATION-RECORDS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "For each tracked obligation, identify contract/clause, responsible party and owner, deliverable or performance measure, due/renewal/notice dates, dependencies, acceptance evidence and current status.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
     "contract_relations": [
       {
         "element_id": "SYN-APP-1",
@@ -162,6 +198,25 @@
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
         "criterion_under_review": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "contract_repository_identity": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-CONTRACT-REPOSITORY-IDENTITY",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Identify contracting parties, operative signed contract/version, applicable jurisdiction or governing-law reference, effective/expiry dates and authoritative record location; preserve draft and superseded status explicitly.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -414,7 +469,10 @@
         "role/contract-manager:1.contract_input_2",
         "role/contract-manager:1.contract_input_3",
         "role/contract-manager:1.contract_input_4",
+        "role/contract-manager:1.contract_lifecycle_integrity",
+        "role/contract-manager:1.contract_obligation_records",
         "role/contract-manager:1.contract_relations",
+        "role/contract-manager:1.contract_repository_identity",
         "role/contract-manager:1.decision_purpose_correction",
         "role/contract-manager:1.delivery_scope",
         "role/contract-manager:1.delivery_verification",

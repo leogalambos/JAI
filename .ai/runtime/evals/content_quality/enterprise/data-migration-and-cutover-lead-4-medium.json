@@ -216,7 +216,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Rollback and contingency plan', provide verifiable evidence satisfying: Rollback/restore paths are timed, tested and bounded by a defined point of no return.. Required delivery form: Executable runbook with trigger thresholds.",
+        "criterion_under_review": "For the specific output 'Rollback and contingency plan', provide verifiable evidence satisfying: Rollback/restore paths are timed, tested and bounded by a defined point of no return. Required delivery form: Executable runbook with trigger thresholds.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

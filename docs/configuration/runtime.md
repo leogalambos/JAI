@@ -10,12 +10,21 @@
 | Model override | `~/.config/ai-it-house/models.json` |
 | Demo estate | `~/it-role-demo/` |
 | Findings ledger | `<project>/.findings/` |
-| Fabric records | `<project>/.fabric/` |
-| Fabric authority key | `~/.config/justifiable-fabric/authority.key` |
+| Fabric CLI records | `~/.ai/fabric/` |
+| Purpose-specific public trust | `<runtime>/trust/jai-<purpose>-trust.json` |
+| L0 private signing key | Host-only default or explicit alternate path; see [key creation and signing](../operations/human-authority.md#default-signing-key-and-host-script) |
 
 ## User versus deployment configuration
 
-Ordinary users need not set any of these variables to start `/layered` or `$workflow-layered`; the orchestrator uses the installed defaults in the current workspace. The shell commands and Fabric budget settings below are **administrator/developer configuration**, applied only under the organisation's change and security policy. The human alone is responsible for accepted exceptions and revised risk tolerances; increasing runtime limits is not a substitute for those decisions.
+The explicit host [workflow interface](../operations/normal-layered-workflow.md) operates
+against an already bootstrapped Store. Ordinary native users invoke `/layered`
+in Claude or `$workflow-layered` in Codex; the native parent handles bootstrap
+and transport. Explicit process-host integration supplies its configuration;
+ordinary dispatch and recording require no private key. Only L0 signs explicit
+decisions outside the agent sandbox. Known public trust files are fixed
+runtime-relative inputs. Unix identity and an environment variable do not grant
+decision authority. The human remains responsible for explicit L0 axioms and
+resource risk; larger runtime limits do not make a result accepted.
 
 ## Installation path overrides
 
@@ -25,31 +34,41 @@ Administrators can override these installer destinations with `AI_IT_HOME`, `AI_
 
 Destination overrides do not establish support for complete runtime relocation: generated instructions still contain references to `~/.ai/it-role-house`. A deployment using other destinations needs separate validation of its generated provider instructions and runtime paths. Exporting variables alone does not move or migrate an existing installation.
 
-## Fabric-specific environment controls
+## Current Store location and recorded limits
 
 | Variable | Default | Meaning |
 | --- | ---: | --- |
-| `FABRIC_HOME` | `./.fabric` | Engagement JSONL location |
-| `FABRIC_AUTHORITY_KEY` | `~/.config/justifiable-fabric/authority.key` | Retired historical setting; grants no authority and enables no legacy-ledger execution |
-| `FABRIC_MAX_REWORK` | `3` | Rework attempts per contract lineage |
-| `FABRIC_MAX_REFORMULATE` | `2` | Reformulations per layer/round |
-| `FABRIC_MAX_CONTRACTS` | `40` | Contracts per round |
-| `FABRIC_MAX_ROUNDS` | `5` | Human revision rounds |
-| `FABRIC_MAX_STEPS` | `120` | Shared episode budget |
+| `FABRIC_HOME` | `~/.ai/fabric` | Fabric CLI engagement JSONL location |
+
+`governed_workflow.py --store` and `governed_dispatch.py --store` name that exact
+Store explicitly. An explicit L0 signed request must bind the same target path;
+ordinary work requires no signed request.
+Old `FABRIC_AUTHORITY_KEY` and `FABRIC_MAX_*` settings do not authorize current
+effects. Current rework/reformulation limits belong to the recorded profile;
+assignment/global allowances and deadlines are explicit immutable inputs, not
+ambient defaults that a worker can increase.
 
 ## Operational reading
 
-Treat these environment variables as governance controls, not as mere performance knobs. Changing them alters what autonomous rework and escalation behaviour is permitted.
+Selection and work use their applicable recorded local allowances. The runtime has a
+finite readiness-driven coordinator, signed speculative grants and episode
+handling under the recorded profile's `scheduling` bounds. It does not implement
+an unbounded solver or a caller-controlled budget reset. Speculative permission
+and current result qualification remain separate. The active native meter is
+elapsed milliseconds; unsupported token/currency metering is not inferred.
 
 ## Implementation details
 
 [Tool hooks, runtime controls and release gates](hooks-gates-verification.md) describes the inspected implementation.
 Inspect the shipped provider event registrations and their enforcement limits.
 
-Fresh Ed25519 operator trust uses schema 2 with signer and explicit capabilities.
+Current Ed25519 public enrollment uses the purpose-specific governed keyring,
+with explicit signer, capabilities, engagement/scope grants and validity windows.
 Unsupported historical ledgers are archive-only, with no executable fallback.
-See [operator workflows](../security/product-operations.md). The installer
-creates no signing keys and does not alter provider configuration silently.
+See [operator workflows](../security/product-operations.md). In a host terminal,
+the installer offers confirmed creation of the default operator key and preserves
+an existing key. Key creation does not enrol trust or grant decision authority.
+See [key creation and signing](../operations/human-authority.md#default-signing-key-and-host-script).
 
 ## Local QA and human intervention
 

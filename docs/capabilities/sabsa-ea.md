@@ -12,20 +12,26 @@ The SABSA capability treats the architecture as a structured, traceable library 
 
 The release supports all **36 SABSA matrix cells** as projection-capable architecture content and maintains structured semantic types for the runtime.
 
-## SABSA in the 26.10.4 JAI model
+## SABSA domain metadata and Gen2 perspectives
 
 SABSA is a **profile of the JAI semantic core**, not a parallel global truth hierarchy.
 
-A SABSA object can retain its own orthogonal coordinates, for example:
+The 26.10.4 domain-profile model introduced persisted semantic references and
+profile metadata. The retained SABSA reader and migration path continue to
+support that metadata. A persisted field such as `jai_layer` is domain-profile
+metadata; it must not be used to infer the current Gen2 content perspective.
 
-```text
-SABSA: Conceptual / Why / objective
-JAI:   L3 responsibility while evaluating the objective against policy/risk
-```
+Gen2 work uses L1 Contextual, L2 Conceptual, L3 Logical, L4 Physical,
+L5 Component and L6 Management. Each perspective addresses What, Why, How, Who,
+Where and When, with management concerns applying across the other perspectives.
+Use the [canonical layer model](../architecture/sabsa-layer-model.md) to classify
+current work. Earlier examples that treated SABSA coordinates and JAI layer
+responsibilities as separate taxonomies describe the historical model.
 
-The coordinates are intentionally not collapsed into each other. A SABSA layer/question is not inferred from the JAI layer number.
-
-New or updated SABSA source objects in 26.10.4 persist a canonical JAI semantic reference and profile metadata. Legacy libraries remain readable and can be upgraded on write/migration.
+Legacy domain libraries remain readable and can be upgraded on write or
+migration. This domain compatibility does not migrate Gen1 engagement history
+or carry forward acceptance or release permission; see
+[compatibility](../reference/compatibility.md).
 
 ## Operator request and implementation boundary
 
@@ -67,7 +73,8 @@ In a **Claude Code** session use the `/sabsa` and `/repository` commands shown b
 
 The EA repository is JSON-based, with ArchiMate/Open Exchange used as an interoperability boundary.
 
-In 26.10.4 its authority is explicitly scoped:
+The domain-projection boundary introduced in 26.10.4 distinguishes the EA
+repository from the JAI semantic identity authority:
 
 ```text
 authoritative_for: ea-domain-projection
@@ -182,7 +189,12 @@ Rollback: restore changed canonical entries from version control; generated CSV,
 LaTeX, PDF and DOCX can be regenerated. No owner approval or publication gate is implied
 by successful rendering or CSV validation.
 
-Use `--layer contextual|conceptual|logical|physical|component|service-management` for an individual matrix layer; `operational` aliases service-management. Each layer document includes its six matrix questions, local elements, source/basis, whole-library approval status and business traceability context.
+Use `--layer contextual|conceptual|logical|physical|component|service-management`
+for an individual matrix layer; `operational` aliases `service-management`.
+The retained `service-management` and `operational` CLI identifiers select
+L6 Management; they do not introduce additional Gen2 perspectives. Each layer
+document includes its six matrix questions, local elements, source/basis,
+whole-library approval status and business traceability context.
 
 ## Authored English viewpoint documents
 
@@ -210,7 +222,7 @@ snapshot approval; changing them invalidates prior approval. Authors supply revi
 professional English text, preserve original sources and cite translations. The
 renderer preserves canonical meaning and does not automatically translate content.
 
-The complete contract is in `runtime/sabsa/publication/README.md`. Generate the
+The complete contract is in `.ai/runtime/sabsa/publication/README.md`. Generate the
 populated fictional six-viewpoint example with
 `python3 .ai/runtime/tools/sabsa_publication_demo.py --out DIR --render`.
 
@@ -218,4 +230,8 @@ For guided use, follow [assessing a deployed system](../examples/how-to-use-JAI/
 
 ## Why this matters
 
-Organisations often struggle to keep security architecture, enterprise architecture and published documents aligned. The 26.10.4 profile model gives each subsystem a clear scope while preserving stable identity and traceability across them.
+Organisations often struggle to keep security architecture, enterprise
+architecture and published documents aligned. Domain-profile boundaries define
+each subsystem's scope, while Gen2's six SABSA perspectives organise current
+work and its justification. Stable identity and traceability connect those
+scopes without treating historical profile metadata as a current layer model.

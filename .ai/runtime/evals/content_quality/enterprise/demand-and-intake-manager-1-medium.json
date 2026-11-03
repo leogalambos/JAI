@@ -231,7 +231,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Demand and intake register', provide verifiable evidence satisfying: Every demand item has a business owner, outcome, current state and auditable disposition; duplicates and redirected items remain traceable.. Required delivery form: Governed register with requester, outcome, capability, owner, evidence status, stage and disposition.",
+        "criterion_under_review": "For the specific output 'Demand and intake register', provide verifiable evidence satisfying: Every demand item has a business owner, outcome, current state and auditable disposition; duplicates and redirected items remain traceable. Required delivery form: Governed register with requester, outcome, capability, owner, evidence status, stage and disposition.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

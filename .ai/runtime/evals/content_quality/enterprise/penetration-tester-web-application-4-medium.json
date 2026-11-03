@@ -40,51 +40,43 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
-    "test_evidence_limits": {
-      "test_id": "SYN-T1",
-      "requirement_ref": "SYN-REC1",
-      "build": "candidate-1.0",
-      "environment": "Isolated recovery rehearsal",
-      "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
-      "expected_max_minutes": 30,
-      "observed_minutes": 27,
-      "expected_duplicate_count": 0,
-      "observed_duplicate_count": 0,
-      "sample_size": 10,
-      "exclusions": [
-        "Peak-load recovery"
-      ],
-      "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
-      "record_id": "SYN-TEST-EVIDENCE-LIMITS",
+    "security_boundary": {
+      "risk_id": "SYN-R1",
+      "cause": "Recovery checkpoint lags active transaction state",
+      "event": "Replay duplicates a committed transaction",
+      "business_consequence": "Ledger imbalance delays warehouse updates",
+      "inherent_score": 12,
+      "residual_score": 8,
+      "control_ref": "SYN-C1",
+      "treatment": "Enforce unique event IDs and rehearse ledger reconciliation",
+      "due": "2026-11-05",
+      "residual_authority": "Independent service risk owner; approval pending",
+      "record_id": "SYN-SECURITY-BOUNDARY",
       "service": "Regional order integration",
       "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify sampling, unexecuted cases, environment limits and independent acceptance responsibility.",
+      "criterion_under_review": "Identify protected business outcomes, trust boundaries and authorised information handling.",
       "accountable_role": "Synthetic receiving service owner",
       "evidence_refs": [
         "SYN-01"
       ],
       "knowledge_status": "synthetic-assumption"
     },
-    "test_requirement_trace": [
+    "security_control_trace": [
       {
-        "test_id": "SYN-T1",
-        "requirement_ref": "SYN-REC1",
-        "build": "candidate-1.0",
-        "environment": "Isolated recovery rehearsal",
-        "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
-        "expected_max_minutes": 30,
-        "observed_minutes": 27,
-        "expected_duplicate_count": 0,
-        "observed_duplicate_count": 0,
-        "sample_size": 10,
-        "exclusions": [
-          "Peak-load recovery"
-        ],
-        "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
-        "record_id": "SYN-TEST-REQUIREMENT-TRACE",
+        "risk_id": "SYN-R1",
+        "cause": "Recovery checkpoint lags active transaction state",
+        "event": "Replay duplicates a committed transaction",
+        "business_consequence": "Ledger imbalance delays warehouse updates",
+        "inherent_score": 12,
+        "residual_score": 8,
+        "control_ref": "SYN-C1",
+        "treatment": "Enforce unique event IDs and rehearse ledger reconciliation",
+        "due": "2026-11-05",
+        "residual_authority": "Independent service risk owner; approval pending",
+        "record_id": "SYN-SECURITY-CONTROL-TRACE",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Map scoped requirements and risks to test procedures, expected observations and evidence.",
+        "criterion_under_review": "Trace threat/risk scenarios through control objectives to effectiveness evidence and residual owners.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -224,7 +216,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'remediation guidance and retest results', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "criterion_under_review": "For the specific output 'remediation guidance and retest results', provide verifiable evidence satisfying: Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations. Required delivery form: Versioned assessment results with traceable evidence.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -270,24 +262,7 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
-    "identity": {
-      "element_id": "SYN-APP-1",
-      "responsibility": "Accept transaction IDs and persist each committed event once",
-      "interface_ref": "SYN-IF-1",
-      "deployment": "Managed Linux service with PostgreSQL standby",
-      "failure_handling": "Retry twice using the same event ID, then reject and alert",
-      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
-      "record_id": "SYN-IDENTITY",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify stable artifact ID, owner, source version and intended usage.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "observed_test_results": [
+    "assurance_criteria": [
       {
         "test_id": "SYN-T1",
         "requirement_ref": "SYN-REC1",
@@ -303,10 +278,10 @@
           "Peak-load recovery"
         ],
         "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
-        "record_id": "SYN-OBSERVED-TEST-RESULTS",
+        "record_id": "SYN-ASSURANCE-CRITERIA",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Link test cases and requirements to actual outcomes, timestamps and execution evidence.",
+        "criterion_under_review": "Define tested obligations, assurance period, sample and exclusions.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -314,7 +289,34 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
-    "test_release_constraints": {
+    "assurance_observations": [
+      {
+        "test_id": "SYN-T1",
+        "requirement_ref": "SYN-REC1",
+        "build": "candidate-1.0",
+        "environment": "Isolated recovery rehearsal",
+        "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
+        "expected_max_minutes": 30,
+        "observed_minutes": 27,
+        "expected_duplicate_count": 0,
+        "observed_duplicate_count": 0,
+        "sample_size": 10,
+        "exclusions": [
+          "Peak-load recovery"
+        ],
+        "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
+        "record_id": "SYN-ASSURANCE-OBSERVATIONS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Link procedures and observed results to immutable evidence and located deviations.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "bounded_conclusion": {
       "test_id": "SYN-T1",
       "requirement_ref": "SYN-REC1",
       "build": "candidate-1.0",
@@ -329,35 +331,27 @@
         "Peak-load recovery"
       ],
       "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
-      "record_id": "SYN-TEST-RELEASE-CONSTRAINTS",
+      "record_id": "SYN-BOUNDED-CONCLUSION",
       "service": "Regional order integration",
       "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Explain defects, untested scope, achieved exit criteria and residual release risk.",
+      "criterion_under_review": "Limit the independent conclusion to tested scope, evidence strength and unresolved findings.",
       "accountable_role": "Synthetic receiving service owner",
       "evidence_refs": [
         "SYN-01"
       ],
       "knowledge_status": "synthetic-assumption"
     },
-    "tested_baseline": {
-      "test_id": "SYN-T1",
-      "requirement_ref": "SYN-REC1",
-      "build": "candidate-1.0",
-      "environment": "Isolated recovery rehearsal",
-      "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
-      "expected_max_minutes": 30,
-      "observed_minutes": 27,
-      "expected_duplicate_count": 0,
-      "observed_duplicate_count": 0,
-      "sample_size": 10,
-      "exclusions": [
-        "Peak-load recovery"
-      ],
-      "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
-      "record_id": "SYN-TESTED-BASELINE",
+    "identity": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-IDENTITY",
       "service": "Regional order integration",
       "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify build, requirements, environment, reporting period and exclusions.",
+      "criterion_under_review": "Identify stable artifact ID, owner, source version and intended usage.",
       "accountable_role": "Synthetic receiving service owner",
       "evidence_refs": [
         "SYN-01"
@@ -392,8 +386,8 @@
       "id": "headings-only",
       "operation": "headings_only",
       "expected_rule_ids": [
-        "domain/testing.test_evidence_limits",
-        "domain/testing.test_requirement_trace",
+        "domain/security.security_boundary",
+        "domain/security.security_control_trace",
         "role/penetration-tester-web-application:4.contract_input_1",
         "role/penetration-tester-web-application:4.contract_input_2",
         "role/penetration-tester-web-application:4.contract_input_3",
@@ -404,10 +398,10 @@
         "role/penetration-tester-web-application:4.delivery_verification",
         "role/penetration-tester-web-application:4.receiving_acceptance",
         "role/penetration-tester-web-application:4.role_gate_observations",
-        "type/test-report.identity",
-        "type/test-report.observed_test_results",
-        "type/test-report.test_release_constraints",
-        "type/test-report.tested_baseline"
+        "type/assurance-report.assurance_criteria",
+        "type/assurance-report.assurance_observations",
+        "type/assurance-report.bounded_conclusion",
+        "type/assurance-report.identity"
       ],
       "expected_category": "critical-content"
     },

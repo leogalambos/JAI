@@ -1,0 +1,62 @@
+{
+  "protocol": "jai.governed-delivery/1",
+  "message_type": "submission",
+  "message_id": "93a8a0c69c4aa661ed51a93b305f3c4af04f4b7cbecb350b53795cf81881332f",
+  "request_id": "request-submission",
+  "correlation_id": "question-service-controls",
+  "engagement": "synthetic-protocol",
+  "scope": "default",
+  "sender": {
+    "kind": "assignment",
+    "ref": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "author-assignment",
+      "version_id": "1870591329732c4cdd7c57d9f45bf9cf132d728ca1fed89d25570d7d8879a622"
+    }
+  },
+  "recipient": {
+    "kind": "controller",
+    "id": "trusted-controller"
+  },
+  "context": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "author-context",
+    "version_id": "29fe898b447be535d3a3bec50aaec15039fb96c4edee43d3a1adf488f9c9f42f"
+  },
+  "profile": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "profile",
+    "version_id": "b0519b9fbd91854cbe44a508a24434902d4296b100862b3f0acc5374550990ef"
+  },
+  "expected_head": "0379d6138bfe05e3382401e0af27527da375e9eaab21d9f744a4b333647120af",
+  "issued_at_ms": -1,
+  "expires_at_ms": 8000,
+  "causes": [],
+  "attachments": [],
+  "payload": {
+    "assignment": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "author-assignment",
+      "version_id": "1870591329732c4cdd7c57d9f45bf9cf132d728ca1fed89d25570d7d8879a622"
+    },
+    "candidate": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "candidate-A",
+      "version_id": "afd1cb19ba756d70d355f71e0047a0518ece554d525734137920aa9f4bdcf2c6"
+    },
+    "evidence": [
+      {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "observation-A",
+        "version_id": "d8bb38ab93a1e888900c91c073bf3b884f2c639ba389f1c30d7e5911d824bbea"
+      }
+    ],
+    "limitations": []
+  }
+}

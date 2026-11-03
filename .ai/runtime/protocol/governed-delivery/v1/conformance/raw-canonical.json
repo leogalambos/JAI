@@ -1,0 +1,39 @@
+[
+  {
+    "id": "nfc-canonical",
+    "raw": "{\"z\":\"e\\u0301\",\"a\":[2,1]}",
+    "accept": true,
+    "canonical": "{\"a\":[2,1],\"z\":\"é\"}"
+  },
+  {
+    "id": "duplicate-key",
+    "raw": "{\"a\":1,\"a\":2}",
+    "accept": false
+  },
+  {
+    "id": "nfc-colliding-key",
+    "raw": "{\"é\":1,\"e\\u0301\":2}",
+    "accept": false
+  },
+  {
+    "id": "lexical-float",
+    "raw": "{\"a\":1.0}",
+    "accept": false
+  },
+  {
+    "id": "nonfinite",
+    "raw": "{\"a\":NaN}",
+    "accept": false
+  },
+  {
+    "id": "malformed",
+    "raw": "{\"a\":",
+    "accept": false
+  },
+  {
+    "id": "preserve-order-whitespace",
+    "raw": "{\"a\":[\" x \",\"y\"]}",
+    "accept": true,
+    "canonical": "{\"a\":[\" x \",\"y\"]}"
+  }
+]

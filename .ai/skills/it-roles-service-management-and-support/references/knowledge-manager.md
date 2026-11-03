@@ -99,7 +99,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Knowledge article standards and templates | Controlled document referencing the parent policy | Requirements are specific, measurable and technology-explicit |
+| 1 | Knowledge article standards and templates | Controlled knowledge article standards and templates | Defines audience and task structure, required source evidence, findability, ownership, review triggers and usability criteria |
 | 2 | knowledge base health and coverage reporting | Structured document with executive summary and evidence annex | Conclusions are traceable to dated evidence; opinion is visibly separated from fact |
 | 3 | article review and retirement process | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 4 | knowledge capture workflow | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
@@ -111,7 +111,7 @@ An output that fails any gate is not released. A gate may be waived only by the 
 - [ ] **G1.** Intake is rejected unless all mandatory inputs are present or a named owner and date exist for each gap.
 - [ ] **G2.** No commitment is made beyond demonstrated capacity for the period.
 - [ ] **G3.** Every deviation from the documented process is logged with its reason and its expiry.
-- [ ] **G4.** Knowledge article standards and templates is published on the agreed cadence even when the news is bad.
+- [ ] **G4.** The primary deliverable ("Knowledge article standards and templates") is published on the agreed cadence, including adverse results.
 - [ ] **G5.** Articles carry an owner, a last-validated date and a confidence flag
 - [ ] **G6.** unvalidated articles past their review date are demoted in search rather than silently trusted
 
@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Knowledge article standards and templates has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Knowledge article standards and templates") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

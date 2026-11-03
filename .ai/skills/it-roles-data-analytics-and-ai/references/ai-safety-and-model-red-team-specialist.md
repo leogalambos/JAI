@@ -102,7 +102,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | 1 | Adversarial evaluation suite and results | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 2 | harm taxonomy and severity ratings | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 3 | jailbreak and misuse findings | Finding record with reproducible evidence and risk rating | Reproduction steps are complete enough for an independent party to confirm |
-| 4 | mitigation recommendations and retest results | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 4 | mitigation recommendations and retest results | Versioned assessment results with traceable evidence | Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations |
 
 ## 7. Output gates (blocking)
 
@@ -113,7 +113,7 @@ An output that fails any gate is not released. A gate may be waived only by the 
 - [ ] **G3.** No production personal data is used in test environments without an approved lawful basis and masking.
 - [ ] **G4.** An intermittent test failure is investigated as a timing, ordering or shared-state defect, never retried or quarantined away without a ticket and an analysis (it-role-library/standards/defect-analysis.md).
 - [ ] **G5.** Automated tests are deterministic, test one behaviour each, mock only collaborators and run integration tests against real dependencies (it-role-library/standards/testing.md).
-- [ ] **G6.** Adversarial evaluation suite and results distinguishes what was tested, what was not tested and what cannot be tested.
+- [ ] **G6.** The primary deliverable ("Adversarial evaluation suite and results") distinguishes what was tested, what was not tested and what cannot be tested.
 - [ ] **G7.** Testing runs against the deployment configuration users will actually get, and findings are reported with severity, reproducibility and a mitigation owner
 
 Verify the gate-check block from section 5 with the bundled checker rather than by eye:
@@ -142,7 +142,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Adversarial evaluation suite and results has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Adversarial evaluation suite and results") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

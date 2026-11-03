@@ -1,0 +1,295 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "jai-sabsa-content/1"
+    },
+    "units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "group": {
+            "enum": [
+              "contextual.what",
+              "contextual.why",
+              "contextual.how",
+              "contextual.who",
+              "contextual.where",
+              "contextual.when",
+              "conceptual.what",
+              "conceptual.why",
+              "conceptual.how",
+              "conceptual.who",
+              "conceptual.where",
+              "conceptual.when",
+              "logical.what",
+              "logical.why",
+              "logical.how",
+              "logical.who",
+              "logical.where",
+              "logical.when",
+              "physical.what",
+              "physical.why",
+              "physical.how",
+              "physical.who",
+              "physical.where",
+              "physical.when",
+              "component.what",
+              "component.why",
+              "component.how",
+              "component.who",
+              "component.where",
+              "component.when",
+              "management.what",
+              "management.why",
+              "management.how",
+              "management.who",
+              "management.where",
+              "management.when",
+              "conceptual.attributes",
+              "management.activity",
+              "management.measure",
+              "management.observation"
+            ]
+          },
+          "title": {
+            "type": "string",
+            "minLength": 1
+          },
+          "statements": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "properties": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "classification": {
+            "enum": [
+              "public",
+              "private"
+            ]
+          }
+        },
+        "required": [
+          "key",
+          "group",
+          "title",
+          "statements",
+          "properties",
+          "classification"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "enum": [
+              "justifies",
+              "refines",
+              "realizes",
+              "constrains",
+              "assigned_to",
+              "located_in",
+              "interacts_with",
+              "precedes",
+              "measures",
+              "observes",
+              "feedback_for"
+            ]
+          },
+          "from": {
+            "type": "object",
+            "properties": {
+              "product": {
+                "anyOf": [
+                  {
+                    "$ref": "common.schema.json#/$defs/reference"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "unit": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "product",
+              "unit"
+            ],
+            "additionalProperties": false
+          },
+          "to": {
+            "type": "object",
+            "properties": {
+              "product": {
+                "anyOf": [
+                  {
+                    "$ref": "common.schema.json#/$defs/reference"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "unit": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "product",
+              "unit"
+            ],
+            "additionalProperties": false
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "key",
+          "type",
+          "from",
+          "to",
+          "rationale"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "view_bindings": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "view": {
+            "enum": [
+              "architecture",
+              "executive-summary",
+              "risk-treatment-plan",
+              "policy-architecture",
+              "trust-model",
+              "information-access-model",
+              "security-service-catalogue",
+              "component-realisation",
+              "assurance-plan",
+              "governance-register",
+              "current-state",
+              "target-state",
+              "transition-architecture",
+              "transition-roadmap",
+              "lifecycle-register",
+              "framework-mapping",
+              "compliance-gap-analysis",
+              "reuse-register",
+              "client-questions"
+            ]
+          },
+          "units": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "product": {
+                  "anyOf": [
+                    {
+                      "$ref": "common.schema.json#/$defs/reference"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "unit": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "product",
+                "unit"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "relations": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "product": {
+                  "anyOf": [
+                    {
+                      "$ref": "common.schema.json#/$defs/reference"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "relation": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "product",
+                "relation"
+              ],
+              "additionalProperties": false
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "view",
+          "units",
+          "relations"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    }
+  },
+  "required": [
+    "format",
+    "units",
+    "relations",
+    "view_bindings"
+  ],
+  "additionalProperties": false
+}

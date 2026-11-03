@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/test-analyst:1",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -195,7 +195,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Test conditions and cases', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "For the specific output 'Test conditions and cases', provide verifiable evidence satisfying: Each case identifies requirement or risk, preconditions, data, actions, expected observations and execution method; manual cases need not be automated. Required delivery form: Versioned test conditions and cases.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,7 +210,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Test conditions and cases', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "reason": "For the specific output 'Test conditions and cases', provide verifiable evidence satisfying: Each case identifies requirement or risk, preconditions, data, actions, expected observations and execution method; manual cases need not be automated. Required delivery form: Versioned test conditions and cases.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-analyst:1",
           "content/types/document.yaml"
@@ -223,8 +223,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Test conditions and cases",
-        "format": "Executable suite in version control plus a coverage statement",
-        "acceptance_criterion": "States what is covered, what is not, and what the suite cannot detect",
+        "format": "Versioned test conditions and cases",
+        "acceptance_criterion": "Each case identifies requirement or risk, preconditions, data, actions, expected observations and execution method; manual cases need not be automated",
         "role_path": "skills/it-roles-quality-and-testing/references/test-analyst.md"
       }
     },
@@ -246,7 +246,7 @@
         "G3: No production personal data is used in test environments without an approved lawful basis and masking.",
         "G4: An intermittent test failure is investigated as a timing, ordering or shared-state defect, never retried or quarantined away without a ticket and an analysis (it-role-library/standards/defect-analysis.md).",
         "G5: Automated tests are deterministic, test one behaviour each, mock only collaborators and run integration tests against real dependencies (it-role-library/standards/testing.md).",
-        "G6: Test conditions and cases distinguishes what was tested, what was not tested and what cannot be tested.",
+        "G6: The primary deliverable (\"Test conditions and cases\") distinguishes what was tested, what was not tested and what cannot be tested.",
         "G7: Every defect report contains reproduction steps, environment, build version and observed-versus-expected behaviour"
       ],
       "evidence_policy": {
@@ -687,6 +687,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Test Analyst",
+        "frameworks": [
+          "ISTQB",
+          "ISO/IEC/IEEE 29119",
+          "risk-based testing practice"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -712,13 +733,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -751,8 +773,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "test-analyst:1",
-    "source_fingerprint": "91c9ee099c6838c103f00285201d484a3c369be975d14f84da6e726e58fcd1d3",
-    "source_hash": "3f4df9c98e3815ff3f6a2240c590631899039932582832a73476adf105df51d3"
+    "source_fingerprint": "235eb38c2ec2f5e24e8927f0e51f4d5034922ef37db45db7d355e9c4a1a567d2",
+    "source_hash": "e0e66f6a23c6f515ded79b9f9b84bba22ee4d4056f3a4c79576b41478142712a"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

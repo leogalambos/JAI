@@ -1,11 +1,10 @@
 # Reference selection and context delivery
 
-Owner: JAI maintainers · Last reviewed: 2026-10-20
 
-This page describes the inspected JAI 26.10.12 implementation. Use the
-[execution
-overview](../overview/execution-context-algorithm.md#reading-implementation-status)
-for status labels. The bundled v2.3.0 library has 135 Markdown
+This page explains how JAI selects professional authoring references and
+supplies relevant material to local work. The [execution overview](../overview/execution-context-algorithm.md#what-the-components-establish)
+distinguishes reference selection from actual execution and acceptance.
+The bundled v2.3.0 library has 135 Markdown
 references across 45 families and three complexity levels. Catalog
 discovery, local file validation and LLM context delivery are separate
 operations.
@@ -125,8 +124,7 @@ before running. Although it records a compiled DCS hash, that does not
 mean the compiled DCS body is inserted into its evaluation prompt.
 Invocation limits do not establish a token or monetary cap. No live
 provider run is required to understand or validate this documentation;
-see [optional evaluation
-boundaries](../validation/optional-provider-evaluation.md).
+see [review and release readiness](../operations/validation.md).
 
 ## Answering “what did the model receive?”
 

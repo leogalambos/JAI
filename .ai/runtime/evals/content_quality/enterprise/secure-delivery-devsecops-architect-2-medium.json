@@ -233,7 +233,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Secure SDLC and pipeline control design', provide verifiable evidence satisfying: Every mandatory secure-delivery control has an owner, machine-enforcement point or justified manual control, evidence and bypass handling.. Required delivery form: Control design mapped to lifecycle stages, threats, policies, tool enforcement and exception paths.",
+        "criterion_under_review": "For the specific output 'Secure SDLC and pipeline control design', provide verifiable evidence satisfying: Every mandatory secure-delivery control has an owner, machine-enforcement point or justified manual control, evidence and bypass handling. Required delivery form: Control design mapped to lifecycle stages, threats, policies, tool enforcement and exception paths.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

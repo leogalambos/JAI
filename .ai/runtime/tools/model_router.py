@@ -112,6 +112,21 @@ def validate_registry(registry):
 
 def resolve(provider, workload_class, override=None):
     registry, _ = effective_registry(override)
+    return resolve_snapshot(registry, provider, workload_class)
+
+
+def resolve_snapshot(registry, provider, workload_class):
+    """Resolve an explicit immutable registry without ambient overrides.
+
+    Args:
+        registry: Captured and explicitly selected model registry object.
+        provider: Exact registered provider identifier.
+        workload_class: Exact registered workload class.
+    Returns:
+        Model selector and independent copy of its declared mapping.
+    Raises:
+        ValueError: Registry, provider or workload capability is unavailable.
+    """
     problems = validate_registry(registry)
     if problems:
         raise ValueError("; ".join(problems))

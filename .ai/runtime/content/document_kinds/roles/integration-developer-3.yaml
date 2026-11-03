@@ -2,14 +2,14 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/integration-developer:3",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/document",
+    "family/requirements-specification",
     "domain/delivery"
   ],
   "applies_to": {
@@ -24,7 +24,7 @@
     "Test Analyst"
   ],
   "decisions_supported": [
-    "Use \"message contracts and schemas\" to communicate the attributable findings and required follow-up actions from Source and target interface definitions; Transformation and mapping rules; Volume and latency requirements; Error handling policy to Application Support Analyst; Test Analyst."
+    "Agree testable requirements, resolve stakeholder conflicts and trace acceptance conditions to implementation and verification for \"message contracts and schemas\", using Source and target interface definitions; Transformation and mapping rules; Volume and latency requirements; Error handling policy."
   ],
   "intended_usage": "Advisory content contract; professional approval pending",
   "non_goals": [
@@ -61,7 +61,8 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: message contracts and schemas.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-developer:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -99,7 +100,8 @@
         "reason": "For each receiving role (Application Support Analyst; Test Analyst), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-developer:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -137,7 +139,8 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-developer:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -175,7 +178,8 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-developer:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -195,7 +199,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'message contracts and schemas', provide verifiable evidence satisfying: Obligations, service levels, exit terms and liability positions are explicit. Required delivery form: Executed document held in the contract repository.",
+        "For the specific output 'message contracts and schemas', provide verifiable evidence satisfying: Defines payload fields, compatibility, validation, ordering, failure and retry semantics with reproducible consumer/provider checks. Required delivery form: Versioned message schemas and interface contract.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,10 +214,11 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'message contracts and schemas', provide verifiable evidence satisfying: Obligations, service levels, exit terms and liability positions are explicit. Required delivery form: Executed document held in the contract repository.",
+        "reason": "For the specific output 'message contracts and schemas', provide verifiable evidence satisfying: Defines payload fields, compatibility, validation, ordering, failure and retry semantics with reproducible consumer/provider checks. Required delivery form: Versioned message schemas and interface contract.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-developer:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -223,8 +228,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "message contracts and schemas",
-        "format": "Executed document held in the contract repository",
-        "acceptance_criterion": "Obligations, service levels, exit terms and liability positions are explicit",
+        "format": "Versioned message schemas and interface contract",
+        "acceptance_criterion": "Defines payload fields, compatibility, validation, ordering, failure and retry semantics with reproducible consumer/provider checks",
         "role_path": "skills/it-roles-software-development-and-engineering/references/integration-developer.md"
       }
     },
@@ -265,7 +270,8 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-developer:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -313,7 +319,8 @@
         "reason": "Analyse the specific input \"Source and target interface definitions\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-developer:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -356,7 +363,8 @@
         "reason": "Analyse the specific input \"Transformation and mapping rules\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-developer:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -399,7 +407,8 @@
         "reason": "Analyse the specific input \"Volume and latency requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-developer:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -442,7 +451,8 @@
         "reason": "Analyse the specific input \"Error handling policy\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-developer:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -487,7 +497,8 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -530,7 +541,8 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -575,7 +587,8 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -689,6 +702,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Integration Developer",
+        "frameworks": [
+          "Enterprise Integration Patterns",
+          "AsyncAPI",
+          "idempotency and exactly-once delivery practice"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -714,13 +748,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -739,12 +774,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "family/requirements-specification",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "document",
+  "semantic_family": "requirements-specification",
   "role_overlay": {
     "contract_id": "integration-developer:3",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -753,8 +790,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "integration-developer:3",
-    "source_fingerprint": "d663900eafcc39a20c3c7e8fc2ddb9d6dac83581e55c3ba7335e45801b3b13ac",
-    "source_hash": "2cff989b293aa7bb5332734f3c8472d560211d4faa221fee1a7c7d6cd57b9376"
+    "source_fingerprint": "677ae8433316b4c29bd2126ab4753e8c606ebce953d3305bc2ce539669abef68",
+    "source_hash": "223dc61f8da72c48e55087876a54ac7e9370cb6cc981e71425f77d328d6901c8"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

@@ -2,15 +2,15 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/privacy-analyst:1",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/decision-paper",
-    "domain/delivery"
+    "type/risk-assessment",
+    "domain/security"
   ],
   "applies_to": {
     "document_kind": "role/privacy-analyst:1",
@@ -61,7 +61,9 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Data protection impact assessments.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
         ]
       },
       "provenance": {
@@ -99,7 +101,9 @@
         "reason": "For each receiving role (Data Privacy Engineer; project teams), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
         ]
       },
       "provenance": {
@@ -137,7 +141,9 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
         ]
       },
       "provenance": {
@@ -175,7 +181,9 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
         ]
       },
       "provenance": {
@@ -213,7 +221,9 @@
         "reason": "For the specific output 'Data protection impact assessments', provide verifiable evidence satisfying: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Structured assessment document with scoring method stated.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
         ]
       },
       "provenance": {
@@ -244,7 +254,7 @@
         "G1: Every requirement is atomic, testable, prioritised and traced to a named source.",
         "G2: Conflicting stakeholder positions are recorded as open conflicts, never averaged into a vague compromise.",
         "G3: Assumptions and constraints are listed separately from requirements and each has an owner.",
-        "G4: Data protection impact assessments has been walked through with the people who will build, test and operate the result.",
+        "G4: The primary deliverable (\"Data protection impact assessments\") has been walked through with the people who will build, test and operate the result.",
         "G5: A DPIA is completed before processing begins where the risk threshold is met",
         "G6: a retrospective DPIA is recorded as a compliance failure, not as completion"
       ],
@@ -263,7 +273,9 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
         ]
       },
       "provenance": {
@@ -309,7 +321,9 @@
         "reason": "Analyse the specific input \"Proposed processing and system designs\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
         ]
       },
       "provenance": {
@@ -352,7 +366,9 @@
         "reason": "Analyse the specific input \"Data flows and inventory\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
         ]
       },
       "provenance": {
@@ -395,7 +411,9 @@
         "reason": "Analyse the specific input \"Legal position\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
         ]
       },
       "provenance": {
@@ -438,7 +456,9 @@
         "reason": "Analyse the specific input \"Rights requests\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
         ]
       },
       "provenance": {
@@ -451,6 +471,166 @@
         "json_pointer": "/jai/semantics/required_inputs/3",
         "value": "Rights requests"
       }
+    },
+    {
+      "id": "role/privacy-analyst:1.processing_description",
+      "semantic_fields": [
+        "processing_description"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Describe the envisaged processing operations, purposes, categories of data/subjects, recipients, retention and relevant data flows; identify controller and applicable jurisdiction.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Describe the envisaged processing operations, purposes, categories of data/subjects, recipients, retention and relevant data flows; identify controller and applicable jurisdiction.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/privacy-analyst:1.necessity_proportionality",
+      "semantic_fields": [
+        "necessity_proportionality"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Assess necessity and proportionality of processing in relation to its purpose, less intrusive alternatives and data-minimisation/retention choices using the actual proposal.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Assess necessity and proportionality of processing in relation to its purpose, less intrusive alternatives and data-minimisation/retention choices using the actual proposal.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/privacy-analyst:1.data_subject_risks",
+      "semantic_fields": [
+        "data_subject_risks"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Describe risks to the rights and freedoms of affected people, including who may be harmed, likelihood, severity, assumptions and supporting evidence; business risk alone is insufficient.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Describe risks to the rights and freedoms of affected people, including who may be harmed, likelihood, severity, assumptions and supporting evidence; business risk alone is insufficient.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/privacy-analyst:1.privacy_safeguards",
+      "semantic_fields": [
+        "privacy_safeguards"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Map each material rights/freedoms risk to proposed safeguards, responsible owner, verification evidence and remaining exposure; record DPO advice where sought and any decision or consultation still required without implying permission to process.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Map each material rights/freedoms risk to proposed safeguards, responsible owner, verification evidence and remaining exposure; record DPO advice where sought and any decision or consultation still required without implying permission to process.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
     }
   ],
   "conditional_information": [
@@ -483,7 +663,9 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
         ]
       },
       "provenance": {
@@ -526,7 +708,9 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
         ]
       },
       "provenance": {
@@ -571,7 +755,9 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
         ]
       },
       "provenance": {
@@ -685,6 +871,36 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "risk-assessment",
+        "title": "NIST SP 800-30 Revision 1, Guide for Conducting Risk Assessments",
+        "url": "https://doi.org/10.6028/NIST.SP.800-30r1",
+        "scope": "Assessment scope, threat events, vulnerabilities, likelihood, impact and uncertainty.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "eu-gdpr",
+        "title": "Regulation (EU) 2016/679, Article 35 — Data protection impact assessment",
+        "url": "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+        "scope": "Article 35 assessment content and accountability where EU GDPR applies; engagement-specific legal applicability and competent interpretation must be established.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Privacy Analyst",
+        "frameworks": [
+          "GDPR",
+          "ISO/IEC 27701",
+          "EDPB guidance",
+          "NIST Privacy Framework"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -710,13 +926,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -735,12 +952,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/risk-assessment",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "decision-paper",
+  "semantic_family": "risk-assessment",
   "role_overlay": {
     "contract_id": "privacy-analyst:1",
     "scope": "Exact source deliverable, input analysis and existing role gates only",

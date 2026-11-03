@@ -230,7 +230,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Application portfolio model', provide verifiable evidence satisfying: The portfolio is complete enough for decision use, references authoritative sources and preserves stable application identities.. Required delivery form: Canonical EA/portfolio model with ownership, capabilities, lifecycle, dependencies, cost/risk and strategic classification.",
+        "criterion_under_review": "For the specific output 'Application portfolio model', provide verifiable evidence satisfying: The portfolio is complete enough for decision use, references authoritative sources and preserves stable application identities. Required delivery form: Canonical EA/portfolio model with ownership, capabilities, lifecycle, dependencies, cost/risk and strategic classification.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

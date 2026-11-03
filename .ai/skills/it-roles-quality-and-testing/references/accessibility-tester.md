@@ -100,7 +100,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
 | 1 | Accessibility conformance evaluation | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 2 | assistive technology test evidence | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 2 | assistive technology test evidence | Versioned assessment results with traceable evidence | Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations |
 | 3 | prioritised remediation list | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 4 | accessibility statement input | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 
@@ -113,7 +113,7 @@ An output that fails any gate is not released. A gate may be waived only by the 
 - [ ] **G3.** No production personal data is used in test environments without an approved lawful basis and masking.
 - [ ] **G4.** An intermittent test failure is investigated as a timing, ordering or shared-state defect, never retried or quarantined away without a ticket and an analysis (it-role-library/standards/defect-analysis.md).
 - [ ] **G5.** Automated tests are deterministic, test one behaviour each, mock only collaborators and run integration tests against real dependencies (it-role-library/standards/testing.md).
-- [ ] **G6.** Accessibility conformance evaluation distinguishes what was tested, what was not tested and what cannot be tested.
+- [ ] **G6.** The primary deliverable ("Accessibility conformance evaluation") distinguishes what was tested, what was not tested and what cannot be tested.
 - [ ] **G7.** Findings are based on manual testing with real assistive technology
 - [ ] **G8.** automated checker results alone are reported as insufficient coverage
 
@@ -143,7 +143,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Accessibility conformance evaluation has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Accessibility conformance evaluation") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

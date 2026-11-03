@@ -250,7 +250,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Decommission acceptance and evidence record', provide verifiable evidence satisfying: Shutdown, data disposition, access/secrets, CMDB/assets/licences/contracts and monitoring changes are evidenced by the responsible roles.. Required delivery form: Traceable evidence pack/register.",
+        "criterion_under_review": "For the specific output 'Decommission acceptance and evidence record', provide verifiable evidence satisfying: Shutdown, data disposition, access/secrets, CMDB/assets/licences/contracts and monitoring changes are evidenced by the responsible roles. Required delivery form: Traceable evidence pack/register.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

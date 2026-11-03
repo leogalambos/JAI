@@ -16,6 +16,10 @@ from pathlib import Path
 sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'runtime/tools'))
 from schema_resolver import release_scope
 from runtime_dependencies import jsonschema_status
+from operator_keys import provision_operator_key
+from guide_alias import GUIDE_ALIAS, GUIDE_SOURCE, guide_bytes
+from provider_projection import (split_frontmatter, model_mapping, model_selector,
+                                 skill_doc, render_claude_agent, render_codex_skill)
 
 SCHEMA=1
 MARKERS={
@@ -57,16 +61,6 @@ def files_under(root):
     root=Path(root)
     return sorted([p for p in root.rglob('*') if p.is_file() and '__pycache__' not in p.parts])
 
-def split_frontmatter(text):
-    if not text.startswith('---\n'): return {},text
-    end=text.find('\n---\n',4)
-    if end<0: return {},text
-    fm=text[4:end].splitlines(); d={}
-    for line in fm:
-        m=re.match(r'^([A-Za-z0-9_-]+):\s*(.*)$',line)
-        if m: d[m.group(1)]=m.group(2).strip().strip('"')
-    return d,text[end+5:]
-
 def deep_merge(base,override):
     if not isinstance(base,dict) or not isinstance(override,dict): return copy.deepcopy(override)
     out=copy.deepcopy(base)
@@ -90,36 +84,6 @@ def load_model_registry(pkg,override=None):
     for required in ('claude','codex'):
         if required not in providers: raise SystemExit(f'error: model registry missing provider {required}')
     return reg,path if path and path.is_file() else None
-
-def model_mapping(registry,provider,workload_class):
-    try: return copy.deepcopy(registry['providers'][provider]['classes'][workload_class])
-    except KeyError as exc: raise SystemExit(f'error: no model mapping for {provider}/{workload_class}') from exc
-
-def model_selector(registry,provider,workload_class):
-    return model_mapping(registry,provider,workload_class)['model_selector']
-
-def render_claude_agent(src,registry):
-    """Render declared author tools within the inherited native sandbox.
-
-    Args:
-        src: Canonical agent source file, preserving its behavioral body.
-        registry: Trusted model routing configuration.
-    Returns:
-        UTF-8 agent with role tools; Bash requires a source author/execute tier.
-        Reviewer shell stays unavailable without a read-only host boundary.
-        This does not
-        replace host mount/network isolation or prove live provider enforcement.
-    """
-    text=Path(src).read_text(encoding='utf-8'); fm,_=split_frontmatter(text)
-    workload=fm.get('model_class',registry.get('fallback_class','standard')); selector=model_selector(registry,'claude',workload)
-    line=re.compile(r'^model_class:\s*[^\n]+$',re.MULTILINE)
-    replacement='' if selector=='inherit' else f'model: {selector}'
-    text=line.sub(replacement,text)
-    declared={tool.strip() for tool in fm.get('tools','').split(',')}
-    permitted={'Read','Grep','Glob','Write','Edit'}|({'Bash'} if declared&{'Write','Edit'} else set())
-    safe=[tool.strip() for tool in fm.get('tools','').split(',') if tool.strip() in permitted]
-    text=re.sub(r'^tools:\s*[^\n]+$', 'tools: '+', '.join(safe), text, flags=re.MULTILINE)
-    return text.encode()
 
 def provider_contract_config(contract,provider,registry,content_profile=None,scope_root=None):
     """Render a detached provider projection preserving canonical JAI obligations.
@@ -174,33 +138,6 @@ def provider_contract_config(contract,provider,registry,content_profile=None,sco
     common.update({'tools':safe_tools,'deny':denied_tools,'sandbox':{'mode':mode,'workspace_write':author,'network':False},'approval_required_for':contract.get('approval_required_for',[])})
     common['native_claude']={'permissionMode':'default','allowedTools':safe_tools,'disallowedTools':denied_tools,'sandbox':{'enabled':True,'failIfUnavailable':True,'autoAllowBashIfSandboxed':False,'allowUnsandboxedCommands':False,'excludedCommands':[]}}
     return common
-
-def skill_doc(name,desc,body,source_kind,source_name,tools=''):
-    desc=desc or f"Universal AI IS/IT house {source_kind}: {source_name}."
-    note=(f"> Rendered from the provider-neutral {source_kind} `{source_name}`. The canonical source is under "
-          f"`~/.ai/it-role-house/{source_kind}s/`." if source_kind!='command' else
-          f"> Rendered from provider-neutral workflow command `/{source_name}`. The canonical source is under `~/.ai/it-role-house/commands/`.")
-    if tools:
-        note += f"\n> Source tool ceiling: `{tools}`. This is behavioral guidance only: Codex skills do not enforce tools, mounts or network permissions. The effective native sandbox and host access controls enforce permissions; operator actions remain external."
-    return f"---\nname: {name}\ndescription: {json.dumps(desc,ensure_ascii=False)}\n---\n\n{note}\n\n{body.lstrip()}".encode()
-
-def render_codex_skill(src,kind,name,registry):
-    text=Path(src).read_text(encoding='utf-8')
-    fm,body=split_frontmatter(text)
-    if kind=='skill':
-        # OpenAI skill frontmatter retains portable identity/description; provider-specific tool declarations stay in the canonical source.
-        nm=fm.get('name',name); desc=fm.get('description',f"AI IS/IT house skill {nm}.")
-        return skill_doc(nm,desc,body,'skill',name,fm.get('allowed-tools',''))
-    if kind=='agent':
-        nm='agent-'+name; desc=fm.get('description',f"Provider-neutral operator contract for {name}.")
-        workload=fm.get('model_class',registry.get('fallback_class','standard')); mapping=model_mapping(registry,'codex',workload); selector=mapping['model_selector']
-        effort=mapping.get('reasoning_effort'); behaviour=('the active Codex/session model' if selector=='inherit' else f'the configured Codex model `{selector}`')
-        fallbacks=', '.join(x.get('model_selector','?') for x in mapping.get('fallbacks',[])) or 'none'
-        extra=(f"\n\n## Provider adaptation\n\nWorkload class: `{workload}`. Project-managed routing selects {behaviour}" + (f" with reasoning effort `{effort}`" if effort else '') + f". Ordered fallbacks: `{fallbacks}`. `selection_strategy` is an AI IT House policy label, not an OpenAI API enum. Change provider/model mappings in the model registry override; do not edit this generated skill.")
-        return skill_doc(nm,desc,body+extra,'agent',name,fm.get('tools',''))
-    nm='workflow-'+name; desc=fm.get('description',f"Provider-neutral workflow /{name}.")
-    body=body.replace('$ARGUMENTS','the user-provided workflow arguments')
-    return skill_doc(nm,desc,body,'command',name,fm.get('allowed-tools',''))
 
 def render_placeholders(obj,ai_house):
     if isinstance(obj,str): return obj.replace('{AI_HOUSE}',str(ai_house))
@@ -277,6 +214,21 @@ def validate_package(pkg):
     if errs: raise SystemExit('error: package validation failed:\n  '+'\n  '.join(errs))
 
 def desired_outputs(pkg,providers,ai_house,claude_home,codex_home,model_registry):
+    """Prepare owned regular installation outputs from a valid source package.
+
+    Args:
+        pkg: Package root with its validated release scope and canonical sources.
+        providers: Provider names whose native projections should be included.
+        ai_house: Destination shared runtime directory, not written here.
+        claude_home: Destination Claude directory, not written here.
+        codex_home: Destination Codex directory, not written here.
+        model_registry: Explicit effective model registry used for projections.
+    Returns:
+        Output bytes and modes keyed by destination path. GUIDE bytes always
+        come from the canonical public page, including Git's Windows link stub.
+    Raises:
+        OSError, ValueError: Package sources, the GUIDE alias or release scope are invalid.
+    """
     release_scope(pkg)  # Required before producing any installation output.
     out={}; modes={}
     # Shared runtime + canonical sources; setup source is not installed into the protected runtime.
@@ -284,6 +236,8 @@ def desired_outputs(pkg,providers,ai_house,claude_home,codex_home,model_registry
         root=pkg/'.ai'/section
         for p in files_under(root):
             rel=p.relative_to(root)
+            if section=='runtime' and rel==Path('GUIDE.md'):
+                continue
             if section=='runtime' and (rel.parts[0]=='deployments' or
                     (rel.parent==Path('tools') and rel.name in {
                         'runtime_security.py','runtime_linux.py','runtime_service.py',
@@ -291,7 +245,11 @@ def desired_outputs(pkg,providers,ai_house,claude_home,codex_home,model_registry
                         'git_operation.py'})):
                 continue
             dest=ai_house/(rel if section=='runtime' else Path(section)/rel)
-            out[str(dest)]=p.read_bytes(); modes[str(dest)]=0o755 if p.suffix in ('.py','.sh') else 0o644
+            out[str(dest)]=p.read_bytes()
+            modes[str(dest)]=0o755 if p.suffix in ('.py','.sh') else 0o644
+    if (pkg/GUIDE_SOURCE).is_file() or (pkg/GUIDE_ALIAS).exists() or (pkg/GUIDE_ALIAS).is_symlink():
+        out[str(ai_house/'GUIDE.md')]=guide_bytes(pkg)
+        modes[str(ai_house/'GUIDE.md')]=0o644
     out[str(ai_house/'RELEASE-SCOPE.json')]=(pkg/'RELEASE-SCOPE.json').read_bytes()
     modes[str(ai_house/'RELEASE-SCOPE.json')]=0o644
     # Install-time effective model routing and provider-native agent configs.
@@ -349,9 +307,9 @@ def runtime_setup_instructions(ai_house, capabilities):
     unknown=(dependency.get('status')=='unknown' or
              (dependency.get('available') is not False and dependency.get('compatible') is not False))
     if unknown:
-        print('Runtime readiness NOT VERIFIED: the jsonschema>=4.26,<5 observation is unknown; this does not mean the package is missing. Verify with the selected interpreter before changing packages.')
+        print('Runtime readiness NOT VERIFIED: the jsonschema>=4.18,<5 observation is unknown; this does not mean the package is missing. Verify with the selected interpreter before changing packages.')
     else:
-        print('Runtime setup required: provide jsonschema>=4.26,<5 in the Python used by contract workflows, then refresh. Installation is complete; contract workflows are not ready yet.')
+        print('Runtime setup required: provide jsonschema>=4.18,<5 in the Python used by contract workflows, then refresh. Installation is complete; contract workflows are not ready yet.')
     if sys.platform!='darwin':return
     venv=Path.home()/'.venvs/jai';python=venv/'bin/python'
     if unknown:
@@ -360,7 +318,7 @@ def runtime_setup_instructions(ai_house, capabilities):
         print('  '+shlex.join(verify))
         print('Only if the runtime validator is missing or incompatible, use the optional setup below; a ready result needs no package changes.')
     commands=[[sys.executable,'-m','venv',str(venv)],
-              [str(python),'-m','pip','install','jsonschema>=4.26,<5'],
+              [str(python),'-m','pip','install','jsonschema>=4.18,<5'],
               [str(python),str(ai_house/'tools/operator_actions.py'),'configure','--refresh']]
     print('macOS: run these commands in your terminal (only the runtime validator and its dependencies are installed):')
     for command in commands:print('  '+shlex.join(command))
@@ -422,9 +380,13 @@ def main():
 
     Returns:
         Zero after successful installation or dry run; two for managed-file
-        conflicts. Uses sys.argv for installer options. Successful real installs
+        conflicts. Same-byte mode drift is backed up and corrected without rewriting
+        content; dry runs change neither bytes nor permissions. Uses sys.argv for installer options. Successful real installs
         print runtime verification/setup after all optional diagnostics and provider
         notices, using an independent lightweight observation of this interpreter.
+        Operator-key setup requires an interactive confirmation; --force-genkey
+        only offers backed-up replacement, independently of managed-file --force.
+        Declined/unavailable key setup does not undo completed software installation.
     Raises:
         SystemExit: Invalid CLI options or package validation failure.
         OSError, ValueError: Required resources or managed outputs cannot be used.
@@ -432,6 +394,7 @@ def main():
     ap=argparse.ArgumentParser(description='Install/update the universal Claude + Codex AI IS/IT house')
     g=ap.add_mutually_exclusive_group(); g.add_argument('--claude-only',action='store_true'); g.add_argument('--codex-only',action='store_true')
     ap.add_argument('--dry-run',action='store_true'); ap.add_argument('--force',action='store_true',help='back up and replace locally modified/colliding managed files')
+    ap.add_argument('--force-genkey',action='store_true',help='offer operator key replacement with confirmation and a private backup; never changes public trust')
     ap.add_argument('--no-claude-md',action='store_true'); ap.add_argument('--no-codex-agents',action='store_true'); ap.add_argument('--no-hooks',action='store_true'); ap.add_argument('--model-config',help='JSON override for provider/workload-class model routing')
     a=ap.parse_args()
     pkg=Path(__file__).resolve().parents[2]
@@ -454,15 +417,16 @@ def main():
         pp=Path(path)
         if ('claude' not in providers and str(pp).startswith(str(claude_home)+os.sep)) or ('codex' not in providers and str(pp).startswith(str(codex_home)+os.sep)):
             if pp.exists(): desired[path]=pp.read_bytes(); modes[path]=pp.stat().st_mode & 0o777
-    conflicts=[]; add=[]; update=[]; same=[]
+    conflicts=[]; add=[]; update=[]; same=[]; mode_only=[]
     for path,data in desired.items():
         actual=sha_file(path); want=sha_bytes(data); prior=oldfiles.get(path)
         if actual is None: add.append(path)
+        elif actual==want:
+            if Path(path).stat().st_mode & 0o777 != modes.get(path,0o644): mode_only.append(path)
+            else: same.append(path)
         elif prior:
-            if actual==want: same.append(path)
-            elif actual==prior: update.append(path)
+            if actual==prior: update.append(path)
             else: conflicts.append((path,'locally modified managed file'))
-        elif actual==want: same.append(path)
         else: conflicts.append((path,'pre-existing unowned file'))
     stale=[]
     for path,prior in oldfiles.items():
@@ -475,7 +439,7 @@ def main():
     print(f"AI IS/IT house {version}: providers={','.join(sorted(providers))}")
     print(f"  model routing: {model_config_source if model_config_source else 'package defaults'}")
     print(f"  common {ai_house}\n  claude {claude_home}\n  codex  {codex_home}")
-    print(f"  delta: {len(add)} new, {len(update)} changed, {len(same)} unchanged, {len(stale)} obsolete, {len(conflicts)} conflict(s)")
+    print(f"  delta: {len(add)} new, {len(update)} changed, {len(mode_only)} mode-only, {len(same)} unchanged, {len(stale)} obsolete, {len(conflicts)} conflict(s)")
     if conflicts:
         print('\nConflicts:')
         for p,why in conflicts[:40]: print(f"  {why}: {p}")
@@ -483,10 +447,11 @@ def main():
             print('\nNothing was written. Re-run with --force to back up and replace/remove conflicting managed paths.')
             return 2
     if a.dry_run:
+        provision_operator_key(force=a.force_genkey,dry_run=True)
         print('\nDry run: package validated; nothing written.')
         return 0
     ts=time.strftime('%Y%m%d-%H%M%S'); backup=ai_home/'backups'/ts
-    touched=set(update+stale+[p for p,_ in conflicts])
+    touched=set(update+mode_only+stale+[p for p,_ in conflicts])
     if touched:
         for pstr in sorted(touched):
             backup_one(pstr, backup)
@@ -498,6 +463,11 @@ def main():
         except FileNotFoundError: pass
     for path,data in desired.items():
         if path in same: continue
+        if path in mode_only:
+            # Converge executable/read permissions without replacing unchanged
+            # content or disturbing its inode and modification timestamp.
+            Path(path).chmod(modes.get(path,0o644))
+            continue
         atomic_write(path,data,modes.get(path,0o644))
     # Remove forced stale conflicts only if they are truly no longer desired.
     if a.force:
@@ -562,8 +532,7 @@ def main():
             except OSError:
                 pass
 
-    # Operator keys are never provisioned by an agent-run installer. Preserve
-    # historical state; enrollment is an explicit independent host action.
+    # Key material is not a managed software output or an enrollment grant.
     key_created=state.get('key_created')
     # State is last: if we fail earlier, old state continues to describe the previous owned hashes.
     newstate={
@@ -573,6 +542,10 @@ def main():
     }
     atomic_write(state_path,(json.dumps(newstate,indent=2,ensure_ascii=False)+'\n').encode(),0o600)
     print('\nInstallation/update complete.')
+    try:
+        provision_operator_key(force=a.force_genkey)
+    except (OSError,ValueError,subprocess.SubprocessError) as error:
+        print('Software installation is complete; operator signing key setup is unavailable: '+str(error),file=sys.stderr)
     optional_discovery(ai_house)
     if 'codex' in providers and not a.no_hooks:
         print('Codex: review/approve the installed hook configuration in Codex before relying on enforcement.')

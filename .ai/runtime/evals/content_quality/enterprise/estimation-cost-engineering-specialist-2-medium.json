@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Estimate uncertainty and discovery plan', provide verifiable evidence satisfying: Each material unknown has a decision consequence, owner and route to reduce or explicitly retain exposure.. Required delivery form: Sensitivity/scenario analysis, non-estimable items, evidence acquisition and commitment options.",
+        "criterion_under_review": "For the specific output 'Estimate uncertainty and discovery plan', provide verifiable evidence satisfying: Each material unknown has a decision consequence, owner and route to reduce or explicitly retain exposure. Required delivery form: Sensitivity/scenario analysis, non-estimable items, evidence acquisition and commitment options.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

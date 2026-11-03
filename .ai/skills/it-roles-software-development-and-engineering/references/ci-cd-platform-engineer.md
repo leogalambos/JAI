@@ -105,8 +105,8 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | --- | --- | --- | --- |
 | 1 | Shared pipeline templates and reusable workflows | Declarative pipeline definition in version control | Reproducible from a clean checkout; no manual step required for a standard run |
 | 2 | runner fleet topology and scaling policy | Controlled document with owner, effective date and review date | Every statement is testable and maps to at least one control |
-| 3 | pipeline identity and OIDC federation design | Declarative pipeline definition in version control | Reproducible from a clean checkout; no manual step required for a standard run |
-| 4 | supply chain provenance and attestation configuration | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 3 | pipeline identity and OIDC federation design | Pipeline identity and federation design | Defines trust relationships, token claims, least-privilege permissions, expiry, failure handling and verification |
+| 4 | supply chain provenance and attestation configuration | Versioned provenance and attestation configuration | Defines build/source identities, provenance fields, signing trust, verification policy and reproducible positive/negative checks |
 
 ## 7. Output gates (blocking)
 
@@ -151,7 +151,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Shared pipeline templates and reusable workflows has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Shared pipeline templates and reusable workflows") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

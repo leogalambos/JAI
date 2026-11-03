@@ -1,13 +1,12 @@
 # Commercial delivery
 
-For the 96-reference library and coherent proposal-package authoring, see
+For the 135-reference library and coherent proposal-package authoring, see
 [proposal production](../using/proposal-production.md). Use the
-[colleague pilot rubric](../validation/proposal-pilot.md) for independent
+[review and release readiness](../operations/validation.md) for independent
 practical evaluation; a pilot disposition does not authorize an offer.
 
 The opt-in `commercial-delivery/1` profile extends JAI with the supplier lifecycle: opportunity, proposal, negotiation, delivery, service operation, renewal and exit. It preserves existing technical workflows and canonical identities. It coordinates commercial work; it does not sign contracts or exercise human authority.
 
-**Owner:** JAI maintainers. **Last reviewed:** 16 October 2026. Source implementation is available; live provider qualification remains incomplete. This page combines the commercial operator guide and worked proposal in the [How to use JAI learning path](../examples/how-to-use-JAI/index.md). Read [methodical workflows](../using/methodical-workflows.md) before choosing an engagement method.
 
 Commercial delivery takes the **supplier's** perspective. The enterprise workflow library's [Source to contract to service](../workflow-library/source-to-contract-to-service.md) and [Supplier onboarding to exit](../workflow-library/supplier-onboarding.md) describe the **buyer's** sourcing and supplier-governance responsibilities. They are complementary views of a contractual relationship, not interchangeable proposal workflows.
 
@@ -198,7 +197,7 @@ Stop before proposal issue or binding commitment.
     commercial owner.
     ```
 
-Request `/fabric-report <decision-engagement-ID>` or `$workflow-fabric-report <decision-engagement-ID>`. Expect actual evidence identifiers and a readiness result that can remain blocked or conditional. Shipped live provider qualification is `not_run`; neither this prompt nor passing unit tests can override that state. Human authorisation and contractual acceptance remain separate from preparation and review.
+Request `/fabric-report <decision-engagement-ID>` or `$workflow-fabric-report <decision-engagement-ID>`. Expect exact governing versions, actual evidence and readiness that can remain blocked or conditional. Native execution evidence and any physical-control qualification are distinct claims; neither a prompt nor passing unit tests proves unobserved deployment controls. Human authorisation and contractual acceptance remain separate from preparation and review.
 
 ### 5. Carry the economics into delivery
 
@@ -206,9 +205,9 @@ After actual award and authorised mobilisation, continue against the accepted ba
 
 ## Apply the SABSA-like method
 
-The commercial domain matrix has six layers—contextual, conceptual, logical, physical, component and operational—and six questions per layer: **what, why, who, when, where and how**. It develops the chain from business need to delivery and operation. Every cell requires an answer or justified non-applicability decision, an owner and a review reference. Structural validation cannot establish business correctness.
+The commercial domain matrix has six perspectives—Contextual, Conceptual, Logical, Physical, Component and Management—and six questions per layer: **what, why, who, when, where and how**. It develops the chain from business need to delivery and operation. Every cell requires an answer or justified non-applicability decision, an owner and a review reference. Structural validation cannot establish business correctness.
 
-This matrix is independent of JAI execution layers L1–L6. The domain matrix organises what must be understood; execution contracts organise specification, production and checking. Maintain the internal chain from source passage and business need through requirements, work packages, effort, capacity, costs, price, baseline, forecast and publications.
+The matrix organises commercial content across SABSA views. Gen2 uses these canonical six SABSA perspectives with local setter, author and independent reviewer responsibilities; execution contracts do not restore a fixed production layer followed by a separate global review layer. Professional roles are chosen locally. Maintain the internal chain from source passage and business need through requirements, work packages, effort, capacity, costs, price, baseline, forecast and publications.
 
 Client outputs retain required contractual disclosures. Internal outputs additionally preserve confidential rates, margins, assumptions and rationale unless explicit disclosure policy requires their release. The supported projection surface is a JSON payload. PDF, DOCX, attachments and other export surfaces are rejected by this profile's surface policy.
 
@@ -226,11 +225,11 @@ No independent human-annotated benchmark establishes better routing accuracy or 
 
 ## Review, approval and provider boundaries
 
-Keep domain validity, evidence verification, independent review, snapshot approval, authority authorisation and contractual acceptance separate. A structurally valid JSON file is neither a verified claim nor an approved proposal. Strict readiness requires exact-snapshot review and platform-authenticated execution identities; declared agent names are insufficient.
+Keep domain validity, evidence verification, independent review, snapshot approval, authority authorisation and contractual acceptance separate. A structurally valid JSON file is neither a verified claim nor an approved proposal. Governed readiness uses exact native execution provenance, immutable material, scoped independent review and current Gen2 justification; declared agent names or echoed context tokens are insufficient.
 
-The capability registry records seven critical controls separately for Codex and Claude. Shipped live states are `not_run`. Strict dispatch requires current `tested/pass` evidence for the exact provider version, adapter version, model, deployment, product and configuration digest. Missing, invalid, future-dated or expired evidence blocks readiness; the default freshness limit is one day unless deployment policy specifies another limit.
+The shared domain integration supplies these facts from the existing Store. Only L0 signs reserved decisions; ordinary producer/checker records require no internal signing keys or HMAC service. Calculation, disclosure and consultation requirements retain their business meaning. Actual acceptance and release remain separate runtime decisions rather than domain booleans manufactured by a callback.
 
-The host must authenticate and protect the registry and evidence. These modules do not independently authenticate registry truth or enforce operating-system mounts. Unit tests and configuration parity do not constitute live isolation tests. Claude `allowed-tools` is preapproval, not an upper permission boundary: actual tools, `disallowedTools`, permissions, mounts and denial of `Agent` must enforce isolation. Codex CLI capabilities cannot be inferred from API tool-search features.
+Provider-control registries describe particular assurance claims. Unmeasured controls remain unverified, and a policy or contract that specifically requires such a control remains blocked without its evidence. An old blanket `not_run` label must not prevent all ordinary native work or be converted into a false isolation PASS. Unit tests and configuration parity do not constitute live deployment tests. Actual tool and filesystem restrictions remain the L0-owned provider sandbox's responsibility; prompt tool declarations alone do not prove physical isolation.
 
 ## Maintainer interfaces
 
@@ -256,7 +255,7 @@ python3 .ai/runtime/tools/commercial.py --profile commercial-delivery/1 axes ./p
 python3 .ai/runtime/tools/commercial.py --profile commercial-delivery/1 rollback ./activation-reference.json --store ./engagement-store --expected-revision 2
 ```
 
-Imports require an expected revision and preserve immutable history. Archives contain internal plaintext and require protected storage. Restore verifies model integrity but leaves operational readiness blocked until the host verifies recovery evidence.
+Imports require an expected revision and preserve immutable history. Archives contain internal plaintext and require protected storage. Restore verifies model integrity but establishes no operational permission or current Gen2 justification by itself; governed use still requires its actual current basis and any specifically required recovery evidence.
 
 `commercial_lifecycle.activate` and `EngagementStore.activate` use a trusted host verifier to authenticate a human scope receipt while preserving canonical objects and memberships. The CLI cannot activate without that verifier. `rollback` retrieves the original using an existing `activation_digest`; it rejects replacement originals and subsequent canonical-content changes. `EngagementStore` and commercial `SnapshotStore` are distinct host-owned stores, not competing semantic masters; host permissions must protect both.
 
@@ -264,11 +263,32 @@ Imports require an expected revision and preserve immutable history. Archives co
 
 `commercial_scheduler.schedule` schedules a dependency DAG into calendar buckets, respecting shared pools, skills, regions, client waits, work windows and external reservations. It reports effort, allocations and earliest finish; its greedy algorithm does not prove optimality. `validate_service_roster` checks explicit shifts, active coverage, backup and on-call constraints against sizing inputs. Aggregate roster success does not prove a response-time SLA percentile.
 
-### Granular Fabric binding
+### Exact governed output binding
 
-The trusted host opens Fabric through its supported API; never edit `.fabric/` directly. `commercial_runtime.append_commercial_binding(fabric, mapping)` accepts `domain_contract_version`, `domain_digest`, `claim_ids`, `claim_digests`, `target_id`, `target_digest`, `layer` and `fragments` containing `id`/`digest` pairs. At L1 the target is the original requirement; lower layers target the adjacent contract. Each fragment must match the exact target and hash.
+The trusted parent uses the current `lifecycle.Store` and pins exact product
+UsePoints through `governed_domain.GovernedDomain`; never edit `.fabric/` directly.
+The host mapping is outside the immutable domain material. Producer/reviewer
+tokens identify pre-issued contexts and stable logical records, not their own
+future product hashes. Actual captured return membership, exact material and
+current scoped independent review establish the callback facts.
 
-The API appends an immutable evidence node without exercising authority. Independent review remains necessary. `fabric_binding_resolver(ledger_path)` verifies actual nodes and binding digests for readiness; a report title or assumed file existence cannot substitute for this binding.
+`commercial_mapping` constructs the domain contract and claim digests, exact
+producing assignment and layer, and scoped output uses. The actual producer
+records these bytes through the existing governed return/admission path. It is
+not a second journal append API and requires no routine dispatch signature.
+
+`GovernedDomain.commercial_callbacks()` supplies the retained identity and
+binding callback interfaces from current Gen2 facts. The resolver checks exact
+domain/claim hashes, assignment/output references, immutable mapping bytes and
+current qualification. Revoked or insufficient justification fails readiness
+even when a historical mapping remains intact. An echoed context token or a
+domain `authenticated` flag supplies no authority. Qualification, independent
+acceptance, contractual approval and release remain separate decisions.
+
+The native command handles these internal references and callbacks. Users supply
+the actual task and source material through prompts rather than writing workers
+or bootstrap JSON. See the [review and release readiness](../operations/validation.md)
+for source wiring and verification limits; installed activation is separate.
 
 The [implementation matrix](commercial-delivery-implementation.md)
 records coverage and remaining deployment acceptance.

@@ -213,7 +213,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'IAM transition roadmap and control decisions', provide verifiable evidence satisfying: Legacy exceptions, migration dependencies and decommission criteria are owned and time-bound.. Required delivery form: Roadmap plus architecture decision records.",
+        "criterion_under_review": "For the specific output 'IAM transition roadmap and control decisions', provide verifiable evidence satisfying: Legacy exceptions, migration dependencies and decommission criteria are owned and time-bound. Required delivery form: Roadmap plus architecture decision records.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

@@ -213,7 +213,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Published architecture view set', provide verifiable evidence satisfying: Every published element resolves to the governed repository object and viewpoint purpose.. Required delivery form: Model in the EA tool plus a published view set.",
+        "criterion_under_review": "For the specific output 'Published architecture view set', provide verifiable evidence satisfying: Every published element resolves to the governed repository object and viewpoint purpose. Required delivery form: Model in the EA tool plus a published view set.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

@@ -1,0 +1,2103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Closed governed delivery wire messages",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_type": {
+          "const": "bootstrap"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "correlation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engagement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sender": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "recipient": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "context": {
+          "type": "null"
+        },
+        "profile": {
+          "type": "null"
+        },
+        "expected_head": {
+          "const": "0000000000000000000000000000000000000000000000000000000000000000"
+        },
+        "issued_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/bootstrap_payload"
+        }
+      },
+      "required": [
+        "protocol",
+        "message_type",
+        "message_id",
+        "request_id",
+        "correlation_id",
+        "engagement",
+        "scope",
+        "sender",
+        "recipient",
+        "context",
+        "profile",
+        "expected_head",
+        "issued_at_ms",
+        "expires_at_ms",
+        "causes",
+        "attachments",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_type": {
+          "const": "record_proposal"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "correlation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engagement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sender": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "recipient": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "expected_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "issued_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/record_proposal_payload"
+        }
+      },
+      "required": [
+        "protocol",
+        "message_type",
+        "message_id",
+        "request_id",
+        "correlation_id",
+        "engagement",
+        "scope",
+        "sender",
+        "recipient",
+        "context",
+        "profile",
+        "expected_head",
+        "issued_at_ms",
+        "expires_at_ms",
+        "causes",
+        "attachments",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_type": {
+          "const": "assignment"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "correlation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engagement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sender": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "recipient": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "expected_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "issued_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/assignment_payload"
+        }
+      },
+      "required": [
+        "protocol",
+        "message_type",
+        "message_id",
+        "request_id",
+        "correlation_id",
+        "engagement",
+        "scope",
+        "sender",
+        "recipient",
+        "context",
+        "profile",
+        "expected_head",
+        "issued_at_ms",
+        "expires_at_ms",
+        "causes",
+        "attachments",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_type": {
+          "const": "submission"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "correlation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engagement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sender": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "recipient": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "expected_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "issued_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/submission_payload"
+        }
+      },
+      "required": [
+        "protocol",
+        "message_type",
+        "message_id",
+        "request_id",
+        "correlation_id",
+        "engagement",
+        "scope",
+        "sender",
+        "recipient",
+        "context",
+        "profile",
+        "expected_head",
+        "issued_at_ms",
+        "expires_at_ms",
+        "causes",
+        "attachments",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_type": {
+          "const": "observation"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "correlation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engagement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sender": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "recipient": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "expected_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "issued_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/observation_payload"
+        }
+      },
+      "required": [
+        "protocol",
+        "message_type",
+        "message_id",
+        "request_id",
+        "correlation_id",
+        "engagement",
+        "scope",
+        "sender",
+        "recipient",
+        "context",
+        "profile",
+        "expected_head",
+        "issued_at_ms",
+        "expires_at_ms",
+        "causes",
+        "attachments",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_type": {
+          "const": "review"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "correlation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engagement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sender": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "recipient": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "expected_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "issued_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/review_payload"
+        }
+      },
+      "required": [
+        "protocol",
+        "message_type",
+        "message_id",
+        "request_id",
+        "correlation_id",
+        "engagement",
+        "scope",
+        "sender",
+        "recipient",
+        "context",
+        "profile",
+        "expected_head",
+        "issued_at_ms",
+        "expires_at_ms",
+        "causes",
+        "attachments",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_type": {
+          "const": "integration"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "correlation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engagement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sender": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "recipient": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "expected_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "issued_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/integration_payload"
+        }
+      },
+      "required": [
+        "protocol",
+        "message_type",
+        "message_id",
+        "request_id",
+        "correlation_id",
+        "engagement",
+        "scope",
+        "sender",
+        "recipient",
+        "context",
+        "profile",
+        "expected_head",
+        "issued_at_ms",
+        "expires_at_ms",
+        "causes",
+        "attachments",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_type": {
+          "const": "handoff"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "correlation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engagement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sender": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "recipient": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "expected_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "issued_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/handoff_payload"
+        }
+      },
+      "required": [
+        "protocol",
+        "message_type",
+        "message_id",
+        "request_id",
+        "correlation_id",
+        "engagement",
+        "scope",
+        "sender",
+        "recipient",
+        "context",
+        "profile",
+        "expected_head",
+        "issued_at_ms",
+        "expires_at_ms",
+        "causes",
+        "attachments",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_type": {
+          "const": "handoff_acceptance"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "correlation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engagement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sender": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "recipient": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "expected_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "issued_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/handoff_acceptance_payload"
+        }
+      },
+      "required": [
+        "protocol",
+        "message_type",
+        "message_id",
+        "request_id",
+        "correlation_id",
+        "engagement",
+        "scope",
+        "sender",
+        "recipient",
+        "context",
+        "profile",
+        "expected_head",
+        "issued_at_ms",
+        "expires_at_ms",
+        "causes",
+        "attachments",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_type": {
+          "const": "information_request"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "correlation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engagement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sender": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "recipient": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "expected_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "issued_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/information_request_payload"
+        }
+      },
+      "required": [
+        "protocol",
+        "message_type",
+        "message_id",
+        "request_id",
+        "correlation_id",
+        "engagement",
+        "scope",
+        "sender",
+        "recipient",
+        "context",
+        "profile",
+        "expected_head",
+        "issued_at_ms",
+        "expires_at_ms",
+        "causes",
+        "attachments",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_type": {
+          "const": "information_response"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "correlation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engagement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sender": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "recipient": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "expected_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "issued_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/information_response_payload"
+        }
+      },
+      "required": [
+        "protocol",
+        "message_type",
+        "message_id",
+        "request_id",
+        "correlation_id",
+        "engagement",
+        "scope",
+        "sender",
+        "recipient",
+        "context",
+        "profile",
+        "expected_head",
+        "issued_at_ms",
+        "expires_at_ms",
+        "causes",
+        "attachments",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_type": {
+          "const": "change_request"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "correlation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engagement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sender": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "recipient": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "expected_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "issued_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/change_request_payload"
+        }
+      },
+      "required": [
+        "protocol",
+        "message_type",
+        "message_id",
+        "request_id",
+        "correlation_id",
+        "engagement",
+        "scope",
+        "sender",
+        "recipient",
+        "context",
+        "profile",
+        "expected_head",
+        "issued_at_ms",
+        "expires_at_ms",
+        "causes",
+        "attachments",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_type": {
+          "const": "escalation"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "correlation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engagement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sender": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "recipient": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "expected_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "issued_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/escalation_payload"
+        }
+      },
+      "required": [
+        "protocol",
+        "message_type",
+        "message_id",
+        "request_id",
+        "correlation_id",
+        "engagement",
+        "scope",
+        "sender",
+        "recipient",
+        "context",
+        "profile",
+        "expected_head",
+        "issued_at_ms",
+        "expires_at_ms",
+        "causes",
+        "attachments",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_type": {
+          "const": "decision"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "correlation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engagement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sender": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "recipient": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "expected_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "issued_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/decision_payload"
+        }
+      },
+      "required": [
+        "protocol",
+        "message_type",
+        "message_id",
+        "request_id",
+        "correlation_id",
+        "engagement",
+        "scope",
+        "sender",
+        "recipient",
+        "context",
+        "profile",
+        "expected_head",
+        "issued_at_ms",
+        "expires_at_ms",
+        "causes",
+        "attachments",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_type": {
+          "const": "relay"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "correlation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engagement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sender": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "recipient": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "expected_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "issued_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/relay_payload"
+        }
+      },
+      "required": [
+        "protocol",
+        "message_type",
+        "message_id",
+        "request_id",
+        "correlation_id",
+        "engagement",
+        "scope",
+        "sender",
+        "recipient",
+        "context",
+        "profile",
+        "expected_head",
+        "issued_at_ms",
+        "expires_at_ms",
+        "causes",
+        "attachments",
+        "payload"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_type": {
+          "const": "control_event"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "correlation_id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "engagement": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "sender": {
+          "$ref": "common.schema.json#/$defs/controller"
+        },
+        "recipient": {
+          "$ref": "common.schema.json#/$defs/controller"
+        },
+        "context": {
+          "anyOf": [
+            {
+              "$ref": "common.schema.json#/$defs/reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "profile": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "expected_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "issued_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "causes": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        },
+        "attachments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/attachment"
+          }
+        },
+        "payload": {
+          "$ref": "#/$defs/control_event_payload"
+        }
+      },
+      "required": [
+        "protocol",
+        "message_type",
+        "message_id",
+        "request_id",
+        "correlation_id",
+        "engagement",
+        "scope",
+        "sender",
+        "recipient",
+        "context",
+        "profile",
+        "expected_head",
+        "issued_at_ms",
+        "expires_at_ms",
+        "causes",
+        "attachments",
+        "payload"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "payload": {
+                "properties": {
+                  "event": {
+                    "const": "renew_control"
+                  }
+                },
+                "required": [
+                  "event"
+                ]
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "context": {
+                "type": "null"
+              }
+            }
+          },
+          "else": {
+            "properties": {
+              "context": {
+                "$ref": "common.schema.json#/$defs/reference"
+              }
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "$defs": {
+    "bootstrap_payload": {
+      "type": "object",
+      "properties": {
+        "controller_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "profile": {
+          "type": "object",
+          "properties": {
+            "logical_id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "record": {
+              "$ref": "record.schema.json#/$defs/profile"
+            }
+          },
+          "required": [
+            "logical_id",
+            "record"
+          ],
+          "additionalProperties": false
+        },
+        "l0_inputs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "logical_id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "record": {
+                "$ref": "record.schema.json#/$defs/source"
+              }
+            },
+            "required": [
+              "logical_id",
+              "record"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        },
+        "use_scopes": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/key"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "controller_id",
+        "profile",
+        "l0_inputs",
+        "use_scopes"
+      ],
+      "additionalProperties": false
+    },
+    "record_proposal_payload": {
+      "$ref": "record.schema.json#/$defs/proposal"
+    },
+    "assignment_payload": {
+      "type": "object",
+      "properties": {
+        "assignment": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "owner": {
+          "$ref": "common.schema.json#/$defs/ownership"
+        },
+        "responsibility": {
+          "enum": [
+            "setter",
+            "author",
+            "reviewer",
+            "integrator",
+            "integration_reviewer",
+            "receiver",
+            "measurement"
+          ]
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        },
+        "criteria": {
+          "$ref": "common.schema.json#/$defs/reference"
+        }
+      },
+      "required": [
+        "assignment",
+        "owner",
+        "responsibility",
+        "inputs",
+        "criteria"
+      ],
+      "additionalProperties": false
+    },
+    "submission_payload": {
+      "type": "object",
+      "properties": {
+        "assignment": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "candidate": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "evidence": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true,
+          "description": "References to additional observation products that must be qualified before use. Do not cite request, criteria, assignment or other source records here. Ordinary document-derived work uses []; its input and criteria provenance is already bound by the host. Source citations may remain in the actual material."
+        },
+        "limitations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "assignment",
+        "candidate",
+        "evidence",
+        "limitations"
+      ],
+      "additionalProperties": false
+    },
+    "observation_payload": {
+      "type": "object",
+      "properties": {
+        "assignment": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "observation": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        },
+        "material": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "assignment",
+        "observation",
+        "inputs",
+        "material"
+      ],
+      "additionalProperties": false
+    },
+    "review_payload": {
+      "type": "object",
+      "properties": {
+        "assignment": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "assessment": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "subject": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "criteria": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "verdict": {
+          "enum": [
+            "supported",
+            "supported_with_conditions",
+            "rework_required",
+            "blocked"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "assignment",
+        "assessment",
+        "subject",
+        "criteria",
+        "verdict",
+        "findings",
+        "conditions"
+      ],
+      "additionalProperties": false
+    },
+    "integration_payload": {
+      "type": "object",
+      "properties": {
+        "assignment": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "bundle": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "answers": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        },
+        "integration_review": {
+          "$ref": "common.schema.json#/$defs/reference"
+        }
+      },
+      "required": [
+        "assignment",
+        "bundle",
+        "answers",
+        "integration_review"
+      ],
+      "additionalProperties": false
+    },
+    "handoff_payload": {
+      "type": "object",
+      "properties": {
+        "assignment": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "handoff": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "bundle": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "interface": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "obligations": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "assignment",
+        "handoff",
+        "bundle",
+        "interface",
+        "obligations"
+      ],
+      "additionalProperties": false
+    },
+    "handoff_acceptance_payload": {
+      "type": "object",
+      "properties": {
+        "assessment": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "handoff": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "interface": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "verdict": {
+          "enum": [
+            "accepted",
+            "information_required",
+            "change_required"
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "assessment",
+        "handoff",
+        "interface",
+        "verdict",
+        "findings"
+      ],
+      "additionalProperties": false
+    },
+    "information_request_payload": {
+      "type": "object",
+      "properties": {
+        "assignment": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "needed": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        },
+        "question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blocked_obligations": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "assignment",
+        "needed",
+        "question",
+        "blocked_obligations"
+      ],
+      "additionalProperties": false
+    },
+    "information_response_payload": {
+      "type": "object",
+      "properties": {
+        "request": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "provided": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        },
+        "remaining_gaps": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      },
+      "required": [
+        "request",
+        "provided",
+        "remaining_gaps"
+      ],
+      "additionalProperties": false
+    },
+    "change_request_payload": {
+      "type": "object",
+      "properties": {
+        "assignment": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "subjects": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        },
+        "proposals": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "assignment",
+        "subjects",
+        "reason",
+        "findings",
+        "proposals"
+      ],
+      "additionalProperties": false
+    },
+    "escalation_payload": {
+      "type": "object",
+      "properties": {
+        "assignment": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "package": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "conflicts": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "affected": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        },
+        "requested_decisions": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "assignment",
+        "package",
+        "conflicts",
+        "affected",
+        "requested_decisions"
+      ],
+      "additionalProperties": false
+    },
+    "decision_payload": {
+      "$ref": "decision.schema.json"
+    },
+    "relay_payload": {
+      "type": "object",
+      "properties": {
+        "original_message": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "original_origin": {
+          "$ref": "common.schema.json#/$defs/participant"
+        },
+        "route": {
+          "$ref": "common.schema.json#/$defs/reference"
+        }
+      },
+      "required": [
+        "original_message",
+        "original_origin",
+        "route"
+      ],
+      "additionalProperties": false
+    },
+    "control_event_payload": {
+      "$ref": "control.schema.json"
+    }
+  }
+}

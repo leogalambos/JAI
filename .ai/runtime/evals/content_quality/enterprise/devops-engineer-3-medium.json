@@ -23,41 +23,43 @@
     "privacy": true
   },
   "semantic_units": {
-    "delivery_accountability": [
+    "operational_ownership": {
+      "service_owner": "Morgan Lee",
+      "support_team": "Warehouse platform operations",
+      "support_hours": "06:00-22:00",
+      "incident_ref": "SYN-INC1",
+      "step": 1,
+      "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+      "expected_output": "deployment transaction-api successfully rolled out",
+      "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+      "safe_state": "Keep new transaction traffic disabled",
+      "escalation": "Incident commander on bridge SYN-INC1",
+      "record_id": "SYN-OPERATIONAL-OWNERSHIP",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify receiving service owner, support boundaries, escalation and review triggers.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "operational_recoverability": [
       {
-        "increment_id": "SYN-WAVE1",
-        "start": "2026-11-01",
-        "finish": "2026-11-05",
-        "dependency": "SYN-T1 peak-load retest",
-        "entry": "Backup restore rehearsed and rollback configuration retained",
-        "exit": "Ledger totals reconcile and operations independently accepts support",
-        "go_no_go": "Service owner with independent operations evidence",
-        "fallback_decision_time": "Before enabling transaction traffic",
-        "record_id": "SYN-DELIVERY-ACCOUNTABILITY",
+        "service_owner": "Morgan Lee",
+        "support_team": "Warehouse platform operations",
+        "support_hours": "06:00-22:00",
+        "incident_ref": "SYN-INC1",
+        "step": 1,
+        "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+        "expected_output": "deployment transaction-api successfully rolled out",
+        "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+        "safe_state": "Keep new transaction traffic disabled",
+        "escalation": "Incident commander on bridge SYN-INC1",
+        "record_id": "SYN-OPERATIONAL-RECOVERABILITY",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Assign outcomes, milestones, resource assumptions and acceptance responsibility.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "delivery_dependencies": [
-      {
-        "increment_id": "SYN-WAVE1",
-        "start": "2026-11-01",
-        "finish": "2026-11-05",
-        "dependency": "SYN-T1 peak-load retest",
-        "entry": "Backup restore rehearsed and rollback configuration retained",
-        "exit": "Ledger totals reconcile and operations independently accepts support",
-        "go_no_go": "Service owner with independent operations evidence",
-        "fallback_decision_time": "Before enabling transaction traffic",
-        "record_id": "SYN-DELIVERY-DEPENDENCIES",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Link delivery risks, cross-team dependencies and change decisions to accountable owners.",
+        "criterion_under_review": "Trace monitoring, failure handling, backup/recovery and rollback requirements to rehearsed evidence.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -410,8 +412,8 @@
       "id": "headings-only",
       "operation": "headings_only",
       "expected_rule_ids": [
-        "domain/delivery.delivery_accountability",
-        "domain/delivery.delivery_dependencies",
+        "domain/operations.operational_ownership",
+        "domain/operations.operational_recoverability",
         "role/devops-engineer:3.contract_input_1",
         "role/devops-engineer:3.contract_input_2",
         "role/devops-engineer:3.contract_input_3",

@@ -1,165 +1,123 @@
-# Execution and context-assembly algorithm
+# Execution and context assembly
 
-Owner: JAI maintainers · Last reviewed: 2026-10-20
+JAI coordinates native provider reasoning, professional instructions, explicit
+output contracts and recorded review. It uses the active Claude Code or Codex
+session rather than running a separate language model. A procedure or generated
+provider file describes intended behaviour; the actual host invocation and
+returned work establish what happened in an engagement.
 
-This explanation is grounded in the JAI 26.10.12 source. JAI coordinates
-provider-hosted reasoning, specialist instructions, typed deliverables,
-evidence and review. It does not implement a separate language model.
-The flow describes supported operations and operating procedures; it is
-not a universally enforced interceptor for every conversational request.
+## Choose the scope of work
 
-[Experimental hint support](../using/experimental-hint.md) helps choose a
-starting procedure from maintained examples. Its lexical metadata selection
-and procedural explanation do not establish universal routing, physical
-loading of a referenced document, or delivery of that document to a model.
+Choose one of the [three usage modes](../using/usage-modes.md): a direct role for
+bounded specialist work, a named workflow for its maintained process, or the
+layered matrix for cross-perspective justification. These are alternative entry
+points, not three engines that every task must traverse.
 
-## Reading implementation status
+The role router matches the requested deliverable to the full catalogue and
+checks the candidate's scope. Professional role selection is distinct from
+provider/model selection. A free-form request is not automatically intercepted
+and transformed into a complete matrix run; use the appropriate workflow entry.
 
-| Label | Meaning on these pages |
-| --- | --- |
-| `IMPLEMENTED` | Confirmed in the named repository component; deployment or execution still needs evidence. |
-| `PROCEDURAL` | An agent/workflow instruction that the operator must actually follow. |
-| `PROPOSED` | A possible enhancement, not a new normative requirement or roadmap commitment. |
-| `NOT VERIFIED` | Available evidence does not establish the claimed deployment or execution. |
-| `NOT IMPLEMENTED` | The described mechanism is absent from the inspected supported path. |
+## Current layered model
 
-Source inspection establishes capability, not that a particular provider
-session executed it. Installed configuration, actual reads and provider
-invocation evidence are different observations.
+Gen2 uses the SABSA content perspectives **Contextual, Conceptual, Logical,
+Physical, Component and Management**, each addressing What, Why, How, Who, Where
+and When. Management concerns are crosscutting. L0 is external human authority,
+not a seventh AI layer. See the [layer model](../architecture/sabsa-layer-model.md).
 
-## Choose the operating mode
-
-**PROCEDURAL:** `.ai/agents/role-router.md` directs the router to
-consult `roles.json`, match the requested deliverable, inspect candidate
-role scope and select its operator. It does not perform the specialist's
-work. `.ai/runtime/roles.json` and `workflows.json` describe available
-roles, workflow steps and handoffs; their presence does not run a
-workflow.
-
-Use direct work for a bounded task, a named domain workflow for its
-defined procedure, or a supervised layered engagement for consequential
-work. These are alternatives, not three mandatory engines in sequence.
-See [interaction patterns](../using/interaction-model.md) and [workflow
-selection](../using/methodical-workflows.md).
-
-**NOT IMPLEMENTED:** a universal entry interceptor that forces every
-free-form request or direct role invocation through role routing and
-L1–L6 supervision. Deployment policy can require that path; this does
-not prove technical enforcement at every entry point.
-
-## Execution layers and authority
-
-The execution layers are L1 Intent and Context, L2 Meaning and Domain
-Model, L3 Reasoning, Policy and Control, L4 Solution Design, L5
-Realisation and Tooling, and L6 Execution and Evidence. L0 Human
-Authority is external, not a seventh AI layer. SABSA coordinates
-describe a separate domain method and do not renumber these execution
-layers.
+An incoming handoff addresses the receiving layer's outcomes and interfaces.
+Its local setter formulates questions and criteria; the author and independent
+reviewer work within that layer. Each entity selects its own suitable
+specialties and available model resources. Integration review and receiving
+handoff acceptance follow the question reviews.
 
 ```mermaid
 flowchart TD
-    Intent[Intent and authorized sources] --> Mode{Choose supported mode}
-    Mode --> Direct[Direct scoped work]
-    Mode --> Domain[Named domain workflow]
-    Mode --> Layered[L1 to L6 supervised engagement]
-    Direct --> Product[Select specialist and deliverable as applicable]
-    Domain --> Product
-    Layered --> Product
-    Product --> Spec[Resolve artifact contract and DCS]
-    Spec --> Sources[Select permitted project sources and references]
-    Sources --> Host[Host reads and supplies applicable context]
-    Host --> Work[Provider reasoning and permitted tools]
-    Work --> Review[Validation and separate review]
-    Review --> Decision{Applicable gates satisfied}
-    Decision -->|Rework or escalation| Product
-    Decision -->|Yes| Publish[Publication and rendered QA if applicable]
-    Publish --> Authority[External L0 decision where required]
+    Intent[Task and authorised inputs] --> Mode{Choose usage mode}
+    Mode --> Role[Direct specialist]
+    Mode --> Workflow[Named workflow]
+    Mode --> Matrix[Layered work and local triads]
+    Role --> Contract[Select exact output contract]
+    Workflow --> Contract
+    Matrix --> Contract
+    Contract --> Context[Relevant inputs and professional instructions]
+    Context --> Work[Native provider work and permitted tools]
+    Work --> Review[Independent applicable review]
+    Review -->|Findings| Work
+    Review -->|Supported within scope| Result[Candidate and supporting evidence]
+    Result --> Format{Publication required?}
+    Format -->|Yes| Publication[Projection, rendering and actual-format QA]
+    Format -->|No| Use[Receiving handoff and intended use]
+    Publication --> Use
+    Use --> Authority[Separate human decision where reserved]
 ```
 
-Arrows describe a controlled operating sequence, not automatic calls.
-Configured pre-tool hooks run before relevant tool execution; post-tool
-hooks run afterwards. They are not activated by every prose response.
-Publication and human decisions apply according to the chosen contract.
+The arrows describe an operating sequence. They do not assert automatic calls,
+acceptance of every output, or permission to perform a reserved decision.
 
-## What each component establishes
+## Select the applicable content
 
-| Step | Implemented component or procedure | Observable output and boundary |
-| --- | --- | --- |
-| Establish intent | User scope and workflow instructions (`PROCEDURAL`) | Purpose, audience, acceptance and unknowns; source assertions are not automatically true. |
-| Select specialist | Role-router instruction (`PROCEDURAL`) | Specialist/operator choice; model selection is a separate concern. |
-| Select deliverable | Artifact Contract v3 registry and `artifacts.py` (`IMPLEMENTED`) | Stable identity and transfer/review contract, not completed content. |
-| Resolve obligations | `ContentSpec.resolve()` and `compile()` (`IMPLEMENTED`) | Registered binding, typed units, applicability and compiled hash; no inferred role authority from standalone kind selection. |
-| Select examples | `ExpertReferences.canonical_family()` and `resolve()` (`IMPLEMENTED`) | One validated reference file and sanitized selection report, not a provider prompt. |
-| Supply context | Role-author reading/handoff instruction (`PROCEDURAL`) | Actual host reads must supply selected files; discovery alone proves no LLM consumption. |
-| Select provider configuration | `model_router.py` and `agent_runtime.py` (`IMPLEMENTED`) | Workload/model mapping and agent tool contract; actual host invocation remains separate. |
-| Record layered work | Fabric contract, packet, ingest and review APIs (`IMPLEMENTED`) | Digest-bound records and explicit review transitions, not proof of hidden provider context. |
-| Validate content | `content_lint.evaluate()` and domain validators (`IMPLEMENTED`) | Structured findings against applicable rules; synthetic tests do not establish professional truth. |
-| Publish | `projection.build()`, `publication.py`, `visual_qa.py` (`IMPLEMENTED`) | Manifest-bound presentation and actual render checks; neither grants L0 authority. |
+The registered role-output ID selects an explicit content specification. Its
+shared foundations and overlays form the effective contract. Required,
+conditional, optional and prohibited information remains distinct; unknown
+applicability must be resolved rather than treated as false. See the
+[output contract catalogue](../reference/output-contracts/index.md).
 
-The Artifact Contract v3 source is
-`.ai/runtime/artifacts/contracts/role-deliverables.v3.json`.
-`artifacts.py:validate()` checks registry consistency. Content
-obligations come from `.ai/runtime/content/registry.json` and its
-registered bindings; they are not interchangeable with the artifact's
-interface and ownership. Current compiled DCS objects carry
-proposed/advisory status. They do not activate new normative enforcement
-merely because an example is selected.
+The existing `ContentSpec.resolve()` and `compile()` functions assemble typed
+information obligations from the registered binding. Their output is a blueprint,
+not proof that a document, implementation or observation fulfils it. Expert
+references are illustrative authoring material; fictional names, calculations
+and evidence identifiers must not become project facts.
 
-## Role routing versus model routing
+## Supply a bounded professional context
 
-**IMPLEMENTED:** `model_router.py:effective_registry()` combines the
-bundled model registry with a configured override. `resolve()` validates
-the provider/workload class and returns its model mapping; `candidates()`
-exposes primary and configured fallback choices. These functions neither
-choose the professional role nor execute a model retry loop.
+For native layered work, the parent obtains an issued task-specific context,
+delegates through the provider's native facilities and captures the returned
+result. The runtime binds the actual capture to the issued assignment and
+context before admitting its semantic effects. See [native execution](../architecture/gen2-native-execution-bridge.md).
 
-`agent_runtime.py:provider_config()` projects the Agent Contract into
-Claude/Codex tool, sandbox and model settings, including native Codex
-model/reasoning fields. `authorize()` checks requested operations against
-enterprise policy and the contract. The installer renders provider-facing
-skills, agents and configuration from these sources. File generation is
-not proof that the host used the configuration for a particular call.
-See [provider/model configuration](../configuration/models.md).
+Each task receives the relevant input sections and immutable attachment
+references. An author and reviewer have separate professional contexts. The
+whole journal and the complete role catalogue are not copied into every prompt;
+the catalogue remains available for local staffing. Missing neighbour-owned
+material is requested explicitly. General reference access and catalogue access
+must not become a restrictive role whitelist.
 
-## How context reaches a provider
+A professional selection plan remains reusable while its governing assignment
+and inputs remain unchanged. Mechanical continuation does not require another
+model selection or another execution of completed work. On restart, reconcile
+prepared intents, actual handles and admitted results before issuing new work.
+Unobserved completion remains unresolved; cancellation alone does not prove that
+a physical invocation terminated.
 
-**PROCEDURAL:** `.ai/agents/role-author.md` instructs the operator to
-resolve a supported reference and read the selected file through a
-private handoff. It requires an execution-capable operator when the
-author role cannot run the resolver. User project inputs, controlling
-policy, role instructions and compiled DCS must be supplied through the
-actual host's supported messages, skills or tool results.
+## What the components establish
 
-**IMPLEMENTED:** Fabric's `contract_context_packet()` in
-`.ai/runtime/fabric/fabric.py` builds the intended contract packet and
-digest. `render-contract` and `context-packet` expose it; protocol 3.3
-ingestion rejects a missing or mismatched echoed context digest. The
-layered skill instructs dispatch with that packet alone. This records
-the intended dependency boundary; it cannot prove that the provider
-added no system instructions, previous messages or other context.
+| Component | Result and boundary |
+| --- | --- |
+| Role and workflow definitions | Professional scope, expected outputs and handoff gates; not proof of execution |
+| Model routing and agent configuration | Available provider/workload mapping and native tool contract; not professional role authority |
+| Content specifications and domain validators | Explicit obligations and located findings; structural success is not professional semantic acceptance |
+| Native execution bridge and dispatcher | Issued context, actual capture and permitted semantic effects; no claim about hidden provider state beyond observed capabilities |
+| Lifecycle Store and governed messages | Immutable identities, explicit dependencies, atomic decisions and scoped current applicability |
+| Projection, publication and visual QA | Audience-specific rendition and evidence for the actual formats inspected; no acceptance or release grant |
+| External operator signing | Proof of an exact reserved human decision, subject to scope, expiry, replay and current-state checks |
 
-**NOT IMPLEMENTED:** one general runtime function that automatically
-assembles task, roles, DCS, project facts and reference excerpts into
-every LLM request with a verified token budget. A narrowly scoped
-optional provider-evaluation harness does construct whole-file prompts;
-it is not the normal authoring engine. See [reference selection and
-context delivery](../reference/reference-selection-context.md).
+The current Fabric facade uses `validate --message`,
+`submit engagement-id --message` and `current-basis engagement-id --query`.
+Read-only assessment commands use the same exact query boundary. Normal users
+do not construct these messages: the native parent handles transport. See the
+[protocol](../reference/governed-delivery-protocol.md) and
+[maintainer operating guide](../operations/normal-layered-workflow.md).
 
-## Evidence, review and publication boundaries
+## Evidence and decision boundaries
 
-Expert examples are AI-authored proposed illustrative content. Their
-people, prices, controls and evidence identifiers must not become
-project facts. Project sources need attribution and applicable access
-controls; missing evidence remains unknown, pending or not executed.
-Source priority does not authorize lower-trust prose to override policy
-or tool limits.
+Source references identify what the work used; they do not make every source
+assertion true. Record observed facts, assumptions, unknowns and unexecuted work
+accurately. Material claims need the evidence required by the selected contract.
 
-Fabric records and execution digests support audit within their recorded
-scope. Separate review, SoD and external human authority remain required
-where applicable. AI editorial review is not independent human approval.
-A successful render or CI gate does not accept business risk or
-authorize use of a project deliverable.
-
-See [layered runtime](../capabilities/layered-runtime.md),
-[publication](../capabilities/artifacts-publication.md) and [hooks and
-release controls](../configuration/hooks-gates-verification.md).
+A changed input creates a new version and an explicit owner decision about
+applicability. A previously supported answer or review does not automatically
+transfer. Continued work, receiving acceptance and release permission remain
+separate. Assess the exact output's relevant dependencies rather than repeatedly
+revalidating unrelated historical records. See
+[versioned applicability](../architecture/governed-runtime-cutover.md).

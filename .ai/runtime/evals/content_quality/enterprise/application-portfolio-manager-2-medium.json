@@ -231,7 +231,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Application rationalisation decision paper', provide verifiable evidence satisfying: Each disposition is justified by business fit, technical/risk health, cost, dependency and strategic factors rather than age alone.. Required delivery form: Decision paper with invest/tolerate/migrate/retire disposition, evidence, alternatives, constraints and authority.",
+        "criterion_under_review": "For the specific output 'Application rationalisation decision paper', provide verifiable evidence satisfying: Each disposition is justified by business fit, technical/risk health, cost, dependency and strategic factors rather than age alone. Required delivery form: Decision paper with invest/tolerate/migrate/retire disposition, evidence, alternatives, constraints and authority.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

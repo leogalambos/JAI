@@ -1,7 +1,5 @@
 # Experimental hint support
 
-Owner: JAI documentation maintainers  
-Review date: 2026-10-20
 
 Use `/hint` when you can describe a task but do not yet know which JAI
 workflow or example to follow. It recommends a starting procedure; it does

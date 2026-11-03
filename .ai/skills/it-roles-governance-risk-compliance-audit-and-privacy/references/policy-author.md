@@ -102,7 +102,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | 1 | Policy and standard documents | Controlled document with owner, effective date and review date | Every statement is testable and maps to at least one control |
 | 2 | policy hierarchy and mapping to obligations | Controlled document with owner, effective date and review date | Every statement is testable and maps to at least one control |
 | 3 | consultation and approval records | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 4 | policy review and retirement schedule | Controlled document with owner, effective date and review date | Every statement is testable and maps to at least one control |
+| 4 | policy review and retirement schedule | Policy review and retirement schedule | Each policy has an owner, review trigger or due date, supersession/retirement conditions and required authority |
 
 ## 7. Output gates (blocking)
 
@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Policy and standard documents has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Policy and standard documents") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

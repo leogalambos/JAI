@@ -111,7 +111,7 @@ An output that fails any gate is not released. A gate may be waived only by the 
 - [ ] **G1.** Intake is rejected unless all mandatory inputs are present or a named owner and date exist for each gap.
 - [ ] **G2.** No commitment is made beyond demonstrated capacity for the period.
 - [ ] **G3.** Every deviation from the documented process is logged with its reason and its expiry.
-- [ ] **G4.** Innovation portfolio and stage gates is published on the agreed cadence even when the news is bad.
+- [ ] **G4.** The primary deliverable ("Innovation portfolio and stage gates") is published on the agreed cadence, including adverse results.
 - [ ] **G5.** Every initiative has a stated kill criterion evaluated at each gate
 - [ ] **G6.** initiatives that pass a gate with no evidence are terminated rather than renewed on enthusiasm
 
@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Innovation portfolio and stage gates has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Innovation portfolio and stage gates") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

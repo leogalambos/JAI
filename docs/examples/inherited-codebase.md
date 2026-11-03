@@ -1,6 +1,5 @@
 # Take over an inherited codebase
 
-Owner: JAI maintainers. Last reviewed: 2026-10-20.
 
 This walkthrough illustrates the `codebase-takeover` workflow recipe.
 It is not an additional native slash command.

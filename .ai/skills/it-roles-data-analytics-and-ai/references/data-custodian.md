@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Access control implementation records has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Access control implementation records") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 
@@ -157,7 +157,7 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 ## 11. Failure modes and anti-patterns
 
 - Diagnosing at length while the service stays down, because curiosity beats the restoration objective.
-- Destroying the evidence during recovery, guaranteeing the same incident recurs.
+- Destroying evidence during recovery, limiting root-cause analysis and increasing the risk of recurrence.
 - Alert fatigue: hundreds of alerts, no ownership, real signals lost in the noise.
 - Permanent workarounds recorded as fixes, so the problem backlog looks healthy while the estate rots.
 

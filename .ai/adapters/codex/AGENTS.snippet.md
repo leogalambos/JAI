@@ -9,8 +9,16 @@ Routing:
 - research and development: `research-and-development` or `$workflow-research`;
 - SABSA: `sabsa-library` or `$workflow-sabsa`;
 - defect diagnosis: `defect-analysis`, `$agent-defect-analyst` or `$workflow-diagnose`;
-- consequential decisions: `$workflow-layered`;
 - specific IS/IT roles, deliverables, RACI or segregation of duties: `it-roles-*` and `$agent-role-router`.
+
+Ordinary bounded role/domain work keeps its existing route. For consequential
+layered justification use `$workflow-layered` and the canonical
+`layered-justifiable-delivery` skill's `references/domain-handoff.md`; use
+`$workflow-fabric-report` for independent read-only audit. The native parent
+handles task capture, exact criteria/input references and runtime transport;
+users do not prepare bootstrap JSON or workers. Preserve the complete catalogue
+and local staffing autonomy. Source availability does not prove installed
+activation or unobserved live-provider qualification.
 
 Source code written by the agent follows `~/.ai/it-role-house/standards/code-documentation.md` and `~/.ai/it-role-house/standards/testing.md`; installed hooks enforce documentation, tests and a passing test run after the last production-code change.
 

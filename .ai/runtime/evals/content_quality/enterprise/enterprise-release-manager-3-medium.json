@@ -231,7 +231,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Enterprise release go/no-go decision paper', provide verifiable evidence satisfying: Go/no-go is traceable to evidence and delegated authority, with explicit rollback/abort conditions and no self-approval of failed gates.. Required delivery form: Decision paper with readiness evidence, unresolved risk, waivers, authority and executable decision.",
+        "criterion_under_review": "For the specific output 'Enterprise release go/no-go decision paper', provide verifiable evidence satisfying: Go/no-go is traceable to evidence and delegated authority, with explicit rollback/abort conditions and no self-approval of failed gates. Required delivery form: Decision paper with readiness evidence, unresolved risk, waivers, authority and executable decision.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

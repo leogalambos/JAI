@@ -1,0 +1,30 @@
+{
+  "owner": {
+    "kind": "authority",
+    "id": "human-owner"
+  },
+  "source_role": "criteria",
+  "origin": {
+    "kind": "authority",
+    "id": "human-owner"
+  },
+  "material": [
+    "3d8f4b545013865bc63eab5f302092092a62cbd3c9c0301273995acef5cfed09"
+  ],
+  "criteria": [
+    {
+      "id": "C1",
+      "requirement": {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "input-A",
+        "version_id": "2af7d6aa53ba2874a2f9b80c4318fbcd4467065cf86eab873c45acc82e53f92a"
+      },
+      "statement": "The assigned interface satisfies the inherited constraint.",
+      "evidence_slots": [
+        "measurement"
+      ]
+    }
+  ],
+  "inherited": []
+}

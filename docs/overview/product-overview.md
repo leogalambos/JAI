@@ -1,79 +1,83 @@
-# Product overview
+# JAI product overview
 
-AI IT House **{{ JAI_VERSION }}** is a provider-neutral, locally installed IS/IT knowledge and delivery framework for enterprise teams using AI-assisted tooling. The release supports **Claude Code** and **Codex / OpenAI-oriented execution surfaces** while keeping the core role model, workflows, artefact contracts, JAI semantics and governance rules provider-neutral.
+JAI — AI IT House combines a catalogue of enterprise IS/IT specialists, maintained
+workflows and a layered method for developing justifiable solutions. It operates
+through the active Claude Code or Codex session and retains accountable human
+decisions outside the AI's professional work.
 
-The **26.10.4 Unified Lifecycle GA** baseline completed the transition from several parallel domain models to a single normative Justifiable AI core with scoped Artifact, SABSA, EA, Publication and Runtime profiles.
+## Start with a task and its sources
 
-## What problem it solves
+For example, provide a requirements document and ask JAI to identify ambiguity,
+missing acceptance criteria and conflicting obligations. The requested output
+is a set of findings tied to locations in the document, with evidence and
+recommendations. You inspect the findings before deciding whether to request
+changes.
 
-Enterprise AI-assisted work commonly fails in several distinct ways:
+Other tasks may call for an architecture, an implementation or a publication.
+State the intended result, supply the relevant sources and constraints, and
+choose the coordination and review needed for that task. JAI's outputs still
+require substantive review; a structured answer is not proof of correctness.
 
-1. the task starts with the wrong specialist viewpoint;
-2. work skips lifecycle or governance gates;
-3. generated content is persuasive but weakly evidenced;
-4. authorship, review and authority collapse into one model conversation;
-5. publication loses traceability to the semantic decision;
-6. later nobody can reconstruct which requirement, evidence or approval justified the use;
-7. a failed tool call or missing observation is silently converted into a confident-looking answer;
-8. a system retries or rephrases until something appears acceptable instead of escalating non-convergence.
+## Three ways to work
 
-AI IT House addresses these failure modes through:
+1. **Use a specialist role** for a bounded analysis, question or deliverable.
+2. **Use a workflow** to coordinate a recognised process and its handoffs.
+3. **Use the layered matrix** when the solution needs explicit traceability,
+   independent review, controlled revisions and an auditable current basis.
 
-- curated role knowledge and explicit tool tiers;
-- 24 canonical enterprise workflows;
-- typed Artifact Contract v3 and a 28-class artefact taxonomy;
-- the six-layer JAI architecture with explicit human authority boundary;
-- append-only traceability and bounded supervision for consequential engagements;
-- SABSA semantic modelling and scoped EA/Open Exchange projection;
-- publication projection, render evidence and visual QA;
-- managed policy, reviewer isolation and provider parity;
-- A–H enterprise release qualification.
+Start with [choosing a mode](../using/usage-modes.md). The
+[full role catalogue](../reference/roles.md) groups all available specialists by
+discipline. The [workflow catalogue](../reference/workflows.md) lists the
+maintained enterprise chains; the [command reference](../reference/commands.md)
+lists the provider-facing entry points.
 
-## Release scope at a glance
+## Layered delivery
 
-Consult the [release inventory](../reference/inventory.md) for the generated package counts and the [commercial implementation matrix](../capabilities/commercial-delivery-implementation.md) for the extension's coverage and qualification limits. The release manifest is authoritative over historical or explanatory counts. Source availability, passing repository checks and qualified live deployment are separate states.
+The six content perspectives are contextual, conceptual, logical, physical,
+component and management architecture. Each addresses What, Why, How, Who, Where
+and When at its own level. Management concerns also apply across the other
+perspectives. The [layer model](../architecture/sabsa-layer-model.md) explains
+their responsibilities and boundaries.
 
-## The normative architecture
+Within a layer, the setter establishes criteria, the author proposes an answer
+and a separate reviewer assesses it. Cross-question integration and receiving
+handoff acceptance are additional obligations. A neighbour supplies requirements
+and interfaces; it does not choose another layer's internal staff or method.
 
-The JAI core has six responsibility layers:
+## Justification that survives change
 
-1. Intent and Context;
-2. Meaning and Domain Model;
-3. Reasoning, Policy and Control;
-4. Solution Design;
-5. Realisation and Tooling;
-6. Execution and Evidence.
+Inputs, claims, evidence, reviews and decisions refer to explicit versions.
+When an input legitimately changes, the earlier record remains a truthful account
+of its original use. Explicit replacement decisions cancel affected applicability
+and dependent permissions without rewriting history. New work receives fresh
+relevant verification; it cannot inherit an old positive result automatically.
 
-**L0 Human Authority is external.** Agents may prepare evidence, recommendations and dossiers, but they cannot manufacture L0 authority.
+JAI can explain which inputs, evidence and decisions currently justify a specific
+output. Continuing work, accepting that output and releasing it are separate acts.
 
-For consequential work, `/layered` operationalises the downward/upward cycle with typed contracts, independent review, bounded recovery and release gating. Begin with [How to use JAI](../examples/how-to-use-JAI/index.md) to choose the assurance arrangement and follow a complete example. [Running a layered engagement](../using/layered-engagement.md) explains its operating cycle.
+## Human authority and practical limits
 
-## Supported working domains
+L0 is the human decision boundary, not another autonomous layer. JAI prepares
+exact requests and verifies returned signatures; it cannot approve its own
+reserved decisions. See [human authority](../operations/human-authority.md).
 
-The catalogue covers architecture, business analysis, service design, software engineering, cloud and infrastructure, operations, governance/risk/compliance, cyber security, SABSA security architecture, data/AI, testing, delivery and sourcing.
+Structured records and independent review improve accountability; they do not
+prove that every natural-language claim is true. Provider behaviour, available
+sources and the host's effective sandbox remain dependencies. JAI does not
+embed Prolog, provide enterprise identity management or guarantee arbitrary
+professional correctness. See [boundaries and limitations](../reference/limitations.md).
 
-## What “Unified Lifecycle” means
+## Gen2 and the 26.11 release family
 
-The release does **not** mean that one AI model autonomously owns the entire lifecycle. It means that the major production subsystems share JAI semantic identity, release namespace and traceability rules:
+**Gen2 denotes JAI 26.11.xx; Gen1 denotes the preceding 26.10.xx family.**
+Gen2 replaces the previous engagement evaluator with content-oriented SABSA
+perspectives, local setter–author–reviewer work and explicit version-scoped
+justification. It also exposes concrete [output content contracts](../reference/output-contracts/index.md)
+through the role and workflow catalogues.
 
-- Artifact Contract v3 writes current JAI-bound artefacts;
-- SABSA objects are profile-native at source;
-- EA is an architecture-domain projection, not a competing global truth store;
-- Publication requires a projection manifest and carries JAI lineage;
-- Runtime Agent/Policy/Execution records are JAI-bound;
-- historical 26.10.0–26.10.3 data remains forward-migratable.
-
-## What it is not
-
-AI IT House does **not** replace accountable human roles and does **not** guarantee arbitrary natural-language truth. A structurally complete, well-reviewed record can still rest on a bad requirement, incorrect source observation or mistaken expert judgement.
-
-The platform also does not claim that every possible direct role invocation is automatically forced through a `/layered` episode. The full Fabric supervision mechanism is strongly enforced **once that path is used**. Organisations requiring layered-by-construction for every consequential task should enforce that classification/routing at their entry boundary.
-
-## Why “Universal” is fair but bounded
-
-The platform spans a broad set of IS/IT working contexts and output types. “Universal” should be read as broad enterprise applicability and shared governance/runtime mechanisms — not as unlimited autonomy, infallibility or automatic suitability for every environment.
-
-## Implementation details
-
-[Execution and context assembly](execution-context-algorithm.md) describes the inspected implementation.
-Follow the source-backed operating flow and its implementation boundaries.
+The useful roles, skills, professional workflows, domains and native Claude/Codex
+entry points remain available. What changes is how consequential work is
+coordinated, reviewed and justified as inputs evolve. Prior engagement journals
+remain historical archives: a fresh Gen2 engagement does not inherit their PASS
+results, acceptance or release permissions. See [compatibility](../reference/compatibility.md)
+and [startup and recovery](../operations/lifecycle-recovery.md).

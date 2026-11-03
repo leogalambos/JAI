@@ -1,0 +1,90 @@
+{
+  "protocol": "jai.governed-delivery/1",
+  "message_type": "record_proposal",
+  "message_id": "1c8688ec747f155ddd2f6daf4d8fc96dc17f95f08f7c932dc084ff890a6663c9",
+  "request_id": "request-record-product",
+  "correlation_id": "question-service-controls",
+  "engagement": "synthetic-protocol",
+  "scope": "default",
+  "sender": {
+    "kind": "assignment",
+    "ref": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "author-assignment",
+      "version_id": "1870591329732c4cdd7c57d9f45bf9cf132d728ca1fed89d25570d7d8879a622"
+    }
+  },
+  "recipient": {
+    "kind": "controller",
+    "id": "trusted-controller"
+  },
+  "context": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "author-context",
+    "version_id": "29fe898b447be535d3a3bec50aaec15039fb96c4edee43d3a1adf488f9c9f42f"
+  },
+  "profile": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "profile",
+    "version_id": "b0519b9fbd91854cbe44a508a24434902d4296b100862b3f0acc5374550990ef"
+  },
+  "expected_head": "0379d6138bfe05e3382401e0af27527da375e9eaab21d9f744a4b333647120af",
+  "issued_at_ms": 1000,
+  "expires_at_ms": 8000,
+  "causes": [],
+  "attachments": [],
+  "payload": {
+    "logical_id": "candidate-A",
+    "record_type": "product",
+    "record": {
+      "owner": {
+        "layer": 3,
+        "work_kind": "question",
+        "question": "how",
+        "work_item": "service-controls"
+      },
+      "product_kind": "answer",
+      "assignment": {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "author-assignment-A",
+        "version_id": "c73dc01bf01acf79380ee8424d4ad4a2928a017678992b4a23c4f79133267d76"
+      },
+      "profile": {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "profile",
+        "version_id": "b0519b9fbd91854cbe44a508a24434902d4296b100862b3f0acc5374550990ef"
+      },
+      "inputs": [
+        {
+          "slot_id": "source",
+          "refs": [
+            {
+              "engagement": "synthetic-protocol",
+              "scope": "default",
+              "logical_id": "input-A",
+              "version_id": "2af7d6aa53ba2874a2f9b80c4318fbcd4467065cf86eab873c45acc82e53f92a"
+            }
+          ]
+        }
+      ],
+      "material": [
+        "0312aed0a05347aef25e357b991e75d4a86326b60648273dfc05e95b84bbc55b"
+      ],
+      "evidence": [
+        {
+          "engagement": "synthetic-protocol",
+          "scope": "default",
+          "logical_id": "observation-A",
+          "version_id": "d8bb38ab93a1e888900c91c073bf3b884f2c639ba389f1c30d7e5911d824bbea"
+        }
+      ],
+      "related": [],
+      "limitations": []
+    }
+  }
+}

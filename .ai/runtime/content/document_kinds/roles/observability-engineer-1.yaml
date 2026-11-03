@@ -2,15 +2,15 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/observability-engineer:1",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/implementation-specification",
-    "domain/architecture"
+    "family/software-change",
+    "domain/delivery"
   ],
   "applies_to": {
     "document_kind": "role/observability-engineer:1",
@@ -61,7 +61,8 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Instrumentation standards and libraries.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -99,7 +100,8 @@
         "reason": "For each receiving role (Software Engineer; Incident Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -137,7 +139,8 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -175,7 +178,8 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -195,7 +199,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Instrumentation standards and libraries', provide verifiable evidence satisfying: Requirements are specific, measurable and technology-explicit. Required delivery form: Controlled document referencing the parent policy.",
+        "For the specific output 'Instrumentation standards and libraries', provide verifiable evidence satisfying: Supplies actual library source/package, supported interfaces and versions, instrumentation conventions, reproducible tests, compatibility and operating constraints. Required delivery form: Instrumentation standards and versioned library package.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,10 +214,11 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Instrumentation standards and libraries', provide verifiable evidence satisfying: Requirements are specific, measurable and technology-explicit. Required delivery form: Controlled document referencing the parent policy.",
+        "reason": "For the specific output 'Instrumentation standards and libraries', provide verifiable evidence satisfying: Supplies actual library source/package, supported interfaces and versions, instrumentation conventions, reproducible tests, compatibility and operating constraints. Required delivery form: Instrumentation standards and versioned library package.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -223,8 +228,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Instrumentation standards and libraries",
-        "format": "Controlled document referencing the parent policy",
-        "acceptance_criterion": "Requirements are specific, measurable and technology-explicit",
+        "format": "Instrumentation standards and versioned library package",
+        "acceptance_criterion": "Supplies actual library source/package, supported interfaces and versions, instrumentation conventions, reproducible tests, compatibility and operating constraints",
         "role_path": "skills/it-roles-infrastructure-cloud-and-operations/references/observability-engineer.md"
       }
     },
@@ -266,7 +271,8 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -315,7 +321,8 @@
         "reason": "Analyse the specific input \"Service level objectives\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -358,7 +365,8 @@
         "reason": "Analyse the specific input \"Application instrumentation needs\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -401,7 +409,8 @@
         "reason": "Analyse the specific input \"Incident review findings\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -444,7 +453,8 @@
         "reason": "Analyse the specific input \"Telemetry cost position\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -489,7 +499,8 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -532,7 +543,8 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -577,7 +589,8 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -672,7 +685,7 @@
     }
   ],
   "size_budget": {
-    "metric": "typed",
+    "metric": "semantic_units",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -691,6 +704,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "secure-software",
+        "title": "NIST SP 800-218, Secure Software Development Framework Version 1.1",
+        "url": "https://doi.org/10.6028/NIST.SP.800-218",
+        "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Observability Engineer",
+        "frameworks": [
+          "OpenTelemetry",
+          "USE and RED methods",
+          "Google SRE alerting philosophy"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -716,13 +750,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -741,12 +776,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "family/software-change",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "implementation-specification",
+  "semantic_family": "software-change",
   "role_overlay": {
     "contract_id": "observability-engineer:1",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -755,8 +792,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "observability-engineer:1",
-    "source_fingerprint": "c45638d7b93dabb4f55fea4ffeec88078ba571ca5f2b8ee5c4591ea0f9ec61ef",
-    "source_hash": "6fb41c6692e9f6f754179f1c81fa5f4d529d9dc81e513dc14e174d7b96dd089d"
+    "source_fingerprint": "ec705386158bdce19c98418fcc58626d1ea30346aeec3cf1f82103a5d9f4b372",
+    "source_hash": "9b5ca628e591213a220d472ef26cdfebd01ee8eeae02d317615510137b8c5628"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

@@ -231,7 +231,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Enterprise applications roadmap', provide verifiable evidence satisfying: The roadmap shows a feasible current-to-target path including migrations, coexistence, decommissioning and business change dependencies.. Required delivery form: Prioritised roadmap with transition states, dependencies, sequencing, owners and decision gates.",
+        "criterion_under_review": "For the specific output 'Enterprise applications roadmap', provide verifiable evidence satisfying: The roadmap shows a feasible current-to-target path including migrations, coexistence, decommissioning and business change dependencies. Required delivery form: Prioritised roadmap with transition states, dependencies, sequencing, owners and decision gates.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

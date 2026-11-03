@@ -23,41 +23,43 @@
     "privacy": true
   },
   "semantic_units": {
-    "data_accountability": {
-      "source_id": "SYN-LEDGER-1",
-      "source_version": "1",
-      "extracted_at": "2026-10-19T10:00:00Z",
-      "transformation": "Group committed records by event_id and compare counts before/after restore",
-      "input_records": 10,
-      "output_records": 10,
-      "classification": "Synthetic non-customer data",
-      "retention": "Delete rehearsal extracts after regression investigation closes",
-      "permitted_use": "Development regression only",
-      "record_id": "SYN-DATA-ACCOUNTABILITY",
+    "operational_ownership": {
+      "service_owner": "Morgan Lee",
+      "support_team": "Warehouse platform operations",
+      "support_hours": "06:00-22:00",
+      "incident_ref": "SYN-INC1",
+      "step": 1,
+      "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+      "expected_output": "deployment transaction-api successfully rolled out",
+      "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+      "safe_state": "Keep new transaction traffic disabled",
+      "escalation": "Incident commander on bridge SYN-INC1",
+      "record_id": "SYN-OPERATIONAL-OWNERSHIP",
       "service": "Regional order integration",
       "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify data owner, stewardship, lawful use, classification and lifecycle obligations.",
+      "criterion_under_review": "Identify receiving service owner, support boundaries, escalation and review triggers.",
       "accountable_role": "Synthetic receiving service owner",
       "evidence_refs": [
         "SYN-01"
       ],
       "knowledge_status": "synthetic-assumption"
     },
-    "data_lineage_quality": [
+    "operational_recoverability": [
       {
-        "source_id": "SYN-LEDGER-1",
-        "source_version": "1",
-        "extracted_at": "2026-10-19T10:00:00Z",
-        "transformation": "Group committed records by event_id and compare counts before/after restore",
-        "input_records": 10,
-        "output_records": 10,
-        "classification": "Synthetic non-customer data",
-        "retention": "Delete rehearsal extracts after regression investigation closes",
-        "permitted_use": "Development regression only",
-        "record_id": "SYN-DATA-LINEAGE-QUALITY",
+        "service_owner": "Morgan Lee",
+        "support_team": "Warehouse platform operations",
+        "support_hours": "06:00-22:00",
+        "incident_ref": "SYN-INC1",
+        "step": 1,
+        "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+        "expected_output": "deployment transaction-api successfully rolled out",
+        "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+        "safe_state": "Keep new transaction traffic disabled",
+        "escalation": "Incident commander on bridge SYN-INC1",
+        "record_id": "SYN-OPERATIONAL-RECOVERABILITY",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Trace source-to-output transformations, quality constraints and evidenced reconciliation.",
+        "criterion_under_review": "Trace monitoring, failure handling, backup/recovery and rollback requirements to rehearsed evidence.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -260,6 +262,111 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
+    "baseline_targets": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-BASELINE-TARGETS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Identify managed assets, tool/schema versions and authorised configuration scope.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "baseline_values": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-BASELINE-VALUES",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Provide typed desired settings, permitted ranges and secret-manager references.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "baseline_verification": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-BASELINE-VERIFICATION",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Evidence reproducibility, drift checks, deployment validation and rollback to a known baseline.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
     "identity": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -271,109 +378,6 @@
       "service": "Regional order integration",
       "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
       "criterion_under_review": "Identify stable artifact ID, owner, source version and intended usage.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "register_integrity": [
-      {
-        "schema_version": "1.0",
-        "entity_id": "SYN-APP-1",
-        "columns": [
-          {
-            "name": "event_id",
-            "datatype": "uuid",
-            "nullable": false
-          },
-          {
-            "name": "amount",
-            "datatype": "decimal(12,2)",
-            "unit": "EUR",
-            "nullable": false
-          }
-        ],
-        "key": "event_id",
-        "record": {
-          "event_id": "SYN-EVENT-1",
-          "amount": 125.5
-        },
-        "uniqueness_observed": "10 of 10 event IDs unique",
-        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
-        "record_id": "SYN-REGISTER-INTEGRITY",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Evidence uniqueness, referential integrity, completeness and lifecycle reconciliation checks.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "register_records": [
-      {
-        "schema_version": "1.0",
-        "entity_id": "SYN-APP-1",
-        "columns": [
-          {
-            "name": "event_id",
-            "datatype": "uuid",
-            "nullable": false
-          },
-          {
-            "name": "amount",
-            "datatype": "decimal(12,2)",
-            "unit": "EUR",
-            "nullable": false
-          }
-        ],
-        "key": "event_id",
-        "record": {
-          "event_id": "SYN-EVENT-1",
-          "amount": 125.5
-        },
-        "uniqueness_observed": "10 of 10 event IDs unique",
-        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
-        "record_id": "SYN-REGISTER-RECORDS",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Provide actual uniquely identified records with source, owner, status and review date.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "register_schema": {
-      "schema_version": "1.0",
-      "entity_id": "SYN-APP-1",
-      "columns": [
-        {
-          "name": "event_id",
-          "datatype": "uuid",
-          "nullable": false
-        },
-        {
-          "name": "amount",
-          "datatype": "decimal(12,2)",
-          "unit": "EUR",
-          "nullable": false
-        }
-      ],
-      "key": "event_id",
-      "record": {
-        "event_id": "SYN-EVENT-1",
-        "amount": 125.5
-      },
-      "uniqueness_observed": "10 of 10 event IDs unique",
-      "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
-      "record_id": "SYN-REGISTER-SCHEMA",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Define required columns, datatypes, identifiers, allowed states and ownership.",
       "accountable_role": "Synthetic receiving service owner",
       "evidence_refs": [
         "SYN-01"
@@ -408,8 +412,8 @@
       "id": "headings-only",
       "operation": "headings_only",
       "expected_rule_ids": [
-        "domain/data.data_accountability",
-        "domain/data.data_lineage_quality",
+        "domain/operations.operational_ownership",
+        "domain/operations.operational_recoverability",
         "role/infrastructure-as-code-engineer:2.contract_input_1",
         "role/infrastructure-as-code-engineer:2.contract_input_2",
         "role/infrastructure-as-code-engineer:2.contract_input_3",
@@ -420,10 +424,10 @@
         "role/infrastructure-as-code-engineer:2.delivery_verification",
         "role/infrastructure-as-code-engineer:2.receiving_acceptance",
         "role/infrastructure-as-code-engineer:2.role_gate_observations",
-        "type/register.identity",
-        "type/register.register_integrity",
-        "type/register.register_records",
-        "type/register.register_schema"
+        "type/configuration-baseline.baseline_targets",
+        "type/configuration-baseline.baseline_values",
+        "type/configuration-baseline.baseline_verification",
+        "type/configuration-baseline.identity"
       ],
       "expected_category": "critical-content"
     },

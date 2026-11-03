@@ -1,6 +1,5 @@
 # Example: New service onboarding
 
-Owner: JAI maintainers. Last reviewed: 2026-10-20.
 
 This walkthrough illustrates the `new-service-onboarding` workflow recipe.
 It is not an additional native slash command.

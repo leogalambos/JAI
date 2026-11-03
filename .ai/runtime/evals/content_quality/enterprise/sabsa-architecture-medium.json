@@ -192,7 +192,7 @@
         "record_id": "SYN-ARCHITECTURE-CELLS",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Map each selected contextual/conceptual/logical/physical/component/operational element to its What/Why/How/Who/Where/When cell.",
+        "criterion_under_review": "Map each selected Contextual/Conceptual/Logical/Physical/Component/Management perspective to its What/Why/How/Who/Where/When cell; Management applies across the other perspectives.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

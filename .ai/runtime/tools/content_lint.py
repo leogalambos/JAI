@@ -21,6 +21,7 @@ import tempfile
 import jsonschema
 import content_spec
 import content_metrics
+import lifecycle
 
 SCHEMA = Path(__file__).resolve().parents[1] / 'content/schema/content-evaluation.schema.json'
 _PLACEHOLDERS = {'', 'tbd', 'todo', 'unknown', 'pending', 'n/a', 'na', 'not applicable', 'placeholder', '...', 'to be determined'}
@@ -94,61 +95,57 @@ def _compiled_hash(spec):
     return content_spec.canonical_hash(body)
 
 
-class ExistingFabricAuthority:
-    """Read an existing signed L0 acceptance without creating authority acts.
+class GovernedAuthority:
+    """Read a current exact-output human acceptance without creating authority.
 
     Args:
-        fabric: Host-opened existing Fabric instance; key custody and its ledger
-            path are host configuration, never supplied by semantic JSON.
-        fragment_id: Existing L1 product whose text is strict JSON with profile
-            content-enforcement and a dcs_activation scope payload. This text is
-            created through the existing answer/ingest path and signed L0 review.
+        store: Host-selected governed Store with externally enrolled proof keys.
+        subject: Exact version reference of a qualified policy product.
         clock: Host clock returning an aware datetime; defaults to UTC now.
+        use_scope: Exact host-selected authorized assessment scope; never inferred
+            from the immutable record's origin namespace.
     """
 
-    def __init__(self, fabric, fragment_id, clock=None):
-        self.fabric = fabric
-        self.fragment_id = fragment_id
+    def __init__(self, store, subject, clock=None, *, use_scope):
+        if not isinstance(store, lifecycle.Store):
+            raise ValueError('host-opened governed Store required')
+        if not isinstance(use_scope, str) or not use_scope:
+            raise ValueError('exact assessment use scope required')
+        self.store, self.subject = store, copy.deepcopy(subject)
+        self.use_scope = use_scope
         self.clock = clock or (lambda: dt.datetime.now(dt.timezone.utc))
-        fragment = fabric.nodes.get(fragment_id, {})
-        self.proof = {'fragment_id': fragment_id, 'fragment_hash': content_spec.canonical_hash(fragment)}
+        self.proof = {'subject': copy.deepcopy(subject), 'use_scope': use_scope}
 
     def verify(self, proof):
-        """Return qualified signed scope payload or None for absent/stale evidence.
+        """Return accepted policy scope, or None for missing or stale justification.
 
         Args:
-            proof: Exact host-pinned fragment ID and hash.
+            proof: Exact host-pinned subject reference, not a caller approval flag.
         Returns:
-            Verified existing L0 acceptance metadata, without issuing approval.
+            Current signed acceptance metadata and its declared scope. Release
+            permission is separate and is not required merely to inspect acceptance.
         """
         if proof != self.proof:
             return None
         try:
-            problems, warnings = self.fabric.verify()
-            if problems or warnings:
+            state = self.store.read()
+            product = state.resolve(self.subject, 'product')
+            accepted = self.store.evaluate(self.subject, scope=self.use_scope)
+            if (not accepted['qualified'] or not accepted['accepted']
+                    or not accepted['acceptances'] or len(product['material']) != 1):
                 return None
-            fragment = self.fabric.nodes[self.fragment_id]
-            if content_spec.canonical_hash(fragment) != proof['fragment_hash'] or fragment.get('type') != 'frag' or fragment.get('layer') != 1:
-                return None
-            accepted, reasons = self.fabric.justify(self.fragment_id, strict=True)
-            acceptance = self.fabric.lifecycle.evaluate(fragment['version_id'], release=True)
-            acceptance_version = self.fabric.lifecycle.proofs.get(
-                ('default', fragment['version_id'], 'accept'))
-            review_id = next((identifier for identifier, node in self.fabric.nodes.items()
-                              if node['version_id'] == acceptance_version), None)
-            review = self.fabric.nodes.get(review_id, {})
-            if not accepted or reasons or not acceptance['eligible'] or review.get('layer') != 0 or review.get('state') != 'accepts' or not review.get('reviewer'):
-                return None
-            policy = json.loads(fragment.get('text', ''), object_pairs_hook=content_spec._pairs,
+            policy = json.loads(self.store._blob(product['material'][0]),
+                                object_pairs_hook=content_spec._pairs,
                                 parse_constant=lambda value: (_ for _ in ()).throw(ValueError('NONFINITE')))
             if not isinstance(policy, dict) or policy.get('profile') != 'content-enforcement':
                 return None
             payload = copy.deepcopy(policy.get('dcs_activation'))
             if not isinstance(payload, dict):
                 return None
-            payload.update(authority_ref=review_id, existing_jai_l0=True,
-                           signature_verified=True, fabric_verified=True,
-                           verification_warnings=[], verified_at=self.clock().isoformat())
+            payload.update(authority_ref=accepted['acceptances'][0]['version_id'],
+                           existing_jai_l0=True, signature_verified=True,
+                           fabric_verified=True, verification_warnings=[],
+                           verified_at=self.clock().isoformat())
             return payload
         except (ValueError, TypeError, KeyError, OSError):
             return None

@@ -67,7 +67,7 @@ Taking on out-of-scope work is not helpfulness; it removes the second pair of ey
 
 **Step 1 — Define the analysis question and its boundary.** State precisely what must be understood or specified, for whom, and by when. Also state what is deliberately out of scope, so the analysis does not expand silently.
 
-**Step 2 — Identify stakeholders and their stake.** Map who is affected, who decides, who supplies information and who will be blamed if it goes wrong. Missing a silent stakeholder is the most common cause of late-stage requirement churn.
+**Step 2 — Identify stakeholders and their stake.** Map who is affected, who decides, who supplies information and who will be blamed if it goes wrong. An omitted stakeholder can introduce late requirements or conflicts; record how stakeholder coverage was checked.
 
 **Step 3 — Elicit from Product telemetry>instrumentation, Experiment hypotheses>Product Manager, User research findings>UX Researcher, Commercial data>Finance.** Use more than one technique (interview, workshop, observation, document analysis, data profiling). Single-technique elicitation reproduces the biases of whoever was in the room.
 
@@ -100,7 +100,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
 | 1 | Product metric framework | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 2 | experiment design and results | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
+| 2 | experiment design and results | Experiment protocol and attributable results | States hypothesis, sample/population, allocation, measures, stopping criteria, observed effects and uncertainty |
 | 3 | funnel and retention analysis | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 4 | feature adoption assessment | Structured assessment document with scoring method stated | Criteria were fixed before evidence collection and the method is reproducible |
 
@@ -111,7 +111,7 @@ An output that fails any gate is not released. A gate may be waived only by the 
 - [ ] **G1.** Every requirement is atomic, testable, prioritised and traced to a named source.
 - [ ] **G2.** Conflicting stakeholder positions are recorded as open conflicts, never averaged into a vague compromise.
 - [ ] **G3.** Assumptions and constraints are listed separately from requirements and each has an owner.
-- [ ] **G4.** Product metric framework has been walked through with the people who will build, test and operate the result.
+- [ ] **G4.** The primary deliverable ("Product metric framework") has been walked through with the people who will build, test and operate the result.
 - [ ] **G5.** Experiment results are reported with effect size, confidence interval and the pre-registered hypothesis
 - [ ] **G6.** post-hoc segment hunting is labelled as exploratory
 
@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Product metric framework has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Product metric framework") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

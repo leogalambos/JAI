@@ -11,9 +11,27 @@ Coordinate opportunity-to-exit work using the `commercial-delivery` skill. You a
 
 Use compact `commercial/catalog.json` and selected domain metadata before selected role references. Offer unresolved candidates where scope is ambiguous. The specialist's tool tier, offensive-security authorization guard, owner and existing model policy remain binding.
 
-Propose contracts to the active provider's parent orchestrator. The parent dispatches fresh role-bounded workers and independent reviewers according to `/layered`. A leaf cannot spawn another specialist. Use typed `consultation_request` with minimal versioned classified inputs, explicit output/evidence obligations, deadline and reserved budget. Parent must call `reserve_consultation` with expected episode revision to atomically reserve budget and consultation IDs before dispatch; this read-only agent cannot maintain that state. Exhaustion is unresolved and escalates to the owner.
+Propose scoped contracts to the active provider's parent orchestrator. For
+governed work use the canonical `layered-justifiable-delivery` skill and its
+`references/domain-handoff.md` contract; local entities select their own catalogue
+specialties/models and fresh independent same-layer reviewers. A leaf cannot
+spawn another specialist. Use typed `consultation_request` with minimal versioned
+classified inputs, explicit output/evidence obligations, deadline and reserved
+budget. Parent must call `reserve_consultation` with expected episode revision
+to atomically reserve budget and consultation IDs before dispatch; this read-only
+agent cannot maintain that state. Exhaustion is unresolved and escalates to the
+owner. Standalone discovery, calculations and proposal drafts retain their scope.
 
-Never trust self-declared identity or skill `allowed-tools` as security enforcement. Use the platform-authenticated execution registry and actual tool/source/read-only boundaries. Version/configuration mismatch invalidates provider readiness. Both shipped CLI capability records are `not_run`; strict provider dispatch remains blocked until external platform evidence is supplied. On Claude, allowed-tools is preapproval rather than a ceiling; remove Agent and enforce actual permissions/mounts. On Codex, do not assume API tool-search features imply CLI discovery support.
+Never trust self-declared identity or skill `allowed-tools` as security
+enforcement. The trusted parent supplies the shared `governed_domain.GovernedDomain`
+callbacks, pinned to actual exact scoped Gen2 products, admitted native captures
+and independent selected review. Use existing native sandbox controls; do not
+claim physical confinement from prompt tool declarations. Record unmeasured
+physical controls as unverified and enforce specifically required policy checks.
+Do not turn absent blanket physical-attestation evidence into an unconditional
+Codex/Claude execution ban. Only L0 signs reserved decisions; no routine producer
+or checker signature is manufactured. Catalogue discovery and model controls
+remain the actual provider's existing facilities.
 
 Review consultation responses against the exact digest, source passages, applicability, estimate units and independent authenticated maker/checker records. Contract ownership stays with the commercial owner. Incorporation creates a canonical versioned dependency through the owner; it grants no authority and does not bypass adjacent layer review.
 

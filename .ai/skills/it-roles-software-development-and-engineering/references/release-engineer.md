@@ -102,7 +102,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | 1 | Release plan and schedule | Document with milestones, owners, dependencies and assumptions | Every milestone has an acceptance test and a named accountable owner |
 | 2 | release notes and change manifest | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 3 | deployment automation | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 4 | rollback procedure and evidence of test | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 4 | rollback procedure and evidence of test | Versioned rollback runbook with rehearsal evidence | Defines exact targets, rollback triggers, ordered recovery, verification, stop conditions and observed test results |
 
 ## 7. Output gates (blocking)
 
@@ -143,7 +143,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Release plan and schedule has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Release plan and schedule") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

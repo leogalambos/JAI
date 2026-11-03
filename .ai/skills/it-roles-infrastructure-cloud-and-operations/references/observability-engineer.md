@@ -99,7 +99,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Instrumentation standards and libraries | Controlled document referencing the parent policy | Requirements are specific, measurable and technology-explicit |
+| 1 | Instrumentation standards and libraries | Instrumentation standards and versioned library package | Supplies actual library source/package, supported interfaces and versions, instrumentation conventions, reproducible tests, compatibility and operating constraints |
 | 2 | dashboards and service health views | Live view in the reporting platform with a documented data lineage | Every metric has a definition, a source, a refresh cadence and an owner |
 | 3 | alert rules with defined ownership | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 4 | telemetry cost and retention policy | Controlled document with owner, effective date and review date | Every statement is testable and maps to at least one control |
@@ -144,7 +144,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Instrumentation standards and libraries has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Instrumentation standards and libraries") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

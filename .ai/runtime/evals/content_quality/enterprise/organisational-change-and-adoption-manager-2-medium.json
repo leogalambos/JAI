@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Adoption and communications plan', provide verifiable evidence satisfying: Every intervention traces to an identified impact or adoption barrier.. Required delivery form: Versioned plan with audience, message, channel, owner and timing.",
+        "criterion_under_review": "For the specific output 'Adoption and communications plan', provide verifiable evidence satisfying: Every intervention traces to an identified impact or adoption barrier. Required delivery form: Versioned plan with audience, message, channel, owner and timing.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Change impact and stakeholder assessment', provide verifiable evidence satisfying: Every material stakeholder group has impact, readiness, owner and evidence.. Required delivery form: Versioned assessment with stakeholder/role heatmap.",
+        "criterion_under_review": "For the specific output 'Change impact and stakeholder assessment', provide verifiable evidence satisfying: Every material stakeholder group has impact, readiness, owner and evidence. Required delivery form: Versioned assessment with stakeholder/role heatmap.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

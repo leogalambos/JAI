@@ -9,63 +9,23 @@ A service, application, platform or technology component is approved for retirem
 The component is retired without hidden dependencies, unmanaged data/access, stale records or unowned residual obligations, and the retirement benefit is measured.
 
 
-<div class="ai-diagram ai-diagram-inline" role="img" aria-label="Service retirement and decommission workflow">
-<svg class="ai-inline-diagram-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 919 582" role="img" aria-labelledby="t d">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e3859"/><stop offset="1" stop-color="#0b6b9a"/></linearGradient><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3ba9d6"/></marker></defs>
-<title id="t">Service retirement and decommission</title>
-<desc id="d">The component is retired without hidden dependencies, unmanaged data/access, stale records or unowned residual obligations, and the retirement benefit is measured.</desc>
-<rect width="100%" height="100%" rx="24" fill="#f6fafc" stroke="#d6e6ee"/>
-<text x="42" y="38" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="700" fill="#0b1f33">Service retirement and decommission</text>
-<path d="M 277 116.0 L 334 116.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 577 116.0 L 634 116.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 759.5 162 L 759.5 192 L 759.5 192 L 759.5 236" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 642 290.0 L 585 290.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 342 290.0 L 285 290.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 159.5 336 L 159.5 366 L 159.5 366 L 159.5 410" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 277 464.0 L 334 464.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<rect x="42" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">1 · IT Service Owner —</text>
-<text x="159.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">confirms retirement</text>
-<text x="159.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">scope, accountable owner</text>
-<text x="159.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">and business/service</text>
-<rect x="342" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">2 · Technology Lifecycle</text>
-<text x="459.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">and Decommission Manager</text>
-<text x="459.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">— runs repository impact</text>
-<text x="459.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">analysis and builds the</text>
-<rect x="642" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">3 · Data Protection</text>
-<text x="759.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Officer — advises on</text>
-<text x="759.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">retention, archive,</text>
-<text x="759.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">destruction and privacy</text>
-<rect x="642" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">4 · Identity and Access</text>
-<text x="759.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Management Engineer —</text>
-<text x="759.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">removes/transfers</text>
-<text x="759.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">identities, privileged</text>
-<rect x="342" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">5 · Change Manager —</text>
-<text x="459.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">applies the authorised</text>
-<text x="459.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">production-change path</text>
-<text x="459.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">and rollback boundary</text>
-<rect x="42" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">6 · IT Asset Manager —</text>
-<text x="159.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">reconciles CMDB/assets</text>
-<text x="159.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">and coordinates</text>
-<text x="159.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">licence/supplier closure</text>
-<rect x="42" y="418" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="431.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">7 · Architecture</text>
-<text x="159.5" y="453.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Repository and Modelling</text>
-<text x="159.5" y="475.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Lead — updates</text>
-<text x="159.5" y="497.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">repository lifecycle</text>
-<rect x="342" y="418" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="431.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">8 · Benefits Realisation</text>
-<text x="459.5" y="453.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Manager — retirement</text>
-<text x="459.5" y="475.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">cost/risk/complexity</text>
-<text x="459.5" y="497.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">benefit and records</text>
-</svg>
-<div class="ai-diagram-caption">Canonical workflow sequence from release 26.10.4 (workflow semantics unchanged from the 26.10.0 GA baseline).</div>
+<!-- JAI:WORKFLOW-DIAGRAM:START -->
+<div class="ai-workflow-overview">
+<ol class="ai-workflow-steps" role="list" aria-label="Service retirement and decommission workflow steps">
+<li data-step="1"><span class="ai-workflow-step-number" aria-hidden="true">1</span><div><strong>IT Service Owner</strong><p>confirms retirement scope, accountable owner and business/service decision</p></div></li>
+<li data-step="2"><span class="ai-workflow-step-number" aria-hidden="true">2</span><div><strong>Technology Lifecycle and Decommission Manager</strong><p>runs repository impact analysis and builds the retirement/disposition plan</p></div></li>
+<li data-step="3"><span class="ai-workflow-step-number" aria-hidden="true">3</span><div><strong>Data Protection Officer</strong><p>advises on retention, archive, destruction and privacy obligations where applicable</p></div></li>
+<li data-step="4"><span class="ai-workflow-step-number" aria-hidden="true">4</span><div><strong>Change Manager</strong><p>obtains the named human change decision for the exact retirement execution window and rollback boundary</p></div></li>
+<li data-step="5"><span class="ai-workflow-step-number" aria-hidden="true">5</span><div><strong>Identity and Access Management Engineer</strong><p>transfers or revokes approved nonessential access and prepares final credential closure with the shutdown operator</p></div></li>
+<li data-step="6"><span class="ai-workflow-step-number" aria-hidden="true">6</span><div><strong>Site Reliability Engineer</strong><p>executes the approved service or platform shutdown and coordinates final credential closure with the assigned IAM actor</p></div></li>
+<li data-step="7"><span class="ai-workflow-step-number" aria-hidden="true">7</span><div><strong>IT Asset Manager</strong><p>reconciles CMDB/assets and coordinates licence/supplier closure evidence</p></div></li>
+<li data-step="8"><span class="ai-workflow-step-number" aria-hidden="true">8</span><div><strong>Architecture Repository and Modelling Lead</strong><p>updates repository lifecycle state, removes/retains views appropriately and records residual dependencies</p></div></li>
+<li data-step="9"><span class="ai-workflow-step-number" aria-hidden="true">9</span><div><strong>Benefits Realisation Manager</strong><p>measures retirement cost/risk/complexity benefit and records variance</p></div></li>
+</ol>
 </div>
+
+[Open the full-size workflow diagram](../assets/diagrams/workflow-service-retirement-and-decommission.svg). Follow the numbered order. The table below specifies the outputs and receiving conditions for each handoff.
+<!-- JAI:WORKFLOW-DIAGRAM:END -->
 
 ## Workflow steps and gates
 
@@ -74,11 +34,12 @@ The component is retired without hidden dependencies, unmanaged data/access, sta
 | 1 | IT Service Owner | confirms retirement scope, accountable owner and business/service decision | retirement mandate and target date | Scope and authority are explicit |
 | 2 | Technology Lifecycle and Decommission Manager | runs repository impact analysis and builds the retirement/disposition plan | dependency impact and retirement plan | Every material dependency has an owned disposition or named waiver |
 | 3 | Data Protection Officer | advises on retention, archive, destruction and privacy obligations where applicable | data disposition position | Regulated/personal data disposition is authorised before irreversible action |
-| 4 | Identity and Access Management Engineer | removes/transfers identities, privileged access, secrets/certificates as assigned | access/credential closure evidence | No active credential remains without owner and purpose |
-| 5 | Change Manager | applies the authorised production-change path and rollback boundary | approved execution window/decision | Destructive steps are within approved change authority |
-| 6 | IT Asset Manager | reconciles CMDB/assets and coordinates licence/supplier closure evidence | asset/configuration closure | Systems of record match the retired technical state |
-| 7 | Architecture Repository and Modelling Lead | updates repository lifecycle state, removes/retains views appropriately and records residual dependencies | repository retirement revision | Repository has no unowned active dependency into the retired element |
-| 8 | Benefits Realisation Manager | measures retirement cost/risk/complexity benefit and records variance | benefits closure result | Benefit or disbenefit variance has an accountable owner |
+| 4 | Change Manager | obtains the named human change decision for the exact retirement execution window and rollback boundary | prior scoped human production-change authorisation | Dependency and data-disposition plans and rehearsal evidence are available before destructive action; approval covers exact credential and service changes, not a completed retirement |
+| 5 | Identity and Access Management Engineer | transfers or revokes approved nonessential access and prepares final credential closure with the shutdown operator | access-transfer evidence and the exact owned, time-bounded shutdown-access list | Prior exact human change approval covers each removal or transfer; retain only explicitly owned bounded shutdown credentials needed for the approved shutdown, with purpose, expiry and final revocation owner |
+| 6 | Site Reliability Engineer | executes the approved service or platform shutdown and coordinates final credential closure with the assigned IAM actor | actual shutdown, final credential revocation and reconciliation evidence, and verified technical state | Prior exact human change and data-disposition authorisation covers every effect; stop on changed scope or failed dependency/archive checks; the assigned IAM actor closes retained shutdown access and verifies final credential reconciliation before asset reconciliation |
+| 7 | IT Asset Manager | reconciles CMDB/assets and coordinates licence/supplier closure evidence | asset/configuration closure | Systems of record match the retired technical state |
+| 8 | Architecture Repository and Modelling Lead | updates repository lifecycle state, removes/retains views appropriately and records residual dependencies | repository retirement revision | Repository has no unowned active dependency into the retired element |
+| 9 | Benefits Realisation Manager | measures retirement cost/risk/complexity benefit and records variance | benefits closure result | Benefit or disbenefit variance has an accountable owner |
 
 ## Running this workflow: operator and implementer boundary
 
@@ -104,3 +65,5 @@ A practical prompt pattern is:
 ## Operational interpretation
 
 The workflow is most useful when the team keeps each hand-over explicit. The system can help generate or review the artefacts, but the accountable role and approval decision remain organisational responsibilities.
+
+Approval and execution are separate handoffs. Candidate preparation stays within explicitly permitted pre-production scope. Every production, pilot, credential or irreversible effect requires prior exact named human authority under the applicable policy. If operational proof is required before a wider approval, obtain separate prior authorisation for the bounded pilot needed to collect it; if no policy route permits collection, stop and consult the authority. Draft rendering and review evidence do not release a publication. An existing policy-permitted waiver must identify the competent human authority, exact gate and scope, and validity period before the gated action; mandatory controls and unsupported factual claims remain blocking.

@@ -101,7 +101,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | --- | --- | --- | --- |
 | 1 | Database automation and infrastructure-as-code | Reviewed, merged change in version control | Passes automated checks, carries tests and telemetry, and has a rollback path |
 | 2 | service level objectives for data stores | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 3 | schema migration tooling and policy | Controlled document with owner, effective date and review date | Every statement is testable and maps to at least one control |
+| 3 | schema migration tooling and policy | Versioned migration tooling with governed migration policy | Supplies actual tool source/configuration, dependencies, reproducible checks, compatibility, authorised migration controls and recovery evidence; planned tooling is not delivered tooling |
 | 4 | reliability and toil reduction plan | Document with milestones, owners, dependencies and assumptions | Every milestone has an acceptance test and a named accountable owner |
 
 ## 7. Output gates (blocking)
@@ -142,7 +142,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Database automation and infrastructure-as-code has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Database automation and infrastructure-as-code") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 
@@ -158,7 +158,7 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 ## 11. Failure modes and anti-patterns
 
 - Diagnosing at length while the service stays down, because curiosity beats the restoration objective.
-- Destroying the evidence during recovery, guaranteeing the same incident recurs.
+- Destroying evidence during recovery, limiting root-cause analysis and increasing the risk of recurrence.
 - Alert fatigue: hundreds of alerts, no ownership, real signals lost in the noise.
 - Permanent workarounds recorded as fixes, so the problem backlog looks healthy while the estate rots.
 

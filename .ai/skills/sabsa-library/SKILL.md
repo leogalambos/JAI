@@ -94,5 +94,10 @@ architecture to produce.
 - The architect writes, the reviewer checks, the owner approves. A text `status: approved` is not release authority: final approval is the hash-bound `.sabsa/approval.json` created by `sabsa approve` after a clean review. Any architecture-input edit invalidates it.
 - SABSA is the SABSA Institute's framework. Its attribute taxonomy is not reproduced here; use the
   organisation's own definitions or its licensed material.
-- For an architecture decision that must be justified to an audit or a board, run `/layered` with the library
-  report as evidence.
+- For architecture decisions requiring governed justification, retain the exact
+  library snapshot, report, criteria, findings and unresolved assumptions as
+  evidence. Use the canonical `layered-justifiable-delivery` skill and its
+  `references/domain-handoff.md` native Gen2 handoff. Standalone library commands
+  and owner approvals remain available; they do not substitute for current Gen2
+  justification, human acceptance or release. The parent handles runtime details;
+  the user does not author bootstrap JSON.

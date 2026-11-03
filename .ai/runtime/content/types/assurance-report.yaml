@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "type/assurance-report",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -56,7 +56,8 @@
         "reason": "Identify stable artifact ID, owner, source version and intended usage.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -77,7 +78,8 @@
       },
       "acceptance_criteria": [
         "Define tested obligations, assurance period, sample and exclusions.",
-        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations.",
+        "State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions."
       ],
       "evidence_policy": {
         "material_claims": "versioned source reference or explicitly labelled assumption",
@@ -94,7 +96,8 @@
         "reason": "Define tested obligations, assurance period, sample and exclusions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -115,7 +118,8 @@
       },
       "acceptance_criteria": [
         "Link procedures and observed results to immutable evidence and located deviations.",
-        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations.",
+        "For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure."
       ],
       "evidence_policy": {
         "material_claims": "versioned source reference or explicitly labelled assumption",
@@ -132,7 +136,8 @@
         "reason": "Link procedures and observed results to immutable evidence and located deviations.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -153,7 +158,8 @@
       },
       "acceptance_criteria": [
         "Limit the independent conclusion to tested scope, evidence strength and unresolved findings.",
-        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations.",
+        "Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure."
       ],
       "evidence_policy": {
         "material_claims": "versioned source reference or explicitly labelled assumption",
@@ -170,7 +176,8 @@
         "reason": "Limit the independent conclusion to tested scope, evidence strength and unresolved findings.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -210,7 +217,8 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -253,7 +261,8 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -298,7 +307,8 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -412,6 +422,16 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
     ]
   },
   "overlap": {
@@ -437,13 +457,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {

@@ -119,7 +119,7 @@ does).
 | `~/.ai/it-role-house/tools/defect.py` | `repeat` · `bisect` · `changes` · `compare` · `timing` · `analysis validate|render|findings` |
 | `~/.ai/it-role-house/skills/it-roles-quality-and-testing/scripts/repo_survey.py` | `<repository>` |
 | `~/.ai/it-role-house/tools/sabsa.py` | `init` · `new` · `check` · `matrix` · `suggest` · `trace` · `questions` · `sources` · `document` · `template` · `migrate` |
-| `~/.ai/it-role-house/fabric/fabric.py` | `status` · `verify` · `justify` · `report` · `dossier` |
+| `~/.ai/it-role-house/fabric/fabric.py` | `validate --message` · `submit --message` · `current-basis --query` · `status --query` · `verify --query` · `justify --query` · `report --query` |
 | `~/.ai/it-role-house/demo/demo.py` | `setup` · `reset` · `check` · `list` |
 
 Each tool has `--help`. For example:
@@ -700,416 +700,31 @@ options:
 
 #### `fabric.py`
 
-`~/.ai/it-role-house/fabric/fabric.py`
+`~/.ai/it-role-house/fabric/fabric.py` is the current local governed-delivery API.
+Ordinary messages use journal format 9; only reserved L0 decisions carry the
+external human signature. The command never supplies a human authority act.
 
-```
-usage: fabric.py [-h] [--version]
-                 {init,req,contract,render-contract,ingest,answer,release,render-review,ingest-reviews,evidence,review,consolidate,conflict,escalate,reformulate,propose,dossier,authorise,keygen,verify,status,report,justify,selftest}
-                 ...
-
-Traceability fabric for layered justifiable engagements.
-
-positional arguments:
-  {init,req,contract,render-contract,ingest,answer,release,render-review,ingest-reviews,evidence,review,consolidate,conflict,escalate,reformulate,propose,dossier,authorise,keygen,verify,status,report,justify,selftest}
-
-options:
-  -h, --help            show this help message and exit
-  --version             show program's version number and exit
+```text
+fabric.py validate --message MESSAGE.json
+fabric.py submit ENGAGEMENT --message MESSAGE.json [--authority-proof PROOF.json]
+fabric.py current-basis ENGAGEMENT --query QUERY.json
+fabric.py verify ENGAGEMENT --query QUERY.json
+fabric.py status ENGAGEMENT --query QUERY.json
+fabric.py justify ENGAGEMENT --query QUERY.json
+fabric.py report ENGAGEMENT --query QUERY.json
 ```
 
-##### `fabric.py init`
-
-```
-usage: fabric.py init [-h] --intent INTENT --owner OWNER [--success SUCCESS]
-                      [--boundary BOUNDARY]
-                      engagement
-
-positional arguments:
-  engagement
-
-options:
-  -h, --help           show this help message and exit
-  --intent INTENT
-  --owner OWNER
-  --success SUCCESS
-  --boundary BOUNDARY
-```
-
-##### `fabric.py req`
-
-```
-usage: fabric.py req [-h] --layer LAYER --from FROM --label {derives,refines}
-                     --text TEXT
-                     engagement
-
-positional arguments:
-  engagement
-
-options:
-  -h, --help            show this help message and exit
-  --layer LAYER
-  --from FROM
-  --label {derives,refines}
-  --text TEXT
-```
-
-##### `fabric.py contract`
-
-```
-usage: fabric.py contract [-h] --from FROM [--what WHAT] [--why WHY]
-                          [--who WHO] [--where WHERE] [--when WHEN]
-                          [--how HOW] [--evidence EVIDENCE]
-                          [--escalate-if ESCALATE_IF] [--sanitise SANITISE]
-                          [--rework-of REWORK_OF]
-                          engagement
-
-positional arguments:
-  engagement
-
-options:
-  -h, --help            show this help message and exit
-  --from FROM
-  --what WHAT
-  --why WHY
-  --who WHO
-  --where WHERE
-  --when WHEN
-  --how HOW
-  --evidence EVIDENCE
-  --escalate-if ESCALATE_IF
-  --sanitise SANITISE
-  --rework-of REWORK_OF
-```
-
-##### `fabric.py render-contract`
-
-```
-usage: fabric.py render-contract [-h] engagement contract
-
-positional arguments:
-  engagement
-  contract
-
-options:
-  -h, --help  show this help message and exit
-```
-
-##### `fabric.py ingest`
-
-```
-usage: fabric.py ingest [-h] --contract CONTRACT engagement result
-
-positional arguments:
-  engagement
-  result               JSON file returned by the layer agent, or - for stdin
-
-options:
-  -h, --help           show this help message and exit
-  --contract CONTRACT
-```
-
-##### `fabric.py answer`
-
-```
-usage: fabric.py answer [-h] --requirement REQUIREMENT --text TEXT
-                        [--supported-by SUPPORTED_BY [SUPPORTED_BY ...]]
-                        engagement
-
-positional arguments:
-  engagement
-
-options:
-  -h, --help            show this help message and exit
-  --requirement REQUIREMENT
-  --text TEXT
-  --supported-by SUPPORTED_BY [SUPPORTED_BY ...]
-```
-
-##### `fabric.py release`
-
-```
-usage: fabric.py release [-h] engagement fragment
-
-positional arguments:
-  engagement
-  fragment
-
-options:
-  -h, --help  show this help message and exit
-```
-
-##### `fabric.py render-review`
-
-```
-usage: fabric.py render-review [-h] engagement contract
-
-positional arguments:
-  engagement
-  contract
-
-options:
-  -h, --help  show this help message and exit
-```
-
-##### `fabric.py ingest-reviews`
-
-```
-usage: fabric.py ingest-reviews [-h] --layer LAYER --reviewer REVIEWER --model
-                                MODEL
-                                engagement result
-
-positional arguments:
-  engagement
-  result
-
-options:
-  -h, --help           show this help message and exit
-  --layer LAYER
-  --reviewer REVIEWER
-  --model MODEL
-```
-
-##### `fabric.py evidence`
-
-```
-usage: fabric.py evidence [-h] --layer LAYER [--supports [SUPPORTS ...]]
-                          [--contradicts [CONTRADICTS ...]] --source SOURCE
-                          --confidence
-                          {deterministic,observation,interpretation,ai_derived}
-                          [--file FILE]
-                          engagement
-
-positional arguments:
-  engagement
-
-options:
-  -h, --help            show this help message and exit
-  --layer LAYER
-  --supports [SUPPORTS ...]
-  --contradicts [CONTRADICTS ...]
-  --source SOURCE
-  --confidence {deterministic,observation,interpretation,ai_derived}
-  --file FILE
-```
-
-##### `fabric.py review`
-
-```
-usage: fabric.py review [-h] --layer LAYER --state
-                        {accepts,accepts_with_constraints,correlates,resonates,insufficient,out_of_scope,conflicts,escalate}
-                        --rationale RATIONALE --reviewer REVIEWER --model
-                        MODEL [--constraints CONSTRAINTS]
-                        engagement fragment
-
-positional arguments:
-  engagement
-  fragment
-
-options:
-  -h, --help            show this help message and exit
-  --layer LAYER
-  --state {accepts,accepts_with_constraints,correlates,resonates,insufficient,out_of_scope,conflicts,escalate}
-  --rationale RATIONALE
-  --reviewer REVIEWER
-  --model MODEL
-  --constraints CONSTRAINTS
-```
-
-##### `fabric.py consolidate`
-
-```
-usage: fabric.py consolidate [-h] --layer LAYER engagement fragment
-
-positional arguments:
-  engagement
-  fragment
-
-options:
-  -h, --help     show this help message and exit
-  --layer LAYER
-```
-
-##### `fabric.py conflict`
-
-```
-usage: fabric.py conflict [-h] --from FROM --layer LAYER --text TEXT
-                          engagement
-
-positional arguments:
-  engagement
-
-options:
-  -h, --help     show this help message and exit
-  --from FROM
-  --layer LAYER
-  --text TEXT
-```
-
-##### `fabric.py escalate`
-
-```
-usage: fabric.py escalate [-h] [--layer LAYER] --reason REASON --code
-                          {exhausted,no_viable_reformulation,outside_authority,relay,budget}
-                          [--to-top]
-                          engagement from
-
-positional arguments:
-  engagement
-  from
-
-options:
-  -h, --help            show this help message and exit
-  --layer LAYER
-  --reason REASON
-  --code {exhausted,no_viable_reformulation,outside_authority,relay,budget}
-  --to-top              relay all the way to L1 (budget exhaustion)
-```
-
-##### `fabric.py reformulate`
-
-```
-usage: fabric.py reformulate [-h] --text TEXT --change CHANGE [--what WHAT]
-                             [--why WHY] [--who WHO] [--where WHERE]
-                             [--when WHEN] [--how HOW] [--evidence EVIDENCE]
-                             [--escalate-if ESCALATE_IF] [--sanitise SANITISE]
-                             engagement escalation
-
-positional arguments:
-  engagement
-  escalation
-
-options:
-  -h, --help            show this help message and exit
-  --text TEXT
-  --change CHANGE
-  --what WHAT
-  --why WHY
-  --who WHO
-  --where WHERE
-  --when WHEN
-  --how HOW
-  --evidence EVIDENCE
-  --escalate-if ESCALATE_IF
-  --sanitise SANITISE
-```
-
-##### `fabric.py propose`
-
-```
-usage: fabric.py propose [-h] --requirement REQUIREMENT --text TEXT --tradeoff
-                         TRADEOFF
-                         engagement
-
-positional arguments:
-  engagement
-
-options:
-  -h, --help            show this help message and exit
-  --requirement REQUIREMENT
-  --text TEXT
-  --tradeoff TRADEOFF
-```
-
-##### `fabric.py dossier`
-
-```
-usage: fabric.py dossier [-h] [--examples EXAMPLES] engagement escalation
-
-positional arguments:
-  engagement
-  escalation
-
-options:
-  -h, --help           show this help message and exit
-  --examples EXAMPLES
-```
-
-##### `fabric.py authorise`
-
-```
-usage: fabric.py authorise [-h] --decision
-                           {accept,exception,revise,reject,terminate} --signer
-                           SIGNER [--rationale RATIONALE] [--expires EXPIRES]
-                           [--revise-text REVISE_TEXT]
-                           [--supersedes SUPERSEDES] [--adopt ADOPT]
-                           [--beyond-round-limit]
-                           engagement escalation
-
-positional arguments:
-  engagement
-  escalation
-
-options:
-  -h, --help            show this help message and exit
-  --decision {accept,exception,revise,reject,terminate}
-  --signer SIGNER
-  --rationale RATIONALE
-  --expires EXPIRES
-  --revise-text REVISE_TEXT
-  --supersedes SUPERSEDES
-  --adopt ADOPT
-  --beyond-round-limit
-```
-
-##### `fabric.py keygen`
-
-```
-usage: fabric.py keygen [-h]
-
-options:
-  -h, --help  show this help message and exit
-```
-
-##### `fabric.py verify`
-
-```
-usage: fabric.py verify [-h] engagement
-
-positional arguments:
-  engagement
-
-options:
-  -h, --help  show this help message and exit
-```
-
-##### `fabric.py status`
-
-```
-usage: fabric.py status [-h] engagement
-
-positional arguments:
-  engagement
-
-options:
-  -h, --help  show this help message and exit
-```
-
-##### `fabric.py report`
-
-```
-usage: fabric.py report [-h] engagement
-
-positional arguments:
-  engagement
-
-options:
-  -h, --help  show this help message and exit
-```
-
-##### `fabric.py justify`
-
-```
-usage: fabric.py justify [-h] [--strict] [--json] engagement [fragment]
-
-positional arguments:
-  engagement
-  fragment
-
-options:
-  -h, --help  show this help message and exit
-  --strict
-  --json
-```
+`validate` checks message structure and identity without recording effects.
+`submit` is the sole host message-ingestion route and remains subject to the
+actual issued context, rights and authority boundary. The remaining commands
+assess the exact query; a successful query grants no permission. See the
+[protocol](governed-delivery-protocol.md), [normal operator flow](../operations/normal-layered-workflow.md)
+and [human authority](../operations/human-authority.md) for complete contracts.
+
+The retired Gen1 graph commands (`init`, `req`, `contract`, `ingest`, `review`,
+`authorise`, `release`, `dossier` and related graph mutation helpers) are
+unsupported archive interfaces. Preserve old records as historical evidence;
+do not replay these commands or treat old acceptance as current authority.
 
 #### `demo.py`
 
@@ -1190,9 +805,10 @@ options:
 
 ## Current operator boundary
 
-For 26.10.14 {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
+For {{ JAI_VERSION }} {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
 Native provider approval is not Fabric L0; external Ed25519 receipts require
-protected trust and matching state. Actual Office QA is OPERATOR_ASSISTED;
+protected trust and matching state. Actual Office QA uses route A when a working native Office renderer is available
+within the permitted environment, or route C through the operator when required;
 WeasyPrint HTML/PDF does not inspect Office bytes. Privileged worker/API
 mutation is NOT_SUPPORTED; optional host confinement is NOT_VERIFIED.
 

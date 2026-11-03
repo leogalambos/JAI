@@ -102,7 +102,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
 | 1 | Secure development standards and threat models | Controlled document referencing the parent policy | Requirements are specific, measurable and technology-explicit |
-| 2 | pipeline security testing configuration | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 2 | pipeline security testing configuration | Versioned pipeline security-test configuration | Defines test stages, tool/rule versions, scope, thresholds, secret references, failure handling and reproducible validation |
 | 3 | finding triage and remediation guidance | Finding record with reproducible evidence and risk rating | Reproduction steps are complete enough for an independent party to confirm |
 | 4 | security champion enablement material | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 
@@ -146,7 +146,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Secure development standards and threat models has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Secure development standards and threat models") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

@@ -7,7 +7,7 @@ from __future__ import annotations
 import argparse,json,tempfile
 try: import jsonschema
 except Exception: jsonschema=None
-from model_router import effective_registry, resolve
+from model_router import effective_registry, resolve_snapshot
 from pathlib import Path
 import schema_resolver
 ROOT=Path(__file__).resolve().parents[1]
@@ -74,13 +74,15 @@ def authorize(c,operation,tool=None):
     if tool and c.get('allowed_tools') and tool not in c['allowed_tools']: return False,f'tool {tool} outside allowlist'
     return True,'allowed'
 
-def provider_config(c,provider,model_config=None):
+def provider_config(c,provider,model_config=None,*,registry=None,tool_ceiling=None):
     """Compile contract intent to conservative native restrictions and host obligations.
 
     Args:
         c: Validated canonical AgentContract; mutation intent stays in that contract.
         provider: Claude or Codex projection selector.
         model_config: Optional trusted model-routing configuration.
+        registry: Already captured explicit registry; skips ambient override reads.
+        tool_ceiling: Optional assignment tool intersection, never a wider grant.
     Returns:
         Role-scoped native workspace settings. These never override the host's
         effective sandbox or confer privileged deployment capabilities.
@@ -90,8 +92,9 @@ def provider_config(c,provider,model_config=None):
     if provider not in ('claude','codex'):
         raise ValueError('unsupported provider')
     workload_class=c.get('workload_class','standard')
-    selector,mapping=resolve(provider,workload_class,model_config)
-    registry,_=effective_registry(model_config); pspec=registry['providers'][provider]
+    if registry is None: registry,_=effective_registry(model_config)
+    selector,mapping=resolve_snapshot(registry,provider,workload_class)
+    pspec=registry['providers'][provider]
     common={'name':c['id'],'provider':provider,'jai':c['jai'],'workload_class':workload_class,'selection_strategy':pspec.get('selection_strategy'),'strategy_scope':pspec.get('strategy_scope','project-internal'),'model_selector':selector}
     content_profile=ROOT/'jai/profiles/content-profile.json'
     extensions=load(content_profile).get('agent_bindings',{}).get(c['id'],{}) if content_profile.exists() else {}
@@ -105,13 +108,16 @@ def provider_config(c,provider,model_config=None):
         'git_authority':'human','enforcement':'effective-provider-sandbox-and-host'}
     if mapping.get('reasoning_effort'): common['reasoning_effort']=mapping['reasoning_effort']
     if mapping.get('fallbacks'): common['fallbacks']=mapping['fallbacks']
-    author=bool(c['mutation_allowed'])
+    author=bool(c['mutation_allowed']) and (tool_ceiling is None or bool({'Write','Edit'} & set(tool_ceiling)))
     # A tool name is not containment. Codex reviewers retain its native read-only
     # mode; Claude's default sandbox does not establish a read-only source mount.
     shell_allowed='Bash' in c['allowed_tools'] and 'Bash' not in c['denied_tools'] and (author or provider=='codex')
+    if tool_ceiling is not None: shell_allowed=shell_allowed and 'Bash' in tool_ceiling
     permitted={'Read','Grep','Glob'}|({'Write','Edit'} if author else set())|({'Bash'} if shell_allowed else set())
     safe_tools=[tool for tool in c['allowed_tools'] if tool in permitted and tool not in c['denied_tools']]
+    if tool_ceiling is not None: safe_tools=[tool for tool in safe_tools if tool in tool_ceiling]
     denied_tools=sorted(set(c['denied_tools'])|{'Agent','WebFetch'}|(set() if shell_allowed else {'Bash','Shell'})|(set() if author else {'Write','Edit'}))
+    if tool_ceiling is not None: denied_tools=sorted(set(denied_tools)|(set(c['allowed_tools'])-set(tool_ceiling)))
     common['local_execution']={'requires_effective_native_sandbox':True,'contract_is_host_enforcement':False,
         'reviewer_source_write':False,'qa_output':'only explicitly native-writable scratch; never widen source access',
         'shell_available':shell_allowed,'host_mount_isolation_required':True,'limitation':'Claude reviewer shell requires an independently established read-only boundary' if not author and provider=='claude' else 'Native settings must actually be loaded; no live confinement claim'}

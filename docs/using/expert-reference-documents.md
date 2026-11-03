@@ -1,10 +1,10 @@
 # Expert reference documents
 
-Owner: JAI maintainers · Last reviewed: 2026-10-20
 
 JAI includes 135 complete English Markdown examples: three complexity levels
-for each of 45 document families. They work immediately after installation;
-customer documents and provider accounts are optional.
+for each of 45 document families. Installation supplies these files; using the
+expert-reference tools requires the task-specific Python dependencies below.
+Customer documents and provider accounts are optional.
 
 The library covers decisions, architecture, requirements, strategy, policy,
 implementation, migration, testing, operations, assurance and proposals.
@@ -37,13 +37,21 @@ Identifiers, complexity slots, stable DCS anchors and existing DCS
 relationships remain unchanged; document integrity hashes change with the
 revised bytes. The complete library works without an earlier reference
 package. Updates do not overwrite separately stored user overrides.
-The [editorial review guide](../validation/expert-reference-review.md)
+The [review and release readiness](../operations/validation.md)
 explains the technical, management and presentation supplements and their
 limits. Their AI editorial status does not grant independent human approval.
 See [proposal production](proposal-production.md) for coherent packages and
-[colleague evaluation](../validation/proposal-pilot.md) for the pilot rubric.
+[review and release readiness](../operations/validation.md) for the pilot rubric.
 
 ## Inspect the installed library
+
+Use Python 3.10 or newer with `jsonschema>=4.18,<5` and `PyYAML>=6,<7` in the
+interpreter that runs the tools. These dependencies support expert-reference
+listing, validation and resolution, and reference-assisted content outlines.
+The installer itself uses only Python's standard library and does not install
+these packages. Use an existing compatible environment or follow its package
+management policy to add only the dependencies needed for this task; the full
+qualification/test dependency set is not required.
 
 From the source checkout:
 
@@ -61,7 +69,7 @@ same resolver, registry and validation rules.
 The resolver works with bundled defaults alone. [Overrides](../configuration/expert-document-overrides.md)
 can replace one slot without changing other references. The
 [format reference](../reference/expert-reference-format.md) explains metadata
-and stable DCS anchors; [offline qualification](../validation/offline-content-qualification.md)
+and stable DCS anchors; [content and governed views](../architecture/governed-sabsa-content.md)
 explains what the automatic checks establish.
 
 ## Use a reference during authoring

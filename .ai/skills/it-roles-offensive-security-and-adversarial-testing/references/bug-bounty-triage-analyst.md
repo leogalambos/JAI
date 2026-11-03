@@ -113,7 +113,7 @@ An output that fails any gate is not released. A gate may be waived only by the 
 - [ ] **G3.** No production personal data is used in test environments without an approved lawful basis and masking.
 - [ ] **G4.** An intermittent test failure is investigated as a timing, ordering or shared-state defect, never retried or quarantined away without a ticket and an analysis (it-role-library/standards/defect-analysis.md).
 - [ ] **G5.** Automated tests are deterministic, test one behaviour each, mock only collaborators and run integration tests against real dependencies (it-role-library/standards/testing.md).
-- [ ] **G6.** Submission validation records distinguishes what was tested, what was not tested and what cannot be tested.
+- [ ] **G6.** The primary deliverable ("Submission validation records") distinguishes what was tested, what was not tested and what cannot be tested.
 - [ ] **G7.** Every determination gives the researcher a reason
 - [ ] **G8.** silent closure or unexplained downgrade is treated as a programme defect because it destroys submission quality
 
@@ -143,7 +143,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Submission validation records has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Submission validation records") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

@@ -1,0 +1,10 @@
+{
+  "protocol": "jai.governed-delivery/1",
+  "subject": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "candidate-A",
+    "version_id": "afd1cb19ba756d70d355f71e0047a0518ece554d525734137920aa9f4bdcf2c6"
+  },
+  "assessment_scope": "default"
+}

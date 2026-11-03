@@ -100,8 +100,8 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
 | 1 | Integration flows and transformations | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 2 | error handling and retry design | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
-| 3 | message contracts and schemas | Executed document held in the contract repository | Obligations, service levels, exit terms and liability positions are explicit |
+| 2 | error handling and retry design | Failure and retry behaviour specification | Defines error taxonomy, bounded retries, idempotency, timeouts, dead-letter handling and uncertain-completion reconciliation |
+| 3 | message contracts and schemas | Versioned message schemas and interface contract | Defines payload fields, compatibility, validation, ordering, failure and retry semantics with reproducible consumer/provider checks |
 | 4 | reconciliation reports | Structured document with executive summary and evidence annex | Conclusions are traceable to dated evidence; opinion is visibly separated from fact |
 
 ## 7. Output gates (blocking)
@@ -143,7 +143,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Integration flows and transformations has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Integration flows and transformations") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

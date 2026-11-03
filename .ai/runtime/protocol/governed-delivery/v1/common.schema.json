@@ -1,0 +1,705 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Governed delivery shared closed definitions",
+  "$defs": {
+    "text": {
+      "type": "string",
+      "minLength": 1
+    },
+    "key": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 128
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "integer": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 9007199254740991
+    },
+    "positive": {
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 9007199254740991
+    },
+    "reference": {
+      "type": "object",
+      "properties": {
+        "engagement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "logical_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "engagement",
+        "scope",
+        "logical_id",
+        "version_id"
+      ],
+      "additionalProperties": false
+    },
+    "references": {
+      "type": "array",
+      "items": {
+        "$ref": "common.schema.json#/$defs/reference"
+      },
+      "uniqueItems": true
+    },
+    "participant": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "assignment"
+            },
+            "ref": {
+              "$ref": "common.schema.json#/$defs/reference"
+            }
+          },
+          "required": [
+            "kind",
+            "ref"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "authority"
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "controller"
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "id"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "authority": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "authority"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "controller": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "controller"
+        },
+        "id": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "id"
+      ],
+      "additionalProperties": false
+    },
+    "ownership": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "layer": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 6
+            },
+            "work_kind": {
+              "const": "question"
+            },
+            "question": {
+              "enum": [
+                "what",
+                "why",
+                "how",
+                "who",
+                "where",
+                "when"
+              ]
+            },
+            "work_item": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "layer",
+            "work_kind",
+            "question",
+            "work_item"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "layer": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 6
+            },
+            "work_kind": {
+              "enum": [
+                "integration",
+                "handoff",
+                "measurement"
+              ]
+            },
+            "question": {
+              "type": "null"
+            },
+            "work_item": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "layer",
+            "work_kind",
+            "question",
+            "work_item"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "attachment": {
+      "type": "object",
+      "properties": {
+        "blob_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "byte_length": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "media_type": {
+          "type": "string",
+          "minLength": 1
+        },
+        "classification": {
+          "enum": [
+            "public",
+            "internal",
+            "confidential",
+            "restricted"
+          ]
+        },
+        "access_handle": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "blob_id",
+        "byte_length",
+        "media_type",
+        "classification",
+        "access_handle"
+      ],
+      "additionalProperties": false
+    },
+    "binding": {
+      "type": "object",
+      "properties": {
+        "slot_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "refs": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "slot_id",
+        "refs"
+      ],
+      "additionalProperties": false
+    },
+    "criterion": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "requirement": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "statement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "evidence_slots": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true,
+          "description": "Additional named prerequisites requiring separately qualified observation products. Use [] when the criterion is checked by inspecting the assigned candidate and its ordinary independent review. Do not list the answer slot, candidate reference, review target or review/proof slot here; those do not supply an observation binding."
+        }
+      },
+      "required": [
+        "id",
+        "requirement",
+        "statement",
+        "evidence_slots"
+      ],
+      "additionalProperties": false
+    },
+    "responsibility": {
+      "enum": [
+        "setter",
+        "author",
+        "reviewer",
+        "integrator",
+        "integration_reviewer",
+        "receiver",
+        "measurement"
+      ]
+    },
+    "review_verdict": {
+      "enum": [
+        "supported",
+        "supported_with_conditions",
+        "rework_required",
+        "blocked"
+      ]
+    },
+    "receiving_verdict": {
+      "enum": [
+        "accepted",
+        "information_required",
+        "change_required"
+      ]
+    },
+    "effect_grant": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "enum": [
+            "read",
+            "propose",
+            "materialize",
+            "measure"
+          ]
+        },
+        "owner": {
+          "$ref": "common.schema.json#/$defs/ownership"
+        },
+        "targets": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        },
+        "destination_handle": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "tool_policy": {
+          "anyOf": [
+            {
+              "$ref": "common.schema.json#/$defs/reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "operation",
+        "owner",
+        "targets",
+        "destination_handle",
+        "tool_policy"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "operation": {
+                "const": "read"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "targets": {
+                "minItems": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "operation": {
+                "const": "materialize"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "destination_handle": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        {
+          "if": {
+            "properties": {
+              "operation": {
+                "const": "measure"
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "tool_policy": {
+                "$ref": "common.schema.json#/$defs/reference"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "budget_limit": {
+      "type": "object",
+      "properties": {
+        "metric": {
+          "enum": [
+            "tokens",
+            "cost_minor_units",
+            "elapsed_ms"
+          ]
+        },
+        "ceiling": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "unit": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "metric",
+        "ceiling",
+        "unit"
+      ],
+      "additionalProperties": false
+    },
+    "obligation": {
+      "type": "object",
+      "properties": {
+        "slot_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "$ref": "common.schema.json#/$defs/ownership"
+        },
+        "subject_kind": {
+          "enum": [
+            "source",
+            "answer",
+            "observation",
+            "bundle",
+            "handoff",
+            "escalation",
+            "final_result"
+          ]
+        },
+        "role": {
+          "enum": [
+            "input",
+            "evidence",
+            "professional_review",
+            "integration_review",
+            "receiving_acceptance",
+            "human_acceptance",
+            "release_permission",
+            "answer",
+            "management_activity"
+          ]
+        },
+        "required_kind": {
+          "enum": [
+            "source",
+            "product",
+            "assessment",
+            "decision"
+          ]
+        },
+        "minimum": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "maximum": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "allow_exclusion": {
+          "type": "boolean"
+        },
+        "exclusion_owner": {
+          "anyOf": [
+            {
+              "$ref": "common.schema.json#/$defs/participant"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "slot_id",
+        "owner",
+        "subject_kind",
+        "role",
+        "required_kind",
+        "minimum",
+        "maximum",
+        "allow_exclusion",
+        "exclusion_owner"
+      ],
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "allow_exclusion": {
+                "const": true
+              }
+            }
+          },
+          "then": {
+            "properties": {
+              "exclusion_owner": {
+                "$ref": "common.schema.json#/$defs/participant"
+              }
+            }
+          }
+        }
+      ]
+    },
+    "selection_slot": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "basis"
+            },
+            "owner": {
+              "$ref": "common.schema.json#/$defs/ownership"
+            },
+            "slot_id": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "owner",
+            "slot_id"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "proof"
+            },
+            "subject": {
+              "$ref": "common.schema.json#/$defs/reference"
+            },
+            "role": {
+              "enum": [
+                "professional_review",
+                "integration_review",
+                "receiving_acceptance",
+                "human_acceptance",
+                "release_permission"
+              ]
+            },
+            "slot_id": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "subject",
+            "role",
+            "slot_id"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "replacement": {
+      "type": "object",
+      "properties": {
+        "previous": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "replacement": {
+          "$ref": "common.schema.json#/$defs/reference"
+        }
+      },
+      "required": [
+        "previous",
+        "replacement"
+      ],
+      "additionalProperties": false
+    },
+    "reconciliation": {
+      "type": "object",
+      "properties": {
+        "subject": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "outcome": {
+          "enum": [
+            "retain",
+            "reverify",
+            "rework",
+            "discard"
+          ]
+        },
+        "basis": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/use_point"
+          },
+          "uniqueItems": true,
+          "minItems": 0
+        },
+        "impact": {
+          "$ref": "common.schema.json#/$defs/reference"
+        }
+      },
+      "required": [
+        "subject",
+        "outcome",
+        "basis",
+        "impact"
+      ],
+      "additionalProperties": false
+    },
+    "use_point": {
+      "type": "object",
+      "properties": {
+        "ref": {
+          "$ref": "#/$defs/reference"
+        },
+        "use_scope": {
+          "$ref": "#/$defs/key"
+        }
+      },
+      "required": [
+        "ref",
+        "use_scope"
+      ],
+      "additionalProperties": false
+    },
+    "prerequisite_use": {
+      "type": "object",
+      "properties": {
+        "at": {
+          "type": "string",
+          "minLength": 1,
+          "pattern": "^/"
+        },
+        "use_scope": {
+          "$ref": "#/$defs/key"
+        }
+      },
+      "required": [
+        "at",
+        "use_scope"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

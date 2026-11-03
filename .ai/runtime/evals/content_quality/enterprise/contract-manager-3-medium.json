@@ -82,6 +82,25 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
+    "binding_obligation_baseline": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-BINDING-OBLIGATION-BASELINE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Identify the executed contract/version, applicable clause or obligation ID, accountable party, effective/due dates and agreed measurable acceptance or performance threshold; distinguish proposed terms from binding obligations.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
     "contract_input_1": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -215,6 +234,44 @@
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
         "criterion_under_review": "For the specific output 'obligation compliance monitoring', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "obligation_observations": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-OBLIGATION-OBSERVATIONS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "For each obligation due in the reporting period, link actual performance/delivery evidence, measurement period and status; separate met, breached, disputed, not yet due and insufficient-evidence cases.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "obligation_remedies": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-OBLIGATION-REMEDIES",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "For each material deviation, identify impact, notice/cure deadlines, contractually available remedies, escalation owner and required legal/commercial decision; do not invent a right, waive an obligation or claim a dispute resolved without authority.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -370,6 +427,7 @@
       "expected_rule_ids": [
         "domain/delivery.delivery_accountability",
         "domain/delivery.delivery_dependencies",
+        "role/contract-manager:3.binding_obligation_baseline",
         "role/contract-manager:3.contract_input_1",
         "role/contract-manager:3.contract_input_2",
         "role/contract-manager:3.contract_input_3",
@@ -378,6 +436,8 @@
         "role/contract-manager:3.decision_purpose_correction",
         "role/contract-manager:3.delivery_scope",
         "role/contract-manager:3.delivery_verification",
+        "role/contract-manager:3.obligation_observations",
+        "role/contract-manager:3.obligation_remedies",
         "role/contract-manager:3.receiving_acceptance",
         "role/contract-manager:3.role_gate_observations",
         "type/document.document_actions",
@@ -390,19 +450,19 @@
     {
       "id": "missing-core",
       "operation": "remove",
-      "field": "contract_input_1",
+      "field": "binding_obligation_baseline",
       "expected_rule_ids": [
-        "role/contract-manager:3.contract_input_1"
+        "role/contract-manager:3.binding_obligation_baseline"
       ],
       "expected_category": "critical-content"
     },
     {
       "id": "invalid-na",
       "operation": "mark_na",
-      "field": "contract_input_1",
+      "field": "binding_obligation_baseline",
       "reason": "Author omitted a required obligation without authority.",
       "expected_rule_ids": [
-        "role/contract-manager:3.contract_input_1"
+        "role/contract-manager:3.binding_obligation_baseline"
       ],
       "expected_category": "critical-content"
     },
@@ -457,7 +517,7 @@
     {
       "id": "excessive",
       "operation": "repeat",
-      "field": "contract_input_1",
+      "field": "binding_obligation_baseline",
       "count": 5,
       "expected_rule_ids": [
         "role/contract-manager:3.duplicate_claim"

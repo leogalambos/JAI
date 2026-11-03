@@ -54,7 +54,7 @@ def check(root=ROOT):
             txt=p.read_text(encoding='utf-8')
             if FULL_SENTENCE in txt: probs.append(f'{rel}: full license boilerplate must not consume AI context')
             continue
-        if p.suffix in {'.py','.sh','.yaml','.yml','.cmd'}:
+        if p.suffix in {'.py','.sh','.yaml','.yml','.cmd','.js','.css','.html'}:
             head='\n'.join(p.read_text(encoding='utf-8',errors='replace').splitlines()[:8])
             if SPDX not in head: probs.append(f'{rel}: compact SPDX header missing')
             if COPY not in head: probs.append(f'{rel}: compact copyright header missing')

@@ -2,15 +2,15 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/information-architect:2",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/prototype",
-    "domain/delivery"
+    "type/model",
+    "domain/architecture"
   ],
   "applies_to": {
     "document_kind": "role/information-architect:2",
@@ -61,7 +61,8 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: navigation and taxonomy design.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#information-architect:2",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -99,7 +100,8 @@
         "reason": "For each receiving role (Content Designer; Frontend Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#information-architect:2",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -137,7 +139,8 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#information-architect:2",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -175,7 +178,8 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#information-architect:2",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -195,7 +199,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'navigation and taxonomy design', provide verifiable evidence satisfying: Loading, empty, partial, error, offline and success states are all specified. Required delivery form: Prototype plus annotated specification of all states.",
+        "For the specific output 'navigation and taxonomy design', provide verifiable evidence satisfying: Defines labels, hierarchy, relationships, user tasks and findability validation with evidence gaps. Required delivery form: Navigation and taxonomy specification.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,10 +214,11 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'navigation and taxonomy design', provide verifiable evidence satisfying: Loading, empty, partial, error, offline and success states are all specified. Required delivery form: Prototype plus annotated specification of all states.",
+        "reason": "For the specific output 'navigation and taxonomy design', provide verifiable evidence satisfying: Defines labels, hierarchy, relationships, user tasks and findability validation with evidence gaps. Required delivery form: Navigation and taxonomy specification.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#information-architect:2",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -223,8 +228,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "navigation and taxonomy design",
-        "format": "Prototype plus annotated specification of all states",
-        "acceptance_criterion": "Loading, empty, partial, error, offline and success states are all specified",
+        "format": "Navigation and taxonomy specification",
+        "acceptance_criterion": "Defines labels, hierarchy, relationships, user tasks and findability validation with evidence gaps",
         "role_path": "skills/it-roles-design-and-user-experience/references/information-architect.md"
       }
     },
@@ -262,7 +267,8 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#information-architect:2",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -307,7 +313,8 @@
         "reason": "Analyse the specific input \"Content inventory and audit\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#information-architect:2",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -350,7 +357,8 @@
         "reason": "Analyse the specific input \"User mental models research\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#information-architect:2",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -393,7 +401,8 @@
         "reason": "Analyse the specific input \"Search and navigation analytics\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#information-architect:2",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -436,7 +445,8 @@
         "reason": "Analyse the specific input \"Governance and ownership model\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#information-architect:2",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -481,7 +491,8 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -524,7 +535,8 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -569,7 +581,8 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -664,7 +677,7 @@
     }
   ],
   "size_budget": {
-    "metric": "typed",
+    "metric": "elements",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -683,6 +696,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "architecture-description",
+        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
+        "url": "https://www.iso.org/standard/74393.html",
+        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Information Architect",
+        "frameworks": [
+          "information architecture practice",
+          "ISO/IEC 11179 for metadata",
+          "WCAG 2.2 AA navigation criteria"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -708,13 +742,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -733,12 +768,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/model",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "prototype",
+  "semantic_family": "model",
   "role_overlay": {
     "contract_id": "information-architect:2",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -747,8 +784,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "information-architect:2",
-    "source_fingerprint": "acef517598e840dc2b17415293b201d2cb27be3d2bd841470949d57bd6de5ea1",
-    "source_hash": "de429ddcaa336f0a876432b4713c0658cb90133e26738f296616cf8f37be55c6"
+    "source_fingerprint": "eb29593cb6722318faf3f41f22ed02e7df78a2ba13da1c561fccbfa3a245daa7",
+    "source_hash": "e0dfcc97ddbab4b6556ef2e1116334c53ca8149619a923502c15c616c4f1137e"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

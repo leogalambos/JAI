@@ -1,0 +1,45 @@
+{
+  "assignment": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "integration-control-assignment",
+    "version_id": "ca3d27f5521a94885efba926044fc301390245913cff2a61c482767669c1a07a"
+  },
+  "context": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "integration-control-assignment-context",
+    "version_id": "c4947eb40a5024dc70991efcfada85acb543ad4fd75a114b0a43ca981ead7025"
+  },
+  "records": [],
+  "intents": [
+    {
+      "message_type": "decision",
+      "recipient": {
+        "kind": "controller",
+        "id": "trusted-controller"
+      },
+      "payload": {
+        "action": "reinstate",
+        "reason": "Explicit owned product restoration requires fresh independent review.",
+        "subjects": [
+          {
+            "engagement": "synthetic-protocol",
+            "scope": "default",
+            "logical_id": "layer-bundle",
+            "version_id": "4d152570c4804c6e26bc9a862beaeded7954787fc7a6ab17dd2f4f493fe49c59"
+          }
+        ],
+        "fresh_proofs": [
+          {
+            "engagement": "synthetic-protocol",
+            "scope": "default",
+            "logical_id": "integration-assessment",
+            "version_id": "ad364ce6f92b09e32024dc2591a15fabb0decf42edc86f5e9a12b8f12bce6b95"
+          }
+        ],
+        "authority_proof": "0000000000000000000000000000000000000000000000000000000000000000"
+      }
+    }
+  ]
+}

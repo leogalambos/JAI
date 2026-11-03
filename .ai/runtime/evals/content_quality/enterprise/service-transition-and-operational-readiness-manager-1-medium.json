@@ -216,7 +216,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Operational readiness assessment', provide verifiable evidence satisfying: Every operational capability is pass/fail/waived with evidence, owner and due date.. Required delivery form: Evidence-backed assessment against defined acceptance criteria.",
+        "criterion_under_review": "For the specific output 'Operational readiness assessment', provide verifiable evidence satisfying: Every operational capability is pass/fail/waived with evidence, owner and due date. Required delivery form: Evidence-backed assessment against defined acceptance criteria.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

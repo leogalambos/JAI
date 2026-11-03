@@ -100,7 +100,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
 | 1 | Gameplay systems code | Reviewed, merged change in version control | Passes automated checks, carries tests and telemetry, and has a rollback path |
-| 2 | performance profiling results against frame budget | Financial model with scenarios and stated assumptions | Assumptions are listed separately, each with an owner and a sensitivity |
+| 2 | performance profiling results against frame budget | Versioned frame-time profiling report | Identifies target hardware, scene/workload, CPU/GPU timings, frame-time distribution, bottlenecks and variance against the frame budget |
 | 3 | build and platform certification artefacts | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 4 | tooling for content creators | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 
@@ -143,7 +143,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Gameplay systems code has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Gameplay systems code") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

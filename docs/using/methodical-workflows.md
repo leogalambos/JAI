@@ -1,7 +1,9 @@
----
-owner: JAI documentation maintainers
-review_due: 2027-01-16
----
+> **Current execution interface:** `/layered` and `/fabric-report` use the Gen2
+> native workflow and read-only audit entry. See the
+> [operator cycle](layered-engagement.md) and
+> [review and release readiness](../operations/validation.md) for
+> their exact source and activation scope. Domain methods, recorded execution,
+> physical-control evidence and human authority remain distinct.
 
 # Choosing and running a methodical workflow
 
@@ -86,13 +88,13 @@ The architectural pattern is:
     $workflow-layered with commercial-delivery → controlled proposal creation → decision dossier
     ```
 
-Strict commercial dispatch remains blocked until the deployment supplies current qualification evidence for the required controls. Shipped live capability states are `not_run` for both providers; a teaching sequence does not override them.
+Governed commercial work uses actual native provenance, exact material and current Gen2 justification. Unmeasured deployment controls remain unverified; a specifically required policy or contract control still needs its own evidence. A teaching sequence, prompt or unit test cannot manufacture such evidence or grant acceptance and release.
 
 ## 5. Example: build and maintain a security architecture
 
 Follow [the security assessment](../examples/how-to-use-JAI/security-assessment.md) for direct SABSA work. Follow [Android development](../examples/how-to-use-JAI/android-development.md) to see architecture, implementation and a subsequent layered release question joined into one sequence.
 
-The **SABSA domain matrix** and **JAI execution layers** are different coordinates. The matrix asks six questions across six architectural perspectives. Execution layers assign responsibility for intent, meaning, policy, design, realisation and evidence. Completing 36 matrix cells does not prove six-layer execution; a Fabric trace does not alone prove each matrix answer correct.
+The current [JAI content layers](../architecture/sabsa-layer-model.md) follow SABSA architectural perspectives, each addressing six questions. Professional responsibilities are local to each layer, rather than fixed professions assigned to L1–L6. Completing 36 matrix cells does not prove governed execution; a journal trace does not alone prove each substantive answer correct.
 
 ## 6. Handle unsuccessful work without losing the reason
 

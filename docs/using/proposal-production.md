@@ -1,6 +1,5 @@
 # Proposal production
 
-Owner: JAI maintainers · Last reviewed: 2026-10-20
 
 The `commercial-delivery/1` profile prepares a coherent proposal package for
 independent professional review. It reuses the shared expert-reference
@@ -120,5 +119,5 @@ This example requires actual project inputs and the existing publication
 prerequisites; it is not an approval command. Follow
 [commercial delivery](../capabilities/commercial-delivery.md) for engagement,
 specialist and disclosure controls. Evaluate a clearly marked pilot draft
-with the [colleague pilot rubric](../validation/proposal-pilot.md). A pilot
+with the [review and release readiness](../operations/validation.md). A pilot
 opinion does not authorize issue, signing or production activation.

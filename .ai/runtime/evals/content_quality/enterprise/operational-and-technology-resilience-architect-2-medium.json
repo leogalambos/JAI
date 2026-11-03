@@ -213,7 +213,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Dependency and failure-domain model', provide verifiable evidence satisfying: Critical dependencies and correlated/shared failure domains are explicit and owned.. Required delivery form: Model plus machine-readable dependency source.",
+        "criterion_under_review": "For the specific output 'Dependency and failure-domain model', provide verifiable evidence satisfying: Critical dependencies and correlated/shared failure domains are explicit and owned. Required delivery form: Model plus machine-readable dependency source.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

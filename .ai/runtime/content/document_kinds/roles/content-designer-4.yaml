@@ -2,15 +2,15 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/content-designer:4",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/test-report",
-    "domain/testing"
+    "type/document",
+    "domain/delivery"
   ],
   "applies_to": {
     "document_kind": "role/content-designer:4",
@@ -195,7 +195,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'readability and comprehension test results', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "For the specific output 'readability and comprehension test results', provide verifiable evidence satisfying: Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations. Required delivery form: Versioned assessment results with traceable evidence.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,7 +210,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'readability and comprehension test results', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "reason": "For the specific output 'readability and comprehension test results', provide verifiable evidence satisfying: Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations. Required delivery form: Versioned assessment results with traceable evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#content-designer:4",
           "content/types/test-report.yaml"
@@ -223,8 +223,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "readability and comprehension test results",
-        "format": "Executable suite in version control plus a coverage statement",
-        "acceptance_criterion": "States what is covered, what is not, and what the suite cannot detect",
+        "format": "Versioned assessment results with traceable evidence",
+        "acceptance_criterion": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
         "role_path": "skills/it-roles-design-and-user-experience/references/content-designer.md"
       }
     },
@@ -685,6 +685,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Content Designer",
+        "frameworks": [
+          "plain language standards",
+          "WCAG 2.2 AA readability-related criteria",
+          "organisational tone of voice"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -710,13 +731,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -735,12 +757,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/document",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "test-report",
+  "semantic_family": "document",
   "role_overlay": {
     "contract_id": "content-designer:4",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -749,8 +773,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "content-designer:4",
-    "source_fingerprint": "eccfa07171838179064d2d19225e9f6752420915de4dc486820c9596d9458a69",
-    "source_hash": "88c9cf7bd9a28fb5e59ab3522ec8f73433eb7b62a303260dfb6c74ae873605ed"
+    "source_fingerprint": "0d4e8367003814c610b1ae3aac752df141978e5b29739155378658920b0a1f2c",
+    "source_hash": "3c715d6d6f1cab634b65f133ad5e1a10cb27c6022816873b59f2b97def9d83d2"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

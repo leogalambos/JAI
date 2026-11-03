@@ -22,8 +22,6 @@ def runtime(root: Path)->Path:
 
 def check(root: Path):
     rt=runtime(root.resolve()); problems=[]; reg=load(rt/'schema/schema-registry.json')
-    if not reg.get('backward_compatibility_policy'): problems.append('schema registry missing backward compatibility policy')
-    if 'migration_rules' not in reg or not isinstance(reg.get('migration_rules'), list): problems.append('schema registry migration_rules must be a list')
     names=set()
     for item in reg.get('schemas',[]):
         name=item.get('name'); path=rt/item.get('path','')

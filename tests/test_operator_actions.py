@@ -69,35 +69,41 @@ def test_no_follow_files_and_returned_output_scope(tmp_path):
     with pytest.raises(ValueError):op.verify_outputs(req,result)
 
 
-def test_real_ed25519_verification_tamper_cross_request_and_decline(tmp_path,monkeypatch):
-    # Disposable synthetic crypto fixture ONLY; production trust is not patched
-    # by the application, and this is not evidence of a real operator action.
-    from lifecycle_fixtures import SyntheticOperator
-    signer=SyntheticOperator(tmp_path,monkeypatch)
-    source=tmp_path/'ledger';source.write_text('fixture')
-    req=op.request('fabric-review','fixture',source,'frag-1',{})
-    receipt=signer.sign(req)
-    assert op.verify_receipt(req,receipt)['accepted']
-    assert not op.verify_receipt(req,signer.sign(req,accepted=False))['accepted']
-    altered=dict(receipt,accepted=False)
-    with pytest.raises(ValueError):op.verify_receipt(req,altered)
-    other=op.request('fabric-review','other',source,'frag-2',{})
-    with pytest.raises(ValueError):op.verify_receipt(other,receipt)
-    signer.trust['capabilities']=['lifecycle-update']
-    with pytest.raises(ValueError,match='capability'):op.verify_receipt(req,receipt)
-    with patch.object(op,'trusted_key',side_effect=ValueError('missing protected trust')):
-        with pytest.raises(ValueError):op.verify_receipt(req,receipt)
-    with patch.object(op.sys.stdin,'isatty',return_value=False):
-        with pytest.raises(ValueError):op.sign(req,signer.private)
+def test_real_ed25519_verification_tamper_cross_request_and_decline(tmp_path, monkeypatch):
+    from governed_fixtures import HumanSigner
+    signers = HumanSigner(tmp_path / 'external', monkeypatch)
+    source = tmp_path / 'request-source'; source.write_text('Synthetic exact intent')
+    wrapper = signers.wrapper('delivery-accept', source, 'output-A', {})
+    req, receipt = wrapper['request'], wrapper['receipt']
+    assert op.verify_receipt(req, receipt)['accepted']
+    denied = signers.wrapper('delivery-accept', source, 'output-A', {}, accepted=False)
+    assert not op.verify_receipt(denied['request'], denied['receipt'])['accepted']
+    altered = dict(receipt, accepted=False)
+    with pytest.raises(ValueError):
+        op.verify_receipt(req, altered)
+    other = signers.wrapper('delivery-accept', source, 'output-B', {})
+    with pytest.raises(ValueError):
+        op.verify_receipt(other['request'], receipt)
+    signers.keys['human']['entry']['capabilities'] = ['lifecycle-update']
+    with pytest.raises(ValueError, match='capability'):
+        op.verify_receipt(req, receipt)
+    with patch.object(op, 'trusted_key', side_effect=ValueError('missing protected trust')):
+        with pytest.raises(ValueError):
+            op.verify_receipt(req, receipt)
+    with patch.object(op.sys.stdin, 'isatty', return_value=False):
+        with pytest.raises(ValueError, match='host operator console'):
+            op.sign(req, signers.keys['human']['private'])
 
 
 def test_protected_pin_doctor_and_incomplete_acceptance(tmp_path):
-    import stat
-    from types import SimpleNamespace
-    assert op.trust_path().name=='jai-operator-trust.json'
-    with patch.object(op.sys,'platform','win32'):
-        with pytest.raises(ValueError):op.trust_path()
-    pin=tmp_path/'public-trust.json';pin.write_text('{}');pin.chmod(0o666)
+    hostile_home = tmp_path / 'caller-controlled-home'
+    expected = Path(op.__file__).resolve().parents[1] / 'trust' / 'jai-operator-trust.json'
+    with patch('pwd.getpwuid', side_effect=AssertionError('NSS is not an authority source')), \
+            patch.dict('os.environ', {'HOME': str(hostile_home),
+                                     'JAI_OPERATOR_TRUST': str(hostile_home / 'chosen.json')}):
+        assert op.trust_path() == expected
+        assert op.trust_path('delivery-change') == expected.with_name('jai-delivery-change-trust.json')
+    pin=tmp_path/'public-trust.json';pin.write_text('{}')
     with patch.object(op,'trust_path',return_value=pin):
         with pytest.raises(ValueError):op.trusted_key()
     manifest=tmp_path/'observations.json';manifest.write_text(json.dumps({'l0':[],'render':[]}))
@@ -116,38 +122,6 @@ def test_protected_pin_doctor_and_incomplete_acceptance(tmp_path):
     with patch.object(sys,'argv',['operator_actions.py','doctor']):assert op.main()==0
 
 
-def test_exact_fabric_transaction_positive_decline_replay_and_tamper(tmp_path,monkeypatch):
-    import importlib.util,types,contextlib,io
-    from lifecycle_fixtures import accepted_graph
-    path=Path(__file__).resolve().parents[1]/'.ai/runtime/fabric/fabric.py'
-    spec=importlib.util.spec_from_file_location('operator_transaction_unit',path);fabric=importlib.util.module_from_spec(spec);spec.loader.exec_module(fabric)
-    with contextlib.redirect_stdout(io.StringIO()):
-        graph,fragment_id,signer=accepted_graph(fabric,tmp_path,monkeypatch,'Synthetic exact target',
-            engagement='fixture',acceptance_state=None)
-    fragment=graph.nodes[fragment_id]
-    assert graph.lifecycle.evaluate(fragment['version_id'])['eligible']
-    assert not graph.lifecycle.evaluate(fragment['version_id'],release=True)['eligible']
-    for accepted in (False,True):
-        request_file=tmp_path/('accept.json' if accepted else 'decline.json')
-        args=types.SimpleNamespace(engagement='fixture',fragment=fragment['id'],layer=0,state='accepts',rationale='unit test only',reviewer='synthetic key',model='test',constraints=None,request_out=str(request_file))
-        before=op.sha(op.regular(fabric.log_path('fixture')))
-        with contextlib.redirect_stdout(io.StringIO()):assert fabric.operator_request(args,'fabric-review')==3
-        assert before==op.sha(op.regular(fabric.log_path('fixture')))
-        req=json.loads(request_file.read_text())
-        receipt=tmp_path/('accept-receipt.json' if accepted else 'decline-receipt.json')
-        receipt.write_text(json.dumps(signer.sign(req,accepted=accepted)))
-        command=types.SimpleNamespace(request=str(request_file),receipt=str(receipt))
-        with contextlib.redirect_stdout(io.StringIO()):assert fabric.cmd_apply_operator(command)==(0 if accepted else 2)
-        if accepted:
-            graph=fabric.open_fabric('fixture');transaction=graph.transactions[-1]
-            assert fabric.verify_lifecycle_proof(transaction,graph.transactions[:-1])
-            review=next(node for node in graph.nodes.values() if node['layer']==0)
-            assert graph.authority_verified(review['id'])
-            assert graph.lifecycle.evaluate(fragment['version_id'],release=True)['eligible']
-            with pytest.raises(fabric.FabricError):fabric.cmd_apply_operator(command)
-            altered=copy.deepcopy(transaction);altered['proof']['receipt']['signature']='AA=='
-            with pytest.raises(ValueError):fabric.verify_lifecycle_proof(altered,graph.transactions[:-1])
-        else:assert before==op.sha(op.regular(fabric.log_path('fixture')))
 
 
 def test_execution_route_is_separate_from_formal_authority_and_never_executes(tmp_path):
@@ -190,6 +164,13 @@ def test_intervention_is_self_contained_and_command_text_is_display_only(tmp_pat
     formal=op.request_message(decision,tmp_path/'decision.json',workdir=tmp_path)
     assert 'CATEGORY: D' in formal and 'FORMAL L0: YES' in formal and 'EXECUTION ROUTE: C' in formal
     assert 'COMMAND: NOT READY' in formal and 'private key' in formal
+    for kind in ('delivery-change','delivery-accept','delivery-release'):
+        current=op.request(kind,'Review exact current decision',source,'exact-output',{})
+        message=op.request_message(current,tmp_path/'decision.json',workdir=tmp_path)
+        assert 'CATEGORY: D' in message and 'FORMAL L0: YES' in message
+        assert 'COMMAND: NOT READY' not in message
+        assert 'operator_actions.py sign' in message and '--workspace' in message
+        assert 'receipts/' in message and current['request_hash'] in message
     arguments=dict(purpose='local QA',reason='actual provider request',workdir=str(tmp_path),inputs=str(source),outputs='image',privileges='normal user',risks='local output only, reversible; no external access',afterwards='return status and image',commands=[['printf','literal; not executed']])
     view=op.intervention_message({'execution_route':'B','formal_l0_required':False},**arguments)
     assert 'CATEGORY: B' in view and 'FORMAL L0: NO' in view and "'literal; not executed'" in view
@@ -198,6 +179,7 @@ def test_intervention_is_self_contained_and_command_text_is_display_only(tmp_pat
     with pytest.raises(ValueError):op.intervention_message({'execution_route':'C'},**{**arguments,'commands':['arbitrary shell text']})
     with pytest.raises(ValueError):op.intervention_message({'execution_route':'B','formal_l0_required':True},**arguments)
     with pytest.raises(ValueError):op.intervention_message({'execution_route':'C','formal_l0_required':True,'effect':'local-qa'},**arguments)
+    with pytest.raises(ValueError):op.intervention_message({'execution_route':'C','formal_l0_required':True,'request_kind':'render'},**arguments)
     changed=dict(req);changed['purpose']='tampered'
     with pytest.raises(ValueError):op.request_message(changed,tmp_path/'request.json')
 
@@ -396,7 +378,7 @@ def test_doctor_exception_chain_retains_timeout_streams():
     assert cause['stderr']=='native loading'
 
 
-@pytest.mark.parametrize('version,compatible',[('4.23.0',False),('4.26.0',True),('4.99.0',True),('5.0.0',False),('invalid',None)])
+@pytest.mark.parametrize('version,compatible',[('4.17.0',False),('4.18.0',True),('4.23.0',True),('4.26.0',True),('4.99.0',True),('5.0.0',False),('invalid',None)])
 def test_doctor_reports_runtime_validator_version_compatibility(version,compatible):
     with patch('importlib.util.find_spec',side_effect=lambda name:True if name=='jsonschema' else None), patch('importlib.metadata.version',return_value=version), patch('shutil.which',return_value=None):
         report=op.doctor()

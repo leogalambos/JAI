@@ -2,14 +2,14 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/research-scientist:1",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/prototype",
+    "type/document",
     "domain/delivery"
   ],
   "applies_to": {
@@ -195,7 +195,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Research design and protocol', provide verifiable evidence satisfying: Loading, empty, partial, error, offline and success states are all specified. Required delivery form: Prototype plus annotated specification of all states.",
+        "For the specific output 'Research design and protocol', provide verifiable evidence satisfying: States research question, hypotheses, methods, sampling, ethics constraints, analysis plan and success or refutation criteria before execution. Required delivery form: Research protocol with reproducibility plan.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,7 +210,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Research design and protocol', provide verifiable evidence satisfying: Loading, empty, partial, error, offline and success states are all specified. Required delivery form: Prototype plus annotated specification of all states.",
+        "reason": "For the specific output 'Research design and protocol', provide verifiable evidence satisfying: States research question, hypotheses, methods, sampling, ethics constraints, analysis plan and success or refutation criteria before execution. Required delivery form: Research protocol with reproducibility plan.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#research-scientist:1",
           "content/types/prototype.yaml"
@@ -223,8 +223,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Research design and protocol",
-        "format": "Prototype plus annotated specification of all states",
-        "acceptance_criterion": "Loading, empty, partial, error, offline and success states are all specified",
+        "format": "Research protocol with reproducibility plan",
+        "acceptance_criterion": "States research question, hypotheses, methods, sampling, ethics constraints, analysis plan and success or refutation criteria before execution",
         "role_path": "skills/it-roles-data-analytics-and-ai/references/research-scientist.md"
       }
     },
@@ -664,7 +664,7 @@
     }
   ],
   "size_budget": {
-    "metric": "typed",
+    "metric": "semantic_units",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -683,6 +683,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Research Scientist",
+        "frameworks": [
+          "scientific method and peer review",
+          "reproducibility standards",
+          "ethical research review"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -708,13 +729,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -733,12 +755,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/document",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "prototype",
+  "semantic_family": "document",
   "role_overlay": {
     "contract_id": "research-scientist:1",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -747,8 +771,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "research-scientist:1",
-    "source_fingerprint": "f06898d530825c3b479513b4ba715c20b68764c2160d5d75a3bb246621acb7af",
-    "source_hash": "e63b77ec596224525369b5471f07ff8f104459e6e67686377eef7b1ad87306de"
+    "source_fingerprint": "667032bce75a69c113e60a90a362e18690dbff731c35fbe541a9fc1f541770c7",
+    "source_hash": "2690155b8759f6548d19910842607f2f0d88467f910f4eabd6ea07c7c82b846b"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

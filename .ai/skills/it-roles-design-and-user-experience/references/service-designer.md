@@ -100,7 +100,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
 | 1 | Service blueprints across front and back stage | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 2 | channel and touchpoint design | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
+| 2 | channel and touchpoint design | Channel and touchpoint design | Defines user journeys, front/back-stage responsibilities, channel transitions, failure recovery and validation criteria |
 | 3 | operational process implications | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 4 | service prototype and pilot results | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 
@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Service blueprints across front and back stage has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Service blueprints across front and back stage") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

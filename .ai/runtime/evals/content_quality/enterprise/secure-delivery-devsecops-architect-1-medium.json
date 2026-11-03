@@ -230,7 +230,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Secure delivery and DevSecOps architecture', provide verifiable evidence satisfying: The delivery path from source to production has explicit control objectives, authority boundaries, evidence and failure behaviour.. Required delivery form: Architecture definition with trust boundaries, control points, identities, data flows and enforcement ownership.",
+        "criterion_under_review": "For the specific output 'Secure delivery and DevSecOps architecture', provide verifiable evidence satisfying: The delivery path from source to production has explicit control objectives, authority boundaries, evidence and failure behaviour. Required delivery form: Architecture definition with trust boundaries, control points, identities, data flows and enforcement ownership.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

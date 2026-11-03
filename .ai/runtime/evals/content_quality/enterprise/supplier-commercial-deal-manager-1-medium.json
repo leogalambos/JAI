@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Supplier commercial strategy and negotiation brief', provide verifiable evidence satisfying: Human negotiator/authority can distinguish delegated positions from reserved decisions.. Required delivery form: Versioned term positions, trade-off packages, economic effects, mandate and escalation limits.",
+        "criterion_under_review": "For the specific output 'Supplier commercial strategy and negotiation brief', provide verifiable evidence satisfying: Human negotiator/authority can distinguish delegated positions from reserved decisions. Required delivery form: Versioned term positions, trade-off packages, economic effects, mandate and escalation limits.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

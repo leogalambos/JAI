@@ -104,7 +104,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | 1 | Interface content and microcopy | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 2 | content patterns and voice guidance | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 3 | error and system message library | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 4 | readability and comprehension test results | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 4 | readability and comprehension test results | Versioned assessment results with traceable evidence | Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations |
 
 ## 7. Output gates (blocking)
 
@@ -143,7 +143,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Interface content and microcopy has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Interface content and microcopy") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

@@ -1,55 +1,84 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 919 582" role="img" aria-labelledby="t d">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e3859"/><stop offset="1" stop-color="#0b6b9a"/></linearGradient><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3ba9d6"/></marker></defs>
-<title id="t">Incident to permanent fix</title>
-<desc id="d">Service restored, cause removed, and a control changed so the class of failure does not recur.</desc>
-<rect width="100%" height="100%" rx="24" fill="#f6fafc" stroke="#d6e6ee"/>
-<text x="42" y="38" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="700" fill="#0b1f33">Incident to permanent fix</text>
-<path d="M 277 116.0 L 334 116.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 577 116.0 L 634 116.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 759.5 162 L 759.5 192 L 759.5 192 L 759.5 236" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 642 290.0 L 585 290.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 342 290.0 L 285 290.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 159.5 336 L 159.5 366 L 159.5 366 L 159.5 410" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 277 464.0 L 334 464.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 577 464.0 L 634 464.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<rect x="42" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="94.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">1 · Service Desk Analyst</text>
-<text x="159.5" y="116.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">— impact and what the</text>
-<text x="159.5" y="138.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">user was trying to do</text>
-<rect x="342" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">2 · Incident Manager —</text>
-<text x="459.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">classifies by business</text>
-<text x="459.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">effect and drives</text>
-<text x="459.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">restoration</text>
-<rect x="642" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">3 · Site Reliability</text>
-<text x="759.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Engineer — restores</text>
-<text x="759.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">service while preserving</text>
-<text x="759.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">evidence</text>
-<rect x="642" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">4 · Major Incident</text>
-<text x="759.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Manager — takes command</text>
-<text x="759.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">when impact exceeds</text>
-<text x="759.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">normal handling</text>
-<rect x="342" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="268.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">5 · Problem Manager —</text>
-<text x="459.5" y="290.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">establishes the systemic</text>
-<text x="459.5" y="312.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">cause</text>
-<rect x="42" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">6 · Technical Lead — the</text>
-<text x="159.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">permanent fix</text>
-<rect x="42" y="418" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="442.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">7 · Change Manager — the</text>
-<text x="159.5" y="464.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">fix through the normal</text>
-<text x="159.5" y="486.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">path</text>
-<rect x="342" y="418" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="431.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">8 · Detection Engineer —</text>
-<text x="459.5" y="453.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">or Observability</text>
-<text x="459.5" y="475.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Engineer closes the</text>
-<text x="459.5" y="497.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">detection gap the</text>
-<rect x="642" y="418" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="431.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">9 · Continual</text>
-<text x="759.5" y="453.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Improvement Manager —</text>
-<text x="759.5" y="475.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">confirms the improvement</text>
-<text x="759.5" y="497.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">happened and held</text>
+<svg xmlns="http://www.w3.org/2000/svg" class="ai-inline-diagram-svg" viewBox="0 0 996 902" role="img" aria-labelledby="workflow-incident-to-problem-title workflow-incident-to-problem-description">
+<!-- SPDX-License-Identifier: BSD-4-Clause; Copyright (c) 2026 Leo Galambos and the Egothor team; https://www.egothor.org -->
+<title id="workflow-incident-to-problem-title">Incident to permanent fix</title>
+<desc id="workflow-incident-to-problem-description">Service restored, cause removed, and a control changed so the class of failure does not recur. Arrows follow the numbered stages. The table below supplies handoffs and acceptance gates.</desc>
+<defs><marker id="workflow-incident-to-problem-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#147eaa"/></marker></defs>
+<rect width="100%" height="100%" rx="16" fill="#f6fafc" stroke="#cbdde8"/>
+<text x="30" y="38" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#102d43" font-weight="700" text-anchor="start">Incident to permanent fix</text>
+<path d="M318,158 L346,158" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-incident-to-problem-arrow)"/>
+<path d="M642,158 L670,158" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-incident-to-problem-arrow)"/>
+<path d="M822,216 L822,264" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-incident-to-problem-arrow)"/>
+<path d="M678,332 L650,332" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-incident-to-problem-arrow)"/>
+<path d="M354,332 L326,332" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-incident-to-problem-arrow)"/>
+<path d="M174,390 L174,438" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-incident-to-problem-arrow)"/>
+<path d="M318,530 L346,530" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-incident-to-problem-arrow)"/>
+<path d="M642,530 L670,530" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-incident-to-problem-arrow)"/>
+<path d="M822,612 L822,660" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-incident-to-problem-arrow)"/>
+<path d="M678,752 L650,752" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-incident-to-problem-arrow)"/>
+<path d="M354,752 L326,752" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-incident-to-problem-arrow)"/>
+<g data-step="1"><rect x="30" y="100" width="288" height="116" rx="12" fill="#145776"/>
+<text x="46" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">1. Service Desk Analyst</text>
+<text x="46" y="166" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">captures impact and what the</text>
+<text x="46" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">user was trying to do</text>
+</g>
+<g data-step="2"><rect x="354" y="100" width="288" height="116" rx="12" fill="#145776"/>
+<text x="370" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">2. Incident Manager</text>
+<text x="370" y="166" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">classifies by business effect</text>
+<text x="370" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">and drives restoration</text>
+</g>
+<g data-step="3"><rect x="678" y="100" width="288" height="116" rx="12" fill="#145776"/>
+<text x="694" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">3. Site Reliability Engineer</text>
+<text x="694" y="166" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">restores service while</text>
+<text x="694" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">preserving evidence</text>
+</g>
+<g data-step="4"><rect x="678" y="274" width="288" height="116" rx="12" fill="#145776"/>
+<text x="694" y="303" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">4. Major Incident Manager</text>
+<text x="694" y="340" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">takes command when impact</text>
+<text x="694" y="364" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">exceeds normal handling</text>
+</g>
+<g data-step="5"><rect x="354" y="274" width="288" height="116" rx="12" fill="#145776"/>
+<text x="370" y="303" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">5. Problem Manager</text>
+<text x="370" y="340" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">establishes the systemic cause</text>
+</g>
+<g data-step="6"><rect x="30" y="274" width="288" height="116" rx="12" fill="#145776"/>
+<text x="46" y="303" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">6. Technical Lead</text>
+<text x="46" y="340" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">designs the permanent fix</text>
+</g>
+<g data-step="7"><rect x="30" y="448" width="288" height="164" rx="12" fill="#145776"/>
+<text x="46" y="477" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">7. Software Engineer</text>
+<text x="46" y="514" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">implements and tests the</text>
+<text x="46" y="538" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">candidate permanent fix in the</text>
+<text x="46" y="562" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">explicitly permitted</text>
+<text x="46" y="586" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">pre-production scope</text>
+</g>
+<g data-step="8"><rect x="354" y="448" width="288" height="164" rx="12" fill="#145776"/>
+<text x="370" y="477" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">8. Change Manager</text>
+<text x="370" y="514" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">obtains the named human change</text>
+<text x="370" y="538" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">decision for the permanent fix</text>
+</g>
+<g data-step="9"><rect x="678" y="448" width="288" height="164" rx="12" fill="#145776"/>
+<text x="694" y="477" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">9. Software Engineer</text>
+<text x="694" y="514" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">deploys the exact reviewed and</text>
+<text x="694" y="538" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">authorised permanent-fix</text>
+<text x="694" y="562" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">candidate</text>
+</g>
+<g data-step="10"><rect x="678" y="670" width="288" height="164" rx="12" fill="#145776"/>
+<text x="694" y="699" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">10. Test Analyst</text>
+<text x="694" y="736" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">performs independent</text>
+<text x="694" y="760" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">validation of the deployed</text>
+<text x="694" y="784" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">permanent fix against</text>
+<text x="694" y="808" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">predeclared criteria</text>
+</g>
+<g data-step="11"><rect x="354" y="670" width="288" height="164" rx="12" fill="#145776"/>
+<text x="370" y="699" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">11. Detection Engineer</text>
+<text x="370" y="736" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">or Observability Engineer</text>
+<text x="370" y="760" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">closes the detection gap the</text>
+<text x="370" y="784" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">incident exposed</text>
+</g>
+<g data-step="12"><rect x="30" y="670" width="288" height="164" rx="12" fill="#145776"/>
+<text x="46" y="699" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">12. Continual Improvement</text>
+<text x="46" y="723" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">Manager</text>
+<text x="46" y="760" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">confirms the improvement</text>
+<text x="46" y="784" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">happened and held</text>
+</g>
 </svg>

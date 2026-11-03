@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Test scripts and sampling rationale', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "criterion_under_review": "For the specific output 'Test scripts and sampling rationale', provide verifiable evidence satisfying: Defines control objectives, population, sampling method, ordered test actions, expected evidence and limits of inference. Required delivery form: Test procedures and sampling rationale.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

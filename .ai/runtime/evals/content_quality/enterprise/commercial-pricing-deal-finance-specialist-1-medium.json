@@ -169,6 +169,61 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
+    "deal_model_assumptions": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-DEAL-MODEL-ASSUMPTIONS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Identify the exact deal scenario, term, currency, price/escalation basis, volumes, staffing/productivity, rates, tax/working-capital assumptions where applicable, source and accountable assumption owner.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "deal_model_calculations": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-DEAL-MODEL-CALCULATIONS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Provide inspectable formulas linking assumptions to delivery costs, supplier/customer cash-flow timing, revenues, margin and funding exposure; identify units, period granularity and calculation dependencies rather than supplying unexplained totals.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "deal_model_controls": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-DEAL-MODEL-CONTROLS",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Reconcile detailed schedules and totals, expose formula/input inconsistencies and run sensitivity scenarios for material volume, timing, cost and collection assumptions; separate a modelled outcome from an approved price or commitment.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
     "decision_purpose_correction": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -214,7 +269,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Deal financial and cash-flow model', provide verifiable evidence satisfying: Inputs, units, formulas, dependencies and policy treatment reconcile; no unsupported precision.. Required delivery form: Versioned, reproducible calculations with cost bridge, price options, margin, cash and sensitivities.",
+        "criterion_under_review": "For the specific output 'Deal financial and cash-flow model', provide verifiable evidence satisfying: Inputs, units, formulas, dependencies and policy treatment reconcile; no unsupported precision. Required delivery form: Versioned, reproducible calculations with cost bridge, price options, margin, cash and sensitivities.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -376,6 +431,9 @@
         "role/commercial-pricing-deal-finance-specialist:1.contract_input_3",
         "role/commercial-pricing-deal-finance-specialist:1.contract_input_4",
         "role/commercial-pricing-deal-finance-specialist:1.contract_relations",
+        "role/commercial-pricing-deal-finance-specialist:1.deal_model_assumptions",
+        "role/commercial-pricing-deal-finance-specialist:1.deal_model_calculations",
+        "role/commercial-pricing-deal-finance-specialist:1.deal_model_controls",
         "role/commercial-pricing-deal-finance-specialist:1.decision_purpose_correction",
         "role/commercial-pricing-deal-finance-specialist:1.delivery_scope",
         "role/commercial-pricing-deal-finance-specialist:1.delivery_verification",

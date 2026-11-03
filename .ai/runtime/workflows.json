@@ -1,5 +1,5 @@
 {
-  "version": "26.10.14",
+  "version": "26.11.0",
   "count": 24,
   "workflows": [
     {
@@ -429,7 +429,7 @@
           "operator_agent": "role-engineer",
           "does": "restores service while preserving evidence",
           "hands_over": "service restored; evidence preserved",
-          "gate": "Evidence kept before destructive recovery"
+          "gate": "Prior applicable standard or emergency change authorisation covers restoration effects; preserve evidence before destructive recovery; stop for named human approval if scope is not already authorised"
         },
         {
           "step": 4,
@@ -466,17 +466,50 @@
         },
         {
           "step": 7,
+          "role": "Software Engineer",
+          "slug": "software-engineer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "implements and tests the candidate permanent fix in the explicitly permitted pre-production scope",
+          "hands_over": "versioned candidate, pre-production test evidence and rollback rehearsal",
+          "gate": "Preparation is confined to permitted code, data and test environments; no production effects before the exact human change decision"
+        },
+        {
+          "step": 8,
           "role": "Change Manager",
           "slug": "change-manager",
           "skill": "it-roles-service-management-and-support",
           "tool_tier": "advise",
           "operator_agent": "role-advisor",
-          "does": "authorises the fix through the normal path",
+          "does": "obtains the named human change decision for the permanent fix",
           "hands_over": "change authorisation",
-          "gate": "Emergency path used only where justified, and logged"
+          "gate": "Candidate fix design, pre-production test evidence and rollback plan precede the human decision; emergency authorisation is justified and logged before effects"
         },
         {
-          "step": 8,
+          "step": 9,
+          "role": "Software Engineer",
+          "slug": "software-engineer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "deploys the exact reviewed and authorised permanent-fix candidate",
+          "hands_over": "versioned fix, execution evidence and rollback observations",
+          "gate": "Prior exact human change authorisation covers deployment; stop on scope change or failed stop/go criteria"
+        },
+        {
+          "step": 10,
+          "role": "Test Analyst",
+          "slug": "test-analyst",
+          "skill": "it-roles-quality-and-testing",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "performs independent validation of the deployed permanent fix against predeclared criteria",
+          "hands_over": "independent regression, service and residual-defect evidence",
+          "gate": "Actual execution and independent validation evidence are required before closure; failed criteria remain blocking"
+        },
+        {
+          "step": 11,
           "role": "Detection Engineer",
           "slug": "detection-engineer",
           "skill": "it-roles-security-operations-and-defensive-security",
@@ -484,10 +517,10 @@
           "operator_agent": "role-engineer",
           "does": "or Observability Engineer closes the detection gap the incident exposed",
           "hands_over": "new or tuned alert with a runbook",
-          "gate": "The alert would have fired earlier for this failure"
+          "gate": "Prior exact change authorisation covers alert changes; prove the alert would have fired earlier for this failure"
         },
         {
-          "step": 9,
+          "step": 12,
           "role": "Continual Improvement Manager",
           "slug": "continual-improvement-manager",
           "skill": "it-roles-service-management-and-support",
@@ -546,31 +579,31 @@
           "skill": "it-roles-infrastructure-cloud-and-operations",
           "tool_tier": "execute",
           "operator_agent": "role-engineer",
-          "does": "rebuilds affected images from patched bases where the finding is inherited",
-          "hands_over": "rebuilt signed images",
-          "gate": "Base image owner and cadence identified"
+          "does": "prepares rebuilt signed candidate images from patched bases where the finding is inherited",
+          "hands_over": "candidate images and validation evidence",
+          "gate": "Base image owner and cadence identified; candidate preparation does not deploy to production"
         },
         {
           "step": 5,
-          "role": "Software Engineer",
-          "slug": "software-engineer",
-          "skill": "it-roles-software-development-and-engineering",
-          "tool_tier": "execute",
-          "operator_agent": "role-engineer",
-          "does": "or Linux Systems Administrator applies the fix",
-          "hands_over": "patched system or dependency",
-          "gate": "Fix verified, not assumed from a version number"
-        },
-        {
-          "step": 6,
           "role": "Change Manager",
           "slug": "change-manager",
           "skill": "it-roles-service-management-and-support",
           "tool_tier": "advise",
           "operator_agent": "role-advisor",
-          "does": "authorises the remediation window",
-          "hands_over": "change authorisation",
-          "gate": "Risk of patching weighed against risk of waiting, explicitly"
+          "does": "coordinates authorisation of the remediation scope and window before deployment",
+          "hands_over": "change authorisation, approved window and rollback conditions",
+          "gate": "Named change authority approves before any production change; the authorised emergency route applies to urgent changes; risk of patching weighed against risk of waiting"
+        },
+        {
+          "step": 6,
+          "role": "Software Engineer",
+          "slug": "software-engineer",
+          "skill": "it-roles-software-development-and-engineering",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "or Linux Systems Administrator deploys the approved candidate fix within the authorised scope and window",
+          "hands_over": "patched system or dependency with execution and verification evidence",
+          "gate": "Current change authorisation and rollback conditions confirmed before deployment; fix verified, not assumed from a version number"
         },
         {
           "step": 7,
@@ -901,9 +934,9 @@
           "skill": "it-roles-data-analytics-and-ai",
           "tool_tier": "execute",
           "operator_agent": "role-engineer",
-          "does": "builds and honestly characterises the model",
-          "hands_over": "model with held-out performance and stated limits",
-          "gate": "Failure modes and the population it must not be applied to are stated"
+          "does": "builds and characterises a candidate model within the explicitly permitted pre-production scope",
+          "hands_over": "candidate model with held-out performance and stated limits",
+          "gate": "Permitted data and test scope are explicit; no production or pilot use before named human approval; failure modes and excluded populations are stated"
         },
         {
           "step": 4,
@@ -923,42 +956,53 @@
           "skill": "it-roles-data-analytics-and-ai",
           "tool_tier": "advise",
           "operator_agent": "role-advisor",
-          "does": "probes the deployment configuration for harm and misuse",
+          "does": "assesses the candidate deployment configuration for harm and misuse within the authorised test scope",
           "hands_over": "adversarial findings with severity and owners",
-          "gate": "Tested against the configuration users will actually get"
+          "gate": "Candidate tests use the intended configuration without production or pilot effects; any offensive testing requires prior written authorisation"
         },
         {
           "step": 6,
+          "role": "Named authority",
+          "slug": "named-authority",
+          "skill": "external",
+          "tool_tier": "advise",
+          "operator_agent": "human",
+          "does": "records the human deployment and operating decision on the reviewed candidate",
+          "hands_over": "exact scoped human approval or rejection",
+          "gate": "Candidate evidence, privacy, safety, lineage, monitoring and rollback readiness are reviewed before any production or pilot effect; an agent cannot approve"
+        },
+        {
+          "step": 7,
           "role": "Machine Learning Engineer",
           "slug": "machine-learning-engineer",
           "skill": "it-roles-data-analytics-and-ai",
           "tool_tier": "execute",
           "operator_agent": "role-engineer",
-          "does": "productionises with full lineage",
-          "hands_over": "reproducible training and traceable deployed version",
-          "gate": "Every deployed version traceable to its training run"
+          "does": "deploys the exact approved model and configuration with full lineage",
+          "hands_over": "authorised deployed version and reproducible training lineage",
+          "gate": "Prior named human approval covers the exact version, data, users, environment and production or pilot scope; every deployed version is traceable to its training run"
         },
         {
-          "step": 7,
+          "step": 8,
           "role": "MLOps Engineer",
           "slug": "mlops-engineer",
           "skill": "it-roles-data-analytics-and-ai",
           "tool_tier": "execute",
           "operator_agent": "role-engineer",
-          "does": "operates the lifecycle with rollback",
+          "does": "operates the approved lifecycle with monitoring and rollback",
           "hands_over": "monitored model with defined thresholds and rollback",
-          "gate": "Automatic or documented rollback route exists"
+          "gate": "Prior named human approval covers operation and rollback scope; thresholds and an authorised rollback route exist"
         },
         {
-          "step": 8,
+          "step": 9,
           "role": "AI Governance Officer",
           "slug": "ai-governance-officer",
           "skill": "it-roles-data-analytics-and-ai",
           "tool_tier": "advise",
           "operator_agent": "role-advisor",
-          "does": "approves, and re-tests at the review date",
-          "hands_over": "approval record and review date",
-          "gate": "Route to challenge the system's decisions is published"
+          "does": "coordinates periodic reassessment and routes material changes for renewed human approval",
+          "hands_over": "periodic assessment, challenge route and next review trigger",
+          "gate": "The challenge route is published; expired or materially changed scope is not operated without renewed prior human approval"
         }
       ],
       "path": "skills/it-role-workflows/references/ai-system-approval.md"
@@ -1256,9 +1300,9 @@
           "skill": "it-roles-data-analytics-and-ai",
           "tool_tier": "execute",
           "operator_agent": "role-engineer",
-          "does": "implements and rehearses migration pipelines against production-like volume",
-          "hands_over": "migration execution evidence and exceptions",
-          "gate": "Rehearsal proves throughput, error handling and repeatability"
+          "does": "implements and rehearses candidate migration pipelines in the explicitly permitted pre-production environment",
+          "hands_over": "pre-production rehearsal evidence and exceptions",
+          "gate": "Permitted data and test scope are explicit; rehearsal proves throughput, error handling and repeatability without production cutover effects"
         },
         {
           "step": 4,
@@ -1269,7 +1313,7 @@
           "operator_agent": "role-author",
           "does": "independently assesses migration, reconciliation and business acceptance evidence",
           "hands_over": "test and residual-risk report",
-          "gate": "Exit criteria were defined before execution and are met or explicitly waived"
+          "gate": "Rehearsal exit criteria are defined before execution; any permitted exception has prior named authority for its exact scope; mandatory controls remain blocking"
         },
         {
           "step": 5,
@@ -1289,9 +1333,9 @@
           "skill": "it-roles-software-development-and-engineering",
           "tool_tier": "execute",
           "operator_agent": "role-engineer",
-          "does": "integrates deployment artefacts with the cutover critical path",
-          "hands_over": "release manifest and deployment/rollback evidence",
-          "gate": "Exact artefact versions and rollback steps are known"
+          "does": "prepares the candidate release manifest and rehearses deployment and rollback within the permitted pre-production scope",
+          "hands_over": "candidate release manifest and rehearsal deployment/rollback evidence",
+          "gate": "Exact artefact versions and rollback steps are known; no production effects before the human change decision"
         },
         {
           "step": 7,
@@ -1300,12 +1344,45 @@
           "skill": "it-roles-service-management-and-support",
           "tool_tier": "advise",
           "operator_agent": "role-advisor",
-          "does": "authorises the production window and stop/go governance",
+          "does": "obtains the named human decision for the production window and stop/go governance",
           "hands_over": "production change authorisation",
-          "gate": "Rehearsal, reconciliation and operational evidence are available to the decision"
+          "gate": "Pre-production rehearsal, reconciliation design and operational readiness evidence precede exact human authorisation covering cutover and validation effects, data, versions, environment, window and rollback boundaries; no destructive test or data exposure outside that prior approved scope"
         },
         {
           "step": 8,
+          "role": "Data Engineer",
+          "slug": "data-engineer",
+          "skill": "it-roles-data-analytics-and-ai",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "executes the approved production cutover with the release operator and records reconciliation and rollback observations",
+          "hands_over": "actual cutover execution, reconciliation and stop/go evidence",
+          "gate": "Prior exact human change authorisation covers data, versions, environment, window and rollback; stop on failed criteria or changed scope"
+        },
+        {
+          "step": 9,
+          "role": "Test Analyst",
+          "slug": "test-analyst",
+          "skill": "it-roles-quality-and-testing",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "performs independent actual post-cutover validation of reconciliation, service behaviour and stability against predeclared criteria",
+          "hands_over": "executed independent validation cases, observed results, reconciliation evidence and located defects",
+          "gate": "Prior exact human change authorisation covers the validation effects and data boundaries; no unapproved destructive tests or data exposure; record actual observations and untested conditions without substituting the migration executor's self-check"
+        },
+        {
+          "step": 10,
+          "role": "Test Manager",
+          "slug": "test-manager",
+          "skill": "it-roles-quality-and-testing",
+          "tool_tier": "author",
+          "operator_agent": "role-author",
+          "does": "assesses independent post-cutover validation, reconciliation and stability evidence",
+          "hands_over": "independent production validation and residual-risk report",
+          "gate": "Independent validation uses actual authorised execution evidence against predeclared criteria; unresolved blocking defects prevent service acceptance"
+        },
+        {
+          "step": 11,
           "role": "IT Service Owner",
           "slug": "it-service-owner",
           "skill": "it-roles-executive-and-leadership",
@@ -1419,7 +1496,7 @@
           "operator_agent": "evidence-rationale-reviewer",
           "does": "checks evidence strength, assumptions, alternatives, rationale and residual risk",
           "hands_over": "semantic gate result and located findings",
-          "gate": "Semantic Gate PASS or explicit waiver by named authority"
+          "gate": "Semantic Gate PASS and the exact stable semantic snapshot has its required source approval under the governing profile, including verified external human proof where required, before the editor acts; only an existing expressly permitted prior scoped waiver applies, and mandatory controls remain blocking"
         },
         {
           "step": 3,
@@ -1428,9 +1505,9 @@
           "skill": "agent",
           "tool_tier": "execute",
           "operator_agent": "enterprise-publication-editor",
-          "does": "selects publication archetype and renders audience-specific DOCX/PPTX/XLSX/HTML/SVG outputs",
+          "does": "selects the publication archetype and renders audience-specific DOCX/PPTX/XLSX/HTML/SVG outputs from the exact approved semantic snapshot",
           "hands_over": "rendered publication set with semantic hash",
-          "gate": "All outputs carry the same semantic SHA-256 and required document control"
+          "gate": "All outputs carry the same semantic SHA-256 and required document control; draft rendering grants no acceptance or release"
         },
         {
           "step": 4,
@@ -1441,7 +1518,7 @@
           "operator_agent": "visual-quality-reviewer",
           "does": "checks density, hierarchy, legibility, tables, diagrams, document control and package integrity",
           "hands_over": "publication gate result and findings",
-          "gate": "Publication Gate PASS; material defects are resolved or explicitly waived"
+          "gate": "Publication Gate PASS with blocking defects resolved; any policy-permitted waiver requires prior named human authority for its exact scope before release or other gated effects; mandatory controls remain blocking"
         },
         {
           "step": 5,
@@ -1449,10 +1526,10 @@
           "slug": "named-authority",
           "skill": "external",
           "tool_tier": "advise",
-          "operator_agent": "authority-liaison",
-          "does": "approves consequential publication for release",
+          "operator_agent": "human",
+          "does": "reviews completed semantic, publication and actual visual evidence and records the human release decision",
           "hands_over": "release approval",
-          "gate": "Approval is by an authority independent of the publication editor where governance requires it"
+          "gate": "Explicit exact human approval precedes release; required independence is preserved; agents cannot approve or issue waivers"
         }
       ]
     },
@@ -1571,28 +1648,39 @@
         },
         {
           "step": 4,
-          "role": "Identity and Access Management Engineer",
-          "slug": "identity-and-access-management-engineer",
-          "skill": "it-roles-security-operations-and-defensive-security",
-          "tool_tier": "execute",
-          "operator_agent": "role-engineer",
-          "does": "removes/transfers identities, privileged access, secrets/certificates as assigned",
-          "hands_over": "access/credential closure evidence",
-          "gate": "No active credential remains without owner and purpose"
-        },
-        {
-          "step": 5,
           "role": "Change Manager",
           "slug": "change-manager",
           "skill": "it-roles-service-management-and-support",
           "tool_tier": "advise",
           "operator_agent": "role-advisor",
-          "does": "applies the authorised production-change path and rollback boundary",
-          "hands_over": "approved execution window/decision",
-          "gate": "Destructive steps are within approved change authority"
+          "does": "obtains the named human change decision for the exact retirement execution window and rollback boundary",
+          "hands_over": "prior scoped human production-change authorisation",
+          "gate": "Dependency and data-disposition plans and rehearsal evidence are available before destructive action; approval covers exact credential and service changes, not a completed retirement"
+        },
+        {
+          "step": 5,
+          "role": "Identity and Access Management Engineer",
+          "slug": "identity-and-access-management-engineer",
+          "skill": "it-roles-security-operations-and-defensive-security",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "transfers or revokes approved nonessential access and prepares final credential closure with the shutdown operator",
+          "hands_over": "access-transfer evidence and the exact owned, time-bounded shutdown-access list",
+          "gate": "Prior exact human change approval covers each removal or transfer; retain only explicitly owned bounded shutdown credentials needed for the approved shutdown, with purpose, expiry and final revocation owner"
         },
         {
           "step": 6,
+          "role": "Site Reliability Engineer",
+          "slug": "site-reliability-engineer",
+          "skill": "it-roles-infrastructure-cloud-and-operations",
+          "tool_tier": "execute",
+          "operator_agent": "role-engineer",
+          "does": "executes the approved service or platform shutdown and coordinates final credential closure with the assigned IAM actor",
+          "hands_over": "actual shutdown, final credential revocation and reconciliation evidence, and verified technical state",
+          "gate": "Prior exact human change and data-disposition authorisation covers every effect; stop on changed scope or failed dependency/archive checks; the assigned IAM actor closes retained shutdown access and verifies final credential reconciliation before asset reconciliation"
+        },
+        {
+          "step": 7,
           "role": "IT Asset Manager",
           "slug": "it-asset-manager",
           "skill": "it-roles-service-management-and-support",
@@ -1603,7 +1691,7 @@
           "gate": "Systems of record match the retired technical state"
         },
         {
-          "step": 7,
+          "step": 8,
           "role": "Architecture Repository and Modelling Lead",
           "slug": "architecture-repository-and-modelling-lead",
           "skill": "it-roles-architecture",
@@ -1614,7 +1702,7 @@
           "gate": "Repository has no unowned active dependency into the retired element"
         },
         {
-          "step": 8,
+          "step": 9,
           "role": "Benefits Realisation Manager",
           "slug": "benefits-realisation-manager",
           "skill": "it-roles-product-delivery-and-agile",

@@ -1,7 +1,5 @@
 # Architecture security assessment and recurring findings management
 
-Owner: JAI documentation maintainers  
-Review date: 2026-10-20
 
 ACME Corp operates a shared monitoring platform. Bob owns the platform;
 Alice performs the assessment. They need an architecture assessment and

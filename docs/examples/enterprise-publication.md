@@ -1,6 +1,5 @@
 # Publish an enterprise decision document
 
-Owner: JAI maintainers. Last reviewed: 2026-10-20.
 
 This walkthrough illustrates the `semantic-to-enterprise-publication` workflow recipe.
 It is not an additional native slash command.

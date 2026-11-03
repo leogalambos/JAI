@@ -21,7 +21,7 @@ The **Claude** column is typed in the Claude Code conversation. The **Codex** co
 | `/publish` | `$workflow-publish` | Render reviewed semantics into enterprise deliverables. |
 | `/repository` | `$workflow-repository` | Scoped EA-domain projection repository operations and Open Exchange interoperability. |
 | `/commercial` | `$workflow-commercial` | Opt-in supplier opportunity-to-exit coordination with commercial-delivery/1; strict provider controls require current runtime evidence. |
-| `/layered` | `$workflow-layered` | Consequential JAI L1–L6 flow with typed contracts, bottom-up review, bounded rework/reformulation and L0 escalation. |
+| `/layered` | `$workflow-layered` | Consequential Gen2 SABSA delivery: Contextual, Conceptual, Logical, Physical, Component and Management, with local setter/author/independent reviewer responsibilities, bounded rework and L0 escalation. |
 | `/fabric-report` | `$workflow-fabric-report` | Independent audit/report view over a Fabric record. |
 
 ## Direct tools

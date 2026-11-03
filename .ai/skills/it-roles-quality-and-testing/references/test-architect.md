@@ -100,7 +100,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
 | 1 | Enterprise test architecture | Model in the EA tool plus a published view set | Every element traces to a driver or a quality-attribute target; no orphan elements |
-| 2 | environment and test data strategy | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 2 | environment and test data strategy | Environment and test-data strategy | Defines representative environments/data, lawful use, provisioning, isolation, dependencies and capability gaps |
 | 3 | tooling standards and integration design | Controlled document referencing the parent policy | Requirements are specific, measurable and technology-explicit |
 | 4 | quality metric framework | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 
@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Enterprise test architecture has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Enterprise test architecture") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

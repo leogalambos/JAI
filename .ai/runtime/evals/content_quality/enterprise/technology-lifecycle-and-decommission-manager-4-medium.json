@@ -248,7 +248,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Residual obligations and benefits closure report', provide verifiable evidence satisfying: Remaining obligations are owned and dated; expected cost/risk/complexity benefit is measured or variance is explained.. Required delivery form: Decision-ready closure report.",
+        "criterion_under_review": "For the specific output 'Residual obligations and benefits closure report', provide verifiable evidence satisfying: Remaining obligations are owned and dated; expected cost/risk/complexity benefit is measured or variance is explained. Required delivery form: Decision-ready closure report.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

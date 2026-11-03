@@ -1,0 +1,188 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Processing responses, immutable receipts and safe errors",
+  "$defs": {
+    "error": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "enum": [
+            "P_PARSE",
+            "P_SCHEMA",
+            "P_IDENTITY",
+            "P_ORIGIN",
+            "P_CONTEXT",
+            "P_SCOPE",
+            "P_IDEMPOTENCY",
+            "P_EXPIRED",
+            "P_HEAD",
+            "P_STATE",
+            "P_PROOF",
+            "P_BUDGET",
+            "P_CONFLICT",
+            "P_INTEGRITY"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "message_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "request_id": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "field": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "message_id",
+        "request_id",
+        "field"
+      ],
+      "additionalProperties": false
+    },
+    "receipt": {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.governed-delivery/1"
+        },
+        "message_id": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "request_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "origin_binding": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "assessed_at_ms": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "before_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "after_head": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "transaction_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "created_versions": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        },
+        "effect_digest": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "affected_uses": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/use_point"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "protocol",
+        "message_id",
+        "request_id",
+        "origin_binding",
+        "assessed_at_ms",
+        "before_head",
+        "after_head",
+        "transaction_id",
+        "created_versions",
+        "effect_digest",
+        "affected_uses"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "status": {
+          "enum": [
+            "committed",
+            "already_committed"
+          ]
+        },
+        "receipt": {
+          "$ref": "#/$defs/receipt"
+        },
+        "error": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "status",
+        "receipt",
+        "error"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "status": {
+          "const": "rejected"
+        },
+        "receipt": {
+          "type": "null"
+        },
+        "error": {
+          "$ref": "#/$defs/error"
+        }
+      },
+      "required": [
+        "status",
+        "receipt",
+        "error"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

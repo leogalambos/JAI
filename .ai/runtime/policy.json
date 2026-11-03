@@ -24,14 +24,6 @@
     "library-release": "execute",
     "docs-author": "author",
     "source-docs-engineer": "execute",
-    "l1-intent": "route",
-    "l2-meaning": "advise",
-    "l3-policy": "advise",
-    "l4-design": "advise",
-    "l5-realisation": "author",
-    "l6-evidence": "inspect",
-    "fabric-auditor": "inspect",
-    "authority-liaison": "route",
     "document-reviewer": "inspect",
     "artefact-governor": "inspect",
     "research-analyst": "research",
@@ -43,45 +35,8 @@
     "enterprise-publication-editor": "execute",
     "visual-quality-reviewer": "inspect",
     "architecture-repository-engineer": "execute",
-    "model-consistency-reviewer": "inspect"
-  },
-  "layers": {
-    "1": {
-      "name": "Intent and Context",
-      "agent": "l1-intent",
-      "tier": "route",
-      "model_class": "heavy"
-    },
-    "2": {
-      "name": "Meaning and Domain Model",
-      "agent": "l2-meaning",
-      "tier": "advise",
-      "model_class": "standard"
-    },
-    "3": {
-      "name": "Reasoning, Policy and Control",
-      "agent": "l3-policy",
-      "tier": "advise",
-      "model_class": "heavy"
-    },
-    "4": {
-      "name": "Solution Design",
-      "agent": "l4-design",
-      "tier": "advise",
-      "model_class": "standard"
-    },
-    "5": {
-      "name": "Realisation and Tooling",
-      "agent": "l5-realisation",
-      "tier": "author",
-      "model_class": "heavy"
-    },
-    "6": {
-      "name": "Execution and Evidence",
-      "agent": "l6-evidence",
-      "tier": "inspect",
-      "model_class": "standard"
-    }
+    "model-consistency-reviewer": "inspect",
+    "fabric-auditor": "route"
   },
   "operator_for_tier": {
     "advise": "role-advisor",
@@ -201,57 +156,6 @@
       ],
       "deny": []
     },
-    "l1-intent": {
-      "allow": [],
-      "deny": [
-        "**"
-      ]
-    },
-    "l2-meaning": {
-      "allow": [],
-      "deny": [
-        "**"
-      ]
-    },
-    "l3-policy": {
-      "allow": [],
-      "deny": [
-        "**"
-      ]
-    },
-    "l4-design": {
-      "allow": [],
-      "deny": [
-        "**"
-      ]
-    },
-    "l5-realisation": {
-      "allow": [
-        "<workspace>/**"
-      ],
-      "deny": [
-        "~/.claude/**",
-        "**/.fabric/**"
-      ]
-    },
-    "l6-evidence": {
-      "allow": [],
-      "deny": [
-        "**"
-      ]
-    },
-    "fabric-auditor": {
-      "allow": [],
-      "deny": [
-        "**"
-      ]
-    },
-    "authority-liaison": {
-      "allow": [],
-      "deny": [
-        "**"
-      ]
-    },
     "document-reviewer": {
       "allow": [
         "<workspace>/.findings/** via findings.py"
@@ -352,6 +256,12 @@
       "deny": [
         "**"
       ]
+    },
+    "fabric-auditor": {
+      "allow": [],
+      "deny": [
+        "**"
+      ]
     }
   },
   "enforcement": {
@@ -396,9 +306,6 @@
     "Every skill in a guarded category must be route or advise tier and cleared by engagement-authorisation-guard.",
     "No agent both drafts and approves a library change.",
     "Writes into the live library require a current, scoped, human-recorded approval.",
-    "docs-author may not write source files; source-docs-engineer may not change behaviour.",
-    "No role is ever operated by an agent wider than the narrower of its own tier and its layer agent's.",
-    "Adjacent layer agents use different models, so no reviewer shares its producer's model (T6).",
-    "The traceability fabric is written only by fabric.py; authority decisions only by a human at a terminal."
+    "docs-author may not write source files; source-docs-engineer may not change behaviour."
   ]
 }

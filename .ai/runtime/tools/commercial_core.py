@@ -321,15 +321,18 @@ def _time(value):
     return datetime.fromisoformat(value.replace("Z", "+00:00"))
 
 
-def readiness(snapshot, now=None, identity_verifier=None, fabric_resolver=None, enforcement_verifier=None):
+def readiness(snapshot, now=None, identity_verifier=None, fabric_resolver=None, enforcement_verifier=None,
+              required_controls=()):
     """Return blockers for each commitment; never infer truth from file existence.
 
     Args: now is an aware datetime; identity_verifier is a trusted dispatcher-owned
-        callback returning {principal, subject_digest} for a verified signed attestation.
+        callback returning {principal, subject_digest} for actual admitted execution.
         subject_digest binds the entity excluding its own attestation field; both
         maker and checker must be authenticated and distinct.
         fabric_resolver verifies ledger-backed exact bindings. enforcement_verifier
-        authenticates host evidence for each control; snapshot strings never suffice.
+        authenticates host evidence for explicitly required policy controls;
+        snapshot strings never suffice. required_controls is a host-selected
+        sequence, not an inferred blanket physical-hardening prerequisite.
     A callback must be injected by the host, never loaded from snapshot data.
     """
     validate_snapshot(snapshot)
@@ -388,12 +391,9 @@ def readiness(snapshot, now=None, identity_verifier=None, fabric_resolver=None, 
                 if not fabric_resolver or not fabric_resolver(entity, snapshot):
                     blockers.append(f"{key}: actual Fabric binding unverified")
     enforcement = snapshot.get("enforcement", {})
-    for control in ("identity", "tool_permissions", "mount_isolation", "context_isolation"):
+    for control in required_controls:
         if not enforcement_verifier or not enforcement_verifier(control, enforcement.get(control)):
             blockers.append(f"enforcement: {control} unverified")
-    layers = {e["data"].get("layer") for e in index.values() if e["type"] == "ExecutionContract"}
-    if layers != set(range(1, 7)):
-        blockers.append("incomplete L1–L6 execution chain")
     if identity_verifier is None:
         blockers.append("enforcement: trusted identity verifier unavailable")
     for required_type in ("Source", "Passage", "Need", "Attribute", "Requirement", "DomainContract", "Fragment", "WorkPackage", "Estimate", "RoleAllocation", "Rate", "Cost", "Price", "Reserve", "Baseline", "Forecast", "Publication"):
@@ -411,9 +411,10 @@ def readiness(snapshot, now=None, identity_verifier=None, fabric_resolver=None, 
             level = contract["data"].get("layer")
             if level and level > 1 and not any(edge["type"] in FORWARD and edge["output"] == contract["version_id"] and index[edge["input"]]["type"] == "ExecutionContract" and index[edge["input"]]["data"].get("layer") == level - 1 for edge in snapshot["relations"]):
                 blockers.append(f"{contract['version_id']}: missing adjacent execution dependency")
-    if not enforcement_verifier or not enforcement_verifier("operational_recovery", snapshot.get("operational_recovery")):
-        blockers.append("operational recovery/retention/legal-hold controls require external deployment qualification")
-    return {"ready": not blockers, "blockers": blockers, "authority_granted": False}
+    return {"ready": not blockers, "blockers": blockers, "authority_granted": False,
+            "assurance": {"required_controls": list(required_controls),
+                          "unmeasured_claims": ["physical mount isolation", "operational recovery/retention/legal hold"],
+                          "note": "Business readiness does not attest sandbox or deployment hardening."}}
 
 
 def project(snapshot, audience, policy):

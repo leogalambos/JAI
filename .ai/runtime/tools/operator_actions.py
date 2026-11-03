@@ -11,12 +11,21 @@ import argparse, base64, hashlib, json, os, re, shlex, stat, subprocess, sys, te
 from pathlib import Path
 
 from runtime_dependencies import jsonschema_status
+from operator_keys import default_private_key
 
 CRYPTO='/usr/bin/openssl'
 CRYPTO_ENV={'PATH':'/usr/bin:/bin','LANG':'C.UTF-8','OPENSSL_CONF':'/dev/null'}
 
-KINDS={'render','fabric-authorise','fabric-review','lifecycle-update','dependency-install','git-maintenance'}
+PURPOSE_CAPABILITIES = {
+    'render': 'render', 'dependency-install': 'dependency-install',
+    'git-maintenance': 'git-maintenance', 'fabric-authorise': 'authorise',
+    'fabric-review': 'accept', 'lifecycle-update': 'lifecycle-update',
+    'delivery-change': 'lifecycle-update', 'delivery-accept': 'accept',
+    'delivery-release': 'release',
+}
+KINDS=set(PURPOSE_CAPABILITIES)
 ASSURANCE='LOCAL_OPERATOR_ATTESTATION'
+GOVERNED_DECISIONS={'delivery-change','delivery-accept','delivery-release'}
 
 def canonical(value):
     """Encode finite, deterministic request/receipt data."""
@@ -27,7 +36,35 @@ def sha(data):
     return hashlib.sha256(data).hexdigest()
 
 def regular(path):
-    """Read a bounded nonsymlink regular file without following the final link."""
+    """Read at most 32 MiB from a nonsymlink single-link regular file.
+
+    Args:
+        path: Exact input file; symbolic links in any path component are refused.
+    Returns:
+        Bytes from the captured descriptor size, provided the file remains stable.
+    Raises:
+        ValueError: The file is oversized, nonregular, linked or changes while read.
+        OSError: Secure opening or reading fails.
+    """
+    return _regular_bytes(path,32*1024*1024)
+
+def journal_snapshot(path):
+    """Read one finite snapshot of an append-only journal's regular file.
+
+    Args:
+        path: Exact journal file with the same link and type restrictions as regular.
+    Returns:
+        Exactly its captured descriptor size in bytes. The cumulative journal has
+        no material-file size cap; transaction and material bounds remain separate.
+        Atomic replacement of the path does not change this open-file snapshot.
+    Raises:
+        ValueError: File type, links, short read or an in-place change prevents a snapshot.
+        OSError: Secure opening or reading fails.
+    """
+    return _regular_bytes(path,None)
+
+def _regular_bytes(path,maximum):
+    """Share secure descriptor opening with a resource-specific aggregate bound."""
     p=Path(path).absolute()
     if '..' in p.parts:raise ValueError('path traversal denied')
     if not hasattr(os,'O_NOFOLLOW') or os.open not in os.supports_dir_fd:raise ValueError('secure local file adapter unavailable on this OS')
@@ -40,8 +77,13 @@ def regular(path):
     finally:os.close(directory)
     try:
         info=os.fstat(fd)
-        if not stat.S_ISREG(info.st_mode) or info.st_nlink!=1 or info.st_size>32*1024*1024:raise ValueError('bounded single-link regular file required')
-        with os.fdopen(fd,'rb',closefd=False) as stream:return stream.read()
+        if not stat.S_ISREG(info.st_mode) or info.st_nlink!=1 or (maximum is not None and info.st_size>maximum):raise ValueError('bounded single-link regular file required')
+        with os.fdopen(fd,'rb',closefd=False) as stream:
+            raw=stream.read(info.st_size)
+        after=os.fstat(fd)
+        if len(raw)!=info.st_size or (after.st_size,after.st_mtime_ns)!=(info.st_size,info.st_mtime_ns):
+            raise ValueError('regular file changed while reading')
+        return raw
     finally:os.close(fd)
 
 
@@ -130,12 +172,14 @@ def intervention_message(plan,*,purpose,reason,workdir,inputs,outputs,privileges
         missing: Required explanation if a complete command is not ready.
     Returns:
         Inline human-facing summary independent of optional detail files.
+        Current governed delivery decisions are formal L0 requests; execution
+        permissions and ordinary host actions cannot acquire that classification.
     Raises:
         ValueError: For AUTO/denied plans, incomplete fields or unsafe formatting.
     """
     route=plan.get('execution_route');formal=plan.get('formal_l0_required') is True
     if route not in {'B','C'} or plan.get('state')=='DENIED':raise ValueError('no human request for AUTO or denied operation')
-    if formal and (route!='C' or not (plan.get('effect')=='formal-decision' or plan.get('request_kind') in {'fabric-authorise','fabric-review'})):raise ValueError('formal L0 requires an explicit domain decision, not an execution permission')
+    if formal and (route!='C' or not (plan.get('effect')=='formal-decision' or plan.get('request_kind') in GOVERNED_DECISIONS|{'fabric-authorise','fabric-review'})):raise ValueError('formal L0 requires an explicit domain decision, not an execution permission')
     if not all(str(x).strip() for x in [purpose,reason,workdir,inputs,outputs,privileges,risks,afterwards]):raise ValueError('self-contained intervention fields required')
     rendered=[]
     for argv in commands:
@@ -159,61 +203,155 @@ def request_message(req,request_path,*,reason='Explicit host route requested; no
         workdir: Actual project directory; defaults to caller working directory.
     Returns:
         Complete C render request or D decision request with C signing route.
-        Unknown external signing paths are explicitly NOT READY, never invented.
+        Current delivery decisions include the installed host sign command using
+        its conventional key location; retired decision kinds remain NOT READY.
     """
-    validate(req);formal=req['kind'] in {'fabric-authorise','fabric-review'};cwd=str(Path(workdir or Path.cwd()).resolve());path=str(Path(request_path).absolute())
-    commands=[] if formal else [[sys.executable,str(Path(__file__).resolve()),'render',path,'--workspace',cwd]] if req['kind']=='render' else []
+    validate(req);current=req['kind'] in GOVERNED_DECISIONS;formal=current or req['kind'] in {'fabric-authorise','fabric-review'};cwd=str(Path(workdir or Path.cwd()).resolve());path=str(Path(request_path).absolute())
+    commands=[[sys.executable,str(Path(__file__).resolve()),'sign',path,'--workspace',cwd]] if current else [] if formal else [[sys.executable,str(Path(__file__).resolve()),'render',path,'--workspace',cwd]] if req['kind']=='render' else []
     context={'source':req['source'],'target':req['target'],'parameters':req['parameters']}
     effect='exact signed ledger effect only' if formal else 'actual PDF/page evidence under '+str(Path(req['target'])/req['request_id']) if req['kind']=='render' else 'operator-returned effect/output evidence for '+req['target']
     text=intervention_message({'execution_route':'C','formal_l0_required':formal,'request_kind':req['kind'],'state':'OPERATOR_ACTION_REQUIRED'},purpose=req['purpose'],reason='Formal consequential decision requires external signed authority; provider/chat approval is not proof' if formal else reason,workdir=cwd,inputs=json.dumps(context),outputs='Public receipt/observation under '+str(Path(path).parent/'receipts'/f"{req['request_id']}.json")+'; '+effect,privileges='Normal host user with existing signing key outside agent access; no agent enrollment' if formal else req['permissions'],risks=req['risk']+'; review/freeze helper code before host execution; no provider credentials required; no external access authorized; local output creation is reversible, signed decisions remain auditable',afterwards='Return only public receipt path/hash; runtime verifies signature, expiry, policy, exact state and replay before apply; chat is never authority' if formal else 'Return exit status/output paths; JAI verifies concrete evidence and resumes only after matching the request; observations are not cryptographic execution attestations',commands=commands,missing='Select the reviewed host signer and private key in the HOST console; do not share the key with the agent' if formal else 'An exact supported host command is not available for this operation')
     return text+'\nDETAIL (secondary): '+path+'\nREQUEST ID: '+req['request_id']+'\nREQUEST SHA-256: '+req['request_hash']+'\nHELPER SHA-256 (review before host execution): '+sha(Path(__file__).read_bytes())
 
-def trust_path():
-    """Locate the protected account pin; its path alone is never authority."""
-    if sys.platform!='linux':raise ValueError('local trust adapter NOT VERIFIED on this OS')
-    import pwd
-    try:home=Path(pwd.getpwuid(os.getuid()).pw_dir)
-    except KeyError:home=Path.home()  # mapped sandbox UID; location is not authority
-    return home/'.ai/jai-operator-trust.json'
+def trust_path(purpose=None):
+    """Return the fixed runtime public-key configuration path.
 
-def trusted_key():
-    """Load root-owned public trust outside the agent workspace; no private key."""
-    p=trust_path();fd=os.open(p,os.O_RDONLY|os.O_NOFOLLOW)
-    try:
-        info=os.fstat(fd)
-        owner_ok=info.st_uid==0
-        if not owner_ok:
-            # A user namespace may expose host-root files as overflowuid. Do not
-            # confuse that with agent ownership: require unmapped ownership AND
-            # actual inability to write either the pin or its containing directory.
-            overflow=int(Path('/proc/sys/kernel/overflowuid').read_text())
-            mappings=[tuple(map(int,line.split())) for line in Path('/proc/self/uid_map').read_text().splitlines()]
-            unmapped=not any(start<=info.st_uid<start+count for start,outside,count in mappings)
-            owner_ok=(info.st_uid==overflow and info.st_uid!=os.getuid() and unmapped
-                and not os.access(p,os.W_OK) and not os.access(p.parent,os.W_OK))
-        if not stat.S_ISREG(info.st_mode) or info.st_nlink!=1 or not owner_ok or info.st_mode&0o022 or info.st_size>65536:raise ValueError('protected administrator-enrolled trust pin required')
-        raw=os.read(fd,65537)
-    finally:os.close(fd)
-    d=json.loads(raw)
-    if set(d)!={'schema_version','policy_version','key_id','public_key','signer','capabilities'} or d['schema_version']!=2 or d['policy_version']!='local-operator-attestation/2':raise ValueError('fresh capability-bearing trust schema required')
-    if not isinstance(d['signer'],str) or not d['signer'].strip() or not isinstance(d['capabilities'],list) or not d['capabilities'] or set(d['capabilities'])-{'lifecycle-update','accept','authorise'}:raise ValueError('explicit known signer capabilities required')
-    if sha(d['public_key'].encode())!=d['key_id']:raise ValueError('public key pin mismatch')
-    der=base64.b64decode(''.join(line for line in d['public_key'].splitlines() if not line.startswith('---')),validate=True)
-    if len(der)!=44 or not der.startswith(bytes.fromhex('302a300506032b6570032100')):raise ValueError('Ed25519 public key required')
-    return d
+    Args:
+        purpose: Known proof purpose, or the default operator keyring.
+    Returns:
+        L0-provisioned public-key path, independent of caller paths or OS identity.
+    Raises:
+        ValueError: The proof purpose is unsupported.
+    """
+    if purpose is not None and purpose not in PURPOSE_CAPABILITIES:
+        raise ValueError('unknown proof purpose')
+    filename = 'jai-operator-trust.json' if purpose is None else 'jai-' + purpose + '-trust.json'
+    return Path(__file__).resolve().parents[1] / 'trust' / filename
 
-def verify_receipt(req,receipt,live=True):
-    """Verify an external Ed25519 receipt against protected trust and exact request."""
-    validate(req,live);trust=trusted_key();body=dict(receipt);signature=body.pop('signature',None)
-    capability={'lifecycle-update':'lifecycle-update','fabric-review':'accept','fabric-authorise':'authorise'}.get(req['kind'])
-    if capability is not None and capability not in trust['capabilities']:raise ValueError('signer lacks required capability '+capability)
-    if set(body)!={'schema_version','request_id','request_hash','accepted','performed','issued_at','expires_at','key_id','assurance','outputs'}:raise ValueError('invalid receipt schema')
-    if (body['schema_version']!=1 or body['request_id']!=req['request_id'] or body['request_hash']!=req['request_hash'] or body['key_id']!=trust['key_id'] or body['assurance']!=ASSURANCE or type(body['accepted']) is not bool or type(body['performed']) is not bool or body['expires_at']!=req['expires_at'] or not req['created_at']<=body['issued_at']<req['expires_at']):raise ValueError('receipt binding mismatch')
+
+def trusted_keys(purpose=None):
+    """Load JAI's L0-provisioned public keys, never a caller or ledger-supplied key.
+
+    Args:
+        purpose: Known exact proof purpose, or default operator enrollment.
+    Returns:
+        Validated host keyring including retained historical public keys.
+    Raises:
+        ValueError: Shape, enrollment, purpose, or public-key validation fails.
+        OSError: Public-key configuration is unavailable.
+    """
+    path = trust_path(purpose)
+    raw = regular(path)
+    if len(raw) > 65536:
+        raise ValueError('bounded public-key configuration required')
+    ring = json.loads(raw)
+    if (set(ring) != {'schema_version', 'policy_version', 'purpose', 'host_policy', 'keys'}
+            or ring['schema_version'] != 3 or ring['policy_version'] != 'governed-keyring/1'
+            or ring['purpose'] != purpose):
+        raise ValueError('fresh purpose-specific governed keyring required')
+    host = ring['host_policy']
+    if set(host) != {'authority_policy_ids', 'routing_policy_ids'}:
+        raise ValueError('closed externally enrolled host policy required')
+    if any(not isinstance(host[key], list) or not host[key]
+           or any(not isinstance(value, str) or not value for value in host[key])
+           or len(host[key]) != len(set(host[key])) for key in ('authority_policy_ids', 'routing_policy_ids')):
+        raise ValueError('explicit nonempty approved policy identifiers required')
+    keys, ids = ring['keys'], set()
+    if not isinstance(keys, list) or not keys:
+        raise ValueError('enrolled historical and active keys required')
+    for key in keys:
+        if set(key) != {'key_id', 'public_key', 'signer', 'capabilities', 'state', 'engagements', 'scopes', 'valid_from_ms', 'valid_until_ms'}:
+            raise ValueError('closed enrolled key entry required')
+        if (key['state'] not in {'active', 'retired', 'revoked'} or not key['signer']
+                or not isinstance(key['capabilities'], list) or not key['capabilities']
+                or set(key['capabilities']) - set(PURPOSE_CAPABILITIES.values())):
+            raise ValueError('explicit known enrollment state and capabilities required')
+        if sha(key['public_key'].encode()) != key['key_id'] or key['key_id'] in ids:
+            raise ValueError('unique exact public key identity required')
+        ids.add(key['key_id'])
+        for field in ('engagements', 'scopes'):
+            if not isinstance(key[field], list) or not key[field] or any(not isinstance(value, str) or not value for value in key[field]) or len(key[field]) != len(set(key[field])):
+                raise ValueError('explicit enrolled engagement and scope sets required')
+        if type(key['valid_from_ms']) is not int or type(key['valid_until_ms']) is not int or not 0 <= key['valid_from_ms'] < key['valid_until_ms'] <= 9007199254740991:
+            raise ValueError('finite enrolled key validity window required')
+        der = base64.b64decode(''.join(line for line in key['public_key'].splitlines()
+                                      if not line.startswith('---')), validate=True)
+        if len(der) != 44 or not der.startswith(bytes.fromhex('302a300506032b6570032100')):
+            raise ValueError('Ed25519 enrollment required')
+        if purpose is not None and PURPOSE_CAPABILITIES[purpose] not in key['capabilities']:
+            raise ValueError('enrollment lacks exact purpose capability')
+    if sum(key['state'] == 'active' for key in keys) != 1:
+        raise ValueError('exactly one active key per purpose required')
+    return ring
+
+
+def trusted_key(purpose=None, key_id=None, historical=False):
+    """Resolve one externally enrolled public key, with live revocation enforced.
+
+    Args:
+        purpose: Exact proof purpose.
+        key_id: Signed key identity, or the currently active key when omitted.
+        historical: Permit retained retired/revoked keys for historical truth only.
+    Returns:
+        Selected immutable public-key metadata and enrolled host-policy snapshot.
+    Raises:
+        ValueError: The requested key is unknown or currently unauthorized.
+    """
+    ring = trusted_keys(purpose)
+    candidates = [entry for entry in ring['keys'] if
+                  (entry['key_id'] == key_id if key_id is not None else entry['state'] == 'active')]
+    if len(candidates) != 1 or (not historical and candidates[0]['state'] != 'active'):
+        raise ValueError('key is unavailable, retired, or revoked for current use')
+    selected = candidates[0]
+    if not historical and not selected['valid_from_ms'] <= int(time.time() * 1000) < selected['valid_until_ms']:
+        raise ValueError('enrolled key is outside its current use window')
+    return {**selected, 'purpose': purpose, 'host_policy': ring['host_policy']}
+
+
+def verify_receipt(req, receipt, live=True):
+    """Verify exact-purpose Ed25519 authorization against external enrollment.
+
+    Args:
+        req: Exact closed signed-wrapper request.
+        receipt: Exact external receipt including its signature and enrolled key ID.
+        live: Enforce current key permission and outer time policy for new effects.
+    Returns:
+        Verified receipt body; historical verification grants no current permission.
+    Raises:
+        ValueError: Purpose, capability, signature, time, or exact binding fails.
+    """
+    validate(req, live)
+    purpose = req['kind']
+    capability = PURPOSE_CAPABILITIES.get(purpose)
+    if capability is None:
+        raise ValueError('unknown authority purpose')
+    trust = trusted_key(purpose, receipt.get('key_id'), historical=not live)
+    if capability not in trust['capabilities']:
+        raise ValueError('signer lacks exact purpose capability')
+    body = dict(receipt)
+    signature = body.pop('signature', None)
+    if set(body) != {'schema_version', 'request_id', 'request_hash', 'accepted', 'performed', 'issued_at', 'expires_at', 'key_id', 'assurance', 'outputs'}:
+        raise ValueError('invalid receipt schema')
+    if (body['schema_version'] != 1 or body['request_id'] != req['request_id']
+            or body['request_hash'] != req['request_hash'] or body['key_id'] != trust['key_id']
+            or body['assurance'] != ASSURANCE or type(body['accepted']) is not bool
+            or type(body['performed']) is not bool or body['expires_at'] != req['expires_at']
+            or not req['created_at'] <= body['issued_at'] < req['expires_at']):
+        raise ValueError('receipt binding mismatch')
+    if not trust['valid_from_ms'] <= int(body['issued_at'] * 1000) < trust['valid_until_ms']:
+        raise ValueError('receipt was not issued inside the externally enrolled key window')
     with tempfile.TemporaryDirectory(prefix='jai-public-verify-') as directory:
-        p=Path(directory);(p/'key.pem').write_text(trust['public_key']);(p/'body').write_bytes(canonical(body));(p/'sig').write_bytes(base64.b64decode(signature,validate=True))
-        result=subprocess.run([CRYPTO,'pkeyutl','-verify','-pubin','-inkey',str(p/'key.pem'),'-rawin','-in',str(p/'body'),'-sigfile',str(p/'sig')],capture_output=True,timeout=15,env=CRYPTO_ENV)
-        if result.returncode:raise ValueError('operator signature invalid')
+        target = Path(directory)
+        (target / 'key.pem').write_text(trust['public_key'])
+        (target / 'body').write_bytes(canonical(body))
+        (target / 'sig').write_bytes(base64.b64decode(signature, validate=True))
+        result = subprocess.run([CRYPTO, 'pkeyutl', '-verify', '-pubin', '-inkey', str(target / 'key.pem'),
+                                 '-rawin', '-in', str(target / 'body'), '-sigfile', str(target / 'sig')],
+                                capture_output=True, timeout=15, env=CRYPTO_ENV)
+        if result.returncode:
+            raise ValueError('operator signature invalid')
     return body
+
 
 def response(req,accepted,performed=False,outputs=()):
     """Create an observation response; unsigned responses are never L0 credentials."""
@@ -280,29 +418,96 @@ def perform_render(req,request_path,workspace):
     else:receipt['qa']='PASS'
     return receipt
 
-def sign(req,key):
-    """Sign only an exact reviewed Fabric request in an interactive host console."""
+def validate_human_intent_request(req):
+    """Preflight a reviewable exact human intent without signing or applying it.
+
+    Args:
+        req: Closed delivery-change/accept/release wrapper request.
+    Returns:
+        Verified intent descriptor for explicit host review.
+    Raises:
+        ValueError: Purpose, source, descriptor, subject, policy or closure is stale.
+    """
     validate(req)
-    if req['kind'] not in {'fabric-authorise','fabric-review','lifecycle-update'}:raise ValueError('not a governed Fabric request')
-    if not sys.stdin.isatty():raise ValueError('host operator console required; stdin/flags cannot approve')
-    if sha(regular(req['source']['path']))!=req['source']['sha256']:raise ValueError('stale ledger')
-    import importlib.util
-    module_path = Path(__file__).resolve().parents[1] / 'fabric/fabric.py'
-    spec = importlib.util.spec_from_file_location('governed_request_preflight', module_path)
-    fabric = importlib.util.module_from_spec(spec)
-    spec.loader.exec_module(fabric)
-    fabric.FABRIC_DIR = str(Path(req['source']['path']).parent)
-    fabric.validate_governed_request(req)
-    print(json.dumps(req,indent=2,ensure_ascii=False));print('Assurance:',ASSURANCE,'; private key must be outside all agent-accessible mounts.')
-    answer=input('Type APPROVE '+req['request_id']+' or DENY '+req['request_id']+': ')
-    if answer not in {'APPROVE '+req['request_id'],'DENY '+req['request_id']}:raise ValueError('cancelled; no signature issued')
-    trust=trusted_key();body=response(req,answer.startswith('APPROVE'));body.update(key_id=trust['key_id'],assurance=ASSURANCE)
+    allowed = {'delivery-change': {'continue', 'reformulate', 'reinstate', 'terminate', 'speculate', 'resolve_escalation', 'exclude_content'},
+               'delivery-accept': {'accept'}, 'delivery-release': {'release'}}
+    if req['kind'] not in allowed:
+        raise ValueError('only purpose-specific human requests may use this console')
+    parameters = req['parameters']
+    if set(parameters) != {'intent', 'intent_digest'}:
+        raise ValueError('exact human action descriptor required')
+    import lifecycle
+    import governed_delivery as delivery
+    intent = parameters['intent']
+    fields = {'protocol', 'delivery_request_id', 'engagement', 'scope', 'expected_head', 'context',
+              'profile', 'policy_digest', 'origin', 'issued_at_ms', 'expires_at_ms', 'causes', 'decision'}
+    if set(intent) != fields or intent['protocol'] != delivery.PROTOCOL:
+        raise ValueError('closed human intent required')
+    if sha(lifecycle.canonical(intent)) != parameters['intent_digest']:
+        raise ValueError('human intent digest mismatch')
+    if sha(regular(req['source']['path'])) != req['source']['sha256']:
+        raise ValueError('human review source bytes changed')
+    if req['source']['sha256'] != sha(lifecycle.canonical(intent)):
+        raise ValueError('human review source must contain the exact canonical intent')
+    decision = intent['decision']
+    if decision.get('action') not in allowed[req['kind']] or 'authority_proof' in decision:
+        raise ValueError('human purpose cannot widen the action or include its future proof')
+    delivery.validator('decision.schema.json').validate({**decision, 'authority_proof': '0' * 64})
+    state = lifecycle.Store(req['target'], intent['engagement']).read()
+    if state.head != intent['expected_head']:
+        raise ValueError('human intent predecessor changed')
+    profile = state.resolve(intent['profile'], 'profile')
+    if sha(lifecycle.canonical(profile)) != intent['policy_digest']:
+        raise ValueError('human intent policy changed')
+    trust = trusted_key(req['kind'])
+    delivery._require_scope(trust, intent['engagement'], intent['scope'])
+    if intent['origin'] != {'kind': 'authority', 'id': trust['signer']}:
+        raise ValueError('human authority identity is not externally enrolled')
+    if decision['action'] in {'accept', 'release'}:
+        state.assess_output_decision(decision, intent['scope'])
+    elif decision['action'] == 'continue':
+        for pair in decision['replacements']:
+            old = state.resolve(pair['previous'], 'source')
+            new = state.resolve(pair['replacement'], 'source')
+            if old['owner'] != new['owner'] or old['owner'] != intent['origin']:
+                raise ValueError('human continuation cannot impersonate another owner')
+    return intent
+
+
+def sign(req, key):
+    """Sign an exact purpose-specific human intent only in an interactive host console.
+
+    Args:
+        req: Independently prepared exact human request, not a claimed dispatch origin.
+        key: Human-controlled private key outside agent-accessible mounts.
+    Returns:
+        Real external Ed25519 receipt after explicit approve/deny console input.
+    Raises:
+        ValueError: Preflight, custody boundary, confirmation or signature fails.
+    """
+    if not sys.stdin.isatty():
+        raise ValueError('host operator console required; flags cannot approve')
+    validate_human_intent_request(req)
+    print(json.dumps(req, indent=2, ensure_ascii=False))
+    print('Private signing material must be outside every agent-accessible mount.')
+    answer = input('Type APPROVE ' + req['request_id'] + ' or DENY ' + req['request_id'] + ': ')
+    if answer not in {'APPROVE ' + req['request_id'], 'DENY ' + req['request_id']}:
+        raise ValueError('cancelled; no signature issued')
+    trust = trusted_key(req['kind'])
+    body = response(req, answer.startswith('APPROVE'))
+    body.update(key_id=trust['key_id'], assurance=ASSURANCE)
     with tempfile.TemporaryDirectory(prefix='jai-operator-sign-') as directory:
-        p=Path(directory);(p/'body').write_bytes(canonical(body))
-        result=subprocess.run([CRYPTO,'pkeyutl','-sign','-inkey',str(Path(key).resolve()),'-rawin','-in',str(p/'body'),'-out',str(p/'sig')],capture_output=True,timeout=30,env=CRYPTO_ENV)
-        if result.returncode:raise ValueError('operator signer failed')
-        body['signature']=base64.b64encode((p/'sig').read_bytes()).decode()
-    verify_receipt(req,body);return body
+        target = Path(directory)
+        (target / 'body').write_bytes(canonical(body))
+        result = subprocess.run([CRYPTO, 'pkeyutl', '-sign', '-inkey', str(Path(key).resolve()),
+                                 '-rawin', '-in', str(target / 'body'), '-out', str(target / 'sig')],
+                                capture_output=True, timeout=30, env=CRYPTO_ENV)
+        if result.returncode:
+            raise ValueError('operator signer failed')
+        body['signature'] = base64.b64encode((target / 'sig').read_bytes()).decode()
+    verify_receipt(req, body)
+    return body
+
 
 def _probe(command, timeout, output_limit=8000):
     """Return bounded subprocess diagnostics without trusting tool readiness."""
@@ -431,7 +636,7 @@ def doctor():
     if validator['compatible'] is not True:
         state=('missing' if validator['status']=='missing' else
                'incompatible or unverified ('+validator['version']+')')
-        base_state='OPERATOR_ACTION_REQUIRED: installation complete; runtime dependency jsonschema>=4.26,<5 is '+state+' in this interpreter. Install it in the Python environment used for contract workflows; release-scope installation validation uses only the standard library.'
+        base_state='OPERATOR_ACTION_REQUIRED: installation complete; runtime dependency jsonschema>=4.18,<5 is '+state+' in this interpreter. Install it in the Python environment used for contract workflows; release-scope installation validation uses only the standard library.'
     else:
         try:
             import agent_runtime
@@ -504,36 +709,22 @@ def doctor():
 
 
 def check_acceptance(path):
-    """Verify completed reference-host receipts with current crypto and pixel checks.
+    """Check observed renderer output coverage and page quality without granting acceptance.
 
-    This consumes observations, never executes an operator action or treats a
-    stored PASS label as proof. Missing per-format or accepted/declined evidence
-    denies reference-host acceptance. It is not a universal host certification.
+    Args:
+        path: Renderer QA manifest naming completed requests and output receipts.
+    Returns:
+        A renderer-format QA result and manifest digest; governed acceptance and
+        effective host confinement are not established by this check.
+    Raises:
+        ValueError: The manifest requests retired L0 acceptance, required HTML,
+            DOCX, PPTX or XLSX observations are missing, or output checks fail.
+        OSError: A required manifest, receipt or rendered file is unavailable.
     """
     manifest=json.loads(regular(path));formats=set();decisions=set()
-    import visual_qa,importlib.util
-    runtime=Path(__file__).resolve().parents[1]
-    spec=importlib.util.spec_from_file_location('operator_acceptance_fabric',runtime/'fabric/fabric.py');fabric=importlib.util.module_from_spec(spec);spec.loader.exec_module(fabric)
-    for item in manifest['l0']:
-        req=json.loads(regular(item['request']));receipt=json.loads(regular(item['receipt']));body=verify_receipt(req,receipt,live=False)
-        if body['accepted']!=item['accepted']:raise ValueError('unexpected actual operator decision')
-        decisions.add(body['accepted']);raw=regular(req['source']['path'])
-        if body['accepted']:
-            entries=[json.loads(line) for line in raw.splitlines() if line.strip()];graph=fabric.Fabric(req['parameters']['engagement'],entries)
-            problems,warnings=graph.verify()
-            if problems or warnings:raise ValueError('actual approved ledger invalid')
-            applied = [transaction for transaction in entries
-                       if transaction.get('proof', {}).get('request', {}).get('request_id') == req['request_id']]
-            if len(applied) != 1 or canonical(applied[0]['proof']['request']) != canonical(req) or canonical(applied[0]['proof']['receipt']) != canonical(receipt):
-                raise ValueError('approved exact transaction effect absent or mismatched')
-            if req['kind'] == 'fabric-review':
-                target = graph.nodes.get(req['target'])
-                acceptance = next((operation['data']['version_id'] for operation in applied[0]['operations']
-                                   if operation['op'] == 'version' and operation['data']['manifest']['kind'] == 'rev'), None)
-                if (target is None or graph.lifecycle.proofs.get(('default', target['version_id'], 'accept')) != acceptance or
-                        not graph.lifecycle.evaluate(target['version_id'], release=True)['eligible']):
-                    raise ValueError('approved acceptance is no longer applicable to the exact current closure')
-        elif sha(raw)!=req['source']['sha256']:raise ValueError('declined ledger changed')
+    import visual_qa
+    if manifest.get('l0'):
+        raise ValueError('Retired graph acceptance manifest is archive-only; use authenticated governed current-basis queries')
     for item in manifest['render']:
         req=json.loads(regular(item['request']));receipt=json.loads(regular(item['receipt']))
         if verify_outputs(req,receipt)!='COMPLETED':raise ValueError('render action not completed')
@@ -542,12 +733,17 @@ def check_acceptance(path):
         if not pages or not receipt.get('tool_evidence',{}).get('libreoffice_version'):raise ValueError('actual format pages/tool evidence required')
         for page in pages:
             if any(severity=='critical' for code,severity,message in visual_qa.image_findings(page['path'])):raise ValueError('actual rendered page failed QA')
-    if decisions!={True,False} or not {'.html','.docx','.pptx','.xlsx'}<=formats:raise ValueError('incomplete positive/negative or actual-format coverage')
-    return {'state':'PASS','scope':'observed Fedora operator-assisted reference acceptance','manifest_sha256':sha(regular(path)),'assurance':ASSURANCE,'host_confinement':'NOT VERIFIED'}
+    if not {'.html','.docx','.pptx','.xlsx'}<=formats:raise ValueError('incomplete actual-format coverage')
+    return {'state':'PASS','scope':'observed renderer-format QA only; no governed acceptance asserted','manifest_sha256':sha(regular(path)),'assurance':ASSURANCE,'host_confinement':'NOT VERIFIED'}
 
 
 def main():
-    """Dispatch typed operator verbs; never evaluate supplied commands."""
+    """Dispatch typed operator verbs; never evaluate supplied commands.
+
+    The host-only sign verb defaults to the conventional private-key location;
+    --key explicitly selects another human-controlled path. It still requires
+    the exact interactive decision and existing public enrollment.
+    """
     p=argparse.ArgumentParser(description=__doc__);sp=p.add_subparsers(dest='cmd',required=True)
     sp.add_parser('doctor')
     a=sp.add_parser('configure',help='Refresh optional tool discovery; never install tools or alter provider settings')
@@ -559,7 +755,7 @@ def main():
     a=sp.add_parser('decline');a.add_argument('request')
     for name in ('render','sign'):
         a=sp.add_parser(name);a.add_argument('request');a.add_argument('--workspace',required=True)
-        if name=='sign':a.add_argument('--key',required=True)
+        if name=='sign':a.add_argument('--key',default=str(default_private_key()),help='host private key (default: %(default)s); never send it to the agent')
     a=sp.add_parser('verify');a.add_argument('request');a.add_argument('receipt')
     a=sp.add_parser('resume-render');a.add_argument('request');a.add_argument('receipt');a.add_argument('--workspace',required=True)
     args=p.parse_args()

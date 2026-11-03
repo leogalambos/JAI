@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Real-time design with timing budgets | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
+| 1 | Real-time design with timing budgets | Real-time system design with timing analysis | Specifies deadlines, task priorities, scheduling assumptions, worst-case execution budgets and timing verification |
 | 2 | scheduling and priority analysis | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 3 | worst-case execution time evidence | Immutable evidence set with hashes, timestamps and custody record | Chain of custody is unbroken and the set is reproducible from the record |
-| 4 | determinism test results | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 4 | determinism test results | Versioned assessment results with traceable evidence | Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations |
 
 ## 7. Output gates (blocking)
 
@@ -143,7 +143,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Real-time design with timing budgets has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Real-time design with timing budgets") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

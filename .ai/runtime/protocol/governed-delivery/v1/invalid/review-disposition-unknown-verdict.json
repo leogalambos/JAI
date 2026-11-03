@@ -1,0 +1,122 @@
+{
+  "protocol": "jai.governed-delivery/1",
+  "subject": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "candidate-A",
+    "version_id": "afd1cb19ba756d70d355f71e0047a0518ece554d525734137920aa9f4bdcf2c6"
+  },
+  "assessment_scope": "default",
+  "assessed_at_ms": 2000,
+  "head": "f7b2e1aac25dd261ae7ea26958a076d3469a838f673641f9bf1d73911321bb01",
+  "selected": [
+    {
+      "slot": {
+        "kind": "basis",
+        "owner": {
+          "layer": 3,
+          "work_kind": "question",
+          "question": "how",
+          "work_item": "service-controls"
+        },
+        "slot_id": "answer-how"
+      },
+      "version": {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "candidate-A",
+        "version_id": "afd1cb19ba756d70d355f71e0047a0518ece554d525734137920aa9f4bdcf2c6"
+      },
+      "use_scope": "default"
+    }
+  ],
+  "closure": [
+    {
+      "ref": {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "input-A",
+        "version_id": "2af7d6aa53ba2874a2f9b80c4318fbcd4467065cf86eab873c45acc82e53f92a"
+      },
+      "use_scope": "default"
+    },
+    {
+      "ref": {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "candidate-A",
+        "version_id": "afd1cb19ba756d70d355f71e0047a0518ece554d525734137920aa9f4bdcf2c6"
+      },
+      "use_scope": "default"
+    }
+  ],
+  "evidence": [
+    {
+      "ref": {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "observation-A",
+        "version_id": "d8bb38ab93a1e888900c91c073bf3b884f2c639ba389f1c30d7e5911d824bbea"
+      },
+      "use_scope": "default"
+    }
+  ],
+  "proofs": [
+    {
+      "ref": {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "professional-assessment-A",
+        "version_id": "c0a9632cd595e9fea689e64901e3dee594a1f9dea3301341dcd9d18b452e9554"
+      },
+      "use_scope": "default"
+    }
+  ],
+  "established_by": [
+    {
+      "ref": {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "selection-decision",
+        "version_id": "bda727af1107fcf2ada63dde30f156fcd64676550abff2345973d182b4d06484"
+      },
+      "use_scope": "default"
+    }
+  ],
+  "cancelled_by": [],
+  "conflicts": [],
+  "eligibility": {
+    "qualified": true,
+    "accepted": false,
+    "release_eligible": false,
+    "reasons": [
+      {
+        "code": "P_PROOF",
+        "message": "Human acceptance and release permission are absent."
+      }
+    ]
+  },
+  "review_dispositions": [
+    {
+      "subject": {
+        "ref": {
+          "engagement": "synthetic-protocol",
+          "scope": "default",
+          "logical_id": "candidate-A",
+          "version_id": "afd1cb19ba756d70d355f71e0047a0518ece554d525734137920aa9f4bdcf2c6"
+        },
+        "use_scope": "default"
+      },
+      "assessment": {
+        "ref": {
+          "engagement": "synthetic-protocol",
+          "scope": "default",
+          "logical_id": "candidate-A",
+          "version_id": "afd1cb19ba756d70d355f71e0047a0518ece554d525734137920aa9f4bdcf2c6"
+        },
+        "use_scope": "default"
+      },
+      "verdict": "PASS"
+    }
+  ]
+}

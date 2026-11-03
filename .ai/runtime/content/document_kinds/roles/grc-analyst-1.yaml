@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/grc-analyst:1",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -195,7 +195,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Control inventory and testing calendar', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "For the specific output 'Control inventory and testing calendar', provide verifiable evidence satisfying: Each control has an owner, obligation, test scope, planned date, evidence source and overdue-action disposition. Required delivery form: Control inventory and testing calendar.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,7 +210,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Control inventory and testing calendar', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "reason": "For the specific output 'Control inventory and testing calendar', provide verifiable evidence satisfying: Each control has an owner, obligation, test scope, planned date, evidence source and overdue-action disposition. Required delivery form: Control inventory and testing calendar.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#grc-analyst:1",
           "content/types/register.yaml"
@@ -223,8 +223,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Control inventory and testing calendar",
-        "format": "Executable suite in version control plus a coverage statement",
-        "acceptance_criterion": "States what is covered, what is not, and what the suite cannot detect",
+        "format": "Control inventory and testing calendar",
+        "acceptance_criterion": "Each control has an owner, obligation, test scope, planned date, evidence source and overdue-action disposition",
         "role_path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/grc-analyst.md"
       }
     },
@@ -685,6 +685,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "GRC Analyst",
+        "frameworks": [
+          "COBIT 2019",
+          "ISO/IEC 27001",
+          "NIST CSF 2.0"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -710,13 +731,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -735,6 +757,8 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/register",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
@@ -749,8 +773,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "grc-analyst:1",
-    "source_fingerprint": "32cb374f550e1494b864422473b6786473e5cd8e5657783673b56fe5f3daa7ff",
-    "source_hash": "f58262c601f5f3085ea10b093f65ea41586bd5f9529cae09f8d3c7b6a485f8d8"
+    "source_fingerprint": "dc27c6f3f4f87188a4f204352dca43e7023e9ee662ed323ed378fee070602e7d",
+    "source_hash": "99c04ec484b0a4363336a885779f460cfbd434aa40727682c2661ab7d5aeadaf"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

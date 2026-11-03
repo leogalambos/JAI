@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="ai-inline-diagram-svg" viewBox="0 0 996 800" role="img" aria-labelledby="gen2-applicability-title gen2-applicability-description">
+<!-- SPDX-License-Identifier: BSD-4-Clause; Copyright (c) 2026 Leo Galambos and the Egothor team; https://www.egothor.org -->
+<title id="gen2-applicability-title">Changed inputs preserve history and change current applicability</title>
+<desc id="gen2-applicability-description">Evidence for input version A remains truthful history. An explicit scoped transition to B cancels affected reliance and permissions atomically. New verification and output-specific acceptance are required; permission to continue is separate from release.</desc>
+<defs><marker id="gen2-applicability-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#147eaa"/></marker></defs>
+<rect width="100%" height="100%" rx="16" fill="#f6fafc" stroke="#cbdde8"/>
+<text x="30" y="38" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#102d43" font-weight="700" text-anchor="start">Changed inputs preserve history and change current applicability</text>
+<rect x="30" y="100" width="280" height="210" rx="12" fill="#e8f2f8" stroke="#a9c6d8"/>
+<text x="46" y="129" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="700" text-anchor="start">Version A: historical basis</text>
+<text x="46" y="162" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">Evidence records what ran</text>
+<text x="46" y="186" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">against A. Preserve the</text>
+<text x="46" y="210" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">exact input identity,</text>
+<text x="46" y="234" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">result and historical</text>
+<text x="46" y="258" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">decision.</text>
+<rect x="358" y="100" width="280" height="210" rx="12" fill="#e8f2f8" stroke="#a9c6d8"/>
+<text x="374" y="129" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="700" text-anchor="start">Explicit scoped transition</text>
+<text x="374" y="162" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">Select B. Cancel affected</text>
+<text x="374" y="186" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">uses and dependent</text>
+<text x="374" y="210" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">permissions together.</text>
+<text x="374" y="234" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">Unrelated scopes retain</text>
+<text x="374" y="258" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">their own valid basis.</text>
+<rect x="686" y="100" width="280" height="210" rx="12" fill="#e8f2f8" stroke="#a9c6d8"/>
+<text x="702" y="129" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="700" text-anchor="start">Version B: new basis</text>
+<text x="702" y="162" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">New records coexist with A.</text>
+<text x="702" y="186" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">Missing evidence remains</text>
+<text x="702" y="210" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">pending; no inherited PASS</text>
+<text x="702" y="234" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">or silent fallback.</text>
+<path d="M310,205 L348,205" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#gen2-applicability-arrow)"/>
+<path d="M638,205 L676,205" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#gen2-applicability-arrow)"/>
+<rect x="30" y="400" width="280" height="190" rx="12" fill="#e8f2f8" stroke="#a9c6d8"/>
+<text x="46" y="429" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="700" text-anchor="start">Continue work</text>
+<text x="46" y="462" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">Applicable authority</text>
+<text x="46" y="486" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">permits revised inputs and</text>
+<text x="46" y="510" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">verification. This does not</text>
+<text x="46" y="534" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">accept the result.</text>
+<rect x="358" y="400" width="280" height="190" rx="12" fill="#e8f2f8" stroke="#a9c6d8"/>
+<text x="374" y="429" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="700" text-anchor="start">Accept this output</text>
+<text x="374" y="462" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">Assess its exact version,</text>
+<text x="374" y="486" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">governing inputs,</text>
+<text x="374" y="510" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">applicable decisions and</text>
+<text x="374" y="534" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">required evidence.</text>
+<rect x="686" y="400" width="280" height="190" rx="12" fill="#e8f2f8" stroke="#a9c6d8"/>
+<text x="702" y="429" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="700" text-anchor="start">Permit release</text>
+<text x="702" y="462" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">Apply the separate release</text>
+<text x="702" y="486" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">requirements and reserved</text>
+<text x="702" y="510" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">human decision where</text>
+<text x="702" y="534" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">required.</text>
+<path d="M310,495 L348,495" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#gen2-applicability-arrow)"/>
+<path d="M638,495 L676,495" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#gen2-applicability-arrow)"/>
+<text x="32" y="665" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="700" text-anchor="start">A valid historical record is not automatically applicable to the current output.</text>
+<text x="32" y="710" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">Changed dependencies cancel only the affected justification closure. Reinstatement requires an</text>
+<text x="32" y="734" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">explicit traceable decision and the applicable verification.</text>
+</svg>

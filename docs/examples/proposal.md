@@ -1,6 +1,5 @@
 # Prepare a supplier proposal
 
-Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
 ACME Services is considering a fixed-price bid for a customer support
 portal. Alice owns the bid, Bob estimates delivery, and John Doe

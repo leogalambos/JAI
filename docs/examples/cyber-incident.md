@@ -1,6 +1,5 @@
 # Coordinate a cyber incident response
 
-Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
 ACME Logistics discovers suspicious access to a supplier account used by
 its booking service. Alice is incident commander, Bob operates the

@@ -26,6 +26,12 @@ reset and backup behaviour only when reset is explicitly requested.
 `$workflow-demo` and `$workflow-guide`; no extra top-level command is
 required. The maintained walkthrough catalogue is `docs/examples/index.md`.
 
+The original `policy-docs` setup project also contains `GEN2-EXERCISE.md` and
+fictional `gen2-inputs/` for a native layered/audit exercise. Setup and reset copy
+those inputs through the existing project lifecycle; they do not seed `.fabric/`,
+execute an agent, import old PASS or sign human acceptance. Follow its paired
+Claude/Codex prompts only when the user requests the exercise.
+
 
 If the user is unsure which task scenario fits a project, offer
 `/hint <project question>` or `$workflow-hint <project question>` for

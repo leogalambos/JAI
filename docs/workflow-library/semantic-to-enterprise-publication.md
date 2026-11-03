@@ -9,54 +9,29 @@ A specialist artefact is substantively complete and requires enterprise-grade pu
 A released audience-specific publication whose semantic content is traceable to the approved source and has passed semantic and publication gates.
 
 
-<div class="ai-diagram ai-diagram-inline" role="img" aria-label="Semantic artefact to enterprise publication workflow">
-<svg class="ai-inline-diagram-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 919 408" role="img" aria-labelledby="t d">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e3859"/><stop offset="1" stop-color="#0b6b9a"/></linearGradient><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3ba9d6"/></marker></defs>
-<title id="t">Semantic artefact to enterprise publication</title>
-<desc id="d">A released audience-specific publication whose semantic content is traceable to the approved source and has passed semantic and publication gates.</desc>
-<rect width="100%" height="100%" rx="24" fill="#f6fafc" stroke="#d6e6ee"/>
-<text x="42" y="38" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="700" fill="#0b1f33">Semantic artefact to enterprise publication</text>
-<path d="M 277 116.0 L 334 116.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 577 116.0 L 634 116.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 759.5 162 L 759.5 192 L 459.5 192 L 459.5 236" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 342 290.0 L 285 290.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<rect x="42" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">1 · Owning specialist —</text>
-<text x="159.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">finalises claims,</text>
-<text x="159.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">decisions, assumptions,</text>
-<text x="159.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">evidence and acceptance</text>
-<rect x="342" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">2 · Evidence &amp; Rationale</text>
-<text x="459.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Reviewer — checks</text>
-<text x="459.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">evidence strength,</text>
-<text x="459.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">assumptions,</text>
-<rect x="642" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">3 · Enterprise</text>
-<text x="759.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Publication Editor —</text>
-<text x="759.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">publication archetype</text>
-<text x="759.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">and renders</text>
-<rect x="342" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">4 · Visual Quality</text>
-<text x="459.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Reviewer — checks</text>
-<text x="459.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">density, hierarchy,</text>
-<text x="459.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">legibility, tables,</text>
-<rect x="42" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="268.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">5 · Named authority —</text>
-<text x="159.5" y="290.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">approves consequential</text>
-<text x="159.5" y="312.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">publication for release</text>
-</svg>
-<div class="ai-diagram-caption">Canonical workflow sequence from release 26.10.4 (workflow semantics unchanged from the 26.10.0 GA baseline).</div>
+<!-- JAI:WORKFLOW-DIAGRAM:START -->
+<div class="ai-workflow-overview">
+<ol class="ai-workflow-steps" role="list" aria-label="Semantic artefact to enterprise publication workflow steps">
+<li data-step="1"><span class="ai-workflow-step-number" aria-hidden="true">1</span><div><strong>Owning specialist</strong><p>finalises claims, decisions, assumptions, evidence and acceptance criteria</p></div></li>
+<li data-step="2"><span class="ai-workflow-step-number" aria-hidden="true">2</span><div><strong>Evidence &amp; Rationale Reviewer</strong><p>checks evidence strength, assumptions, alternatives, rationale and residual risk</p></div></li>
+<li data-step="3"><span class="ai-workflow-step-number" aria-hidden="true">3</span><div><strong>Enterprise Publication Editor</strong><p>selects the publication archetype and renders audience-specific DOCX/PPTX/XLSX/HTML/SVG outputs from the exact approved semantic snapshot</p></div></li>
+<li data-step="4"><span class="ai-workflow-step-number" aria-hidden="true">4</span><div><strong>Visual Quality Reviewer</strong><p>checks density, hierarchy, legibility, tables, diagrams, document control and package integrity</p></div></li>
+<li data-step="5"><span class="ai-workflow-step-number" aria-hidden="true">5</span><div><strong>Named authority</strong><p>reviews completed semantic, publication and actual visual evidence and records the human release decision</p></div></li>
+</ol>
 </div>
+
+[Open the full-size workflow diagram](../assets/diagrams/workflow-semantic-to-enterprise-publication.svg). Follow the numbered order. The table below specifies the outputs and receiving conditions for each handoff.
+<!-- JAI:WORKFLOW-DIAGRAM:END -->
 
 ## Workflow steps and gates
 
 | Step | Accountable role | Activity | Handover | Gate |
 | ---: | --- | --- | --- | --- |
 | 1 | Owning specialist | finalises claims, decisions, assumptions, evidence and acceptance criteria | semantic publication model | Semantic source is complete enough to review; unresolved items are explicit |
-| 2 | Evidence & Rationale Reviewer | checks evidence strength, assumptions, alternatives, rationale and residual risk | semantic gate result and located findings | Semantic Gate PASS or explicit waiver by named authority |
-| 3 | Enterprise Publication Editor | selects publication archetype and renders audience-specific DOCX/PPTX/XLSX/HTML/SVG outputs | rendered publication set with semantic hash | All outputs carry the same semantic SHA-256 and required document control |
-| 4 | Visual Quality Reviewer | checks density, hierarchy, legibility, tables, diagrams, document control and package integrity | publication gate result and findings | Publication Gate PASS; material defects are resolved or explicitly waived |
-| 5 | Named authority | approves consequential publication for release | release approval | Approval is by an authority independent of the publication editor where governance requires it |
+| 2 | Evidence & Rationale Reviewer | checks evidence strength, assumptions, alternatives, rationale and residual risk | semantic gate result and located findings | Semantic Gate PASS and the exact stable semantic snapshot has its required source approval under the governing profile, including verified external human proof where required, before the editor acts; only an existing expressly permitted prior scoped waiver applies, and mandatory controls remain blocking |
+| 3 | Enterprise Publication Editor | selects the publication archetype and renders audience-specific DOCX/PPTX/XLSX/HTML/SVG outputs from the exact approved semantic snapshot | rendered publication set with semantic hash | All outputs carry the same semantic SHA-256 and required document control; draft rendering grants no acceptance or release |
+| 4 | Visual Quality Reviewer | checks density, hierarchy, legibility, tables, diagrams, document control and package integrity | publication gate result and findings | Publication Gate PASS with blocking defects resolved; any policy-permitted waiver requires prior named human authority for its exact scope before release or other gated effects; mandatory controls remain blocking |
+| 5 | Named authority | reviews completed semantic, publication and actual visual evidence and records the human release decision | release approval | Explicit exact human approval precedes release; required independence is preserved; agents cannot approve or issue waivers |
 
 ## Running this workflow: operator and implementer boundary
 
@@ -82,3 +57,7 @@ A practical prompt pattern is:
 ## Operational interpretation
 
 The workflow is most useful when the team keeps each hand-over explicit. The system can help generate or review the artefacts, but the accountable role and approval decision remain organisational responsibilities.
+
+Approval and execution are separate handoffs. Candidate preparation stays within explicitly permitted pre-production scope. Every production, pilot, credential or irreversible effect requires prior exact named human authority under the applicable policy. If operational proof is required before a wider approval, obtain separate prior authorisation for the bounded pilot needed to collect it; if no policy route permits collection, stop and consult the authority. Draft rendering and review evidence do not release a publication. An existing policy-permitted waiver must identify the competent human authority, exact gate and scope, and validity period before the gated action; mandatory controls and unsupported factual claims remain blocking.
+
+Semantic-source approval precedes publication editing and is distinct from the final publication-release decision after visual review. Professional Semantic Gate PASS does not itself supply human approval. Preparatory draft work may use only an existing separately permitted route; it cannot bypass the editor's approved-source precondition.

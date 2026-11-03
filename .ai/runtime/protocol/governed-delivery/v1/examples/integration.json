@@ -1,0 +1,67 @@
+{
+  "protocol": "jai.governed-delivery/1",
+  "message_type": "integration",
+  "message_id": "184667209d0dc09382c9b14d45f8e8761822224b9d19f1f5fb2f46b95fbb52c7",
+  "request_id": "request-integration",
+  "correlation_id": "question-service-controls",
+  "engagement": "synthetic-protocol",
+  "scope": "default",
+  "sender": {
+    "kind": "assignment",
+    "ref": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "author-assignment",
+      "version_id": "1870591329732c4cdd7c57d9f45bf9cf132d728ca1fed89d25570d7d8879a622"
+    }
+  },
+  "recipient": {
+    "kind": "controller",
+    "id": "trusted-controller"
+  },
+  "context": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "author-context",
+    "version_id": "29fe898b447be535d3a3bec50aaec15039fb96c4edee43d3a1adf488f9c9f42f"
+  },
+  "profile": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "profile",
+    "version_id": "b0519b9fbd91854cbe44a508a24434902d4296b100862b3f0acc5374550990ef"
+  },
+  "expected_head": "0379d6138bfe05e3382401e0af27527da375e9eaab21d9f744a4b333647120af",
+  "issued_at_ms": 1000,
+  "expires_at_ms": 8000,
+  "causes": [],
+  "attachments": [],
+  "payload": {
+    "assignment": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "integration-control-assignment",
+      "version_id": "ca3d27f5521a94885efba926044fc301390245913cff2a61c482767669c1a07a"
+    },
+    "bundle": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "layer-bundle",
+      "version_id": "4d152570c4804c6e26bc9a862beaeded7954787fc7a6ab17dd2f4f493fe49c59"
+    },
+    "answers": [
+      {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "candidate-A",
+        "version_id": "afd1cb19ba756d70d355f71e0047a0518ece554d525734137920aa9f4bdcf2c6"
+      }
+    ],
+    "integration_review": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "integration-assessment",
+      "version_id": "ad364ce6f92b09e32024dc2591a15fabb0decf42edc86f5e9a12b8f12bce6b95"
+    }
+  }
+}
