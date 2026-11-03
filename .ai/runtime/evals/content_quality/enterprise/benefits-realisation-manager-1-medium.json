@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Benefits map and benefits register', provide verifiable evidence satisfying: Every benefit has an accountable business owner, measure, baseline, target and dependency.. Required delivery form: Versioned register with dependency map.",
+        "criterion_under_review": "For the specific output 'Benefits map and benefits register', provide verifiable evidence satisfying: Every benefit has an accountable business owner, measure, baseline, target and dependency. Required delivery form: Versioned register with dependency map.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

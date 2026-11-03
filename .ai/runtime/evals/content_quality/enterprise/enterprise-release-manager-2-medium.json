@@ -233,7 +233,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Enterprise release readiness assessment', provide verifiable evidence satisfying: Readiness is evidenced against agreed criteria; failed mandatory gates cannot be hidden by schedule pressure.. Required delivery form: Operational readiness assessment covering technical, business, cutover, supplier, support, security and rollback readiness.",
+        "criterion_under_review": "For the specific output 'Enterprise release readiness assessment', provide verifiable evidence satisfying: Readiness is evidenced against agreed criteria; failed mandatory gates cannot be hidden by schedule pressure. Required delivery form: Operational readiness assessment covering technical, business, cutover, supplier, support, security and rollback readiness.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

@@ -1,0 +1,56 @@
+{
+  "protocol": "jai.governed-delivery/1",
+  "message_type": "decision",
+  "message_id": "bc93dc0028d8bccd2ca41517abc32f7e44d55d9061618c473cfac9c313d13e7c",
+  "request_id": "request-decision-reformulate",
+  "correlation_id": "question-service-controls",
+  "engagement": "synthetic-protocol",
+  "scope": "default",
+  "sender": {
+    "kind": "assignment",
+    "ref": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "author-assignment",
+      "version_id": "1870591329732c4cdd7c57d9f45bf9cf132d728ca1fed89d25570d7d8879a622"
+    }
+  },
+  "recipient": {
+    "kind": "controller",
+    "id": "trusted-controller"
+  },
+  "context": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "author-context",
+    "version_id": "29fe898b447be535d3a3bec50aaec15039fb96c4edee43d3a1adf488f9c9f42f"
+  },
+  "profile": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "profile",
+    "version_id": "b0519b9fbd91854cbe44a508a24434902d4296b100862b3f0acc5374550990ef"
+  },
+  "expected_head": "0379d6138bfe05e3382401e0af27527da375e9eaab21d9f744a4b333647120af",
+  "issued_at_ms": 1000,
+  "expires_at_ms": 8000,
+  "causes": [],
+  "attachments": [],
+  "payload": {
+    "action": "reformulate",
+    "reason": "Synthetic entitled decision for protocol shape",
+    "subject": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "input-A",
+      "version_id": "2af7d6aa53ba2874a2f9b80c4318fbcd4467065cf86eab873c45acc82e53f92a"
+    },
+    "replacement": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "input-B",
+      "version_id": "6b2f90aa104446ecab79680f5cd107fed3619f706f4f3df419cbd5a9c7a181a7"
+    },
+    "authority_proof": "6433164289745d2b6893355a526914f0f157146718d9ee17bf3e455bb64df522"
+  }
+}

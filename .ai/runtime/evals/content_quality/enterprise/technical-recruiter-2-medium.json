@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'sourcing strategy and pipeline', provide verifiable evidence satisfying: Reproducible from a clean checkout; no manual step required for a standard run. Required delivery form: Declarative pipeline definition in version control.",
+        "criterion_under_review": "For the specific output 'sourcing strategy and pipeline', provide verifiable evidence satisfying: Identifies target skills, sourcing channels, stages, accountable recruiters, candidate consent constraints and measured conversion gaps. Required delivery form: Sourcing plan and candidate pipeline register.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

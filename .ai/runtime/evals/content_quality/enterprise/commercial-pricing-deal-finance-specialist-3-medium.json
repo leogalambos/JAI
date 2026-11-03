@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Deal baseline and variance review', provide verifiable evidence satisfying: Material adverse variance has an owner, threshold, corrective option and decision date.. Required delivery form: Signed-scope financial baseline, actuals, forecast at completion and change effects.",
+        "criterion_under_review": "For the specific output 'Deal baseline and variance review', provide verifiable evidence satisfying: Material adverse variance has an owner, threshold, corrective option and decision date. Required delivery form: Signed-scope financial baseline, actuals, forecast at completion and change effects.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

@@ -99,9 +99,9 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Network topology and addressing design | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
+| 1 | Network topology and addressing design | Network design and addressing plan | Defines topology, addressing, routing, segmentation, capacity assumptions and verification criteria |
 | 2 | segmentation and zoning model | Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON) | The model is validated against real observed behaviour or data, not only interviews |
-| 3 | network resilience design | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
+| 3 | network resilience design | Network resilience design | Defines failure domains, redundant paths, convergence targets, failover behaviour and validation scenarios |
 | 4 | network standards | Controlled document referencing the parent policy | Requirements are specific, measurable and technology-explicit |
 
 ## 7. Output gates (blocking)
@@ -140,7 +140,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Network topology and addressing design has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Network topology and addressing design") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

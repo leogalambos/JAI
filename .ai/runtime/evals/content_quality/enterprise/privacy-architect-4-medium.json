@@ -213,7 +213,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Privacy architecture decision and exception record', provide verifiable evidence satisfying: Exceptions identify residual privacy risk, decision authority, compensating measures and review/expiry.. Required delivery form: Decision/exception register with owner and expiry.",
+        "criterion_under_review": "For the specific output 'Privacy architecture decision and exception record', provide verifiable evidence satisfying: Exceptions identify residual privacy risk, decision authority, compensating measures and review/expiry. Required delivery form: Decision/exception register with owner and expiry.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

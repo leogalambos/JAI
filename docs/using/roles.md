@@ -2,6 +2,10 @@
 
 The current working catalogue contains **{{ JAI_ROLE_COVERAGE }}**.
 
+The table below summarises the disciplines. The [complete role catalogue by
+category](../reference/roles.md) lists every available specialist and its purpose;
+it is the maintained appendix for direct role work and workflow staffing.
+
 | Discipline | Roles | Representative roles |
 | --- | ---: | --- |
 | Analysis | 11 | Business Analyst, Systems Analyst, Requirements Engineer, Process Analyst |

@@ -1,0 +1,66 @@
+{
+  "owner": {
+    "layer": 3,
+    "work_kind": "question",
+    "question": "how",
+    "work_item": "service-controls"
+  },
+  "assessment_kind": "professional",
+  "assignment": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "reviewer-assignment",
+    "version_id": "a88637ec46aa3a02dfa9047d07ed7f2ae77b9c1a985fabb57b1e8deeb1f00371"
+  },
+  "subject": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "candidate-A",
+    "version_id": "afd1cb19ba756d70d355f71e0047a0518ece554d525734137920aa9f4bdcf2c6"
+  },
+  "criteria": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "criteria",
+    "version_id": "c7a744ce9482a3ff9901d128f8aa6a51da67eb82a4108276aad95897a2b51619"
+  },
+  "profile": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "profile",
+    "version_id": "b0519b9fbd91854cbe44a508a24434902d4296b100862b3f0acc5374550990ef"
+  },
+  "assessed_closure": [
+    {
+      "ref": {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "input-A",
+        "version_id": "2af7d6aa53ba2874a2f9b80c4318fbcd4467065cf86eab873c45acc82e53f92a"
+      },
+      "use_scope": "default"
+    },
+    {
+      "ref": {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "candidate-A",
+        "version_id": "afd1cb19ba756d70d355f71e0047a0518ece554d525734137920aa9f4bdcf2c6"
+      },
+      "use_scope": "default"
+    },
+    {
+      "ref": {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "observation-A",
+        "version_id": "d8bb38ab93a1e888900c91c073bf3b884f2c639ba389f1c30d7e5911d824bbea"
+      },
+      "use_scope": "default"
+    }
+  ],
+  "assessed_hash": "84b53380de65802f28d50c584c670b857b244c058ee7eda93867c03518269322",
+  "verdict": "accepted",
+  "findings": [],
+  "conditions": []
+}

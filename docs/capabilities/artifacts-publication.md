@@ -45,18 +45,18 @@ The current taxonomy defines **28 artefact classes**.
 
 ## Artifact Contract v3
 
-The current production contract is JAI-native. It composes artefact concerns across L1–L6 rather than treating publication as a flat set of fields.
+The current production contract is JAI-native. Artifact Contract v3 groups artefact concerns into six schema fields. These retained field names are not the Gen2 SABSA perspectives: L1 Contextual, L2 Conceptual, L3 Logical, L4 Physical, L5 Component and L6 Management. Each perspective has local setter, author and independent reviewer responsibilities.
 
 A simplified mapping is:
 
-| JAI layer | Artefact concern |
+| Contract field | Artefact concern |
 | --- | --- |
-| L1 | purpose, audience, owner, intended decision/use |
-| L2 | artefact type, schema, required inputs/relations |
-| L3 | evidence/review/acceptance and policy obligations |
-| L4 | mandatory sections/views/diagram requirements |
-| L5 | producer, renderer, formats, system-of-record/handoff |
-| L6 | actual validation/evidence and semantic/projection/render hashes |
+| `intent` | purpose, audience, owner, intended decision/use |
+| `semantics` | artefact type, schema, required inputs/relations |
+| `justification` | evidence/review/acceptance and policy obligations |
+| `design` | mandatory sections/views/diagram requirements |
+| `realisation` | producer, renderer, formats, system-of-record/handoff |
+| `evidence` | actual validation/evidence and semantic/projection/render hashes |
 
 Artifact Contract v2 remains compatibility input only; current production writes use the release-independent `ArtifactContract-v3` identity.
 

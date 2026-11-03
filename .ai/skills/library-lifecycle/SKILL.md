@@ -8,17 +8,17 @@ allowed-tools: Read, Grep, Glob, Bash, Task, Agent
 
 ## Governed input evolution
 
-During develop, rework and review, do not overwrite an accepted input or reuse
-acceptance after its required closure changes. Use the shared Fabric lifecycle
-engine and exact governing versions. Prepare
-`lifecycle-plan ENG --spec FILE --out PLAN`; the external human signs and performs
-protected `lifecycle-apply --request PLAN --receipt RECEIPT` with explicit
-`lifecycle-update` capability. Then follow the allowed fresh verification path,
-obtain new independent review proofs and request separate exact-output human
-acceptance using `accept` capability. Reinstatement cannot revive cancelled
-conclusions or proofs. Unsupported ledgers remain archive-only; reconstruct from
-maintained public specifications under a new engagement rather than importing
-authority acts. Synthetic checks are never human acceptance or release.
+During develop, rework and review, preserve immutable input versions and do not
+reuse acceptance after its required justification changes. Obtain fresh,
+independent verification and separate human acceptance for the exact output.
+For the consequential branch, use the canonical `layered-justifiable-delivery`
+skill and its `references/domain-handoff.md` contract. It connects the actual
+request, exact criteria, candidate and evidence to the existing native Gen2
+entry; the parent handles runtime transport without user-authored JSON. Ordinary
+bounded lifecycle activities keep the routes below. This workflow grants no
+acceptance or release.
+Do not use archived Fabric commands or import historical authority acts as current
+acceptance.
 
 > **Agents named here** are subagents: delegate them through the active provider's operator/delegation mechanism — `artefact-governor`, `codebase-reviewer`, `docs-author`, `document-reviewer`, `library-approver`, `library-author`, `library-release`, `role-author`, `role-engineer`, `role-router`, `source-docs-engineer`.
 
@@ -100,5 +100,6 @@ change like any other, reviewed and merged by the owner.
 - The reviewer never fixes; the author never verifies. The ledger refuses both.
 - Pass each agent its step's inputs only: the finding, not the whole review; the criteria, not the conversation.
 - Never edit `.findings/` by hand. It is hash-chained, and a hook blocks it.
-- For a consequential decision on top of this work — a release, an architecture choice someone must justify —
-  use `/layered`, which adds layered review and an auditable record of who decided what.
+- Consequential decisions require explicit evidence and the native Gen2 handoff
+  above; required reserved decisions remain external L0 acts. This lifecycle
+  workflow does not itself authorize release.

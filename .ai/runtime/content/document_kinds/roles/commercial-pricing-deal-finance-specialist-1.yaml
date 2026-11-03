@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/commercial-pricing-deal-finance-specialist:1",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -62,7 +62,8 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Deal financial and cash-flow model",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#commercial-pricing-deal-finance-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -100,7 +101,8 @@
         "reason": "For each receiving role (Bid / Proposal Manager; Supplier Commercial / Deal Manager; Delegated human commercial and finance authority), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#commercial-pricing-deal-finance-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -138,7 +140,8 @@
         "reason": "Identify actual entity IDs and relationship instances for: business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence; material inputs -> source/version/assumption; client commitments -> protected internal commitment baseline; decision -> human approver where required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#commercial-pricing-deal-finance-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -176,7 +179,8 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#commercial-pricing-deal-finance-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -196,7 +200,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Deal financial and cash-flow model', provide verifiable evidence satisfying: Inputs, units, formulas, dependencies and policy treatment reconcile; no unsupported precision.. Required delivery form: Versioned, reproducible calculations with cost bridge, price options, margin, cash and sensitivities.",
+        "For the specific output 'Deal financial and cash-flow model', provide verifiable evidence satisfying: Inputs, units, formulas, dependencies and policy treatment reconcile; no unsupported precision. Required delivery form: Versioned, reproducible calculations with cost bridge, price options, margin, cash and sensitivities.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -211,10 +215,11 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Deal financial and cash-flow model', provide verifiable evidence satisfying: Inputs, units, formulas, dependencies and policy treatment reconcile; no unsupported precision.. Required delivery form: Versioned, reproducible calculations with cost bridge, price options, margin, cash and sensitivities.",
+        "reason": "For the specific output 'Deal financial and cash-flow model', provide verifiable evidence satisfying: Inputs, units, formulas, dependencies and policy treatment reconcile; no unsupported precision. Required delivery form: Versioned, reproducible calculations with cost bridge, price options, margin, cash and sensitivities.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#commercial-pricing-deal-finance-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -265,7 +270,8 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#commercial-pricing-deal-finance-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -312,7 +318,8 @@
         "reason": "Analyse the specific input \"Scoped cost and effort estimate with uncertainty and resource rates\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#commercial-pricing-deal-finance-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -355,7 +362,8 @@
         "reason": "Analyse the specific input \"Margin, return, discount, contingency and credit policy\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#commercial-pricing-deal-finance-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -398,7 +406,8 @@
         "reason": "Analyse the specific input \"Payment, acceptance, liability, indexation, SLA, currency and exit terms\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#commercial-pricing-deal-finance-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -441,7 +450,8 @@
         "reason": "Analyse the specific input \"Billing milestones, delivery/service schedule and resource pyramid\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#commercial-pricing-deal-finance-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -454,6 +464,123 @@
         "json_pointer": "/jai/semantics/required_inputs/3",
         "value": "Billing milestones, delivery/service schedule and resource pyramid"
       }
+    },
+    {
+      "id": "role/commercial-pricing-deal-finance-specialist:1.deal_model_assumptions",
+      "semantic_fields": [
+        "deal_model_assumptions"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Identify the exact deal scenario, term, currency, price/escalation basis, volumes, staffing/productivity, rates, tax/working-capital assumptions where applicable, source and accountable assumption owner.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Identify the exact deal scenario, term, currency, price/escalation basis, volumes, staffing/productivity, rates, tax/working-capital assumptions where applicable, source and accountable assumption owner.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#commercial-pricing-deal-finance-specialist:1",
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/commercial-pricing-deal-finance-specialist:1.deal_model_calculations",
+      "semantic_fields": [
+        "deal_model_calculations"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Provide inspectable formulas linking assumptions to delivery costs, supplier/customer cash-flow timing, revenues, margin and funding exposure; identify units, period granularity and calculation dependencies rather than supplying unexplained totals.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Provide inspectable formulas linking assumptions to delivery costs, supplier/customer cash-flow timing, revenues, margin and funding exposure; identify units, period granularity and calculation dependencies rather than supplying unexplained totals.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#commercial-pricing-deal-finance-specialist:1",
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/commercial-pricing-deal-finance-specialist:1.deal_model_controls",
+      "semantic_fields": [
+        "deal_model_controls"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Reconcile detailed schedules and totals, expose formula/input inconsistencies and run sensitivity scenarios for material volume, timing, cost and collection assumptions; separate a modelled outcome from an approved price or commitment.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Reconcile detailed schedules and totals, expose formula/input inconsistencies and run sensitivity scenarios for material volume, timing, cost and collection assumptions; separate a modelled outcome from an approved price or commitment.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#commercial-pricing-deal-finance-specialist:1",
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
     }
   ],
   "conditional_information": [
@@ -486,7 +613,8 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -529,7 +657,8 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -574,7 +703,8 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -688,6 +818,35 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "business-appraisal",
+        "title": "HM Treasury, The Green Book",
+        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Commercial Pricing / Deal Finance Specialist",
+        "frameworks": [
+          "GAO Cost Estimating and Assessment Guide, GAO-20-195G (2020): credible cost baselines, risk/sensitivity analysis and updates with actuals; adapted to supplier deals, not a claim of GAO certification.",
+          "IFRS 15 Revenue from Contracts with Customers, where applicable: route identification of performance obligations and revenue recognition to authorised accounting specialists.",
+          "Organisation treasury, tax, pricing, credit and accounting policies; IAS 21 for applicable currency accounting questions, with qualified finance review."
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -713,13 +872,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {

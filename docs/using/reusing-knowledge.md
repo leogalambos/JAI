@@ -1,7 +1,5 @@
 # Build and reuse your local know-how
 
-Owner: JAI maintainers  
-Last reviewed: 2026-10-20
 
 A useful knowledge library preserves what made an approach work, where it
 failed and which assumptions must be checked next time. It is not a collection

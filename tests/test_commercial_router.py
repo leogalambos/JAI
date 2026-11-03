@@ -159,7 +159,10 @@ class CommercialAdapterRenderingTests(unittest.TestCase):
         self.assertIn('workflow-commercial', command)
         skill = installer.render_codex_skill(root / '.ai/skills/commercial-delivery/SKILL.md', 'skill', 'commercial-delivery', registry).decode()
         self.assertIn('name: commercial-delivery', skill)
-        self.assertIn('not_run', skill)
+        self.assertIn('references/domain-handoff.md', skill)
+        self.assertIn('Local entities choose their professionals', skill)
+        self.assertIn('and models from the complete catalogue', skill)
+        self.assertIn('neither commercial readiness nor a successful render grants release', skill)
 
 class CommercialReservationTests(unittest.TestCase):
     _consultation = CommercialRouterTests._consultation

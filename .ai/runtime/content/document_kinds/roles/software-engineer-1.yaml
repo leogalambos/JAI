@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/software-engineer:1",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -62,7 +62,8 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Reviewed and merged code.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-engineer:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -100,7 +101,8 @@
         "reason": "For each receiving role (Test Analyst; Site Reliability Engineer; Release Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-engineer:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -138,7 +140,8 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-engineer:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -176,7 +179,8 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-engineer:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -214,7 +218,8 @@
         "reason": "For the specific output 'Reviewed and merged code', provide verifiable evidence satisfying: Passes automated checks, carries tests and telemetry, and has a rollback path. Required delivery form: Reviewed, merged change in version control.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-engineer:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -267,7 +272,8 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-engineer:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -316,7 +322,8 @@
         "reason": "Analyse the specific input \"Work item with acceptance criteria\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-engineer:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -359,7 +366,8 @@
         "reason": "Analyse the specific input \"Technical design or ADR\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-engineer:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -402,7 +410,8 @@
         "reason": "Analyse the specific input \"Coding and security standards\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-engineer:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -445,7 +454,8 @@
         "reason": "Analyse the specific input \"Existing code and telemetry\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-engineer:1",
-          "content/types/decision-paper.yaml"
+          "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -490,7 +500,8 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -533,7 +544,8 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -578,7 +590,8 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -692,6 +705,28 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "secure-software",
+        "title": "NIST SP 800-218, Secure Software Development Framework Version 1.1",
+        "url": "https://doi.org/10.6028/NIST.SP.800-218",
+        "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Software Engineer",
+        "frameworks": [
+          "SWEBOK v4",
+          "OWASP ASVS",
+          "team coding standards",
+          "NIST SSDF (SP 800-218)"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -717,13 +752,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {

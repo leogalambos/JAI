@@ -1,6 +1,5 @@
 # Prepare a sourcing and contract decision
 
-Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
 ACME Engineering is selecting a managed network service. Alice owns
 sourcing, Bob owns network operations and John Doe coordinates the
@@ -26,8 +25,8 @@ reporting and exit needs and identify the procurement and legal
 authorities.
 
 Use names such as `inputs/service-requirements.md`,
-`inputs/evaluation-criteria.md`, `inputs/supplier-responses/ and
-inputs/contract-issues.csv`. Keep source dates, versions and owners in
+`inputs/evaluation-criteria.md`, `inputs/supplier-responses/` and
+`inputs/contract-issues.csv`. Keep source dates, versions and owners in
 `inputs/source-register.md`. If a supplier omits an exit price, record
 it as an unresolved commercial dependency. Do not invent a favourable
 number to make bids comparable.

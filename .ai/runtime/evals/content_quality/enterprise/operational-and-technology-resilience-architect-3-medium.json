@@ -213,7 +213,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Recovery architecture and resilience patterns', provide verifiable evidence satisfying: Patterns state failure assumptions, degradation mode, RTO/RPO contribution and validation method.. Required delivery form: Versioned specification with failure scenarios and recovery paths.",
+        "criterion_under_review": "For the specific output 'Recovery architecture and resilience patterns', provide verifiable evidence satisfying: Patterns state failure assumptions, degradation mode, RTO/RPO contribution and validation method. Required delivery form: Versioned specification with failure scenarios and recovery paths.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

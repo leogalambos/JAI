@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Pricing and commercial trade-off recommendation', provide verifiable evidence satisfying: Human decision owner can see trade-offs, limits and residual risk for the complete lifecycle.. Required delivery form: Option paper covering price, terms, discount, reserves, return and downside exposure.",
+        "criterion_under_review": "For the specific output 'Pricing and commercial trade-off recommendation', provide verifiable evidence satisfying: Human decision owner can see trade-offs, limits and residual risk for the complete lifecycle. Required delivery form: Option paper covering price, terms, discount, reserves, return and downside exposure.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

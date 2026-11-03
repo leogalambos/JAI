@@ -99,7 +99,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Control inventory and testing calendar | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 1 | Control inventory and testing calendar | Control inventory and testing calendar | Each control has an owner, obligation, test scope, planned date, evidence source and overdue-action disposition |
 | 2 | risk and issue register maintenance | Structured table in the system of record (CSV/tool export) | Every row has an owner, a date, a status and a next action |
 | 3 | compliance evidence collection | Immutable evidence set with hashes, timestamps and custody record | Chain of custody is unbroken and the set is reproducible from the record |
 | 4 | GRC reporting packs | Structured document with executive summary and evidence annex | Conclusions are traceable to dated evidence; opinion is visibly separated from fact |
@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Control inventory and testing calendar has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Control inventory and testing calendar") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

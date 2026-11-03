@@ -41,4 +41,10 @@ python3 ~/.ai/it-role-house/tools/repository.py portfolio ./ea-repo --format md 
 
 **Acceptance and escalation.** A projected EA view must not rewrite the identity or semantics of its canonical source.
 
+Ordinary model maintenance and exchanges retain these routes. When the requested
+architecture result requires Gen2 justification, use the canonical
+`layered-justifiable-delivery/references/domain-handoff.md` native handoff with
+the exact repository snapshot, model-review findings and evidence. Do not replace
+the repository engine or infer acceptance/release from a generated view.
+
 **Documentation.** The current product manual is authored in repository `docs/` (see `docs/reference/commands.md` and `docs/reference/command-walkthroughs.md`). For installed offline assistance use `~/.ai/it-role-house/GUIDE.md` or `/guide`. Provider commands and skills are native runtime contracts; no separate runtime HTML help site is required.

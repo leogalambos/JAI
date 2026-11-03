@@ -1,6 +1,5 @@
 # Build a business case and benefits review
 
-Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
 ACME Transport is considering a scheduling system intended to reduce
 manual coordination. Alice sponsors the investment, Bob estimates

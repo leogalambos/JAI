@@ -1,0 +1,53 @@
+{
+  "protocol": "jai.governed-delivery/1",
+  "message_type": "control_event",
+  "message_id": "d9fad6a515824eaeeacab12ce039d38f29f5633f3028f7d0c963caf7923614cd",
+  "request_id": "request-run_completed",
+  "correlation_id": "question-service-controls",
+  "engagement": "synthetic-protocol",
+  "scope": "default",
+  "sender": {
+    "kind": "controller",
+    "id": "trusted-controller"
+  },
+  "recipient": {
+    "kind": "controller",
+    "id": "trusted-controller"
+  },
+  "context": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "controller-context",
+    "version_id": "c99e611773d7986ec9d979952e0eab68331cae4e3a8c7bfc9e83d632df7d48c2"
+  },
+  "profile": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "profile",
+    "version_id": "b0519b9fbd91854cbe44a508a24434902d4296b100862b3f0acc5374550990ef"
+  },
+  "expected_head": "0379d6138bfe05e3382401e0af27527da375e9eaab21d9f744a4b333647120af",
+  "issued_at_ms": 1000,
+  "expires_at_ms": 8000,
+  "causes": [],
+  "attachments": [],
+  "payload": {
+    "event": "run_completed",
+    "run_context": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "author-context-A",
+      "version_id": "d2aff78d85eb9d9c01c5bf7290ed2dfc3fc2961bea63d44b42da4c6c8556cfca"
+    },
+    "run_id": "run-author-A",
+    "observed_at_ms": 2000,
+    "return_blob_id": "684a866eb905aa1522a1dbb976ca1fbdb6f737d37e7649ae2a9ca595b1ea067f",
+    "usage": [
+      {
+        "metric": "tokens",
+        "unit": "governed-token",
+        "total": 23
+      }
+    ]
+  }
+}

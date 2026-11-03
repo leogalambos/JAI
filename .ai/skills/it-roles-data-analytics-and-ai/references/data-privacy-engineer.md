@@ -102,7 +102,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | 1 | Privacy control implementation (minimisation, pseudonymisation, encryption) | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 2 | data subject request tooling | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 3 | retention and deletion automation | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 4 | privacy technical design reviews | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
+| 4 | privacy technical design reviews | Located privacy design review | Traces processing purposes and data flows to privacy requirements, findings, evidence limits and independent resolution |
 
 ## 7. Output gates (blocking)
 
@@ -143,7 +143,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Privacy control implementation (minimisation, pseudonymisation, encryption) has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Privacy control implementation (minimisation, pseudonymisation, encryption)") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Service transition and handover plan', provide verifiable evidence satisfying: Receiving operations roles explicitly accept the handover and its open risks.. Required delivery form: Versioned plan with RACI, support model, knowledge and transition milestones.",
+        "criterion_under_review": "For the specific output 'Service transition and handover plan', provide verifiable evidence satisfying: Receiving operations roles explicitly accept the handover and its open risks. Required delivery form: Versioned plan with RACI, support model, knowledge and transition milestones.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

@@ -46,7 +46,7 @@ class CommercialPolicyTests(unittest.TestCase):
     def test_skill_names_the_coordinator_as_an_agent(self):
         self.assertIn(NAME, self._declared_agents(".ai/skills/commercial-delivery/SKILL.md"))
 
-    def test_provider_projections_preserve_read_only_ceiling_and_parent_dispatch(self):
+    def test_provider_projections_preserve_read_only_ceiling_and_local_handoff(self):
         spec = importlib.util.spec_from_file_location("commercial_policy_installer", ROOT / ".ai/setup/installer.py")
         installer = importlib.util.module_from_spec(spec)
         spec.loader.exec_module(installer)
@@ -58,7 +58,10 @@ class CommercialPolicyTests(unittest.TestCase):
         codex = installer.render_codex_skill(source, "agent", NAME, registry).decode()
         self.assertIn("Source tool ceiling: `Read, Grep, Glob`", codex)
         for rendered in (claude, codex):
-            self.assertIn("The parent dispatches fresh role-bounded workers and independent reviewers", rendered)
+            rendered = " ".join(rendered.split())
+            self.assertIn("references/domain-handoff.md", rendered)
+            self.assertIn("local entities select their own catalogue", rendered)
+            self.assertIn("specialties/models and fresh independent same-layer reviewers", rendered)
             self.assertIn("this read-only agent cannot maintain that state", rendered)
 
 

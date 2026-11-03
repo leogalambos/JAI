@@ -1,6 +1,5 @@
 # Assess and plan a regulatory change
 
-Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
 ACME Finance receives a new reporting obligation affecting an existing
 customer service. Alice owns compliance coordination, Bob owns the
@@ -25,8 +24,8 @@ reporting arrangements and the effective-date notice. Include the scope
 statement defining affected entities, products and jurisdictions.
 
 Use names such as `inputs/obligation-text.pdf`,
-`inputs/legal-interpretation.md`, `inputs/current-controls.csv and
-inputs/applicability.md`. Keep source dates, versions and owners in
+`inputs/legal-interpretation.md`, `inputs/current-controls.csv` and
+`inputs/applicability.md`. Keep source dates, versions and owners in
 `inputs/source-register.md`. An absent legal interpretation must stay a
 question for the responsible adviser. A generated explanation cannot
 silently become an authoritative interpretation.

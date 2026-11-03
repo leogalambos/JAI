@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/estimation-cost-engineering-specialist:1",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -62,7 +62,8 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Basis of estimate and work/cost breakdown",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -100,7 +101,8 @@
         "reason": "For each receiving role (Bid / Proposal Manager; Supplier Commercial / Deal Manager; Delegated human commercial and finance authority), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -138,7 +140,8 @@
         "reason": "Identify actual entity IDs and relationship instances for: business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence; material inputs -> source/version/assumption; client commitments -> protected internal commitment baseline; decision -> human approver where required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -176,7 +179,8 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -196,7 +200,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Basis of estimate and work/cost breakdown', provide verifiable evidence satisfying: Another qualified estimator can reconstruct the material figures and distinguish fact from assumption.. Required delivery form: Source-linked quantities, methods, effort, rates, assumptions, ranges and exclusions.",
+        "For the specific output 'Basis of estimate and work/cost breakdown', provide verifiable evidence satisfying: Another qualified estimator can reconstruct the material figures and distinguish fact from assumption. Required delivery form: Source-linked quantities, methods, effort, rates, assumptions, ranges and exclusions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -211,10 +215,11 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Basis of estimate and work/cost breakdown', provide verifiable evidence satisfying: Another qualified estimator can reconstruct the material figures and distinguish fact from assumption.. Required delivery form: Source-linked quantities, methods, effort, rates, assumptions, ranges and exclusions.",
+        "reason": "For the specific output 'Basis of estimate and work/cost breakdown', provide verifiable evidence satisfying: Another qualified estimator can reconstruct the material figures and distinguish fact from assumption. Required delivery form: Source-linked quantities, methods, effort, rates, assumptions, ranges and exclusions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -265,7 +270,8 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -312,7 +318,8 @@
         "reason": "Analyse the specific input \"Business outcomes, scope, acceptance and service obligations\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -355,7 +362,8 @@
         "reason": "Analyse the specific input \"Work breakdown, dependencies, resource pyramid and schedule constraints\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -398,7 +406,8 @@
         "reason": "Analyse the specific input \"Historical actual effort, productivity, costs and change history\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -441,7 +450,8 @@
         "reason": "Analyse the specific input \"Public benchmarks, SME estimates, rate cards and licensing assumptions\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
-          "content/types/business-case.yaml"
+          "content/types/business-case.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -486,7 +496,8 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -529,7 +540,8 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -574,7 +586,8 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -688,6 +701,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "business-appraisal",
+        "title": "HM Treasury, The Green Book",
+        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Estimation / Cost Engineering Specialist",
+        "frameworks": [
+          "GAO Cost Estimating and Assessment Guide, GAO-20-195G (2020), https://www.gao.gov/products/gao-20-195g: technical baseline, WBS, assumptions, data, methods, sensitivity/risk analysis, documentation and updates.",
+          "AACE International Total Cost Management Framework and relevant estimate-classification recommended practices: use only industry-appropriate versions. AACE 18R-97 is process-industry oriented and does not establish universal IS/IT accuracy percentages.",
+          "ISO/IEC/IEEE 15939 measurement-process concepts and organisation-approved software/service estimation practices; use only validated local parametric calibrations."
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -713,13 +747,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {

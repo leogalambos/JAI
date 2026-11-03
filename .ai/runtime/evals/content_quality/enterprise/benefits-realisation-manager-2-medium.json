@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Benefits realisation plan', provide verifiable evidence satisfying: Benefit timing reflects delivery and adoption dependencies rather than project completion dates.. Required delivery form: Time-phased plan with review points and owners.",
+        "criterion_under_review": "For the specific output 'Benefits realisation plan', provide verifiable evidence satisfying: Benefit timing reflects delivery and adoption dependencies rather than project completion dates. Required delivery form: Time-phased plan with review points and owners.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

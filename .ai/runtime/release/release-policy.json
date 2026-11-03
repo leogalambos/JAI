@@ -7,23 +7,18 @@
   "changelog_mode": "production-only",
   "pre_ga_versions_in_changelog": false,
   "required_gates": [
-    "A",
-    "B",
-    "C",
-    "D",
-    "E",
-    "F",
-    "G",
-    "H"
+    "source-contracts",
+    "local-offline-tests",
+    "public-documentation",
+    "archive-integrity"
   ],
   "required_release_files": [
     "VERSION",
     "CHANGELOG.md",
-    "VALIDATION.md",
-    "QUALIFICATION-A-H.json",
-    "SBOM.spdx.json",
-    "COMPATIBILITY.json",
-    "PROVENANCE.json"
+    "README.md",
+    "install.sh",
+    "requirements.txt",
+    "RELEASE-SCOPE.json"
   ],
   "signing": {
     "mode": "automated-ci-release",

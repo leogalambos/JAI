@@ -19,106 +19,87 @@ Enabled features: `role-workflows`, `workspace-authoring`,
 `operator-attested-local-l0`.
 
 - Roles: **286**
-- Agents: **34**
+- Agents: **27**
 - Skills: **24**
 - Workflows: **24**
 - Artifact Types: **28**
 - Schemas: **33**
 - Renderers: **4**
-- Tests: **32**
 - Provider Adapters: **2**
 
 ### Compatibility matrix
 
 - **Claude Code**
-  - Minimum: provider-supported strict sandbox
-  - Tested: not installed on reference host; projections only, live
-    NOT_VERIFIED
-  - Supported: contract-scoped tools; reviewer shell unavailable without
-    read-only isolation
+  - Minimum: provider-supported
+  - Supported: Native role and workflow projections; effective isolation
+    depends on the host sandbox.
 - **Codex CLI**
   - Minimum: provider-supported
-  - Tested: 0.164.0 host CLI help confirms sandbox/on-request values;
-    live role confinement NOT_VERIFIED
-  - Supported: role-authorized local QA in effective native sandbox
+  - Supported: Native role and workflow skills; effective isolation
+    depends on the host sandbox.
 - **Python**
   - Minimum: 3.10
-  - Tested: 3.12 release CI target; bare interpreter installation tested
-    with site packages disabled
-  - Supported: standard-library-only installation; runtime contract
-    workflows need their dependencies
+  - Supported: Standard-library installation; runtime contract workflows
+    also require their declared dependencies.
 - **Pandoc**
   - Minimum: optional
-  - Tested: publication tool detects at runtime
-  - Supported: optional
+  - Supported: Optional document conversion.
 - **WeasyPrint**
   - Minimum: 70.x optional
-  - Tested: actual HTML/PDF conversion; constrained resource fetching;
-    uniform CLI-first/current-Python fallback covered by real CLI
-    subprocess tests
-  - Supported: SUPPORTED optional HTML/PDF; not Office fidelity
+  - Supported: HTML/PDF publication using a CLI-first/current-Python
+    fallback with constrained resource fetching; not Office fidelity.
 - **Pyphen**
   - Minimum: determined by the installed WeasyPrint dependency
     requirements
-  - Tested: metadata reported; actual HTML/PDF conversion determines
-    readiness
-  - Supported: WeasyPrint transitive dependency; optional pip recipe
-    selects 0.17.x in requirements-rendering.txt, without rejecting
-    working OS packages
+  - Supported: WeasyPrint transitive dependency; the optional pip recipe
+    selects 0.17.x without rejecting working OS packages.
 - **LibreOffice**
   - Minimum: Office-compatible host renderer
-  - Tested: actual DOCX/PPTX/XLSX operator renders on Fedora
-  - Supported: AUTO when native sandbox permits; otherwise
-    OPERATOR_ASSISTED actual Office QA
+  - Supported: Office document rendering in the native sandbox when
+    available, otherwise through an explicit operator handoff.
 - **Poppler**
   - Minimum: pdftoppm on PATH
-  - Tested: actual PDF page rasterization
-  - Supported: visual QA raster prerequisite
+  - Supported: PDF page rasterization for visual inspection.
 - **OpenSSL**
-  - Minimum: Ed25519 pkeyutl -rawin
-  - Tested: external receipts verified with fixed /usr/bin/openssl on
-    Linux
-  - Supported: OPERATOR_ASSISTED local L0; other trust adapters
-    NOT_VERIFIED
+  - Minimum: Ed25519 genpkey and pkeyutl -rawin
+  - Supported: Host-confirmed key creation and explicit human signing;
+    private keys stay outside agent access.
 - **Fonts/system libraries**
-  - Minimum: DejaVu Sans; renderer-native text/layout libraries
-  - Tested: Fedora reference glyph/layout corpus
-  - Supported: host prerequisite; other platforms NOT_VERIFIED
+  - Minimum: DejaVu Sans and renderer-native layout libraries
+  - Supported: Required by the selected rendering tools.
 - **lxml**
   - Minimum: 5.x
-  - Tested: XSD conformance suite
-  - Supported: EA conformance
+  - Supported: Architecture exchange conformance checks.
 - **jsonschema**
-  - Minimum: >=4.26,<5 for runtime contract workflows
-  - Tested: Draft 2020-12; narrow release-scope bootstrap validation
-    uses only the standard library
-  - Supported: required for Agent/Policy, DCS and Artifact validation;
-    not required for installation
+  - Minimum: >=4.18,<5
+  - Supported: Required for runtime contract validation; not required
+    for installation.
 - **Pillow**
   - Minimum: runtime-supported
-  - Tested: visual QA fixture rendering
-  - Supported: visual QA
+  - Supported: Image inspection and visual QA.
 - **GitHub Actions**
-  - Minimum: release workflow
-  - Tested: tag, A-H gates, ZIP SHA-256, CI publication
-  - Supported: automatic release publication
+  - Minimum: release@YY.MM.VV tag workflow
+  - Supported: Validated source archives and checksums are published
+    only after a matching release tag is pushed.
 <!-- GENERATED-INVENTORY:END -->
 
-## Runtime/tooling compatibility
+## Generation and data compatibility
 
-Current tooling is generated below from the release manifest. Presence of a
-binary is not proof of confinement or actual-format visual fidelity.
+**Gen2 is the 26.11.xx release family; Gen1 is the preceding 26.10.xx family.**
+The professional catalogue and provider-facing workflows remain available, but
+the engagement evaluator and current-applicability model have changed.
 
-## Data/schema compatibility from the 26.10.4 baseline
-
-| Source release | Read/migrate | Current write |
+| Material | Gen2 treatment | Acceptance boundary |
 | --- | --- | --- |
-| 26.10.0 | supported | no |
-| 26.10.1 | supported | no |
-| 26.10.2 | supported | no |
-| 26.10.3 | supported | no |
-| **26.10.4 and later (same v3 contract)** | native | **yes** |
+| Current journal-format-9 engagement | Resume through its recorded locator and actual durable state | Preserve exact inputs, decisions and applicable permissions; reconcile uncertain invocations before new work |
+| Unsupported earlier engagement journal | Keep as an immutable historical archive and start a fresh Gen2 engagement from authorised inputs | No journal migration, imported PASS result or inherited acceptance/release permission |
+| Retained professional-domain model | Use the supported reader and current write contract for that specific domain/profile | A domain reader does not establish a Gen2 execution history or accept the model for a new use |
+| Earlier publication representation | Apply the publication profile's explicit read/render boundary | Readable historical lineage alone does not satisfy current content, rendering or release requirements |
 
-Migration is forward-only. Historical schema namespaces and migration sources are intentionally retained so that previous data can be interpreted without pretending it originated in the current release.
-
-See [26.10.4 release and migration](release-migration.md) for subsystem-specific behavior.
+Compatibility belongs to the named subsystem and schema, not merely a product
+version interval. Retained domain readers may interpret their supported old
+representations; this is not a release-wide promise to migrate Gen1 engagements.
+Use [startup and recovery](../operations/lifecycle-recovery.md) for a new
+engagement and [versioned applicability](../architecture/governed-runtime-cutover.md)
+for current input changes. The [publication stack](../configuration/publication-stack.md)
+explains its separate manifest boundary.

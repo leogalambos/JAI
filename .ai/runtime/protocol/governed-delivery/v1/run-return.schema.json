@@ -1,0 +1,319 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Canonical actual execution return",
+  "type": "object",
+  "properties": {
+    "assignment": {
+      "$ref": "common.schema.json#/$defs/reference"
+    },
+    "context": {
+      "$ref": "common.schema.json#/$defs/reference"
+    },
+    "records": {
+      "type": "array",
+      "items": {
+        "$ref": "record.schema.json#/$defs/proposal"
+      },
+      "minItems": 0
+    },
+    "intents": {
+      "type": "array",
+      "items": {
+        "oneOf": [
+          {
+            "type": "object",
+            "properties": {
+              "message_type": {
+                "const": "assignment"
+              },
+              "recipient": {
+                "$ref": "common.schema.json#/$defs/participant"
+              },
+              "payload": {
+                "$ref": "message.schema.json#/$defs/assignment_payload"
+              }
+            },
+            "required": [
+              "message_type",
+              "recipient",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "message_type": {
+                "const": "submission"
+              },
+              "recipient": {
+                "$ref": "common.schema.json#/$defs/participant"
+              },
+              "payload": {
+                "$ref": "message.schema.json#/$defs/submission_payload"
+              }
+            },
+            "required": [
+              "message_type",
+              "recipient",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "message_type": {
+                "const": "observation"
+              },
+              "recipient": {
+                "$ref": "common.schema.json#/$defs/participant"
+              },
+              "payload": {
+                "$ref": "message.schema.json#/$defs/observation_payload"
+              }
+            },
+            "required": [
+              "message_type",
+              "recipient",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "message_type": {
+                "const": "review"
+              },
+              "recipient": {
+                "$ref": "common.schema.json#/$defs/participant"
+              },
+              "payload": {
+                "$ref": "message.schema.json#/$defs/review_payload"
+              }
+            },
+            "required": [
+              "message_type",
+              "recipient",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "message_type": {
+                "const": "integration"
+              },
+              "recipient": {
+                "$ref": "common.schema.json#/$defs/participant"
+              },
+              "payload": {
+                "$ref": "message.schema.json#/$defs/integration_payload"
+              }
+            },
+            "required": [
+              "message_type",
+              "recipient",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "message_type": {
+                "const": "handoff"
+              },
+              "recipient": {
+                "$ref": "common.schema.json#/$defs/participant"
+              },
+              "payload": {
+                "$ref": "message.schema.json#/$defs/handoff_payload"
+              }
+            },
+            "required": [
+              "message_type",
+              "recipient",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "message_type": {
+                "const": "handoff_acceptance"
+              },
+              "recipient": {
+                "$ref": "common.schema.json#/$defs/participant"
+              },
+              "payload": {
+                "$ref": "message.schema.json#/$defs/handoff_acceptance_payload"
+              }
+            },
+            "required": [
+              "message_type",
+              "recipient",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "message_type": {
+                "const": "information_request"
+              },
+              "recipient": {
+                "$ref": "common.schema.json#/$defs/participant"
+              },
+              "payload": {
+                "$ref": "message.schema.json#/$defs/information_request_payload"
+              }
+            },
+            "required": [
+              "message_type",
+              "recipient",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "message_type": {
+                "const": "information_response"
+              },
+              "recipient": {
+                "$ref": "common.schema.json#/$defs/participant"
+              },
+              "payload": {
+                "$ref": "message.schema.json#/$defs/information_response_payload"
+              }
+            },
+            "required": [
+              "message_type",
+              "recipient",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "message_type": {
+                "const": "change_request"
+              },
+              "recipient": {
+                "$ref": "common.schema.json#/$defs/participant"
+              },
+              "payload": {
+                "$ref": "message.schema.json#/$defs/change_request_payload"
+              }
+            },
+            "required": [
+              "message_type",
+              "recipient",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "message_type": {
+                "const": "escalation"
+              },
+              "recipient": {
+                "$ref": "common.schema.json#/$defs/participant"
+              },
+              "payload": {
+                "$ref": "message.schema.json#/$defs/escalation_payload"
+              }
+            },
+            "required": [
+              "message_type",
+              "recipient",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "message_type": {
+                "const": "decision"
+              },
+              "recipient": {
+                "$ref": "common.schema.json#/$defs/participant"
+              },
+              "payload": {
+                "allOf": [
+                  {
+                    "$ref": "message.schema.json#/$defs/decision_payload"
+                  },
+                  {
+                    "properties": {
+                      "authority_proof": {
+                        "type": "null"
+                      },
+                      "action": {
+                        "enum": [
+                          "select_execution",
+                          "rework",
+                          "reformulate",
+                          "select",
+                          "invalidate",
+                          "reinstate",
+                          "terminate",
+                          "resolve_escalation",
+                          "configure_procedure"
+                        ]
+                      }
+                    }
+                  }
+                ]
+              }
+            },
+            "required": [
+              "message_type",
+              "recipient",
+              "payload"
+            ],
+            "additionalProperties": false
+          },
+          {
+            "type": "object",
+            "properties": {
+              "message_type": {
+                "const": "relay"
+              },
+              "recipient": {
+                "$ref": "common.schema.json#/$defs/participant"
+              },
+              "payload": {
+                "$ref": "message.schema.json#/$defs/relay_payload"
+              }
+            },
+            "required": [
+              "message_type",
+              "recipient",
+              "payload"
+            ],
+            "additionalProperties": false
+          }
+        ]
+      },
+      "minItems": 1
+    }
+  },
+  "required": [
+    "assignment",
+    "context",
+    "records",
+    "intents"
+  ],
+  "additionalProperties": false
+}

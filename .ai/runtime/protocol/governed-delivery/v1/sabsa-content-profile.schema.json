@@ -1,0 +1,350 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "properties": {
+    "format": {
+      "const": "jai-sabsa-content-profile/1"
+    },
+    "catalogue_id": {
+      "const": "jai-sabsa-minimum"
+    },
+    "catalogue_version": {
+      "const": "1"
+    },
+    "method_sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "edition": {
+            "type": "string",
+            "minLength": 1
+          },
+          "location": {
+            "type": "string",
+            "minLength": 1
+          },
+          "adopted_scope": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "id",
+          "edition",
+          "location",
+          "adopted_scope"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "scope": {
+      "type": "object",
+      "properties": {
+        "purpose": {
+          "type": "string",
+          "minLength": 1
+        },
+        "layers": {
+          "type": "array",
+          "items": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 6
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "questions": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "what",
+              "why",
+              "how",
+              "who",
+              "where",
+              "when"
+            ]
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "depth": {
+          "type": "string",
+          "minLength": 1
+        },
+        "audiences": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "classification": {
+          "enum": [
+            "public",
+            "private"
+          ]
+        }
+      },
+      "required": [
+        "purpose",
+        "layers",
+        "questions",
+        "depth",
+        "audiences",
+        "classification"
+      ],
+      "additionalProperties": false
+    },
+    "required_units": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "owner": {
+            "$ref": "common.schema.json#/$defs/ownership"
+          },
+          "group": {
+            "enum": [
+              "contextual.what",
+              "contextual.why",
+              "contextual.how",
+              "contextual.who",
+              "contextual.where",
+              "contextual.when",
+              "conceptual.what",
+              "conceptual.why",
+              "conceptual.how",
+              "conceptual.who",
+              "conceptual.where",
+              "conceptual.when",
+              "logical.what",
+              "logical.why",
+              "logical.how",
+              "logical.who",
+              "logical.where",
+              "logical.when",
+              "physical.what",
+              "physical.why",
+              "physical.how",
+              "physical.who",
+              "physical.where",
+              "physical.when",
+              "component.what",
+              "component.why",
+              "component.how",
+              "component.who",
+              "component.where",
+              "component.when",
+              "management.what",
+              "management.why",
+              "management.how",
+              "management.who",
+              "management.where",
+              "management.when",
+              "conceptual.attributes",
+              "management.activity",
+              "management.measure",
+              "management.observation"
+            ]
+          }
+        },
+        "required": [
+          "key",
+          "owner",
+          "group"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 1,
+      "uniqueItems": true
+    },
+    "required_relations": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "key": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "enum": [
+              "justifies",
+              "refines",
+              "realizes",
+              "constrains",
+              "assigned_to",
+              "located_in",
+              "interacts_with",
+              "precedes",
+              "measures",
+              "observes",
+              "feedback_for"
+            ]
+          },
+          "from_obligation": {
+            "type": "string",
+            "minLength": 1
+          },
+          "to_obligation": {
+            "type": "string",
+            "minLength": 1
+          }
+        },
+        "required": [
+          "key",
+          "type",
+          "from_obligation",
+          "to_obligation"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "required_views": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "view": {
+            "enum": [
+              "architecture",
+              "executive-summary",
+              "risk-treatment-plan",
+              "policy-architecture",
+              "trust-model",
+              "information-access-model",
+              "security-service-catalogue",
+              "component-realisation",
+              "assurance-plan",
+              "governance-register",
+              "current-state",
+              "target-state",
+              "transition-architecture",
+              "transition-roadmap",
+              "lifecycle-register",
+              "framework-mapping",
+              "compliance-gap-analysis",
+              "reuse-register",
+              "client-questions"
+            ]
+          },
+          "unit_obligations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          },
+          "relation_obligations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 0,
+            "uniqueItems": true
+          }
+        },
+        "required": [
+          "view",
+          "unit_obligations",
+          "relation_obligations"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "exclusions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "obligations": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "minItems": 1,
+            "uniqueItems": true
+          },
+          "decision": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "rationale": {
+            "type": "string",
+            "minLength": 1
+          },
+          "consequences": {
+            "type": "string",
+            "minLength": 1
+          },
+          "use_scope": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expires_at_ms": {
+            "anyOf": [
+              {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 9007199254740991
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "obligations",
+          "decision",
+          "rationale",
+          "consequences",
+          "use_scope",
+          "expires_at_ms"
+        ],
+        "additionalProperties": false
+      },
+      "minItems": 0,
+      "uniqueItems": true
+    },
+    "claim": {
+      "type": "string",
+      "minLength": 1
+    }
+  },
+  "required": [
+    "format",
+    "catalogue_id",
+    "catalogue_version",
+    "method_sources",
+    "scope",
+    "required_units",
+    "required_relations",
+    "required_views",
+    "exclusions",
+    "claim"
+  ],
+  "additionalProperties": false
+}

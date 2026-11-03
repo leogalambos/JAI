@@ -216,7 +216,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Early-life support and service acceptance report', provide verifiable evidence satisfying: The service exits early-life support only when stability and ownership thresholds are met.. Required delivery form: Time-bound report with exit criteria and trend evidence.",
+        "criterion_under_review": "For the specific output 'Early-life support and service acceptance report', provide verifiable evidence satisfying: The service exits early-life support only when stability and ownership thresholds are met. Required delivery form: Time-bound report with exit criteria and trend evidence.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

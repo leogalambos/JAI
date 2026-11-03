@@ -213,7 +213,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Privacy architecture and design requirements', provide verifiable evidence satisfying: Every requirement traces to purpose, processing context, privacy obligation/risk and verification method.. Required delivery form: Versioned specification with traceable numbered requirements.",
+        "criterion_under_review": "For the specific output 'Privacy architecture and design requirements', provide verifiable evidence satisfying: Every requirement traces to purpose, processing context, privacy obligation/risk and verification method. Required delivery form: Versioned specification with traceable numbered requirements.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

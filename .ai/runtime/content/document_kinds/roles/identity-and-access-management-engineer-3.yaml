@@ -2,14 +2,14 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/identity-and-access-management-engineer:3",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/prototype",
+    "family/deployment-automation",
     "domain/delivery"
   ],
   "applies_to": {
@@ -61,7 +61,9 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: joiner-mover-leaver automation.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -99,7 +101,9 @@
         "reason": "For each receiving role (Identity Governance Specialist; Application teams), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -137,7 +141,9 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -175,7 +181,9 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -213,7 +221,9 @@
         "reason": "For the specific output 'joiner-mover-leaver automation', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -265,7 +275,9 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -313,7 +325,9 @@
         "reason": "Analyse the specific input \"Identity sources and HR feeds\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -356,7 +370,9 @@
         "reason": "Analyse the specific input \"Access policy\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -399,7 +415,9 @@
         "reason": "Analyse the specific input \"Application integration requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -442,7 +460,9 @@
         "reason": "Analyse the specific input \"Regulatory access requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -487,7 +507,9 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -530,7 +552,9 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -575,7 +599,9 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -670,7 +696,7 @@
     }
   ],
   "size_budget": {
-    "metric": "typed",
+    "metric": "semantic_units",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -689,6 +715,36 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "configuration-management",
+        "title": "NIST SP 800-128, Guide for Security-Focused Configuration Management of Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-128",
+        "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "secure-software",
+        "title": "NIST SP 800-218, Secure Software Development Framework Version 1.1",
+        "url": "https://doi.org/10.6028/NIST.SP.800-218",
+        "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Identity and Access Management Engineer",
+        "frameworks": [
+          "NIST SP 800-63",
+          "OAuth 2.1 and OIDC",
+          "SAML",
+          "zero trust principles (NIST SP 800-207)"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -714,13 +770,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -739,12 +796,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "family/deployment-automation",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "prototype",
+  "semantic_family": "deployment-automation",
   "role_overlay": {
     "contract_id": "identity-and-access-management-engineer:3",
     "scope": "Exact source deliverable, input analysis and existing role gates only",

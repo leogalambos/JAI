@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/business-attribute-profiler:1",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -244,7 +244,7 @@
         "G1: Every requirement is atomic, testable, prioritised and traced to a named source.",
         "G2: Conflicting stakeholder positions are recorded as open conflicts, never averaged into a vague compromise.",
         "G3: Assumptions and constraints are listed separately from requirements and each has an owner.",
-        "G4: Business attribute profile has been walked through with the people who will build, test and operate the result.",
+        "G4: The primary deliverable (\"Business attribute profile\") has been walked through with the people who will build, test and operate the result.",
         "G5: Every attribute has a definition, a metric, a measurement method and a target threshold agreed with the business",
         "G6: attributes without measures cannot drive design or prove assurance and are rejected"
       ],
@@ -685,6 +685,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Business Attribute Profiler",
+        "frameworks": [
+          "SABSA business attribute profiling",
+          "SABSA attributes taxonomy",
+          "measurement and metrics design practice"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -710,13 +731,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {

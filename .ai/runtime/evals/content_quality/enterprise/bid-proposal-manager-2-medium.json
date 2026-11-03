@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Proposal compliance and clarification matrix', provide verifiable evidence satisfying: Every mandatory request is answered, explicitly departed from or escalated; no silent omissions.. Required delivery form: Source-linked requirement register, response/evidence location, amendments, questions and dispositions.",
+        "criterion_under_review": "For the specific output 'Proposal compliance and clarification matrix', provide verifiable evidence satisfying: Every mandatory request is answered, explicitly departed from or escalated; no silent omissions. Required delivery form: Source-linked requirement register, response/evidence location, amendments, questions and dispositions.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

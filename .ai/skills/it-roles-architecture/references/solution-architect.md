@@ -100,7 +100,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
 | 1 | Solution architecture document | Model in the EA tool plus a published view set | Every element traces to a driver or a quality-attribute target; no orphan elements |
-| 2 | interface and integration design | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
+| 2 | interface and integration design | Interface and integration design | Defines versioned schemas, producer/consumer obligations, trust boundaries, failure handling and compatibility checks |
 | 3 | non-functional requirement specification | Versioned specification with numbered, traceable requirements | Every requirement is atomic, testable and traced to a source and a priority |
 | 4 | architecture decision records | Model in the EA tool plus a published view set | Every element traces to a driver or a quality-attribute target; no orphan elements |
 
@@ -140,7 +140,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Solution architecture document has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Solution architecture document") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

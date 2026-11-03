@@ -2,15 +2,15 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/knowledge-manager:1",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/implementation-specification",
-    "domain/architecture"
+    "type/document",
+    "domain/delivery"
   ],
   "applies_to": {
     "document_kind": "role/knowledge-manager:1",
@@ -195,7 +195,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Knowledge article standards and templates', provide verifiable evidence satisfying: Requirements are specific, measurable and technology-explicit. Required delivery form: Controlled document referencing the parent policy.",
+        "For the specific output 'Knowledge article standards and templates', provide verifiable evidence satisfying: Defines audience and task structure, required source evidence, findability, ownership, review triggers and usability criteria. Required delivery form: Controlled knowledge article standards and templates.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,7 +210,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Knowledge article standards and templates', provide verifiable evidence satisfying: Requirements are specific, measurable and technology-explicit. Required delivery form: Controlled document referencing the parent policy.",
+        "reason": "For the specific output 'Knowledge article standards and templates', provide verifiable evidence satisfying: Defines audience and task structure, required source evidence, findability, ownership, review triggers and usability criteria. Required delivery form: Controlled knowledge article standards and templates.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#knowledge-manager:1",
           "content/types/implementation-specification.yaml"
@@ -223,8 +223,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Knowledge article standards and templates",
-        "format": "Controlled document referencing the parent policy",
-        "acceptance_criterion": "Requirements are specific, measurable and technology-explicit",
+        "format": "Controlled knowledge article standards and templates",
+        "acceptance_criterion": "Defines audience and task structure, required source evidence, findability, ownership, review triggers and usability criteria",
         "role_path": "skills/it-roles-service-management-and-support/references/knowledge-manager.md"
       }
     },
@@ -244,7 +244,7 @@
         "G1: Intake is rejected unless all mandatory inputs are present or a named owner and date exist for each gap.",
         "G2: No commitment is made beyond demonstrated capacity for the period.",
         "G3: Every deviation from the documented process is logged with its reason and its expiry.",
-        "G4: Knowledge article standards and templates is published on the agreed cadence even when the news is bad.",
+        "G4: The primary deliverable (\"Knowledge article standards and templates\") is published on the agreed cadence, including adverse results.",
         "G5: Articles carry an owner, a last-validated date and a confidence flag",
         "G6: unvalidated articles past their review date are demoted in search rather than silently trusted"
       ],
@@ -666,7 +666,7 @@
     }
   ],
   "size_budget": {
-    "metric": "typed",
+    "metric": "semantic_units",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -685,6 +685,26 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Knowledge Manager",
+        "frameworks": [
+          "KCS v6 (Knowledge-Centred Service)",
+          "ITIL 4 knowledge management"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -710,13 +730,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -735,12 +756,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/document",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "implementation-specification",
+  "semantic_family": "document",
   "role_overlay": {
     "contract_id": "knowledge-manager:1",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -749,8 +772,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "knowledge-manager:1",
-    "source_fingerprint": "51f7434d3f2fe0c45ce37f6148d5b2b59ce7d3a7cc1921d0a34d3861ebde8393",
-    "source_hash": "3d5ed2a1121a4603635e2e1e23497bf837465d7224b61f04942dddecb0749395"
+    "source_fingerprint": "0ca764b81e37844ba0d301395a2c48394d09c09ad7e7f3c4295a8688671d93b7",
+    "source_hash": "c5bc0d4014d63f1ed34bbaa8888e2644c4f289c71516d4af7c3330b5fa8a3d2a"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

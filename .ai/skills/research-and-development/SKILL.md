@@ -43,5 +43,9 @@ evidence cannot be had at this cost; stop and say which, with what was learned. 
 - Prototypes stay in `experiments/`. Promoting one to production is an engineering decision with a rewrite,
   routed through `role-router`, never a copy.
 - Cite sources for every claim that carries weight. Benchmark numbers carry their conditions or are not reported.
-- For an R&D decision with real consequences — adopting a technology, a security architecture choice — run
-  `/layered` on the decision, with this cycle's outputs as evidence.
+- For consequential R&D decisions, retain the exact plan, criteria, results and
+  assessment as evidence. Use the canonical `layered-justifiable-delivery` skill
+  and its `references/domain-handoff.md` native Gen2 handoff. The parent captures
+  the actual request and references; the user does not construct bootstrap JSON.
+  The ordinary research cycle remains bounded as above. Required human authority
+  is separate; this cycle does not itself grant acceptance or release.

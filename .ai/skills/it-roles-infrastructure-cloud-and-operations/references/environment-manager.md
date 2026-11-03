@@ -105,7 +105,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | --- | --- | --- | --- |
 | 1 | Environment inventory, topology and ownership map | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 2 | environment booking and refresh schedule | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 3 | test data seeding and masking procedure | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 3 | test data seeding and masking procedure | Versioned test-data seeding and masking procedure | Defines authorised source data, masking rules, reproducible preparation, validation, cleanup and privacy controls |
 | 4 | ephemeral environment provisioning standard | Controlled document referencing the parent policy | Requirements are specific, measurable and technology-explicit |
 
 ## 7. Output gates (blocking)
@@ -115,7 +115,7 @@ An output that fails any gate is not released. A gate may be waived only by the 
 - [ ] **G1.** Intake is rejected unless all mandatory inputs are present or a named owner and date exist for each gap.
 - [ ] **G2.** No commitment is made beyond demonstrated capacity for the period.
 - [ ] **G3.** Every deviation from the documented process is logged with its reason and its expiry.
-- [ ] **G4.** Environment inventory, topology and ownership map is published on the agreed cadence even when the news is bad.
+- [ ] **G4.** The primary deliverable ("Environment inventory, topology and ownership map") is published on the agreed cadence, including adverse results.
 - [ ] **G5.** No non-production environment holds unmasked production personal data
 - [ ] **G6.** one that does is treated as a production system with a data protection incident attached
 - [ ] **G7.** Every environment has an owner, a refresh cadence and a documented teardown, and environments with no owner are reclaimed on a published schedule
@@ -146,7 +146,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Environment inventory, topology and ownership map has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Environment inventory, topology and ownership map") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

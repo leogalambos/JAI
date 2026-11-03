@@ -1,6 +1,5 @@
 # Expert document overrides
 
-Owner: JAI maintainers · Last reviewed: 2026-10-20
 
 Overrides replace an authoring reference for one document-kind/complexity
 slot. They never modify normative DCS requirements, security restrictions,

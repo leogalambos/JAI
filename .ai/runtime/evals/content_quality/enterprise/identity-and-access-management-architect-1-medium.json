@@ -213,7 +213,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'IAM architecture and reference patterns', provide verifiable evidence satisfying: Identity populations, trust boundaries, lifecycle and control patterns trace to security objectives.. Required delivery form: Model in the EA tool plus a published view set.",
+        "criterion_under_review": "For the specific output 'IAM architecture and reference patterns', provide verifiable evidence satisfying: Identity populations, trust boundaries, lifecycle and control patterns trace to security objectives. Required delivery form: Model in the EA tool plus a published view set.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

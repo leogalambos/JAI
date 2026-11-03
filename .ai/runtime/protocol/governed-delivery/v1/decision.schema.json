@@ -1,0 +1,752 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Closed governed delivery decision actions",
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "rework"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "assignment": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "replacement": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "action",
+        "reason",
+        "assignment",
+        "replacement",
+        "findings"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "reformulate"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "replacement": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "authority_proof": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "findings": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "action",
+        "reason",
+        "subject",
+        "replacement",
+        "authority_proof"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "select"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "slot": {
+          "$ref": "common.schema.json#/$defs/selection_slot"
+        },
+        "candidate": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "previous": {
+          "anyOf": [
+            {
+              "$ref": "common.schema.json#/$defs/reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "action",
+        "reason",
+        "slot",
+        "candidate",
+        "previous"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "continue"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "replacements": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/replacement"
+          },
+          "minItems": 1
+        },
+        "verification_path": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "authority_proof": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "action",
+        "reason",
+        "replacements",
+        "verification_path",
+        "authority_proof"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "speculate"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "escalation": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "assignments": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/use_point"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "limits": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/budget_limit"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "expires_at_ms": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "authority_proof": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "action",
+        "reason",
+        "escalation",
+        "assignments",
+        "inputs",
+        "limits",
+        "expires_at_ms",
+        "authority_proof"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "resume"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "escalation": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "resolutions": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        },
+        "reconciliation": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reconciliation"
+          }
+        }
+      },
+      "required": [
+        "action",
+        "reason",
+        "escalation",
+        "resolutions",
+        "reconciliation"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "invalidate"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subjects": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "action",
+        "reason",
+        "subjects"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "reinstate"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subjects": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "fresh_proofs": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true
+        },
+        "authority_proof": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "action",
+        "reason",
+        "subjects",
+        "fresh_proofs",
+        "authority_proof"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "accept"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "closure_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "authority_proof": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "action",
+        "reason",
+        "subject",
+        "closure_hash",
+        "authority_proof"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "release"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subject": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "acceptance": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "closure_hash": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        },
+        "authority_proof": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "action",
+        "reason",
+        "subject",
+        "acceptance",
+        "closure_hash",
+        "authority_proof"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "terminate"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "subjects": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "authority_proof": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "action",
+        "reason",
+        "subjects",
+        "authority_proof"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "select_execution"
+        },
+        "assignment": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "specialties": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/text"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "provider": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "workload_class": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "model_selector": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "reason": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "authority_proof": {
+          "type": "null"
+        },
+        "previous": {
+          "anyOf": [
+            {
+              "$ref": "common.schema.json#/$defs/reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "action",
+        "assignment",
+        "specialties",
+        "provider",
+        "workload_class",
+        "model_selector",
+        "reason",
+        "authority_proof",
+        "previous"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "resolve_escalation"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "escalation": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "package": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "conflicts": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "impacts": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "subject": {
+                "$ref": "common.schema.json#/$defs/use_point"
+              },
+              "outcome": {
+                "enum": [
+                  "unchanged",
+                  "changed",
+                  "unknown"
+                ]
+              },
+              "reason": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "subject",
+              "outcome",
+              "reason"
+            ],
+            "additionalProperties": false
+          },
+          "uniqueItems": true,
+          "minItems": 1
+        },
+        "decisions": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "uniqueItems": true,
+          "minItems": 0
+        },
+        "authority_proof": {
+          "anyOf": [
+            {
+              "type": "string",
+              "pattern": "^[0-9a-f]{64}$"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "action",
+        "reason",
+        "escalation",
+        "package",
+        "conflicts",
+        "impacts",
+        "decisions",
+        "authority_proof"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "exclude_content"
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "content_policy": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "obligations": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        },
+        "authority_proof": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{64}$"
+        }
+      },
+      "required": [
+        "action",
+        "reason",
+        "content_policy",
+        "obligations",
+        "authority_proof"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "action": {
+          "const": "configure_procedure"
+        },
+        "assignment": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "criteria": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "kind": {
+          "enum": [
+            "question",
+            "layer"
+          ]
+        },
+        "specification": {
+          "oneOf": [
+            {
+              "$ref": "#/$defs/question_procedure"
+            },
+            {
+              "$ref": "#/$defs/layer_procedure"
+            }
+          ]
+        },
+        "previous": {
+          "anyOf": [
+            {
+              "$ref": "common.schema.json#/$defs/reference"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "type": "string",
+          "minLength": 1
+        },
+        "authority_proof": {
+          "type": "null"
+        }
+      },
+      "required": [
+        "action",
+        "assignment",
+        "criteria",
+        "kind",
+        "specification",
+        "previous",
+        "reason",
+        "authority_proof"
+      ],
+      "additionalProperties": false
+    }
+  ],
+  "$defs": {
+    "question_procedure": {
+      "type": "object",
+      "properties": {
+        "question": {
+          "type": "string",
+          "minLength": 1
+        },
+        "author_task": {
+          "type": "string",
+          "minLength": 1
+        },
+        "reviewer_task": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "question",
+        "author_task",
+        "reviewer_task"
+      ],
+      "additionalProperties": false
+    },
+    "layer_procedure": {
+      "type": "object",
+      "properties": {
+        "framing": {
+          "type": "string",
+          "minLength": 1
+        },
+        "question_tasks": {
+          "type": "object",
+          "properties": {
+            "what": {
+              "type": "string",
+              "minLength": 1
+            },
+            "why": {
+              "type": "string",
+              "minLength": 1
+            },
+            "how": {
+              "type": "string",
+              "minLength": 1
+            },
+            "who": {
+              "type": "string",
+              "minLength": 1
+            },
+            "where": {
+              "type": "string",
+              "minLength": 1
+            },
+            "when": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "what",
+            "why",
+            "how",
+            "who",
+            "where",
+            "when"
+          ],
+          "additionalProperties": false
+        },
+        "integration_task": {
+          "type": "string",
+          "minLength": 1
+        },
+        "review_task": {
+          "type": "string",
+          "minLength": 1
+        },
+        "interface_criterion": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "framing",
+        "question_tasks",
+        "integration_task",
+        "review_task",
+        "interface_criterion"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

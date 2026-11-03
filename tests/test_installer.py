@@ -273,7 +273,7 @@ def test_bare_python_installs_without_third_party_packages_and_reports_runtime_d
     assert installed.returncode==0, installed.stdout+installed.stderr
     assert (tmp_path/'home/.ai/it-role-house/install-state.json').is_file()
     assert 'Installation/update complete.' in installed.stdout
-    assert 'installation complete; runtime dependency jsonschema>=4.26,<5 is missing' in installed.stdout
+    assert 'installation complete; runtime dependency jsonschema>=4.18,<5 is missing' in installed.stdout
     assert '"available": false' in installed.stdout
     assert 'Traceback' not in installed.stdout+installed.stderr
     assert '"no_site": true' in installed.stdout
@@ -288,12 +288,12 @@ def test_runtime_setup_completion_limits_macos_venv_commands_to_missing_dependen
     output=capsys.readouterr().out
     assert ('-m venv' in output)==expected
     if expected:
-        assert "-m pip install 'jsonschema>=4.26,<5'" in output
+        assert "-m pip install 'jsonschema>=4.18,<5'" in output
         assert 'operator_actions.py' in output and 'configure --refresh' in output
         assert 'PATH=' in output and 'codex' in output and 'claude' in output
         assert 'does not persist' in output
     elif not ready:
-        assert 'jsonschema>=4.26,<5' in output
+        assert 'jsonschema>=4.18,<5' in output
 
 
 @pytest.mark.parametrize('discovery',['success','doctor-unavailable','timeout'])
@@ -310,14 +310,14 @@ def test_main_prints_macos_runtime_setup_after_all_diagnostics_and_codex_notice(
         capabilities=({'runtime_dependencies':{'jsonschema':{'available':True,'compatible':False}}}
                       if discovery=='success' else {'status':'UNAVAILABLE','reason':'doctor failed'})
         return subprocess.CompletedProcess(command,0,json.dumps({'capabilities':capabilities,'tools':{}}),'')
-    with patch.object(installer.sys,'argv',['installer.py','--codex-only']), patch.object(installer.sys,'platform','darwin'), patch.object(installer.subprocess,'run',side_effect=run), patch('importlib.util.find_spec',return_value=True), patch.object(importlib.metadata,'version',return_value='4.23.0'):
+    with patch.object(installer.sys,'argv',['installer.py','--codex-only']), patch.object(installer.sys,'platform','darwin'), patch.object(installer.subprocess,'run',side_effect=run), patch('importlib.util.find_spec',return_value=True), patch.object(importlib.metadata,'version',return_value='4.17.0'):
         assert installer.main()==0
     output=capsys.readouterr().out
     assert (tmp_path/'home with space/.ai/it-role-house/install-state.json').is_file()
     assert output.index('Runtime setup required:')>output.index('Codex: review/approve')
     assert output.index('Runtime setup required:')>output.index('Refresh optional capabilities with:')
     assert output.rstrip().endswith('for GUI sessions, use an environment with the same PATH.')
-    assert "-m pip install 'jsonschema>=4.26,<5'" in output
+    assert "-m pip install 'jsonschema>=4.18,<5'" in output
 
 
 @pytest.mark.parametrize('state',['unknown','ready'])
@@ -343,3 +343,77 @@ def test_main_uses_independent_runtime_observation_after_doctor_failure(tmp_path
         assert 'does not mean the package is missing' in output
         assert output.index('verify first')<output.index('-m venv')
         assert output.rstrip().endswith('for GUI sessions, use an environment with the same PATH.')
+
+
+@pytest.mark.parametrize('options,expected', [
+    ([], {'force': False}),
+    (['--force'], {'force': False}),
+    (['--force-genkey'], {'force': True}),
+    (['--dry-run', '--force-genkey'], {'force': True, 'dry_run': True}),
+])
+def test_operator_key_setup_uses_its_own_flag_and_respects_dry_run(tmp_path, monkeypatch, options, expected):
+    """Installer flag wiring cannot turn managed-file force into key rotation."""
+    calls = []
+    monkeypatch.setattr(installer, 'validate_package', lambda package: None)
+    monkeypatch.setattr(installer, 'load_model_registry', lambda *args: ({}, None))
+    monkeypatch.setattr(installer, 'desired_outputs', lambda *args: ({}, {}))
+    monkeypatch.setattr(installer, 'optional_discovery', lambda *args: None)
+    monkeypatch.setattr(installer, 'runtime_setup_instructions', lambda *args: None)
+    monkeypatch.setattr(installer, 'provision_operator_key', lambda **kwargs: calls.append(kwargs))
+    for name in ('AI_IT_HOME', 'AI_IT_HOUSE', 'CLAUDE_HOME', 'CODEX_HOME'):
+        monkeypatch.setenv(name, str(tmp_path / name))
+    monkeypatch.setattr(sys, 'argv', ['installer.py', '--codex-only', '--no-hooks', '--no-codex-agents', *options])
+    assert installer.main() == 0
+    assert calls == [expected]
+
+
+def test_managed_same_bytes_mode_drift_converges_without_rewriting_content(tmp_path):
+    """Actual dry-run preserves drift; apply fixes only mode and repeat is a no-op."""
+    import os
+    import shutil
+    import subprocess
+    package = tmp_path / 'package'
+    for section in ('skills', 'agents', 'commands', 'setup', 'runtime/tools', 'runtime/schema', 'runtime/models'):
+        (package / '.ai' / section).mkdir(parents=True, exist_ok=True)
+    for relative in ('setup/installer.py', 'runtime/tools/schema_resolver.py',
+                     'runtime/tools/runtime_dependencies.py', 'runtime/tools/operator_keys.py', 'runtime/tools/provider_projection.py',
+                     'runtime/tools/guide_alias.py', 'runtime/schema/release-scope.schema.json',
+                     'runtime/models/model-registry.json', 'runtime/VERSION'):
+        shutil.copy2(ROOT / '.ai' / relative, package / '.ai' / relative)
+    shutil.copy2(ROOT / 'RELEASE-SCOPE.json', package / 'RELEASE-SCOPE.json')
+    (package / '.ai/VERSION').write_text('fixture-mode-convergence\n')
+    sample = package / '.ai/runtime/tools/mode_probe.py'
+    sample.write_text('"""Synthetic installer mode fixture, not an executable authority."""\nVALUE = 1\n')
+    house = tmp_path / 'installed/house'
+    environment = dict(os.environ, AI_IT_HOME=str(tmp_path / 'installed/ai'), AI_IT_HOUSE=str(house),
+                       CLAUDE_HOME=str(tmp_path / 'installed/claude'), CODEX_HOME=str(tmp_path / 'installed/codex'))
+    command = [sys.executable, str(package / '.ai/setup/installer.py'), '--codex-only',
+               '--no-hooks', '--no-claude-md', '--no-codex-agents',
+               '--model-config', str(package / '.ai/runtime/models/model-registry.json')]
+    def install(*extra):
+        result = subprocess.run(command + list(extra), env=environment, capture_output=True, text=True, timeout=30)
+        assert result.returncode == 0, result.stdout + result.stderr
+        return result
+    install()
+    target = house / 'tools/mode_probe.py'
+    target.chmod(0o644)
+    def file_state(info):
+        return (info.st_mode, info.st_ino, info.st_size, info.st_mtime_ns, info.st_ctime_ns)
+    original = target.stat()
+    original_bytes = target.read_bytes()
+    state_bytes = (house / 'install-state.json').read_bytes()
+    dry = install('--dry-run')
+    assert '1 mode-only' in dry.stdout
+    assert file_state(target.stat()) == file_state(original) and target.read_bytes() == original_bytes
+    assert (house / 'install-state.json').read_bytes() == state_bytes
+    applied = install()
+    repaired = target.stat()
+    assert '1 mode-only' in applied.stdout and repaired.st_mode & 0o777 == 0o755
+    assert (repaired.st_ino, repaired.st_mtime_ns) == (original.st_ino, original.st_mtime_ns)
+    assert target.read_bytes() == original_bytes
+    state = json.loads((house / 'install-state.json').read_text())
+    backup = Path(state['backup_last']) / str(target).lstrip(os.sep)
+    assert backup.read_bytes() == original_bytes and backup.stat().st_mode & 0o777 == 0o644
+    unchanged = install()
+    assert '0 mode-only' in unchanged.stdout
+    assert file_state(target.stat()) == file_state(repaired) and target.read_bytes() == original_bytes

@@ -1,0 +1,338 @@
+{
+  "format": "jai-sabsa-catalogue/1",
+  "catalogue_id": "jai-sabsa-minimum",
+  "catalogue_version": "1",
+  "claim_boundary": "Original JAI minimum informed by adopted sources; not certification or an exhaustive official deliverable list.",
+  "method_sources": {
+    "S1": {
+      "edition": "TSI-R101/1.0/2018",
+      "title": "SABSA Matrices 2018 Release Notes",
+      "adopted_scope": "Updated matrix terminology and architecture versus management activity distinction."
+    },
+    "S2": {
+      "edition": "TSI-W100/1995-2009",
+      "title": "Enterprise Security Architecture white paper",
+      "adopted_scope": "Introductory business attributes, architecture, lifecycle and assurance principles."
+    }
+  },
+  "groups": {
+    "contextual.what": {
+      "layer": 1,
+      "question": "what",
+      "purpose": "Business assets and information within the architecture boundary.",
+      "required_properties": []
+    },
+    "contextual.why": {
+      "layer": 1,
+      "question": "why",
+      "purpose": "Business drivers, opportunities, constraints, risk limits and measurable required qualities.",
+      "required_properties": []
+    },
+    "contextual.how": {
+      "layer": 1,
+      "question": "how",
+      "purpose": "Business activities that achieve the requested outcomes.",
+      "required_properties": []
+    },
+    "contextual.who": {
+      "layer": 1,
+      "question": "who",
+      "purpose": "Stakeholders, accountable owners and decision authority.",
+      "required_properties": []
+    },
+    "contextual.where": {
+      "layer": 1,
+      "question": "where",
+      "purpose": "Operating environments, jurisdictions and business locations.",
+      "required_properties": []
+    },
+    "contextual.when": {
+      "layer": 1,
+      "question": "when",
+      "purpose": "Planning horizons, important events, critical periods and tolerances.",
+      "required_properties": []
+    },
+    "conceptual.what": {
+      "layer": 2,
+      "question": "what",
+      "purpose": "Business-justified concepts, objectives and protection principles.",
+      "required_properties": []
+    },
+    "conceptual.why": {
+      "layer": 2,
+      "question": "why",
+      "purpose": "Required business attributes, strategy and risk rationale.",
+      "required_properties": []
+    },
+    "conceptual.how": {
+      "layer": 2,
+      "question": "how",
+      "purpose": "Policy concepts and approaches to achieving business objectives.",
+      "required_properties": []
+    },
+    "conceptual.who": {
+      "layer": 2,
+      "question": "who",
+      "purpose": "Governance, responsibilities and accountable concept owners.",
+      "required_properties": []
+    },
+    "conceptual.where": {
+      "layer": 2,
+      "question": "where",
+      "purpose": "Conceptual domains, trust boundaries and relationships between domains.",
+      "required_properties": []
+    },
+    "conceptual.when": {
+      "layer": 2,
+      "question": "when",
+      "purpose": "Lifecycle principles and significant timing constraints.",
+      "required_properties": []
+    },
+    "logical.what": {
+      "layer": 3,
+      "question": "what",
+      "purpose": "Information structures, control requirements and their meanings.",
+      "required_properties": []
+    },
+    "logical.why": {
+      "layer": 3,
+      "question": "why",
+      "purpose": "Technology-independent justification and requirement satisfaction.",
+      "required_properties": []
+    },
+    "logical.how": {
+      "layer": 3,
+      "question": "how",
+      "purpose": "Logical functions, services and their interactions.",
+      "required_properties": []
+    },
+    "logical.who": {
+      "layer": 3,
+      "question": "who",
+      "purpose": "Actors, authorization responsibilities and privilege boundaries.",
+      "required_properties": []
+    },
+    "logical.where": {
+      "layer": 3,
+      "question": "where",
+      "purpose": "Logical placement, trust and information flows.",
+      "required_properties": []
+    },
+    "logical.when": {
+      "layer": 3,
+      "question": "when",
+      "purpose": "Event ordering, schedules and timing constraints.",
+      "required_properties": []
+    },
+    "physical.what": {
+      "layer": 4,
+      "question": "what",
+      "purpose": "Chosen mechanisms and concrete information or resource arrangements.",
+      "required_properties": []
+    },
+    "physical.why": {
+      "layer": 4,
+      "question": "why",
+      "purpose": "Alternatives, selection rationale and satisfied requirements.",
+      "required_properties": []
+    },
+    "physical.how": {
+      "layer": 4,
+      "question": "how",
+      "purpose": "Concrete processes, technology and integration mechanisms.",
+      "required_properties": []
+    },
+    "physical.who": {
+      "layer": 4,
+      "question": "who",
+      "purpose": "Operating responsibilities and physical or organizational endpoints.",
+      "required_properties": []
+    },
+    "physical.where": {
+      "layer": 4,
+      "question": "where",
+      "purpose": "Topology, deployment locations and operating environments.",
+      "required_properties": []
+    },
+    "physical.when": {
+      "layer": 4,
+      "question": "when",
+      "purpose": "Implementation sequencing, timing mechanisms and service windows.",
+      "required_properties": []
+    },
+    "component.what": {
+      "layer": 5,
+      "question": "what",
+      "purpose": "Detailed components, interfaces and configuration specifications.",
+      "required_properties": []
+    },
+    "component.why": {
+      "layer": 5,
+      "question": "why",
+      "purpose": "Satisfied requirements and verifiable implementation behavior.",
+      "required_properties": []
+    },
+    "component.how": {
+      "layer": 5,
+      "question": "how",
+      "purpose": "Build, configuration and detailed realization procedures.",
+      "required_properties": []
+    },
+    "component.who": {
+      "layer": 5,
+      "question": "who",
+      "purpose": "Implementation ownership and maintenance responsibilities.",
+      "required_properties": []
+    },
+    "component.where": {
+      "layer": 5,
+      "question": "where",
+      "purpose": "Packaging, environments and release dependencies.",
+      "required_properties": []
+    },
+    "component.when": {
+      "layer": 5,
+      "question": "when",
+      "purpose": "Initialization, schedules and interface timing.",
+      "required_properties": []
+    },
+    "management.what": {
+      "layer": 6,
+      "question": "what",
+      "purpose": "Managed assets, required attributes and service objectives.",
+      "required_properties": []
+    },
+    "management.why": {
+      "layer": 6,
+      "question": "why",
+      "purpose": "Governance, assurance, risk and improvement objectives.",
+      "required_properties": []
+    },
+    "management.how": {
+      "layer": 6,
+      "question": "how",
+      "purpose": "Operation, monitoring, support, incident, change, maintenance and resilience practices.",
+      "required_properties": []
+    },
+    "management.who": {
+      "layer": 6,
+      "question": "who",
+      "purpose": "Responsible owners, support responsibilities and escalation paths.",
+      "required_properties": []
+    },
+    "management.where": {
+      "layer": 6,
+      "question": "where",
+      "purpose": "Operating locations and control coverage across all other layers.",
+      "required_properties": []
+    },
+    "management.when": {
+      "layer": 6,
+      "question": "when",
+      "purpose": "Triggers, windows, measurement periods, reviews and feedback cadence.",
+      "required_properties": []
+    },
+    "conceptual.attributes": {
+      "layer": 2,
+      "question": null,
+      "purpose": "Tailored business attributes with explicit targets, measurement and accountability.",
+      "required_properties": [
+        "business_justification",
+        "target",
+        "unit",
+        "measurement_method",
+        "accountable_owner",
+        "evaluation_horizon"
+      ]
+    },
+    "management.activity": {
+      "layer": 6,
+      "question": null,
+      "purpose": "A governed activity definition; this does not demonstrate its execution.",
+      "required_properties": [
+        "objective",
+        "responsible_actor",
+        "inputs",
+        "outputs",
+        "scope",
+        "trigger",
+        "timing",
+        "controls",
+        "required_evidence"
+      ]
+    },
+    "management.measure": {
+      "layer": 6,
+      "question": null,
+      "purpose": "A proposed or established measurement definition, distinct from observed results.",
+      "required_properties": [
+        "target",
+        "unit",
+        "method",
+        "source",
+        "frequency",
+        "thresholds",
+        "action",
+        "owner"
+      ]
+    },
+    "management.observation": {
+      "layer": 6,
+      "question": null,
+      "purpose": "An actual result against an exact subject and measure, with supporting evidence.",
+      "required_properties": [
+        "subject",
+        "measure",
+        "period",
+        "method",
+        "result"
+      ]
+    }
+  },
+  "relations": [
+    "justifies",
+    "refines",
+    "realizes",
+    "constrains",
+    "assigned_to",
+    "located_in",
+    "interacts_with",
+    "precedes",
+    "measures",
+    "observes",
+    "feedback_for"
+  ],
+  "views": [
+    "architecture",
+    "executive-summary",
+    "risk-treatment-plan",
+    "policy-architecture",
+    "trust-model",
+    "information-access-model",
+    "security-service-catalogue",
+    "component-realisation",
+    "assurance-plan",
+    "governance-register",
+    "current-state",
+    "target-state",
+    "transition-architecture",
+    "transition-roadmap",
+    "lifecycle-register",
+    "framework-mapping",
+    "compliance-gap-analysis",
+    "reuse-register",
+    "client-questions"
+  ],
+  "trace_relations": [
+    "justifies",
+    "refines",
+    "realizes"
+  ],
+  "trace_direction": "from dependent unit to its justifying business basis",
+  "business_role_property": "business_role",
+  "business_roles": [
+    "driver",
+    "quality_attribute",
+    "external_obligation"
+  ]
+}

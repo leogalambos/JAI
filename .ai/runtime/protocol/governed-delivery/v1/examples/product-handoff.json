@@ -1,0 +1,47 @@
+{
+  "owner": {
+    "layer": 3,
+    "work_kind": "handoff",
+    "question": null,
+    "work_item": "service-controls"
+  },
+  "product_kind": "handoff",
+  "assignment": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "author-assignment",
+    "version_id": "1870591329732c4cdd7c57d9f45bf9cf132d728ca1fed89d25570d7d8879a622"
+  },
+  "profile": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "profile",
+    "version_id": "b0519b9fbd91854cbe44a508a24434902d4296b100862b3f0acc5374550990ef"
+  },
+  "inputs": [
+    {
+      "slot_id": "source",
+      "refs": [
+        {
+          "engagement": "synthetic-protocol",
+          "scope": "default",
+          "logical_id": "input-A",
+          "version_id": "2af7d6aa53ba2874a2f9b80c4318fbcd4467065cf86eab873c45acc82e53f92a"
+        }
+      ]
+    }
+  ],
+  "material": [
+    "3d8f4b545013865bc63eab5f302092092a62cbd3c9c0301273995acef5cfed09"
+  ],
+  "evidence": [
+    {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "observation-A",
+      "version_id": "d8bb38ab93a1e888900c91c073bf3b884f2c639ba389f1c30d7e5911d824bbea"
+    }
+  ],
+  "related": [],
+  "limitations": []
+}

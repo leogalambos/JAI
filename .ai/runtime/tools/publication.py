@@ -339,7 +339,8 @@ def _render_format(m,fmt,out,theme):
     {'html':render_html,'docx':render_docx,'pdf':render_pdf,'pptx':render_pptx,'xlsx':render_xlsx,'svg':render_svg}[fmt](m,out,theme)
 
 
-def render(m,fmt,out,theme,manifest=None,directory=None,trusted_executions=None,authority=None):
+def render(m,fmt,out,theme,manifest=None,directory=None,trusted_executions=None,authority=None,
+           governed=None,operation='draft'):
     """Render only after independently checking the complete local QA bundle.
 
     Args:
@@ -351,14 +352,18 @@ def render(m,fmt,out,theme,manifest=None,directory=None,trusted_executions=None,
         directory: Required immutable sidecar directory.
         trusted_executions: Optional host runtime attestation verifier.
         authority: Optional existing JAI L0 authority verifier.
+        governed: Optional host-pinned Gen2 adapter for the exact original source.
+        operation: draft, accepted or release; never inferred from rendering.
     Raises:
         ValueError: If verification inputs are absent or invalid.
         OSError: If output cannot be written.
     """
     if manifest is None or directory is None: raise ValueError('render requires verified DCS manifest and sidecars')
-    return render_verified(m,manifest,directory,fmt,out,theme,trusted_executions=trusted_executions,authority=authority)
+    return render_verified(m,manifest,directory,fmt,out,theme,trusted_executions=trusted_executions,
+                           authority=authority,governed=governed,operation=operation)
 
-def render_verified(m,manifest,directory,fmt,out,theme,trusted_executions=None,authority=None):
+def render_verified(m,manifest,directory,fmt,out,theme,trusted_executions=None,authority=None,
+                    governed=None,operation='draft'):
     """Verify current immutable QA before rendering a clearly classified draft.
 
     Args:
@@ -370,16 +375,29 @@ def render_verified(m,manifest,directory,fmt,out,theme,trusted_executions=None,a
         theme: Theme dictionary.
         trusted_executions: Optional host runtime attestation verifier.
         authority: Optional existing JAI L0 authority verifier.
+        governed: Optional host-pinned Gen2 adapter for exact source/current facts.
+        operation: draft, accepted or release; their gates remain distinct.
     Raises:
         ValueError: If current content QA or projection integrity fails.
         OSError: If rendering fails.
     """
-    import publication_integrity
-    problems=publication_integrity.verify_content(m,manifest,directory,trusted_executions=trusted_executions,authority=authority)
-    if problems: raise ValueError('; '.join(problems))
-    rendered=dict(m,publication_status='DRAFT_INCOMPLETE')
-    rendered['subtitle']='DRAFT — content specification and professional approval pending. '+str(m.get('subtitle') or '')
-    _render_format(rendered,fmt,out,theme)
+    if operation not in {'draft','accepted','release'} or (operation!='draft' and governed is None):
+        raise ValueError('A supported publication operation and current Gen2 pin are required')
+    import contextlib, publication_integrity
+    with governed.action() if governed is not None else contextlib.nullcontext():
+        if governed is not None:
+            source=load_json(Path(directory)/'semantic-source.json')
+            if semantic_hash(source)!=manifest.get('source_semantic_hash'):
+                raise ValueError('Governed publication source differs from the exact manifest')
+            status=governed.publication_status(source,source.get('audience'),operation)
+            if not status['eligible']:
+                raise ValueError('Current Gen2 justification or requested publication permission is unavailable')
+            trusted_executions=governed
+        problems=publication_integrity.verify_content(m,manifest,directory,trusted_executions=trusted_executions,authority=authority)
+        if problems: raise ValueError('; '.join(problems))
+        rendered=dict(m,publication_status='DRAFT_INCOMPLETE')
+        rendered['subtitle']='DRAFT — content specification and professional approval pending. '+str(m.get('subtitle') or '')
+        _render_format(rendered,fmt,out,theme)
 
 def qa_file(path,theme):
     p=Path(path); ext=p.suffix.lower(); probs=[]; warnings=[]
@@ -430,9 +448,16 @@ def self_test():
     passed=sum(x[1] for x in tests); print(f'{passed}/{len(tests)} PASS'); return 0 if passed==len(tests) else 1
 
 def main():
+    """Run existing publication tools; governed host locators remain internal.
+
+    Returns:
+        None; exits nonzero for invalid model, QA, justification or rendering.
+    """
     ap=argparse.ArgumentParser(); sp=ap.add_subparsers(dest='cmd',required=True)
     v=sp.add_parser('validate'); v.add_argument('model')
     r=sp.add_parser('render'); r.add_argument('model'); r.add_argument('--manifest',required=True,help='ProjectionManifest v3 proving L1-L6 lineage'); r.add_argument('--format',choices=['html','docx','pdf','pptx','xlsx','svg','all'],default='all'); r.add_argument('--out',required=True); r.add_argument('--theme',default=str(DEFAULT_THEME))
+    import governed_domain
+    governed_domain.add_arguments(r)
     q=sp.add_parser('qa'); q.add_argument('path'); q.add_argument('--theme',default=str(DEFAULT_THEME))
     sp.add_parser('self-test')
     a=ap.parse_args()
@@ -444,8 +469,15 @@ def main():
         probs,w=qa_file(a.path,theme); [print('WARN',x) for x in w]; [print('FAIL',x) for x in probs]; print('OK' if not probs else 'FAILED'); raise SystemExit(1 if probs else 0)
     m=load_json(a.model); probs=validate_model(m)+validate_native_jai(m)
     if probs: [print(' -',p,file=sys.stderr) for p in probs]; raise SystemExit(2)
+    import contextlib
+    adapter,authority=governed_domain.from_arguments(a)
+    with adapter.action() if adapter is not None else contextlib.nullcontext():
+        _render_command(a,m,theme,adapter,authority)
+
+
+def _render_command(a,m,theme,adapter,authority):
     import projection, publication_integrity
-    man=load_json(a.manifest); probs=projection.validate_manifest(man)+publication_integrity.check(m,man)+publication_integrity.verify_content(m,man,Path(a.manifest).parent)
+    man=load_json(a.manifest); probs=projection.validate_manifest(man)+publication_integrity.check(m,man)+publication_integrity.verify_content(m,man,Path(a.manifest).parent,trusted_executions=adapter,authority=authority)
     if probs: [print(' -',p,file=sys.stderr) for p in probs]; raise SystemExit(2)
     if m.get('jai') != man.get('jai'): print(' - publication model JAI lineage differs from manifest',file=sys.stderr); raise SystemExit(2)
     out=Path(a.out); out.mkdir(parents=True,exist_ok=True)
@@ -456,7 +488,8 @@ def main():
     for fmt in formats:
         p=out/f'{stem}.{fmt}'
         if p.exists() or p.is_symlink(): raise FileExistsError('render output already exists: '+str(p))
-        render_verified(m,man,Path(a.manifest).parent,fmt,p,theme); pr,w=qa_file(p,theme)
+        render_verified(m,man,Path(a.manifest).parent,fmt,p,theme,governed=adapter,
+                        authority=authority,operation=a.governed_operation); pr,w=qa_file(p,theme)
         fh=hashlib.sha256(p.read_bytes()).hexdigest()
         render_evidence['renders'][fmt]={'sha256':fh,'qa':'PASS' if not pr else 'FAIL','warnings':w,'critical_defects':pr}
         print(f'{fmt}: {p} sha256={fh} semantic={semantic_hash(m)} qa={"PASS" if not pr else "FAIL"}')

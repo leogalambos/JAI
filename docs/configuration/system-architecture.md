@@ -10,14 +10,16 @@ with [Methodical workflows](../using/methodical-workflows.md).
 
 ## JAI as the normative top-level architecture
 
-The six-layer Justifiable AI core is the single top-level architecture for production semantics. Human Authority is the external L0 boundary.
+The layered delivery mode uses a six-layer SABSA matrix. Ad-hoc specialist work
+and selected workflows reuse the same catalogue without requiring the whole
+matrix. Human Authority is the external L0 boundary in every mode.
 
 ```text
                          L0 HUMAN AUTHORITY
                                 │
                          JUSTIFIABLE AI CORE
                                 │
-        L1 Intent → L2 Meaning → L3 Policy → L4 Design → L5 Realisation → L6 Evidence
+        L1 Contextual → L2 Conceptual → L3 Logical → L4 Physical → L5 Component → L6 Management
                                 │
         ┌───────────────────────┼────────────────────────┐
         │                       │                        │
@@ -66,7 +68,7 @@ The common runtime includes:
 - scoped EA repository and ArchiMate/Open Exchange tooling;
 - publication projection, rendering and visual QA;
 - policy/agent enforcement and content-hashed Execution Records (not immutable custody);
-- behavioral evaluation and A–H release qualification;
+- output validation and tag-driven product release checks;
 - Justifiable Fabric supervision runtime.
 
 ## Skills versus agents
@@ -80,7 +82,10 @@ Governance therefore does not depend on a “personality prompt” alone. Review
 
 ## Fabric relationship to the semantic model
 
-In 26.10.4 the Fabric is an **assurance ledger**, not a second semantic database. Product/evidence Fabric records carry canonical references/hashes so that audit and supervision can point to the same semantic identities used by Artifact/SABSA/EA/Publication profiles.
+The governed runtime records immutable versions, dependencies, decisions and
+scoped applicability. Product and evidence records carry exact references and
+content identities so audit can explain the basis of a particular output. The
+ledger does not make unrelated historical conclusions current.
 
 ## Publication path
 
@@ -103,18 +108,17 @@ A production render that bypasses the matching ProjectionManifest is not the sup
 The `/layered` path adds the supervised JAI execution cycle around consequential work:
 
 ```text
-intent
-→ L1…L6 contracts
-→ evidence
-→ bottom-up review
-→ bounded rework/reformulation/escalation
-→ L0 decision when required
-→ strict release gate
+task and governing inputs
+→ each layer: local setter, author and independent reviewer
+→ six-question integration and adjacent-layer handoff
+→ bounded rework, reformulation or escalation where needed
+→ completed output with its relevant evidence
+→ separate human acceptance and release decisions when required
 ```
 
 See [Layered runtime and assurance model](../capabilities/layered-runtime.md) for detailed enforcement semantics.
 
 ## Implementation details
 
-[Execution and context assembly](../overview/execution-context-algorithm.md) describes the inspected implementation.
+[Execution and context assembly](../overview/execution-context-algorithm.md) describes context assembly and runtime boundaries.
 See how the architecture maps to supported procedures and actual runtime calls.

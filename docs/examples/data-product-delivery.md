@@ -1,6 +1,5 @@
 # Deliver a governed data product
 
-Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
 ACME Retail wants a daily inventory-availability dataset for store
 replenishment. Alice owns the business definition, Bob engineers the
@@ -26,8 +25,8 @@ sample data and describe its representativeness. Include the receiving
 team's acceptance criteria and the data owner's authority.
 
 Use names such as `inputs/consumer-needs.md`,
-`inputs/source-schema.json`, `inputs/definitions.md and
-inputs/quality-expectations.md`. Keep source dates, versions and owners
+`inputs/source-schema.json`, `inputs/definitions.md` and
+`inputs/quality-expectations.md`. Keep source dates, versions and owners
 in `inputs/source-register.md`. If reserved stock is not defined
 consistently across systems, record the semantic conflict before
 choosing a calculation. A reference example is not a source of ACME's

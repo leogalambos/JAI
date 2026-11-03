@@ -14,6 +14,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / '.ai/runtime/tools'))
 
 
 def module(rel: str, name: str):
@@ -35,7 +36,10 @@ class VersionDecoupling(unittest.TestCase):
         self.assertEqual(g.root_from(ROOT)[0], ROOT)
         inv = g.inventory(ROOT)
         self.assertIn('WeasyPrint', g.md_block(inv))
-        self.assertIn('QUALIFICATION-A-H.json', g.validation_doc(inv))
+        self.assertNotIn('Tested:', g.md_block(inv))
+        self.assertNotIn('tests', inv['counts'])
+        self.assertNotIn('tests', inv)
+        self.assertNotIn('P00', g.md_block(inv))
         self.assertEqual(g.replace_block('# Example\n', 'block').count('block'), 1)
         self.assertEqual(g.outputs(ROOT)[2]['release'], (ROOT/'VERSION').read_text().strip())
         with tempfile.TemporaryDirectory() as directory:
@@ -47,11 +51,22 @@ class VersionDecoupling(unittest.TestCase):
                              '.ai/runtime/schema/schema-registry.json', '.ai/runtime/_meta/release-manifest.json']:
                 dest=target/relative; dest.parent.mkdir(parents=True, exist_ok=True)
                 shutil.copy2(ROOT/relative, dest)
+            guide = target / '.ai/runtime/GUIDE.md'
+            guide.symlink_to('../../docs/reference/installed-cli-guide.md')
+            original_link = guide.lstat().st_ino
             with contextlib.redirect_stdout(io.StringIO()):
                 self.assertEqual(g.run(target), 0)
+                self.assertFalse((target / 'VALIDATION.md').exists())
                 self.assertEqual(g.run(target, check=True), 0)
-                (target/'.ai/runtime/GUIDE.md').write_text('drift')
+                self.assertTrue(guide.is_symlink())
+                self.assertEqual(guide.lstat().st_ino, original_link)
+                guide.unlink()
+                guide.symlink_to('wrong-guide.md')
                 self.assertEqual(g.run(target, check=True), 1)
+                self.assertEqual(g.run(target), 1)
+                self.assertEqual(guide.readlink(), Path('wrong-guide.md'))
+                guide.unlink()
+                guide.symlink_to('../../docs/reference/installed-cli-guide.md')
                 self.assertEqual(g.run(target), 0)
             self.assertEqual((target/'.ai/runtime/GUIDE.md').read_bytes(), (target/'docs/reference/installed-cli-guide.md').read_bytes())
             with patch.object(sys,'argv',['generate_docs.py','--check','--root',str(target)]), contextlib.redirect_stdout(io.StringIO()):
@@ -63,12 +78,12 @@ class VersionDecoupling(unittest.TestCase):
             generator = module('.ai/runtime/tools/generate_docs.py', 'renderer_compatibility_generator')
         compatibility = {entry['component']: entry for entry in generator.inventory(ROOT)['compatibility']}
         weasyprint = compatibility['WeasyPrint']
-        self.assertIn('CLI-first/current-Python fallback', weasyprint['tested'])
-        self.assertIn('constrained resource fetching', weasyprint['tested'])
+        self.assertIn('CLI-first/current-Python fallback', weasyprint['supported'])
+        self.assertIn('constrained resource fetching', weasyprint['supported'])
         pyphen = compatibility['Pyphen']
         self.assertEqual(pyphen['minimum'], 'determined by the installed WeasyPrint dependency requirements')
-        self.assertIn('actual HTML/PDF conversion determines readiness', pyphen['tested'])
-        self.assertNotIn('required', pyphen['tested'])
+        self.assertNotIn('tested', pyphen)
+        self.assertNotIn('tested', weasyprint)
         self.assertIn('without rejecting working OS packages', pyphen['supported'])
 
     def test_descriptor_projection_tracks_product_without_touching_pins(self):
@@ -252,18 +267,6 @@ class VersionDecoupling(unittest.TestCase):
                          (ROOT / 'VERSION').read_text().strip())
         self.assertEqual(router.effective_payload()['registry_origin_release'], '26.10.4')
 
-    def test_tag_publishes_production_without_operator_approval(self):
-        workflow = (ROOT / '.github/workflows/release.yml').read_text()
-        self.assertIn("- 'release@*'", workflow)
-        self.assertIn('scripts/versioning.py check --tag', workflow)
-        self.assertIn('release_ga.py qualify', workflow)
-        self.assertIn('gh release create', workflow)
-        self.assertIn('--verify-tag --latest', workflow)
-        self.assertNotIn('--draft', workflow)
-        self.assertNotIn('gpg --', workflow.lower())
-        policy = json.loads((ROOT / '.ai/runtime/release/release-policy.json').read_text())
-        self.assertEqual(policy['signing']['mode'], 'automated-ci-release')
-        self.assertIs(policy['signing']['publication_requires_manual_approval'], False)
 
     def test_frozen_26104_schema_has_original_identity(self):
         frozen = json.loads((ROOT / '.ai/runtime/schema/26.10.4/artifact-contract.schema.json').read_text())

@@ -2,6 +2,17 @@
 
 This tour is intentionally practical. It shows how the system behaves in realistic work rather than only describing features.
 
+## Before you begin
+
+Complete [installation](install.md), then start a fresh Claude Code or Codex
+session so the installed commands or skills are available. This tour uses
+fictional local inputs; it does not require a client system or customer data.
+
+The demo setup creates `~/it-role-demo/`. After setup, open that directory as
+your provider workspace and start a new session there before continuing with
+step 2. The relative paths in this tour, such as `invoice-service` and
+`acme-pay/client-material`, are relative to `~/it-role-demo/`.
+
 If you do not yet know which walkthrough fits your task, start with the
 [experimental hint guide](../using/experimental-hint.md). `/hint` (Claude)
 or `$workflow-hint` (Codex) recommends a starting procedure; `/guide`
@@ -15,12 +26,19 @@ and the limits of experimental capture.
 
 These are short exercises across the demo estate, not a single governed engagement. For a complete reader journey, continue to [How to use JAI](../examples/how-to-use-JAI/index.md): choose the assurance arrangement, then follow the security-assessment, Android-development or commercial-proposal case. A final `/layered` exercise here does not recreate a layered history for preceding exercises.
 
-**Run the examples inside your Claude Code or Codex CLI session** in the demo workspace; do not paste these into a system shell. Choose the Claude Code or Codex CLI tab for each example; both variants express the same intent. The provider agent is responsible for calling the internal Python helpers. Manual host work covers installation/maintenance, restricted operator tasks and external signed **L0 human-authority** decisions in either provider; native tool approval is separate; see [the interaction model](../using/interaction-model.md).
+**Run the examples inside your Claude Code or Codex CLI session**; do not paste
+them into a system shell. Run step 1 from a session permitted to create
+`~/it-role-demo/`, then use that directory as the workspace for the remaining
+steps. Choose the Claude Code or Codex CLI tab for each example; both variants
+express the same intent. The provider agent calls the internal Python helpers.
+Manual host work covers installation and maintenance, restricted operator tasks
+and external signed **L0 human-authority** decisions in either provider. Native
+tool approval is separate; see [the interaction model](../using/interaction-model.md).
 
 | User intent | Claude command | Codex skill |
 | --- | --- | --- |
 | Analyse a repository | `/analyse invoice-service` | `$workflow-analyse invoice-service` |
-| Fix review criteria | `/criteria invoice-service` | `$workflow-criteria invoice-service` |
+| Establish review criteria | `/criteria invoice-service` | `$workflow-criteria invoice-service` |
 | Review the result | `/review invoice-service` | `$workflow-review invoice-service` |
 | Diagnose a defect | `/diagnose <symptom>` | `$workflow-diagnose <symptom>` |
 | Manage SABSA | `/sabsa ...` | `$workflow-sabsa ...` |
@@ -118,7 +136,9 @@ A good result first explains what the system is and where complexity lies.
     $workflow-diagnose test_charge_is_approved in tests/test_payments.py fails now and then.
     ```
 
-The defect workflow must compare the last known good state, a working analogue and timing/order effects. That is materially stronger than a shallow “guess a fix” answer.
+The defect workflow compares the last known good state, a working analogue and
+timing or ordering effects. Its findings should identify the evidence supporting
+the diagnosis before a repair is proposed.
 
 ## 5. Build and inspect a SABSA library
 
@@ -180,11 +200,17 @@ This is the fastest way to experience what makes the Justifiable Fabric differen
 
 ## Current operator boundary
 
-For 26.10.14 {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
-Native provider approval is not Fabric L0; external Ed25519 receipts require
-protected trust and matching state. Actual Office QA is OPERATOR_ASSISTED;
-WeasyPrint HTML/PDF does not inspect Office bytes. Privileged worker/API
-mutation is NOT_SUPPORTED; optional host confinement is NOT_VERIFIED.
+For JAI {{ JAI_VERSION }}, use the maintained
+[execution routes and boundaries](../security/product-operations.md) and
+[operator walkthrough](../operations/operator-walkthrough.md).
+Role-authorised local work runs automatically when the effective sandbox and
+required tools permit it. Actual Office QA follows that same rule: use the
+permitted Office renderer locally, or request an exact operator host action when
+it is unavailable. A PDF rendered from HTML does not inspect Office bytes.
+
+A provider permission prompt or host execution handoff is distinct from a
+reserved L0 decision. Only the human signs such a decision through the external
+operator procedure; the returned proof must match its exact request and effects.
 
 ## Local QA and human intervention
 

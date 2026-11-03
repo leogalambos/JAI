@@ -23,41 +23,41 @@
     "privacy": true
   },
   "semantic_units": {
-    "delivery_accountability": [
+    "data_accountability": {
+      "source_id": "SYN-LEDGER-1",
+      "source_version": "1",
+      "extracted_at": "2026-10-19T10:00:00Z",
+      "transformation": "Group committed records by event_id and compare counts before/after restore",
+      "input_records": 10,
+      "output_records": 10,
+      "classification": "Synthetic non-customer data",
+      "retention": "Delete rehearsal extracts after regression investigation closes",
+      "permitted_use": "Development regression only",
+      "record_id": "SYN-DATA-ACCOUNTABILITY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify data owner, stewardship, lawful use, classification and lifecycle obligations.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "data_lineage_quality": [
       {
-        "increment_id": "SYN-WAVE1",
-        "start": "2026-11-01",
-        "finish": "2026-11-05",
-        "dependency": "SYN-T1 peak-load retest",
-        "entry": "Backup restore rehearsed and rollback configuration retained",
-        "exit": "Ledger totals reconcile and operations independently accepts support",
-        "go_no_go": "Service owner with independent operations evidence",
-        "fallback_decision_time": "Before enabling transaction traffic",
-        "record_id": "SYN-DELIVERY-ACCOUNTABILITY",
+        "source_id": "SYN-LEDGER-1",
+        "source_version": "1",
+        "extracted_at": "2026-10-19T10:00:00Z",
+        "transformation": "Group committed records by event_id and compare counts before/after restore",
+        "input_records": 10,
+        "output_records": 10,
+        "classification": "Synthetic non-customer data",
+        "retention": "Delete rehearsal extracts after regression investigation closes",
+        "permitted_use": "Development regression only",
+        "record_id": "SYN-DATA-LINEAGE-QUALITY",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Assign outcomes, milestones, resource assumptions and acceptance responsibility.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "delivery_dependencies": [
-      {
-        "increment_id": "SYN-WAVE1",
-        "start": "2026-11-01",
-        "finish": "2026-11-05",
-        "dependency": "SYN-T1 peak-load retest",
-        "entry": "Backup restore rehearsed and rollback configuration retained",
-        "exit": "Ledger totals reconcile and operations independently accepts support",
-        "go_no_go": "Service owner with independent operations evidence",
-        "fallback_decision_time": "Before enabling transaction traffic",
-        "record_id": "SYN-DELIVERY-DEPENDENCIES",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Link delivery risks, cross-team dependencies and change decisions to accountable owners.",
+        "criterion_under_review": "Trace source-to-output transformations, quality constraints and evidenced reconciliation.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -277,83 +277,109 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
-    "prototype_hypothesis": {
-      "test_id": "SYN-T1",
-      "requirement_ref": "SYN-REC1",
-      "build": "candidate-1.0",
-      "environment": "Isolated recovery rehearsal",
-      "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
-      "expected_max_minutes": 30,
-      "observed_minutes": 27,
-      "expected_duplicate_count": 0,
-      "observed_duplicate_count": 0,
-      "sample_size": 10,
-      "exclusions": [
-        "Peak-load recovery"
-      ],
-      "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
-      "record_id": "SYN-PROTOTYPE-HYPOTHESIS",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Define the feasibility question, explicit non-production boundary and success criteria.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "prototype_reproduction": {
-      "test_id": "SYN-T1",
-      "requirement_ref": "SYN-REC1",
-      "build": "candidate-1.0",
-      "environment": "Isolated recovery rehearsal",
-      "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
-      "expected_max_minutes": 30,
-      "observed_minutes": 27,
-      "expected_duplicate_count": 0,
-      "observed_duplicate_count": 0,
-      "sample_size": 10,
-      "exclusions": [
-        "Peak-load recovery"
-      ],
-      "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
-      "record_id": "SYN-PROTOTYPE-REPRODUCTION",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify versioned code, dependencies, representative inputs and reproducible execution.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "prototype_results": [
+    "register_integrity": [
       {
-        "test_id": "SYN-T1",
-        "requirement_ref": "SYN-REC1",
-        "build": "candidate-1.0",
-        "environment": "Isolated recovery rehearsal",
-        "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
-        "expected_max_minutes": 30,
-        "observed_minutes": 27,
-        "expected_duplicate_count": 0,
-        "observed_duplicate_count": 0,
-        "sample_size": 10,
-        "exclusions": [
-          "Peak-load recovery"
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
         ],
-        "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
-        "record_id": "SYN-PROTOTYPE-RESULTS",
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-REGISTER-INTEGRITY",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Record observed results, limitations, risks and disposition against predeclared criteria.",
+        "criterion_under_review": "Evidence uniqueness, referential integrity, completeness and lifecycle reconciliation checks.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
         ],
         "knowledge_status": "synthetic-assumption"
       }
-    ]
+    ],
+    "register_records": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-REGISTER-RECORDS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Provide actual uniquely identified records with source, owner, status and review date.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "register_schema": {
+      "schema_version": "1.0",
+      "entity_id": "SYN-APP-1",
+      "columns": [
+        {
+          "name": "event_id",
+          "datatype": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "amount",
+          "datatype": "decimal(12,2)",
+          "unit": "EUR",
+          "nullable": false
+        }
+      ],
+      "key": "event_id",
+      "record": {
+        "event_id": "SYN-EVENT-1",
+        "amount": 125.5
+      },
+      "uniqueness_observed": "10 of 10 event IDs unique",
+      "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+      "record_id": "SYN-REGISTER-SCHEMA",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Define required columns, datatypes, identifiers, allowed states and ownership.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    }
   },
   "evaluation_selection": {
     "overlays": []
@@ -382,8 +408,8 @@
       "id": "headings-only",
       "operation": "headings_only",
       "expected_rule_ids": [
-        "domain/delivery.delivery_accountability",
-        "domain/delivery.delivery_dependencies",
+        "domain/data.data_accountability",
+        "domain/data.data_lineage_quality",
         "role/request-fulfilment-manager:4.contract_input_1",
         "role/request-fulfilment-manager:4.contract_input_2",
         "role/request-fulfilment-manager:4.contract_input_3",
@@ -394,10 +420,10 @@
         "role/request-fulfilment-manager:4.delivery_verification",
         "role/request-fulfilment-manager:4.receiving_acceptance",
         "role/request-fulfilment-manager:4.role_gate_observations",
-        "type/prototype.identity",
-        "type/prototype.prototype_hypothesis",
-        "type/prototype.prototype_reproduction",
-        "type/prototype.prototype_results"
+        "type/register.identity",
+        "type/register.register_integrity",
+        "type/register.register_records",
+        "type/register.register_schema"
       ],
       "expected_category": "critical-content"
     },

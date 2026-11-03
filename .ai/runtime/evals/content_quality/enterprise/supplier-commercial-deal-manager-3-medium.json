@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Deal performance, change and renewal/exit recommendation', provide verifiable evidence satisfying: Material commercial drift is visible before a new commitment, with accountable action and approval route.. Required delivery form: Baseline-to-actual/forecast bridge, contract impact, options and decision request.",
+        "criterion_under_review": "For the specific output 'Deal performance, change and renewal/exit recommendation', provide verifiable evidence satisfying: Material commercial drift is visible before a new commitment, with accountable action and approval route. Required delivery form: Baseline-to-actual/forecast bridge, contract impact, options and decision request.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

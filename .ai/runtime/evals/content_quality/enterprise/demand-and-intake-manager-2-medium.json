@@ -231,7 +231,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Demand qualification and impact assessment', provide verifiable evidence satisfying: Items advance only when the minimum evidence for their decision class is present or an explicit exception is owned.. Required delivery form: Decision-ready assessment covering problem evidence, capability fit, architecture/security/data impact, urgency, dependencies and uncertainty.",
+        "criterion_under_review": "For the specific output 'Demand qualification and impact assessment', provide verifiable evidence satisfying: Items advance only when the minimum evidence for their decision class is present or an explicit exception is owned. Required delivery form: Decision-ready assessment covering problem evidence, capability fit, architecture/security/data impact, urgency, dependencies and uncertainty.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

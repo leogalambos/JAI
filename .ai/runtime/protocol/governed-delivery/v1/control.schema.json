@@ -1,0 +1,691 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Closed host control events",
+  "$defs": {
+    "usage_total": {
+      "type": "object",
+      "properties": {
+        "metric": {
+          "enum": [
+            "tokens",
+            "cost_minor_units",
+            "elapsed_ms"
+          ]
+        },
+        "unit": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "total": {
+          "$ref": "common.schema.json#/$defs/integer"
+        }
+      },
+      "required": [
+        "metric",
+        "unit",
+        "total"
+      ],
+      "additionalProperties": false
+    },
+    "native_binding": {
+      "type": "object",
+      "properties": {
+        "provider": {
+          "enum": [
+            "codex",
+            "claude"
+          ]
+        },
+        "handle": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "packet_blob_id": {
+          "$ref": "common.schema.json#/$defs/digest"
+        },
+        "capture_blob_id": {
+          "$ref": "common.schema.json#/$defs/digest"
+        },
+        "manifest_hash": {
+          "$ref": "common.schema.json#/$defs/digest"
+        },
+        "packet_bytes": {
+          "type": "integer",
+          "minimum": 256,
+          "maximum": 8388608
+        },
+        "total_bytes": {
+          "type": "integer",
+          "minimum": 256,
+          "maximum": 33554432
+        },
+        "transferred_bytes": {
+          "$ref": "common.schema.json#/$defs/integer"
+        }
+      },
+      "required": [
+        "provider",
+        "handle",
+        "packet_blob_id",
+        "capture_blob_id",
+        "manifest_hash",
+        "packet_bytes",
+        "total_bytes",
+        "transferred_bytes"
+      ],
+      "additionalProperties": false
+    }
+  },
+  "oneOf": [
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "renew_control"
+        },
+        "previous_context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "profile_use": {
+          "$ref": "common.schema.json#/$defs/use_point"
+        }
+      },
+      "required": [
+        "event",
+        "previous_context",
+        "profile_use"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "run_started"
+        },
+        "run_context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "run_id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "observed_at_ms": {
+          "$ref": "common.schema.json#/$defs/integer"
+        },
+        "native": {
+          "$ref": "#/$defs/native_binding"
+        }
+      },
+      "required": [
+        "event",
+        "run_context",
+        "run_id",
+        "observed_at_ms"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "run_completed"
+        },
+        "run_context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "run_id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "observed_at_ms": {
+          "$ref": "common.schema.json#/$defs/integer"
+        },
+        "return_blob_id": {
+          "anyOf": [
+            {
+              "$ref": "common.schema.json#/$defs/digest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "usage": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/usage_total"
+          },
+          "minItems": 0
+        },
+        "native_handle": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "event",
+        "run_context",
+        "run_id",
+        "observed_at_ms",
+        "return_blob_id",
+        "usage"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "run_cancelled"
+        },
+        "run_context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "run_id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "observed_at_ms": {
+          "$ref": "common.schema.json#/$defs/integer"
+        },
+        "reason": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "usage": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/usage_total"
+          },
+          "minItems": 0
+        },
+        "native_handle": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "event",
+        "run_context",
+        "run_id",
+        "observed_at_ms",
+        "reason",
+        "usage"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "usage_audit"
+        },
+        "run_context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "run_id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "observed_at_ms": {
+          "$ref": "common.schema.json#/$defs/integer"
+        },
+        "usage": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/usage_total"
+          },
+          "minItems": 1
+        },
+        "native_handle": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "event",
+        "run_context",
+        "run_id",
+        "observed_at_ms",
+        "usage"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "broker_requested"
+        },
+        "run_context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "run_id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "observed_at_ms": {
+          "$ref": "common.schema.json#/$defs/integer"
+        },
+        "request_blob_id": {
+          "$ref": "common.schema.json#/$defs/digest"
+        },
+        "packet_bytes": {
+          "type": "integer",
+          "minimum": 256,
+          "maximum": 8388608
+        },
+        "total_bytes": {
+          "type": "integer",
+          "minimum": 256,
+          "maximum": 33554432
+        },
+        "transferred_bytes": {
+          "$ref": "common.schema.json#/$defs/integer"
+        },
+        "native_handle": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "event",
+        "run_context",
+        "run_id",
+        "observed_at_ms",
+        "request_blob_id",
+        "packet_bytes",
+        "total_bytes",
+        "transferred_bytes"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "broker_observed"
+        },
+        "run_context": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "run_id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "observed_at_ms": {
+          "$ref": "common.schema.json#/$defs/integer"
+        },
+        "request_blob_id": {
+          "$ref": "common.schema.json#/$defs/digest"
+        },
+        "packet_bytes": {
+          "type": "integer",
+          "minimum": 256,
+          "maximum": 8388608
+        },
+        "total_bytes": {
+          "type": "integer",
+          "minimum": 256,
+          "maximum": 33554432
+        },
+        "transferred_bytes": {
+          "$ref": "common.schema.json#/$defs/integer"
+        },
+        "result_blob_id": {
+          "$ref": "common.schema.json#/$defs/digest"
+        },
+        "native_handle": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "event",
+        "run_context",
+        "run_id",
+        "observed_at_ms",
+        "request_blob_id",
+        "packet_bytes",
+        "total_bytes",
+        "transferred_bytes",
+        "result_blob_id"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "procedure_step"
+        },
+        "procedure": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "step": {
+          "type": "string",
+          "minLength": 1
+        },
+        "triggers": {
+          "type": "array",
+          "items": {
+            "$ref": "common.schema.json#/$defs/reference"
+          },
+          "minItems": 1,
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "event",
+        "procedure",
+        "step",
+        "triggers"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "invocation_issued"
+        },
+        "invocation_id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "bound_ms": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "members": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "member_key": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "logical_id": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "record": {
+                "$ref": "record.schema.json#/$defs/context"
+              }
+            },
+            "required": [
+              "member_key",
+              "logical_id",
+              "record"
+            ],
+            "additionalProperties": false
+          },
+          "minItems": 1
+        }
+      },
+      "required": [
+        "event",
+        "invocation_id",
+        "bound_ms",
+        "members"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "invocation_prepared"
+        },
+        "invocation_id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "manifest_blob_id": {
+          "$ref": "common.schema.json#/$defs/digest"
+        }
+      },
+      "required": [
+        "event",
+        "invocation_id",
+        "manifest_blob_id"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "invocation_started"
+        },
+        "invocation_id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "provider": {
+          "enum": [
+            "codex",
+            "claude"
+          ]
+        },
+        "handle": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "capture_blob_id": {
+          "$ref": "common.schema.json#/$defs/digest"
+        },
+        "observed_at_ms": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "event",
+        "invocation_id",
+        "provider",
+        "handle",
+        "capture_blob_id",
+        "observed_at_ms"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "invocation_finished"
+        },
+        "invocation_id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "observed_at_ms": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "capture_blob_id": {
+          "$ref": "common.schema.json#/$defs/digest"
+        },
+        "raw_return_blob_id": {
+          "$ref": "common.schema.json#/$defs/digest"
+        },
+        "codec": {
+          "const": "jai.semantic-encoder/2"
+        },
+        "encoded_returns": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "member_key": {
+                "$ref": "common.schema.json#/$defs/text"
+              },
+              "return_blob_id": {
+                "anyOf": [
+                  {
+                    "$ref": "common.schema.json#/$defs/digest"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "error": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "code": {
+                        "$ref": "common.schema.json#/$defs/text"
+                      },
+                      "message": {
+                        "$ref": "common.schema.json#/$defs/text"
+                      }
+                    },
+                    "required": [
+                      "code",
+                      "message"
+                    ],
+                    "additionalProperties": false
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              }
+            },
+            "required": [
+              "member_key",
+              "return_blob_id",
+              "error"
+            ],
+            "additionalProperties": false
+          }
+        }
+      },
+      "required": [
+        "event",
+        "invocation_id",
+        "observed_at_ms",
+        "capture_blob_id",
+        "raw_return_blob_id",
+        "codec",
+        "encoded_returns"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "invocation_cancelled"
+        },
+        "invocation_id": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "observed_at_ms": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "capture_blob_id": {
+          "$ref": "common.schema.json#/$defs/digest"
+        },
+        "reason": {
+          "$ref": "common.schema.json#/$defs/text"
+        }
+      },
+      "required": [
+        "event",
+        "invocation_id",
+        "observed_at_ms",
+        "capture_blob_id",
+        "reason"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "local_budget_pause"
+        },
+        "unit_id": {
+          "$ref": "common.schema.json#/$defs/digest"
+        },
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "observed_at_ms": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        }
+      },
+      "required": [
+        "event",
+        "unit_id",
+        "expected_revision",
+        "observed_at_ms"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "local_budget_extend"
+        },
+        "unit_id": {
+          "$ref": "common.schema.json#/$defs/digest"
+        },
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "additional_ms": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 9007199254740991
+        },
+        "operator_instruction_ref": {
+          "$ref": "common.schema.json#/$defs/digest"
+        }
+      },
+      "required": [
+        "event",
+        "unit_id",
+        "expected_revision",
+        "additional_ms",
+        "operator_instruction_ref"
+      ],
+      "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "local_budget_stop"
+        },
+        "unit_id": {
+          "$ref": "common.schema.json#/$defs/digest"
+        },
+        "expected_revision": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 9007199254740991
+        },
+        "target": {
+          "enum": [
+            "unit",
+            "task"
+          ]
+        },
+        "reason": {
+          "$ref": "common.schema.json#/$defs/text"
+        },
+        "operator_instruction_ref": {
+          "$ref": "common.schema.json#/$defs/digest"
+        }
+      },
+      "required": [
+        "event",
+        "unit_id",
+        "expected_revision",
+        "target",
+        "reason",
+        "operator_instruction_ref"
+      ],
+      "additionalProperties": false
+    }
+  ]
+}

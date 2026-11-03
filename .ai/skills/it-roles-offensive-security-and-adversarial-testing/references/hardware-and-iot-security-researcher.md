@@ -112,7 +112,7 @@ An output that fails any gate is not released. A gate may be waived only by the 
 - [ ] **G2.** Negative results are reported, not quietly abandoned.
 - [ ] **G3.** Prototype code is labelled non-production and is never deployed to a production path without a rewrite decision.
 - [ ] **G4.** Licensing, export-control, data-protection and ethical constraints are checked before using external data or models.
-- [ ] **G5.** Findings state whether the attack requires physical possession, proximity or remote access, because the remediation priority depends entirely on that distinction
+- [ ] **G5.** Findings state whether the attack requires physical possession, proximity or remote access, because access prerequisites materially affect likelihood, impact and remediation options
 
 Verify the gate-check block from section 5 with the bundled checker rather than by eye:
 
@@ -140,7 +140,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Hardware assessment plan has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Hardware assessment plan") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

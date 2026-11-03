@@ -351,7 +351,9 @@ class CompiledPurposeConsistencyTests(unittest.TestCase):
         strategy=engine.resolve('chief-technology-officer:1')['blueprint']['semantic_units']
         self.assertNotIn('type/register.register_records',{u['id'] for u in strategy})
         self.assertIn('family/strategy.strategic_choices',{u['id'] for u in strategy})
-        prototype=next(cid for cid,b in engine.bindings.items() if b['artifact_type']=='prototype' and cid not in ['software-engineer:4','release-engineer:3','devops-engineer:1','devops-engineer:2','devops-engineer:4'])
+        # A genuine experimental system retains prototype obligations; frozen
+        # storage modality alone does not identify such a work product.
+        prototype='research-engineer:1'
         self.assertIn('type/prototype.prototype_hypothesis',
             {u['id'] for u in engine.resolve(prototype)['blueprint']['semantic_units']})
 
@@ -361,7 +363,7 @@ class CompiledPurposeConsistencyTests(unittest.TestCase):
         sys.path.insert(0,str(ROOT/'.ai/runtime/tools'))
         sys.path.insert(0,str(ROOT/'tools'))
         from content_spec import ContentSpec
-        from content_catalog_definitions import CONTRACT_PURPOSE_ACTIONS, TYPE_DOMAINS
+        from content_catalog_definitions import CONTRACT_PURPOSE_ACTIONS
         engine=ContentSpec(ROOT)
         contracts={c['id']:c for c in read(ROOT/'.ai/runtime/artifacts/contracts/role-deliverables.v3.json')['contracts']}
         for cid in CONTRACT_PURPOSE_ACTIONS:
@@ -370,7 +372,14 @@ class CompiledPurposeConsistencyTests(unittest.TestCase):
             self.assertEqual(engine.bindings[cid]['artifact_type'],legacy)
             inherited={item['id'] for item in result['inheritance']}
             self.assertIn('global/invariants',inherited,cid)
-            self.assertIn('domain/'+TYPE_DOMAINS[legacy],inherited,cid)
+            expected_domains={
+                'software-engineer:2':'testing', 'software-engineer:4':'operations',
+                'test-automation-engineer:1':'testing', 'test-automation-engineer:2':'testing',
+                'test-automation-engineer:3':'testing', 'test-automation-engineer:4':'testing',
+                'devops-engineer:3':'operations',
+                'devops-engineer:4':'data',
+            }
+            self.assertIn('domain/'+expected_domains.get(cid,'delivery'),inherited,cid)
             self.assertEqual(engine.specs[result['spec_id']]['applies_to']['artifact_types'],[legacy])
             self.assertFalse(result['production_ready'])
 
@@ -470,6 +479,33 @@ class CatalogGeneratorBehaviorTests(unittest.TestCase):
         registry=generated[CONTENT/'registry.json']
         self.assertEqual(len(registry['document_kinds']),1174)
         self.assertTrue(all(row['status']=='proposed' for row in registry['document_kinds']))
+
+    def test_source_sentences_have_one_separator_without_changing_source_values(self):
+        generator=self.generator()
+        contract=read(ROOT/'.ai/runtime/artifacts/contracts/role-deliverables.v3.json')['contracts'][0]
+        for ending in ('', '.'):
+            source={'deliverable':{'name':'Assessment','format':'Versioned report'+ending,
+                    'acceptance_criterion':'Evidence is attributable'+ending},
+                    'role':{'path':'skills/synthetic-role.md'},'gates':[]}
+            units=generator.contract_units(contract,'synthetic-check',source)
+            verification=next(u for u in units if u['semantic_fields']==['delivery_verification'])
+            self.assertNotIn('..',verification['acceptance_criteria'][0])
+            self.assertIn('attributable. Required delivery form: Versioned report.',verification['acceptance_criteria'][0])
+            self.assertEqual(verification['source_deliverable']['format'],source['deliverable']['format'])
+
+    def test_enrichment_retains_proposed_status_and_rejects_wrong_unit_shape(self):
+        generator=self.generator()
+        generator.enrich_professional_guidance({}, [], [])
+        policy=generator.spec('type/document','type','Subject report','complete')
+        policy['required_information']=[generator.unit('document','identity','object','Identify subject')]
+        policy['required_information'] += [generator.unit('document',*entry) for entry in generator.TYPE_REQUIREMENTS['document']]
+        generator.complete_policy(policy,'document')
+        generator.enrich_professional_guidance({'policy':policy},[],[])
+        self.assertEqual(policy['status'],'proposed')
+        self.assertTrue(policy['sources']['professional_references'])
+        policy['required_information'].pop()
+        with self.assertRaises(ValueError):
+            generator.enrich_professional_guidance({'policy':policy},[],[])
 
 
 class CorpusGeneratorBehaviorTests(unittest.TestCase):

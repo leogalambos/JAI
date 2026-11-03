@@ -101,7 +101,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | --- | --- | --- | --- |
 | 1 | Conceptual and logical data models | Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON) | The model is validated against real observed behaviour or data, not only interviews |
 | 2 | data platform architecture | Model in the EA tool plus a published view set | Every element traces to a driver or a quality-attribute target; no orphan elements |
-| 3 | data flow and lineage design | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
+| 3 | data flow and lineage design | Data-flow and lineage design | Traces source/target entities, transformations, ownership, privacy boundaries and lineage validation |
 | 4 | data standards and naming conventions | Controlled document referencing the parent policy | Requirements are specific, measurable and technology-explicit |
 
 ## 7. Output gates (blocking)
@@ -140,7 +140,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Conceptual and logical data models has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Conceptual and logical data models") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

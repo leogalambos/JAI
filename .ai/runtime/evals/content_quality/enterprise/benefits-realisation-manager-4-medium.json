@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Post-implementation benefits review', provide verifiable evidence satisfying: Claims distinguish observed association from demonstrated causality and name residual uncertainty.. Required delivery form: Decision paper with actuals, variance, causality limits and actions.",
+        "criterion_under_review": "For the specific output 'Post-implementation benefits review', provide verifiable evidence satisfying: Claims distinguish observed association from demonstrated causality and name residual uncertainty. Required delivery form: Decision paper with actuals, variance, causality limits and actions.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

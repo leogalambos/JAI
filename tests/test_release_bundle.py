@@ -8,7 +8,6 @@ from pathlib import Path
 import os
 import sys
 import tempfile
-from types import SimpleNamespace
 import unittest
 from unittest.mock import patch
 import zipfile
@@ -17,8 +16,6 @@ import hashlib
 TOOLS = Path(__file__).resolve().parents[1] / '.ai/runtime/tools'
 sys.path.insert(0, str(TOOLS))
 import release_bundle as bundle
-import supply_chain
-import qualification_core
 
 
 class ReleaseBundleTest(unittest.TestCase):
@@ -37,15 +34,7 @@ class ReleaseBundleTest(unittest.TestCase):
             '.ai/runtime/sabsa/publication/example.json': '{"fictional":true}',
             '.ai/runtime/sabsa/publication/profiles/logical.json': '{"layer":"logical"}',
             '.ai/runtime/templates/sabsa/latex/enterprise.tex': 'Maintained template',
-            '.env.example': 'Public environment example',
-            'QUALIFICATION-A-H.json': json.dumps({'release': '26.10.4', 'all_pass': True,
-                'gates': dict.fromkeys('ABCDEFGH', True),
-                'checks': {gate: [{'name': 'executed fixture', 'ok': True, 'state': 'PASS'}] for gate in 'ABCDEFGH'}})}
-        self.resources['RELEASE-SCOPE.json']=(TOOLS.parents[2]/'RELEASE-SCOPE.json').read_text()
-        self.resources['.ai/runtime/schema/release-scope.schema.json']=(TOOLS.parent/'schema/release-scope.schema.json').read_text()
-        scope=json.loads(self.resources['RELEASE-SCOPE.json'])
-        report=json.loads(self.resources['QUALIFICATION-A-H.json']);report['supported_capabilities']=scope
-        self.resources['QUALIFICATION-A-H.json']=json.dumps(report)
+            '.env.example': 'Public environment example'}
         for name, data in self.resources.items(): self.write(name, data)
 
     def write(self, name, data):
@@ -54,17 +43,59 @@ class ReleaseBundleTest(unittest.TestCase):
         path.write_text(data, encoding='utf-8')
         return path
 
+    def test_release_rejects_missing_current_source_without_creating_output(self):
+        destination = self.directory / 'unavailable-release'
+        with self.assertRaises(OSError):
+            bundle.check_ready(self.root)
+        with self.assertRaises(OSError):
+            bundle.build(self.root, destination)
+        self.assertFalse(destination.exists())
+        self.assertEqual(list(self.outputs.iterdir()), [])
+
+    def test_current_source_contracts_are_checked_without_importing_old_pass(self):
+        policy = {'signing': {'mode': 'automated-ci-release'},
+                  'required_release_files': ['VERSION', 'README.md']}
+        self.write('.ai/runtime/release/release-policy.json', json.dumps(policy))
+        self.write('QUALIFICATION-A-H.json', json.dumps({'all_pass': True}))
+        success = bundle.subprocess.CompletedProcess([], 0, 'PASS', '')
+        with patch.object(bundle.subprocess, 'run', return_value=success) as execute:
+            self.assertEqual(bundle.check_ready(self.root), '26.10.4')
+        self.assertEqual(execute.call_count, 2)
+        failed = bundle.subprocess.CompletedProcess([], 1, '', 'stale version')
+        with patch.object(bundle.subprocess, 'run', return_value=failed):
+            with self.assertRaisesRegex(ValueError, 'source contract failed'):
+                bundle.check_ready(self.root)
+        (self.root / 'README.md').unlink()
+        with self.assertRaisesRegex(ValueError, 'required release source missing'):
+            bundle.check_ready(self.root)
+
+    def test_build_produces_versioned_archive_checksum_and_preserves_existing_output(self):
+        for name in bundle.INTERNAL_RELEASE_RECORDS:
+            self.write(name, 'PRIVATE HISTORICAL DEVELOPMENT RESULT')
+        with patch.object(bundle, 'check_ready', return_value='26.10.4'):
+            result = bundle.build(self.root, self.outputs)
+            archive, checksum = Path(result['archive']), Path(result['checksum'])
+            self.assertEqual(archive.name, 'ai-it-house-universal-26.10.4.zip')
+            self.assertEqual(checksum.read_text(), hashlib.sha256(archive.read_bytes()).hexdigest() + '  ' + archive.name + '\n')
+            with zipfile.ZipFile(archive) as package:
+                self.assertFalse(any(Path(name).name in bundle.INTERNAL_RELEASE_RECORDS for name in package.namelist()))
+                self.assertIn('ai-it-house-universal-26.10.4/README.md', package.namelist())
+            before = archive.read_bytes()
+            with self.assertRaises(FileExistsError):
+                bundle.build(self.root, self.outputs)
+            self.assertEqual(archive.read_bytes(), before)
+
     def test_dependency_closure_rejects_retired_imports_but_ships_supported_verifier(self):
         self.assertTrue(bundle.dependency_closure(self.root))
         broken=self.write('.ai/runtime/tools/broken.py','import runtime_service\n')
         with self.assertRaisesRegex(ValueError,'dependency closure'):bundle.dependency_closure(self.root)
         broken.unlink()
-        self.write('.ai/runtime/tools/commercial_runtime.py','class TrustedDispatcher: pass\n')
-        self.assertIn(self.root/'.ai/runtime/tools/commercial_runtime.py',list(bundle.files(self.root)))
+        self.write('.ai/runtime/tools/maintained_fixture_tool.py','def report(): return {}\n')
+        self.assertIn(self.root/'.ai/runtime/tools/maintained_fixture_tool.py',list(bundle.files(self.root)))
         self.assertTrue(bundle.dependency_closure(self.root))
 
     def test_private_and_generated_trees_are_pruned_before_traversal(self):
-        private = ('INBOX', 'build', 'out', 'dist', 'site', '.git', '.venv',
+        private = ('INBOX', 'build', 'out', 'dist', 'site', 'obsolete', '.git', '.venv',
                    '.findings', '.fabric', 'docs/.findings', 'docs/.fabric',
                    '.direnv', '.secrets', '__pycache__', '.ai/runtime/_meta/gates')
         for name in private: self.write(name + '/sentinel.txt', 'PRIVATE FIXTURE MARKER')
@@ -217,90 +248,11 @@ class ReleaseBundleTest(unittest.TestCase):
             with self.subTest(limit=limit), self.assertRaises(ValueError):
                 bundle.verify_zip(target, maximum_uncompressed_bytes=limit)
 
-    def test_release_qualification_gates_and_fixture_build_remain_enforced(self):
-        with patch.object(bundle.subprocess, 'run', return_value=SimpleNamespace(returncode=1)):
-            with self.assertRaisesRegex(SystemExit, 'policy'): bundle.check_ready(self.root)
-        qualification = self.root / 'QUALIFICATION-A-H.json'
-        original = qualification.read_text()
-        qualification.write_text(json.dumps({'all_pass': True, 'gates': {'A': True}}))
-        with patch.object(bundle.subprocess, 'run', return_value=SimpleNamespace(returncode=0)):
-            with self.assertRaisesRegex(SystemExit, 'all PASS'): bundle.check_ready(self.root)
-            qualification.write_text(original)
-            self.integrity()
-            self.assertIsNone(bundle.check_ready(self.root))
-            with contextlib.redirect_stdout(io.StringIO()):
-                self.assertEqual(0, bundle.build(self.root, self.outputs))
-            with self.assertRaisesRegex(SystemExit, 'already exists'): bundle.build(self.root, self.outputs)
-        self.assertTrue((self.outputs / 'ai-it-house-universal-26.10.4.zip').is_file())
-        self.assertTrue((self.outputs / 'ai-it-house-universal-26.10.4.sha256').is_file())
 
-    def integrity(self, bind=True):
-        meta = self.root / '.ai/runtime/_meta'; meta.mkdir(parents=True, exist_ok=True)
-        (meta / 'release-manifest.json').write_text(json.dumps({'compatibility': []}))
-        qualification = json.loads((self.root / 'QUALIFICATION-A-H.json').read_text())
-        if bind:
-            fingerprint = qualification_core.source_fingerprint(self.root)
-            qualification['source_bindings'] = dict.fromkeys('ABCDEFGH', qualification_core.source_binding(fingerprint, fingerprint))
-            self.write('QUALIFICATION-A-H.json', json.dumps(qualification))
-        source = {'source_bindings': {g: qualification['source_bindings'][g] for g in 'ABCDEFG'},
-            'release': qualification['release'],
-            'gates': {g: qualification['gates'][g] for g in 'ABCDEFG'},
-            'checks': {g: qualification['checks'][g] for g in 'ABCDEFG'}}
-        ag = meta / 'qualification-A-G.json'; ag.write_text(json.dumps(source))
-        supply_chain.sbom(self.root, self.root / 'SBOM.spdx.json')
-        supply_chain.compatibility(self.root, self.root / 'COMPATIBILITY.json')
-        supply_chain.provenance(self.root, self.root / 'SBOM.spdx.json', ag, self.root / 'PROVENANCE.json')
 
-    def test_qualified_build_rejects_stale_source_and_mismatched_gate_provenance(self):
-        self.integrity()
-        with patch.object(bundle.subprocess, 'run', return_value=SimpleNamespace(returncode=0)):
-            self.assertIsNone(bundle.check_ready(self.root))
-            self.write('README.md', 'Changed after historical qualification')
-            with self.assertRaises(SystemExit): bundle.check_ready(self.root)
-            with self.assertRaises(SystemExit): bundle.build(self.root, self.outputs)
-            self.assertEqual(list(self.outputs.iterdir()), [])
-            # Regenerating integrity manifests cannot rebind old executed gates.
-            self.integrity(bind=False)
-            with self.assertRaises(SystemExit): bundle.check_ready(self.root)
-            self.integrity()
-            path = self.root / 'PROVENANCE.json'; document = json.loads(path.read_text())
-            document['test_results']['checks']['D'][0]['name'] = 'different gate execution'
-            path.write_text(json.dumps(document))
-            with self.assertRaisesRegex(SystemExit, 'qualification'): bundle.check_ready(self.root)
 
-    def test_qualified_build_rejects_changed_archive_modes(self):
-        runner = self.root / '.ai/runtime/tools/example.py'
-        runner.chmod(0o644)
-        self.integrity()
-        with patch.object(bundle.subprocess, 'run', return_value=SimpleNamespace(returncode=0)):
-            self.assertIsNone(bundle.check_ready(self.root))
-            runner.chmod(0o755)
-            self.integrity(bind=False)
-            with self.assertRaises(SystemExit): bundle.check_ready(self.root)
-            self.assertEqual(list(self.outputs.iterdir()), [])
 
-    def test_current_release_and_actual_executed_checks_are_mandatory(self):
-        original = json.loads(self.resources['QUALIFICATION-A-H.json'])
-        cases = []
-        for field, value in [('release', '26.10.5'), ('release', None), ('all_pass', 'true')]:
-            report = json.loads(json.dumps(original)); report[field] = value; cases.append(report)
-        for checks in ([], None, [{'name': 'unavailable', 'ok': True, 'state': 'NOT_EXECUTED'}],
-                       [{'name': 'false flag', 'ok': False, 'state': 'FAIL'}]):
-            report = json.loads(json.dumps(original)); report['checks']['H'] = checks; cases.append(report)
-        report = json.loads(json.dumps(original)); report['gates']['H'] = 1; cases.append(report)
-        cases.extend([[], {'all_pass': True, 'gates': dict.fromkeys('ABCDEFGH', True)}])
-        with patch.object(bundle.subprocess, 'run', return_value=SimpleNamespace(returncode=0)):
-            for report in cases:
-                with self.subTest(report=report):
-                    self.write('QUALIFICATION-A-H.json', json.dumps(report))
-                    with self.assertRaises(SystemExit): bundle.check_ready(self.root)
-                    with self.assertRaises(SystemExit): bundle.build(self.root, self.outputs)
-                    self.assertEqual([], list(self.outputs.iterdir()))
 
-    def test_cli_dispatch_keeps_explicit_root_and_output(self):
-        with patch.object(sys, 'argv', ['release_bundle.py', 'build', '--root', str(self.root), '--dist', str(self.outputs)]), patch.object(bundle, 'build', return_value=7) as build:
-            self.assertEqual(7, bundle.main())
-            build.assert_called_once_with(str(self.root), str(self.outputs))
 
 
 if __name__ == '__main__':

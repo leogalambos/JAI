@@ -1,11 +1,5 @@
----
-owner: JAI documentation maintainers
-review_due: 2027-01-16
----
-
 # Assess a deployed system with SABSA
 
-Owner: JAI maintainers. Last reviewed: 2026-10-20.
 
 ## Set up the assessment workspace
 

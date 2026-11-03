@@ -213,7 +213,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Authentication and federation architecture', provide verifiable evidence satisfying: Assurance, token/session lifetimes, recovery and federation trust are explicit per use case.. Required delivery form: Versioned specification plus sequence/trust diagrams.",
+        "criterion_under_review": "For the specific output 'Authentication and federation architecture', provide verifiable evidence satisfying: Assurance, token/session lifetimes, recovery and federation trust are explicit per use case. Required delivery form: Versioned specification plus sequence/trust diagrams.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

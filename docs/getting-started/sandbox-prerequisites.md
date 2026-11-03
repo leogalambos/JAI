@@ -1,6 +1,5 @@
 # Sandbox and environment prerequisites
 
-Owner: JAI maintainers · Last reviewed: 2026-10-16 · Review by: 2027-01-16
 
 Use this reference when JAI works in a system terminal but a Claude or Codex session cannot read its runtime, resolve a host or render a document. Installation, executable availability, filesystem permissions and network authorisation are separate requirements. A program can be installed and on `PATH` while its libraries, fonts or configuration remain unreadable inside the sandbox.
 
@@ -11,7 +10,7 @@ The provider selects authorised tools from your natural-language request. Markdo
 | Task | Required local components | Additional access to consider |
 | --- | --- | --- |
 | Install/update JAI | Python 3.10+ standard library only; no preinstalled Python packages | Package resources and intended installation paths |
-| Use installed JAI contract workflows | Python 3.10+, jsonschema>=4.26,<5, installed provider surface and JAI runtime | Installed skills, runtime Python files, schemas and the working project |
+| Use installed JAI contract workflows | Python 3.10+, jsonschema>=4.18,<5, installed provider surface and JAI runtime | Installed skills, runtime Python files, schemas and the working project |
 | Generate SABSA `.tex` source or DOCX | Pandoc | Pandoc executable and its installed resources; writable output and temporary files |
 | Compile SABSA LaTeX to PDF | Pandoc, XeLaTeX, required TeX packages and DejaVu Serif | TeX trees, configuration, compiled formats and fonts |
 | Inspect PDF pages as images or text | Poppler tools such as `pdftoppm` and `pdftotext` | Readable PDF and writable inspection output |
@@ -156,12 +155,17 @@ Hooks depend on host event delivery and do not replace sandbox or filesystem con
 
 ## Current operator boundary
 
-For 26.10.14 {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
-Native provider approval is not Fabric L0; external Ed25519 receipts require
-protected trust and matching state. Actual Office QA is AUTO when the role and effective sandbox permit it;
-otherwise it needs an explicit OPERATOR_EXECUTION handoff;
-WeasyPrint HTML/PDF does not inspect Office bytes. Privileged worker/API
-mutation is NOT_SUPPORTED; optional host confinement is NOT_VERIFIED.
+For JAI {{ JAI_VERSION }}, use the maintained
+[execution routes and boundaries](../security/product-operations.md) and
+[operator walkthrough](../operations/operator-walkthrough.md).
+Role-authorised local work runs automatically when the effective sandbox and
+required tools permit it. Actual Office QA follows that same rule: use the
+permitted Office renderer locally, or request an exact operator host action when
+it is unavailable. A PDF rendered from HTML does not inspect Office bytes.
+
+A provider permission prompt or host execution handoff is distinct from a
+reserved L0 decision. Only the human signs such a decision through the external
+operator procedure; the returned proof must match its exact request and effects.
 
 
 For supported Python renderer dependencies, use the

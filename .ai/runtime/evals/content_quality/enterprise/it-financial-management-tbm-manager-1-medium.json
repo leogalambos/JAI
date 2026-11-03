@@ -186,6 +186,59 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
+    "cost_allocation_model": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-COST-ALLOCATION-MODEL",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Define the selected cost taxonomy, source cost pools, allocation drivers, units, formulas and mappings through resources/services to consuming products or business units; disclose shared, unallocated and excluded costs.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "cost_model_boundary": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-COST-MODEL-BOUNDARY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "State model purpose, service/portfolio boundary, accounting period, currency and price basis, source ledger extracts and accountable financial owner; identify actuals, commitments and forecasts separately.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "cost_reconciliation_sensitivity": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-COST-RECONCILIATION-SENSITIVITY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Reconcile source totals to allocated outputs without double counting; identify rounding, missing inputs and material assumptions, and show how uncertain volumes/rates affect unit costs and proposed decisions.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
     "decision_purpose_correction": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -231,7 +284,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'IT financial and TBM cost model', provide verifiable evidence satisfying: Costs reconcile to authoritative finance data and allocation rules are explainable, repeatable and governed.. Required delivery form: Versioned dataset/model with cost pools, towers/services/products, allocation rules, drivers and reconciliation controls.",
+        "criterion_under_review": "For the specific output 'IT financial and TBM cost model', provide verifiable evidence satisfying: Costs reconcile to authoritative finance data and allocation rules are explainable, repeatable and governed. Required delivery form: Versioned dataset/model with cost pools, towers/services/products, allocation rules, drivers and reconciliation controls.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -407,6 +460,9 @@
         "role/it-financial-management-tbm-manager:1.contract_input_4",
         "role/it-financial-management-tbm-manager:1.contract_input_5",
         "role/it-financial-management-tbm-manager:1.contract_relations",
+        "role/it-financial-management-tbm-manager:1.cost_allocation_model",
+        "role/it-financial-management-tbm-manager:1.cost_model_boundary",
+        "role/it-financial-management-tbm-manager:1.cost_reconciliation_sensitivity",
         "role/it-financial-management-tbm-manager:1.decision_purpose_correction",
         "role/it-financial-management-tbm-manager:1.delivery_scope",
         "role/it-financial-management-tbm-manager:1.delivery_verification",

@@ -1,6 +1,5 @@
 # Commented task walkthroughs
 
-Owner: JAI maintainers. Last reviewed: 2026-10-20.
 
 Start here when you know the task but do not yet know which JAI commands
 to use. Each walkthrough explains a plausible problem, the documents to

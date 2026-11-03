@@ -100,7 +100,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
 | 1 | Automation or application implementation | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 2 | process exception handling design | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
+| 2 | process exception handling design | Process exception-handling specification | Defines triggers, permitted recovery, human escalation, state reconciliation and reproducible exception scenarios |
 | 3 | solution documentation and ownership record | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 4 | monitoring and failure alerting | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 
@@ -143,7 +143,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Automation or application implementation has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Automation or application implementation") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

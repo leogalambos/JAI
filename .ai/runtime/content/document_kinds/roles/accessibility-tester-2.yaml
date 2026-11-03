@@ -2,15 +2,15 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/accessibility-tester:2",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/test-report",
-    "domain/testing"
+    "type/document",
+    "domain/delivery"
   ],
   "applies_to": {
     "document_kind": "role/accessibility-tester:2",
@@ -195,7 +195,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'assistive technology test evidence', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "For the specific output 'assistive technology test evidence', provide verifiable evidence satisfying: Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations. Required delivery form: Versioned assessment results with traceable evidence.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,7 +210,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'assistive technology test evidence', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "reason": "For the specific output 'assistive technology test evidence', provide verifiable evidence satisfying: Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations. Required delivery form: Versioned assessment results with traceable evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#accessibility-tester:2",
           "content/types/test-report.yaml"
@@ -223,8 +223,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "assistive technology test evidence",
-        "format": "Executable suite in version control plus a coverage statement",
-        "acceptance_criterion": "States what is covered, what is not, and what the suite cannot detect",
+        "format": "Versioned assessment results with traceable evidence",
+        "acceptance_criterion": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
         "role_path": "skills/it-roles-quality-and-testing/references/accessibility-tester.md"
       }
     },
@@ -246,7 +246,7 @@
         "G3: No production personal data is used in test environments without an approved lawful basis and masking.",
         "G4: An intermittent test failure is investigated as a timing, ordering or shared-state defect, never retried or quarantined away without a ticket and an analysis (it-role-library/standards/defect-analysis.md).",
         "G5: Automated tests are deterministic, test one behaviour each, mock only collaborators and run integration tests against real dependencies (it-role-library/standards/testing.md).",
-        "G6: Accessibility conformance evaluation distinguishes what was tested, what was not tested and what cannot be tested.",
+        "G6: The primary deliverable (\"Accessibility conformance evaluation\") distinguishes what was tested, what was not tested and what cannot be tested.",
         "G7: Findings are based on manual testing with real assistive technology",
         "G8: automated checker results alone are reported as insufficient coverage"
       ],
@@ -689,6 +689,28 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Accessibility Tester",
+        "frameworks": [
+          "WCAG 2.2 AA",
+          "EN 301 549",
+          "WAI-ARIA authoring practices",
+          "ISO/IEC 40500"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -714,13 +736,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -739,12 +762,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/document",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "test-report",
+  "semantic_family": "document",
   "role_overlay": {
     "contract_id": "accessibility-tester:2",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -753,8 +778,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "accessibility-tester:2",
-    "source_fingerprint": "7d93a549276b5a028cb9e5c50da81bcf77da6a21e0d11b1124a79dfb49aa595c",
-    "source_hash": "5f215ca3ef6873f98fc09de0c0cd2f2bd7246d0f8411d88d7a5c61cb73d57c3f"
+    "source_fingerprint": "4786904f6192e1331fa8f771ecacfe310e2a1bc7cc43be4dc6a8dff5099b9642",
+    "source_hash": "f76d077edf7bd56f43c1aa67899d75317bf35369976d9ac6b1a37fa0a3587bfc"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

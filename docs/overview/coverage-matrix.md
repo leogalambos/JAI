@@ -1,6 +1,6 @@
 # Coverage matrix
 
-AI IT House {{ JAI_VERSION }} spans **{{ JAI_ROLE_COVERAGE }}**, **24 canonical workflows** and **28 typed artefact classes**. The 26.10.4 baseline preserved the prior functional catalogue and established lifecycle/integrity convergence.
+AI IT House {{ JAI_VERSION }} spans **{{ JAI_ROLE_COVERAGE }}**, **24 canonical workflows** and **28 typed artefact classes**. The catalogues below describe the available professional scope.
 
 ## Discipline coverage
 
@@ -17,14 +17,18 @@ The table is generated from the canonical role registry. Representative roles il
 | SABSA projection | 36/36 projection-capable |
 | EA repository | scoped EA-domain projection with Open Exchange |
 | Publication | Production ProjectionManifest v4 with DCS binding + render evidence + visual QA; see [publication capabilities](../capabilities/artifacts-publication.md). |
-| Release qualification | Gates A–H |
+| Release preparation | Package identity, archive integrity and explicit publication controls |
 | Behavioral universal qualification | harness/corpus/threshold/evaluator; no live provider/model claim |
 | Schemas | {{ JAI_SCHEMA_COUNT }} current registered schemas |
 | Provider adapters | Claude + Codex |
 
 ## Workflow coverage
 
-Each workflow contains a trigger, target outcome, accountable role per step, explicit hand-over and gate condition. The sequences are functionally preserved in 26.10.4; the Unified Lifecycle release changes their shared semantic/runtime foundation rather than adding workflow count.
+The 24 canonical workflow chains use the shared role catalogue and runtime
+contracts. Each defines a trigger, target outcome, responsible roles, explicit
+handoffs and conditions for progression. Choose a chain for coordinated work
+without requiring the complete layered matrix; use layered delivery when the
+task needs all six layers and their local independent review.
 
 Browse the [Workflow library](../workflow-library/idea-to-production.md) from the left navigation.
 

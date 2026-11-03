@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/environment-manager:3",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -62,7 +62,9 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: test data seeding and masking procedure.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
-          "content/types/runbook.yaml"
+          "content/types/runbook.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -100,7 +102,9 @@
         "reason": "For each receiving role (Test Analyst; Software Engineer; Release Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
-          "content/types/runbook.yaml"
+          "content/types/runbook.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -138,7 +142,9 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
-          "content/types/runbook.yaml"
+          "content/types/runbook.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -176,7 +182,9 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
-          "content/types/runbook.yaml"
+          "content/types/runbook.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -196,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'test data seeding and masking procedure', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "For the specific output 'test data seeding and masking procedure', provide verifiable evidence satisfying: Defines authorised source data, masking rules, reproducible preparation, validation, cleanup and privacy controls. Required delivery form: Versioned test-data seeding and masking procedure.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -211,10 +219,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'test data seeding and masking procedure', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "reason": "For the specific output 'test data seeding and masking procedure', provide verifiable evidence satisfying: Defines authorised source data, masking rules, reproducible preparation, validation, cleanup and privacy controls. Required delivery form: Versioned test-data seeding and masking procedure.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
-          "content/types/runbook.yaml"
+          "content/types/runbook.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -224,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "test data seeding and masking procedure",
-        "format": "Executable suite in version control plus a coverage statement",
-        "acceptance_criterion": "States what is covered, what is not, and what the suite cannot detect",
+        "format": "Versioned test-data seeding and masking procedure",
+        "acceptance_criterion": "Defines authorised source data, masking rules, reproducible preparation, validation, cleanup and privacy controls",
         "role_path": "skills/it-roles-infrastructure-cloud-and-operations/references/environment-manager.md"
       }
     },
@@ -245,7 +255,7 @@
         "G1: Intake is rejected unless all mandatory inputs are present or a named owner and date exist for each gap.",
         "G2: No commitment is made beyond demonstrated capacity for the period.",
         "G3: Every deviation from the documented process is logged with its reason and its expiry.",
-        "G4: Environment inventory, topology and ownership map is published on the agreed cadence even when the news is bad.",
+        "G4: The primary deliverable (\"Environment inventory, topology and ownership map\") is published on the agreed cadence, including adverse results.",
         "G5: No non-production environment holds unmasked production personal data",
         "G6: one that does is treated as a production system with a data protection incident attached",
         "G7: Every environment has an owner, a refresh cadence and a documented teardown, and environments with no owner are reclaimed on a published schedule"
@@ -265,7 +275,9 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
-          "content/types/runbook.yaml"
+          "content/types/runbook.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -312,7 +324,9 @@
         "reason": "Analyse the specific input \"Test and integration requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
-          "content/types/runbook.yaml"
+          "content/types/runbook.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -355,7 +369,9 @@
         "reason": "Analyse the specific input \"Provisioning capability\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
-          "content/types/runbook.yaml"
+          "content/types/runbook.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -398,7 +414,9 @@
         "reason": "Analyse the specific input \"Masking and lawful basis requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
-          "content/types/runbook.yaml"
+          "content/types/runbook.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -441,7 +459,9 @@
         "reason": "Analyse the specific input \"Release calendar\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
-          "content/types/runbook.yaml"
+          "content/types/runbook.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -486,7 +506,9 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -529,7 +551,9 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -574,7 +598,9 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -688,6 +714,35 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "contingency-planning",
+        "title": "NIST SP 800-34 Revision 1, Contingency Planning Guide for Federal Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-34r1",
+        "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "configuration-management",
+        "title": "NIST SP 800-128, Guide for Security-Focused Configuration Management of Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-128",
+        "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Environment Manager",
+        "frameworks": [
+          "ITIL 4 change and release practice",
+          "test data management practice",
+          "GDPR Article 25 for non-production data"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -713,13 +768,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -738,6 +794,8 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/runbook",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
@@ -752,8 +810,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "environment-manager:3",
-    "source_fingerprint": "86532cc8862f108ae2d51f8540fc773b7ca1e97ea1b78273a836b096f6cff6e2",
-    "source_hash": "64e3c0d90153f021ecfa7aa686cc1c92796faa5a768618819402c0da2df687c0"
+    "source_fingerprint": "f9bdb4ae7d2311edaf8dd02f21fbb6774a87b60c127eee33f2759c5b553b1741",
+    "source_hash": "77467cafbdfdf3eee3ec6de1e62895cf3e5902a2067f4f321ec360fe1b83e631"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

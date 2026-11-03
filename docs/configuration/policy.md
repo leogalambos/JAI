@@ -23,11 +23,23 @@ A prompt is the weakest enforcement tier in that chain.
 
 ## JAI policy responsibilities
 
-- **L1** binds work to accountable purpose and authority scope.
-- **L3** owns policy constraints, acceptance criteria, evidence obligations, exceptions and escalation rules.
-- **L5** binds design to permitted tools/implementation controls.
-- **L6** records actual observations, failures and execution evidence.
-- **L0** remains the external authority for consequential acceptance/exception/revision decisions.
+Gen2 organises policy work through the six SABSA content perspectives:
+**L1 Contextual**, **L2 Conceptual**, **L3 Logical**, **L4 Physical**,
+**L5 Component** and **L6 Management**. Each addresses What, Why, How, Who,
+Where and When at its own level. See the
+[canonical layer model](../architecture/sabsa-layer-model.md).
+
+Within each perspective, the local setter establishes criteria and evidence
+obligations, the author proposes an answer, and an independent reviewer assesses
+that answer. Policy constraints, exceptions, escalation and execution evidence
+are handled wherever they apply; they are not exclusive responsibilities of
+L3 or L6. L5 Component covers implementation detail. L6 Management covers
+governance, assurance and operation, with management concerns applying across
+the other perspectives.
+
+**L0** remains the external human authority for reserved consequential
+acceptance, exception and revision decisions. A local review does not grant
+that authority.
 
 ## High-value operating rules
 

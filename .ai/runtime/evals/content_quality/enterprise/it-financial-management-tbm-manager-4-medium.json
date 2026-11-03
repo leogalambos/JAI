@@ -231,7 +231,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Financial variance and optimisation decision paper', provide verifiable evidence satisfying: Material variance has an accountable owner, quantified impact and a decision or explicitly accepted rationale for no action.. Required delivery form: Decision paper linking variance/root causes to options, trade-offs, owners and approved corrective actions.",
+        "criterion_under_review": "For the specific output 'Financial variance and optimisation decision paper', provide verifiable evidence satisfying: Material variance has an accountable owner, quantified impact and a decision or explicitly accepted rationale for no action. Required delivery form: Decision paper linking variance/root causes to options, trade-offs, owners and approved corrective actions.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

@@ -1,0 +1,268 @@
+{
+  "protocol": "jai.governed-delivery/1",
+  "message_type": "record_proposal",
+  "message_id": "688e81e91cb71b9fa6ca1de6ba9d7f65e1bf3003efb568505aba0d559d33cb71",
+  "request_id": "request-record-profile",
+  "correlation_id": "question-service-controls",
+  "engagement": "synthetic-protocol",
+  "scope": "default",
+  "sender": {
+    "kind": "assignment",
+    "ref": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "author-assignment",
+      "version_id": "1870591329732c4cdd7c57d9f45bf9cf132d728ca1fed89d25570d7d8879a622"
+    }
+  },
+  "recipient": {
+    "kind": "controller",
+    "id": "trusted-controller"
+  },
+  "context": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "author-context",
+    "version_id": "29fe898b447be535d3a3bec50aaec15039fb96c4edee43d3a1adf488f9c9f42f"
+  },
+  "profile": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "profile",
+    "version_id": "b0519b9fbd91854cbe44a508a24434902d4296b100862b3f0acc5374550990ef"
+  },
+  "expected_head": "0379d6138bfe05e3382401e0af27527da375e9eaab21d9f744a4b333647120af",
+  "issued_at_ms": 1000,
+  "expires_at_ms": 8000,
+  "causes": [],
+  "attachments": [],
+  "payload": {
+    "logical_id": "profile",
+    "record_type": "profile",
+    "record": {
+      "owner": {
+        "kind": "controller",
+        "id": "trusted-controller"
+      },
+      "profile_id": "synthetic-profile",
+      "protocol": "jai.governed-delivery/1",
+      "source_profiles": [],
+      "obligations": [
+        {
+          "slot_id": "what-answer",
+          "owner": {
+            "layer": 3,
+            "work_kind": "question",
+            "question": "what",
+            "work_item": "service-controls"
+          },
+          "subject_kind": "answer",
+          "role": "answer",
+          "required_kind": "product",
+          "minimum": 1,
+          "maximum": 1,
+          "allow_exclusion": false,
+          "exclusion_owner": null
+        },
+        {
+          "slot_id": "what-professional_review",
+          "owner": {
+            "layer": 3,
+            "work_kind": "question",
+            "question": "what",
+            "work_item": "service-controls"
+          },
+          "subject_kind": "answer",
+          "role": "professional_review",
+          "required_kind": "assessment",
+          "minimum": 1,
+          "maximum": 1,
+          "allow_exclusion": false,
+          "exclusion_owner": null
+        },
+        {
+          "slot_id": "why-answer",
+          "owner": {
+            "layer": 3,
+            "work_kind": "question",
+            "question": "why",
+            "work_item": "service-controls"
+          },
+          "subject_kind": "answer",
+          "role": "answer",
+          "required_kind": "product",
+          "minimum": 1,
+          "maximum": 1,
+          "allow_exclusion": false,
+          "exclusion_owner": null
+        },
+        {
+          "slot_id": "why-professional_review",
+          "owner": {
+            "layer": 3,
+            "work_kind": "question",
+            "question": "why",
+            "work_item": "service-controls"
+          },
+          "subject_kind": "answer",
+          "role": "professional_review",
+          "required_kind": "assessment",
+          "minimum": 1,
+          "maximum": 1,
+          "allow_exclusion": false,
+          "exclusion_owner": null
+        },
+        {
+          "slot_id": "how-answer",
+          "owner": {
+            "layer": 3,
+            "work_kind": "question",
+            "question": "how",
+            "work_item": "service-controls"
+          },
+          "subject_kind": "answer",
+          "role": "answer",
+          "required_kind": "product",
+          "minimum": 1,
+          "maximum": 1,
+          "allow_exclusion": false,
+          "exclusion_owner": null
+        },
+        {
+          "slot_id": "how-professional_review",
+          "owner": {
+            "layer": 3,
+            "work_kind": "question",
+            "question": "how",
+            "work_item": "service-controls"
+          },
+          "subject_kind": "answer",
+          "role": "professional_review",
+          "required_kind": "assessment",
+          "minimum": 1,
+          "maximum": 1,
+          "allow_exclusion": false,
+          "exclusion_owner": null
+        },
+        {
+          "slot_id": "who-answer",
+          "owner": {
+            "layer": 3,
+            "work_kind": "question",
+            "question": "who",
+            "work_item": "service-controls"
+          },
+          "subject_kind": "answer",
+          "role": "answer",
+          "required_kind": "product",
+          "minimum": 1,
+          "maximum": 1,
+          "allow_exclusion": false,
+          "exclusion_owner": null
+        },
+        {
+          "slot_id": "who-professional_review",
+          "owner": {
+            "layer": 3,
+            "work_kind": "question",
+            "question": "who",
+            "work_item": "service-controls"
+          },
+          "subject_kind": "answer",
+          "role": "professional_review",
+          "required_kind": "assessment",
+          "minimum": 1,
+          "maximum": 1,
+          "allow_exclusion": false,
+          "exclusion_owner": null
+        },
+        {
+          "slot_id": "where-answer",
+          "owner": {
+            "layer": 3,
+            "work_kind": "question",
+            "question": "where",
+            "work_item": "service-controls"
+          },
+          "subject_kind": "answer",
+          "role": "answer",
+          "required_kind": "product",
+          "minimum": 1,
+          "maximum": 1,
+          "allow_exclusion": false,
+          "exclusion_owner": null
+        },
+        {
+          "slot_id": "where-professional_review",
+          "owner": {
+            "layer": 3,
+            "work_kind": "question",
+            "question": "where",
+            "work_item": "service-controls"
+          },
+          "subject_kind": "answer",
+          "role": "professional_review",
+          "required_kind": "assessment",
+          "minimum": 1,
+          "maximum": 1,
+          "allow_exclusion": false,
+          "exclusion_owner": null
+        },
+        {
+          "slot_id": "when-answer",
+          "owner": {
+            "layer": 3,
+            "work_kind": "question",
+            "question": "when",
+            "work_item": "service-controls"
+          },
+          "subject_kind": "answer",
+          "role": "answer",
+          "required_kind": "product",
+          "minimum": 1,
+          "maximum": 1,
+          "allow_exclusion": false,
+          "exclusion_owner": null
+        },
+        {
+          "slot_id": "when-professional_review",
+          "owner": {
+            "layer": 3,
+            "work_kind": "question",
+            "question": "when",
+            "work_item": "service-controls"
+          },
+          "subject_kind": "answer",
+          "role": "professional_review",
+          "required_kind": "assessment",
+          "minimum": 1,
+          "maximum": 1,
+          "allow_exclusion": false,
+          "exclusion_owner": null
+        }
+      ],
+      "max_clock_skew_ms": 100,
+      "max_request_duration_ms": 10000,
+      "authority_policy_id": "host-authority",
+      "routing_policy_id": "host-routing",
+      "scheduling": {
+        "collection_window_ms": 60000,
+        "control_limits": [
+          {
+            "metric": "elapsed_ms",
+            "unit": "ms",
+            "ceiling": 10000
+          }
+        ],
+        "max_search_steps": 200,
+        "max_escalation_rounds": 10,
+        "initial_deadline_ms": null
+      },
+      "content_profile": null,
+      "local_budget": {
+        "iteration_ms": 600000,
+        "max_reworks": 3
+      }
+    }
+  }
+}

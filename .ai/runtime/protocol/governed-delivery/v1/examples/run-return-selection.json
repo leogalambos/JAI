@@ -1,0 +1,42 @@
+{
+  "assignment": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "author-assignment-A",
+    "version_id": "c73dc01bf01acf79380ee8424d4ad4a2928a017678992b4a23c4f79133267d76"
+  },
+  "context": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "author-context",
+    "version_id": "29fe898b447be535d3a3bec50aaec15039fb96c4edee43d3a1adf488f9c9f42f"
+  },
+  "records": [],
+  "intents": [
+    {
+      "message_type": "decision",
+      "recipient": {
+        "kind": "controller",
+        "id": "trusted-controller"
+      },
+      "payload": {
+        "action": "select_execution",
+        "assignment": {
+          "engagement": "synthetic-protocol",
+          "scope": "default",
+          "logical_id": "author-assignment-A",
+          "version_id": "c73dc01bf01acf79380ee8424d4ad4a2928a017678992b4a23c4f79133267d76"
+        },
+        "specialties": [
+          "software-engineer"
+        ],
+        "provider": "json-process/1",
+        "workload_class": "fixture-author",
+        "model_selector": "fixture-author",
+        "reason": "The functional author selected its own professionals from the full catalogue.",
+        "authority_proof": null,
+        "previous": null
+      }
+    }
+  ]
+}

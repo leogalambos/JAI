@@ -1,6 +1,5 @@
 # Command walkthroughs and example outcomes
 
-Owner: JAI maintainers · Last reviewed: 2026-10-16
 
 Use this page to look up a single command's exercise and expected outputs. For a first end-to-end engagement, follow [How to use JAI](../examples/how-to-use-JAI/index.md): method, provider interaction, then a complete security, Android or commercial case. The examples below do not imply that every domain command automatically creates a six-layer Fabric engagement.
 
@@ -77,10 +76,10 @@ visible before review. For syntax and criteria precedence, use the
 Accept the offer to create the file. Then add a criterion of your
 own, either by asking Claude ("add a criterion C9 on money handling:
 amounts must be integer cents or Decimal, never float") or by editing
-`invoice-service/.claude/review-criteria.md` yourself:
+`invoice-service/.ai/review-criteria.md` yourself:
 
 ```
-#### C9 Money handling
+## C9 Money handling
 Monetary amounts are integer cents or Decimal, never binary floating point.
 - High if money is computed or stored as float
 ```
@@ -135,7 +134,7 @@ lists three folders under `~/it-role-demo`.
 
 **Check it worked.**
 `~/it-role-demo/invoice-service` exists and, if git is
-installed, has five commits:
+installed, has seven commits:
 `git -C ~/it-role-demo/invoice-service log --oneline`.
 
 ## commands : develop
@@ -367,8 +366,10 @@ Run a consequential task through the six-layer justifiable delivery method
 `/layered <intent, stated as you would to an accountable team>`
 
 **What it does.** Takes a consequential decision through
-six layers of agents — intent, meaning, policy, design, realisation,
-evidence — with requirements going down and evidence coming back up.
+six SABSA perspectives — L1 Contextual, L2 Conceptual, L3 Logical, L4 Physical,
+L5 Component and L6 Management — with requirements going down and reviewed
+results coming back up. Each What, Why, How, Who, Where and When question has
+a local setter, author and independent reviewer; integration has its own review.
 Unsupported work is sent back for rework, problems escalate layer by
 layer to you, and every step is recorded so that you can later show why
 the outcome was allowed. Use it when you will have to justify a
@@ -381,10 +382,11 @@ decision; not for routine changes.
 
 1. Your intent is recorded verbatim, and the decision log starts in
    `.fabric/` of the current folder.
-2. Each layer turns the requirement from above into a precise contract
-   for the layer below.
-3. Results come back up and are reviewed by the layer that asked for
-   them; nothing is built on unreviewed work.
+2. Each local setter turns its inherited requirements into measurable work
+   contracts; each entity selects its own professional specialties.
+3. Independent reviewers at the same layer assess exact author candidates.
+   Local integration and adjacent receiving handoffs are separate checks;
+   a later layer is not the author's reviewer.
 4. When a layer cannot meet its requirement, the producer reworks the
    unchanged obligation, or returns it to its issuer for owner-controlled
    reformulation within budget. Escalations climb one layer at a time.
@@ -411,11 +413,12 @@ minutes; it is the most thorough command):
     $workflow-layered Decide whether invoice-service is ready to be exposed to external partners. It must be secure enough for partner traffic and its money calculations must be exact.
     ```
 
-**What to expect.** The evidence layer finds the
-injection, authorisation and secret problems; the policy layer cannot
-accept them; the question reaches you with options such as "fix before
-exposure" or "expose a read-only subset" — each with its cost. Whatever
-you choose is recorded, approved by you.
+**What to expect.** Relevant specialists identify injection, authorisation
+and secret defects within the applicable SABSA perspectives. Same-layer
+reviewers assess the evidence; unresolved conflicts can reach you with
+options such as fixing defects before exposure or assessing a restricted
+scope. Findings and options do not themselves approve exposure: any required
+exact human decision precedes the effect it authorises.
 
 **Check it worked.** `/fabric-report` gives
 an independent verdict on the record.
@@ -882,8 +885,9 @@ reports the structural state; `sabsa.py matrix acme-pay/sabsa` shows the 36 cell
 
 ## Current operator boundary
 
-For 26.10.14 {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
+For {{ JAI_VERSION }} {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
 Native provider approval is not Fabric L0; external Ed25519 receipts require
-protected trust and matching state. Actual Office QA is OPERATOR_ASSISTED;
+protected trust and matching state. Actual Office QA uses route A when a working native Office renderer is available
+within the permitted environment, or route C through the operator when required;
 WeasyPrint HTML/PDF does not inspect Office bytes. Privileged worker/API
 mutation is NOT_SUPPORTED; optional host confinement is NOT_VERIFIED.

@@ -15,21 +15,25 @@ Publication is a controlled projection of approved semantics, not a free-standin
 <img src="../../assets/diagrams/publication-chain.svg" alt="Enterprise publication chain from semantic source through projection, renderer and visual QA to approval">
 </div>
 
-The publication profile connects the six layers:
+The publication sequence has its own stages within the selected professional
+workflow. These stages do not redefine the six Gen2 content perspectives:
 
 ```text
-L1 intended audience / decision / authorised use
+Reviewed semantic source and intended audience/use
   ↓
-L2 semantic material available for publication
+Applicable output contract, evidence and disclosure rules
   ↓
-L3 inclusion, omission, evidence and release rules
+Audience-specific projection and document design
   ↓
-L4 publication/document design
+Actual requested renditions
   ↓
-L5 renderer and output implementation
+Independent semantic/projection and actual-format visual checks
   ↓
-L6 rendered artefact + hashes + visual evidence
+Reserved release decision, when required
 ```
+
+The [layer model](../architecture/sabsa-layer-model.md) separately defines
+Contextual, Conceptual, Logical, Physical, Component and Management work.
 
 ## Current DCS-bound projection manifest
 
@@ -92,7 +96,7 @@ The separation is essential for detecting both content omission and post-render 
 
 Render-based visual QA checks the visible result after rendering. It complements, rather than replaces, semantic review and ProjectionManifest coverage checks.
 
-## 26.10.14 actual-format rendering
+## Actual-format rendering
 
 HTML/PDF prefers optional WeasyPrint 70 with URL fetches and custom font-face
 loads denied. System fonts remain host dependencies. Host LibreOffice is a
@@ -102,10 +106,10 @@ Receipts bind hashes, tool/version, profile, command and actual pages.
 
 Office retains editable text/tables and diagram topology; HTML/PDF/SVG provides
 vector diagrams. Native Office vector shape embedding is not claimed. Layout
-and pagination differ by backend; inspect actual outputs. The evaluated corpus
-covers diacritics, long tables, multipage output, document control, a diagram,
-substantive slides and a workbook. LibreOffice HTML import flattens inline SVG
-and paginates differently; WeasyPrint is preferred for HTML/PDF fidelity.
+and pagination differ by backend. Inspect the actual delivered files, including
+long tables, diacritics, diagrams, document control and page or slide boundaries.
+LibreOffice HTML import can flatten inline SVG and paginate differently;
+WeasyPrint is preferred for HTML/PDF fidelity.
 
 See [operator walkthrough](../operations/operator-walkthrough.md) for prepare, render,
 verify and resume. Critical QA thresholds and hashes remain mandatory. Missing
@@ -119,7 +123,8 @@ on PATH. For a clean renderer venv, follow [installation](../getting-started/ins
 
 | Task | Dependency | Where / prerequisite | Scope |
 | --- | --- | --- | --- |
-| Core contracts, Fabric and structured workflows | Python 3.10+, jsonschema and PyYAML from requirements.txt | JAI's Python interpreter | Required for applicable core validation |
+| Core contract validation | Python 3.10+ and `jsonschema>=4.18,<5` | Interpreter running the applicable validator | Required for contract validation; installation itself uses the standard library |
+| Expert-reference tools and reference-assisted content outlines | Python 3.10+, `jsonschema>=4.18,<5` and `PyYAML>=6,<7` | Interpreter running expert-reference listing, validation, resolution or content outlines | Required for these tasks; the broader qualification/test environment is not required |
 | Build the documentation website | MkDocs, Material and pymdown-extensions; mistune for Markdown processing | Maintainer/docs environment; requirements.txt includes these convenience dependencies | Development/documentation, not a native provider prerequisite |
 | HTML/CSS to PDF | WeasyPrint 70 with its dependencies (including Pyphen); Pango/HarfBuzz/Fontconfig libraries and usable fonts | WeasyPrint CLI on PATH first; current Python module fallback, plus host libraries | Optional; no Office fidelity claim |
 | Actual DOCX/PPTX/XLSX visual review | LibreOffice or qualified Office renderer, usable fonts and writable temporary profile | Agent sandbox if available, otherwise reviewed host C action | Optional; actual Office bytes must be rendered |

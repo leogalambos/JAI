@@ -1,0 +1,24 @@
+{
+  "status": "committed",
+  "receipt": {
+    "protocol": "jai.governed-delivery/1",
+    "message_id": "c35827becf8add1c08dd0f5b596090969b39fcb39adcf29efc649468a27808d2",
+    "request_id": "request-submission",
+    "origin_binding": "c45012ff027e5eba464996b38be304231df5f5b1ef45a78eec3f70169441a606",
+    "assessed_at_ms": 2000,
+    "before_head": "72d2f1b36b9e9d63abaec8ad1ebe2d863ac22b9f851c6956f7f882156fc00ad3",
+    "after_head": "f7b2e1aac25dd261ae7ea26958a076d3469a838f673641f9bf1d73911321bb01",
+    "transaction_id": "synthetic-tx-1",
+    "created_versions": [
+      {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "candidate-A",
+        "version_id": "afd1cb19ba756d70d355f71e0047a0518ece554d525734137920aa9f4bdcf2c6"
+      }
+    ],
+    "effect_digest": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "affected_uses": []
+  },
+  "error": null
+}

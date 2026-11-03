@@ -9,7 +9,7 @@ explicit lineage; the projection boundary deterministically binds them to the se
 publication policy/design, renderer and evidence identities before the manifest is persisted.
 """
 from __future__ import annotations
-import argparse, hashlib, json, re
+import argparse, contextlib, hashlib, json, re
 from pathlib import Path
 try:
     import jsonschema
@@ -155,7 +155,37 @@ def validate_manifest(manifest):
         for err in jsonschema.Draft202012Validator(load(schema)).iter_errors(manifest): probs.append('projection schema: '+err.message)
     return probs
 
-def build(model_path,profile_path,outdir,reviewer=None,trusted_executions=None,authority=None):
+def build(model_path,profile_path,outdir,reviewer=None,trusted_executions=None,authority=None,
+          governed=None,operation='draft'):
+    """Build an ordinary draft or an exact currently justified Gen2 projection.
+
+    Args:
+        model_path: Complete semantic source file; its bytes are never repaired.
+        profile_path: Registered audience profile.
+        outdir: New immutable projection destination.
+        reviewer: Actual independently authored content-review body.
+        trusted_executions: Existing host verifier for ordinary draft work.
+        authority: Existing L0 acceptance adapter; never an agent approval flag.
+        governed: Optional host-pinned Gen2 domain adapter for governed output.
+        operation: draft, accepted or release; retains their distinct core gates.
+    Returns:
+        Problems, publication model and manifest; rejected builds write nothing.
+    Raises:
+        OSError, ValueError: Source, selected profile or destination is invalid.
+    """
+    if operation not in {'draft','accepted','release'} or (operation!='draft' and governed is None):
+        raise ValueError('A supported publication operation and current Gen2 pin are required')
+    model=load(model_path)
+    with governed.action() if governed is not None else contextlib.nullcontext():
+        if governed is not None:
+            status=governed.publication_status(model,model.get('audience'),operation)
+            if not status['eligible']:
+                return ['Current Gen2 source justification or required permission is unavailable.'],{},{}
+            trusted_executions=governed
+        return _build(model,profile_path,outdir,reviewer,trusted_executions,authority)
+
+
+def _build(model,profile_path,outdir,reviewer=None,trusted_executions=None,authority=None):
     """Persist a new DCS-bound projection with immutable source and QA sidecars.
 
     Args:
@@ -171,7 +201,7 @@ def build(model_path,profile_path,outdir,reviewer=None,trusted_executions=None,a
         OSError: Filesystem failure or immutable sidecar collision.
     """
     import content_spec, content_lint
-    model=load(model_path); profile=load(profile_path)
+    profile=load(profile_path)
     pub,man=select_sections(model,profile)
     try:
         if not model.get('contract_id'): raise ValueError('explicit registered contract_id required for new projection')
@@ -235,13 +265,25 @@ def self_test():
     print(f"{sum(v for _,v in tests)}/{len(tests)} PASS")
     return 0 if all(v for _,v in tests) else 1
 
-def main():
+def main(argv=None):
+    """Run existing projection commands with optional host-pinned Gen2 inputs.
+
+    Args:
+        argv: Optional internal CLI arguments; the provider parent supplies pins.
+    Returns:
+        None; existing CLI exits nonzero when the projection is rejected.
+    """
+    import governed_domain
     ap=argparse.ArgumentParser(); sp=ap.add_subparsers(dest='cmd',required=True)
     b=sp.add_parser('build'); b.add_argument('model'); b.add_argument('--profile',required=True); b.add_argument('--out',required=True)
+    b.add_argument('--reviewer'); governed_domain.add_arguments(b)
     v=sp.add_parser('validate'); v.add_argument('manifest')
-    sp.add_parser('self-test'); a=ap.parse_args()
+    sp.add_parser('self-test'); a=ap.parse_args(argv)
     if a.cmd=='self-test': raise SystemExit(self_test())
     if a.cmd=='validate':
         probs=validate_manifest(load(a.manifest)); [print('FAIL',x) for x in probs]; print('PASS' if not probs else 'FAILED'); raise SystemExit(bool(probs))
-    probs,_,_=build(a.model,a.profile,a.out); [print('FAIL',x) for x in probs]; print('PASS' if not probs else 'FAILED'); raise SystemExit(bool(probs))
+    adapter,authority=governed_domain.from_arguments(a)
+    probs,_,_=build(a.model,a.profile,a.out,reviewer=load(a.reviewer) if a.reviewer else None,
+                   governed=adapter,authority=authority,operation=a.governed_operation)
+    [print('FAIL',x) for x in probs]; print('PASS' if not probs else 'FAILED'); raise SystemExit(bool(probs))
 if __name__=='__main__': main()

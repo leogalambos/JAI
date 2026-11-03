@@ -9,51 +9,20 @@ A project/domain architecture needs to become a governed enterprise repository m
 Canonical model facts, cross-project dependencies, Open Exchange interchange and published views are consistent, reviewable and traceable to named owners.
 
 
-<div class="ai-diagram ai-diagram-inline" role="img" aria-label="Architecture model to repository governance workflow">
-<svg class="ai-inline-diagram-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 919 408" role="img" aria-labelledby="t d">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e3859"/><stop offset="1" stop-color="#0b6b9a"/></linearGradient><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3ba9d6"/></marker></defs>
-<title id="t">Architecture model to repository governance</title>
-<desc id="d">Canonical model facts, cross-project dependencies, Open Exchange interchange and published views are consistent, reviewable and traceable to named owners.</desc>
-<rect width="100%" height="100%" rx="24" fill="#f6fafc" stroke="#d6e6ee"/>
-<text x="42" y="38" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="700" fill="#0b1f33">Architecture model to repository governance</text>
-<path d="M 277 116.0 L 334 116.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 577 116.0 L 634 116.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 759.5 162 L 759.5 192 L 759.5 192 L 759.5 236" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 642 290.0 L 585 290.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 342 290.0 L 285 290.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<rect x="42" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">1 · Solution Architect —</text>
-<text x="159.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">finalises project model</text>
-<text x="159.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">facts, decisions and</text>
-<text x="159.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">project ownership</text>
-<rect x="342" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">2 · Architecture</text>
-<text x="459.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Repository and Modelling</text>
-<text x="459.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Lead — model facts into</text>
-<text x="459.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">the canonical</text>
-<rect x="642" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">3 · Architecture</text>
-<text x="759.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Repository Engineer —</text>
-<text x="759.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">imports/updates the</text>
-<text x="759.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">canonical repository,</text>
-<rect x="642" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">4 · Model Consistency</text>
-<text x="759.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Reviewer — checks</text>
-<text x="759.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">references, orphans,</text>
-<text x="759.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">cross-project ownership,</text>
-<rect x="342" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">5 · Enterprise Architect</text>
-<text x="459.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">— resolves</text>
-<text x="459.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">enterprise/domain</text>
-<text x="459.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">overlap, shared elements</text>
-<rect x="42" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">6 · Technical Design</text>
-<text x="159.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Authority Member —</text>
-<text x="159.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">applies architecture</text>
-<text x="159.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">governance to material</text>
-</svg>
-<div class="ai-diagram-caption">Canonical workflow sequence from release 26.10.4 (workflow semantics unchanged from the 26.10.0 GA baseline).</div>
+<!-- JAI:WORKFLOW-DIAGRAM:START -->
+<div class="ai-workflow-overview">
+<ol class="ai-workflow-steps" role="list" aria-label="Architecture model to repository governance workflow steps">
+<li data-step="1"><span class="ai-workflow-step-number" aria-hidden="true">1</span><div><strong>Solution Architect</strong><p>finalises project model facts, decisions and project ownership boundaries</p></div></li>
+<li data-step="2"><span class="ai-workflow-step-number" aria-hidden="true">2</span><div><strong>Architecture Repository and Modelling Lead</strong><p>maps model facts into the canonical repository/metamodel and repository conventions</p></div></li>
+<li data-step="3"><span class="ai-workflow-step-number" aria-hidden="true">3</span><div><strong>Architecture Repository Engineer</strong><p>imports/updates the canonical repository, preserving IDs, lifecycle and provenance</p></div></li>
+<li data-step="4"><span class="ai-workflow-step-number" aria-hidden="true">4</span><div><strong>Model Consistency Reviewer</strong><p>checks references, orphans, cross-project ownership, lifecycle conflicts and view drift</p></div></li>
+<li data-step="5"><span class="ai-workflow-step-number" aria-hidden="true">5</span><div><strong>Enterprise Architect</strong><p>resolves enterprise/domain overlap, shared elements and portfolio dependencies</p></div></li>
+<li data-step="6"><span class="ai-workflow-step-number" aria-hidden="true">6</span><div><strong>Technical Design Authority Member</strong><p>applies architecture governance to material conformance/exception decisions</p></div></li>
+</ol>
 </div>
+
+[Open the full-size workflow diagram](../assets/diagrams/workflow-architecture-model-to-repository-governance.svg). Follow the numbered order. The table below specifies the outputs and receiving conditions for each handoff.
+<!-- JAI:WORKFLOW-DIAGRAM:END -->
 
 ## Workflow steps and gates
 

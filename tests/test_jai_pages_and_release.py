@@ -28,7 +28,7 @@ tags = load('scripts/validate_release_tag.py', 'jai_validate_release_tag')
 
 
 class SourceHomeCtaTests(unittest.TestCase):
-    def test_hero_urls_are_source_authored_and_expanded(self):
+    def test_homepage_urls_preserve_source_links_and_current_entry_routes(self):
         raw = (ROOT / 'docs/index.md').read_text(encoding='utf-8')
         self.assertIn('ai-home-actions-v31', raw)
         self.assertIn('Download JAI', raw)
@@ -39,8 +39,12 @@ class SourceHomeCtaTests(unittest.TestCase):
         self.assertIn('href="https://github.com/some-owner/JAI"', rendered)
         self.assertNotIn('__JAI_GITHUB_', rendered)
         self.assertIn('href="getting-started/quick-start/"', rendered)
-        self.assertIn('href="overview/product-overview/"', rendered)
-        self.assertIn('href="security/product-operations/"', rendered)
+        # The contextual homepage introduced in 51c4ded routes through the role,
+        # workflow and layered cards, with human authority explained separately.
+        for route in ('reference/roles/', 'reference/workflows/',
+                      'using/layered-engagement/', 'operations/human-authority/'):
+            with self.subTest(route=route):
+                self.assertIn('href="' + route + '"', rendered)
 
     def test_strictly_rejects_invalid_repository_values(self):
         raw = (ROOT / 'docs/index.md').read_text(encoding='utf-8')

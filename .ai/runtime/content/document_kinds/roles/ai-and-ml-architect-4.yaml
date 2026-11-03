@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/ai-and-ml-architect:4",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -62,7 +62,8 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: model monitoring design.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ai-and-ml-architect:4",
-          "content/types/diagram.yaml"
+          "content/types/diagram.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -100,7 +101,8 @@
         "reason": "For each receiving role (Machine Learning Engineer; MLOps Engineer; Data Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ai-and-ml-architect:4",
-          "content/types/diagram.yaml"
+          "content/types/diagram.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -138,7 +140,8 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ai-and-ml-architect:4",
-          "content/types/diagram.yaml"
+          "content/types/diagram.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -176,7 +179,8 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ai-and-ml-architect:4",
-          "content/types/diagram.yaml"
+          "content/types/diagram.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -214,7 +218,8 @@
         "reason": "For the specific output 'model monitoring design', provide verifiable evidence satisfying: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON).",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ai-and-ml-architect:4",
-          "content/types/diagram.yaml"
+          "content/types/diagram.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -263,7 +268,8 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ai-and-ml-architect:4",
-          "content/types/diagram.yaml"
+          "content/types/diagram.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -308,7 +314,8 @@
         "reason": "Analyse the specific input \"Use case and risk classification\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ai-and-ml-architect:4",
-          "content/types/diagram.yaml"
+          "content/types/diagram.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -351,7 +358,8 @@
         "reason": "Analyse the specific input \"Data availability and lawfulness\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ai-and-ml-architect:4",
-          "content/types/diagram.yaml"
+          "content/types/diagram.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -394,7 +402,8 @@
         "reason": "Analyse the specific input \"Latency and scale requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ai-and-ml-architect:4",
-          "content/types/diagram.yaml"
+          "content/types/diagram.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -437,7 +446,8 @@
         "reason": "Analyse the specific input \"Model requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ai-and-ml-architect:4",
-          "content/types/diagram.yaml"
+          "content/types/diagram.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -482,7 +492,8 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -525,7 +536,8 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -570,7 +582,8 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -684,6 +697,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "architecture-description",
+        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
+        "url": "https://www.iso.org/standard/74393.html",
+        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "AI and ML Architect",
+        "frameworks": [
+          "ISO/IEC 42001",
+          "NIST AI RMF 1.0",
+          "MLOps maturity practice"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -709,13 +743,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {

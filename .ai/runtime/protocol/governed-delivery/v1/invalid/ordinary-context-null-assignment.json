@@ -1,0 +1,59 @@
+{
+  "owner": {
+    "layer": 3,
+    "work_kind": "question",
+    "question": "how",
+    "work_item": "service-controls"
+  },
+  "assignment": null,
+  "profile": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "profile",
+    "version_id": "b0519b9fbd91854cbe44a508a24434902d4296b100862b3f0acc5374550990ef"
+  },
+  "purpose": "author",
+  "run_id": "run-author-1",
+  "issued_to": "author-actor",
+  "inputs": [
+    {
+      "slot_id": "source",
+      "refs": [
+        {
+          "engagement": "synthetic-protocol",
+          "scope": "default",
+          "logical_id": "input-A",
+          "version_id": "2af7d6aa53ba2874a2f9b80c4318fbcd4467065cf86eab873c45acc82e53f92a"
+        }
+      ]
+    }
+  ],
+  "attachments": [],
+  "effects": [
+    {
+      "operation": "read",
+      "owner": {
+        "layer": 3,
+        "work_kind": "question",
+        "question": "how",
+        "work_item": "service-controls"
+      },
+      "targets": [
+        {
+          "engagement": "synthetic-protocol",
+          "scope": "default",
+          "logical_id": "input-A",
+          "version_id": "2af7d6aa53ba2874a2f9b80c4318fbcd4467065cf86eab873c45acc82e53f92a"
+        }
+      ],
+      "destination_handle": null,
+      "tool_policy": null
+    }
+  ],
+  "expires_at_ms": 9000,
+  "execution": {
+    "phase": "selection"
+  },
+  "speculation": null,
+  "ready_basis": []
+}

@@ -12,6 +12,41 @@ allowed-tools: Read, Grep, Glob
 
 The role skills define single roles. This one defines the chains between them: the value streams, the hand-offs and the gate that must hold at each boundary. Routing and explanation only — it writes nothing and runs nothing.
 
+## Governed layer-local execution
+
+These domain chains remain reusable methods; their names are not proof of
+governed execution. For a consequential branch, use the canonical
+`layered-justifiable-delivery` skill and its `references/domain-handoff.md`
+contract over the existing native Gen2 bridge. Ordinary role workflows remain
+bounded and the parent handles runtime transport without user-authored JSON.
+An external task addresses
+a whole layer through its outcome/interface. That layer formulates its six
+questions and chooses its own professionals and method. Do not convert a
+neighbor preference or old catalogue layer label into a staffing restriction.
+
+Every entity can browse the full intrinsic public catalogue without a neighbor
+request. Selection and work are separate finite phases: only the actual entity's
+captured choice authorizes its one work context. Preserve independent same-layer
+review, explicit owner rework/reformulation and the prior findings. Missing
+inputs use the typed adjacent owner route, not guessed context or hidden access
+to another entity's conversation. A complete-layer bundle needs six current
+selected answers and independent integration review; an interface receipt alone
+does not establish completeness, human acceptance or release permission.
+
+P06 supplies finite readiness-driven coordination of existing tasks. Explicit
+escalation pauses productive work by default. Only exact episode-handling mandates
+or an actual signed bounded operator grant permit the relevant continuation.
+Do not invent independence from matching hashes or model confidence. Owner impact
+reconciliation preserves unchanged work in its normal review state; changed or
+unknown dependencies require the necessary new work. Exhausted search is not
+proof that no solution exists, and no budget can force PASS.
+
+The canonical native entry supplies task capture and delegation; this routing
+skill does not itself execute workers or prove provider-wide confinement.
+Use the maintained CLI guide and report actual unavailable capabilities without
+declaring a formerly available workflow unsupported merely from missing hardening
+evidence. Installed activation and live-provider qualification are separate facts.
+
 ## Chains
 
 | Workflow | Steps | Trigger |
@@ -63,6 +98,16 @@ Require the canonical source, registered contract and replayable content QA,
 then an independent authenticated receiver with a host-assigned receiving
 role and evidence for the specific gate. Producer names, declared roles,
 advisory findings and successful rendering cannot establish acceptance.
+
+The native parent supplies trusted execution facts through the shared
+`governed_domain.GovernedDomain` callbacks over exact scoped Gen2 products and
+current selected review. Separately pass the existing registered workflow's
+`receiving_assignments` host map to `content_workflow.check` (the internal CLI
+uses `--receiving-assignments`). Receiving responsibility is a functional
+business duty, never derived from selected professional specialties and never
+permission for a neighbour to prescribe the local entity's profession or model.
+Actual content-unit review material is required; aggregate qualification cannot
+invent a unit verdict.
 
 The shared content profile and checker apply identically to Claude and
 Codex. A final named human authority step uses the existing signed JAI L0

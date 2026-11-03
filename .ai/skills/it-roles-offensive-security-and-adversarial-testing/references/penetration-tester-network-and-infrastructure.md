@@ -100,9 +100,9 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
 | 1 | Rules of engagement and signed scope | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 2 | test findings with reproducible evidence | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 2 | test findings with reproducible evidence | Versioned assessment results with traceable evidence | Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations |
 | 3 | prioritised remediation report | Structured document with executive summary and evidence annex | Conclusions are traceable to dated evidence; opinion is visibly separated from fact |
-| 4 | retest verification results | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 4 | retest verification results | Versioned assessment results with traceable evidence | Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations |
 
 ## 7. Output gates (blocking)
 
@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Rules of engagement and signed scope has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Rules of engagement and signed scope") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

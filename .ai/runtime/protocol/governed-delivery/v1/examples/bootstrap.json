@@ -1,0 +1,103 @@
+{
+  "protocol": "jai.governed-delivery/1",
+  "message_type": "bootstrap",
+  "message_id": "6798675649253d05acec06e03f7e39b8d937d470fbf2902c2bd5c5d9eeb06916",
+  "request_id": "request-bootstrap",
+  "correlation_id": "question-service-controls",
+  "engagement": "synthetic-protocol",
+  "scope": "default",
+  "sender": {
+    "kind": "controller",
+    "id": "trusted-controller"
+  },
+  "recipient": {
+    "kind": "controller",
+    "id": "trusted-controller"
+  },
+  "context": null,
+  "profile": null,
+  "expected_head": "0000000000000000000000000000000000000000000000000000000000000000",
+  "issued_at_ms": 1000,
+  "expires_at_ms": 8000,
+  "causes": [],
+  "attachments": [],
+  "payload": {
+    "controller_id": "trusted-controller",
+    "profile": {
+      "logical_id": "bootstrap-profile",
+      "record": {
+        "owner": {
+          "kind": "controller",
+          "id": "trusted-controller"
+        },
+        "profile_id": "synthetic-profile",
+        "protocol": "jai.governed-delivery/1",
+        "source_profiles": [],
+        "obligations": [
+          {
+            "slot_id": "answer-how",
+            "owner": {
+              "layer": 3,
+              "work_kind": "question",
+              "question": "how",
+              "work_item": "service-controls"
+            },
+            "subject_kind": "answer",
+            "role": "input",
+            "required_kind": "source",
+            "minimum": 1,
+            "maximum": 1,
+            "allow_exclusion": false,
+            "exclusion_owner": null
+          }
+        ],
+        "max_clock_skew_ms": 100,
+        "max_request_duration_ms": 10000,
+        "authority_policy_id": "host-authority",
+        "routing_policy_id": "host-routing",
+        "scheduling": {
+          "collection_window_ms": 60000,
+          "control_limits": [
+            {
+              "metric": "elapsed_ms",
+              "unit": "ms",
+              "ceiling": 10000
+            }
+          ],
+          "max_search_steps": 200,
+          "max_escalation_rounds": 10,
+          "initial_deadline_ms": null
+        },
+        "content_profile": null,
+        "local_budget": {
+          "iteration_ms": 600000,
+          "max_reworks": 3
+        }
+      }
+    },
+    "l0_inputs": [
+      {
+        "logical_id": "l0-input",
+        "record": {
+          "owner": {
+            "kind": "authority",
+            "id": "human-owner"
+          },
+          "source_role": "input",
+          "origin": {
+            "kind": "authority",
+            "id": "human-owner"
+          },
+          "material": [
+            "3d8f4b545013865bc63eab5f302092092a62cbd3c9c0301273995acef5cfed09"
+          ],
+          "criteria": [],
+          "inherited": []
+        }
+      }
+    ],
+    "use_scopes": [
+      "default"
+    ]
+  }
+}

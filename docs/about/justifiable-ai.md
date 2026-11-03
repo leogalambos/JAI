@@ -11,18 +11,26 @@ The central architectural problem is not whether an AI answer sounds persuasive.
 
 The paper therefore separates generation from evidence, review, authority and release. Requirements flow downward; evidence, disagreement and operating feedback flow upward. Missing observations or unresolved dissent are intended to change system behavior — request more evidence, return work, escalate, invalidate or block — rather than appear only in an audit log after the fact.
 
-## Six responsibilities, not six mandatory model calls
+## Six SABSA perspectives, not six mandatory model calls
 
-The paper proposes six architectural responsibilities that AI IT House adopts as its JAI core:
+JAI Gen2 uses the six SABSA content perspectives below. These are the current
+implementation's layer names; the research paper's earlier responsibility
+labels are historical context, not the Gen2 layer taxonomy. See the
+[canonical layer model](../architecture/sabsa-layer-model.md) for the governing
+definitions and boundaries.
 
-| Layer | Responsibility |
+| Layer | Perspective and responsibility |
 | --- | --- |
-| L1 | Intent and Context |
-| L2 | Meaning and Domain Model |
-| L3 | Reasoning, Policy and Control |
-| L4 | Solution Design |
-| L5 | Realisation and Tooling |
-| L6 | Execution and Evidence |
+| L1 Contextual | Business purpose, stakeholders, assets, environment, scope, required qualities, constraints and success measures |
+| L2 Conceptual | Principles, domains, trust, strategies, business attributes and control objectives |
+| L3 Logical | Technology-independent services, information, interactions and control behaviour |
+| L4 Physical | Concrete technical and organisational mechanisms |
+| L5 Component | Detailed components, interfaces, configuration and implementation |
+| L6 Management | Governance, assurance, operation, monitoring, support, maintenance, resilience and improvement |
+
+Each perspective addresses What, Why, How, Who, Where and When. Management
+concerns also apply across the other perspectives; L6 is not merely a final
+evidence-collection stage.
 
 A layer is an abstraction and accountability boundary. It may contain several agents, deterministic validators and human specialists. The design does not assume that a higher layer is technically more competent, nor that six separate LLM invocations are inherently safer.
 

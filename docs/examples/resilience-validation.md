@@ -1,6 +1,5 @@
 # Validate resilience with a bounded exercise
 
-Owner: JAI maintainers. Last reviewed: 2026-10-20.
 
 This walkthrough illustrates the `resilience-validation` workflow recipe.
 It is not an additional native slash command.

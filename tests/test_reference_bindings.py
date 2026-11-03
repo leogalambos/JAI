@@ -11,7 +11,8 @@ import unittest
 ROOT=Path(__file__).resolve().parents[1]
 sys.path.insert(0,str(ROOT/'tools'))
 sys.path.insert(0,str(ROOT/'.ai/runtime/tools'))
-from generate_content_catalog import validate_reference_bindings
+from generate_content_catalog import BINDINGS, FAMILIES, validate_reference_bindings
+from content_reference_definitions import REFERENCE_KINDS, REFERENCE_ROLE_LINKS
 from content_spec import ContentSpec
 
 
@@ -35,6 +36,34 @@ def _publication_supplement(text):
     """Extract the single standardized supplement; its wording does not prove adequacy."""
     assert text.count(SUPPLEMENT_HEADING) == 1
     return text.partition(SUPPLEMENT_HEADING)[2]
+
+
+def _established_reference_topology_matches(document):
+    # The last-good 11dbf0e topology remains fixed; Gen2 deliberately refines
+    # role membership separately without changing these 169 anchor relations.
+    rows = [{key: value for key, value in row.items() if key != 'role_contract_ids'}
+            for row in document['families'][:32]]
+    digest = hashlib.sha256(json.dumps(rows, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
+    return (digest == '1fd884d0a6115c6dac76150ddcda019cd923d0f3e86035e6e2b78e8f5873e0cc'
+            and sum(len(row['anchor_bindings']) for row in rows) == 169)
+
+
+def _current_reference_role_closure_matches(document, bindings):
+    # Explicit priority and reference mappings take precedence over the current
+    # semantic-family fallback, as in the catalogue generator's source contract.
+    for record in document['families']:
+        family = record['reference_family']
+        if family in FAMILIES:
+            expected = [cid for cid, assigned in BINDINGS.items() if assigned == family]
+        else:
+            kind = REFERENCE_KINDS[family][0]
+            expected = REFERENCE_ROLE_LINKS.get(family, [])
+            if not expected:
+                expected = [row['artifact_id'] for row in bindings
+                            if row['semantic_family'] == kind]
+        if record.get('role_contract_ids') != expected:
+            return False
+    return True
 
 
 class ReferenceBindingTests(unittest.TestCase):
@@ -254,8 +283,34 @@ class ReferenceBindingTests(unittest.TestCase):
         self.assertFalse(any(row['document_kind'] in ENGINEERING_REFERENCE_KINDS for row in self.engine.bindings.values()))
 
     def test_established_reference_relationships_remain_exactly_compatible(self):
-        """Pin the public v2.1 mapping, independently of newly added examples."""
-        rows=self.document['families'][:32]
-        digest=hashlib.sha256(json.dumps(rows,sort_keys=True,separators=(',',':')).encode()).hexdigest()
-        self.assertEqual(digest,'f0d96418636baebe3fc036db96e95bbfbe262c6c22da9b793adced0e6d41ad6c')
-        self.assertEqual(sum(len(row['anchor_bindings']) for row in rows),169)
+        """Pin every established non-role field independently of Gen2 role refinements."""
+        self.assertTrue(_established_reference_topology_matches(self.document))
+
+    def test_reference_roles_exactly_match_current_explicit_and_semantic_family_bindings(self):
+        self.assertTrue(_current_reference_role_closure_matches(self.document, self.engine.bindings.values()))
+
+    def test_historical_topology_guard_rejects_changed_anchor_and_unit_relationships(self):
+        for field in ('source_anchor', 'unit_id'):
+            document = copy.deepcopy(self.document)
+            anchors = document['families'][0]['anchor_bindings']
+            anchors[0][field] = anchors[1][field]
+            with self.subTest(field=field):
+                self.assertFalse(_established_reference_topology_matches(document))
+
+    def test_current_role_closure_rejects_missing_extra_duplicate_and_wrong_family_roles(self):
+        for mutation in ('missing', 'extra', 'duplicate', 'wrong-family'):
+            document = copy.deepcopy(self.document)
+            record = next(row for row in document['families']
+                          if row['reference_family'] == 'requirements-specification')
+            roles = record['role_contract_ids']
+            unrelated = next(cid for cid in sorted(self.contract_ids) if cid not in roles)
+            if mutation == 'missing':
+                roles.pop()
+            elif mutation == 'extra':
+                roles.append(unrelated)
+            elif mutation == 'duplicate':
+                roles.append(roles[0])
+            else:
+                roles[0] = unrelated
+            with self.subTest(mutation=mutation):
+                self.assertFalse(_current_reference_role_closure_matches(document, self.engine.bindings.values()))

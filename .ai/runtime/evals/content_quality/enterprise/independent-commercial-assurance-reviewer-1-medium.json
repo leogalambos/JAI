@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Independent commercial assurance plan and findings', provide verifiable evidence satisfying: Independence and coverage are explicit; every finding is evidence-linked and assigned.. Required delivery form: Response report or controlled external findings handoff with criteria, scope, sampling, conflict declaration and located findings.",
+        "criterion_under_review": "For the specific output 'Independent commercial assurance plan and findings', provide verifiable evidence satisfying: Independence and coverage are explicit; every finding is evidence-linked and assigned. Required delivery form: Response report or controlled external findings handoff with criteria, scope, sampling, conflict declaration and located findings.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

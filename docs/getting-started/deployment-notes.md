@@ -77,8 +77,14 @@ is public where permitted, so assess documentation classification.
 
 ## Current operator boundary
 
-For 26.10.14 {{ JAI_SCOPE }} use the [exact operator walkthrough](../operations/operator-walkthrough.md).
-Native provider approval is not Fabric L0; external Ed25519 receipts require
-protected trust and matching state. Actual Office QA is OPERATOR_ASSISTED;
-WeasyPrint HTML/PDF does not inspect Office bytes. Privileged worker/API
-mutation is NOT_SUPPORTED; optional host confinement is NOT_VERIFIED.
+For JAI {{ JAI_VERSION }}, use the maintained
+[execution routes and boundaries](../security/product-operations.md) and
+[operator walkthrough](../operations/operator-walkthrough.md).
+Role-authorised local work runs automatically when the effective sandbox and
+required tools permit it. Actual Office QA follows that same rule: use the
+permitted Office renderer locally, or request an exact operator host action when
+it is unavailable. A PDF rendered from HTML does not inspect Office bytes.
+
+A provider permission prompt or host execution handoff is distinct from a
+reserved L0 decision. Only the human signs such a decision through the external
+operator procedure; the returned proof must match its exact request and effects.

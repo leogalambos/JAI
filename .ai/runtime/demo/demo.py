@@ -31,7 +31,8 @@ DEFAULT_TO = os.path.join(os.path.expanduser("~"), "it-role-demo")
 ABOUT = {
     "invoice-service": "a small Python service with planted flaws — /analyse /criteria /review /rework /develop /govern "
                        "/research /layered",
-    "policy-docs": "a security policy library with planted flaws — /analyse /review /rework /govern",
+    "policy-docs": "a security policy library with planted flaws — /analyse /review /rework /govern; "
+                   "GEN2-EXERCISE.md adds fictional /layered /fabric-report practice",
     "acme-pay": "material about a fictional potential client — /sabsa (prepare, create, questions, document)",
 }
 

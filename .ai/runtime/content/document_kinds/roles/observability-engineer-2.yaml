@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/observability-engineer:2",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -61,7 +61,9 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: dashboards and service health views.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:2",
-          "content/types/dashboard.yaml"
+          "content/types/dashboard.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -99,7 +101,9 @@
         "reason": "For each receiving role (Software Engineer; Incident Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:2",
-          "content/types/dashboard.yaml"
+          "content/types/dashboard.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -137,7 +141,9 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:2",
-          "content/types/dashboard.yaml"
+          "content/types/dashboard.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -175,7 +181,9 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:2",
-          "content/types/dashboard.yaml"
+          "content/types/dashboard.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -213,7 +221,9 @@
         "reason": "For the specific output 'dashboards and service health views', provide verifiable evidence satisfying: Every metric has a definition, a source, a refresh cadence and an owner. Required delivery form: Live view in the reporting platform with a documented data lineage.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:2",
-          "content/types/dashboard.yaml"
+          "content/types/dashboard.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -266,7 +276,9 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:2",
-          "content/types/dashboard.yaml"
+          "content/types/dashboard.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -315,7 +327,9 @@
         "reason": "Analyse the specific input \"Service level objectives\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:2",
-          "content/types/dashboard.yaml"
+          "content/types/dashboard.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -358,7 +372,9 @@
         "reason": "Analyse the specific input \"Application instrumentation needs\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:2",
-          "content/types/dashboard.yaml"
+          "content/types/dashboard.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -401,7 +417,9 @@
         "reason": "Analyse the specific input \"Incident review findings\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:2",
-          "content/types/dashboard.yaml"
+          "content/types/dashboard.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -444,7 +462,9 @@
         "reason": "Analyse the specific input \"Telemetry cost position\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:2",
-          "content/types/dashboard.yaml"
+          "content/types/dashboard.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -489,7 +509,9 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -532,7 +554,9 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -577,7 +601,9 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -691,6 +717,35 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "data-quality",
+        "title": "W3C Data Quality Vocabulary",
+        "url": "https://www.w3.org/TR/vocab-dqv/",
+        "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Observability Engineer",
+        "frameworks": [
+          "OpenTelemetry",
+          "USE and RED methods",
+          "Google SRE alerting philosophy"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -716,13 +771,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {

@@ -7,11 +7,13 @@ from __future__ import annotations
 
 import importlib.util
 import tempfile
+import sys
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 LICENSE_CHECK = ROOT / '.ai/runtime/tools/license_check.py'
+sys.path.insert(0, str(LICENSE_CHECK.parent))
 
 
 class LicensePolicyFixtures(unittest.TestCase):
@@ -55,6 +57,19 @@ class LicensePolicyFixtures(unittest.TestCase):
         for directory in ('build', 'out', 'dist', 'site', '.git', '.venv'):
             self._write(f'{directory}/generated.py', 'unlicensed generated output\n')
         self.assertEqual(self.policy.check(self.root), [])
+
+    def test_web_source_headers_are_required_and_comment_formats_are_accepted(self):
+        for name, delimiters in (('assets/app.js', ('/*', '*/')),
+                                 ('assets/site.css', ('/*', '*/')),
+                                 ('overrides/main.html', ('{#', '#}'))):
+            with self.subTest(name=name):
+                self._write(name, 'unlicensed source\n')
+                self.assertEqual(self.policy.check(self.root), [
+                    f'{name}: compact SPDX header missing',
+                    f'{name}: compact copyright header missing'])
+                start, end = delimiters
+                self._write(name, f'{start} {self.policy.SPDX}\n{self.policy.COPY} {end}\n')
+                self.assertEqual(self.policy.check(self.root), [])
 
     def test_shebang_must_remain_first(self):
         self._write('tools/example.py', self.header + '#!/usr/bin/env python3\n')

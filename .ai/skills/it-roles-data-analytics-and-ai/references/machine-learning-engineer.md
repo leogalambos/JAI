@@ -100,9 +100,9 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
 | 1 | Training and inference pipeline code | Reviewed, merged change in version control | Passes automated checks, carries tests and telemetry, and has a rollback path |
-| 2 | model packaging and versioning | Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON) | The model is validated against real observed behaviour or data, not only interviews |
+| 2 | model packaging and versioning | Versioned model package and reproducible packaging manifest | Supplies the actual model package with digest, version, serving/input-output contract, runtime and dependency versions, provenance and reproducible loading/compatibility checks |
 | 3 | performance and latency evidence | Immutable evidence set with hashes, timestamps and custody record | Chain of custody is unbroken and the set is reproducible from the record |
-| 4 | model monitoring instrumentation | Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON) | The model is validated against real observed behaviour or data, not only interviews |
+| 4 | model monitoring instrumentation | Versioned model-monitoring implementation and configuration | Supplies actual instrumentation source/configuration, defined drift/quality/latency measures, thresholds, alert ownership, reproducible checks and observed evidence |
 
 ## 7. Output gates (blocking)
 
@@ -143,7 +143,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Training and inference pipeline code has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Training and inference pipeline code") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

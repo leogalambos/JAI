@@ -41,7 +41,9 @@ automatically become executable demo packs.
 
 ## Why the demo matters
 
-The demos are not marketing toys. They exercise the system's workflows against seeded defects and realistic outputs.
+The demos provide fictional inputs and seeded defects for practising workflow
+steps, inspecting expected outputs and recognising review or escalation points.
+Completing an exercise does not establish readiness for a production engagement.
 
 ## Recommended sequence
 

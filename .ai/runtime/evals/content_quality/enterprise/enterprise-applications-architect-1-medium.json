@@ -230,7 +230,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Enterprise application landscape architecture', provide verifiable evidence satisfying: Strategic applications, capabilities, ownership, lifecycle, dependencies and target-state boundaries are explicit and traceable.. Required delivery form: Canonical EA model plus published application/business/integration views.",
+        "criterion_under_review": "For the specific output 'Enterprise application landscape architecture', provide verifiable evidence satisfying: Strategic applications, capabilities, ownership, lifecycle, dependencies and target-state boundaries are explicit and traceable. Required delivery form: Canonical EA model plus published application/business/integration views.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: BSD-4-Clause
 # Copyright (c) 2026 Leo Galambos and the Egothor team
 # https://www.egothor.org
-"""CI dependency drift regression: validation and release share one environment."""
+"""Keep shared qualification dependencies separate from documentation publishing."""
 from contextlib import ExitStack
 import importlib.util
 import io
@@ -26,21 +26,24 @@ SPEC.loader.exec_module(environment)
 
 
 class CIEnvironmentContract(unittest.TestCase):
-    def test_both_qualification_workflows_share_composite_action(self):
-        for filename in ('validate-library.yml', 'release.yml'):
-            with self.subTest(filename=filename):
-                text = (ROOT / '.github/workflows' / filename).read_text()
-                self.assertIn('uses: ./.github/actions/setup-qualification', text)
-                workflow = yaml.load(text, Loader=yaml.BaseLoader)
-                full_job = workflow['jobs'].get('qualification', workflow['jobs'].get('release-preflight'))
-                self.assertNotIn('pip install --disable-pip-version-check', yaml.dump(full_job))
-                self.assertNotIn('sudo apt-get install', text)
-                self.assertIn('jai-ci-environment', text)
 
-    def test_pages_use_same_python_manifest(self):
+    def test_pages_uses_documentation_manifest_for_its_documentation_only_job(self):
         pages = (ROOT / '.github/workflows/pages.yml').read_text()
-        self.assertIn('-r requirements-ci.txt', pages)
-        self.assertIn("- 'requirements-ci.txt'", pages)
+        workflow = yaml.safe_load(pages)
+        commands = [step.get('run', '') for step in workflow['jobs']['build']['steps']]
+        installs = [command for command in commands if 'pip install' in command]
+        self.assertEqual(len(installs), 1)
+        self.assertRegex(installs[0], r'(?:^|\s)-r\s+requirements\.txt(?:\s|$)')
+        self.assertNotIn('requirements-ci.txt', installs[0])
+        # Pages runs documentation validators and MkDocs, so test and native
+        # renderer dependencies belong to qualification rather than this job.
+        build_commands = '\n'.join(commands)
+        self.assertIn('mkdocs build --strict', build_commands)
+        self.assertNotRegex(build_commands, r'\bpytest\b|check_ci_environment\.py|ci/validate\.sh')
+        # PyYAML's YAML 1.1 loader represents the unquoted "on" key as True.
+        events = workflow.get('on', workflow.get(True))
+        for event in ('push', 'pull_request'):
+            self.assertIn('requirements.txt', events[event]['paths'])
 
     def test_python_dependencies_are_canonical(self):
         text = PYTHON_REQUIREMENTS.read_text()

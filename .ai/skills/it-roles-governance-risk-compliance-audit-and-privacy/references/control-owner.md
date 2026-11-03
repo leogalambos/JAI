@@ -99,7 +99,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Control design documentation | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
+| 1 | Control design documentation | Control design and effectiveness criteria | Identifies control objective, owner, trigger, inputs, actions, exceptions, evidence and measurable effectiveness tests |
 | 2 | operating evidence for each period | Immutable evidence set with hashes, timestamps and custody record | Chain of custody is unbroken and the set is reproducible from the record |
 | 3 | control performance and exception reporting | Structured document with executive summary and evidence annex | Conclusions are traceable to dated evidence; opinion is visibly separated from fact |
 | 4 | remediation of control failures | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
@@ -111,7 +111,7 @@ An output that fails any gate is not released. A gate may be waived only by the 
 - [ ] **G1.** Intake is rejected unless all mandatory inputs are present or a named owner and date exist for each gap.
 - [ ] **G2.** No commitment is made beyond demonstrated capacity for the period.
 - [ ] **G3.** Every deviation from the documented process is logged with its reason and its expiry.
-- [ ] **G4.** Control design documentation is published on the agreed cadence even when the news is bad.
+- [ ] **G4.** The primary deliverable ("Control design documentation") is published on the agreed cadence, including adverse results.
 - [ ] **G5.** The control produces evidence as a by-product of operating
 - [ ] **G6.** controls that require someone to remember to create evidence are redesigned, because they fail silently
 
@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Control design documentation has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Control design documentation") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

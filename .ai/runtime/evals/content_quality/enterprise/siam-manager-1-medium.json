@@ -233,7 +233,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'SIAM operating model and service integration design', provide verifiable evidence satisfying: End-to-end accountability is explicit; supplier boundaries do not create unowned process, data or service outcomes.. Required delivery form: Service design covering governance, process integration, authority, data and tooling boundaries.",
+        "criterion_under_review": "For the specific output 'SIAM operating model and service integration design', provide verifiable evidence satisfying: End-to-end accountability is explicit; supplier boundaries do not create unowned process, data or service outcomes. Required delivery form: Service design covering governance, process integration, authority, data and tooling boundaries.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

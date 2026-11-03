@@ -15,10 +15,11 @@ import re
 import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import unquote, urljoin, urlsplit
+from guide_alias import GUIDE_ALIAS, guide_bytes
 
 ROOT = Path(__file__).resolve().parents[3]
 # YAML list navigation entries in the product's MkDocs layout; no YAML plugin needed.
-NAV = re.compile(r'^\s*-[ \t]+(?:[^\n:]+):\s+([^\s#]+\.md)\s*$', re.M)
+NAV = re.compile(r'^\s*-[ \t]+(?:[^\n]+):\s+([^\s#]+\.md)\s*$', re.M)
 LINK = re.compile(r'!?\[([^\]\n]+)\]\(([^)\n]+)\)')
 MEDIA = re.compile(r'<(?:img|script)[^>]+src=["\']([^"\']+)["\']')
 HTML_ANCHOR = re.compile(r'<a\b[^>]*\bhref\s*=\s*["\']([^"\']+)["\']', re.I)
@@ -177,16 +178,19 @@ def check(root: Path) -> list[str]:
     for workflow in ('pages.yml', 'validate-library.yml'):
         if not (root / '.github/workflows' / workflow).is_file():
             problems.append(f'active GitHub Actions workflow missing: {workflow}')
-    guide = root / '.ai/runtime/GUIDE.md'
+    guide = root / GUIDE_ALIAS
     command_dir = root / '.ai/commands'
+    guide_text = ''
     if not guide.is_file():
         problems.append('installed CLI GUIDE.md missing')
-    elif (root/'docs/reference/installed-cli-guide.md').read_bytes() != guide.read_bytes():
-        problems.append('installed GUIDE.md drift: regenerate from docs/reference/installed-cli-guide.md')
+    else:
+        try:
+            guide_text = guide_bytes(root).decode('utf-8')
+        except (ValueError, OSError, UnicodeError) as error:
+            problems.append('invalid GUIDE alias: ' + str(error))
     if not command_dir.is_dir():
         problems.append('provider command contracts missing')
     else:
-        guide_text = guide.read_text(encoding='utf-8')
         reference = (root / 'docs/reference/commands.md').read_text(encoding='utf-8')
         for command in sorted(command_dir.glob('*.md')):
             slug = command.stem

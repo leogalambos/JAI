@@ -100,7 +100,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
 | 1 | SD-WAN overlay design and policy configuration | Controlled document with owner, effective date and review date | Every statement is testable and maps to at least one control |
-| 2 | site connectivity and failover design | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
+| 2 | site connectivity and failover design | Connectivity and failover design | Defines site paths, routing, failure detection, convergence targets, degraded operation and validation scenarios |
 | 3 | application steering policy | Controlled document with owner, effective date and review date | Every statement is testable and maps to at least one control |
 | 4 | edge security configuration | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 
@@ -143,7 +143,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- SD-WAN overlay design and policy configuration has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("SD-WAN overlay design and policy configuration") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

@@ -175,7 +175,7 @@
         "record_id": "SYN-ARCHITECTURE-CELLS",
         "service": "Inventory service recovery",
         "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
-        "criterion_under_review": "Map each selected contextual/conceptual/logical/physical/component/operational element to its What/Why/How/Who/Where/When cell.",
+        "criterion_under_review": "Map each selected Contextual/Conceptual/Logical/Physical/Component/Management perspective to its What/Why/How/Who/Where/When cell; Management applies across the other perspectives.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

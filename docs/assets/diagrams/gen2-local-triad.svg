@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" class="ai-inline-diagram-svg" viewBox="0 0 996 700" role="img" aria-labelledby="gen2-triad-title gen2-triad-description">
+<!-- SPDX-License-Identifier: BSD-4-Clause; Copyright (c) 2026 Leo Galambos and the Egothor team; https://www.egothor.org -->
+<title id="gen2-triad-title">One local triad within the six-perspective matrix</title>
+<desc id="gen2-triad-description">Each SABSA content perspective addresses six questions. Local setter, author and independent reviewer choose suitable professional roles. Cross-question integration and the neighbouring receiver are separate acceptance boundaries.</desc>
+<defs><marker id="gen2-triad-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#147eaa"/></marker></defs>
+<rect width="100%" height="100%" rx="16" fill="#f6fafc" stroke="#cbdde8"/>
+<text x="30" y="38" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#102d43" font-weight="700" text-anchor="start">One local triad within the six-perspective matrix</text>
+<rect x="30" y="90" width="936" height="110" rx="12" fill="#e8f2f8" stroke="#a9c6d8"/>
+<text x="46" y="119" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="700" text-anchor="start">Six perspectives × six questions</text>
+<text x="46" y="152" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">Contextual · Conceptual · Logical · Physical · Component · Management; What · Why · How · Who ·</text>
+<text x="46" y="176" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">Where · When.</text>
+<rect x="30" y="270" width="280" height="150" rx="12" fill="#e8f2f8" stroke="#a9c6d8"/>
+<text x="46" y="299" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="700" text-anchor="start">Setter</text>
+<text x="46" y="332" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">Frames the local question,</text>
+<text x="46" y="356" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">criteria and required</text>
+<text x="46" y="380" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">inputs.</text>
+<rect x="358" y="270" width="280" height="150" rx="12" fill="#e8f2f8" stroke="#a9c6d8"/>
+<text x="374" y="299" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="700" text-anchor="start">Author</text>
+<text x="374" y="332" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">Supplies a candidate,</text>
+<text x="374" y="356" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">evidence and explicit</text>
+<text x="374" y="380" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">uncertainty.</text>
+<rect x="686" y="270" width="280" height="150" rx="12" fill="#e8f2f8" stroke="#a9c6d8"/>
+<text x="702" y="299" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="700" text-anchor="start">Independent reviewer</text>
+<text x="702" y="332" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">Assesses this candidate;</text>
+<text x="702" y="356" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">reports findings without</text>
+<text x="702" y="380" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">repairing it.</text>
+<path d="M310,345 L348,345" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#gen2-triad-arrow)"/>
+<path d="M638,345 L676,345" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#gen2-triad-arrow)"/>
+<path d="M826,425 L826,470 L498,470 L498,425" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#gen2-triad-arrow)"/>
+<text x="510" y="462" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">Findings → local rework</text>
+<rect x="30" y="520" width="936" height="140" rx="12" fill="#e8f2f8" stroke="#a9c6d8"/>
+<text x="46" y="549" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="700" text-anchor="start">Integration and neighbouring handoff</text>
+<text x="46" y="582" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">Integrate the layer’s questions before the receiving neighbour assesses the exact handoff.</text>
+<text x="46" y="606" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">Aggregate unresolved conflicts and escalate through ownership. Each local entity selects its own</text>
+<text x="46" y="630" font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#102d43" font-weight="400" text-anchor="start">professions from the complete catalogue.</text>
+</svg>

@@ -101,7 +101,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | --- | --- | --- | --- |
 | 1 | Supplier risk assessments and tiering | Structured assessment document with scoring method stated | Criteria were fixed before evidence collection and the method is reproducible |
 | 2 | register of information for critical suppliers | Structured table in the system of record (CSV/tool export) | Every row has an owner, a date, a status and a next action |
-| 3 | contractual control requirements | Executed document held in the contract repository | Obligations, service levels, exit terms and liability positions are explicit |
+| 3 | contractual control requirements | Traceable contractual control requirements for negotiation | Each requirement maps to supplier risk or an applicable obligation, proposed clause/evidence, accountable owner and unresolved legal or commercial decision; proposed requirements do not imply an executed contract |
 | 4 | ongoing monitoring and exit plans | Document with milestones, owners, dependencies and assumptions | Every milestone has an acceptance test and a named accountable owner |
 
 ## 7. Output gates (blocking)
@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Supplier risk assessments and tiering has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Supplier risk assessments and tiering") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

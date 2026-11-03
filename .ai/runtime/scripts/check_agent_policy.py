@@ -35,6 +35,26 @@ STD_AGENT_KEYS = {"name", "description", "tools", "model_class"}
 _YAML_WORDS = {"true", "false", "yes", "no", "on", "off", "null", "~"}
 
 
+# Current executable assets must ship; archived migration utilities are not
+# prerequisites for a fresh governed runtime.
+ENFORCEMENT_ASSETS = ("hooks/guard_library_write.py",
+                  "scripts/approve_change.py", "CHANGE-RECORD.md", "CHANGELOG.md",
+                  "VERSION", "workflows.json",
+                  "templates/sabsa/architecture.md", "templates/sabsa/client-questions.md",
+                  "standards/code-documentation.md", "standards/testing.md", "standards/defect-analysis.md",
+                  "hooks/code_gate.py",
+                  "hooks/guard_authority.py", "fabric/fabric.py",
+                  "tools/artifacts.py", "tools/publication.py", "tools/repository.py",
+                  "tools/sabsa_ea.py", "tools/ea_conformance.py", "tools/schema_check.py", "tools/generate_docs.py",
+                  "artifacts/schema/artifact-types.json", "artifacts/schema/artifact-contract.schema.json",
+                  "artifacts/contracts/role-deliverables.v3.json", "artifacts/contracts/golden-classification.json",
+                  "jai/core/native-write-policy.json", "tools/lifecycle.py",
+                  "tools/governed_delivery.py", "schema/schema-registry.json", "ea/sabsa-mapping.json", "ea/schema/open-exchange-supported.xsd",
+                  "artifacts/schema/generic-document.json", "artifacts/templates/generic-document.md",
+                  "artifacts/role-deliverables.json",
+                  "ea/schema/repository-model.json", "ea/consistency-policy.json", "ea/viewpoints.json")
+
+
 def yaml_needs_quotes(v):
     return (v == "" or v != v.strip() or v[0] in "-?:,[]{}#&*!|>'\"%@`" or ": " in v or " #" in v
             or v.endswith(":") or v.lower() in _YAML_WORDS
@@ -87,6 +107,27 @@ sys.argv = [a.encode("utf-8", "surrogateescape").decode("utf-8", "replace") for 
 
 def toolset(value):
     return {t.strip() for t in value.split(",") if t.strip()} if value else set()
+
+
+def workflow_operator_problem(step, agents):
+    """Check that a workflow distinguishes human authority from agent execution.
+
+    Args:
+        step: Workflow step with its declared skill and operator identifier.
+        agents: Existing agent identifiers; external humans are never agent entries.
+    Returns:
+        None for a real agent step or an explicitly external human step. Otherwise
+        a diagnostic describing a missing agent or invalid human substitution.
+        Recognition does not execute work or grant signing/approval authority.
+    """
+    operator = step.get('operator_agent')
+    if step.get('skill') == 'external':
+        return None if operator == 'human' else 'external authority requires the human operator, not an agent'
+    if operator == 'human':
+        return 'the human operator requires an explicitly external workflow step'
+    if operator not in agents:
+        return 'operator ' + str(operator) + ' does not exist'
+    return None
 
 
 def main():
@@ -316,54 +357,13 @@ def main():
                 special = st.get("skill") in ("agent", "dynamic", "external") or st.get("slug") in agents
                 if st["slug"] not in known and not special:
                     problems.append(f"workflow {w['key']} step {st['step']}: unknown role {st['role']}")
-                if st["operator_agent"] not in agents:
-                    problems.append(f"workflow {w['key']} step {st['step']}: operator "
-                                    f"{st['operator_agent']} does not exist")
+                operator_problem = workflow_operator_problem(st, agents)
+                if operator_problem:
+                    problems.append(f"workflow {w['key']} step {st['step']}: {operator_problem}")
     else:
         problems.append("it-role-library/workflows.json: missing")
 
-    # ------------------------------------------------- layered method
-    layers = policy.get("layers", {})
     lay_checked = 0
-    if layers and os.path.isfile(cat2):
-        for k in range(1, 7):
-            L = layers.get(str(k))
-            if not L:
-                problems.append(f"policy: layer {k} undefined")
-                continue
-            a = agents.get(L["agent"])
-            if not a:
-                problems.append(f"layer {k}: agent {L['agent']} missing")
-                continue
-            if toolset(a.get("tools", "")) != tiers[L["tier"]]:
-                problems.append(f"layer {k}: {L['agent']} tools do not equal its '{L['tier']}' tier")
-            if a.get("model_class") != L["model_class"]:
-                problems.append(f"layer {k}: {L['agent']} model_class {a.get('model_class')} != policy {L['model_class']}")
-            if k > 1 and L["model_class"] == layers[str(k - 1)]["model_class"]:
-                problems.append(f"layers {k - 1}/{k} share workload class {L['model_class']}: a reviewer would share its "
-                                "producer's routing class (T6)")
-        if toolset(agents.get("l5-realisation", {}).get("tools", "")) & {"Bash"}:
-            problems.append("l5-realisation must not hold Bash: it would produce evidence about its own work")
-        if toolset(agents.get("l6-evidence", {}).get("tools", "")) & {"Write", "Edit"}:
-            problems.append("l6-evidence must not hold Write or Edit: it could alter what it observes")
-        for r in json.load(open(cat2, encoding="utf-8"))["roles"]:
-            lay_checked += 1
-            k = r.get("layer")
-            if k not in range(1, 7):
-                problems.append(f"{r['slug']}: layer {k!r} not in 1..6")
-                continue
-            op = r.get("layer_operator")
-            if op not in agents:
-                problems.append(f"{r['slug']}: layer_operator {op} does not exist")
-                continue
-            layer_agents = {v["agent"] for v in layers.values()}
-            if op in layer_agents and op != layers[str(k)]["agent"]:
-                problems.append(f"{r['slug']}: layer-{k} role operated by another layer's agent {op}")
-            opt = toolset(agents[op].get("tools", ""))
-            if not opt <= tiers[r["tool_tier"]]:
-                problems.append(f"{r['slug']}: {op} is wider than the role's own '{r['tool_tier']}' tier")
-            if not opt <= tiers[layers[str(k)]["tier"]]:
-                problems.append(f"{r['slug']}: {op} is wider than layer {k}'s agent")
 
     fab_dir = os.path.join(package_root, "fabric")
     if os.path.isfile(os.path.join(fab_dir, "fabric.py")):
@@ -371,7 +371,7 @@ def main():
             selftest = "skipped (--fast)"
         else:
             import subprocess
-            st = subprocess.run([sys.executable, os.path.join(fab_dir, "fabric.py"), "selftest"],
+            st = subprocess.run([sys.executable, os.path.join(package_root, "tools", "governed_probe.py")],
                                 capture_output=True, encoding="utf-8", errors="replace")
             selftest = st.stdout.strip().splitlines()[-1] if st.stdout.strip() else "no output"
             if st.returncode != 0:
@@ -533,22 +533,7 @@ def main():
     print(f"workflows: {wf_count} chains, {wf_steps} steps")
     print(f"roles    : {refs}")
     print(f"agents   : {len(agents)}")
-    for asset in ("hooks/guard_library_write.py",
-                  "scripts/approve_change.py", "CHANGE-RECORD.md", "CHANGELOG.md",
-                  "VERSION", "workflows.json",
-                  "templates/sabsa/architecture.md", "templates/sabsa/client-questions.md",
-                  "standards/code-documentation.md", "standards/testing.md", "standards/defect-analysis.md",
-                  "hooks/code_gate.py",
-                  "hooks/guard_authority.py", "fabric/fabric.py",
-                  "tools/artifacts.py", "tools/publication.py", "tools/repository.py",
-                  "tools/sabsa_ea.py", "tools/ea_conformance.py", "tools/schema_check.py", "tools/generate_docs.py",
-                  "artifacts/schema/artifact-types.json", "artifacts/schema/artifact-contract.schema.json",
-                  "artifacts/contracts/role-deliverables.v3.json", "artifacts/contracts/golden-classification.json",
-                  "jai/core/native-write-policy.json", "jai/migrations/migrate-26.10.0.py",
-                  "jai/migrations/migrate-26.10.1.py", "schema/schema-registry.json", "ea/sabsa-mapping.json", "ea/schema/open-exchange-supported.xsd",
-                  "artifacts/schema/generic-document.json", "artifacts/templates/generic-document.md",
-                  "artifacts/role-deliverables.json",
-                  "ea/schema/repository-model.json", "ea/consistency-policy.json", "ea/viewpoints.json"):
+    for asset in ENFORCEMENT_ASSETS:
         if not os.path.exists(os.path.join(package_root, asset)):
             problems.append(f"it-role-library/{asset}: enforcement asset missing")
 

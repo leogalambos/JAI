@@ -1,31 +1,38 @@
-# Validate the current 26.10.14 candidate
+# Review and release readiness
 
-Owner: JAI maintainers. Last reviewed: 2026-10-26.
+Review a particular output against its actual requirements, governing input
+versions and relevant evidence. A previous positive result or a release label
+does not establish the correctness of a changed candidate.
 
-Scope: {{ JAI_SCOPE }}. Read RELEASE-SCOPE.json and QUALIFICATION-A-H.json
-inside the exact ZIP, not a prior checkout or historical PASS. Compare release,
-source bindings, all eight named gates and supported capabilities. Source edits
-require fresh evidence; this page does not assert a new gate result.
+## Independent assessment
 
-Maintainer diagnostic, from the development root:
+Set criteria before reviewing, retain located findings and keep the reviewer
+independent from the author. After a repair, verify the affected boundary.
+Reuse still-applicable evidence for unchanged mechanisms rather than repeating
+the entire history or every workflow combination.
 
-```sh
-python3 .ai/runtime/tools/release_ga.py qualify
-python3 .ai/runtime/tools/release_bundle.py --root . --dist build/dist build
-```
+Evidence must describe what actually happened. A controlled example, simulated
+response, rendered page, declared capability and live professional execution
+are different observations. None should be presented as another.
 
-A structural/semantic/governance result is not model correctness. D checks
-supported application denials and provider projections, not certified host
-confinement. E checks publication; F needs real renders, with actual Office
-bytes inspected separately from HTML/PDF. G is fixture/harness qualification,
-not live model qualification. H verifies source-bound integrity/provenance and
-packaging; a checksum is not a human signature. Required missing checks fail.
+## Separate decisions
 
-The source suite and extracted/installed ZIP acceptance are separate evidence.
-See [operator actions](operator-walkthrough.md) for signed L0 and returned
-Office evidence. Privileged worker deployment
-is NOT_SUPPORTED / NOT_VERIFIED, never reported as a passing host test.
+Authorisation to continue, acceptance of an exact output and permission to
+release it are separate. Missing required current evidence blocks the affected
+acceptance or release. An obsolete record unrelated to that output does not
+block every operation.
 
-The owner alone reviews Git, signing and publication. The tag-triggered CI can
-publish after its own qualification; an agent must not trigger it autonomously.
-[Imported 26.10.4 results](../reference/validation-26-10-4-history.md) are HISTORICAL.
+Only the entitled human performs reserved decisions through the
+[signing procedure](human-authority.md). A successful build or checksum grants
+no acceptance or release permission.
+
+## Publication and installation
+
+The maintainer selects the release candidate and follows the
+[version and release procedure](../reference/versioning.md). Operators use
+[deployment and recovery](gen2-deployment-recovery.md) to install reviewed
+software while preserving current engagement data and public trust.
+
+Source availability, a completed package build, an installed projection and a
+live provider session are distinct states. Describe the actual state instead of
+claiming activation from a copy or configuration file alone.

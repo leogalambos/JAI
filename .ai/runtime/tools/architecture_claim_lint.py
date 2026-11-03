@@ -19,7 +19,7 @@ FORBIDDEN=[
  ('unscoped-ea-source-of-truth',re.compile(r'(canonical (EA )?repository|repository JSON).{0,50}(persistent )?source of truth',re.I)),
  ('stale-3.6-ea',re.compile(r'3\.6 canonical EA repository',re.I)),
 ]
-ACTIVE_TOOLS=['integration_adapters.py','execution_record.py','behavioral_eval.py','agent_runtime.py','repository.py','sabsa_ea.py']
+ACTIVE_TOOLS=['integration_adapters.py','execution_record.py','agent_runtime.py','repository.py','sabsa_ea.py']
 LEGACY_SCHEMA_REFS=[r"integrations/adapter-contract\.schema",r"audit/execution-record\.schema",r"evals/evaluation-(case|result)\.schema",r"schema/26\.10/"]
 
 def main():

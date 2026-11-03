@@ -1,6 +1,5 @@
 # Develop a SABSA security architecture
 
-Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
 ACME Distribution is opening an online ordering channel. Alice sponsors
 the business service, Bob operates the warehouse systems, and John Doe

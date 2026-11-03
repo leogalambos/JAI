@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Commercial commitments and lifecycle obligation baseline', provide verifiable evidence satisfying: Every material obligation has a feasible owner and traceable lifecycle effort/cost treatment.. Required delivery form: Linked client commitments, internal economics, subcontract gaps, owners, acceptance and review triggers.",
+        "criterion_under_review": "For the specific output 'Commercial commitments and lifecycle obligation baseline', provide verifiable evidence satisfying: Every material obligation has a feasible owner and traceable lifecycle effort/cost treatment. Required delivery form: Linked client commitments, internal economics, subcontract gaps, owners, acceptance and review triggers.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

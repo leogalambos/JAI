@@ -5,27 +5,30 @@
 """Build qualified AI IT House distribution archives for automatic publication.
 
 Packaging is independent of Git and never traverses private input, local audit,
-provider-local state or generated output directories. Maintained runtime resources
-and required qualification evidence remain package inputs. Source trees must remain
-unchanged during a build; symbolic links are not distribution resources.
+provider-local state or generated output directories. Maintained runtime resources and public documentation remain package inputs;
+internal development reports and historical qualification results do not. Source trees must remain
+unchanged during a build; symbolic links are not distribution resources. The
+single declared GUIDE alias is materialized from selected public source bytes.
 """
 from __future__ import annotations
 
 import argparse, hashlib, json, zipfile, subprocess, sys, os, stat, tempfile, unicodedata
 from pathlib import Path, PurePosixPath
+from guide_alias import GUIDE_ALIAS, GUIDE_SOURCE, guide_bytes
 
 TOOLS = Path(__file__).resolve().parent
 PY = sys.executable
 
-# Keep this contract explicit: release evidence may be Git-ignored but is required
-# in a qualified archive, whereas private workspace material must never be visited.
-ROOT_EXCLUDED_DIRECTORIES = frozenset({"INBOX", "build", "out", "dist", "site"})
+# Private workspace material must be pruned before traversal, independently of Git.
+ROOT_EXCLUDED_DIRECTORIES = frozenset({"INBOX", "build", "out", "dist", "site", "obsolete"})
 EXCLUDED_DIRECTORY_NAMES = frozenset({".git", ".venv", "__pycache__", ".findings", ".fabric",
                                      ".direnv", ".secrets", ".pytest_cache", ".cache", ".mypy_cache",
                                      ".ruff_cache", ".tox", "node_modules", '.aws', '.ssh',
                                      '.gnupg', '.kube', '.docker', '.config', '.local'})
 PRIVATE_FILE_SUFFIXES = frozenset({".pem", ".key", ".p12", ".pfx"})
 PUBLIC_ENV_EXAMPLES = frozenset({".env.example", ".env.sample", ".env.template"})
+INTERNAL_RELEASE_RECORDS = frozenset({'QUALIFICATION-A-H.json', 'COMPATIBILITY.json',
+                                     'PROVENANCE.json', 'SBOM.spdx.json', 'VALIDATION.md'})
 PRIVATE_FILE_NAMES = frozenset({'.git', 'auth.json', 'id_rsa', 'id_ed25519',
                                 '.npmrc', '.pypirc', '.netrc', 'settings-security.xml', '.claude.json',
                                 'credentials', 'credentials.json'})
@@ -99,6 +102,7 @@ def files(root, excluded_directory=None):
                     or ("/" not in relative and path.suffix in {".zip", ".log", ".tmp"})
                     or path.suffix in PRIVATE_FILE_SUFFIXES
                     or ((name == ".env" or name.startswith(".env.")) and name not in PUBLIC_ENV_EXAMPLES)
+                    or ("/" not in relative and name in INTERNAL_RELEASE_RECORDS)
                     or relative in {".claude/settings.local.json", ".codex/config.local.toml",
                                     '.codex/config.toml', '.claude/settings.json',
                                     ".ai/runtime/_meta/qualification-A-G.json"}):
@@ -126,51 +130,34 @@ def dependency_closure(root):
 
 
 def check_ready(root):
-    """Require current-release executed A-H evidence before a qualified build.
+    """Validate current source contracts before constructing a distribution.
 
     Args:
-        root: Distribution source containing VERSION and qualification evidence.
+        root: Reviewed source checkout; no archived result grants readiness.
     Returns:
-        None only when release policy and every current gate pass, source bytes
-        match the verified SBOM/provenance, and the provenance A-G execution
-        records agree with the final qualification. Same-version historical PASS
-        files alone never authorize a changed tree.
+        Authoritative product version after identity, documentation and source
+        dependency checks. Comprehensive tests remain a separate local operator
+        prerequisite before publication.
     Raises:
-        SystemExit: If policy, identity, gate coverage or execution is non-passing.
-        OSError, ValueError: If required local evidence cannot be processed.
+        ValueError: Required public sources, synchronized identity or contracts
+            are missing or invalid. No package output is created here.
+        OSError: Maintained source files cannot be read.
     """
-    from qualification_core import gate_report_problems, source_fingerprint
-    from schema_resolver import release_scope
-    scope=release_scope(root)
-    root=Path(root)
-    if subprocess.run([PY,str(TOOLS/'release_policy.py'),'check','--final'],cwd=root).returncode:
-        raise SystemExit('release policy is not final-ready')
-    q=json.loads((root/'QUALIFICATION-A-H.json').read_text())
-    release=(root/'VERSION').read_text().strip()
-    if (not isinstance(q,dict) or q.get('all_pass') is not True
-            or q.get('release')!=release or not isinstance(q.get('gates'),dict)
-            or not isinstance(q.get('checks'),dict)
-            or set(q['gates'])!=set('ABCDEFGH') or set(q['checks'])!=set('ABCDEFGH')):
-        raise SystemExit('QUALIFICATION-A-H.json is not current-release all PASS')
-    if q.get('supported_capabilities')!=scope:
-        raise SystemExit('qualification release scope disagrees with canonical manifest')
-    fingerprint=source_fingerprint(root)
-    for gate in 'ABCDEFGH':
-        if gate_report_problems({'gate':gate,'release':q['release'],'pass':q['gates'][gate],
-                                 'checks':q['checks'][gate],'source_binding':q.get('source_bindings',{}).get(gate)},gate,release,fingerprint):
-            raise SystemExit('QUALIFICATION-A-H.json lacks current-release all PASS execution')
-    import supply_chain
-    try:
-        supply_chain.verify(root, root/'SBOM.spdx.json', root/'PROVENANCE.json', root/'COMPATIBILITY.json')
-        provenance = json.loads((root/'PROVENANCE.json').read_text())
-    except (OSError, ValueError, KeyError, TypeError) as exc:
-        raise SystemExit('release source integrity prerequisite failed') from exc
-    source = provenance.get('test_results', {})
-    if (not isinstance(source, dict) or source.get('release') != release
-            or source.get('gates') != {g: q['gates'][g] for g in 'ABCDEFG'}
-            or source.get('checks') != {g: q['checks'][g] for g in 'ABCDEFG'}
-            or source.get('source_bindings') != {g: q['source_bindings'][g] for g in 'ABCDEFG'}):
-        raise SystemExit('source provenance qualification does not match final A-G execution')
+    root = Path(root).resolve()
+    policy = json.loads((root / '.ai/runtime/release/release-policy.json').read_text())
+    if policy.get('signing', {}).get('mode') != 'automated-ci-release':
+        raise ValueError('automated release policy required')
+    for relative in policy.get('required_release_files', []):
+        if not _safe_member(relative) or not (root / relative).is_file():
+            raise ValueError('required release source missing: ' + str(relative))
+    for command in (
+            [PY, str(root / 'scripts/versioning.py'), 'check', '--root', str(root)],
+            [PY, str(root / '.ai/runtime/tools/docs_contract.py'), '--root', str(root)]):
+        result = subprocess.run(command, cwd=root, capture_output=True, text=True)
+        if result.returncode:
+            raise ValueError('release source contract failed: ' + (result.stdout + result.stderr).strip())
+    dependency_closure(root)
+    return (root / 'VERSION').read_text().strip()
 
 
 def _safe_member(name):
@@ -222,6 +209,12 @@ def _snapshot(root, excluded_directory):
             raise ValueError('unsafe or duplicate portable archive member')
         portable.add(folded)
         output[relative] = _read_resource(root, relative)
+    if GUIDE_ALIAS in output or GUIDE_SOURCE in output:
+        if GUIDE_SOURCE not in output:
+            raise ValueError('GUIDE canonical public resource was not selected')
+        canonical_bytes = output[GUIDE_SOURCE][0]
+        alias_bytes = output[GUIDE_ALIAS][0] if GUIDE_ALIAS in output else None
+        output[GUIDE_ALIAS] = (guide_bytes(root, canonical_bytes, alias_bytes), 0o644)
     return output
 
 
@@ -312,30 +305,32 @@ def build_zip(root,out,prefix):
             temporary.unlink(missing_ok=True)
 
 
-def build(root,dist):
-    """Build an exclusive deterministic qualified archive and companion digest.
+def build(root, dist):
+    """Build the current version's deterministic archive and checksum locally.
 
     Args:
-        root: Source distribution with current executed qualification evidence.
-        dist: Output directory excluded from archive input discovery.
+        root: Source checkout satisfying current public source contracts.
+        dist: Local output directory, excluded from archive traversal.
     Returns:
-        Zero after writing the archive and its SHA-256 companion.
+        Archive and checksum paths. No Git operation, signing or publication is
+        performed. Comprehensive local regressions are an operator prerequisite;
+        the release workflow separately enforces its bounded source checks.
     Raises:
-        SystemExit: If qualification fails or the artifact already exists.
-        OSError, ValueError: If sources or destinations cannot be processed.
+        OSError, ValueError: Source checks, archive construction or exclusive
+            output creation fails. Existing output files are never overwritten.
     """
-    root=Path(root).resolve(); dist=Path(dist).resolve(); dependency_closure(root); check_ready(root)
-    version=(root/'VERSION').read_text().strip(); prefix=f'ai-it-house-{version}'; base=f'ai-it-house-universal-{version}'
-    dist.mkdir(parents=True,exist_ok=True)
-    archive=dist/f'{base}.zip'
-    if archive.exists():
-        raise SystemExit(f'release artifact already exists: {archive}; refuse accidental overwrite')
-    build_zip(root,archive,prefix)
-    digest=hashlib.sha256(archive.read_bytes()).hexdigest()
-    (dist/f'{base}.sha256').write_text(f'{digest}  {archive.name}\n', encoding='utf-8')
-    print(f'PASS production ZIP built {version}: SHA-256 {digest}')
-    print(archive)
-    return 0
+    version = check_ready(root)
+    destination = Path(dist).absolute()
+    archive = destination / ('ai-it-house-universal-' + version + '.zip')
+    checksum = archive.with_suffix('.sha256')
+    if archive.exists() or checksum.exists():
+        raise FileExistsError('release outputs already exist; use a fresh directory')
+    destination.mkdir(parents=True, exist_ok=True)
+    build_zip(root, archive, 'ai-it-house-universal-' + version)
+    digest = hashlib.sha256(archive.read_bytes()).hexdigest()
+    with checksum.open('x', encoding='utf-8') as stream:
+        stream.write(digest + '  ' + archive.name + '\n')
+    return {'archive': str(archive), 'checksum': str(checksum)}
 
 
 def main():
@@ -349,7 +344,7 @@ def main():
     ap=argparse.ArgumentParser(); ap.add_argument('cmd',choices=['build','check-closure']); ap.add_argument('--root',required=True); ap.add_argument('--dist'); a=ap.parse_args()
     if a.cmd=='check-closure':dependency_closure(a.root);print('PASS distribution dependency closure');return 0
     if not a.dist:ap.error('--dist required for build')
-    return build(a.root,a.dist)
+    print(json.dumps(build(a.root,a.dist), sort_keys=True)); return 0
 
 
 if __name__=='__main__': raise SystemExit(main())

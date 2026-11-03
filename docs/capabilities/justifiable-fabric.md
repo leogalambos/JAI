@@ -1,184 +1,134 @@
 # Justifiable Fabric
 
-The **Justifiable Fabric** is the append-only assurance ledger and supervision runtime behind `/layered` engagements.
+The **Justifiable Fabric** records the justification for a consequential Gen2
+engagement. Its append-only journal connects exact inputs, assignments, outputs,
+evidence, reviews and decisions. Canonical business or architecture content
+remains in the relevant domain model; the journal records how particular versions
+were used and what currently follows from them.
 
-It is not the global semantic source of truth. Canonical semantic identity belongs to JAI and domain profiles. Fabric records point to the relevant canonical object identities/hashes and record **who did what, under which contract, with which evidence/review/authority state**.
+## What the operator uses
 
-## What the operator uses; what the runtime does
-
-| In a Claude/Codex conversation | Behind the scenes |
+| In the provider conversation | What JAI records or assesses |
 | --- | --- |
-| Start `/layered <intent>` or `$workflow-layered <intent>`. | The orchestrator creates a Fabric engagement, records intent, issues typed contracts and delegates the work. |
-| Ask for blockers, evidence or an independent `/fabric-report` / `$workflow-fabric-report`. | `fabric-auditor` calls `fabric.py` read-only status/report/verification operations and cites actual record IDs. |
-| Supply missing material or respond to an escalation. | The agent records failed attempts, reviews and bounded recovery; the deterministic runtime rejects invalid transitions. |
-| Make L0 decisions using the provider's trusted mechanism. | Claude may present an interactive gate; Codex intentionally **cannot perform the authority command** and must give it to the human for separate execution. |
+| Claude: `/layered <intent>`; Codex: `$workflow-layered <intent>` | The task, its controlling inputs, local professional assignments and actual returned work |
+| Ask for progress, missing evidence or the next action | The durable current state, unresolved dependencies and applicable local limits |
+| Claude: `/fabric-report [engagement]`; Codex: `$workflow-fabric-report [engagement]` | An independent read-only assessment of the exact output, governing versions and current permissions |
+| Supply revised inputs or answer an escalation | An owner-authorised revision with explicit scope and cancellation effects |
+| Decide a reserved L0 matter | An exact request for external human review and signing; the agent does not sign it |
 
-**No normal manual Fabric setup is required.** The Python snippets below are the underlying **maintainer/implementation API** and show how a recorded event is reproduced or investigated. Their presence does not mean a user must run them after invoking the provider skill. The runtime is invoked by model-orchestrated tool calls; missing execution or blocked permissions must be surfaced as unresolved work, not reported as success. See [the operator journey](../using/layered-engagement.md) and [human authority](../operations/human-authority.md).
+The native parent handles setup and runtime transport. Users do not prepare
+bootstrap JSON, launch nested provider clients or write workers for ordinary
+native use. See the [operator journey](../using/layered-engagement.md).
 
-## What it records
+## Layers and local review
 
-A fabric engagement can contain typed records for:
+<div class="ai-diagram ai-diagram-inline" markdown="1">
+<div class="ai-diagram-scroll" role="region" tabindex="0" aria-label="Scrollable diagram: Gen2 layers" markdown="1">
 
-- operator intent and requirements;
-- adjacent-layer contracts;
-- product fragments/candidates;
-- evidence and evidence-file digests;
-- reviews and constraints;
-- explicit failures;
-- conflicts and contradictions;
-- escalations and reformulations;
-- human authority decisions;
-- release decisions and invalidations;
-- execution/assurance lineage.
+![Gen2 SABSA perspectives, layer-local work and external human authority](../assets/diagrams/layered-runtime-cycle.svg){ .ai-concept-svg }
 
-Records are append-only and hash-chained. Corrections create new records rather than rewriting earlier history.
-
-## Layer model
-
-<div class="ai-diagram ai-diagram-inline">
-  <img src="../../assets/diagrams/layered-runtime-cycle.svg" alt="Six JAI layers with downward contracts, upward evidence and external human authority">
+</div>
 </div>
 
-**L0 is Human Authority and is not part of the six-layer JAI core.**
+[Open the full-size diagram](../assets/diagrams/layered-runtime-cycle.svg).
+On a narrow display, focus the diagram region and scroll to read its labels.
 
-Adjacent-layer transformation is the default and enforced relation rules prevent a lower-layer product from being silently promoted across intermediate transformation boundaries.
+The six perspectives are **Contextual, Conceptual, Logical, Physical, Component
+and Management**. Each addresses What, Why, How, Who, Where and When at its own
+level. Management concerns also apply across the other perspectives. L0 is the
+external human decision boundary. See the [layer model](../architecture/sabsa-layer-model.md).
 
-## Where the record lives
+Within a layer, a setter defines the question and criteria, an author produces a
+candidate, and an independent reviewer assesses it. Each entity selects suitable
+specialties from the complete catalogue. Adjacent layers exchange outcomes,
+requirements and interfaces; they do not choose each other's internal staff.
+Cross-question integration review and receiving handoff acceptance are distinct
+from the local question reviews.
 
-Default engagement record:
+## Historical truth and current justification
 
-```text
-<current working directory>/.fabric/<engagement>.jsonl
+The journal preserves immutable versions and the decisions that established or
+cancelled their applicability. A working filesystem path is a locator, not an
+immutable input identity. A test result can remain a truthful historical record
+while no longer justifying the changed output.
+
+A legitimate input replacement selects the new scoped version and cancels the
+affected conclusions, reviews and permissions atomically. It does not make the
+replacement verified or accepted. If required current evidence is absent, there
+is no valid current basis; the system must not fall back to a superseded record.
+Unrelated historical material outside the assessed output's dependency closure
+does not block that output. See [versioned applicability](../architecture/governed-runtime-cutover.md).
+
+## Continued work, acceptance and release
+
+These are separate permissions:
+
+- **Continuation** permits specified work, including verification of updated inputs.
+- **Acceptance** establishes the reviewed result for its exact intended use.
+- **Release** permits the specified use or distribution of an exact output.
+
+An authorisation to continue does not accept a result or permit release. A local
+reviewer's supported conclusion does not manufacture an external human decision.
+Ordinary recording and local queries require no private signing key. Only
+explicit reserved L0 decisions use the external operator key and existing signed
+request mechanism. Its public proof remains bound to the approved effects,
+scope, expiry, request identity and expected state. See [human authority](../operations/human-authority.md).
+
+## Rework, time limits and escalation
+
+Rework corrects an answer against the current assignment. Reformulation changes
+the question or criteria through their entitled owner; another layer cannot
+silently edit inherited requirements. Unresolved issues are aggregated and
+escalated through adjacent ownership. Affected work pauses by default. Speculative
+continuation requires an explicit operator-approved scope and budget.
+
+Ordinary processing has no mandatory overall task deadline. The configurable
+local iteration window defaults to ten minutes across the actual setter, author
+and reviewer work. Three unsuccessful semantic reworks lead to escalation. A
+restart preserves an active window rather than resetting it. On expiry, JAI
+reports the interrupted stage, progress, iteration and reworks used; the operator
+can grant additional time or stop the work. Explicitly requested overall limits
+remain possible. See the [operating guide](../operations/normal-layered-workflow.md).
+
+## Storage and recovery
+
+The Fabric CLI defaults to `~/.ai/fabric/<engagement>.jsonl`; `FABRIC_HOME` changes
+that locator. A host adapter using an explicit Store path must use the same
+engagement location consistently. Referenced immutable files live beside the
+journal in its `<journal-name>.blobs/` directory. Preserve both together.
+
+Normal processing reuses the verified journal prefix. Cold reconstruction,
+explicit audit and an actual loss of trust are separate verification boundaries.
+A missing or corrupt required file is an explicit failure, not permission to
+substitute a mutable working file. Old engagement formats remain historical
+archives; a fresh Gen2 engagement does not inherit their acceptance. See
+[startup and recovery](../operations/lifecycle-recovery.md).
+
+## Behind the scenes: maintainer interface
+
+Ordinary users stay in the provider conversation. For host integrations and
+investigation, the installed facade accepts typed messages and exact scoped
+queries. The following placeholders stand for actual host-prepared files:
+
+```sh
+python3 ~/.ai/it-role-house/fabric/fabric.py validate --message /operator/message.json
+python3 ~/.ai/it-role-house/fabric/fabric.py submit engagement-id --message /operator/message.json
+python3 ~/.ai/it-role-house/fabric/fabric.py current-basis engagement-id --query /operator/query.json
 ```
 
-Override the record directory with `FABRIC_HOME`.
+Validation checks message structure and identity without recording or granting
+authority. Submission checks the actual transition and returns its receipt or
+rejection. An explicit L0 message additionally supplies the exact public proof
+prepared by the [operator signing procedure](../operations/operator-walkthrough.md).
+The read-only `status`, `verify`, `justify` and `report` commands also require
+`engagement-id --query /operator/query.json`; their result is scoped to that query.
+The query shape is defined by the [delivery protocol](../reference/governed-delivery-protocol.md).
 
-Formal L0 uses a separately protected Ed25519 operator key, never an
-agent-accessible signing secret. The verifier reads a protected public trust
-pin; it validates the exact request/state-bound receipt before applying it.
-See [human authority](../operations/human-authority.md) and the
-[operator walkthrough](../operations/operator-walkthrough.md) for enrollment,
-approval and rejection. Unsupported historical ledgers are archive-only;
-a managed hook or provider tool approval does not establish independent L0.
-Local ledger hashes do not prevent rollback without separate protected custody.
+## Scope of assurance
 
-## Context binding
-
-A layer agent is intended to receive the rendered contract packet rather than the full unconstrained conversation. The packet carries a SHA-256 `context_digest`; ingestion rejects a result that declares a different digest.
-
-This creates an auditable intended context boundary. It does **not** by itself prove that an external provider received no additional context — that remains a provider/host integration property.
-
-## Review before promotion
-
-The upward path is a review path. A layer can build upward only from child fragments it has accepted. This prevents a summariser from laundering an unresolved lower-layer result into a stronger state merely by rewriting it.
-
-Strict release mode distinguishes direct/evidenced support from weaker relations such as correlation or resonance.
-
-## Bounded supervision
-
-The deterministic policy kernel is stored in:
-
-```text
-~/.ai/it-role-house/fabric/supervision-policy.json
-```
-
-The policy treats retryable failures, contradictions, budget exhaustion and operator-boundary cases differently. A model cannot grant itself additional autonomous attempts.
-
-Default bounds:
-
-- rework: `3` per contract lineage;
-- reformulation: `2` per layer per round;
-- contracts: `40` per round;
-- human revision rounds: `5` before explicit override;
-- shared episode transitions: `120`.
-
-See [Running a layered justifiable engagement](../using/layered-engagement.md) for the full recovery ladder.
-
-## Rework is not reformulation
-
-**Rework** is another attempt at the same requirement. The runtime prevents it from changing material semantic fields such as `what`, `why`, evidence obligation and escalation condition.
-
-**Reformulation** creates a new requirement generation and can only be issued by the layer that owns/issued the strained requirement.
-
-**Escalation** moves an unresolved issue one layer upward. Authority matters such as risk acceptance cannot be downgraded into a reformulatable technical problem.
-
-## Evidence drift and invalidation
-
-When an evidence file is recorded, the Fabric stores its digest. If the file later changes, strict release eligibility fails.
-
-When a depended-on Fabric record is superseded or invalidated, the orchestrator (or a maintainer performing recovery) calls the internal API:
-
-```bash
-python3 ~/.ai/it-role-house/fabric/fabric.py invalidate <engagement> \
-  --changed <record-id> --reason '<reason>' --request-out invalidation-plan.json
-```
-
-This prepares a pending lifecycle plan without mutating the ledger. The external
-human signs with `lifecycle-update` capability and performs protected
-`lifecycle-apply --request invalidation-plan.json --receipt RECEIPT`. Exact effects
-cancel affected conclusions and dependent reviews, acceptance and permissions
-across scopes. Fresh verification, independent review and new human acceptance
-are required; unrelated branches remain. See [recovery](../operations/lifecycle-recovery.md)
-for exact installed signing and receipt handling.
-
-## Release eligibility
-
-Finishing generation is not release. The release gate requires, among other things:
-
-- strict justifiability of the product;
-- accepted review state;
-- appropriate L0 authority acceptance for the consequential product;
-- intact fabric hash chain and well-typed relations;
-- no current evidence drift/blocking invalidation.
-
-Internal checks run by an agent or maintainer (the ordinary operator asks for `$workflow-fabric-report` or `/fabric-report` instead):
-
-```bash
-python3 ~/.ai/it-role-house/fabric/fabric.py verify <engagement>
-python3 ~/.ai/it-role-house/fabric/fabric.py justify <engagement> --strict
-python3 ~/.ai/it-role-house/fabric/fabric.py release <engagement> <fragment-id>
-```
-
-## Human-friendly and direct inspection
-
-=== "Claude Code"
-
-    ```text
-    /fabric-report [engagement]
-    ```
-
-=== "Codex CLI"
-
-    ```text
-    $workflow-fabric-report [engagement]
-    ```
-
-Direct CLI:
-
-```bash
-python3 ~/.ai/it-role-house/fabric/fabric.py status <engagement>
-python3 ~/.ai/it-role-house/fabric/fabric.py verify <engagement>
-python3 ~/.ai/it-role-house/fabric/fabric.py justify <engagement> --strict
-python3 ~/.ai/it-role-house/fabric/fabric.py report <engagement>
-python3 ~/.ai/it-role-house/fabric/fabric.py dossier <engagement> <escalation-id>
-```
-
-## Self-test
-
-The shipped Fabric self-test contains **45 checks** covering typing, adjacency, review direction, evidence support, strict release, tamper detection, rework exhaustion, escalation direction, reformulation ownership/budgets, authority stickiness, context-digest mismatch, dependency invalidation and worst-case bounded termination.
-
-Run it with:
-
-```bash
-python3 ~/.ai/it-role-house/fabric/fabric.py selftest
-```
-
-## Explicit Prolog status
-
-**The current AI IT House runtime does not execute Prolog.**
-
-The paper's Prolog listings are a restricted symbolic model and orchestration specification. The shipped implementation uses deterministic Python state transitions, schemas and provider/runtime controls. This should be described as an implementation of selected architectural mechanisms, not as execution of the paper's illustrative Prolog program.
-
-## Enforcement boundary
-
-Fabric controls are meaningful only on paths that actually use them. Direct role/workflow invocation remains available outside a layered engagement. Deployments that require every consequential task to be Fabric-supervised must enforce that entry-routing rule separately.
+JAI uses deterministic Python state transitions, schemas and native provider
+integration; it does not execute the illustrative Prolog model. Recorded
+provenance establishes the actual captured scope, not hidden provider context or
+arbitrary professional truth. Direct roles and workflows remain available outside
+a full layered engagement. A deployment requiring layered handling must select
+that route and enforce its applicable host boundaries.

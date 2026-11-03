@@ -2,14 +2,14 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/product-designer:1",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/prototype",
+    "family/strategy",
     "domain/delivery"
   ],
   "applies_to": {
@@ -25,7 +25,7 @@
     "Frontend Engineer"
   ],
   "decisions_supported": [
-    "Use \"Design strategy for the product area\" to communicate the attributable findings and required follow-up actions from Product strategy; User research; Usage and funnel data; Technical feasibility to UX Designer; UI Designer; Frontend Engineer."
+    "Set strategic choices, target outcomes, investment priorities and accountable review triggers for \"Design strategy for the product area\", using Product strategy; User research; Usage and funnel data; Technical feasibility."
   ],
   "intended_usage": "Advisory content contract; professional approval pending",
   "non_goals": [
@@ -62,7 +62,8 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Design strategy for the product area.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -100,7 +101,8 @@
         "reason": "For each receiving role (UX Designer; UI Designer; Frontend Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -138,7 +140,8 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -176,7 +179,8 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -196,7 +200,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Design strategy for the product area', provide verifiable evidence satisfying: Loading, empty, partial, error, offline and success states are all specified. Required delivery form: Prototype plus annotated specification of all states.",
+        "For the specific output 'Design strategy for the product area', provide verifiable evidence satisfying: Traces user/business outcomes to research, design principles, priorities, constraints and measurable evaluation. Required delivery form: Product-area design strategy.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -211,10 +215,11 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Design strategy for the product area', provide verifiable evidence satisfying: Loading, empty, partial, error, offline and success states are all specified. Required delivery form: Prototype plus annotated specification of all states.",
+        "reason": "For the specific output 'Design strategy for the product area', provide verifiable evidence satisfying: Traces user/business outcomes to research, design principles, priorities, constraints and measurable evaluation. Required delivery form: Product-area design strategy.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -224,8 +229,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Design strategy for the product area",
-        "format": "Prototype plus annotated specification of all states",
-        "acceptance_criterion": "Loading, empty, partial, error, offline and success states are all specified",
+        "format": "Product-area design strategy",
+        "acceptance_criterion": "Traces user/business outcomes to research, design principles, priorities, constraints and measurable evaluation",
         "role_path": "skills/it-roles-design-and-user-experience/references/product-designer.md"
       }
     },
@@ -263,7 +268,8 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -308,7 +314,8 @@
         "reason": "Analyse the specific input \"Product strategy\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -351,7 +358,8 @@
         "reason": "Analyse the specific input \"User research\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -394,7 +402,8 @@
         "reason": "Analyse the specific input \"Usage and funnel data\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -437,7 +446,8 @@
         "reason": "Analyse the specific input \"Technical feasibility\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -482,7 +492,8 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -525,7 +536,8 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -570,7 +582,8 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -665,7 +678,7 @@
     }
   ],
   "size_budget": {
-    "metric": "typed",
+    "metric": "semantic_units",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -684,6 +697,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Product Designer",
+        "frameworks": [
+          "ISO 9241-210",
+          "WCAG 2.2 AA",
+          "design system governance"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -709,13 +743,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -734,12 +769,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "family/strategy",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "prototype",
+  "semantic_family": "strategy",
   "role_overlay": {
     "contract_id": "product-designer:1",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -748,8 +785,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "product-designer:1",
-    "source_fingerprint": "204f2395cac83c6e0cace35efdc3fe0873cfebe500bc51c0d8f2cead23e4dd41",
-    "source_hash": "1741e59fd38b0aaf97abcea857ef22f6d63f70f9dd9f2818d63697e7014db1ae"
+    "source_fingerprint": "059caa7855ed575f0e47b777dcde290bea67c51b342e564c56503760729e6896",
+    "source_hash": "aeec5ca0be7bb885165ad2c60f6feec4101f30ff503ab7c3b0502a142745721a"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

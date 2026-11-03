@@ -2,15 +2,15 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/ci-cd-platform-engineer:4",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/document",
-    "domain/delivery"
+    "type/configuration-baseline",
+    "domain/operations"
   ],
   "applies_to": {
     "document_kind": "role/ci-cd-platform-engineer:4",
@@ -63,7 +63,8 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: supply chain provenance and attestation configuration.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -101,7 +102,8 @@
         "reason": "For each receiving role (DevOps Engineer; Build Engineer; Release Engineer; Software Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -139,7 +141,8 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -177,7 +180,8 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -197,7 +201,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'supply chain provenance and attestation configuration', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "For the specific output 'supply chain provenance and attestation configuration', provide verifiable evidence satisfying: Defines build/source identities, provenance fields, signing trust, verification policy and reproducible positive/negative checks. Required delivery form: Versioned provenance and attestation configuration.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -212,10 +216,11 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'supply chain provenance and attestation configuration', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "reason": "For the specific output 'supply chain provenance and attestation configuration', provide verifiable evidence satisfying: Defines build/source identities, provenance fields, signing trust, verification policy and reproducible positive/negative checks. Required delivery form: Versioned provenance and attestation configuration.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -225,8 +230,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "supply chain provenance and attestation configuration",
-        "format": "Executable suite in version control plus a coverage statement",
-        "acceptance_criterion": "States what is covered, what is not, and what the suite cannot detect",
+        "format": "Versioned provenance and attestation configuration",
+        "acceptance_criterion": "Defines build/source identities, provenance fields, signing trust, verification policy and reproducible positive/negative checks",
         "role_path": "skills/it-roles-software-development-and-engineering/references/ci-cd-platform-engineer.md"
       }
     },
@@ -271,7 +276,8 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -323,7 +329,8 @@
         "reason": "Analyse the specific input \"Team build requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -366,7 +373,8 @@
         "reason": "Analyse the specific input \"Supply chain and scanning requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -409,7 +417,8 @@
         "reason": "Analyse the specific input \"Runner infrastructure capability\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -452,7 +461,8 @@
         "reason": "Analyse the specific input \"Delivery metrics\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -497,7 +507,8 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -540,7 +551,8 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -585,7 +597,8 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -680,7 +693,7 @@
     }
   ],
   "size_budget": {
-    "metric": "semantic_units",
+    "metric": "typed",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -699,6 +712,28 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "configuration-management",
+        "title": "NIST SP 800-128, Guide for Security-Focused Configuration Management of Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-128",
+        "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "CI/CD Platform Engineer",
+        "frameworks": [
+          "SLSA supply chain levels",
+          "NIST SSDF (SP 800-218)",
+          "OIDC workload identity federation",
+          "DORA metrics"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -724,13 +759,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -749,12 +785,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/configuration-baseline",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "document",
+  "semantic_family": "configuration-baseline",
   "role_overlay": {
     "contract_id": "ci-cd-platform-engineer:4",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -763,8 +801,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "ci-cd-platform-engineer:4",
-    "source_fingerprint": "65bde2d7e94fcec3dda53ea472ea70f2831c617c35080430d34f8167e290bc02",
-    "source_hash": "15f0cc48b6970c4cec1b200ca300419aa473dc024ed46afc65792727d7a62c0b"
+    "source_fingerprint": "443d87a62b1093f9ebfe8f04d2cf659e05e7c71564ffcbcf953b620de00d0989",
+    "source_hash": "e8e40f02f8533e32ba5005e7ba8d4546d46dc47bf93624a3ad5e7888626c2f0e"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

@@ -1,7 +1,81 @@
 # Installation
 
-For format-2 deployment and fresh reconstruction of a blocked or unsupported
-engagement, follow [lifecycle recovery](../operations/lifecycle-recovery.md).
+## Install and start your first session
+
+Use an extracted JAI release package and Python 3.10 or newer. Run the following
+installation commands from the extracted package root in a **system terminal**.
+The installer uses Python's standard library; it does not install dependencies
+or change your host Python environment. Runtime contract validation additionally
+needs `jsonschema>=4.18,<5`; see [runtime dependencies](#runtime-workflows-additional-dependencies).
+
+### Step 1 — inspect the package safely
+
+=== "Linux / macOS"
+
+    ```bash
+    ./install.sh --dry-run
+    ```
+
+=== "Windows"
+
+    ```bat
+    install.cmd --dry-run
+    ```
+
+A dry run validates the package, reads the effective model-routing source and
+reports what would change without writing managed files. Inspect the report
+before installing. If it reports a conflict, inspect the affected local changes
+before choosing whether to replace them; do not retry automatically with `--force`.
+
+### Step 2 — install
+
+=== "Linux / macOS"
+
+    ```bash
+    ./install.sh
+    ```
+
+=== "Windows"
+
+    ```bat
+    install.cmd
+    ```
+
+Both provider surfaces are installed by default. Use `--claude-only` or
+`--codex-only` if you need only one. See [installer options](#installer-options)
+for managed-file controls and model configuration.
+
+### Step 3 — start a fresh provider session
+
+Open a **new** Claude Code or Codex session so it can discover the installed
+commands or skills. Run the following checks in that provider conversation,
+not in the system terminal.
+
+### Step 4 — run the demo self-check
+
+=== "Claude Code"
+
+    ```text
+    /demo check
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-demo check
+    ```
+
+The self-check uses temporary fictional fixtures to exercise the deterministic
+demo tools, then removes its temporary workspace. It does not inspect your
+project or prove that live provider workflows and every optional runtime
+capability are ready. Inspect the report before continuing with the
+[quick start](quick-start.md) to create the fictional demo inputs and complete
+a first exercise. The sections below explain runtime dependencies, optional
+tools, operator responsibilities and advanced installation choices.
+
+For installation, backup and recovery, follow
+[deployment and recovery](../operations/gen2-deployment-recovery.md). For a blocked
+or unsupported engagement, follow [lifecycle recovery](../operations/lifecycle-recovery.md).
 Installation does not import old acceptance or provision operator trust.
 
 ## Reconfigure JAI after installing additional tools
@@ -102,18 +176,34 @@ fail closed; validation is never skipped when a package is unavailable.
 
 A successful copy/install does **not** mean contract workflows are ready.
 Before running installed Agent/Policy, DCS or Artifact Contract validation,
-provide `jsonschema>=4.26,<5` in the Python interpreter used by those workflows.
+provide `jsonschema>=4.18,<5` in the Python interpreter used by those workflows.
+Version 4.18.0 introduced the reference-registry API used by the current protocol
+loader. Existing installations within the supported range need not be replaced
+solely to install JAI. Check current dependency advisories when maintaining your
+environment; a minimum supported version is not a permanent security guarantee.
+The [upstream security policy](https://github.com/python-jsonschema/jsonschema/security)
+maintains only the latest release. Review newly published advisories when
+selecting deployment dependencies; do not add network checks to each work step.
 These broader schemas still use the full JSON Schema validator and fail closed
 if it is absent. Doctor/installer discovery reports the missing runtime package
 explicitly while retaining successful installation status.
 
 Use an existing suitable OS package or Python environment. If you choose `pip`,
 install only the needed runtime package with that interpreter's
-`python -m pip install 'jsonschema>=4.26,<5'`, following its package-management
+`python -m pip install 'jsonschema>=4.18,<5'`, following its package-management
 policy. A user-owned venv is an option when system Python is externally managed;
 it is not an installation prerequisite, and unrelated packages need not migrate.
 `requirements.txt` additionally contains documentation/build dependencies and is
 not necessary just to copy/install JAI. No package is installed automatically.
+
+Expert-reference listing, validation and resolution, and reference-assisted
+content outlines additionally require `PyYAML>=6,<7` alongside
+`jsonschema>=4.18,<5` in the interpreter running those tools. For that task,
+provide both packages in your chosen environment, following its package
+management policy. This does not make PyYAML an installer prerequisite or
+require the broader qualification/test environment. See
+[expert reference documents](../using/expert-reference-documents.md) for the
+task-specific commands.
 
 Normal workflow use also needs **Claude Code and/or a supported Codex CLI**.
 Use the same intended workflow interpreter when running `configure --refresh`;
@@ -135,7 +225,7 @@ Python packages. From a terminal:
 
 ```sh
 python3 -m venv "$HOME/.venvs/jai"
-"$HOME/.venvs/jai/bin/python" -m pip install 'jsonschema>=4.26,<5'
+"$HOME/.venvs/jai/bin/python" -m pip install 'jsonschema>=4.18,<5'
 "$HOME/.venvs/jai/bin/python" "$HOME/.ai/it-role-house/tools/operator_actions.py" configure --refresh
 ```
 
@@ -223,7 +313,7 @@ virtual environment (normal user, no sudo):
 
 ```sh
 python3 -m venv build/render-venv
-build/render-venv/bin/python -m pip install -r requirements-rendering.txt "jsonschema>=4.26,<5"
+build/render-venv/bin/python -m pip install -r requirements-rendering.txt "jsonschema>=4.18,<5"
 build/render-venv/bin/python .ai/runtime/tools/operator_actions.py doctor
 ```
 
@@ -273,7 +363,7 @@ from the extracted package root:
 
 ```sh
 python3 -m venv "$HOME/.venvs/jai-render"
-"$HOME/.venvs/jai-render/bin/python" -m pip install -r requirements-rendering.txt "jsonschema>=4.26,<5"
+"$HOME/.venvs/jai-render/bin/python" -m pip install -r requirements-rendering.txt "jsonschema>=4.18,<5"
 "$HOME/.venvs/jai-render/bin/python" "$HOME/.ai/it-role-house/tools/operator_actions.py" configure --refresh
 ```
 
@@ -323,7 +413,22 @@ When formal L0 approval is required:
 
 These are **not API keys** for Codex, Claude, or an AI model provider.
 
-The installer does not automatically generate these new L0 signing keys. You need to set them up only if you intend to use signed local human-approval workflows.
+The installer offers to create an Ed25519 private key at
+`~/.local/share/jai-operator/private.pem`. Confirm the displayed `[Y/n]` prompt
+with Enter, `Y` or `yes`; `n` or end-of-input leaves the key unchanged. Existing
+keys are reported and preserved. `--force-genkey` offers replacement, still
+requiring confirmation, and retains a private backup of the previous key.
+`--force` alone never replaces a key. Dry runs and noninteractive installations
+never generate keys; rerun the installer in your host terminal to confirm creation.
+
+Newly created keys use a private directory (`0700`) and key mode `0600`;
+an existing key is preserved without permission changes. Keep it outside the
+agent sandbox; a conventional path does not itself enforce sandbox exclusion.
+Generating a key does not enroll its public key or approve a decision. When JAI
+needs a reserved L0 decision, it supplies an exact request and a host signing
+command. The existing `operator_actions.py sign` uses this default key; optional
+`--key /other/private.pem` selects another key. You still inspect the request
+and type its exact approval or denial in the host console.
 
 See [Human authority and escalation](../operations/human-authority.md) for key setup, approval, rejection, verification, troubleshooting and security limitations.
 
@@ -365,41 +470,11 @@ Autonomous privileged host and external-system mutations are not supported by th
 For deployment details, see [Sandbox prerequisites](sandbox-prerequisites.md) and [Security boundaries](../security/product-operations.md).
 
 
-## Before you install
+## How installation manages provider assets
 
-Read the installation as a **rendering step** rather than a simple file copy. The package maintains provider-neutral canonical sources under the common runtime and then renders provider-facing surfaces for Claude and Codex.
-
-## Step 1 — inspect the package safely
-
-=== "Linux / macOS"
-
-    ```bash
-    ./install.sh --dry-run
-    ```
-
-=== "Windows"
-
-    ```bat
-    install.cmd --dry-run
-    ```
-
-A dry run validates the package, reads the effective model-routing source and reports what would change without writing any managed files.
-
-## Step 2 — install
-
-=== "Linux / macOS"
-
-    ```bash
-    ./install.sh
-    ```
-
-=== "Windows"
-
-    ```bat
-    install.cmd
-    ```
-
-By default, both provider surfaces are installed.
+Installation renders provider-facing assets from the maintained, provider-neutral
+canonical sources. It installs the shared runtime and the selected Claude or
+Codex surfaces; individual Python tools do not need to be configured by hand.
 
 ### Provider-specific installation
 
@@ -421,6 +496,7 @@ By default, both provider surfaces are installed.
 | --- | --- |
 | `--dry-run` | Validate and show the file delta without writing. |
 | `--force` | Back up and replace locally modified or colliding managed files. |
+| `--force-genkey` | Offer replacement of the default operator key, with confirmation and a private backup; does not change public trust. |
 | `--claude-only` | Install/update only the Claude-facing surface plus common runtime. |
 | `--codex-only` | Install/update only the Codex-facing surface plus common runtime. |
 | `--no-claude-md` | Do not add/update the managed AI IT House block in `~/.claude/CLAUDE.md`. |
@@ -436,29 +512,12 @@ By default, both provider surfaces are installed.
 ~/.codex/skills/        Codex-native skills and compatibility surfaces
 ```
 
-The installer does not generate approval keys. Unsupported historical Fabric
-ledgers are archive-only, never executable or imported acceptance. Configure
-fresh schema-2 capability-bearing Ed25519 operator signing and
-protected public trust only when needed, following
+The operator-confirmed signing key lives separately at
+`~/.local/share/jai-operator/private.pem`; it is not managed package content and
+ordinary updates preserve it. Unsupported historical Fabric ledgers are
+archive-only, never executable or imported acceptance. Configure purpose-specific
+public enrollment separately when signed authority is needed, following
 [human authority](../operations/human-authority.md).
-
-## Step 3 — start a fresh provider session
-
-Provider-facing assets are discovered at session start. After installation, open a **new** Claude or Codex session.
-
-## Step 4 — verify the installation
-
-=== "Claude Code"
-
-    ```text
-    /demo check
-    ```
-
-=== "Codex CLI"
-
-    ```text
-    $workflow-demo check
-    ```
 
 **Optional administrator/developer diagnostics** (these are **not** required after every successful provider command):
 

@@ -82,6 +82,59 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
+    "budget_allocation": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-BUDGET-ALLOCATION",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Identify expenditure lines by service/initiative and accountable owner, distinguishing capital/operating and one-off/recurring cost where relevant; state amount, timing, funding source and material dependencies.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "budget_baseline": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-BUDGET-BASELINE",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "State financial year, currency, price/assumption basis, planning scope, accountable budget owner and reconciliation to the current approved baseline.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "budget_reconciliation": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-BUDGET-RECONCILIATION",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Reconcile allocation totals to the requested envelope and financial periods; show forecast/commitment assumptions, material variances, contingency and the decisions needed for an unfunded or over-budget plan.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
     "contract_input_1": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -370,6 +423,9 @@
       "expected_rule_ids": [
         "domain/delivery.delivery_accountability",
         "domain/delivery.delivery_dependencies",
+        "role/chief-information-officer:4.budget_allocation",
+        "role/chief-information-officer:4.budget_baseline",
+        "role/chief-information-officer:4.budget_reconciliation",
         "role/chief-information-officer:4.contract_input_1",
         "role/chief-information-officer:4.contract_input_2",
         "role/chief-information-officer:4.contract_input_3",
@@ -390,19 +446,19 @@
     {
       "id": "missing-core",
       "operation": "remove",
-      "field": "contract_input_1",
+      "field": "budget_allocation",
       "expected_rule_ids": [
-        "role/chief-information-officer:4.contract_input_1"
+        "role/chief-information-officer:4.budget_allocation"
       ],
       "expected_category": "critical-content"
     },
     {
       "id": "invalid-na",
       "operation": "mark_na",
-      "field": "contract_input_1",
+      "field": "budget_allocation",
       "reason": "Author omitted a required obligation without authority.",
       "expected_rule_ids": [
-        "role/chief-information-officer:4.contract_input_1"
+        "role/chief-information-officer:4.budget_allocation"
       ],
       "expected_category": "critical-content"
     },
@@ -457,7 +513,7 @@
     {
       "id": "excessive",
       "operation": "repeat",
-      "field": "contract_input_1",
+      "field": "budget_allocation",
       "count": 5,
       "expected_rule_ids": [
         "role/chief-information-officer:4.duplicate_claim"

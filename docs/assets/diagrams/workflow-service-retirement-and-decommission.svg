@@ -1,54 +1,80 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 919 582" role="img" aria-labelledby="t d">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e3859"/><stop offset="1" stop-color="#0b6b9a"/></linearGradient><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3ba9d6"/></marker></defs>
-<title id="t">Service retirement and decommission</title>
-<desc id="d">The component is retired without hidden dependencies, unmanaged data/access, stale records or unowned residual obligations, and the retirement benefit is measured.</desc>
-<rect width="100%" height="100%" rx="24" fill="#f6fafc" stroke="#d6e6ee"/>
-<text x="42" y="38" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="700" fill="#0b1f33">Service retirement and decommission</text>
-<path d="M 277 116.0 L 334 116.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 577 116.0 L 634 116.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 759.5 162 L 759.5 192 L 759.5 192 L 759.5 236" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 642 290.0 L 585 290.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 342 290.0 L 285 290.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 159.5 336 L 159.5 366 L 159.5 366 L 159.5 410" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 277 464.0 L 334 464.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<rect x="42" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">1 · IT Service Owner —</text>
-<text x="159.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">confirms retirement</text>
-<text x="159.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">scope, accountable owner</text>
-<text x="159.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">and business/service</text>
-<rect x="342" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">2 · Technology Lifecycle</text>
-<text x="459.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">and Decommission Manager</text>
-<text x="459.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">— runs repository impact</text>
-<text x="459.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">analysis and builds the</text>
-<rect x="642" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">3 · Data Protection</text>
-<text x="759.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Officer — advises on</text>
-<text x="759.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">retention, archive,</text>
-<text x="759.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">destruction and privacy</text>
-<rect x="642" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">4 · Identity and Access</text>
-<text x="759.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Management Engineer —</text>
-<text x="759.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">removes/transfers</text>
-<text x="759.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">identities, privileged</text>
-<rect x="342" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">5 · Change Manager —</text>
-<text x="459.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">applies the authorised</text>
-<text x="459.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">production-change path</text>
-<text x="459.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">and rollback boundary</text>
-<rect x="42" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">6 · IT Asset Manager —</text>
-<text x="159.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">reconciles CMDB/assets</text>
-<text x="159.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">and coordinates</text>
-<text x="159.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">licence/supplier closure</text>
-<rect x="42" y="418" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="431.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">7 · Architecture</text>
-<text x="159.5" y="453.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Repository and Modelling</text>
-<text x="159.5" y="475.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Lead — updates</text>
-<text x="159.5" y="497.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">repository lifecycle</text>
-<rect x="342" y="418" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="431.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">8 · Benefits Realisation</text>
-<text x="459.5" y="453.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Manager — retirement</text>
-<text x="459.5" y="475.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">cost/risk/complexity</text>
-<text x="459.5" y="497.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">benefit and records</text>
+<svg xmlns="http://www.w3.org/2000/svg" class="ai-inline-diagram-svg" viewBox="0 0 996 848" role="img" aria-labelledby="workflow-service-retirement-and-decommission-title workflow-service-retirement-and-decommission-description">
+<!-- SPDX-License-Identifier: BSD-4-Clause; Copyright (c) 2026 Leo Galambos and the Egothor team; https://www.egothor.org -->
+<title id="workflow-service-retirement-and-decommission-title">Service retirement and decommission</title>
+<desc id="workflow-service-retirement-and-decommission-description">The component is retired without hidden dependencies, unmanaged data/access, stale records or unowned residual obligations, and the retirement benefit is measured. Arrows follow the numbered stages. The table below supplies handoffs and acceptance gates.</desc>
+<defs><marker id="workflow-service-retirement-and-decommission-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#147eaa"/></marker></defs>
+<rect width="100%" height="100%" rx="16" fill="#f6fafc" stroke="#cbdde8"/>
+<text x="30" y="38" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#102d43" font-weight="700" text-anchor="start">Service retirement and decommission</text>
+<path d="M318,182 L346,182" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-service-retirement-and-decommission-arrow)"/>
+<path d="M642,182 L670,182" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-service-retirement-and-decommission-arrow)"/>
+<path d="M822,264 L822,312" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-service-retirement-and-decommission-arrow)"/>
+<path d="M678,428 L650,428" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-service-retirement-and-decommission-arrow)"/>
+<path d="M354,428 L326,428" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-service-retirement-and-decommission-arrow)"/>
+<path d="M174,534 L174,582" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-service-retirement-and-decommission-arrow)"/>
+<path d="M318,686 L346,686" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-service-retirement-and-decommission-arrow)"/>
+<path d="M642,686 L670,686" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-service-retirement-and-decommission-arrow)"/>
+<g data-step="1"><rect x="30" y="100" width="288" height="164" rx="12" fill="#145776"/>
+<text x="46" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">1. IT Service Owner</text>
+<text x="46" y="166" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">confirms retirement scope,</text>
+<text x="46" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">accountable owner and</text>
+<text x="46" y="214" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">business/ service decision</text>
+</g>
+<g data-step="2"><rect x="354" y="100" width="288" height="164" rx="12" fill="#145776"/>
+<text x="370" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">2. Technology Lifecycle and</text>
+<text x="370" y="153" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">Decommission Manager</text>
+<text x="370" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">runs repository impact</text>
+<text x="370" y="214" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">analysis and builds the</text>
+<text x="370" y="238" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">retirement/ disposition plan</text>
+</g>
+<g data-step="3"><rect x="678" y="100" width="288" height="164" rx="12" fill="#145776"/>
+<text x="694" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">3. Data Protection Officer</text>
+<text x="694" y="166" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">advises on retention, archive,</text>
+<text x="694" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">destruction and privacy</text>
+<text x="694" y="214" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">obligations where applicable</text>
+</g>
+<g data-step="4"><rect x="678" y="322" width="288" height="212" rx="12" fill="#145776"/>
+<text x="694" y="351" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">4. Change Manager</text>
+<text x="694" y="388" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">obtains the named human change</text>
+<text x="694" y="412" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">decision for the exact</text>
+<text x="694" y="436" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">retirement execution window</text>
+<text x="694" y="460" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">and rollback boundary</text>
+</g>
+<g data-step="5"><rect x="354" y="322" width="288" height="212" rx="12" fill="#145776"/>
+<text x="370" y="351" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">5. Identity and Access</text>
+<text x="370" y="375" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">Management Engineer</text>
+<text x="370" y="412" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">transfers or revokes approved</text>
+<text x="370" y="436" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">nonessential access and</text>
+<text x="370" y="460" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">prepares final credential</text>
+<text x="370" y="484" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">closure with the shutdown</text>
+<text x="370" y="508" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">operator</text>
+</g>
+<g data-step="6"><rect x="30" y="322" width="288" height="212" rx="12" fill="#145776"/>
+<text x="46" y="351" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">6. Site Reliability Engineer</text>
+<text x="46" y="388" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">executes the approved service</text>
+<text x="46" y="412" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">or platform shutdown and</text>
+<text x="46" y="436" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">coordinates final credential</text>
+<text x="46" y="460" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">closure with the assigned IAM</text>
+<text x="46" y="484" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">actor</text>
+</g>
+<g data-step="7"><rect x="30" y="592" width="288" height="188" rx="12" fill="#145776"/>
+<text x="46" y="621" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">7. IT Asset Manager</text>
+<text x="46" y="658" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">reconciles CMDB/ assets and</text>
+<text x="46" y="682" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">coordinates licence/ supplier</text>
+<text x="46" y="706" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">closure evidence</text>
+</g>
+<g data-step="8"><rect x="354" y="592" width="288" height="188" rx="12" fill="#145776"/>
+<text x="370" y="621" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">8. Architecture Repository</text>
+<text x="370" y="645" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">and Modelling Lead</text>
+<text x="370" y="682" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">updates repository lifecycle</text>
+<text x="370" y="706" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">state, removes/ retains views</text>
+<text x="370" y="730" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">appropriately and records</text>
+<text x="370" y="754" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">residual dependencies</text>
+</g>
+<g data-step="9"><rect x="678" y="592" width="288" height="188" rx="12" fill="#145776"/>
+<text x="694" y="621" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">9. Benefits Realisation</text>
+<text x="694" y="645" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">Manager</text>
+<text x="694" y="682" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">measures retirement cost/</text>
+<text x="694" y="706" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">risk/ complexity benefit and</text>
+<text x="694" y="730" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">records variance</text>
+</g>
 </svg>

@@ -103,7 +103,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | --- | --- | --- | --- |
 | 1 | Cross-team technical strategy | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 2 | architecture decision records | Model in the EA tool plus a published view set | Every element traces to a driver or a quality-attribute target; no orphan elements |
-| 3 | prototypes that settle contested questions | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 3 | prototypes that settle contested questions | Reproducible prototype and evaluation report | Defines contested hypothesis, bounded non-production scope, reproducible inputs/execution and observed results with limitations |
 | 4 | technical standards adopted across teams | Controlled document referencing the parent policy | Requirements are specific, measurable and technology-explicit |
 
 ## 7. Output gates (blocking)
@@ -142,7 +142,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Cross-team technical strategy has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Cross-team technical strategy") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

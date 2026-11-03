@@ -231,7 +231,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Application portfolio health and risk dashboard', provide verifiable evidence satisfying: Metrics have defined sources and thresholds; exceptions and stale/incomplete data are visible rather than silently scored.. Required delivery form: Dashboard with business fit, technical fitness, lifecycle, cost, risk, duplication and progress metrics.",
+        "criterion_under_review": "For the specific output 'Application portfolio health and risk dashboard', provide verifiable evidence satisfying: Metrics have defined sources and thresholds; exceptions and stale/incomplete data are visible rather than silently scored. Required delivery form: Dashboard with business fit, technical fitness, lifecycle, cost, risk, duplication and progress metrics.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

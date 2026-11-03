@@ -10,12 +10,74 @@ In Claude or Codex, specify the audience, exact decision, source evidence, manda
 
 ## Deliverable journey
 
-1. identify the required outcome;
-2. select the role(s) or workflow;
-3. build or analyse the semantic content;
-4. review the result;
-5. project it into the target publication archetype;
-6. render and visually check the final file.
+1. Identify the required outcome, intended use, recipient and relevant boundaries.
+2. Select appropriate [roles](../reference/roles.md) or a [workflow](../reference/workflows.md).
+3. Follow the output link to its exact [content contract](../reference/output-contracts/index.md). Read its selected shared foundations and overlays together with the local requirements.
+4. Establish the required inputs and evidence. Distinguish required content, conditionally required content, optional additions and prohibited information. Unknown applicability remains unresolved.
+5. Produce the actual work product and request independent review against that contract. Correct findings or escalate a deficiency to the owner entitled to resolve it.
+6. For a document or audience-specific rendition, project the reviewed semantic content, render the requested formats and inspect their actual bytes. For code, configuration, tests or operational work, use the corresponding executable or operational checks; a rendered description cannot substitute for the work.
+7. Submit the exact result and supporting evidence to its receiving handoff. Obtain any separately reserved acceptance or release decision before relying on the result for that use.
+
+These steps explain the reader's path through existing controls. A contract
+listed as proposed/advisory does not become an approved external standard merely
+because it is selected, and successful validation does not manufacture human
+authority.
+
+## Worked example: a rollback procedure for a release
+
+This is a fictional teaching scenario. It describes expected work and decisions,
+not an executed deployment, an actual review receipt or release approval.
+
+**Request.** A warehouse team wants a rollback procedure for a read-only stock
+dashboard. The change replaces the web application image without changing the
+database schema. The request names the target release, environment, receiving
+operations team and evidence expected from a rehearsal.
+
+**Select the output.** The Release Engineer's
+[rollback procedure and evidence of test](../reference/output-contracts/role-release-engineer.md#output-release-engineer-4)
+has contract ID `release-engineer:4`. Its page links the applicable foundations,
+including the [runbook requirements](../reference/output-contracts/spec-type-runbook.md).
+This supplies a precise starting point instead of a request for a generic
+"deployment document".
+
+| Content class | What the example must establish |
+| --- | --- |
+| Required | Trigger, exact release/environment, operator prerequisites, ordered steps and expected observations, failure/stop conditions, safe recovery, and actual rehearsal evidence with its limits |
+| Conditional | Whether personal data is processed and whether regulatory requirements apply; a true condition requires the corresponding analysis, while an unknown condition remains a gap |
+| Optional | A supporting annotated rehearsal transcript when it helps the recipient understand a specific step or conclusion |
+| Prohibited | Credentials, invented observations or an assertion that a planned rehearsal already passed |
+
+**Prepare and review.** The author produces a draft with correct steps but omits
+what to do when the health check fails. The reviewer locates that omission
+against the recovery requirement and returns `rework_required`. The reviewer
+does not edit the procedure. The author adds a safe-state branch, escalation
+contact and evidence from the required rehearsal before asking for a new review.
+If no rehearsal has occurred, the evidence remains missing; clearer prose alone
+cannot close that finding.
+
+**Resolve a condition.** Suppose the input description does not say whether
+operational logs contain personal identifiers. The author requests clarification
+from the source owner and keeps privacy applicability unresolved. In the
+fictional revised scope, the owner supplies a reviewed data-flow description and
+log configuration showing that this dashboard and its rollback use anonymous
+aggregate stock counts without personal identifiers. That explicit scope can
+support a false privacy condition; merely omitting customer names from the
+draft could not. A later input change requires reassessment of affected content.
+
+**Hand over the result.** The
+[idea-to-production workflow](../workflow-library/idea-to-production.md#workflow-steps-and-gates)
+uses this contract at its release preparation stage. The receiving handoff
+includes the exact procedure, release manifest and test evidence; its gate
+requires the manifest to state which artefact versions ship where. The procedure
+does not satisfy that complete handoff on its own. A supported local review,
+receiving acceptance and any reserved human decision remain distinct. JAI can
+prepare the exact release request; only the entitled human can sign it when
+required.
+
+Markdown is sufficient for this procedure unless the recipient needs another
+rendition. Asking for a PDF does not add missing recovery behaviour, execution
+evidence or permission to deploy. Conversely, this documentary example does not
+require every code or configuration output to pass through a document renderer.
 
 ## Typical deliverable families
 

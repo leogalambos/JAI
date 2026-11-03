@@ -231,7 +231,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Intake-to-portfolio commitment roadmap', provide verifiable evidence satisfying: Portfolio handoff is explicit; no item is presented as committed before funding/capacity authority has acted.. Required delivery form: Roadmap showing qualified demand, discovery/estimate gates, capacity/funding dependencies and target commitment windows.",
+        "criterion_under_review": "For the specific output 'Intake-to-portfolio commitment roadmap', provide verifiable evidence satisfying: Portfolio handoff is explicit; no item is presented as committed before funding/capacity authority has acted. Required delivery form: Roadmap showing qualified demand, discovery/estimate gates, capacity/funding dependencies and target commitment windows.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

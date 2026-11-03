@@ -1,78 +1,85 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 919 756" role="img" aria-labelledby="t d">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e3859"/><stop offset="1" stop-color="#0b6b9a"/></linearGradient><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3ba9d6"/></marker></defs>
-<title id="t">New service onboarding</title>
-<desc id="d">A service with codified infrastructure, a pipeline, environments, observability and an on-call owner.</desc>
-<rect width="100%" height="100%" rx="24" fill="#f6fafc" stroke="#d6e6ee"/>
-<text x="42" y="38" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="700" fill="#0b1f33">New service onboarding</text>
-<path d="M 277 116.0 L 334 116.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 577 116.0 L 634 116.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 759.5 162 L 759.5 192 L 759.5 192 L 759.5 236" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 642 290.0 L 585 290.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 342 290.0 L 285 290.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 159.5 336 L 159.5 366 L 159.5 366 L 159.5 410" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 277 464.0 L 334 464.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 577 464.0 L 634 464.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 759.5 510 L 759.5 540 L 759.5 540 L 759.5 584" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 642 638.0 L 585 638.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 342 638.0 L 285 638.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<rect x="42" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">1 · Cloud Architect —</text>
-<text x="159.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">sets the landing zone,</text>
-<text x="159.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">resilience and residency</text>
-<text x="159.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">constraints</text>
-<rect x="342" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">2 · Infrastructure as</text>
-<text x="459.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Code Engineer — codifies</text>
-<text x="459.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">the infrastructure and</text>
-<text x="459.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">its guardrails</text>
-<rect x="642" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">3 · Container Platform</text>
-<text x="759.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Engineer — establishes</text>
-<text x="759.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">the image build chain</text>
-<text x="759.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">and base image lineage</text>
-<rect x="642" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">4 · CI/CD Platform</text>
-<text x="759.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Engineer — wires the</text>
-<text x="759.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">service onto the shared</text>
-<text x="759.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">pipeline platform</text>
-<rect x="342" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">5 · Secrets and</text>
-<text x="459.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Configuration Management</text>
-<text x="459.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Engineer — issues the</text>
-<text x="459.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">service&#x27;s credentials</text>
-<rect x="42" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">6 · Environment Manager</text>
-<text x="159.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">— provisions the</text>
-<text x="159.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">non-production</text>
-<text x="159.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">environments and their</text>
-<rect x="42" y="418" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="431.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">7 · GitOps and</text>
-<text x="159.5" y="453.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Continuous Delivery</text>
-<text x="159.5" y="475.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Engineer — promotion and</text>
-<text x="159.5" y="497.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">rollback across</text>
-<rect x="342" y="418" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="431.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">8 · Observability</text>
-<text x="459.5" y="453.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Engineer — instruments</text>
-<text x="459.5" y="475.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">the service against its</text>
-<text x="459.5" y="497.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">objectives</text>
-<rect x="642" y="418" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="431.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">9 · Site Reliability</text>
-<text x="759.5" y="453.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Engineer — agrees the</text>
-<text x="759.5" y="475.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">service objective and</text>
-<text x="759.5" y="497.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">the error budget policy</text>
-<rect x="642" y="592" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="605.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">10 · Application Support</text>
-<text x="759.5" y="627.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Analyst — the service</text>
-<text x="759.5" y="649.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">into support with a</text>
-<text x="759.5" y="671.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">runbook</text>
-<rect x="342" y="592" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="605.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">11 · Configuration</text>
-<text x="459.5" y="627.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Manager — records the</text>
-<text x="459.5" y="649.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">service, its</text>
-<text x="459.5" y="671.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">relationships and its</text>
-<rect x="42" y="592" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="605.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">12 · IT Service Owner —</text>
-<text x="159.5" y="627.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">takes end-to-end</text>
-<text x="159.5" y="649.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">ownership of value, cost</text>
-<text x="159.5" y="671.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">and risk</text>
+<svg xmlns="http://www.w3.org/2000/svg" class="ai-inline-diagram-svg" viewBox="0 0 996 902" role="img" aria-labelledby="workflow-new-service-onboarding-title workflow-new-service-onboarding-description">
+<!-- SPDX-License-Identifier: BSD-4-Clause; Copyright (c) 2026 Leo Galambos and the Egothor team; https://www.egothor.org -->
+<title id="workflow-new-service-onboarding-title">New service onboarding</title>
+<desc id="workflow-new-service-onboarding-description">A service with codified infrastructure, a pipeline, environments, observability and an on-call owner. Arrows follow the numbered stages. The table below supplies handoffs and acceptance gates.</desc>
+<defs><marker id="workflow-new-service-onboarding-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#147eaa"/></marker></defs>
+<rect width="100%" height="100%" rx="16" fill="#f6fafc" stroke="#cbdde8"/>
+<text x="30" y="38" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#102d43" font-weight="700" text-anchor="start">New service onboarding</text>
+<path d="M318,170 L346,170" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-new-service-onboarding-arrow)"/>
+<path d="M642,170 L670,170" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-new-service-onboarding-arrow)"/>
+<path d="M822,240 L822,288" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-new-service-onboarding-arrow)"/>
+<path d="M678,368 L650,368" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-new-service-onboarding-arrow)"/>
+<path d="M354,368 L326,368" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-new-service-onboarding-arrow)"/>
+<path d="M174,438 L174,486" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-new-service-onboarding-arrow)"/>
+<path d="M318,566 L346,566" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-new-service-onboarding-arrow)"/>
+<path d="M642,566 L670,566" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-new-service-onboarding-arrow)"/>
+<path d="M822,636 L822,684" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-new-service-onboarding-arrow)"/>
+<path d="M678,764 L650,764" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-new-service-onboarding-arrow)"/>
+<path d="M354,764 L326,764" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-new-service-onboarding-arrow)"/>
+<g data-step="1"><rect x="30" y="100" width="288" height="140" rx="12" fill="#145776"/>
+<text x="46" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">1. Cloud Architect</text>
+<text x="46" y="166" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">sets the landing zone,</text>
+<text x="46" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">resilience and residency</text>
+<text x="46" y="214" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">constraints</text>
+</g>
+<g data-step="2"><rect x="354" y="100" width="288" height="140" rx="12" fill="#145776"/>
+<text x="370" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">2. Infrastructure as Code</text>
+<text x="370" y="153" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">Engineer</text>
+<text x="370" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">codifies the infrastructure</text>
+<text x="370" y="214" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">and its guardrails</text>
+</g>
+<g data-step="3"><rect x="678" y="100" width="288" height="140" rx="12" fill="#145776"/>
+<text x="694" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">3. Container Platform</text>
+<text x="694" y="153" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">Engineer</text>
+<text x="694" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">establishes the image build</text>
+<text x="694" y="214" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">chain and base image lineage</text>
+</g>
+<g data-step="4"><rect x="678" y="298" width="288" height="140" rx="12" fill="#145776"/>
+<text x="694" y="327" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">4. CI/ CD Platform Engineer</text>
+<text x="694" y="364" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">wires the service onto the</text>
+<text x="694" y="388" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">shared pipeline platform</text>
+</g>
+<g data-step="5"><rect x="354" y="298" width="288" height="140" rx="12" fill="#145776"/>
+<text x="370" y="327" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">5. Secrets and Configuration</text>
+<text x="370" y="351" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">Management Engineer</text>
+<text x="370" y="388" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">issues the service&#x27;s</text>
+<text x="370" y="412" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">credentials with a lifecycle</text>
+</g>
+<g data-step="6"><rect x="30" y="298" width="288" height="140" rx="12" fill="#145776"/>
+<text x="46" y="327" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">6. Environment Manager</text>
+<text x="46" y="364" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">provisions the non-production</text>
+<text x="46" y="388" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">environments and their data</text>
+</g>
+<g data-step="7"><rect x="30" y="496" width="288" height="140" rx="12" fill="#145776"/>
+<text x="46" y="525" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">7. GitOps and Continuous</text>
+<text x="46" y="549" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">Delivery Engineer</text>
+<text x="46" y="586" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">defines promotion and rollback</text>
+<text x="46" y="610" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">across environments</text>
+</g>
+<g data-step="8"><rect x="354" y="496" width="288" height="140" rx="12" fill="#145776"/>
+<text x="370" y="525" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">8. Observability Engineer</text>
+<text x="370" y="562" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">instruments the service</text>
+<text x="370" y="586" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">against its objectives</text>
+</g>
+<g data-step="9"><rect x="678" y="496" width="288" height="140" rx="12" fill="#145776"/>
+<text x="694" y="525" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">9. Site Reliability Engineer</text>
+<text x="694" y="562" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">agrees the service objective</text>
+<text x="694" y="586" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">and the error budget policy</text>
+</g>
+<g data-step="10"><rect x="678" y="694" width="288" height="140" rx="12" fill="#145776"/>
+<text x="694" y="723" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">10. Application Support</text>
+<text x="694" y="747" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">Analyst</text>
+<text x="694" y="784" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">accepts the service into</text>
+<text x="694" y="808" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">support with a runbook</text>
+</g>
+<g data-step="11"><rect x="354" y="694" width="288" height="140" rx="12" fill="#145776"/>
+<text x="370" y="723" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">11. Configuration Manager</text>
+<text x="370" y="760" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">records the service, its</text>
+<text x="370" y="784" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">relationships and its owner</text>
+</g>
+<g data-step="12"><rect x="30" y="694" width="288" height="140" rx="12" fill="#145776"/>
+<text x="46" y="723" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">12. IT Service Owner</text>
+<text x="46" y="760" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">takes end-to-end ownership of</text>
+<text x="46" y="784" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">value, cost and risk</text>
+</g>
 </svg>

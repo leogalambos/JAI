@@ -9,6 +9,8 @@ import json
 import re
 import tempfile
 import unittest
+
+import yaml
 from pathlib import Path
 from types import SimpleNamespace
 from unittest.mock import patch
@@ -41,6 +43,19 @@ class CanonicalNavigationTests(unittest.TestCase):
         self.assertNotIn(links.HOME_NAV_TOKEN, text)
         self.assertIn('aria-current="page"', text)
         self.assertIn('https://github.com/team/JAI/releases', text)
+
+    def test_home_collapses_groups_without_hiding_any_canonical_links(self):
+        home = page('Home', '')
+        install = page('Install', 'start/install/')
+        learn = page('Learn', 'using/learn/')
+        tree = SimpleNamespace(items=[home, section('Start', install), section('Use', learn)])
+        rendered = links.render_navigation(tree, home)
+        self.assertNotIn('<details open>', rendered)
+        self.assertEqual(rendered.count('<details>'), 2)
+        self.assertIn('href="start/install/"', rendered)
+        self.assertIn('href="using/learn/"', rendered)
+        self.assertEqual(rendered.count('aria-current="page"'), 1)
+        self.assertIn('<details open><summary>Use</summary>', links.render_navigation(tree, learn))
 
     def test_relative_urls_work_for_nested_pages_and_non_directory_outputs(self):
         current = page('Current', 'guide/current/index.html')
@@ -118,7 +133,7 @@ class CanonicalNavigationTests(unittest.TestCase):
                 self.assertIn('href="second/"', home)
                 self.assertNotIn(links.HOME_NAV_TOKEN, home)
                 first_html = (root / 'site/first/index.html').read_text()
-                self.assertIn('Registered qualification checks', first_html)
+                self.assertNotIn('Registered qualification checks', first_html)
                 self.assertIn('commercial-coordinator', first_html)
                 self.assertNotIn(links.RELEASE_INVENTORY_TOKEN, first_html)
                 footer = first_html.split('<nav class="md-footer__inner', 1)[1].split('</nav>', 1)[0]
@@ -141,7 +156,7 @@ class CanonicalNavigationTests(unittest.TestCase):
             rendered = links.render_release_inventory(root)
             self.assertIn('| Agent procedures | ' + str(manifest['counts']['agents']) + ' |', rendered)
             self.assertIn('`new-agent`', rendered)
-            self.assertIn('Registered qualification checks', rendered)
+            self.assertNotIn('Registered qualification checks', rendered)
             manifest['agents'].remove('new-agent')
             manifest['agents'][0] = 'renamed-agent'
             manifest['counts']['agents'] -= 1
@@ -178,8 +193,21 @@ class CanonicalNavigationTests(unittest.TestCase):
 
     def test_every_document_has_one_canonical_navigation_entry_and_method_precedes_cases(self):
         config = (ROOT / 'mkdocs.yml').read_text()
-        nav = config.split('\nnav:\n', 1)[1]
-        paths = re.findall(r': ([^\n]+\.md)$', nav, re.M)
+        nav = yaml.safe_load(config.split('\nnav:\n', 1)[1])
+        paths = []
+
+        def collect(entries):
+            for entry in entries:
+                self.assertIsInstance(entry, dict)
+                self.assertEqual(len(entry), 1)
+                target = next(iter(entry.values()))
+                if isinstance(target, list):
+                    collect(target)
+                else:
+                    self.assertIsInstance(target, str)
+                    paths.append(target)
+
+        collect(nav)
         documents = {str(p.relative_to(ROOT / 'docs')) for p in (ROOT / 'docs').rglob('*.md')}
         self.assertNotIn('    - navigation.instant', config)
         self.assertIn('    - navigation.footer', config)
@@ -272,3 +300,84 @@ class CanonicalRoleCoverageTests(unittest.TestCase):
             rows[2]['slug'] = 'one'
             registry.write_text(json.dumps({'count': 3, 'roles': rows}))
             with self.assertRaises(ValueError): links.render_role_coverage(root)
+
+
+def test_public_pages_do_not_expose_empty_front_matter_as_separators():
+    """Metadata removal must not leave visible separators above page content."""
+    for path in (ROOT / 'docs').rglob('*.md'):
+        source = path.read_text(encoding='utf-8')
+        assert not re.match(r'\A---\s*\n---(?:\n|$)', source), path
+
+
+def test_public_catalogues_describe_all_canonical_deliverables_and_handoffs():
+    """Every retained profession and workflow has concrete, discoverable outputs."""
+    roles = json.loads((ROOT / '.ai/runtime/roles.json').read_text())['roles']
+    role_page = (ROOT / 'docs/reference/roles.md').read_text()
+    for role in roles:
+        row = next(line for line in role_page.splitlines()
+                   if line.startswith(f"| {role['name']} |"))
+        for output in role['primary_deliverables']:
+            assert output.replace('|', '&#124;').replace('\n', ' ') in row
+    workflows = json.loads((ROOT / '.ai/runtime/workflows.json').read_text())['workflows']
+    workflow_page = (ROOT / 'docs/reference/workflows.md').read_text()
+    for workflow in workflows:
+        section = workflow_page.split('## ' + workflow['title'] + '\n', 1)[1].split('\n## ', 1)[0]
+        assert workflow['trigger'] in section
+        assert workflow['outcome'] in section
+        assert f"../workflow-library/{workflow['key']}.md#workflow-steps-and-gates" in section
+        for step in workflow['steps']:
+            assert f"**{step['role']}:** {step['hands_over']}" in section
+
+
+def test_homepage_workflow_coverage_tracks_canonical_counts_and_rejects_invalid_identity(tmp_path):
+    target = tmp_path / '.ai/runtime/workflows.json'
+    target.parent.mkdir(parents=True)
+    target.write_text(json.dumps({'count': 2, 'workflows': [{'key': 'first'}, {'key': 'second'}]}))
+    assert links.render_workflow_coverage(tmp_path) == '2 enterprise workflow chains'
+    target.write_text(json.dumps({'count': 1, 'workflows': [{'key': 'first'}]}))
+    assert links.render_workflow_coverage(tmp_path) == '1 enterprise workflow chain'
+    target.write_text(json.dumps({'count': 0, 'workflows': []}))
+    assert links.render_workflow_coverage(tmp_path) == '0 enterprise workflow chains'
+    for invalid in ([], {'count': 2, 'workflows': [{'key': 'same'}, {'key': 'same'}]},
+                    {'count': 1, 'workflows': []}, {'count': 1, 'workflows': [{'key': ''}]},
+                    {'count': True, 'workflows': [{'key': 'first'}]}):
+        target.write_text(json.dumps(invalid))
+        with unittest.TestCase().assertRaises(ValueError):
+            links.render_workflow_coverage(tmp_path)
+    target.unlink()
+    with unittest.TestCase().assertRaises(OSError):
+        links.render_workflow_coverage(tmp_path)
+
+
+def test_homepage_offers_contextual_catalogues_and_beginner_routes_without_link_pile():
+    source = (ROOT / 'docs/index.md').read_text()
+    assert source.count(links.HOME_NAV_TOKEN) == 1
+    assert 'assets/images/hero-scene.jpg' in source
+    assert 'Turn complexity into<br><span>justifiable progress.</span>' in source
+    assert 'https://doi.org/10.13140/RG.2.2.29244.19843' in source
+    assert 'Human Authority &amp; Workflows' not in source
+    assert 'ai-home-learning-links' not in source
+    cards = re.findall(r'<article class="ai-home-path-card">(.*?)</article>', source, re.S)
+    assert len(cards) == 3
+    for card, target in zip(cards, ('reference/roles/', 'reference/workflows/', 'using/layered-engagement/')):
+        assert f'href="{target}"' in card
+        assert 'aria-hidden="true"' in card
+        assert '<h3>' in card and '<p>' in card
+    assert 'Trace requirements from top to bottom:' in cards[2]
+    assert 'business intent, design, implementation and evidence' in cards[2]
+    assert len(re.findall(r'class="ai-matrix-cell(?: ai-matrix-highlight)?"', cards[2])) == 36
+    assert 'href="using/demo-estate/"' in source
+    assert 'href="using/experimental-hint/"' in source
+    assert 'Experimental hint' in source
+    assert 'Open source' in source
+    assert 'href="about/license-attribution/"' in source
+    assert 'href="reference/output-contracts/"' in source
+    assert 'href="operations/human-authority/"' in source
+    with unittest.TestCase().assertRaises(ValueError):
+        links.expand_homepage(source.replace('href="https://github.com/__JAI_GITHUB_REPOSITORY__"', 'href="missing/"'), 'team/JAI')
+    links.on_nav(SimpleNamespace(items=[page('Home', '')]), config=None, files=None)
+    with patch.object(links, 'resolved_repository', return_value='team/JAI'):
+        rendered = links.on_page_markdown(source, page=page('Home', ''), config=None, files=None)
+    assert '{{ JAI_WORKFLOW_COVERAGE }}' not in rendered
+    assert links.render_workflow_coverage(ROOT) in rendered
+    assert 'href="https://github.com/team/JAI"' in rendered

@@ -1,37 +1,120 @@
 # AI IT House — installed CLI guide
 
-## Lifecycle updates and recovery
+## Current governed workflow and recovery
 
-Fresh engagements use format 2. Unsupported ledgers are archive-only:
-reconstruct from maintained public specifications with a new `init`,
-fresh evidence and new human acceptance. Never execute an old ledger
-or import its authority acts.
+Use `/layered <request>` in Claude or `$workflow-layered <request>` in Codex for
+native governed work, and `/fabric-report` or `$workflow-fabric-report` for an
+independent audit. Bounded ordinary analysis, development, research and domain
+work retain their existing commands; they do not require a six-layer engagement
+unless the requested result needs that governed workflow. The parent handles
+runtime transport and exact references internally. Routine users do not prepare
+bootstrap JSON, test workers or host configuration files.
 
-Prepare an exact update with
-`fabric.py lifecycle-plan ENG --spec FILE --out PLAN`;
-inspect with `fabric.py lifecycle-status ENG --scope default`.
-An external human with explicit `lifecycle-update` capability signs
-the reviewed plan and performs
-`fabric.py lifecycle-apply --request PLAN --receipt RECEIPT`.
-Agents cannot perform protected human acts. Trust separately grants
-`accept`; update approval grants no acceptance or release. Obtain
-fresh verification and independent review after an update, then
-request new exact-output acceptance. Reinstatement never revives
-cancelled conclusions or proofs. Synthetic gate checks are not
-human acceptance.
-Installed tools live under `~/.ai/it-role-house/fabric/` and
-`~/.ai/it-role-house/tools/`. See the release source's
-`docs/operations/lifecycle-recovery.md`
-for deployment and command details.
+Current source engagements use journal format 9. Earlier formats are rejected and
+remain immutable archives; start a separate engagement without importing acceptance.
+Validation files are retained in the engagement's content-addressed blob directory;
+the journal stores their exact identities rather than whole-file copies. Back up
+the engagement directory, including its journal, blobs and enrollment/locator files.
+Authored materials also have immutable blob identities linked to their task,
+owner and version. A separate named folder is not created automatically for each
+agent; human-readable exports use the explicitly configured output destination.
+The native bridge and retained local-process tools share the same governed runtime.
+Earlier evidence remains a historical account within its recorded scope; it does
+not verify the changed orchestration or replace native qualification.
+The runtime is the sole journal writer within the
+Codex/operator-controlled workspace. Ordinary bootstrap, work, control and queries
+require no signing key or proof. Only L0 signs explicit reserved decisions, using
+the external companion; its private key remains outside entity sandboxes.
+The host installer offers `[Y/n]` creation of
+`~/.local/share/jai-operator/private.pem`; existing keys are preserved unless
+`--force-genkey` is explicitly used and confirmed. Dry runs and noninteractive
+installs never create keys. Replacement keeps a private backup and requires
+separate public enrollment before the new key can authorize decisions.
+The human runs `operator_actions.py sign REQUEST --workspace WORKSPACE` in the
+host terminal; it uses that default key, or `--key /other/private.pem`.
+Creation is not approval: signing still requires inspection and exact
+`APPROVE REQUEST_ID` or `DENY REQUEST_ID` confirmation. Never send private keys
+to an agent.
+Older journals remain historical archives and cannot
+transfer PASS, human acceptance or release permission.
 
-Ordinary completion uses explicit relevant contract obligations and
-exact input bindings. Register fresh byte-bound inputs with
-`fabric.py record-input ENG --logical-id ID --kind source --file FILE`.
-The same command recaptures an identical current pending replacement
-after its signed selection; it cannot replace a slot or revive a
-cancelled version. Fixed routine verification grants no L0 rights.
-See `docs/operations/normal-layered-workflow.md` for a complete
-six-layer CLI example through preacceptance eligibility.
+An external task addresses a layer as a whole. Its local entities formulate the
+questions and choose their own specialties/models from global availability.
+Every layer intrinsically reads the full common catalogue and instructions;
+selected prompt text is a context-size optimization, not a catalogue ACL.
+Selection and work are separate phases. An actual captured professional/model
+plan can serve unchanged assignments across continuations; every invocation
+receives fresh bounded authority. No neighbor chooses local staff or method.
+The owner may declare an explicit procedure for ordinary structural progression.
+The controller records those steps under that procedure, while substantive
+content, findings and verdicts still come from the responsible professionals.
+
+Native workers return compact role-specific semantics. The host constructs
+record envelopes and exact references. Compatible work in the same layer and
+responsibility can share one physical invocation, including singleton batches;
+author and reviewer conversations remain separate. Persisted preparation supports
+restart and reconciliation without repeating uncertain calls. See
+[native execution](../architecture/gen2-native-execution-bridge.md) for the
+relationship between issued identities, actual captures and durable continuation.
+
+The following is a maintainer reference for the retained local-process route,
+not the native command's user interface. It requires an explicitly configured
+process worker and chooser:
+
+```sh
+python3 ~/.ai/it-role-house/tools/governed_workflow.py \
+  --store /operator/engagement-id.jsonl --engagement engagement-id \
+  --config /operator/host-config.json \
+  run /operator/assignment-ref.json --phase selection
+```
+
+Save the intrinsic choice VersionRef returned by the actual completion. A
+subsequent `run ... --phase work --selection /operator/choice-ref.json` issues a
+fresh work context. Other commands are `entry`, `preview`, `local-entry` and
+`status`, `ready`, bounded `step`/`drive --max-steps N`, `handling-entry`
+and `attempt-status`. `prepare-decision` and `submit-decision` exchange exact
+operator control intents and actual external proofs; they never sign human
+consent. `run`, `ready`, `step` and `drive` may bind an existing signed grant with
+`--speculation`. The source manual's `docs/operations/normal-layered-workflow.md` gives
+their exact arguments and actor boundaries; `docs/operations/lifecycle-recovery.md`
+explains current-format startup and blocked-engagement recovery.
+
+Ordinary processing has no mandatory whole-task elapsed-time deadline. A ready
+local triad uses a configurable iteration window, default ten minutes, shared
+across its actual setter, author and reviewer work. Queueing and a coordinator's
+wait for other cells do not consume a running work window. Restart preserves an
+active window; it never silently grants another ten minutes. Three unsuccessful
+semantic reworks lead to the normal escalation process.
+
+If a local window expires, JAI pauses that unit and reports its iteration,
+reworks used, interrupted stage, completed progress and pending physical status.
+The operator may explicitly grant additional time or stop the unit or task.
+Additional time permits fresh bounded grants for unfinished work; it does not
+revive expired grants or change criteria, rework counts, acceptance or release.
+An overall task stop remains available when the operator explicitly requests it.
+
+Authors and same-layer reviewers remain separate. A complete-layer bundle needs
+six current selected answers and independent integration review. Actual execution,
+professional support, human acceptance and release permission are separate facts.
+Changed inputs require owner-authorized version selection and fresh applicable
+verification; no force option or historical PASS fallback exists.
+
+For a selected SABSA content profile, `content-status /operator/output-use.json
+--audience private` assesses exact current content. `content-views` takes the same
+arguments and produces deterministic JSON/Markdown views. The input file is an
+exact output UsePoint (`ref` and `use_scope`), not a latest-by-name selector.
+`--audience public` applies confidentiality and publication restrictions; it grants
+no release permission. The source manual's `docs/operations/sabsa-content.md`
+explains the bounded content claim, business traces, operational observations,
+gaps and independent review. Local construction does not wait for future-layer
+content; the whole claim requires the complete current justification.
+
+The source `/layered` and `/fabric-report` entries use the Gen2 native workflow
+and read-only audit interfaces. Installed availability depends on activating the
+reviewed provider projections; source qualification does not prove deployment.
+Archived Gen1 graph commands are not execution fallbacks. Domain workflows remain
+reusable methods, not proof of confined native Codex/Claude execution. Bounded
+coordination does not itself author domain content or grant acceptance and release.
 
 ## Refresh optional supporting tools
 
@@ -53,7 +136,6 @@ AVAILABLE is not functional readiness or sandbox permission. Missing
 optional tools do not prevent core workflows. Host tasks are category C,
 not formal L0.
 
-Owner: JAI maintainers · Last reviewed: 2026-10-20
 
 This guide explains the workflows exposed by the library to Claude Code
 and Codex CLI, with demos you can run in a few minutes. In Claude Code
@@ -129,8 +211,9 @@ installed offline runtime.
 ## 1. Before you start
 
 1. **Install** the package (`install.cmd` on Windows, `bash install.sh`
-elsewhere) and **start a new Claude Code or Codex CLI session**. Nothing
-else needs setting up.
+elsewhere) and **start a new Claude Code or Codex CLI session**. Check the
+[task-specific prerequisites](../getting-started/sandbox-prerequisites.md) before
+using optional renderers, integrations or project build tools.
 2. **Create the demo projects:** in Claude Code use `/demo setup`; in
 Codex invoke `$workflow-demo` with `setup`. They are copied to
 `~/it-role-demo/` (on Windows, `C:\Users\<you>\it-role-demo\`):
@@ -148,8 +231,10 @@ Anywhere else, give full paths.
 **How to read the demos.** Each command's *Try it* gives you the exact
 text to type. *What to expect* describes a good result. For the review
 demos it also lists the flaws that were planted — the answer key. The
-reviewers never see this guide, so if they find the flaws, they found
-them in the code. A good review finds most of them, and may find others;
+review exercise should exclude this answer key from the reviewer context.
+Check the actual invocation and supplied context before claiming independence;
+a documented procedure alone does not prove isolation. A good review finds
+most seeded defects and may find others;
 a review that misses the high-severity ones is worth reporting.
 
 **Two things you will see often.**
@@ -463,7 +548,7 @@ shows you the file and offers to tailor it.
 Accept the offer to create the file. Then add a criterion of your own,
 either by asking Claude ("add a criterion C9 on money handling: amounts
 must be integer cents or Decimal, never float") or by editing
-`invoice-service/.claude/review-criteria.md` yourself:
+`invoice-service/.ai/review-criteria.md` yourself:
 
 ```markdown
 ## C9 Money handling
@@ -609,7 +694,7 @@ surfaced, `requests` upgraded, a docstring on every public function
 stating its contract, and tests: unit tests for the API and the
 arithmetic, including the discount boundary, deletion by a non-owner and
 an empty invoice, and an integration test running the storage against a
-real SQLite database — which is what proves the injection is gone. the
+real SQLite database — which is what proves the injection is gone. The
 agent cannot finish until those tests exist and a test run after its
 last change has passed. The old key remaining in git history cannot be
 fixed by editing files — expect it to come back to you as a decision:
@@ -784,7 +869,7 @@ are fixed before they run. It ends with adopt, trial, assess or hold.
 1. The agent agrees the question, the decision and a time-box with you.
 2. `research-analyst` researches and cites primary sources.
 3. If that does not settle it, `experiment-engineer` writes
-`experiments/<id>/PLAN.md` — hypothesis and success criteria — and The
+`experiments/<id>/PLAN.md` — hypothesis and success criteria — and the
 agent records its fingerprint **before** anything runs.
 4. The experiment runs; `research-analyst`, not the engineer, assesses
 the result against the plan.
@@ -1001,6 +1086,11 @@ checks structure, legibility and package integrity.
 5. The generated outputs carry the source semantic hash so reviewers can
 verify that presentation did not silently change the substance.
 
+For a governed result, publication also checks its exact current Gen2 output,
+material and audience permissions through the shared runtime. A draft render,
+positive review or stale acceptance cannot substitute for current release
+permission. Ordinary draft preparation and its existing QA remain available.
+
 **Try it.** Publish an architecture decision or review pack that has
 already passed semantic review:
 
@@ -1070,72 +1160,91 @@ regression suite.
 
 ### /layered
 
-**What it does.** Takes a consequential decision through six layers of
-agents — intent, meaning, policy, design, realisation, evidence — with
-requirements going down and evidence coming back up. Unsupported work is
-sent back for rework, problems escalate layer by layer to you, and every
-step is recorded so that you can later show why the outcome was allowed.
-Use it when you will have to justify a decision; not for routine
-changes.
+**What it does.** Runs consequential work through the six SABSA content layers:
+L1 Contextual, L2 Conceptual, L3 Logical, L4 Physical, L5 Component and L6 Management. Each layer
+addresses What, Why, How, Who, Where and When. Every question has a local setter,
+author and independent reviewer; a separate local integration review assesses the
+layer's combined result. Use it when the outcome needs explicit justification.
 
-**Syntax.** `/layered <intent, stated as you would to an accountable
-team>`
+**Syntax.** `/layered <intent, stated as you would to an accountable team>`
+In Codex use `$workflow-layered` with the same request. These are native
+conversation workflows, not shell aliases.
 
 **What happens.**
-1. Your intent is recorded verbatim, and the decision log starts in
-`.fabric/` of the current folder.
-2. Each layer turns the requirement from above into a precise contract
-for the layer below.
-3. Results come back up and are reviewed by the layer that asked for
-them; nothing is built on unreviewed work.
-4. When a layer cannot meet its requirement, it reformulates — within a
-budget — or escalates. Escalations climb one layer at a time.
-5. **When one reaches you**, the agent shows you a decision packet built
-from the record: what was tried, real examples of why it failed, and the
-the options found. You choose. Both providers prepare the same exact
-operator request. **You** review
-and sign or decline externally; Fabric verifies the matching receipt.
-A native tool prompt is not Fabric L0.
-6. The result is released only if the record shows it is justified.
 
-**Try it.** In `~/it-role-demo` (expect 20–40 minutes; it is the most
-thorough command):
+1. The parent records your request verbatim as versioned input. Separately supplied
+   criteria retain their exact wording. Local setters formulate measurable criteria
+   without rewriting your requirements.
+2. Each entity chooses its own professional specialties and model workload from
+   the retained catalogue. A neighbouring layer does not prescribe its staff.
+3. Authors return candidates; distinct same-layer reviewers assess the exact
+   candidates and criteria. Local integration and adjacent handoffs use the
+   existing governed runtime. A later layer is not the author's reviewer.
+4. Findings lead to bounded rework, owner-led reformulation or adjacent escalation.
+   Escalation pauses productive work by default. Permission to continue speculative
+   work is a separate, bounded operator decision.
+5. When human action is required, you receive the actual conflict, evidence,
+   available options and the external action needed. Missing signing configuration
+   does not hide this explanation. Only you sign and perform reserved L0 acts.
+6. Continuation uses the existing journal, exact versions and admitted results.
+   A checkpoint does not renew a budget, imply success or repeat uncertain effects.
+
+**Example request.**
 
 === "Claude Code"
 
-    ```
-    /layered Decide whether invoice-service is ready to be exposed to external partners. It must be secure enough for partner traffic and its money calculations must be exact.
+    ```text
+    /layered Assess whether invoice-service can be exposed to external partners. Preserve monetary accuracy and identify the security requirements, evidence gaps and decisions needed before release.
     ```
 
 === "Codex CLI"
 
-    ```
-    $workflow-layered Decide whether invoice-service is ready to be exposed to external partners. It must be secure enough for partner traffic and its money calculations must be exact.
+    ```text
+    $workflow-layered Assess whether invoice-service can be exposed to external partners. Preserve monetary accuracy and identify the security requirements, evidence gaps and decisions needed before release.
     ```
 
-**What to expect.** The evidence layer finds the injection,
-authorisation and secret problems; the policy layer cannot accept them;
-the question reaches you with options such as "fix before exposure" or
-"expose a read-only subset" — each with its cost. Whatever you choose is
-recorded, approved by you.
+**What to expect.** Versioned work and review records, explicit evidence gaps,
+and an inspectable current basis or a bounded explanation of why work is waiting.
+No particular verdict or duration is promised. A professional review, human
+acceptance and permission to release are distinct decisions; finishing autonomous
+work grants none of them automatically.
 
-**Check it worked.** `/fabric-report` gives an independent verdict on
-the record.
+**Continuation.** Name the existing engagement when asking to continue it. The
+parent resumes its recorded state and reports any expired bounds, unresolved
+uncertainty or required human decision. It must not silently start a replacement
+engagement or import historical acceptance.
+
+The source command uses the Gen2 native bridge. See the
+[layered delivery](../using/layered-engagement.md) for actual
+verification and activation scope. Use the independent audit entry below to
+inspect recorded current justification; a command name or an old release label
+does not establish installed availability.
 
 ### /fabric-report
 
-**What it does.** An independent check of a `/layered` decision record:
-that it has not been tampered with, that every step followed the rules,
-and which outcomes the record actually justifies.
+**What it does.** Independently explains the recorded Gen2 justification for
+exact output versions: governing inputs, supporting evidence, missing material,
+reviews, decisions, cancelled applicability and current permissions. Historical
+integrity, current qualification, human acceptance and release are separate facts.
 
-**Syntax.** `/fabric-report [engagement]` — without a name, the newest
-record in `.fabric/`.
+**Syntax.** `/fabric-report [engagement]` in Claude, or
+`$workflow-fabric-report [engagement]` in Codex. Describe a particular output in
+the request when needed; the parent resolves its exact version and scope from
+recorded state, asking for clarification if the reference is ambiguous. The user
+does not prepare JSON queries.
 
 **Try it.** After the `/layered` demo: `/fabric-report`
 
-**What to expect.** Integrity confirmed; each result marked as justified
-or not, with the reason when not; open items; whether the final product
-is releasable.
+**What to expect.** Exact references and reasons, with the assessed journal head
+and limits of the check. If there is no selected output, the report says so;
+recorded sources and assignments alone do not establish a releasable product.
+Missing required current evidence remains blocking. Unrelated obsolete evidence
+does not become a global veto. The independent auditor does not repair records,
+select replacements, grant acceptance or release, or import archived Gen1 PASS.
+
+See the [review and release readiness](../operations/validation.md) for the
+implemented source interface and verification scope. Installed activation and
+live-provider qualification are separate deployment evidence.
 
 ---
 
@@ -1147,8 +1256,11 @@ economics, contracts, staged delivery and service monitoring. Existing
 technical engagements keep their identities and workflows. Human
 authority retains contractual decisions. The commercial coordinator
 loads compact domain metadata and requests bounded specialist
-consultations; strict dispatch stays blocked while critical provider
-controls lack current local evidence. For layered creation, explicitly
+consultations. Governed readiness binds actual native work, exact material,
+independent review and current Gen2 justification. Unmeasured physical-control
+claims remain unverified; specifically required security conditions remain
+blocking. Routine professional records require no producer signing keys.
+For layered creation, explicitly
 request the commercial profile within `/layered` rather than assuming
 the domain command automatically starts a six-layer engagement. A later
 layered bid decision has its own scope. See the [commercial capability
@@ -1320,39 +1432,29 @@ The installed guide reproduces this maintained Markdown page.
 | `~/.ai/it-role-house/tools/sabsa_publication_demo.py` | `--out DIR --render` — populated fictional English six-viewpoint example in a fresh directory |
 | `~/.ai/it-role-house/tools/publication.py` | semantic-model rendering to HTML · DOCX · PPTX · XLSX · SVG; `self-test` |
 | `~/.ai/it-role-house/tools/repository.py` | `init` · `validate` · `import-open-exchange` · `export-open-exchange` · `generate-views` · `portfolio` · `impact` · `decommission` · `self-test` |
-| `~/.ai/it-role-house/fabric/fabric.py` | `status` · `verify` · `justify` · `report` · `dossier` |
+| `~/.ai/it-role-house/fabric/fabric.py` | `status` · `verify` · `justify` · `report`; each requires the exact engagement and `--query` JSON for the assessment |
 | `~/.ai/it-role-house/demo/demo.py` | `setup` · `reset` · `check` · `list` · `scenarios` · `describe` · `scenario` · `reset-scenario` · `check-scenarios` |
 
 Each tool has `--help`. For example:
 
 ```
-python3 ~/.ai/it-role-house/tools/doc_survey.py
-~/it-role-demo/policy-docs
-python3 ~/.ai/it-role-house/tools/sabsa.py matrix
-~/it-role-demo/acme-pay/sabsa
+python3 ~/.ai/it-role-house/tools/doc_survey.py ~/it-role-demo/policy-docs
+python3 ~/.ai/it-role-house/tools/sabsa.py matrix ~/it-role-demo/acme-pay/sabsa
 ```
 
 For a maintainer reproducing SABSA publication operations:
 
 ```sh
-python3 ~/.ai/it-role-house/tools/sabsa.py narrative-init LIB --layer
-logical
+python3 ~/.ai/it-role-house/tools/sabsa.py narrative-init LIB --layer logical
 # Author and review LIB/narratives/logical/ and the canonical elements before rendering.
-python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer
-logical --out logical.md
-python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer
-logical --out logical.tex
-python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer
-logical --out logical.pdf --latex
-python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer
-logical --out logical.docx
-python3 ~/.ai/it-role-house/tools/sabsa.py catalogues LIB export
---directory CSV
+python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer logical --out logical.md
+python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer logical --out logical.tex
+python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer logical --out logical.pdf --latex
+python3 ~/.ai/it-role-house/tools/sabsa.py document LIB --layer logical --out logical.docx
+python3 ~/.ai/it-role-house/tools/sabsa.py catalogues LIB export --directory CSV
 # Edit existing local entries in CSV while retaining schema and stable IDs.
-python3 ~/.ai/it-role-house/tools/sabsa.py catalogues LIB validate
---directory CSV
-python3 ~/.ai/it-role-house/tools/sabsa.py catalogues LIB import
---directory CSV
+python3 ~/.ai/it-role-house/tools/sabsa.py catalogues LIB validate --directory CSV
+python3 ~/.ai/it-role-house/tools/sabsa.py catalogues LIB import --directory CSV
 ```
 
 `--layer` accepts `contextual`, `conceptual`, `logical`, `physical`,
@@ -1370,7 +1472,7 @@ does not constitute an architecture approval or a product release.
 | --- | --- |
 | A command is not recognised | Start a new Claude Code or Codex CLI session after installing or upgrading. |
 | "Python 3.10 or newer is required" | Install Python from python.org; on Windows tick "Add python.exe to PATH". |
-| An authority act is refused, with a message about the permission mode | You are in auto or bypass mode, where no approval prompt can appear. Switch to the default mode. |
+| An authority act is refused, with a message about the permission mode | The assistant cannot perform the human authority act. The authorised human reviews and signs the exact request through the external authority procedure; a native permission-mode change does not supply authority. |
 | `/sabsa document … as docx` says pandoc is needed | Install pandoc from pandoc.org, or produce Markdown and convert it yourself. |
 | Windows: a note that Git for Windows was not found | Claude Code then uses PowerShell. Most things work; install Git for Windows for the full experience. |
 | The agent keeps adding Javadoc or docstrings it was not asked for | That is the documentation standard, applied to code the agent wrote or changed. To switch it off for a project, create an empty file `.ai/no-doc-check` in it. |
@@ -1414,8 +1516,7 @@ Check the semantic source through the selected provider adapter:
 Then run the shared metrics and evaluation tools:
 
 ```sh
-python3 ~/.ai/it-role-house/tools/content_metrics.py analyze
-semantic.json
+python3 ~/.ai/it-role-house/tools/content_metrics.py analyze semantic.json
 python3 ~/.ai/it-role-house/tools/content_eval.py run
 ```
 
@@ -1430,10 +1531,8 @@ proposed size calibration and review-pending historical migration:
 
 ```sh
 python3 ~/.ai/it-role-house/tools/content_workflow.py list
-python3 ~/.ai/it-role-house/tools/content_metrics.py trends
-snapshots.json
-python3 ~/.ai/it-role-house/tools/content_metrics.py calibrate
-samples.json
+python3 ~/.ai/it-role-house/tools/content_metrics.py trends snapshots.json
+python3 ~/.ai/it-role-house/tools/content_metrics.py calibrate samples.json
 python3 ~/.ai/it-role-house/tools/content_migrate.py historical.json \
   --contract-id enterprise-architect:4 --artifact-id migrated/adr-1
 ```
@@ -1445,7 +1544,7 @@ candidates remain proposed and synthetic-only until enterprise evidence
 and competent approval exist. Migration preserves the historical source,
 records explicit field mappings and never transfers old approvals.
 
-## Supported operator workflow in 26.10.14
+## Supported operator workflow
 
 See [the complete operator
 walkthrough](../operations/operator-walkthrough.md)
@@ -1477,9 +1576,9 @@ action.
 
 Try authorized local tools first. Shell follows the role contract and
 native
-containment. Codex reviewers retain read-only source; scratch writes
-require
-explicit real native support. Claude reviewer shell is unavailable
+containment. Codex reviewers must keep source read-only; verify the actual invocation and
+host restrictions before claiming enforced isolation. Scratch writes require
+explicit native support. Claude reviewer shell is unavailable
 without an
 independently established read-only boundary. Generated settings are not
 proof.
@@ -1504,7 +1603,7 @@ files using a narrow fail-closed validator, with no pip install or
 mandatory venv/profile setup. Unsupported schema keywords are rejected
 rather than ignored.
 
-Contract workflows still require `jsonschema>=4.26,<5` in their selected
+Contract workflows still require `jsonschema>=4.18,<5` in their selected
 Python. A completed installation can therefore report the runtime
 validator missing; provide the package with the environment's normal
 package manager and refresh. Full Agent/Policy, DCS and Artifact
@@ -1528,7 +1627,7 @@ unrelated Python packages. From a terminal:
 
 ```sh
 python3 -m venv "$HOME/.venvs/jai"
-"$HOME/.venvs/jai/bin/python" -m pip install 'jsonschema>=4.26,<5'
+"$HOME/.venvs/jai/bin/python" -m pip install 'jsonschema>=4.18,<5'
 "$HOME/.venvs/jai/bin/python" "$HOME/.ai/it-role-house/tools/operator_actions.py" configure --refresh
 ```
 
@@ -1557,7 +1656,7 @@ A working OS-provided WeasyPrint 70 Python package is acceptable; Pyphen
 is normally installed as its dependency. Doctor reports Pyphen metadata
 and tests actual conversion rather than rejecting a Pyphen version. If
 an isolated pip setup is needed, install `requirements-rendering.txt`
-plus `jsonschema>=4.26,<5` in a user-owned venv and invoke its Python
+plus `jsonschema>=4.18,<5` in a user-owned venv and invoke its Python
 explicitly for doctor/render commands. No shell-profile activation or
 migration of unrelated Python packages is needed. The optional pip
 requirements select Pyphen 0.17.x to avoid a legacy Fedora

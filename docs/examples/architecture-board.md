@@ -1,6 +1,5 @@
 # Prepare an architecture board decision
 
-Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
 ACME Retail must decide whether its order service should use a shared
 integration platform or direct partner connections. Alice sponsors the

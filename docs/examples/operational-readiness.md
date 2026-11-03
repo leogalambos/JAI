@@ -1,6 +1,5 @@
 # Assess readiness to operate a service
 
-Owner: JAI maintainers. Last reviewed: 2026-10-20.
 
 This walkthrough illustrates the `design-to-operational-readiness` workflow recipe.
 It is not an additional native slash command.

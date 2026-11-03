@@ -1,0 +1,120 @@
+{
+  "protocol": "jai.governed-delivery/1",
+  "message_type": "record_proposal",
+  "message_id": "d7fe6fdbfb62f1779594fe4eeaca3b1ec301d38b8dba4eb24c92aedf98102916",
+  "request_id": "request-record-speculative-context",
+  "correlation_id": "question-service-controls",
+  "engagement": "synthetic-protocol",
+  "scope": "default",
+  "sender": {
+    "kind": "assignment",
+    "ref": {
+      "engagement": "synthetic-protocol",
+      "scope": "default",
+      "logical_id": "author-assignment",
+      "version_id": "1870591329732c4cdd7c57d9f45bf9cf132d728ca1fed89d25570d7d8879a622"
+    }
+  },
+  "recipient": {
+    "kind": "controller",
+    "id": "trusted-controller"
+  },
+  "context": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "author-context",
+    "version_id": "29fe898b447be535d3a3bec50aaec15039fb96c4edee43d3a1adf488f9c9f42f"
+  },
+  "profile": {
+    "engagement": "synthetic-protocol",
+    "scope": "default",
+    "logical_id": "profile",
+    "version_id": "b0519b9fbd91854cbe44a508a24434902d4296b100862b3f0acc5374550990ef"
+  },
+  "expected_head": "0379d6138bfe05e3382401e0af27527da375e9eaab21d9f744a4b333647120af",
+  "issued_at_ms": 1000,
+  "expires_at_ms": 8000,
+  "causes": [],
+  "attachments": [],
+  "payload": {
+    "logical_id": "speculative-context",
+    "record_type": "context",
+    "record": {
+      "owner": {
+        "layer": 3,
+        "work_kind": "question",
+        "question": "how",
+        "work_item": "service-controls"
+      },
+      "assignment": {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "author-assignment-A",
+        "version_id": "c73dc01bf01acf79380ee8424d4ad4a2928a017678992b4a23c4f79133267d76"
+      },
+      "profile": {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "profile",
+        "version_id": "b0519b9fbd91854cbe44a508a24434902d4296b100862b3f0acc5374550990ef"
+      },
+      "purpose": "author",
+      "run_id": "author-work-run",
+      "issued_to": "author-actor-A",
+      "inputs": [
+        {
+          "slot_id": "source",
+          "refs": [
+            {
+              "engagement": "synthetic-protocol",
+              "scope": "default",
+              "logical_id": "input-A",
+              "version_id": "2af7d6aa53ba2874a2f9b80c4318fbcd4467065cf86eab873c45acc82e53f92a"
+            }
+          ]
+        }
+      ],
+      "attachments": [],
+      "effects": [
+        {
+          "operation": "read",
+          "owner": {
+            "layer": 3,
+            "work_kind": "question",
+            "question": "how",
+            "work_item": "service-controls"
+          },
+          "targets": [
+            {
+              "engagement": "synthetic-protocol",
+              "scope": "default",
+              "logical_id": "input-A",
+              "version_id": "2af7d6aa53ba2874a2f9b80c4318fbcd4467065cf86eab873c45acc82e53f92a"
+            }
+          ],
+          "destination_handle": null,
+          "tool_policy": null
+        }
+      ],
+      "expires_at_ms": 8000,
+      "execution": {
+        "phase": "work",
+        "selection": {
+          "engagement": "synthetic-protocol",
+          "scope": "default",
+          "logical_id": "captured-execution-choice",
+          "version_id": "99d82658423c13f3b5802edf3e92319d190fc4cde4e56c80afa27c5d24f6289e"
+        }
+      },
+      "speculation": {
+        "engagement": "synthetic-protocol",
+        "scope": "default",
+        "logical_id": "speculative-grant",
+        "version_id": "4f3c294279cfda5f2eb4783b5f3a7dd0a90a81b012057f81d127a0b4bb3b2277"
+      },
+      "ready_basis": [
+        "initial:author-assignment-A"
+      ]
+    }
+  }
+}

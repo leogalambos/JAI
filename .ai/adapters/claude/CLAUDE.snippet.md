@@ -8,8 +8,16 @@ The user guide is `~/.ai/it-role-house/GUIDE.md`; `/guide` shows it and `/demo` 
 - **Problem research and development** — use `research-and-development` or `/research`.
 - **SABSA security architecture** — use `sabsa-library` or `/sabsa`.
 - **Defects** — diagnose before fixing, using `defect-analysis`, the `defect-analyst` subagent or `/diagnose`.
-- **Consequential decisions** that must be justified later — use `/layered`.
 - **Specific IS/IT roles, deliverables, RACI or segregation of duties** — use the `it-roles-*` skills or delegate to the `role-router` subagent. Match on the requested deliverable, not merely the job title.
+
+Ordinary bounded role/domain work keeps its existing route. For consequential
+layered justification use `/layered` and the canonical
+`layered-justifiable-delivery` skill's `references/domain-handoff.md`; use
+`/fabric-report` for independent read-only audit. The native parent handles task
+capture, exact criteria/input references and runtime transport; users do not
+prepare bootstrap JSON or workers. Preserve the complete catalogue and local
+staffing autonomy. Source availability does not prove installed activation or
+unobserved live-provider qualification.
 
 Source code written by the agent follows `~/.ai/it-role-house/standards/code-documentation.md` and `~/.ai/it-role-house/standards/testing.md`; installed hooks enforce documentation, tests and a passing test run after the last production-code change.
 

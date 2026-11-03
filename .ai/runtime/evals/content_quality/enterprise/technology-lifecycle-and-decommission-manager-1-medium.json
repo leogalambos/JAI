@@ -248,7 +248,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Technology lifecycle and decommission assessment', provide verifiable evidence satisfying: Scope, owner, lifecycle state, dependencies, obligations and authority are explicit and current.. Required delivery form: Evidence-backed assessment with repository IDs and systems-of-record references.",
+        "criterion_under_review": "For the specific output 'Technology lifecycle and decommission assessment', provide verifiable evidence satisfying: Scope, owner, lifecycle state, dependencies, obligations and authority are explicit and current. Required delivery form: Evidence-backed assessment with repository IDs and systems-of-record references.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

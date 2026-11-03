@@ -11,7 +11,7 @@ sys.path.insert(0,str(Path(__file__).resolve().parents[1]/'.ai/runtime/tools'))
 import runtime_dependencies
 
 
-@pytest.mark.parametrize('version,status,compatible',[('4.26.0','ready',True),('4.23.0','incompatible',False),('5.0.0','incompatible',False),('invalid','unknown',None),(None,'unknown',None)])
+@pytest.mark.parametrize('version,status,compatible',[('4.17.0','incompatible',False),('4.18.0','ready',True),('4.23.0','ready',True),('4.26.0','ready',True),('5.0.0','incompatible',False),('invalid','unknown',None),(None,'unknown',None)])
 def test_jsonschema_status_distinguishes_qualified_incompatible_and_unknown_metadata(version,status,compatible):
     with patch('importlib.util.find_spec',return_value=True), patch('importlib.metadata.version',return_value=version):
         result=runtime_dependencies.jsonschema_status()

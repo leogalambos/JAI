@@ -102,7 +102,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | 1 | Application test plan aligned to OWASP WSTG | Document with milestones, owners, dependencies and assumptions | Every milestone has an acceptance test and a named accountable owner |
 | 2 | findings with reproduction steps and impact | Finding record with reproducible evidence and risk rating | Reproduction steps are complete enough for an independent party to confirm |
 | 3 | business logic flaw analysis | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 4 | remediation guidance and retest results | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 4 | remediation guidance and retest results | Versioned assessment results with traceable evidence | Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations |
 
 ## 7. Output gates (blocking)
 
@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Application test plan aligned to OWASP WSTG has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Application test plan aligned to OWASP WSTG") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

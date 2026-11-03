@@ -1,6 +1,5 @@
 # Example: Intermittent production defect
 
-Owner: JAI maintainers. Last reviewed: 2026-10-20.
 
 This walkthrough illustrates the `incident-to-problem` workflow recipe.
 It is not an additional native slash command.

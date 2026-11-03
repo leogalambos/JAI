@@ -102,7 +102,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | 1 | Usability test plans and task scenarios | Document with milestones, owners, dependencies and assumptions | Every milestone has an acceptance test and a named accountable owner |
 | 2 | session recordings and observation notes | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 3 | severity-rated usability findings | Finding record with reproducible evidence and risk rating | Reproduction steps are complete enough for an independent party to confirm |
-| 4 | retest results after changes | Executable suite in version control plus a coverage statement | States what is covered, what is not, and what the suite cannot detect |
+| 4 | retest results after changes | Versioned assessment results with traceable evidence | Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations |
 
 ## 7. Output gates (blocking)
 
@@ -113,7 +113,7 @@ An output that fails any gate is not released. A gate may be waived only by the 
 - [ ] **G3.** No production personal data is used in test environments without an approved lawful basis and masking.
 - [ ] **G4.** An intermittent test failure is investigated as a timing, ordering or shared-state defect, never retried or quarantined away without a ticket and an analysis (it-role-library/standards/defect-analysis.md).
 - [ ] **G5.** Automated tests are deterministic, test one behaviour each, mock only collaborators and run integration tests against real dependencies (it-role-library/standards/testing.md).
-- [ ] **G6.** Usability test plans and task scenarios distinguishes what was tested, what was not tested and what cannot be tested.
+- [ ] **G6.** The primary deliverable ("Usability test plans and task scenarios") distinguishes what was tested, what was not tested and what cannot be tested.
 - [ ] **G7.** Sessions test real tasks with representative participants including users of assistive technology
 - [ ] **G8.** testing with colleagues is reported as a walkthrough, not usability testing
 
@@ -143,7 +143,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Usability test plans and task scenarios has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Usability test plans and task scenarios") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

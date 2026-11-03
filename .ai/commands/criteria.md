@@ -15,4 +15,9 @@ Review criteria for $ARGUMENTS (or the current project). Run `python3 ~/.ai/it-r
 
 **Acceptance and escalation.** Never silently alter criteria after examining the target; changed criteria require a newly recorded baseline and applicable authority approval.
 
+For governed work, retain the exact frozen criteria bytes/reference through the
+native `layered-justifiable-delivery/references/domain-handoff.md` handoff.
+Criteria lookup or initialization alone starts no layered engagement and grants
+no acceptance; the parent handles Gen2 input capture internally.
+
 **Documentation.** The current product manual is authored in repository `docs/` (see `docs/reference/commands.md` and `docs/reference/command-walkthroughs.md`). For installed offline assistance use `~/.ai/it-role-house/GUIDE.md` or `/guide`. Provider commands and skills are native runtime contracts; no separate runtime HTML help site is required.

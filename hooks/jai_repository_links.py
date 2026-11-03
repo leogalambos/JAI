@@ -57,6 +57,7 @@ def render_navigation(nav, page) -> str:
 
     Returns:
         Escaped HTML with current-page state and native disclosure controls.
+        Only ancestors of the current page start expanded.
 
     Raises:
         ValueError: A link uses a non-web URI scheme.
@@ -65,17 +66,17 @@ def render_navigation(nav, page) -> str:
         children = getattr(item, "children", None) or ()
         return item is page or any(contains_current(child) for child in children)
 
-    def render(items, depth=0):
+    def render(items):
         result = ['<ul class="ai-canonical-nav-list">']
-        for index, item in enumerate(items):
+        for item in items:
             title = escape(str(item.title))
             children = getattr(item, "children", None) or ()
             if children:
-                # The learning section provides an initial foothold; the remainder
-                # stays collapsed until requested, including on narrow screens.
-                opened = contains_current(item) or (depth == 0 and index == 2)
+                # Expand the active path only; a landing page must not force an
+                # unrelated catalogue open or depend on section order.
+                opened = contains_current(item)
                 result.append(f'<li><details{" open" if opened else ""}><summary>{title}</summary>')
-                result.append(render(children, depth + 1))
+                result.append(render(children))
                 result.append('</details></li>')
             else:
                 url = str(item.url)
@@ -157,13 +158,13 @@ def render_release_inventory(root: Path) -> str:
         "roles": "Role definitions", "agents": "Agent procedures",
         "skills": "Shared skills", "workflows": "Enterprise workflow chains",
         "artifact_types": "Artifact types", "schemas": "Registered schemas",
-        "renderers": "Renderer entries", "tests": "Registered qualification checks",
+        "renderers": "Renderer entries",
         "provider_adapters": "Provider adapters",
     }
     counts = manifest.get("counts")
     if not isinstance(counts, dict) or any(type(counts.get(key)) is not int or counts[key] < 0 for key in labels):
         raise ValueError("Inventory requires non-negative integer counts")
-    for key in ("agents", "skills", "renderers", "tests", "provider_adapters"):
+    for key in ("agents", "skills", "renderers", "provider_adapters"):
         values = manifest.get(key)
         if not isinstance(values, list) or any(not isinstance(value, str) or not value for value in values):
             raise ValueError(f"Invalid inventory membership: {key}")
@@ -198,6 +199,30 @@ def render_role_coverage(root: Path) -> str:
             or len({role["slug"] for role in roles}) != len(roles)):
         raise ValueError("Invalid canonical role coverage")
     return f"{len(roles)} IS/IT roles across {len({role['skill'] for role in roles})} domains"
+
+
+def render_workflow_coverage(root: Path) -> str:
+    """Render homepage workflow coverage from the canonical catalogue.
+
+    Args:
+        root: Checkout containing .ai/runtime/workflows.json.
+    Returns:
+        The actual number of distinct enterprise workflow chains.
+    Raises:
+        ValueError: Count or workflow identities are malformed or inconsistent.
+        OSError: The canonical registry cannot be read.
+    """
+    registry = json.loads((root / '.ai/runtime/workflows.json').read_text(encoding='utf-8'))
+    if not isinstance(registry, dict):
+        raise ValueError('Invalid canonical workflow coverage')
+    workflows = registry.get('workflows')
+    if (not isinstance(workflows, list) or type(registry.get('count')) is not int
+            or registry['count'] != len(workflows)
+            or any(not isinstance(row, dict) or not isinstance(row.get('key'), str)
+                   or not row['key'].strip() for row in workflows)
+            or len({row['key'] for row in workflows}) != len(workflows)):
+        raise ValueError('Invalid canonical workflow coverage')
+    return f"{len(workflows)} enterprise workflow {'chain' if len(workflows) == 1 else 'chains'}"
 
 
 def render_discipline_coverage(root: Path) -> str:
@@ -271,6 +296,8 @@ def on_page_markdown(markdown, *, page, config, files):
         markdown = markdown.replace(RELEASE_INVENTORY_TOKEN, render_release_inventory(root))
     if "{{ JAI_ROLE_COVERAGE }}" in markdown:
         markdown = markdown.replace("{{ JAI_ROLE_COVERAGE }}", render_role_coverage(root))
+    if "{{ JAI_WORKFLOW_COVERAGE }}" in markdown:
+        markdown = markdown.replace("{{ JAI_WORKFLOW_COVERAGE }}", render_workflow_coverage(root))
     if "{{ JAI_DISCIPLINE_COVERAGE }}" in markdown:
         markdown = markdown.replace("{{ JAI_DISCIPLINE_COVERAGE }}", render_discipline_coverage(root))
     if "{{ JAI_SCHEMA_COUNT }}" in markdown:

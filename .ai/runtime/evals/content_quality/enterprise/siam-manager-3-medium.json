@@ -231,7 +231,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Multi-supplier governance and escalation decision paper', provide verifiable evidence satisfying: Cross-supplier decisions have a named authority, evidence standard, escalation clock and documented conflict-of-interest handling.. Required delivery form: Decision paper defining governance forums, dispute/escalation paths, shared acceptance and exception authority.",
+        "criterion_under_review": "For the specific output 'Multi-supplier governance and escalation decision paper', provide verifiable evidence satisfying: Cross-supplier decisions have a named authority, evidence standard, escalation clock and documented conflict-of-interest handling. Required delivery form: Decision paper defining governance forums, dispute/escalation paths, shared acceptance and exception authority.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

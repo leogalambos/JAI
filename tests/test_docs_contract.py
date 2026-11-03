@@ -8,9 +8,11 @@ import importlib.util
 from pathlib import Path
 import tempfile
 import unittest
+import sys
 
 
 _SOURCE = Path(__file__).resolve().parents[1] / '.ai/runtime/tools/docs_contract.py'
+sys.path.insert(0, str(_SOURCE.parent))
 _SPEC = importlib.util.spec_from_file_location('docs_contract', _SOURCE)
 assert _SPEC is not None and _SPEC.loader is not None
 docs_contract = importlib.util.module_from_spec(_SPEC)
@@ -71,6 +73,24 @@ class DocumentationScenarioContractTests(unittest.TestCase):
             'examples/index-overview.md': '# A scenario with an index-like name\n',
             'examples/nested/scenario.md': '# An executable scenario\n',
         }))
+
+
+    def test_quoted_navigation_titles_with_colons_preserve_coverage_and_duplicates(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            target = root / 'docs/contracts/example.md'
+            target.parent.mkdir(parents=True)
+            target.write_text('# Example contract\n')
+            navigation = 'nav:\n  - "Example: output contract": contracts/example.md\n'
+            (root / 'mkdocs.yml').write_text(navigation)
+            def navigation_errors():
+                return [problem for problem in docs_contract.check(root)
+                        if 'navigation' in problem.lower()]
+            self.assertEqual([], navigation_errors())
+            (root / 'mkdocs.yml').write_text(navigation + '  - "Duplicate: example": contracts/example.md\n')
+            self.assertEqual(['MkDocs navigation contains duplicate Markdown pages'], navigation_errors())
+            (root / 'mkdocs.yml').write_text(navigation + '  - "Missing: output": contracts/missing.md\n')
+            self.assertEqual(['MkDocs navigation references missing Markdown: docs/contracts/missing.md'], navigation_errors())
 
 
 if __name__ == '__main__':

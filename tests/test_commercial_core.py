@@ -166,7 +166,8 @@ class CommercialCoreTests(unittest.TestCase):
         data = snapshot()
         data["enforcement"] = {key: "tested" for key in ("identity", "tool_permissions", "mount_isolation", "context_isolation")}
         data["entities"].append(entity("Claim", "claim", {}))
-        result = core.readiness(data, identity_verifier=lambda value: "same")
+        result = core.readiness(data, identity_verifier=lambda value: "same",
+                                required_controls=("mount_isolation",))
         self.assertFalse(result["ready"])
         self.assertTrue(any("claim@1: ungrounded" in x for x in result["blockers"]))
         self.assertTrue(any("mount_isolation unverified" in x for x in result["blockers"]))

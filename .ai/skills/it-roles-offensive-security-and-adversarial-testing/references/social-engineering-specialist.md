@@ -140,7 +140,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Social engineering scenario plan and approval has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Social engineering scenario plan and approval") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

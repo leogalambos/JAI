@@ -1,77 +1,90 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 919 930" role="img" aria-labelledby="t d">
-<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0e3859"/><stop offset="1" stop-color="#0b6b9a"/></linearGradient><marker id="a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#3ba9d6"/></marker></defs>
-<title id="t">Idea to production</title>
-<desc id="d">A change running in production with a measured benefit and a named owner.</desc>
-<rect width="100%" height="100%" rx="24" fill="#f6fafc" stroke="#d6e6ee"/>
-<text x="42" y="38" font-family="Inter,Arial,sans-serif" font-size="23" font-weight="700" fill="#0b1f33">Idea to production</text>
-<path d="M 277 116.0 L 334 116.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 577 116.0 L 634 116.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 759.5 162 L 759.5 192 L 759.5 192 L 759.5 236" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 642 290.0 L 585 290.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 342 290.0 L 285 290.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 159.5 336 L 159.5 366 L 159.5 366 L 159.5 410" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 277 464.0 L 334 464.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 577 464.0 L 634 464.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 759.5 510 L 759.5 540 L 759.5 540 L 759.5 584" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 642 638.0 L 585 638.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 342 638.0 L 285 638.0" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<path d="M 159.5 684 L 159.5 714 L 159.5 714 L 159.5 758" fill="none" stroke="#3ba9d6" stroke-width="3" marker-end="url(#a)"/>
-<rect x="42" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">1 · Business</text>
-<text x="159.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Relationship Manager —</text>
-<text x="159.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">the demand with a</text>
-<text x="159.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">business outcome and an</text>
-<rect x="342" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">2 · Product Manager —</text>
-<text x="459.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">whether and why to</text>
-<text x="459.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">pursue it, against</text>
-<text x="459.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">evidence</text>
-<rect x="642" y="70" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="83.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">3 · Business Analyst —</text>
-<text x="759.5" y="105.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">and specifies the need</text>
-<text x="759.5" y="127.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">with testable acceptance</text>
-<text x="759.5" y="149.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">criteria</text>
-<rect x="642" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="257.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">4 · Solution Architect —</text>
-<text x="759.5" y="279.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">the solution end to end</text>
-<text x="759.5" y="301.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">and records the</text>
-<text x="759.5" y="323.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">decisions</text>
-<rect x="342" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="268.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">5 · Security Architect —</text>
-<text x="459.5" y="290.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">the controls the</text>
-<text x="459.5" y="312.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">solution needs</text>
-<rect x="42" y="244" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="268.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">6 · Technical Lead — the</text>
-<text x="159.5" y="290.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">work down and sets the</text>
-<text x="159.5" y="312.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">technical approach</text>
-<rect x="42" y="418" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="453.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">7 · Software Engineer —</text>
-<text x="159.5" y="475.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">with tests and telemetry</text>
-<rect x="342" y="418" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="442.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">8 · Test Analyst —</text>
-<text x="459.5" y="464.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">against the claims and</text>
-<text x="459.5" y="486.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">reports residual risk</text>
-<rect x="642" y="418" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="442.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">9 · Release Engineer —</text>
-<text x="759.5" y="464.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">the release and proves</text>
-<text x="759.5" y="486.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">the rollback</text>
-<rect x="642" y="592" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="759.5" y="605.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">10 · Change Manager —</text>
-<text x="759.5" y="627.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">the production change</text>
-<text x="759.5" y="649.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">proportionate to its</text>
-<text x="759.5" y="671.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">risk</text>
-<rect x="342" y="592" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="459.5" y="605.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">11 · GitOps and</text>
-<text x="459.5" y="627.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Continuous Delivery</text>
-<text x="459.5" y="649.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Engineer — the artefact</text>
-<text x="459.5" y="671.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">and runs the progressive</text>
-<rect x="42" y="592" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="605.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">12 · Site Reliability</text>
-<text x="159.5" y="627.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">Engineer — against the</text>
-<text x="159.5" y="649.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">service objective and</text>
-<text x="159.5" y="671.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">owns the run</text>
-<rect x="42" y="766" width="235" height="92" rx="16" fill="url(#g)"/>
-<text x="159.5" y="790.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">13 · Product Analyst —</text>
-<text x="159.5" y="812.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">whether the stated</text>
-<text x="159.5" y="834.0" text-anchor="middle" dominant-baseline="middle" font-family="Inter,Arial,sans-serif" font-size="15" font-weight="650" fill="#fff">benefit arrived</text>
+<svg xmlns="http://www.w3.org/2000/svg" class="ai-inline-diagram-svg" viewBox="0 0 996 1028" role="img" aria-labelledby="workflow-idea-to-production-title workflow-idea-to-production-description">
+<!-- SPDX-License-Identifier: BSD-4-Clause; Copyright (c) 2026 Leo Galambos and the Egothor team; https://www.egothor.org -->
+<title id="workflow-idea-to-production-title">Idea to production</title>
+<desc id="workflow-idea-to-production-description">A change running in production with a measured benefit and a named owner. Arrows follow the numbered stages. The table below supplies handoffs and acceptance gates.</desc>
+<defs><marker id="workflow-idea-to-production-arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto"><path d="M0,0 L10,4 L0,8 z" fill="#147eaa"/></marker></defs>
+<rect width="100%" height="100%" rx="16" fill="#f6fafc" stroke="#cbdde8"/>
+<text x="30" y="38" font-family="Arial,Helvetica,sans-serif" font-size="23" fill="#102d43" font-weight="700" text-anchor="start">Idea to production</text>
+<path d="M318,170 L346,170" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-idea-to-production-arrow)"/>
+<path d="M642,170 L670,170" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-idea-to-production-arrow)"/>
+<path d="M822,240 L822,288" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-idea-to-production-arrow)"/>
+<path d="M678,356 L650,356" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-idea-to-production-arrow)"/>
+<path d="M354,356 L326,356" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-idea-to-production-arrow)"/>
+<path d="M174,414 L174,462" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-idea-to-production-arrow)"/>
+<path d="M318,530 L346,530" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-idea-to-production-arrow)"/>
+<path d="M642,530 L670,530" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-idea-to-production-arrow)"/>
+<path d="M822,588 L822,636" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-idea-to-production-arrow)"/>
+<path d="M678,716 L650,716" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-idea-to-production-arrow)"/>
+<path d="M354,716 L326,716" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-idea-to-production-arrow)"/>
+<path d="M174,786 L174,834" fill="none" stroke="#147eaa" stroke-width="3" marker-end="url(#workflow-idea-to-production-arrow)"/>
+<g data-step="1"><rect x="30" y="100" width="288" height="140" rx="12" fill="#145776"/>
+<text x="46" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">1. Business Relationship</text>
+<text x="46" y="153" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">Manager</text>
+<text x="46" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">captures the demand with a</text>
+<text x="46" y="214" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">business outcome and an owner</text>
+</g>
+<g data-step="2"><rect x="354" y="100" width="288" height="140" rx="12" fill="#145776"/>
+<text x="370" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">2. Product Manager</text>
+<text x="370" y="166" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">decides whether and why to</text>
+<text x="370" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">pursue it, against evidence</text>
+</g>
+<g data-step="3"><rect x="678" y="100" width="288" height="140" rx="12" fill="#145776"/>
+<text x="694" y="129" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">3. Business Analyst</text>
+<text x="694" y="166" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">elicits and specifies the need</text>
+<text x="694" y="190" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">with testable acceptance</text>
+<text x="694" y="214" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">criteria</text>
+</g>
+<g data-step="4"><rect x="678" y="298" width="288" height="116" rx="12" fill="#145776"/>
+<text x="694" y="327" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">4. Solution Architect</text>
+<text x="694" y="364" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">designs the solution end to</text>
+<text x="694" y="388" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">end and records the decisions</text>
+</g>
+<g data-step="5"><rect x="354" y="298" width="288" height="116" rx="12" fill="#145776"/>
+<text x="370" y="327" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">5. Security Architect</text>
+<text x="370" y="364" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">designs the controls the</text>
+<text x="370" y="388" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">solution needs</text>
+</g>
+<g data-step="6"><rect x="30" y="298" width="288" height="116" rx="12" fill="#145776"/>
+<text x="46" y="327" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">6. Technical Lead</text>
+<text x="46" y="364" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">breaks the work down and sets</text>
+<text x="46" y="388" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">the technical approach</text>
+</g>
+<g data-step="7"><rect x="30" y="472" width="288" height="116" rx="12" fill="#145776"/>
+<text x="46" y="501" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">7. Software Engineer</text>
+<text x="46" y="538" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">implements with tests and</text>
+<text x="46" y="562" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">telemetry</text>
+</g>
+<g data-step="8"><rect x="354" y="472" width="288" height="116" rx="12" fill="#145776"/>
+<text x="370" y="501" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">8. Test Analyst</text>
+<text x="370" y="538" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">verifies against the claims</text>
+<text x="370" y="562" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">and reports residual risk</text>
+</g>
+<g data-step="9"><rect x="678" y="472" width="288" height="116" rx="12" fill="#145776"/>
+<text x="694" y="501" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">9. Release Engineer</text>
+<text x="694" y="538" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">assembles the release and</text>
+<text x="694" y="562" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">proves the rollback</text>
+</g>
+<g data-step="10"><rect x="678" y="646" width="288" height="140" rx="12" fill="#145776"/>
+<text x="694" y="675" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">10. Change Manager</text>
+<text x="694" y="712" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">authorises the production</text>
+<text x="694" y="736" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">change proportionate to its</text>
+<text x="694" y="760" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">risk</text>
+</g>
+<g data-step="11"><rect x="354" y="646" width="288" height="140" rx="12" fill="#145776"/>
+<text x="370" y="675" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">11. GitOps and Continuous</text>
+<text x="370" y="699" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">Delivery Engineer</text>
+<text x="370" y="736" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">promotes the artefact and runs</text>
+<text x="370" y="760" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">the progressive rollout</text>
+</g>
+<g data-step="12"><rect x="30" y="646" width="288" height="140" rx="12" fill="#145776"/>
+<text x="46" y="675" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">12. Site Reliability</text>
+<text x="46" y="699" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">Engineer</text>
+<text x="46" y="736" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">observes against the service</text>
+<text x="46" y="760" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">objective and owns the run</text>
+</g>
+<g data-step="13"><rect x="30" y="844" width="288" height="116" rx="12" fill="#145776"/>
+<text x="46" y="873" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="700" text-anchor="start">13. Product Analyst</text>
+<text x="46" y="910" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">measures whether the stated</text>
+<text x="46" y="934" font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#ffffff" font-weight="400" text-anchor="start">benefit arrived</text>
+</g>
 </svg>

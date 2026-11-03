@@ -103,8 +103,6 @@ nav:
       - Product orientation:
           - Product overview: overview/product-overview.md
           - Execution and context assembly: overview/execution-context-algorithm.md
-          - What's new in 26.10.14: release/compatible-ga-26.10.14.md
-          - Historical 26.10.4 announcement: overview/release-26-10-4.md
           - Coverage matrix: overview/coverage-matrix.md
           - Delivery model: overview/delivery-model.md
       - Installation: getting-started/install.md
@@ -112,6 +110,7 @@ nav:
       - 20-minute quick start: getting-started/quick-start.md
       - Update & uninstall: getting-started/update-uninstall.md
   - How to use JAI:
+      - Three ways to use JAI: using/usage-modes.md
       - How to use this guide: examples/how-to-use-JAI/index.md
       - Choose your workflow: using/methodical-workflows.md
       - Experimental hint: using/experimental-hint.md
@@ -216,12 +215,8 @@ nav:
           - Deployment notes: getting-started/deployment-notes.md
       - Operate and govern:
           - Validation and release controls: operations/validation.md
-          - Offline content qualification: validation/offline-content-qualification.md
-          - Proposal colleague pilot: validation/proposal-pilot.md
-          - Engineering and security review: validation/engineering-security-review.md
           - Supported product and operator workflows: security/product-operations.md
-          - Expert reference editorial review: validation/expert-reference-review.md
-          - Optional provider evaluation: validation/optional-provider-evaluation.md
+          - Governed process dispatch: operations/governed-dispatch.md
           - Human authority and escalation: operations/human-authority.md
           - Operating controls: operations/operating-controls.md
           - Troubleshooting: operations/troubleshooting.md
@@ -230,12 +225,452 @@ nav:
       - Release inventory: reference/inventory.md
       - Workflow catalogue: reference/workflows.md
       - Full role catalogue: reference/roles.md
+      - Output contract catalogue:
+          # JAI:OUTPUT-CONTRACTS:NAV:START
+          - Overview: reference/output-contracts/index.md
+          - "Analysis":
+              - "Business Analyst": reference/output-contracts/role-business-analyst.md
+              - "Systems Analyst": reference/output-contracts/role-systems-analyst.md
+              - "Requirements Engineer": reference/output-contracts/role-requirements-engineer.md
+              - "Process Analyst": reference/output-contracts/role-process-analyst.md
+              - "Enterprise Business Analyst": reference/output-contracts/role-enterprise-business-analyst.md
+              - "Data Analyst": reference/output-contracts/role-data-analyst.md
+              - "Business Intelligence Analyst": reference/output-contracts/role-business-intelligence-analyst.md
+              - "FinOps Analyst": reference/output-contracts/role-finops-analyst.md
+              - "Product Analyst": reference/output-contracts/role-product-analyst.md
+              - "Service Level Analyst": reference/output-contracts/role-service-level-analyst.md
+              - "Configuration Analyst": reference/output-contracts/role-configuration-analyst.md
+          - "Architecture":
+              - "Enterprise Architect": reference/output-contracts/role-enterprise-architect.md
+              - "Business Architect": reference/output-contracts/role-business-architect.md
+              - "Solution Architect": reference/output-contracts/role-solution-architect.md
+              - "Application Architect": reference/output-contracts/role-application-architect.md
+              - "Domain Architect": reference/output-contracts/role-domain-architect.md
+              - "Data Architect": reference/output-contracts/role-data-architect.md
+              - "Integration Architect": reference/output-contracts/role-integration-architect.md
+              - "Cloud Architect": reference/output-contracts/role-cloud-architect.md
+              - "Network Architect": reference/output-contracts/role-network-architect.md
+              - "Security Architect": reference/output-contracts/role-security-architect.md
+              - "AI and ML Architect": reference/output-contracts/role-ai-and-ml-architect.md
+              - "Technical Design Authority Member": reference/output-contracts/role-technical-design-authority-member.md
+              - "Architecture Repository and Modelling Lead": reference/output-contracts/role-architecture-repository-and-modelling-lead.md
+              - "Identity and Access Management Architect": reference/output-contracts/role-identity-and-access-management-architect.md
+              - "Operational and Technology Resilience Architect": reference/output-contracts/role-operational-and-technology-resilience-architect.md
+              - "Enterprise Applications Architect": reference/output-contracts/role-enterprise-applications-architect.md
+              - "Secure Delivery / DevSecOps Architect": reference/output-contracts/role-secure-delivery-devsecops-architect.md
+              - "Application Portfolio Manager": reference/output-contracts/role-application-portfolio-manager.md
+          - "Commercial, Sourcing and Enablement":
+              - "IT Procurement Specialist": reference/output-contracts/role-it-procurement-specialist.md
+              - "Vendor Manager": reference/output-contracts/role-vendor-manager.md
+              - "Contract Manager": reference/output-contracts/role-contract-manager.md
+              - "Software Licence Compliance Specialist": reference/output-contracts/role-software-licence-compliance-specialist.md
+              - "Pre-Sales Solution Consultant": reference/output-contracts/role-pre-sales-solution-consultant.md
+              - "Sales Engineer": reference/output-contracts/role-sales-engineer.md
+              - "Customer Success Engineer": reference/output-contracts/role-customer-success-engineer.md
+              - "Implementation Consultant": reference/output-contracts/role-implementation-consultant.md
+              - "Technical Account Manager": reference/output-contracts/role-technical-account-manager.md
+              - "Technical Writer": reference/output-contracts/role-technical-writer.md
+              - "Developer Advocate": reference/output-contracts/role-developer-advocate.md
+              - "IT Trainer": reference/output-contracts/role-it-trainer.md
+              - "Technical Recruiter": reference/output-contracts/role-technical-recruiter.md
+              - "Resource Manager": reference/output-contracts/role-resource-manager.md
+              - "IT Financial Management / TBM Manager": reference/output-contracts/role-it-financial-management-tbm-manager.md
+              - "Bid / Proposal Manager": reference/output-contracts/role-bid-proposal-manager.md
+              - "Commercial Pricing / Deal Finance Specialist": reference/output-contracts/role-commercial-pricing-deal-finance-specialist.md
+              - "Estimation / Cost Engineering Specialist": reference/output-contracts/role-estimation-cost-engineering-specialist.md
+              - "Independent Commercial Assurance Reviewer": reference/output-contracts/role-independent-commercial-assurance-reviewer.md
+              - "Supplier Commercial / Deal Manager": reference/output-contracts/role-supplier-commercial-deal-manager.md
+          - "Data, Analytics and AI":
+              - "Data Engineer": reference/output-contracts/role-data-engineer.md
+              - "Analytics Engineer": reference/output-contracts/role-analytics-engineer.md
+              - "Database Administrator": reference/output-contracts/role-database-administrator.md
+              - "Database Reliability Engineer": reference/output-contracts/role-database-reliability-engineer.md
+              - "Data Modeller": reference/output-contracts/role-data-modeller.md
+              - "Data Steward": reference/output-contracts/role-data-steward.md
+              - "Data Owner": reference/output-contracts/role-data-owner.md
+              - "Data Custodian": reference/output-contracts/role-data-custodian.md
+              - "Data Governance Lead": reference/output-contracts/role-data-governance-lead.md
+              - "Data Quality Analyst": reference/output-contracts/role-data-quality-analyst.md
+              - "Master Data Management Specialist": reference/output-contracts/role-master-data-management-specialist.md
+              - "Data Scientist": reference/output-contracts/role-data-scientist.md
+              - "Research Scientist": reference/output-contracts/role-research-scientist.md
+              - "Machine Learning Engineer": reference/output-contracts/role-machine-learning-engineer.md
+              - "MLOps Engineer": reference/output-contracts/role-mlops-engineer.md
+              - "LLMOps and AI Platform Engineer": reference/output-contracts/role-llmops-and-ai-platform-engineer.md
+              - "AI Solutions Engineer": reference/output-contracts/role-ai-solutions-engineer.md
+              - "AI Safety and Model Red Team Specialist": reference/output-contracts/role-ai-safety-and-model-red-team-specialist.md
+              - "AI Governance Officer": reference/output-contracts/role-ai-governance-officer.md
+              - "Data Privacy Engineer": reference/output-contracts/role-data-privacy-engineer.md
+              - "Metadata Manager": reference/output-contracts/role-metadata-manager.md
+          - "Design and User Experience":
+              - "UX Designer": reference/output-contracts/role-ux-designer.md
+              - "UI Designer": reference/output-contracts/role-ui-designer.md
+              - "Product Designer": reference/output-contracts/role-product-designer.md
+              - "UX Researcher": reference/output-contracts/role-ux-researcher.md
+              - "Usability Tester": reference/output-contracts/role-usability-tester.md
+              - "Interaction Designer": reference/output-contracts/role-interaction-designer.md
+              - "Service Designer": reference/output-contracts/role-service-designer.md
+              - "Information Architect": reference/output-contracts/role-information-architect.md
+              - "Design System Engineer": reference/output-contracts/role-design-system-engineer.md
+              - "Accessibility Specialist": reference/output-contracts/role-accessibility-specialist.md
+              - "Content Designer": reference/output-contracts/role-content-designer.md
+          - "Executive and Leadership":
+              - "Chief Information Officer": reference/output-contracts/role-chief-information-officer.md
+              - "Chief Technology Officer": reference/output-contracts/role-chief-technology-officer.md
+              - "Chief Information Security Officer": reference/output-contracts/role-chief-information-security-officer.md
+              - "Chief Data Officer": reference/output-contracts/role-chief-data-officer.md
+              - "Chief Digital Officer": reference/output-contracts/role-chief-digital-officer.md
+              - "Chief Product Officer": reference/output-contracts/role-chief-product-officer.md
+              - "Chief AI Officer": reference/output-contracts/role-chief-ai-officer.md
+              - "IT Chief of Staff": reference/output-contracts/role-it-chief-of-staff.md
+              - "VP of Engineering": reference/output-contracts/role-vp-of-engineering.md
+              - "Head of Platform": reference/output-contracts/role-head-of-platform.md
+              - "IT Service Owner": reference/output-contracts/role-it-service-owner.md
+          - "Governance, Risk, Compliance, Audit and Privacy":
+              - "IT Governance Manager": reference/output-contracts/role-it-governance-manager.md
+              - "GRC Analyst": reference/output-contracts/role-grc-analyst.md
+              - "IT Risk Manager": reference/output-contracts/role-it-risk-manager.md
+              - "Information Security Officer (Local)": reference/output-contracts/role-information-security-officer-local.md
+              - "Compliance Officer (Technology)": reference/output-contracts/role-compliance-officer-technology.md
+              - "Internal IT Auditor": reference/output-contracts/role-internal-it-auditor.md
+              - "External Auditor and Assessor": reference/output-contracts/role-external-auditor-and-assessor.md
+              - "Control Owner": reference/output-contracts/role-control-owner.md
+              - "Control Tester": reference/output-contracts/role-control-tester.md
+              - "Data Protection Officer": reference/output-contracts/role-data-protection-officer.md
+              - "Privacy Analyst": reference/output-contracts/role-privacy-analyst.md
+              - "Records Manager": reference/output-contracts/role-records-manager.md
+              - "Business Continuity Manager": reference/output-contracts/role-business-continuity-manager.md
+              - "Disaster Recovery Coordinator": reference/output-contracts/role-disaster-recovery-coordinator.md
+              - "Third-Party Risk Manager": reference/output-contracts/role-third-party-risk-manager.md
+              - "Policy Author": reference/output-contracts/role-policy-author.md
+              - "Crisis Manager": reference/output-contracts/role-crisis-manager.md
+              - "Privacy Architect": reference/output-contracts/role-privacy-architect.md
+          - "Infrastructure, Cloud and Operations":
+              - "Linux Systems Administrator": reference/output-contracts/role-linux-systems-administrator.md
+              - "Windows Systems Administrator": reference/output-contracts/role-windows-systems-administrator.md
+              - "Cloud Engineer": reference/output-contracts/role-cloud-engineer.md
+              - "Cloud Operations Engineer": reference/output-contracts/role-cloud-operations-engineer.md
+              - "Platform Engineer": reference/output-contracts/role-platform-engineer.md
+              - "DevOps Engineer": reference/output-contracts/role-devops-engineer.md
+              - "Site Reliability Engineer": reference/output-contracts/role-site-reliability-engineer.md
+              - "Kubernetes Platform Engineer": reference/output-contracts/role-kubernetes-platform-engineer.md
+              - "Infrastructure as Code Engineer": reference/output-contracts/role-infrastructure-as-code-engineer.md
+              - "Container Platform Engineer": reference/output-contracts/role-container-platform-engineer.md
+              - "Environment Manager": reference/output-contracts/role-environment-manager.md
+              - "Virtualisation Engineer": reference/output-contracts/role-virtualisation-engineer.md
+              - "Storage Engineer": reference/output-contracts/role-storage-engineer.md
+              - "Backup and Recovery Engineer": reference/output-contracts/role-backup-and-recovery-engineer.md
+              - "Datacentre Technician": reference/output-contracts/role-datacentre-technician.md
+              - "Capacity Manager": reference/output-contracts/role-capacity-manager.md
+              - "Availability Manager": reference/output-contracts/role-availability-manager.md
+              - "Observability Engineer": reference/output-contracts/role-observability-engineer.md
+              - "Middleware Administrator": reference/output-contracts/role-middleware-administrator.md
+              - "FinOps Engineer": reference/output-contracts/role-finops-engineer.md
+              - "Sustainable IT Engineer": reference/output-contracts/role-sustainable-it-engineer.md
+          - "Network and Telecommunications":
+              - "Network Engineer": reference/output-contracts/role-network-engineer.md
+              - "Network Administrator": reference/output-contracts/role-network-administrator.md
+              - "Network Operations Centre Analyst": reference/output-contracts/role-network-operations-centre-analyst.md
+              - "Wireless and RF Engineer": reference/output-contracts/role-wireless-and-rf-engineer.md
+              - "Unified Communications Engineer": reference/output-contracts/role-unified-communications-engineer.md
+              - "SD-WAN and Edge Engineer": reference/output-contracts/role-sd-wan-and-edge-engineer.md
+              - "Firewall and Perimeter Engineer": reference/output-contracts/role-firewall-and-perimeter-engineer.md
+              - "DNS DHCP and IPAM Specialist": reference/output-contracts/role-dns-dhcp-and-ipam-specialist.md
+              - "Network Field Technician": reference/output-contracts/role-network-field-technician.md
+          - "Offensive Security and Adversarial Testing":
+              - "Penetration Tester (Network and Infrastructure)": reference/output-contracts/role-penetration-tester-network-and-infrastructure.md
+              - "Penetration Tester (Web Application)": reference/output-contracts/role-penetration-tester-web-application.md
+              - "Penetration Tester (Mobile)": reference/output-contracts/role-penetration-tester-mobile.md
+              - "Penetration Tester (API)": reference/output-contracts/role-penetration-tester-api.md
+              - "Penetration Tester (Cloud)": reference/output-contracts/role-penetration-tester-cloud.md
+              - "Penetration Tester (Wireless)": reference/output-contracts/role-penetration-tester-wireless.md
+              - "Penetration Tester (Thick Client)": reference/output-contracts/role-penetration-tester-thick-client.md
+              - "Red Team Operator": reference/output-contracts/role-red-team-operator.md
+              - "Red Team Lead": reference/output-contracts/role-red-team-lead.md
+              - "Exploit Developer": reference/output-contracts/role-exploit-developer.md
+              - "Vulnerability Researcher": reference/output-contracts/role-vulnerability-researcher.md
+              - "Binary Reverse Engineer": reference/output-contracts/role-binary-reverse-engineer.md
+              - "Social Engineering Specialist": reference/output-contracts/role-social-engineering-specialist.md
+              - "Physical Intrusion Specialist": reference/output-contracts/role-physical-intrusion-specialist.md
+              - "Open Source Intelligence Investigator": reference/output-contracts/role-open-source-intelligence-investigator.md
+              - "Adversary Emulation Engineer": reference/output-contracts/role-adversary-emulation-engineer.md
+              - "Breach and Attack Simulation Engineer": reference/output-contracts/role-breach-and-attack-simulation-engineer.md
+              - "Bug Bounty Programme Manager": reference/output-contracts/role-bug-bounty-programme-manager.md
+              - "Bug Bounty Triage Analyst": reference/output-contracts/role-bug-bounty-triage-analyst.md
+              - "Vulnerability Disclosure Coordinator": reference/output-contracts/role-vulnerability-disclosure-coordinator.md
+              - "Hardware and IoT Security Researcher": reference/output-contracts/role-hardware-and-iot-security-researcher.md
+          - "Product, Delivery and Agile":
+              - "Product Manager": reference/output-contracts/role-product-manager.md
+              - "Product Owner": reference/output-contracts/role-product-owner.md
+              - "Technical Product Manager": reference/output-contracts/role-technical-product-manager.md
+              - "Scrum Master": reference/output-contracts/role-scrum-master.md
+              - "Agile Coach": reference/output-contracts/role-agile-coach.md
+              - "Delivery Manager": reference/output-contracts/role-delivery-manager.md
+              - "Release Train Engineer": reference/output-contracts/role-release-train-engineer.md
+              - "Epic Owner": reference/output-contracts/role-epic-owner.md
+              - "SAFe System Architect": reference/output-contracts/role-safe-system-architect.md
+              - "Project Manager": reference/output-contracts/role-project-manager.md
+              - "Programme Manager": reference/output-contracts/role-programme-manager.md
+              - "Portfolio Manager": reference/output-contracts/role-portfolio-manager.md
+              - "PMO Analyst": reference/output-contracts/role-pmo-analyst.md
+              - "PMO Lead": reference/output-contracts/role-pmo-lead.md
+              - "Engineering Manager": reference/output-contracts/role-engineering-manager.md
+              - "Technical Lead": reference/output-contracts/role-technical-lead.md
+              - "Transformation Manager": reference/output-contracts/role-transformation-manager.md
+              - "Organisational Change and Adoption Manager": reference/output-contracts/role-organisational-change-and-adoption-manager.md
+              - "Benefits Realisation Manager": reference/output-contracts/role-benefits-realisation-manager.md
+              - "Data Migration and Cutover Lead": reference/output-contracts/role-data-migration-and-cutover-lead.md
+              - "Enterprise Release Manager": reference/output-contracts/role-enterprise-release-manager.md
+              - "Demand & Intake Manager": reference/output-contracts/role-demand-and-intake-manager.md
+          - "Quality and Testing":
+              - "Test Analyst": reference/output-contracts/role-test-analyst.md
+              - "Test Automation Engineer": reference/output-contracts/role-test-automation-engineer.md
+              - "Performance Test Engineer": reference/output-contracts/role-performance-test-engineer.md
+              - "Test Manager": reference/output-contracts/role-test-manager.md
+              - "Test Architect": reference/output-contracts/role-test-architect.md
+              - "User Acceptance Test Coordinator": reference/output-contracts/role-user-acceptance-test-coordinator.md
+              - "Accessibility Tester": reference/output-contracts/role-accessibility-tester.md
+              - "Localisation QA Analyst": reference/output-contracts/role-localisation-qa-analyst.md
+              - "Chaos and Resilience Engineer": reference/output-contracts/role-chaos-and-resilience-engineer.md
+              - "Codebase Reviewer": reference/output-contracts/role-codebase-reviewer.md
+              - "Release Quality Gatekeeper": reference/output-contracts/role-release-quality-gatekeeper.md
+          - "Research, Innovation and Specialist Engineering":
+              - "Research Engineer": reference/output-contracts/role-research-engineer.md
+              - "Innovation Lead": reference/output-contracts/role-innovation-lead.md
+              - "Technology Scout": reference/output-contracts/role-technology-scout.md
+              - "Standards Body Representative": reference/output-contracts/role-standards-body-representative.md
+              - "Ethics and Responsible Technology Lead": reference/output-contracts/role-ethics-and-responsible-technology-lead.md
+              - "Systems Engineer (INCOSE)": reference/output-contracts/role-systems-engineer-incose.md
+              - "Simulation Engineer": reference/output-contracts/role-simulation-engineer.md
+              - "High Performance Computing Engineer": reference/output-contracts/role-high-performance-computing-engineer.md
+              - "Quantum Computing Engineer": reference/output-contracts/role-quantum-computing-engineer.md
+          - "SABSA Security Architecture":
+              - "Chief Security Architect (SABSA Practice Lead)": reference/output-contracts/role-chief-security-architect-sabsa-practice-lead.md
+              - "Business Security Architect (SABSA Contextual Layer)": reference/output-contracts/role-business-security-architect-sabsa-contextual-layer.md
+              - "Business Attribute Profiler": reference/output-contracts/role-business-attribute-profiler.md
+              - "Conceptual Security Architect (SABSA Architect's View)": reference/output-contracts/role-conceptual-security-architect-sabsa-architect-s-view.md
+              - "Logical Security Designer (SABSA Designer's View)": reference/output-contracts/role-logical-security-designer-sabsa-designer-s-view.md
+              - "Physical Security Solution Builder (SABSA Builder's View)": reference/output-contracts/role-physical-security-solution-builder-sabsa-builder-s-view.md
+              - "Security Component Specialist (SABSA Tradesman's View)": reference/output-contracts/role-security-component-specialist-sabsa-tradesman-s-view.md
+              - "Security Service Manager (SABSA Service Management View)": reference/output-contracts/role-security-service-manager-sabsa-service-management-view.md
+              - "Security Domain Authority": reference/output-contracts/role-security-domain-authority.md
+              - "Security Risk and Opportunity Architect": reference/output-contracts/role-security-risk-and-opportunity-architect.md
+              - "Security Assurance and Measurement Architect": reference/output-contracts/role-security-assurance-and-measurement-architect.md
+              - "SABSA and TOGAF Integration Architect": reference/output-contracts/role-sabsa-and-togaf-integration-architect.md
+          - "Security Operations and Defensive Security":
+              - "Security Analyst Tier 1": reference/output-contracts/role-security-analyst-tier-1.md
+              - "Security Analyst Tier 2": reference/output-contracts/role-security-analyst-tier-2.md
+              - "Security Analyst Tier 3": reference/output-contracts/role-security-analyst-tier-3.md
+              - "SOC Manager": reference/output-contracts/role-soc-manager.md
+              - "Threat Hunter": reference/output-contracts/role-threat-hunter.md
+              - "Incident Responder": reference/output-contracts/role-incident-responder.md
+              - "Digital Forensics Examiner": reference/output-contracts/role-digital-forensics-examiner.md
+              - "Malware Analyst": reference/output-contracts/role-malware-analyst.md
+              - "Threat Intelligence Analyst": reference/output-contracts/role-threat-intelligence-analyst.md
+              - "Detection Engineer": reference/output-contracts/role-detection-engineer.md
+              - "Security Engineer": reference/output-contracts/role-security-engineer.md
+              - "Vulnerability Management Analyst": reference/output-contracts/role-vulnerability-management-analyst.md
+              - "Cryptography and PKI Engineer": reference/output-contracts/role-cryptography-and-pki-engineer.md
+              - "Secrets and Configuration Management Engineer": reference/output-contracts/role-secrets-and-configuration-management-engineer.md
+              - "Identity and Access Management Engineer": reference/output-contracts/role-identity-and-access-management-engineer.md
+              - "Identity Governance Specialist": reference/output-contracts/role-identity-governance-specialist.md
+              - "Privileged Access Management Administrator": reference/output-contracts/role-privileged-access-management-administrator.md
+              - "Cloud Security Engineer": reference/output-contracts/role-cloud-security-engineer.md
+              - "Application Security Engineer": reference/output-contracts/role-application-security-engineer.md
+              - "Security Champion": reference/output-contracts/role-security-champion.md
+              - "Operational Technology Security Engineer": reference/output-contracts/role-operational-technology-security-engineer.md
+              - "Security Awareness and Training Manager": reference/output-contracts/role-security-awareness-and-training-manager.md
+              - "Insider Threat Analyst": reference/output-contracts/role-insider-threat-analyst.md
+              - "Purple Team Lead": reference/output-contracts/role-purple-team-lead.md
+          - "Service Management and Support":
+              - "Service Desk Analyst": reference/output-contracts/role-service-desk-analyst.md
+              - "Desktop Support Engineer": reference/output-contracts/role-desktop-support-engineer.md
+              - "Application Support Analyst": reference/output-contracts/role-application-support-analyst.md
+              - "Incident Manager": reference/output-contracts/role-incident-manager.md
+              - "Major Incident Manager": reference/output-contracts/role-major-incident-manager.md
+              - "Problem Manager": reference/output-contracts/role-problem-manager.md
+              - "Change Manager": reference/output-contracts/role-change-manager.md
+              - "Request Fulfilment Manager": reference/output-contracts/role-request-fulfilment-manager.md
+              - "Service Level Manager": reference/output-contracts/role-service-level-manager.md
+              - "Service Catalogue Manager": reference/output-contracts/role-service-catalogue-manager.md
+              - "Continual Improvement Manager": reference/output-contracts/role-continual-improvement-manager.md
+              - "Knowledge Manager": reference/output-contracts/role-knowledge-manager.md
+              - "Configuration Manager": reference/output-contracts/role-configuration-manager.md
+              - "IT Asset Manager": reference/output-contracts/role-it-asset-manager.md
+              - "Software Asset Manager": reference/output-contracts/role-software-asset-manager.md
+              - "End-User Computing Engineer": reference/output-contracts/role-end-user-computing-engineer.md
+              - "Business Relationship Manager": reference/output-contracts/role-business-relationship-manager.md
+              - "Service Transition and Operational Readiness Manager": reference/output-contracts/role-service-transition-and-operational-readiness-manager.md
+              - "Technology Lifecycle and Decommission Manager": reference/output-contracts/role-technology-lifecycle-and-decommission-manager.md
+              - "SIAM Manager": reference/output-contracts/role-siam-manager.md
+          - "Software Development and Engineering":
+              - "Software Engineer": reference/output-contracts/role-software-engineer.md
+              - "Senior Software Engineer": reference/output-contracts/role-senior-software-engineer.md
+              - "Staff Engineer": reference/output-contracts/role-staff-engineer.md
+              - "Backend Engineer": reference/output-contracts/role-backend-engineer.md
+              - "Frontend Engineer": reference/output-contracts/role-frontend-engineer.md
+              - "Full-stack Engineer": reference/output-contracts/role-full-stack-engineer.md
+              - "Mobile Engineer": reference/output-contracts/role-mobile-engineer.md
+              - "Embedded Firmware Engineer": reference/output-contracts/role-embedded-firmware-engineer.md
+              - "Real-time Systems Engineer": reference/output-contracts/role-real-time-systems-engineer.md
+              - "Systems Programmer": reference/output-contracts/role-systems-programmer.md
+              - "Mainframe Developer": reference/output-contracts/role-mainframe-developer.md
+              - "API Developer": reference/output-contracts/role-api-developer.md
+              - "Integration Developer": reference/output-contracts/role-integration-developer.md
+              - "ERP and CRM Consultant Developer": reference/output-contracts/role-erp-and-crm-consultant-developer.md
+              - "Low-code and RPA Developer": reference/output-contracts/role-low-code-and-rpa-developer.md
+              - "Game Developer": reference/output-contracts/role-game-developer.md
+              - "Graphics and Engine Engineer": reference/output-contracts/role-graphics-and-engine-engineer.md
+              - "Blockchain and Smart Contract Developer": reference/output-contracts/role-blockchain-and-smart-contract-developer.md
+              - "Quantitative Developer": reference/output-contracts/role-quantitative-developer.md
+              - "Compiler and Toolchain Engineer": reference/output-contracts/role-compiler-and-toolchain-engineer.md
+              - "Build Engineer": reference/output-contracts/role-build-engineer.md
+              - "Release Engineer": reference/output-contracts/role-release-engineer.md
+              - "CI/CD Platform Engineer": reference/output-contracts/role-ci-cd-platform-engineer.md
+              - "GitOps and Continuous Delivery Engineer": reference/output-contracts/role-gitops-and-continuous-delivery-engineer.md
+              - "Developer Experience Engineer": reference/output-contracts/role-developer-experience-engineer.md
+              - "Open Source Program Office Engineer": reference/output-contracts/role-open-source-program-office-engineer.md
+              - "Software Modernisation Engineer": reference/output-contracts/role-software-modernisation-engineer.md
+          - Shared foundations and specialisations:
+              - "archetype/architecture-definition": reference/output-contracts/spec-archetype-architecture-definition.md
+              - "archetype/architecture-review-pack": reference/output-contracts/spec-archetype-architecture-review-pack.md
+              - "archetype/audit-compliance-evidence-pack": reference/output-contracts/spec-archetype-audit-compliance-evidence-pack.md
+              - "archetype/benefits-review": reference/output-contracts/spec-archetype-benefits-review.md
+              - "archetype/decision-paper": reference/output-contracts/spec-archetype-decision-paper.md
+              - "archetype/detailed-design-lld": reference/output-contracts/spec-archetype-detailed-design-lld.md
+              - "archetype/executive-one-pager": reference/output-contracts/spec-archetype-executive-one-pager.md
+              - "archetype/implementation-specification": reference/output-contracts/spec-archetype-implementation-specification.md
+              - "archetype/migration-cutover-pack": reference/output-contracts/spec-archetype-migration-cutover-pack.md
+              - "archetype/operational-handover": reference/output-contracts/spec-archetype-operational-handover.md
+              - "archetype/risk-assurance-pack": reference/output-contracts/spec-archetype-risk-assurance-pack.md
+              - "archetype/roadmap": reference/output-contracts/spec-archetype-roadmap.md
+              - "archetype/solution-design-hld": reference/output-contracts/spec-archetype-solution-design-hld.md
+              - "domain/architecture": reference/output-contracts/spec-domain-architecture.md
+              - "domain/data": reference/output-contracts/spec-domain-data.md
+              - "domain/delivery": reference/output-contracts/spec-domain-delivery.md
+              - "domain/operations": reference/output-contracts/spec-domain-operations.md
+              - "domain/security": reference/output-contracts/spec-domain-security.md
+              - "domain/testing": reference/output-contracts/spec-domain-testing.md
+              - "family/automated-tests": reference/output-contracts/spec-family-automated-tests.md
+              - "family/deployment-automation": reference/output-contracts/spec-family-deployment-automation.md
+              - "family/release-notes": reference/output-contracts/spec-family-release-notes.md
+              - "family/requirements-specification": reference/output-contracts/spec-family-requirements-specification.md
+              - "family/software-change": reference/output-contracts/spec-family-software-change.md
+              - "family/strategy": reference/output-contracts/spec-family-strategy.md
+              - "global/invariants": reference/output-contracts/spec-global-invariants.md
+              - "kind/adr": reference/output-contracts/spec-kind-adr.md
+              - "kind/api-interface-contract": reference/output-contracts/spec-kind-api-interface-contract.md
+              - "kind/appsec-verification-report": reference/output-contracts/spec-kind-appsec-verification-report.md
+              - "kind/architecture-definition": reference/output-contracts/spec-kind-architecture-definition.md
+              - "kind/assurance-report": reference/output-contracts/spec-kind-assurance-report.md
+              - "kind/benefits-review": reference/output-contracts/spec-kind-benefits-review.md
+              - "kind/business-case": reference/output-contracts/spec-kind-business-case.md
+              - "kind/cicd-pipeline-assurance": reference/output-contracts/spec-kind-cicd-pipeline-assurance.md
+              - "kind/client-proposal": reference/output-contracts/spec-kind-client-proposal.md
+              - "kind/commercial-proposal": reference/output-contracts/spec-kind-commercial-proposal.md
+              - "kind/compliance-gap-analysis": reference/output-contracts/spec-kind-compliance-gap-analysis.md
+              - "kind/cybersecurity-transformation-proposal": reference/output-contracts/spec-kind-cybersecurity-transformation-proposal.md
+              - "kind/decision-paper": reference/output-contracts/spec-kind-decision-paper.md
+              - "kind/delivery-proposal": reference/output-contracts/spec-kind-delivery-proposal.md
+              - "kind/devsecops-pipeline-design": reference/output-contracts/spec-kind-devsecops-pipeline-design.md
+              - "kind/executive-proposal": reference/output-contracts/spec-kind-executive-proposal.md
+              - "kind/hld": reference/output-contracts/spec-kind-hld.md
+              - "kind/implementation-specification": reference/output-contracts/spec-kind-implementation-specification.md
+              - "kind/incident-postmortem": reference/output-contracts/spec-kind-incident-postmortem.md
+              - "kind/managed-security-services-proposal": reference/output-contracts/spec-kind-managed-security-services-proposal.md
+              - "kind/migration-cutover-plan": reference/output-contracts/spec-kind-migration-cutover-plan.md
+              - "kind/operational-handover": reference/output-contracts/spec-kind-operational-handover.md
+              - "kind/operational-readiness-assessment": reference/output-contracts/spec-kind-operational-readiness-assessment.md
+              - "kind/policy-standard": reference/output-contracts/spec-kind-policy-standard.md
+              - "kind/proposal-compliance-matrix": reference/output-contracts/spec-kind-proposal-compliance-matrix.md
+              - "kind/release-readiness-review": reference/output-contracts/spec-kind-release-readiness-review.md
+              - "kind/requirements-specification": reference/output-contracts/spec-kind-requirements-specification.md
+              - "kind/rfp-response": reference/output-contracts/spec-kind-rfp-response.md
+              - "kind/risk-assessment": reference/output-contracts/spec-kind-risk-assessment.md
+              - "kind/roadmap": reference/output-contracts/spec-kind-roadmap.md
+              - "kind/runbook": reference/output-contracts/spec-kind-runbook.md
+              - "kind/security-architecture-assessment": reference/output-contracts/spec-kind-security-architecture-assessment.md
+              - "kind/security-control-assessment": reference/output-contracts/spec-kind-security-control-assessment.md
+              - "kind/service-design": reference/output-contracts/spec-kind-service-design.md
+              - "kind/software-engineering-plan": reference/output-contracts/spec-kind-software-engineering-plan.md
+              - "kind/software-supply-chain-assessment": reference/output-contracts/spec-kind-software-supply-chain-assessment.md
+              - "kind/statement-of-work": reference/output-contracts/spec-kind-statement-of-work.md
+              - "kind/strategy": reference/output-contracts/spec-kind-strategy.md
+              - "kind/target-operating-model": reference/output-contracts/spec-kind-target-operating-model.md
+              - "kind/technical-proposal": reference/output-contracts/spec-kind-technical-proposal.md
+              - "kind/test-report": reference/output-contracts/spec-kind-test-report.md
+              - "kind/test-strategy": reference/output-contracts/spec-kind-test-strategy.md
+              - "kind/threat-model": reference/output-contracts/spec-kind-threat-model.md
+              - "kind/transformation-baseline-assessment": reference/output-contracts/spec-kind-transformation-baseline-assessment.md
+              - "kind/transformation-execution-plan": reference/output-contracts/spec-kind-transformation-execution-plan.md
+              - "sabsa/architecture": reference/output-contracts/spec-sabsa-architecture.md
+              - "sabsa/assurance-plan": reference/output-contracts/spec-sabsa-assurance-plan.md
+              - "sabsa/client-questions": reference/output-contracts/spec-sabsa-client-questions.md
+              - "sabsa/compliance-gap-analysis": reference/output-contracts/spec-sabsa-compliance-gap-analysis.md
+              - "sabsa/component-realisation": reference/output-contracts/spec-sabsa-component-realisation.md
+              - "sabsa/current-state": reference/output-contracts/spec-sabsa-current-state.md
+              - "sabsa/executive-summary": reference/output-contracts/spec-sabsa-executive-summary.md
+              - "sabsa/framework-mapping": reference/output-contracts/spec-sabsa-framework-mapping.md
+              - "sabsa/governance-register": reference/output-contracts/spec-sabsa-governance-register.md
+              - "sabsa/information-access-model": reference/output-contracts/spec-sabsa-information-access-model.md
+              - "sabsa/lifecycle-register": reference/output-contracts/spec-sabsa-lifecycle-register.md
+              - "sabsa/policy-architecture": reference/output-contracts/spec-sabsa-policy-architecture.md
+              - "sabsa/reuse-register": reference/output-contracts/spec-sabsa-reuse-register.md
+              - "sabsa/risk-treatment-plan": reference/output-contracts/spec-sabsa-risk-treatment-plan.md
+              - "sabsa/security-service-catalogue": reference/output-contracts/spec-sabsa-security-service-catalogue.md
+              - "sabsa/target-state": reference/output-contracts/spec-sabsa-target-state.md
+              - "sabsa/transition-architecture": reference/output-contracts/spec-sabsa-transition-architecture.md
+              - "sabsa/transition-roadmap": reference/output-contracts/spec-sabsa-transition-roadmap.md
+              - "sabsa/trust-model": reference/output-contracts/spec-sabsa-trust-model.md
+              - "type/architecture-decision": reference/output-contracts/spec-type-architecture-decision.md
+              - "type/architecture-definition": reference/output-contracts/spec-type-architecture-definition.md
+              - "type/assurance-report": reference/output-contracts/spec-type-assurance-report.md
+              - "type/benefits-review": reference/output-contracts/spec-type-benefits-review.md
+              - "type/business-case": reference/output-contracts/spec-type-business-case.md
+              - "type/catalogue": reference/output-contracts/spec-type-catalogue.md
+              - "type/configuration-baseline": reference/output-contracts/spec-type-configuration-baseline.md
+              - "type/control-design": reference/output-contracts/spec-type-control-design.md
+              - "type/cutover-plan": reference/output-contracts/spec-type-cutover-plan.md
+              - "type/dashboard": reference/output-contracts/spec-type-dashboard.md
+              - "type/dataset": reference/output-contracts/spec-type-dataset.md
+              - "type/decision-paper": reference/output-contracts/spec-type-decision-paper.md
+              - "type/diagram": reference/output-contracts/spec-type-diagram.md
+              - "type/document": reference/output-contracts/spec-type-document.md
+              - "type/implementation-specification": reference/output-contracts/spec-type-implementation-specification.md
+              - "type/migration-plan": reference/output-contracts/spec-type-migration-plan.md
+              - "type/model": reference/output-contracts/spec-type-model.md
+              - "type/operational-readiness-assessment": reference/output-contracts/spec-type-operational-readiness-assessment.md
+              - "type/presentation": reference/output-contracts/spec-type-presentation.md
+              - "type/prototype": reference/output-contracts/spec-type-prototype.md
+              - "type/register": reference/output-contracts/spec-type-register.md
+              - "type/risk-assessment": reference/output-contracts/spec-type-risk-assessment.md
+              - "type/roadmap": reference/output-contracts/spec-type-roadmap.md
+              - "type/runbook": reference/output-contracts/spec-type-runbook.md
+              - "type/service-design": reference/output-contracts/spec-type-service-design.md
+              - "type/solution-design": reference/output-contracts/spec-type-solution-design.md
+              - "type/test-report": reference/output-contracts/spec-type-test-report.md
+              - "type/test-strategy": reference/output-contracts/spec-type-test-strategy.md
+          - Source-owned workflow handoffs:
+              - "AI system from idea to approved production use: source-owned handoff contracts": reference/output-contracts/workflow-ai-system-approval.md
+              - "Semantic artefact to enterprise publication: source-owned handoff contracts": reference/output-contracts/workflow-semantic-to-enterprise-publication.md
+# JAI:OUTPUT-CONTRACTS:NAV:END
       - Command reference: reference/commands.md
       - Complete installed CLI guide: reference/installed-cli-guide.md
       - Exact operator walkthrough: operations/operator-walkthrough.md
+      - Deployment and recovery: operations/gen2-deployment-recovery.md
       - Lifecycle deployment and recovery: operations/lifecycle-recovery.md
       - Complete ordinary layered workflow: operations/normal-layered-workflow.md
-      - Immutable scoped lifecycle decision: reference/lifecycle-format-2.md
+      - Governed SABSA content and views: operations/sabsa-content.md
+      - Governed SABSA-layer delivery model: architecture/sabsa-layer-model.md
+      - Versioned inputs and applicability: architecture/governed-runtime-cutover.md
+      - Runtime recording and L0 decisions: architecture/governed-runtime-recording.md
+      - Governed dispatch boundary: architecture/governed-dispatch-boundary.md
+      - Governed layer-local workflow: architecture/governed-layer-workflow.md
+      - Native provider execution: architecture/gen2-native-execution-bridge.md
+      - Governed escalation and scheduling: architecture/governed-escalation-scheduling.md
+      - Governed SABSA content: architecture/governed-sabsa-content.md
+      - SABSA delivery profile: reference/sabsa-delivery-profile.md
+      - Governed delivery protocol: reference/governed-delivery-protocol.md
       - Documentation authority and installed CLI help: runtime-reference/current-help.md
       - Product version and release tags: reference/versioning.md
       - Extended command walkthroughs: reference/command-walkthroughs.md
@@ -244,8 +679,6 @@ nav:
       - Expert reference format: reference/expert-reference-format.md
       - Reference selection and context delivery: reference/reference-selection-context.md
       - Compatibility matrix: reference/compatibility.md
-      - Historical 26.10.4 validation: reference/validation-26-10-4-history.md
-      - Historical 26.10.4 baseline: reference/release-migration.md
       - Boundaries and limitations: reference/limitations.md
       - Glossary: reference/glossary.md
   - About:

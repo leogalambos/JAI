@@ -1,6 +1,5 @@
 # Take demand through a funding decision
 
-Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
 ACME Public Services has competing requests for a customer portal, a
 resilience upgrade and reporting improvements. Alice manages the demand

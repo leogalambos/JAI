@@ -21,4 +21,13 @@ Metadata discovery example (source checkout):
 python3 .ai/runtime/tools/commercial_router.py 'firewall implementation effort' --contract ctr-1 --domain network-and-telecommunications
 ```
 
-Installed equivalent uses `~/.ai/it-role-house/tools/commercial_router.py`. Routing does not dispatch or authorize a provider. Strict dispatch requires tested controls for the exact provider version/configuration; the shipped capability records are explicitly `not_run` for both Codex and Claude.
+Installed equivalent uses `~/.ai/it-role-house/tools/commercial_router.py`.
+Routing does not dispatch or authorize a provider. The consequential branch uses
+the canonical `layered-justifiable-delivery` skill and its
+`references/domain-handoff.md` native Gen2 contract. The trusted parent supplies
+exact scoped product, captured execution and selected-review facts through
+`governed_domain.GovernedDomain`; producer names alone establish nothing.
+Keep unmeasured physical-control claims explicitly unverified. A specifically
+required security policy remains blocking when unmet; missing generic hardening
+evidence does not disable ordinary native commercial work. Qualification,
+acceptance and release retain their separate existing requirements.

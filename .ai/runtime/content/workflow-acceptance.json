@@ -2,7 +2,7 @@
   "schema_version": "1.0.0",
   "status": "proposed",
   "workflow_count": 24,
-  "handoff_count": 207,
+  "handoff_count": 215,
   "bindings": [
     {
       "handoff_id": "access-request-to-review:1",
@@ -179,7 +179,7 @@
         "register"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "8fd3d3f606a89d2052e6b86a7e3d13f7ae542b4c10fb511394ca5b3e3ebee91f",
+      "source_hash": "8bbcf9a25dab046e00b218b99485d23cb823e749d5f758d3a8caee5483c896e3",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -205,7 +205,7 @@
         "document"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "8fd3d3f606a89d2052e6b86a7e3d13f7ae542b4c10fb511394ca5b3e3ebee91f",
+      "source_hash": "8bbcf9a25dab046e00b218b99485d23cb823e749d5f758d3a8caee5483c896e3",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -221,8 +221,8 @@
       "step": 3,
       "producer_role": "data-scientist",
       "receiving_role": "ai-and-ml-architect",
-      "handover": "model with held-out performance and stated limits",
-      "acceptance_criterion": "Failure modes and the population it must not be applied to are stated",
+      "handover": "candidate model with held-out performance and stated limits",
+      "acceptance_criterion": "Permitted data and test scope are explicit; no production or pilot use before named human approval; failure modes and excluded populations are stated",
       "contract_ids": [
         "data-scientist:1",
         "data-scientist:2"
@@ -233,7 +233,7 @@
         "diagram"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "8fd3d3f606a89d2052e6b86a7e3d13f7ae542b4c10fb511394ca5b3e3ebee91f",
+      "source_hash": "8bbcf9a25dab046e00b218b99485d23cb823e749d5f758d3a8caee5483c896e3",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -261,7 +261,7 @@
         "model"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "8fd3d3f606a89d2052e6b86a7e3d13f7ae542b4c10fb511394ca5b3e3ebee91f",
+      "source_hash": "8bbcf9a25dab046e00b218b99485d23cb823e749d5f758d3a8caee5483c896e3",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -276,9 +276,9 @@
       "workflow_id": "ai-system-approval",
       "step": 5,
       "producer_role": "ai-safety-and-model-red-team-specialist",
-      "receiving_role": "machine-learning-engineer",
+      "receiving_role": "engagement:named-authority",
       "handover": "adversarial findings with severity and owners",
-      "acceptance_criterion": "Tested against the configuration users will actually get",
+      "acceptance_criterion": "Candidate tests use the intended configuration without production or pilot effects; any offensive testing requires prior written authorisation",
       "contract_ids": [
         "ai-safety-and-model-red-team-specialist:1",
         "ai-safety-and-model-red-team-specialist:2",
@@ -290,7 +290,7 @@
         "model"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "8fd3d3f606a89d2052e6b86a7e3d13f7ae542b4c10fb511394ca5b3e3ebee91f",
+      "source_hash": "8bbcf9a25dab046e00b218b99485d23cb823e749d5f758d3a8caee5483c896e3",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -304,10 +304,51 @@
       "handoff_id": "ai-system-approval:6",
       "workflow_id": "ai-system-approval",
       "step": 6,
+      "producer_role": "engagement:named-authority",
+      "receiving_role": "machine-learning-engineer",
+      "handover": "exact scoped human approval or rejection",
+      "acceptance_criterion": "Candidate evidence, privacy, safety, lineage, monitoring and rollback readiness are reviewed before any production or pilot effect; an agent cannot approve",
+      "contract_ids": [],
+      "contract_selection": "explicit-source-contract",
+      "artifact_types": [],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "8bbcf9a25dab046e00b218b99485d23cb823e749d5f758d3a8caee5483c896e3",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ],
+      "source_content_contract": {
+        "id": "ai-system-approval:6",
+        "version": "1.0.0",
+        "basis": "JAI-authored source handoff practice; supplements the existing workflow gate without granting authority.",
+        "required": [
+          "Identify the named human authority, exact candidate version, intended use, deployment scope and reviewed risk and assurance evidence.",
+          "Record the actual approval, rejection or conditional decision before the corresponding production effects; an agent recommendation is not authority.",
+          "Identify conditions, unresolved evidence, monitoring obligations, validity and change triggers; reference verified external approval where the governing profile requires it."
+        ],
+        "conditional": [
+          {
+            "when": "Evidence requires a bounded pilot before final approval.",
+            "requirement": "Reference prior authority for that exact pilot scope, safeguards and stop conditions; pilot evidence does not authorise broader production use."
+          }
+        ],
+        "optional": [
+          "Decision communication within the authorised scope."
+        ]
+      }
+    },
+    {
+      "handoff_id": "ai-system-approval:7",
+      "workflow_id": "ai-system-approval",
+      "step": 7,
       "producer_role": "machine-learning-engineer",
       "receiving_role": "mlops-engineer",
-      "handover": "reproducible training and traceable deployed version",
-      "acceptance_criterion": "Every deployed version traceable to its training run",
+      "handover": "authorised deployed version and reproducible training lineage",
+      "acceptance_criterion": "Prior named human approval covers the exact version, data, users, environment and production or pilot scope; every deployed version is traceable to its training run",
       "contract_ids": [
         "machine-learning-engineer:1",
         "machine-learning-engineer:2"
@@ -318,35 +359,7 @@
         "prototype"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "8fd3d3f606a89d2052e6b86a7e3d13f7ae542b4c10fb511394ca5b3e3ebee91f",
-      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
-      "receiver_checks": [
-        "exact-contract-binding",
-        "content-qa-replay",
-        "existing-gates-preserved",
-        "independent-receiver-attestation",
-        "specific-gate-evidence"
-      ]
-    },
-    {
-      "handoff_id": "ai-system-approval:7",
-      "workflow_id": "ai-system-approval",
-      "step": 7,
-      "producer_role": "mlops-engineer",
-      "receiving_role": "ai-governance-officer",
-      "handover": "monitored model with defined thresholds and rollback",
-      "acceptance_criterion": "Automatic or documented rollback route exists",
-      "contract_ids": [
-        "mlops-engineer:2",
-        "mlops-engineer:4"
-      ],
-      "contract_selection": "registered-contracts",
-      "artifact_types": [
-        "document",
-        "runbook"
-      ],
-      "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "8fd3d3f606a89d2052e6b86a7e3d13f7ae542b4c10fb511394ca5b3e3ebee91f",
+      "source_hash": "8bbcf9a25dab046e00b218b99485d23cb823e749d5f758d3a8caee5483c896e3",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -360,10 +373,38 @@
       "handoff_id": "ai-system-approval:8",
       "workflow_id": "ai-system-approval",
       "step": 8,
+      "producer_role": "mlops-engineer",
+      "receiving_role": "ai-governance-officer",
+      "handover": "monitored model with defined thresholds and rollback",
+      "acceptance_criterion": "Prior named human approval covers operation and rollback scope; thresholds and an authorised rollback route exist",
+      "contract_ids": [
+        "mlops-engineer:2",
+        "mlops-engineer:4"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "document",
+        "runbook"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "8bbcf9a25dab046e00b218b99485d23cb823e749d5f758d3a8caee5483c896e3",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ]
+    },
+    {
+      "handoff_id": "ai-system-approval:9",
+      "workflow_id": "ai-system-approval",
+      "step": 9,
       "producer_role": "ai-governance-officer",
       "receiving_role": "engagement:named-authority",
-      "handover": "approval record and review date",
-      "acceptance_criterion": "Route to challenge the system's decisions is published",
+      "handover": "periodic assessment, challenge route and next review trigger",
+      "acceptance_criterion": "The challenge route is published; expired or materially changed scope is not operated without renewed prior human approval",
       "contract_ids": [
         "ai-governance-officer:3"
       ],
@@ -372,7 +413,7 @@
         "diagram"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "8fd3d3f606a89d2052e6b86a7e3d13f7ae542b4c10fb511394ca5b3e3ebee91f",
+      "source_hash": "8bbcf9a25dab046e00b218b99485d23cb823e749d5f758d3a8caee5483c896e3",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -2678,7 +2719,7 @@
         "register"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "23eb0c2336dac2674978ef33cd3507810d8423de7345ba422d39ce8fe6477735",
+      "source_hash": "53b3842d86fa08f57878cc49aa7405fc9bc9e255a46f86e2132c5b3adec98bc8",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -2707,7 +2748,7 @@
         "register"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "23eb0c2336dac2674978ef33cd3507810d8423de7345ba422d39ce8fe6477735",
+      "source_hash": "53b3842d86fa08f57878cc49aa7405fc9bc9e255a46f86e2132c5b3adec98bc8",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -2724,7 +2765,7 @@
       "producer_role": "site-reliability-engineer",
       "receiving_role": "major-incident-manager",
       "handover": "service restored; evidence preserved",
-      "acceptance_criterion": "Evidence kept before destructive recovery",
+      "acceptance_criterion": "Prior applicable standard or emergency change authorisation covers restoration effects; preserve evidence before destructive recovery; stop for named human approval if scope is not already authorised",
       "contract_ids": [
         "site-reliability-engineer:3"
       ],
@@ -2733,7 +2774,7 @@
         "register"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "23eb0c2336dac2674978ef33cd3507810d8423de7345ba422d39ce8fe6477735",
+      "source_hash": "53b3842d86fa08f57878cc49aa7405fc9bc9e255a46f86e2132c5b3adec98bc8",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -2762,7 +2803,7 @@
         "register"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "23eb0c2336dac2674978ef33cd3507810d8423de7345ba422d39ce8fe6477735",
+      "source_hash": "53b3842d86fa08f57878cc49aa7405fc9bc9e255a46f86e2132c5b3adec98bc8",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -2790,7 +2831,7 @@
         "register"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "23eb0c2336dac2674978ef33cd3507810d8423de7345ba422d39ce8fe6477735",
+      "source_hash": "53b3842d86fa08f57878cc49aa7405fc9bc9e255a46f86e2132c5b3adec98bc8",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -2805,7 +2846,7 @@
       "workflow_id": "incident-to-problem",
       "step": 6,
       "producer_role": "technical-lead",
-      "receiving_role": "change-manager",
+      "receiving_role": "software-engineer",
       "handover": "fix approach and effort",
       "acceptance_criterion": "The fix addresses the cause, not the latest symptom",
       "contract_ids": [
@@ -2818,7 +2859,7 @@
         "document"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "23eb0c2336dac2674978ef33cd3507810d8423de7345ba422d39ce8fe6477735",
+      "source_hash": "53b3842d86fa08f57878cc49aa7405fc9bc9e255a46f86e2132c5b3adec98bc8",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -2832,19 +2873,23 @@
       "handoff_id": "incident-to-problem:7",
       "workflow_id": "incident-to-problem",
       "step": 7,
-      "producer_role": "change-manager",
-      "receiving_role": "detection-engineer",
-      "handover": "change authorisation",
-      "acceptance_criterion": "Emergency path used only where justified, and logged",
+      "producer_role": "software-engineer",
+      "receiving_role": "change-manager",
+      "handover": "versioned candidate, pre-production test evidence and rollback rehearsal",
+      "acceptance_criterion": "Preparation is confined to permitted code, data and test environments; no production effects before the exact human change decision",
       "contract_ids": [
-        "change-manager:1"
+        "software-engineer:1",
+        "software-engineer:2",
+        "software-engineer:4"
       ],
       "contract_selection": "registered-contracts",
       "artifact_types": [
-        "register"
+        "decision-paper",
+        "document",
+        "prototype"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "23eb0c2336dac2674978ef33cd3507810d8423de7345ba422d39ce8fe6477735",
+      "source_hash": "53b3842d86fa08f57878cc49aa7405fc9bc9e255a46f86e2132c5b3adec98bc8",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -2858,20 +2903,19 @@
       "handoff_id": "incident-to-problem:8",
       "workflow_id": "incident-to-problem",
       "step": 8,
-      "producer_role": "detection-engineer",
-      "receiving_role": "continual-improvement-manager",
-      "handover": "new or tuned alert with a runbook",
-      "acceptance_criterion": "The alert would have fired earlier for this failure",
+      "producer_role": "change-manager",
+      "receiving_role": "software-engineer",
+      "handover": "change authorisation",
+      "acceptance_criterion": "Candidate fix design, pre-production test evidence and rollback plan precede the human decision; emergency authorisation is justified and logged before effects",
       "contract_ids": [
-        "detection-engineer:1",
-        "detection-engineer:2"
+        "change-manager:1"
       ],
       "contract_selection": "registered-contracts",
       "artifact_types": [
-        "document"
+        "register"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "23eb0c2336dac2674978ef33cd3507810d8423de7345ba422d39ce8fe6477735",
+      "source_hash": "53b3842d86fa08f57878cc49aa7405fc9bc9e255a46f86e2132c5b3adec98bc8",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -2885,6 +2929,89 @@
       "handoff_id": "incident-to-problem:9",
       "workflow_id": "incident-to-problem",
       "step": 9,
+      "producer_role": "software-engineer",
+      "receiving_role": "test-analyst",
+      "handover": "versioned fix, execution evidence and rollback observations",
+      "acceptance_criterion": "Prior exact human change authorisation covers deployment; stop on scope change or failed stop/go criteria",
+      "contract_ids": [
+        "software-engineer:1",
+        "software-engineer:4"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "decision-paper",
+        "prototype"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "53b3842d86fa08f57878cc49aa7405fc9bc9e255a46f86e2132c5b3adec98bc8",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ]
+    },
+    {
+      "handoff_id": "incident-to-problem:10",
+      "workflow_id": "incident-to-problem",
+      "step": 10,
+      "producer_role": "test-analyst",
+      "receiving_role": "detection-engineer",
+      "handover": "independent regression, service and residual-defect evidence",
+      "acceptance_criterion": "Actual execution and independent validation evidence are required before closure; failed criteria remain blocking",
+      "contract_ids": [
+        "test-analyst:1",
+        "test-analyst:2"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "document",
+        "test-report"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "53b3842d86fa08f57878cc49aa7405fc9bc9e255a46f86e2132c5b3adec98bc8",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ]
+    },
+    {
+      "handoff_id": "incident-to-problem:11",
+      "workflow_id": "incident-to-problem",
+      "step": 11,
+      "producer_role": "detection-engineer",
+      "receiving_role": "continual-improvement-manager",
+      "handover": "new or tuned alert with a runbook",
+      "acceptance_criterion": "Prior exact change authorisation covers alert changes; prove the alert would have fired earlier for this failure",
+      "contract_ids": [
+        "detection-engineer:1",
+        "detection-engineer:2"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "document"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "53b3842d86fa08f57878cc49aa7405fc9bc9e255a46f86e2132c5b3adec98bc8",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ]
+    },
+    {
+      "handoff_id": "incident-to-problem:12",
+      "workflow_id": "incident-to-problem",
+      "step": 12,
       "producer_role": "continual-improvement-manager",
       "receiving_role": "engagement:named-authority",
       "handover": "measured recurrence rate",
@@ -2897,7 +3024,7 @@
         "document"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "23eb0c2336dac2674978ef33cd3507810d8423de7345ba422d39ce8fe6477735",
+      "source_hash": "53b3842d86fa08f57878cc49aa7405fc9bc9e255a46f86e2132c5b3adec98bc8",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -2925,7 +3052,7 @@
         "prototype"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "9c1637f27ac2b5f11b202e1aa3bb8e3b40949ca71c74680af3b2f1e819c3ad78",
+      "source_hash": "ad70c84aff2b04011fef00a06edd92768e0d9f368afb1cf442026cee96089ff7",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -2955,7 +3082,7 @@
         "runbook"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "9c1637f27ac2b5f11b202e1aa3bb8e3b40949ca71c74680af3b2f1e819c3ad78",
+      "source_hash": "ad70c84aff2b04011fef00a06edd92768e0d9f368afb1cf442026cee96089ff7",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -2971,8 +3098,8 @@
       "step": 3,
       "producer_role": "data-engineer",
       "receiving_role": "test-manager",
-      "handover": "migration execution evidence and exceptions",
-      "acceptance_criterion": "Rehearsal proves throughput, error handling and repeatability",
+      "handover": "pre-production rehearsal evidence and exceptions",
+      "acceptance_criterion": "Permitted data and test scope are explicit; rehearsal proves throughput, error handling and repeatability without production cutover effects",
       "contract_ids": [
         "data-engineer:1",
         "data-engineer:3"
@@ -2983,7 +3110,7 @@
         "prototype"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "9c1637f27ac2b5f11b202e1aa3bb8e3b40949ca71c74680af3b2f1e819c3ad78",
+      "source_hash": "ad70c84aff2b04011fef00a06edd92768e0d9f368afb1cf442026cee96089ff7",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -3000,7 +3127,7 @@
       "producer_role": "test-manager",
       "receiving_role": "service-transition-and-operational-readiness-manager",
       "handover": "test and residual-risk report",
-      "acceptance_criterion": "Exit criteria were defined before execution and are met or explicitly waived",
+      "acceptance_criterion": "Rehearsal exit criteria are defined before execution; any permitted exception has prior named authority for its exact scope; mandatory controls remain blocking",
       "contract_ids": [
         "test-manager:2",
         "test-manager:3"
@@ -3011,7 +3138,7 @@
         "document"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "9c1637f27ac2b5f11b202e1aa3bb8e3b40949ca71c74680af3b2f1e819c3ad78",
+      "source_hash": "ad70c84aff2b04011fef00a06edd92768e0d9f368afb1cf442026cee96089ff7",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -3037,7 +3164,7 @@
         "assurance-report"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "9c1637f27ac2b5f11b202e1aa3bb8e3b40949ca71c74680af3b2f1e819c3ad78",
+      "source_hash": "ad70c84aff2b04011fef00a06edd92768e0d9f368afb1cf442026cee96089ff7",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -3053,8 +3180,8 @@
       "step": 6,
       "producer_role": "release-engineer",
       "receiving_role": "change-manager",
-      "handover": "release manifest and deployment/rollback evidence",
-      "acceptance_criterion": "Exact artefact versions and rollback steps are known",
+      "handover": "candidate release manifest and rehearsal deployment/rollback evidence",
+      "acceptance_criterion": "Exact artefact versions and rollback steps are known; no production effects before the human change decision",
       "contract_ids": [
         "release-engineer:2",
         "release-engineer:4"
@@ -3065,7 +3192,7 @@
         "runbook"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "9c1637f27ac2b5f11b202e1aa3bb8e3b40949ca71c74680af3b2f1e819c3ad78",
+      "source_hash": "ad70c84aff2b04011fef00a06edd92768e0d9f368afb1cf442026cee96089ff7",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -3080,9 +3207,9 @@
       "workflow_id": "migration-and-cutover",
       "step": 7,
       "producer_role": "change-manager",
-      "receiving_role": "it-service-owner",
+      "receiving_role": "data-engineer",
       "handover": "production change authorisation",
-      "acceptance_criterion": "Rehearsal, reconciliation and operational evidence are available to the decision",
+      "acceptance_criterion": "Pre-production rehearsal, reconciliation design and operational readiness evidence precede exact human authorisation covering cutover and validation effects, data, versions, environment, window and rollback boundaries; no destructive test or data exposure outside that prior approved scope",
       "contract_ids": [
         "change-manager:1"
       ],
@@ -3091,7 +3218,7 @@
         "register"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "9c1637f27ac2b5f11b202e1aa3bb8e3b40949ca71c74680af3b2f1e819c3ad78",
+      "source_hash": "ad70c84aff2b04011fef00a06edd92768e0d9f368afb1cf442026cee96089ff7",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -3105,6 +3232,90 @@
       "handoff_id": "migration-and-cutover:8",
       "workflow_id": "migration-and-cutover",
       "step": 8,
+      "producer_role": "data-engineer",
+      "receiving_role": "test-analyst",
+      "handover": "actual cutover execution, reconciliation and stop/go evidence",
+      "acceptance_criterion": "Prior exact human change authorisation covers data, versions, environment, window and rollback; stop on failed criteria or changed scope",
+      "contract_ids": [
+        "data-engineer:1",
+        "data-engineer:3"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "document",
+        "prototype"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "ad70c84aff2b04011fef00a06edd92768e0d9f368afb1cf442026cee96089ff7",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ]
+    },
+    {
+      "handoff_id": "migration-and-cutover:9",
+      "workflow_id": "migration-and-cutover",
+      "step": 9,
+      "producer_role": "test-analyst",
+      "receiving_role": "test-manager",
+      "handover": "executed independent validation cases, observed results, reconciliation evidence and located defects",
+      "acceptance_criterion": "Prior exact human change authorisation covers the validation effects and data boundaries; no unapproved destructive tests or data exposure; record actual observations and untested conditions without substituting the migration executor's self-check",
+      "contract_ids": [
+        "test-analyst:2",
+        "test-analyst:4"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "document",
+        "test-report"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "ad70c84aff2b04011fef00a06edd92768e0d9f368afb1cf442026cee96089ff7",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ]
+    },
+    {
+      "handoff_id": "migration-and-cutover:10",
+      "workflow_id": "migration-and-cutover",
+      "step": 10,
+      "producer_role": "test-manager",
+      "receiving_role": "it-service-owner",
+      "handover": "independent production validation and residual-risk report",
+      "acceptance_criterion": "Independent validation uses actual authorised execution evidence against predeclared criteria; unresolved blocking defects prevent service acceptance",
+      "contract_ids": [
+        "test-manager:2",
+        "test-manager:3"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "decision-paper",
+        "document"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "ad70c84aff2b04011fef00a06edd92768e0d9f368afb1cf442026cee96089ff7",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ]
+    },
+    {
+      "handoff_id": "migration-and-cutover:11",
+      "workflow_id": "migration-and-cutover",
+      "step": 11,
       "producer_role": "it-service-owner",
       "receiving_role": "engagement:named-authority",
       "handover": "service acceptance and residual issues",
@@ -3119,7 +3330,7 @@
         "service-design"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "9c1637f27ac2b5f11b202e1aa3bb8e3b40949ca71c74680af3b2f1e819c3ad78",
+      "source_hash": "ad70c84aff2b04011fef00a06edd92768e0d9f368afb1cf442026cee96089ff7",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -4387,7 +4598,7 @@
       "contract_selection": "explicit-source-contract",
       "artifact_types": [],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "17cfa369d3fcdfb8f7260f6b204b368bfcb63ca7213bcd15e2c6ef96282b5219",
+      "source_hash": "0444ec79b8631389674d7dbc99d0274cf16bd4383ae1caffe0f57ac21177cf90",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -4395,7 +4606,26 @@
         "existing-gates-preserved",
         "independent-receiver-attestation",
         "specific-gate-evidence"
-      ]
+      ],
+      "source_content_contract": {
+        "id": "semantic-to-enterprise-publication:1",
+        "version": "1.0.0",
+        "basis": "JAI-authored source handoff practice; supplements the existing workflow gate without granting authority.",
+        "required": [
+          "Identify the exact semantic model version, intended audience, purpose, scope and requested publication formats.",
+          "State claims, decisions, alternatives and rationale; link material claims to evidence and distinguish facts, assumptions and unresolved questions.",
+          "Identify acceptance criteria, source references, classification, disclosure limits and the owners of unresolved items."
+        ],
+        "conditional": [
+          {
+            "when": "The publication requests a consequential decision.",
+            "requirement": "Identify the accountable decision authority, exact decision requested and residual risks requiring disposition."
+          }
+        ],
+        "optional": [
+          "Supporting calculations and detailed source annexes referenced by material claims."
+        ]
+      }
     },
     {
       "handoff_id": "semantic-to-enterprise-publication:2",
@@ -4404,12 +4634,12 @@
       "producer_role": "agent:evidence-rationale-reviewer",
       "receiving_role": "agent:enterprise-publication-editor",
       "handover": "semantic gate result and located findings",
-      "acceptance_criterion": "Semantic Gate PASS or explicit waiver by named authority",
+      "acceptance_criterion": "Semantic Gate PASS and the exact stable semantic snapshot has its required source approval under the governing profile, including verified external human proof where required, before the editor acts; only an existing expressly permitted prior scoped waiver applies, and mandatory controls remain blocking",
       "contract_ids": [],
       "contract_selection": "explicit-source-contract",
       "artifact_types": [],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "17cfa369d3fcdfb8f7260f6b204b368bfcb63ca7213bcd15e2c6ef96282b5219",
+      "source_hash": "0444ec79b8631389674d7dbc99d0274cf16bd4383ae1caffe0f57ac21177cf90",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -4417,7 +4647,26 @@
         "existing-gates-preserved",
         "independent-receiver-attestation",
         "specific-gate-evidence"
-      ]
+      ],
+      "source_content_contract": {
+        "id": "semantic-to-enterprise-publication:2",
+        "version": "1.0.0",
+        "basis": "JAI-authored source handoff practice; supplements the existing workflow gate without granting authority.",
+        "required": [
+          "Identify reviewer, independence, exact source version and the criteria and evidence actually assessed.",
+          "Locate each finding against a claim or criterion; record significance, evidence limits and required resolution.",
+          "State a bounded semantic verdict, unresolved findings and any explicit waiver reference without treating missing evidence as a pass."
+        ],
+        "conditional": [
+          {
+            "when": "The governing policy permits a waiver and one is relied upon.",
+            "requirement": "Reference prior explicit authority for that exact criterion, scope, rationale, limits and expiry where specified; a reviewer cannot create permission to waive a mandatory gate."
+          }
+        ],
+        "optional": [
+          "Comparative recommendations that do not alter the underlying decision."
+        ]
+      }
     },
     {
       "handoff_id": "semantic-to-enterprise-publication:3",
@@ -4426,12 +4675,12 @@
       "producer_role": "agent:enterprise-publication-editor",
       "receiving_role": "agent:visual-quality-reviewer",
       "handover": "rendered publication set with semantic hash",
-      "acceptance_criterion": "All outputs carry the same semantic SHA-256 and required document control",
+      "acceptance_criterion": "All outputs carry the same semantic SHA-256 and required document control; draft rendering grants no acceptance or release",
       "contract_ids": [],
       "contract_selection": "explicit-source-contract",
       "artifact_types": [],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "17cfa369d3fcdfb8f7260f6b204b368bfcb63ca7213bcd15e2c6ef96282b5219",
+      "source_hash": "0444ec79b8631389674d7dbc99d0274cf16bd4383ae1caffe0f57ac21177cf90",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -4439,7 +4688,26 @@
         "existing-gates-preserved",
         "independent-receiver-attestation",
         "specific-gate-evidence"
-      ]
+      ],
+      "source_content_contract": {
+        "id": "semantic-to-enterprise-publication:3",
+        "version": "1.0.0",
+        "basis": "JAI-authored source handoff practice; supplements the existing workflow gate without granting authority.",
+        "required": [
+          "Identify the approved semantic input version and digest, selected publication archetype, audience and requested formats.",
+          "Supply the actual rendered files with a manifest linking every rendition to the same semantic source; preserve claims, caveats and decisions.",
+          "Record document identity, classification, references, generation limitations and dependencies needed to reproduce the projection."
+        ],
+        "conditional": [
+          {
+            "when": "A required renderer or format is unavailable.",
+            "requirement": "Identify the missing rendition and blocking limitation; do not claim it was produced or inspected."
+          }
+        ],
+        "optional": [
+          "Additional audience projections whose semantic equivalence is established."
+        ]
+      }
     },
     {
       "handoff_id": "semantic-to-enterprise-publication:4",
@@ -4448,12 +4716,12 @@
       "producer_role": "agent:visual-quality-reviewer",
       "receiving_role": "engagement:named-authority",
       "handover": "publication gate result and findings",
-      "acceptance_criterion": "Publication Gate PASS; material defects are resolved or explicitly waived",
+      "acceptance_criterion": "Publication Gate PASS with blocking defects resolved; any policy-permitted waiver requires prior named human authority for its exact scope before release or other gated effects; mandatory controls remain blocking",
       "contract_ids": [],
       "contract_selection": "explicit-source-contract",
       "artifact_types": [],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "17cfa369d3fcdfb8f7260f6b204b368bfcb63ca7213bcd15e2c6ef96282b5219",
+      "source_hash": "0444ec79b8631389674d7dbc99d0274cf16bd4383ae1caffe0f57ac21177cf90",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -4461,7 +4729,26 @@
         "existing-gates-preserved",
         "independent-receiver-attestation",
         "specific-gate-evidence"
-      ]
+      ],
+      "source_content_contract": {
+        "id": "semantic-to-enterprise-publication:4",
+        "version": "1.0.0",
+        "basis": "JAI-authored source handoff practice; supplements the existing workflow gate without granting authority.",
+        "required": [
+          "Identify reviewer, exact rendered files, source binding, inspected formats and actual viewing or rendering method.",
+          "Record located findings for legibility, hierarchy, density, tables, diagrams, document control and package integrity.",
+          "State the publication verdict and limitations, defect disposition, and any explicit waiver; distinguish static checks from observed visual inspection."
+        ],
+        "conditional": [
+          {
+            "when": "An output format or part of the package could not be inspected.",
+            "requirement": "Record the missing inspection and its impact; retain the blocked state unless the governing policy permits and the exact authority explicitly approves a scoped disposition before release."
+          }
+        ],
+        "optional": [
+          "Annotated previews and presentation recommendations supporting the findings."
+        ]
+      }
     },
     {
       "handoff_id": "semantic-to-enterprise-publication:5",
@@ -4470,12 +4757,12 @@
       "producer_role": "engagement:named-authority",
       "receiving_role": "engagement:named-authority",
       "handover": "release approval",
-      "acceptance_criterion": "Approval is by an authority independent of the publication editor where governance requires it",
+      "acceptance_criterion": "Explicit exact human approval precedes release; required independence is preserved; agents cannot approve or issue waivers",
       "contract_ids": [],
       "contract_selection": "explicit-source-contract",
       "artifact_types": [],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "17cfa369d3fcdfb8f7260f6b204b368bfcb63ca7213bcd15e2c6ef96282b5219",
+      "source_hash": "0444ec79b8631389674d7dbc99d0274cf16bd4383ae1caffe0f57ac21177cf90",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -4483,7 +4770,26 @@
         "existing-gates-preserved",
         "independent-receiver-attestation",
         "specific-gate-evidence"
-      ]
+      ],
+      "source_content_contract": {
+        "id": "semantic-to-enterprise-publication:5",
+        "version": "1.0.0",
+        "basis": "JAI-authored source handoff practice; supplements the existing workflow gate without granting authority.",
+        "required": [
+          "Identify the actual accountable authority, exact publication version and files, permitted audience and release scope.",
+          "Reference the applicable semantic and publication reviews, unresolved risks and any authorised conditions or waivers.",
+          "Record the explicit decision and its effective conditions using the existing authority mechanism; a drafted request or agent assertion is not approval."
+        ],
+        "conditional": [
+          {
+            "when": "The governing decision requires an L0 signature.",
+            "requirement": "Reference the actual operator-signed decision bound to these effects; do not manufacture a signature or inherit another output approval."
+          }
+        ],
+        "optional": [
+          "Communication instructions that stay within the approved audience and scope."
+        ]
+      }
     },
     {
       "handoff_id": "service-retirement-and-decommission:1",
@@ -4501,7 +4807,7 @@
         "service-design"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "2c2d340a93484413882df61aa36566404a666ac05b062d32fd29f7f5182f93cb",
+      "source_hash": "2a07185f1523ba23d5c5b216715e0d9f52f3bb8860cc8604d415d1d1456b537d",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -4529,7 +4835,7 @@
         "register"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "2c2d340a93484413882df61aa36566404a666ac05b062d32fd29f7f5182f93cb",
+      "source_hash": "2a07185f1523ba23d5c5b216715e0d9f52f3bb8860cc8604d415d1d1456b537d",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -4544,7 +4850,7 @@
       "workflow_id": "service-retirement-and-decommission",
       "step": 3,
       "producer_role": "data-protection-officer",
-      "receiving_role": "identity-and-access-management-engineer",
+      "receiving_role": "change-manager",
       "handover": "data disposition position",
       "acceptance_criterion": "Regulated/personal data disposition is authorised before irreversible action",
       "contract_ids": [
@@ -4557,7 +4863,7 @@
         "register"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "2c2d340a93484413882df61aa36566404a666ac05b062d32fd29f7f5182f93cb",
+      "source_hash": "2a07185f1523ba23d5c5b216715e0d9f52f3bb8860cc8604d415d1d1456b537d",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -4571,19 +4877,19 @@
       "handoff_id": "service-retirement-and-decommission:4",
       "workflow_id": "service-retirement-and-decommission",
       "step": 4,
-      "producer_role": "identity-and-access-management-engineer",
-      "receiving_role": "change-manager",
-      "handover": "access/credential closure evidence",
-      "acceptance_criterion": "No active credential remains without owner and purpose",
+      "producer_role": "change-manager",
+      "receiving_role": "identity-and-access-management-engineer",
+      "handover": "prior scoped human production-change authorisation",
+      "acceptance_criterion": "Dependency and data-disposition plans and rehearsal evidence are available before destructive action; approval covers exact credential and service changes, not a completed retirement",
       "contract_ids": [
-        "identity-and-access-management-engineer:3"
+        "change-manager:1"
       ],
       "contract_selection": "registered-contracts",
       "artifact_types": [
-        "prototype"
+        "register"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "2c2d340a93484413882df61aa36566404a666ac05b062d32fd29f7f5182f93cb",
+      "source_hash": "2a07185f1523ba23d5c5b216715e0d9f52f3bb8860cc8604d415d1d1456b537d",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -4597,19 +4903,19 @@
       "handoff_id": "service-retirement-and-decommission:5",
       "workflow_id": "service-retirement-and-decommission",
       "step": 5,
-      "producer_role": "change-manager",
-      "receiving_role": "it-asset-manager",
-      "handover": "approved execution window/decision",
-      "acceptance_criterion": "Destructive steps are within approved change authority",
+      "producer_role": "identity-and-access-management-engineer",
+      "receiving_role": "site-reliability-engineer",
+      "handover": "access-transfer evidence and the exact owned, time-bounded shutdown-access list",
+      "acceptance_criterion": "Prior exact human change approval covers each removal or transfer; retain only explicitly owned bounded shutdown credentials needed for the approved shutdown, with purpose, expiry and final revocation owner",
       "contract_ids": [
-        "change-manager:1"
+        "identity-and-access-management-engineer:3"
       ],
       "contract_selection": "registered-contracts",
       "artifact_types": [
-        "register"
+        "prototype"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "2c2d340a93484413882df61aa36566404a666ac05b062d32fd29f7f5182f93cb",
+      "source_hash": "2a07185f1523ba23d5c5b216715e0d9f52f3bb8860cc8604d415d1d1456b537d",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -4623,6 +4929,32 @@
       "handoff_id": "service-retirement-and-decommission:6",
       "workflow_id": "service-retirement-and-decommission",
       "step": 6,
+      "producer_role": "site-reliability-engineer",
+      "receiving_role": "it-asset-manager",
+      "handover": "actual shutdown, final credential revocation and reconciliation evidence, and verified technical state",
+      "acceptance_criterion": "Prior exact human change and data-disposition authorisation covers every effect; stop on changed scope or failed dependency/archive checks; the assigned IAM actor closes retained shutdown access and verifies final credential reconciliation before asset reconciliation",
+      "contract_ids": [
+        "site-reliability-engineer:3"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "register"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "2a07185f1523ba23d5c5b216715e0d9f52f3bb8860cc8604d415d1d1456b537d",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ]
+    },
+    {
+      "handoff_id": "service-retirement-and-decommission:7",
+      "workflow_id": "service-retirement-and-decommission",
+      "step": 7,
       "producer_role": "it-asset-manager",
       "receiving_role": "architecture-repository-and-modelling-lead",
       "handover": "asset/configuration closure",
@@ -4637,34 +4969,7 @@
         "roadmap"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "2c2d340a93484413882df61aa36566404a666ac05b062d32fd29f7f5182f93cb",
-      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
-      "receiver_checks": [
-        "exact-contract-binding",
-        "content-qa-replay",
-        "existing-gates-preserved",
-        "independent-receiver-attestation",
-        "specific-gate-evidence"
-      ]
-    },
-    {
-      "handoff_id": "service-retirement-and-decommission:7",
-      "workflow_id": "service-retirement-and-decommission",
-      "step": 7,
-      "producer_role": "architecture-repository-and-modelling-lead",
-      "receiving_role": "benefits-realisation-manager",
-      "handover": "repository retirement revision",
-      "acceptance_criterion": "Repository has no unowned active dependency into the retired element",
-      "contract_ids": [
-        "architecture-repository-and-modelling-lead:3",
-        "architecture-repository-and-modelling-lead:4"
-      ],
-      "contract_selection": "registered-contracts",
-      "artifact_types": [
-        "model"
-      ],
-      "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "2c2d340a93484413882df61aa36566404a666ac05b062d32fd29f7f5182f93cb",
+      "source_hash": "2a07185f1523ba23d5c5b216715e0d9f52f3bb8860cc8604d415d1d1456b537d",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -4678,6 +4983,33 @@
       "handoff_id": "service-retirement-and-decommission:8",
       "workflow_id": "service-retirement-and-decommission",
       "step": 8,
+      "producer_role": "architecture-repository-and-modelling-lead",
+      "receiving_role": "benefits-realisation-manager",
+      "handover": "repository retirement revision",
+      "acceptance_criterion": "Repository has no unowned active dependency into the retired element",
+      "contract_ids": [
+        "architecture-repository-and-modelling-lead:3",
+        "architecture-repository-and-modelling-lead:4"
+      ],
+      "contract_selection": "registered-contracts",
+      "artifact_types": [
+        "model"
+      ],
+      "source_ref": ".ai/runtime/workflows.json",
+      "source_hash": "2a07185f1523ba23d5c5b216715e0d9f52f3bb8860cc8604d415d1d1456b537d",
+      "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
+      "receiver_checks": [
+        "exact-contract-binding",
+        "content-qa-replay",
+        "existing-gates-preserved",
+        "independent-receiver-attestation",
+        "specific-gate-evidence"
+      ]
+    },
+    {
+      "handoff_id": "service-retirement-and-decommission:9",
+      "workflow_id": "service-retirement-and-decommission",
+      "step": 9,
       "producer_role": "benefits-realisation-manager",
       "receiving_role": "engagement:named-authority",
       "handover": "benefits closure result",
@@ -4690,7 +5022,7 @@
         "benefits-review"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "2c2d340a93484413882df61aa36566404a666ac05b062d32fd29f7f5182f93cb",
+      "source_hash": "2a07185f1523ba23d5c5b216715e0d9f52f3bb8860cc8604d415d1d1456b537d",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -5390,7 +5722,7 @@
         "document"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "30f454db553a20806a80eca7ac47b0c3607f8526de6e1303413bfc4f16503e26",
+      "source_hash": "2dcaab8f2153f3bfdbcd11510f4a8f9004292f4cc5bf524f867591db99879752",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -5416,7 +5748,7 @@
         "risk-assessment"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "30f454db553a20806a80eca7ac47b0c3607f8526de6e1303413bfc4f16503e26",
+      "source_hash": "2dcaab8f2153f3bfdbcd11510f4a8f9004292f4cc5bf524f867591db99879752",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -5442,7 +5774,7 @@
         "document"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "30f454db553a20806a80eca7ac47b0c3607f8526de6e1303413bfc4f16503e26",
+      "source_hash": "2dcaab8f2153f3bfdbcd11510f4a8f9004292f4cc5bf524f867591db99879752",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -5457,9 +5789,9 @@
       "workflow_id": "vulnerability-to-remediation",
       "step": 4,
       "producer_role": "container-platform-engineer",
-      "receiving_role": "software-engineer",
-      "handover": "rebuilt signed images",
-      "acceptance_criterion": "Base image owner and cadence identified",
+      "receiving_role": "change-manager",
+      "handover": "candidate images and validation evidence",
+      "acceptance_criterion": "Base image owner and cadence identified; candidate preparation does not deploy to production",
       "contract_ids": [
         "container-platform-engineer:1",
         "container-platform-engineer:4"
@@ -5470,7 +5802,7 @@
         "implementation-specification"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "30f454db553a20806a80eca7ac47b0c3607f8526de6e1303413bfc4f16503e26",
+      "source_hash": "2dcaab8f2153f3bfdbcd11510f4a8f9004292f4cc5bf524f867591db99879752",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -5484,19 +5816,19 @@
       "handoff_id": "vulnerability-to-remediation:5",
       "workflow_id": "vulnerability-to-remediation",
       "step": 5,
-      "producer_role": "software-engineer",
-      "receiving_role": "change-manager",
-      "handover": "patched system or dependency",
-      "acceptance_criterion": "Fix verified, not assumed from a version number",
+      "producer_role": "change-manager",
+      "receiving_role": "software-engineer",
+      "handover": "change authorisation, approved window and rollback conditions",
+      "acceptance_criterion": "Named change authority approves before any production change; the authorised emergency route applies to urgent changes; risk of patching weighed against risk of waiting",
       "contract_ids": [
-        "software-engineer:1"
+        "change-manager:1"
       ],
       "contract_selection": "registered-contracts",
       "artifact_types": [
-        "decision-paper"
+        "register"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "30f454db553a20806a80eca7ac47b0c3607f8526de6e1303413bfc4f16503e26",
+      "source_hash": "2dcaab8f2153f3bfdbcd11510f4a8f9004292f4cc5bf524f867591db99879752",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -5510,19 +5842,19 @@
       "handoff_id": "vulnerability-to-remediation:6",
       "workflow_id": "vulnerability-to-remediation",
       "step": 6,
-      "producer_role": "change-manager",
+      "producer_role": "software-engineer",
       "receiving_role": "penetration-tester-network-and-infrastructure",
-      "handover": "change authorisation",
-      "acceptance_criterion": "Risk of patching weighed against risk of waiting, explicitly",
+      "handover": "patched system or dependency with execution and verification evidence",
+      "acceptance_criterion": "Current change authorisation and rollback conditions confirmed before deployment; fix verified, not assumed from a version number",
       "contract_ids": [
-        "change-manager:1"
+        "software-engineer:1"
       ],
       "contract_selection": "registered-contracts",
       "artifact_types": [
-        "register"
+        "decision-paper"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "30f454db553a20806a80eca7ac47b0c3607f8526de6e1303413bfc4f16503e26",
+      "source_hash": "2dcaab8f2153f3bfdbcd11510f4a8f9004292f4cc5bf524f867591db99879752",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -5548,7 +5880,7 @@
         "document"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "30f454db553a20806a80eca7ac47b0c3607f8526de6e1303413bfc4f16503e26",
+      "source_hash": "2dcaab8f2153f3bfdbcd11510f4a8f9004292f4cc5bf524f867591db99879752",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -5574,7 +5906,7 @@
         "register"
       ],
       "source_ref": ".ai/runtime/workflows.json",
-      "source_hash": "30f454db553a20806a80eca7ac47b0c3607f8526de6e1303413bfc4f16503e26",
+      "source_hash": "2dcaab8f2153f3bfdbcd11510f4a8f9004292f4cc5bf524f867591db99879752",
       "obligation_basis": "Existing workflow handover/gate and explicit professional contract mapping; proposed, pending domain approval.",
       "receiver_checks": [
         "exact-contract-binding",
@@ -5585,5 +5917,5 @@
       ]
     }
   ],
-  "catalog_hash": "7778534cd0014d532ce6fb8dd149234e1553427cd5846b6d20aec39452bea0e7"
+  "catalog_hash": "2fafda230d2aa3b3e62e7e76a03401045b580a4e5af7564c38515c47ff960eb3"
 }

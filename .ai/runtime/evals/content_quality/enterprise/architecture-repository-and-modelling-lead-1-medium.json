@@ -213,7 +213,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Architecture repository metamodel and modelling conventions', provide verifiable evidence satisfying: Element types, relationships, identifiers and viewpoint rules are explicit and versioned.. Required delivery form: Model in the EA tool plus a versioned published specification.",
+        "criterion_under_review": "For the specific output 'Architecture repository metamodel and modelling conventions', provide verifiable evidence satisfying: Element types, relationships, identifiers and viewpoint rules are explicit and versioned. Required delivery form: Model in the EA tool plus a versioned published specification.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

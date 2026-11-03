@@ -100,7 +100,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
 | 1 | Component library implementation | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 2 | design tokens and theming | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
+| 2 | design tokens and theming | Versioned design-token and theme specification | Defines token names, types, semantic aliases, theme resolution, accessibility constraints and compatibility checks |
 | 3 | component documentation and usage guidance | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 | 4 | accessibility conformance per component | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 
@@ -144,7 +144,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Component library implementation has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Component library implementation") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

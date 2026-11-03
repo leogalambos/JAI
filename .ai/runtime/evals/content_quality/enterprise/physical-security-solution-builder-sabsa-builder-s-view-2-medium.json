@@ -259,6 +259,52 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
+    "component_design": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-COMPONENT-DESIGN",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Describe bounded component responsibilities and deployment topology.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "design_verification": [
+      {
+        "test_id": "SYN-T1",
+        "requirement_ref": "SYN-REC1",
+        "build": "candidate-1.0",
+        "environment": "Isolated recovery rehearsal",
+        "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
+        "expected_max_minutes": 30,
+        "observed_minutes": 27,
+        "expected_duplicate_count": 0,
+        "observed_duplicate_count": 0,
+        "sample_size": 10,
+        "exclusions": [
+          "Peak-load recovery"
+        ],
+        "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
+        "record_id": "SYN-DESIGN-VERIFICATION",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Map measurable quality requirements to design verification and acceptance.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
     "identity": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -276,34 +322,7 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
-    "implementation_acceptance": [
-      {
-        "test_id": "SYN-T1",
-        "requirement_ref": "SYN-REC1",
-        "build": "candidate-1.0",
-        "environment": "Isolated recovery rehearsal",
-        "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
-        "expected_max_minutes": 30,
-        "observed_minutes": 27,
-        "expected_duplicate_count": 0,
-        "observed_duplicate_count": 0,
-        "sample_size": 10,
-        "exclusions": [
-          "Peak-load recovery"
-        ],
-        "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
-        "record_id": "SYN-IMPLEMENTATION-ACCEPTANCE",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Specify deployment, verification, rollback and reproducible acceptance tests.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "implementation_interfaces": [
+    "interface_contracts": [
       {
         "element_id": "SYN-APP-1",
         "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -311,45 +330,10 @@
         "deployment": "Managed Linux service with PostgreSQL standby",
         "failure_handling": "Retry twice using the same event ID, then reject and alert",
         "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
-        "record_id": "SYN-IMPLEMENTATION-INTERFACES",
+        "record_id": "SYN-INTERFACE-CONTRACTS",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Specify schemas, error states, concurrency and compatibility requirements.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "implementation_parameters": [
-      {
-        "schema_version": "1.0",
-        "entity_id": "SYN-APP-1",
-        "columns": [
-          {
-            "name": "event_id",
-            "datatype": "uuid",
-            "nullable": false
-          },
-          {
-            "name": "amount",
-            "datatype": "decimal(12,2)",
-            "unit": "EUR",
-            "nullable": false
-          }
-        ],
-        "key": "event_id",
-        "record": {
-          "event_id": "SYN-EVENT-1",
-          "amount": 125.5
-        },
-        "uniqueness_observed": "10 of 10 event IDs unique",
-        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
-        "record_id": "SYN-IMPLEMENTATION-PARAMETERS",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Define typed configuration values, units, versions and permitted ranges without secrets.",
+        "criterion_under_review": "Define versioned interface inputs, outputs, trust boundaries and failure handling.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -397,10 +381,10 @@
         "role/physical-security-solution-builder-sabsa-builder-s-view:2.delivery_verification",
         "role/physical-security-solution-builder-sabsa-builder-s-view:2.receiving_acceptance",
         "role/physical-security-solution-builder-sabsa-builder-s-view:2.role_gate_observations",
-        "type/implementation-specification.identity",
-        "type/implementation-specification.implementation_acceptance",
-        "type/implementation-specification.implementation_interfaces",
-        "type/implementation-specification.implementation_parameters"
+        "type/solution-design.component_design",
+        "type/solution-design.design_verification",
+        "type/solution-design.identity",
+        "type/solution-design.interface_contracts"
       ],
       "expected_category": "critical-content"
     },

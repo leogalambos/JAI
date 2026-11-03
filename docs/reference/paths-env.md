@@ -16,10 +16,14 @@ No path-variable exports are needed for the standard installation. These install
 
 | Variable | Default | Purpose |
 | --- | --- | --- |
-| `FABRIC_HOME` | `./.fabric` | Fabric record location |
-| `FABRIC_AUTHORITY_KEY` | `~/.config/justifiable-fabric/authority.key` | Retired historical setting; grants no authority and enables no legacy-ledger execution |
-| `FABRIC_MAX_REWORK` | `3` | Rework bound |
-| `FABRIC_MAX_REFORMULATE` | `2` | Reformulation bound |
-| `FABRIC_MAX_CONTRACTS` | `40` | Contract bound |
-| `FABRIC_MAX_ROUNDS` | `5` | Revision-round bound |
-| `FABRIC_MAX_STEPS` | `120` | Shared episode budget |
+| `FABRIC_HOME` | `~/.ai/fabric` | Fabric CLI engagement-journal location |
+
+Process-host commands may instead supply an explicit Store path. The host,
+queries, continuation and any reserved signed decision must refer to the same
+actual engagement. See [runtime paths](../configuration/runtime.md).
+
+Current local iteration and rework allowances belong to the recorded profile;
+assignment allowances and any explicitly requested overall stop are governed
+inputs. Retired `FABRIC_MAX_*` and `FABRIC_AUTHORITY_KEY` settings neither reset
+those limits nor grant authority. Ordinary recording needs no signing key.
+Only reserved human decisions use the external operator signing procedure.

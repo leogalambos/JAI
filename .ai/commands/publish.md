@@ -29,6 +29,19 @@ python3 ~/.ai/it-role-house/tools/publication.py render \
 
 The publication layer may restructure or visualise content but may not alter a material claim, decision, assumption, risk acceptance or evidence statement from the semantic source.
 
+For a governed Gen2 result, the trusted parent pins the exact product UsePoint
+outside its immutable source and supplies `governed_domain.GovernedDomain` to
+the retained projection/publication callbacks. Require actual captured producer
+and independent reviewer material and the existing current audience/permission
+checks. Context tokens refer to pre-issued contexts, not a product's own version
+hash; never rewrite authored material to manufacture provenance. Missing, stale,
+foreign or revoked support cannot inherit permission from another version.
+Draft rendering remains distinct from governed acceptance and release. Use the
+shared `layered-justifiable-delivery/references/domain-handoff.md` contract when
+the semantic result itself needs new governed work; keep actual DCS unit reviews,
+content QA, projection and visual checks separate. The user supplies the request,
+not internal bootstrap JSON or trust callbacks.
+
 
 ## Operational specification — Publication integrity
 

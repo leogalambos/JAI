@@ -99,8 +99,8 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Cloud landing zone design | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
-| 2 | resilience and availability design | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
+| 1 | Cloud landing zone design | Cloud landing-zone architecture | Specifies account/subscription boundaries, identity, network, policy guardrails, operating ownership and verification of measurable requirements |
+| 2 | resilience and availability design | Resilience design and recovery analysis | Defines failure domains, availability/recovery targets, dependencies, failure responses and planned validation |
 | 3 | cloud cost model | Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON) | The model is validated against real observed behaviour or data, not only interviews |
 | 4 | cloud security and network topology | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 
@@ -140,7 +140,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Cloud landing zone design has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Cloud landing zone design") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

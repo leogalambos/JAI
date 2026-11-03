@@ -1,20 +1,18 @@
----
-owner: JAI documentation maintainers
-review_due: 2027-01-16
----
-
 # How to use JAI
 
-For a commented, task-by-task starting point, open the
-[task walkthroughs](../index.md). They cover 24 enterprise workflow
-recipes and additional proposal, SABSA, assessment and decision examples,
-with input preparation, Claude/Codex prompts, review pauses, escalation
-and handoff explanations. Start with the [commercial proposal](../proposal.md)
-for an offer, or choose the closest business question from the coverage map.
-The [commercial delivery capability](../../capabilities/commercial-delivery.md)
-remains the reference for the wider supplier-delivery profile.
+After [installation](../../getting-started/install.md), use the
+[quick start](../../getting-started/quick-start.md) for a short first exercise.
+Then follow the numbered learning path below: learn the method, check how to
+interact with your provider, and work through one case. JAI's commands select
+procedures; they do not automatically approve a result.
 
-Start with the method, choose what must be justified, and then follow a worked case. JAI's commands select procedures; they are not interchangeable shortcuts to an automatically approved result. This learning path keeps the explanation beside the cases that demonstrate it.
+If you already know your business task, you can instead choose a
+[task walkthrough](../index.md). That optional route covers 24 enterprise
+workflow recipes and additional proposal, SABSA, assessment and decision
+examples. For an offer, choose the [commercial proposal](../proposal.md);
+the [commercial delivery capability](../../capabilities/commercial-delivery.md)
+provides the wider supplier-delivery reference. These are alternatives to the
+default learning path, not additional prerequisites.
 
 ## 1. Learn the method before choosing a command
 

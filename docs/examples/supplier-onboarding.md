@@ -1,6 +1,5 @@
 # Prepare supplier onboarding
 
-Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
 ACME Health Services wants to onboard a supplier that will process
 appointment messages. Alice owns procurement, Bob owns the service and
@@ -25,8 +24,8 @@ classification and outsourcing policies and the identity of the actual
 contract and risk owners.
 
 Use names such as `inputs/supplier-scope.md`,
-`inputs/questionnaire.xlsx`, `inputs/data-flow.pdf and
-inputs/contract-draft.docx`. Keep source dates, versions and owners in
+`inputs/questionnaire.xlsx`, `inputs/data-flow.pdf` and
+`inputs/contract-draft.docx`. Keep source dates, versions and owners in
 `inputs/source-register.md`. Record evidence dates and coverage. If an
 assurance report excludes the proposed service, state the gap instead of
 borrowing its badge.

@@ -2,7 +2,7 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "sabsa/architecture",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
@@ -110,7 +110,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "Map each selected contextual/conceptual/logical/physical/component/operational element to its What/Why/How/Who/Where/When cell.",
+        "Map each selected Contextual/Conceptual/Logical/Physical/Component/Management perspective to its What/Why/How/Who/Where/When cell; Management applies across the other perspectives.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -125,7 +125,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "Map each selected contextual/conceptual/logical/physical/component/operational element to its What/Why/How/Who/Where/When cell.",
+        "reason": "Map each selected Contextual/Conceptual/Logical/Physical/Component/Management perspective to its What/Why/How/Who/Where/When cell; Management applies across the other perspectives.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml"
@@ -408,6 +408,16 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
     ]
   },
   "overlap": {
@@ -433,13 +443,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {

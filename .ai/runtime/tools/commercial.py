@@ -17,6 +17,7 @@ import commercial_router as router
 import commercial_lifecycle as lifecycle
 import commercial_scheduler as scheduler
 import commercial_proposal as proposal
+import governed_domain
 
 
 def main(argv=None):
@@ -36,6 +37,7 @@ def main(argv=None):
         sub=commands.add_parser(name)
         sub.add_argument('input',type=Path)
         if name=='gate':sub.add_argument('--phase',required=True,choices=core.PHASES)
+        if name=='readiness':governed_domain.add_arguments(sub,operations=('draft',))
         if name in ('archive','restore','rollback'):sub.add_argument('--store',type=Path,required=True)
         if name=='rollback':sub.add_argument('--expected-revision',type=int,required=True)
         if name=='trace':sub.add_argument('--version',required=True)
@@ -54,6 +56,8 @@ def main(argv=None):
             sub.add_argument('--output',type=Path,required=True)
         if name=='proposal-handoff':
             sub.add_argument('--kind',required=True,choices=proposal.CORE_KINDS+proposal.OPTIONAL_KINDS)
+            sub.add_argument('--reviewer',type=Path)
+            governed_domain.add_arguments(sub)
         if name in ('proposal-plan','proposal-prepare'):
             sub.add_argument('--user-root',type=Path)
             sub.add_argument('--organisation-root',type=Path)
@@ -62,7 +66,10 @@ def main(argv=None):
     try:
         if args.command.startswith('proposal-'):
             if args.command=='proposal-handoff':
-                result=proposal.publication_handoff(args.input,args.kind,args.output,root=args.root)
+                adapter,authority=governed_domain.from_arguments(args)
+                result=proposal.publication_handoff(args.input,args.kind,args.output,root=args.root,
+                    reviewer=json.loads(args.reviewer.read_text()) if args.reviewer else None,
+                    authority=authority,governed=adapter,operation=args.governed_operation)
             else:
                 data=json.loads(args.input.read_text())
                 if args.command=='proposal-validate':
@@ -94,7 +101,13 @@ def main(argv=None):
             elif args.command=='validate':result={'valid':core.validate_snapshot(data)}
             elif args.command=='gate':result=core.commercial_gate(data,args.phase)
             elif args.command=='discover':result={'valid':core.validate_discovery(data)}
-            elif args.command=='readiness':result=core.readiness(data)
+            elif args.command=='readiness':
+                adapter,_=governed_domain.from_arguments(args)
+                if adapter is None:
+                    result=core.readiness(data)
+                else:
+                    with adapter.action():
+                        result=core.readiness(data,**adapter.commercial_callbacks())
             elif args.command=='trace':result=core.trace(data,args.version,reverse=True)
             elif args.command=='project':result=core.project(data,args.audience,json.loads(args.policy.read_text()) if args.policy else {})
             elif args.command=='import':result={'revision':core.SnapshotStore(args.store).commit(data,args.expected_revision)}

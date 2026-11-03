@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Privacy engineering patterns and reference controls', provide verifiable evidence satisfying: Patterns state applicability, constraints, verification and known trade-offs.. Required delivery form: Versioned pattern catalogue.",
+        "criterion_under_review": "For the specific output 'Privacy engineering patterns and reference controls', provide verifiable evidence satisfying: Patterns state applicability, constraints, verification and known trade-offs. Required delivery form: Versioned pattern catalogue.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

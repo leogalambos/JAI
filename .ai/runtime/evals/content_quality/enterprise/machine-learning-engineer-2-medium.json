@@ -23,40 +23,43 @@
     "privacy": true
   },
   "semantic_units": {
-    "architecture_change_impact": [
+    "operational_ownership": {
+      "service_owner": "Morgan Lee",
+      "support_team": "Warehouse platform operations",
+      "support_hours": "06:00-22:00",
+      "incident_ref": "SYN-INC1",
+      "step": 1,
+      "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+      "expected_output": "deployment transaction-api successfully rolled out",
+      "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+      "safe_state": "Keep new transaction traffic disabled",
+      "escalation": "Incident commander on bridge SYN-INC1",
+      "record_id": "SYN-OPERATIONAL-OWNERSHIP",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify receiving service owner, support boundaries, escalation and review triggers.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "operational_recoverability": [
       {
-        "element_id": "SYN-APP-1",
-        "responsibility": "Accept transaction IDs and persist each committed event once",
-        "interface_ref": "SYN-IF-1",
-        "deployment": "Managed Linux service with PostgreSQL standby",
-        "failure_handling": "Retry twice using the same event ID, then reject and alert",
-        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
-        "record_id": "SYN-ARCHITECTURE-CHANGE-IMPACT",
+        "service_owner": "Morgan Lee",
+        "support_team": "Warehouse platform operations",
+        "support_hours": "06:00-22:00",
+        "incident_ref": "SYN-INC1",
+        "step": 1,
+        "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+        "expected_output": "deployment transaction-api successfully rolled out",
+        "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+        "safe_state": "Keep new transaction traffic disabled",
+        "escalation": "Incident commander on bridge SYN-INC1",
+        "record_id": "SYN-OPERATIONAL-RECOVERABILITY",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Identify cross-domain dependencies, affected owners and compatibility constraints.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "architecture_source_trace": [
-      {
-        "source_id": "SYN-LEDGER-1",
-        "source_version": "1",
-        "extracted_at": "2026-10-19T10:00:00Z",
-        "transformation": "Group committed records by event_id and compare counts before/after restore",
-        "input_records": 10,
-        "output_records": 10,
-        "classification": "Synthetic non-customer data",
-        "retention": "Delete rehearsal extracts after regression investigation closes",
-        "permitted_use": "Development regression only",
-        "record_id": "SYN-ARCHITECTURE-SOURCE-TRACE",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Link design claims to versioned source elements, stakeholder concerns and measurable requirements.",
+        "criterion_under_review": "Trace monitoring, failure handling, backup/recovery and rollback requirements to rehearsed evidence.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -213,7 +216,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'model packaging and versioning', provide verifiable evidence satisfying: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON).",
+        "criterion_under_review": "For the specific output 'model packaging and versioning', provide verifiable evidence satisfying: Supplies the actual model package with digest, version, serving/input-output contract, runtime and dependency versions, provenance and reproducible loading/compatibility checks. Required delivery form: Versioned model package and reproducible packaging manifest.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -259,7 +262,7 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
-    "diagram_elements": [
+    "baseline_targets": [
       {
         "schema_version": "1.0",
         "entity_id": "SYN-APP-1",
@@ -283,10 +286,10 @@
         },
         "uniqueness_observed": "10 of 10 event IDs unique",
         "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
-        "record_id": "SYN-DIAGRAM-ELEMENTS",
+        "record_id": "SYN-BASELINE-TARGETS",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "List stable source-model element IDs, typed relations and labels represented in the view.",
+        "criterion_under_review": "Identify managed assets, tool/schema versions and authorised configuration scope.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -294,7 +297,7 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
-    "diagram_integrity": [
+    "baseline_values": [
       {
         "schema_version": "1.0",
         "entity_id": "SYN-APP-1",
@@ -318,10 +321,10 @@
         },
         "uniqueness_observed": "10 of 10 event IDs unique",
         "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
-        "record_id": "SYN-DIAGRAM-INTEGRITY",
+        "record_id": "SYN-BASELINE-VALUES",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Evidence endpoint validity, semantic compatibility, coverage and visual readability.",
+        "criterion_under_review": "Provide typed desired settings, permitted ranges and secret-manager references.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -329,23 +332,41 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
-    "diagram_viewpoint": {
-      "element_id": "SYN-APP-1",
-      "responsibility": "Accept transaction IDs and persist each committed event once",
-      "interface_ref": "SYN-IF-1",
-      "deployment": "Managed Linux service with PostgreSQL standby",
-      "failure_handling": "Retry twice using the same event ID, then reject and alert",
-      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
-      "record_id": "SYN-DIAGRAM-VIEWPOINT",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Define the concern, viewpoint, system boundary, legend and notation.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
+    "baseline_verification": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-BASELINE-VERIFICATION",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Evidence reproducibility, drift checks, deployment validation and rollback to a known baseline.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
     "identity": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -391,8 +412,8 @@
       "id": "headings-only",
       "operation": "headings_only",
       "expected_rule_ids": [
-        "domain/architecture.architecture_change_impact",
-        "domain/architecture.architecture_source_trace",
+        "domain/operations.operational_ownership",
+        "domain/operations.operational_recoverability",
         "role/machine-learning-engineer:2.contract_input_1",
         "role/machine-learning-engineer:2.contract_input_2",
         "role/machine-learning-engineer:2.contract_input_3",
@@ -403,10 +424,10 @@
         "role/machine-learning-engineer:2.delivery_verification",
         "role/machine-learning-engineer:2.receiving_acceptance",
         "role/machine-learning-engineer:2.role_gate_observations",
-        "type/diagram.diagram_elements",
-        "type/diagram.diagram_integrity",
-        "type/diagram.diagram_viewpoint",
-        "type/diagram.identity"
+        "type/configuration-baseline.baseline_targets",
+        "type/configuration-baseline.baseline_values",
+        "type/configuration-baseline.baseline_verification",
+        "type/configuration-baseline.identity"
       ],
       "expected_category": "critical-content"
     },

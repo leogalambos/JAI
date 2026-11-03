@@ -38,7 +38,7 @@ recommended procedure.
 | Temporary-file or Office profile creation fails | Verify the selected writable directory and application profile; see [temporary files](../getting-started/sandbox-prerequisites.md#temporary-files). |
 | Branch creation fails while project edits work | Protected Git metadata may be read-only by policy. Report the operation and use the approved human/administrator path; do not bypass the protection. |
 | Authority command is refused | Prepare an exact request, then have the external operator sign or decline with the reviewed host helper. Fabric requires a valid Ed25519 receipt, protected public pin and unchanged snapshot. Native approval is not L0. |
-| `.fabric/` looks inconsistent | Do not edit it manually; request an audit report in the CLI; a maintainer can run `fabric.py verify` and `report`. |
+| `.fabric/` looks inconsistent | Do not edit it manually. Request `/fabric-report` in Claude Code or `$workflow-fabric-report` in Codex with the actual engagement context. Direct maintainer `fabric.py verify` and `report` calls require the exact engagement and `--query` JSON for the assessment. See [validation](validation.md). |
 | You want to undo the installation | Use `uninstall.sh` / `uninstall.cmd` from an extracted release package. |
 
 ## Useful direct diagnostics — maintainer/CI only
@@ -50,7 +50,6 @@ python3 ~/.ai/it-role-house/tools/model_router.py self-test
 python3 ~/.ai/it-role-house/tools/provider_parity.py
 python3 ~/.ai/it-role-house/tools/publication.py self-test
 python3 ~/.ai/it-role-house/tools/repository.py self-test
-python3 ~/.ai/it-role-house/fabric/fabric.py selftest
 ```
 
 ## Local QA and human intervention
@@ -82,7 +81,7 @@ failures remain diagnostic and never trigger a weaker fallback. No packages are
 installed and OS-specific Python discovery is not required.
 
 Installation needs only Python 3.10+ standard library. A successful installation
-can report `OPERATOR_ACTION_REQUIRED` for the runtime `jsonschema>=4.26,<5`
+can report `OPERATOR_ACTION_REQUIRED` for the runtime `jsonschema>=4.18,<5`
 dependency. Install/provide it in the interpreter used for contract workflows,
 then refresh discovery with that interpreter. Full Agent/Policy, DCS and Artifact
 validation is never skipped. The installer validates its small release-scope

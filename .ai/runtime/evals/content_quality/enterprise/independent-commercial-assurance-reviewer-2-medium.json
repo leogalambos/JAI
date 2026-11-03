@@ -214,7 +214,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Rework verification and commercial assurance opinion', provide verifiable evidence satisfying: Closure is supported by evidence; the opinion makes no human approval or unreviewed-scope claim.. Required delivery form: Response report or external review record with disposition, residual exposure and version bounds.",
+        "criterion_under_review": "For the specific output 'Rework verification and commercial assurance opinion', provide verifiable evidence satisfying: Closure is supported by evidence; the opinion makes no human approval or unreviewed-scope claim. Required delivery form: Response report or external review record with disposition, residual exposure and version bounds.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

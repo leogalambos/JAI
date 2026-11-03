@@ -2,15 +2,15 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/privileged-access-management-administrator:4",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/test-report",
-    "domain/testing"
+    "type/runbook",
+    "domain/operations"
   ],
   "applies_to": {
     "document_kind": "role/privileged-access-management-administrator:4",
@@ -61,7 +61,9 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: break-glass procedures and test evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privileged-access-management-administrator:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -99,7 +101,9 @@
         "reason": "For each receiving role (Systems Administrators; Security Analyst Tier 2), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privileged-access-management-administrator:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -137,7 +141,9 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privileged-access-management-administrator:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -175,7 +181,9 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privileged-access-management-administrator:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -195,7 +203,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'break-glass procedures and test evidence', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "For the specific output 'break-glass procedures and test evidence', provide verifiable evidence satisfying: Defines activation authority, access scope, expiry, logging, recovery, revocation and observed rehearsal results. Required delivery form: Controlled break-glass runbook with rehearsal evidence.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,10 +218,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'break-glass procedures and test evidence', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "reason": "For the specific output 'break-glass procedures and test evidence', provide verifiable evidence satisfying: Defines activation authority, access scope, expiry, logging, recovery, revocation and observed rehearsal results. Required delivery form: Controlled break-glass runbook with rehearsal evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privileged-access-management-administrator:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -223,8 +233,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "break-glass procedures and test evidence",
-        "format": "Executable suite in version control plus a coverage statement",
-        "acceptance_criterion": "States what is covered, what is not, and what the suite cannot detect",
+        "format": "Controlled break-glass runbook with rehearsal evidence",
+        "acceptance_criterion": "Defines activation authority, access scope, expiry, logging, recovery, revocation and observed rehearsal results",
         "role_path": "skills/it-roles-security-operations-and-defensive-security/references/privileged-access-management-administrator.md"
       }
     },
@@ -264,7 +274,9 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privileged-access-management-administrator:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -311,7 +323,9 @@
         "reason": "Analyse the specific input \"Privileged account discovery\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privileged-access-management-administrator:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -354,7 +368,9 @@
         "reason": "Analyse the specific input \"Access policy and tiering model\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privileged-access-management-administrator:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -397,7 +413,9 @@
         "reason": "Analyse the specific input \"Operational access needs\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privileged-access-management-administrator:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -440,7 +458,9 @@
         "reason": "Analyse the specific input \"Audit requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privileged-access-management-administrator:4",
-          "content/types/test-report.yaml"
+          "content/types/test-report.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -485,7 +505,9 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -528,7 +550,9 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -573,7 +597,9 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-128"
         ]
       },
       "provenance": {
@@ -687,6 +713,35 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "contingency-planning",
+        "title": "NIST SP 800-34 Revision 1, Contingency Planning Guide for Federal Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-34r1",
+        "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "configuration-management",
+        "title": "NIST SP 800-128, Guide for Security-Focused Configuration Management of Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-128",
+        "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Privileged Access Management Administrator",
+        "frameworks": [
+          "NIST SP 800-53 AC and AU families",
+          "CIS Controls",
+          "privileged access tiering models"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -712,13 +767,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -737,12 +793,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/runbook",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "test-report",
+  "semantic_family": "runbook",
   "role_overlay": {
     "contract_id": "privileged-access-management-administrator:4",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -751,8 +809,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "privileged-access-management-administrator:4",
-    "source_fingerprint": "e2304c855ff8db70428ed4434e7aaed3315e4e65e60ec7ce77cb523c435f060e",
-    "source_hash": "58e9a18ea6608db868d2ff1e0e4f60747b3556a8e59d1b8d746ba4966f5ed1a0"
+    "source_fingerprint": "faeccd6e137e70d6516738a263a05f244b49b540f86359318cdb3e448deeaa1d",
+    "source_hash": "26ae0f7bb686e5f12481d681d38ba22c74b449def839a5203bc31a655c5ea391"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",

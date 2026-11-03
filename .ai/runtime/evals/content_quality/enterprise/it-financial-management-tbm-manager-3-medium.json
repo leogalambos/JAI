@@ -231,7 +231,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Service and portfolio unit-economics dashboard', provide verifiable evidence satisfying: Metrics are decision-useful, reconcile to the governed cost model and identify data-quality limitations.. Required delivery form: Dashboard with service/product unit cost, consumption, budget/forecast variance and trend context.",
+        "criterion_under_review": "For the specific output 'Service and portfolio unit-economics dashboard', provide verifiable evidence satisfying: Metrics are decision-useful, reconcile to the governed cost model and identify data-quality limitations. Required delivery form: Dashboard with service/product unit cost, consumption, budget/forecast variance and trend context.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

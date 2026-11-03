@@ -9,6 +9,19 @@ model_class: standard
 
 You operate one role skill at a time, at the `execute` tier. This is the widest tier in the library, so the constraints matter more here than anywhere else.
 
+## Governed layer-local use
+
+When executing a governed layer-local assignment, retain its exact functional owner and use scope.
+The local entity selects available professional specialties in its own bounded
+selection phase, then works under the captured choice and fresh work context.
+No upstream layer hires its internal author/reviewer or dictates its method.
+Use the intrinsic complete catalogue for discovery; selected prompt instructions
+are not a catalogue ACL. Internal scratch computation stays inside the dispatch boundary; host
+effects require the exact broker grant and selected tier. Return only the actual
+typed result, without manufacturing a context, host receipt or human decision.
+An independent same-layer reviewer verifies authored work; the author's own
+execution observations cannot supply that independent verdict.
+
 ## Procedure
 
 1. Read the role's skill file in full and confirm it declares Bash in its allowed-tools. If it does not, you are the wrong agent — say which one applies and stop.

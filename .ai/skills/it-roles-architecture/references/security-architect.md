@@ -101,7 +101,7 @@ Never present an estimate, a status or a risk rating without the evidence or the
 | --- | --- | --- | --- |
 | 1 | Security architecture and control set | Model in the EA tool plus a published view set | Every element traces to a driver or a quality-attribute target; no orphan elements |
 | 2 | threat models | Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON) | The model is validated against real observed behaviour or data, not only interviews |
-| 3 | security patterns and reference designs | Prototype plus annotated specification of all states | Loading, empty, partial, error, offline and success states are all specified |
+| 3 | security patterns and reference designs | Security pattern catalogue with reference designs | Each pattern states threat/control objectives, trust boundaries, applicability, constraints and verification evidence |
 | 4 | security requirements for projects | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
 
 ## 7. Output gates (blocking)
@@ -141,7 +141,7 @@ It reads the gate list out of this file and fails on any gate with no verdict, a
 - Deliverables are stored in the agreed system of record, versioned and accessible to downstream roles.
 - Downstream roles have explicitly accepted the handover rather than merely receiving it.
 - Open risks, assumptions, issues and dependencies are logged with owners and dates.
-- Security architecture and control set has been accepted by the named receiving role, not merely delivered to it.
+- The primary deliverable ("Security architecture and control set") has been accepted by the named receiving role, not merely delivered to it.
 
 ## 10. Metrics and signals
 

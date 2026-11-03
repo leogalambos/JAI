@@ -216,7 +216,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Operational acceptance criteria and evidence pack', provide verifiable evidence satisfying: Monitoring, recovery, security, support, supplier and configuration criteria are evidenced, not self-attested.. Required delivery form: Traceable checklist plus evidence references.",
+        "criterion_under_review": "For the specific output 'Operational acceptance criteria and evidence pack', provide verifiable evidence satisfying: Monitoring, recovery, security, support, supplier and configuration criteria are evidenced, not self-attested. Required delivery form: Traceable checklist plus evidence references.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

@@ -1,0 +1,803 @@
+{
+  "format": "jai-sabsa-content-profile/1",
+  "catalogue_id": "jai-sabsa-minimum",
+  "catalogue_version": "1",
+  "method_sources": [
+    {
+      "id": "S1",
+      "edition": "TSI-R101/1.0/2018",
+      "location": "https://github.com/yasenstar/ArchiMate_SABSA/blob/f2df225396a8c00e6cb3c5f9b3fae52038996742/Docs/TSI-R101-SABSA-Matrices-2018-Release-Notes.pdf",
+      "adopted_scope": "Original paraphrase of updated matrix terminology and the architecture/management distinction."
+    },
+    {
+      "id": "S2",
+      "edition": "TSI-W100/1995-2009",
+      "location": "https://github.com/yasenstar/ArchiMate_SABSA/blob/0bb1023ad1f2f6f006e5b460c593eb3aebf43a2b/Docs/TSI-W100-SABSA-White-Paper.pdf",
+      "adopted_scope": "Original introductory business-attribute, lifecycle and assurance requirements."
+    }
+  ],
+  "scope": {
+    "purpose": "Fictional structural illustration; not an executed or accepted architecture.",
+    "layers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "questions": [
+      "what",
+      "why",
+      "how",
+      "who",
+      "where",
+      "when"
+    ],
+    "depth": "Architecture and management content obligations; actual evidence remains required.",
+    "audiences": [
+      "fictional architecture team"
+    ],
+    "classification": "public"
+  },
+  "required_units": [
+    {
+      "key": "contextual-what",
+      "owner": {
+        "layer": 1,
+        "work_kind": "question",
+        "question": "what",
+        "work_item": "fictional-service"
+      },
+      "group": "contextual.what"
+    },
+    {
+      "key": "contextual-why",
+      "owner": {
+        "layer": 1,
+        "work_kind": "question",
+        "question": "why",
+        "work_item": "fictional-service"
+      },
+      "group": "contextual.why"
+    },
+    {
+      "key": "contextual-how",
+      "owner": {
+        "layer": 1,
+        "work_kind": "question",
+        "question": "how",
+        "work_item": "fictional-service"
+      },
+      "group": "contextual.how"
+    },
+    {
+      "key": "contextual-who",
+      "owner": {
+        "layer": 1,
+        "work_kind": "question",
+        "question": "who",
+        "work_item": "fictional-service"
+      },
+      "group": "contextual.who"
+    },
+    {
+      "key": "contextual-where",
+      "owner": {
+        "layer": 1,
+        "work_kind": "question",
+        "question": "where",
+        "work_item": "fictional-service"
+      },
+      "group": "contextual.where"
+    },
+    {
+      "key": "contextual-when",
+      "owner": {
+        "layer": 1,
+        "work_kind": "question",
+        "question": "when",
+        "work_item": "fictional-service"
+      },
+      "group": "contextual.when"
+    },
+    {
+      "key": "conceptual-what",
+      "owner": {
+        "layer": 2,
+        "work_kind": "question",
+        "question": "what",
+        "work_item": "fictional-service"
+      },
+      "group": "conceptual.what"
+    },
+    {
+      "key": "conceptual-why",
+      "owner": {
+        "layer": 2,
+        "work_kind": "question",
+        "question": "why",
+        "work_item": "fictional-service"
+      },
+      "group": "conceptual.why"
+    },
+    {
+      "key": "conceptual-how",
+      "owner": {
+        "layer": 2,
+        "work_kind": "question",
+        "question": "how",
+        "work_item": "fictional-service"
+      },
+      "group": "conceptual.how"
+    },
+    {
+      "key": "conceptual-who",
+      "owner": {
+        "layer": 2,
+        "work_kind": "question",
+        "question": "who",
+        "work_item": "fictional-service"
+      },
+      "group": "conceptual.who"
+    },
+    {
+      "key": "conceptual-where",
+      "owner": {
+        "layer": 2,
+        "work_kind": "question",
+        "question": "where",
+        "work_item": "fictional-service"
+      },
+      "group": "conceptual.where"
+    },
+    {
+      "key": "conceptual-when",
+      "owner": {
+        "layer": 2,
+        "work_kind": "question",
+        "question": "when",
+        "work_item": "fictional-service"
+      },
+      "group": "conceptual.when"
+    },
+    {
+      "key": "logical-what",
+      "owner": {
+        "layer": 3,
+        "work_kind": "question",
+        "question": "what",
+        "work_item": "fictional-service"
+      },
+      "group": "logical.what"
+    },
+    {
+      "key": "logical-why",
+      "owner": {
+        "layer": 3,
+        "work_kind": "question",
+        "question": "why",
+        "work_item": "fictional-service"
+      },
+      "group": "logical.why"
+    },
+    {
+      "key": "logical-how",
+      "owner": {
+        "layer": 3,
+        "work_kind": "question",
+        "question": "how",
+        "work_item": "fictional-service"
+      },
+      "group": "logical.how"
+    },
+    {
+      "key": "logical-who",
+      "owner": {
+        "layer": 3,
+        "work_kind": "question",
+        "question": "who",
+        "work_item": "fictional-service"
+      },
+      "group": "logical.who"
+    },
+    {
+      "key": "logical-where",
+      "owner": {
+        "layer": 3,
+        "work_kind": "question",
+        "question": "where",
+        "work_item": "fictional-service"
+      },
+      "group": "logical.where"
+    },
+    {
+      "key": "logical-when",
+      "owner": {
+        "layer": 3,
+        "work_kind": "question",
+        "question": "when",
+        "work_item": "fictional-service"
+      },
+      "group": "logical.when"
+    },
+    {
+      "key": "physical-what",
+      "owner": {
+        "layer": 4,
+        "work_kind": "question",
+        "question": "what",
+        "work_item": "fictional-service"
+      },
+      "group": "physical.what"
+    },
+    {
+      "key": "physical-why",
+      "owner": {
+        "layer": 4,
+        "work_kind": "question",
+        "question": "why",
+        "work_item": "fictional-service"
+      },
+      "group": "physical.why"
+    },
+    {
+      "key": "physical-how",
+      "owner": {
+        "layer": 4,
+        "work_kind": "question",
+        "question": "how",
+        "work_item": "fictional-service"
+      },
+      "group": "physical.how"
+    },
+    {
+      "key": "physical-who",
+      "owner": {
+        "layer": 4,
+        "work_kind": "question",
+        "question": "who",
+        "work_item": "fictional-service"
+      },
+      "group": "physical.who"
+    },
+    {
+      "key": "physical-where",
+      "owner": {
+        "layer": 4,
+        "work_kind": "question",
+        "question": "where",
+        "work_item": "fictional-service"
+      },
+      "group": "physical.where"
+    },
+    {
+      "key": "physical-when",
+      "owner": {
+        "layer": 4,
+        "work_kind": "question",
+        "question": "when",
+        "work_item": "fictional-service"
+      },
+      "group": "physical.when"
+    },
+    {
+      "key": "component-what",
+      "owner": {
+        "layer": 5,
+        "work_kind": "question",
+        "question": "what",
+        "work_item": "fictional-service"
+      },
+      "group": "component.what"
+    },
+    {
+      "key": "component-why",
+      "owner": {
+        "layer": 5,
+        "work_kind": "question",
+        "question": "why",
+        "work_item": "fictional-service"
+      },
+      "group": "component.why"
+    },
+    {
+      "key": "component-how",
+      "owner": {
+        "layer": 5,
+        "work_kind": "question",
+        "question": "how",
+        "work_item": "fictional-service"
+      },
+      "group": "component.how"
+    },
+    {
+      "key": "component-who",
+      "owner": {
+        "layer": 5,
+        "work_kind": "question",
+        "question": "who",
+        "work_item": "fictional-service"
+      },
+      "group": "component.who"
+    },
+    {
+      "key": "component-where",
+      "owner": {
+        "layer": 5,
+        "work_kind": "question",
+        "question": "where",
+        "work_item": "fictional-service"
+      },
+      "group": "component.where"
+    },
+    {
+      "key": "component-when",
+      "owner": {
+        "layer": 5,
+        "work_kind": "question",
+        "question": "when",
+        "work_item": "fictional-service"
+      },
+      "group": "component.when"
+    },
+    {
+      "key": "management-what",
+      "owner": {
+        "layer": 6,
+        "work_kind": "question",
+        "question": "what",
+        "work_item": "fictional-service"
+      },
+      "group": "management.what"
+    },
+    {
+      "key": "management-why",
+      "owner": {
+        "layer": 6,
+        "work_kind": "question",
+        "question": "why",
+        "work_item": "fictional-service"
+      },
+      "group": "management.why"
+    },
+    {
+      "key": "management-how",
+      "owner": {
+        "layer": 6,
+        "work_kind": "question",
+        "question": "how",
+        "work_item": "fictional-service"
+      },
+      "group": "management.how"
+    },
+    {
+      "key": "management-who",
+      "owner": {
+        "layer": 6,
+        "work_kind": "question",
+        "question": "who",
+        "work_item": "fictional-service"
+      },
+      "group": "management.who"
+    },
+    {
+      "key": "management-where",
+      "owner": {
+        "layer": 6,
+        "work_kind": "question",
+        "question": "where",
+        "work_item": "fictional-service"
+      },
+      "group": "management.where"
+    },
+    {
+      "key": "management-when",
+      "owner": {
+        "layer": 6,
+        "work_kind": "question",
+        "question": "when",
+        "work_item": "fictional-service"
+      },
+      "group": "management.when"
+    },
+    {
+      "key": "availability-attribute",
+      "owner": {
+        "layer": 2,
+        "work_kind": "question",
+        "question": "why",
+        "work_item": "fictional-service"
+      },
+      "group": "conceptual.attributes"
+    },
+    {
+      "key": "service-monitoring",
+      "owner": {
+        "layer": 6,
+        "work_kind": "question",
+        "question": "how",
+        "work_item": "fictional-service"
+      },
+      "group": "management.activity"
+    },
+    {
+      "key": "availability-measure",
+      "owner": {
+        "layer": 6,
+        "work_kind": "question",
+        "question": "how",
+        "work_item": "fictional-service"
+      },
+      "group": "management.measure"
+    },
+    {
+      "key": "availability-observation",
+      "owner": {
+        "layer": 6,
+        "work_kind": "question",
+        "question": "how",
+        "work_item": "fictional-service"
+      },
+      "group": "management.observation"
+    }
+  ],
+  "required_relations": [
+    {
+      "key": "contextual-what-business-basis",
+      "type": "justifies",
+      "from_obligation": "contextual-what",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "contextual-how-business-basis",
+      "type": "justifies",
+      "from_obligation": "contextual-how",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "contextual-who-business-basis",
+      "type": "justifies",
+      "from_obligation": "contextual-who",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "contextual-where-business-basis",
+      "type": "justifies",
+      "from_obligation": "contextual-where",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "contextual-when-business-basis",
+      "type": "justifies",
+      "from_obligation": "contextual-when",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "conceptual-what-business-basis",
+      "type": "justifies",
+      "from_obligation": "conceptual-what",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "conceptual-why-business-basis",
+      "type": "justifies",
+      "from_obligation": "conceptual-why",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "conceptual-how-business-basis",
+      "type": "justifies",
+      "from_obligation": "conceptual-how",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "conceptual-who-business-basis",
+      "type": "justifies",
+      "from_obligation": "conceptual-who",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "conceptual-where-business-basis",
+      "type": "justifies",
+      "from_obligation": "conceptual-where",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "conceptual-when-business-basis",
+      "type": "justifies",
+      "from_obligation": "conceptual-when",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "logical-what-business-basis",
+      "type": "justifies",
+      "from_obligation": "logical-what",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "logical-why-business-basis",
+      "type": "justifies",
+      "from_obligation": "logical-why",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "logical-how-business-basis",
+      "type": "justifies",
+      "from_obligation": "logical-how",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "logical-who-business-basis",
+      "type": "justifies",
+      "from_obligation": "logical-who",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "logical-where-business-basis",
+      "type": "justifies",
+      "from_obligation": "logical-where",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "logical-when-business-basis",
+      "type": "justifies",
+      "from_obligation": "logical-when",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "physical-what-business-basis",
+      "type": "justifies",
+      "from_obligation": "physical-what",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "physical-why-business-basis",
+      "type": "justifies",
+      "from_obligation": "physical-why",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "physical-how-business-basis",
+      "type": "justifies",
+      "from_obligation": "physical-how",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "physical-who-business-basis",
+      "type": "justifies",
+      "from_obligation": "physical-who",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "physical-where-business-basis",
+      "type": "justifies",
+      "from_obligation": "physical-where",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "physical-when-business-basis",
+      "type": "justifies",
+      "from_obligation": "physical-when",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "component-what-business-basis",
+      "type": "justifies",
+      "from_obligation": "component-what",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "component-why-business-basis",
+      "type": "justifies",
+      "from_obligation": "component-why",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "component-how-business-basis",
+      "type": "justifies",
+      "from_obligation": "component-how",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "component-who-business-basis",
+      "type": "justifies",
+      "from_obligation": "component-who",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "component-where-business-basis",
+      "type": "justifies",
+      "from_obligation": "component-where",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "component-when-business-basis",
+      "type": "justifies",
+      "from_obligation": "component-when",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "management-what-business-basis",
+      "type": "justifies",
+      "from_obligation": "management-what",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "management-why-business-basis",
+      "type": "justifies",
+      "from_obligation": "management-why",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "management-how-business-basis",
+      "type": "justifies",
+      "from_obligation": "management-how",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "management-who-business-basis",
+      "type": "justifies",
+      "from_obligation": "management-who",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "management-where-business-basis",
+      "type": "justifies",
+      "from_obligation": "management-where",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "management-when-business-basis",
+      "type": "justifies",
+      "from_obligation": "management-when",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "availability-attribute-business-basis",
+      "type": "justifies",
+      "from_obligation": "availability-attribute",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "service-monitoring-business-basis",
+      "type": "justifies",
+      "from_obligation": "service-monitoring",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "availability-measure-business-basis",
+      "type": "justifies",
+      "from_obligation": "availability-measure",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "availability-observation-business-basis",
+      "type": "justifies",
+      "from_obligation": "availability-observation",
+      "to_obligation": "contextual-why"
+    },
+    {
+      "key": "measure-attribute",
+      "type": "measures",
+      "from_obligation": "availability-measure",
+      "to_obligation": "availability-attribute"
+    },
+    {
+      "key": "observation-measure",
+      "type": "observes",
+      "from_obligation": "availability-observation",
+      "to_obligation": "availability-measure"
+    },
+    {
+      "key": "operation-feedback",
+      "type": "feedback_for",
+      "from_obligation": "availability-observation",
+      "to_obligation": "contextual-why"
+    }
+  ],
+  "required_views": [
+    {
+      "view": "architecture",
+      "unit_obligations": [
+        "contextual-what",
+        "contextual-why",
+        "contextual-how",
+        "contextual-who",
+        "contextual-where",
+        "contextual-when",
+        "conceptual-what",
+        "conceptual-why",
+        "conceptual-how",
+        "conceptual-who",
+        "conceptual-where",
+        "conceptual-when",
+        "logical-what",
+        "logical-why",
+        "logical-how",
+        "logical-who",
+        "logical-where",
+        "logical-when",
+        "physical-what",
+        "physical-why",
+        "physical-how",
+        "physical-who",
+        "physical-where",
+        "physical-when",
+        "component-what",
+        "component-why",
+        "component-how",
+        "component-who",
+        "component-where",
+        "component-when",
+        "management-what",
+        "management-why",
+        "management-how",
+        "management-who",
+        "management-where",
+        "management-when",
+        "availability-attribute",
+        "service-monitoring",
+        "availability-measure",
+        "availability-observation"
+      ],
+      "relation_obligations": [
+        "contextual-what-business-basis",
+        "contextual-how-business-basis",
+        "contextual-who-business-basis",
+        "contextual-where-business-basis",
+        "contextual-when-business-basis",
+        "conceptual-what-business-basis",
+        "conceptual-why-business-basis",
+        "conceptual-how-business-basis",
+        "conceptual-who-business-basis",
+        "conceptual-where-business-basis",
+        "conceptual-when-business-basis",
+        "logical-what-business-basis",
+        "logical-why-business-basis",
+        "logical-how-business-basis",
+        "logical-who-business-basis",
+        "logical-where-business-basis",
+        "logical-when-business-basis",
+        "physical-what-business-basis",
+        "physical-why-business-basis",
+        "physical-how-business-basis",
+        "physical-who-business-basis",
+        "physical-where-business-basis",
+        "physical-when-business-basis",
+        "component-what-business-basis",
+        "component-why-business-basis",
+        "component-how-business-basis",
+        "component-who-business-basis",
+        "component-where-business-basis",
+        "component-when-business-basis",
+        "management-what-business-basis",
+        "management-why-business-basis",
+        "management-how-business-basis",
+        "management-who-business-basis",
+        "management-where-business-basis",
+        "management-when-business-basis",
+        "availability-attribute-business-basis",
+        "service-monitoring-business-basis",
+        "availability-measure-business-basis",
+        "availability-observation-business-basis",
+        "measure-attribute",
+        "observation-measure",
+        "operation-feedback"
+      ]
+    },
+    {
+      "view": "executive-summary",
+      "unit_obligations": [
+        "contextual-why",
+        "availability-attribute"
+      ],
+      "relation_obligations": [
+        "availability-attribute-business-basis"
+      ]
+    }
+  ],
+  "exclusions": [],
+  "claim": "Illustrates the original bounded JAI minimum only; no execution, completeness, acceptance, release or certification is asserted.",
+  "force_conformance": true
+}

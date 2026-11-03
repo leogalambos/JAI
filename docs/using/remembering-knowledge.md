@@ -1,7 +1,5 @@
 # Remember useful knowledge from your current task
 
-Owner: JAI maintainers  
-Last reviewed: 2026-10-20
 
 Use experimental knowledge capture when something in your current conversation
 is worth reusing: a successful approach, a failed attempt and its lesson, or a

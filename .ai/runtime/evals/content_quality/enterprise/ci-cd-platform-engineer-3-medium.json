@@ -213,7 +213,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'pipeline identity and OIDC federation design', provide verifiable evidence satisfying: Reproducible from a clean checkout; no manual step required for a standard run. Required delivery form: Declarative pipeline definition in version control.",
+        "criterion_under_review": "For the specific output 'pipeline identity and OIDC federation design', provide verifiable evidence satisfying: Defines trust relationships, token claims, least-privilege permissions, expiry, failure handling and verification. Required delivery form: Pipeline identity and federation design.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

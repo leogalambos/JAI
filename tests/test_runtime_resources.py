@@ -21,7 +21,7 @@ class RuntimeResourceTests(unittest.TestCase):
         self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
 
     def test_runtime_selftests_close_files_without_resource_warnings(self):
-        for source in (".ai/runtime/tools/findings.py", ".ai/runtime/fabric/fabric.py"):
+        for source in (".ai/runtime/tools/findings.py",):
             with self.subTest(source=source):
                 self.run_isolated('''
                     import gc, runpy, sys, warnings
@@ -82,62 +82,88 @@ class RuntimeResourceTests(unittest.TestCase):
                 assert not stream.closed, "borrowed stdin was closed"
         ''')
 
-    def test_fabric_evidence_closes_binary_file_and_preserves_hash(self):
+    def test_current_cas_read_closes_binary_file_and_preserves_hash(self):
         self.run_isolated('''
-            import errno, hashlib, os, runpy, tempfile
+            import errno, hashlib, os, sys, tempfile
             from pathlib import Path
             from unittest.mock import patch
-            module = runpy.run_path(".ai/runtime/fabric/fabric.py")
-            class EvidenceSink:
-                def add_node(self, *args, **kwargs):
-                    return kwargs
+            sys.path.insert(0, str(Path(".ai/runtime/tools").resolve()))
+            import lifecycle as lc
             with tempfile.TemporaryDirectory() as directory:
-                source = Path(directory) / "evidence.bin"
+                store = lc.Store(Path(directory) / "journal.jsonl", "resources")
                 payload = bytes(range(256))
-                source.write_bytes(payload)
-                real_fdopen, real_fstat, handles, opened_descriptors = os.fdopen, os.fstat, [], []
+                identifier = store.put_blob(payload)
+                real_fdopen, real_fstat, handles, descriptors = os.fdopen, os.fstat, [], []
                 def tracked_fdopen(*args, **kwargs):
-                    opened_descriptors.append(args[0])
+                    descriptors.append(args[0])
                     handle = real_fdopen(*args, **kwargs)
                     handles.append(handle)
                     return handle
                 with patch("os.fdopen", tracked_fdopen):
-                    result = module["make_evidence"](EvidenceSink(), 6, "fixture", "deterministic", str(source))
-                assert result["sha256"] == hashlib.sha256(payload).hexdigest()
-                assert result["size"] == len(payload)
-                assert handles and all(h.closed for h in handles), "binary input remains open"
-                for descriptor in opened_descriptors:
+                    result = store._blob(identifier)
+                assert result == payload
+                assert hashlib.sha256(result).digest() == hashlib.sha256(payload).digest()
+                assert lc.blob(result) == identifier
+                assert handles and all(handle.closed for handle in handles)
+                for descriptor in descriptors:
                     try:
                         real_fstat(descriptor)
                     except OSError as exc:
-                        assert exc.errno == errno.EBADF, exc
+                        assert exc.errno == errno.EBADF
                     else:
-                        raise AssertionError("successful evidence descriptor remains open")
-                # Fail after the secure descriptor opens, before its binary stream
-                # exists, and verify the real descriptor closes on that path too.
-                real_fstat, descriptors = os.fstat, []
+                        raise AssertionError("successful CAS descriptor remains open")
+                descriptors.clear()
                 def failed_metadata(descriptor):
                     descriptors.append(descriptor)
                     raise OSError("fixture metadata failure")
                 with patch("os.fstat", failed_metadata):
                     try:
-                        module["make_evidence"](EvidenceSink(), 6, "fixture", "deterministic", str(source))
+                        store._blob(identifier)
                     except OSError:
                         pass
                     else:
                         raise AssertionError("metadata failure was swallowed")
-                assert descriptors, "failure did not exercise an opened descriptor"
+                assert descriptors
                 for descriptor in descriptors:
                     try:
                         real_fstat(descriptor)
                     except OSError as exc:
-                        assert exc.errno == errno.EBADF, exc
+                        assert exc.errno == errno.EBADF
                     else:
-                        raise AssertionError("failed evidence descriptor remains open")
+                        raise AssertionError("failed CAS descriptor remains open")
+                (store.material / identifier).write_bytes(b"tampered")
                 try:
-                    module["make_evidence"](EvidenceSink(), 6, "fixture", "deterministic", str(source) + "-missing")
-                except module["FabricError"]:
-                    pass
+                    store._blob(identifier)
+                except lc.ERROR as exc:
+                    assert exc.code == "P_INTEGRITY"
                 else:
-                    raise AssertionError("missing evidence was accepted")
+                    raise AssertionError("corrupted CAS material was accepted")
+        ''')
+
+    def test_current_fabric_validate_closes_files_without_resource_warnings(self):
+        self.run_isolated('''
+            import contextlib, gc, io, json, runpy, sys, tempfile, warnings
+            from pathlib import Path
+            sys.path.insert(0, str(Path("tests").resolve()))
+            from governed_fixtures import GovernedHarness
+            from unittest.mock import patch
+            class Environment:
+                def setenv(self, name, value):
+                    import os
+                    os.environ[name] = str(value)
+            with tempfile.TemporaryDirectory() as directory:
+                host = GovernedHarness(Path(directory), Environment())
+                message = host.bootstrap_message()
+                path = Path(directory) / "message.json"
+                path.write_text(json.dumps(message))
+                module = runpy.run_path(".ai/runtime/fabric/fabric.py")
+                output = io.StringIO()
+                with warnings.catch_warnings(record=True) as observed, contextlib.redirect_stdout(output):
+                    warnings.simplefilter("always", ResourceWarning)
+                    assert module["main"](["validate", "--message", str(path)]) == 0
+                    gc.collect()
+                report = json.loads(output.getvalue())
+                assert report["structurally_valid"] and not report["authority_granted"]
+                assert report["message_id"] == message["message_id"]
+                assert not [warning for warning in observed if issubclass(warning.category, ResourceWarning)]
         ''')

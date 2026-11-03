@@ -216,7 +216,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Control design documentation', provide verifiable evidence satisfying: Loading, empty, partial, error, offline and success states are all specified. Required delivery form: Prototype plus annotated specification of all states.",
+        "criterion_under_review": "For the specific output 'Control design documentation', provide verifiable evidence satisfying: Identifies control objective, owner, trigger, inputs, actions, exceptions, evidence and measurable effectiveness tests. Required delivery form: Control design and effectiveness criteria.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"

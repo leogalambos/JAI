@@ -74,24 +74,36 @@ The platform's publication chain ensures that the final presentation can be poli
 
 When a decision may later need defence — for example external exposure of a risky service, a residual security exception, or a high-impact architecture choice — `/layered` and the Justifiable Fabric preserve the full justification chain.
 
-## Two delivery modes share the same governance model
+## Three ways to use the same professional resources
 
-The current release supports both ordinary specialist delivery and fully supervised consequential delivery.
+Use a specialist role, an enterprise workflow or the full layered matrix. The
+[mode selection guide](../using/usage-modes.md) explains the differences and
+links to the complete role and workflow catalogues.
 
 ### Standard specialist path
 
 ```text
-request → role/workflow routing → specialist execution → artefact/review/publication gates
+request → role selection → specialist execution → artefact/review/publication gates
 ```
 
 Use this for normal enterprise work where the full Fabric episode is not required.
+
+### Enterprise workflow path
+
+```text
+business outcome → workflow selection → specialist handoffs and gates → reviewed outcome
+```
+
+Use a [maintained workflow](../reference/workflows.md) when the process spans
+several professional responsibilities. A workflow is not automatically a full
+layered engagement.
 
 ### Layered consequential path
 
 ```text
 operator intent
 → L1–L6 typed contracts
-→ evidence and bottom-up review
+→ evidence, same-layer independent review and exact neighbouring handoffs
 → bounded rework/reformulation/escalation
 → L0 authority when required
 → strict release
@@ -99,7 +111,8 @@ operator intent
 
 Use this when the organisation must later defend why a result was allowed for a particular consequential use.
 
-The second path is not merely "more agents". Its value is the preserved requirement/evidence/authority state and deterministic recovery ladder.
+The layered path preserves the requirement, evidence and authority state across
+review, change and resumed work; its value is not merely using more agents.
 
 ## Important routing boundary
 

@@ -11171,7 +11171,7 @@
       "version": "3.0.0",
       "role_slug": "pmo-lead",
       "deliverable_number": 1,
-      "source_fingerprint": "1fcda4ff066df3bd512d61e3f79e57bae7ff426d446f029ea211f52a0c58c1e2",
+      "source_fingerprint": "b97eadcd3cefa4480e9a6ac763db9318a8c7d076aadf7b59088e2510f71adbf9",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -11180,7 +11180,7 @@
             "PMO Analyst",
             "Project Manager"
           ],
-          "decision_supported": "Requirements are specific, measurable and technology-explicit",
+          "decision_supported": "Defines applicable lifecycle stages, roles, mandatory artefacts, decision gates, exceptions and measurable adoption criteria",
           "owner_role": "PMO Lead",
           "classification": "inherit engagement / project classification"
         },
@@ -11228,7 +11228,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Controlled document referencing the parent policy"
+            "Controlled delivery method and standards"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -16822,7 +16822,7 @@
       "version": "3.0.0",
       "role_slug": "product-analyst",
       "deliverable_number": 2,
-      "source_fingerprint": "4af1bef18736fbd317ada718a75c8ce39e0db8b746ac5494a6cb17e1e5cd3248",
+      "source_fingerprint": "f72aae9fffa5431fa2f55e863169bcb783e2a394c78026fb570ab58929169ebe",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -16831,7 +16831,7 @@
             "Product Manager",
             "Product Designer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "States hypothesis, sample/population, allocation, measures, stopping criteria, observed effects and uncertainty",
           "owner_role": "Product Analyst",
           "classification": "inherit engagement / project classification"
         },
@@ -16879,7 +16879,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Experiment protocol and attributable results"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -19140,7 +19140,7 @@
       "version": "3.0.0",
       "role_slug": "solution-architect",
       "deliverable_number": 2,
-      "source_fingerprint": "675ba44806852255707a7de9409f53d6addb64f5e0701306e4f77859bf4f2311",
+      "source_fingerprint": "bb539c7a6bd28cafe7550ac99ba9435d644c3e33f927767c07ef5499fa8fab7a",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -19150,7 +19150,7 @@
             "Software Engineer",
             "Site Reliability Engineer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Defines versioned schemas, producer/consumer obligations, trust boundaries, failure handling and compatibility checks",
           "owner_role": "Solution Architect",
           "classification": "inherit engagement / project classification"
         },
@@ -19198,7 +19198,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Interface and integration design"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -20645,7 +20645,7 @@
       "version": "3.0.0",
       "role_slug": "data-architect",
       "deliverable_number": 3,
-      "source_fingerprint": "5b649808f08a6b3bc7ace4c9f1b791821baf711bfbee087bd2670e70c4b6fabd",
+      "source_fingerprint": "8f4fd6b9070159ab112969a6905847eefc6ec843600652b4977d31c0d8057bd8",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -20655,7 +20655,7 @@
             "Data Modeller",
             "Analytics Engineer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Traces source/target entities, transformations, ownership, privacy boundaries and lineage validation",
           "owner_role": "Data Architect",
           "classification": "inherit engagement / project classification"
         },
@@ -20703,7 +20703,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Data-flow and lineage design"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -21339,7 +21339,7 @@
       "version": "3.0.0",
       "role_slug": "cloud-architect",
       "deliverable_number": 1,
-      "source_fingerprint": "4d745cf0c30e5c54b3e36f1a8347ed9b541e09722dc6192c0edca428aa9576da",
+      "source_fingerprint": "c4b66b6f9430f12c556676118ff2dcb2e1bd8b402c225823084239deaaeff8e9",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -21349,7 +21349,7 @@
             "Cloud Engineer",
             "Site Reliability Engineer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Specifies account/subscription boundaries, identity, network, policy guardrails, operating ownership and verification of measurable requirements",
           "owner_role": "Cloud Architect",
           "classification": "inherit engagement / project classification"
         },
@@ -21397,7 +21397,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Cloud landing-zone architecture"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -21456,7 +21456,7 @@
       "version": "3.0.0",
       "role_slug": "cloud-architect",
       "deliverable_number": 2,
-      "source_fingerprint": "c9ccf8a8fcee3e229dbfb82090418ec03a0503efbedfe02b9ec82233b0cce20d",
+      "source_fingerprint": "1a53621018db893b7cbdb54e987ca69d6ca07ebd97e0ee438c093e7e5663e73e",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -21466,7 +21466,7 @@
             "Cloud Engineer",
             "Site Reliability Engineer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Defines failure domains, availability/recovery targets, dependencies, failure responses and planned validation",
           "owner_role": "Cloud Architect",
           "classification": "inherit engagement / project classification"
         },
@@ -21514,7 +21514,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Resilience design and recovery analysis"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -21807,7 +21807,7 @@
       "version": "3.0.0",
       "role_slug": "network-architect",
       "deliverable_number": 1,
-      "source_fingerprint": "7ab56c60f31873eb604bd2ffb99837339f0fcc769bee54e48c577490f687969a",
+      "source_fingerprint": "7d0c5896687430de8b4abf03be409b1605e59fd521f2be052eb05bc4e789d693",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -21816,7 +21816,7 @@
             "Network Engineer",
             "Firewall and Perimeter Engineer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Defines topology, addressing, routing, segmentation, capacity assumptions and verification criteria",
           "owner_role": "Network Architect",
           "classification": "inherit engagement / project classification"
         },
@@ -21864,7 +21864,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Network design and addressing plan"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -22037,7 +22037,7 @@
       "version": "3.0.0",
       "role_slug": "network-architect",
       "deliverable_number": 3,
-      "source_fingerprint": "eef97ff84822e459b329da233c5ef9fa7a703c98cfbfee4aa27d991d644f33d7",
+      "source_fingerprint": "d798dd14c428e507401d5763d07fbe70ad3346cfe197127dd121c6952b3aae6a",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -22046,7 +22046,7 @@
             "Network Engineer",
             "Firewall and Perimeter Engineer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Defines failure domains, redundant paths, convergence targets, failover behaviour and validation scenarios",
           "owner_role": "Network Architect",
           "classification": "inherit engagement / project classification"
         },
@@ -22094,7 +22094,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Network resilience design"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -22501,7 +22501,7 @@
       "version": "3.0.0",
       "role_slug": "security-architect",
       "deliverable_number": 3,
-      "source_fingerprint": "90c8c2aca148e219cc9cfca242bcd84f4854e8b551c32315ac6ab846a19efc82",
+      "source_fingerprint": "ef6ce02ab757326cea305b9273cc6391b202815ce89c1f8d949ae1769047c3c1",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -22511,7 +22511,7 @@
             "Cloud Security Engineer",
             "Application Security Engineer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Each pattern states threat/control objectives, trust boundaries, applicability, constraints and verification evidence",
           "owner_role": "Security Architect",
           "classification": "inherit engagement / project classification"
         },
@@ -22559,7 +22559,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Security pattern catalogue with reference designs"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -24821,7 +24821,7 @@
       "version": "3.0.0",
       "role_slug": "staff-engineer",
       "deliverable_number": 3,
-      "source_fingerprint": "065bfa145c6b09f6c40ee6e1cfb88d39508aa07ffcbafeef70e13df41689bc74",
+      "source_fingerprint": "826ba8b1e1549a633ace0c596f111bc4dd56cd3cbb068d89922e891d0eb9dc91",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -24830,7 +24830,7 @@
             "Technical Lead",
             "Senior Software Engineer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Defines contested hypothesis, bounded non-production scope, reproducible inputs/execution and observed results with limitations",
           "owner_role": "Staff Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -24878,7 +24878,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Reproducible prototype and evaluation report"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -25856,7 +25856,7 @@
       "version": "3.0.0",
       "role_slug": "frontend-engineer",
       "deliverable_number": 4,
-      "source_fingerprint": "574c86f35f625ff4ed3b59b1fdb7b4411d533484e249a415c34506ae67525615",
+      "source_fingerprint": "f6a5775a69482e3857a42b64b7be82a001700ad5113493c7a143c76b230fae69",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -25865,7 +25865,7 @@
             "Test Automation Engineer",
             "Accessibility Tester"
           ],
-          "decision_supported": "Assumptions are listed separately, each with an owner and a sensitivity",
+          "decision_supported": "Compares observed loading, interaction and resource metrics with stated targets, device/network conditions and unresolved regressions",
           "owner_role": "Frontend Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -25913,7 +25913,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Financial model with scenarios and stated assumptions"
+            "Versioned performance measurement report"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -27351,7 +27351,7 @@
       "version": "3.0.0",
       "role_slug": "real-time-systems-engineer",
       "deliverable_number": 1,
-      "source_fingerprint": "f3b74fb8beb51813af04f0f80d2b659ceee12e7868e2377960a5db43e1b11dd2",
+      "source_fingerprint": "ae1f7b84c75497a67e43a4e62298a2d1c98f4034477bfd0dd4ac8c37ade6d4e3",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -27360,7 +27360,7 @@
             "Test Analyst",
             "Embedded Firmware Engineer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Specifies deadlines, task priorities, scheduling assumptions, worst-case execution budgets and timing verification",
           "owner_role": "Real-time Systems Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -27408,7 +27408,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Real-time system design with timing analysis"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -27696,7 +27696,7 @@
       "version": "3.0.0",
       "role_slug": "real-time-systems-engineer",
       "deliverable_number": 4,
-      "source_fingerprint": "b329eefa1e6cc94461a4f629caba8cd253283601664207a3ce50399d2fd2b10b",
+      "source_fingerprint": "844bc4354fc33a1415824f6b6672c0bb2983f504ad1744d2ce42424f00d91611",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -27705,7 +27705,7 @@
             "Test Analyst",
             "Embedded Firmware Engineer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Real-time Systems Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -27753,7 +27753,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -29306,7 +29306,7 @@
       "version": "3.0.0",
       "role_slug": "integration-developer",
       "deliverable_number": 2,
-      "source_fingerprint": "cd920f92bf82324d0ae54114741ad06ec98baf50ac8d176bd50797ed62aaa0b6",
+      "source_fingerprint": "f5ab4845dea0dcc43891b376f451a7973adc487a48f9cd3f0b31bad3a9c0b10a",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -29315,7 +29315,7 @@
             "Application Support Analyst",
             "Test Analyst"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Defines error taxonomy, bounded retries, idempotency, timeouts, dead-letter handling and uncertain-completion reconciliation",
           "owner_role": "Integration Developer",
           "classification": "inherit engagement / project classification"
         },
@@ -29363,7 +29363,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Failure and retry behaviour specification"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -29421,7 +29421,7 @@
       "version": "3.0.0",
       "role_slug": "integration-developer",
       "deliverable_number": 3,
-      "source_fingerprint": "d663900eafcc39a20c3c7e8fc2ddb9d6dac83581e55c3ba7335e45801b3b13ac",
+      "source_fingerprint": "677ae8433316b4c29bd2126ab4753e8c606ebce953d3305bc2ce539669abef68",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -29430,7 +29430,7 @@
             "Application Support Analyst",
             "Test Analyst"
           ],
-          "decision_supported": "Obligations, service levels, exit terms and liability positions are explicit",
+          "decision_supported": "Defines payload fields, compatibility, validation, ordering, failure and retry semantics with reproducible consumer/provider checks",
           "owner_role": "Integration Developer",
           "classification": "inherit engagement / project classification"
         },
@@ -29478,7 +29478,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executed document held in the contract repository"
+            "Versioned message schemas and interface contract"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -30226,7 +30226,7 @@
       "version": "3.0.0",
       "role_slug": "low-code-and-rpa-developer",
       "deliverable_number": 2,
-      "source_fingerprint": "73f692a83d38fa8018f1953f1631bc838ce8942fbe3b2ba37d2ec6aa9db65453",
+      "source_fingerprint": "3ea5aedb292cd2da1985050f06051552d764354c7497a21c2b3c2d3ed3da3c7f",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -30235,7 +30235,7 @@
             "Application Support Analyst",
             "Configuration Analyst"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Defines triggers, permitted recovery, human escalation, state reconciliation and reproducible exception scenarios",
           "owner_role": "Low-code and RPA Developer",
           "classification": "inherit engagement / project classification"
         },
@@ -30283,7 +30283,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Process exception-handling specification"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -30686,7 +30686,7 @@
       "version": "3.0.0",
       "role_slug": "game-developer",
       "deliverable_number": 2,
-      "source_fingerprint": "e96f0194ad8977db8ce3911c5847571584c493bc5d49578c5deb2bf5ad0a1b30",
+      "source_fingerprint": "62539b114ca038f3688acc870adfabdd322cf54a2afe98e996c1b739c8d33e33",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -30695,7 +30695,7 @@
             "Test Analyst",
             "Graphics and Engine Engineer"
           ],
-          "decision_supported": "Assumptions are listed separately, each with an owner and a sensitivity",
+          "decision_supported": "Identifies target hardware, scene/workload, CPU/GPU timings, frame-time distribution, bottlenecks and variance against the frame budget",
           "owner_role": "Game Developer",
           "classification": "inherit engagement / project classification"
         },
@@ -30743,7 +30743,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Financial model with scenarios and stated assumptions"
+            "Versioned frame-time profiling report"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -33676,7 +33676,7 @@
       "version": "3.0.0",
       "role_slug": "release-engineer",
       "deliverable_number": 4,
-      "source_fingerprint": "0638ab89dfa97a1dc18442ae4a0963341f142466fa938c17695ac6c8629c5c94",
+      "source_fingerprint": "f7b107964bcd900c010c6025f11ba6874888ef38f07825e4cf45f190d50881d9",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -33685,7 +33685,7 @@
             "Site Reliability Engineer",
             "Application Support Analyst"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Defines exact targets, rollback triggers, ordered recovery, verification, stop conditions and observed test results",
           "owner_role": "Release Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -33733,7 +33733,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned rollback runbook with rehearsal evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -34029,7 +34029,7 @@
       "version": "3.0.0",
       "role_slug": "ci-cd-platform-engineer",
       "deliverable_number": 3,
-      "source_fingerprint": "2a39be03af52b694f52094758e025d4081c3979a2bfe87fab45fec0324be657c",
+      "source_fingerprint": "ad433f3e81088531a8a461fd745d968b61828dcbe2dd0ac8fe5188e4f3e13fe0",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -34040,7 +34040,7 @@
             "Release Engineer",
             "Software Engineer"
           ],
-          "decision_supported": "Reproducible from a clean checkout; no manual step required for a standard run",
+          "decision_supported": "Defines trust relationships, token claims, least-privilege permissions, expiry, failure handling and verification",
           "owner_role": "CI/CD Platform Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -34088,7 +34088,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Declarative pipeline definition in version control"
+            "Pipeline identity and federation design"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -34148,7 +34148,7 @@
       "version": "3.0.0",
       "role_slug": "ci-cd-platform-engineer",
       "deliverable_number": 4,
-      "source_fingerprint": "65bde2d7e94fcec3dda53ea472ea70f2831c617c35080430d34f8167e290bc02",
+      "source_fingerprint": "443d87a62b1093f9ebfe8f04d2cf659e05e7c71564ffcbcf953b620de00d0989",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -34159,7 +34159,7 @@
             "Release Engineer",
             "Software Engineer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Defines build/source identities, provenance fields, signing trust, verification policy and reproducible positive/negative checks",
           "owner_role": "CI/CD Platform Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -34207,7 +34207,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned provenance and attestation configuration"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -36115,7 +36115,7 @@
       "version": "3.0.0",
       "role_slug": "test-analyst",
       "deliverable_number": 1,
-      "source_fingerprint": "91c9ee099c6838c103f00285201d484a3c369be975d14f84da6e726e58fcd1d3",
+      "source_fingerprint": "235eb38c2ec2f5e24e8927f0e51f4d5034922ef37db45db7d355e9c4a1a567d2",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -36124,7 +36124,7 @@
             "Software Engineer",
             "Release Engineer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Each case identifies requirement or risk, preconditions, data, actions, expected observations and execution method; manual cases need not be automated",
           "owner_role": "Test Analyst",
           "classification": "inherit engagement / project classification"
         },
@@ -36172,7 +36172,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned test conditions and cases"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -36230,7 +36230,7 @@
       "version": "3.0.0",
       "role_slug": "test-analyst",
       "deliverable_number": 2,
-      "source_fingerprint": "eac24fb2d828d29c67674972ae1bb2f2606c2b2bd6190c6eecac307dd612e802",
+      "source_fingerprint": "47ac33ed5220e014ebde0c74315c0f62f29c62339aaeb017f9782b07a92c17a4",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -36239,7 +36239,7 @@
             "Software Engineer",
             "Release Engineer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Test Analyst",
           "classification": "inherit engagement / project classification"
         },
@@ -36287,7 +36287,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -36460,7 +36460,7 @@
       "version": "3.0.0",
       "role_slug": "test-analyst",
       "deliverable_number": 4,
-      "source_fingerprint": "fa04c8538b52b84ed84bb28d3cfe8f600980ec3dbe2e5b72703b5364c60af392",
+      "source_fingerprint": "de5b6e2bff21d06d910c07590e3bff24fc121271ee6dca057c06eb18ffd70746",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -36469,7 +36469,7 @@
             "Software Engineer",
             "Release Engineer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Test Analyst",
           "classification": "inherit engagement / project classification"
         },
@@ -36517,7 +36517,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -37150,7 +37150,7 @@
       "version": "3.0.0",
       "role_slug": "performance-test-engineer",
       "deliverable_number": 2,
-      "source_fingerprint": "e6e1218f884cf30b1f8488d18ae8f3d255ced1a5fc1fa91722952bc8dd22e31a",
+      "source_fingerprint": "62eda9d63092735a2ce595743e203c10b60087102ff392ad7a6fa167ebbe09c9",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -37159,7 +37159,7 @@
             "Site Reliability Engineer",
             "Capacity Manager"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Performance Test Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -37207,7 +37207,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -38070,7 +38070,7 @@
       "version": "3.0.0",
       "role_slug": "test-architect",
       "deliverable_number": 2,
-      "source_fingerprint": "ac280dad79fa554ef0f5b3fbcf104cfb19a44cc183f15a83865cf5cdb25721da",
+      "source_fingerprint": "ffb1ac557d0c9669e71cea4f79550f1a8f56372a14bae8d54f072a52073501b4",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -38079,7 +38079,7 @@
             "Test Manager",
             "Test Automation Engineer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Defines representative environments/data, lawful use, provisioning, isolation, dependencies and capability gaps",
           "owner_role": "Test Architect",
           "classification": "inherit engagement / project classification"
         },
@@ -38127,7 +38127,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Environment and test-data strategy"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -38990,7 +38990,7 @@
       "version": "3.0.0",
       "role_slug": "accessibility-tester",
       "deliverable_number": 2,
-      "source_fingerprint": "7d93a549276b5a028cb9e5c50da81bcf77da6a21e0d11b1124a79dfb49aa595c",
+      "source_fingerprint": "4786904f6192e1331fa8f771ecacfe310e2a1bc7cc43be4dc6a8dff5099b9642",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -38999,7 +38999,7 @@
             "Frontend Engineer",
             "Product Designer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Accessibility Tester",
           "classification": "inherit engagement / project classification"
         },
@@ -39047,7 +39047,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -39335,7 +39335,7 @@
       "version": "3.0.0",
       "role_slug": "localisation-qa-analyst",
       "deliverable_number": 1,
-      "source_fingerprint": "44949b895fd1e4ace0c4ad4db7896f6b7e2c550f9beac981cc025fd3bca71b4f",
+      "source_fingerprint": "887c2ff8b8ba9c05a06bbc36994517f4058feb4377e9b812b884846ab1c76d3b",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -39344,7 +39344,7 @@
             "Frontend Engineer",
             "Content Designer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Localisation QA Analyst",
           "classification": "inherit engagement / project classification"
         },
@@ -39392,7 +39392,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -39795,7 +39795,7 @@
       "version": "3.0.0",
       "role_slug": "chaos-and-resilience-engineer",
       "deliverable_number": 1,
-      "source_fingerprint": "bcd7aae542abec2aa92d9ac719bedbb3252cecc16c7e6e3fcdbff8e8299c3376",
+      "source_fingerprint": "90431a112286bb367e42123306fa3b23ab704c05870d8b9d6e73f1b8001ec1a7",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -39804,7 +39804,7 @@
             "Software Engineer",
             "Problem Manager"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Defines steady state, failure hypothesis, authorised scope, blast radius, stop criteria, recovery and observable success/failure measures",
           "owner_role": "Chaos and Resilience Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -39852,7 +39852,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Predeclared resilience experiment protocol"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -42801,7 +42801,7 @@
       "version": "3.0.0",
       "role_slug": "database-reliability-engineer",
       "deliverable_number": 3,
-      "source_fingerprint": "64aaa18a696398c5105e4f9517218385af71d46eb3372eac5dc83dd3dd3a070f",
+      "source_fingerprint": "98d73766b597a2e544c61670121dfdcc04b6a774135a2e326a45709382a6dfad",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -42810,7 +42810,7 @@
             "Backend Engineer",
             "Database Administrator"
           ],
-          "decision_supported": "Every statement is testable and maps to at least one control",
+          "decision_supported": "Supplies actual tool source/configuration, dependencies, reproducible checks, compatibility, authorised migration controls and recovery evidence; planned tooling is not delivered tooling",
           "owner_role": "Database Reliability Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -42858,7 +42858,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Controlled document with owner, effective date and review date"
+            "Versioned migration tooling with governed migration policy"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -46719,7 +46719,7 @@
       "version": "3.0.0",
       "role_slug": "research-scientist",
       "deliverable_number": 1,
-      "source_fingerprint": "f06898d530825c3b479513b4ba715c20b68764c2160d5d75a3bb246621acb7af",
+      "source_fingerprint": "667032bce75a69c113e60a90a362e18690dbff731c35fbe541a9fc1f541770c7",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -46728,7 +46728,7 @@
             "Machine Learning Engineer",
             "Innovation Lead"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "States research question, hypotheses, methods, sampling, ethics constraints, analysis plan and success or refutation criteria before execution",
           "owner_role": "Research Scientist",
           "classification": "inherit engagement / project classification"
         },
@@ -46776,7 +46776,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Research protocol with reproducibility plan"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -47294,7 +47294,7 @@
       "version": "3.0.0",
       "role_slug": "machine-learning-engineer",
       "deliverable_number": 2,
-      "source_fingerprint": "6eebff70c18f43a36a254da5b9485b3ad5774ba47e46fe868a25de96bf167fd5",
+      "source_fingerprint": "0cb312637777162bc260b499845820147a79936517674dd1a7261724b6c9f48a",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -47303,7 +47303,7 @@
             "MLOps Engineer",
             "Site Reliability Engineer"
           ],
-          "decision_supported": "The model is validated against real observed behaviour or data, not only interviews",
+          "decision_supported": "Supplies the actual model package with digest, version, serving/input-output contract, runtime and dependency versions, provenance and reproducible loading/compatibility checks",
           "owner_role": "Machine Learning Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -47351,7 +47351,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON)"
+            "Versioned model package and reproducible packaging manifest"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -47524,7 +47524,7 @@
       "version": "3.0.0",
       "role_slug": "machine-learning-engineer",
       "deliverable_number": 4,
-      "source_fingerprint": "c5678bb950e47bf543605e111011ea2e7059063044f21a7aaf6dd42b4123d510",
+      "source_fingerprint": "fc4b61fd4ce4267e8195be34314ecf27878a7cc04d6d78eb2b61e25ae0ddc726",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -47533,7 +47533,7 @@
             "MLOps Engineer",
             "Site Reliability Engineer"
           ],
-          "decision_supported": "The model is validated against real observed behaviour or data, not only interviews",
+          "decision_supported": "Supplies actual instrumentation source/configuration, defined drift/quality/latency measures, thresholds, alert ownership, reproducible checks and observed evidence",
           "owner_role": "Machine Learning Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -47581,7 +47581,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON)"
+            "Versioned model-monitoring implementation and configuration"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -48904,7 +48904,7 @@
       "version": "3.0.0",
       "role_slug": "ai-solutions-engineer",
       "deliverable_number": 4,
-      "source_fingerprint": "43af3f03d2de16a1bd6d565ca4f8e27574da932589d28d9678dacdb3a148e69e",
+      "source_fingerprint": "49a534e63676e10ee590af56f80fa4adb33caa22baedd8b6d16b467b94f425fd",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -48913,7 +48913,7 @@
             "LLMOps and AI Platform Engineer",
             "Test Analyst"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Defines failure signals, bounded recovery, escalation, human decision points and tests for unsafe or uncertain outcomes",
           "owner_role": "AI Solutions Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -48961,7 +48961,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Failure-handling and human-oversight design"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -49364,7 +49364,7 @@
       "version": "3.0.0",
       "role_slug": "ai-safety-and-model-red-team-specialist",
       "deliverable_number": 4,
-      "source_fingerprint": "55caac1c7ee39017c21830523434240e927aa1cd2b7da6e772afcd5daee12356",
+      "source_fingerprint": "5593dc48da9dfa374b782cf1c95aab4647eb713fc8fcfa792b0b68abccbc44ad",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -49373,7 +49373,7 @@
             "Machine Learning Engineer",
             "AI Solutions Engineer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "AI Safety and Model Red Team Specialist",
           "classification": "inherit engagement / project classification"
         },
@@ -49421,7 +49421,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -50292,7 +50292,7 @@
       "version": "3.0.0",
       "role_slug": "data-privacy-engineer",
       "deliverable_number": 4,
-      "source_fingerprint": "c0ab4f53a899e88bac8466f4b655ff692abcfabb1dc74adca9ebd0e748613371",
+      "source_fingerprint": "34d397ec829f27da445508a0644a89666877d9fdd353bee7d6ddcc5041ed46be",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -50301,7 +50301,7 @@
             "Data Engineer",
             "Platform Engineer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Traces processing purposes and data flows to privacy requirements, findings, evidence limits and independent resolution",
           "owner_role": "Data Privacy Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -50349,7 +50349,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Located privacy design review"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -55725,7 +55725,7 @@
       "version": "3.0.0",
       "role_slug": "environment-manager",
       "deliverable_number": 3,
-      "source_fingerprint": "86532cc8862f108ae2d51f8540fc773b7ca1e97ea1b78273a836b096f6cff6e2",
+      "source_fingerprint": "f9bdb4ae7d2311edaf8dd02f21fbb6774a87b60c127eee33f2759c5b553b1741",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -55735,7 +55735,7 @@
             "Software Engineer",
             "Release Engineer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Defines authorised source data, masking rules, reproducible preparation, validation, cleanup and privacy controls",
           "owner_role": "Environment Manager",
           "classification": "inherit engagement / project classification"
         },
@@ -55783,7 +55783,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned test-data seeding and masking procedure"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -56994,7 +56994,7 @@
       "version": "3.0.0",
       "role_slug": "backup-and-recovery-engineer",
       "deliverable_number": 2,
-      "source_fingerprint": "d2a0df55266aaa47a14c9389def3621b2a0a00f16758da00fa2c9ac52707776a",
+      "source_fingerprint": "7be50e5c4474c5d97c194cefeb5afddbed237db9df026a90c05520cb18500cb1",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -57003,7 +57003,7 @@
             "Database Administrator",
             "Disaster Recovery Coordinator"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Backup and Recovery Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -57051,7 +57051,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -58727,7 +58727,7 @@
       "version": "3.0.0",
       "role_slug": "observability-engineer",
       "deliverable_number": 1,
-      "source_fingerprint": "c45638d7b93dabb4f55fea4ffeec88078ba571ca5f2b8ee5c4591ea0f9ec61ef",
+      "source_fingerprint": "ec705386158bdce19c98418fcc58626d1ea30346aeec3cf1f82103a5d9f4b372",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -58736,7 +58736,7 @@
             "Software Engineer",
             "Incident Manager"
           ],
-          "decision_supported": "Requirements are specific, measurable and technology-explicit",
+          "decision_supported": "Supplies actual library source/package, supported interfaces and versions, instrumentation conventions, reproducible tests, compatibility and operating constraints",
           "owner_role": "Observability Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -58784,7 +58784,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Controlled document referencing the parent policy"
+            "Instrumentation standards and versioned library package"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -62982,7 +62982,7 @@
       "version": "3.0.0",
       "role_slug": "sd-wan-and-edge-engineer",
       "deliverable_number": 2,
-      "source_fingerprint": "68390bb3bceb1d483f6ada87bb7d0c2a7929c88bb0830355eb4fa6e50173b79c",
+      "source_fingerprint": "3aabc026298dfde460390f3fd6d3271057f2a67c0e54c68b0d5c3192a7cfa39d",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -62991,7 +62991,7 @@
             "Network Engineer",
             "Firewall and Perimeter Engineer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Defines site paths, routing, failure detection, convergence targets, degraded operation and validation scenarios",
           "owner_role": "SD-WAN and Edge Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -63039,7 +63039,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Connectivity and failover design"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -69767,7 +69767,7 @@
       "version": "3.0.0",
       "role_slug": "knowledge-manager",
       "deliverable_number": 1,
-      "source_fingerprint": "51f7434d3f2fe0c45ce37f6148d5b2b59ce7d3a7cc1921d0a34d3861ebde8393",
+      "source_fingerprint": "0ca764b81e37844ba0d301395a2c48394d09c09ad7e7f3c4295a8688671d93b7",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -69776,7 +69776,7 @@
             "Service Desk Analyst",
             "Technical Writer"
           ],
-          "decision_supported": "Requirements are specific, measurable and technology-explicit",
+          "decision_supported": "Defines audience and task structure, required source evidence, findability, ownership, review triggers and usability criteria",
           "owner_role": "Knowledge Manager",
           "classification": "inherit engagement / project classification"
         },
@@ -69824,7 +69824,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Controlled document referencing the parent policy"
+            "Controlled knowledge article standards and templates"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -72182,7 +72182,7 @@
       "version": "3.0.0",
       "role_slug": "business-relationship-manager",
       "deliverable_number": 2,
-      "source_fingerprint": "dec10ae644e80cfbfca2801d1852f8efc0ca5f9560601f4fa81d907244b8d375",
+      "source_fingerprint": "1fe0a4985dbe8ce8182810ea9a25bcb1e1f03f5213a4a9821d91ac902b547f55",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -72191,7 +72191,7 @@
             "Portfolio Manager",
             "IT Service Owner"
           ],
-          "decision_supported": "Reproducible from a clean checkout; no manual step required for a standard run",
+          "decision_supported": "Each demand has business outcome, sponsor, status, dependencies and next qualification or portfolio decision",
           "owner_role": "Business Relationship Manager",
           "classification": "inherit engagement / project classification"
         },
@@ -72239,7 +72239,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Declarative pipeline definition in version control"
+            "Prioritised demand register"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -78640,7 +78640,7 @@
       "version": "3.0.0",
       "role_slug": "secrets-and-configuration-management-engineer",
       "deliverable_number": 2,
-      "source_fingerprint": "b7561ed85ed86485d71ca3ed32d6e63c9dde195bef768a3ccca04780bbd7ff99",
+      "source_fingerprint": "13462447ed113dc08e6e0452affbdd5249400a349ac50e6ebb6e842b766c298b",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -78650,7 +78650,7 @@
             "CI/CD Platform Engineer",
             "Platform Engineer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Defines identity/trust flow, credential scope, lifetime, issuance, renewal, revocation, failure behaviour and verification",
           "owner_role": "Secrets and Configuration Management Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -78698,7 +78698,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Credential issuance design"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -80256,7 +80256,7 @@
       "version": "3.0.0",
       "role_slug": "privileged-access-management-administrator",
       "deliverable_number": 4,
-      "source_fingerprint": "e2304c855ff8db70428ed4434e7aaed3315e4e65e60ec7ce77cb523c435f060e",
+      "source_fingerprint": "faeccd6e137e70d6516738a263a05f244b49b540f86359318cdb3e448deeaa1d",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -80265,7 +80265,7 @@
             "Systems Administrators",
             "Security Analyst Tier 2"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Defines activation authority, access scope, expiry, logging, recovery, revocation and observed rehearsal results",
           "owner_role": "Privileged Access Management Administrator",
           "classification": "inherit engagement / project classification"
         },
@@ -80313,7 +80313,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Controlled break-glass runbook with rehearsal evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -80946,7 +80946,7 @@
       "version": "3.0.0",
       "role_slug": "application-security-engineer",
       "deliverable_number": 2,
-      "source_fingerprint": "4e46319f2ab151bf113f75abd1b16f14e2257eaf528edbf70a44737123b80119",
+      "source_fingerprint": "28d31a4a5d7a7faba36ce9e7b68e5554dde2bbff3dadf8187f82e280b55e66e6",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -80955,7 +80955,7 @@
             "Software Engineer",
             "Security Champion"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Defines test stages, tool/rule versions, scope, thresholds, secret references, failure handling and reproducible validation",
           "owner_role": "Application Security Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -81003,7 +81003,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned pipeline security-test configuration"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -81404,7 +81404,7 @@
       "version": "3.0.0",
       "role_slug": "security-champion",
       "deliverable_number": 2,
-      "source_fingerprint": "753348a8e48f6082db680ae83c6ca5bf2d8190389efd72567a6a52b888f288b6",
+      "source_fingerprint": "c3c377aeca1b779a57505414ed86f1e95e2e13d0f453c56427f2b58d845f50bc",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -81412,7 +81412,7 @@
           "audience": [
             "Software Engineer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Traces design/change findings to threats, security requirements, severity, independent resolution and residual uncertainty",
           "owner_role": "Security Champion",
           "classification": "inherit engagement / project classification"
         },
@@ -81460,7 +81460,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Located security review with evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -83706,7 +83706,7 @@
       "version": "3.0.0",
       "role_slug": "penetration-tester-network-and-infrastructure",
       "deliverable_number": 2,
-      "source_fingerprint": "cd35efc1f86f1ea9c0a862b365e3a8a85c3cf5b598e5854670a7713599b198c2",
+      "source_fingerprint": "8fe644fbfc74c3c4a335a9c988c9ee9615006264d1d88a2467e1791d84507c80",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -83715,7 +83715,7 @@
             "Vulnerability Management Analyst",
             "Systems Administrator"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Penetration Tester (Network and Infrastructure)",
           "classification": "inherit engagement / project classification"
         },
@@ -83763,7 +83763,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -83936,7 +83936,7 @@
       "version": "3.0.0",
       "role_slug": "penetration-tester-network-and-infrastructure",
       "deliverable_number": 4,
-      "source_fingerprint": "f3ec0493396e4c2c77fe0ccd003d57f11ec2e42330e0ef25610a0614b70d1a04",
+      "source_fingerprint": "74faf6cb4659f6474bd54fe9081b22fad9ee2a648aa979bac8885b4cc869be9f",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -83945,7 +83945,7 @@
             "Vulnerability Management Analyst",
             "Systems Administrator"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Penetration Tester (Network and Infrastructure)",
           "classification": "inherit engagement / project classification"
         },
@@ -83993,7 +83993,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -84396,7 +84396,7 @@
       "version": "3.0.0",
       "role_slug": "penetration-tester-web-application",
       "deliverable_number": 4,
-      "source_fingerprint": "026a7e074e14585f5ad70b2e86febfe6c0b844dd5b37691c18f6b0747838fd7d",
+      "source_fingerprint": "809e8af8994908372c073f98af2f79624028b51359d932a17e6c22a144abc674",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -84405,7 +84405,7 @@
             "Software Engineer",
             "Application Security Engineer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Penetration Tester (Web Application)",
           "classification": "inherit engagement / project classification"
         },
@@ -84453,7 +84453,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -84856,7 +84856,7 @@
       "version": "3.0.0",
       "role_slug": "penetration-tester-mobile",
       "deliverable_number": 4,
-      "source_fingerprint": "524b57e72ea03a7c0b243485649842d60394b690ddee1be4670bafbc098a9bb1",
+      "source_fingerprint": "5a770a7015637163859e64e205cc64f3a831029466e6a10186f94aba910e0ad6",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -84865,7 +84865,7 @@
             "Mobile Engineer",
             "Application Security Engineer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Penetration Tester (Mobile)",
           "classification": "inherit engagement / project classification"
         },
@@ -84913,7 +84913,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -93719,7 +93719,7 @@
       "version": "3.0.0",
       "role_slug": "grc-analyst",
       "deliverable_number": 1,
-      "source_fingerprint": "32cb374f550e1494b864422473b6786473e5cd8e5657783673b56fe5f3daa7ff",
+      "source_fingerprint": "dc27c6f3f4f87188a4f204352dca43e7023e9ee662ed323ed378fee070602e7d",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -93728,7 +93728,7 @@
             "Control Owner",
             "Control Tester"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Each control has an owner, obligation, test scope, planned date, evidence source and overdue-action disposition",
           "owner_role": "GRC Analyst",
           "classification": "inherit engagement / project classification"
         },
@@ -93776,7 +93776,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Control inventory and testing calendar"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -96479,7 +96479,7 @@
       "version": "3.0.0",
       "role_slug": "control-owner",
       "deliverable_number": 1,
-      "source_fingerprint": "0806dfed6a6a5f80df345a45eba716341ef9b86aceb88f1c183643b00430e0e2",
+      "source_fingerprint": "87886a8cb76d7be92860edafd90cd0f7fd38a044aeef06c423c3137b826c8a06",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -96488,7 +96488,7 @@
             "Control Tester",
             "operational teams"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Identifies control objective, owner, trigger, inputs, actions, exceptions, evidence and measurable effectiveness tests",
           "owner_role": "Control Owner",
           "classification": "inherit engagement / project classification"
         },
@@ -96536,7 +96536,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Control design and effectiveness criteria"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -96939,7 +96939,7 @@
       "version": "3.0.0",
       "role_slug": "control-tester",
       "deliverable_number": 1,
-      "source_fingerprint": "f2d6297ba492d7d4621481dfaa0bc6ee2ef21077bbd9bb5e6599d6a28ce47940",
+      "source_fingerprint": "ed1ea4af05ffc04ffea64c4ed27a7067f227b0dcb9daf0b2b39a85f3477a6437",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -96947,7 +96947,7 @@
           "audience": [
             "Control Owner"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Defines control objectives, population, sampling method, ordered test actions, expected evidence and limits of inference",
           "owner_role": "Control Tester",
           "classification": "inherit engagement / project classification"
         },
@@ -96995,7 +96995,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Test procedures and sampling rationale"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -97052,7 +97052,7 @@
       "version": "3.0.0",
       "role_slug": "control-tester",
       "deliverable_number": 2,
-      "source_fingerprint": "05db98f698e44dfe237d70321a130ea0a3f4edb11ef343d8ade2fe02e7f52ca8",
+      "source_fingerprint": "72eec2842ef8fd606d9c3a2403722aaa000a0853b7e1f7d861ff296ec1d04a1d",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -97060,7 +97060,7 @@
           "audience": [
             "Control Owner"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Control Tester",
           "classification": "inherit engagement / project classification"
         },
@@ -97108,7 +97108,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -97278,7 +97278,7 @@
       "version": "3.0.0",
       "role_slug": "control-tester",
       "deliverable_number": 4,
-      "source_fingerprint": "38ad307cc3408830ebd3180eae774ae843b4270ad0c0c2ae7b67b717af136bcb",
+      "source_fingerprint": "2f24edd70579e57e999049aaad7d3a96d0ac7f062957ff198fdd9151d66c1fb1",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -97286,7 +97286,7 @@
           "audience": [
             "Control Owner"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Control Tester",
           "classification": "inherit engagement / project classification"
         },
@@ -97334,7 +97334,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -98204,7 +98204,7 @@
       "version": "3.0.0",
       "role_slug": "privacy-analyst",
       "deliverable_number": 4,
-      "source_fingerprint": "5774d5bebc776b6d1493675cfc5e68fccf5689b9cc8bf2b10b1d26224efed0e2",
+      "source_fingerprint": "96f747610c977a80c989cefb8986997e62ab050715194da28ec62ade1e641cc9",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -98213,7 +98213,7 @@
             "Data Privacy Engineer",
             "project teams"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "States processing purposes, required disclosures, lawful-basis assumptions, consent choices and unresolved legal or DPO advice",
           "owner_role": "Privacy Analyst",
           "classification": "inherit engagement / project classification"
         },
@@ -98261,7 +98261,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Privacy notice and consent design input"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -99354,7 +99354,7 @@
       "version": "3.0.0",
       "role_slug": "disaster-recovery-coordinator",
       "deliverable_number": 2,
-      "source_fingerprint": "5f5c9a69171a365e41a3772a8e7cc21678c5293c76539db550c60566c86cb72a",
+      "source_fingerprint": "9d71694e0f0630d5362d4999e23731a588cd49c65bb97ea1b4522ade02cf88eb",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -99363,7 +99363,7 @@
             "Backup and Recovery Engineer",
             "Platform Engineer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Disaster Recovery Coordinator",
           "classification": "inherit engagement / project classification"
         },
@@ -99411,7 +99411,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -99929,7 +99929,7 @@
       "version": "3.0.0",
       "role_slug": "third-party-risk-manager",
       "deliverable_number": 3,
-      "source_fingerprint": "5f2aac0e98b4c8f13fd609954b6dd51375f375891b50d83276d2c4eb0c69169b",
+      "source_fingerprint": "44112c61f0741a9939edecb437226a4a572e70b8dcba86a03d6781dc9e99a5d9",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -99938,7 +99938,7 @@
             "Vendor Manager",
             "Contract Manager"
           ],
-          "decision_supported": "Obligations, service levels, exit terms and liability positions are explicit",
+          "decision_supported": "Each requirement maps to supplier risk or an applicable obligation, proposed clause/evidence, accountable owner and unresolved legal or commercial decision; proposed requirements do not imply an executed contract",
           "owner_role": "Third-Party Risk Manager",
           "classification": "inherit engagement / project classification"
         },
@@ -99986,7 +99986,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executed document held in the contract repository"
+            "Traceable contractual control requirements for negotiation"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -100504,7 +100504,7 @@
       "version": "3.0.0",
       "role_slug": "policy-author",
       "deliverable_number": 4,
-      "source_fingerprint": "a96e11865678f499c06ecb4fe211f7f8cd73006bde4fc23559f25529ce666179",
+      "source_fingerprint": "ecb54bcbd92e88b23869ec43b412464a00df9ce611a728dfd2e0bb510066abbc",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -100513,7 +100513,7 @@
             "practice owners",
             "Control Owner"
           ],
-          "decision_supported": "Every statement is testable and maps to at least one control",
+          "decision_supported": "Each policy has an owner, review trigger or due date, supersession/retirement conditions and required authority",
           "owner_role": "Policy Author",
           "classification": "inherit engagement / project classification"
         },
@@ -100561,7 +100561,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Controlled document with owner, effective date and review date"
+            "Policy review and retirement schedule"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -101424,7 +101424,7 @@
       "version": "3.0.0",
       "role_slug": "ux-designer",
       "deliverable_number": 4,
-      "source_fingerprint": "7f9faf00148efbce09d3ed9dba1af23dabaeb1226a4c1813c906824eb3563329",
+      "source_fingerprint": "649bf0bd335c75011643245741e614a663608fb6549e15ad13afe564b83378dc",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -101433,7 +101433,7 @@
             "Frontend Engineer",
             "UI Designer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "UX Designer",
           "classification": "inherit engagement / project classification"
         },
@@ -101481,7 +101481,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -101999,7 +101999,7 @@
       "version": "3.0.0",
       "role_slug": "product-designer",
       "deliverable_number": 1,
-      "source_fingerprint": "204f2395cac83c6e0cace35efdc3fe0873cfebe500bc51c0d8f2cead23e4dd41",
+      "source_fingerprint": "059caa7855ed575f0e47b777dcde290bea67c51b342e564c56503760729e6896",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -102009,7 +102009,7 @@
             "UI Designer",
             "Frontend Engineer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Traces user/business outcomes to research, design principles, priorities, constraints and measurable evaluation",
           "owner_role": "Product Designer",
           "classification": "inherit engagement / project classification"
         },
@@ -102057,7 +102057,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Product-area design strategy"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -102233,7 +102233,7 @@
       "version": "3.0.0",
       "role_slug": "product-designer",
       "deliverable_number": 3,
-      "source_fingerprint": "3e74c1dbc78c5e3a93962454d2b994e15ea7b1bdbe519c901d3874bb11ce55e4",
+      "source_fingerprint": "c20da5cebc24679c947871ee5abac2792224d3a2a8d4663cbb0e3c69d7d71e7e",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -102243,7 +102243,7 @@
             "UI Designer",
             "Frontend Engineer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Links design choices and rejected alternatives to attributable user research, assumptions and validation limits",
           "owner_role": "Product Designer",
           "classification": "inherit engagement / project classification"
         },
@@ -102291,7 +102291,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Research-backed design rationale"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -102350,7 +102350,7 @@
       "version": "3.0.0",
       "role_slug": "product-designer",
       "deliverable_number": 4,
-      "source_fingerprint": "3f5c9d330046e34b3106a6cb4bda4e6aa28866aa55742a0c25535ac7310d99bc",
+      "source_fingerprint": "adc861a992f44997bb820b78d0aa690bd8100084b93abdaad906b544108ee404",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -102360,7 +102360,7 @@
             "UI Designer",
             "Frontend Engineer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Compares measured user outcomes against baseline and targets, reporting methods, uncertainty and next actions",
           "owner_role": "Product Designer",
           "classification": "inherit engagement / project classification"
         },
@@ -102408,7 +102408,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Design-outcome evaluation report"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -103272,7 +103272,7 @@
       "version": "3.0.0",
       "role_slug": "usability-tester",
       "deliverable_number": 4,
-      "source_fingerprint": "ef2d6df8f095544d4db50c5c4e3af78dc20b5cdd88b1d409dad625487ba6f423",
+      "source_fingerprint": "6c676e06afaa03f3e32b12ef634d0ba36ebf6f11319c4c3d5ded60d5f1191cd4",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -103281,7 +103281,7 @@
             "UX Designer",
             "Frontend Engineer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Usability Tester",
           "classification": "inherit engagement / project classification"
         },
@@ -103329,7 +103329,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -103962,7 +103962,7 @@
       "version": "3.0.0",
       "role_slug": "service-designer",
       "deliverable_number": 2,
-      "source_fingerprint": "f1881e8a461b0ff2171e07b0a46e1f66b774b14ff1bfc27a899159a4d039c3e7",
+      "source_fingerprint": "9947fbb54f6251aa7e8371d75c61c816935bef6f844751663f318a1aa9da2477",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -103971,7 +103971,7 @@
             "Product Designer",
             "Process Analyst"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Defines user journeys, front/back-stage responsibilities, channel transitions, failure recovery and validation criteria",
           "owner_role": "Service Designer",
           "classification": "inherit engagement / project classification"
         },
@@ -104019,7 +104019,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Channel and touchpoint design"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -104422,7 +104422,7 @@
       "version": "3.0.0",
       "role_slug": "information-architect",
       "deliverable_number": 2,
-      "source_fingerprint": "acef517598e840dc2b17415293b201d2cb27be3d2bd841470949d57bd6de5ea1",
+      "source_fingerprint": "eb29593cb6722318faf3f41f22ed02e7df78a2ba13da1c561fccbfa3a245daa7",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -104431,7 +104431,7 @@
             "Content Designer",
             "Frontend Engineer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Defines labels, hierarchy, relationships, user tasks and findability validation with evidence gaps",
           "owner_role": "Information Architect",
           "classification": "inherit engagement / project classification"
         },
@@ -104479,7 +104479,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Navigation and taxonomy specification"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -104652,7 +104652,7 @@
       "version": "3.0.0",
       "role_slug": "information-architect",
       "deliverable_number": 4,
-      "source_fingerprint": "550a343296ba550beba45312c341d05dab19d87a5ae822b7273733e286f66e44",
+      "source_fingerprint": "540ebc62573976eb068ce594c6029b8d6e5f05d3d460c7c262b46e233db267b8",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -104661,7 +104661,7 @@
             "Content Designer",
             "Frontend Engineer"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Information Architect",
           "classification": "inherit engagement / project classification"
         },
@@ -104709,7 +104709,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -104882,7 +104882,7 @@
       "version": "3.0.0",
       "role_slug": "design-system-engineer",
       "deliverable_number": 2,
-      "source_fingerprint": "462cdfdda32866c4edb01512c92d223eceda3370f1cc0ff96424ef5115874882",
+      "source_fingerprint": "d6cbc34b7e7b461a60e52900ea5f7bc99045ab947be5cd34bad22139164d9e9a",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -104891,7 +104891,7 @@
             "Frontend Engineer",
             "UI Designer"
           ],
-          "decision_supported": "Loading, empty, partial, error, offline and success states are all specified",
+          "decision_supported": "Defines token names, types, semantic aliases, theme resolution, accessibility constraints and compatibility checks",
           "owner_role": "Design System Engineer",
           "classification": "inherit engagement / project classification"
         },
@@ -104939,7 +104939,7 @@
           "producer": "external:engineering-toolchain",
           "renderer": "external:engineering-toolchain",
           "output_formats": [
-            "Prototype plus annotated specification of all states"
+            "Versioned design-token and theme specification"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": "engineering-toolchain",
@@ -106040,7 +106040,7 @@
       "version": "3.0.0",
       "role_slug": "content-designer",
       "deliverable_number": 4,
-      "source_fingerprint": "eccfa07171838179064d2d19225e9f6752420915de4dc486820c9596d9458a69",
+      "source_fingerprint": "0d4e8367003814c610b1ae3aac752df141978e5b29739155378658920b0a1f2c",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -106049,7 +106049,7 @@
             "Frontend Engineer",
             "Localisation QA Analyst"
           ],
-          "decision_supported": "States what is covered, what is not, and what the suite cannot detect",
+          "decision_supported": "Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations",
           "owner_role": "Content Designer",
           "classification": "inherit engagement / project classification"
         },
@@ -106097,7 +106097,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Executable suite in version control plus a coverage statement"
+            "Versioned assessment results with traceable evidence"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,
@@ -111790,7 +111790,7 @@
       "version": "3.0.0",
       "role_slug": "technical-recruiter",
       "deliverable_number": 2,
-      "source_fingerprint": "eaa4d6ddead990812e42cc783a124a0a3aacce10936615ede1a854117be0d0bf",
+      "source_fingerprint": "78d99def21037b46e588c4e888161d991ee18d3448a4258c7757d4ab9c875f63",
       "jai": {
         "core_version": "1.0.0",
         "intent": {
@@ -111799,7 +111799,7 @@
             "hiring panel",
             "candidates"
           ],
-          "decision_supported": "Reproducible from a clean checkout; no manual step required for a standard run",
+          "decision_supported": "Identifies target skills, sourcing channels, stages, accountable recruiters, candidate consent constraints and measured conversion gaps",
           "owner_role": "Technical Recruiter",
           "classification": "inherit engagement / project classification"
         },
@@ -111847,7 +111847,7 @@
           "producer": "tools/publication.py",
           "renderer": "tools/publication.py",
           "output_formats": [
-            "Declarative pipeline definition in version control"
+            "Sourcing plan and candidate pipeline register"
           ],
           "system_of_record": "agreed system of record",
           "external_handoff_adapter": null,

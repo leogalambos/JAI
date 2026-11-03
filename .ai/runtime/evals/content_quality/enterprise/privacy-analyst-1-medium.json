@@ -23,48 +23,6 @@
     "privacy": true
   },
   "semantic_units": {
-    "delivery_accountability": [
-      {
-        "increment_id": "SYN-WAVE1",
-        "start": "2026-11-01",
-        "finish": "2026-11-05",
-        "dependency": "SYN-T1 peak-load retest",
-        "entry": "Backup restore rehearsed and rollback configuration retained",
-        "exit": "Ledger totals reconcile and operations independently accepts support",
-        "go_no_go": "Service owner with independent operations evidence",
-        "fallback_decision_time": "Before enabling transaction traffic",
-        "record_id": "SYN-DELIVERY-ACCOUNTABILITY",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Assign outcomes, milestones, resource assumptions and acceptance responsibility.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "delivery_dependencies": [
-      {
-        "increment_id": "SYN-WAVE1",
-        "start": "2026-11-01",
-        "finish": "2026-11-05",
-        "dependency": "SYN-T1 peak-load retest",
-        "entry": "Backup restore rehearsed and rollback configuration retained",
-        "exit": "Ledger totals reconcile and operations independently accepts support",
-        "go_no_go": "Service owner with independent operations evidence",
-        "fallback_decision_time": "Before enabling transaction traffic",
-        "record_id": "SYN-DELIVERY-DEPENDENCIES",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Link delivery risks, cross-team dependencies and change decisions to accountable owners.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
     "privacy_analysis": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -82,6 +40,50 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
+    "security_boundary": {
+      "risk_id": "SYN-R1",
+      "cause": "Recovery checkpoint lags active transaction state",
+      "event": "Replay duplicates a committed transaction",
+      "business_consequence": "Ledger imbalance delays warehouse updates",
+      "inherent_score": 12,
+      "residual_score": 8,
+      "control_ref": "SYN-C1",
+      "treatment": "Enforce unique event IDs and rehearse ledger reconciliation",
+      "due": "2026-11-05",
+      "residual_authority": "Independent service risk owner; approval pending",
+      "record_id": "SYN-SECURITY-BOUNDARY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify protected business outcomes, trust boundaries and authorised information handling.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "security_control_trace": [
+      {
+        "risk_id": "SYN-R1",
+        "cause": "Recovery checkpoint lags active transaction state",
+        "event": "Replay duplicates a committed transaction",
+        "business_consequence": "Ledger imbalance delays warehouse updates",
+        "inherent_score": 12,
+        "residual_score": 8,
+        "control_ref": "SYN-C1",
+        "treatment": "Enforce unique event IDs and rehearse ledger reconciliation",
+        "due": "2026-11-05",
+        "residual_authority": "Independent service risk owner; approval pending",
+        "record_id": "SYN-SECURITY-CONTROL-TRACE",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Trace threat/risk scenarios through control objectives to effectiveness evidence and residual owners.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
     "contract_input_1": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -169,6 +171,25 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
+    "data_subject_risks": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-DATA-SUBJECT-RISKS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Describe risks to the rights and freedoms of affected people, including who may be harmed, likelihood, severity, assumptions and supporting evidence; business risk alone is insufficient.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
     "decision_purpose_correction": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -222,6 +243,59 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
+    "necessity_proportionality": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-NECESSITY-PROPORTIONALITY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Assess necessity and proportionality of processing in relation to its purpose, less intrusive alternatives and data-minimisation/retention choices using the actual proposal.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "privacy_safeguards": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-PRIVACY-SAFEGUARDS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Map each material rights/freedoms risk to proposed safeguards, responsible owner, verification evidence and remaining exposure; record DPO advice where sought and any decision or consultation still required without implying permission to process.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "processing_description": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-PROCESSING-DESCRIPTION",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Describe the envisaged processing operations, purposes, categories of data/subjects, recipients, retention and relevant data flows; identify controller and applicable jurisdiction.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
     "receiving_acceptance": [
       {
         "element_id": "SYN-APP-1",
@@ -260,52 +334,29 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
-    "decision_authority": {
-      "baseline": {
-        "id": "BASE",
-        "restore_minutes": 48,
-        "transition_eur": 0
-      },
-      "candidate": {
-        "id": "TARGET",
-        "restore_minutes": 27,
-        "transition_eur": 18000
-      },
-      "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
-      "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
-      "record_id": "SYN-DECISION-AUTHORITY",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify the specific choice, accountable authority and decision deadline.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "decision_impacts": {
-      "baseline": {
-        "id": "BASE",
-        "restore_minutes": 48,
-        "transition_eur": 0
-      },
-      "candidate": {
-        "id": "TARGET",
-        "restore_minutes": 27,
-        "transition_eur": 18000
-      },
-      "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
-      "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
-      "record_id": "SYN-DECISION-IMPACTS",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Explain cost, benefit, dependencies, uncertainty and residual risks of the recommendation.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
+    "evaluated_scenarios": [
+      {
+        "risk_id": "SYN-R1",
+        "cause": "Recovery checkpoint lags active transaction state",
+        "event": "Replay duplicates a committed transaction",
+        "business_consequence": "Ledger imbalance delays warehouse updates",
+        "inherent_score": 12,
+        "residual_score": 8,
+        "control_ref": "SYN-C1",
+        "treatment": "Enforce unique event IDs and rehearse ledger reconciliation",
+        "due": "2026-11-05",
+        "residual_authority": "Independent service risk owner; approval pending",
+        "record_id": "SYN-EVALUATED-SCENARIOS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Link assets, causes, events, consequences and inherent/residual ratings to evidence.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
     "identity": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -323,24 +374,43 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
-    "option_comparison": [
+    "risk_method": {
+      "risk_id": "SYN-R1",
+      "cause": "Recovery checkpoint lags active transaction state",
+      "event": "Replay duplicates a committed transaction",
+      "business_consequence": "Ledger imbalance delays warehouse updates",
+      "inherent_score": 12,
+      "residual_score": 8,
+      "control_ref": "SYN-C1",
+      "treatment": "Enforce unique event IDs and rehearse ledger reconciliation",
+      "due": "2026-11-05",
+      "residual_authority": "Independent service risk owner; approval pending",
+      "record_id": "SYN-RISK-METHOD",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Define scope, likelihood, impact scales and applicable risk appetite.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "treatment_accountability": [
       {
-        "baseline": {
-          "id": "BASE",
-          "restore_minutes": 48,
-          "transition_eur": 0
-        },
-        "candidate": {
-          "id": "TARGET",
-          "restore_minutes": 27,
-          "transition_eur": 18000
-        },
-        "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
-        "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
-        "record_id": "SYN-OPTION-COMPARISON",
+        "risk_id": "SYN-R1",
+        "cause": "Recovery checkpoint lags active transaction state",
+        "event": "Replay duplicates a committed transaction",
+        "business_consequence": "Ledger imbalance delays warehouse updates",
+        "inherent_score": 12,
+        "residual_score": 8,
+        "control_ref": "SYN-C1",
+        "treatment": "Enforce unique event IDs and rehearse ledger reconciliation",
+        "due": "2026-11-05",
+        "residual_authority": "Independent service risk owner; approval pending",
+        "record_id": "SYN-TREATMENT-ACCOUNTABILITY",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Compare viable options including the do-nothing baseline against common criteria.",
+        "criterion_under_review": "Assign treatments, deadlines, risk owners and residual acceptance authority.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -376,22 +446,26 @@
       "id": "headings-only",
       "operation": "headings_only",
       "expected_rule_ids": [
-        "domain/delivery.delivery_accountability",
-        "domain/delivery.delivery_dependencies",
+        "domain/security.security_boundary",
+        "domain/security.security_control_trace",
         "role/privacy-analyst:1.contract_input_1",
         "role/privacy-analyst:1.contract_input_2",
         "role/privacy-analyst:1.contract_input_3",
         "role/privacy-analyst:1.contract_input_4",
         "role/privacy-analyst:1.contract_relations",
+        "role/privacy-analyst:1.data_subject_risks",
         "role/privacy-analyst:1.decision_purpose_correction",
         "role/privacy-analyst:1.delivery_scope",
         "role/privacy-analyst:1.delivery_verification",
+        "role/privacy-analyst:1.necessity_proportionality",
+        "role/privacy-analyst:1.privacy_safeguards",
+        "role/privacy-analyst:1.processing_description",
         "role/privacy-analyst:1.receiving_acceptance",
         "role/privacy-analyst:1.role_gate_observations",
-        "type/decision-paper.decision_authority",
-        "type/decision-paper.decision_impacts",
-        "type/decision-paper.identity",
-        "type/decision-paper.option_comparison"
+        "type/risk-assessment.evaluated_scenarios",
+        "type/risk-assessment.identity",
+        "type/risk-assessment.risk_method",
+        "type/risk-assessment.treatment_accountability"
       ],
       "expected_category": "critical-content"
     },

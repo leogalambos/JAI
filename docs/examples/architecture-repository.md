@@ -1,6 +1,5 @@
 # Update an enterprise architecture repository
 
-Owner: JAI documentation maintainers. Updated: 2026-10-20.
 
 ACME Group is replacing a shared identity service used by several
 business units. Alice owns the architecture repository, Bob owns the

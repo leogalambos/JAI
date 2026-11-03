@@ -2,15 +2,15 @@
   "license": "SPDX-License-Identifier: BSD-4-Clause",
   "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
   "id": "kind/role/third-party-risk-manager:3",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "owner": "Content Standards Owner",
   "status": "proposed",
   "effective_from": null,
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/implementation-specification",
-    "domain/architecture"
+    "type/document",
+    "domain/delivery"
   ],
   "applies_to": {
     "document_kind": "role/third-party-risk-manager:3",
@@ -195,7 +195,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'contractual control requirements', provide verifiable evidence satisfying: Obligations, service levels, exit terms and liability positions are explicit. Required delivery form: Executed document held in the contract repository.",
+        "For the specific output 'contractual control requirements', provide verifiable evidence satisfying: Each requirement maps to supplier risk or an applicable obligation, proposed clause/evidence, accountable owner and unresolved legal or commercial decision; proposed requirements do not imply an executed contract. Required delivery form: Traceable contractual control requirements for negotiation.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,7 +210,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'contractual control requirements', provide verifiable evidence satisfying: Obligations, service levels, exit terms and liability positions are explicit. Required delivery form: Executed document held in the contract repository.",
+        "reason": "For the specific output 'contractual control requirements', provide verifiable evidence satisfying: Each requirement maps to supplier risk or an applicable obligation, proposed clause/evidence, accountable owner and unresolved legal or commercial decision; proposed requirements do not imply an executed contract. Required delivery form: Traceable contractual control requirements for negotiation.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#third-party-risk-manager:3",
           "content/types/implementation-specification.yaml"
@@ -223,8 +223,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "contractual control requirements",
-        "format": "Executed document held in the contract repository",
-        "acceptance_criterion": "Obligations, service levels, exit terms and liability positions are explicit",
+        "format": "Traceable contractual control requirements for negotiation",
+        "acceptance_criterion": "Each requirement maps to supplier risk or an applicable obligation, proposed clause/evidence, accountable owner and unresolved legal or commercial decision; proposed requirements do not imply an executed contract",
         "role_path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/third-party-risk-manager.md"
       }
     },
@@ -666,7 +666,7 @@
     }
   ],
   "size_budget": {
-    "metric": "typed",
+    "metric": "semantic_units",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -685,6 +685,27 @@
     "freshness": "review on source or policy change",
     "claim_to_evidence_rules": [
       "Material claims reference dated, versioned evidence or explicit uncertainty."
+    ],
+    "professional_references": [
+      {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      }
+    ],
+    "role_framework_context": [
+      {
+        "role": "Third-Party Risk Manager",
+        "frameworks": [
+          "DORA third-party requirements",
+          "ISO/IEC 27036",
+          "NIST SP 800-161 supply chain risk"
+        ],
+        "basis": "Canonical role context; not proof that every listed framework applies to this output."
+      }
     ]
   },
   "overlap": {
@@ -710,13 +731,14 @@
     "waiver_policy": "Existing JAI L0 authority only; no legal/security bypass."
   },
   "lifecycle": {
-    "effective_version": "1.1.0",
+    "effective_version": "1.2.0",
     "deprecation": null,
     "migration": "26.10.5 explicit sidecar binding",
     "golden_case_refs": [],
     "change_history": [
       "Initial proposed foundation; no professional approval asserted.",
-      "26.10.8 substantive proposed obligations; no professional approval asserted."
+      "26.10.8 substantive proposed obligations; no professional approval asserted.",
+      "26.11.0 explicit professional-source context and concrete acceptance criteria; professional approval remains separate."
     ]
   },
   "jai": {
@@ -735,12 +757,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/document",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "implementation-specification",
+  "semantic_family": "document",
   "role_overlay": {
     "contract_id": "third-party-risk-manager:3",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -749,8 +773,8 @@
   "coverage_note": "Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.",
   "source_contract": {
     "id": "third-party-risk-manager:3",
-    "source_fingerprint": "5f2aac0e98b4c8f13fd609954b6dd51375f375891b50d83276d2c4eb0c69169b",
-    "source_hash": "04f59b92e7273e5149e4a0e5e9065e9ce65e1b606ae4ccfdccac6e4da00d2cba"
+    "source_fingerprint": "44112c61f0741a9939edecb437226a4a572e70b8dcba86a03d6781dc9e99a5d9",
+    "source_hash": "b988491e34e760e102e035c2b073ecc54ab0ddab1b2e634e596f3f65ce791a2e"
   },
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
