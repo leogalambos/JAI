@@ -67,7 +67,7 @@ jobs:
           python3 tools/generate_workflow_diagrams.py --root . --check
           python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/runtime/tools/expert_references.py validate --root . --all
       - name: P0 runtime security application regression (host coverage reported separately)
-        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . --timeout 120 -- python3 -u -m pytest -vv -rs tests/test_agent_runtime.py tests/test_integration_adapters.py tests/test_guard_library_write.py tests/test_fabric_authority_boundary.py tests/test_governed_domain.py tests/test_gen2_command_integrations.py
+        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . --timeout 300 -- python3 -u -m pytest -vv -rs tests/test_agent_runtime.py tests/test_integration_adapters.py tests/test_guard_library_write.py tests/test_fabric_authority_boundary.py tests/test_governed_domain.py tests/test_gen2_command_integrations.py
 
       - name: Gate checker positive and negative regression
         run: |

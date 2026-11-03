@@ -79,7 +79,6 @@ extra_javascript:
   - https://unpkg.com/mermaid@11/dist/mermaid.min.js
   - assets/javascripts/mermaid.js
   - assets/javascripts/home-footer.js
-  - assets/javascripts/sidebar-behaviour.js
 
 extra:
   generator: false
