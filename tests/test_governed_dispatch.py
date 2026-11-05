@@ -8,6 +8,7 @@ import json
 import os
 from pathlib import Path
 import socket
+from types import SimpleNamespace
 import time
 
 import pytest
@@ -399,3 +400,42 @@ def test_current_worker_slots_project_facts_without_reassessing_accepted_results
     state.states[(host.scope, subject['version_id'])] = {'validity': 'valid', 'applicable': False}
     slots = consumer._current_slots(state, actor['setter'], state.resolve(actor['setter'], 'assignment'), [], [])
     assert not next(item for item in slots if item['selected_ref'] == subject)['applicable']
+
+
+@pytest.mark.parametrize('available', [True, False])
+def test_host_bwrap_lookup_preserves_confined_namespace(tmp_path, monkeypatch, available):
+    tools = tmp_path / 'backend tools with spaces'
+    tools.mkdir()
+    executable = tools / 'bwrap'
+    if available:
+        executable.write_text('#!/bin/sh\nexit 0\n')
+        executable.chmod(0o755)
+    monkeypatch.setenv('PATH', str(tools))
+    launcher = object.__new__(dispatch.Dispatcher)
+    launcher.execution = {'snapshot': {'descriptor': {'catalogue_blob_id': 'fixture'}, 'instructions': {}}}
+    launcher.store = SimpleNamespace(_blob=lambda identifier: b'{}')
+    monkeypatch.setattr(launcher, '_worker', lambda worker: None)
+    monkeypatch.setattr(dispatch, '_seccomp', lambda path: path.write_bytes(b'disposable filter'))
+    calls = []
+    sentinel = object()
+    def capture(command, **kwargs):
+        calls.append((command, kwargs))
+        assert command[0] == str(executable)
+        return sentinel
+    monkeypatch.setattr(dispatch.subprocess, 'Popen', capture)
+    worker = {'files': [], 'argv': ['/usr/bin/python3', '/worker/main.py']}
+    if not available:
+        with pytest.raises(dispatch.DispatchError, match='bwrap.*PATH') as error:
+            launcher._launch(worker, tmp_path, {})
+        assert error.value.code == 'P_BACKEND'
+        assert not calls
+        return
+    assert launcher._launch(worker, tmp_path, {}) is sentinel
+    command, options = calls[0]
+    assert command[1:12] == ['--die-with-parent', '--new-session', '--unshare-user', '--unshare-pid',
+        '--unshare-ipc', '--unshare-uts', '--cap-drop', 'ALL', '--clearenv', '--setenv', 'PATH']
+    assert command[12] == '/usr/bin:/bin'
+    assert command[-3:] == ['--', '/usr/bin/python3', '/worker/main.py']
+    assert '--seccomp' in command and '--ro-bind' in command and '--bind' in command
+    assert options['env'] == {'PATH': '/usr/bin:/bin'}
+    assert options['close_fds'] and options['start_new_session'] and len(options['pass_fds']) == 1

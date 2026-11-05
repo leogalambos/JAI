@@ -32,6 +32,7 @@ import os
 from pathlib import Path
 import selectors
 import signal
+import shutil
 import subprocess
 import tempfile
 import time
@@ -586,6 +587,10 @@ class Dispatcher:
 
     def _launch(self, worker, folder, packet):
         self._worker(worker)
+        backend = shutil.which('bwrap')
+        if backend is None:
+            raise DispatchError('P_BACKEND', 'Host bwrap executable is unavailable on the inherited PATH')
+        backend = os.path.abspath(backend)
         assets = folder / 'worker'
         assets.mkdir()
         scratch = folder / 'scratch'
@@ -606,7 +611,7 @@ class Dispatcher:
             (catalogue / 'instructions' / (slug + '.md')).write_bytes(self.store._blob(instruction['blob_id']))
         filter_path = folder / 'filter.bpf'
         _seccomp(filter_path)
-        command = ['/usr/bin/bwrap', '--die-with-parent', '--new-session', '--unshare-user', '--unshare-pid',
+        command = [backend, '--die-with-parent', '--new-session', '--unshare-user', '--unshare-pid',
                    '--unshare-ipc', '--unshare-uts', '--cap-drop', 'ALL', '--clearenv',
                    '--setenv', 'PATH', '/usr/bin:/bin', '--setenv', 'HOME', '/nonexistent', '--tmpfs', '/tmp']
         for runtime in _RUNTIME:

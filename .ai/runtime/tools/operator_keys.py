@@ -26,6 +26,22 @@ def default_private_key():
     return Path.home() / '.local/share/jai-operator/private.pem'
 
 
+
+def openssl_executable():
+    """Locate the host OpenSSL executable lazily using the inherited search path.
+
+    Returns:
+        Absolute executable pathname, retaining the selected symlink pathname.
+        The caller's environment is unchanged; subprocesses may use a clean one.
+    Raises:
+        ValueError: No executable OpenSSL is available on the inherited PATH.
+    """
+    executable = shutil.which('openssl')
+    if executable is None:
+        raise ValueError('OpenSSL executable is unavailable on the inherited PATH')
+    return os.path.abspath(executable)
+
+
 def provision_operator_key(*, force=False, dry_run=False):
     """Offer Ed25519 creation in a human terminal, preserving an existing key.
 
@@ -39,7 +55,8 @@ def provision_operator_key(*, force=False, dry_run=False):
     Raises:
         OSError: File creation, backup or replacement fails. An existing key is
             preserved if staging or backup fails.
-        ValueError: OpenSSL fails or a forced target is not a regular file.
+        ValueError: OpenSSL is missing from PATH or fails, or a forced target is
+            not a regular file. Missing OpenSSL creates no key directories or files.
     """
     key = default_private_key()
     exists = key.exists() or key.is_symlink()
@@ -64,13 +81,14 @@ def provision_operator_key(*, force=False, dry_run=False):
     if answer not in {'', 'y', 'yes'}:
         print(f'Operator signing key {"not replaced" if exists else "not created"}: confirmation declined.')
         return {**result, 'status': 'declined'}
+    crypto = openssl_executable()
     key.parent.mkdir(parents=True, exist_ok=True, mode=0o700)
     key.parent.chmod(0o700)
     descriptor, staged = tempfile.mkstemp(prefix='.private-', dir=key.parent)
     os.close(descriptor)
     staged = Path(staged)
     try:
-        completed = subprocess.run(['/usr/bin/openssl', 'genpkey', '-algorithm', 'ED25519', '-out', str(staged)],
+        completed = subprocess.run([crypto, 'genpkey', '-algorithm', 'ED25519', '-out', str(staged)],
             capture_output=True, timeout=30,
             env={'PATH': '/usr/bin:/bin', 'LANG': 'C.UTF-8', 'OPENSSL_CONF': '/dev/null'})
         if completed.returncode:
@@ -92,7 +110,7 @@ def provision_operator_key(*, force=False, dry_run=False):
             print(f'Previous operator key preserved: {result["backup"]}')
         print('Public trust is unchanged. Export only the public key for explicit enrollment:')
         import shlex
-        print(shlex.join(['/usr/bin/openssl', 'pkey', '-in', str(key), '-pubout']))
+        print(shlex.join([crypto, 'pkey', '-in', str(key), '-pubout']))
         return result
     finally:
         staged.unlink(missing_ok=True)

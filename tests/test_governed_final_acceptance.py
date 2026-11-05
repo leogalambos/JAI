@@ -1,6 +1,9 @@
 # SPDX-License-Identifier: BSD-4-Clause
 # Copyright (c) 2026 Leo Galambos and the Egothor team
 """Reviewed final reports require separate exact human acceptance and release."""
+import io
+import shutil
+
 import pytest
 
 from governed_fixtures import GovernedHarness, HUMAN, delivery
@@ -66,6 +69,19 @@ def test_reviewed_honest_final_report_can_be_accepted_then_released(tmp_path, mo
     request, intent = _unsigned_human_request(host, subject)
     before = host.path.read_bytes()
     assert op.validate_human_intent_request(request) == intent
+    tools = tmp_path / 'operator crypto tools with spaces'
+    tools.mkdir()
+    (tools / 'openssl').symlink_to(shutil.which('openssl'))
+    with monkeypatch.context() as console:
+        console.setenv('PATH', str(tools))
+        console.setattr(op.sys, 'stdin', io.StringIO())
+        console.setattr(op.sys.stdin, 'isatty', lambda: True)
+        console.setattr('builtins.input', lambda prompt: 'APPROVE ' + request['request_id'])
+        receipt = op.sign(request, host.signers.keys['human']['private'])
+        assert op.verify_receipt(request, receipt)['accepted']
+        with pytest.raises(ValueError, match='signature invalid'):
+            op.verify_receipt(request, dict(receipt, accepted=False))
+    assert host.path.read_bytes() == before
     assert host.store.read().assess_output_decision(intent['decision'], host.scope)['closure_hash'] == current['closure_hash']
     assert host.path.read_bytes() == before
 

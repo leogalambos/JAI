@@ -1,7 +1,7 @@
 # SPDX-License-Identifier: BSD-4-Clause
 # Copyright (c) 2026 Leo Galambos and the Egothor team
 """Application protocol/crypto checks; these do not prove host key separation."""
-import base64,copy,json,subprocess,sys,time
+import base64,copy,json,os,shutil,subprocess,sys,time
 from pathlib import Path
 from unittest.mock import patch
 import pytest
@@ -389,3 +389,42 @@ def test_doctor_reports_runtime_validator_version_compatibility(version,compatib
     if not compatible:
         assert 'OPERATOR_ACTION_REQUIRED' in report['base_workflow']
         assert 'installation complete' in report['base_workflow']
+
+
+def test_sign_and_verify_select_nonstandard_host_openssl(tmp_path, monkeypatch):
+    from governed_fixtures import HumanSigner
+    signers = HumanSigner(tmp_path / 'external', monkeypatch)
+    source = tmp_path / 'request-source'
+    source.write_text('Synthetic exact intent')
+    req = signers.wrapper('delivery-accept', source, 'output-A', {})['request']
+    real = shutil.which('openssl')
+    assert real
+    tools = tmp_path / 'crypto tools with spaces'
+    tools.mkdir()
+    selected = tools / 'openssl'
+    selected.symlink_to(real)
+    monkeypatch.setenv('PATH', str(tools))
+    monkeypatch.setenv('OPENSSL_CONF', str(tmp_path / 'host configuration'))
+    # Intent preflight has its own governed integration coverage; this test
+    # isolates executable selection while retaining real signing and verification.
+    monkeypatch.setattr(op, 'validate_human_intent_request', lambda request: None)
+    monkeypatch.setattr(op.sys.stdin, 'isatty', lambda: True)
+    monkeypatch.setattr('builtins.input', lambda prompt: 'APPROVE ' + req['request_id'])
+    run = subprocess.run
+    calls = []
+    def observed(command, **kwargs):
+        calls.append(command)
+        assert command[0] == str(selected)
+        assert kwargs['env'] == {'PATH': '/usr/bin:/bin', 'LANG': 'C.UTF-8', 'OPENSSL_CONF': '/dev/null'}
+        return run(command, **kwargs)
+    monkeypatch.setattr(op.subprocess, 'run', observed)
+    receipt = op.sign(req, signers.keys['human']['private'])
+    assert op.verify_receipt(req, receipt)['accepted']
+    with pytest.raises(ValueError, match='signature invalid'):
+        op.verify_receipt(req, dict(receipt, accepted=False))
+    assert any('-sign' in command for command in calls)
+    assert any('-verify' in command for command in calls)
+    assert os.environ['PATH'] == str(tools)
+    monkeypatch.setenv('PATH', str(tmp_path / 'missing tools'))
+    with pytest.raises(ValueError, match='OpenSSL.*PATH'):
+        op.verify_receipt(req, receipt)

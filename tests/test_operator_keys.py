@@ -2,6 +2,9 @@
 # Copyright (c) 2026 Leo Galambos and the Egothor team
 """Confirmed installer key provisioning uses disposable local crypto material."""
 import io
+import os
+import shlex
+import shutil
 from pathlib import Path
 import subprocess
 import sys
@@ -39,7 +42,7 @@ def test_confirmed_generation_and_explicit_replacement_preserve_private_backup(h
     assert first['status'] == 'created' and '[Y/n]' in prompts[0]
     assert host_key.stat().st_mode & 0o777 == 0o600
     assert host_key.parent.stat().st_mode & 0o777 == 0o700
-    checked = subprocess.run(['/usr/bin/openssl', 'pkey', '-in', str(host_key), '-pubout'],
+    checked = subprocess.run([shutil.which('openssl'), 'pkey', '-in', str(host_key), '-pubout'],
                              capture_output=True, check=True)
     assert checked.stdout.startswith(b'-----BEGIN PUBLIC KEY-----')
     previous = host_key.stat()
@@ -96,3 +99,75 @@ def test_force_still_requires_confirmation_and_backup_failure_preserves_key(host
         keys.provision_operator_key(force=True)
     assert host_key.read_bytes() == original
     assert not list(host_key.parent.glob('.private-*'))
+
+
+@pytest.mark.parametrize('candidate', ['missing', 'not-executable'])
+def test_missing_openssl_never_creates_key_directory(host_key, monkeypatch, tmp_path, candidate):
+    tools = tmp_path / 'unavailable tools'
+    tools.mkdir()
+    if candidate == 'not-executable':
+        (tools / 'openssl').write_text('not an executable')
+    monkeypatch.setenv('PATH', str(tools))
+    monkeypatch.setattr('builtins.input', lambda prompt: 'yes')
+    with pytest.raises(ValueError, match='OpenSSL.*PATH'):
+        keys.openssl_executable()
+    with pytest.raises(ValueError, match='OpenSSL.*PATH'):
+        keys.provision_operator_key()
+    assert not host_key.parent.exists()
+    assert keys.default_private_key() == host_key
+    assert keys.provision_operator_key(dry_run=True)['status'] == 'dry-run'
+    host_key.parent.mkdir()
+    host_key.write_bytes(b'disposable existing key')
+    prior = host_key.stat()
+    assert keys.provision_operator_key()['status'] == 'existing'
+    with pytest.raises(ValueError, match='OpenSSL.*PATH'):
+        keys.provision_operator_key(force=True)
+    assert host_key.read_bytes() == b'disposable existing key'
+    assert host_key.stat().st_mtime_ns == prior.st_mtime_ns
+    assert list(host_key.parent.iterdir()) == [host_key]
+
+
+def test_generation_and_export_select_inherited_path_without_crypto_environment_leak(host_key, monkeypatch, tmp_path, capsys):
+    real = shutil.which('openssl')
+    assert real, 'OpenSSL is required for disposable crypto integration tests'
+    tools = tmp_path / 'host tools with spaces'
+    tools.mkdir()
+    selected = tools / 'openssl'
+    selected.symlink_to(real)
+    monkeypatch.setenv('PATH', str(tools))
+    assert keys.openssl_executable() == str(selected)
+    monkeypatch.setenv('OPENSSL_CONF', str(tmp_path / 'untrusted configuration'))
+    monkeypatch.setattr('builtins.input', lambda prompt: 'yes')
+    run = subprocess.run
+    calls = []
+    def observed(command, **kwargs):
+        calls.append((command, kwargs))
+        assert command[0] == str(selected)
+        assert kwargs['env']['OPENSSL_CONF'] == '/dev/null'
+        return run(command, **kwargs)
+    monkeypatch.setattr(keys.subprocess, 'run', observed)
+    assert keys.provision_operator_key()['status'] == 'created'
+    assert len(calls) == 1
+    assert os.environ['PATH'] == str(tools)
+    exported = shlex.split(capsys.readouterr().out.strip().splitlines()[-1])
+    assert exported == [str(selected), 'pkey', '-in', str(host_key), '-pubout']
+    assert run(exported, capture_output=True, check=True, env=calls[0][1]['env']).stdout.startswith(b'-----BEGIN PUBLIC KEY-----')
+
+
+def test_openssl_lookup_absolutizes_relative_path_and_remains_lazy(tmp_path, monkeypatch):
+    import importlib.util
+    tools = tmp_path / 'relative tools'
+    tools.mkdir()
+    executable = tools / 'openssl'
+    executable.write_text('#!/bin/sh\nexit 0\n')
+    executable.chmod(0o755)
+    monkeypatch.chdir(tmp_path)
+    monkeypatch.setenv('PATH', tools.name)
+    assert keys.openssl_executable() == str(executable)
+    monkeypatch.setenv('PATH', str(tmp_path / 'no tools'))
+    spec = importlib.util.spec_from_file_location('isolated_operator_keys', keys.__file__)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    assert module.default_private_key().name == 'private.pem'
+    with pytest.raises(ValueError, match='OpenSSL.*PATH'):
+        module.openssl_executable()

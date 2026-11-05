@@ -11,9 +11,8 @@ import argparse, base64, hashlib, json, os, re, shlex, stat, subprocess, sys, te
 from pathlib import Path
 
 from runtime_dependencies import jsonschema_status
-from operator_keys import default_private_key
+from operator_keys import default_private_key, openssl_executable
 
-CRYPTO='/usr/bin/openssl'
 CRYPTO_ENV={'PATH':'/usr/bin:/bin','LANG':'C.UTF-8','OPENSSL_CONF':'/dev/null'}
 
 PURPOSE_CAPABILITIES = {
@@ -318,7 +317,8 @@ def verify_receipt(req, receipt, live=True):
     Returns:
         Verified receipt body; historical verification grants no current permission.
     Raises:
-        ValueError: Purpose, capability, signature, time, or exact binding fails.
+        ValueError: Purpose, capability, signature, time, or exact binding fails,
+            or OpenSSL is unavailable on the inherited PATH.
     """
     validate(req, live)
     purpose = req['kind']
@@ -345,7 +345,7 @@ def verify_receipt(req, receipt, live=True):
         (target / 'key.pem').write_text(trust['public_key'])
         (target / 'body').write_bytes(canonical(body))
         (target / 'sig').write_bytes(base64.b64decode(signature, validate=True))
-        result = subprocess.run([CRYPTO, 'pkeyutl', '-verify', '-pubin', '-inkey', str(target / 'key.pem'),
+        result = subprocess.run([openssl_executable(), 'pkeyutl', '-verify', '-pubin', '-inkey', str(target / 'key.pem'),
                                  '-rawin', '-in', str(target / 'body'), '-sigfile', str(target / 'sig')],
                                 capture_output=True, timeout=15, env=CRYPTO_ENV)
         if result.returncode:
@@ -483,7 +483,8 @@ def sign(req, key):
     Returns:
         Real external Ed25519 receipt after explicit approve/deny console input.
     Raises:
-        ValueError: Preflight, custody boundary, confirmation or signature fails.
+        ValueError: Preflight, custody boundary, confirmation or signature fails,
+            or OpenSSL is unavailable on the inherited PATH.
     """
     if not sys.stdin.isatty():
         raise ValueError('host operator console required; flags cannot approve')
@@ -499,7 +500,7 @@ def sign(req, key):
     with tempfile.TemporaryDirectory(prefix='jai-operator-sign-') as directory:
         target = Path(directory)
         (target / 'body').write_bytes(canonical(body))
-        result = subprocess.run([CRYPTO, 'pkeyutl', '-sign', '-inkey', str(Path(key).resolve()),
+        result = subprocess.run([openssl_executable(), 'pkeyutl', '-sign', '-inkey', str(Path(key).resolve()),
                                  '-rawin', '-in', str(target / 'body'), '-out', str(target / 'sig')],
                                 capture_output=True, timeout=30, env=CRYPTO_ENV)
         if result.returncode:
