@@ -54,10 +54,24 @@ search, semantic ranker, or proof that an example meets your requirements.
 The active provider interprets the request and explains how selected examples
 may apply. These are different mechanisms.
 
-Expect the explanation to identify the interpreted goal, assumptions,
-source scenarios, proposed sequence, expected outputs, checks and unresolved
-questions. A combination of examples is an adaptation: the combined sequence
-has not thereby become an executed or approved workflow.
+Expect five compact blocks: the interpreted goal and success criteria; available
+inputs and whether they suffice; prioritized additions; the recommended
+procedure; and one concrete next action (at most three when needed). Additions
+appear before the procedure, grouped only where applicable as **Necessary to
+proceed**, **Highly recommended** and **Optional — useful for the task**. Each
+identifies what to supply, its benefit and the consequence of proceeding without
+it, with a viable substitute when known. Only an actual blocker belongs in the
+first group; it identifies the step or decision it prevents.
+
+The recommendation reuses supplied information, says when preparation is
+sufficient and distinguishes work that can start now from steps awaiting inputs.
+It omits empty groups, generic checklists and repetition, while retaining material
+dependencies, expected outputs, checks and unresolved questions. Sources,
+assumptions, adaptations and control obligations appear beside the relevant
+recommendation or in a compact note before the next action. A combination of
+examples is an adaptation: the combined sequence has not thereby become an
+executed or approved workflow. Detail scales with the task rather than a fixed
+length limit.
 
 The procedure must inspect each selected scenario's steps using its validated
 ID before recommending them. It must not rewrite an unsupported goal simply

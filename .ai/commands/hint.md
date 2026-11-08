@@ -65,18 +65,48 @@ LLM call is required or permitted by this command.
 
 ## Required response
 
-- **Working interpretation:** English summary, assumptions and material questions.
-- **Source selection:** actual scenario IDs, titles, reasons and source references;
-  qualitative direct match, combination of examples, partial match or no match.
-- **Preparation:** required inputs, established available inputs, missing
-  prerequisites and consequences. Fictional examples are not project evidence.
-- **Ordered procedure:** purpose, prerequisites, Claude command, Codex equivalent,
-  expected output, inspection point and stop/rework/escalation condition per step.
-- **Adaptation:** distinguish maintained source steps, adapted steps and newly
-  proposed steps, with sources and reasons. Combining examples is not approval.
-- **Boundaries:** missing evidence, independent review, SoD and human decisions.
-  Preserve DCS obligations, normative MUST/MUST NOT, signed L0 and A–H gates.
-  AI editorial advice is not independent human approval or gate execution.
+After the experimental label, present these five compact blocks in order:
+
+1. **Working interpretation:** the goal, expected result and success criteria,
+   material constraints and provisional assumptions. Keep the English working
+   interpretation; the explanation may use the operator's language.
+2. **Available inputs:** what is already supplied and what it supports;
+   material gaps, conflicts and unverified claims. State when the inputs suffice
+   to start. Do not request information already supplied or treat fictional
+   examples as project evidence.
+3. **Preparation:** task-specific additions, ranked by their effect on the
+   result. Use only applicable priority groups:
+   - **Necessary to proceed:** actual blockers, naming the affected step or
+     decision; do not classify quality improvements as prerequisites.
+   - **Highly recommended:** additions that materially improve accuracy,
+     solution choice or avoidance of rework.
+   - **Optional — useful for the task:** helpful context or refinements.
+   For each addition, compactly state what to supply, why it helps and the
+   consequence of proceeding without it; offer a viable substitute when known.
+   Omit empty groups and generic checklists. If nothing material is missing,
+   say so rather than inventing requests.
+4. **Ordered procedure:** purpose, prerequisites, Claude command, Codex equivalent,
+   expected output, inspection point and stop/rework/escalation condition per
+   step. Identify what can start now and which later steps depend on additions;
+   nonblocking gaps must not delay independent work. Make any input-dependent
+   choice of procedure explicit.
+5. **Next action:** one concrete operator action, or at most three prioritized
+   actions when necessary, derived from the assessment and procedure.
+
+Integrate **Source selection**, **Adaptation** and **Boundaries** beside the
+relevant recommendation or in one compact note before Next action. Retain actual
+scenario IDs, titles, reasons and consulted source references, with a qualitative
+direct match, combination of examples, partial match or no match. Distinguish
+maintained, adapted and newly proposed steps with sources and reasons. Combining
+examples is not approval. Disclose missing evidence, independent review, SoD and
+human decisions. Preserve DCS obligations, normative MUST/MUST NOT, signed L0 and
+A–H gates. AI editorial advice is not independent human approval or gate execution.
+
+Keep presentation proportional to the task: short paragraphs, concise bullets or
+a small table where useful. State each fact once, omit empty sections and avoid
+repeated summaries, long introductions and unnecessary alternatives. Compactness
+must not remove material inputs, dependencies, source limits or control
+obligations; do not impose a fixed length that truncates necessary content.
 
 Keep available, selected, read and delivered content distinct. State which
 sources were actually consulted; do not invent downstream provider invocations.
