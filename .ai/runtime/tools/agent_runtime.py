@@ -127,7 +127,7 @@ def provider_config(c,provider,model_config=None,*,registry=None,tool_ceiling=No
         common['native_codex']={'model':selector if selector!='inherit' else 'inherit-session','model_reasoning_effort':mapping.get('reasoning_effort'),'sandbox_mode':mode,'approval_policy':'on-request'}
         return common
     common.update({'tools':safe_tools,'deny':denied_tools,'sandbox':{'mode':mode,'workspace_write':author,'network':False},'approval_required_for':c.get('approval_required_for',[])})
-    common['native_claude']={'permissionMode':'default','allowedTools':safe_tools,'disallowedTools':denied_tools,'sandbox':{'enabled':True,'failIfUnavailable':True,'autoAllowBashIfSandboxed':False,'allowUnsandboxedCommands':False,'excludedCommands':[]}}
+    common['native_claude']={'model':selector,'effort':mapping.get('reasoning_effort'),'permissionMode':'default','allowedTools':safe_tools,'disallowedTools':denied_tools,'sandbox':{'enabled':True,'failIfUnavailable':True,'autoAllowBashIfSandboxed':False,'allowUnsandboxedCommands':False,'excludedCommands':[]}}
     return common
 
 def generate(outdir):

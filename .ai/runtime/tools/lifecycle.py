@@ -1372,6 +1372,14 @@ class State:
             raise ERROR('P_PROOF', 'Professional review must match exact layer and work ownership')
         if record['assessment_kind'] == 'receiving' and abs(subject_owner['layer'] - record['owner']['layer']) != 1:
             raise ERROR('P_SCOPE', 'Receiving acceptance must cross one adjacent interface')
+        if live and context_ref is not None:
+            review_context = self.resolve(context_ref, 'context')
+            if review_context.get('execution', {}).get('phase') == 'work':
+                choice = self.resolve(review_context['execution']['selection'])['message']['payload']
+                available = self._assignment_routing(assignment, live)
+                import professional_review
+                professional_review.enforce(self, assignment, available['snapshot'], choice,
+                                            live=live, subject=record['subject'])
         if record['criteria'] != assignment['criteria'] or record['profile'] != assignment['profile']:
             raise ERROR('P_PROOF', 'Review criteria or profile changed')
         closure = self.assessment_closure(record['subject'], record['assignment'])
@@ -1501,7 +1509,7 @@ class State:
                 effects.append({'op': 'qualify', 'subject': reference['version_id'], 'applicable': not requires_review,
                                 'requirements': observation_supports})
             elif kind in {'review', 'handoff_acceptance'}:
-                self._assessment(record, assignment, live)
+                self._assessment(record, assignment, live, context_ref=message['context'])
                 effects.append({'op': 'qualify', 'subject': reference['version_id']})
             else:
                 for ref in record['evidence']:
@@ -2157,6 +2165,8 @@ class State:
             raise ERROR('P_ORIGIN', 'Work choice is not from this exact local entity selection run')
         self._governing_grants(self._revision_grant(reference, assignment['use_scope']), live)
         selected = governed_routing.select_execution(assignment, available['snapshot'], choice)
+        import professional_review
+        professional_review.enforce(self, assignment, available['snapshot'], choice, live=live)
         return {**selected, 'phase': 'work', 'selection': reference, 'policy_use': available['policy_use'],
                 'snapshot': available['snapshot']}
 
@@ -3655,6 +3665,8 @@ class State:
                 raise ERROR('P_SCOPE', 'Only the actual local selection run may choose its own execution')
             available = self._assignment_routing(assignment, live)
             governed_routing.select_execution(assignment, available['snapshot'], payload)
+            import professional_review
+            professional_review.enforce(self, assignment, available['snapshot'], payload, live=live)
             if payload['previous'] != self.execution_plans.get((payload['assignment']['version_id'], scope)):
                 raise ERROR('P_CONFLICT', 'Execution plan must replace its exact current predecessor')
             effects.append({'op': 'execution-plan', 'assignment': payload['assignment'],

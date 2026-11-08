@@ -82,3 +82,14 @@ use C with a complete inline command, reason, input/output hashes, privileges,
 risks and verification/resume plan. Say FORMAL L0: NO for rendering. Formal
 consequential acceptance is D and uses existing signed Fabric receipts; it is
 not implied by a provider prompt or the operator running LibreOffice.
+
+
+## Compact execution feedback
+
+Present the task result first, then a compact one-row Markdown efficiency table.
+Use actual recorded host `efficiency.table` when linked to a native governed run.
+Otherwise report measurements unavailable in one row; never invent model time,
+rework, findings, acceptance or a governed execution record. Detailed history and
+advisory comparisons are available through `/jai-stats` / `$workflow-stats` inside
+the conversation. Do not append a long efficiency narrative or switch profiles
+without an explicit operator selection.

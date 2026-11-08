@@ -21,6 +21,37 @@ links = importlib.util.module_from_spec(SPEC)
 SPEC.loader.exec_module(links)
 
 
+class DocumentationVersionChromeTests(unittest.TestCase):
+    def test_footer_displays_canonical_version_after_copyright_without_a_banner(self):
+        from jinja2 import DictLoader, Environment
+
+        environment = Environment(loader=DictLoader({
+            'copyright.html': (ROOT / 'overrides/partials/copyright.html').read_text(),
+        }))
+        rendered = environment.get_template('copyright.html').render(config={
+            'copyright': 'Copyright example',
+            'extra': {'jai_product_version': '26.11.1', 'generator': False}})
+        self.assertIn('Documentation 26.11.1', rendered)
+        self.assertLess(rendered.index('Copyright example'), rendered.index('Documentation 26.11.1'))
+        self.assertNotIn('{% block announce %}', (ROOT / 'overrides/main.html').read_text())
+
+    def test_sitewide_version_uses_root_authority_and_preserves_other_metadata(self):
+        config = {'extra': {'jai_product_version': 'stale', 'generator': False}}
+        self.assertIs(links.on_config(config), config)
+        self.assertEqual(config['extra']['jai_product_version'],
+                         (ROOT / 'VERSION').read_text().strip())
+        self.assertFalse(config['extra']['generator'])
+
+    def test_sitewide_version_refuses_malformed_source_instead_of_claiming_a_release(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            (root / 'hooks').mkdir()
+            (root / 'VERSION').write_text('not-a-version\n')
+            with patch.object(links, '__file__', str(root / 'hooks/jai_repository_links.py')):
+                with self.assertRaisesRegex(ValueError, 'authoritative product VERSION'):
+                    links.on_config({})
+
+
 def page(title, url, source='index.md'):
     return SimpleNamespace(title=title, url=url, children=None, file=SimpleNamespace(src_uri=source))
 

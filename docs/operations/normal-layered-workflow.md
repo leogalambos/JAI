@@ -22,6 +22,11 @@ interfaces enter the layer, which formulates its own questions and hires its own
 professional specialties. A neighbor cannot choose its internal author,
 reviewer, model or method.
 
+For the meaning of compaction, main-chat reset and fresh workers, see the
+[context operations and handoff boundaries](../configuration/execution-profiles.md#context-boundaries).
+One policy is captured for each future run; it does not clear the main chat at
+every internal handoff.
+
 ## Prerequisites
 
 Use a bootstrapped journal-format-9 engagement in the controlled workspace.

@@ -1,6 +1,15 @@
 # Changelog
 
-## 26.11.0 — prepared release
+## 26.11.1
+
+- Add project execution profiles, native profile/statistics commands, Claude effort
+  projection and incremental compact efficiency summaries. Existing engagements
+  retain their pinned model preferences; analytics do not grant authority.
+- Make model and work-style configuration visible in homepage onboarding, and
+  show the current documentation version throughout the site.
+
+
+## 26.11.0
 
 This version introduces the versioned layered delivery core and reconnects the
 provider-facing professional resources to it.

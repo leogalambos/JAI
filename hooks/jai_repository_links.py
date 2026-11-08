@@ -32,6 +32,25 @@ HOME_NAV_TOKEN = "<!-- JAI_CANONICAL_NAVIGATION -->"
 _navigation = None
 
 
+def on_config(config):
+    """Expose the authoritative source version to sitewide documentation chrome.
+
+    Args:
+        config: Mutable MkDocs configuration; existing extra metadata is preserved.
+    Returns:
+        The same configuration with jai_product_version read from root VERSION.
+        This identifies source documentation, not an observed published release.
+    Raises:
+        OSError, ValueError: Root VERSION is unavailable or malformed.
+    """
+    root = Path(__file__).resolve().parents[1]
+    version = (root / 'VERSION').read_text(encoding='utf-8').strip()
+    if not PRODUCT_VERSION_RE.fullmatch(version):
+        raise ValueError('invalid authoritative product VERSION')
+    config.setdefault('extra', {})['jai_product_version'] = version
+    return config
+
+
 def on_nav(nav, *, config, files):
     """Retain the resolved MkDocs navigation for this build and return it unchanged.
 

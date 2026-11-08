@@ -46,6 +46,11 @@ def render_claude_agent(src,registry,*,workload_class=None,tool_ceiling=None):
     workload=workload_class or fm.get('model_class',registry.get('fallback_class','standard')); selector=model_selector(registry,'claude',workload)
     line=re.compile(r'^model_class:\s*[^\n]+$',re.MULTILINE)
     replacement='' if selector=='inherit' else f'model: {selector}'
+    effort=model_mapping(registry,'claude',workload).get('reasoning_effort')
+    if effort:
+        if effort not in {'low','medium','high','xhigh','max'}:
+            raise ValueError('Unsupported Claude effort in agent projection')
+        replacement += ('\n' if replacement else '') + f'effort: {effort}'
     text=line.sub(replacement,text)
     declared={tool.strip() for tool in fm.get('tools','').split(',')}
     permitted={'Read','Grep','Glob','Write','Edit'}|({'Bash'} if declared&{'Write','Edit'} else set())
@@ -55,7 +60,20 @@ def render_claude_agent(src,registry,*,workload_class=None,tool_ceiling=None):
     return text.encode()
 
 def skill_doc(name,desc,body,source_kind,source_name,tools=''):
-    """Render a source-preserving Codex skill with honest tool-ceiling guidance."""
+    """Render a source-preserving Codex skill with tool-ceiling guidance.
+
+    Args:
+        name: Native Codex skill identity.
+        desc: Human-readable skill description, or an empty default request.
+        body: Canonical behavioral text preserved in the projection.
+        source_kind: Canonical agent, skill or command kind.
+        source_name: Source identity; profile/stats have explicit Claude aliases.
+        tools: Source tool ceiling rendered as guidance, never enforcement.
+    Returns:
+        UTF-8 Markdown skill bytes with portable identity frontmatter.
+    """
+    if source_kind=='command' and source_name in {'profile','stats'}:
+        source_name='jai-'+source_name
     desc=desc or f"Universal AI IS/IT house {source_kind}: {source_name}."
     note=(f"> Rendered from the provider-neutral {source_kind} `{source_name}`. The canonical source is under "
           f"`~/.ai/it-role-house/{source_kind}s/`." if source_kind!='command' else

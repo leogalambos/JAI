@@ -36,19 +36,28 @@
       "selection_strategy": "explicit-per-agent",
       "classes": {
         "light": {
-          "model_selector": "haiku"
+          "model_selector": "haiku",
+          "reasoning_effort": "low"
         },
         "standard": {
-          "model_selector": "sonnet"
+          "model_selector": "sonnet",
+          "reasoning_effort": "medium"
         },
         "heavy": {
-          "model_selector": "opus"
+          "model_selector": "opus",
+          "reasoning_effort": "high"
         },
         "research": {
-          "model_selector": "opus"
+          "model_selector": "opus",
+          "reasoning_effort": "xhigh"
         }
       },
-      "strategy_scope": "project-internal"
+      "strategy_scope": "project-internal",
+      "native_controls": {
+        "model": "Claude agent model",
+        "reasoning_effort": "Claude agent effort / supported native invocation effort",
+        "availability": "provider model catalogue / host session"
+      }
     },
     "codex": {
       "display_name": "OpenAI Codex / ChatGPT model family",
@@ -123,5 +132,18 @@
       },
       "strategy_scope": "project-internal"
     }
-  }
+  },
+  "professional_review_constraints": [
+    {
+      "id": "sabsa-independent-review-model",
+      "kind": "different-model",
+      "author_categories": [
+        "SABSA Security Architecture"
+      ],
+      "author_operators": [
+        "sabsa-architect"
+      ],
+      "source_contract": "agent:sabsa-architect"
+    }
+  ]
 }

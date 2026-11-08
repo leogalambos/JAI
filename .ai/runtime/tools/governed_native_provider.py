@@ -21,6 +21,7 @@ import governed_delivery as wire
 import governed_routing as routing
 import lifecycle as lc
 import model_router
+import execution_profiles
 import provider_projection
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -68,7 +69,8 @@ def _profile(controller, work_item, request_ttl_ms, limits, deadline_ms, local_b
 
 def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
               deadline_ms, model_config=None, *, human_id='L0-operator',
-              destinations=(), tools=(), packet_bytes=2097152, total_bytes=8388608, local_budget=None):
+              destinations=(), tools=(), packet_bytes=2097152, total_bytes=8388608, local_budget=None,
+              project=None, execution_profile=None, execution_context_policy=None):
     """Start a new-format engagement from the actual operator's explicit inputs.
 
     Args:
@@ -80,6 +82,10 @@ def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
         limits: Optional aggregate elapsed_ms/ms bounds; [] imposes no task cap.
         deadline_ms: Explicit future aggregate stop, or None for no global deadline.
         model_config: Optional existing model-registry override path, captured once.
+        project: Project root for optional execution preferences, otherwise cwd.
+        execution_profile: Explicit new-run profile selection, never a resume override.
+        execution_context_policy: Explicit context from a current session selection;
+            captured once at new-run entry, never applied on resume.
         human_id: Attribution of the current input supplier, not a verified signer.
         destinations: Existing explicit host destination enrollments, if needed.
         tools: Existing explicit measurement enrollments, if needed.
@@ -121,6 +127,9 @@ def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
             'requirement': task_ref, 'statement': criteria_bytes.decode('utf-8'),
             'evidence_slots': []}], 'inherited': [task_ref]}
     models, _ = model_router.effective_registry(model_config)
+    models['execution_profile'] = execution_profiles.resolve(
+        Path.cwd() if project is None else project, models, provider, execution_profile,
+        context_policy=execution_context_policy)
     selector, _ = model_router.resolve_snapshot(models, provider, 'light')
     catalogue = (ROOT / 'roles.json').read_bytes()
     rows = lc.loads(catalogue)['roles']
@@ -209,6 +218,11 @@ def _response_contract(packet, assignment, profile):
 
 def _operator_projections(execution, responsibility, provider, models, workload):
     """Preserve each selected specialty's canonical operator under common ceilings."""
+    models = copy.deepcopy(models)
+    # Projections must describe the exact validated selection, including effort.
+    selected = copy.deepcopy(execution['model'])
+    selected.pop('execution', None)
+    models['providers'][provider]['classes'][workload] = selected
     groups = {}
     if execution['phase'] == 'selection':
         groups['role-router'] = []
@@ -426,8 +440,11 @@ def _delivery_resources(session, run, assignment, profile, response_contract, op
     workforce_body = {'phase': packet['execution']['phase']}
     if kind == 'selection':
         workforce_body.update(availability=packet['execution'].get('availability', []),
+            execution_preference=packet['execution'].get('execution_preference'),
             rule='Choose your actual profession using exact catalogue row.slug values, not name/display labels. '
-                'Choose the model from the actual matching active-provider/workload availability entry.')
+                'Choose the model from the actual matching active-provider/workload availability entry. '
+                'Assess the mandate locally and state the reason for your class/model choice; no automatic difficulty score is supplied. '
+                'Profile preferences never waive professional independence requirements, including any domain-specific different-model obligation.')
     else:
         workforce_body.update(selected_specialties=packet['execution']['specialties'],
             selected_instructions=[{'slug': slug, **instructions[slug]} for slug in packet['execution']['specialties']])
@@ -446,6 +463,7 @@ def _delivery_resources(session, run, assignment, profile, response_contract, op
         'responsibility': assignment['responsibility'], 'phase': packet['execution']['phase'],
         'assigned_actor': assignment['assigned_actor'],
         'active_provider': run.execution['model']['execution']['provider'],
+        'context_policy': run.execution['snapshot']['models'].get('execution_profile', {}).get('context_policy', 'isolated-handoffs'),
         'operator_agents': [item['agent'] for item in operators],
         'purpose': response_contract['purpose'],
         **({'mandate': response_contract['mandate']} if packet['execution']['phase'] == 'selection' else {}),
@@ -534,6 +552,7 @@ def prepare(session, invocation):
         semantic = lc.loads((wire.PACKAGE / 'semantic-return.schema.json').read_bytes())
         fields = [name for name in semantic['$defs'][kind]['required'] if name not in {'member', 'kind'}]
         view = {'operator_agents': sorted(operators), 'members': views,
+            'context_policy': models.get('execution_profile', {}).get('context_policy', 'isolated-handoffs'),
             'return': {'envelope': {'format': 'jai.semantic-return/1', 'results': [
                 {'member': item['member_key'], 'kind': kind} for item in members]},
                 'required_result_fields': fields,
@@ -567,10 +586,30 @@ def prepare(session, invocation):
                         else {'agents': view['operator_agents']}), 'prompt': prompt_raw.decode('utf-8')}
     if selector != 'inherit':
         arguments['model'] = selector
-    if provider == 'codex' and selected.get('reasoning_effort'):
-        arguments['reasoning_effort'] = selected['reasoning_effort']
+    if selected.get('reasoning_effort'):
+        arguments['reasoning_effort' if provider == 'codex' else 'effort'] = selected['reasoning_effort']
+    observations = []
+    if physical['phase'] == 'work':
+        for member in members:
+            context = state.resolve(member['context'], 'context')
+            choice = state.resolve(context['execution']['selection'])['message']['payload']
+            execution = session._run(member['context']).execution
+            preference = execution['snapshot']['models'].get('execution_profile')
+            if preference is not None:
+                observations.append({'member': member['member_key'], **execution_profiles.routing_observation(
+                    preference, physical['responsibility'], choice['workload_class'], selected)})
     return {'invocation_id': invocation, 'provider': provider, 'members': members,
-        'model_view': view, 'host_delivery': {
+        'routing_observations': observations,
+        'professional_constraint_verification': 'Routing comparison alone does not verify professional constraints or served-model identity.',
+        'model_view': view,
+        'context_controls': {'worker_history': 'isolated',
+            'policy': view.get('context_policy', 'isolated-handoffs'),
+            'main_conversation_action': ('request-fresh-task-chat' if view.get('context_policy') == 'task-isolated'
+                else 'operator-controlled' if view.get('context_policy') == 'manual' else 'provider-managed-compaction'),
+            'main_action_status': 'not performed by preparation; host must execute or report unavailable',
+            'author_reviewer_separation': 'required'},
+        'host_requirements': ({'claude_effort': 'Load the delivered agent effort field or use a supported per-invocation effort parameter; report unsupported host controls explicitly. Session environment overrides may take precedence.'} if provider == 'claude' and selected.get('reasoning_effort') else {}),
+        'host_delivery': {
             'manifest_blob_id': manifest['delivery_manifest_blob_id'], 'prompt_blob_id': manifest['prompt_blob_id']},
         'generic_agent': view['operator_agents'][0] if len(view['operator_agents']) == 1 else None,
         'invocation': {'tool': 'collaboration.spawn_agent' if provider == 'codex' else 'native-agent-intent',

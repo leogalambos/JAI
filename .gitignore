@@ -45,3 +45,7 @@
 __pycache__/
 *.py[codz]
 *$py.class
+
+# Local execution preferences and derived measurements
+.jai/config.local.json
+.jai/stats/

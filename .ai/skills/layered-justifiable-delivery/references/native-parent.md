@@ -237,3 +237,65 @@ The operator then uses the package's exact `fabric.py submit` command and
 `FABRIC_HOME` against the same journal. Never run a reserved authority command
 on the operator's behalf or bypass its native hook denial. Resume from the
 actual resulting journal state; a chat approval is not a signed receipt.
+
+
+## Execution preferences and compact efficiency
+
+New starts resolve the actual project execution profile once. Honor a session-only
+selection by retaining the complete receipt and passing both
+`--execution-profile NAME` and `--execution-context-policy VALUE` on new starts;
+resumed engagements keep their captured mappings and context. A session-only
+transition to workload must pass the previous receipt context to the profile
+helper's `use workload --session --context-policy VALUE`; effective diagnostics
+use `effective --session-profile NAME --context-policy VALUE`. Do not substitute
+the persisted project profile for an active session override. `/jai-profile` / `$workflow-profile` manage these preferences
+inside the conversation. Selection availability includes exact responsibility
+preferences; local entities retain alternative workloads and the full catalogue.
+
+Inspect prepared `context_controls`. Workers keep fresh bounded histories and
+independent review. For `task-isolated`, use an actually supported native fresh-chat
+facility once at new-task entry, before its first invocation; if unavailable,
+report that main-chat reset was not performed. Repeated prepared context descriptors
+are policy descriptions, not repeated reset triggers. Do not reset at internal
+selection/work, review/rework or layer handoffs, or on cold resume of the same task.
+New invocations are fresh; compatible batch members share one worker context.
+A bound invocation continues in its existing worker and cold resume preserves its
+actual handle. Never claim worker isolation cleared the parent chat. `manual`
+requests no JAI compaction/reset and cannot disable the host's own automatic
+compaction. Compaction preserves a summary; a new main chat replaces active turn
+history while project instructions and durable state remain. These operations do
+not reset journal state or budgets. The maintained context-boundary table explains
+B0–B10 in `docs/configuration/execution-profiles.md#context-boundaries`. Claude effort must be loaded
+from delivered agent frontmatter or passed through a supported native effort
+parameter; report unsupported controls rather than silently dropping them.
+
+After the actual task result, render only the host's `efficiency.table` compact
+footer. The `efficiency` host operation and completion/checkpoint/next/close
+responses expose measurements. Do not substitute a long report or interpret
+worker completion as human acceptance. Inspect exact final output status before
+final reporting. Analytics independently derive the current final outcome from
+durable submitted final-result records and their governing qualification; a host
+checkpoint or cold resume cannot erase a previously accepted result by omission.
+`/jai-stats` / `$workflow-stats` show requested details. Uninstrumented retained
+workflows report metrics unavailable instead of manufacturing an execution record.
+
+
+## Professional model prerequisites and actual routing
+
+Use prepared routing_observations to distinguish the named profile preference
+from the exact selected workload/model/effort; observed served backend identity
+remains unknown. Selection chooser turns are not role-profile deviations. A
+profile asterisk in the compact footer means actual captured work routing differs;
+it does not prove or waive a professional prerequisite.
+
+A live SABSA AI review must pass professional_review.py's retained different-model
+prerequisite. The kernel checks the exact candidate's immutable producer choice
+at review selection, new review work admission and new assessment registration.
+Use its inline help: reselect a compatible explicit reviewer model for the SAME
+pending assignment, preserving the candidate and remaining allowance. Different
+effort on the same model is insufficient. Alternatives are declared by the captured
+registry/profile, not observed account availability. When no compatible explicit
+model exists, keep the review pending and present the actual owner/deployment
+reconfiguration route; a future-run profile switch cannot alter this pinned run.
+Never infer a model identity from a deterministic process label or invent actual
+host controls. Existing physical-context and actor separation still apply.

@@ -48,3 +48,14 @@ the exact repository snapshot, model-review findings and evidence. Do not replac
 the repository engine or infer acceptance/release from a generated view.
 
 **Documentation.** The current product manual is authored in repository `docs/` (see `docs/reference/commands.md` and `docs/reference/command-walkthroughs.md`). For installed offline assistance use `~/.ai/it-role-house/GUIDE.md` or `/guide`. Provider commands and skills are native runtime contracts; no separate runtime HTML help site is required.
+
+
+## Compact execution feedback
+
+Present the task result first, then a compact one-row Markdown efficiency table.
+Use actual recorded host `efficiency.table` when linked to a native governed run.
+Otherwise report measurements unavailable in one row; never invent model time,
+rework, findings, acceptance or a governed execution record. Detailed history and
+advisory comparisons are available through `/jai-stats` / `$workflow-stats` inside
+the conversation. Do not append a long efficiency narrative or switch profiles
+without an explicit operator selection.

@@ -336,8 +336,14 @@ class Dispatcher:
                                'instructions': execution['instructions']}
         if execution['phase'] == 'selection':
             packet['execution']['previous'] = copy.deepcopy(state.execution_plans.get((context['assignment']['version_id'], assignment['use_scope'])))
+            import execution_profiles
+            preference = snapshot['models'].get('execution_profile')
+            packet['execution']['execution_preference'] = copy.deepcopy(preference)
             packet['execution']['availability'] = [
-                {'provider': provider, 'workload_class': workload, 'model_selector': model['model_selector'],
+                {'provider': provider, 'workload_class': workload, 'model_selector': (execution_profiles.mapping(preference, assignment['responsibility'], workload, snapshot['models'])[1]['model_selector']
+                    if preference and preference['provider'] == provider else model['model_selector']),
+                 'reasoning_effort': (execution_profiles.mapping(preference, assignment['responsibility'], workload, snapshot['models'])[1].get('reasoning_effort')
+                    if preference and preference['provider'] == provider else model.get('reasoning_effort')),
                  'supported': provider in {'json-process/1', 'codex', 'claude'}}
                 for provider, details in snapshot['models']['providers'].items()
                 for workload, model in details['classes'].items()]

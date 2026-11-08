@@ -5,6 +5,11 @@ business intent, requirements, design, implementation and management, with
 independent review and traceable decisions. For smaller tasks,
 [choose a specialist or workflow](usage-modes.md).
 
+For the meaning of compaction, main-chat reset and fresh workers, see the
+[context operations and handoff boundaries](../configuration/execution-profiles.md#context-boundaries).
+One policy is captured for each future run; it does not clear the main chat at
+every internal handoff.
+
 ## Operator journey: describe, inspect and decide
 
 Invoke `/layered` in Claude Code or `$workflow-layered` in Codex and describe:

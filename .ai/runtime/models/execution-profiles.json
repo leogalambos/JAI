@@ -1,0 +1,113 @@
+{
+  "schema_version": 1,
+  "execution_profile": "standard",
+  "profiles": {
+    "workload": {
+      "description": "Use locally selected workload registry mappings without fixed responsibility preferences.",
+      "context_policy": "isolated-handoffs"
+    },
+    "standard": {
+      "description": "Balanced professional authoring and independent review.",
+      "context_policy": "isolated-handoffs",
+      "responsibilities": {
+        "setter": {
+          "workload_class": "standard",
+          "reasoning_effort": "medium"
+        },
+        "author": {
+          "workload_class": "standard",
+          "reasoning_effort": "medium"
+        },
+        "reviewer": {
+          "workload_class": "standard",
+          "reasoning_effort": "medium"
+        }
+      }
+    },
+    "stronger-reviewer": {
+      "extends": "standard",
+      "description": "Invest in independent defect detection.",
+      "responsibilities": {
+        "setter": {
+          "reasoning_effort": "high"
+        },
+        "reviewer": {
+          "workload_class": "heavy",
+          "reasoning_effort": "high"
+        }
+      }
+    },
+    "stronger-author": {
+      "extends": "standard",
+      "description": "Invest in difficult creation with clear acceptance criteria.",
+      "responsibilities": {
+        "setter": {
+          "reasoning_effort": "high"
+        },
+        "author": {
+          "workload_class": "heavy",
+          "reasoning_effort": "high"
+        }
+      }
+    },
+    "stronger-setter": {
+      "extends": "standard",
+      "description": "Invest in requirements formulation and interface clarity.",
+      "responsibilities": {
+        "setter": {
+          "workload_class": "heavy",
+          "reasoning_effort": "high"
+        },
+        "reviewer": {
+          "reasoning_effort": "high"
+        }
+      }
+    },
+    "high-assurance": {
+      "extends": "standard",
+      "description": "High reasoning investment across all professional responsibilities.",
+      "responsibilities": {
+        "setter": {
+          "workload_class": "heavy",
+          "reasoning_effort": "high"
+        },
+        "author": {
+          "workload_class": "heavy",
+          "reasoning_effort": "high"
+        },
+        "reviewer": {
+          "workload_class": "heavy",
+          "reasoning_effort": "high"
+        }
+      }
+    },
+    "economy": {
+      "extends": "standard",
+      "description": "Lower-cost authoring of simple outputs with standard independent review.",
+      "responsibilities": {
+        "author": {
+          "workload_class": "light",
+          "reasoning_effort": "medium"
+        }
+      }
+    },
+    "research": {
+      "extends": "standard",
+      "description": "Exploration and difficult synthesis with substantial independent review.",
+      "responsibilities": {
+        "setter": {
+          "workload_class": "research",
+          "reasoning_effort": "high"
+        },
+        "author": {
+          "workload_class": "research",
+          "reasoning_effort": "xhigh"
+        },
+        "reviewer": {
+          "workload_class": "heavy",
+          "reasoning_effort": "high"
+        }
+      }
+    }
+  }
+}

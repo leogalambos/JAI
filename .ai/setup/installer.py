@@ -136,7 +136,7 @@ def provider_contract_config(contract,provider,registry,content_profile=None,sco
         common['native_codex']={'model':selector if selector!='inherit' else 'inherit-session','model_reasoning_effort':mapping.get('reasoning_effort'),'sandbox_mode':mode,'approval_policy':'on-request'}
         return common
     common.update({'tools':safe_tools,'deny':denied_tools,'sandbox':{'mode':mode,'workspace_write':author,'network':False},'approval_required_for':contract.get('approval_required_for',[])})
-    common['native_claude']={'permissionMode':'default','allowedTools':safe_tools,'disallowedTools':denied_tools,'sandbox':{'enabled':True,'failIfUnavailable':True,'autoAllowBashIfSandboxed':False,'allowUnsandboxedCommands':False,'excludedCommands':[]}}
+    common['native_claude']={'model':selector,'effort':mapping.get('reasoning_effort'),'permissionMode':'default','allowedTools':safe_tools,'disallowedTools':denied_tools,'sandbox':{'enabled':True,'failIfUnavailable':True,'autoAllowBashIfSandboxed':False,'allowUnsandboxedCommands':False,'excludedCommands':[]}}
     return common
 
 def render_placeholders(obj,ai_house):
@@ -272,7 +272,10 @@ def desired_outputs(pkg,providers,ai_house,claude_home,codex_home,model_registry
         for section in ('skills','agents','commands'):
             root=pkg/'.ai'/section
             for p in files_under(root):
-                rel=p.relative_to(root); dest=claude_home/section/rel
+                rel=p.relative_to(root)
+                if section=='commands' and rel.as_posix() in {'profile.md','stats.md'}:
+                    rel=Path('jai-'+rel.name)
+                dest=claude_home/section/rel
                 out[str(dest)]=render_claude_agent(p,model_registry) if section=='agents' and p.suffix=='.md' else p.read_bytes(); modes[str(dest)]=0o755 if p.suffix in ('.py','.sh') else 0o644
     if 'codex' in providers:
         for d in sorted((pkg/'.ai/skills').iterdir()):

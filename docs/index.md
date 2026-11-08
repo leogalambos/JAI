@@ -142,6 +142,11 @@ title: AI IT House Universal
 
       <aside class="ai-home-quick" aria-labelledby="ai-home-quick-title">
         <h2 id="ai-home-quick-title">Get started quickly</h2>
+        <a class="ai-home-quick-card" href="configuration/execution-profiles/">
+          <span class="ai-home-quick-icon" aria-hidden="true">⚙</span>
+          <span><strong>Choose models and work style</strong><span>Set model strength, reasoning effort and context before your first task.</span></span>
+          <span class="ai-home-quick-arrow" aria-hidden="true">›</span>
+        </a>
         <a class="ai-home-quick-card" href="using/demo-estate/">
           <span class="ai-home-quick-icon" aria-hidden="true">▷</span>
           <span><strong>Try a guided demo</strong><span>Practise with fictional inputs and a worked guide.</span></span>
@@ -168,6 +173,6 @@ title: AI IT House Universal
       <a href="capabilities/commercial-delivery/"><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="M9 4h15l7 7v25H9zM24 4v8h7M14 18h12M14 24h12M14 30h8"/></svg><h3>Plan &amp; justify</h3><p>Business cases, supplier proposals, governance evidence and stakeholder publications.</p></a>
     </section>
 
-    <div class="ai-home-footer-anchor-v31"><footer class="ai-home-footer-v31"><span>Copyright © 2026 Leo Galambos and Egothor Project Team</span><span>AI IT House Universal · Documentation</span></footer></div>
+    <div class="ai-home-footer-anchor-v31"><footer class="ai-home-footer-v31"><span>Copyright © 2026 Leo Galambos and Egothor Project Team</span><span>AI IT House Universal · Documentation {{ JAI_VERSION }}</span></footer></div>
   </main>
 </div>

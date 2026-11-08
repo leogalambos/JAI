@@ -193,7 +193,7 @@ def check(root: Path) -> list[str]:
     else:
         reference = (root / 'docs/reference/commands.md').read_text(encoding='utf-8')
         for command in sorted(command_dir.glob('*.md')):
-            slug = command.stem
+            slug = "jai-" + command.stem if command.stem in {"profile", "stats"} else command.stem
             content = command.read_text(encoding='utf-8')
             if 'description:' not in content[:500]:
                 problems.append(f'command frontmatter description missing: {slug}')

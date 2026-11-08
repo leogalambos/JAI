@@ -81,3 +81,34 @@ three reopenings a finding is stuck and goes to the user; do not argue it round 
 ## Approval gate
 
 You never approve. After all findings are resolved, verify `sabsa.py check <lib>` has **zero errors and zero warnings** and that `sabsa.py matrix <lib>` shows 36/36 settled. Report the library ready for owner decision. Only the owner, through the orchestrator, may run `sabsa.py approve`; `sabsa.py approval` must subsequently report APPROVED. Any later architecture-input change makes that approval stale and requires re-review of the impact.
+
+
+## Required model prerequisite before ordinary native delegation
+
+The retained SABSA different-model requirement applies to ordinary bounded work
+as well as governed delivery. Do not force ordinary work into six layers to run
+this check. Before dispatching a native SABSA author/reviewer pair, the parent must
+know and pin the actual explicit author and reviewer provider/model/effort controls.
+Use the shared read-only helper internally:
+
+```text
+python3 ~/.ai/it-role-house/tools/professional_review.py --project PROJECT --profile PROFILE --author-provider PROVIDER --author-model AUTHOR_MODEL --author-effort AUTHOR_EFFORT --reviewer-provider PROVIDER --reviewer-model REVIEWER_MODEL --reviewer-effort REVIEWER_EFFORT
+```
+
+Use the actual project and declared class/profile mappings. These placeholders
+are filled by the native parent, not by the user. Keep the authored candidate and
+actual requested author controls, then recheck the pair before each review if the
+planned controls changed. A different effort on the same model does not qualify.
+`inherit`, unknown controls or an unavailable compatible model are blocking
+prerequisites: show the helper's inline facts, registry-declared alternatives and
+ordinary native-model reselection step. Do not invent a governed assignment,
+select_execution decision or journal for this ordinary route. Run the check again
+with the actual alternate model before dispatching the pending review.
+
+A model profile expresses preferences and cannot waive this requirement. If a
+compatible alternative differs from the preference, report the actual choice.
+The helper checks supplied explicit controls; the parent must actually use them.
+If the host cannot expose or pin those controls, stop and explain that concrete
+capability barrier. Neither this contract nor the helper is an OS interception of
+arbitrary provider calls or proof of the served backend model. Human-authored or
+explicitly model-free inputs must not be assigned an invented AI producer model.

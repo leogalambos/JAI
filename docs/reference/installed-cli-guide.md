@@ -1671,3 +1671,29 @@ Resource denials and conversion failures never trigger fallback. It does
 not suppress warnings, install packages, or certify host confinement.
 See the [dependency matrix](../configuration/publication-stack.md) and
 installed package installation guide for the exact setup steps.
+
+
+### /jai-profile
+
+Claude `/jai-profile` and Codex `$workflow-profile` operate inside the conversation.
+With no arguments, list profiles and active configuration. A profile name selects
+it for future project runs; `show NAME`, `effective` and `NAME --session` inspect
+or scope the choice. Existing engagements retain their captured configuration.
+The native parent invokes the execution_profiles.py helper internally. No external
+terminal is required and operational configuration grants no authority.
+
+### /jai-stats
+
+Claude `/jai-stats` and Codex `$workflow-stats` display recorded project efficiency.
+Use no arguments for history, `last` for the latest record, `profile NAME` to filter
+or `compare A B` for compatible cohorts. Task results precede their one-row table.
+Unknown cost/tokens are omitted; uninstrumented work has unavailable metrics.
+Advice includes evidence limitations and never switches profiles automatically.
+
+
+For `/jai-profile` / `$workflow-profile`, `workload` is a selectable mode that
+returns to actual selected-class registry mappings. It preserves context, analytics
+and custom definitions; `standard` selects fixed responsibility preferences.
+`configured: true` does not imply fixed routing when routing_mode is workload.
+Receipts expose effective mode and shadowing. Use `--local` or `--session` to change
+the corresponding scope; the native parent retains and transports session context.

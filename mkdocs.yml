@@ -206,6 +206,7 @@ nav:
       - Configure and deploy:
           - System architecture: configuration/system-architecture.md
           - Providers, models & reasoning effort: configuration/models.md
+          - Execution profiles and efficiency: configuration/execution-profiles.md
           - Runtime paths & environment variables: configuration/runtime.md
           - Tool hooks and runtime verification: configuration/hooks-gates-verification.md
           - Expert document overrides: configuration/expert-document-overrides.md

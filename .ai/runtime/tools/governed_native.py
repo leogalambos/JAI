@@ -14,6 +14,9 @@ import copy
 import json
 import sys
 import time
+from pathlib import Path
+
+import execution_stats
 
 import governed_dispatch as dispatch
 import governed_delivery as wire
@@ -25,18 +28,107 @@ import operator_actions as operator
 class NativeSession:
     """Bind physical native observations to individually governed logical members."""
 
-    def __init__(self, store, config):
+    def __init__(self, store, config, project=None):
         """Retain the sole warm Store and existing shared broker enrollment.
 
         Args:
             store: Current engagement Store; no second authoritative cache is made.
             config: Explicit existing dispatcher enrollment and finite transport limits.
+            project: Optional analytics root; default derives only from a .fabric parent.
         Raises:
             ValueError, OSError: Enrollment or local resources are unavailable.
         """
         self.store = store
         self.workflow = governed_workflow.Workflow(store, config)
         self._runs = {}
+        self.project = Path(project).resolve() if project is not None else (
+            store.path.parent.parent.resolve() if store.path.parent.name == '.fabric' else None)
+        self.execution_profile = None
+        models = None
+        state = store.read()
+        for reference in state.sources.values():
+            source = state.resolve(reference, 'source')
+            if source.get('source_role') != 'policy' or not source.get('material'):
+                continue
+            descriptor = lc.loads(store._blob(source['material'][0]))
+            if descriptor.get('protocol') == 'jai.role-routing/1':
+                models = lc.loads(store._blob(descriptor['models_blob_id']))
+                self.execution_profile = copy.deepcopy(models.get('execution_profile'))
+                break
+        preference = self.execution_profile or {}
+        self._efficiency = execution_stats.Accumulator(store.engagement,
+            profile=preference.get('execution_profile', 'legacy'),
+            provider=preference.get('provider', 'unspecified'),
+            config_version=execution_stats.configuration_version(self.execution_profile, models),
+            task_class=preference.get('analytics', {}).get('task_class', 'unspecified'),
+            review_scope=preference.get('analytics', {}).get('review_scope', 'unspecified'),
+            preferences=self.execution_profile)
+        self._efficiency.update(state)
+        self._efficiency_cache = None
+        self._outcome_cursor = 0
+        self._outcome_root = None
+        self._outcome_finals = {}
+        self._outcome_submissions = set()
+
+    def efficiency(self):
+        """Return and optionally persist factual compact execution measurements.
+
+        Returns:
+            Safe aggregate summary and a single Markdown table row. Completion
+            of an invocation does not imply professional or human acceptance.
+        Raises:
+            OSError, ValueError: Derived project history cannot be safely written.
+        """
+        state = self.store.read()
+        if self._efficiency_cache is not None and self._efficiency_cache[0] == state.head:
+            return copy.deepcopy(self._efficiency_cache[1])
+        self._efficiency.update(state)
+        outcome = self._execution_outcome(state)
+        summary = self._efficiency.summary(outcome)
+        value = {'summary': summary, 'table': execution_stats.compact_table(summary)}
+        if self.project is not None:
+            try:
+                execution_stats.record(self.project, summary)
+            except (OSError, ValueError) as error:
+                value['history_status'] = 'not recorded'
+                value['history_error'] = type(error).__name__
+        self._efficiency_cache = (state.head, value)
+        return copy.deepcopy(value)
+
+    def _execution_outcome(self, state):
+        """Index new durable root/final/submission facts; assess only exact finals."""
+        for transaction in state.transactions[self._outcome_cursor:]:
+            data = transaction['operations'][0]['data']
+            message = data['message']
+            if message['message_type'] == 'submission':
+                self._outcome_submissions.add(message['payload']['candidate']['version_id'])
+            for effect in data['effects']:
+                if effect['op'] == 'event':
+                    semantic = effect.get('semantic_message', message)
+                    if semantic['message_type'] == 'submission':
+                        self._outcome_submissions.add(semantic['payload']['candidate']['version_id'])
+                if effect['op'] != 'register':
+                    continue
+                manifest = effect['manifest']
+                record = manifest['content']['record']
+                identifier = lc.version_id(manifest)
+                if (manifest['kind'] == 'delivery.assignment' and record['issued_under'] is None
+                        and record.get('handling') is None and record['owner']['layer'] == 1
+                        and record['owner']['work_kind'] == 'integration'
+                        and (self._outcome_root is None or record['assigned_actor'].startswith('layer-entry:'))):
+                    self._outcome_root = identifier
+                elif manifest['kind'] == 'delivery.product' and record['product_kind'] == 'final_result':
+                    self._outcome_finals[identifier] = (record['outcome']['attempt']['version_id'],
+                        state._reference(identifier), message['scope'])
+        self._outcome_cursor = len(state.transactions)
+        candidates = [(reference, scope) for identifier, (attempt, reference, scope) in self._outcome_finals.items()
+                      if attempt == self._outcome_root and identifier in self._outcome_submissions]
+        statuses = [state.evaluate(reference, scope, live=True) for reference, scope in candidates]
+        current = [value for value in statuses if value['qualified']]
+        if len(current) != 1:
+            return 'in progress'
+        return 'accepted' if current[0]['accepted'] else 'completed'
+
 
     def _peer(self):
         base = self.workflow.dispatcher
@@ -380,6 +472,14 @@ class NativeSession:
             capture_blob_id=self.store.put_blob(operator.canonical(capture)),
             reason='Actual host or platform cancellation observation retained')
 
+def _efficiency_notice(session):
+    """Keep optional telemetry failure separate from a committed host operation."""
+    try:
+        return session.efficiency()
+    except (OSError, ValueError, KeyError, TypeError, lc.ERROR) as error:
+        return {'status': 'unavailable', 'reason': type(error).__name__}
+
+
 def serve(session, source, destination, operations=None):
     """Serve closed parent-only JSON-line commands while retaining one Store.
 
@@ -402,7 +502,7 @@ def serve(session, source, destination, operations=None):
               'local_budget_status': ('assignment',), 'pause_due': ('scope',),
               'extend_local_budget': ('unit_id', 'expected_revision', 'additional_ms', 'operator_instruction_ref'),
               'stop_local_budget': ('unit_id', 'expected_revision', 'target', 'reason', 'operator_instruction_ref'),
-              'close': ()}
+              'efficiency': (), 'close': ()}
     optional = {'issue_batch': ('bound_ms', 'invocation_id')}
     if operations:
         if set(operations) & set(fields):
@@ -424,11 +524,13 @@ def serve(session, source, destination, operations=None):
             if operation not in fields or not required <= set(request) or not set(request) <= allowed or not isinstance(identifier, str):
                 raise dispatch.DispatchError('P_SCHEMA', 'Closed parent host command required')
             if operation == 'close':
-                print(json.dumps({'id': identifier, 'ok': True, 'result': {'closed': True}}), file=destination, flush=True)
+                print(json.dumps({'id': identifier, 'ok': True, 'result': {'closed': True}, 'efficiency': _efficiency_notice(session)}), file=destination, flush=True)
                 return 0
             result = getattr(session, operation)(**{name: request[name] for name in
                 (*fields[operation], *optional.get(operation, ())) if name in request})
             response = {'id': identifier, 'ok': True, 'result': result}
+            if operation in {'complete', 'checkpoint', 'next'}:
+                response['efficiency'] = _efficiency_notice(session)
         except (dispatch.DispatchError, lc.ERROR, ValueError, OSError, KeyError, TypeError) as error:
             response = {'id': identifier, 'ok': False,
                         'error': {'code': getattr(error, 'code', 'P_CONTEXT'), 'message': str(error)}}
@@ -448,6 +550,7 @@ def main(argv=None):
     Raises:
         ValueError, OSError: Configuration or initial engagement history is invalid.
     """
+    import execution_profiles
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--store', required=True)
     parser.add_argument('--engagement', required=True)
@@ -461,14 +564,17 @@ def main(argv=None):
     parser.add_argument('--iteration-ms', type=int)
     parser.add_argument('--max-reworks', type=int)
     parser.add_argument('--model-config')
+    parser.add_argument('--project')
+    parser.add_argument('--execution-profile')
+    parser.add_argument('--execution-context-policy', choices=sorted(execution_profiles.CONTEXT_POLICIES))
     args = parser.parse_args(argv)
     store = lc.Store(args.store, args.engagement)
     startup = (args.task, args.criteria, args.provider, args.work_item)
     if args.config:
         if any(value is not None for value in (*startup, args.deadline_ms, args.limit_ms,
-                args.iteration_ms, args.max_reworks, args.model_config)):
+                args.iteration_ms, args.max_reworks, args.model_config, args.execution_profile, args.execution_context_policy)):
             parser.error('Use either an existing --config or explicit new-engagement inputs')
-        session = NativeSession(store, lc.loads(operator.regular(args.config)))
+        session = NativeSession(store, lc.loads(operator.regular(args.config)), args.project)
     else:
         if any(value is None for value in startup):
             parser.error('New startup needs --task --criteria --provider --work-item')
@@ -476,10 +582,11 @@ def main(argv=None):
         limits = [] if args.limit_ms is None else [{'metric': 'elapsed_ms', 'unit': 'ms', 'ceiling': args.limit_ms}]
         initialized = governed_native_provider.bootstrap(store, operator.regular(args.task),
             operator.regular(args.criteria), args.provider, args.work_item, limits,
-            args.deadline_ms, args.model_config, local_budget={
+            args.deadline_ms, args.model_config, project=args.project, execution_profile=args.execution_profile,
+            execution_context_policy=args.execution_context_policy, local_budget={
                 'iteration_ms': 600000 if args.iteration_ms is None else args.iteration_ms,
                 'max_reworks': 3 if args.max_reworks is None else args.max_reworks})
-        session = NativeSession(store, initialized['config'])
+        session = NativeSession(store, initialized['config'], args.project)
         entry = session.workflow.entry('default', args.work_item, limits, args.deadline_ms)
         issued = session.issue_batch([{'assignment': entry['assignment'], 'phase': 'selection'}])
         print(json.dumps({'id': 'startup', 'ok': True, 'result': {

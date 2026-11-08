@@ -243,7 +243,7 @@ class GovernedHarness:
         chooser_execution = {'provider': 'json-process/1', 'argv': ['/usr/bin/python3', '/worker/main.py'],
                              'files': [{'name': 'main.py', 'sha256': hashlib.sha256(chooser.read_bytes()).hexdigest()}]}
         models = json.loads((ROOT / '.ai/runtime/models/model-registry.json').read_bytes())
-        classes = {name: {'model_selector': 'local-' + name, 'execution': copy.deepcopy(default)}
+        classes = {name: {'model_selector': 'local-' + name, 'model_kind': 'deterministic', 'execution': copy.deepcopy(default)}
                    for name in models['workload_classes']}
         responsibilities = ('chooser', 'setter', 'author', 'reviewer', 'integrator', 'integration_reviewer', 'receiver', 'measurement')
         for responsibility in responsibilities:
@@ -253,7 +253,7 @@ class GovernedHarness:
             for provider in models['providers'].values():
                 provider['classes'][workload] = copy.deepcopy(provider['classes']['standard'])
             execution = chooser_execution if responsibility == 'chooser' else default
-            classes[workload] = {'model_selector': workload, 'execution':
+            classes[workload] = {'model_selector': workload, 'model_kind': 'deterministic', 'execution':
                                  copy.deepcopy(self.route_executions.get(responsibility, execution))}
         models['providers']['json-process/1'] = {'display_name': 'Disposable local process',
             'adapter': 'json-process/1', 'selection_strategy': 'explicit-per-agent',

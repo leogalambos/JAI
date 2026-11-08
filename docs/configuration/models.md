@@ -13,7 +13,7 @@ AI IT House does not hard-code provider model names into the role knowledge. Ins
 
 ## Default mapping from the current model registry
 
-| Workload | Claude | Codex/OpenAI | Codex reasoning effort |
+| Workload | Claude | Codex/OpenAI | Reasoning effort (both providers) |
 | --- | --- | --- | --- |
 | `light` | `haiku` | `gpt-6-luna` | `low` |
 | `standard` | `sonnet` | `gpt-6.1-sol` | `medium` |
@@ -22,7 +22,7 @@ AI IT House does not hard-code provider model names into the role knowledge. Ins
 
 ## Why reasoning effort matters
 
-In the Codex mapping, reasoning effort is part of the routing policy. This lets the organisation align cost, latency and quality expectations by workload class rather than by editing every role definition.
+In both provider mappings, reasoning effort is part of the routing policy. This lets the organisation align cost, latency and quality expectations by workload class rather than by editing every role definition.
 
 ## Effective routing files
 
@@ -87,3 +87,19 @@ python3 ~/.ai/it-role-house/tools/provider_parity.py
 ```
 
 These should be part of any controlled enterprise upgrade.
+
+## Operator execution profiles
+
+Operators can select project model/effort preferences using `/jai-profile` in
+Claude or `$workflow-profile` in Codex. This does not edit deployment mappings or
+change authority. See [execution profiles and efficiency](execution-profiles.md)
+for precedence, immutable run snapshots, context boundaries and compact statistics.
+
+## Choosing a class and returning to workload routing
+
+`/jai-profile workload` in Claude and `$workflow-profile workload` in Codex restore
+explicit class-based routing for future runs without deleting context settings or
+custom profiles. The local entity chooses its class and matching model with a
+recorded reason; there is no automatic measured difficulty classifier. Canonical
+`model_class` defaults, the `standard` projection fallback and the lightweight
+native chooser have different purposes. See [workload complexity and routing](execution-profiles.md#how-workload-complexity-is-chosen).

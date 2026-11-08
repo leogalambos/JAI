@@ -70,6 +70,8 @@ class ReleaseBundleTest(unittest.TestCase):
             bundle.check_ready(self.root)
 
     def test_build_produces_versioned_archive_checksum_and_preserves_existing_output(self):
+        self.write('.jai/config.local.json', '{"schema_version":1}')
+        self.write('.jai/stats/aggregate.json', '{"synthetic_private_metrics":true}')
         for name in bundle.INTERNAL_RELEASE_RECORDS:
             self.write(name, 'PRIVATE HISTORICAL DEVELOPMENT RESULT')
         with patch.object(bundle, 'check_ready', return_value='26.10.4'):
@@ -80,6 +82,7 @@ class ReleaseBundleTest(unittest.TestCase):
             with zipfile.ZipFile(archive) as package:
                 self.assertFalse(any(Path(name).name in bundle.INTERNAL_RELEASE_RECORDS for name in package.namelist()))
                 self.assertIn('ai-it-house-universal-26.10.4/README.md', package.namelist())
+                self.assertFalse(any('/.jai/' in name for name in package.namelist()))
             before = archive.read_bytes()
             with self.assertRaises(FileExistsError):
                 bundle.build(self.root, self.outputs)
@@ -96,7 +99,7 @@ class ReleaseBundleTest(unittest.TestCase):
 
     def test_private_and_generated_trees_are_pruned_before_traversal(self):
         private = ('INBOX', 'build', 'out', 'dist', 'site', 'obsolete', '.git', '.venv',
-                   '.findings', '.fabric', 'docs/.findings', 'docs/.fabric',
+                   '.findings', '.fabric', '.jai', 'docs/.findings', 'docs/.fabric', 'docs/.jai',
                    '.direnv', '.secrets', '__pycache__', '.ai/runtime/_meta/gates')
         for name in private: self.write(name + '/sentinel.txt', 'PRIVATE FIXTURE MARKER')
         self.write('.ai/runtime/_meta/qualification-A-G.json', 'Excluded generated evidence')

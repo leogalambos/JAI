@@ -25,3 +25,14 @@ native handoff with the actual request, exact criteria/candidate and evidence.
 Ordinary bounded work keeps this command's scope and independent responsibilities;
 the parent handles runtime transport without user-authored JSON. This command
 itself grants no human acceptance or release permission.
+
+
+## Compact execution feedback
+
+Present the task result first, then a compact one-row Markdown efficiency table.
+Use actual recorded host `efficiency.table` when linked to a native governed run.
+Otherwise report measurements unavailable in one row; never invent model time,
+rework, findings, acceptance or a governed execution record. Detailed history and
+advisory comparisons are available through `/jai-stats` / `$workflow-stats` inside
+the conversation. Do not append a long efficiency narrative or switch profiles
+without an explicit operator selection.

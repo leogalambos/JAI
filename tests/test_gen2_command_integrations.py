@@ -17,12 +17,12 @@ import provider_projection as projection
 COMMANDS = {
     'layered', 'fabric-report', 'analyse', 'commercial', 'criteria', 'demo',
     'develop', 'diagnose', 'govern', 'guide', 'hint', 'publish', 'repository',
-    'research', 'review', 'rework', 'sabsa',
+    'research', 'review', 'rework', 'sabsa', 'profile', 'stats',
 }
 HANDOFF = ROOT / '.ai/skills/layered-justifiable-delivery/references/domain-handoff.md'
 
 
-def test_all_seventeen_commands_preserve_provider_bodies_and_complete_role_resources():
+def test_all_commands_preserve_provider_bodies_and_complete_role_resources():
     registry = json.loads((ROOT / '.ai/runtime/models/model-registry.json').read_bytes())
     sources = {path.stem: path for path in (ROOT / '.ai/commands').glob('*.md')}
     assert set(sources) == COMMANDS

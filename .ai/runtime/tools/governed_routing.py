@@ -9,6 +9,7 @@ import hashlib
 
 import lifecycle as lc
 import model_router
+import execution_profiles
 
 PROTOCOL = 'jai.role-routing/1'
 _RESPONSIBILITIES = {'setter', 'author', 'reviewer', 'integrator', 'integration_reviewer', 'receiver', 'measurement'}
@@ -134,9 +135,13 @@ def load_policy(source, blob_reader):
     return {'descriptor': descriptor, 'catalogue': catalogue, 'models': models, 'instructions': instructions}
 
 
-def _execution(models, choice):
+def _execution(models, choice, responsibility=None):
     try:
         selector, model = model_router.resolve_snapshot(models, choice['provider'], choice['workload_class'])
+        preference = models.get('execution_profile')
+        if preference and responsibility and preference['provider'] == choice['provider']:
+            _, model = execution_profiles.mapping(preference, responsibility, choice['workload_class'], models)
+            selector = model['model_selector']
     except (ValueError, KeyError, TypeError) as error:
         raise lc.ERROR('P_PROOF', 'No exact globally available workload/model capability exists') from error
     if selector != choice['model_selector']:
@@ -228,7 +233,7 @@ def select_execution(assignment, snapshot, choice):
         allowed.discard('materialize')
     if assignment['responsibility'] == 'measurement' and 'measure' not in allowed:
         raise lc.ERROR('P_PROOF', 'Measurement work requires a measurement-capable professional')
-    selector, model = _execution(snapshot['models'], choice)
+    selector, model = _execution(snapshot['models'], choice, assignment['responsibility'])
     return {'specialties': copy.deepcopy(specialties), 'model_selector': selector, 'model': model,
             'instructions': [copy.deepcopy(snapshot['instructions'][slug]) for slug in specialties],
             'allowed_operations': sorted(allowed)}

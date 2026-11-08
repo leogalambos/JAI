@@ -123,7 +123,8 @@
                     "medium",
                     "high",
                     "xhigh",
-                    "max"
+                    "max",
+                    "ultra"
                   ]
                 },
                 "fallbacks": {
@@ -147,8 +148,78 @@
                           "medium",
                           "high",
                           "xhigh",
-                          "max"
+                          "max",
+                          "ultra"
                         ]
+                      }
+                    }
+                  }
+                },
+                "model_kind": {
+                  "enum": [
+                    "ai",
+                    "deterministic"
+                  ],
+                  "description": "Explicit capability declaration for a process executor; native AI cannot be relabeled."
+                },
+                "model_provider": {
+                  "enum": [
+                    "codex",
+                    "claude"
+                  ],
+                  "description": "Actual requested backend provider for declared process-wrapped AI."
+                },
+                "model_identity": {
+                  "type": "string",
+                  "minLength": 1,
+                  "description": "Actual requested backend model for declared process-wrapped AI, distinct from model_selector resource label."
+                },
+                "execution": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "provider",
+                    "argv",
+                    "files"
+                  ],
+                  "properties": {
+                    "provider": {
+                      "const": "json-process/1"
+                    },
+                    "argv": {
+                      "type": "array",
+                      "minItems": 1,
+                      "prefixItems": [
+                        {
+                          "type": "string",
+                          "pattern": "^/"
+                        }
+                      ],
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "files": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "name",
+                          "sha256"
+                        ],
+                        "properties": {
+                          "name": {
+                            "type": "string",
+                            "minLength": 1,
+                            "pattern": "^(?!\\.{1,2}$)[^/\\\\]+$"
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{64}$"
+                          }
+                        }
                       }
                     }
                   }
@@ -167,6 +238,62 @@
             "enum": [
               "project-internal"
             ]
+          }
+        }
+      }
+    },
+    "execution_profile": {
+      "type": "object",
+      "description": "Pinned operational preferences; not authority or a catalogue restriction.",
+      "properties": {
+        "routing_mode": {
+          "enum": [
+            "workload",
+            "profile"
+          ],
+          "description": "Explicit operational routing. Absent in legacy snapshots, whose configured flag retains its original meaning."
+        }
+      }
+    },
+    "professional_review_constraints": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "kind",
+          "author_categories",
+          "author_operators",
+          "source_contract"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "const": "different-model"
+          },
+          "author_categories": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "author_operators": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            },
+            "uniqueItems": true
+          },
+          "source_contract": {
+            "type": "string",
+            "minLength": 1
           }
         }
       }

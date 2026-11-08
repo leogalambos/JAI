@@ -82,7 +82,7 @@ class LayeredSession(native.NativeSession):
 
     @classmethod
     def create(cls, home, engagement, task, provider_name, work_item, deadline_ms=None,
-               limit_ms=None, criteria=None, config=None, model_config=None, local_budget=None):
+               limit_ms=None, criteria=None, config=None, model_config=None, local_budget=None, execution_profile=None, execution_context_policy=None):
         """Capture an actual request and create the initial L1 structural gateway.
 
         Args:
@@ -96,6 +96,9 @@ class LayeredSession(native.NativeSession):
             criteria: Actual explicit criteria bytes; None reuses task verbatim.
             config: Optional existing host enrollment; None creates read/propose defaults.
             model_config: Existing model-registry override path, if supplied.
+            execution_profile: Explicit operational profile for this new run only.
+            execution_context_policy: Validated context from the session selection;
+                captured at new entry and preserved by cold resume.
             local_budget: Optional iteration_ms/max_reworks configuration, defaulting
                 to ten minutes per local iteration and three actual reworks.
         Returns:
@@ -124,7 +127,8 @@ class LayeredSession(native.NativeSession):
             provider_name, work_item, limits, deadline_ms, model_config,
             destinations=supplied['destinations'], tools=supplied['tools'],
             packet_bytes=supplied['limits']['packet_bytes'], total_bytes=supplied['limits']['total_bytes'],
-            local_budget=local_budget)
+            local_budget=local_budget, project=home.parent, execution_profile=execution_profile,
+            execution_context_policy=execution_context_policy)
         session = cls(store, supplied, locator)
         entry = session.workflow.entry('default', work_item, limits, deadline_ms)
         return session, {'locator': str(locator), 'inputs': initialized['sources'],
@@ -537,6 +541,8 @@ def main(argv=None):
     start.add_argument('--max-reworks', type=int, default=3)
     start.add_argument('--config')
     start.add_argument('--model-config')
+    start.add_argument('--execution-profile')
+    start.add_argument('--execution-context-policy', choices=sorted(provider.execution_profiles.CONTEXT_POLICIES))
     resume = commands.add_parser('resume')
     resume.add_argument('--session', required=True)
     resume.add_argument('--config')
@@ -576,7 +582,8 @@ def main(argv=None):
         session, created = LayeredSession.create(args.home, args.engagement,
             operator.regular(args.task), args.provider, args.work_item, args.deadline_ms,
             args.limit_ms, operator.regular(args.criteria) if args.criteria else None,
-            config, args.model_config, local_budget={'iteration_ms': args.iteration_ms, 'max_reworks': args.max_reworks})
+            config, args.model_config, local_budget={'iteration_ms': args.iteration_ms, 'max_reworks': args.max_reworks},
+            execution_profile=args.execution_profile, execution_context_policy=args.execution_context_policy)
         result = {'created': created, 'next': session.next(), 'checkpoint': session.checkpoint()}
     else:
         session = LayeredSession.open(args.session, config)

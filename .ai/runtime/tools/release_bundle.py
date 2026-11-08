@@ -21,7 +21,7 @@ PY = sys.executable
 
 # Private workspace material must be pruned before traversal, independently of Git.
 ROOT_EXCLUDED_DIRECTORIES = frozenset({"INBOX", "build", "out", "dist", "site", "obsolete"})
-EXCLUDED_DIRECTORY_NAMES = frozenset({".git", ".venv", "__pycache__", ".findings", ".fabric",
+EXCLUDED_DIRECTORY_NAMES = frozenset({".git", ".venv", "__pycache__", ".findings", ".fabric", ".jai",
                                      ".direnv", ".secrets", ".pytest_cache", ".cache", ".mypy_cache",
                                      ".ruff_cache", ".tox", "node_modules", '.aws', '.ssh',
                                      '.gnupg', '.kube', '.docker', '.config', '.local'})

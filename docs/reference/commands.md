@@ -151,3 +151,25 @@ protected trust and matching state. Actual Office QA uses route A when a working
 within the permitted environment, or route C through the operator when required;
 WeasyPrint HTML/PDF does not inspect Office bytes. Privileged worker/API
 mutation is NOT_SUPPORTED; optional host confinement is NOT_VERIFIED.
+
+## Execution preferences and efficiency
+
+`/jai-profile` maps to `$workflow-profile`, and `/jai-stats` maps to
+`$workflow-stats`. Both run inside the native conversation. The operator does not
+need an external console. With no arguments, the first lists selectable profiles
+and active configuration; the second shows compact recorded project history.
+
+Use `/jai-profile stronger-reviewer` to select a project default, `show NAME` to
+inspect a profile, `effective` for resolved settings, or `NAME --session` for
+subsequent new runs in this conversation only. Existing runs retain their snapshot.
+Use `/jai-stats last`, `profile NAME` or `compare A B` for recorded metrics.
+The default task footer is a compact one-row table after the result. Unknown usage
+or unrecorded workflows are explicit; no profile switches automatically.
+See [execution profiles](../configuration/execution-profiles.md).
+
+
+`/jai-profile workload` / `$workflow-profile workload` explicitly restore
+class-based routing for future runs without deleting project settings. Add
+`--local` when a project-local selection shadows the shared choice, or `--session`
+for this conversation. Effective diagnostics distinguish routing mode from the
+configured flag and show session context separately from persisted defaults.

@@ -32,6 +32,7 @@
     "git_authority": "human",
     "enforcement": "effective-provider-sandbox-and-host"
   },
+  "reasoning_effort": "medium",
   "local_execution": {
     "requires_effective_native_sandbox": true,
     "contract_is_host_enforcement": false,
@@ -66,6 +67,8 @@
     "release-approval"
   ],
   "native_claude": {
+    "model": "sonnet",
+    "effort": "medium",
     "permissionMode": "default",
     "allowedTools": [
       "Read",

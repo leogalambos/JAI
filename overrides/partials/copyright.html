@@ -1,0 +1,11 @@
+{# SPDX-License-Identifier: BSD-4-Clause
+Copyright (c) 2026 Leo Galambos and the Egothor team #}
+<div class="md-copyright">
+  {% if config.copyright %}
+    <div class="md-copyright__highlight">{{ config.copyright }}</div>
+  {% endif %}
+  {% if not config.extra.generator == false %}
+    Made with <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">Material for MkDocs</a>
+  {% endif %}
+</div>
+<div class="jai-doc-version">Documentation {{ config.extra.jai_product_version }}</div>

@@ -496,8 +496,9 @@ def main():
     else:
         gtext = open(guide, encoding="utf-8").read()
         for fn in sorted(os.listdir(os.path.join(surface_root, "commands"))) if os.path.isdir(os.path.join(surface_root, "commands")) else []:
-            if fn.endswith(".md") and ours(f"commands/{fn}") and f"### /{fn[:-3]}\n" not in gtext:
-                problems.append(f"GUIDE.md: no section '### /{fn[:-3]}' for commands/{fn}")
+            slug = "jai-" + fn[:-3] if fn in {"profile.md", "stats.md"} else fn[:-3]
+            if fn.endswith(".md") and ours(f"commands/{fn}") and f"### /{slug}\n" not in gtext:
+                problems.append(f"GUIDE.md: no section '### /{slug}' for commands/{fn}")
     # Canonical product documentation lives in the repository docs/ Markdown tree.
     # The installed runtime intentionally carries GUIDE.md and provider-native
     # command / skill contracts, not a duplicate, hard-coded HTML mini-site.

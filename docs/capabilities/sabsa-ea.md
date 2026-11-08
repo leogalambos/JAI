@@ -235,3 +235,43 @@ architecture and published documents aligned. Domain-profile boundaries define
 each subsystem's scope, while Gen2's six SABSA perspectives organise current
 work and its justification. Stable identity and traceability connect those
 scopes without treating historical profile metadata as a current layer model.
+
+
+## Independent review model prerequisite
+
+For SABSA AI-authored work, the reviewer must use a different explicit model from
+the corresponding author. Different effort alone is insufficient. This retained
+professional requirement cannot be waived by an execution profile. When a named
+profile would select the same model for both, choose a compatible different model
+and disclose the deviation, or keep the review pending with its inline recovery
+instructions. A profile command changes future runs, not an already pinned run.
+
+The governed admission check binds the exact candidate's producer context and
+captured selection, rather than a later mutable author plan. It applies to captured
+SABSA professional categories/operators and admitted SABSA semantic/domain markers;
+choosing a generic profession does not bypass an explicitly marked SABSA subject.
+Checks run on review selection, new work admission and new assessment registration.
+Immutable pair results are reused; historical replay does not rewrite or reapprove
+past records. Independent actors and physical contexts remain mandatory.
+
+Native Claude/Codex execution is AI. A process resource label is not automatically
+an AI model: a captured `model_kind: deterministic` declaration for a model-free
+process exempts its author output from AI model-pair diversity, while other review
+requirements remain. Process-wrapped AI declares `model_kind: ai`, its actual
+`model_provider` and `model_identity` separately from the executable resource label.
+An affected process with unspecified kind or model identity is an unavailable
+prerequisite, not permission to guess. A deterministic checker can provide evidence
+but cannot replace the required different-model review of AI-authored SABSA work.
+These administrative declarations do not prove what arbitrary process code did.
+
+For ordinary `/sabsa` and `$workflow-sabsa`, the native parent runs the same shared
+read-only pair check before actual native author/reviewer delegation. It pins the
+explicit requested controls and uses the helper's ordinary-model recovery help;
+no layered engagement or parallel journal is required. If those controls are
+unavailable, the parent must explain the host barrier and stop the affected review.
+This mechanically checks the supplied pair; parent compliance is not OS-level
+interception of arbitrary calls, and requested selectors do not attest served
+backend identity. Registry alternatives are not observed host/account availability.
+
+See [execution profiles and actual routing](../configuration/execution-profiles.md#routing-deviations-and-professional-requirements)
+and the [context operation glossary](../configuration/execution-profiles.md#what-each-operation-means).

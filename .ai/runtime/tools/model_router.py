@@ -20,7 +20,7 @@ from pathlib import Path
 
 RUNTIME = Path(__file__).resolve().parents[1]
 BASE = RUNTIME / "models/model-registry.json"
-EFFORTS = {"none", "minimal", "low", "medium", "high", "xhigh", "max"}
+EFFORTS = {"none", "minimal", "low", "medium", "high", "xhigh", "max", "ultra"}
 
 
 def load(path: Path):
@@ -65,6 +65,25 @@ def _mapping_problems(provider, workload_class, mapping):
     effort = mapping.get("reasoning_effort")
     if effort is not None and effort not in EFFORTS:
         problems.append(f"provider {provider}/{workload_class}: unsupported reasoning_effort {effort}")
+    kind = mapping.get("model_kind")
+    if "model_kind" in mapping and (not isinstance(kind, str) or kind not in {"ai", "deterministic"}):
+        problems.append(f"provider {provider}/{workload_class}: invalid model_kind")
+    if provider in {"codex", "claude"}:
+        if kind == "deterministic":
+            problems.append(f"provider {provider}/{workload_class}: native AI cannot be relabeled deterministic")
+        if "model_provider" in mapping and mapping["model_provider"] != provider:
+            problems.append(f"provider {provider}/{workload_class}: native model_provider must match the native provider")
+        if "model_identity" in mapping and mapping["model_identity"] != selector:
+            problems.append(f"provider {provider}/{workload_class}: native model_identity must match the selected model")
+    elif provider == "json-process/1":
+        execution = mapping.get("execution", {})
+        if kind is not None and (not isinstance(execution, dict) or execution.get("provider") != "json-process/1"):
+            problems.append(f"provider {provider}/{workload_class}: model_kind requires the captured process execution contract")
+        if kind == "ai" and (not isinstance(mapping.get("model_provider"), str) or mapping["model_provider"] not in {"codex", "claude"}
+                or not isinstance(mapping.get("model_identity"), str) or not mapping["model_identity"].strip()):
+            problems.append(f"provider {provider}/{workload_class}: wrapped AI requires explicit model_provider and model_identity")
+        if kind != "ai" and any(field in mapping for field in ("model_provider", "model_identity")):
+            problems.append(f"provider {provider}/{workload_class}: backend model fields require an explicit AI declaration")
     for i, fallback in enumerate(mapping.get("fallbacks", [])):
         if not isinstance(fallback, dict) or not fallback.get("model_selector"):
             problems.append(f"provider {provider}/{workload_class}: fallback {i} missing model_selector")
@@ -76,6 +95,14 @@ def _mapping_problems(provider, workload_class, mapping):
 
 
 def validate_registry(registry):
+    """Validate routing vocabulary and an optional pinned execution preference.
+
+    Args:
+        registry: Parsed provider-neutral registry with classes and provider mappings.
+    Returns:
+        Validation problems, empty when structural contracts are consistent.
+        This does not prove concrete account/model/client capability or authority.
+    """
     problems = []
     classes = registry.get("workload_classes", {})
     providers = registry.get("providers", {})
@@ -104,6 +131,16 @@ def validate_registry(registry):
             if name not in classes:
                 problems.append(f"provider {provider}: maps unknown class {name}")
             problems.extend(_mapping_problems(provider, name, mapping))
+    if "professional_review_constraints" in registry:
+        import professional_review
+        problems.extend(professional_review.constraints_problems(registry["professional_review_constraints"]))
+    preference = registry.get("execution_profile")
+    if preference is not None:
+        try:
+            import execution_profiles
+            problems.extend(execution_profiles.validate_snapshot(preference, registry))
+        except (ValueError, KeyError, TypeError) as error:
+            problems.append("invalid captured execution profile: " + str(error))
     for required in ("claude", "codex"):
         if required not in providers:
             problems.append(f"required provider {required} missing")

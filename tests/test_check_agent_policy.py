@@ -88,3 +88,15 @@ def test_current_resource_policy_preserves_read_only_audit_and_human_publication
     assert not any(name.startswith('jai/migrations/') for name in policy.ENFORCEMENT_ASSETS)
     assert len(workflows) == 24
 
+
+
+def test_source_validator_resolves_provider_command_aliases_in_maintained_guide():
+    import subprocess
+    import sys
+
+    root = _PATH.parents[3]
+    result = subprocess.run([sys.executable, str(_PATH), '--fast', str(root)],
+                            capture_output=True, text=True, check=False, timeout=120)
+    assert result.returncode == 0, result.stdout + result.stderr
+    assert "no section '### /profile'" not in result.stdout
+    assert "no section '### /stats'" not in result.stdout

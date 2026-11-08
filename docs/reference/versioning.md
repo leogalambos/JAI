@@ -3,10 +3,9 @@
 ## One product version authority
 
 The root `VERSION` file is the only authority for the product version. Its format
-is `YY.MM.VV`; the prepared version is **26.11.0**. Preparing source or building
-documentation does not publish a release. Documentation can describe functionality
-before its official release; an availability statement identifies the first
-product version containing that functionality.
+is `YY.MM.VV`; the prepared version is **26.11.1**. Preparing source or building
+documentation does not publish a release. Documentation follows the source
+`VERSION` and may be newer than an installed published package.
 
 Edit `VERSION`, then synchronize and inspect the maintained projections:
 
@@ -68,7 +67,7 @@ python3 .ai/runtime/tools/release_bundle.py build --root . --dist dist
 ```
 
 The packaging command validates current source contracts and produces
-`ai-it-house-universal-26.11.0.zip` and its `.sha256` checksum in a fresh output
+`ai-it-house-universal-26.11.1.zip` and its `.sha256` checksum in a fresh output
 directory. Existing outputs are not overwritten. Private inputs, local journals,
 private keys, build trees, obsolete code and archived development reports are
 excluded. A local build performs no Git operation or remote publication and does
@@ -81,8 +80,8 @@ synchronized source to `main`. Only when publication is intended, create and pus
 the matching tag. For the prepared version, those future commands are:
 
 ```sh
-git tag -a 'release@26.11.0' -m 'JAI 26.11.0'
-git push origin 'release@26.11.0'
+git tag -a 'release@26.11.1' -m 'JAI 26.11.1'
+git push origin 'release@26.11.1'
 ```
 
 The `release@YY.MM.VV` tag is the publication trigger. GitHub Actions requires
@@ -102,13 +101,13 @@ bytes; it is not a signature. These build controls do not grant business
 acceptance or release permission for an output produced by a JAI engagement.
 
 Do not move a published tag. Corrections require a new product version. Preparing
-26.11.0 in the repository has not itself performed the publication steps above.
+26.11.1 in the repository has not itself performed the publication steps above.
 
 ## Diagnostics
 
 ```sh
 python3 scripts/versioning.py check --root .
-python3 scripts/versioning.py check --root . --tag 'release@26.11.0'
+python3 scripts/versioning.py check --root . --tag 'release@26.11.1'
 python3 .ai/runtime/tools/generate_docs.py --check --root .
 ```
 
