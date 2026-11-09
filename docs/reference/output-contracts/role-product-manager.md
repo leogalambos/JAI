@@ -42,6 +42,19 @@ Produce and govern the role deliverable: Product strategy and roadmap.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `outcome-roadmap`.
+
+Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.
+
+**Evidence accompanying the work product:**
+
+- current/target baseline and planning assumptions
+- resource/funding constraints and decision triggers
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -49,27 +62,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/product-manager:1.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Product strategy and roadmap.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:1.receiving_acceptance`** — `array`
 
 - For each receiving role (Product Owner; Product Designer; Engineering Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:1.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:1.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:1.delivery_verification`** — `array`
 
-- For the specific output 'Product strategy and roadmap', provide verifiable evidence satisfying: Each item carries a dependency set, a cost band and a decision date. Required delivery form: Time-phased view with named owners per horizon.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- For the specific output 'Product strategy and roadmap', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Each item carries a dependency set, a cost band and a decision date. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:1.role_gate_observations`** — `array`
 
@@ -79,27 +92,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: Every deviation from the documented process is logged with its reason and its expiry.
 - G4: The primary deliverable ("Product strategy and roadmap") is published on the agreed cadence, including adverse results.
 - G5: Every roadmap item names the customer problem, the evidence it exists and the measure that will show it is solved
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:1.contract_input_1`** — `object`
 
 - Analyse the specific input "Customer research and usage data" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:1.contract_input_2`** — `object`
 
 - Analyse the specific input "Market and competitor evidence" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:1.contract_input_3`** — `object`
 
 - Analyse the specific input "Delivery capacity" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:1.contract_input_4`** — `object`
 
 - Analyse the specific input "Commercial targets" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -108,21 +121,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:1.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/product-manager:1.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -161,10 +174,15 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 - **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **[HM Treasury, The Green Book](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government)** — Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO 9241-210:2019, Human-centred design for interactive systems](https://www.iso.org/standard/77520.html)** — Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Product Manager:** Jobs-to-be-Done; product discovery practice; SFIA 9 (PROD). Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-product-manager-2"></a>
@@ -204,6 +222,19 @@ Produce and govern the role deliverable: prioritised product backlog.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `governed-register`.
+
+Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.
+
+**Evidence accompanying the work product:**
+
+- actual source-attributed records
+- uniqueness, completeness and relationship reconciliation
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -211,22 +242,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/product-manager:2.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: prioritised product backlog.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:2.receiving_acceptance`** — `array`
 
 - For each receiving role (Product Owner; Product Designer; Engineering Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:2.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:2.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:2.delivery_verification`** — `array`
 
-- For the specific output 'prioritised product backlog', provide verifiable evidence satisfying: Every item has acceptance criteria, a priority rationale and an estimate or an explicit 'unsized'. Required delivery form: Ordered list in the delivery tool.
+- For the specific output 'prioritised product backlog', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every item has acceptance criteria, a priority rationale and an estimate or an explicit 'unsized'. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:2.role_gate_observations`** — `array`
 
@@ -236,22 +272,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: Every deviation from the documented process is logged with its reason and its expiry.
 - G4: The primary deliverable ("Product strategy and roadmap") is published on the agreed cadence, including adverse results.
 - G5: Every roadmap item names the customer problem, the evidence it exists and the measure that will show it is solved
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:2.contract_input_1`** — `object`
 
 - Analyse the specific input "Customer research and usage data" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:2.contract_input_2`** — `object`
 
 - Analyse the specific input "Market and competitor evidence" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:2.contract_input_3`** — `object`
 
 - Analyse the specific input "Delivery capacity" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:2.contract_input_4`** — `object`
 
 - Analyse the specific input "Commercial targets" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -260,18 +301,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:2.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/product-manager:2.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -321,10 +365,16 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO 9241-210:2019, Human-centred design for interactive systems](https://www.iso.org/standard/77520.html)** — Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Product Manager:** Jobs-to-be-Done; product discovery practice; SFIA 9 (PROD). Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-product-manager-3"></a>
@@ -364,6 +414,19 @@ Produce and govern the role deliverable: opportunity and problem definitions.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `professional-document`.
+
+Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.
+
+**Evidence accompanying the work product:**
+
+- attributable subject-specific findings and limitations
+- reviewable sources and verifiable follow-up actions
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -371,22 +434,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/product-manager:3.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: opportunity and problem definitions.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:3.receiving_acceptance`** — `array`
 
 - For each receiving role (Product Owner; Product Designer; Engineering Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:3.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:3.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:3.delivery_verification`** — `array`
 
-- For the specific output 'opportunity and problem definitions', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.
+- For the specific output 'opportunity and problem definitions', provide verifiable evidence satisfying: State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Required delivery form: Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:3.role_gate_observations`** — `array`
 
@@ -396,22 +464,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: Every deviation from the documented process is logged with its reason and its expiry.
 - G4: The primary deliverable ("Product strategy and roadmap") is published on the agreed cadence, including adverse results.
 - G5: Every roadmap item names the customer problem, the evidence it exists and the measure that will show it is solved
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:3.contract_input_1`** — `object`
 
 - Analyse the specific input "Customer research and usage data" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:3.contract_input_2`** — `object`
 
 - Analyse the specific input "Market and competitor evidence" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:3.contract_input_3`** — `object`
 
 - Analyse the specific input "Delivery capacity" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:3.contract_input_4`** — `object`
 
 - Analyse the specific input "Commercial targets" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -420,18 +493,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:3.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/product-manager:3.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -469,10 +545,16 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO 9241-210:2019, Human-centred design for interactive systems](https://www.iso.org/standard/77520.html)** — Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Product Manager:** Jobs-to-be-Done; product discovery practice; SFIA 9 (PROD). Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-product-manager-4"></a>
@@ -512,6 +594,19 @@ Produce and govern the role deliverable: launch plan.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `outcome-roadmap`.
+
+Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.
+
+**Evidence accompanying the work product:**
+
+- current/target baseline and planning assumptions
+- resource/funding constraints and decision triggers
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -519,27 +614,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/product-manager:4.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: launch plan.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:4.receiving_acceptance`** — `array`
 
 - For each receiving role (Product Owner; Product Designer; Engineering Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:4.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:4.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:4.delivery_verification`** — `array`
 
-- For the specific output 'launch plan', provide verifiable evidence satisfying: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Document with milestones, owners, dependencies and assumptions.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- For the specific output 'launch plan', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:4.role_gate_observations`** — `array`
 
@@ -549,27 +644,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: Every deviation from the documented process is logged with its reason and its expiry.
 - G4: The primary deliverable ("Product strategy and roadmap") is published on the agreed cadence, including adverse results.
 - G5: Every roadmap item names the customer problem, the evidence it exists and the measure that will show it is solved
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:4.contract_input_1`** — `object`
 
 - Analyse the specific input "Customer research and usage data" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:4.contract_input_2`** — `object`
 
 - Analyse the specific input "Market and competitor evidence" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:4.contract_input_3`** — `object`
 
 - Analyse the specific input "Delivery capacity" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:4.contract_input_4`** — `object`
 
 - Analyse the specific input "Commercial targets" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -578,21 +673,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/product-manager:4.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/product-manager:4.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -631,8 +726,13 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 - **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **[HM Treasury, The Green Book](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government)** — Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO 9241-210:2019, Human-centred design for interactive systems](https://www.iso.org/standard/77520.html)** — Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Product Manager:** Jobs-to-be-Done; product discovery practice; SFIA 9 (PROD). Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 <!-- JAI:OUTPUT-CONTRACTS:END -->

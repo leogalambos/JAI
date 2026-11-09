@@ -63,7 +63,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:2",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -103,7 +106,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:2",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -143,7 +149,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:2",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -183,7 +192,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:2",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -203,7 +215,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Cutover runbook and integrated schedule', provide verifiable evidence satisfying: The critical path, stop/go gates and irreversible steps are explicit and rehearsed. Required delivery form: Sequenced runbook with owners, dependencies, timestamps and decision points.",
+        "For the specific output 'Cutover runbook and integrated schedule', provide verifiable evidence satisfying: For every activity, identify sequence/dependencies, operator, target, window, expected result and completion criterion. State go/no-go criteria and authority, communications, evidence needed at each checkpoint and any point of no return. Define reversal or forward-recovery branches, decision deadlines, data reconciliation and observable safe-state criteria; distinguish rehearsed from untested actions. Existing source requirement: The critical path, stop/go gates and irreversible steps are explicit and rehearsed. Required delivery form: Timed operational cutover procedure with decision points, operators, rollback and safe-state checks.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +230,15 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Cutover runbook and integrated schedule', provide verifiable evidence satisfying: The critical path, stop/go gates and irreversible steps are explicit and rehearsed. Required delivery form: Sequenced runbook with owners, dependencies, timestamps and decision points.",
+        "reason": "For the specific output 'Cutover runbook and integrated schedule', provide verifiable evidence satisfying: For every activity, identify sequence/dependencies, operator, target, window, expected result and completion criterion. State go/no-go criteria and authority, communications, evidence needed at each checkpoint and any point of no return. Define reversal or forward-recovery branches, decision deadlines, data reconciliation and observable safe-state criteria; distinguish rehearsed from untested actions. Existing source requirement: The critical path, stop/go gates and irreversible steps are explicit and rehearsed. Required delivery form: Timed operational cutover procedure with decision points, operators, rollback and safe-state checks.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:2",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -233,8 +248,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Cutover runbook and integrated schedule",
-        "format": "Sequenced runbook with owners, dependencies, timestamps and decision points",
-        "acceptance_criterion": "The critical path, stop/go gates and irreversible steps are explicit and rehearsed.",
+        "format": "Timed operational cutover procedure with decision points, operators, rollback and safe-state checks.",
+        "acceptance_criterion": "For every activity, identify sequence/dependencies, operator, target, window, expected result and completion criterion. State go/no-go criteria and authority, communications, evidence needed at each checkpoint and any point of no return. Define reversal or forward-recovery branches, decision deadlines, data reconciliation and observable safe-state criteria; distinguish rehearsed from untested actions. Existing source requirement: The critical path, stop/go gates and irreversible steps are explicit and rehearsed.",
         "role_path": "skills/it-roles-product-delivery-and-agile/references/data-migration-and-cutover-lead.md"
       }
     },
@@ -274,7 +289,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:2",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -321,7 +339,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:2",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -366,7 +387,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:2",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -411,7 +435,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:2",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -456,7 +483,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:2",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -503,7 +533,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -548,7 +581,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -595,7 +631,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -726,16 +765,45 @@
         "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "human-centred-design",
+        "title": "ISO 9241-210:2019, Human-centred design for interactive systems",
+        "url": "https://www.iso.org/standard/77520.html",
+        "scope": "Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Data Migration and Cutover Lead",
+        "domain": "Product, Delivery and Agile",
+        "domain_index": 2,
+        "method_focus": "Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.",
         "frameworks": [
           "PMI/PRINCE2 transition controls",
           "DAMA data migration practices",
           "ITIL 4 deployment management"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -806,6 +874,17 @@
     "source_fingerprint": "97a2588ccb22edaf4482a5b81017498a8734486a450cde4a1b10be7456f38b05",
     "source_hash": "7a12a7b241952dc340e21a080ab25356d985334740cfe4fdb58c2b1c0a2b81e8"
   },
+  "delivery_form": {
+    "primary_artifact": "cutover-runbook",
+    "representation": "Timed operational cutover procedure with decision points, operators, rollback and safe-state checks.",
+    "evidence": [
+      "go/no-go evidence and latest safe reversal point",
+      "actual rehearsal or explicit untested status"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "23b0f0e3427f341a32f6c6fa3a345e5ffe4994f8a4c3f8e2422e6f17968976d4",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

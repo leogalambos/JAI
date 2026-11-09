@@ -64,7 +64,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:2",
           "content/types/control-design.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -104,7 +106,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:2",
           "content/types/control-design.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -144,7 +148,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:2",
           "content/types/control-design.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -184,7 +190,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:2",
           "content/types/control-design.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -204,7 +212,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Secure SDLC and pipeline control design', provide verifiable evidence satisfying: Every mandatory secure-delivery control has an owner, machine-enforcement point or justified manual control, evidence and bypass handling. Required delivery form: Control design mapped to lifecycle stages, threats, policies, tool enforcement and exception paths.",
+        "For the specific output 'Secure SDLC and pipeline control design', provide verifiable evidence satisfying: Trace each control objective to a risk or obligation and identify accountable owner, protected outcome and operating scope. Specify trigger, actor/system, required inputs, action, expected observable result, exceptions and response when the control fails. Define design/operating-effectiveness checks, population or sampling, expected evidence, acceptance threshold and disposition of exceptions. Existing source requirement: Every mandatory secure-delivery control has an owner, machine-enforcement point or justified manual control, evidence and bypass handling. Required delivery form: Control specification with objectives, trigger, actor, actions, failure paths and effectiveness measures.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,12 +227,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Secure SDLC and pipeline control design', provide verifiable evidence satisfying: Every mandatory secure-delivery control has an owner, machine-enforcement point or justified manual control, evidence and bypass handling. Required delivery form: Control design mapped to lifecycle stages, threats, policies, tool enforcement and exception paths.",
+        "reason": "For the specific output 'Secure SDLC and pipeline control design', provide verifiable evidence satisfying: Trace each control objective to a risk or obligation and identify accountable owner, protected outcome and operating scope. Specify trigger, actor/system, required inputs, action, expected observable result, exceptions and response when the control fails. Define design/operating-effectiveness checks, population or sampling, expected evidence, acceptance threshold and disposition of exceptions. Existing source requirement: Every mandatory secure-delivery control has an owner, machine-enforcement point or justified manual control, evidence and bypass handling. Required delivery form: Control specification with objectives, trigger, actor, actions, failure paths and effectiveness measures.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:2",
           "content/types/control-design.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -234,8 +244,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Secure SDLC and pipeline control design",
-        "format": "Control design mapped to lifecycle stages, threats, policies, tool enforcement and exception paths",
-        "acceptance_criterion": "Every mandatory secure-delivery control has an owner, machine-enforcement point or justified manual control, evidence and bypass handling.",
+        "format": "Control specification with objectives, trigger, actor, actions, failure paths and effectiveness measures.",
+        "acceptance_criterion": "Trace each control objective to a risk or obligation and identify accountable owner, protected outcome and operating scope. Specify trigger, actor/system, required inputs, action, expected observable result, exceptions and response when the control fails. Define design/operating-effectiveness checks, population or sampling, expected evidence, acceptance threshold and disposition of exceptions. Existing source requirement: Every mandatory secure-delivery control has an owner, machine-enforcement point or justified manual control, evidence and bypass handling.",
         "role_path": "skills/it-roles-architecture/references/secure-delivery-devsecops-architect.md"
       }
     },
@@ -276,7 +286,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:2",
           "content/types/control-design.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -324,7 +336,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:2",
           "content/types/control-design.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -369,7 +383,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:2",
           "content/types/control-design.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -414,7 +430,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:2",
           "content/types/control-design.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -459,7 +477,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:2",
           "content/types/control-design.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -504,7 +524,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:2",
           "content/types/control-design.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -551,7 +573,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -596,7 +620,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -643,7 +669,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -774,17 +802,38 @@
         "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "architecture-description",
+        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
+        "url": "https://www.iso.org/standard/74393.html",
+        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Secure Delivery / DevSecOps Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "NIST SSDF SP 800-218",
           "SLSA",
           "OWASP SAMM",
           "ISO/IEC 27001:2022 secure development controls"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -855,6 +904,17 @@
     "source_fingerprint": "e9f9711766bb6ad0ae9bdbd46b5e016775bac7165f423c997d7b854d9aa3ab3a",
     "source_hash": "b3bcb5c2641cdac7bdb1d16ab94420cf018a743692ad72bcb7e0e13aa92442c6"
   },
+  "delivery_form": {
+    "primary_artifact": "control-specification",
+    "representation": "Control specification with objectives, trigger, actor, actions, failure paths and effectiveness measures.",
+    "evidence": [
+      "risk/obligation traceability",
+      "measurable operating effectiveness checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "c4fc38632d77412b7351e386cac0ed4a92c7829315f46a3cb1c266cf6abde52e",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

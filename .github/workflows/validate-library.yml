@@ -64,6 +64,9 @@ jobs:
           python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/runtime/tools/content_spec.py lint-registry --root .
           python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 tools/generate_content_workflows.py --check
           python3 tools/generate_output_contract_docs.py --root . --check
+          python3 tools/generate_role_output_guidance.py --root . --check
+          python3 tools/generate_content_catalog.py --check
+          python3 tools/generate_reference_completion.py --root . --role-examples --check
           python3 tools/generate_workflow_diagrams.py --root . --check
           python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/runtime/tools/expert_references.py validate --root . --all
       - name: P0 runtime security application regression (host coverage reported separately)

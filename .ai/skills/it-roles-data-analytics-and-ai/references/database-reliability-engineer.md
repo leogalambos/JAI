@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Database automation and infrastructure-as-code | Reviewed, merged change in version control | Passes automated checks, carries tests and telemetry, and has a rollback path |
-| 2 | service level objectives for data stores | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 3 | schema migration tooling and policy | Versioned migration tooling with governed migration policy | Supplies actual tool source/configuration, dependencies, reproducible checks, compatibility, authorised migration controls and recovery evidence; planned tooling is not delivered tooling |
-| 4 | reliability and toil reduction plan | Document with milestones, owners, dependencies and assumptions | Every milestone has an acceptance test and a named accountable owner |
+| 1 | Database automation and infrastructure-as-code | Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates. | Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets. Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths. Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence. Existing source requirement: Passes automated checks, carries tests and telemetry, and has a rollback path. |
+| 2 | service level objectives for data stores | Service definition with consumers, outcomes, responsibilities and measurable service commitments. | State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. |
+| 3 | schema migration tooling and policy | Actual version-controlled implementation or analysis code, separate from its explanatory report. | Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. Existing source requirement: Supplies actual tool source/configuration, dependencies, reproducible checks, compatibility, authorised migration controls and recovery evidence; planned tooling is not delivered tooling. |
+| 4 | reliability and toil reduction plan | Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones. | State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. |
 
 ## 7. Output gates (blocking)
 
@@ -189,6 +189,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - Google SRE practice
 - online schema change patterns
 - vendor high-availability guidance
@@ -199,13 +203,32 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Enable zero-downtime schema changes on a 4TB table with 20,000 writes per second”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver database automation and infrastructure-as-code in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Database automation and infrastructure-as-code.
+
+**Illustrative case material:**
+
+Pipeline dep-8 promotes image digest sha256:example-42 to the test namespace only. Parameters include target, desired revision and change reference; credentials are short-lived references. Rebuilding an image during promotion breaks artifact identity.
+
+**Acceptance question:** Identify exact immutable artifacts, targets and authorisation prerequisites.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets.
+- Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths.
+- Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `deployment-automation` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

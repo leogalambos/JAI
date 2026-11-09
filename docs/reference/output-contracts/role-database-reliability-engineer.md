@@ -42,6 +42,19 @@ Produce and govern the role deliverable: Database automation and infrastructure-
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `executable-deployment-automation`.
+
+Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.
+
+**Evidence accompanying the work product:**
+
+- reproducible invocation and target versions
+- observed idempotency, health and rollback checks
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -49,27 +62,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/database-reliability-engineer:1.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Database automation and infrastructure-as-code.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:1.receiving_acceptance`** — `array`
 
 - For each receiving role (Backend Engineer; Database Administrator), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:1.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:1.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:1.delivery_verification`** — `array`
 
-- For the specific output 'Database automation and infrastructure-as-code', provide verifiable evidence satisfying: Passes automated checks, carries tests and telemetry, and has a rollback path. Required delivery form: Reviewed, merged change in version control.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- For the specific output 'Database automation and infrastructure-as-code', provide verifiable evidence satisfying: Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets. Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths. Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence. Existing source requirement: Passes automated checks, carries tests and telemetry, and has a rollback path. Required delivery form: Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:1.role_gate_observations`** — `array`
 
@@ -81,27 +94,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G5: Every recurring incident has an open problem record; recurrence without a problem record is a process failure.
 - G6: Every schema migration is backward compatible or ships with a tested, timed rollback
 - G7: blocking migrations on live tables are refused
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:1.contract_input_1`** — `object`
 
 - Analyse the specific input "Service level requirements" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:1.contract_input_2`** — `object`
 
 - Analyse the specific input "Schema change pipeline" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:1.contract_input_3`** — `object`
 
 - Analyse the specific input "Performance telemetry" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:1.contract_input_4`** — `object`
 
 - Analyse the specific input "Platform capabilities" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -110,21 +123,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:1.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/database-reliability-engineer:1.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-128); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -163,10 +176,16 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 - **[NIST SP 800-128, Guide for Security-Focused Configuration Management of Information Systems](https://doi.org/10.6028/NIST.SP.800-128)** — Configuration baselines, controlled changes, impact analysis and monitoring. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **[NIST SP 800-218, Secure Software Development Framework Version 1.1](https://doi.org/10.6028/NIST.SP.800-218)** — Secure development practices, protected source/build inputs, verification and vulnerability response. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C Data Catalog Vocabulary Version 3 (DCAT 3)](https://www.w3.org/TR/vocab-dcat-3/)** — Dataset/catalogue identity, distributions, provenance, access and descriptive metadata. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C Data Quality Vocabulary](https://www.w3.org/TR/vocab-dqv/)** — Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[NIST AI 100-1, Artificial Intelligence Risk Management Framework (AI RMF 1.0)](https://doi.org/10.6028/NIST.AI.100-1)** — Voluntary GOVERN, MAP, MEASURE and MANAGE functions for AI risks; applicability and adopted practices require explicit contextual selection. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Database Reliability Engineer:** Google SRE practice; online schema change patterns; vendor high-availability guidance. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace data provenance, quality, meaning and permitted use; define model evaluation, uncertainty and operational monitoring where applicable.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-database-reliability-engineer-2"></a>
@@ -206,6 +225,19 @@ Produce and govern the role deliverable: service level objectives for data store
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `service-definition`.
+
+Service definition with consumers, outcomes, responsibilities and measurable service commitments.
+
+**Evidence accompanying the work product:**
+
+- indicator/target/window definitions
+- support, dependency and recovery arrangements
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -213,27 +245,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/database-reliability-engineer:2.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: service level objectives for data stores.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:2.receiving_acceptance`** — `array`
 
 - For each receiving role (Backend Engineer; Database Administrator), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:2.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:2.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:2.delivery_verification`** — `array`
 
-- For the specific output 'service level objectives for data stores', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
+- For the specific output 'service level objectives for data stores', provide verifiable evidence satisfying: State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. Required delivery form: Service definition with consumers, outcomes, responsibilities and measurable service commitments.
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:2.role_gate_observations`** — `array`
 
@@ -245,27 +277,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G5: Every recurring incident has an open problem record; recurrence without a problem record is a process failure.
 - G6: Every schema migration is backward compatible or ships with a tested, timed rollback
 - G7: blocking migrations on live tables are refused
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:2.contract_input_1`** — `object`
 
 - Analyse the specific input "Service level requirements" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:2.contract_input_2`** — `object`
 
 - Analyse the specific input "Schema change pipeline" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:2.contract_input_3`** — `object`
 
 - Analyse the specific input "Performance telemetry" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:2.contract_input_4`** — `object`
 
 - Analyse the specific input "Platform capabilities" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -274,21 +306,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:2.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/database-reliability-engineer:2.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -327,10 +359,16 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 - **[ISO/IEC 20000-1:2018, Service management system requirements](https://www.iso.org/standard/70636.html)** — Service requirements, agreements, transition, operation and measurement concepts. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **[Google Site Reliability Engineering, Service Level Objectives](https://sre.google/sre-book/service-level-objectives/)** — Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C Data Catalog Vocabulary Version 3 (DCAT 3)](https://www.w3.org/TR/vocab-dcat-3/)** — Dataset/catalogue identity, distributions, provenance, access and descriptive metadata. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C Data Quality Vocabulary](https://www.w3.org/TR/vocab-dqv/)** — Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[NIST AI 100-1, Artificial Intelligence Risk Management Framework (AI RMF 1.0)](https://doi.org/10.6028/NIST.AI.100-1)** — Voluntary GOVERN, MAP, MEASURE and MANAGE functions for AI risks; applicability and adopted practices require explicit contextual selection. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Database Reliability Engineer:** Google SRE practice; online schema change patterns; vendor high-availability guidance. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace data provenance, quality, meaning and permitted use; define model evaluation, uncertainty and operational monitoring where applicable.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-database-reliability-engineer-3"></a>
@@ -370,6 +408,19 @@ Produce and govern the role deliverable: schema migration tooling and policy.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `versioned-source-change`.
+
+Actual version-controlled implementation or analysis code, separate from its explanatory report.
+
+**Evidence accompanying the work product:**
+
+- exact source and dependency revision
+- observed checks and independent review
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -377,27 +428,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/database-reliability-engineer:3.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: schema migration tooling and policy.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:3.receiving_acceptance`** — `array`
 
 - For each receiving role (Backend Engineer; Database Administrator), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:3.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:3.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:3.delivery_verification`** — `array`
 
-- For the specific output 'schema migration tooling and policy', provide verifiable evidence satisfying: Supplies actual tool source/configuration, dependencies, reproducible checks, compatibility, authorised migration controls and recovery evidence; planned tooling is not delivered tooling. Required delivery form: Versioned migration tooling with governed migration policy.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- For the specific output 'schema migration tooling and policy', provide verifiable evidence satisfying: Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. Existing source requirement: Supplies actual tool source/configuration, dependencies, reproducible checks, compatibility, authorised migration controls and recovery evidence; planned tooling is not delivered tooling. Required delivery form: Actual version-controlled implementation or analysis code, separate from its explanatory report.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:3.role_gate_observations`** — `array`
 
@@ -409,27 +460,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G5: Every recurring incident has an open problem record; recurrence without a problem record is a process failure.
 - G6: Every schema migration is backward compatible or ships with a tested, timed rollback
 - G7: blocking migrations on live tables are refused
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:3.contract_input_1`** — `object`
 
 - Analyse the specific input "Service level requirements" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:3.contract_input_2`** — `object`
 
 - Analyse the specific input "Schema change pipeline" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:3.contract_input_3`** — `object`
 
 - Analyse the specific input "Performance telemetry" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:3.contract_input_4`** — `object`
 
 - Analyse the specific input "Platform capabilities" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -438,21 +489,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:3.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/database-reliability-engineer:3.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -490,10 +541,16 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **[NIST SP 800-218, Secure Software Development Framework Version 1.1](https://doi.org/10.6028/NIST.SP.800-218)** — Secure development practices, protected source/build inputs, verification and vulnerability response. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C Data Catalog Vocabulary Version 3 (DCAT 3)](https://www.w3.org/TR/vocab-dcat-3/)** — Dataset/catalogue identity, distributions, provenance, access and descriptive metadata. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C Data Quality Vocabulary](https://www.w3.org/TR/vocab-dqv/)** — Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[NIST AI 100-1, Artificial Intelligence Risk Management Framework (AI RMF 1.0)](https://doi.org/10.6028/NIST.AI.100-1)** — Voluntary GOVERN, MAP, MEASURE and MANAGE functions for AI risks; applicability and adopted practices require explicit contextual selection. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Database Reliability Engineer:** Google SRE practice; online schema change patterns; vendor high-availability guidance. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace data provenance, quality, meaning and permitted use; define model evaluation, uncertainty and operational monitoring where applicable.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-database-reliability-engineer-4"></a>
@@ -533,6 +590,19 @@ Produce and govern the role deliverable: reliability and toil reduction plan.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `outcome-roadmap`.
+
+Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.
+
+**Evidence accompanying the work product:**
+
+- current/target baseline and planning assumptions
+- resource/funding constraints and decision triggers
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -540,27 +610,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/database-reliability-engineer:4.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: reliability and toil reduction plan.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:4.receiving_acceptance`** — `array`
 
 - For each receiving role (Backend Engineer; Database Administrator), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:4.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:4.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:4.delivery_verification`** — `array`
 
-- For the specific output 'reliability and toil reduction plan', provide verifiable evidence satisfying: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Document with milestones, owners, dependencies and assumptions.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- For the specific output 'reliability and toil reduction plan', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:4.role_gate_observations`** — `array`
 
@@ -572,27 +642,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G5: Every recurring incident has an open problem record; recurrence without a problem record is a process failure.
 - G6: Every schema migration is backward compatible or ships with a tested, timed rollback
 - G7: blocking migrations on live tables are refused
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:4.contract_input_1`** — `object`
 
 - Analyse the specific input "Service level requirements" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:4.contract_input_2`** — `object`
 
 - Analyse the specific input "Schema change pipeline" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:4.contract_input_3`** — `object`
 
 - Analyse the specific input "Performance telemetry" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:4.contract_input_4`** — `object`
 
 - Analyse the specific input "Platform capabilities" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -601,21 +671,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 **`role/database-reliability-engineer:4.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/database-reliability-engineer:4.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.w3.org/TR/vocab-dcat-3/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://doi.org/10.6028/NIST.AI.100-1) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -654,8 +724,14 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 - **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **[HM Treasury, The Green Book](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government)** — Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C Data Catalog Vocabulary Version 3 (DCAT 3)](https://www.w3.org/TR/vocab-dcat-3/)** — Dataset/catalogue identity, distributions, provenance, access and descriptive metadata. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C Data Quality Vocabulary](https://www.w3.org/TR/vocab-dqv/)** — Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[NIST AI 100-1, Artificial Intelligence Risk Management Framework (AI RMF 1.0)](https://doi.org/10.6028/NIST.AI.100-1)** — Voluntary GOVERN, MAP, MEASURE and MANAGE functions for AI risks; applicability and adopted practices require explicit contextual selection. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Database Reliability Engineer:** Google SRE practice; online schema change patterns; vendor high-availability guidance. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace data provenance, quality, meaning and permitted use; define model evaluation, uncertainty and operational monitoring where applicable.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 <!-- JAI:OUTPUT-CONTRACTS:END -->

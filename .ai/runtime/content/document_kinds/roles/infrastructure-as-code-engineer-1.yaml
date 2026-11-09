@@ -65,7 +65,9 @@
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:1",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -105,7 +107,9 @@
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:1",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -145,7 +149,9 @@
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:1",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -185,7 +191,9 @@
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:1",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -205,7 +213,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Terraform or OpenTofu modules and root configurations', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'Terraform or OpenTofu modules and root configurations', provide verifiable evidence satisfying: Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets. Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths. Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence. Required delivery form: Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -220,12 +228,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Terraform or OpenTofu modules and root configurations', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'Terraform or OpenTofu modules and root configurations', provide verifiable evidence satisfying: Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets. Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths. Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence. Required delivery form: Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:1",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -235,8 +245,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Terraform or OpenTofu modules and root configurations",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.",
+        "acceptance_criterion": "Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets. Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths. Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence.",
         "role_path": "skills/it-roles-infrastructure-cloud-and-operations/references/infrastructure-as-code-engineer.md"
       }
     },
@@ -282,7 +292,9 @@
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:1",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -335,7 +347,9 @@
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:1",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -380,7 +394,9 @@
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:1",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -425,7 +441,9 @@
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:1",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -470,7 +488,9 @@
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:1",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -517,7 +537,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -562,7 +584,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -609,7 +633,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -740,17 +766,38 @@
         "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "contingency-planning",
+        "title": "NIST SP 800-34 Revision 1, Contingency Planning Guide for Federal Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-34r1",
+        "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Infrastructure as Code Engineer",
+        "domain": "Infrastructure, Cloud and Operations",
+        "domain_index": 8,
+        "method_focus": "Define measurable service objectives, capacity and dependency assumptions, failure behaviour, recovery and observed operational evidence.",
         "frameworks": [
           "Terraform and OpenTofu module conventions with semantic versioning",
           "policy-as-code with Open Policy Agent or equivalent",
           "CIS Benchmarks",
           "provider well-architected frameworks"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -823,6 +870,17 @@
     "source_fingerprint": "2982daf96a0bcce61417da1c82c2977a6043bdc035cdbc0188e3b1231b25b73f",
     "source_hash": "b8abee23a4e66444d9888c245a8cd836a7e0543e4b3c7abb790576a32666ae9a"
   },
+  "delivery_form": {
+    "primary_artifact": "executable-deployment-automation",
+    "representation": "Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.",
+    "evidence": [
+      "reproducible invocation and target versions",
+      "observed idempotency, health and rollback checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "1636ef4c66befd23b0c2a2a52bb611aceb96bd752527cf96f936e906a269c264",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

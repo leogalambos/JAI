@@ -7,6 +7,8 @@ customer facts or executed evidence. Source Markdown anchors remain unchanged;
 the generated sidecar maps their full HTML identifiers to registered DCS units.
 """
 
+from extended_reference_definitions import REFERENCE_CASES
+
 # Reference family: canonical kind, shared parents, source field -> rationale.
 REFERENCE_KINDS = {
  'it-digital-strategy': ('strategy', ['family/strategy'], {
@@ -181,4 +183,12 @@ REFERENCE_KINDS.update({
  'cicd-pipeline-assurance': ('cicd-pipeline-assurance', ['domain/security', 'type/assurance-report'], {'assurance_scope': 'Identify pipeline revision, execution environments, assurance criteria and coverage exclusions.', 'runner_trust': 'Assess runner isolation, identity permissions, untrusted input and protected promotion boundaries.', 'execution_results': 'Record actual check results and retain failed, blocked and unexecuted states without promotion.', 'provenance_checks': 'Verify source-to-build-to-artifact provenance and distinguish integrity from professional approval.', 'exceptions_and_risks': 'Locate exceptions, evidence gaps, supply dependencies and accountable residual-risk owners.', 'release_attestation': 'State bounded release assurance and required independent decisions without fabricating attestation.'}),
  'appsec-verification-report': ('appsec-verification-report', ['domain/security', 'type/test-report'], {'verification_scope': 'Identify application build, authorized test boundary, environments and verification exclusions.', 'threat_requirements': 'Trace security requirements and threat scenarios to risk-based verification procedures.', 'static_dependency_tests': 'Record attributable static, dependency and configuration checks with versions and limitations.', 'dynamic_authorization_tests': 'Document executed dynamic, object-authorization and abuse tests with inputs and observations.', 'findings_and_fixes': 'Locate findings, assess exploitability, record fixes and independently attributable retest evidence.', 'acceptance_disposition': 'State unresolved exposure, execution gaps and competent release or risk disposition authority.'}),
  'software-supply-chain-assessment': ('software-supply-chain-assessment', ['domain/security', 'type/assurance-report'], {'supply_chain_scope': 'Define software products, build systems, suppliers and distribution boundaries under assessment.', 'dependency_inventory': 'Inventory direct and transitive dependencies, versions, origin, licensing and known evidence gaps.', 'build_provenance': 'Assess attributable build provenance, reproducibility, isolated execution and source integrity.', 'publisher_integrity': 'Verify publisher identities, artifact digests, signing trust and controlled acquisition practices.', 'supplier_risks': 'Evaluate supplier exposure, maintenance, compromise paths and uncertainty with accountable owners.', 'release_conditions': 'Define evidence-based release conditions, remediation and competent exception authority.'}),
+})
+
+# Explicit shared families retain their original inherited obligations.
+REFERENCE_KINDS.update({
+    family: (family, [parent], {
+        "reference_" + field: requirement
+        for field, (requirement, _) in fields.items()})
+    for family, (parent, fields, _, _) in REFERENCE_CASES.items()
 })

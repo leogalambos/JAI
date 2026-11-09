@@ -64,7 +64,8 @@
           "artifacts/contracts/role-deliverables.v3.json#solution-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -104,7 +105,8 @@
           "artifacts/contracts/role-deliverables.v3.json#solution-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -144,7 +146,8 @@
           "artifacts/contracts/role-deliverables.v3.json#solution-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -184,7 +187,8 @@
           "artifacts/contracts/role-deliverables.v3.json#solution-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -204,7 +208,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'interface and integration design', provide verifiable evidence satisfying: Defines versioned schemas, producer/consumer obligations, trust boundaries, failure handling and compatibility checks. Required delivery form: Interface and integration design.",
+        "For the specific output 'interface and integration design', provide verifiable evidence satisfying: Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Defines versioned schemas, producer/consumer obligations, trust boundaries, failure handling and compatibility checks. Required delivery form: Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,12 +223,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'interface and integration design', provide verifiable evidence satisfying: Defines versioned schemas, producer/consumer obligations, trust boundaries, failure handling and compatibility checks. Required delivery form: Interface and integration design.",
+        "reason": "For the specific output 'interface and integration design', provide verifiable evidence satisfying: Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Defines versioned schemas, producer/consumer obligations, trust boundaries, failure handling and compatibility checks. Required delivery form: Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#solution-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -234,8 +239,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "interface and integration design",
-        "format": "Interface and integration design",
-        "acceptance_criterion": "Defines versioned schemas, producer/consumer obligations, trust boundaries, failure handling and compatibility checks",
+        "format": "Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
+        "acceptance_criterion": "Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Defines versioned schemas, producer/consumer obligations, trust boundaries, failure handling and compatibility checks.",
         "role_path": "skills/it-roles-architecture/references/solution-architect.md"
       }
     },
@@ -275,7 +280,8 @@
           "artifacts/contracts/role-deliverables.v3.json#solution-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -322,7 +328,8 @@
           "artifacts/contracts/role-deliverables.v3.json#solution-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -367,7 +374,8 @@
           "artifacts/contracts/role-deliverables.v3.json#solution-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -412,7 +420,8 @@
           "artifacts/contracts/role-deliverables.v3.json#solution-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -457,7 +466,8 @@
           "artifacts/contracts/role-deliverables.v3.json#solution-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -504,7 +514,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -549,7 +560,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -596,7 +608,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -727,17 +740,30 @@
         "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Solution Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "TOGAF 10",
           "ISO/IEC 25010",
           "ATAM scenario evaluation",
           "C4 model"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -810,6 +836,17 @@
     "source_fingerprint": "bb539c7a6bd28cafe7550ac99ba9435d644c3e33f927767c07ef5499fa8fab7a",
     "source_hash": "cdc23d7a3081eae522f1c6fe69ad995335c273481f350b7397805132bd869040"
   },
+  "delivery_form": {
+    "primary_artifact": "solution-design",
+    "representation": "Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
+    "evidence": [
+      "requirements-to-design traceability",
+      "independent design review"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "ef810de64b51bbcaa541cda87cdee1cf6066b94601482eb4d2924343b9f4ddc8",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

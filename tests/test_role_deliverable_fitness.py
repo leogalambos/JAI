@@ -43,8 +43,8 @@ def test_deliverable_uses_its_professional_meaning(role, number, forbidden):
 
 
 def test_software_tests_remain_executable_and_ux_design_retains_states():
-    assert 'Executable suite' in deliverable('software-engineer', 2)
-    assert 'Loading, empty' in deliverable('ux-designer', 1)
+    assert 'Executable tests in version control' in deliverable('software-engineer', 2)
+    assert 'loading, empty, error' in deliverable('ux-designer', 1)
 
 
 @pytest.mark.parametrize('contract_id,family', [
@@ -55,7 +55,7 @@ def test_software_tests_remain_executable_and_ux_design_retains_states():
     ('finops-engineer:1', 'software-change'),
     ('business-relationship-manager:2', 'register'),
     ('binary-reverse-engineer:4', 'software-change'),
-    ('ai-governance-officer:3', 'document'),
+    ('ai-governance-officer:3', 'register'),
     ('request-fulfilment-manager:4', 'register'),
     ('technical-design-authority-member:1', 'assurance-report'),
     ('policy-author:1', 'document'),
@@ -128,7 +128,7 @@ def test_actual_implementation_specifications_keep_component_verification(contra
 
 @pytest.mark.parametrize('contract_id', [
     'end-user-computing-engineer:3','security-engineer:1','adversary-emulation-engineer:2',
-    'mobile-engineer:4','interaction-designer:4','service-designer:4',
+    'mobile-engineer:4','ux-designer:1','product-designer:2','interaction-designer:4','service-designer:4',
 ])
 def test_operational_outputs_and_noncoding_designs_are_not_mandatory_code_experiments(contract_id, content_engine):
     units = content_engine.resolve(contract_id)['blueprint']['semantic_units']
@@ -163,3 +163,17 @@ def test_gate_and_handover_sentences_use_a_grammatical_subject(role, wrong):
     text = path.read_text()
     assert wrong not in text
     assert 'has been accepted by the named receiving role' in text
+
+
+@pytest.mark.parametrize('contract_id', ['ux-designer:1', 'product-designer:2', 'interaction-designer:4'])
+def test_interaction_prototypes_preserve_native_design_states_without_code_experiments(contract_id):
+    """Noncoding prototypes retain actual editable assets and observable interaction coverage."""
+    sys.path.insert(0, str(ROOT / 'tools'))
+    from professional_output_refinements import OUTPUT_REFINEMENTS, OUTPUT_REQUIREMENTS, delivery_form_for
+    assert OUTPUT_REFINEMENTS[contract_id] == 'document'
+    form = delivery_form_for('document', contract_id)
+    assert form['primary_artifact'] == 'interactive-design-prototype'
+    assert 'editable' in form['representation']
+    requirements = ' '.join(row[2] for row in OUTPUT_REQUIREMENTS[contract_id])
+    for observable in ('loading', 'empty', 'error', 'transitions', 'keyboard', 'not-tested'):
+        assert observable in requirements

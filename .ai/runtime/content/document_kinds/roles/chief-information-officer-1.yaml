@@ -64,7 +64,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-officer:1",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -103,7 +104,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-officer:1",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -142,7 +144,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-officer:1",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -181,7 +184,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-officer:1",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -201,7 +205,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'IT strategy', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'IT strategy', provide verifiable evidence satisfying: Trace target outcomes and measurable success to business direction and baseline constraints. Compare investment and operating choices, dependencies, resource assumptions and rejected alternatives. Assign sequenced initiatives, accountable owners, outcome measures and review triggers. Required delivery form: Evidenced strategic choices with target outcomes, alternatives, investment assumptions and execution accountability.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -216,11 +220,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'IT strategy', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'IT strategy', provide verifiable evidence satisfying: Trace target outcomes and measurable success to business direction and baseline constraints. Compare investment and operating choices, dependencies, resource assumptions and rejected alternatives. Assign sequenced initiatives, accountable owners, outcome measures and review triggers. Required delivery form: Evidenced strategic choices with target outcomes, alternatives, investment assumptions and execution accountability.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-officer:1",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -230,8 +235,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "IT strategy",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Evidenced strategic choices with target outcomes, alternatives, investment assumptions and execution accountability.",
+        "acceptance_criterion": "Trace target outcomes and measurable success to business direction and baseline constraints. Compare investment and operating choices, dependencies, resource assumptions and rejected alternatives. Assign sequenced initiatives, accountable owners, outcome measures and review triggers.",
         "role_path": "skills/it-roles-executive-and-leadership/references/chief-information-officer.md"
       }
     },
@@ -270,7 +275,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-officer:1",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -316,7 +322,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-officer:1",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -360,7 +367,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-officer:1",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -404,7 +412,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-officer:1",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -448,7 +457,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-officer:1",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -494,7 +504,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -538,7 +549,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -584,7 +596,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -707,16 +720,29 @@
         "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "business-appraisal",
+        "title": "HM Treasury, The Green Book",
+        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Chief Information Officer",
+        "domain": "Executive and Leadership",
+        "domain_index": 1,
+        "method_focus": "Connect strategic choices, investment options, measurable outcomes, risk appetite and accountable decisions.",
         "frameworks": [
           "COBIT 2019 (EDM domain)",
           "ISO/IEC 38500",
           "ITIL 4"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -789,6 +815,17 @@
     "source_fingerprint": "b4a4447cdaa4e8f0e1674d15537f86ba4d5533ff93fa8820311b4f029c7372d7",
     "source_hash": "e0dfe8b631e272c4671a7f2e0c719076d37b245706b87e739febb64ba098d90f"
   },
+  "delivery_form": {
+    "primary_artifact": "strategy",
+    "representation": "Evidenced strategic choices with target outcomes, alternatives, investment assumptions and execution accountability.",
+    "evidence": [
+      "baseline and rejected options",
+      "outcome measures, dependencies and review triggers"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "f9d054e4bfb3d104bf50f822e5674dfc1c0368a1183e68cda78683305b6ba4e9",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

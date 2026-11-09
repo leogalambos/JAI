@@ -204,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Pricing and commercial trade-off recommendation', provide verifiable evidence satisfying: Human decision owner can see trade-offs, limits and residual risk for the complete lifecycle. Required delivery form: Option paper covering price, terms, discount, reserves, return and downside exposure.",
+        "For the specific output 'Pricing and commercial trade-off recommendation', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Human decision owner can see trade-offs, limits and residual risk for the complete lifecycle. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,7 +219,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Pricing and commercial trade-off recommendation', provide verifiable evidence satisfying: Human decision owner can see trade-offs, limits and residual risk for the complete lifecycle. Required delivery form: Option paper covering price, terms, discount, reserves, return and downside exposure.",
+        "reason": "For the specific output 'Pricing and commercial trade-off recommendation', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Human decision owner can see trade-offs, limits and residual risk for the complete lifecycle. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#commercial-pricing-deal-finance-specialist:2",
           "content/types/decision-paper.yaml",
@@ -234,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Pricing and commercial trade-off recommendation",
-        "format": "Option paper covering price, terms, discount, reserves, return and downside exposure",
-        "acceptance_criterion": "Human decision owner can see trade-offs, limits and residual risk for the complete lifecycle.",
+        "format": "Bounded decision paper with consistent option comparison and a clear authority/decision request.",
+        "acceptance_criterion": "Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Human decision owner can see trade-offs, limits and residual risk for the complete lifecycle.",
         "role_path": "skills/it-roles-commercial-sourcing-and-enablement/references/commercial-pricing-deal-finance-specialist.md"
       }
     },
@@ -736,11 +736,16 @@
     "role_framework_context": [
       {
         "role": "Commercial Pricing / Deal Finance Specialist",
+        "domain": "Commercial, Sourcing and Enablement",
+        "domain_index": 15,
+        "method_focus": "Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.",
         "frameworks": [
           "GAO Cost Estimating and Assessment Guide, GAO-20-195G (2020): credible cost baselines, risk/sensitivity analysis and updates with actuals; adapted to supplier deals, not a claim of GAO certification.",
           "IFRS 15 Revenue from Contracts with Customers, where applicable: route identification of performance obligations and revenue recognition to authorised accounting specialists.",
           "Organisation treasury, tax, pricing, credit and accounting policies; IAS 21 for applicable currency accounting questions, with qualified finance review."
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -811,6 +816,17 @@
     "source_fingerprint": "b6a554ad5fd492f726ee9478ffd7a0f3191a749935f07b840dd6994c298a1bf9",
     "source_hash": "97a0f02a080468427e87a2c1194ad736a8f8e59d31a7f92a2cc218fb32a024a3"
   },
+  "delivery_form": {
+    "primary_artifact": "decision-paper",
+    "representation": "Bounded decision paper with consistent option comparison and a clear authority/decision request.",
+    "evidence": [
+      "baseline and feasible alternatives",
+      "cost/benefit/uncertainty and consequences"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "d11cac8579c9141c89731c7f01f4e52676ad010e6b07a9aef9e4566b787c2c91",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

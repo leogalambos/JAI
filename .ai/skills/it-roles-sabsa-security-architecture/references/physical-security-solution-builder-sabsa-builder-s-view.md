@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Physical security architecture (builder's view) | Model in the EA tool plus a published view set | Every element traces to a driver or a quality-attribute target; no orphan elements |
-| 2 | solution specification and platform selection rationale | Versioned specification with numbered, traceable requirements | Every requirement is atomic, testable and traced to a source and a priority |
-| 3 | security mechanism design | Versioned mechanism specification with implementation constraints and validation criteria | Every mechanism traces to a logical service, states its security properties, dependencies, failure modes and verification method |
-| 4 | build and deployment specifications | Versioned specification with numbered, traceable requirements | Every requirement is atomic, testable and traced to a source and a priority |
+| 1 | Physical security architecture (builder's view) | Versioned typed model with stable entities, relations, constraints, provenance and selected views. | Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. |
+| 2 | solution specification and platform selection rationale | Versioned solution design with component responsibilities, interfaces and measurable quality responses. | Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority. |
+| 3 | security mechanism design | Versioned solution design with component responsibilities, interfaces and measurable quality responses. | Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Every mechanism traces to a logical service, states its security properties, dependencies, failure modes and verification method. |
+| 4 | build and deployment specifications | Typed implementation specification with exact target versions, interfaces and verification/recovery conditions. | Identify exact component/environment versions and each required parameter with type, unit, permitted range, default and secret-reference handling. State interface schemas, input/output semantics, error responses, concurrency/idempotency expectations and external dependency constraints. Give reproducible build/deploy/verification steps, expected results, stop conditions and recovery path; identify evidence still required before execution. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority. |
 
 ## 7. Output gates (blocking)
 
@@ -193,6 +193,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - SABSA physical layer
 - CIS Benchmarks
 - vendor security reference architectures
@@ -203,13 +207,32 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Specify the buildable solution for the authorisation services we designed logically”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver physical security architecture (builder's view) in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Physical security architecture (builder's view).
+
+**Illustrative case material:**
+
+Repository ea-12 models Order API as an application component and Reserve Stock as an application service in the explicitly selected 3.2 profile. A process and a component are not interchangeable merely because their labels match.
+
+**Acceptance question:** Define metamodel, edition, concern and source baseline.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions.
+- Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question.
+- Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `model` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

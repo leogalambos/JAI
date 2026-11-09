@@ -4,8 +4,8 @@
 This page explains how JAI selects professional authoring references and
 supplies relevant material to local work. The [execution overview](../overview/execution-context-algorithm.md#what-the-components-establish)
 distinguishes reference selection from actual execution and acceptance.
-The bundled v2.3.0 library has 135 Markdown
-references across 45 families and three complexity levels. Catalog
+The bundled v2.4.0 library has 189 Markdown
+references across 63 families and three complexity levels. Catalog
 discovery, local file validation and LLM context delivery are separate
 operations.
 

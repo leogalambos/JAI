@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | System behaviour specification | Versioned specification with numbered, traceable requirements | Every requirement is atomic, testable and traced to a source and a priority |
-| 2 | interface and data mapping | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 3 | impact analysis across systems | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 4 | transition and migration rules | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
+| 1 | System behaviour specification | Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions. | Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority. |
+| 2 | interface and data mapping | Versioned typed model with stable entities, relations, constraints, provenance and selected views. | Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. |
+| 3 | impact analysis across systems | Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request. | Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. |
+| 4 | transition and migration rules | Typed implementation specification with exact target versions, interfaces and verification/recovery conditions. | Identify exact component/environment versions and each required parameter with type, unit, permitted range, default and secret-reference handling. State interface schemas, input/output semantics, error responses, concurrency/idempotency expectations and external dependency constraints. Give reproducible build/deploy/verification steps, expected results, stop conditions and recovery path; identify evidence still required before execution. |
 
 ## 7. Output gates (blocking)
 
@@ -187,6 +187,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - UML
 - IEEE 29148 requirements
 - data mapping practice
@@ -197,13 +201,30 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Map the customer data flow between CRM, billing and the data warehouse before we replace billing”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver system behaviour specification in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** System behaviour specification.
+
+**Illustrative case material:**
+
+Define the business problem and intended capability in user-observable terms. Identify actors, process initiation and completion, normal and exceptional flows, jurisdiction and data ownership. Record the baseline and success criteria before decomposing into solution requirements. A requirements specification must distinguish stakeholder wishes, constraints and binding obligations from possible implementation patterns; premature commitment to a vendor or protocol is a design decision requiring separate justification.
+
+**Case application:** The accountable Security Architecture Authority must confirm whether the objective and boundary are materially complete for `CIS-IAM`. The fact that a sample shows a proposed owner does not delegate any actual organizational authority.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers.
+- State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions.
+- Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `requirements-specification` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

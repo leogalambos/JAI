@@ -205,7 +205,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'annual IT plan and budget', provide verifiable evidence satisfying: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Document with milestones, owners, dependencies and assumptions.",
+        "For the specific output 'annual IT plan and budget', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -220,7 +220,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'annual IT plan and budget', provide verifiable evidence satisfying: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Document with milestones, owners, dependencies and assumptions.",
+        "reason": "For the specific output 'annual IT plan and budget', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-officer:4",
           "content/types/roadmap.yaml",
@@ -235,8 +235,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "annual IT plan and budget",
-        "format": "Document with milestones, owners, dependencies and assumptions",
-        "acceptance_criterion": "Every milestone has an acceptance test and a named accountable owner",
+        "format": "Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
+        "acceptance_criterion": "State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner.",
         "role_path": "skills/it-roles-executive-and-leadership/references/chief-information-officer.md"
       }
     },
@@ -853,11 +853,16 @@
     "role_framework_context": [
       {
         "role": "Chief Information Officer",
+        "domain": "Executive and Leadership",
+        "domain_index": 1,
+        "method_focus": "Connect strategic choices, investment options, measurable outcomes, risk appetite and accountable decisions.",
         "frameworks": [
           "COBIT 2019 (EDM domain)",
           "ISO/IEC 38500",
           "ITIL 4"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -928,6 +933,17 @@
     "source_fingerprint": "c29cfb447907d0ffb7bbf7574d7b00729941d3527b6dc38696d4e8b042a2c5f2",
     "source_hash": "8f3c0951f28f692f999950fb336507bf251be7111951be3faa633db42438c777"
   },
+  "delivery_form": {
+    "primary_artifact": "outcome-roadmap",
+    "representation": "Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
+    "evidence": [
+      "current/target baseline and planning assumptions",
+      "resource/funding constraints and decision triggers"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "7322b09b573c3c4ea977330be8fe93fb2f6ea9d2c3604c6858036aec122819b1",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

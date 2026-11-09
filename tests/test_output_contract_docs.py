@@ -60,6 +60,10 @@ def test_all_role_outputs_and_workflow_handoffs_resolve_to_public_contracts(proj
     pages = projection.render()
     role_catalogue = pages['docs/reference/roles.md']
     workflow_catalogue = pages['docs/reference/workflows.md']
+    assert 'individual_access_decision' in pages[
+        f'{docs.DIRECTORY}/workflow-access-request-to-review.md']
+    assert 'policy_ref' in pages[f'{docs.DIRECTORY}/workflow-access-request-to-review.md']
+    assert 'handoff/access-request-to-review:2' in workflow_catalogue
     for role in projection.roles:
         role_page = pages[f'{docs.DIRECTORY}/role-{role["slug"]}.md']
         contracts = [contract for contract in projection.contracts.values() if contract['role_slug'] == role['slug']]
@@ -221,3 +225,27 @@ def test_framework_context_does_not_duplicate_terminal_punctuation(projection):
     framework = next(line for line in body.splitlines() if line.startswith('- **Bid / Proposal Manager:**'))
     assert '.;' not in framework
     assert '..' not in framework
+
+
+def test_selected_workflow_alternatives_publish_their_actual_obligations(projection):
+    """Readers can distinguish SaaS and terminal paths from base requirements."""
+    pages = projection.render()
+    for row in projection.handoffs.values():
+        variants = row.get('variant_bindings', {})
+        if not variants:
+            continue
+        page = pages[f'{docs.DIRECTORY}/workflow-{row["workflow_id"]}.md']
+        for path_id, binding in variants.items():
+            assert f'**Selected path:** `{path_id}`.' in page
+            assert binding['acceptance_criterion'] in page
+            assert binding['producer_role'] in page
+            assert binding['receiving_role'] in page
+            for unit in binding['handoff_content_contract']['units']:
+                assert unit['semantic_field'] in page
+                assert unit['acceptance_criterion'] in page
+                for field in unit['required_fields']:
+                    assert f'`{field}`' in page
+    page = pages[f'{docs.DIRECTORY}/workflow-new-service-onboarding.md']
+    assert 'Alternative bindings replace the base obligations' in page
+    assert '**Selected path:** `saas-cots`.' in page
+    assert '`service_tenant`' in page

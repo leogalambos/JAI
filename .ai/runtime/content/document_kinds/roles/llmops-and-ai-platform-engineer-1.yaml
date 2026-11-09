@@ -62,7 +62,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#llmops-and-ai-platform-engineer:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -101,7 +104,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#llmops-and-ai-platform-engineer:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -140,7 +146,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#llmops-and-ai-platform-engineer:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -179,7 +188,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#llmops-and-ai-platform-engineer:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -199,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Model serving and gateway configuration', provide verifiable evidence satisfying: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON).",
+        "For the specific output 'Model serving and gateway configuration', provide verifiable evidence satisfying: Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Model serving and gateway configuration', provide verifiable evidence satisfying: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON).",
+        "reason": "For the specific output 'Model serving and gateway configuration', provide verifiable evidence satisfying: Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#llmops-and-ai-platform-engineer:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -228,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Model serving and gateway configuration",
-        "format": "Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON)",
-        "acceptance_criterion": "The model is validated against real observed behaviour or data, not only interviews",
+        "format": "Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
+        "acceptance_criterion": "Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews.",
         "role_path": "skills/it-roles-data-analytics-and-ai/references/llmops-and-ai-platform-engineer.md"
       }
     },
@@ -270,7 +285,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#llmops-and-ai-platform-engineer:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -318,7 +336,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#llmops-and-ai-platform-engineer:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -362,7 +383,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#llmops-and-ai-platform-engineer:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -406,7 +430,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#llmops-and-ai-platform-engineer:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -450,7 +477,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#llmops-and-ai-platform-engineer:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -496,7 +526,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -540,7 +573,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -586,7 +622,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -709,16 +748,45 @@
         "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "data-catalogue",
+        "title": "W3C Data Catalog Vocabulary Version 3 (DCAT 3)",
+        "url": "https://www.w3.org/TR/vocab-dcat-3/",
+        "scope": "Dataset/catalogue identity, distributions, provenance, access and descriptive metadata.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "data-quality",
+        "title": "W3C Data Quality Vocabulary",
+        "url": "https://www.w3.org/TR/vocab-dqv/",
+        "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "ai-risk-management",
+        "title": "NIST AI 100-1, Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+        "url": "https://doi.org/10.6028/NIST.AI.100-1",
+        "scope": "Voluntary GOVERN, MAP, MEASURE and MANAGE functions for AI risks; applicability and adopted practices require explicit contextual selection.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "LLMOps and AI Platform Engineer",
+        "domain": "Data, Analytics and AI",
+        "domain_index": 7,
+        "method_focus": "Trace data provenance, quality, meaning and permitted use; define model evaluation, uncertainty and operational monitoring where applicable.",
         "frameworks": [
           "NIST AI RMF 1.0",
           "ISO/IEC 42001",
           "evaluation and red-teaming practice"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -791,6 +859,17 @@
     "source_fingerprint": "2af7ec96b4e60c4443488f5883fa1997b16c967876078ee620af234ea0eae238",
     "source_hash": "fc368b03480a0d5568178b27a82a9de709e750f687c1ead35d2a20804ba3243a"
   },
+  "delivery_form": {
+    "primary_artifact": "versioned-configuration",
+    "representation": "Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
+    "evidence": [
+      "reproduction/drift observations",
+      "verification and recovery to a known baseline"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "11582e60e4b613f8376ee86a845091adb171b6e5a8e8065e90b9514758805a6d",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

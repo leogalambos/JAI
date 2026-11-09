@@ -63,7 +63,9 @@
           "artifacts/contracts/role-deliverables.v3.json#open-source-intelligence-investigator:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -103,7 +105,9 @@
           "artifacts/contracts/role-deliverables.v3.json#open-source-intelligence-investigator:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -143,7 +147,9 @@
           "artifacts/contracts/role-deliverables.v3.json#open-source-intelligence-investigator:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -183,7 +189,9 @@
           "artifacts/contracts/role-deliverables.v3.json#open-source-intelligence-investigator:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -203,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Collection plan and source list', provide verifiable evidence satisfying: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Document with milestones, owners, dependencies and assumptions.",
+        "For the specific output 'Collection plan and source list', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Collection plan and source list', provide verifiable evidence satisfying: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Document with milestones, owners, dependencies and assumptions.",
+        "reason": "For the specific output 'Collection plan and source list', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#open-source-intelligence-investigator:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -233,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Collection plan and source list",
-        "format": "Document with milestones, owners, dependencies and assumptions",
-        "acceptance_criterion": "Every milestone has an acceptance test and a named accountable owner",
+        "format": "Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
+        "acceptance_criterion": "State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner.",
         "role_path": "skills/it-roles-offensive-security-and-adversarial-testing/references/open-source-intelligence-investigator.md"
       }
     },
@@ -275,7 +285,9 @@
           "artifacts/contracts/role-deliverables.v3.json#open-source-intelligence-investigator:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -323,7 +335,9 @@
           "artifacts/contracts/role-deliverables.v3.json#open-source-intelligence-investigator:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -368,7 +382,9 @@
           "artifacts/contracts/role-deliverables.v3.json#open-source-intelligence-investigator:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -413,7 +429,9 @@
           "artifacts/contracts/role-deliverables.v3.json#open-source-intelligence-investigator:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -458,7 +476,9 @@
           "artifacts/contracts/role-deliverables.v3.json#open-source-intelligence-investigator:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -505,7 +525,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -550,7 +572,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -597,7 +621,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -728,16 +754,37 @@
         "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "risk-assessment",
+        "title": "NIST SP 800-30 Revision 1, Guide for Conducting Risk Assessments",
+        "url": "https://doi.org/10.6028/NIST.SP.800-30r1",
+        "scope": "Assessment scope, threat events, vulnerabilities, likelihood, impact and uncertainty.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Open Source Intelligence Investigator",
+        "domain": "Offensive Security and Adversarial Testing",
+        "domain_index": 12,
+        "method_focus": "Bind authorised scope and methodology to reproducible observations, impact, evidence limitations and retest results.",
         "frameworks": [
           "OSINT methodology",
           "admiralty source grading",
           "applicable data protection law"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -808,6 +855,17 @@
     "source_fingerprint": "134117dc9d8ec60b1f0b90fe2e748b5bbc5e9ce9b7585c641bf8df6e2d9d3d6f",
     "source_hash": "92c25edc6bb18e0399d8e6e428e83056389e1321e69b244ca386fcc41788b494"
   },
+  "delivery_form": {
+    "primary_artifact": "outcome-roadmap",
+    "representation": "Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
+    "evidence": [
+      "current/target baseline and planning assumptions",
+      "resource/funding constraints and decision triggers"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "61f0e0d8030eefc16f254379e03929c37955f1387635774229037d2ad9ed8954",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

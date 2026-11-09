@@ -63,7 +63,9 @@
           "artifacts/contracts/role-deliverables.v3.json#end-user-computing-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -103,7 +105,9 @@
           "artifacts/contracts/role-deliverables.v3.json#end-user-computing-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -143,7 +147,9 @@
           "artifacts/contracts/role-deliverables.v3.json#end-user-computing-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -183,7 +189,9 @@
           "artifacts/contracts/role-deliverables.v3.json#end-user-computing-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -203,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'application packaging and deployment', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'application packaging and deployment', provide verifiable evidence satisfying: Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets. Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths. Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence. Required delivery form: Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'application packaging and deployment', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'application packaging and deployment', provide verifiable evidence satisfying: Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets. Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths. Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence. Required delivery form: Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#end-user-computing-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -233,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "application packaging and deployment",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.",
+        "acceptance_criterion": "Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets. Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths. Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence.",
         "role_path": "skills/it-roles-service-management-and-support/references/end-user-computing-engineer.md"
       }
     },
@@ -278,7 +288,9 @@
           "artifacts/contracts/role-deliverables.v3.json#end-user-computing-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -329,7 +341,9 @@
           "artifacts/contracts/role-deliverables.v3.json#end-user-computing-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -374,7 +388,9 @@
           "artifacts/contracts/role-deliverables.v3.json#end-user-computing-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -419,7 +435,9 @@
           "artifacts/contracts/role-deliverables.v3.json#end-user-computing-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -464,7 +482,9 @@
           "artifacts/contracts/role-deliverables.v3.json#end-user-computing-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -511,7 +531,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -556,7 +578,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -603,7 +627,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -734,16 +760,37 @@
         "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "service-management",
+        "title": "ISO/IEC 20000-1:2018, Service management system requirements",
+        "url": "https://www.iso.org/standard/70636.html",
+        "scope": "Service requirements, agreements, transition, operation and measurement concepts.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "End-User Computing Engineer",
+        "domain": "Service Management and Support",
+        "domain_index": 10,
+        "method_focus": "Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.",
         "frameworks": [
           "CIS Benchmarks",
           "vendor endpoint management guidance",
           "zero trust device posture principles"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -816,6 +863,17 @@
     "source_fingerprint": "88b2a10df4175eb36d6887df16c0909efc8a42eba42cc88ddc1051abddf521c3",
     "source_hash": "633539aca5141bdd92310030afad31d0ba8f815caec5b574fb6f6d105350f147"
   },
+  "delivery_form": {
+    "primary_artifact": "executable-deployment-automation",
+    "representation": "Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.",
+    "evidence": [
+      "reproducible invocation and target versions",
+      "observed idempotency, health and rollback checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "4d589c9777929c344b2ecafa4b7f059146ccd357afb940a9baf73e91d387fefd",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

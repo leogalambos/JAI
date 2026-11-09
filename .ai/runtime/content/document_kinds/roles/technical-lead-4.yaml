@@ -9,7 +9,7 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/document",
+    "type/roadmap",
     "domain/delivery"
   ],
   "applies_to": {
@@ -61,7 +61,11 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: technical breakdown of upcoming work.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-lead:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -99,7 +103,11 @@
         "reason": "For each receiving role (Software Engineer; Test Automation Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-lead:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -137,7 +145,11 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-lead:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -175,7 +187,11 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-lead:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -195,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'technical breakdown of upcoming work', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'technical breakdown of upcoming work', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,10 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'technical breakdown of upcoming work', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'technical breakdown of upcoming work', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-lead:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -223,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "technical breakdown of upcoming work",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
+        "acceptance_criterion": "State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options.",
         "role_path": "skills/it-roles-product-delivery-and-agile/references/technical-lead.md"
       }
     },
@@ -262,7 +282,11 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-lead:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -307,7 +331,11 @@
         "reason": "Analyse the specific input \"Upcoming backlog\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-lead:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -350,7 +378,11 @@
         "reason": "Analyse the specific input \"Architecture constraints\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-lead:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -393,7 +425,11 @@
         "reason": "Analyse the specific input \"Production behaviour and incidents\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-lead:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -436,7 +472,11 @@
         "reason": "Analyse the specific input \"Team skill profile\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-lead:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -481,7 +521,11 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -524,7 +568,11 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -569,7 +617,11 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -686,22 +738,51 @@
     ],
     "professional_references": [
       {
-        "id": "jai-practice",
-        "title": "JAI authored enterprise-delivery practice",
-        "url": null,
-        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
-        "basis": "jai-practice",
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "business-appraisal",
+        "title": "HM Treasury, The Green Book",
+        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "human-centred-design",
+        "title": "ISO 9241-210:2019, Human-centred design for interactive systems",
+        "url": "https://www.iso.org/standard/77520.html",
+        "scope": "Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment.",
+        "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Technical Lead",
+        "domain": "Product, Delivery and Agile",
+        "domain_index": 2,
+        "method_focus": "Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.",
         "frameworks": [
           "SWEBOK v4",
           "architecture decision records",
           "team coding standards"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -755,12 +836,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/roadmap",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "document",
+  "semantic_family": "roadmap",
   "role_overlay": {
     "contract_id": "technical-lead:4",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -772,6 +855,17 @@
     "source_fingerprint": "ac4dde0f72fc067638505dbd8dcc83622e404541ea251868fa52dfea56c9aedc",
     "source_hash": "6eae6363063e0df93cda6f058f7710eeb3aaf21e1a5665826d92ed0b54c80cbd"
   },
+  "delivery_form": {
+    "primary_artifact": "outcome-roadmap",
+    "representation": "Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
+    "evidence": [
+      "current/target baseline and planning assumptions",
+      "resource/funding constraints and decision triggers"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "a2a8da2db012e30d9ec7c17c16cb39ebb62fdda575b40050017edc0338d4e11e",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

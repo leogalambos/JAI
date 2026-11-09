@@ -42,6 +42,19 @@ Produce and govern the role deliverable: Team working agreement.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `professional-document`.
+
+Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.
+
+**Evidence accompanying the work product:**
+
+- attributable subject-specific findings and limitations
+- reviewable sources and verifiable follow-up actions
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -49,22 +62,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/scrum-master:1.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Team working agreement.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:1.receiving_acceptance`** — `array`
 
 - For each receiving role (Development team), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:1.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:1.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:1.delivery_verification`** — `array`
 
-- For the specific output 'Team working agreement', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.
+- For the specific output 'Team working agreement', provide verifiable evidence satisfying: State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Required delivery form: Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:1.role_gate_observations`** — `array`
 
@@ -74,22 +92,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: Every deviation from the documented process is logged with its reason and its expiry.
 - G4: The primary deliverable ("Team working agreement") is published on the agreed cadence, including adverse results.
 - G5: Retrospective actions carry an owner and a date, and last cycle's actions are reviewed before new ones are added
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:1.contract_input_1`** — `object`
 
 - Analyse the specific input "Sprint goal and backlog" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:1.contract_input_2`** — `object`
 
 - Analyse the specific input "Team capacity and availability" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:1.contract_input_3`** — `object`
 
 - Analyse the specific input "Flow metrics" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:1.contract_input_4`** — `object`
 
 - Analyse the specific input "Impediments" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -98,18 +121,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:1.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/scrum-master:1.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -147,10 +173,16 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO 9241-210:2019, Human-centred design for interactive systems](https://www.iso.org/standard/77520.html)** — Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Scrum Master:** Scrum Guide 2020; Kanban flow metrics; Team Topologies interaction modes. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-scrum-master-2"></a>
@@ -190,6 +222,19 @@ Produce and govern the role deliverable: impediment log.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `governed-register`.
+
+Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.
+
+**Evidence accompanying the work product:**
+
+- actual source-attributed records
+- uniqueness, completeness and relationship reconciliation
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -197,22 +242,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/scrum-master:2.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: impediment log.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:2.receiving_acceptance`** — `array`
 
 - For each receiving role (Development team), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:2.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:2.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:2.delivery_verification`** — `array`
 
-- For the specific output 'impediment log', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.
+- For the specific output 'impediment log', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:2.role_gate_observations`** — `array`
 
@@ -222,22 +272,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: Every deviation from the documented process is logged with its reason and its expiry.
 - G4: The primary deliverable ("Team working agreement") is published on the agreed cadence, including adverse results.
 - G5: Retrospective actions carry an owner and a date, and last cycle's actions are reviewed before new ones are added
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:2.contract_input_1`** — `object`
 
 - Analyse the specific input "Sprint goal and backlog" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:2.contract_input_2`** — `object`
 
 - Analyse the specific input "Team capacity and availability" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:2.contract_input_3`** — `object`
 
 - Analyse the specific input "Flow metrics" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:2.contract_input_4`** — `object`
 
 - Analyse the specific input "Impediments" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -246,18 +301,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:2.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/scrum-master:2.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -307,10 +365,16 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO 9241-210:2019, Human-centred design for interactive systems](https://www.iso.org/standard/77520.html)** — Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Scrum Master:** Scrum Guide 2020; Kanban flow metrics; Team Topologies interaction modes. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-scrum-master-3"></a>
@@ -320,7 +384,7 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 **At a glance**
 
 - **Purpose:** Produce and govern the role deliverable: flow and delivery metrics.
-- **Mandatory examples:** Identify decisions or downstream uses, accountable recipients and verifiable next actions. Provide attributable substantive findings, reasoning and limitations for the specific subject. Identify document purpose, audience, subject boundary and authoritative source versions.
+- **Mandatory examples:** Explain thresholds, uncertainty, missing data and actions supported by the view. Define metrics, units, denominators, targets, refresh cadence and accountable owners. Provide dated observations linked to versioned source queries and population scope.
 - **Conditions to resolve:** personal data are processed; an applicable regulatory requirement exists. Unknown applicability remains unresolved.
 - **Optional example:** Include versioned calculations, logs or technical detail only when linked to a specific required claim.
 - **Review:** assess substantive content, evidence and gaps against the full selected contract; acceptance and release remain separate.
@@ -345,10 +409,23 @@ Produce and govern the role deliverable: flow and delivery metrics.
 **Also applicable:** all requirements in these linked foundations and overlays form part of this contract, subject to their explicit conditions:
 
 - [`global/invariants`](spec-global-invariants.md)
-- [`type/document`](spec-type-document.md)
-- [`domain/delivery`](spec-domain-delivery.md)
+- [`type/dashboard`](spec-type-dashboard.md)
+- [`domain/data`](spec-domain-data.md)
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
+
+### Primary work product and evidence
+
+**Primary work product:** `measured-dashboard`.
+
+Dashboard or scorecard with metric definitions, observations, source queries and interpretation.
+
+**Evidence accompanying the work product:**
+
+- units, denominators and measurement windows
+- dated values, thresholds and actionable exceptions
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
 
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
@@ -357,22 +434,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/scrum-master:3.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: flow and delivery metrics.
+- **Professional basis:** [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:3.receiving_acceptance`** — `array`
 
 - For each receiving role (Development team), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:3.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:3.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:3.delivery_verification`** — `array`
 
-- For the specific output 'flow and delivery metrics', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.
+- For the specific output 'flow and delivery metrics', provide verifiable evidence satisfying: For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Required delivery form: Dashboard or scorecard with metric definitions, observations, source queries and interpretation.
+- **Professional basis:** [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:3.role_gate_observations`** — `array`
 
@@ -382,22 +464,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: Every deviation from the documented process is logged with its reason and its expiry.
 - G4: The primary deliverable ("Team working agreement") is published on the agreed cadence, including adverse results.
 - G5: Retrospective actions carry an owner and a date, and last cycle's actions are reviewed before new ones are added
+- **Professional basis:** [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:3.contract_input_1`** — `object`
 
 - Analyse the specific input "Sprint goal and backlog" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:3.contract_input_2`** — `object`
 
 - Analyse the specific input "Team capacity and availability" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:3.contract_input_3`** — `object`
 
 - Analyse the specific input "Flow metrics" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:3.contract_input_4`** — `object`
 
 - Analyse the specific input "Impediments" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -406,18 +493,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:3.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/scrum-master:3.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://sre.google/sre-book/service-level-objectives/); [source](https://www.w3.org/TR/vocab-dqv/); [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -448,17 +538,36 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
     "annex_rules": [
       "Reference canonical detail rather than repeat it."
     ]
+  },
+  "rows": {
+    "metric": "rows",
+    "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
+    "minimum_is_quality_gate": false,
+    "calibration_status": "synthetic-only",
+    "allowance_rules": [
+      "Document complexity and audience need; excess requires review, not automatic rejection."
+    ],
+    "annex_rules": [
+      "Reference canonical detail rather than repeat it."
+    ]
   }
 }
 ```
 
 ### Professional sources and their limits
 
-- **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[Google Site Reliability Engineering, Service Level Objectives](https://sre.google/sre-book/service-level-objectives/)** — Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C Data Quality Vocabulary](https://www.w3.org/TR/vocab-dqv/)** — Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO 9241-210:2019, Human-centred design for interactive systems](https://www.iso.org/standard/77520.html)** — Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Scrum Master:** Scrum Guide 2020; Kanban flow metrics; Team Topologies interaction modes. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-scrum-master-4"></a>
@@ -468,7 +577,7 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 **At a glance**
 
 - **Purpose:** Produce and govern the role deliverable: retrospective action set.
-- **Mandatory examples:** Identify decisions or downstream uses, accountable recipients and verifiable next actions. Provide attributable substantive findings, reasoning and limitations for the specific subject. Identify document purpose, audience, subject boundary and authoritative source versions.
+- **Mandatory examples:** Evidence uniqueness, referential integrity, completeness and lifecycle reconciliation checks. Provide actual uniquely identified records with source, owner, status and review date. Define required columns, datatypes, identifiers, allowed states and ownership.
 - **Conditions to resolve:** personal data are processed; an applicable regulatory requirement exists. Unknown applicability remains unresolved.
 - **Optional example:** Include versioned calculations, logs or technical detail only when linked to a specific required claim.
 - **Review:** assess substantive content, evidence and gaps against the full selected contract; acceptance and release remain separate.
@@ -493,10 +602,23 @@ Produce and govern the role deliverable: retrospective action set.
 **Also applicable:** all requirements in these linked foundations and overlays form part of this contract, subject to their explicit conditions:
 
 - [`global/invariants`](spec-global-invariants.md)
-- [`type/document`](spec-type-document.md)
-- [`domain/delivery`](spec-domain-delivery.md)
+- [`type/register`](spec-type-register.md)
+- [`domain/data`](spec-domain-data.md)
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
+
+### Primary work product and evidence
+
+**Primary work product:** `governed-register`.
+
+Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.
+
+**Evidence accompanying the work product:**
+
+- actual source-attributed records
+- uniqueness, completeness and relationship reconciliation
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
 
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
@@ -505,22 +627,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/scrum-master:4.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: retrospective action set.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:4.receiving_acceptance`** — `array`
 
 - For each receiving role (Development team), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:4.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:4.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:4.delivery_verification`** — `array`
 
-- For the specific output 'retrospective action set', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.
+- For the specific output 'retrospective action set', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:4.role_gate_observations`** — `array`
 
@@ -530,22 +657,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: Every deviation from the documented process is logged with its reason and its expiry.
 - G4: The primary deliverable ("Team working agreement") is published on the agreed cadence, including adverse results.
 - G5: Retrospective actions carry an owner and a date, and last cycle's actions are reviewed before new ones are added
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:4.contract_input_1`** — `object`
 
 - Analyse the specific input "Sprint goal and backlog" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:4.contract_input_2`** — `object`
 
 - Analyse the specific input "Team capacity and availability" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:4.contract_input_3`** — `object`
 
 - Analyse the specific input "Flow metrics" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:4.contract_input_4`** — `object`
 
 - Analyse the specific input "Impediments" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -554,18 +686,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 **`role/scrum-master:4.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/scrum-master:4.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/77520.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -596,6 +731,18 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
     "annex_rules": [
       "Reference canonical detail rather than repeat it."
     ]
+  },
+  "rows": {
+    "metric": "rows",
+    "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
+    "minimum_is_quality_gate": false,
+    "calibration_status": "synthetic-only",
+    "allowance_rules": [
+      "Document complexity and audience need; excess requires review, not automatic rejection."
+    ],
+    "annex_rules": [
+      "Reference canonical detail rather than repeat it."
+    ]
   }
 }
 ```
@@ -603,8 +750,14 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO 9241-210:2019, Human-centred design for interactive systems](https://www.iso.org/standard/77520.html)** — Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Scrum Master:** Scrum Guide 2020; Kanban flow metrics; Team Topologies interaction modes. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 <!-- JAI:OUTPUT-CONTRACTS:END -->

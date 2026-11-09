@@ -64,7 +64,8 @@
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -104,7 +105,8 @@
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -144,7 +146,8 @@
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -184,7 +187,8 @@
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -204,7 +208,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'test data seeding and masking procedure', provide verifiable evidence satisfying: Defines authorised source data, masking rules, reproducible preparation, validation, cleanup and privacy controls. Required delivery form: Versioned test-data seeding and masking procedure.",
+        "For the specific output 'test data seeding and masking procedure', provide verifiable evidence satisfying: State when the procedure applies, exact targets, permitted operator capability, prerequisites, access dependencies and conditions forbidding execution. For each step, give the action, parameters, expected observation and a decision on success/failure; do not embed credentials. Define failure/timeout branches, rollback or safe recovery, escalation conditions and evidence of rehearsal against a named version/environment. Existing source requirement: Defines authorised source data, masking rules, reproducible preparation, validation, cleanup and privacy controls. Required delivery form: Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,12 +223,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'test data seeding and masking procedure', provide verifiable evidence satisfying: Defines authorised source data, masking rules, reproducible preparation, validation, cleanup and privacy controls. Required delivery form: Versioned test-data seeding and masking procedure.",
+        "reason": "For the specific output 'test data seeding and masking procedure', provide verifiable evidence satisfying: State when the procedure applies, exact targets, permitted operator capability, prerequisites, access dependencies and conditions forbidding execution. For each step, give the action, parameters, expected observation and a decision on success/failure; do not embed credentials. Define failure/timeout branches, rollback or safe recovery, escalation conditions and evidence of rehearsal against a named version/environment. Existing source requirement: Defines authorised source data, masking rules, reproducible preparation, validation, cleanup and privacy controls. Required delivery form: Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -234,8 +239,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "test data seeding and masking procedure",
-        "format": "Versioned test-data seeding and masking procedure",
-        "acceptance_criterion": "Defines authorised source data, masking rules, reproducible preparation, validation, cleanup and privacy controls",
+        "format": "Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches.",
+        "acceptance_criterion": "State when the procedure applies, exact targets, permitted operator capability, prerequisites, access dependencies and conditions forbidding execution. For each step, give the action, parameters, expected observation and a decision on success/failure; do not embed credentials. Define failure/timeout branches, rollback or safe recovery, escalation conditions and evidence of rehearsal against a named version/environment. Existing source requirement: Defines authorised source data, masking rules, reproducible preparation, validation, cleanup and privacy controls.",
         "role_path": "skills/it-roles-infrastructure-cloud-and-operations/references/environment-manager.md"
       }
     },
@@ -277,7 +282,8 @@
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -326,7 +332,8 @@
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -371,7 +378,8 @@
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -416,7 +424,8 @@
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -461,7 +470,8 @@
           "artifacts/contracts/role-deliverables.v3.json#environment-manager:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -508,7 +518,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -553,7 +564,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -600,7 +612,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -731,16 +744,29 @@
         "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Environment Manager",
+        "domain": "Infrastructure, Cloud and Operations",
+        "domain_index": 8,
+        "method_focus": "Define measurable service objectives, capacity and dependency assumptions, failure behaviour, recovery and observed operational evidence.",
         "frameworks": [
           "ITIL 4 change and release practice",
           "test data management practice",
           "GDPR Article 25 for non-production data"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -813,6 +839,17 @@
     "source_fingerprint": "f9bdb4ae7d2311edaf8dd02f21fbb6774a87b60c127eee33f2759c5b553b1741",
     "source_hash": "77467cafbdfdf3eee3ec6de1e62895cf3e5902a2067f4f321ec360fe1b83e631"
   },
+  "delivery_form": {
+    "primary_artifact": "operational-procedure",
+    "representation": "Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches.",
+    "evidence": [
+      "versioned verification checkpoints",
+      "rehearsal environment/results or explicit untested scope"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "53063170d775feb5e153a2b4239068362aabbdb47392245123e2bada3e7c85d7",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

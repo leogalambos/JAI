@@ -86,10 +86,10 @@ Structure every substantive answer in this order:
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Privacy architecture and design requirements | Versioned specification with traceable numbered requirements | Every requirement traces to purpose, processing context, privacy obligation/risk and verification method. |
-| 2 | Personal-data flow and processing architecture | Model in the EA tool plus a published view set | Data classes, purposes, recipients, stores, jurisdictions and retention points are represented with stable identifiers. |
-| 3 | Privacy engineering patterns and reference controls | Versioned pattern catalogue | Patterns state applicability, constraints, verification and known trade-offs. |
-| 4 | Privacy architecture decision and exception record | Decision/exception register with owner and expiry | Exceptions identify residual privacy risk, decision authority, compensating measures and review/expiry. |
+| 1 | Privacy architecture and design requirements | Concern-driven description with a versioned model and views selected for stakeholder questions. | Name the system of interest, boundary exclusions, stakeholder groups, each concern and the versioned current/target baseline. Identify each viewpoint and its conventions; trace each view to the concerns it addresses and identify cross-view correspondences and unresolved inconsistencies. For each material gap, identify current and target elements, business impact, owner, proposed response and the decision or evidence needed to close it. Existing source requirement: Every requirement traces to purpose, processing context, privacy obligation/risk and verification method. |
+| 2 | Personal-data flow and processing architecture | Versioned typed model with stable entities, relations, constraints, provenance and selected views. | Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Data classes, purposes, recipients, stores, jurisdictions and retention points are represented with stable identifiers. |
+| 3 | Privacy engineering patterns and reference controls | Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships. | Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Patterns state applicability, constraints, verification and known trade-offs. |
+| 4 | Privacy architecture decision and exception record | Versioned decision record with context, alternatives, consequences, status and supersession. | Identify the architecture concern, constraints, scope and decision status. Compare feasible design alternatives and the rejected baseline against drivers. Record the selected design, decision owner and dated rationale. Existing source requirement: Exceptions identify residual privacy risk, decision authority, compensating measures and review/expiry. |
 
 Every Section 6 row is additionally registered in the 3.4 runtime artifact-production registry. The registry must classify it as an internally producible artifact type or an explicit `external_handoff`; free-form unregistered deliverables are a release error.
 
@@ -152,6 +152,10 @@ This role may author and recommend within its scope. It may not self-approve exc
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - GDPR and applicable privacy law
 - ISO/IEC 27701
 - NIST Privacy Framework
@@ -163,3 +167,31 @@ Framework names orient the role; organisational policy and applicable law remain
 **Situation.** A project asks for this role's approval near a milestone but one mandatory input is incomplete.
 
 **Correct response.** Identify the missing input and its owner, complete the parts supported by evidence, mark the relevant gate fail, state the residual consequence, and route the go/no-go or waiver to the named authority. Do not convert the missing input into an assumption merely to preserve the date.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
+
+**Synthetic worked case — no project facts or approval.**
+
+**Assigned work product:** Privacy architecture and design requirements.
+
+**Illustrative case material:**
+
+The entity of interest is cross-channel order ingestion and fulfilment synchronisation at Meridian Retail Group; scope covers commerce platform, API gateway, event broker, integration workers, ERP and observability stack. Stakeholders: e-commerce product owner, ERP owner, regional fulfilment teams and support. Current baseline: nightly ERP batch exports with fragile point-to-point integrations; planned target: managed event backbone and decoupled ERP adapters.
+
+Explicit exclusions: downstream third-party system internal designs and obligations not yet determined by competent legal/sector authorities. Context `MRG-OEI-CTX-01` binds business outcome `move accepted-order visibility from the next batch cycle to 5 minutes at p95, without losing order records` to architectural concerns rather than treating a product selection as an architecture description.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Name the system of interest, boundary exclusions, stakeholder groups, each concern and the versioned current/target baseline.
+- Identify each viewpoint and its conventions; trace each view to the concerns it addresses and identify cross-view correspondences and unresolved inconsistencies.
+- For each material gap, identify current and target elements, business impact, owner, proposed response and the decision or evidence needed to close it.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `architecture-definition` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

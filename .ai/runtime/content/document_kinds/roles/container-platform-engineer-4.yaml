@@ -62,7 +62,10 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: image signing, SBOM and registry promotion policy.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:4",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -100,7 +103,10 @@
         "reason": "For each receiving role (Software Engineer; Kubernetes Platform Engineer; Release Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:4",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -138,7 +144,10 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:4",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -176,7 +185,10 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:4",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -196,7 +208,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'image signing, SBOM and registry promotion policy', provide verifiable evidence satisfying: Every statement is testable and maps to at least one control. Required delivery form: Controlled document with owner, effective date and review date.",
+        "For the specific output 'image signing, SBOM and registry promotion policy', provide verifiable evidence satisfying: State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Every statement is testable and maps to at least one control. Required delivery form: Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -211,10 +223,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'image signing, SBOM and registry promotion policy', provide verifiable evidence satisfying: Every statement is testable and maps to at least one control. Required delivery form: Controlled document with owner, effective date and review date.",
+        "reason": "For the specific output 'image signing, SBOM and registry promotion policy', provide verifiable evidence satisfying: State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Every statement is testable and maps to at least one control. Required delivery form: Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:4",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -224,8 +239,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "image signing, SBOM and registry promotion policy",
-        "format": "Controlled document with owner, effective date and review date",
-        "acceptance_criterion": "Every statement is testable and maps to at least one control",
+        "format": "Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.",
+        "acceptance_criterion": "State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Every statement is testable and maps to at least one control.",
         "role_path": "skills/it-roles-infrastructure-cloud-and-operations/references/container-platform-engineer.md"
       }
     },
@@ -270,7 +285,10 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:4",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -322,7 +340,10 @@
         "reason": "Analyse the specific input \"Application runtime requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:4",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -365,7 +386,10 @@
         "reason": "Analyse the specific input \"Scanning and hardening policy\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:4",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -408,7 +432,10 @@
         "reason": "Analyse the specific input \"Registry and storage capability\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:4",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -451,7 +478,10 @@
         "reason": "Analyse the specific input \"Base image advisories\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:4",
-          "content/types/implementation-specification.yaml"
+          "content/types/implementation-specification.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -496,7 +526,10 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -539,7 +572,10 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -584,7 +620,10 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -707,11 +746,38 @@
         "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
         "basis": "jai-practice",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "configuration-management",
+        "title": "NIST SP 800-128, Guide for Security-Focused Configuration Management of Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-128",
+        "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "contingency-planning",
+        "title": "NIST SP 800-34 Revision 1, Contingency Planning Guide for Federal Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-34r1",
+        "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Container Platform Engineer",
+        "domain": "Infrastructure, Cloud and Operations",
+        "domain_index": 8,
+        "method_focus": "Define measurable service objectives, capacity and dependency assumptions, failure behaviour, recovery and observed operational evidence.",
         "frameworks": [
           "OCI image and distribution specifications",
           "Docker and Podman build practice",
@@ -719,6 +785,8 @@
           "SLSA provenance",
           "CIS Docker Benchmark"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -791,6 +859,17 @@
     "source_fingerprint": "fd6f389d120b3cbf35008c1f2f9933b61e0e6b7a7b94fc085d8092709081defd",
     "source_hash": "d2aa3525239723b32d2e5e6bd7ac3858bcaaf3419be4d85499c8bd86eb07a3a5"
   },
+  "delivery_form": {
+    "primary_artifact": "professional-document",
+    "representation": "Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.",
+    "evidence": [
+      "attributable subject-specific findings and limitations",
+      "reviewable sources and verifiable follow-up actions"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "36c274ed2b15c99ed8369044ecc53e52b3ab1893a8e21b1b2343463b6a56834f",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

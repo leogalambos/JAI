@@ -62,7 +62,9 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Commercial commitments and lifecycle obligation baseline",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#supplier-commercial-deal-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -100,7 +102,9 @@
         "reason": "For each receiving role (Bid / Proposal Manager; Supplier Commercial / Deal Manager; Delegated human commercial and finance authority), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#supplier-commercial-deal-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -138,7 +142,9 @@
         "reason": "Identify actual entity IDs and relationship instances for: business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence; material inputs -> source/version/assumption; client commitments -> protected internal commitment baseline; decision -> human approver where required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#supplier-commercial-deal-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -176,7 +182,9 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#supplier-commercial-deal-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -196,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Commercial commitments and lifecycle obligation baseline', provide verifiable evidence satisfying: Every material obligation has a feasible owner and traceable lifecycle effort/cost treatment. Required delivery form: Linked client commitments, internal economics, subcontract gaps, owners, acceptance and review triggers.",
+        "For the specific output 'Commercial commitments and lifecycle obligation baseline', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every material obligation has a feasible owner and traceable lifecycle effort/cost treatment. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -211,10 +219,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Commercial commitments and lifecycle obligation baseline', provide verifiable evidence satisfying: Every material obligation has a feasible owner and traceable lifecycle effort/cost treatment. Required delivery form: Linked client commitments, internal economics, subcontract gaps, owners, acceptance and review triggers.",
+        "reason": "For the specific output 'Commercial commitments and lifecycle obligation baseline', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every material obligation has a feasible owner and traceable lifecycle effort/cost treatment. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#supplier-commercial-deal-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -224,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Commercial commitments and lifecycle obligation baseline",
-        "format": "Linked client commitments, internal economics, subcontract gaps, owners, acceptance and review triggers",
-        "acceptance_criterion": "Every material obligation has a feasible owner and traceable lifecycle effort/cost treatment.",
+        "format": "Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
+        "acceptance_criterion": "Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every material obligation has a feasible owner and traceable lifecycle effort/cost treatment.",
         "role_path": "skills/it-roles-commercial-sourcing-and-enablement/references/supplier-commercial-deal-manager.md"
       }
     },
@@ -265,7 +275,9 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#supplier-commercial-deal-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -312,7 +324,9 @@
         "reason": "Analyse the specific input \"Client objectives, procurement route and opportunity strategy\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#supplier-commercial-deal-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -355,7 +369,9 @@
         "reason": "Analyse the specific input \"Negotiation mandate, signing limits, risk appetite and legal constraints\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#supplier-commercial-deal-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -398,7 +414,9 @@
         "reason": "Analyse the specific input \"Solution, estimate, price options and delivery/service feasibility\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#supplier-commercial-deal-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -441,7 +459,9 @@
         "reason": "Analyse the specific input \"Draft/signed terms, obligations, changes, invoices, service performance and claims\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#supplier-commercial-deal-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -486,7 +506,9 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -529,7 +551,9 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -574,7 +598,9 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -697,16 +723,37 @@
         "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
         "basis": "jai-practice",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "business-appraisal",
+        "title": "HM Treasury, The Green Book",
+        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Supplier Commercial / Deal Manager",
+        "domain": "Commercial, Sourcing and Enablement",
+        "domain_index": 15,
+        "method_focus": "Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.",
         "frameworks": [
           "World Commerce & Contracting contract and commercial management lifecycle practices: lifecycle commercial coherence, obligations, negotiation and change; no certification claim.",
           "ISO 44001 collaborative business relationship management concepts where applicable; collaboration does not displace contractual duties.",
           "Applicable contract/procurement/competition law and organisation delegated-authority, accounting, pricing and risk policies, interpreted by accountable specialists."
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -777,6 +824,17 @@
     "source_fingerprint": "e94e1d361927e4777b8a25ad462f23a57c7ce9324af00f2335cbec0b156e73a9",
     "source_hash": "c98584ae29c7cb2892293861bf16621d016ab63ac6634f92fd8a0eea333c4984"
   },
+  "delivery_form": {
+    "primary_artifact": "governed-register",
+    "representation": "Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
+    "evidence": [
+      "actual source-attributed records",
+      "uniqueness, completeness and relationship reconciliation"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "38bea5253afc654f1cee7d32d23c0d117583ec2d86824854bf45099e25b07402",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

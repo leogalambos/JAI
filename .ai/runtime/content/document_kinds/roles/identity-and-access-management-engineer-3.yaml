@@ -63,7 +63,10 @@
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -103,7 +106,10 @@
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -143,7 +149,10 @@
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -183,7 +192,10 @@
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -203,7 +215,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'joiner-mover-leaver automation', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'joiner-mover-leaver automation', provide verifiable evidence satisfying: Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets. Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths. Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence. Required delivery form: Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +230,15 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'joiner-mover-leaver automation', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'joiner-mover-leaver automation', provide verifiable evidence satisfying: Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets. Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths. Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence. Required delivery form: Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -233,8 +248,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "joiner-mover-leaver automation",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.",
+        "acceptance_criterion": "Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets. Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths. Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence.",
         "role_path": "skills/it-roles-security-operations-and-defensive-security/references/identity-and-access-management-engineer.md"
       }
     },
@@ -277,7 +292,10 @@
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -327,7 +345,10 @@
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -372,7 +393,10 @@
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -417,7 +441,10 @@
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -462,7 +489,10 @@
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-engineer:3",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -509,7 +539,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -554,7 +587,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -601,7 +637,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -732,17 +771,46 @@
         "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "systems-security-engineering",
+        "title": "NIST SP 800-160 Volume 1 Revision 1, Engineering Trustworthy Secure Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+        "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "contingency-planning",
+        "title": "NIST SP 800-34 Revision 1, Contingency Planning Guide for Federal Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-34r1",
+        "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Identity and Access Management Engineer",
+        "domain": "Security Operations and Defensive Security",
+        "domain_index": 11,
+        "method_focus": "Separate observed events, detection coverage, analytic hypotheses, confidence and containment/recovery evidence.",
         "frameworks": [
           "NIST SP 800-63",
           "OAuth 2.1 and OIDC",
           "SAML",
           "zero trust principles (NIST SP 800-207)"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -815,6 +883,17 @@
     "source_fingerprint": "ac9225a5c83ba291c0c1d4afb7b9814c5684e3b2bc54bea1d7fcd09c564fa896",
     "source_hash": "d6170cfbbce038627260c56fc2bc520c674f5126a5c2a58cd02da2d4d7ce26c6"
   },
+  "delivery_form": {
+    "primary_artifact": "executable-deployment-automation",
+    "representation": "Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.",
+    "evidence": [
+      "reproducible invocation and target versions",
+      "observed idempotency, health and rollback checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "0418c8d3dbd6514c3bb94069298207b2db447abc6dd3739acd1be8b3cdea500d",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

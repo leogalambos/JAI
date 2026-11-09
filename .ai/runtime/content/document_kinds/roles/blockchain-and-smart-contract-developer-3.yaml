@@ -63,7 +63,9 @@
           "artifacts/contracts/role-deliverables.v3.json#blockchain-and-smart-contract-developer:3",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -103,7 +105,9 @@
           "artifacts/contracts/role-deliverables.v3.json#blockchain-and-smart-contract-developer:3",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -143,7 +147,9 @@
           "artifacts/contracts/role-deliverables.v3.json#blockchain-and-smart-contract-developer:3",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -183,7 +189,9 @@
           "artifacts/contracts/role-deliverables.v3.json#blockchain-and-smart-contract-developer:3",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -203,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'deployment and upgrade strategy', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'deployment and upgrade strategy', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'deployment and upgrade strategy', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'deployment and upgrade strategy', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#blockchain-and-smart-contract-developer:3",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -233,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "deployment and upgrade strategy",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
+        "acceptance_criterion": "State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options.",
         "role_path": "skills/it-roles-software-development-and-engineering/references/blockchain-and-smart-contract-developer.md"
       }
     },
@@ -277,7 +287,9 @@
           "artifacts/contracts/role-deliverables.v3.json#blockchain-and-smart-contract-developer:3",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -327,7 +339,9 @@
           "artifacts/contracts/role-deliverables.v3.json#blockchain-and-smart-contract-developer:3",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -372,7 +386,9 @@
           "artifacts/contracts/role-deliverables.v3.json#blockchain-and-smart-contract-developer:3",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -417,7 +433,9 @@
           "artifacts/contracts/role-deliverables.v3.json#blockchain-and-smart-contract-developer:3",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -462,7 +480,9 @@
           "artifacts/contracts/role-deliverables.v3.json#blockchain-and-smart-contract-developer:3",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -509,7 +529,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -554,7 +576,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -601,7 +625,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -732,16 +758,37 @@
         "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "secure-software",
+        "title": "NIST SP 800-218, Secure Software Development Framework Version 1.1",
+        "url": "https://doi.org/10.6028/NIST.SP.800-218",
+        "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "software-testing",
+        "title": "ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation",
+        "url": "https://www.iso.org/standard/79429.html",
+        "scope": "Test planning, test specifications and reporting information needs.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Blockchain and Smart Contract Developer",
+        "domain": "Software Development and Engineering",
+        "domain_index": 5,
+        "method_focus": "Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.",
         "frameworks": [
           "language-specific secure development guidance",
           "smart contract audit practice",
           "formal verification tooling"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -812,6 +859,17 @@
     "source_fingerprint": "89adb0153b4f23464511dfc114c3ed367dca85b0c4abf4650ccb0721ce78107c",
     "source_hash": "27240a71cf21608bc035c86a0f33c6e4a12b3c3339e049abc7b6d56ddc4fb7b5"
   },
+  "delivery_form": {
+    "primary_artifact": "outcome-roadmap",
+    "representation": "Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
+    "evidence": [
+      "current/target baseline and planning assumptions",
+      "resource/funding constraints and decision triggers"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "ce4a424eee54214981f77b77a866e9d022cde0585c8b906c232fecaa9a9896af",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

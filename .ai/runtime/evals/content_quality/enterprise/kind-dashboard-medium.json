@@ -1,0 +1,341 @@
+{
+  "artifact_id": "synthetic/enterprise/kind-dashboard-medium",
+  "contract_id": "kind/dashboard",
+  "document_kind": "dashboard",
+  "author": {
+    "principal_id": "synthetic-author"
+  },
+  "title": "Regional order integration: kind-dashboard-medium",
+  "context": {
+    "processes_personal_data": true,
+    "regulatory_requirement": false
+  },
+  "summary": "Three regional order services, ERP integration, identity management and two operations teams.",
+  "scenario": {
+    "name": "Regional order integration",
+    "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+    "drivers": "Reconcile regional orders within 15 minutes with 99.9 percent monthly availability and no duplicated financial postings.",
+    "design": "An idempotent event gateway connects three regional services to ERP using versioned schemas and a dead-letter queue.",
+    "cost": "EUR 420000 implementation and EUR 90000 annual operation; three-year avoided handling cost EUR 810000, sensitive to order volume by 30 percent.",
+    "risk": "Replayed events can duplicate postings; deduplication keys and reconciled ledger totals reduce exposure but require weekly evidence review.",
+    "operations": "Regional service owners retain customer support; the integration team owns gateway recovery and ERP reconciliation escalation.",
+    "regulatory": false,
+    "privacy": true
+  },
+  "semantic_units": {
+    "privacy_analysis": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-PRIVACY-ANALYSIS",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "reference_decision_thresholds": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-REFERENCE-DECISION-THRESHOLDS",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Explain thresholds, uncertainty and the supported action.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "reference_measure_definition": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-REFERENCE-MEASURE-DEFINITION",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Define metric semantics, units, denominator, window and owner.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "reference_measurement_lineage": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-REFERENCE-MEASUREMENT-LINEAGE",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Link displayed values to reproducible queries and source versions.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "framework_applicability": [
+      {
+        "record_id": "SYN-PROFESSIONAL-BASIS",
+        "source": {
+          "title": "JAI authored enterprise-delivery practice",
+          "edition": "Synthetic development scenario, revision 1",
+          "authoritative_location": "content/rules/global-invariants.yaml"
+        },
+        "basis": "jai-interpretation",
+        "applicability": "applicable",
+        "rationale": "This fictional recovery case uses JAI evidence and bounded-handoff practice to exercise the DCS contract; no external framework conformity is claimed.",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "jurisdiction": "No real jurisdictional compliance conclusion is established by this synthetic fixture.",
+        "adopted_concepts": [
+          "Attributable evidence",
+          "Bounded receiving-role conclusions"
+        ],
+        "tailoring": "Illustrative recovery-service facts only; peak-load validation is excluded and remains pending.",
+        "precedence": "Applicable real law and organisation policy would prevail; neither is fabricated by this case.",
+        "method_mapping": [
+          {
+            "output_unit_ref": "global.framework_applicability",
+            "method": "Separate fabricated scenario observations from demonstrated production results and map residual gaps to the receiving owner.",
+            "expected_evidence": "Versioned synthetic scenario and its declared limitations.",
+            "evidence_refs": [
+              "SYN-01"
+            ],
+            "reviewer_test": "Reject any inference of real execution, framework conformance or human approval from this fictional example."
+          }
+        ],
+        "review": {
+          "owner": "Synthetic independent domain reviewer",
+          "status": "pending-independent-review",
+          "change_trigger": "Change to scenario scope, source practice or evidence; unchanged history is reused."
+        },
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "human_approval_ref": null
+      }
+    ],
+    "dashboard_interpretation": {
+      "metric_id": "SYN-M1",
+      "metric": "recovery_minutes",
+      "unit": "minutes",
+      "observed": 27,
+      "target_max": 30,
+      "sample_numerator": 1,
+      "sample_denominator": 1,
+      "period": "2026-10-19",
+      "source_query": "rehearsal_end minus rehearsal_start, version 1",
+      "refresh": "After each deployment and quarterly",
+      "interpretation": "One synthetic rehearsal meets the target; peak-load confidence remains unknown",
+      "record_id": "SYN-DASHBOARD-INTERPRETATION",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Explain thresholds, uncertainty, missing data and actions supported by the view.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "dashboard_measures": [
+      {
+        "metric_id": "SYN-M1",
+        "metric": "recovery_minutes",
+        "unit": "minutes",
+        "observed": 27,
+        "target_max": 30,
+        "sample_numerator": 1,
+        "sample_denominator": 1,
+        "period": "2026-10-19",
+        "source_query": "rehearsal_end minus rehearsal_start, version 1",
+        "refresh": "After each deployment and quarterly",
+        "interpretation": "One synthetic rehearsal meets the target; peak-load confidence remains unknown",
+        "record_id": "SYN-DASHBOARD-MEASURES",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Define metrics, units, denominators, targets, refresh cadence and accountable owners.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "dashboard_values": [
+      {
+        "metric_id": "SYN-M1",
+        "metric": "recovery_minutes",
+        "unit": "minutes",
+        "observed": 27,
+        "target_max": 30,
+        "sample_numerator": 1,
+        "sample_denominator": 1,
+        "period": "2026-10-19",
+        "source_query": "rehearsal_end minus rehearsal_start, version 1",
+        "refresh": "After each deployment and quarterly",
+        "interpretation": "One synthetic rehearsal meets the target; peak-load confidence remains unknown",
+        "record_id": "SYN-DASHBOARD-VALUES",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Provide dated observations linked to versioned source queries and population scope.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "identity": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-IDENTITY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify stable artifact ID, owner, source version and intended usage.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    }
+  },
+  "evaluation_selection": {
+    "overlays": []
+  },
+  "structural_probe": true,
+  "evaluation_scope": "Typed contract/overlay detector probe; professional semantic adequacy is not established by these generated records.",
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Fabricated recovery service records; no real customer evidence or human approval."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "dashboard.reference_decision_thresholds",
+        "dashboard.reference_measure_definition",
+        "dashboard.reference_measurement_lineage",
+        "global.framework_applicability",
+        "type/dashboard.dashboard_interpretation",
+        "type/dashboard.dashboard_measures",
+        "type/dashboard.dashboard_values",
+        "type/dashboard.identity"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "reference_decision_thresholds",
+      "expected_rule_ids": [
+        "dashboard.reference_decision_thresholds"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "reference_decision_thresholds",
+      "reason": "Author omitted a required obligation without authority.",
+      "expected_rule_ids": [
+        "dashboard.reference_decision_thresholds"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "The recovery design guarantees permanent zero incidents without evidence.",
+      "expected_rule_ids": [
+        "dashboard.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "The history of office furniture procurement does not support service recovery or the receiving decision.",
+      "expected_rule_ids": [
+        "dashboard.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "dashboard.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "Schedule pressure is claimed to waive the applicable legal restriction without authority.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope excludes personal identifiers; SYN-NA records anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "reference_decision_thresholds",
+      "count": 5,
+      "expected_rule_ids": [
+        "dashboard.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    }
+  ]
+}

@@ -25,7 +25,7 @@ Producing, maintaining and defending the quality of:
 
 Also in scope:
 
-- Working within TOGAF 10 ADM, ArchiMate 3.2, ISO/IEC 42010 and the organisation's own policy set.
+- Working with applicable TOGAF 10 ADM and ISO/IEC/IEEE 42010:2022 concepts and the organisation's adopted policies. Select and justify notation for the audience and concern; ArchiMate is opt-in unless an explicit project profile makes it the default. Identify the exact supported edition and qualification limits rather than assuming that a framework name establishes conformance.
 - Naming, escalating and tracking the risks, assumptions, issues and dependencies arising from that work.
 
 ### Out of scope — route elsewhere
@@ -75,7 +75,7 @@ Taking on out-of-scope work is not helpfulness; it removes the second pair of ey
 
 **Step 5 — Produce Enterprise architecture models (business, data, application, technology) plus decision records.** Record every significant choice as an ADR: context, options, decision, consequences, status. The consequences section is the one that earns its keep two years later.
 
-**Step 6 — Review with peers and affected parties.** Put the design through architecture review under TOGAF 10 ADM, ArchiMate 3.2, ISO/IEC 42010. Reviewers must include at least one person who will implement it and one who will run it.
+**Step 6 — Review with peers and affected parties.** Review the design against the applicable framework profile, stakeholder concerns, measurable requirements and cross-view consistency. When ArchiMate is selected, independently review the exact edition, metamodel legality, notation and interoperability limits. Reviewers must include at least one person who will implement it and one who will run it.
 
 **Step 7 — Govern through implementation.** Check conformance at build time, not only at design time. Track accepted deviations as technical debt with an owner and a repayment trigger.
 
@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Enterprise architecture models (business, data, application, technology) | Model in the EA tool plus a published view set | Every element traces to a driver or a quality-attribute target; no orphan elements |
-| 2 | architecture principles and standards | Model in the EA tool plus a published view set | Every element traces to a driver or a quality-attribute target; no orphan elements |
-| 3 | technology roadmap | Time-phased view with named owners per horizon | Each item carries a dependency set, a cost band and a decision date |
-| 4 | architecture decision records | Model in the EA tool plus a published view set | Every element traces to a driver or a quality-attribute target; no orphan elements |
+| 1 | Enterprise architecture models (business, data, application, technology) | Concern-driven architecture description with linked views; notation chosen for audience and qualified project profile. | Name the system of interest, boundary exclusions, stakeholder groups, each concern and the versioned current/target baseline. Identify each viewpoint and its conventions; trace each view to the concerns it addresses and identify cross-view correspondences and unresolved inconsistencies. For each material gap, identify current and target elements, business impact, owner, proposed response and the decision or evidence needed to close it. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. |
+| 2 | architecture principles and standards | Governed principle records with rationale, implications and exceptions. | Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. |
+| 3 | technology roadmap | Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones. | State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Each item carries a dependency set, a cost band and a decision date. |
+| 4 | architecture decision records | Versioned ADR; an EA tool representation is optional. | Identify the architecture concern, constraints, scope and decision status. Compare feasible design alternatives and the rejected baseline against drivers. Record the selected design, decision owner and dated rationale. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. |
 
 ## 7. Output gates (blocking)
 
@@ -188,6 +188,12 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+
+ArchiMate 3.2 is opt-in for an explicit operator request or an explicit project profile with relevant audience/concerns, governed source facts and independent semantic/visual QA; preserve role boundaries and report the actual qualification scope. No external EA application is required, and a generic repository graph must not be called verified ArchiMate notation.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - TOGAF 10 ADM
 - ArchiMate 3.2
 - ISO/IEC 42010
@@ -198,13 +204,30 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Produce a target architecture and a five-year decommissioning plan for 140 overlapping applications”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver enterprise architecture models (business, data, application, technology) in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Enterprise architecture models (business, data, application, technology).
+
+**Illustrative case material:**
+
+The entity of interest is cross-channel order ingestion and fulfilment synchronisation at Meridian Retail Group; scope covers commerce platform, API gateway, event broker, integration workers, ERP and observability stack. Stakeholders: e-commerce product owner, ERP owner, regional fulfilment teams and support. Current baseline: nightly ERP batch exports with fragile point-to-point integrations; planned target: managed event backbone and decoupled ERP adapters.
+
+Explicit exclusions: downstream third-party system internal designs and obligations not yet determined by competent legal/sector authorities. Context `MRG-OEI-CTX-01` binds business outcome `move accepted-order visibility from the next batch cycle to 5 minutes at p95, without losing order records` to architectural concerns rather than treating a product selection as an architecture description.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Name the system of interest, boundary exclusions, stakeholder groups, each concern and the versioned current/target baseline.
+- Identify each viewpoint and its conventions; trace each view to the concerns it addresses and identify cross-view correspondences and unresolved inconsistencies.
+- For each material gap, identify current and target elements, business impact, owner, proposed response and the decision or evidence needed to close it.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `architecture-definition` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

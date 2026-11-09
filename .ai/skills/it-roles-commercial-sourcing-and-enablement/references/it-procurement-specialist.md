@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Requirements and tender documentation | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 2 | supplier evaluation and scoring records | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 3 | commercial recommendation | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 4 | negotiated terms summary | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
+| 1 | Requirements and tender documentation | Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions. | State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. |
+| 2 | supplier evaluation and scoring records | Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules. | Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. |
+| 3 | commercial recommendation | Bounded decision paper with consistent option comparison and a clear authority/decision request. | Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. |
+| 4 | negotiated terms summary | Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions. | State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. |
 
 ## 7. Output gates (blocking)
 
@@ -188,6 +188,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - organisational procurement policy
 - public procurement regulation where applicable
 - ISO 20400 sustainable procurement
@@ -198,13 +202,32 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Run a selection for a core SaaS platform where the business has already chosen the vendor”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver requirements and tender documentation in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Requirements and tender documentation.
+
+**Illustrative case material:**
+
+The maintainer needs to know whether interface stock-v2 changes retry behaviour. The source set is API schema v2, change src-42 and the owner supplied requirement R-17; undocumented production behaviour is excluded.
+
+**Acceptance question:** State the reader decision, subject and bounded sources.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers.
+- Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient.
+- State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `document` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

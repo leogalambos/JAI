@@ -63,7 +63,9 @@
           "artifacts/contracts/role-deliverables.v3.json#ethics-and-responsible-technology-lead:4",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -103,7 +105,9 @@
           "artifacts/contracts/role-deliverables.v3.json#ethics-and-responsible-technology-lead:4",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -143,7 +147,9 @@
           "artifacts/contracts/role-deliverables.v3.json#ethics-and-responsible-technology-lead:4",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -183,7 +189,9 @@
           "artifacts/contracts/role-deliverables.v3.json#ethics-and-responsible-technology-lead:4",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -203,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'escalation and stop recommendations', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'escalation and stop recommendations', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'escalation and stop recommendations', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'escalation and stop recommendations', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ethics-and-responsible-technology-lead:4",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -233,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "escalation and stop recommendations",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Bounded decision paper with consistent option comparison and a clear authority/decision request.",
+        "acceptance_criterion": "Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option.",
         "role_path": "skills/it-roles-research-innovation-and-specialist-engineering/references/ethics-and-responsible-technology-lead.md"
       }
     },
@@ -275,7 +285,9 @@
           "artifacts/contracts/role-deliverables.v3.json#ethics-and-responsible-technology-lead:4",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -323,7 +335,9 @@
           "artifacts/contracts/role-deliverables.v3.json#ethics-and-responsible-technology-lead:4",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -368,7 +382,9 @@
           "artifacts/contracts/role-deliverables.v3.json#ethics-and-responsible-technology-lead:4",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -413,7 +429,9 @@
           "artifacts/contracts/role-deliverables.v3.json#ethics-and-responsible-technology-lead:4",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -458,7 +476,9 @@
           "artifacts/contracts/role-deliverables.v3.json#ethics-and-responsible-technology-lead:4",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -505,7 +525,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -550,7 +572,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -597,7 +621,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -728,17 +754,38 @@
         "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "research-reproducibility",
+        "title": "ACM Artifact Review and Badging policy",
+        "url": "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+        "scope": "Artifact availability, evaluation and reproducibility terminology; informative evidence-pack practice, not proof that an experiment is scientifically sufficient.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Ethics and Responsible Technology Lead",
+        "domain": "Research, Innovation and Specialist Engineering",
+        "domain_index": 16,
+        "method_focus": "State hypotheses, success criteria and measurement methods before experiments; distinguish observed results, uncertainty and applicability limits.",
         "frameworks": [
           "IEEE 7000 series",
           "ISO/IEC 42001 for AI",
           "UNGP business and human rights",
           "internal ethics policy"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -809,6 +856,17 @@
     "source_fingerprint": "6e84eac2fc315e831614d3ff69d38e11f306827b5d9278170561e970a954c8c7",
     "source_hash": "c38df467b2e216ff78da8d8fcf32d00ffe44cc15b33284f7771932d49cbaf07f"
   },
+  "delivery_form": {
+    "primary_artifact": "decision-paper",
+    "representation": "Bounded decision paper with consistent option comparison and a clear authority/decision request.",
+    "evidence": [
+      "baseline and feasible alternatives",
+      "cost/benefit/uncertainty and consequences"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "985c6c2ddc7b42f00520c21e8277e19ced8a3a90f5ad6a176db6540ad41b37b8",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

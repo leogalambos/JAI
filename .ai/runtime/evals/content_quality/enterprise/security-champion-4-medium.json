@@ -82,6 +82,48 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
+    "framework_applicability": [
+      {
+        "record_id": "SYN-PROFESSIONAL-BASIS",
+        "source": {
+          "title": "JAI authored enterprise-delivery practice",
+          "edition": "Synthetic development scenario, revision 1",
+          "authoritative_location": "content/rules/global-invariants.yaml"
+        },
+        "basis": "jai-interpretation",
+        "applicability": "applicable",
+        "rationale": "This fictional recovery case uses JAI evidence and bounded-handoff practice to exercise the DCS contract; no external framework conformity is claimed.",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "jurisdiction": "No real jurisdictional compliance conclusion is established by this synthetic fixture.",
+        "adopted_concepts": [
+          "Attributable evidence",
+          "Bounded receiving-role conclusions"
+        ],
+        "tailoring": "Illustrative recovery-service facts only; peak-load validation is excluded and remains pending.",
+        "precedence": "Applicable real law and organisation policy would prevail; neither is fabricated by this case.",
+        "method_mapping": [
+          {
+            "output_unit_ref": "global.framework_applicability",
+            "method": "Separate fabricated scenario observations from demonstrated production results and map residual gaps to the receiving owner.",
+            "expected_evidence": "Versioned synthetic scenario and its declared limitations.",
+            "evidence_refs": [
+              "SYN-01"
+            ],
+            "reviewer_test": "Reject any inference of real execution, framework conformance or human approval from this fictional example."
+          }
+        ],
+        "review": {
+          "owner": "Synthetic independent domain reviewer",
+          "status": "pending-independent-review",
+          "change_trigger": "Change to scenario scope, source practice or evidence; unchanged history is reused."
+        },
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "human_approval_ref": null
+      }
+    ],
     "contract_input_1": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -214,7 +256,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'team security practice improvements', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "criterion_under_review": "For the specific output 'team security practice improvements', provide verifiable evidence satisfying: State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Required delivery form: Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -370,6 +412,7 @@
       "expected_rule_ids": [
         "domain/delivery.delivery_accountability",
         "domain/delivery.delivery_dependencies",
+        "global.framework_applicability",
         "role/security-champion:4.contract_input_1",
         "role/security-champion:4.contract_input_2",
         "role/security-champion:4.contract_input_3",

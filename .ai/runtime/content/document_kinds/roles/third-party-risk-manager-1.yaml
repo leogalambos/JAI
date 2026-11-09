@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#third-party-risk-manager:1",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#third-party-risk-manager:1",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#third-party-risk-manager:1",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#third-party-risk-manager:1",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Supplier risk assessments and tiering', provide verifiable evidence satisfying: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Structured assessment document with scoring method stated.",
+        "For the specific output 'Supplier risk assessments and tiering', provide verifiable evidence satisfying: Define assessment scope, likelihood/impact scales, time horizon, risk criteria and appetite; explain how qualitative or quantitative ratings are assigned. For each scenario, record cause, event, affected asset/outcome, consequences, existing controls, evidence, uncertainty and a justified current/residual rating. For each treatment, record the scenario ID, chosen response, action owner, target date, expected risk change and authority required for residual acceptance. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Supplier risk assessments and tiering', provide verifiable evidence satisfying: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Structured assessment document with scoring method stated.",
+        "reason": "For the specific output 'Supplier risk assessments and tiering', provide verifiable evidence satisfying: Define assessment scope, likelihood/impact scales, time horizon, risk criteria and appetite; explain how qualitative or quantitative ratings are assigned. For each scenario, record cause, event, affected asset/outcome, consequences, existing controls, evidence, uncertainty and a justified current/residual rating. For each treatment, record the scenario ID, chosen response, action owner, target date, expected risk change and authority required for residual acceptance. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#third-party-risk-manager:1",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Supplier risk assessments and tiering",
-        "format": "Structured assessment document with scoring method stated",
-        "acceptance_criterion": "Criteria were fixed before evidence collection and the method is reproducible",
+        "format": "Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.",
+        "acceptance_criterion": "Define assessment scope, likelihood/impact scales, time horizon, risk criteria and appetite; explain how qualitative or quantitative ratings are assigned. For each scenario, record cause, event, affected asset/outcome, consequences, existing controls, evidence, uncertainty and a justified current/residual rating. For each treatment, record the scenario ID, chosen response, action owner, target date, expected risk change and authority required for residual acceptance. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible.",
         "role_path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/third-party-risk-manager.md"
       }
     },
@@ -269,7 +279,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#third-party-risk-manager:1",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -316,7 +328,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#third-party-risk-manager:1",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -360,7 +374,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#third-party-risk-manager:1",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -404,7 +420,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#third-party-risk-manager:1",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -448,7 +466,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#third-party-risk-manager:1",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -494,7 +514,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -538,7 +560,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -584,7 +608,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -707,16 +733,37 @@
         "scope": "Assessment scope, threat events, vulnerabilities, likelihood, impact and uncertainty.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Third-Party Risk Manager",
+        "domain": "Governance, Risk, Compliance, Audit and Privacy",
+        "domain_index": 13,
+        "method_focus": "Separate binding obligation, interpretation, control, evidence, independent test and bounded assurance/risk conclusion.",
         "frameworks": [
           "DORA third-party requirements",
           "ISO/IEC 27036",
           "NIST SP 800-161 supply chain risk"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -787,6 +834,17 @@
     "source_fingerprint": "294d523eabb3da12348de4d80a5a689f51e1ce6728be4d1d6eaf2ba3cc947112",
     "source_hash": "f5db75fdc0f3a71ed3d1903f07c051f78c6faa6803fbfcabf85c09bafd28f307"
   },
+  "delivery_form": {
+    "primary_artifact": "risk-assessment",
+    "representation": "Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.",
+    "evidence": [
+      "likelihood/impact rationale and uncertainty",
+      "current/residual exposure and treatment evidence"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "7278de634be3b0bcf81b0a7dee9331decae76a5e428bdb0560f381d7bdcaf9fd",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

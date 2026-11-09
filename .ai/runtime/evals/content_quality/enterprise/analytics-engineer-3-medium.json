@@ -82,6 +82,48 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
+    "framework_applicability": [
+      {
+        "record_id": "SYN-PROFESSIONAL-BASIS",
+        "source": {
+          "title": "JAI authored enterprise-delivery practice",
+          "edition": "Synthetic development scenario, revision 1",
+          "authoritative_location": "content/rules/global-invariants.yaml"
+        },
+        "basis": "jai-interpretation",
+        "applicability": "applicable",
+        "rationale": "This fictional recovery case uses JAI evidence and bounded-handoff practice to exercise the DCS contract; no external framework conformity is claimed.",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "jurisdiction": "No real jurisdictional compliance conclusion is established by this synthetic fixture.",
+        "adopted_concepts": [
+          "Attributable evidence",
+          "Bounded receiving-role conclusions"
+        ],
+        "tailoring": "Illustrative recovery-service facts only; peak-load validation is excluded and remains pending.",
+        "precedence": "Applicable real law and organisation policy would prevail; neither is fabricated by this case.",
+        "method_mapping": [
+          {
+            "output_unit_ref": "global.framework_applicability",
+            "method": "Separate fabricated scenario observations from demonstrated production results and map residual gaps to the receiving owner.",
+            "expected_evidence": "Versioned synthetic scenario and its declared limitations.",
+            "evidence_refs": [
+              "SYN-01"
+            ],
+            "reviewer_test": "Reject any inference of real execution, framework conformance or human approval from this fictional example."
+          }
+        ],
+        "review": {
+          "owner": "Synthetic independent domain reviewer",
+          "status": "pending-independent-review",
+          "change_trigger": "Change to scenario scope, source practice or evidence; unchanged history is reused."
+        },
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "human_approval_ref": null
+      }
+    ],
     "contract_input_1": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -214,7 +256,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'dataset documentation and lineage', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "criterion_under_review": "For the specific output 'dataset documentation and lineage', provide verifiable evidence satisfying: Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Required delivery form: Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -260,49 +302,7 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
-    "dataset_lineage": {
-      "source_id": "SYN-LEDGER-1",
-      "source_version": "1",
-      "extracted_at": "2026-10-19T10:00:00Z",
-      "transformation": "Group committed records by event_id and compare counts before/after restore",
-      "input_records": 10,
-      "output_records": 10,
-      "classification": "Synthetic non-customer data",
-      "retention": "Delete rehearsal extracts after regression investigation closes",
-      "permitted_use": "Development regression only",
-      "record_id": "SYN-DATASET-LINEAGE",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Record source versions, extraction time, transformations, lawful access and retention.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "dataset_quality": [
-      {
-        "source_id": "SYN-LEDGER-1",
-        "source_version": "1",
-        "extracted_at": "2026-10-19T10:00:00Z",
-        "transformation": "Group committed records by event_id and compare counts before/after restore",
-        "input_records": 10,
-        "output_records": 10,
-        "classification": "Synthetic non-customer data",
-        "retention": "Delete rehearsal extracts after regression investigation closes",
-        "permitted_use": "Development regression only",
-        "record_id": "SYN-DATASET-QUALITY",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Evidence completeness, uniqueness, consistency, drift and permitted-use limitations.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "dataset_schema": [
+    "catalogue_entries": [
       {
         "schema_version": "1.0",
         "entity_id": "SYN-APP-1",
@@ -326,10 +326,10 @@
         },
         "uniqueness_observed": "10 of 10 event IDs unique",
         "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
-        "record_id": "SYN-DATASET-SCHEMA",
+        "record_id": "SYN-CATALOGUE-ENTRIES",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Define fields, datatypes, units, keys, null handling and allowed values.",
+        "criterion_under_review": "Identify actual governed entities with owners, source, status and lifecycle dates.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -337,6 +337,74 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
+    "catalogue_integrity": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-CATALOGUE-INTEGRITY",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Evidence duplicate detection, relationship integrity and reconciliation against sources.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "catalogue_schema": {
+      "schema_version": "1.0",
+      "entity_id": "SYN-APP-1",
+      "columns": [
+        {
+          "name": "event_id",
+          "datatype": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "amount",
+          "datatype": "decimal(12,2)",
+          "unit": "EUR",
+          "nullable": false
+        }
+      ],
+      "key": "event_id",
+      "record": {
+        "event_id": "SYN-EVENT-1",
+        "amount": 125.5
+      },
+      "uniqueness_observed": "10 of 10 event IDs unique",
+      "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+      "record_id": "SYN-CATALOGUE-SCHEMA",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Define entity classes, stable identifiers, required attributes and relations.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
     "identity": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -384,6 +452,7 @@
       "expected_rule_ids": [
         "domain/data.data_accountability",
         "domain/data.data_lineage_quality",
+        "global.framework_applicability",
         "role/analytics-engineer:3.contract_input_1",
         "role/analytics-engineer:3.contract_input_2",
         "role/analytics-engineer:3.contract_input_3",
@@ -394,10 +463,10 @@
         "role/analytics-engineer:3.delivery_verification",
         "role/analytics-engineer:3.receiving_acceptance",
         "role/analytics-engineer:3.role_gate_observations",
-        "type/dataset.dataset_lineage",
-        "type/dataset.dataset_quality",
-        "type/dataset.dataset_schema",
-        "type/dataset.identity"
+        "type/catalogue.catalogue_entries",
+        "type/catalogue.catalogue_integrity",
+        "type/catalogue.catalogue_schema",
+        "type/catalogue.identity"
       ],
       "expected_category": "critical-content"
     },

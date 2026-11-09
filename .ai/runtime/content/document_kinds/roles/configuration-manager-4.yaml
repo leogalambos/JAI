@@ -63,7 +63,9 @@
           "artifacts/contracts/role-deliverables.v3.json#configuration-manager:4",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -103,7 +105,9 @@
           "artifacts/contracts/role-deliverables.v3.json#configuration-manager:4",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -143,7 +147,9 @@
           "artifacts/contracts/role-deliverables.v3.json#configuration-manager:4",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -183,7 +189,9 @@
           "artifacts/contracts/role-deliverables.v3.json#configuration-manager:4",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -203,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'data quality improvement plan', provide verifiable evidence satisfying: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Document with milestones, owners, dependencies and assumptions.",
+        "For the specific output 'data quality improvement plan', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'data quality improvement plan', provide verifiable evidence satisfying: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Document with milestones, owners, dependencies and assumptions.",
+        "reason": "For the specific output 'data quality improvement plan', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#configuration-manager:4",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -233,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "data quality improvement plan",
-        "format": "Document with milestones, owners, dependencies and assumptions",
-        "acceptance_criterion": "Every milestone has an acceptance test and a named accountable owner",
+        "format": "Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
+        "acceptance_criterion": "State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner.",
         "role_path": "skills/it-roles-service-management-and-support/references/configuration-manager.md"
       }
     },
@@ -275,7 +285,9 @@
           "artifacts/contracts/role-deliverables.v3.json#configuration-manager:4",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -323,7 +335,9 @@
           "artifacts/contracts/role-deliverables.v3.json#configuration-manager:4",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -368,7 +382,9 @@
           "artifacts/contracts/role-deliverables.v3.json#configuration-manager:4",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -413,7 +429,9 @@
           "artifacts/contracts/role-deliverables.v3.json#configuration-manager:4",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -458,7 +476,9 @@
           "artifacts/contracts/role-deliverables.v3.json#configuration-manager:4",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -505,7 +525,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -550,7 +572,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -597,7 +621,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -728,16 +754,37 @@
         "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "service-management",
+        "title": "ISO/IEC 20000-1:2018, Service management system requirements",
+        "url": "https://www.iso.org/standard/70636.html",
+        "scope": "Service requirements, agreements, transition, operation and measurement concepts.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Configuration Manager",
+        "domain": "Service Management and Support",
+        "domain_index": 10,
+        "method_focus": "Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.",
         "frameworks": [
           "ITIL 4 service configuration management",
           "ISO/IEC 20000-1",
           "ISO/IEC 19770-1"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -808,6 +855,17 @@
     "source_fingerprint": "757f43f62e577498c006488c1cf9d5f1be307e1042c83b6b59d766d3d1d2f155",
     "source_hash": "f1639327738788d0390fffc636d6313e0189f627fa136f874fda180a28346de3"
   },
+  "delivery_form": {
+    "primary_artifact": "outcome-roadmap",
+    "representation": "Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
+    "evidence": [
+      "current/target baseline and planning assumptions",
+      "resource/funding constraints and decision triggers"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "ab5eddd9450304d0e695b7bbb3914c6ec838847b3ef742cd5a11053c6e552f29",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

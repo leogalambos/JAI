@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#developer-experience-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#developer-experience-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#developer-experience-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#developer-experience-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'local development environment', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'local development environment', provide verifiable evidence satisfying: Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Required delivery form: Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'local development environment', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'local development environment', provide verifiable evidence satisfying: Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Required delivery form: Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#developer-experience-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "local development environment",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
+        "acceptance_criterion": "Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions.",
         "role_path": "skills/it-roles-software-development-and-engineering/references/developer-experience-engineer.md"
       }
     },
@@ -272,7 +282,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#developer-experience-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -322,7 +334,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#developer-experience-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -366,7 +380,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#developer-experience-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -410,7 +426,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#developer-experience-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -454,7 +472,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#developer-experience-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -500,7 +520,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -544,7 +566,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -590,7 +614,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -713,16 +739,37 @@
         "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "secure-software",
+        "title": "NIST SP 800-218, Secure Software Development Framework Version 1.1",
+        "url": "https://doi.org/10.6028/NIST.SP.800-218",
+        "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "software-testing",
+        "title": "ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation",
+        "url": "https://www.iso.org/standard/79429.html",
+        "scope": "Test planning, test specifications and reporting information needs.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Developer Experience Engineer",
+        "domain": "Software Development and Engineering",
+        "domain_index": 5,
+        "method_focus": "Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.",
         "frameworks": [
           "DORA and SPACE metrics",
           "Team Topologies",
           "internal developer platform practice"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -795,6 +842,17 @@
     "source_fingerprint": "4a7d10e2013a8b6a367bb6ce2401996ad0a93d4eda6c14745ee77a29bde69f98",
     "source_hash": "f9c3a140f6e1d78257dcf5f563477f35ab826de861cd201044136f4022de9a12"
   },
+  "delivery_form": {
+    "primary_artifact": "versioned-configuration",
+    "representation": "Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
+    "evidence": [
+      "reproduction/drift observations",
+      "verification and recovery to a known baseline"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "050f533d5258de73005e75115825a8011a03d4bbf26a549d669462adb46d42ac",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#wireless-and-rf-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#wireless-and-rf-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#wireless-and-rf-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#wireless-and-rf-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'wireless security configuration', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'wireless security configuration', provide verifiable evidence satisfying: Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Required delivery form: Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'wireless security configuration', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'wireless security configuration', provide verifiable evidence satisfying: Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Required delivery form: Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#wireless-and-rf-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "wireless security configuration",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
+        "acceptance_criterion": "Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions.",
         "role_path": "skills/it-roles-network-and-telecommunications/references/wireless-and-rf-engineer.md"
       }
     },
@@ -271,7 +281,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#wireless-and-rf-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -320,7 +332,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#wireless-and-rf-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -364,7 +378,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#wireless-and-rf-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -408,7 +424,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#wireless-and-rf-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -452,7 +470,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#wireless-and-rf-engineer:3",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -498,7 +518,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -542,7 +564,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -588,7 +612,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -711,16 +737,37 @@
         "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "internet-standards-process",
+        "title": "IETF RFC 2026, The Internet Standards Process — Revision 3",
+        "url": "https://www.rfc-editor.org/rfc/rfc2026",
+        "scope": "Distinguishing standards-track status and specification maturity; select the actual applicable protocol RFCs and their updates rather than treating the process document as a network design standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "systems-security-engineering",
+        "title": "NIST SP 800-160 Volume 1 Revision 1, Engineering Trustworthy Secure Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+        "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Wireless and RF Engineer",
+        "domain": "Network and Telecommunications",
+        "domain_index": 9,
+        "method_focus": "Identify applicable protocol/technology editions, topology and trust assumptions, measurable network behaviour and compatibility evidence.",
         "frameworks": [
           "IEEE 802.11 standards",
           "regulatory spectrum rules",
           "vendor design guides"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -793,6 +840,17 @@
     "source_fingerprint": "8153bed2cdfe5d3b620f78e201c3b98f4f682707d433cc686d1bb5a11e42c0a9",
     "source_hash": "f97f4d6252d2924e602a121d707e51d09364a20bcafbdf69f989712679121790"
   },
+  "delivery_form": {
+    "primary_artifact": "versioned-configuration",
+    "representation": "Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
+    "evidence": [
+      "reproduction/drift observations",
+      "verification and recovery to a known baseline"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "d8f136b7dbdab9510ed3fecbe2256549f9609e18ffea064611b9b71685db449f",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

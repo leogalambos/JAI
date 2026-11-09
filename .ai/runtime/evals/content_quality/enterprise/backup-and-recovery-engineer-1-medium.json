@@ -23,41 +23,43 @@
     "privacy": true
   },
   "semantic_units": {
-    "delivery_accountability": [
+    "operational_ownership": {
+      "service_owner": "Morgan Lee",
+      "support_team": "Warehouse platform operations",
+      "support_hours": "06:00-22:00",
+      "incident_ref": "SYN-INC1",
+      "step": 1,
+      "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+      "expected_output": "deployment transaction-api successfully rolled out",
+      "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+      "safe_state": "Keep new transaction traffic disabled",
+      "escalation": "Incident commander on bridge SYN-INC1",
+      "record_id": "SYN-OPERATIONAL-OWNERSHIP",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify receiving service owner, support boundaries, escalation and review triggers.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "operational_recoverability": [
       {
-        "increment_id": "SYN-WAVE1",
-        "start": "2026-11-01",
-        "finish": "2026-11-05",
-        "dependency": "SYN-T1 peak-load retest",
-        "entry": "Backup restore rehearsed and rollback configuration retained",
-        "exit": "Ledger totals reconcile and operations independently accepts support",
-        "go_no_go": "Service owner with independent operations evidence",
-        "fallback_decision_time": "Before enabling transaction traffic",
-        "record_id": "SYN-DELIVERY-ACCOUNTABILITY",
+        "service_owner": "Morgan Lee",
+        "support_team": "Warehouse platform operations",
+        "support_hours": "06:00-22:00",
+        "incident_ref": "SYN-INC1",
+        "step": 1,
+        "command": "kubectl --context inv-rehearsal rollout status deployment/transaction-api --timeout=120s",
+        "expected_output": "deployment transaction-api successfully rolled out",
+        "stop_condition": "Environment differs from inv-rehearsal or reconciliation fails",
+        "safe_state": "Keep new transaction traffic disabled",
+        "escalation": "Incident commander on bridge SYN-INC1",
+        "record_id": "SYN-OPERATIONAL-RECOVERABILITY",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Assign outcomes, milestones, resource assumptions and acceptance responsibility.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "delivery_dependencies": [
-      {
-        "increment_id": "SYN-WAVE1",
-        "start": "2026-11-01",
-        "finish": "2026-11-05",
-        "dependency": "SYN-T1 peak-load retest",
-        "entry": "Backup restore rehearsed and rollback configuration retained",
-        "exit": "Ledger totals reconcile and operations independently accepts support",
-        "go_no_go": "Service owner with independent operations evidence",
-        "fallback_decision_time": "Before enabling transaction traffic",
-        "record_id": "SYN-DELIVERY-DEPENDENCIES",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Link delivery risks, cross-team dependencies and change decisions to accountable owners.",
+        "criterion_under_review": "Trace monitoring, failure handling, backup/recovery and rollback requirements to rehearsed evidence.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -82,6 +84,48 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
+    "framework_applicability": [
+      {
+        "record_id": "SYN-PROFESSIONAL-BASIS",
+        "source": {
+          "title": "JAI authored enterprise-delivery practice",
+          "edition": "Synthetic development scenario, revision 1",
+          "authoritative_location": "content/rules/global-invariants.yaml"
+        },
+        "basis": "jai-interpretation",
+        "applicability": "applicable",
+        "rationale": "This fictional recovery case uses JAI evidence and bounded-handoff practice to exercise the DCS contract; no external framework conformity is claimed.",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "jurisdiction": "No real jurisdictional compliance conclusion is established by this synthetic fixture.",
+        "adopted_concepts": [
+          "Attributable evidence",
+          "Bounded receiving-role conclusions"
+        ],
+        "tailoring": "Illustrative recovery-service facts only; peak-load validation is excluded and remains pending.",
+        "precedence": "Applicable real law and organisation policy would prevail; neither is fabricated by this case.",
+        "method_mapping": [
+          {
+            "output_unit_ref": "global.framework_applicability",
+            "method": "Separate fabricated scenario observations from demonstrated production results and map residual gaps to the receiving owner.",
+            "expected_evidence": "Versioned synthetic scenario and its declared limitations.",
+            "evidence_refs": [
+              "SYN-01"
+            ],
+            "reviewer_test": "Reject any inference of real execution, framework conformance or human approval from this fictional example."
+          }
+        ],
+        "review": {
+          "owner": "Synthetic independent domain reviewer",
+          "status": "pending-independent-review",
+          "change_trigger": "Change to scenario scope, source practice or evidence; unchanged history is reused."
+        },
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "human_approval_ref": null
+      }
+    ],
     "contract_input_1": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -214,7 +258,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Backup configuration and schedule', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "criterion_under_review": "For the specific output 'Backup configuration and schedule', provide verifiable evidence satisfying: Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Required delivery form: Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -260,20 +304,104 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
-    "delivery_increments": [
+    "baseline_targets": [
       {
-        "increment_id": "SYN-WAVE1",
-        "start": "2026-11-01",
-        "finish": "2026-11-05",
-        "dependency": "SYN-T1 peak-load retest",
-        "entry": "Backup restore rehearsed and rollback configuration retained",
-        "exit": "Ledger totals reconcile and operations independently accepts support",
-        "go_no_go": "Service owner with independent operations evidence",
-        "fallback_decision_time": "Before enabling transaction traffic",
-        "record_id": "SYN-DELIVERY-INCREMENTS",
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-BASELINE-TARGETS",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Define sequenced increments, resources, milestones and measurable acceptance.",
+        "criterion_under_review": "Identify managed assets, tool/schema versions and authorised configuration scope.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "baseline_values": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-BASELINE-VALUES",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Provide typed desired settings, permitted ranges and secret-manager references.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "baseline_verification": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-BASELINE-VERIFICATION",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Evidence reproducibility, drift checks, deployment validation and rollback to a known baseline.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -297,49 +425,7 @@
         "SYN-01"
       ],
       "knowledge_status": "synthetic-assumption"
-    },
-    "outcome_horizons": [
-      {
-        "increment_id": "SYN-WAVE1",
-        "start": "2026-11-01",
-        "finish": "2026-11-05",
-        "dependency": "SYN-T1 peak-load retest",
-        "entry": "Backup restore rehearsed and rollback configuration retained",
-        "exit": "Ledger totals reconcile and operations independently accepts support",
-        "go_no_go": "Service owner with independent operations evidence",
-        "fallback_decision_time": "Before enabling transaction traffic",
-        "record_id": "SYN-OUTCOME-HORIZONS",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Describe current and target outcomes, accountable owners and planning assumptions.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "roadmap_dependencies": [
-      {
-        "increment_id": "SYN-WAVE1",
-        "start": "2026-11-01",
-        "finish": "2026-11-05",
-        "dependency": "SYN-T1 peak-load retest",
-        "entry": "Backup restore rehearsed and rollback configuration retained",
-        "exit": "Ledger totals reconcile and operations independently accepts support",
-        "go_no_go": "Service owner with independent operations evidence",
-        "fallback_decision_time": "Before enabling transaction traffic",
-        "record_id": "SYN-ROADMAP-DEPENDENCIES",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Link dependencies, funding constraints, risks and decision dates to affected increments.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ]
+    }
   },
   "evaluation_selection": {
     "overlays": []
@@ -368,8 +454,9 @@
       "id": "headings-only",
       "operation": "headings_only",
       "expected_rule_ids": [
-        "domain/delivery.delivery_accountability",
-        "domain/delivery.delivery_dependencies",
+        "domain/operations.operational_ownership",
+        "domain/operations.operational_recoverability",
+        "global.framework_applicability",
         "role/backup-and-recovery-engineer:1.contract_input_1",
         "role/backup-and-recovery-engineer:1.contract_input_2",
         "role/backup-and-recovery-engineer:1.contract_input_3",
@@ -380,10 +467,10 @@
         "role/backup-and-recovery-engineer:1.delivery_verification",
         "role/backup-and-recovery-engineer:1.receiving_acceptance",
         "role/backup-and-recovery-engineer:1.role_gate_observations",
-        "type/roadmap.delivery_increments",
-        "type/roadmap.identity",
-        "type/roadmap.outcome_horizons",
-        "type/roadmap.roadmap_dependencies"
+        "type/configuration-baseline.baseline_targets",
+        "type/configuration-baseline.baseline_values",
+        "type/configuration-baseline.baseline_verification",
+        "type/configuration-baseline.identity"
       ],
       "expected_category": "critical-content"
     },

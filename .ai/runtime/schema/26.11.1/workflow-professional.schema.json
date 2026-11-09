@@ -1,0 +1,530 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://ai-it-house.local/schema/26.11.1/workflow-professional.schema.json",
+  "title": "Workflow with professional intake, routes and exact handoff content",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "key",
+    "title",
+    "trigger",
+    "outcome",
+    "steps"
+  ],
+  "properties": {
+    "key": {
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9-]+$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 3
+    },
+    "trigger": {
+      "type": "string",
+      "minLength": 10
+    },
+    "outcome": {
+      "type": "string",
+      "minLength": 10
+    },
+    "mandatory_artifacts": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "minLength": 1
+      },
+      "uniqueItems": true
+    },
+    "steps": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "step",
+          "role",
+          "slug",
+          "skill",
+          "tool_tier",
+          "operator_agent",
+          "does",
+          "hands_over",
+          "gate"
+        ],
+        "properties": {
+          "step": {
+            "type": "integer",
+            "minimum": 1
+          },
+          "role": {
+            "type": "string",
+            "minLength": 2
+          },
+          "slug": {
+            "type": "string",
+            "minLength": 1
+          },
+          "skill": {
+            "anyOf": [
+              {
+                "type": "string",
+                "pattern": "^it-roles-"
+              },
+              {
+                "enum": [
+                  "agent",
+                  "dynamic",
+                  "external"
+                ]
+              }
+            ]
+          },
+          "tool_tier": {
+            "enum": [
+              "advise",
+              "author",
+              "execute",
+              "inspect"
+            ]
+          },
+          "operator_agent": {
+            "type": "string",
+            "minLength": 1
+          },
+          "does": {
+            "type": "string",
+            "minLength": 3
+          },
+          "hands_over": {
+            "type": "string",
+            "minLength": 1
+          },
+          "gate": {
+            "type": "string",
+            "minLength": 3
+          },
+          "mandatory_artifact": {
+            "type": "string",
+            "minLength": 1
+          },
+          "handoff_content_contract": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "version",
+              "basis",
+              "subject",
+              "workflow_profile_hash",
+              "units"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "version": {
+                "const": "1.0.0"
+              },
+              "basis": {
+                "type": "string",
+                "minLength": 1
+              },
+              "subject": {
+                "type": "string",
+                "minLength": 1
+              },
+              "workflow_profile_hash": {
+                "type": "string",
+                "pattern": "^[0-9a-f]{64}$"
+              },
+              "units": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "semantic_field",
+                    "required_fields",
+                    "acceptance_criterion"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "semantic_field": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "required_fields": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "uniqueItems": true
+                    },
+                    "acceptance_criterion": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "variant_bindings": {
+            "type": "object",
+            "minProperties": 1,
+            "additionalProperties": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": [
+                "contract_ids",
+                "producer_role",
+                "receiving_role",
+                "acceptance_criterion",
+                "handoff_content_contract",
+                "next_step"
+              ],
+              "properties": {
+                "contract_ids": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "uniqueItems": true
+                },
+                "producer_role": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "receiving_role": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "acceptance_criterion": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "handoff_content_contract": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "required": [
+                    "id",
+                    "version",
+                    "basis",
+                    "subject",
+                    "workflow_profile_hash",
+                    "units"
+                  ],
+                  "properties": {
+                    "id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "version": {
+                      "const": "1.0.0"
+                    },
+                    "basis": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "subject": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "workflow_profile_hash": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "units": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "additionalProperties": false,
+                        "required": [
+                          "id",
+                          "semantic_field",
+                          "required_fields",
+                          "acceptance_criterion"
+                        ],
+                        "properties": {
+                          "id": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "semantic_field": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "required_fields": {
+                            "type": "array",
+                            "minItems": 1,
+                            "items": {
+                              "type": "string",
+                              "minLength": 1
+                            },
+                            "uniqueItems": true
+                          },
+                          "acceptance_criterion": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        }
+                      }
+                    }
+                  }
+                },
+                "next_step": {
+                  "type": [
+                    "integer",
+                    "null"
+                  ],
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "path": {
+      "type": "string",
+      "pattern": "^skills/it-role-workflows/references/.+\\.md$"
+    },
+    "applicability": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "selection_rule",
+        "invariant_outcomes",
+        "variants",
+        "disposition_rule"
+      ],
+      "properties": {
+        "selection_rule": {
+          "type": "string",
+          "minLength": 3
+        },
+        "invariant_outcomes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 3
+          }
+        },
+        "variants": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "context",
+              "mechanisms",
+              "evidence"
+            ],
+            "properties": {
+              "context": {
+                "type": "string",
+                "minLength": 3
+              },
+              "mechanisms": {
+                "type": "string",
+                "minLength": 3
+              },
+              "evidence": {
+                "type": "string",
+                "minLength": 3
+              }
+            }
+          }
+        },
+        "disposition_rule": {
+          "type": "string",
+          "minLength": 3
+        }
+      }
+    },
+    "operating_profile": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "version",
+        "basis",
+        "entry_inputs",
+        "variants",
+        "routes",
+        "context_policy",
+        "scope_assessment",
+        "paths"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "const": "1.0.0"
+        },
+        "basis": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entry_inputs": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "variants": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "mechanisms",
+              "evidence"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "mechanisms": {
+                "type": "string",
+                "minLength": 1
+              },
+              "evidence": {
+                "type": "string",
+                "minLength": 1
+              },
+              "when": {
+                "type": "object",
+                "additionalProperties": false,
+                "required": [
+                  "field",
+                  "op",
+                  "value"
+                ],
+                "properties": {
+                  "field": {
+                    "enum": [
+                      "processes_personal_data",
+                      "regulatory_requirement"
+                    ]
+                  },
+                  "op": {
+                    "const": "eq"
+                  },
+                  "value": {
+                    "type": "boolean"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "routes": {
+          "type": "array",
+          "minItems": 4,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "trigger",
+              "action"
+            ],
+            "properties": {
+              "id": {
+                "enum": [
+                  "continue",
+                  "rework",
+                  "stop",
+                  "exit"
+                ]
+              },
+              "trigger": {
+                "type": "string",
+                "minLength": 1
+              },
+              "action": {
+                "type": "string",
+                "minLength": 1
+              }
+            }
+          }
+        },
+        "context_policy": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope_assessment": {
+          "type": "string",
+          "minLength": 1
+        },
+        "paths": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "id",
+              "variant",
+              "mechanism",
+              "steps",
+              "terminal_step"
+            ],
+            "properties": {
+              "id": {
+                "type": "string",
+                "minLength": 1
+              },
+              "variant": {
+                "type": "string",
+                "minLength": 1
+              },
+              "mechanism": {
+                "type": "string",
+                "minLength": 1
+              },
+              "steps": {
+                "type": "array",
+                "minItems": 1,
+                "items": {
+                  "type": "integer",
+                  "minimum": 1
+                },
+                "uniqueItems": true
+              },
+              "terminal_step": {
+                "type": "integer",
+                "minimum": 1
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

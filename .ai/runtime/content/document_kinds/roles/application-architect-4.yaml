@@ -63,7 +63,8 @@
           "artifacts/contracts/role-deliverables.v3.json#application-architect:4",
           "content/types/architecture-decision.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -103,7 +104,8 @@
           "artifacts/contracts/role-deliverables.v3.json#application-architect:4",
           "content/types/architecture-decision.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -143,7 +145,8 @@
           "artifacts/contracts/role-deliverables.v3.json#application-architect:4",
           "content/types/architecture-decision.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -183,7 +186,8 @@
           "artifacts/contracts/role-deliverables.v3.json#application-architect:4",
           "content/types/architecture-decision.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -203,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'application architecture decision records', provide verifiable evidence satisfying: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Model in the EA tool plus a published view set.",
+        "For the specific output 'application architecture decision records', provide verifiable evidence satisfying: Identify the architecture concern, constraints, scope and decision status. Compare feasible design alternatives and the rejected baseline against drivers. Record the selected design, decision owner and dated rationale. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Versioned decision record with context, alternatives, consequences, status and supersession.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'application architecture decision records', provide verifiable evidence satisfying: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Model in the EA tool plus a published view set.",
+        "reason": "For the specific output 'application architecture decision records', provide verifiable evidence satisfying: Identify the architecture concern, constraints, scope and decision status. Compare feasible design alternatives and the rejected baseline against drivers. Record the selected design, decision owner and dated rationale. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Versioned decision record with context, alternatives, consequences, status and supersession.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-architect:4",
           "content/types/architecture-decision.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -233,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "application architecture decision records",
-        "format": "Model in the EA tool plus a published view set",
-        "acceptance_criterion": "Every element traces to a driver or a quality-attribute target; no orphan elements",
+        "format": "Versioned decision record with context, alternatives, consequences, status and supersession.",
+        "acceptance_criterion": "Identify the architecture concern, constraints, scope and decision status. Compare feasible design alternatives and the rejected baseline against drivers. Record the selected design, decision owner and dated rationale. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements.",
         "role_path": "skills/it-roles-architecture/references/application-architect.md"
       }
     },
@@ -274,7 +279,8 @@
           "artifacts/contracts/role-deliverables.v3.json#application-architect:4",
           "content/types/architecture-decision.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -321,7 +327,8 @@
           "artifacts/contracts/role-deliverables.v3.json#application-architect:4",
           "content/types/architecture-decision.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -366,7 +373,8 @@
           "artifacts/contracts/role-deliverables.v3.json#application-architect:4",
           "content/types/architecture-decision.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -411,7 +419,8 @@
           "artifacts/contracts/role-deliverables.v3.json#application-architect:4",
           "content/types/architecture-decision.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -456,7 +465,8 @@
           "artifacts/contracts/role-deliverables.v3.json#application-architect:4",
           "content/types/architecture-decision.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -503,7 +513,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -548,7 +559,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -595,7 +607,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -726,17 +739,30 @@
         "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Application Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "SWEBOK v4",
           "domain-driven design",
           "C4 model",
           "ISO/IEC 25010 maintainability"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -807,6 +833,17 @@
     "source_fingerprint": "92ce92ebed50c4db5b69b5d7fd3aefb8dc1cfb9e09ae6f288df6e6b7689ec53b",
     "source_hash": "6becb61152ebb34425bc3c00493a74c452e866130f7e5e72f9c14bb76f9faa71"
   },
+  "delivery_form": {
+    "primary_artifact": "architecture-decision-record",
+    "representation": "Versioned decision record with context, alternatives, consequences, status and supersession.",
+    "evidence": [
+      "comparable option evaluation",
+      "actual decision status and owner"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "cadbc3c5c183ae35bfeb4203449b06a760329004d1ee5588512ee53a006db8b6",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

@@ -26,10 +26,14 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`domain/architecture.architecture_source_trace`** — `array`
 
 - Link design claims to versioned source elements, stakeholder concerns and measurable requirements.
+- Use architecture-description concepts to trace stakeholder, concern, requirement, viewpoint and view; identify correspondence rules and unresolved inconsistencies without mandating a notation.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`domain/architecture.architecture_change_impact`** — `array`
 
 - Identify cross-domain dependencies, affected owners and compatibility constraints.
+- Use measurable requirement and correspondence checks to assess affected elements, cross-view dependencies, change impact and decisions still needing evidence.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -38,18 +42,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`domain/architecture.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`domain/architecture.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -110,5 +117,6 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 ### Professional sources and their limits
 
-- **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 42010:2022, Architecture description](https://www.iso.org/standard/74393.html)** — Stakeholders, concerns, viewpoints, architecture views and correspondence. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 <!-- JAI:OUTPUT-CONTRACTS:END -->

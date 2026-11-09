@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/model",
-    "domain/architecture"
+    "family/analysis-report",
+    "domain/delivery"
   ],
   "applies_to": {
     "document_kind": "role/codebase-reviewer:2",
@@ -63,7 +63,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#codebase-reviewer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -102,7 +104,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#codebase-reviewer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -141,7 +145,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#codebase-reviewer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -180,7 +186,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#codebase-reviewer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -200,7 +208,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'architecture conformance and coupling analysis', provide verifiable evidence satisfying: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Model in the EA tool plus a published view set.",
+        "For the specific output 'architecture conformance and coupling analysis', provide verifiable evidence satisfying: Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +223,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'architecture conformance and coupling analysis', provide verifiable evidence satisfying: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Model in the EA tool plus a published view set.",
+        "reason": "For the specific output 'architecture conformance and coupling analysis', provide verifiable evidence satisfying: Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#codebase-reviewer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -229,8 +239,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "architecture conformance and coupling analysis",
-        "format": "Model in the EA tool plus a published view set",
-        "acceptance_criterion": "Every element traces to a driver or a quality-attribute target; no orphan elements",
+        "format": "Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request.",
+        "acceptance_criterion": "Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements.",
         "role_path": "skills/it-roles-quality-and-testing/references/codebase-reviewer.md"
       }
     },
@@ -272,7 +282,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#codebase-reviewer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -321,7 +333,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#codebase-reviewer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -365,7 +379,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#codebase-reviewer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -409,7 +425,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#codebase-reviewer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -453,7 +471,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#codebase-reviewer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -499,7 +519,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -543,7 +565,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -589,7 +613,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -684,7 +710,7 @@
     }
   ],
   "size_budget": {
-    "metric": "elements",
+    "metric": "semantic_units",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -706,10 +732,34 @@
     ],
     "professional_references": [
       {
-        "id": "architecture-description",
-        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
-        "url": "https://www.iso.org/standard/74393.html",
-        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "software-testing",
+        "title": "ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation",
+        "url": "https://www.iso.org/standard/79429.html",
+        "scope": "Test planning, test specifications and reporting information needs.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "accessibility",
+        "title": "W3C Web Content Accessibility Guidelines (WCAG) 2.2",
+        "url": "https://www.w3.org/TR/WCAG22/",
+        "scope": "Perceivable and understandable content, text alternatives and accessible navigation; applicability depends on the delivered medium.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
@@ -717,12 +767,17 @@
     "role_framework_context": [
       {
         "role": "Codebase Reviewer",
+        "domain": "Quality and Testing",
+        "domain_index": 6,
+        "method_focus": "Use risk-based test or assessment methods with expected/actual results, coverage, sampling and bounded conclusions.",
         "frameworks": [
           "ISO/IEC 25010 product quality",
           "ISO/IEC 5055 code quality measures",
           "OWASP ASVS",
           "SWEBOK v4"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -776,12 +831,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "family/analysis-report",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "model",
+  "semantic_family": "analysis-report",
   "role_overlay": {
     "contract_id": "codebase-reviewer:2",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -793,6 +850,17 @@
     "source_fingerprint": "a0ab6b5ebdfaafe92ce0098cea05b7e92a12844ab60facb348d36b92c46a078b",
     "source_hash": "9c5ae7ac02c5b37f270af0253420898018cf068518f6c2774aa35cb6a09bc157"
   },
+  "delivery_form": {
+    "primary_artifact": "evidence-based-analysis-report",
+    "representation": "Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request.",
+    "evidence": [
+      "versioned source/period/population and reproducible method",
+      "observations, uncertainty, counterevidence and accountable follow-up"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "f2ea3aa2566573ac01542f00eaef760f21f4d82e6c2ace5db90fc1f014a6669b",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sabsa-and-togaf-integration-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sabsa-and-togaf-integration-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sabsa-and-togaf-integration-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sabsa-and-togaf-integration-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Integrated architecture method and governance', provide verifiable evidence satisfying: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Model in the EA tool plus a published view set.",
+        "For the specific output 'Integrated architecture method and governance', provide verifiable evidence satisfying: Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Integrated architecture method and governance', provide verifiable evidence satisfying: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Model in the EA tool plus a published view set.",
+        "reason": "For the specific output 'Integrated architecture method and governance', provide verifiable evidence satisfying: Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sabsa-and-togaf-integration-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Integrated architecture method and governance",
-        "format": "Model in the EA tool plus a published view set",
-        "acceptance_criterion": "Every element traces to a driver or a quality-attribute target; no orphan elements",
+        "format": "Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
+        "acceptance_criterion": "Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements.",
         "role_path": "skills/it-roles-sabsa-security-architecture/references/sabsa-and-togaf-integration-architect.md"
       }
     },
@@ -269,7 +279,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sabsa-and-togaf-integration-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -316,7 +328,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sabsa-and-togaf-integration-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -360,7 +374,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sabsa-and-togaf-integration-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -404,7 +420,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sabsa-and-togaf-integration-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -448,7 +466,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sabsa-and-togaf-integration-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -494,7 +514,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -538,7 +560,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -584,7 +608,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -707,17 +733,38 @@
         "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sabsa-overview",
+        "title": "SABSA Institute, SABSA Executive Summary",
+        "url": "https://sabsa.org/sabsa-executive-summary/",
+        "scope": "Business-driven security architecture and traceability overview; actual SABSA deliveries must select the accessible authoritative method/version and their detailed obligations.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "systems-security-engineering",
+        "title": "NIST SP 800-160 Volume 1 Revision 1, Engineering Trustworthy Secure Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+        "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "SABSA and TOGAF Integration Architect",
+        "domain": "SABSA Security Architecture",
+        "domain_index": 17,
+        "method_focus": "Trace business drivers and measurable attributes through risks, control objectives, services, mechanisms and operational measures.",
         "frameworks": [
           "SABSA",
           "TOGAF 10 ADM",
           "ArchiMate 3.2",
           "ISO/IEC 42010"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -788,6 +835,17 @@
     "source_fingerprint": "bfabe07c5ff0ab72a8166fe76db077df2d54b3891cec3c6405c37570097ca407",
     "source_hash": "51691dcf3742962eecbf2f58d115b451ba9910a41c5a9b17147aa9a1d8fe8837"
   },
+  "delivery_form": {
+    "primary_artifact": "typed-semantic-model",
+    "representation": "Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
+    "evidence": [
+      "metamodel/reference/cross-view checks",
+      "source baseline and unresolved semantic gaps"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "3710291200c2bfc11a6a3eb15bd6eb184261efed21f75f09accf2e9c9d98c0f8",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

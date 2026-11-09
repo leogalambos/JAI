@@ -42,6 +42,19 @@ Produce and govern the role deliverable: Accessibility policy and standards.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `professional-document`.
+
+Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.
+
+**Evidence accompanying the work product:**
+
+- attributable subject-specific findings and limitations
+- reviewable sources and verifiable follow-up actions
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -49,22 +62,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/accessibility-specialist:1.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Accessibility policy and standards.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:1.receiving_acceptance`** — `array`
 
 - For each receiving role (Product Designer; Frontend Engineer; Accessibility Tester), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:1.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:1.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:1.delivery_verification`** — `array`
 
-- For the specific output 'Accessibility policy and standards', provide verifiable evidence satisfying: Every statement is testable and maps to at least one control. Required delivery form: Controlled document with owner, effective date and review date.
+- For the specific output 'Accessibility policy and standards', provide verifiable evidence satisfying: State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Every statement is testable and maps to at least one control. Required delivery form: Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:1.role_gate_observations`** — `array`
 
@@ -75,22 +93,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G4: Any breach of tolerance triggers a defined action, not merely a note in the minutes.
 - G5: Accessibility statements reflect tested reality including known failures
 - G6: publishing a statement claiming conformance that testing does not support is a legal exposure, not a presentational choice
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:1.contract_input_1`** — `object`
 
 - Analyse the specific input "Legal obligations" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:1.contract_input_2`** — `object`
 
 - Analyse the specific input "Audit and test findings" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:1.contract_input_3`** — `object`
 
 - Analyse the specific input "Product roadmaps" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:1.contract_input_4`** — `object`
 
 - Analyse the specific input "User feedback from disabled users" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -99,18 +122,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:1.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/accessibility-specialist:1.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -148,10 +174,16 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO 9241-210:2019, Human-centred design for interactive systems](https://www.iso.org/standard/77520.html)** — Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C Web Content Accessibility Guidelines (WCAG) 2.2](https://www.w3.org/TR/WCAG22/)** — Perceivable and understandable content, text alternatives and accessible navigation; applicability depends on the delivered medium. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C WCAG Evaluation Methodology (WCAG-EM) 2.0](https://www.w3.org/TR/wcag-em-2/)** — Evaluation scope, representative sample, evaluation and reporting; W3C Group Note, informative methodology rather than a conformance standard. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Accessibility Specialist:** WCAG 2.2 AA; EN 301 549; ISO/IEC 40500; national accessibility legislation. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace user research and accessibility requirements to findings, design choices and observed usability/accessibility evaluation.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-accessibility-specialist-2"></a>
@@ -191,6 +223,19 @@ Produce and govern the role deliverable: conformance assessments and accessibili
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `assurance-assessment`.
+
+Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.
+
+**Evidence accompanying the work product:**
+
+- criterion-to-test-to-observation traceability
+- independent reviewer and limitations
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -198,27 +243,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/accessibility-specialist:2.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: conformance assessments and accessibility statements.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:2.receiving_acceptance`** — `array`
 
 - For each receiving role (Product Designer; Frontend Engineer; Accessibility Tester), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:2.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:2.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:2.delivery_verification`** — `array`
 
-- For the specific output 'conformance assessments and accessibility statements', provide verifiable evidence satisfying: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Structured assessment document with scoring method stated.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- For the specific output 'conformance assessments and accessibility statements', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:2.role_gate_observations`** — `array`
 
@@ -229,27 +274,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G4: Any breach of tolerance triggers a defined action, not merely a note in the minutes.
 - G5: Accessibility statements reflect tested reality including known failures
 - G6: publishing a statement claiming conformance that testing does not support is a legal exposure, not a presentational choice
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:2.contract_input_1`** — `object`
 
 - Analyse the specific input "Legal obligations" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:2.contract_input_2`** — `object`
 
 - Analyse the specific input "Audit and test findings" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:2.contract_input_3`** — `object`
 
 - Analyse the specific input "Product roadmaps" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:2.contract_input_4`** — `object`
 
 - Analyse the specific input "User feedback from disabled users" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -258,21 +303,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:2.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/accessibility-specialist:2.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -310,10 +355,16 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **[NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls](https://doi.org/10.6028/NIST.SP.800-53Ar5)** — Assessment objectives, methods, evidence, findings and bounded assessment conclusions. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO 9241-210:2019, Human-centred design for interactive systems](https://www.iso.org/standard/77520.html)** — Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C Web Content Accessibility Guidelines (WCAG) 2.2](https://www.w3.org/TR/WCAG22/)** — Perceivable and understandable content, text alternatives and accessible navigation; applicability depends on the delivered medium. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C WCAG Evaluation Methodology (WCAG-EM) 2.0](https://www.w3.org/TR/wcag-em-2/)** — Evaluation scope, representative sample, evaluation and reporting; W3C Group Note, informative methodology rather than a conformance standard. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Accessibility Specialist:** WCAG 2.2 AA; EN 301 549; ISO/IEC 40500; national accessibility legislation. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace user research and accessibility requirements to findings, design choices and observed usability/accessibility evaluation.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-accessibility-specialist-3"></a>
@@ -353,6 +404,19 @@ Produce and govern the role deliverable: remediation roadmap.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `outcome-roadmap`.
+
+Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.
+
+**Evidence accompanying the work product:**
+
+- current/target baseline and planning assumptions
+- resource/funding constraints and decision triggers
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -360,27 +424,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/accessibility-specialist:3.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: remediation roadmap.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:3.receiving_acceptance`** — `array`
 
 - For each receiving role (Product Designer; Frontend Engineer; Accessibility Tester), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:3.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:3.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:3.delivery_verification`** — `array`
 
-- For the specific output 'remediation roadmap', provide verifiable evidence satisfying: Each item carries a dependency set, a cost band and a decision date. Required delivery form: Time-phased view with named owners per horizon.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- For the specific output 'remediation roadmap', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Each item carries a dependency set, a cost band and a decision date. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:3.role_gate_observations`** — `array`
 
@@ -391,27 +455,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G4: Any breach of tolerance triggers a defined action, not merely a note in the minutes.
 - G5: Accessibility statements reflect tested reality including known failures
 - G6: publishing a statement claiming conformance that testing does not support is a legal exposure, not a presentational choice
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:3.contract_input_1`** — `object`
 
 - Analyse the specific input "Legal obligations" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:3.contract_input_2`** — `object`
 
 - Analyse the specific input "Audit and test findings" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:3.contract_input_3`** — `object`
 
 - Analyse the specific input "Product roadmaps" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:3.contract_input_4`** — `object`
 
 - Analyse the specific input "User feedback from disabled users" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -420,21 +484,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:3.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/accessibility-specialist:3.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -473,10 +537,16 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 - **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **[HM Treasury, The Green Book](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government)** — Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO 9241-210:2019, Human-centred design for interactive systems](https://www.iso.org/standard/77520.html)** — Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C Web Content Accessibility Guidelines (WCAG) 2.2](https://www.w3.org/TR/WCAG22/)** — Perceivable and understandable content, text alternatives and accessible navigation; applicability depends on the delivered medium. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C WCAG Evaluation Methodology (WCAG-EM) 2.0](https://www.w3.org/TR/wcag-em-2/)** — Evaluation scope, representative sample, evaluation and reporting; W3C Group Note, informative methodology rather than a conformance standard. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Accessibility Specialist:** WCAG 2.2 AA; EN 301 549; ISO/IEC 40500; national accessibility legislation. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace user research and accessibility requirements to findings, design choices and observed usability/accessibility evaluation.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-accessibility-specialist-4"></a>
@@ -516,6 +586,19 @@ Produce and govern the role deliverable: training and capability building.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `professional-document`.
+
+Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.
+
+**Evidence accompanying the work product:**
+
+- attributable subject-specific findings and limitations
+- reviewable sources and verifiable follow-up actions
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -523,22 +606,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/accessibility-specialist:4.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: training and capability building.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:4.receiving_acceptance`** — `array`
 
 - For each receiving role (Product Designer; Frontend Engineer; Accessibility Tester), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:4.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:4.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:4.delivery_verification`** — `array`
 
-- For the specific output 'training and capability building', provide verifiable evidence satisfying: Measured against a behaviour-change objective, not attendance alone. Required delivery form: Delivered session plus retained materials and attendance record.
+- For the specific output 'training and capability building', provide verifiable evidence satisfying: State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Measured against a behaviour-change objective, not attendance alone. Required delivery form: Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:4.role_gate_observations`** — `array`
 
@@ -549,22 +637,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G4: Any breach of tolerance triggers a defined action, not merely a note in the minutes.
 - G5: Accessibility statements reflect tested reality including known failures
 - G6: publishing a statement claiming conformance that testing does not support is a legal exposure, not a presentational choice
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:4.contract_input_1`** — `object`
 
 - Analyse the specific input "Legal obligations" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:4.contract_input_2`** — `object`
 
 - Analyse the specific input "Audit and test findings" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:4.contract_input_3`** — `object`
 
 - Analyse the specific input "Product roadmaps" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:4.contract_input_4`** — `object`
 
 - Analyse the specific input "User feedback from disabled users" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -573,18 +666,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 **`role/accessibility-specialist:4.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/accessibility-specialist:4.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.iso.org/standard/77520.html); [source](https://www.w3.org/TR/WCAG22/); [source](https://www.w3.org/TR/wcag-em-2/) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -622,8 +718,14 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO 9241-210:2019, Human-centred design for interactive systems](https://www.iso.org/standard/77520.html)** — Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C Web Content Accessibility Guidelines (WCAG) 2.2](https://www.w3.org/TR/WCAG22/)** — Perceivable and understandable content, text alternatives and accessible navigation; applicability depends on the delivered medium. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[W3C WCAG Evaluation Methodology (WCAG-EM) 2.0](https://www.w3.org/TR/wcag-em-2/)** — Evaluation scope, representative sample, evaluation and reporting; W3C Group Note, informative methodology rather than a conformance standard. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Accessibility Specialist:** WCAG 2.2 AA; EN 301 549; ISO/IEC 40500; national accessibility legislation. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace user research and accessibility requirements to findings, design choices and observed usability/accessibility evaluation.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 <!-- JAI:OUTPUT-CONTRACTS:END -->

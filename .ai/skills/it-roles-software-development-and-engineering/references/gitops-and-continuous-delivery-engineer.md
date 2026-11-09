@@ -103,10 +103,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Environment promotion model and desired-state repositories | Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON) | The model is validated against real observed behaviour or data, not only interviews |
-| 2 | GitOps reconciliation configuration | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 3 | progressive delivery policy for canary, blue-green and feature flags | Controlled document with owner, effective date and review date | Every statement is testable and maps to at least one control |
-| 4 | automated rollback and health gate definitions | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
+| 1 | Environment promotion model and desired-state repositories | Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates. | Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets. Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths. Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. |
+| 2 | GitOps reconciliation configuration | Typed desired-state configuration with exact targets, versioned values and controlled secret references. | Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. |
+| 3 | progressive delivery policy for canary, blue-green and feature flags | Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions. | State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Every statement is testable and maps to at least one control. |
+| 4 | automated rollback and health gate definitions | Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates. | Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets. Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths. Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence. |
 
 ## 7. Output gates (blocking)
 
@@ -199,6 +199,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - OpenGitOps principles
 - progressive delivery practice
 - ITIL 4 deployment management
@@ -210,13 +214,32 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Design environment promotion for four environments where deployment is currently one person running a script”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver environment promotion model and desired-state repositories in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Environment promotion model and desired-state repositories.
+
+**Illustrative case material:**
+
+Pipeline dep-8 promotes image digest sha256:example-42 to the test namespace only. Parameters include target, desired revision and change reference; credentials are short-lived references. Rebuilding an image during promotion breaks artifact identity.
+
+**Acceptance question:** Identify exact immutable artifacts, targets and authorisation prerequisites.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets.
+- Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths.
+- Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `deployment-automation` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

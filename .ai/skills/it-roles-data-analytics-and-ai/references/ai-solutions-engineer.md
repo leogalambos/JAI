@@ -101,10 +101,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Application and orchestration implementation | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 2 | prompt and context strategy under version control | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 3 | evaluation set and results | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 4 | failure handling and human-in-the-loop design | Failure-handling and human-oversight design | Defines failure signals, bounded recovery, escalation, human decision points and tests for unsafe or uncertain outcomes |
+| 1 | Application and orchestration implementation | Actual version-controlled implementation or analysis code, separate from its explanatory report. | Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. |
+| 2 | prompt and context strategy under version control | Typed desired-state configuration with exact targets, versioned values and controlled secret references. | Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. |
+| 3 | evaluation set and results | Observed test results against a named baseline with passed, failed, blocked and unexecuted cases. | Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation. |
+| 4 | failure handling and human-in-the-loop design | Control specification with objectives, trigger, actor, actions, failure paths and effectiveness measures. | Trace each control objective to a risk or obligation and identify accountable owner, protected outcome and operating scope. Specify trigger, actor/system, required inputs, action, expected observable result, exceptions and response when the control fails. Define design/operating-effectiveness checks, population or sampling, expected evidence, acceptance threshold and disposition of exceptions. Existing source requirement: Defines failure signals, bounded recovery, escalation, human decision points and tests for unsafe or uncertain outcomes. |
 
 ## 7. Output gates (blocking)
 
@@ -194,6 +194,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - NIST AI RMF 1.0
 - evaluation-driven development practice
 - OWASP Top 10 for LLM applications
@@ -204,13 +208,32 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Build a support triage assistant that fails safely when it does not know the answer”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver application and orchestration implementation in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Application and orchestration implementation.
+
+**Illustrative case material:**
+
+Requirement R-17 permits one stock reservation per order key. Revision src-42 replaces a read-then-write check with a unique order-key constraint and transactional insert. A duplicate returns the existing reservation ID, not another decrement.
+
+**Acceptance question:** Identify the exact source revision, changed behaviour and requirement.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision.
+- Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution.
+- Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `software-change` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

@@ -205,7 +205,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Security strategy and roadmap', provide verifiable evidence satisfying: Each item carries a dependency set, a cost band and a decision date. Required delivery form: Time-phased view with named owners per horizon.",
+        "For the specific output 'Security strategy and roadmap', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Each item carries a dependency set, a cost band and a decision date. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -220,7 +220,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Security strategy and roadmap', provide verifiable evidence satisfying: Each item carries a dependency set, a cost band and a decision date. Required delivery form: Time-phased view with named owners per horizon.",
+        "reason": "For the specific output 'Security strategy and roadmap', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Each item carries a dependency set, a cost band and a decision date. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-security-officer:1",
           "content/types/roadmap.yaml",
@@ -235,8 +235,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Security strategy and roadmap",
-        "format": "Time-phased view with named owners per horizon",
-        "acceptance_criterion": "Each item carries a dependency set, a cost band and a decision date",
+        "format": "Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
+        "acceptance_criterion": "State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Each item carries a dependency set, a cost band and a decision date.",
         "role_path": "skills/it-roles-executive-and-leadership/references/chief-information-security-officer.md"
       }
     },
@@ -733,11 +733,16 @@
     "role_framework_context": [
       {
         "role": "Chief Information Security Officer",
+        "domain": "Executive and Leadership",
+        "domain_index": 1,
+        "method_focus": "Connect strategic choices, investment options, measurable outcomes, risk appetite and accountable decisions.",
         "frameworks": [
           "ISO/IEC 27001:2022",
           "NIST CSF 2.0",
           "NIS2 and DORA where in scope"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -808,6 +813,17 @@
     "source_fingerprint": "0acb803664de4b0e0f5e25e40f491371626a5ba682b5bda4fdccef6e3254ebdb",
     "source_hash": "de3e019a1322df827b5fc4b65a7114791d1f7ae8e5042aa7b62308c9c004d1da"
   },
+  "delivery_form": {
+    "primary_artifact": "outcome-roadmap",
+    "representation": "Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
+    "evidence": [
+      "current/target baseline and planning assumptions",
+      "resource/funding constraints and decision triggers"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "5d79e46377d326ceda5eeb4b8ee8fed0954280ac612787b4000a93db19512e3b",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

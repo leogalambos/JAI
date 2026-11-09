@@ -63,7 +63,10 @@
           "artifacts/contracts/role-deliverables.v3.json#security-component-specialist-sabsa-tradesman-s-view:1",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -103,7 +106,10 @@
           "artifacts/contracts/role-deliverables.v3.json#security-component-specialist-sabsa-tradesman-s-view:1",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -143,7 +149,10 @@
           "artifacts/contracts/role-deliverables.v3.json#security-component-specialist-sabsa-tradesman-s-view:1",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -183,7 +192,10 @@
           "artifacts/contracts/role-deliverables.v3.json#security-component-specialist-sabsa-tradesman-s-view:1",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -203,7 +215,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Component configuration specifications', provide verifiable evidence satisfying: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Versioned specification with numbered, traceable requirements.",
+        "For the specific output 'Component configuration specifications', provide verifiable evidence satisfying: Identify exact component/environment versions and each required parameter with type, unit, permitted range, default and secret-reference handling. State interface schemas, input/output semantics, error responses, concurrency/idempotency expectations and external dependency constraints. Give reproducible build/deploy/verification steps, expected results, stop conditions and recovery path; identify evidence still required before execution. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Typed implementation specification with exact target versions, interfaces and verification/recovery conditions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +230,15 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Component configuration specifications', provide verifiable evidence satisfying: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Versioned specification with numbered, traceable requirements.",
+        "reason": "For the specific output 'Component configuration specifications', provide verifiable evidence satisfying: Identify exact component/environment versions and each required parameter with type, unit, permitted range, default and secret-reference handling. State interface schemas, input/output semantics, error responses, concurrency/idempotency expectations and external dependency constraints. Give reproducible build/deploy/verification steps, expected results, stop conditions and recovery path; identify evidence still required before execution. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Typed implementation specification with exact target versions, interfaces and verification/recovery conditions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-component-specialist-sabsa-tradesman-s-view:1",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -233,8 +248,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Component configuration specifications",
-        "format": "Versioned specification with numbered, traceable requirements",
-        "acceptance_criterion": "Every requirement is atomic, testable and traced to a source and a priority",
+        "format": "Typed implementation specification with exact target versions, interfaces and verification/recovery conditions.",
+        "acceptance_criterion": "Identify exact component/environment versions and each required parameter with type, unit, permitted range, default and secret-reference handling. State interface schemas, input/output semantics, error responses, concurrency/idempotency expectations and external dependency constraints. Give reproducible build/deploy/verification steps, expected results, stop conditions and recovery path; identify evidence still required before execution. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority.",
         "role_path": "skills/it-roles-sabsa-security-architecture/references/security-component-specialist-sabsa-tradesman-s-view.md"
       }
     },
@@ -278,7 +293,10 @@
           "artifacts/contracts/role-deliverables.v3.json#security-component-specialist-sabsa-tradesman-s-view:1",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -329,7 +347,10 @@
           "artifacts/contracts/role-deliverables.v3.json#security-component-specialist-sabsa-tradesman-s-view:1",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -374,7 +395,10 @@
           "artifacts/contracts/role-deliverables.v3.json#security-component-specialist-sabsa-tradesman-s-view:1",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -419,7 +443,10 @@
           "artifacts/contracts/role-deliverables.v3.json#security-component-specialist-sabsa-tradesman-s-view:1",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -464,7 +491,10 @@
           "artifacts/contracts/role-deliverables.v3.json#security-component-specialist-sabsa-tradesman-s-view:1",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -511,7 +541,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -556,7 +589,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -603,7 +639,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -734,17 +773,46 @@
         "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sabsa-overview",
+        "title": "SABSA Institute, SABSA Executive Summary",
+        "url": "https://sabsa.org/sabsa-executive-summary/",
+        "scope": "Business-driven security architecture and traceability overview; actual SABSA deliveries must select the accessible authoritative method/version and their detailed obligations.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "architecture-description",
+        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
+        "url": "https://www.iso.org/standard/74393.html",
+        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "systems-security-engineering",
+        "title": "NIST SP 800-160 Volume 1 Revision 1, Engineering Trustworthy Secure Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+        "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Security Component Specialist (SABSA Tradesman's View)",
+        "domain": "SABSA Security Architecture",
+        "domain_index": 17,
+        "method_focus": "Trace business drivers and measurable attributes through risks, control objectives, services, mechanisms and operational measures.",
         "frameworks": [
           "SABSA component layer",
           "CIS Benchmarks",
           "vendor hardening guides",
           "relevant protocol standards"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -815,6 +883,17 @@
     "source_fingerprint": "a726ff317cc62fbfa4e244040f2ac070d5df311ac144789ad974b263dde857f7",
     "source_hash": "45274681303114351acf1b42471a3c60d2586396086e15ca6f669ee8aa425734"
   },
+  "delivery_form": {
+    "primary_artifact": "implementation-specification",
+    "representation": "Typed implementation specification with exact target versions, interfaces and verification/recovery conditions.",
+    "evidence": [
+      "parameter/schema constraints",
+      "reproducible acceptance and recovery procedure"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "8a2103d11e55ac956b60dbd6c7307571d611cffa36dad6cb303430ec37b8ff43",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

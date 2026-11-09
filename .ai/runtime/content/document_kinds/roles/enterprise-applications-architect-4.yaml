@@ -64,7 +64,8 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -104,7 +105,8 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -144,7 +146,8 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -184,7 +187,8 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -204,7 +208,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Enterprise SaaS/ERP capability-fit and integration design', provide verifiable evidence satisfying: Fit/gap, extension/customisation boundaries, integration contracts and operating ownership are decision-ready and testable. Required delivery form: Solution design/HLD with capability mapping, integration/data/identity boundaries and non-functional constraints.",
+        "For the specific output 'Enterprise SaaS/ERP capability-fit and integration design', provide verifiable evidence satisfying: Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Fit/gap, extension/customisation boundaries, integration contracts and operating ownership are decision-ready and testable. Required delivery form: Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,12 +223,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Enterprise SaaS/ERP capability-fit and integration design', provide verifiable evidence satisfying: Fit/gap, extension/customisation boundaries, integration contracts and operating ownership are decision-ready and testable. Required delivery form: Solution design/HLD with capability mapping, integration/data/identity boundaries and non-functional constraints.",
+        "reason": "For the specific output 'Enterprise SaaS/ERP capability-fit and integration design', provide verifiable evidence satisfying: Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Fit/gap, extension/customisation boundaries, integration contracts and operating ownership are decision-ready and testable. Required delivery form: Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -234,8 +239,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Enterprise SaaS/ERP capability-fit and integration design",
-        "format": "Solution design/HLD with capability mapping, integration/data/identity boundaries and non-functional constraints",
-        "acceptance_criterion": "Fit/gap, extension/customisation boundaries, integration contracts and operating ownership are decision-ready and testable.",
+        "format": "Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
+        "acceptance_criterion": "Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Fit/gap, extension/customisation boundaries, integration contracts and operating ownership are decision-ready and testable.",
         "role_path": "skills/it-roles-architecture/references/enterprise-applications-architect.md"
       }
     },
@@ -276,7 +281,8 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -324,7 +330,8 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -369,7 +376,8 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -414,7 +422,8 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -459,7 +468,8 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -504,7 +514,8 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -551,7 +562,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -596,7 +608,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -643,7 +656,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -774,17 +788,30 @@
         "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Enterprise Applications Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "TOGAF Standard, 10th Edition",
           "ArchiMate 3.2",
           "ISO/IEC/IEEE 42010 architecture description concepts",
           "Technology Business Management (TBM) taxonomy where used"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -855,6 +882,17 @@
     "source_fingerprint": "811f4a337a99575e9561e4f2d1319967e6a91493baa7a2597b3a28660555cce5",
     "source_hash": "e0a9a83f059ab79250c87f0c583c548bc3fd885f1f606e936065b0e53275256f"
   },
+  "delivery_form": {
+    "primary_artifact": "solution-design",
+    "representation": "Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
+    "evidence": [
+      "requirements-to-design traceability",
+      "independent design review"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "76c0cbfa85e201774622d1e07c353a87b09111ac408b62b86b7439337ac9589a",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

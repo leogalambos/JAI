@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/business-case",
-    "domain/delivery"
+    "type/register",
+    "domain/data"
   ],
   "applies_to": {
     "document_kind": "role/continual-improvement-manager:1",
@@ -62,7 +62,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#continual-improvement-manager:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -101,7 +102,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#continual-improvement-manager:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -140,7 +142,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#continual-improvement-manager:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -179,7 +182,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#continual-improvement-manager:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -199,7 +203,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Improvement register with business cases', provide verifiable evidence satisfying: Every row has an owner, a date, a status and a next action. Required delivery form: Structured table in the system of record (CSV/tool export).",
+        "For the specific output 'Improvement register with business cases', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every row has an owner, a date, a status and a next action. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +218,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Improvement register with business cases', provide verifiable evidence satisfying: Every row has an owner, a date, a status and a next action. Required delivery form: Structured table in the system of record (CSV/tool export).",
+        "reason": "For the specific output 'Improvement register with business cases', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every row has an owner, a date, a status and a next action. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#continual-improvement-manager:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -228,8 +233,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Improvement register with business cases",
-        "format": "Structured table in the system of record (CSV/tool export)",
-        "acceptance_criterion": "Every row has an owner, a date, a status and a next action",
+        "format": "Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
+        "acceptance_criterion": "Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every row has an owner, a date, a status and a next action.",
         "role_path": "skills/it-roles-service-management-and-support/references/continual-improvement-manager.md"
       }
     },
@@ -269,7 +274,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#continual-improvement-manager:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -316,7 +322,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#continual-improvement-manager:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -360,7 +367,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#continual-improvement-manager:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -404,7 +412,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#continual-improvement-manager:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -448,7 +457,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#continual-improvement-manager:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -461,6 +471,46 @@
         "json_pointer": "/jai/semantics/required_inputs/3",
         "value": "Strategic priorities"
       }
+    },
+    {
+      "id": "role/continual-improvement-manager:1.improvement_business_case_links",
+      "semantic_fields": [
+        "improvement_business_case_links"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "For each improvement record, link its actual business-case version or explicit pending status, evidenced problem, expected measurable benefit, cost assumptions, priority, owner and funding/approval state. Maintain the register as actual records rather than replacing it with one unrelated investment paper.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "For each improvement record, link its actual business-case version or explicit pending status, evidenced problem, expected measurable benefit, cost assumptions, priority, owner and funding/approval state. Maintain the register as actual records rather than replacing it with one unrelated investment paper.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#continual-improvement-manager:1",
+          "content/types/business-case.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
     }
   ],
   "conditional_information": [
@@ -494,7 +544,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -538,7 +589,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -584,7 +636,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -679,7 +732,7 @@
     }
   ],
   "size_budget": {
-    "metric": "semantic_units",
+    "metric": "rows",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -701,10 +754,26 @@
     ],
     "professional_references": [
       {
-        "id": "business-appraisal",
-        "title": "HM Treasury, The Green Book",
-        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "service-management",
+        "title": "ISO/IEC 20000-1:2018, Service management system requirements",
+        "url": "https://www.iso.org/standard/70636.html",
+        "scope": "Service requirements, agreements, transition, operation and measurement concepts.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
@@ -712,11 +781,16 @@
     "role_framework_context": [
       {
         "role": "Continual Improvement Manager",
+        "domain": "Service Management and Support",
+        "domain_index": 10,
+        "method_focus": "Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.",
         "frameworks": [
           "ITIL 4 continual improvement",
           "Lean and Six Sigma techniques",
           "P3M3 or equivalent maturity models"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -770,12 +844,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/register",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "business-case",
+  "semantic_family": "register",
   "role_overlay": {
     "contract_id": "continual-improvement-manager:1",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -787,6 +863,17 @@
     "source_fingerprint": "684b0d1c3eff34f355d337d94f7add59520abf938761f413658c6f2f87e85339",
     "source_hash": "45ea9ea85a11e55e085499ec482d63f2438706bb66cfe6a9fe601c7100c0876d"
   },
+  "delivery_form": {
+    "primary_artifact": "governed-register",
+    "representation": "Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
+    "evidence": [
+      "actual source-attributed records",
+      "uniqueness, completeness and relationship reconciliation"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "936224f560ac3dff69a482f37b687a3183c7e651e5bca0898c38c2dfb2827a41",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

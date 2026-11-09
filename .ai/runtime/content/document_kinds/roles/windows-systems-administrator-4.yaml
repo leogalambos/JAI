@@ -62,7 +62,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#windows-systems-administrator:4",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -101,7 +104,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#windows-systems-administrator:4",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -140,7 +146,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#windows-systems-administrator:4",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -179,7 +188,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#windows-systems-administrator:4",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -199,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'backup and recovery verification', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'backup and recovery verification', provide verifiable evidence satisfying: Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation. Required delivery form: Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'backup and recovery verification', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'backup and recovery verification', provide verifiable evidence satisfying: Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation. Required delivery form: Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#windows-systems-administrator:4",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -228,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "backup and recovery verification",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
+        "acceptance_criterion": "Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation.",
         "role_path": "skills/it-roles-infrastructure-cloud-and-operations/references/windows-systems-administrator.md"
       }
     },
@@ -270,7 +285,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#windows-systems-administrator:4",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -318,7 +336,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#windows-systems-administrator:4",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -362,7 +383,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#windows-systems-administrator:4",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -406,7 +430,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#windows-systems-administrator:4",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -450,7 +477,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#windows-systems-administrator:4",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -496,7 +526,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -540,7 +573,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -586,7 +622,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -709,16 +748,45 @@
         "scope": "Test planning, test specifications and reporting information needs.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "configuration-management",
+        "title": "NIST SP 800-128, Guide for Security-Focused Configuration Management of Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-128",
+        "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "contingency-planning",
+        "title": "NIST SP 800-34 Revision 1, Contingency Planning Guide for Federal Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-34r1",
+        "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Windows Systems Administrator",
+        "domain": "Infrastructure, Cloud and Operations",
+        "domain_index": 8,
+        "method_focus": "Define measurable service objectives, capacity and dependency assumptions, failure behaviour, recovery and observed operational evidence.",
         "frameworks": [
           "CIS Benchmarks for Windows",
           "Microsoft security baselines",
           "ITIL 4 operations practices"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -791,6 +859,17 @@
     "source_fingerprint": "f69e549ecf33338720f8765912098a929e58767a3ffb288612f4fe4031b1d587",
     "source_hash": "9c845b3800aa184c3e34aa5339be2756877f2344624b52cf5121f3f07c392259"
   },
+  "delivery_form": {
+    "primary_artifact": "test-results",
+    "representation": "Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
+    "evidence": [
+      "expected/actual observations and execution references",
+      "coverage denominators and residual defects"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "f1f5b93296918ef7227eefb415b1b0c35660bf53ac820c849712c2026cba6eeb",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

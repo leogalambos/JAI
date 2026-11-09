@@ -42,6 +42,19 @@ Produce and govern the role deliverable: Contract repository and obligation regi
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `governed-register`.
+
+Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.
+
+**Evidence accompanying the work product:**
+
+- actual source-attributed records
+- uniqueness, completeness and relationship reconciliation
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -49,22 +62,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/contract-manager:1.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Contract repository and obligation register.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:1.receiving_acceptance`** — `array`
 
 - For each receiving role (Vendor Manager; Third-Party Risk Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:1.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:1.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:1.delivery_verification`** — `array`
 
-- For the specific output 'Contract repository and obligation register', provide verifiable evidence satisfying: Every row has an owner, a date, a status and a next action. Required delivery form: Structured table in the system of record (CSV/tool export).
+- For the specific output 'Contract repository and obligation register', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every row has an owner, a date, a status and a next action. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:1.role_gate_observations`** — `array`
 
@@ -75,34 +93,42 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G4: The primary deliverable ("Contract repository and obligation register") is published on the agreed cadence, including adverse results.
 - G5: Every obligation on both sides is extracted into a tracked register with an owner
 - G6: obligations that live only in the contract document are not managed
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:1.contract_input_1`** — `object`
 
 - Analyse the specific input "Negotiated commercial terms" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:1.contract_input_2`** — `object`
 
 - Analyse the specific input "Legal drafting" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:1.contract_input_3`** — `object`
 
 - Analyse the specific input "Delivery performance" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:1.contract_input_4`** — `object`
 
 - Analyse the specific input "Regulatory requirements for contracts" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:1.contract_repository_identity`** — `array`
 
 - Identify contracting parties, operative signed contract/version, applicable jurisdiction or governing-law reference, effective/expiry dates and authoritative record location; preserve draft and superseded status explicitly.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:1.contract_obligation_records`** — `array`
 
 - For each tracked obligation, identify contract/clause, responsible party and owner, deliverable or performance measure, due/renewal/notice dates, dependencies, acceptance evidence and current status.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:1.contract_lifecycle_integrity`** — `object`
 
 - Define access/classification, authorised variation links, renewal/termination triggers and reconciliation of the obligation register with operative contract versions; expose missing documents or unresolved interpretations.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -111,18 +137,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:1.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/contract-manager:1.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -172,10 +201,15 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[HM Treasury, The Green Book](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government)** — Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Contract Manager:** organisational contract standards; DORA contractual requirements where applicable; IACCM/WorldCC practice. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-contract-manager-2"></a>
@@ -215,6 +249,19 @@ Produce and govern the role deliverable: variation and change records.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `governed-register`.
+
+Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.
+
+**Evidence accompanying the work product:**
+
+- actual source-attributed records
+- uniqueness, completeness and relationship reconciliation
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -222,22 +269,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/contract-manager:2.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: variation and change records.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:2.receiving_acceptance`** — `array`
 
 - For each receiving role (Vendor Manager; Third-Party Risk Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:2.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:2.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:2.delivery_verification`** — `array`
 
-- For the specific output 'variation and change records', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.
+- For the specific output 'variation and change records', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:2.role_gate_observations`** — `array`
 
@@ -248,22 +300,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G4: The primary deliverable ("Contract repository and obligation register") is published on the agreed cadence, including adverse results.
 - G5: Every obligation on both sides is extracted into a tracked register with an owner
 - G6: obligations that live only in the contract document are not managed
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:2.contract_input_1`** — `object`
 
 - Analyse the specific input "Negotiated commercial terms" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:2.contract_input_2`** — `object`
 
 - Analyse the specific input "Legal drafting" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:2.contract_input_3`** — `object`
 
 - Analyse the specific input "Delivery performance" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:2.contract_input_4`** — `object`
 
 - Analyse the specific input "Regulatory requirements for contracts" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -272,18 +329,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:2.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/contract-manager:2.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -333,10 +393,15 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[HM Treasury, The Green Book](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government)** — Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Contract Manager:** organisational contract standards; DORA contractual requirements where applicable; IACCM/WorldCC practice. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-contract-manager-3"></a>
@@ -346,7 +411,7 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 **At a glance**
 
 - **Purpose:** Produce and govern the role deliverable: obligation compliance monitoring.
-- **Mandatory examples:** Identify decisions or downstream uses, accountable recipients and verifiable next actions. Provide attributable substantive findings, reasoning and limitations for the specific subject. Identify document purpose, audience, subject boundary and authoritative source versions.
+- **Mandatory examples:** Define tested obligations, assurance period, sample and exclusions. Link procedures and observed results to immutable evidence and located deviations. Limit the independent conclusion to tested scope, evidence strength and unresolved findings.
 - **Conditions to resolve:** personal data are processed; an applicable regulatory requirement exists. Unknown applicability remains unresolved.
 - **Optional example:** Include versioned calculations, logs or technical detail only when linked to a specific required claim.
 - **Review:** assess substantive content, evidence and gaps against the full selected contract; acceptance and release remain separate.
@@ -371,10 +436,23 @@ Produce and govern the role deliverable: obligation compliance monitoring.
 **Also applicable:** all requirements in these linked foundations and overlays form part of this contract, subject to their explicit conditions:
 
 - [`global/invariants`](spec-global-invariants.md)
-- [`type/document`](spec-type-document.md)
-- [`domain/delivery`](spec-domain-delivery.md)
+- [`type/assurance-report`](spec-type-assurance-report.md)
+- [`domain/security`](spec-domain-security.md)
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
+
+### Primary work product and evidence
+
+**Primary work product:** `assurance-assessment`.
+
+Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.
+
+**Evidence accompanying the work product:**
+
+- criterion-to-test-to-observation traceability
+- independent reviewer and limitations
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
 
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
@@ -383,22 +461,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/contract-manager:3.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: obligation compliance monitoring.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:3.receiving_acceptance`** — `array`
 
 - For each receiving role (Vendor Manager; Third-Party Risk Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:3.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:3.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:3.delivery_verification`** — `array`
 
-- For the specific output 'obligation compliance monitoring', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.
+- For the specific output 'obligation compliance monitoring', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:3.role_gate_observations`** — `array`
 
@@ -409,34 +492,42 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G4: The primary deliverable ("Contract repository and obligation register") is published on the agreed cadence, including adverse results.
 - G5: Every obligation on both sides is extracted into a tracked register with an owner
 - G6: obligations that live only in the contract document are not managed
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:3.contract_input_1`** — `object`
 
 - Analyse the specific input "Negotiated commercial terms" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:3.contract_input_2`** — `object`
 
 - Analyse the specific input "Legal drafting" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:3.contract_input_3`** — `object`
 
 - Analyse the specific input "Delivery performance" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:3.contract_input_4`** — `object`
 
 - Analyse the specific input "Regulatory requirements for contracts" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:3.binding_obligation_baseline`** — `array`
 
 - Identify the executed contract/version, applicable clause or obligation ID, accountable party, effective/due dates and agreed measurable acceptance or performance threshold; distinguish proposed terms from binding obligations.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:3.obligation_observations`** — `array`
 
 - For each obligation due in the reporting period, link actual performance/delivery evidence, measurement period and status; separate met, breached, disputed, not yet due and insufficient-evidence cases.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:3.obligation_remedies`** — `array`
 
 - For each material deviation, identify impact, notice/cure deadlines, contractually available remedies, escalation owner and required legal/commercial decision; do not invent a right, waive an obligation or claim a dispute resolved without authority.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -445,18 +536,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:3.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/contract-manager:3.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -493,11 +587,17 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 ### Professional sources and their limits
 
+- **[NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls](https://doi.org/10.6028/NIST.SP.800-53Ar5)** — Assessment objectives, methods, evidence, findings and bounded assessment conclusions. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[HM Treasury, The Green Book](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government)** — Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Contract Manager:** organisational contract standards; DORA contractual requirements where applicable; IACCM/WorldCC practice. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-contract-manager-4"></a>
@@ -537,6 +637,19 @@ Produce and govern the role deliverable: dispute and remedy records.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `governed-register`.
+
+Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.
+
+**Evidence accompanying the work product:**
+
+- actual source-attributed records
+- uniqueness, completeness and relationship reconciliation
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -544,22 +657,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/contract-manager:4.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: dispute and remedy records.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:4.receiving_acceptance`** — `array`
 
 - For each receiving role (Vendor Manager; Third-Party Risk Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:4.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:4.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:4.delivery_verification`** — `array`
 
-- For the specific output 'dispute and remedy records', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.
+- For the specific output 'dispute and remedy records', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:4.role_gate_observations`** — `array`
 
@@ -570,34 +688,42 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G4: The primary deliverable ("Contract repository and obligation register") is published on the agreed cadence, including adverse results.
 - G5: Every obligation on both sides is extracted into a tracked register with an owner
 - G6: obligations that live only in the contract document are not managed
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:4.contract_input_1`** — `object`
 
 - Analyse the specific input "Negotiated commercial terms" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:4.contract_input_2`** — `object`
 
 - Analyse the specific input "Legal drafting" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:4.contract_input_3`** — `object`
 
 - Analyse the specific input "Delivery performance" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:4.contract_input_4`** — `object`
 
 - Analyse the specific input "Regulatory requirements for contracts" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:4.dispute_factual_record`** — `array`
 
 - Identify dispute/claim ID, parties, operative contract/clause and relevant governing-law reference, asserted event, dated chronology, evidence, amounts/remedies claimed and disputed versus agreed facts.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:4.notice_remedy_control`** — `array`
 
 - Record applicable contractual notice/cure/escalation deadlines, required delivery method, notices actually issued, rights reserved, proposed remedies and accountable commercial/legal owners; do not fabricate authority or a legal entitlement.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:4.dispute_disposition`** — `object`
 
 - Record positions, negotiation/decision status, authorised settlement or remedy where actually agreed, outstanding actions, implementation evidence and closure conditions; a recommendation is not an executed settlement.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -606,18 +732,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/contract-manager:4.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/contract-manager:4.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -667,8 +796,13 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[HM Treasury, The Green Book](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government)** — Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Contract Manager:** organisational contract standards; DORA contractual requirements where applicable; IACCM/WorldCC practice. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 <!-- JAI:OUTPUT-CONTRACTS:END -->

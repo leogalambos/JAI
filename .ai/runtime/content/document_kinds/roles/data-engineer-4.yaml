@@ -64,7 +64,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-engineer:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -104,7 +107,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-engineer:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -144,7 +150,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-engineer:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -184,7 +193,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-engineer:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -204,7 +216,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'pipeline runbooks and service levels', provide verifiable evidence satisfying: A competent on-call engineer who has never seen the service can execute it unaided. Required delivery form: Versioned Markdown in the service repository.",
+        "For the specific output 'pipeline runbooks and service levels', provide verifiable evidence satisfying: State when the procedure applies, exact targets, permitted operator capability, prerequisites, access dependencies and conditions forbidding execution. For each step, give the action, parameters, expected observation and a decision on success/failure; do not embed credentials. Define failure/timeout branches, rollback or safe recovery, escalation conditions and evidence of rehearsal against a named version/environment. Existing source requirement: A competent on-call engineer who has never seen the service can execute it unaided. Required delivery form: Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,12 +231,15 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'pipeline runbooks and service levels', provide verifiable evidence satisfying: A competent on-call engineer who has never seen the service can execute it unaided. Required delivery form: Versioned Markdown in the service repository.",
+        "reason": "For the specific output 'pipeline runbooks and service levels', provide verifiable evidence satisfying: State when the procedure applies, exact targets, permitted operator capability, prerequisites, access dependencies and conditions forbidding execution. For each step, give the action, parameters, expected observation and a decision on success/failure; do not embed credentials. Define failure/timeout branches, rollback or safe recovery, escalation conditions and evidence of rehearsal against a named version/environment. Existing source requirement: A competent on-call engineer who has never seen the service can execute it unaided. Required delivery form: Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#data-engineer:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -234,8 +249,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "pipeline runbooks and service levels",
-        "format": "Versioned Markdown in the service repository",
-        "acceptance_criterion": "A competent on-call engineer who has never seen the service can execute it unaided",
+        "format": "Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches.",
+        "acceptance_criterion": "State when the procedure applies, exact targets, permitted operator capability, prerequisites, access dependencies and conditions forbidding execution. For each step, give the action, parameters, expected observation and a decision on success/failure; do not embed credentials. Define failure/timeout branches, rollback or safe recovery, escalation conditions and evidence of rehearsal against a named version/environment. Existing source requirement: A competent on-call engineer who has never seen the service can execute it unaided.",
         "role_path": "skills/it-roles-data-analytics-and-ai/references/data-engineer.md"
       }
     },
@@ -278,7 +293,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-engineer:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -328,7 +346,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-engineer:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -373,7 +394,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-engineer:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -418,7 +442,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-engineer:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -463,7 +490,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-engineer:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -510,7 +540,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -555,7 +588,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -602,7 +638,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -733,16 +772,45 @@
         "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "data-catalogue",
+        "title": "W3C Data Catalog Vocabulary Version 3 (DCAT 3)",
+        "url": "https://www.w3.org/TR/vocab-dcat-3/",
+        "scope": "Dataset/catalogue identity, distributions, provenance, access and descriptive metadata.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "data-quality",
+        "title": "W3C Data Quality Vocabulary",
+        "url": "https://www.w3.org/TR/vocab-dqv/",
+        "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "ai-risk-management",
+        "title": "NIST AI 100-1, Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+        "url": "https://doi.org/10.6028/NIST.AI.100-1",
+        "scope": "Voluntary GOVERN, MAP, MEASURE and MANAGE functions for AI risks; applicability and adopted practices require explicit contextual selection.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Data Engineer",
+        "domain": "Data, Analytics and AI",
+        "domain_index": 7,
+        "method_focus": "Trace data provenance, quality, meaning and permitted use; define model evaluation, uncertainty and operational monitoring where applicable.",
         "frameworks": [
           "DAMA-DMBOK 2",
           "data contract practice",
           "dimensional or Data Vault modelling as adopted"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -813,6 +881,17 @@
     "source_fingerprint": "fd4dfcc83920ec185b45c0c76ac7712a3182537a1a3e8ce1aea8d46c2fbd94f2",
     "source_hash": "ecd57225a287359888b0c5d2f55f9cc9a70f0efb475dea1a7a028bdb784c3c1d"
   },
+  "delivery_form": {
+    "primary_artifact": "operational-procedure",
+    "representation": "Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches.",
+    "evidence": [
+      "versioned verification checkpoints",
+      "rehearsal environment/results or explicit untested scope"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "28fef2652b5562ce34013a7ad58f03c334da797b73ea7a84baa6b563b07f5c98",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

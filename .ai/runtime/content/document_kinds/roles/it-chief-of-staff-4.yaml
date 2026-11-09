@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
           "content/types/presentation.yaml",
-          "https://www.w3.org/TR/WCAG22/"
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
           "content/types/presentation.yaml",
-          "https://www.w3.org/TR/WCAG22/"
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
           "content/types/presentation.yaml",
-          "https://www.w3.org/TR/WCAG22/"
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
           "content/types/presentation.yaml",
-          "https://www.w3.org/TR/WCAG22/"
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'executive briefing pack', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'executive briefing pack', provide verifiable evidence satisfying: State intended audience, specific decision or learning objective, scope and requested next action. Present a coherent argument linking claims to evidence, alternatives, limitations and the recommendation; do not replace analysis with slogans. Make visuals and reading order understandable; give meaningful labels/text alternatives and links to supporting details appropriate to the delivered medium. Required delivery form: Audience-specific presentation with a supported ask and sequenced evidence-linked argument.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'executive briefing pack', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'executive briefing pack', provide verifiable evidence satisfying: State intended audience, specific decision or learning objective, scope and requested next action. Present a coherent argument linking claims to evidence, alternatives, limitations and the recommendation; do not replace analysis with slogans. Make visuals and reading order understandable; give meaningful labels/text alternatives and links to supporting details appropriate to the delivered medium. Required delivery form: Audience-specific presentation with a supported ask and sequenced evidence-linked argument.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
           "content/types/presentation.yaml",
-          "https://www.w3.org/TR/WCAG22/"
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "executive briefing pack",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Audience-specific presentation with a supported ask and sequenced evidence-linked argument.",
+        "acceptance_criterion": "State intended audience, specific decision or learning objective, scope and requested next action. Present a coherent argument linking claims to evidence, alternatives, limitations and the recommendation; do not replace analysis with slogans. Make visuals and reading order understandable; give meaningful labels/text alternatives and links to supporting details appropriate to the delivered medium.",
         "role_path": "skills/it-roles-executive-and-leadership/references/it-chief-of-staff.md"
       }
     },
@@ -268,7 +278,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
           "content/types/presentation.yaml",
-          "https://www.w3.org/TR/WCAG22/"
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -314,7 +326,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
           "content/types/presentation.yaml",
-          "https://www.w3.org/TR/WCAG22/"
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -358,7 +372,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
           "content/types/presentation.yaml",
-          "https://www.w3.org/TR/WCAG22/"
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -402,7 +418,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
           "content/types/presentation.yaml",
-          "https://www.w3.org/TR/WCAG22/"
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -446,7 +464,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-chief-of-staff:4",
           "content/types/presentation.yaml",
-          "https://www.w3.org/TR/WCAG22/"
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -492,7 +512,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/WCAG22/"
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -536,7 +558,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/WCAG22/"
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -582,7 +606,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/WCAG22/"
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -713,15 +739,36 @@
         "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
         "basis": "jai-practice",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "business-appraisal",
+        "title": "HM Treasury, The Green Book",
+        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "IT Chief of Staff",
+        "domain": "Executive and Leadership",
+        "domain_index": 1,
+        "method_focus": "Connect strategic choices, investment options, measurable outcomes, risk appetite and accountable decisions.",
         "frameworks": [
           "OKR practice",
           "COBIT 2019 reporting guidance"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -792,6 +839,17 @@
     "source_fingerprint": "c89707f90833c399b3d83fca2fe22ee3ef17c03929dca714341e228a14b4a6c2",
     "source_hash": "77aa3f065f904b4b80a918380c3ab532281ed7f45102eefdad641e291edb00a3"
   },
+  "delivery_form": {
+    "primary_artifact": "audience-presentation",
+    "representation": "Audience-specific presentation with a supported ask and sequenced evidence-linked argument.",
+    "evidence": [
+      "claim/evidence links",
+      "accessible visuals and source navigation"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "287cd9261fa1cedd124343e79e99b7cd2216a4b0a983658d08ab0035fb030678",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

@@ -63,7 +63,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#accessibility-specialist:2",
           "content/types/decision-paper.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -102,7 +105,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#accessibility-specialist:2",
           "content/types/decision-paper.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -141,7 +147,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#accessibility-specialist:2",
           "content/types/decision-paper.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -180,7 +189,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#accessibility-specialist:2",
           "content/types/decision-paper.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -200,7 +212,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'conformance assessments and accessibility statements', provide verifiable evidence satisfying: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Structured assessment document with scoring method stated.",
+        "For the specific output 'conformance assessments and accessibility statements', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +227,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'conformance assessments and accessibility statements', provide verifiable evidence satisfying: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Structured assessment document with scoring method stated.",
+        "reason": "For the specific output 'conformance assessments and accessibility statements', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#accessibility-specialist:2",
           "content/types/decision-paper.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -229,8 +244,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "conformance assessments and accessibility statements",
-        "format": "Structured assessment document with scoring method stated",
-        "acceptance_criterion": "Criteria were fixed before evidence collection and the method is reproducible",
+        "format": "Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
+        "acceptance_criterion": "State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible.",
         "role_path": "skills/it-roles-design-and-user-experience/references/accessibility-specialist.md"
       }
     },
@@ -270,7 +285,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#accessibility-specialist:2",
           "content/types/decision-paper.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -317,7 +335,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#accessibility-specialist:2",
           "content/types/decision-paper.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -361,7 +382,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#accessibility-specialist:2",
           "content/types/decision-paper.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -405,7 +429,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#accessibility-specialist:2",
           "content/types/decision-paper.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -449,7 +476,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#accessibility-specialist:2",
           "content/types/decision-paper.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -495,7 +525,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -539,7 +572,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -585,7 +621,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -708,17 +747,46 @@
         "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "human-centred-design",
+        "title": "ISO 9241-210:2019, Human-centred design for interactive systems",
+        "url": "https://www.iso.org/standard/77520.html",
+        "scope": "Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "accessibility",
+        "title": "W3C Web Content Accessibility Guidelines (WCAG) 2.2",
+        "url": "https://www.w3.org/TR/WCAG22/",
+        "scope": "Perceivable and understandable content, text alternatives and accessible navigation; applicability depends on the delivered medium.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "accessibility-evaluation",
+        "title": "W3C WCAG Evaluation Methodology (WCAG-EM) 2.0",
+        "url": "https://www.w3.org/TR/wcag-em-2/",
+        "scope": "Evaluation scope, representative sample, evaluation and reporting; W3C Group Note, informative methodology rather than a conformance standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Accessibility Specialist",
+        "domain": "Design and User Experience",
+        "domain_index": 14,
+        "method_focus": "Trace user research and accessibility requirements to findings, design choices and observed usability/accessibility evaluation.",
         "frameworks": [
           "WCAG 2.2 AA",
           "EN 301 549",
           "ISO/IEC 40500",
           "national accessibility legislation"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -791,6 +859,17 @@
     "source_fingerprint": "095d88775a66c23cebb5c78d90e6e66245157029f873c095ca89f1c5cab705df",
     "source_hash": "6d84af00e5176085d9466e24e0ad3ba38d24cff15408c9c79a2b613b6618881c"
   },
+  "delivery_form": {
+    "primary_artifact": "assurance-assessment",
+    "representation": "Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
+    "evidence": [
+      "criterion-to-test-to-observation traceability",
+      "independent reviewer and limitations"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "0d8faa1f47c92b3e5078e4d888315b6f8526e116ba77217ab437b1aeb9eb547f",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

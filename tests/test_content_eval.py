@@ -9,12 +9,25 @@ import unittest
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / '.ai/runtime/tools'))
-from content_eval import evaluate_corpus, prepare_case, catalogue_coverage
+from content_eval import evaluate_corpus, prepare_case, catalogue_coverage, evaluate_sod_probes
 from content_mutations import apply_variant
 from content_spec import ContentSpec
 
 
 class ContentEvalTests(unittest.TestCase):
+    def test_existing_host_probe_api_rejects_self_review_and_detects_a_broken_detector(self):
+        reference = json.loads((ROOT / '.ai/runtime/evals/content_quality/adr-simple.json').read_text())
+        model, spec = prepare_case(reference, ContentSpec(ROOT))
+        result = evaluate_sod_probes(model, spec)
+        self.assertTrue(result['pass'])
+        self.assertEqual(0, result['sod_escapes'])
+        def unsafe_detector(model, spec, **kwargs):
+            return {'reviewer': {'status': 'verified-independent-review', 'required_units': []},
+                    'findings': []}
+        broken = evaluate_sod_probes(model, spec, unsafe_detector)
+        self.assertFalse(broken['pass'])
+        self.assertEqual(6, broken['sod_escapes'])
+
     def test_detector_without_findings_cannot_pass_seeded_recall(self):
         report = evaluate_corpus(ROOT, detector=lambda model, spec: {
             'findings': [], 'gate_verdict': 'DRAFT_INCOMPLETE'}, include_enterprise=False)

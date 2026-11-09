@@ -63,7 +63,9 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: security risk register.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-security-officer:3",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "reason": "For each receiving role (SOC Manager; Security Architect; GRC Analyst; Security Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-security-officer:3",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -139,7 +143,9 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-security-officer:3",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -177,7 +183,9 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-security-officer:3",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -197,7 +205,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'security risk register', provide verifiable evidence satisfying: Every row has an owner, a date, a status and a next action. Required delivery form: Structured table in the system of record (CSV/tool export).",
+        "For the specific output 'security risk register', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every row has an owner, a date, a status and a next action. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -212,10 +220,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'security risk register', provide verifiable evidence satisfying: Every row has an owner, a date, a status and a next action. Required delivery form: Structured table in the system of record (CSV/tool export).",
+        "reason": "For the specific output 'security risk register', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every row has an owner, a date, a status and a next action. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-security-officer:3",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -225,8 +235,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "security risk register",
-        "format": "Structured table in the system of record (CSV/tool export)",
-        "acceptance_criterion": "Every row has an owner, a date, a status and a next action",
+        "format": "Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
+        "acceptance_criterion": "Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every row has an owner, a date, a status and a next action.",
         "role_path": "skills/it-roles-executive-and-leadership/references/chief-information-security-officer.md"
       }
     },
@@ -264,7 +274,9 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-security-officer:3",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -309,7 +321,9 @@
         "reason": "Analyse the specific input \"Threat landscape and intelligence\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-security-officer:3",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -352,7 +366,9 @@
         "reason": "Analyse the specific input \"Asset and crown-jewel inventory\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-security-officer:3",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -395,7 +411,9 @@
         "reason": "Analyse the specific input \"Regulatory obligations\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-security-officer:3",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -438,7 +456,9 @@
         "reason": "Analyse the specific input \"Incident and control performance data\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-information-security-officer:3",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -483,7 +503,9 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -526,7 +548,9 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -571,7 +595,9 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -694,16 +720,37 @@
         "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
         "basis": "jai-practice",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "business-appraisal",
+        "title": "HM Treasury, The Green Book",
+        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Chief Information Security Officer",
+        "domain": "Executive and Leadership",
+        "domain_index": 1,
+        "method_focus": "Connect strategic choices, investment options, measurable outcomes, risk appetite and accountable decisions.",
         "frameworks": [
           "ISO/IEC 27001:2022",
           "NIST CSF 2.0",
           "NIS2 and DORA where in scope"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -774,6 +821,17 @@
     "source_fingerprint": "5030d4794448a44a36cd83e1f1bc8eb90228ebb85ac8edf631ac4c3978f5655a",
     "source_hash": "b24c48588971d632a79573d523a5d7a05d306c12068893b42f142e1658faea7b"
   },
+  "delivery_form": {
+    "primary_artifact": "governed-register",
+    "representation": "Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
+    "evidence": [
+      "actual source-attributed records",
+      "uniqueness, completeness and relationship reconciliation"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "95160dc19af60fbb30cd6a7e0859f55c42b53019c26f5db304892954603447b2",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

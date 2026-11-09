@@ -63,7 +63,10 @@
           "artifacts/contracts/role-deliverables.v3.json#purple-team-lead:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -103,7 +106,10 @@
           "artifacts/contracts/role-deliverables.v3.json#purple-team-lead:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -143,7 +149,10 @@
           "artifacts/contracts/role-deliverables.v3.json#purple-team-lead:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -183,7 +192,10 @@
           "artifacts/contracts/role-deliverables.v3.json#purple-team-lead:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -203,7 +215,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Technique execution plan mapped to ATT&CK', provide verifiable evidence satisfying: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Document with milestones, owners, dependencies and assumptions.",
+        "For the specific output 'Technique execution plan mapped to ATT&CK', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +230,15 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Technique execution plan mapped to ATT&CK', provide verifiable evidence satisfying: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Document with milestones, owners, dependencies and assumptions.",
+        "reason": "For the specific output 'Technique execution plan mapped to ATT&CK', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#purple-team-lead:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -233,8 +248,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Technique execution plan mapped to ATT&CK",
-        "format": "Document with milestones, owners, dependencies and assumptions",
-        "acceptance_criterion": "Every milestone has an acceptance test and a named accountable owner",
+        "format": "Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
+        "acceptance_criterion": "State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner.",
         "role_path": "skills/it-roles-security-operations-and-defensive-security/references/purple-team-lead.md"
       }
     },
@@ -276,7 +291,10 @@
           "artifacts/contracts/role-deliverables.v3.json#purple-team-lead:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -325,7 +343,10 @@
           "artifacts/contracts/role-deliverables.v3.json#purple-team-lead:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -370,7 +391,10 @@
           "artifacts/contracts/role-deliverables.v3.json#purple-team-lead:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -415,7 +439,10 @@
           "artifacts/contracts/role-deliverables.v3.json#purple-team-lead:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -460,7 +487,10 @@
           "artifacts/contracts/role-deliverables.v3.json#purple-team-lead:1",
           "content/types/roadmap.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -507,7 +537,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -552,7 +585,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -599,7 +635,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -730,16 +769,45 @@
         "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "systems-security-engineering",
+        "title": "NIST SP 800-160 Volume 1 Revision 1, Engineering Trustworthy Secure Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+        "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "contingency-planning",
+        "title": "NIST SP 800-34 Revision 1, Contingency Planning Guide for Federal Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-34r1",
+        "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Purple Team Lead",
+        "domain": "Security Operations and Defensive Security",
+        "domain_index": 11,
+        "method_focus": "Separate observed events, detection coverage, analytic hypotheses, confidence and containment/recovery evidence.",
         "frameworks": [
           "MITRE ATT&CK and ATT&CK Evaluations methodology",
           "adversary emulation practice",
           "NIST SP 800-115"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -810,6 +878,17 @@
     "source_fingerprint": "337ade7237e7e3661480d7f9bebea33384222fa871cf2a9ed7e685ea888f9804",
     "source_hash": "c1799adda76116ed1c8f0123b9ac8a655be4ccd383e6fa3bcbddfc4646cf7067"
   },
+  "delivery_form": {
+    "primary_artifact": "outcome-roadmap",
+    "representation": "Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
+    "evidence": [
+      "current/target baseline and planning assumptions",
+      "resource/funding constraints and decision triggers"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "364528299e6300f2a50b33cc827753a1097d489e411c685e57240d1bd0d3ecd3",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

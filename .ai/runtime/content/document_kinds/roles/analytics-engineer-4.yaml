@@ -63,7 +63,9 @@
           "artifacts/contracts/role-deliverables.v3.json#analytics-engineer:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -103,7 +105,9 @@
           "artifacts/contracts/role-deliverables.v3.json#analytics-engineer:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -143,7 +147,9 @@
           "artifacts/contracts/role-deliverables.v3.json#analytics-engineer:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -183,7 +189,9 @@
           "artifacts/contracts/role-deliverables.v3.json#analytics-engineer:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -203,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'data freshness and quality dashboards', provide verifiable evidence satisfying: Every metric has a definition, a source, a refresh cadence and an owner. Required delivery form: Live view in the reporting platform with a documented data lineage.",
+        "For the specific output 'data freshness and quality dashboards', provide verifiable evidence satisfying: For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Existing source requirement: Every metric has a definition, a source, a refresh cadence and an owner. Required delivery form: Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'data freshness and quality dashboards', provide verifiable evidence satisfying: Every metric has a definition, a source, a refresh cadence and an owner. Required delivery form: Live view in the reporting platform with a documented data lineage.",
+        "reason": "For the specific output 'data freshness and quality dashboards', provide verifiable evidence satisfying: For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Existing source requirement: Every metric has a definition, a source, a refresh cadence and an owner. Required delivery form: Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#analytics-engineer:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -233,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "data freshness and quality dashboards",
-        "format": "Live view in the reporting platform with a documented data lineage",
-        "acceptance_criterion": "Every metric has a definition, a source, a refresh cadence and an owner",
+        "format": "Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
+        "acceptance_criterion": "For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Existing source requirement: Every metric has a definition, a source, a refresh cadence and an owner.",
         "role_path": "skills/it-roles-data-analytics-and-ai/references/analytics-engineer.md"
       }
     },
@@ -277,7 +287,9 @@
           "artifacts/contracts/role-deliverables.v3.json#analytics-engineer:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -327,7 +339,9 @@
           "artifacts/contracts/role-deliverables.v3.json#analytics-engineer:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -372,7 +386,9 @@
           "artifacts/contracts/role-deliverables.v3.json#analytics-engineer:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -417,7 +433,9 @@
           "artifacts/contracts/role-deliverables.v3.json#analytics-engineer:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -462,7 +480,9 @@
           "artifacts/contracts/role-deliverables.v3.json#analytics-engineer:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -509,7 +529,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -554,7 +576,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -601,7 +625,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -732,16 +758,37 @@
         "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "data-catalogue",
+        "title": "W3C Data Catalog Vocabulary Version 3 (DCAT 3)",
+        "url": "https://www.w3.org/TR/vocab-dcat-3/",
+        "scope": "Dataset/catalogue identity, distributions, provenance, access and descriptive metadata.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "ai-risk-management",
+        "title": "NIST AI 100-1, Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+        "url": "https://doi.org/10.6028/NIST.AI.100-1",
+        "scope": "Voluntary GOVERN, MAP, MEASURE and MANAGE functions for AI risks; applicability and adopted practices require explicit contextual selection.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Analytics Engineer",
+        "domain": "Data, Analytics and AI",
+        "domain_index": 7,
+        "method_focus": "Trace data provenance, quality, meaning and permitted use; define model evaluation, uncertainty and operational monitoring where applicable.",
         "frameworks": [
           "dimensional modelling",
           "analytics engineering practice (e.g. dbt)",
           "DAMA-DMBOK 2"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -812,6 +859,17 @@
     "source_fingerprint": "fa14b508e048cc69e22fd8b7aa01f28325458f6421ec16950b7c4e8d82cd593e",
     "source_hash": "02c39715665a54c0a1adbead4aeea52569375914e2a9a6c5f03b3c483d7da1ba"
   },
+  "delivery_form": {
+    "primary_artifact": "measured-dashboard",
+    "representation": "Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
+    "evidence": [
+      "units, denominators and measurement windows",
+      "dated values, thresholds and actionable exceptions"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "692e0e52c596cfdf4f244f4459eb29a37b4c58512340d98493aa20036ef81699",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

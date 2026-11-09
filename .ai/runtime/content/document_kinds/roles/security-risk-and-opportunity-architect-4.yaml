@@ -63,7 +63,8 @@
           "artifacts/contracts/role-deliverables.v3.json#security-risk-and-opportunity-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -103,7 +104,8 @@
           "artifacts/contracts/role-deliverables.v3.json#security-risk-and-opportunity-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -143,7 +145,8 @@
           "artifacts/contracts/role-deliverables.v3.json#security-risk-and-opportunity-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -183,7 +186,8 @@
           "artifacts/contracts/role-deliverables.v3.json#security-risk-and-opportunity-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -203,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'risk-informed design recommendations', provide verifiable evidence satisfying: Every recommendation identifies the affected attribute, scenario, expected change in exposure/opportunity and decision owner. Required delivery form: Traceable recommendation set linked to risk/opportunity scenarios and business attributes.",
+        "For the specific output 'risk-informed design recommendations', provide verifiable evidence satisfying: Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Every recommendation identifies the affected attribute, scenario, expected change in exposure/opportunity and decision owner. Required delivery form: Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'risk-informed design recommendations', provide verifiable evidence satisfying: Every recommendation identifies the affected attribute, scenario, expected change in exposure/opportunity and decision owner. Required delivery form: Traceable recommendation set linked to risk/opportunity scenarios and business attributes.",
+        "reason": "For the specific output 'risk-informed design recommendations', provide verifiable evidence satisfying: Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Every recommendation identifies the affected attribute, scenario, expected change in exposure/opportunity and decision owner. Required delivery form: Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-risk-and-opportunity-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -233,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "risk-informed design recommendations",
-        "format": "Traceable recommendation set linked to risk/opportunity scenarios and business attributes",
-        "acceptance_criterion": "Every recommendation identifies the affected attribute, scenario, expected change in exposure/opportunity and decision owner",
+        "format": "Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
+        "acceptance_criterion": "Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Every recommendation identifies the affected attribute, scenario, expected change in exposure/opportunity and decision owner.",
         "role_path": "skills/it-roles-sabsa-security-architecture/references/security-risk-and-opportunity-architect.md"
       }
     },
@@ -275,7 +280,8 @@
           "artifacts/contracts/role-deliverables.v3.json#security-risk-and-opportunity-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -323,7 +329,8 @@
           "artifacts/contracts/role-deliverables.v3.json#security-risk-and-opportunity-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -368,7 +375,8 @@
           "artifacts/contracts/role-deliverables.v3.json#security-risk-and-opportunity-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -413,7 +421,8 @@
           "artifacts/contracts/role-deliverables.v3.json#security-risk-and-opportunity-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -458,7 +467,8 @@
           "artifacts/contracts/role-deliverables.v3.json#security-risk-and-opportunity-architect:4",
           "content/types/solution-design.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -505,7 +515,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -550,7 +561,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -597,7 +609,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -728,17 +741,30 @@
         "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sabsa-overview",
+        "title": "SABSA Institute, SABSA Executive Summary",
+        "url": "https://sabsa.org/sabsa-executive-summary/",
+        "scope": "Business-driven security architecture and traceability overview; actual SABSA deliveries must select the accessible authoritative method/version and their detailed obligations.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Security Risk and Opportunity Architect",
+        "domain": "SABSA Security Architecture",
+        "domain_index": 17,
+        "method_focus": "Trace business drivers and measurable attributes through risks, control objectives, services, mechanisms and operational measures.",
         "frameworks": [
           "SABSA risk and opportunity management",
           "ISO 31000",
           "FAIR quantification",
           "NIST SP 800-30"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -809,6 +835,17 @@
     "source_fingerprint": "d4871ae081300ac16cea91b4aaa3ef48a398315ae523d8903d86d9cc5c87d484",
     "source_hash": "35111f5c18591ee15e202b4d2608df1bd4e8bb6f77516af13a1eb050557d70b7"
   },
+  "delivery_form": {
+    "primary_artifact": "solution-design",
+    "representation": "Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
+    "evidence": [
+      "requirements-to-design traceability",
+      "independent design review"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "cced663f4cc17eb1b1431371de5d679919ae02ea702e8b2b1a0d8ec43e022703",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

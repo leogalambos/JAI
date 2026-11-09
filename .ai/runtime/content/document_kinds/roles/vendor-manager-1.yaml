@@ -63,7 +63,9 @@
           "artifacts/contracts/role-deliverables.v3.json#vendor-manager:1",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -103,7 +105,9 @@
           "artifacts/contracts/role-deliverables.v3.json#vendor-manager:1",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -143,7 +147,9 @@
           "artifacts/contracts/role-deliverables.v3.json#vendor-manager:1",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -183,7 +189,9 @@
           "artifacts/contracts/role-deliverables.v3.json#vendor-manager:1",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -203,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Supplier performance reviews and scorecards', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'Supplier performance reviews and scorecards', provide verifiable evidence satisfying: For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Required delivery form: Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Supplier performance reviews and scorecards', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'Supplier performance reviews and scorecards', provide verifiable evidence satisfying: For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Required delivery form: Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#vendor-manager:1",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -233,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Supplier performance reviews and scorecards",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
+        "acceptance_criterion": "For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations.",
         "role_path": "skills/it-roles-commercial-sourcing-and-enablement/references/vendor-manager.md"
       }
     },
@@ -275,7 +285,9 @@
           "artifacts/contracts/role-deliverables.v3.json#vendor-manager:1",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -323,7 +335,9 @@
           "artifacts/contracts/role-deliverables.v3.json#vendor-manager:1",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -368,7 +382,9 @@
           "artifacts/contracts/role-deliverables.v3.json#vendor-manager:1",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -413,7 +429,9 @@
           "artifacts/contracts/role-deliverables.v3.json#vendor-manager:1",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -458,7 +476,9 @@
           "artifacts/contracts/role-deliverables.v3.json#vendor-manager:1",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -505,7 +525,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -550,7 +572,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -597,7 +621,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -728,16 +754,37 @@
         "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "business-appraisal",
+        "title": "HM Treasury, The Green Book",
+        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Vendor Manager",
+        "domain": "Commercial, Sourcing and Enablement",
+        "domain_index": 15,
+        "method_focus": "Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.",
         "frameworks": [
           "ITIL 4 supplier management",
           "ISO/IEC 27036",
           "ISO 44001 collaborative relationships"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -808,6 +855,17 @@
     "source_fingerprint": "34739ecc323110ce416c46483d716f0db728c6e95f43cdda866403fdc873cdca",
     "source_hash": "11eb112a1c1706089a23201e3c8ba14e8f023e446c262ab31888804477ff32e9"
   },
+  "delivery_form": {
+    "primary_artifact": "measured-dashboard",
+    "representation": "Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
+    "evidence": [
+      "units, denominators and measurement windows",
+      "dated values, thresholds and actionable exceptions"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "a96426db4ee185ab005c4f2b53d4c6ad5f7061caf92f52e80223fa694cc641ab",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

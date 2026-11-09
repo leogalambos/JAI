@@ -9,7 +9,7 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/decision-paper",
+    "family/analysis-report",
     "domain/delivery"
   ],
   "applies_to": {
@@ -62,8 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -102,8 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -142,8 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -182,8 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -203,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Capability assessment', provide verifiable evidence satisfying: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Structured assessment document with scoring method stated.",
+        "For the specific output 'Capability assessment', provide verifiable evidence satisfying: Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Capability assessment', provide verifiable evidence satisfying: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Structured assessment document with scoring method stated.",
+        "reason": "For the specific output 'Capability assessment', provide verifiable evidence satisfying: Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -233,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Capability assessment",
-        "format": "Structured assessment document with scoring method stated",
-        "acceptance_criterion": "Criteria were fixed before evidence collection and the method is reproducible",
+        "format": "Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request.",
+        "acceptance_criterion": "Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible.",
         "role_path": "skills/it-roles-product-delivery-and-agile/references/agile-coach.md"
       }
     },
@@ -273,8 +278,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -320,8 +326,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -365,8 +372,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -410,8 +418,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -455,8 +464,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -502,8 +512,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -547,8 +558,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -594,8 +606,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -712,11 +725,11 @@
     ],
     "professional_references": [
       {
-        "id": "business-appraisal",
-        "title": "HM Treasury, The Green Book",
-        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
-        "basis": "informed-by",
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       },
       {
@@ -726,16 +739,37 @@
         "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "human-centred-design",
+        "title": "ISO 9241-210:2019, Human-centred design for interactive systems",
+        "url": "https://www.iso.org/standard/77520.html",
+        "scope": "Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Agile Coach",
+        "domain": "Product, Delivery and Agile",
+        "domain_index": 2,
+        "method_focus": "Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.",
         "frameworks": [
           "Team Topologies",
           "Kanban Maturity Model",
           "evidence-based management"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -789,12 +823,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "family/analysis-report",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "decision-paper",
+  "semantic_family": "analysis-report",
   "role_overlay": {
     "contract_id": "agile-coach:1",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -806,6 +842,17 @@
     "source_fingerprint": "46d93af525ea91c700db7dc454d12ae04bc294558694eb8397e7b82f7ddb3b9c",
     "source_hash": "2a2cb03cc11be5323813ee44b498ca5a737833fb0c2ff7bd8bd1bbc50b16786a"
   },
+  "delivery_form": {
+    "primary_artifact": "evidence-based-analysis-report",
+    "representation": "Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request.",
+    "evidence": [
+      "versioned source/period/population and reproducible method",
+      "observations, uncertainty, counterevidence and accountable follow-up"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "12f43bbeb4afb5bb8b4390c200f9ebaa7d82937847ff9d8dde7d533f61d44f59",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

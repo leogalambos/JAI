@@ -204,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'build-versus-buy position', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'build-versus-buy position', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,7 +219,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'build-versus-buy position', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'build-versus-buy position', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-technology-officer:2",
           "content/types/decision-paper.yaml",
@@ -234,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "build-versus-buy position",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Bounded decision paper with consistent option comparison and a clear authority/decision request.",
+        "acceptance_criterion": "Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option.",
         "role_path": "skills/it-roles-executive-and-leadership/references/chief-technology-officer.md"
       }
     },
@@ -732,11 +732,16 @@
     "role_framework_context": [
       {
         "role": "Chief Technology Officer",
+        "domain": "Executive and Leadership",
+        "domain_index": 1,
+        "method_focus": "Connect strategic choices, investment options, measurable outcomes, risk appetite and accountable decisions.",
         "frameworks": [
           "SFIA 9",
           "SWEBOK v4",
           "ISO/IEC 25010 quality model"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -807,6 +812,17 @@
     "source_fingerprint": "0062aac124b2e91d124024ab5777faae39468dce8553f1e6a2f3e7a309750e4b",
     "source_hash": "5601165b4e4cb2d34558834d4e6fd60826f19588d821e2e263ad5543815c2df5"
   },
+  "delivery_form": {
+    "primary_artifact": "decision-paper",
+    "representation": "Bounded decision paper with consistent option comparison and a clear authority/decision request.",
+    "evidence": [
+      "baseline and feasible alternatives",
+      "cost/benefit/uncertainty and consequences"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "9daddb5992d9dc2eafc48040ef95829a944dcbed131f4dd512c2457b6a671d03",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

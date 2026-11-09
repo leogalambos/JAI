@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Solution architecture document | Model in the EA tool plus a published view set | Every element traces to a driver or a quality-attribute target; no orphan elements |
-| 2 | interface and integration design | Interface and integration design | Defines versioned schemas, producer/consumer obligations, trust boundaries, failure handling and compatibility checks |
-| 3 | non-functional requirement specification | Versioned specification with numbered, traceable requirements | Every requirement is atomic, testable and traced to a source and a priority |
-| 4 | architecture decision records | Model in the EA tool plus a published view set | Every element traces to a driver or a quality-attribute target; no orphan elements |
+| 1 | Solution architecture document | Versioned solution design with component responsibilities, interfaces and measurable quality responses. | Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. |
+| 2 | interface and integration design | Versioned solution design with component responsibilities, interfaces and measurable quality responses. | Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Defines versioned schemas, producer/consumer obligations, trust boundaries, failure handling and compatibility checks. |
+| 3 | non-functional requirement specification | Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions. | Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority. |
+| 4 | architecture decision records | Versioned decision record with context, alternatives, consequences, status and supersession. | Identify the architecture concern, constraints, scope and decision status. Compare feasible design alternatives and the rejected baseline against drivers. Record the selected design, decision owner and dated rationale. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. |
 
 ## 7. Output gates (blocking)
 
@@ -187,6 +187,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - TOGAF 10
 - ISO/IEC 25010
 - ATAM scenario evaluation
@@ -198,13 +202,32 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Design the integration between our new ordering system and three legacy back-ends”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver solution architecture document in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Solution architecture document.
+
+**Illustrative case material:**
+
+HLD `MRG-OEI-HLD-01` proposes the target implementation of cross-channel order ingestion and fulfilment synchronisation. Included: commerce platform, API gateway, event broker, integration workers, ERP and observability stack. Excluded: internal code and infrastructure of unmanaged external counterparties, unapproved jurisdiction obligations and personal-device support.
+
+Delivery owner: Programme Delivery Manager; solution designer: Integration Architect; operations receiver: Service Operations Manager. Assumption: contract and identity owners accept the proposed integration design. Every assumption is a condition for detailed design rather than an implicit confirmed fact.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Define the proposed implementation boundary, use cases and external dependencies.
+- State measurable availability, performance, security and operational acceptance targets.
+- Describe component responsibilities, deployment topology and design rationale.
+- Specify integration contracts, data flows, trust boundaries and failure behaviour.
+- Describe deployment, migration, operability, rollback and design verification.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `hld` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

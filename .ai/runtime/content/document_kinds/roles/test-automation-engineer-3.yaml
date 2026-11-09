@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-automation-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-automation-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-automation-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-automation-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'flakiness and reliability report', provide verifiable evidence satisfying: Conclusions are traceable to dated evidence; opinion is visibly separated from fact. Required delivery form: Structured document with executive summary and evidence annex.",
+        "For the specific output 'flakiness and reliability report', provide verifiable evidence satisfying: Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation. Existing source requirement: Conclusions are traceable to dated evidence; opinion is visibly separated from fact. Required delivery form: Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'flakiness and reliability report', provide verifiable evidence satisfying: Conclusions are traceable to dated evidence; opinion is visibly separated from fact. Required delivery form: Structured document with executive summary and evidence annex.",
+        "reason": "For the specific output 'flakiness and reliability report', provide verifiable evidence satisfying: Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation. Existing source requirement: Conclusions are traceable to dated evidence; opinion is visibly separated from fact. Required delivery form: Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-automation-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "flakiness and reliability report",
-        "format": "Structured document with executive summary and evidence annex",
-        "acceptance_criterion": "Conclusions are traceable to dated evidence; opinion is visibly separated from fact",
+        "format": "Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
+        "acceptance_criterion": "Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation. Existing source requirement: Conclusions are traceable to dated evidence; opinion is visibly separated from fact.",
         "role_path": "skills/it-roles-quality-and-testing/references/test-automation-engineer.md"
       }
     },
@@ -271,7 +281,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-automation-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -320,7 +332,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-automation-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -364,7 +378,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-automation-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -408,7 +424,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-automation-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -452,7 +470,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-automation-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -498,7 +518,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -542,7 +564,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -588,7 +612,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -711,16 +737,37 @@
         "scope": "Test planning, test specifications and reporting information needs.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "accessibility",
+        "title": "W3C Web Content Accessibility Guidelines (WCAG) 2.2",
+        "url": "https://www.w3.org/TR/WCAG22/",
+        "scope": "Perceivable and understandable content, text alternatives and accessible navigation; applicability depends on the delivered medium.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Test Automation Engineer",
+        "domain": "Quality and Testing",
+        "domain_index": 6,
+        "method_focus": "Use risk-based test or assessment methods with expected/actual results, coverage, sampling and bounded conclusions.",
         "frameworks": [
           "ISTQB test automation",
           "test pyramid practice",
           "ISO/IEC/IEEE 29119"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -793,6 +840,17 @@
     "source_fingerprint": "4e3d154de8c767b056a0268c56a02210065e7d92a9414323001c9128410a07c8",
     "source_hash": "8d9aaf66020716e77dfb09c40713a21cb69526162c988c53ff99f44bb0733331"
   },
+  "delivery_form": {
+    "primary_artifact": "test-results",
+    "representation": "Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
+    "evidence": [
+      "expected/actual observations and execution references",
+      "coverage denominators and residual defects"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "74e426cc373e533fa383e17758de1b9ec52fa0bde49f9ad963c8e3921d90a0a4",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Insider risk indicators and detection logic | Detection rule in version control with test cases | Mapped to an ATT&CK technique, with documented true- and false-positive behaviour |
-| 2 | case assessments with evidence | Structured assessment document with scoring method stated | Criteria were fixed before evidence collection and the method is reproducible |
-| 3 | referral packages for HR or legal | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 4 | programme governance documentation | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
+| 1 | Insider risk indicators and detection logic | Control specification with objectives, trigger, actor, actions, failure paths and effectiveness measures. | Trace each control objective to a risk or obligation and identify accountable owner, protected outcome and operating scope. Specify trigger, actor/system, required inputs, action, expected observable result, exceptions and response when the control fails. Define design/operating-effectiveness checks, population or sampling, expected evidence, acceptance threshold and disposition of exceptions. Existing source requirement: Mapped to an ATT&CK technique, with documented true- and false-positive behaviour. |
+| 2 | case assessments with evidence | Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request. | Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible. |
+| 3 | referral packages for HR or legal | Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules. | Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. |
+| 4 | programme governance documentation | Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones. | State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. |
 
 ## 7. Output gates (blocking)
 
@@ -188,6 +188,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - CISA insider threat mitigation guidance
 - NIST SP 800-53
 - applicable employment and privacy law
@@ -198,13 +202,32 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Design an insider risk programme that is lawful in the EU and does not destroy trust”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver insider risk indicators and detection logic in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Insider risk indicators and detection logic.
+
+**Illustrative case material:**
+
+Risk CR-4 is unauthorised privileged production access. Control CD-4 requires a time-bounded grant tied to a ticket and accountable approver, owned by the identity service owner. It does not authorise access by itself.
+
+**Acceptance question:** Trace the control objective to a risk, obligation and owner.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Trace each control objective to a risk or obligation and identify accountable owner, protected outcome and operating scope.
+- Specify trigger, actor/system, required inputs, action, expected observable result, exceptions and response when the control fails.
+- Define design/operating-effectiveness checks, population or sampling, expected evidence, acceptance threshold and disposition of exceptions.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `control-design` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

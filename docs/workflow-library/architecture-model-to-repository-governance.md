@@ -9,6 +9,50 @@ A project/domain architecture needs to become a governed enterprise repository m
 Canonical model facts, cross-project dependencies, Open Exchange interchange and published views are consistent, reviewable and traceable to named owners.
 
 
+<!-- BEGIN workflow-applicability -->
+## Context and mechanism applicability
+
+Use the actual bounded request, current environment and decision rights to select one applicable mechanism variant. Unknown applicability remains pending; the routing record grants no authority.
+
+**Invariant outcomes:**
+
+- Canonical model facts, cross-project dependencies, Open Exchange interchange and published views are consistent, reviewable and traceable to named owners.
+- Retain source-version traceability, accountable receiving duties and every applicable existing gate.
+
+| Context | Mechanisms | Required evidence |
+| --- | --- | --- |
+| native-model | Maintain source semantics and governed canonical identities | Exact revisions, ownership and integrity results |
+| interchange | Assess supported format and observable losses without inventing tool qualification | Export/import artifacts, exact format profile and loss disposition |
+
+Return inconsistent source facts to their owner and exchange losses to the mapping/repository owner. Stop publication/release with blocking identity/reference errors, unsupported semantic reinterpretation or missing authority. Publish an explicitly bounded reviewed revision or reject/defer release with owned exceptions and review dates. Mechanism selection is not a waiver of security, legal or acceptance obligations.
+
+**Entry information (selected once per actual context version):**
+
+- Exact source model and project boundary
+- Stable identifier namespace and evidence
+- Selected notation/exchange profile and ownership rules
+
+Select intake and mechanism variant once per actual context version. Carry the reviewed record by versioned evidence reference. Reuse unchanged evidence; recheck mutable prerequisites only at the action they govern. A new context version requires its own relevant review, not reconstruction of historical work.
+
+**Continuation, rework, stop and exit:**
+
+- **continue** — The current handoff criteria and applicable prerequisites are satisfied. Continue to the registered receiving duty with exact output and evidence references.
+- **rework** — A current criterion fails or required information changes. Return inconsistent source facts to their owner and exchange losses to the mapping/repository owner.
+- **stop** — An applicable authority, legal, safety or mandatory-control boundary forbids the effect. Stop publication/release with blocking identity/reference errors, unsupported semantic reinterpretation or missing authority.
+- **exit** — The bounded outcome is accepted or the entitled owner rejects, cancels or defers the scope. Publish an explicitly bounded reviewed revision or reject/defer release with owned exceptions and review dates.
+
+**Bounded paths and scope:**
+
+Native and interchange paths share semantic integrity; native-only scope does not assert exported files or external-tool qualification.
+
+| Selected path | Applicable stages | Terminal stage |
+| --- | --- | ---: |
+| native-model | 1, 2, 3, 4, 5, 6 | 6 |
+| interchange | 1, 2, 3, 4, 5, 6 | 6 |
+
+A path with a separate mechanism requires that explicit mechanism selection in the versioned intake record. Unknown selection remains pending. Later out-of-scope stages cannot claim acceptance; a terminal exit still needs the registered exact-scope authority.
+<!-- END workflow-applicability -->
+
 <!-- JAI:WORKFLOW-DIAGRAM:START -->
 <div class="ai-workflow-overview">
 <ol class="ai-workflow-steps" role="list" aria-label="Architecture model to repository governance workflow steps">

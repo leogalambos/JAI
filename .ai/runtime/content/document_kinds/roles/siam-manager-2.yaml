@@ -62,7 +62,9 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: End-to-end SLA and OLA responsibility matrix.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -100,7 +102,9 @@
         "reason": "For each receiving role (Service Level Manager; Incident Manager; Problem Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -138,7 +142,9 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required; exceptions -> owner + expiry/review.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -176,7 +182,9 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -196,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'End-to-end SLA and OLA responsibility matrix', provide verifiable evidence satisfying: Every customer-facing commitment decomposes into measurable underpinning responsibilities with no gaps or contradictory ownership. Required delivery form: Governed register/matrix linking service outcomes, SLAs, OLAs, suppliers, owners, evidence and escalation.",
+        "For the specific output 'End-to-end SLA and OLA responsibility matrix', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every customer-facing commitment decomposes into measurable underpinning responsibilities with no gaps or contradictory ownership. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -211,10 +219,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'End-to-end SLA and OLA responsibility matrix', provide verifiable evidence satisfying: Every customer-facing commitment decomposes into measurable underpinning responsibilities with no gaps or contradictory ownership. Required delivery form: Governed register/matrix linking service outcomes, SLAs, OLAs, suppliers, owners, evidence and escalation.",
+        "reason": "For the specific output 'End-to-end SLA and OLA responsibility matrix', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every customer-facing commitment decomposes into measurable underpinning responsibilities with no gaps or contradictory ownership. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -224,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "End-to-end SLA and OLA responsibility matrix",
-        "format": "Governed register/matrix linking service outcomes, SLAs, OLAs, suppliers, owners, evidence and escalation",
-        "acceptance_criterion": "Every customer-facing commitment decomposes into measurable underpinning responsibilities with no gaps or contradictory ownership.",
+        "format": "Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
+        "acceptance_criterion": "Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every customer-facing commitment decomposes into measurable underpinning responsibilities with no gaps or contradictory ownership.",
         "role_path": "skills/it-roles-service-management-and-support/references/siam-manager.md"
       }
     },
@@ -264,7 +274,9 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -310,7 +322,9 @@
         "reason": "Analyse the specific input \"Service model and customer commitments\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -353,7 +367,9 @@
         "reason": "Analyse the specific input \"Supplier contracts and service schedules\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -396,7 +412,9 @@
         "reason": "Analyse the specific input \"SLA/OLA/KPI definitions and performance evidence\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -439,7 +457,9 @@
         "reason": "Analyse the specific input \"Incident/problem/change/configuration process interfaces\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -482,7 +502,9 @@
         "reason": "Analyse the specific input \"Service architecture and dependency map\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -527,7 +549,9 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -570,7 +594,9 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -615,7 +641,9 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -738,17 +766,38 @@
         "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
         "basis": "jai-practice",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "service-management",
+        "title": "ISO/IEC 20000-1:2018, Service management system requirements",
+        "url": "https://www.iso.org/standard/70636.html",
+        "scope": "Service requirements, agreements, transition, operation and measurement concepts.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "SIAM Manager",
+        "domain": "Service Management and Support",
+        "domain_index": 10,
+        "method_focus": "Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.",
         "frameworks": [
           "ITIL 4",
           "ISO/IEC 20000-1",
           "SIAM professional practice principles",
           "COBIT governance concepts"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -819,6 +868,17 @@
     "source_fingerprint": "46ed639f629a5588f9601e6187111d7c9c033d1547082d37d7fac68cf2603f96",
     "source_hash": "5d47afcdfe114ac13a24f82a1e59860f19b7cb1956768370d1fa91fba6db3d00"
   },
+  "delivery_form": {
+    "primary_artifact": "governed-register",
+    "representation": "Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
+    "evidence": [
+      "actual source-attributed records",
+      "uniqueness, completeness and relationship reconciliation"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "154f1b9a902ec5c73b9509ff974779bf49bc182db380f44a21bc8889b442a551",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

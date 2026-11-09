@@ -62,7 +62,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -101,7 +104,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -140,7 +146,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -179,7 +188,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -199,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Instrumentation standards and libraries', provide verifiable evidence satisfying: Supplies actual library source/package, supported interfaces and versions, instrumentation conventions, reproducible tests, compatibility and operating constraints. Required delivery form: Instrumentation standards and versioned library package.",
+        "For the specific output 'Instrumentation standards and libraries', provide verifiable evidence satisfying: Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. Existing source requirement: Supplies actual library source/package, supported interfaces and versions, instrumentation conventions, reproducible tests, compatibility and operating constraints. Required delivery form: Actual version-controlled implementation or analysis code, separate from its explanatory report.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Instrumentation standards and libraries', provide verifiable evidence satisfying: Supplies actual library source/package, supported interfaces and versions, instrumentation conventions, reproducible tests, compatibility and operating constraints. Required delivery form: Instrumentation standards and versioned library package.",
+        "reason": "For the specific output 'Instrumentation standards and libraries', provide verifiable evidence satisfying: Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. Existing source requirement: Supplies actual library source/package, supported interfaces and versions, instrumentation conventions, reproducible tests, compatibility and operating constraints. Required delivery form: Actual version-controlled implementation or analysis code, separate from its explanatory report.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -228,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Instrumentation standards and libraries",
-        "format": "Instrumentation standards and versioned library package",
-        "acceptance_criterion": "Supplies actual library source/package, supported interfaces and versions, instrumentation conventions, reproducible tests, compatibility and operating constraints",
+        "format": "Actual version-controlled implementation or analysis code, separate from its explanatory report.",
+        "acceptance_criterion": "Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. Existing source requirement: Supplies actual library source/package, supported interfaces and versions, instrumentation conventions, reproducible tests, compatibility and operating constraints.",
         "role_path": "skills/it-roles-infrastructure-cloud-and-operations/references/observability-engineer.md"
       }
     },
@@ -272,7 +287,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -322,7 +340,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -366,7 +387,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -410,7 +434,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -454,7 +481,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#observability-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -500,7 +530,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -544,7 +577,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -590,7 +626,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -713,16 +752,45 @@
         "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "configuration-management",
+        "title": "NIST SP 800-128, Guide for Security-Focused Configuration Management of Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-128",
+        "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "contingency-planning",
+        "title": "NIST SP 800-34 Revision 1, Contingency Planning Guide for Federal Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-34r1",
+        "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Observability Engineer",
+        "domain": "Infrastructure, Cloud and Operations",
+        "domain_index": 8,
+        "method_focus": "Define measurable service objectives, capacity and dependency assumptions, failure behaviour, recovery and observed operational evidence.",
         "frameworks": [
           "OpenTelemetry",
           "USE and RED methods",
           "Google SRE alerting philosophy"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -795,6 +863,17 @@
     "source_fingerprint": "ec705386158bdce19c98418fcc58626d1ea30346aeec3cf1f82103a5d9f4b372",
     "source_hash": "9b5ca628e591213a220d472ef26cdfebd01ee8eeae02d317615510137b8c5628"
   },
+  "delivery_form": {
+    "primary_artifact": "versioned-source-change",
+    "representation": "Actual version-controlled implementation or analysis code, separate from its explanatory report.",
+    "evidence": [
+      "exact source and dependency revision",
+      "observed checks and independent review"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "f0e4b52e377cc9d6b69345d618f2726f0a10bcdc019c8e00fc800948c72c20d5",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

@@ -80,3 +80,42 @@ def test_cli_output_is_immutable_and_never_invokes_a_provider(tmp_path, capsys, 
     assert main(args) == 1
     assert output.read_bytes() == original
     assert 'private' not in capsys.readouterr().out.lower()
+
+
+@pytest.mark.parametrize('mutation,expected', [
+    ('missing-handoff-unit', 'HANDOFF_CONTENT_MISSING_OR_INVALID'),
+    ('missing-selection', 'WORKFLOW_PATH_UNRESOLVED'),
+    ('missing-unit-review', 'RECEIVING_CONTENT_REVIEW_REQUIRED'),
+])
+def test_scenario_cannot_bypass_selected_handoff_content_or_authenticated_review(monkeypatch, mutation, expected):
+    import content_scenarios as scenarios
+    from content_spec import canonical_hash
+    if mutation == 'missing-unit-review':
+        original = scenarios._receiver
+        def changed_receiver(row, model, report, catalog, host, principal, path):
+            subject = original(row, model, report, catalog, host, principal, path)
+            subject.pop('attestation')
+            subject['unit_reviews'] = []
+            subject['attestation'] = host.attest(principal, subject, canonical_hash(model), subject['context_manifest'], True)
+            return subject
+        monkeypatch.setattr(scenarios, '_receiver', changed_receiver)
+    else:
+        original = scenarios._handoff_material
+        def changed_material(model, row, selected, *args):
+            model = original(model, row, selected, *args)
+            if mutation == 'missing-selection':
+                model['semantic_units']['workflow_context']['context_ref'] = 'unregistered-context'
+            else:
+                unit = next(unit for unit in selected['handoff_content_contract']['units']
+                            if unit['semantic_field'] != 'workflow_context')
+                model['semantic_units'].pop(unit['semantic_field'])
+            return model
+        monkeypatch.setattr(scenarios, '_handoff_material', changed_material)
+    report = scenarios.run_scenarios(ROOT, ['application-delivery'])
+    assert report['status'] == 'FAIL'
+    assert not report['production_release_authorized']
+    first = report['scenarios'][0]['trace'][0]
+    assert not first['passed']
+    assert expected in first['findings']
+    if mutation == 'missing-unit-review':
+        assert 'RECEIVER_IDENTITY_UNVERIFIED' not in first['findings']

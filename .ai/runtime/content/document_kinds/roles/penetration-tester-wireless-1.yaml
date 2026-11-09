@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#penetration-tester-wireless:1",
           "content/types/test-strategy.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#penetration-tester-wireless:1",
           "content/types/test-strategy.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#penetration-tester-wireless:1",
           "content/types/test-strategy.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#penetration-tester-wireless:1",
           "content/types/test-strategy.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Wireless test plan and coverage area agreement', provide verifiable evidence satisfying: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Document with milestones, owners, dependencies and assumptions.",
+        "For the specific output 'Wireless test plan and coverage area agreement', provide verifiable evidence satisfying: Identify product/build scope, critical requirements, quality risks, excluded risks and the confidence the selected tests can and cannot provide. Map risks to levels, techniques and responsibilities; specify environment, representative data, dependencies and expected evidence. Define measurable entry/exit criteria, coverage interpretation, triage/retest rules and treatment of blocked or unexecuted cases. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Risk-based test specification with cases/techniques, expected outcomes, environments and entry/exit criteria.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Wireless test plan and coverage area agreement', provide verifiable evidence satisfying: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Document with milestones, owners, dependencies and assumptions.",
+        "reason": "For the specific output 'Wireless test plan and coverage area agreement', provide verifiable evidence satisfying: Identify product/build scope, critical requirements, quality risks, excluded risks and the confidence the selected tests can and cannot provide. Map risks to levels, techniques and responsibilities; specify environment, representative data, dependencies and expected evidence. Define measurable entry/exit criteria, coverage interpretation, triage/retest rules and treatment of blocked or unexecuted cases. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Risk-based test specification with cases/techniques, expected outcomes, environments and entry/exit criteria.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#penetration-tester-wireless:1",
           "content/types/test-strategy.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Wireless test plan and coverage area agreement",
-        "format": "Document with milestones, owners, dependencies and assumptions",
-        "acceptance_criterion": "Every milestone has an acceptance test and a named accountable owner",
+        "format": "Risk-based test specification with cases/techniques, expected outcomes, environments and entry/exit criteria.",
+        "acceptance_criterion": "Identify product/build scope, critical requirements, quality risks, excluded risks and the confidence the selected tests can and cannot provide. Map risks to levels, techniques and responsibilities; specify environment, representative data, dependencies and expected evidence. Define measurable entry/exit criteria, coverage interpretation, triage/retest rules and treatment of blocked or unexecuted cases. Existing source requirement: Every milestone has an acceptance test and a named accountable owner.",
         "role_path": "skills/it-roles-offensive-security-and-adversarial-testing/references/penetration-tester-wireless.md"
       }
     },
@@ -268,7 +278,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#penetration-tester-wireless:1",
           "content/types/test-strategy.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -314,7 +326,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#penetration-tester-wireless:1",
           "content/types/test-strategy.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -358,7 +372,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#penetration-tester-wireless:1",
           "content/types/test-strategy.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -402,7 +418,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#penetration-tester-wireless:1",
           "content/types/test-strategy.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -446,7 +464,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#penetration-tester-wireless:1",
           "content/types/test-strategy.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -492,7 +512,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -536,7 +558,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -582,7 +606,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -705,16 +731,37 @@
         "scope": "Test planning, test specifications and reporting information needs.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "risk-assessment",
+        "title": "NIST SP 800-30 Revision 1, Guide for Conducting Risk Assessments",
+        "url": "https://doi.org/10.6028/NIST.SP.800-30r1",
+        "scope": "Assessment scope, threat events, vulnerabilities, likelihood, impact and uncertainty.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Penetration Tester (Wireless)",
+        "domain": "Offensive Security and Adversarial Testing",
+        "domain_index": 12,
+        "method_focus": "Bind authorised scope and methodology to reproducible observations, impact, evidence limitations and retest results.",
         "frameworks": [
           "NIST SP 800-115",
           "IEEE 802.11 security",
           "applicable interception and spectrum law"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -785,6 +832,17 @@
     "source_fingerprint": "a7a52607dfd5eedd4163f54f5897604c268dd40c622cefcd7992fef43533fc10",
     "source_hash": "657bc9ba3cad7e63b1f593bf944397800d2c7dccf159156c4708714ec5c1b425"
   },
+  "delivery_form": {
+    "primary_artifact": "test-specification",
+    "representation": "Risk-based test specification with cases/techniques, expected outcomes, environments and entry/exit criteria.",
+    "evidence": [
+      "requirement/risk-to-case coverage",
+      "data/sample rationale and untested risks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "44cc56489fce82dedebce3eea264a46441e94aec0edf9404b54b7b628d110650",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

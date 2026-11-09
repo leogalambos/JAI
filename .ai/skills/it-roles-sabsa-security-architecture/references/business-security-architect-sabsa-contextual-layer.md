@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Contextual security architecture (business view) | Model in the EA tool plus a published view set | Every element traces to a driver or a quality-attribute target; no orphan elements |
-| 2 | business driver and requirement catalogue | Structured entries in the service or asset management tool | Each entry has an owner, a lifecycle status and a last-verified date |
-| 3 | business risk and opportunity context | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 4 | security business case inputs | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
+| 1 | Contextual security architecture (business view) | Versioned typed model with stable entities, relations, constraints, provenance and selected views. | Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. |
+| 2 | business driver and requirement catalogue | Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships. | Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Each entry has an owner, a lifecycle status and a last-verified date. |
+| 3 | business risk and opportunity context | Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request. | Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. |
+| 4 | security business case inputs | Reconciled investment appraisal with dated financial model and accountable benefits. | State sponsor, financial owner, investment boundary, appraisal period and the precise funding or continuation decision requested. Show source and date of costs/benefits, currency, price basis, cash-flow periods, baseline and incremental treatment; avoid double-counted benefits. Identify key uncertain variables, sensitivity/scenario results, benefit measures, baseline, accountable realisation owner and review trigger. |
 
 ## 7. Output gates (blocking)
 
@@ -188,6 +188,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - SABSA contextual layer and the What-Why-How-Who-Where-When matrix
 - ISO/IEC 27001 context of the organisation
 - BIZBOK
@@ -198,17 +202,32 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Capture the contextual security requirements for a new digital lending business before any solution is proposed”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver contextual security architecture (business view) in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Contextual security architecture (business view).
 
-## 3.2 external-framework discipline
+**Illustrative case material:**
 
-Regulation and control frameworks may influence business context, but framework control identifiers are not business drivers by themselves. Capture the underlying business/legal obligation in BD/RO/BA terms and keep requirement-level mappings in external overlays. This preserves SABSA business justification instead of turning compliance catalogues into the architecture ontology.
+Repository ea-12 models Order API as an application component and Reserve Stock as an application service in the explicitly selected 3.2 profile. A process and a component are not interchangeable merely because their labels match.
+
+**Acceptance question:** Define metamodel, edition, concern and source baseline.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions.
+- Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question.
+- Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `model` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

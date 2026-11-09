@@ -64,7 +64,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:4",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -104,7 +106,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:4",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -144,7 +148,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:4",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -184,7 +190,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:4",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -204,7 +212,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Software supply-chain implementation specification', provide verifiable evidence satisfying: Engineering teams can implement the controls deterministically without inventing authority or weakening required segregation of duties. Required delivery form: Implementation specification for policy-as-code, signing, SBOM, provenance, scanning and deployment gates.",
+        "For the specific output 'Software supply-chain implementation specification', provide verifiable evidence satisfying: Identify exact component/environment versions and each required parameter with type, unit, permitted range, default and secret-reference handling. State interface schemas, input/output semantics, error responses, concurrency/idempotency expectations and external dependency constraints. Give reproducible build/deploy/verification steps, expected results, stop conditions and recovery path; identify evidence still required before execution. Existing source requirement: Engineering teams can implement the controls deterministically without inventing authority or weakening required segregation of duties. Required delivery form: Typed implementation specification with exact target versions, interfaces and verification/recovery conditions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,12 +227,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Software supply-chain implementation specification', provide verifiable evidence satisfying: Engineering teams can implement the controls deterministically without inventing authority or weakening required segregation of duties. Required delivery form: Implementation specification for policy-as-code, signing, SBOM, provenance, scanning and deployment gates.",
+        "reason": "For the specific output 'Software supply-chain implementation specification', provide verifiable evidence satisfying: Identify exact component/environment versions and each required parameter with type, unit, permitted range, default and secret-reference handling. State interface schemas, input/output semantics, error responses, concurrency/idempotency expectations and external dependency constraints. Give reproducible build/deploy/verification steps, expected results, stop conditions and recovery path; identify evidence still required before execution. Existing source requirement: Engineering teams can implement the controls deterministically without inventing authority or weakening required segregation of duties. Required delivery form: Typed implementation specification with exact target versions, interfaces and verification/recovery conditions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:4",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -234,8 +244,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Software supply-chain implementation specification",
-        "format": "Implementation specification for policy-as-code, signing, SBOM, provenance, scanning and deployment gates",
-        "acceptance_criterion": "Engineering teams can implement the controls deterministically without inventing authority or weakening required segregation of duties.",
+        "format": "Typed implementation specification with exact target versions, interfaces and verification/recovery conditions.",
+        "acceptance_criterion": "Identify exact component/environment versions and each required parameter with type, unit, permitted range, default and secret-reference handling. State interface schemas, input/output semantics, error responses, concurrency/idempotency expectations and external dependency constraints. Give reproducible build/deploy/verification steps, expected results, stop conditions and recovery path; identify evidence still required before execution. Existing source requirement: Engineering teams can implement the controls deterministically without inventing authority or weakening required segregation of duties.",
         "role_path": "skills/it-roles-architecture/references/secure-delivery-devsecops-architect.md"
       }
     },
@@ -276,7 +286,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:4",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -324,7 +336,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:4",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -369,7 +383,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:4",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -414,7 +430,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:4",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -459,7 +477,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:4",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -504,7 +524,9 @@
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:4",
           "content/types/implementation-specification.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -551,7 +573,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -596,7 +620,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -643,7 +669,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-218",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -774,17 +802,38 @@
         "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "architecture-description",
+        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
+        "url": "https://www.iso.org/standard/74393.html",
+        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Secure Delivery / DevSecOps Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "NIST SSDF SP 800-218",
           "SLSA",
           "OWASP SAMM",
           "ISO/IEC 27001:2022 secure development controls"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -855,6 +904,17 @@
     "source_fingerprint": "6a9ce0ed7afd466f38350b3f8327dede5b0e09bd36306377ce3478f4e9fe89dc",
     "source_hash": "63e2510137f7b416c6e364781aa8a60a48798c4790d46a6f63dc363337be0f68"
   },
+  "delivery_form": {
+    "primary_artifact": "implementation-specification",
+    "representation": "Typed implementation specification with exact target versions, interfaces and verification/recovery conditions.",
+    "evidence": [
+      "parameter/schema constraints",
+      "reproducible acceptance and recovery procedure"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "f453383c5e694671361aded0ff4c316828bfa1e74778c2d1d211c2fa0643db8c",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

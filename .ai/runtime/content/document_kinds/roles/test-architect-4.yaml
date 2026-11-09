@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/document",
-    "domain/delivery"
+    "type/dashboard",
+    "domain/data"
   ],
   "applies_to": {
     "document_kind": "role/test-architect:4",
@@ -61,7 +61,12 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: quality metric framework.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-architect:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -99,7 +104,12 @@
         "reason": "For each receiving role (Test Manager; Test Automation Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-architect:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -137,7 +147,12 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-architect:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -175,7 +190,12 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-architect:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -195,7 +215,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'quality metric framework', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'quality metric framework', provide verifiable evidence satisfying: For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Required delivery form: Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,10 +230,15 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'quality metric framework', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'quality metric framework', provide verifiable evidence satisfying: For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Required delivery form: Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-architect:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -223,8 +248,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "quality metric framework",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
+        "acceptance_criterion": "For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations.",
         "role_path": "skills/it-roles-quality-and-testing/references/test-architect.md"
       }
     },
@@ -263,7 +288,12 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-architect:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -309,7 +339,12 @@
         "reason": "Analyse the specific input \"System landscape\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-architect:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -352,7 +387,12 @@
         "reason": "Analyse the specific input \"Delivery model and cadence\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-architect:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -395,7 +435,12 @@
         "reason": "Analyse the specific input \"Data protection constraints\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-architect:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -438,7 +483,12 @@
         "reason": "Analyse the specific input \"Current tooling estate\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#test-architect:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -483,7 +533,12 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -526,7 +581,12 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -571,7 +631,12 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -666,7 +731,7 @@
     }
   ],
   "size_budget": {
-    "metric": "semantic_units",
+    "metric": "rows",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -688,22 +753,59 @@
     ],
     "professional_references": [
       {
-        "id": "jai-practice",
-        "title": "JAI authored enterprise-delivery practice",
-        "url": null,
-        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
-        "basis": "jai-practice",
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "data-quality",
+        "title": "W3C Data Quality Vocabulary",
+        "url": "https://www.w3.org/TR/vocab-dqv/",
+        "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "software-testing",
+        "title": "ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation",
+        "url": "https://www.iso.org/standard/79429.html",
+        "scope": "Test planning, test specifications and reporting information needs.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "accessibility",
+        "title": "W3C Web Content Accessibility Guidelines (WCAG) 2.2",
+        "url": "https://www.w3.org/TR/WCAG22/",
+        "scope": "Perceivable and understandable content, text alternatives and accessible navigation; applicability depends on the delivered medium.",
+        "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Test Architect",
+        "domain": "Quality and Testing",
+        "domain_index": 6,
+        "method_focus": "Use risk-based test or assessment methods with expected/actual results, coverage, sampling and bounded conclusions.",
         "frameworks": [
           "ISO/IEC/IEEE 29119",
           "test pyramid and contract testing practice",
           "data masking standards"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -757,12 +859,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/dashboard",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "document",
+  "semantic_family": "dashboard",
   "role_overlay": {
     "contract_id": "test-architect:4",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -774,6 +878,17 @@
     "source_fingerprint": "5b93c9ac64430bcaffbcd424fa5d55008db7b09060fbf6f1eb25e6bdb903580f",
     "source_hash": "d4cf3f3e1eee995128e42891363689737931d15823837b719ade514764c53814"
   },
+  "delivery_form": {
+    "primary_artifact": "measured-dashboard",
+    "representation": "Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
+    "evidence": [
+      "units, denominators and measurement windows",
+      "dated values, thresholds and actionable exceptions"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "302175ded47091f8090bd2caecbfb543e48cf5d02ea8c89f79a9980f817d35c8",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

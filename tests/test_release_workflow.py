@@ -46,6 +46,9 @@ def test_publication_requires_release_tag_and_successful_validation_job():
     source_validation = (ROOT / '.github/workflows/validate-library.yml').read_text()
     assert source_validation.count('tools/generate_content_workflows.py --check') == 1
     assert source_validation.count('generate_output_contract_docs.py --root . --check') == 1
+    reference_check = 'tools/generate_reference_completion.py --root . --role-examples --check'
+    assert commands.count(reference_check) == 1
+    assert source_validation.count(reference_check) == 1
     assert 'release_ga.py' not in source
     assert 'QUALIFICATION-A-H.json' not in source
     publication = '\n'.join(step.get('run', '') for step in publish['steps'])
@@ -78,6 +81,11 @@ def test_pages_build_checks_generated_catalogues_and_runs_on_their_source_change
                            'tools/content_reference_definitions.py',
                            'tools/generate_content_catalog.py',
                            'tools/generate_content_workflows.py',
+                           'tools/generate_role_output_guidance.py',
+                           'tools/generate_reference_completion.py',
+                           'tools/extended_reference_definitions.py',
+                           'tools/professional_output_refinements.py',
+                           'tools/workflow_professional_definitions.py',
                            '.ai/runtime/content/**',
                            '.ai/runtime/artifacts/contracts/**',
                            '.ai/runtime/tools/content_spec.py'):
@@ -86,6 +94,7 @@ def test_pages_build_checks_generated_catalogues_and_runs_on_their_source_change
     commands = '\n'.join(step.get('run', '') for step in steps)
     for generator in ('generate_output_contract_docs.py', 'generate_workflow_diagrams.py'):
         assert commands.count(f'python tools/{generator} --root . --check') == 1
+    assert commands.count('python tools/generate_reference_completion.py --root . --role-examples --check') == 1
     assert '-r requirements.txt' in commands
     assert '-r requirements-ci.txt' not in commands
     assert '-m pytest' not in commands

@@ -62,7 +62,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#epic-owner:2",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -101,7 +104,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#epic-owner:2",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -140,7 +146,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#epic-owner:2",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -179,7 +188,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#epic-owner:2",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -199,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'lean business case', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'lean business case', provide verifiable evidence satisfying: State sponsor, financial owner, investment boundary, appraisal period and the precise funding or continuation decision requested. Show source and date of costs/benefits, currency, price basis, cash-flow periods, baseline and incremental treatment; avoid double-counted benefits. Identify key uncertain variables, sensitivity/scenario results, benefit measures, baseline, accountable realisation owner and review trigger. Required delivery form: Reconciled investment appraisal with dated financial model and accountable benefits.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'lean business case', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'lean business case', provide verifiable evidence satisfying: State sponsor, financial owner, investment boundary, appraisal period and the precise funding or continuation decision requested. Show source and date of costs/benefits, currency, price basis, cash-flow periods, baseline and incremental treatment; avoid double-counted benefits. Identify key uncertain variables, sensitivity/scenario results, benefit measures, baseline, accountable realisation owner and review trigger. Required delivery form: Reconciled investment appraisal with dated financial model and accountable benefits.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#epic-owner:2",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -228,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "lean business case",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Reconciled investment appraisal with dated financial model and accountable benefits.",
+        "acceptance_criterion": "State sponsor, financial owner, investment boundary, appraisal period and the precise funding or continuation decision requested. Show source and date of costs/benefits, currency, price basis, cash-flow periods, baseline and incremental treatment; avoid double-counted benefits. Identify key uncertain variables, sensitivity/scenario results, benefit measures, baseline, accountable realisation owner and review trigger.",
         "role_path": "skills/it-roles-product-delivery-and-agile/references/epic-owner.md"
       }
     },
@@ -268,7 +283,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#epic-owner:2",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -314,7 +332,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#epic-owner:2",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -358,7 +379,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#epic-owner:2",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -402,7 +426,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#epic-owner:2",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -446,7 +473,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#epic-owner:2",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -492,7 +522,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -536,7 +569,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -582,7 +618,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -705,15 +744,44 @@
         "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "human-centred-design",
+        "title": "ISO 9241-210:2019, Human-centred design for interactive systems",
+        "url": "https://www.iso.org/standard/77520.html",
+        "scope": "Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Epic Owner",
+        "domain": "Product, Delivery and Agile",
+        "domain_index": 2,
+        "method_focus": "Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.",
         "frameworks": [
           "SAFe lean portfolio management",
           "lean startup measurement"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -784,6 +852,17 @@
     "source_fingerprint": "1c446b3f824374b7695fbd7259f54358b0cb9b0152141f28b1a76651597b08d2",
     "source_hash": "16d0cd8880fde52d4a3d3fdacd3ee8afc82386f203dfab46b67c8948d796815a"
   },
+  "delivery_form": {
+    "primary_artifact": "investment-appraisal",
+    "representation": "Reconciled investment appraisal with dated financial model and accountable benefits.",
+    "evidence": [
+      "source cash flows and calculations",
+      "scenario sensitivity and benefit ownership"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "892948073271a28e1a424bf38213dcb5fef8e1227b3030317f962b26e0b7dc34",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

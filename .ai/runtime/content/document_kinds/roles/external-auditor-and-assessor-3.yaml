@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/decision-paper",
-    "domain/delivery"
+    "type/assurance-report",
+    "domain/security"
   ],
   "applies_to": {
     "document_kind": "role/external-auditor-and-assessor:3",
@@ -62,8 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#external-auditor-and-assessor:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -102,8 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#external-auditor-and-assessor:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -142,8 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#external-auditor-and-assessor:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -182,8 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#external-auditor-and-assessor:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -203,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'certification or attestation report', provide verifiable evidence satisfying: Conclusions are traceable to dated evidence; opinion is visibly separated from fact. Required delivery form: Structured document with executive summary and evidence annex.",
+        "For the specific output 'certification or attestation report', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Conclusions are traceable to dated evidence; opinion is visibly separated from fact. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'certification or attestation report', provide verifiable evidence satisfying: Conclusions are traceable to dated evidence; opinion is visibly separated from fact. Required delivery form: Structured document with executive summary and evidence annex.",
+        "reason": "For the specific output 'certification or attestation report', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Conclusions are traceable to dated evidence; opinion is visibly separated from fact. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#external-auditor-and-assessor:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -233,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "certification or attestation report",
-        "format": "Structured document with executive summary and evidence annex",
-        "acceptance_criterion": "Conclusions are traceable to dated evidence; opinion is visibly separated from fact",
+        "format": "Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
+        "acceptance_criterion": "State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Conclusions are traceable to dated evidence; opinion is visibly separated from fact.",
         "role_path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/external-auditor-and-assessor.md"
       }
     },
@@ -274,8 +279,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#external-auditor-and-assessor:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -322,8 +328,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#external-auditor-and-assessor:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -367,8 +374,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#external-auditor-and-assessor:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -412,8 +420,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#external-auditor-and-assessor:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -457,8 +466,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#external-auditor-and-assessor:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -504,8 +514,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -549,8 +560,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -596,8 +608,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -714,10 +727,10 @@
     ],
     "professional_references": [
       {
-        "id": "business-appraisal",
-        "title": "HM Treasury, The Green Book",
-        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       },
@@ -728,15 +741,28 @@
         "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "risk-assessment",
+        "title": "NIST SP 800-30 Revision 1, Guide for Conducting Risk Assessments",
+        "url": "https://doi.org/10.6028/NIST.SP.800-30r1",
+        "scope": "Assessment scope, threat events, vulnerabilities, likelihood, impact and uncertainty.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "External Auditor and Assessor",
+        "domain": "Governance, Risk, Compliance, Audit and Privacy",
+        "domain_index": 13,
+        "method_focus": "Separate binding obligation, interpretation, control, evidence, independent test and bounded assurance/risk conclusion.",
         "frameworks": [
           "the applicable scheme (ISO/IEC 27001 with ISO/IEC 17021, PCI DSS with QSA programme rules, SOC 2 with AICPA standards)",
           "ISO 19011"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -790,12 +816,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/assurance-report",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "decision-paper",
+  "semantic_family": "assurance-report",
   "role_overlay": {
     "contract_id": "external-auditor-and-assessor:3",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -807,6 +835,17 @@
     "source_fingerprint": "c948de65552e504fdbeb40348dc186530d2a0fde86add3a168a89397664180a0",
     "source_hash": "e3830334c0b4a96c650520f6f4de67febbcddac0d7fed210fec37f9469824492"
   },
+  "delivery_form": {
+    "primary_artifact": "assurance-assessment",
+    "representation": "Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
+    "evidence": [
+      "criterion-to-test-to-observation traceability",
+      "independent reviewer and limitations"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "b1ac194759b1ca72068a4207a36aa02c30833e649fcb83e82f2bfd1d55e26935",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

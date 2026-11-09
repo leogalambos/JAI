@@ -45,7 +45,8 @@
       },
       "acceptance_criteria": [
         "Assign outcomes, milestones, resource assumptions and acceptance responsibility.",
-        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations.",
+        "Use the applicable governance/appraisal method to separate outcomes, decision rights, funding assumptions, acceptance responsibility and benefit ownership."
       ],
       "evidence_policy": {
         "material_claims": "versioned source reference or explicitly labelled assumption",
@@ -62,7 +63,9 @@
         "reason": "Assign outcomes, milestones, resource assumptions and acceptance responsibility.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -83,7 +86,8 @@
       },
       "acceptance_criteria": [
         "Link delivery risks, cross-team dependencies and change decisions to accountable owners.",
-        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations.",
+        "Compare credible delivery options and dependencies against a common baseline; identify sensitivity to cost, benefit, timing and residual risk without treating public-sector guidance as universally binding."
       ],
       "evidence_policy": {
         "material_claims": "versioned source reference or explicitly labelled assumption",
@@ -100,7 +104,9 @@
         "reason": "Link delivery risks, cross-team dependencies and change decisions to accountable owners.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -140,7 +146,9 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -183,7 +191,9 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -228,7 +238,9 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -345,11 +357,19 @@
     ],
     "professional_references": [
       {
-        "id": "jai-practice",
-        "title": "JAI authored enterprise-delivery practice",
-        "url": null,
-        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
-        "basis": "jai-practice",
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "business-appraisal",
+        "title": "HM Treasury, The Green Book",
+        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ]

@@ -204,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'automated tests', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "For the specific output 'automated tests', provide verifiable evidence satisfying: Trace executable cases and reusable test abstractions to requirements, risk coverage, deterministic data and environment assumptions. Give reproducible invocation, assertions, expected outcomes and failure diagnostics; distinguish test definitions from evidence of executed runs. Define isolation, dependency handling, flakiness investigation, coverage limitations and maintenance ownership. Existing source requirement: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable tests in version control with reproducible invocation.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,7 +219,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'automated tests', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "reason": "For the specific output 'automated tests', provide verifiable evidence satisfying: Trace executable cases and reusable test abstractions to requirements, risk coverage, deterministic data and environment assumptions. Give reproducible invocation, assertions, expected outcomes and failure diagnostics; distinguish test definitions from evidence of executed runs. Define isolation, dependency handling, flakiness investigation, coverage limitations and maintenance ownership. Existing source requirement: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable tests in version control with reproducible invocation.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-engineer:2",
           "content/types/document.yaml",
@@ -234,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "automated tests",
-        "format": "Executable suite in version control plus a coverage statement",
-        "acceptance_criterion": "States what is covered, what is not, and what the suite cannot detect",
+        "format": "Executable tests in version control with reproducible invocation.",
+        "acceptance_criterion": "Trace executable cases and reusable test abstractions to requirements, risk coverage, deterministic data and environment assumptions. Give reproducible invocation, assertions, expected outcomes and failure diagnostics; distinguish test definitions from evidence of executed runs. Define isolation, dependency handling, flakiness investigation, coverage limitations and maintenance ownership. Existing source requirement: States what is covered, what is not, and what the suite cannot detect.",
         "role_path": "skills/it-roles-software-development-and-engineering/references/software-engineer.md"
       }
     },
@@ -740,12 +740,17 @@
     "role_framework_context": [
       {
         "role": "Software Engineer",
+        "domain": "Software Development and Engineering",
+        "domain_index": 5,
+        "method_focus": "Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.",
         "frameworks": [
           "SWEBOK v4",
           "OWASP ASVS",
           "team coding standards",
           "NIST SSDF (SP 800-218)"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -818,6 +823,18 @@
     "source_fingerprint": "94a26358f5d5bba06e69b2f2afaa09778779a8bbb41b7a86b4f51da4f177c9d1",
     "source_hash": "1e20dc759f302c1be4294049df211c8bde26e07a548798c9b10651e7bb57ded3"
   },
+  "delivery_form": {
+    "primary_artifact": "executable-test-suite",
+    "representation": "Executable tests in version control with reproducible invocation.",
+    "evidence": [
+      "exact suite and tested revision",
+      "observed execution results",
+      "risk/requirement coverage and exclusions"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "0ea8b842dff3adcf64ac9786a8a969db1d2c7ff2090fc31659502831faa19cfc",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

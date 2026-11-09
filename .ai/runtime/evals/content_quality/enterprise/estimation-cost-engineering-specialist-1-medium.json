@@ -23,41 +23,41 @@
     "privacy": true
   },
   "semantic_units": {
-    "delivery_accountability": [
+    "data_accountability": {
+      "source_id": "SYN-LEDGER-1",
+      "source_version": "1",
+      "extracted_at": "2026-10-19T10:00:00Z",
+      "transformation": "Group committed records by event_id and compare counts before/after restore",
+      "input_records": 10,
+      "output_records": 10,
+      "classification": "Synthetic non-customer data",
+      "retention": "Delete rehearsal extracts after regression investigation closes",
+      "permitted_use": "Development regression only",
+      "record_id": "SYN-DATA-ACCOUNTABILITY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Identify data owner, stewardship, lawful use, classification and lifecycle obligations.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "data_lineage_quality": [
       {
-        "increment_id": "SYN-WAVE1",
-        "start": "2026-11-01",
-        "finish": "2026-11-05",
-        "dependency": "SYN-T1 peak-load retest",
-        "entry": "Backup restore rehearsed and rollback configuration retained",
-        "exit": "Ledger totals reconcile and operations independently accepts support",
-        "go_no_go": "Service owner with independent operations evidence",
-        "fallback_decision_time": "Before enabling transaction traffic",
-        "record_id": "SYN-DELIVERY-ACCOUNTABILITY",
+        "source_id": "SYN-LEDGER-1",
+        "source_version": "1",
+        "extracted_at": "2026-10-19T10:00:00Z",
+        "transformation": "Group committed records by event_id and compare counts before/after restore",
+        "input_records": 10,
+        "output_records": 10,
+        "classification": "Synthetic non-customer data",
+        "retention": "Delete rehearsal extracts after regression investigation closes",
+        "permitted_use": "Development regression only",
+        "record_id": "SYN-DATA-LINEAGE-QUALITY",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Assign outcomes, milestones, resource assumptions and acceptance responsibility.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "delivery_dependencies": [
-      {
-        "increment_id": "SYN-WAVE1",
-        "start": "2026-11-01",
-        "finish": "2026-11-05",
-        "dependency": "SYN-T1 peak-load retest",
-        "entry": "Backup restore rehearsed and rollback configuration retained",
-        "exit": "Ledger totals reconcile and operations independently accepts support",
-        "go_no_go": "Service owner with independent operations evidence",
-        "fallback_decision_time": "Before enabling transaction traffic",
-        "record_id": "SYN-DELIVERY-DEPENDENCIES",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Link delivery risks, cross-team dependencies and change decisions to accountable owners.",
+        "criterion_under_review": "Trace source-to-output transformations, quality constraints and evidenced reconciliation.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -82,6 +82,48 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
+    "framework_applicability": [
+      {
+        "record_id": "SYN-PROFESSIONAL-BASIS",
+        "source": {
+          "title": "JAI authored enterprise-delivery practice",
+          "edition": "Synthetic development scenario, revision 1",
+          "authoritative_location": "content/rules/global-invariants.yaml"
+        },
+        "basis": "jai-interpretation",
+        "applicability": "applicable",
+        "rationale": "This fictional recovery case uses JAI evidence and bounded-handoff practice to exercise the DCS contract; no external framework conformity is claimed.",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "jurisdiction": "No real jurisdictional compliance conclusion is established by this synthetic fixture.",
+        "adopted_concepts": [
+          "Attributable evidence",
+          "Bounded receiving-role conclusions"
+        ],
+        "tailoring": "Illustrative recovery-service facts only; peak-load validation is excluded and remains pending.",
+        "precedence": "Applicable real law and organisation policy would prevail; neither is fabricated by this case.",
+        "method_mapping": [
+          {
+            "output_unit_ref": "global.framework_applicability",
+            "method": "Separate fabricated scenario observations from demonstrated production results and map residual gaps to the receiving owner.",
+            "expected_evidence": "Versioned synthetic scenario and its declared limitations.",
+            "evidence_refs": [
+              "SYN-01"
+            ],
+            "reviewer_test": "Reject any inference of real execution, framework conformance or human approval from this fictional example."
+          }
+        ],
+        "review": {
+          "owner": "Synthetic independent domain reviewer",
+          "status": "pending-independent-review",
+          "change_trigger": "Change to scenario scope, source practice or evidence; unchanged history is reused."
+        },
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "human_approval_ref": null
+      }
+    ],
     "contract_input_1": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -214,7 +256,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'Basis of estimate and work/cost breakdown', provide verifiable evidence satisfying: Another qualified estimator can reconstruct the material figures and distinguish fact from assumption. Required delivery form: Source-linked quantities, methods, effort, rates, assumptions, ranges and exclusions.",
+        "criterion_under_review": "For the specific output 'Basis of estimate and work/cost breakdown', provide verifiable evidence satisfying: Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations. Existing source requirement: Another qualified estimator can reconstruct the material figures and distinguish fact from assumption. Required delivery form: Actual work/cost breakdown and estimate model with estimation method, quantities, units, rates, assumptions and uncertainty; narrative accompanies the reproducible model.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -260,6 +302,83 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
+    "dataset_lineage": {
+      "source_id": "SYN-LEDGER-1",
+      "source_version": "1",
+      "extracted_at": "2026-10-19T10:00:00Z",
+      "transformation": "Group committed records by event_id and compare counts before/after restore",
+      "input_records": 10,
+      "output_records": 10,
+      "classification": "Synthetic non-customer data",
+      "retention": "Delete rehearsal extracts after regression investigation closes",
+      "permitted_use": "Development regression only",
+      "record_id": "SYN-DATASET-LINEAGE",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Record source versions, extraction time, transformations, lawful access and retention.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "dataset_quality": [
+      {
+        "source_id": "SYN-LEDGER-1",
+        "source_version": "1",
+        "extracted_at": "2026-10-19T10:00:00Z",
+        "transformation": "Group committed records by event_id and compare counts before/after restore",
+        "input_records": 10,
+        "output_records": 10,
+        "classification": "Synthetic non-customer data",
+        "retention": "Delete rehearsal extracts after regression investigation closes",
+        "permitted_use": "Development regression only",
+        "record_id": "SYN-DATASET-QUALITY",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Evidence completeness, uniqueness, consistency, drift and permitted-use limitations.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "dataset_schema": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-DATASET-SCHEMA",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Define fields, datatypes, units, keys, null handling and allowed values.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
     "identity": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -276,71 +395,7 @@
         "SYN-01"
       ],
       "knowledge_status": "synthetic-assumption"
-    },
-    "investment_boundary": {
-      "currency": "EUR",
-      "horizon_years": 1,
-      "transition": 18000,
-      "annual_operation": 6000,
-      "annual_avoided_manual_cost": 32000,
-      "net_benefit": 8000,
-      "benefit_downside_fraction": 0.25,
-      "downside_net_benefit": 0,
-      "double_counting_rule": "Count avoided manual handling only, with no revenue uplift",
-      "record_id": "SYN-INVESTMENT-BOUNDARY",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify sponsor, financial owner, funding decision and appraisal horizon.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "investment_cashflows": [
-      {
-        "currency": "EUR",
-        "horizon_years": 1,
-        "transition": 18000,
-        "annual_operation": 6000,
-        "annual_avoided_manual_cost": 32000,
-        "net_benefit": 8000,
-        "benefit_downside_fraction": 0.25,
-        "downside_net_benefit": 0,
-        "double_counting_rule": "Count avoided manual handling only, with no revenue uplift",
-        "record_id": "SYN-INVESTMENT-CASHFLOWS",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Show dated currency, baseline, costs and non-overlapping benefits with assumptions.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "investment_sensitivity": [
-      {
-        "currency": "EUR",
-        "horizon_years": 1,
-        "transition": 18000,
-        "annual_operation": 6000,
-        "annual_avoided_manual_cost": 32000,
-        "net_benefit": 8000,
-        "benefit_downside_fraction": 0.25,
-        "downside_net_benefit": 0,
-        "double_counting_rule": "Count avoided manual handling only, with no revenue uplift",
-        "record_id": "SYN-INVESTMENT-SENSITIVITY",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Assess uncertain benefit, cost and timing assumptions and assign realisation owners.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ]
+    }
   },
   "evaluation_selection": {
     "overlays": []
@@ -369,8 +424,9 @@
       "id": "headings-only",
       "operation": "headings_only",
       "expected_rule_ids": [
-        "domain/delivery.delivery_accountability",
-        "domain/delivery.delivery_dependencies",
+        "domain/data.data_accountability",
+        "domain/data.data_lineage_quality",
+        "global.framework_applicability",
         "role/estimation-cost-engineering-specialist:1.contract_input_1",
         "role/estimation-cost-engineering-specialist:1.contract_input_2",
         "role/estimation-cost-engineering-specialist:1.contract_input_3",
@@ -381,10 +437,10 @@
         "role/estimation-cost-engineering-specialist:1.delivery_verification",
         "role/estimation-cost-engineering-specialist:1.receiving_acceptance",
         "role/estimation-cost-engineering-specialist:1.role_gate_observations",
-        "type/business-case.identity",
-        "type/business-case.investment_boundary",
-        "type/business-case.investment_cashflows",
-        "type/business-case.investment_sensitivity"
+        "type/dataset.dataset_lineage",
+        "type/dataset.dataset_quality",
+        "type/dataset.dataset_schema",
+        "type/dataset.identity"
       ],
       "expected_category": "critical-content"
     },

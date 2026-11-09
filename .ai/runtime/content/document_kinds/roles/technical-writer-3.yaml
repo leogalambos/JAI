@@ -63,7 +63,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technical-writer:3",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -103,7 +105,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technical-writer:3",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -143,7 +147,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technical-writer:3",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -183,7 +189,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technical-writer:3",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -203,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'release notes', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'release notes', provide verifiable evidence satisfying: Identify exact release and predecessor versions, affected products and deployment applicability. Link delivered changes, resolved defects, known limitations and compatibility impacts to traceable change records. Specify required upgrade actions, configuration changes, rollback constraints and recipient communication. Required delivery form: Release-specific changes, compatibility impacts, known limitations and recipient upgrade/recovery actions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'release notes', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'release notes', provide verifiable evidence satisfying: Identify exact release and predecessor versions, affected products and deployment applicability. Link delivered changes, resolved defects, known limitations and compatibility impacts to traceable change records. Specify required upgrade actions, configuration changes, rollback constraints and recipient communication. Required delivery form: Release-specific changes, compatibility impacts, known limitations and recipient upgrade/recovery actions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-writer:3",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -233,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "release notes",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Release-specific changes, compatibility impacts, known limitations and recipient upgrade/recovery actions.",
+        "acceptance_criterion": "Identify exact release and predecessor versions, affected products and deployment applicability. Link delivered changes, resolved defects, known limitations and compatibility impacts to traceable change records. Specify required upgrade actions, configuration changes, rollback constraints and recipient communication.",
         "role_path": "skills/it-roles-commercial-sourcing-and-enablement/references/technical-writer.md"
       }
     },
@@ -275,7 +285,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technical-writer:3",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -323,7 +335,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technical-writer:3",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -368,7 +382,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technical-writer:3",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -413,7 +429,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technical-writer:3",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -458,7 +476,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technical-writer:3",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -505,7 +525,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -550,7 +572,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -597,7 +621,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -728,16 +754,37 @@
         "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "business-appraisal",
+        "title": "HM Treasury, The Green Book",
+        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Technical Writer",
+        "domain": "Commercial, Sourcing and Enablement",
+        "domain_index": 15,
+        "method_focus": "Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.",
         "frameworks": [
           "docs-as-code practice",
           "Diátaxis documentation framework",
           "plain language and WCAG 2.2 AA for published content"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -810,6 +857,17 @@
     "source_fingerprint": "9db4b381d84613de71f9a7dfd28eab84b1fb8fa3059eb62336e90b77c02ffa3c",
     "source_hash": "63dfd242b4bd0adb714675dbc1c68409d0da671b97d882a2bb6b968932806519"
   },
+  "delivery_form": {
+    "primary_artifact": "release-change-record",
+    "representation": "Release-specific changes, compatibility impacts, known limitations and recipient upgrade/recovery actions.",
+    "evidence": [
+      "exact release/predecessor revisions",
+      "source change and issue references"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "d37cc9c57dddde41755ba1399f3f1e66b3f92a990e67e166fcf8e6bc245325db",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

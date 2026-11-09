@@ -302,6 +302,11 @@ def test_existing_trusted_host_can_project_exact_draft_without_granting_authorit
     from test_governed_domain import _commercial_fixture, _qualified
     import governed_domain
     import commercial_core as core
+    import lifecycle
+    # Exercise exact provenance and permissions independently of CPU scheduling.
+    # Expiry is covered by the paired controlled 0/5001 ms domain regression.
+    now = lifecycle.time.time()
+    monkeypatch.setattr(lifecycle.time, 'time', lambda: now)
     directory,_ = prepared
     data = fixture()
     markdown = (directory/'client-proposal.md').read_text()

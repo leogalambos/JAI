@@ -62,7 +62,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#operational-and-technology-resilience-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -101,7 +102,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#operational-and-technology-resilience-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -140,7 +142,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#operational-and-technology-resilience-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -179,7 +182,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#operational-and-technology-resilience-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -199,7 +203,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Technology resilience architecture', provide verifiable evidence satisfying: Critical service paths, resilience requirements and mechanisms trace to business impact tolerances. Required delivery form: Model in the EA tool plus a published view set.",
+        "For the specific output 'Technology resilience architecture', provide verifiable evidence satisfying: Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Critical service paths, resilience requirements and mechanisms trace to business impact tolerances. Required delivery form: Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +218,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Technology resilience architecture', provide verifiable evidence satisfying: Critical service paths, resilience requirements and mechanisms trace to business impact tolerances. Required delivery form: Model in the EA tool plus a published view set.",
+        "reason": "For the specific output 'Technology resilience architecture', provide verifiable evidence satisfying: Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Critical service paths, resilience requirements and mechanisms trace to business impact tolerances. Required delivery form: Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#operational-and-technology-resilience-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -228,8 +233,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Technology resilience architecture",
-        "format": "Model in the EA tool plus a published view set",
-        "acceptance_criterion": "Critical service paths, resilience requirements and mechanisms trace to business impact tolerances.",
+        "format": "Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
+        "acceptance_criterion": "Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Critical service paths, resilience requirements and mechanisms trace to business impact tolerances.",
         "role_path": "skills/it-roles-architecture/references/operational-and-technology-resilience-architect.md"
       }
     },
@@ -268,7 +273,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#operational-and-technology-resilience-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -314,7 +320,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#operational-and-technology-resilience-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -358,7 +365,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#operational-and-technology-resilience-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -402,7 +410,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#operational-and-technology-resilience-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -446,7 +455,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#operational-and-technology-resilience-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -492,7 +502,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -536,7 +547,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -582,7 +594,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -705,16 +718,29 @@
         "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Operational and Technology Resilience Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "ISO 22301",
           "ISO/IEC 27031",
           "NIST SP 800-34 and relevant operational resilience regulation"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -785,6 +811,17 @@
     "source_fingerprint": "0296d04042099ec54f4730799ca7dd0c5145a250cbf4fd9ded066552c2192518",
     "source_hash": "e49d3688452890625a7377fac5230c2ce1f6e30ff07163a3878169c4096755b4"
   },
+  "delivery_form": {
+    "primary_artifact": "typed-semantic-model",
+    "representation": "Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
+    "evidence": [
+      "metamodel/reference/cross-view checks",
+      "source baseline and unresolved semantic gaps"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "e07877e8ba1d63502eb309f41cc0744b1826277a8f48357a6e105345c8388287",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/diagram",
-    "domain/architecture"
+    "type/register",
+    "domain/data"
   ],
   "applies_to": {
     "document_kind": "role/portfolio-manager:1",
@@ -63,7 +63,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#portfolio-manager:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -102,7 +104,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#portfolio-manager:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -141,7 +145,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#portfolio-manager:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -180,7 +186,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#portfolio-manager:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -200,7 +208,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Investment portfolio and prioritisation model', provide verifiable evidence satisfying: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON).",
+        "For the specific output 'Investment portfolio and prioritisation model', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +223,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Investment portfolio and prioritisation model', provide verifiable evidence satisfying: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON).",
+        "reason": "For the specific output 'Investment portfolio and prioritisation model', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#portfolio-manager:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -229,8 +239,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Investment portfolio and prioritisation model",
-        "format": "Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON)",
-        "acceptance_criterion": "The model is validated against real observed behaviour or data, not only interviews",
+        "format": "Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
+        "acceptance_criterion": "Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews.",
         "role_path": "skills/it-roles-product-delivery-and-agile/references/portfolio-manager.md"
       }
     },
@@ -270,7 +280,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#portfolio-manager:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -317,7 +329,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#portfolio-manager:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -361,7 +375,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#portfolio-manager:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -405,7 +421,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#portfolio-manager:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -449,7 +467,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#portfolio-manager:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -495,7 +515,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -539,7 +561,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -585,7 +609,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -680,7 +706,7 @@
     }
   ],
   "size_budget": {
-    "metric": "elements",
+    "metric": "rows",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -702,10 +728,34 @@
     ],
     "professional_references": [
       {
-        "id": "architecture-description",
-        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
-        "url": "https://www.iso.org/standard/74393.html",
-        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "human-centred-design",
+        "title": "ISO 9241-210:2019, Human-centred design for interactive systems",
+        "url": "https://www.iso.org/standard/77520.html",
+        "scope": "Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
@@ -713,11 +763,16 @@
     "role_framework_context": [
       {
         "role": "Portfolio Manager",
+        "domain": "Product, Delivery and Agile",
+        "domain_index": 2,
+        "method_focus": "Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.",
         "frameworks": [
           "MoP (Management of Portfolios)",
           "lean portfolio management",
           "COBIT 2019 APO05"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -771,12 +826,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/register",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "diagram",
+  "semantic_family": "register",
   "role_overlay": {
     "contract_id": "portfolio-manager:1",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -788,6 +845,17 @@
     "source_fingerprint": "55a06a0cc9b69b6bcd1c26d975a77db88c00a669fb261e4f6cda450cbc28025f",
     "source_hash": "434bcde02f964e7ac725965e369d9f69a3cf20c13d1e0ca2a20300bfced8a7ff"
   },
+  "delivery_form": {
+    "primary_artifact": "governed-register",
+    "representation": "Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
+    "evidence": [
+      "actual source-attributed records",
+      "uniqueness, completeness and relationship reconciliation"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "cf61333dbb4412719ae3dfbc316932c44dcdc946bd58fe122886b4d97d643dfd",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

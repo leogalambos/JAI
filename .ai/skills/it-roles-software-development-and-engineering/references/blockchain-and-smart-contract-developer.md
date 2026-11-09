@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Smart contract code | Reviewed, merged change in version control | Passes automated checks, carries tests and telemetry, and has a rollback path |
-| 2 | formal or property-based verification evidence | Immutable evidence set with hashes, timestamps and custody record | Chain of custody is unbroken and the set is reproducible from the record |
-| 3 | deployment and upgrade strategy | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 4 | independent audit remediation record | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
+| 1 | Smart contract code | Actual version-controlled implementation or analysis code, separate from its explanatory report. | Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. Existing source requirement: Passes automated checks, carries tests and telemetry, and has a rollback path. |
+| 2 | formal or property-based verification evidence | Observed test results against a named baseline with passed, failed, blocked and unexecuted cases. | Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation. Existing source requirement: Chain of custody is unbroken and the set is reproducible from the record. |
+| 3 | deployment and upgrade strategy | Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones. | State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. |
+| 4 | independent audit remediation record | Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules. | Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. |
 
 ## 7. Output gates (blocking)
 
@@ -192,6 +192,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - language-specific secure development guidance
 - smart contract audit practice
 - formal verification tooling
@@ -202,13 +206,32 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Review and harden an escrow contract before mainnet deployment”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver smart contract code in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Smart contract code.
+
+**Illustrative case material:**
+
+Requirement R-17 permits one stock reservation per order key. Revision src-42 replaces a read-then-write check with a unique order-key constraint and transactional insert. A duplicate returns the existing reservation ID, not another decrement.
+
+**Acceptance question:** Identify the exact source revision, changed behaviour and requirement.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision.
+- Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution.
+- Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `software-change` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

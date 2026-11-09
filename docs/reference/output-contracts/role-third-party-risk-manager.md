@@ -42,6 +42,19 @@ Produce and govern the role deliverable: Supplier risk assessments and tiering.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `risk-assessment`.
+
+Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.
+
+**Evidence accompanying the work product:**
+
+- likelihood/impact rationale and uncertainty
+- current/residual exposure and treatment evidence
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -49,27 +62,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/third-party-risk-manager:1.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Supplier risk assessments and tiering.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1); [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:1.receiving_acceptance`** — `array`
 
 - For each receiving role (Vendor Manager; Contract Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1); [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:1.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1); [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:1.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1); [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:1.delivery_verification`** — `array`
 
-- For the specific output 'Supplier risk assessments and tiering', provide verifiable evidence satisfying: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Structured assessment document with scoring method stated.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
+- For the specific output 'Supplier risk assessments and tiering', provide verifiable evidence satisfying: Define assessment scope, likelihood/impact scales, time horizon, risk criteria and appetite; explain how qualitative or quantitative ratings are assigned. For each scenario, record cause, event, affected asset/outcome, consequences, existing controls, evidence, uncertainty and a justified current/residual rating. For each treatment, record the scenario ID, chosen response, action owner, target date, expected risk change and authority required for residual acceptance. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1); [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:1.role_gate_observations`** — `array`
 
@@ -80,27 +93,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G4: Management responses record an owner, a date and an accepted residual risk for every finding.
 - G5: Every critical supplier has a tested exit or substitution plan
 - G6: a supplier that cannot be exited is recorded as a concentration risk requiring board awareness
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1); [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:1.contract_input_1`** — `object`
 
 - Analyse the specific input "Supplier inventory and criticality" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1); [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:1.contract_input_2`** — `object`
 
 - Analyse the specific input "Supplier assurance evidence" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1); [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:1.contract_input_3`** — `object`
 
 - Analyse the specific input "Contract terms" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1); [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:1.contract_input_4`** — `object`
 
 - Analyse the specific input "Concentration and substitutability analysis" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1); [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -109,21 +122,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1); [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:1.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1); [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/third-party-risk-manager:1.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-30r1); [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -161,10 +174,15 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **[NIST SP 800-30 Revision 1, Guide for Conducting Risk Assessments](https://doi.org/10.6028/NIST.SP.800-30r1)** — Assessment scope, threat events, vulnerabilities, likelihood, impact and uncertainty. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls](https://doi.org/10.6028/NIST.SP.800-53Ar5)** — Assessment objectives, methods, evidence, findings and bounded assessment conclusions. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Third-Party Risk Manager:** DORA third-party requirements; ISO/IEC 27036; NIST SP 800-161 supply chain risk. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Separate binding obligation, interpretation, control, evidence, independent test and bounded assurance/risk conclusion.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-third-party-risk-manager-2"></a>
@@ -204,6 +222,19 @@ Produce and govern the role deliverable: register of information for critical su
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `governed-register`.
+
+Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.
+
+**Evidence accompanying the work product:**
+
+- actual source-attributed records
+- uniqueness, completeness and relationship reconciliation
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -211,22 +242,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/third-party-risk-manager:2.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: register of information for critical suppliers.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:2.receiving_acceptance`** — `array`
 
 - For each receiving role (Vendor Manager; Contract Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:2.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:2.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:2.delivery_verification`** — `array`
 
-- For the specific output 'register of information for critical suppliers', provide verifiable evidence satisfying: Every row has an owner, a date, a status and a next action. Required delivery form: Structured table in the system of record (CSV/tool export).
+- For the specific output 'register of information for critical suppliers', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every row has an owner, a date, a status and a next action. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:2.role_gate_observations`** — `array`
 
@@ -237,22 +273,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G4: Management responses record an owner, a date and an accepted residual risk for every finding.
 - G5: Every critical supplier has a tested exit or substitution plan
 - G6: a supplier that cannot be exited is recorded as a concentration risk requiring board awareness
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:2.contract_input_1`** — `object`
 
 - Analyse the specific input "Supplier inventory and criticality" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:2.contract_input_2`** — `object`
 
 - Analyse the specific input "Supplier assurance evidence" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:2.contract_input_3`** — `object`
 
 - Analyse the specific input "Contract terms" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:2.contract_input_4`** — `object`
 
 - Analyse the specific input "Concentration and substitutability analysis" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -261,18 +302,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:2.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/third-party-risk-manager:2.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -322,10 +366,16 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls](https://doi.org/10.6028/NIST.SP.800-53Ar5)** — Assessment objectives, methods, evidence, findings and bounded assessment conclusions. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[NIST SP 800-30 Revision 1, Guide for Conducting Risk Assessments](https://doi.org/10.6028/NIST.SP.800-30r1)** — Assessment scope, threat events, vulnerabilities, likelihood, impact and uncertainty. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Third-Party Risk Manager:** DORA third-party requirements; ISO/IEC 27036; NIST SP 800-161 supply chain risk. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Separate binding obligation, interpretation, control, evidence, independent test and bounded assurance/risk conclusion.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-third-party-risk-manager-3"></a>
@@ -365,6 +415,19 @@ Produce and govern the role deliverable: contractual control requirements.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `professional-document`.
+
+Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.
+
+**Evidence accompanying the work product:**
+
+- attributable subject-specific findings and limitations
+- reviewable sources and verifiable follow-up actions
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -372,22 +435,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/third-party-risk-manager:3.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: contractual control requirements.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:3.receiving_acceptance`** — `array`
 
 - For each receiving role (Vendor Manager; Contract Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:3.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:3.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:3.delivery_verification`** — `array`
 
-- For the specific output 'contractual control requirements', provide verifiable evidence satisfying: Each requirement maps to supplier risk or an applicable obligation, proposed clause/evidence, accountable owner and unresolved legal or commercial decision; proposed requirements do not imply an executed contract. Required delivery form: Traceable contractual control requirements for negotiation.
+- For the specific output 'contractual control requirements', provide verifiable evidence satisfying: State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Each requirement maps to supplier risk or an applicable obligation, proposed clause/evidence, accountable owner and unresolved legal or commercial decision; proposed requirements do not imply an executed contract. Required delivery form: Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:3.role_gate_observations`** — `array`
 
@@ -398,22 +466,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G4: Management responses record an owner, a date and an accepted residual risk for every finding.
 - G5: Every critical supplier has a tested exit or substitution plan
 - G6: a supplier that cannot be exited is recorded as a concentration risk requiring board awareness
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:3.contract_input_1`** — `object`
 
 - Analyse the specific input "Supplier inventory and criticality" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:3.contract_input_2`** — `object`
 
 - Analyse the specific input "Supplier assurance evidence" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:3.contract_input_3`** — `object`
 
 - Analyse the specific input "Contract terms" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:3.contract_input_4`** — `object`
 
 - Analyse the specific input "Concentration and substitutability analysis" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -422,18 +495,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:3.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/third-party-risk-manager:3.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -471,10 +547,16 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls](https://doi.org/10.6028/NIST.SP.800-53Ar5)** — Assessment objectives, methods, evidence, findings and bounded assessment conclusions. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[NIST SP 800-30 Revision 1, Guide for Conducting Risk Assessments](https://doi.org/10.6028/NIST.SP.800-30r1)** — Assessment scope, threat events, vulnerabilities, likelihood, impact and uncertainty. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Third-Party Risk Manager:** DORA third-party requirements; ISO/IEC 27036; NIST SP 800-161 supply chain risk. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Separate binding obligation, interpretation, control, evidence, independent test and bounded assurance/risk conclusion.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-third-party-risk-manager-4"></a>
@@ -514,6 +596,19 @@ Produce and govern the role deliverable: ongoing monitoring and exit plans.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `outcome-roadmap`.
+
+Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.
+
+**Evidence accompanying the work product:**
+
+- current/target baseline and planning assumptions
+- resource/funding constraints and decision triggers
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -521,27 +616,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/third-party-risk-manager:4.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: ongoing monitoring and exit plans.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:4.receiving_acceptance`** — `array`
 
 - For each receiving role (Vendor Manager; Contract Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:4.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:4.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:4.delivery_verification`** — `array`
 
-- For the specific output 'ongoing monitoring and exit plans', provide verifiable evidence satisfying: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Document with milestones, owners, dependencies and assumptions.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- For the specific output 'ongoing monitoring and exit plans', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:4.role_gate_observations`** — `array`
 
@@ -552,27 +647,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G4: Management responses record an owner, a date and an accepted residual risk for every finding.
 - G5: Every critical supplier has a tested exit or substitution plan
 - G6: a supplier that cannot be exited is recorded as a concentration risk requiring board awareness
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:4.contract_input_1`** — `object`
 
 - Analyse the specific input "Supplier inventory and criticality" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:4.contract_input_2`** — `object`
 
 - Analyse the specific input "Supplier assurance evidence" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:4.contract_input_3`** — `object`
 
 - Analyse the specific input "Contract terms" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:4.contract_input_4`** — `object`
 
 - Analyse the specific input "Concentration and substitutability analysis" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -581,21 +676,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 **`role/third-party-risk-manager:4.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/third-party-risk-manager:4.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://doi.org/10.6028/NIST.SP.800-30r1) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -634,8 +729,13 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 - **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **[HM Treasury, The Green Book](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government)** — Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls](https://doi.org/10.6028/NIST.SP.800-53Ar5)** — Assessment objectives, methods, evidence, findings and bounded assessment conclusions. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[NIST SP 800-30 Revision 1, Guide for Conducting Risk Assessments](https://doi.org/10.6028/NIST.SP.800-30r1)** — Assessment scope, threat events, vulnerabilities, likelihood, impact and uncertainty. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Third-Party Risk Manager:** DORA third-party requirements; ISO/IEC 27036; NIST SP 800-161 supply chain risk. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Separate binding obligation, interpretation, control, evidence, independent test and bounded assurance/risk conclusion.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 <!-- JAI:OUTPUT-CONTRACTS:END -->

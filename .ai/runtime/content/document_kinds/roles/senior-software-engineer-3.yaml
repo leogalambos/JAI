@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/decision-paper",
-    "domain/delivery"
+    "type/assurance-report",
+    "domain/security"
   ],
   "applies_to": {
     "document_kind": "role/senior-software-engineer:3",
@@ -62,8 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#senior-software-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -102,8 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#senior-software-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -142,8 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#senior-software-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -182,8 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#senior-software-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -203,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'code review feedback that teaches', provide verifiable evidence satisfying: Passes automated checks, carries tests and telemetry, and has a rollback path. Required delivery form: Reviewed, merged change in version control.",
+        "For the specific output 'code review feedback that teaches', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Passes automated checks, carries tests and telemetry, and has a rollback path. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'code review feedback that teaches', provide verifiable evidence satisfying: Passes automated checks, carries tests and telemetry, and has a rollback path. Required delivery form: Reviewed, merged change in version control.",
+        "reason": "For the specific output 'code review feedback that teaches', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Passes automated checks, carries tests and telemetry, and has a rollback path. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#senior-software-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -233,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "code review feedback that teaches",
-        "format": "Reviewed, merged change in version control",
-        "acceptance_criterion": "Passes automated checks, carries tests and telemetry, and has a rollback path",
+        "format": "Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
+        "acceptance_criterion": "State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Passes automated checks, carries tests and telemetry, and has a rollback path.",
         "role_path": "skills/it-roles-software-development-and-engineering/references/senior-software-engineer.md"
       }
     },
@@ -276,8 +281,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#senior-software-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -326,8 +332,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#senior-software-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -371,8 +378,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#senior-software-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -416,8 +424,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#senior-software-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -461,8 +470,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#senior-software-engineer:3",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -508,8 +518,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -553,8 +564,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -600,8 +612,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -718,18 +731,26 @@
     ],
     "professional_references": [
       {
-        "id": "business-appraisal",
-        "title": "HM Treasury, The Green Book",
-        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       },
       {
-        "id": "it-governance",
-        "title": "COBIT governance and management framework",
-        "url": "https://www.isaca.org/resources/cobit",
-        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "id": "secure-software",
+        "title": "NIST SP 800-218, Secure Software Development Framework Version 1.1",
+        "url": "https://doi.org/10.6028/NIST.SP.800-218",
+        "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "software-testing",
+        "title": "ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation",
+        "url": "https://www.iso.org/standard/79429.html",
+        "scope": "Test planning, test specifications and reporting information needs.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
@@ -737,11 +758,16 @@
     "role_framework_context": [
       {
         "role": "Senior Software Engineer",
+        "domain": "Software Development and Engineering",
+        "domain_index": 5,
+        "method_focus": "Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.",
         "frameworks": [
           "SWEBOK v4",
           "OWASP ASVS",
           "architecture decision records"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -795,12 +821,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/assurance-report",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "decision-paper",
+  "semantic_family": "assurance-report",
   "role_overlay": {
     "contract_id": "senior-software-engineer:3",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -812,6 +840,17 @@
     "source_fingerprint": "b2d09a8ff39e6fffab0cdd9cab23e466992ecb5384de89ebfbc9e73642d15f6c",
     "source_hash": "62ef0eb99d5e603b4a00487cc2b1119d53f040d812a4055b3625d14181b590f0"
   },
+  "delivery_form": {
+    "primary_artifact": "assurance-assessment",
+    "representation": "Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
+    "evidence": [
+      "criterion-to-test-to-observation traceability",
+      "independent reviewer and limitations"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "e1c14debafe00c4548c7f0ffa88671cd32d1e0694bcdfdff0127e5544c4d6eb1",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

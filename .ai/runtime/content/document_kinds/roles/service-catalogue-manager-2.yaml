@@ -203,7 +203,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'request and service definitions', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'request and service definitions', provide verifiable evidence satisfying: State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. Required delivery form: Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,7 +218,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'request and service definitions', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'request and service definitions', provide verifiable evidence satisfying: State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. Required delivery form: Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-catalogue-manager:2",
           "content/types/service-design.yaml",
@@ -233,8 +233,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "request and service definitions",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
+        "acceptance_criterion": "State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions.",
         "role_path": "skills/it-roles-service-management-and-support/references/service-catalogue-manager.md"
       }
     },
@@ -733,10 +733,15 @@
     "role_framework_context": [
       {
         "role": "Service Catalogue Manager",
+        "domain": "Service Management and Support",
+        "domain_index": 10,
+        "method_focus": "Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.",
         "frameworks": [
           "ITIL 4 service catalogue management",
           "ISO/IEC 20000-1"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -807,6 +812,17 @@
     "source_fingerprint": "b7c6d2678595619f12c93e755e103d08d5a106636b45540d9618928ebc9d5265",
     "source_hash": "55d90b95dd21a9d7aeedac057a5cbcd88feedb026cf5b1c2887b8940bdc8484a"
   },
+  "delivery_form": {
+    "primary_artifact": "service-definition",
+    "representation": "Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
+    "evidence": [
+      "indicator/target/window definitions",
+      "support, dependency and recovery arrangements"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "d07d7e1a56f7c55fd9148331654b663795605d94711bdf2c851e8239de83449e",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

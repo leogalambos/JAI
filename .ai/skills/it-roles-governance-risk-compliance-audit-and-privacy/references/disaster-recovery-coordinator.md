@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Technical recovery plans and runbooks | Versioned Markdown in the service repository | A competent on-call engineer who has never seen the service can execute it unaided |
-| 2 | recovery test schedule and results | Versioned assessment results with traceable evidence | Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations |
-| 3 | recovery capability gaps against objectives | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 4 | failover and failback procedures | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
+| 1 | Technical recovery plans and runbooks | Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches. | State when the procedure applies, exact targets, permitted operator capability, prerequisites, access dependencies and conditions forbidding execution. For each step, give the action, parameters, expected observation and a decision on success/failure; do not embed credentials. Define failure/timeout branches, rollback or safe recovery, escalation conditions and evidence of rehearsal against a named version/environment. Existing source requirement: A competent on-call engineer who has never seen the service can execute it unaided. |
+| 2 | recovery test schedule and results | Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion. | State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Identifies assessed scope, method, environment or population, expected and observed outcomes, located findings, untested conditions and residual limitations. |
+| 3 | recovery capability gaps against objectives | Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request. | Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. |
+| 4 | failover and failback procedures | Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches. | State when the procedure applies, exact targets, permitted operator capability, prerequisites, access dependencies and conditions forbidding execution. For each step, give the action, parameters, expected observation and a decision on success/failure; do not embed credentials. Define failure/timeout branches, rollback or safe recovery, escalation conditions and evidence of rehearsal against a named version/environment. |
 
 ## 7. Output gates (blocking)
 
@@ -189,6 +189,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - ISO 22301
 - NIST SP 800-34
 - ITIL 4 continuity practice
@@ -199,13 +203,30 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Run a real failover test for a system the business says cannot be taken offline”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver technical recovery plans and runbooks in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Technical recovery plans and runbooks.
+
+**Illustrative case material:**
+
+Runbook `MRG-OEI-RB-01` supports cross-channel order ingestion and fulfilment synchronisation only. Activate for **broker backlog age over ten minutes, consumer restart loop, or unexplained ERP reconciliation differences**; on-call operator may gather evidence and perform preapproved containment, but production-impacting steps require an authorised change/incident authority. Never run this example as a production procedure without service-specific verification.
+
+**STOP immediately** on inconsistent system identity, unverified privileged access, missing backups/checkpoints, an unknown jurisdiction restriction, risk of irreversible business action, or evidence of active compromise. Escalate to Service Operations Manager and Head of Digital Risk.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- State when the procedure applies, exact targets, permitted operator capability, prerequisites, access dependencies and conditions forbidding execution.
+- For each step, give the action, parameters, expected observation and a decision on success/failure; do not embed credentials.
+- Define failure/timeout branches, rollback or safe recovery, escalation conditions and evidence of rehearsal against a named version/environment.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `runbook` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

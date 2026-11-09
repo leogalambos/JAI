@@ -63,7 +63,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-analyst:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -102,7 +103,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-analyst:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -141,7 +143,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-analyst:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -180,7 +183,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-analyst:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -200,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Requirements specification', provide verifiable evidence satisfying: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Versioned specification with numbered, traceable requirements.",
+        "For the specific output 'Requirements specification', provide verifiable evidence satisfying: Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +219,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Requirements specification', provide verifiable evidence satisfying: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Versioned specification with numbered, traceable requirements.",
+        "reason": "For the specific output 'Requirements specification', provide verifiable evidence satisfying: Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-analyst:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -229,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Requirements specification",
-        "format": "Versioned specification with numbered, traceable requirements",
-        "acceptance_criterion": "Every requirement is atomic, testable and traced to a source and a priority",
+        "format": "Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
+        "acceptance_criterion": "Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority.",
         "role_path": "skills/it-roles-analysis/references/business-analyst.md"
       }
     },
@@ -270,7 +275,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-analyst:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -317,7 +323,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-analyst:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -361,7 +368,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-analyst:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -405,7 +413,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-analyst:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -449,7 +458,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-analyst:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -495,7 +505,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -539,7 +550,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -585,7 +597,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -708,16 +721,29 @@
         "scope": "Requirements information items, requirement quality and traceability.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "data-quality",
+        "title": "W3C Data Quality Vocabulary",
+        "url": "https://www.w3.org/TR/vocab-dqv/",
+        "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Business Analyst",
+        "domain": "Analysis",
+        "domain_index": 3,
+        "method_focus": "Trace source needs, stakeholders and conflicting constraints into verifiable requirements, models and acceptance criteria.",
         "frameworks": [
           "BABOK v3",
           "BPMN 2.0",
           "IREB CPRE"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -790,6 +816,17 @@
     "source_fingerprint": "05a4e10c9a6a7335f855852a4a3f91295a495e48824a51fb34a092ed4421e2b8",
     "source_hash": "4078a65505c30a06fc2ffae25a1885b1e5b7dabd8339bf2b377fe529081c49c9"
   },
+  "delivery_form": {
+    "primary_artifact": "requirements-specification",
+    "representation": "Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
+    "evidence": [
+      "forward/backward traceability",
+      "conflict, interface and change-impact checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "f7766f9f06e19c51c9294dc5215ef162661ae15ada22839874ecdce04d323b36",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

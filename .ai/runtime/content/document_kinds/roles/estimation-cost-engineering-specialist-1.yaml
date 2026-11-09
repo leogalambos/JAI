@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/business-case",
-    "domain/delivery"
+    "type/dataset",
+    "domain/data"
   ],
   "applies_to": {
     "document_kind": "role/estimation-cost-engineering-specialist:1",
@@ -63,7 +63,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -102,7 +105,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -141,7 +147,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -180,7 +189,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -200,7 +212,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Basis of estimate and work/cost breakdown', provide verifiable evidence satisfying: Another qualified estimator can reconstruct the material figures and distinguish fact from assumption. Required delivery form: Source-linked quantities, methods, effort, rates, assumptions, ranges and exclusions.",
+        "For the specific output 'Basis of estimate and work/cost breakdown', provide verifiable evidence satisfying: Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations. Existing source requirement: Another qualified estimator can reconstruct the material figures and distinguish fact from assumption. Required delivery form: Actual work/cost breakdown and estimate model with estimation method, quantities, units, rates, assumptions and uncertainty; narrative accompanies the reproducible model.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +227,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Basis of estimate and work/cost breakdown', provide verifiable evidence satisfying: Another qualified estimator can reconstruct the material figures and distinguish fact from assumption. Required delivery form: Source-linked quantities, methods, effort, rates, assumptions, ranges and exclusions.",
+        "reason": "For the specific output 'Basis of estimate and work/cost breakdown', provide verifiable evidence satisfying: Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations. Existing source requirement: Another qualified estimator can reconstruct the material figures and distinguish fact from assumption. Required delivery form: Actual work/cost breakdown and estimate model with estimation method, quantities, units, rates, assumptions and uncertainty; narrative accompanies the reproducible model.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -229,8 +244,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Basis of estimate and work/cost breakdown",
-        "format": "Source-linked quantities, methods, effort, rates, assumptions, ranges and exclusions",
-        "acceptance_criterion": "Another qualified estimator can reconstruct the material figures and distinguish fact from assumption.",
+        "format": "Actual work/cost breakdown and estimate model with estimation method, quantities, units, rates, assumptions and uncertainty; narrative accompanies the reproducible model.",
+        "acceptance_criterion": "Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations. Existing source requirement: Another qualified estimator can reconstruct the material figures and distinguish fact from assumption.",
         "role_path": "skills/it-roles-commercial-sourcing-and-enablement/references/estimation-cost-engineering-specialist.md"
       }
     },
@@ -271,7 +286,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -319,7 +337,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -363,7 +384,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -407,7 +431,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -451,7 +478,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#estimation-cost-engineering-specialist:1",
           "content/types/business-case.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -497,7 +527,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -541,7 +574,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -587,7 +623,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -682,7 +721,7 @@
     }
   ],
   "size_budget": {
-    "metric": "semantic_units",
+    "metric": "rows",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -704,10 +743,34 @@
     ],
     "professional_references": [
       {
+        "id": "data-catalogue",
+        "title": "W3C Data Catalog Vocabulary Version 3 (DCAT 3)",
+        "url": "https://www.w3.org/TR/vocab-dcat-3/",
+        "scope": "Dataset/catalogue identity, distributions, provenance, access and descriptive metadata.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "data-quality",
+        "title": "W3C Data Quality Vocabulary",
+        "url": "https://www.w3.org/TR/vocab-dqv/",
+        "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
         "id": "business-appraisal",
         "title": "HM Treasury, The Green Book",
         "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
         "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
@@ -715,11 +778,16 @@
     "role_framework_context": [
       {
         "role": "Estimation / Cost Engineering Specialist",
+        "domain": "Commercial, Sourcing and Enablement",
+        "domain_index": 15,
+        "method_focus": "Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.",
         "frameworks": [
           "GAO Cost Estimating and Assessment Guide, GAO-20-195G (2020), https://www.gao.gov/products/gao-20-195g: technical baseline, WBS, assumptions, data, methods, sensitivity/risk analysis, documentation and updates.",
           "AACE International Total Cost Management Framework and relevant estimate-classification recommended practices: use only industry-appropriate versions. AACE 18R-97 is process-industry oriented and does not establish universal IS/IT accuracy percentages.",
           "ISO/IEC/IEEE 15939 measurement-process concepts and organisation-approved software/service estimation practices; use only validated local parametric calibrations."
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -773,12 +841,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/dataset",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "business-case",
+  "semantic_family": "dataset",
   "role_overlay": {
     "contract_id": "estimation-cost-engineering-specialist:1",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -790,6 +860,17 @@
     "source_fingerprint": "369ac0d1f2d9621e81811c7b9f7ae55ebd8e08e0dd22db15212294fa81b03e22",
     "source_hash": "8a710ecbe77e43df471c27171345f2c291c4885aea5c6bd00b050460807d15ca"
   },
+  "delivery_form": {
+    "primary_artifact": "versioned-basis-of-estimate-model",
+    "representation": "Actual work/cost breakdown and estimate model with estimation method, quantities, units, rates, assumptions and uncertainty; narrative accompanies the reproducible model.",
+    "evidence": [
+      "scope/WBS-to-quantity/rate/formula traceability",
+      "reconciliation, calibration evidence, exclusions and estimate confidence range"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "f624da83b9ea8c24c6a1c29920d5d79824cdebc991581f426bbecb6e632f2993",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

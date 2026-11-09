@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/document",
-    "domain/delivery"
+    "type/test-report",
+    "domain/testing"
   ],
   "applies_to": {
     "document_kind": "role/red-team-operator:4",
@@ -61,7 +61,10 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: detection and response observations.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#red-team-operator:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -99,7 +102,10 @@
         "reason": "For each receiving role (Purple Team Lead; SOC Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#red-team-operator:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -137,7 +143,10 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#red-team-operator:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -175,7 +184,10 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#red-team-operator:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -195,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'detection and response observations', provide verifiable evidence satisfying: Mapped to an ATT&CK technique, with documented true- and false-positive behaviour. Required delivery form: Detection rule in version control with test cases.",
+        "For the specific output 'detection and response observations', provide verifiable evidence satisfying: Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation. Existing source requirement: Mapped to an ATT&CK technique, with documented true- and false-positive behaviour. Required delivery form: Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,10 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'detection and response observations', provide verifiable evidence satisfying: Mapped to an ATT&CK technique, with documented true- and false-positive behaviour. Required delivery form: Detection rule in version control with test cases.",
+        "reason": "For the specific output 'detection and response observations', provide verifiable evidence satisfying: Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation. Existing source requirement: Mapped to an ATT&CK technique, with documented true- and false-positive behaviour. Required delivery form: Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#red-team-operator:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -223,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "detection and response observations",
-        "format": "Detection rule in version control with test cases",
-        "acceptance_criterion": "Mapped to an ATT&CK technique, with documented true- and false-positive behaviour",
+        "format": "Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
+        "acceptance_criterion": "Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation. Existing source requirement: Mapped to an ATT&CK technique, with documented true- and false-positive behaviour.",
         "role_path": "skills/it-roles-offensive-security-and-adversarial-testing/references/red-team-operator.md"
       }
     },
@@ -262,7 +277,10 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#red-team-operator:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -307,7 +325,10 @@
         "reason": "Analyse the specific input \"Signed authorisation and objectives\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#red-team-operator:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -350,7 +371,10 @@
         "reason": "Analyse the specific input \"Threat actor profile to emulate\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#red-team-operator:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -393,7 +417,10 @@
         "reason": "Analyse the specific input \"Deconfliction contacts and process\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#red-team-operator:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -436,7 +463,10 @@
         "reason": "Analyse the specific input \"Legal constraints\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#red-team-operator:4",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -481,7 +511,10 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -524,7 +557,10 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -569,7 +605,10 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -686,22 +725,43 @@
     ],
     "professional_references": [
       {
-        "id": "jai-practice",
-        "title": "JAI authored enterprise-delivery practice",
-        "url": null,
-        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
-        "basis": "jai-practice",
+        "id": "software-testing",
+        "title": "ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation",
+        "url": "https://www.iso.org/standard/79429.html",
+        "scope": "Test planning, test specifications and reporting information needs.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "risk-assessment",
+        "title": "NIST SP 800-30 Revision 1, Guide for Conducting Risk Assessments",
+        "url": "https://doi.org/10.6028/NIST.SP.800-30r1",
+        "scope": "Assessment scope, threat events, vulnerabilities, likelihood, impact and uncertainty.",
+        "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Red Team Operator",
+        "domain": "Offensive Security and Adversarial Testing",
+        "domain_index": 12,
+        "method_focus": "Bind authorised scope and methodology to reproducible observations, impact, evidence limitations and retest results.",
         "frameworks": [
           "MITRE ATT&CK adversary emulation",
           "TIBER-EU or CBEST where applicable",
           "NIST SP 800-115"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -755,12 +815,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/test-report",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "document",
+  "semantic_family": "test-report",
   "role_overlay": {
     "contract_id": "red-team-operator:4",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -772,6 +834,17 @@
     "source_fingerprint": "d11f0243ebe435e1116f461598ffaf7c6997d244944dca4cb8ca80c4f56e781c",
     "source_hash": "81268f07a3af8c9ff0baeb514f5ef139e0cdfc9c5114e4bae092195987921bb8"
   },
+  "delivery_form": {
+    "primary_artifact": "test-results",
+    "representation": "Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
+    "evidence": [
+      "expected/actual observations and execution references",
+      "coverage denominators and residual defects"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "83b500fa31a19d83c4c3cd30a36c5863768dd945af91e8aa8091bfec70394fe0",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

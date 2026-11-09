@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sales-engineer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sales-engineer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sales-engineer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sales-engineer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'integration and architecture answers', provide verifiable evidence satisfying: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Model in the EA tool plus a published view set.",
+        "For the specific output 'integration and architecture answers', provide verifiable evidence satisfying: Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'integration and architecture answers', provide verifiable evidence satisfying: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Model in the EA tool plus a published view set.",
+        "reason": "For the specific output 'integration and architecture answers', provide verifiable evidence satisfying: Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sales-engineer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "integration and architecture answers",
-        "format": "Model in the EA tool plus a published view set",
-        "acceptance_criterion": "Every element traces to a driver or a quality-attribute target; no orphan elements",
+        "format": "Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
+        "acceptance_criterion": "Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements.",
         "role_path": "skills/it-roles-commercial-sourcing-and-enablement/references/sales-engineer.md"
       }
     },
@@ -269,7 +279,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sales-engineer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -316,7 +328,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sales-engineer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -360,7 +374,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sales-engineer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -404,7 +420,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sales-engineer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -448,7 +466,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#sales-engineer:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -494,7 +514,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -538,7 +560,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -584,7 +608,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -707,15 +733,36 @@
         "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "business-appraisal",
+        "title": "HM Treasury, The Green Book",
+        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Sales Engineer",
+        "domain": "Commercial, Sourcing and Enablement",
+        "domain_index": 15,
+        "method_focus": "Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.",
         "frameworks": [
           "organisational bid governance",
           "product documentation accuracy standards"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -786,6 +833,17 @@
     "source_fingerprint": "c6ef4e19d1c665b67f40ad50b782ac0ce8b65af93a9a8465b802ec5ca45cc3d6",
     "source_hash": "0abeca1b1f6a4bf9d912973133b1f16f12dfcf272b64f090095c293d13847af2"
   },
+  "delivery_form": {
+    "primary_artifact": "typed-semantic-model",
+    "representation": "Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
+    "evidence": [
+      "metamodel/reference/cross-view checks",
+      "source baseline and unresolved semantic gaps"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "92d7b3d0b4e247dec00545ebedcc46f0fbb6a0706e22e723bb0b5d5c3ff4f895",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

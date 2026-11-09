@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/decision-paper",
-    "domain/delivery"
+    "type/assurance-report",
+    "domain/security"
   ],
   "applies_to": {
     "document_kind": "role/security-domain-authority:4",
@@ -62,8 +62,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-domain-authority:4",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -102,8 +104,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-domain-authority:4",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -142,8 +146,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-domain-authority:4",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -182,8 +188,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-domain-authority:4",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -203,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'domain conformance reporting', provide verifiable evidence satisfying: Conclusions are traceable to dated evidence; opinion is visibly separated from fact. Required delivery form: Structured document with executive summary and evidence annex.",
+        "For the specific output 'domain conformance reporting', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Conclusions are traceable to dated evidence; opinion is visibly separated from fact. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'domain conformance reporting', provide verifiable evidence satisfying: Conclusions are traceable to dated evidence; opinion is visibly separated from fact. Required delivery form: Structured document with executive summary and evidence annex.",
+        "reason": "For the specific output 'domain conformance reporting', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Conclusions are traceable to dated evidence; opinion is visibly separated from fact. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-domain-authority:4",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -233,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "domain conformance reporting",
-        "format": "Structured document with executive summary and evidence annex",
-        "acceptance_criterion": "Conclusions are traceable to dated evidence; opinion is visibly separated from fact",
+        "format": "Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
+        "acceptance_criterion": "State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Conclusions are traceable to dated evidence; opinion is visibly separated from fact.",
         "role_path": "skills/it-roles-sabsa-security-architecture/references/security-domain-authority.md"
       }
     },
@@ -275,8 +285,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-domain-authority:4",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -324,8 +336,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-domain-authority:4",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -369,8 +383,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-domain-authority:4",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -414,8 +430,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-domain-authority:4",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -459,8 +477,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-domain-authority:4",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -506,8 +526,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -551,8 +573,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -598,8 +622,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -716,18 +742,34 @@
     ],
     "professional_references": [
       {
-        "id": "business-appraisal",
-        "title": "HM Treasury, The Green Book",
-        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       },
       {
-        "id": "it-governance",
-        "title": "COBIT governance and management framework",
-        "url": "https://www.isaca.org/resources/cobit",
-        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "id": "sabsa-overview",
+        "title": "SABSA Institute, SABSA Executive Summary",
+        "url": "https://sabsa.org/sabsa-executive-summary/",
+        "scope": "Business-driven security architecture and traceability overview; actual SABSA deliveries must select the accessible authoritative method/version and their detailed obligations.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "architecture-description",
+        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
+        "url": "https://www.iso.org/standard/74393.html",
+        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "systems-security-engineering",
+        "title": "NIST SP 800-160 Volume 1 Revision 1, Engineering Trustworthy Secure Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+        "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
@@ -735,11 +777,16 @@
     "role_framework_context": [
       {
         "role": "Security Domain Authority",
+        "domain": "SABSA Security Architecture",
+        "domain_index": 17,
+        "method_focus": "Trace business drivers and measurable attributes through risks, control objectives, services, mechanisms and operational measures.",
         "frameworks": [
           "SABSA domain model and inter-domain trust",
           "ISO/IEC 27001",
           "organisational delegated authority schedule"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -793,12 +840,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/assurance-report",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "decision-paper",
+  "semantic_family": "assurance-report",
   "role_overlay": {
     "contract_id": "security-domain-authority:4",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -810,6 +859,17 @@
     "source_fingerprint": "256c5b9cf7ae31f2b02b346e3510f9dbd7c0cbbec51629a3770dac1280270f2c",
     "source_hash": "ac6e1265621678d35e8f41d85ff95f35718f017cbe119ac1aeaf0f6dd29a8c4d"
   },
+  "delivery_form": {
+    "primary_artifact": "assurance-assessment",
+    "representation": "Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
+    "evidence": [
+      "criterion-to-test-to-observation traceability",
+      "independent reviewer and limitations"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "e3daef855f71e9e67bdb707834ed413ae3fe9505df2b70a20afa628e9e5b605a",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

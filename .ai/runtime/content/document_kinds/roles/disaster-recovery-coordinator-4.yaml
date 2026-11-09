@@ -63,7 +63,10 @@
           "artifacts/contracts/role-deliverables.v3.json#disaster-recovery-coordinator:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -103,7 +106,10 @@
           "artifacts/contracts/role-deliverables.v3.json#disaster-recovery-coordinator:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -143,7 +149,10 @@
           "artifacts/contracts/role-deliverables.v3.json#disaster-recovery-coordinator:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -183,7 +192,10 @@
           "artifacts/contracts/role-deliverables.v3.json#disaster-recovery-coordinator:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -203,7 +215,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'failover and failback procedures', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'failover and failback procedures', provide verifiable evidence satisfying: State when the procedure applies, exact targets, permitted operator capability, prerequisites, access dependencies and conditions forbidding execution. For each step, give the action, parameters, expected observation and a decision on success/failure; do not embed credentials. Define failure/timeout branches, rollback or safe recovery, escalation conditions and evidence of rehearsal against a named version/environment. Required delivery form: Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +230,15 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'failover and failback procedures', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'failover and failback procedures', provide verifiable evidence satisfying: State when the procedure applies, exact targets, permitted operator capability, prerequisites, access dependencies and conditions forbidding execution. For each step, give the action, parameters, expected observation and a decision on success/failure; do not embed credentials. Define failure/timeout branches, rollback or safe recovery, escalation conditions and evidence of rehearsal against a named version/environment. Required delivery form: Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#disaster-recovery-coordinator:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -233,8 +248,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "failover and failback procedures",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches.",
+        "acceptance_criterion": "State when the procedure applies, exact targets, permitted operator capability, prerequisites, access dependencies and conditions forbidding execution. For each step, give the action, parameters, expected observation and a decision on success/failure; do not embed credentials. Define failure/timeout branches, rollback or safe recovery, escalation conditions and evidence of rehearsal against a named version/environment.",
         "role_path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/disaster-recovery-coordinator.md"
       }
     },
@@ -276,7 +291,10 @@
           "artifacts/contracts/role-deliverables.v3.json#disaster-recovery-coordinator:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -325,7 +343,10 @@
           "artifacts/contracts/role-deliverables.v3.json#disaster-recovery-coordinator:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -370,7 +391,10 @@
           "artifacts/contracts/role-deliverables.v3.json#disaster-recovery-coordinator:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -415,7 +439,10 @@
           "artifacts/contracts/role-deliverables.v3.json#disaster-recovery-coordinator:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -460,7 +487,10 @@
           "artifacts/contracts/role-deliverables.v3.json#disaster-recovery-coordinator:4",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -507,7 +537,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -552,7 +585,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -599,7 +635,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -730,16 +769,45 @@
         "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "risk-assessment",
+        "title": "NIST SP 800-30 Revision 1, Guide for Conducting Risk Assessments",
+        "url": "https://doi.org/10.6028/NIST.SP.800-30r1",
+        "scope": "Assessment scope, threat events, vulnerabilities, likelihood, impact and uncertainty.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Disaster Recovery Coordinator",
+        "domain": "Governance, Risk, Compliance, Audit and Privacy",
+        "domain_index": 13,
+        "method_focus": "Separate binding obligation, interpretation, control, evidence, independent test and bounded assurance/risk conclusion.",
         "frameworks": [
           "ISO 22301",
           "NIST SP 800-34",
           "ITIL 4 continuity practice"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -810,6 +878,17 @@
     "source_fingerprint": "77b4adcccce962ee2d9ef7304387a43cb2626173bd7aaa4b232a4608a6867104",
     "source_hash": "2b8fe426e9a6c4ec9c289584a662f9d68f9dc3b468b97c1a035d02282689f710"
   },
+  "delivery_form": {
+    "primary_artifact": "operational-procedure",
+    "representation": "Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches.",
+    "evidence": [
+      "versioned verification checkpoints",
+      "rehearsal environment/results or explicit untested scope"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "8e835a25a2f7a51e7225ab5e93f5b5ebdf590de618f1289c1e382d1ff70ae5e9",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

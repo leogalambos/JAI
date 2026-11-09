@@ -64,7 +64,9 @@
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -104,7 +106,9 @@
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -144,7 +148,9 @@
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -184,7 +190,9 @@
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -204,7 +212,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Application portfolio health and risk dashboard', provide verifiable evidence satisfying: Metrics have defined sources and thresholds; exceptions and stale/incomplete data are visible rather than silently scored. Required delivery form: Dashboard with business fit, technical fitness, lifecycle, cost, risk, duplication and progress metrics.",
+        "For the specific output 'Application portfolio health and risk dashboard', provide verifiable evidence satisfying: For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Existing source requirement: Metrics have defined sources and thresholds; exceptions and stale/incomplete data are visible rather than silently scored. Required delivery form: Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,12 +227,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Application portfolio health and risk dashboard', provide verifiable evidence satisfying: Metrics have defined sources and thresholds; exceptions and stale/incomplete data are visible rather than silently scored. Required delivery form: Dashboard with business fit, technical fitness, lifecycle, cost, risk, duplication and progress metrics.",
+        "reason": "For the specific output 'Application portfolio health and risk dashboard', provide verifiable evidence satisfying: For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Existing source requirement: Metrics have defined sources and thresholds; exceptions and stale/incomplete data are visible rather than silently scored. Required delivery form: Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -234,8 +244,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Application portfolio health and risk dashboard",
-        "format": "Dashboard with business fit, technical fitness, lifecycle, cost, risk, duplication and progress metrics",
-        "acceptance_criterion": "Metrics have defined sources and thresholds; exceptions and stale/incomplete data are visible rather than silently scored.",
+        "format": "Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
+        "acceptance_criterion": "For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Existing source requirement: Metrics have defined sources and thresholds; exceptions and stale/incomplete data are visible rather than silently scored.",
         "role_path": "skills/it-roles-architecture/references/application-portfolio-manager.md"
       }
     },
@@ -276,7 +286,9 @@
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -324,7 +336,9 @@
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -369,7 +383,9 @@
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -414,7 +430,9 @@
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -459,7 +477,9 @@
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -504,7 +524,9 @@
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:4",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -551,7 +573,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -596,7 +620,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -643,7 +669,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -774,17 +802,38 @@
         "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "architecture-description",
+        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
+        "url": "https://www.iso.org/standard/74393.html",
+        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Application Portfolio Manager",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "TOGAF portfolio/capability concepts",
           "ArchiMate 3.2",
           "Technology Business Management taxonomy where used",
           "TIME-style application rationalisation as an organisational profile, not an external authority"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -855,6 +904,17 @@
     "source_fingerprint": "36d05cd4ed46b8665de4dee37e4c057a41319c247c84977f7e63a7118976a534",
     "source_hash": "3d447fe9e0650082bfba3c847d43826a17112361fe5e3f9216f69f9eccb12cea"
   },
+  "delivery_form": {
+    "primary_artifact": "measured-dashboard",
+    "representation": "Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
+    "evidence": [
+      "units, denominators and measurement windows",
+      "dated values, thresholds and actionable exceptions"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "41ed37cd474e33155c032a6c9dd396b5f0e31b90495f4ac1cd10af9f5861d26e",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

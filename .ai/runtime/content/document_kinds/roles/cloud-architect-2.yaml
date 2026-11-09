@@ -64,7 +64,8 @@
           "artifacts/contracts/role-deliverables.v3.json#cloud-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -104,7 +105,8 @@
           "artifacts/contracts/role-deliverables.v3.json#cloud-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -144,7 +146,8 @@
           "artifacts/contracts/role-deliverables.v3.json#cloud-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -184,7 +187,8 @@
           "artifacts/contracts/role-deliverables.v3.json#cloud-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -204,7 +208,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'resilience and availability design', provide verifiable evidence satisfying: Defines failure domains, availability/recovery targets, dependencies, failure responses and planned validation. Required delivery form: Resilience design and recovery analysis.",
+        "For the specific output 'resilience and availability design', provide verifiable evidence satisfying: Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Defines failure domains, availability/recovery targets, dependencies, failure responses and planned validation. Required delivery form: Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,12 +223,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'resilience and availability design', provide verifiable evidence satisfying: Defines failure domains, availability/recovery targets, dependencies, failure responses and planned validation. Required delivery form: Resilience design and recovery analysis.",
+        "reason": "For the specific output 'resilience and availability design', provide verifiable evidence satisfying: Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Defines failure domains, availability/recovery targets, dependencies, failure responses and planned validation. Required delivery form: Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#cloud-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -234,8 +239,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "resilience and availability design",
-        "format": "Resilience design and recovery analysis",
-        "acceptance_criterion": "Defines failure domains, availability/recovery targets, dependencies, failure responses and planned validation",
+        "format": "Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
+        "acceptance_criterion": "Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Defines failure domains, availability/recovery targets, dependencies, failure responses and planned validation.",
         "role_path": "skills/it-roles-architecture/references/cloud-architect.md"
       }
     },
@@ -275,7 +280,8 @@
           "artifacts/contracts/role-deliverables.v3.json#cloud-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -322,7 +328,8 @@
           "artifacts/contracts/role-deliverables.v3.json#cloud-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -367,7 +374,8 @@
           "artifacts/contracts/role-deliverables.v3.json#cloud-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -412,7 +420,8 @@
           "artifacts/contracts/role-deliverables.v3.json#cloud-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -457,7 +466,8 @@
           "artifacts/contracts/role-deliverables.v3.json#cloud-architect:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -504,7 +514,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -549,7 +560,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -596,7 +608,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -727,16 +740,29 @@
         "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Cloud Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "AWS/Azure/GCP well-architected frameworks",
           "CIS Benchmarks",
           "ISO/IEC 27017"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -809,6 +835,17 @@
     "source_fingerprint": "1a53621018db893b7cbdb54e987ca69d6ca07ebd97e0ee438c093e7e5663e73e",
     "source_hash": "9d92f07ff6f86df14cdbdc058a9caae317bde49b319b04bb9168f6acb0d4473c"
   },
+  "delivery_form": {
+    "primary_artifact": "solution-design",
+    "representation": "Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
+    "evidence": [
+      "requirements-to-design traceability",
+      "independent design review"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "8ba6bef285a328740244acaddf7b9f057127c2010b38cfed82124615e6794a04",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

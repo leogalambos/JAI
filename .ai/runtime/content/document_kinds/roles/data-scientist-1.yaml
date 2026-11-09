@@ -62,7 +62,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#data-scientist:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -101,7 +104,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#data-scientist:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -140,7 +146,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#data-scientist:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -179,7 +188,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#data-scientist:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -199,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Analysis and model code with reproducible environment', provide verifiable evidence satisfying: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON).",
+        "For the specific output 'Analysis and model code with reproducible environment', provide verifiable evidence satisfying: Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Actual version-controlled implementation or analysis code, separate from its explanatory report.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Analysis and model code with reproducible environment', provide verifiable evidence satisfying: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON).",
+        "reason": "For the specific output 'Analysis and model code with reproducible environment', provide verifiable evidence satisfying: Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Actual version-controlled implementation or analysis code, separate from its explanatory report.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#data-scientist:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -228,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Analysis and model code with reproducible environment",
-        "format": "Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON)",
-        "acceptance_criterion": "The model is validated against real observed behaviour or data, not only interviews",
+        "format": "Actual version-controlled implementation or analysis code, separate from its explanatory report.",
+        "acceptance_criterion": "Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews.",
         "role_path": "skills/it-roles-data-analytics-and-ai/references/data-scientist.md"
       }
     },
@@ -268,7 +283,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#data-scientist:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -314,7 +332,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#data-scientist:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -358,7 +379,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#data-scientist:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -402,7 +426,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#data-scientist:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -446,7 +473,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#data-scientist:1",
           "content/types/diagram.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -492,7 +522,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -536,7 +569,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -582,7 +618,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -705,16 +744,45 @@
         "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "data-catalogue",
+        "title": "W3C Data Catalog Vocabulary Version 3 (DCAT 3)",
+        "url": "https://www.w3.org/TR/vocab-dcat-3/",
+        "scope": "Dataset/catalogue identity, distributions, provenance, access and descriptive metadata.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "data-quality",
+        "title": "W3C Data Quality Vocabulary",
+        "url": "https://www.w3.org/TR/vocab-dqv/",
+        "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "ai-risk-management",
+        "title": "NIST AI 100-1, Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+        "url": "https://doi.org/10.6028/NIST.AI.100-1",
+        "scope": "Voluntary GOVERN, MAP, MEASURE and MANAGE functions for AI risks; applicability and adopted practices require explicit contextual selection.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Data Scientist",
+        "domain": "Data, Analytics and AI",
+        "domain_index": 7,
+        "method_focus": "Trace data provenance, quality, meaning and permitted use; define model evaluation, uncertainty and operational monitoring where applicable.",
         "frameworks": [
           "statistical practice",
           "NIST AI RMF 1.0",
           "model documentation practice (model cards)"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -787,6 +855,17 @@
     "source_fingerprint": "7274019f0fc06335f6a181dd8cb42668e95db19a7b1ae2110b00127603a613a9",
     "source_hash": "d855c20b8c3a5de5f8481cc89efdf762d2ec80e8a64e9f717f84d9ba20e5335c"
   },
+  "delivery_form": {
+    "primary_artifact": "versioned-source-change",
+    "representation": "Actual version-controlled implementation or analysis code, separate from its explanatory report.",
+    "evidence": [
+      "exact source and dependency revision",
+      "observed checks and independent review"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "9b46d80482ca909ad98bd47bf481aae6e48929585057a9349b5935edb6267e2c",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

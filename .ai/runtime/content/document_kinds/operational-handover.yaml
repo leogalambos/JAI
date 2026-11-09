@@ -59,7 +59,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -99,7 +101,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -139,7 +143,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -219,7 +227,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -261,7 +271,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -306,7 +318,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -353,7 +367,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -535,16 +551,37 @@
         "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "business-appraisal",
+        "title": "HM Treasury, The Green Book",
+        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Implementation Consultant",
+        "domain": "Commercial, Sourcing and Enablement",
+        "domain_index": 15,
+        "method_focus": "Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.",
         "frameworks": [
           "vendor implementation methodology",
           "PRINCE2 or equivalent for the engagement",
           "data migration practice"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -606,5 +643,16 @@
     "conditional_units": "N/A requires context evidence, reviewer-visible justification and condition=false; unknown condition remains pending",
     "unknown_context": "Do not silently assume false; request evidence or retain pending review."
   },
-  "completion_scope": "Authored information contract and synthetic fixtures only; proposed and not production-qualified."
+  "completion_scope": "Authored information contract and synthetic fixtures only; proposed and not production-qualified.",
+  "delivery_form": {
+    "primary_artifact": "service-handover",
+    "representation": "Versioned service boundary, operational inventory and receiving responsibilities with readiness disposition.",
+    "evidence": [
+      "actual monitoring/recovery/security/support readiness",
+      "recipient acceptance and unresolved obligations"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "98d75086406f5939a74904b400f59eccc398cd481a5573d34771c67158148530"
 }

@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-assurance-and-measurement-architect:2",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-assurance-and-measurement-architect:2",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-assurance-and-measurement-architect:2",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-assurance-and-measurement-architect:2",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'assurance evidence model per control objective', provide verifiable evidence satisfying: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON).",
+        "For the specific output 'assurance evidence model per control objective', provide verifiable evidence satisfying: Identify diagram purpose, scope, audience, version and notation/legend, including the meaning of every relationship type. Use stable element identifiers and meaningful labels; show relevant boundaries, directions, interfaces and external dependencies without invented facts. Check consistency with source models and related views; distinguish intentional abstraction from omitted or unresolved relationships. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Concern-specific diagram with declared notation, legend, typed relationships and source-element links.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'assurance evidence model per control objective', provide verifiable evidence satisfying: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON).",
+        "reason": "For the specific output 'assurance evidence model per control objective', provide verifiable evidence satisfying: Identify diagram purpose, scope, audience, version and notation/legend, including the meaning of every relationship type. Use stable element identifiers and meaningful labels; show relevant boundaries, directions, interfaces and external dependencies without invented facts. Check consistency with source models and related views; distinguish intentional abstraction from omitted or unresolved relationships. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Concern-specific diagram with declared notation, legend, typed relationships and source-element links.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-assurance-and-measurement-architect:2",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "assurance evidence model per control objective",
-        "format": "Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON)",
-        "acceptance_criterion": "The model is validated against real observed behaviour or data, not only interviews",
+        "format": "Concern-specific diagram with declared notation, legend, typed relationships and source-element links.",
+        "acceptance_criterion": "Identify diagram purpose, scope, audience, version and notation/legend, including the meaning of every relationship type. Use stable element identifiers and meaningful labels; show relevant boundaries, directions, interfaces and external dependencies without invented facts. Check consistency with source models and related views; distinguish intentional abstraction from omitted or unresolved relationships. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews.",
         "role_path": "skills/it-roles-sabsa-security-architecture/references/security-assurance-and-measurement-architect.md"
       }
     },
@@ -270,7 +280,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-assurance-and-measurement-architect:2",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -318,7 +330,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-assurance-and-measurement-architect:2",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -362,7 +376,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-assurance-and-measurement-architect:2",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -406,7 +422,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-assurance-and-measurement-architect:2",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -450,7 +468,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-assurance-and-measurement-architect:2",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -496,7 +516,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -540,7 +562,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -586,7 +610,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -709,16 +735,37 @@
         "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sabsa-overview",
+        "title": "SABSA Institute, SABSA Executive Summary",
+        "url": "https://sabsa.org/sabsa-executive-summary/",
+        "scope": "Business-driven security architecture and traceability overview; actual SABSA deliveries must select the accessible authoritative method/version and their detailed obligations.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "systems-security-engineering",
+        "title": "NIST SP 800-160 Volume 1 Revision 1, Engineering Trustworthy Secure Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+        "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Security Assurance and Measurement Architect",
+        "domain": "SABSA Security Architecture",
+        "domain_index": 17,
+        "method_focus": "Trace business drivers and measurable attributes through risks, control objectives, services, mechanisms and operational measures.",
         "frameworks": [
           "SABSA performance management and assurance",
           "ISO/IEC 27004 measurement",
           "NIST SP 800-55"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -789,6 +836,17 @@
     "source_fingerprint": "15242f6cd7d27dd05cc24b1431cfdd048d70d7438c654a66e9da26fc3387dddc",
     "source_hash": "d1c59d1f9d4fdecbc6357c291ee9cc889a8a73b6b025f89b3bed0133895ce4b4"
   },
+  "delivery_form": {
+    "primary_artifact": "model-derived-view",
+    "representation": "Concern-specific diagram with declared notation, legend, typed relationships and source-element links.",
+    "evidence": [
+      "endpoint/meaning/coverage checks",
+      "legibility and explicit projection limitations"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "3d9784eeb33f6e64e62b8af4a363ea650751abec59fdba8dc47f6cc246fd27e5",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

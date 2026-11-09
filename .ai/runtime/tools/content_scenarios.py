@@ -30,6 +30,17 @@ SCENARIOS = {
     'decommission': ('service-retirement-and-decommission', 'Retire a fictional reporting platform after dependency migration.', 'Prove consumer migration and retention disposition; stop destructive actions until external authority accepts.'),
 }
 
+# These are explicit protocol-fixture selections, never inferred task routing.
+SCENARIO_PATHS = {
+    'cloud-migration': 'cutover',
+    'regulated-service': 'critical-regulated/saas-cots',
+    'erp-data-migration': 'nonpersonal',
+    'security-incident': 'suspected',
+    'application-delivery': 'new-product',
+    'saas-integration': 'coordinated',
+    'decommission': 'authorised-retirement',
+}
+
 
 class _FixtureHost:
     def __init__(self):
@@ -94,11 +105,50 @@ def _review(model, spec, host, principal):
     return model, review
 
 
-def _receiver(row, model, report, catalog, host, principal):
+def _handoff_material(model, row, selected, context_record, scenario_id, goal, criterion, upstream):
+    """Populate registered boundary fields with explicitly fictional protocol data.
+
+    The versioned intake record is selected once per scenario and carried by
+    reference. These records exercise field, selection and authenticated-review
+    checks; they do not assert real execution, legal decisions or professional
+    adequacy of the supplied generic synthetic values.
+    """
+    source_id = 'synthetic-input:' + scenario_id
+    boundary_id = 'synthetic-handoff:' + row['handoff_id']
+    input_record = {'id': source_id, 'version': '1', 'payload': {
+        'scenario_id': scenario_id, 'scope': goal, 'criterion': criterion,
+        'classification': 'synthetic protocol input; no project fact or approval'}}
+    boundary_records = {}
+    for unit in selected['handoff_content_contract']['units']:
+        value = {field: f'Fictional {field} for {row["handover"]}; scoped scenario {scenario_id}'
+                 for field in unit['required_fields']}
+        value.update(knowledge_status='synthetic-assumption', evidence_refs=[boundary_id])
+        model['semantic_units'][unit['semantic_field']] = value
+        boundary_records[unit['semantic_field']] = copy.deepcopy(value)
+    model['semantic_units']['workflow_context'].update({
+        'context_ref': context_record['id'], 'route': 'continue',
+        'input_refs': [source_id],
+        'route_evidence': 'Synthetic current gate observation: ' + criterion})
+    model['evidence'].extend([input_record, copy.deepcopy(context_record), {
+        'id': boundary_id, 'version': '1', 'payload': {
+            'scenario_id': scenario_id, 'handoff_id': row['handoff_id'],
+            'scope': goal, 'criterion': selected['acceptance_criterion'],
+            'upstream_record_hash': upstream, 'declared_records': boundary_records,
+            'classification': 'Fictional boundary values; no real execution or authority evidence'}}])
+    return model
+
+
+def _receiver(row, model, report, catalog, host, principal, path):
     subject = {'handoff_id': row['handoff_id'], 'semantic_hash': content_spec.canonical_hash(model),
                'report_hash': report['report_hash'], 'catalog_hash': catalog['catalog_hash'],
                'criterion': row['acceptance_criterion'], 'receiving_role': row['receiving_role'],
+               'path_id': path['id'],
+               'handoff_content_hash': content_spec.canonical_hash(row['handoff_content_contract']),
                'verdict': 'PASS', 'evidence': 'Synthetic receiver protocol observation against this exact scoped gate.',
+               'unit_reviews': [{'unit_id': unit['id'], 'verdict': 'PASS',
+                   'rationale': 'Protocol fixture supplies this exact selected boundary unit; professional meaning remains unassessed.',
+                   'evidence': 'Versioned fictional boundary/context records, not an actual operation or approval.'}
+                   for unit in row['handoff_content_contract']['units']],
                'context_manifest': {'scope': 'offline-synthetic-protocol-simulation'}}
     subject['attestation'] = host.attest(principal, subject, content_spec.canonical_hash(model), subject['context_manifest'], True)
     return subject
@@ -106,7 +156,12 @@ def _receiver(row, model, report, catalog, host, principal):
 
 def _run_case(root, engine, catalog, scenario_id):
     workflow, goal, criterion = SCENARIOS[scenario_id]
-    rows = sorted((row for row in catalog['bindings'] if row['workflow_id'] == workflow), key=lambda row: row['step'])
+    profile = catalog['profiles'][workflow]
+    path = next((path for path in profile['paths'] if path['id'] == SCENARIO_PATHS[scenario_id]), None)
+    if path is None:
+        raise ValueError('SCENARIO_PATH_MISSING')
+    rows = sorted((row for row in catalog['bindings']
+                   if row['workflow_id'] == workflow and row['step'] in path['steps']), key=lambda row: row['step'])
     if not rows:
         raise ValueError('SCENARIO_WORKFLOW_MISSING')
     trace = []
@@ -114,16 +169,27 @@ def _run_case(root, engine, catalog, scenario_id):
     host = _FixtureHost()
     negatives = {}
     principal = f'synthetic:{scenario_id}:producer'
+    context_record = {'id': 'synthetic-context:' + scenario_id, 'version': '1', 'payload': {
+        'workflow_id': workflow, 'profile_hash': rows[0]['handoff_content_contract']['workflow_profile_hash'],
+        'context_id': 'synthetic-intake:' + scenario_id, 'context_version': '1',
+        'variant': path['variant'], 'mechanism_variant': path['mechanism'],
+        'entry_inputs': {name: {'source_id': f'synthetic-intake:{scenario_id}:{index}',
+                               'version': '1', 'scope': goal, 'criterion': criterion}
+                         for index, name in enumerate(profile['entry_inputs'], 1)}}}
     for row in rows:
-        contract_id = row['contract_ids'][0] if row['contract_ids'] else 'enterprise-applications-architect:2'
-        spec = engine.resolve(contract_id, {'processes_personal_data': False, 'regulatory_requirement': False})
+        selected = row['variant_bindings'][path['id']]
+        effective = {**row, **selected}
+        contract_id = effective['contract_ids'][0] if effective['contract_ids'] else 'enterprise-applications-architect:2'
+        spec = engine.resolve(contract_id, {'processes_personal_data': False,
+                                            'regulatory_requirement': scenario_id == 'regulated-service'})
         raw = _model(spec, scenario_id, goal, criterion, row['step'], previous)
+        raw = _handoff_material(raw, row, selected, context_record, scenario_id, goal, criterion, previous)
         model, review = _review(raw, spec, host, principal)
         qa = content_lint.evaluate(model, spec, reviewer=review, trusted_executions=host)
         receiver = f'synthetic:{scenario_id}:receiver:{row["step"]}'
-        acceptance = _receiver(row, model, qa, catalog, host, receiver)
+        acceptance = _receiver(effective, model, qa, catalog, host, receiver, path)
         kwargs = {'root': root, 'acceptance': acceptance, 'trusted_executions': host,
-                  'receiving_assignments': {receiver: [row['receiving_role']]}, 'resolver': engine}
+                  'receiving_assignments': {receiver: [effective['receiving_role']]}, 'resolver': engine}
         checked = content_workflow.check(row['handoff_id'], model, qa, **kwargs)
         human = 'EXISTING_SIGNED_L0_ACCEPTANCE_REQUIRED' in checked['findings']
         expected = 'EXPECTED_L0_ESCALATION' if human else 'ACCEPTANCE_VERIFIED'
@@ -134,6 +200,7 @@ def _run_case(root, engine, catalog, scenario_id):
                   'compiled_spec_hash': spec['compiled_spec_hash'], 'context_hash': spec['context_hash'],
                   'semantic_hash': content_spec.canonical_hash(model), 'content_qa_hash': qa['report_hash'],
                   'producer_principal': principal, 'receiver_principal': receiver,
+                  'path_id': path['id'], 'findings': list(checked['findings']),
                   'previous_record_hash': previous, 'acceptance': expected, 'passed': ok,
                   'authority_granted': False}
         record['record_hash'] = content_spec.canonical_hash(record)

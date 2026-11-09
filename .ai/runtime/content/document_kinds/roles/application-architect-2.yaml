@@ -9,7 +9,7 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/document",
+    "family/requirements-specification",
     "domain/delivery"
   ],
   "applies_to": {
@@ -24,7 +24,7 @@
     "Software Engineer"
   ],
   "decisions_supported": [
-    "Use \"dependency and layering rules\" to communicate the attributable findings and required follow-up actions from Feature roadmap; Current code and dependency analysis; Defect and change hotspots; Runtime behaviour to Technical Lead; Software Engineer."
+    "Agree testable requirements, resolve stakeholder conflicts and trace acceptance conditions to implementation and verification for \"dependency and layering rules\", using Feature roadmap; Current code and dependency analysis; Defect and change hotspots; Runtime behaviour."
   ],
   "intended_usage": "Advisory content contract; professional approval pending",
   "non_goals": [
@@ -61,7 +61,9 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: dependency and layering rules.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-architect:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -99,7 +101,9 @@
         "reason": "For each receiving role (Technical Lead; Software Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-architect:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -137,7 +141,9 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-architect:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -175,7 +181,9 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-architect:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -195,7 +203,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'dependency and layering rules', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'dependency and layering rules', provide verifiable evidence satisfying: Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Required delivery form: Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,10 +218,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'dependency and layering rules', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'dependency and layering rules', provide verifiable evidence satisfying: Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Required delivery form: Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-architect:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -223,8 +233,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "dependency and layering rules",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
+        "acceptance_criterion": "Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility.",
         "role_path": "skills/it-roles-architecture/references/application-architect.md"
       }
     },
@@ -262,7 +272,9 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-architect:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -307,7 +319,9 @@
         "reason": "Analyse the specific input \"Feature roadmap\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-architect:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -350,7 +364,9 @@
         "reason": "Analyse the specific input \"Current code and dependency analysis\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-architect:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -393,7 +409,9 @@
         "reason": "Analyse the specific input \"Defect and change hotspots\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-architect:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -436,7 +454,9 @@
         "reason": "Analyse the specific input \"Runtime behaviour\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-architect:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -481,7 +501,9 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -524,7 +546,9 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -569,7 +593,9 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -686,23 +712,36 @@
     ],
     "professional_references": [
       {
-        "id": "jai-practice",
-        "title": "JAI authored enterprise-delivery practice",
-        "url": null,
-        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
-        "basis": "jai-practice",
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "architecture-description",
+        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
+        "url": "https://www.iso.org/standard/74393.html",
+        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Application Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "SWEBOK v4",
           "domain-driven design",
           "C4 model",
           "ISO/IEC 25010 maintainability"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -756,12 +795,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "family/requirements-specification",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "document",
+  "semantic_family": "requirements-specification",
   "role_overlay": {
     "contract_id": "application-architect:2",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -773,6 +814,17 @@
     "source_fingerprint": "18589fe553779e07d3279b3dc386e173606c2f91278e92e4cb29e56658538985",
     "source_hash": "29725f01484937f7a3d9791c75152d15adcd730d80f2a75d09a71db904c7b0da"
   },
+  "delivery_form": {
+    "primary_artifact": "requirements-specification",
+    "representation": "Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
+    "evidence": [
+      "forward/backward traceability",
+      "conflict, interface and change-impact checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "20e2f620f10b71e32dc14840cef1eeca7b22e7c390e6d7d62ec06d09785cb886",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

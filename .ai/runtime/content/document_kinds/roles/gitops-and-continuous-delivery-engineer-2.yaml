@@ -63,7 +63,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#gitops-and-continuous-delivery-engineer:2",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -102,7 +104,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#gitops-and-continuous-delivery-engineer:2",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -141,7 +145,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#gitops-and-continuous-delivery-engineer:2",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -180,7 +186,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#gitops-and-continuous-delivery-engineer:2",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -200,7 +208,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'GitOps reconciliation configuration', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'GitOps reconciliation configuration', provide verifiable evidence satisfying: Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Required delivery form: Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +223,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'GitOps reconciliation configuration', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'GitOps reconciliation configuration', provide verifiable evidence satisfying: Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Required delivery form: Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#gitops-and-continuous-delivery-engineer:2",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -229,8 +239,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "GitOps reconciliation configuration",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
+        "acceptance_criterion": "Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions.",
         "role_path": "skills/it-roles-software-development-and-engineering/references/gitops-and-continuous-delivery-engineer.md"
       }
     },
@@ -275,7 +285,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#gitops-and-continuous-delivery-engineer:2",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -327,7 +339,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#gitops-and-continuous-delivery-engineer:2",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -371,7 +385,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#gitops-and-continuous-delivery-engineer:2",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -415,7 +431,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#gitops-and-continuous-delivery-engineer:2",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -459,7 +477,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#gitops-and-continuous-delivery-engineer:2",
           "content/types/document.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -505,7 +525,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -549,7 +571,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -595,7 +619,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -718,17 +744,38 @@
         "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "secure-software",
+        "title": "NIST SP 800-218, Secure Software Development Framework Version 1.1",
+        "url": "https://doi.org/10.6028/NIST.SP.800-218",
+        "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "software-testing",
+        "title": "ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation",
+        "url": "https://www.iso.org/standard/79429.html",
+        "scope": "Test planning, test specifications and reporting information needs.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "GitOps and Continuous Delivery Engineer",
+        "domain": "Software Development and Engineering",
+        "domain_index": 5,
+        "method_focus": "Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.",
         "frameworks": [
           "OpenGitOps principles",
           "progressive delivery practice",
           "ITIL 4 deployment management",
           "DORA metrics"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -801,6 +848,17 @@
     "source_fingerprint": "fbcf3ab4510bea4fd492cde396b54d7710c62a1be824598d0f6b5dbc4bf165fc",
     "source_hash": "3cc43bcd6e7791ac2adf09d0a62dd22a1fa9fcaaa834e558fb8824214520fff0"
   },
+  "delivery_form": {
+    "primary_artifact": "versioned-configuration",
+    "representation": "Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
+    "evidence": [
+      "reproduction/drift observations",
+      "verification and recovery to a known baseline"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "0c44d736f6e739944f86644c358c828d5e6d521fd245dbf51631789443601b2a",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

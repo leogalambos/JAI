@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Technology strategy | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 2 | build-versus-buy position | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 3 | engineering capability plan | Document with milestones, owners, dependencies and assumptions | Every milestone has an acceptance test and a named accountable owner |
-| 4 | technical risk register | Structured table in the system of record (CSV/tool export) | Every row has an owner, a date, a status and a next action |
+| 1 | Technology strategy | Evidenced strategic choices with target outcomes, alternatives, investment assumptions and execution accountability. | Trace target outcomes and measurable success to business direction and baseline constraints. Compare investment and operating choices, dependencies, resource assumptions and rejected alternatives. Assign sequenced initiatives, accountable owners, outcome measures and review triggers. |
+| 2 | build-versus-buy position | Bounded decision paper with consistent option comparison and a clear authority/decision request. | Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. |
+| 3 | engineering capability plan | Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones. | State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. |
+| 4 | technical risk register | Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules. | Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every row has an owner, a date, a status and a next action. |
 
 ## 7. Output gates (blocking)
 
@@ -187,6 +187,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - SFIA 9
 - SWEBOK v4
 - ISO/IEC 25010 quality model
@@ -197,13 +201,30 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Decide whether to rebuild our core platform, re-platform it incrementally, or buy”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver technology strategy in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Technology strategy.
+
+**Illustrative case material:**
+
+The strategic ambition is to improve the enterprise capability to serve users reliably while retaining technology choice and financial control. Define horizon, sponsor, organizational boundary and the business capabilities that need to change. Separate outcomes such as reduced process lead time from delivery outputs such as a new cloud platform. Describe constraints inherited from procurement, privacy, budget and service continuity. A strategy is not a shopping list of technologies: a proposed architecture or platform is a hypothesis explaining how the capability target could be reached.
+
+**Case application:** The accountable Digital Commerce Sponsor must confirm whether the objective and boundary are materially complete for `MRG-OEI`. The fact that a sample shows a proposed owner does not delegate any actual organizational authority.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Trace target outcomes and measurable success to business direction and baseline constraints.
+- Compare investment and operating choices, dependencies, resource assumptions and rejected alternatives.
+- Assign sequenced initiatives, accountable owners, outcome measures and review triggers.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `it-digital-strategy` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

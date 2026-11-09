@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/document",
-    "domain/delivery"
+    "type/assurance-report",
+    "domain/security"
   ],
   "applies_to": {
     "document_kind": "role/contract-manager:3",
@@ -61,7 +61,10 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: obligation compliance monitoring.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#contract-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -99,7 +102,10 @@
         "reason": "For each receiving role (Vendor Manager; Third-Party Risk Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#contract-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -137,7 +143,10 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#contract-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -175,7 +184,10 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#contract-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -195,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'obligation compliance monitoring', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'obligation compliance monitoring', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,10 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'obligation compliance monitoring', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'obligation compliance monitoring', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#contract-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -223,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "obligation compliance monitoring",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
+        "acceptance_criterion": "State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure.",
         "role_path": "skills/it-roles-commercial-sourcing-and-enablement/references/contract-manager.md"
       }
     },
@@ -263,7 +278,10 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#contract-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -309,7 +327,10 @@
         "reason": "Analyse the specific input \"Negotiated commercial terms\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#contract-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -352,7 +373,10 @@
         "reason": "Analyse the specific input \"Legal drafting\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#contract-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -395,7 +419,10 @@
         "reason": "Analyse the specific input \"Delivery performance\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#contract-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -438,7 +465,10 @@
         "reason": "Analyse the specific input \"Regulatory requirements for contracts\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#contract-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -481,7 +511,10 @@
         "reason": "Identify the executed contract/version, applicable clause or obligation ID, accountable party, effective/due dates and agreed measurable acceptance or performance threshold; distinguish proposed terms from binding obligations.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#contract-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -519,7 +552,10 @@
         "reason": "For each obligation due in the reporting period, link actual performance/delivery evidence, measurement period and status; separate met, breached, disputed, not yet due and insufficient-evidence cases.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#contract-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -557,7 +593,10 @@
         "reason": "For each material deviation, identify impact, notice/cure deadlines, contractually available remedies, escalation owner and required legal/commercial decision; do not invent a right, waive an obligation or claim a dispute resolved without authority.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#contract-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -597,7 +636,10 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -640,7 +682,10 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -685,7 +730,10 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -802,22 +850,51 @@
     ],
     "professional_references": [
       {
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
         "id": "jai-practice",
         "title": "JAI authored enterprise-delivery practice",
         "url": null,
         "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
         "basis": "jai-practice",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "business-appraisal",
+        "title": "HM Treasury, The Green Book",
+        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Contract Manager",
+        "domain": "Commercial, Sourcing and Enablement",
+        "domain_index": 15,
+        "method_focus": "Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.",
         "frameworks": [
           "organisational contract standards",
           "DORA contractual requirements where applicable",
           "IACCM/WorldCC practice"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -871,12 +948,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/assurance-report",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "document",
+  "semantic_family": "assurance-report",
   "role_overlay": {
     "contract_id": "contract-manager:3",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -888,6 +967,17 @@
     "source_fingerprint": "c87059377b412e8f0653e1d98bf05b8b53fdd43e9b5f8b32895229431f128de6",
     "source_hash": "b011ecc23cb4b22bfc3dce90a782ca40caa9f1e8aae6a4114ed0f8a48e5512b7"
   },
+  "delivery_form": {
+    "primary_artifact": "assurance-assessment",
+    "representation": "Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
+    "evidence": [
+      "criterion-to-test-to-observation traceability",
+      "independent reviewer and limitations"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "0f8c12c93047cd0b7a0fd02f36f0de1551f0e5aea091e687fc2f41ca94fd9288",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

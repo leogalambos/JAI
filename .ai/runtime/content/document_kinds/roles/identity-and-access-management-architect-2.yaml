@@ -62,7 +62,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-architect:2",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -101,7 +102,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-architect:2",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -140,7 +142,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-architect:2",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -179,7 +182,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-architect:2",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -199,7 +203,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Authentication and federation architecture', provide verifiable evidence satisfying: Assurance, token/session lifetimes, recovery and federation trust are explicit per use case. Required delivery form: Versioned specification plus sequence/trust diagrams.",
+        "For the specific output 'Authentication and federation architecture', provide verifiable evidence satisfying: Name the system of interest, boundary exclusions, stakeholder groups, each concern and the versioned current/target baseline. Identify each viewpoint and its conventions; trace each view to the concerns it addresses and identify cross-view correspondences and unresolved inconsistencies. For each material gap, identify current and target elements, business impact, owner, proposed response and the decision or evidence needed to close it. Existing source requirement: Assurance, token/session lifetimes, recovery and federation trust are explicit per use case. Required delivery form: Concern-driven description with a versioned model and views selected for stakeholder questions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +218,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Authentication and federation architecture', provide verifiable evidence satisfying: Assurance, token/session lifetimes, recovery and federation trust are explicit per use case. Required delivery form: Versioned specification plus sequence/trust diagrams.",
+        "reason": "For the specific output 'Authentication and federation architecture', provide verifiable evidence satisfying: Name the system of interest, boundary exclusions, stakeholder groups, each concern and the versioned current/target baseline. Identify each viewpoint and its conventions; trace each view to the concerns it addresses and identify cross-view correspondences and unresolved inconsistencies. For each material gap, identify current and target elements, business impact, owner, proposed response and the decision or evidence needed to close it. Existing source requirement: Assurance, token/session lifetimes, recovery and federation trust are explicit per use case. Required delivery form: Concern-driven description with a versioned model and views selected for stakeholder questions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-architect:2",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -228,8 +233,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Authentication and federation architecture",
-        "format": "Versioned specification plus sequence/trust diagrams",
-        "acceptance_criterion": "Assurance, token/session lifetimes, recovery and federation trust are explicit per use case.",
+        "format": "Concern-driven description with a versioned model and views selected for stakeholder questions.",
+        "acceptance_criterion": "Name the system of interest, boundary exclusions, stakeholder groups, each concern and the versioned current/target baseline. Identify each viewpoint and its conventions; trace each view to the concerns it addresses and identify cross-view correspondences and unresolved inconsistencies. For each material gap, identify current and target elements, business impact, owner, proposed response and the decision or evidence needed to close it. Existing source requirement: Assurance, token/session lifetimes, recovery and federation trust are explicit per use case.",
         "role_path": "skills/it-roles-architecture/references/identity-and-access-management-architect.md"
       }
     },
@@ -268,7 +273,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-architect:2",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -314,7 +320,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-architect:2",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -358,7 +365,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-architect:2",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -402,7 +410,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-architect:2",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -446,7 +455,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#identity-and-access-management-architect:2",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -492,7 +502,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -536,7 +547,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -582,7 +594,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -705,16 +718,29 @@
         "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Identity and Access Management Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "NIST SP 800-63",
           "NIST SP 800-207",
           "OAuth/OIDC and SAML standards"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -785,6 +811,17 @@
     "source_fingerprint": "dc997d76b0a300c485c51155c9973b073ae59eefa0323ffc233a870bcbfe8150",
     "source_hash": "40cd32ff54dcf0871beede52e93a49116652b34a2e8db6fbd2dbc28983ac0d1b"
   },
+  "delivery_form": {
+    "primary_artifact": "architecture-description",
+    "representation": "Concern-driven description with a versioned model and views selected for stakeholder questions.",
+    "evidence": [
+      "stakeholder/concern coverage",
+      "cross-view consistency and known gaps"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "9677bab9f5b5968cc71f1cfac75b12f1543c4eaee3dffad23e72afe6efd99ef9",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

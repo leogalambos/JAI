@@ -1,6 +1,6 @@
 ---
 name: it-roles-governance-risk-compliance-audit-and-privacy
-description: "Governance, Risk, Compliance, Audit and Privacy role skills: 17 defined roles covering it governance manager; grc analyst; it risk manager; information security officer (local); compliance officer (technology); internal it auditor; external auditor and assessor; control owner; and more. Use when the request involves any of these roles, their deliverables, or the design of the function itself — job descriptions, RACI, segregation of duties, maturity assessment or hiring scorecards within governance, risk, compliance, audit and privacy. Read the matching file in references/ before answering."
+description: "Governance, Risk, Compliance, Audit and Privacy role skills: 18 defined roles covering it governance manager; grc analyst; it risk manager; information security officer (local); compliance officer (technology); internal it auditor; external auditor and assessor; control owner; and more. Use when the request involves any of these roles, their deliverables, or the design of the function itself — job descriptions, RACI, segregation of duties, maturity assessment or hiring scorecards within governance, risk, compliance, audit and privacy. Read the matching file in references/ before answering."
 allowed-tools: Read, Grep, Glob
 ---
 
@@ -69,4 +69,4 @@ No role performs, approves and assures the same activity. Where headcount forces
 
 ## Tool restriction
 
-14 of the 17 roles here are `advise` tier (`Read, Grep, Glob, WebSearch`) because their work is assurance, oversight, evidential or adversarial. Operate them with `role-advisor`: analyse and document, and hand anything that changes a system to the role named in its interfaces section.
+14 of the 18 roles here are `advise` tier (`Read, Grep, Glob, WebSearch`) because their work is assurance, oversight, evidential or adversarial. Operate them with `role-advisor`: analyse and document, and hand anything that changes a system to the role named in its interfaces section.

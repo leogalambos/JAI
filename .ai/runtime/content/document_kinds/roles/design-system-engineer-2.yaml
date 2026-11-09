@@ -62,7 +62,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#design-system-engineer:2",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -101,7 +104,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#design-system-engineer:2",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -140,7 +146,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#design-system-engineer:2",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -179,7 +188,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#design-system-engineer:2",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -199,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'design tokens and theming', provide verifiable evidence satisfying: Defines token names, types, semantic aliases, theme resolution, accessibility constraints and compatibility checks. Required delivery form: Versioned design-token and theme specification.",
+        "For the specific output 'design tokens and theming', provide verifiable evidence satisfying: Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Existing source requirement: Defines token names, types, semantic aliases, theme resolution, accessibility constraints and compatibility checks. Required delivery form: Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'design tokens and theming', provide verifiable evidence satisfying: Defines token names, types, semantic aliases, theme resolution, accessibility constraints and compatibility checks. Required delivery form: Versioned design-token and theme specification.",
+        "reason": "For the specific output 'design tokens and theming', provide verifiable evidence satisfying: Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Existing source requirement: Defines token names, types, semantic aliases, theme resolution, accessibility constraints and compatibility checks. Required delivery form: Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#design-system-engineer:2",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -228,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "design tokens and theming",
-        "format": "Versioned design-token and theme specification",
-        "acceptance_criterion": "Defines token names, types, semantic aliases, theme resolution, accessibility constraints and compatibility checks",
+        "format": "Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
+        "acceptance_criterion": "Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Existing source requirement: Defines token names, types, semantic aliases, theme resolution, accessibility constraints and compatibility checks.",
         "role_path": "skills/it-roles-design-and-user-experience/references/design-system-engineer.md"
       }
     },
@@ -272,7 +287,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#design-system-engineer:2",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -322,7 +340,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#design-system-engineer:2",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -366,7 +387,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#design-system-engineer:2",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -410,7 +434,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#design-system-engineer:2",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -454,7 +481,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#design-system-engineer:2",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -500,7 +530,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -544,7 +577,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -590,7 +626,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -713,17 +752,46 @@
         "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "human-centred-design",
+        "title": "ISO 9241-210:2019, Human-centred design for interactive systems",
+        "url": "https://www.iso.org/standard/77520.html",
+        "scope": "Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "accessibility",
+        "title": "W3C Web Content Accessibility Guidelines (WCAG) 2.2",
+        "url": "https://www.w3.org/TR/WCAG22/",
+        "scope": "Perceivable and understandable content, text alternatives and accessible navigation; applicability depends on the delivered medium.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "accessibility-evaluation",
+        "title": "W3C WCAG Evaluation Methodology (WCAG-EM) 2.0",
+        "url": "https://www.w3.org/TR/wcag-em-2/",
+        "scope": "Evaluation scope, representative sample, evaluation and reporting; W3C Group Note, informative methodology rather than a conformance standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Design System Engineer",
+        "domain": "Design and User Experience",
+        "domain_index": 14,
+        "method_focus": "Trace user research and accessibility requirements to findings, design choices and observed usability/accessibility evaluation.",
         "frameworks": [
           "WCAG 2.2 AA",
           "WAI-ARIA authoring practices",
           "design token standards",
           "semantic versioning"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -796,6 +864,17 @@
     "source_fingerprint": "d6cbc34b7e7b461a60e52900ea5f7bc99045ab947be5cd34bad22139164d9e9a",
     "source_hash": "3b39598a85361382aa9071b67b36646d0343f97180e2afcd6f12eb467392f899"
   },
+  "delivery_form": {
+    "primary_artifact": "versioned-configuration",
+    "representation": "Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
+    "evidence": [
+      "reproduction/drift observations",
+      "verification and recovery to a known baseline"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "9847d9cd15ce53ecf3d72e932e91c732b92cacc087a7489873974ddaa3b5cd8a",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

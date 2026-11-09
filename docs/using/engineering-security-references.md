@@ -1,16 +1,24 @@
 # Engineering and security references
 
 
-Library v2.3.0 contains 135 English synthetic examples, including 39 across
-13 engineering, transformation and security families. Each family has
-`simple`, `medium` and `complex` documents. All reference bodies now include
-AI editorial decision/evidence supplements; stable identities and production
-commands remain unchanged. These examples are authoring inputs, not a second semantic record,
-security assessment, release approval or record of executed tests.
+Library v2.4.0 contains 189 English synthetic examples across 63 families,
+each with `simple`, `medium` and `complex` documents. It preserves the
+135-example v2.3.0 baseline, including the 39 examples across 13
+engineering, transformation and security families described here.
 
-See [review and release readiness](../operations/validation.md) for
-the scope of the three review lenses. They do not replace the professional
-review rubric below or existing human authority.
+The AI editorial decision/evidence supplements belong to that preserved
+135-example baseline. The 54 added modality examples have their own
+reasoned cases and counterexamples; their independent editorial and
+professional review remains pending. Baseline review claims do not extend
+to them. None of the examples is human-approved professional gold.
+
+These examples are authoring inputs, not a second semantic record,
+security assessment, release approval or record of executed tests. See
+[the current reference library](expert-reference-documents.md) for coverage
+and [review and release readiness](../operations/validation.md) for the
+independent professional rubric and evidence requirements. Editorial
+review does not replace competent subject review or existing human
+authority.
 
 ## Choose a family and audience
 
@@ -73,7 +81,8 @@ Overrides cannot change DCS obligations or human approval authority.
 
 ## Synthetic casebook
 
-The new examples share three fictional cases with earlier references.
+These 39 engineering and security examples share three fictional cases
+with earlier baseline references.
 Every numerical value below is an illustrative design target, not an observed
 customer baseline or achieved result.
 

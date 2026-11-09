@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Team-level threat model contributions | Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON) | The model is validated against real observed behaviour or data, not only interviews |
-| 2 | security review of designs and changes | Located security review with evidence | Traces design/change findings to threats, security requirements, severity, independent resolution and residual uncertainty |
-| 3 | security finding triage within the team | Finding record with reproducible evidence and risk rating | Reproduction steps are complete enough for an independent party to confirm |
-| 4 | team security practice improvements | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
+| 1 | Team-level threat model contributions | Concern-specific diagram with declared notation, legend, typed relationships and source-element links. | Identify diagram purpose, scope, audience, version and notation/legend, including the meaning of every relationship type. Use stable element identifiers and meaningful labels; show relevant boundaries, directions, interfaces and external dependencies without invented facts. Check consistency with source models and related views; distinguish intentional abstraction from omitted or unresolved relationships. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. |
+| 2 | security review of designs and changes | Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion. | State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Traces design/change findings to threats, security requirements, severity, independent resolution and residual uncertainty. |
+| 3 | security finding triage within the team | Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request. | Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Reproduction steps are complete enough for an independent party to confirm. |
+| 4 | team security practice improvements | Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions. | State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. |
 
 ## 7. Output gates (blocking)
 
@@ -188,6 +188,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - OWASP SAMM
 - OWASP ASVS
 - internal secure development standards
@@ -198,13 +202,32 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Set up a security champion network across 12 teams that does not collapse in three months”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver team-level threat model contributions in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Team-level threat model contributions.
+
+**Illustrative case material:**
+
+The operations view answers which dependency can prevent order acceptance. It includes Order API, Stock API and their synchronous call; finance reporting is explicitly outside the view. The legend distinguishes dependency direction from event-flow direction.
+
+**Acceptance question:** Identify audience, concern, boundary and notation so readers can judge whether the view answers its stated question.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Identify diagram purpose, scope, audience, version and notation/legend, including the meaning of every relationship type.
+- Use stable element identifiers and meaningful labels; show relevant boundaries, directions, interfaces and external dependencies without invented facts.
+- Check consistency with source models and related views; distinguish intentional abstraction from omitted or unresolved relationships.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `diagram` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

@@ -9,7 +9,7 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/decision-paper",
+    "type/document",
     "domain/delivery"
   ],
   "applies_to": {
@@ -62,8 +62,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#standards-body-representative:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -102,8 +102,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#standards-body-representative:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -142,8 +142,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#standards-body-representative:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -182,8 +182,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#standards-body-representative:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -203,7 +203,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Position papers and contributions', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'Position papers and contributions', provide verifiable evidence satisfying: State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Required delivery form: Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +218,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Position papers and contributions', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'Position papers and contributions', provide verifiable evidence satisfying: State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Required delivery form: Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#standards-body-representative:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -233,8 +233,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Position papers and contributions",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.",
+        "acceptance_criterion": "State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly.",
         "role_path": "skills/it-roles-research-innovation-and-specialist-engineering/references/standards-body-representative.md"
       }
     },
@@ -274,8 +274,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#standards-body-representative:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -322,8 +322,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#standards-body-representative:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -367,8 +367,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#standards-body-representative:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -412,8 +412,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#standards-body-representative:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -457,8 +457,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#standards-body-representative:1",
           "content/types/decision-paper.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -504,8 +504,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -549,8 +549,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -596,8 +596,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -714,18 +714,26 @@
     ],
     "professional_references": [
       {
-        "id": "business-appraisal",
-        "title": "HM Treasury, The Green Book",
-        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "research-reproducibility",
+        "title": "ACM Artifact Review and Badging policy",
+        "url": "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+        "scope": "Artifact availability, evaluation and reproducibility terminology; informative evidence-pack practice, not proof that an experiment is scientifically sufficient.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       },
       {
-        "id": "it-governance",
-        "title": "COBIT governance and management framework",
-        "url": "https://www.isaca.org/resources/cobit",
-        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
@@ -733,11 +741,16 @@
     "role_framework_context": [
       {
         "role": "Standards Body Representative",
+        "domain": "Research, Innovation and Specialist Engineering",
+        "domain_index": 16,
+        "method_focus": "State hypotheses, success criteria and measurement methods before experiments; distinguish observed results, uncertainty and applicability limits.",
         "frameworks": [
           "the relevant body's process (ISO, IETF, W3C, ETSI, OASIS)",
           "antitrust and competition law",
           "IPR and patent policy of the body"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -791,12 +804,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/document",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "decision-paper",
+  "semantic_family": "document",
   "role_overlay": {
     "contract_id": "standards-body-representative:1",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -808,6 +823,17 @@
     "source_fingerprint": "b8b59753f6ac79524bcace7f4083a263d8fb35aad8af91f4571e51101d106e89",
     "source_hash": "13e7d6513b9633e5d963fb1e9a736f6579fee1ba3da00523b9e6be0ffa4b3dff"
   },
+  "delivery_form": {
+    "primary_artifact": "professional-document",
+    "representation": "Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.",
+    "evidence": [
+      "attributable subject-specific findings and limitations",
+      "reviewable sources and verifiable follow-up actions"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "c764d897ad4dd96720796b22b14437243cc33c5c3cb66c1e7fdf0d313ecce9e0",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

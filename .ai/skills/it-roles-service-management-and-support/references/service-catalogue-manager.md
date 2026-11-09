@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Service catalogue entries with owners and terms | Structured entries in the service or asset management tool | Each entry has an owner, a lifecycle status and a last-verified date |
-| 2 | request and service definitions | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 3 | catalogue review and currency evidence | Immutable evidence set with hashes, timestamps and custody record | Chain of custody is unbroken and the set is reproducible from the record |
-| 4 | catalogue usability improvements | Structured entries in the service or asset management tool | Each entry has an owner, a lifecycle status and a last-verified date |
+| 1 | Service catalogue entries with owners and terms | Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships. | Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Each entry has an owner, a lifecycle status and a last-verified date. |
+| 2 | request and service definitions | Service definition with consumers, outcomes, responsibilities and measurable service commitments. | State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. |
+| 3 | catalogue review and currency evidence | Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships. | Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Chain of custody is unbroken and the set is reproducible from the record. |
+| 4 | catalogue usability improvements | Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships. | Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Each entry has an owner, a lifecycle status and a last-verified date. |
 
 ## 7. Output gates (blocking)
 
@@ -188,6 +188,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - ITIL 4 service catalogue management
 - ISO/IEC 20000-1
 - SFIA 9 — for the responsibility level and skill coding of this role.
@@ -197,13 +201,32 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Rewrite a catalogue full of internal jargon so users can actually find what they need”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver service catalogue entries with owners and terms in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Service catalogue entries with owners and terms.
+
+**Illustrative case material:**
+
+The service catalogue uses stable IDs svc-orders and svc-stock. Display name Order API may change without a new service identity. Each record has a service owner, lifecycle state and versioned source; supplier product names are attributes, not primary keys.
+
+**Acceptance question:** Specify entity classes, stable identifiers, ownership and lifecycle.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules.
+- Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships.
+- Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `catalogue` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

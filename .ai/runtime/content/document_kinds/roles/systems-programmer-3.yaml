@@ -62,7 +62,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-programmer:3",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -101,7 +102,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-programmer:3",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -140,7 +142,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-programmer:3",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -179,7 +182,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-programmer:3",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -199,7 +203,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'memory and concurrency safety evidence', provide verifiable evidence satisfying: Chain of custody is unbroken and the set is reproducible from the record. Required delivery form: Immutable evidence set with hashes, timestamps and custody record.",
+        "For the specific output 'memory and concurrency safety evidence', provide verifiable evidence satisfying: Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation. Existing source requirement: Chain of custody is unbroken and the set is reproducible from the record. Required delivery form: Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +218,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'memory and concurrency safety evidence', provide verifiable evidence satisfying: Chain of custody is unbroken and the set is reproducible from the record. Required delivery form: Immutable evidence set with hashes, timestamps and custody record.",
+        "reason": "For the specific output 'memory and concurrency safety evidence', provide verifiable evidence satisfying: Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation. Existing source requirement: Chain of custody is unbroken and the set is reproducible from the record. Required delivery form: Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-programmer:3",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -228,8 +233,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "memory and concurrency safety evidence",
-        "format": "Immutable evidence set with hashes, timestamps and custody record",
-        "acceptance_criterion": "Chain of custody is unbroken and the set is reproducible from the record",
+        "format": "Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
+        "acceptance_criterion": "Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation. Existing source requirement: Chain of custody is unbroken and the set is reproducible from the record.",
         "role_path": "skills/it-roles-software-development-and-engineering/references/systems-programmer.md"
       }
     },
@@ -271,7 +276,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-programmer:3",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -320,7 +326,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-programmer:3",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -364,7 +371,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-programmer:3",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -408,7 +416,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-programmer:3",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -452,7 +461,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-programmer:3",
           "content/types/document.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -498,7 +508,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -542,7 +553,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -588,7 +600,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/79429.html"
+          "https://www.iso.org/standard/79429.html",
+          "https://doi.org/10.6028/NIST.SP.800-218"
         ]
       },
       "provenance": {
@@ -711,16 +724,29 @@
         "scope": "Test planning, test specifications and reporting information needs.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "secure-software",
+        "title": "NIST SP 800-218, Secure Software Development Framework Version 1.1",
+        "url": "https://doi.org/10.6028/NIST.SP.800-218",
+        "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Systems Programmer",
+        "domain": "Software Development and Engineering",
+        "domain_index": 5,
+        "method_focus": "Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.",
         "frameworks": [
           "platform kernel documentation",
           "CERT secure coding standards",
           "concurrency and memory model references"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -793,6 +819,17 @@
     "source_fingerprint": "ba3d07d633f906063d8174d1d756b6a571ea240d4f7c5d544b516119c08ce212",
     "source_hash": "0a751a37f0da2944fcef181fde7c4caa3079656e68055c17518df1ea17b18547"
   },
+  "delivery_form": {
+    "primary_artifact": "test-results",
+    "representation": "Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
+    "evidence": [
+      "expected/actual observations and execution references",
+      "coverage denominators and residual defects"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "f353ccaccd6ecec858fc4126fd5c75798a2b02948a9038569233faa7f1993949",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

@@ -64,7 +64,9 @@
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:3",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -104,7 +106,9 @@
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:3",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -144,7 +148,9 @@
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:3",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -184,7 +190,9 @@
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:3",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -204,7 +212,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Multi-supplier governance and escalation decision paper', provide verifiable evidence satisfying: Cross-supplier decisions have a named authority, evidence standard, escalation clock and documented conflict-of-interest handling. Required delivery form: Decision paper defining governance forums, dispute/escalation paths, shared acceptance and exception authority.",
+        "For the specific output 'Multi-supplier governance and escalation decision paper', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Cross-supplier decisions have a named authority, evidence standard, escalation clock and documented conflict-of-interest handling. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,12 +227,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Multi-supplier governance and escalation decision paper', provide verifiable evidence satisfying: Cross-supplier decisions have a named authority, evidence standard, escalation clock and documented conflict-of-interest handling. Required delivery form: Decision paper defining governance forums, dispute/escalation paths, shared acceptance and exception authority.",
+        "reason": "For the specific output 'Multi-supplier governance and escalation decision paper', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Cross-supplier decisions have a named authority, evidence standard, escalation clock and documented conflict-of-interest handling. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:3",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -234,8 +244,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Multi-supplier governance and escalation decision paper",
-        "format": "Decision paper defining governance forums, dispute/escalation paths, shared acceptance and exception authority",
-        "acceptance_criterion": "Cross-supplier decisions have a named authority, evidence standard, escalation clock and documented conflict-of-interest handling.",
+        "format": "Bounded decision paper with consistent option comparison and a clear authority/decision request.",
+        "acceptance_criterion": "Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Cross-supplier decisions have a named authority, evidence standard, escalation clock and documented conflict-of-interest handling.",
         "role_path": "skills/it-roles-service-management-and-support/references/siam-manager.md"
       }
     },
@@ -276,7 +286,9 @@
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:3",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -324,7 +336,9 @@
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:3",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -369,7 +383,9 @@
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:3",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -414,7 +430,9 @@
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:3",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -459,7 +477,9 @@
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:3",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -504,7 +524,9 @@
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:3",
           "content/types/decision-paper.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -551,7 +573,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -596,7 +620,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -643,7 +669,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -774,17 +802,38 @@
         "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "service-management",
+        "title": "ISO/IEC 20000-1:2018, Service management system requirements",
+        "url": "https://www.iso.org/standard/70636.html",
+        "scope": "Service requirements, agreements, transition, operation and measurement concepts.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "SIAM Manager",
+        "domain": "Service Management and Support",
+        "domain_index": 10,
+        "method_focus": "Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.",
         "frameworks": [
           "ITIL 4",
           "ISO/IEC 20000-1",
           "SIAM professional practice principles",
           "COBIT governance concepts"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -855,6 +904,17 @@
     "source_fingerprint": "27ef70a4fa453d5f9af7b379c820f178c3a8f752467a9c0f5ec00356b65201d6",
     "source_hash": "646ae599f968fde146a4c525392a7f94b3888a83b5b21e9b450975d52b4a0fae"
   },
+  "delivery_form": {
+    "primary_artifact": "decision-paper",
+    "representation": "Bounded decision paper with consistent option comparison and a clear authority/decision request.",
+    "evidence": [
+      "baseline and feasible alternatives",
+      "cost/benefit/uncertainty and consequences"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "8823479409a2a2c453fedf02fb00feb54e479fb6cc0f4c4b1ca9311bf8b58910",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

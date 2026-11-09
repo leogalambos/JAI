@@ -9,7 +9,7 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/diagram",
+    "type/model",
     "domain/architecture"
   ],
   "applies_to": {
@@ -62,7 +62,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -101,7 +102,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -140,7 +142,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -179,7 +182,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -199,7 +203,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Business capability model', provide verifiable evidence satisfying: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON).",
+        "For the specific output 'Business capability model', provide verifiable evidence satisfying: Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +218,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Business capability model', provide verifiable evidence satisfying: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON).",
+        "reason": "For the specific output 'Business capability model', provide verifiable evidence satisfying: Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -228,8 +233,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Business capability model",
-        "format": "Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON)",
-        "acceptance_criterion": "The model is validated against real observed behaviour or data, not only interviews",
+        "format": "Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
+        "acceptance_criterion": "Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews.",
         "role_path": "skills/it-roles-architecture/references/business-architect.md"
       }
     },
@@ -268,7 +273,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -314,7 +320,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -358,7 +365,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -402,7 +410,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -446,7 +455,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -492,7 +502,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -536,7 +547,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -582,7 +594,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -705,16 +718,29 @@
         "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Business Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "BIZBOK",
           "TOGAF 10 business architecture",
           "value stream mapping"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -768,12 +794,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/model",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "diagram",
+  "semantic_family": "model",
   "role_overlay": {
     "contract_id": "business-architect:1",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -785,6 +813,17 @@
     "source_fingerprint": "b4562e8d3e175ff6301dacbcc92c25f5f7ea82136a04db7c4c384ec9f62eb2b1",
     "source_hash": "136bdfe32a218e207797d1ead2eda9dfa1c3ec77a1653e77889b3a02d7acecb0"
   },
+  "delivery_form": {
+    "primary_artifact": "typed-semantic-model",
+    "representation": "Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
+    "evidence": [
+      "metamodel/reference/cross-view checks",
+      "source baseline and unresolved semantic gaps"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "b1a99ef61c7c4c9f9f1145cb3233a099bf6584b74bc4c20936e293d485ae022c",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

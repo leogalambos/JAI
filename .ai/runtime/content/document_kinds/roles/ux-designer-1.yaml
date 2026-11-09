@@ -61,7 +61,10 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Interaction designs and prototypes.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ux-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -99,7 +102,10 @@
         "reason": "For each receiving role (Frontend Engineer; UI Designer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ux-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -137,7 +143,10 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ux-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -175,7 +184,10 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ux-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -195,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Interaction designs and prototypes', provide verifiable evidence satisfying: Loading, empty, partial, error, offline and success states are all specified. Required delivery form: Prototype plus annotated specification of all states.",
+        "For the specific output 'Interaction designs and prototypes', provide verifiable evidence satisfying: State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Loading, empty, partial, error, offline and success states are all specified. Required delivery form: Actual editable design/prototype assets or interaction-tool project with linked screens, transitions and loading, empty, error states; implementation code is required only when explicitly in scope.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,10 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Interaction designs and prototypes', provide verifiable evidence satisfying: Loading, empty, partial, error, offline and success states are all specified. Required delivery form: Prototype plus annotated specification of all states.",
+        "reason": "For the specific output 'Interaction designs and prototypes', provide verifiable evidence satisfying: State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Loading, empty, partial, error, offline and success states are all specified. Required delivery form: Actual editable design/prototype assets or interaction-tool project with linked screens, transitions and loading, empty, error states; implementation code is required only when explicitly in scope.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ux-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -223,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Interaction designs and prototypes",
-        "format": "Prototype plus annotated specification of all states",
-        "acceptance_criterion": "Loading, empty, partial, error, offline and success states are all specified",
+        "format": "Actual editable design/prototype assets or interaction-tool project with linked screens, transitions and loading, empty, error states; implementation code is required only when explicitly in scope.",
+        "acceptance_criterion": "State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Loading, empty, partial, error, offline and success states are all specified.",
         "role_path": "skills/it-roles-design-and-user-experience/references/ux-designer.md"
       }
     },
@@ -263,7 +278,10 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ux-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -309,7 +327,10 @@
         "reason": "Analyse the specific input \"User research findings\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ux-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -352,7 +373,10 @@
         "reason": "Analyse the specific input \"Product requirements\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ux-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -395,7 +419,10 @@
         "reason": "Analyse the specific input \"Technical constraints\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ux-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -438,7 +465,10 @@
         "reason": "Analyse the specific input \"Design system components\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ux-designer:1",
-          "content/types/prototype.yaml"
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -451,6 +481,129 @@
         "json_pointer": "/jai/semantics/required_inputs/3",
         "value": "Design system components"
       }
+    },
+    {
+      "id": "role/ux-designer:1.interaction_prototype_assets",
+      "semantic_fields": [
+        "interaction_prototype_assets"
+      ],
+      "datatype": "object",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Supply the actual editable prototype/design assets or interaction-tool project with exact revision, tool/version, access/export constraints and links between screens and flows. A narrative description cannot replace requested prototype assets; do not require an executable code experiment for a noncoding design.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Supply the actual editable prototype/design assets or interaction-tool project with exact revision, tool/version, access/export constraints and links between screens and flows. A narrative description cannot replace requested prototype assets; do not require an executable code experiment for a noncoding design.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#ux-designer:1",
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/ux-designer:1.interaction_state_coverage",
+      "semantic_fields": [
+        "interaction_state_coverage"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Map intended user tasks to screens, inputs, transitions and feedback. Cover loading, empty, error, permission and success states, keyboard/focus behaviour and recovery where applicable; explain exclusions and unresolved design questions.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Map intended user tasks to screens, inputs, transitions and feedback. Cover loading, empty, error, permission and success states, keyboard/focus behaviour and recovery where applicable; explain exclusions and unresolved design questions.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#ux-designer:1",
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/ux-designer:1.interaction_evaluation_evidence",
+      "semantic_fields": [
+        "interaction_evaluation_evidence"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Link actual review/usability/accessibility evaluation observations to the exact prototype revision, task/state and remediation decision. Distinguish observed results from planned evaluation and explicit not-tested states; never invent participant findings.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Link actual review/usability/accessibility evaluation observations to the exact prototype revision, task/state and remediation decision. Distinguish observed results from planned evaluation and explicit not-tested states; never invent participant findings.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#ux-designer:1",
+          "content/types/prototype.yaml",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
     }
   ],
   "conditional_information": [
@@ -483,7 +636,10 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -526,7 +682,10 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -571,7 +730,10 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -694,16 +856,45 @@
         "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
         "basis": "jai-practice",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "human-centred-design",
+        "title": "ISO 9241-210:2019, Human-centred design for interactive systems",
+        "url": "https://www.iso.org/standard/77520.html",
+        "scope": "Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "accessibility",
+        "title": "W3C Web Content Accessibility Guidelines (WCAG) 2.2",
+        "url": "https://www.w3.org/TR/WCAG22/",
+        "scope": "Perceivable and understandable content, text alternatives and accessible navigation; applicability depends on the delivered medium.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "accessibility-evaluation",
+        "title": "W3C WCAG Evaluation Methodology (WCAG-EM) 2.0",
+        "url": "https://www.w3.org/TR/wcag-em-2/",
+        "scope": "Evaluation scope, representative sample, evaluation and reporting; W3C Group Note, informative methodology rather than a conformance standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "UX Designer",
+        "domain": "Design and User Experience",
+        "domain_index": 14,
+        "method_focus": "Trace user research and accessibility requirements to findings, design choices and observed usability/accessibility evaluation.",
         "frameworks": [
           "WCAG 2.2 AA",
           "ISO 9241-210 human-centred design",
           "platform interaction guidelines"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -776,6 +967,17 @@
     "source_fingerprint": "bf31a384d264687aaaf7969aa6f63a97e534f2895a464f9bc8ad5804b3e12757",
     "source_hash": "66d746f0d17cc1a0f2b6968c3c3b85fad03384c08528337cafdd50e45144ff6e"
   },
+  "delivery_form": {
+    "primary_artifact": "interactive-design-prototype",
+    "representation": "Actual editable design/prototype assets or interaction-tool project with linked screens, transitions and loading, empty, error states; implementation code is required only when explicitly in scope.",
+    "evidence": [
+      "exact design revision, tool/version, access and export constraints",
+      "state/flow coverage and observed evaluation findings or explicit not-tested status"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "6367dfe1f4fbff513ba8b494b0baa484b4a8760917f867ea15cd5c518a3e7d75",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

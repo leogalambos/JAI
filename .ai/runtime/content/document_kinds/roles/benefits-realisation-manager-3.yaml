@@ -63,7 +63,10 @@
           "artifacts/contracts/role-deliverables.v3.json#benefits-realisation-manager:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -103,7 +106,10 @@
           "artifacts/contracts/role-deliverables.v3.json#benefits-realisation-manager:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -143,7 +149,10 @@
           "artifacts/contracts/role-deliverables.v3.json#benefits-realisation-manager:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -183,7 +192,10 @@
           "artifacts/contracts/role-deliverables.v3.json#benefits-realisation-manager:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -203,7 +215,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Benefit measurement baseline', provide verifiable evidence satisfying: Baseline source, period, calculation and confidence are reproducible. Required delivery form: Evidence-backed baseline dataset and method statement.",
+        "For the specific output 'Benefit measurement baseline', provide verifiable evidence satisfying: Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations. Existing source requirement: Baseline source, period, calculation and confidence are reproducible. Required delivery form: Typed data or calculation model with units, keys/formulas, lineage and quality constraints.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +230,15 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Benefit measurement baseline', provide verifiable evidence satisfying: Baseline source, period, calculation and confidence are reproducible. Required delivery form: Evidence-backed baseline dataset and method statement.",
+        "reason": "For the specific output 'Benefit measurement baseline', provide verifiable evidence satisfying: Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations. Existing source requirement: Baseline source, period, calculation and confidence are reproducible. Required delivery form: Typed data or calculation model with units, keys/formulas, lineage and quality constraints.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#benefits-realisation-manager:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -233,8 +248,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Benefit measurement baseline",
-        "format": "Evidence-backed baseline dataset and method statement",
-        "acceptance_criterion": "Baseline source, period, calculation and confidence are reproducible.",
+        "format": "Typed data or calculation model with units, keys/formulas, lineage and quality constraints.",
+        "acceptance_criterion": "Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations. Existing source requirement: Baseline source, period, calculation and confidence are reproducible.",
         "role_path": "skills/it-roles-product-delivery-and-agile/references/benefits-realisation-manager.md"
       }
     },
@@ -274,7 +289,10 @@
           "artifacts/contracts/role-deliverables.v3.json#benefits-realisation-manager:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -321,7 +339,10 @@
           "artifacts/contracts/role-deliverables.v3.json#benefits-realisation-manager:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -366,7 +387,10 @@
           "artifacts/contracts/role-deliverables.v3.json#benefits-realisation-manager:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -411,7 +435,10 @@
           "artifacts/contracts/role-deliverables.v3.json#benefits-realisation-manager:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -456,7 +483,10 @@
           "artifacts/contracts/role-deliverables.v3.json#benefits-realisation-manager:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -503,7 +533,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -548,7 +581,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -595,7 +631,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -726,16 +765,45 @@
         "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "human-centred-design",
+        "title": "ISO 9241-210:2019, Human-centred design for interactive systems",
+        "url": "https://www.iso.org/standard/77520.html",
+        "scope": "Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Benefits Realisation Manager",
+        "domain": "Product, Delivery and Agile",
+        "domain_index": 2,
+        "method_focus": "Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.",
         "frameworks": [
           "Managing Successful Programmes benefits management",
           "MoP benefits management",
           "PMI benefits realisation practices"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -806,6 +874,17 @@
     "source_fingerprint": "6c109a3a270d9f5991b462675e7c5eb1cd41d8c9bd60f17310c688b1a46a2f05",
     "source_hash": "11e62dda9fe7e0ca8954ded84fe696879ecd951cd8aa0dbfeda9e7be04f0c63c"
   },
+  "delivery_form": {
+    "primary_artifact": "typed-dataset-or-calculation-model",
+    "representation": "Typed data or calculation model with units, keys/formulas, lineage and quality constraints.",
+    "evidence": [
+      "versioned inputs and reproducible transformations",
+      "reconciliation, quality measures and permitted use"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "c2bcf2a35b4450536bd1696a50dc9f2ae794feaa2951164436cf19f7101067df",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

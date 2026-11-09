@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/document",
-    "domain/delivery"
+    "type/service-design",
+    "domain/operations"
   ],
   "applies_to": {
     "document_kind": "role/service-level-analyst:2",
@@ -61,7 +61,11 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: SLA and OLA definitions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-level-analyst:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -99,7 +103,11 @@
         "reason": "For each receiving role (IT Service Owner; Vendor Manager), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-level-analyst:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -137,7 +145,11 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-level-analyst:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -175,7 +187,11 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-level-analyst:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -195,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'SLA and OLA definitions', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'SLA and OLA definitions', provide verifiable evidence satisfying: State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. Required delivery form: Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,10 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'SLA and OLA definitions', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'SLA and OLA definitions', provide verifiable evidence satisfying: State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. Required delivery form: Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-level-analyst:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -223,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "SLA and OLA definitions",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
+        "acceptance_criterion": "State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions.",
         "role_path": "skills/it-roles-analysis/references/service-level-analyst.md"
       }
     },
@@ -263,7 +283,11 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-level-analyst:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -309,7 +333,11 @@
         "reason": "Analyse the specific input \"Monitoring and availability data\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-level-analyst:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -352,7 +380,11 @@
         "reason": "Analyse the specific input \"Incident and request records\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-level-analyst:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -395,7 +427,11 @@
         "reason": "Analyse the specific input \"Agreed service targets\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-level-analyst:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -438,7 +474,11 @@
         "reason": "Analyse the specific input \"Supplier performance data\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-level-analyst:2",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -483,7 +523,11 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -526,7 +570,11 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -571,7 +619,11 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -688,21 +740,50 @@
     ],
     "professional_references": [
       {
-        "id": "jai-practice",
-        "title": "JAI authored enterprise-delivery practice",
-        "url": null,
-        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
-        "basis": "jai-practice",
+        "id": "service-management",
+        "title": "ISO/IEC 20000-1:2018, Service management system requirements",
+        "url": "https://www.iso.org/standard/70636.html",
+        "scope": "Service requirements, agreements, transition, operation and measurement concepts.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "data-quality",
+        "title": "W3C Data Quality Vocabulary",
+        "url": "https://www.w3.org/TR/vocab-dqv/",
+        "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
+        "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Service Level Analyst",
+        "domain": "Analysis",
+        "domain_index": 3,
+        "method_focus": "Trace source needs, stakeholders and conflicting constraints into verifiable requirements, models and acceptance criteria.",
         "frameworks": [
           "ITIL 4 service level management",
           "ISO/IEC 20000-1"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -756,12 +837,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/service-design",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "document",
+  "semantic_family": "service-design",
   "role_overlay": {
     "contract_id": "service-level-analyst:2",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -773,6 +856,17 @@
     "source_fingerprint": "1e62c0d139d3664db232a418bb80d01573c2eee3f768468872fe30ea531c7da3",
     "source_hash": "ed145d908fa25c0f49e0357f50a25fe03e36b9752fb9b17f34ed530c945b7787"
   },
+  "delivery_form": {
+    "primary_artifact": "service-definition",
+    "representation": "Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
+    "evidence": [
+      "indicator/target/window definitions",
+      "support, dependency and recovery arrangements"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "d8005cf8e6853c7e3015b4184284724bb909807d7455d6629a4fbda886063deb",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

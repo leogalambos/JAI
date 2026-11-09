@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/model",
-    "domain/architecture"
+    "type/configuration-baseline",
+    "domain/operations"
   ],
   "applies_to": {
     "document_kind": "role/kubernetes-platform-engineer:1",
@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#kubernetes-platform-engineer:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#kubernetes-platform-engineer:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#kubernetes-platform-engineer:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#kubernetes-platform-engineer:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Cluster architecture and configuration as code', provide verifiable evidence satisfying: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Model in the EA tool plus a published view set.",
+        "For the specific output 'Cluster architecture and configuration as code', provide verifiable evidence satisfying: Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Actual versioned cluster configuration/deployment code with linked architecture, dependency and ownership definitions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Cluster architecture and configuration as code', provide verifiable evidence satisfying: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Model in the EA tool plus a published view set.",
+        "reason": "For the specific output 'Cluster architecture and configuration as code', provide verifiable evidence satisfying: Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Actual versioned cluster configuration/deployment code with linked architecture, dependency and ownership definitions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#kubernetes-platform-engineer:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Cluster architecture and configuration as code",
-        "format": "Model in the EA tool plus a published view set",
-        "acceptance_criterion": "Every element traces to a driver or a quality-attribute target; no orphan elements",
+        "format": "Actual versioned cluster configuration/deployment code with linked architecture, dependency and ownership definitions.",
+        "acceptance_criterion": "Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements.",
         "role_path": "skills/it-roles-infrastructure-cloud-and-operations/references/kubernetes-platform-engineer.md"
       }
     },
@@ -271,7 +281,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#kubernetes-platform-engineer:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -320,7 +332,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#kubernetes-platform-engineer:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -364,7 +378,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#kubernetes-platform-engineer:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -408,7 +424,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#kubernetes-platform-engineer:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -452,7 +470,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#kubernetes-platform-engineer:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -498,7 +518,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -542,7 +564,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -588,7 +612,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -683,7 +709,7 @@
     }
   ],
   "size_budget": {
-    "metric": "elements",
+    "metric": "typed",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -705,10 +731,26 @@
     ],
     "professional_references": [
       {
-        "id": "architecture-description",
-        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
-        "url": "https://www.iso.org/standard/74393.html",
-        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "id": "configuration-management",
+        "title": "NIST SP 800-128, Guide for Security-Focused Configuration Management of Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-128",
+        "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "contingency-planning",
+        "title": "NIST SP 800-34 Revision 1, Contingency Planning Guide for Federal Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-34r1",
+        "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
@@ -716,11 +758,16 @@
     "role_framework_context": [
       {
         "role": "Kubernetes Platform Engineer",
+        "domain": "Infrastructure, Cloud and Operations",
+        "domain_index": 8,
+        "method_focus": "Define measurable service objectives, capacity and dependency assumptions, failure behaviour, recovery and observed operational evidence.",
         "frameworks": [
           "CIS Kubernetes Benchmark",
           "NSA/CISA Kubernetes hardening guidance",
           "CNCF practice"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -774,12 +821,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/configuration-baseline",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "model",
+  "semantic_family": "configuration-baseline",
   "role_overlay": {
     "contract_id": "kubernetes-platform-engineer:1",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -791,6 +840,17 @@
     "source_fingerprint": "470240fdbb04aa521a42cb779238c38e2d10d3d97ec6e5cad27a090107a85baf",
     "source_hash": "957f82d1f3be32042bce732fef822fbbc145ef44a7359d905847b2a0590f9c69"
   },
+  "delivery_form": {
+    "primary_artifact": "cluster-design-and-configuration-code",
+    "representation": "Actual versioned cluster configuration/deployment code with linked architecture, dependency and ownership definitions.",
+    "evidence": [
+      "configuration/schema/target revisions",
+      "actual plan/apply/isolation/recovery checks or explicit not-executed state"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "7ff8c72a7daa824ef6cb9c95d871d9920b5a9f5994ece6fa15f0a071981ac077",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

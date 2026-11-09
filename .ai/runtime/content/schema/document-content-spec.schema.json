@@ -18,6 +18,18 @@
     "size_budget"
   ],
   "properties": {
+    "delivery_form": {
+      "type": "object",
+      "required": ["primary_artifact", "representation", "evidence", "legacy_type_is_compatibility_only", "authority"],
+      "properties": {
+        "primary_artifact": {"type": "string", "minLength": 1},
+        "representation": {"type": "string", "minLength": 1},
+        "evidence": {"type": "array", "minItems": 1, "items": {"type": "string", "minLength": 1}},
+        "legacy_type_is_compatibility_only": {"const": true},
+        "authority": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false
+    },
     "id": {
       "type": "string",
       "minLength": 1

@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/register",
-    "domain/data"
+    "type/test-report",
+    "domain/testing"
   ],
   "applies_to": {
     "document_kind": "role/research-engineer:2",
@@ -61,7 +61,10 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: evaluation methodology and results.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#research-engineer:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -99,7 +102,10 @@
         "reason": "For each receiving role (Software Engineer; Innovation Lead), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#research-engineer:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -137,7 +143,10 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#research-engineer:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -175,7 +184,10 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#research-engineer:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -195,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'evaluation methodology and results', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'evaluation methodology and results', provide verifiable evidence satisfying: Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation. Required delivery form: Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,10 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'evaluation methodology and results', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'evaluation methodology and results', provide verifiable evidence satisfying: Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation. Required delivery form: Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#research-engineer:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -223,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "evaluation methodology and results",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
+        "acceptance_criterion": "Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation.",
         "role_path": "skills/it-roles-research-innovation-and-specialist-engineering/references/research-engineer.md"
       }
     },
@@ -263,7 +278,10 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#research-engineer:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -309,7 +327,10 @@
         "reason": "Analyse the specific input \"Research question and constraints\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#research-engineer:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -352,7 +373,10 @@
         "reason": "Analyse the specific input \"Prior art and literature\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#research-engineer:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -395,7 +419,10 @@
         "reason": "Analyse the specific input \"Compute and data resources\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#research-engineer:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -438,7 +465,10 @@
         "reason": "Analyse the specific input \"Production constraints\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#research-engineer:2",
-          "content/types/register.yaml"
+          "content/types/register.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -483,7 +513,10 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -526,7 +559,10 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -571,7 +607,10 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -666,7 +705,7 @@
     }
   ],
   "size_budget": {
-    "metric": "rows",
+    "metric": "semantic_units",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -688,22 +727,43 @@
     ],
     "professional_references": [
       {
-        "id": "jai-practice",
-        "title": "JAI authored enterprise-delivery practice",
-        "url": null,
-        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
-        "basis": "jai-practice",
+        "id": "software-testing",
+        "title": "ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation",
+        "url": "https://www.iso.org/standard/79429.html",
+        "scope": "Test planning, test specifications and reporting information needs.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "research-reproducibility",
+        "title": "ACM Artifact Review and Badging policy",
+        "url": "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+        "scope": "Artifact availability, evaluation and reproducibility terminology; informative evidence-pack practice, not proof that an experiment is scientifically sufficient.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Research Engineer",
+        "domain": "Research, Innovation and Specialist Engineering",
+        "domain_index": 16,
+        "method_focus": "State hypotheses, success criteria and measurement methods before experiments; distinguish observed results, uncertainty and applicability limits.",
         "frameworks": [
           "scientific method",
           "reproducibility standards",
           "internal research ethics policy"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -757,12 +817,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/test-report",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "register",
+  "semantic_family": "test-report",
   "role_overlay": {
     "contract_id": "research-engineer:2",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -774,6 +836,17 @@
     "source_fingerprint": "a6c243f875dd3a7b35c300dcbb2ddbe205d773e0eec935fdcd6e51df61030e7f",
     "source_hash": "ab5e6d51cd1743087b30fa2433d32d0d82acd995509b01c5b410bf8389201a5f"
   },
+  "delivery_form": {
+    "primary_artifact": "test-results",
+    "representation": "Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.",
+    "evidence": [
+      "expected/actual observations and execution references",
+      "coverage denominators and residual defects"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "d2a5756becea1676d8ce16dc00385e1d9fedf5d0d0c5e447a1afff317db1f9b7",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

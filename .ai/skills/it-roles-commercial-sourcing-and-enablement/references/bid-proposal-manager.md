@@ -75,10 +75,10 @@ Record source identity, version/date, applicability, access classification and r
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Bid qualification and response plan | Qualification rationale, responsibilities, milestones, review strategy and authority map | Decision owner can approve or decline with costs, constraints and evidence visible. |
-| 2 | Proposal compliance and clarification matrix | Source-linked requirement register, response/evidence location, amendments, questions and dispositions | Every mandatory request is answered, explicitly departed from or escalated; no silent omissions. |
-| 3 | Controlled client proposal and internal bid dossier | Client offer plus separately protected cost, rationale, assumptions and review history | Offer is responsive and authorised; sensitive internal evidence is retained without being exposed. |
-| 4 | Bid-to-delivery handover record | Commitments, baselines, residual risks, service obligations and receiving-owner acceptance | Delivery and service owners accept the same version the client was offered. |
+| 1 | Bid qualification and response plan | Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones. | State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Decision owner can approve or decline with costs, constraints and evidence visible. |
+| 2 | Proposal compliance and clarification matrix | Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules. | Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every mandatory request is answered, explicitly departed from or escalated; no silent omissions. |
+| 3 | Controlled client proposal and internal bid dossier | Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions. | State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Offer is responsive and authorised; sensitive internal evidence is retained without being exposed. |
+| 4 | Bid-to-delivery handover record | Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules. | Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Delivery and service owners accept the same version the client was offered. |
 
 Canonical Artifact Contract v3 mapping, in table order: `Bid qualification and response plan` → `roadmap`; `Proposal compliance and clarification matrix` → `register`; `Controlled client proposal and internal bid dossier` → `document`; `Bid-to-delivery handover record` → `decision-paper`. These mappings classify the semantic artefact; they do not imply that the generic producer validates financial formulas or provides a new specialist spreadsheet engine. Include the commercial case/snapshot, work-package, assumption, estimate, price and decision record IDs relevant to the output. Retain source calculation files as controlled evidence attachments or an explicit external handoff. The advise-tier reviewer returns its report for a separate authorised recorder; it does not invoke a writing renderer.
 
@@ -137,6 +137,10 @@ Author and maintain only this role's artefacts within its tool tier; no technica
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - APMP Body of Knowledge and APMP professional practices: bid qualification, proposal development, compliance and review. Consult the current licensed/public materials; no APMP certification is implied.
 - Client procurement procedure and applicable procurement/competition law are authoritative; legal interpretation belongs to qualified counsel.
 
@@ -146,3 +150,30 @@ Frameworks supply methods and questions; applicability, edition and licensed acc
 
 A tender requires a fixed implementation price while the client declines estate-volume data. Keep the response requirement visible; request bounded volume bands, commission an estimate with explicit uncertainty, compare a capped discovery phase and conditional scope, and escalate any non-compliant qualification rather than quietly submitting a fabricated precise price.
 
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
+
+**Synthetic worked case — no project facts or approval.**
+
+**Assigned work product:** Bid qualification and response plan.
+
+**Illustrative case material:**
+
+**Illustrative RFP:** `MRG-OEI-RFP-2027-01`, fictional request for proposal for European Commerce-to-ERP Event Backbone. Bidder: fictional Northstar Enterprise Delivery Ltd.; client: Meridian Retail Group. No actual invitation, question catalogue, clarification transcript, contract schedule or evaluation matrix was supplied. **All question IDs below are synthetic placeholders** and must never be represented as a customer's actual RFP requirements.
+
+Objective: make accepted orders visible to ERP within five minutes at p95, with zero unexplained order loss. Current challenge: nightly ERP batch exports and fragile point-to-point integration with delayed order promise updates. Submission is **non-binding and incomplete for any real procurement**, requiring client-specific RFP upload and legal review.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions.
+- For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome.
+- Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `rfp-response` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

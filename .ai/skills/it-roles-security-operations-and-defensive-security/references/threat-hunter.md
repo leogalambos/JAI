@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Hunt hypotheses and methodology | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 2 | hunt findings and negative results | Finding record with reproducible evidence and risk rating | Reproduction steps are complete enough for an independent party to confirm |
-| 3 | new detection candidates | Detection rule in version control with test cases | Mapped to an ATT&CK technique, with documented true- and false-positive behaviour |
-| 4 | visibility gap findings | Finding record with reproducible evidence and risk rating | Reproduction steps are complete enough for an independent party to confirm |
+| 1 | Hunt hypotheses and methodology | Risk-based test specification with cases/techniques, expected outcomes, environments and entry/exit criteria. | Identify product/build scope, critical requirements, quality risks, excluded risks and the confidence the selected tests can and cannot provide. Map risks to levels, techniques and responsibilities; specify environment, representative data, dependencies and expected evidence. Define measurable entry/exit criteria, coverage interpretation, triage/retest rules and treatment of blocked or unexecuted cases. |
+| 2 | hunt findings and negative results | Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request. | Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Reproduction steps are complete enough for an independent party to confirm. |
+| 3 | new detection candidates | Actual version-controlled implementation or analysis code, separate from its explanatory report. | Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. Existing source requirement: Mapped to an ATT&CK technique, with documented true- and false-positive behaviour. |
+| 4 | visibility gap findings | Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request. | Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Reproduction steps are complete enough for an independent party to confirm. |
 
 ## 7. Output gates (blocking)
 
@@ -188,6 +188,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - MITRE ATT&CK
 - TaHiTI or PEAK hunting methodologies
 - pyramid of pain
@@ -198,13 +202,30 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Hunt for evidence of persistence techniques our EDR would not alert on”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver hunt hypotheses and methodology in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Hunt hypotheses and methodology.
+
+**Illustrative case material:**
+
+Describe release scope, critical business invariants, stakeholder requirements, architecture interfaces and hazards. Define what confidence a successful program of tests should provide and what it cannot demonstrate. Distinguish verification of implementation from validation of user/business needs. Treat regulatory and security criteria as explicit inputs, not a generic “nonfunctional testing” heading.
+
+**Case application:** The accountable Security Architecture Authority must confirm whether the objective and boundary are materially complete for `CIS-IAM`. The fact that a sample shows a proposed owner does not delegate any actual organizational authority.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Identify product/build scope, critical requirements, quality risks, excluded risks and the confidence the selected tests can and cannot provide.
+- Map risks to levels, techniques and responsibilities; specify environment, representative data, dependencies and expected evidence.
+- Define measurable entry/exit criteria, coverage interpretation, triage/retest rules and treatment of blocked or unexecuted cases.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `test-strategy-plan` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

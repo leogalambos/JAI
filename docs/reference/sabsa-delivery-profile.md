@@ -125,6 +125,30 @@ Documents are deterministic or controlled editorial views of governed semantic v
 
 ArchiMate is a selectable representation profile for engagements that require it, not a mandatory implementation language for every JAI task. Native semantic records retain the authoritative information and provenance; a representation cannot silently redefine the source's meaning.
 
+A project may select ArchiMate as its default when its recipients use the notation,
+the views answer explicit stakeholder concerns, a governed source model supplies
+stable identities, and the exact edition, mapping and renderer have an evidenced
+qualification scope, including the receiving tool when one is used.
+Independently assess semantics and visual
+notation for the published version. An explicit request activates this selection
+process; it does not make an unqualified draft conformant. A generic repository
+graph is labelled as such and is not presented as an ArchiMate notation view.
+
+Choose the representation to serve the decision: an ADR or principle register
+does not require an EA diagram, and executive, operational and software views
+may use text, tables or other suitable notations. ISO/IEC/IEEE 42010:2022 does
+not prescribe a particular notation or tool.
+
+Edition qualification is explicit. The portable implementation targets language
+3.2 and exchange schema 3.1; publication of ArchiMate 4 does not establish
+support for its changed metamodel or exchange format. No external EA
+application or virtual display is a prerequisite for the portable JAI
+workflow. Optional external-tool qualification
+must identify the exact tool and supported edition. Internal exchange tests do
+not establish vendor interoperability, and a successful 3.2 import cannot qualify
+version 4. Follow the maintained [portable ArchiMate procedure](../capabilities/sabsa-ea.md#portable-archimate-32)
+for explicit requests, helper operations and separate validation boundaries.
+
 The selected mapping reference is **S3**, Steven Bradley, *Modelling SABSA with ArchiMate*, TSI-T100, Release 1.0, October 2019, SABSA Press, approved by the SABSA Institute Trustees: [version-pinned mirror](https://github.com/yasenstar/ArchiMate_SABSA/blob/55eff9fcc67ab022fcec27093990fb85dbeb509a/Docs/TSI-T100-Modelling-SABSA-with-ArchiMate.pdf). Its declared target is ArchiMate 3.0; do not infer conformance to another edition from that mapping.
 
 The engagement selects an exact ArchiMate edition and mapping version. Independently validate native SABSA content and legal ArchiMate concepts/relationships for that edition. Preserve stable cross-references, documented mapping decisions, loss/unrepresented-information reports, and evidence links. A required information unit that cannot be represented in a chosen diagram must appear in an authorized complementary view, or remain a blocking gap. Diagram validity is not business or SABSA completeness.

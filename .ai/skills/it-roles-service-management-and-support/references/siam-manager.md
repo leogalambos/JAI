@@ -82,10 +82,10 @@ Producing, maintaining and defending the quality of:
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | SIAM operating model and service integration design | Service design covering governance, process integration, authority, data and tooling boundaries | End-to-end accountability is explicit; supplier boundaries do not create unowned process, data or service outcomes. |
-| 2 | End-to-end SLA and OLA responsibility matrix | Governed register/matrix linking service outcomes, SLAs, OLAs, suppliers, owners, evidence and escalation | Every customer-facing commitment decomposes into measurable underpinning responsibilities with no gaps or contradictory ownership. |
-| 3 | Multi-supplier governance and escalation decision paper | Decision paper defining governance forums, dispute/escalation paths, shared acceptance and exception authority | Cross-supplier decisions have a named authority, evidence standard, escalation clock and documented conflict-of-interest handling. |
-| 4 | Multi-supplier service assurance report | Assurance report covering service performance, handoff defects, supplier interactions, systemic issues and remediation | The report distinguishes individual supplier performance from end-to-end service performance and assigns systemic remediation owners. |
+| 1 | SIAM operating model and service integration design | Service definition with consumers, outcomes, responsibilities and measurable service commitments. | State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. Existing source requirement: End-to-end accountability is explicit; supplier boundaries do not create unowned process, data or service outcomes. |
+| 2 | End-to-end SLA and OLA responsibility matrix | Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules. | Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every customer-facing commitment decomposes into measurable underpinning responsibilities with no gaps or contradictory ownership. |
+| 3 | Multi-supplier governance and escalation decision paper | Bounded decision paper with consistent option comparison and a clear authority/decision request. | Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Cross-supplier decisions have a named authority, evidence standard, escalation clock and documented conflict-of-interest handling. |
+| 4 | Multi-supplier service assurance report | Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion. | State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: The report distinguishes individual supplier performance from end-to-end service performance and assigns systemic remediation owners. |
 
 Every Section 6 row is registered in Artifact Contract v3/JAI and must resolve to a typed internal producer/validator/renderer or an explicit external handoff.
 
@@ -151,6 +151,10 @@ This role owns **end-to-end multi-supplier service accountability and service-in
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - ITIL 4
 - ISO/IEC 20000-1
 - SIAM professional practice principles
@@ -163,3 +167,31 @@ Frameworks orient the role; organisation policy, law, contracts and explicit del
 **Situation.** A cross-domain programme asks for a rapid decision in this role's area, but one critical dependency and one evidence source are unresolved.
 
 **Correct response.** Separate known facts from assumptions, identify the decision that can be made now versus the decision that must wait, compare credible options, record the unresolved dependency with owner/date, produce the relevant Section 6 artefact, and hand it to the named receiving role with an explicit reopen trigger if the missing evidence changes the basis.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
+
+**Synthetic worked case — no project facts or approval.**
+
+**Assigned work product:** SIAM operating model and service integration design.
+
+**Illustrative case material:**
+
+Define service consumers, business capability enabled, catalog boundary, eligibility and explicit exclusions. Separate internal technology components from the outcome experienced by the consumer. Establish supported locations, hours, priority classes, cost model and retained responsibilities across suppliers. The service design must not imply a contract commitment until the authorized parties have agreed to it.
+
+**Case application:** The accountable Clinical Digital Owner must confirm whether the objective and boundary are materially complete for `BHN-CRM`. The fact that a sample shows a proposed owner does not delegate any actual organizational authority.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions.
+- For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals.
+- Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `service-design-sla` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

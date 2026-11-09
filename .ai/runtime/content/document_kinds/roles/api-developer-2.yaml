@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#api-developer:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#api-developer:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#api-developer:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#api-developer:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'OpenAPI or AsyncAPI specification', provide verifiable evidence satisfying: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Versioned specification with numbered, traceable requirements.",
+        "For the specific output 'OpenAPI or AsyncAPI specification', provide verifiable evidence satisfying: Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'OpenAPI or AsyncAPI specification', provide verifiable evidence satisfying: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Versioned specification with numbered, traceable requirements.",
+        "reason": "For the specific output 'OpenAPI or AsyncAPI specification', provide verifiable evidence satisfying: Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#api-developer:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "OpenAPI or AsyncAPI specification",
-        "format": "Versioned specification with numbered, traceable requirements",
-        "acceptance_criterion": "Every requirement is atomic, testable and traced to a source and a priority",
+        "format": "Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
+        "acceptance_criterion": "Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority.",
         "role_path": "skills/it-roles-software-development-and-engineering/references/api-developer.md"
       }
     },
@@ -272,7 +282,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#api-developer:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -322,7 +334,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#api-developer:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -366,7 +380,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#api-developer:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -410,7 +426,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#api-developer:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -454,7 +472,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#api-developer:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -500,7 +520,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -544,7 +566,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -590,7 +614,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -713,17 +739,38 @@
         "scope": "Requirements information items, requirement quality and traceability.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "secure-software",
+        "title": "NIST SP 800-218, Secure Software Development Framework Version 1.1",
+        "url": "https://doi.org/10.6028/NIST.SP.800-218",
+        "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "software-testing",
+        "title": "ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation",
+        "url": "https://www.iso.org/standard/79429.html",
+        "scope": "Test planning, test specifications and reporting information needs.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "API Developer",
+        "domain": "Software Development and Engineering",
+        "domain_index": 5,
+        "method_focus": "Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.",
         "frameworks": [
           "OpenAPI",
           "AsyncAPI",
           "OWASP API Security Top 10",
           "semantic versioning"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -796,6 +843,17 @@
     "source_fingerprint": "16fcf4f7b7a43d4e616a79d73fc0a5c614f955c2c25abb0cb4631614cbfc50fc",
     "source_hash": "5db5ed359e060600350503ee9c69393444ae0d2bb9c7c919d7029485e5f94b89"
   },
+  "delivery_form": {
+    "primary_artifact": "requirements-specification",
+    "representation": "Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
+    "evidence": [
+      "forward/backward traceability",
+      "conflict, interface and change-impact checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "83959ee6609a3aa3d0bb77a7ffad25128f9632baf256e2530bf40ab0b6b42622",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

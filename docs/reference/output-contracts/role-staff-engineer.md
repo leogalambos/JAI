@@ -42,6 +42,19 @@ Produce and govern the role deliverable: Cross-team technical strategy.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `strategy`.
+
+Evidenced strategic choices with target outcomes, alternatives, investment assumptions and execution accountability.
+
+**Evidence accompanying the work product:**
+
+- baseline and rejected options
+- outcome measures, dependencies and review triggers
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -49,27 +62,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/staff-engineer:1.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Cross-team technical strategy.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:1.receiving_acceptance`** — `array`
 
 - For each receiving role (Technical Lead; Senior Software Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:1.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:1.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:1.delivery_verification`** — `array`
 
-- For the specific output 'Cross-team technical strategy', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- For the specific output 'Cross-team technical strategy', provide verifiable evidence satisfying: Trace target outcomes and measurable success to business direction and baseline constraints. Compare investment and operating choices, dependencies, resource assumptions and rejected alternatives. Assign sequenced initiatives, accountable owners, outcome measures and review triggers. Required delivery form: Evidenced strategic choices with target outcomes, alternatives, investment assumptions and execution accountability.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:1.role_gate_observations`** — `array`
 
@@ -79,27 +92,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: The design names its failure modes and its blast radius, not just its happy path.
 - G4: Deviations accepted at build time are recorded as debt with an owner and a repayment trigger.
 - G5: Cross-team proposals are validated with a working prototype or measured evidence before teams are asked to adopt them
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:1.contract_input_1`** — `object`
 
 - Analyse the specific input "Cross-team pain points" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:1.contract_input_2`** — `object`
 
 - Analyse the specific input "Architecture roadmap" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:1.contract_input_3`** — `object`
 
 - Analyse the specific input "Production incident patterns" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:1.contract_input_4`** — `object`
 
 - Analyse the specific input "Delivery metrics" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -108,21 +121,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:1.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/staff-engineer:1.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -160,10 +173,15 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[NIST SP 800-218, Secure Software Development Framework Version 1.1](https://doi.org/10.6028/NIST.SP.800-218)** — Secure development practices, protected source/build inputs, verification and vulnerability response. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation](https://www.iso.org/standard/79429.html)** — Test planning, test specifications and reporting information needs. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Staff Engineer:** SWEBOK v4; ISO/IEC 25010; Team Topologies. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-staff-engineer-2"></a>
@@ -203,6 +221,19 @@ Produce and govern the role deliverable: architecture decision records.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `architecture-decision-record`.
+
+Versioned decision record with context, alternatives, consequences, status and supersession.
+
+**Evidence accompanying the work product:**
+
+- comparable option evaluation
+- actual decision status and owner
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -210,27 +241,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/staff-engineer:2.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: architecture decision records.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:2.receiving_acceptance`** — `array`
 
 - For each receiving role (Technical Lead; Senior Software Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:2.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:2.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:2.delivery_verification`** — `array`
 
-- For the specific output 'architecture decision records', provide verifiable evidence satisfying: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Model in the EA tool plus a published view set.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- For the specific output 'architecture decision records', provide verifiable evidence satisfying: Identify the architecture concern, constraints, scope and decision status. Compare feasible design alternatives and the rejected baseline against drivers. Record the selected design, decision owner and dated rationale. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Versioned decision record with context, alternatives, consequences, status and supersession.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:2.role_gate_observations`** — `array`
 
@@ -240,27 +271,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: The design names its failure modes and its blast radius, not just its happy path.
 - G4: Deviations accepted at build time are recorded as debt with an owner and a repayment trigger.
 - G5: Cross-team proposals are validated with a working prototype or measured evidence before teams are asked to adopt them
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:2.contract_input_1`** — `object`
 
 - Analyse the specific input "Cross-team pain points" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:2.contract_input_2`** — `object`
 
 - Analyse the specific input "Architecture roadmap" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:2.contract_input_3`** — `object`
 
 - Analyse the specific input "Production incident patterns" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:2.contract_input_4`** — `object`
 
 - Analyse the specific input "Delivery metrics" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -269,21 +300,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:2.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/staff-engineer:2.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -322,10 +353,15 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 - **[ISO/IEC/IEEE 42010:2022, Architecture description](https://www.iso.org/standard/74393.html)** — Stakeholders, concerns, viewpoints, architecture views and correspondence. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **[NIST SP 800-160 Volume 1 Revision 1, Engineering Trustworthy Secure Systems](https://doi.org/10.6028/NIST.SP.800-160v1r1)** — Life-cycle requirements, design rationale, verification and assurance of system security. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[NIST SP 800-218, Secure Software Development Framework Version 1.1](https://doi.org/10.6028/NIST.SP.800-218)** — Secure development practices, protected source/build inputs, verification and vulnerability response. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation](https://www.iso.org/standard/79429.html)** — Test planning, test specifications and reporting information needs. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Staff Engineer:** SWEBOK v4; ISO/IEC 25010; Team Topologies. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-staff-engineer-3"></a>
@@ -365,6 +401,19 @@ Produce and govern the role deliverable: prototypes that settle contested questi
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `disposable-prototype`.
+
+Bounded non-production prototype or executable/design experiment with predeclared question and success criteria.
+
+**Evidence accompanying the work product:**
+
+- reproducible inputs and execution/interaction
+- observed outcomes and applicability limits
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -372,27 +421,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/staff-engineer:3.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: prototypes that settle contested questions.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:3.receiving_acceptance`** — `array`
 
 - For each receiving role (Technical Lead; Senior Software Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:3.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:3.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:3.delivery_verification`** — `array`
 
-- For the specific output 'prototypes that settle contested questions', provide verifiable evidence satisfying: Defines contested hypothesis, bounded non-production scope, reproducible inputs/execution and observed results with limitations. Required delivery form: Reproducible prototype and evaluation report.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- For the specific output 'prototypes that settle contested questions', provide verifiable evidence satisfying: State the hypothesis or feasibility question, experiment boundary, success/failure criteria and limitations of representativeness. Identify reproducible prototype source/configuration, dependencies, environment and procedure without claiming production readiness. Record actual observations against criteria, failed/untested conditions and what may or may not be inferred for a production solution. Existing source requirement: Defines contested hypothesis, bounded non-production scope, reproducible inputs/execution and observed results with limitations. Required delivery form: Bounded non-production prototype or executable/design experiment with predeclared question and success criteria.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:3.role_gate_observations`** — `array`
 
@@ -402,27 +451,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: The design names its failure modes and its blast radius, not just its happy path.
 - G4: Deviations accepted at build time are recorded as debt with an owner and a repayment trigger.
 - G5: Cross-team proposals are validated with a working prototype or measured evidence before teams are asked to adopt them
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:3.contract_input_1`** — `object`
 
 - Analyse the specific input "Cross-team pain points" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:3.contract_input_2`** — `object`
 
 - Analyse the specific input "Architecture roadmap" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:3.contract_input_3`** — `object`
 
 - Analyse the specific input "Production incident patterns" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:3.contract_input_4`** — `object`
 
 - Analyse the specific input "Delivery metrics" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -431,21 +480,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:3.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/staff-engineer:3.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -496,10 +545,14 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 - **[NIST SP 800-218, Secure Software Development Framework Version 1.1](https://doi.org/10.6028/NIST.SP.800-218)** — Secure development practices, protected source/build inputs, verification and vulnerability response. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation](https://www.iso.org/standard/79429.html)** — Test planning, test specifications and reporting information needs. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Staff Engineer:** SWEBOK v4; ISO/IEC 25010; Team Topologies. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-staff-engineer-4"></a>
@@ -539,6 +592,19 @@ Produce and govern the role deliverable: technical standards adopted across team
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `professional-document`.
+
+Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.
+
+**Evidence accompanying the work product:**
+
+- attributable subject-specific findings and limitations
+- reviewable sources and verifiable follow-up actions
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -546,22 +612,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/staff-engineer:4.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: technical standards adopted across teams.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:4.receiving_acceptance`** — `array`
 
 - For each receiving role (Technical Lead; Senior Software Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:4.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:4.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:4.delivery_verification`** — `array`
 
-- For the specific output 'technical standards adopted across teams', provide verifiable evidence satisfying: Requirements are specific, measurable and technology-explicit. Required delivery form: Controlled document referencing the parent policy.
+- For the specific output 'technical standards adopted across teams', provide verifiable evidence satisfying: State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Requirements are specific, measurable and technology-explicit. Required delivery form: Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:4.role_gate_observations`** — `array`
 
@@ -571,22 +642,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: The design names its failure modes and its blast radius, not just its happy path.
 - G4: Deviations accepted at build time are recorded as debt with an owner and a repayment trigger.
 - G5: Cross-team proposals are validated with a working prototype or measured evidence before teams are asked to adopt them
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:4.contract_input_1`** — `object`
 
 - Analyse the specific input "Cross-team pain points" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:4.contract_input_2`** — `object`
 
 - Analyse the specific input "Architecture roadmap" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:4.contract_input_3`** — `object`
 
 - Analyse the specific input "Production incident patterns" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:4.contract_input_4`** — `object`
 
 - Analyse the specific input "Delivery metrics" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -595,18 +671,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 **`role/staff-engineer:4.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/staff-engineer:4.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.iso.org/standard/79429.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -644,8 +723,13 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[NIST SP 800-218, Secure Software Development Framework Version 1.1](https://doi.org/10.6028/NIST.SP.800-218)** — Secure development practices, protected source/build inputs, verification and vulnerability response. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation](https://www.iso.org/standard/79429.html)** — Test planning, test specifications and reporting information needs. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Staff Engineer:** SWEBOK v4; ISO/IEC 25010; Team Topologies. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 <!-- JAI:OUTPUT-CONTRACTS:END -->

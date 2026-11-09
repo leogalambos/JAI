@@ -32,6 +32,15 @@ python3 ~/.ai/it-role-house/tools/repository.py portfolio ./ea-repo --format md 
 7. Before retirement/decommission, run impact analysis. Do not force a lifecycle transition past active dependencies without a named waiver and retained evidence.
 8. Run the Model Consistency Reviewer before architecture/repository release.
 
+For an explicit ArchiMate request, select the portable language 3.2 / exchange
+3.1 profile and retain its semantic, preservation and draft-notation limits.
+The installed `ea/README.md` describes `validate-archimate` and
+`render-archimate`; these are Python helpers, not additional native command
+verbs. Use the public manual's `docs/capabilities/sabsa-ea.md` section
+"Portable ArchiMate 3.2" for request examples, project-default conditions and
+independent QA boundaries. Generic repository graphs do not establish verified
+ArchiMate notation, and no external EA application is required.
+
 
 ## Operational specification — Repository integrity
 

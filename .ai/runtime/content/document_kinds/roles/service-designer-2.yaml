@@ -63,7 +63,10 @@
           "artifacts/contracts/role-deliverables.v3.json#service-designer:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -103,7 +106,10 @@
           "artifacts/contracts/role-deliverables.v3.json#service-designer:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -143,7 +149,10 @@
           "artifacts/contracts/role-deliverables.v3.json#service-designer:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -183,7 +192,10 @@
           "artifacts/contracts/role-deliverables.v3.json#service-designer:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -203,7 +215,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'channel and touchpoint design', provide verifiable evidence satisfying: Defines user journeys, front/back-stage responsibilities, channel transitions, failure recovery and validation criteria. Required delivery form: Channel and touchpoint design.",
+        "For the specific output 'channel and touchpoint design', provide verifiable evidence satisfying: State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. Existing source requirement: Defines user journeys, front/back-stage responsibilities, channel transitions, failure recovery and validation criteria. Required delivery form: Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +230,15 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'channel and touchpoint design', provide verifiable evidence satisfying: Defines user journeys, front/back-stage responsibilities, channel transitions, failure recovery and validation criteria. Required delivery form: Channel and touchpoint design.",
+        "reason": "For the specific output 'channel and touchpoint design', provide verifiable evidence satisfying: State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. Existing source requirement: Defines user journeys, front/back-stage responsibilities, channel transitions, failure recovery and validation criteria. Required delivery form: Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-designer:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -233,8 +248,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "channel and touchpoint design",
-        "format": "Channel and touchpoint design",
-        "acceptance_criterion": "Defines user journeys, front/back-stage responsibilities, channel transitions, failure recovery and validation criteria",
+        "format": "Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
+        "acceptance_criterion": "State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. Existing source requirement: Defines user journeys, front/back-stage responsibilities, channel transitions, failure recovery and validation criteria.",
         "role_path": "skills/it-roles-design-and-user-experience/references/service-designer.md"
       }
     },
@@ -275,7 +290,10 @@
           "artifacts/contracts/role-deliverables.v3.json#service-designer:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -323,7 +341,10 @@
           "artifacts/contracts/role-deliverables.v3.json#service-designer:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -368,7 +389,10 @@
           "artifacts/contracts/role-deliverables.v3.json#service-designer:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -413,7 +437,10 @@
           "artifacts/contracts/role-deliverables.v3.json#service-designer:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -458,7 +485,10 @@
           "artifacts/contracts/role-deliverables.v3.json#service-designer:2",
           "content/types/prototype.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -505,7 +535,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -550,7 +583,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -597,7 +633,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -728,16 +767,45 @@
         "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "human-centred-design",
+        "title": "ISO 9241-210:2019, Human-centred design for interactive systems",
+        "url": "https://www.iso.org/standard/77520.html",
+        "scope": "Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "accessibility",
+        "title": "W3C Web Content Accessibility Guidelines (WCAG) 2.2",
+        "url": "https://www.w3.org/TR/WCAG22/",
+        "scope": "Perceivable and understandable content, text alternatives and accessible navigation; applicability depends on the delivered medium.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "accessibility-evaluation",
+        "title": "W3C WCAG Evaluation Methodology (WCAG-EM) 2.0",
+        "url": "https://www.w3.org/TR/wcag-em-2/",
+        "scope": "Evaluation scope, representative sample, evaluation and reporting; W3C Group Note, informative methodology rather than a conformance standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Service Designer",
+        "domain": "Design and User Experience",
+        "domain_index": 14,
+        "method_focus": "Trace user research and accessibility requirements to findings, design choices and observed usability/accessibility evaluation.",
         "frameworks": [
           "ISO 9241-210",
           "service design practice",
           "UK GDS service standard as a reference model"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -810,6 +878,17 @@
     "source_fingerprint": "9947fbb54f6251aa7e8371d75c61c816935bef6f844751663f318a1aa9da2477",
     "source_hash": "c921bf1a084c6ec3c865ed5d50baeacedbafed2599898a914ddc048bd0c0865c"
   },
+  "delivery_form": {
+    "primary_artifact": "service-definition",
+    "representation": "Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
+    "evidence": [
+      "indicator/target/window definitions",
+      "support, dependency and recovery arrangements"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "97cbc411d2f83768a6c54a25ad474d8594f389c84950850d8b7124de63e11471",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

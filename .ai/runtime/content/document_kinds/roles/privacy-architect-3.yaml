@@ -62,7 +62,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -101,7 +104,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -140,7 +146,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -179,7 +188,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -199,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Privacy engineering patterns and reference controls', provide verifiable evidence satisfying: Patterns state applicability, constraints, verification and known trade-offs. Required delivery form: Versioned pattern catalogue.",
+        "For the specific output 'Privacy engineering patterns and reference controls', provide verifiable evidence satisfying: Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Patterns state applicability, constraints, verification and known trade-offs. Required delivery form: Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Privacy engineering patterns and reference controls', provide verifiable evidence satisfying: Patterns state applicability, constraints, verification and known trade-offs. Required delivery form: Versioned pattern catalogue.",
+        "reason": "For the specific output 'Privacy engineering patterns and reference controls', provide verifiable evidence satisfying: Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Patterns state applicability, constraints, verification and known trade-offs. Required delivery form: Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -228,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Privacy engineering patterns and reference controls",
-        "format": "Versioned pattern catalogue",
-        "acceptance_criterion": "Patterns state applicability, constraints, verification and known trade-offs.",
+        "format": "Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
+        "acceptance_criterion": "Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Patterns state applicability, constraints, verification and known trade-offs.",
         "role_path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/privacy-architect.md"
       }
     },
@@ -268,7 +283,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -314,7 +332,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -358,7 +379,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -402,7 +426,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -446,7 +473,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -492,7 +522,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -536,7 +569,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -582,7 +618,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://doi.org/10.6028/NIST.SP.800-30r1"
         ]
       },
       "provenance": {
@@ -705,16 +744,45 @@
         "scope": "Dataset/catalogue identity, distributions, provenance, access and descriptive metadata.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "risk-assessment",
+        "title": "NIST SP 800-30 Revision 1, Guide for Conducting Risk Assessments",
+        "url": "https://doi.org/10.6028/NIST.SP.800-30r1",
+        "scope": "Assessment scope, threat events, vulnerabilities, likelihood, impact and uncertainty.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Privacy Architect",
+        "domain": "Governance, Risk, Compliance, Audit and Privacy",
+        "domain_index": 13,
+        "method_focus": "Separate binding obligation, interpretation, control, evidence, independent test and bounded assurance/risk conclusion.",
         "frameworks": [
           "GDPR and applicable privacy law",
           "ISO/IEC 27701",
           "NIST Privacy Framework"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -785,6 +853,17 @@
     "source_fingerprint": "64739d3bbd794aff83bf03693617a7a1a671e8b22be7d3309a4d8323d31989c4",
     "source_hash": "770516fa82553b13a8f60cfffff1343b7a85b3860b3bbbf7dd2976b0c20dc0e6"
   },
+  "delivery_form": {
+    "primary_artifact": "governed-catalogue",
+    "representation": "Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
+    "evidence": [
+      "source reconciliation and lifecycle state",
+      "duplicate/reference integrity checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "783b195a4e1856c3ddf27779b0db1962791d868c18a17346d46b5d55b6d05d9d",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

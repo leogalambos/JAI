@@ -62,7 +62,9 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Controlled client proposal and internal bid dossier",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#bid-proposal-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -100,7 +102,9 @@
         "reason": "For each receiving role (Bid / Proposal Manager; Supplier Commercial / Deal Manager; Delegated human commercial and finance authority), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#bid-proposal-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -138,7 +142,9 @@
         "reason": "Identify actual entity IDs and relationship instances for: business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence; material inputs -> source/version/assumption; client commitments -> protected internal commitment baseline; decision -> human approver where required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#bid-proposal-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -176,7 +182,9 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#bid-proposal-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -196,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Controlled client proposal and internal bid dossier', provide verifiable evidence satisfying: Offer is responsive and authorised; sensitive internal evidence is retained without being exposed. Required delivery form: Client offer plus separately protected cost, rationale, assumptions and review history.",
+        "For the specific output 'Controlled client proposal and internal bid dossier', provide verifiable evidence satisfying: State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Offer is responsive and authorised; sensitive internal evidence is retained without being exposed. Required delivery form: Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -211,10 +219,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Controlled client proposal and internal bid dossier', provide verifiable evidence satisfying: Offer is responsive and authorised; sensitive internal evidence is retained without being exposed. Required delivery form: Client offer plus separately protected cost, rationale, assumptions and review history.",
+        "reason": "For the specific output 'Controlled client proposal and internal bid dossier', provide verifiable evidence satisfying: State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Offer is responsive and authorised; sensitive internal evidence is retained without being exposed. Required delivery form: Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#bid-proposal-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -224,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Controlled client proposal and internal bid dossier",
-        "format": "Client offer plus separately protected cost, rationale, assumptions and review history",
-        "acceptance_criterion": "Offer is responsive and authorised; sensitive internal evidence is retained without being exposed.",
+        "format": "Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.",
+        "acceptance_criterion": "State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Offer is responsive and authorised; sensitive internal evidence is retained without being exposed.",
         "role_path": "skills/it-roles-commercial-sourcing-and-enablement/references/bid-proposal-manager.md"
       }
     },
@@ -265,7 +275,9 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#bid-proposal-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -312,7 +324,9 @@
         "reason": "Analyse the specific input \"Opportunity brief, client outcomes and qualification criteria\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#bid-proposal-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -355,7 +369,9 @@
         "reason": "Analyse the specific input \"RFI/RFP/ITT, amendments, procurement rules, deadlines and evaluation criteria\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#bid-proposal-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -398,7 +414,9 @@
         "reason": "Analyse the specific input \"Solution, delivery and service assumptions with dependencies\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#bid-proposal-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -441,7 +459,9 @@
         "reason": "Analyse the specific input \"Basis of estimate, pricing recommendation and contractual departures\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#bid-proposal-manager:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -486,7 +506,9 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -529,7 +551,9 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -574,7 +598,9 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -697,15 +723,36 @@
         "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
         "basis": "jai-practice",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "business-appraisal",
+        "title": "HM Treasury, The Green Book",
+        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Bid / Proposal Manager",
+        "domain": "Commercial, Sourcing and Enablement",
+        "domain_index": 15,
+        "method_focus": "Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.",
         "frameworks": [
           "APMP Body of Knowledge and APMP professional practices: bid qualification, proposal development, compliance and review. Consult the current licensed/public materials; no APMP certification is implied.",
           "Client procurement procedure and applicable procurement/competition law are authoritative; legal interpretation belongs to qualified counsel."
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -776,6 +823,17 @@
     "source_fingerprint": "913c0c41273b36fa66dd0ed040aca54628ca45d3175327d052d393040dedb74c",
     "source_hash": "070c0338fdc44f15d25a5c2808cd431219bde3fb9584c4d42b5bb5cb7aa4fa9e"
   },
+  "delivery_form": {
+    "primary_artifact": "professional-document",
+    "representation": "Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions.",
+    "evidence": [
+      "attributable subject-specific findings and limitations",
+      "reviewable sources and verifiable follow-up actions"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "81cf9efc4e10e7f71f3521dee0eac534cc4ca098bd9becb2dab5b1947ca14098",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

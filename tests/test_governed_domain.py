@@ -236,16 +236,25 @@ def _append_finding(host, subject, body_factory, logical_id):
 
 
 def _receiving(host, subject, model, qa):
+    from test_content_workflow import _selected_handoff_fixture
     catalog = content_workflow.load_bindings(ROOT)
     row = next(item for item in catalog['bindings'] if item['handoff_id'] == 'semantic-to-enterprise-publication:1')
+    selected = _selected_handoff_fixture(row, model)
+    context = next(item['payload'] for item in model['evidence'] if item['id'] == 'SYN-CONTEXT')
     def body(token,manifest):
         return {'attestation': token, 'context_manifest': manifest,
             'handoff_id': row['handoff_id'], 'semantic_hash': domain._digest(model),
             'report_hash': qa['report_hash'], 'catalog_hash': catalog['catalog_hash'],
-            'criterion': row['acceptance_criterion'], 'receiving_role': row['receiving_role'],
+            'criterion': selected['acceptance_criterion'], 'receiving_role': selected['receiving_role'],
+            'path_id': context['selected_path'],
+            'handoff_content_hash': content_spec.canonical_hash(selected['handoff_content_contract']),
+            'unit_reviews': [{'unit_id': unit['id'], 'verdict': 'PASS',
+                'rationale': 'Controlled fixture review of the exact selected boundary and intake reference.',
+                'evidence': 'Actual native-captured synthetic semantic source; no professional or human approval claimed.'}
+                for unit in selected['handoff_content_contract']['units']],
             'verdict': 'PASS', 'evidence': 'Controlled actual receiving body binds this exact source and prior QA report.'}
     acceptance, principal, old_finding, _ = _append_finding(host,subject,body,'actual-receiving-body')
-    return acceptance, {principal: [row['receiving_role']]}, old_finding
+    return acceptance, {principal: [selected['receiving_role']]}, old_finding
 
 
 def test_exact_native_material_and_selected_review_identity_reject_foreign_tokens(tmp_path, monkeypatch):
@@ -308,8 +317,14 @@ def test_exact_native_material_and_selected_review_identity_reject_foreign_token
 def test_current_publication_changes_do_not_inherit_permissions_or_mutate_history(tmp_path, monkeypatch):
     host = _fixture(tmp_path, monkeypatch)
     from test_content_publication import fixture
+    from test_content_workflow import _handoff_content_fixture
     source, profile, out = fixture(tmp_path)
     original = json.loads(source.read_text())
+    row = next(item for item in content_workflow.load_bindings(ROOT)['bindings']
+               if item['handoff_id'] == 'semantic-to-enterprise-publication:1')
+    # Admit the complete selected source before native capture. Adding a handoff
+    # after qualification would invalidate the exact-material identity being tested.
+    original = _handoff_content_fixture(row, copy.deepcopy(original), path_id='draft')
     def semantic(_, token, manifest):
         return dict(original, producer={'attestation': token, 'context_manifest': manifest})
     subject, token, model, _, review = _qualified(host, model_factory=semantic)

@@ -63,7 +63,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -102,7 +103,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -141,7 +143,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -180,7 +183,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -200,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Application portfolio model', provide verifiable evidence satisfying: The portfolio is complete enough for decision use, references authoritative sources and preserves stable application identities. Required delivery form: Canonical EA/portfolio model with ownership, capabilities, lifecycle, dependencies, cost/risk and strategic classification.",
+        "For the specific output 'Application portfolio model', provide verifiable evidence satisfying: Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: The portfolio is complete enough for decision use, references authoritative sources and preserves stable application identities. Required delivery form: Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +219,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Application portfolio model', provide verifiable evidence satisfying: The portfolio is complete enough for decision use, references authoritative sources and preserves stable application identities. Required delivery form: Canonical EA/portfolio model with ownership, capabilities, lifecycle, dependencies, cost/risk and strategic classification.",
+        "reason": "For the specific output 'Application portfolio model', provide verifiable evidence satisfying: Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: The portfolio is complete enough for decision use, references authoritative sources and preserves stable application identities. Required delivery form: Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -229,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Application portfolio model",
-        "format": "Canonical EA/portfolio model with ownership, capabilities, lifecycle, dependencies, cost/risk and strategic classification",
-        "acceptance_criterion": "The portfolio is complete enough for decision use, references authoritative sources and preserves stable application identities.",
+        "format": "Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
+        "acceptance_criterion": "Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: The portfolio is complete enough for decision use, references authoritative sources and preserves stable application identities.",
         "role_path": "skills/it-roles-architecture/references/application-portfolio-manager.md"
       }
     },
@@ -270,7 +275,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -317,7 +323,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -361,7 +368,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -405,7 +413,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -449,7 +458,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -493,7 +503,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#application-portfolio-manager:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -539,7 +550,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -583,7 +595,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -629,7 +642,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -752,17 +766,30 @@
         "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Application Portfolio Manager",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "TOGAF portfolio/capability concepts",
           "ArchiMate 3.2",
           "Technology Business Management taxonomy where used",
           "TIME-style application rationalisation as an organisational profile, not an external authority"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -833,6 +860,17 @@
     "source_fingerprint": "9c3d933506903b5091c8e5009d7cb9e7cf0ffcae8e1465edece3731c7f115666",
     "source_hash": "26c4069e8ba4456226f878974d34aac231d9e91e8d859f862f9624fb8103a340"
   },
+  "delivery_form": {
+    "primary_artifact": "typed-semantic-model",
+    "representation": "Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
+    "evidence": [
+      "metamodel/reference/cross-view checks",
+      "source baseline and unresolved semantic gaps"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "edddfd8ebc6f915080e75a6e81771c8e94c631225b6eaf559935030e2b5f95ef",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

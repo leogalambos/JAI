@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#high-performance-computing-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#high-performance-computing-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#high-performance-computing-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#high-performance-computing-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Cluster configuration and scheduler policy', provide verifiable evidence satisfying: Every statement is testable and maps to at least one control. Required delivery form: Controlled document with owner, effective date and review date.",
+        "For the specific output 'Cluster configuration and scheduler policy', provide verifiable evidence satisfying: Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Existing source requirement: Every statement is testable and maps to at least one control. Required delivery form: Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Cluster configuration and scheduler policy', provide verifiable evidence satisfying: Every statement is testable and maps to at least one control. Required delivery form: Controlled document with owner, effective date and review date.",
+        "reason": "For the specific output 'Cluster configuration and scheduler policy', provide verifiable evidence satisfying: Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Existing source requirement: Every statement is testable and maps to at least one control. Required delivery form: Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#high-performance-computing-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Cluster configuration and scheduler policy",
-        "format": "Controlled document with owner, effective date and review date",
-        "acceptance_criterion": "Every statement is testable and maps to at least one control",
+        "format": "Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
+        "acceptance_criterion": "Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. Existing source requirement: Every statement is testable and maps to at least one control.",
         "role_path": "skills/it-roles-research-innovation-and-specialist-engineering/references/high-performance-computing-engineer.md"
       }
     },
@@ -270,7 +280,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#high-performance-computing-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -318,7 +330,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#high-performance-computing-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -362,7 +376,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#high-performance-computing-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -406,7 +422,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#high-performance-computing-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -450,7 +468,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#high-performance-computing-engineer:1",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -496,7 +516,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -540,7 +562,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -586,7 +610,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -709,16 +735,37 @@
         "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "research-reproducibility",
+        "title": "ACM Artifact Review and Badging policy",
+        "url": "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+        "scope": "Artifact availability, evaluation and reproducibility terminology; informative evidence-pack practice, not proof that an experiment is scientifically sufficient.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "High Performance Computing Engineer",
+        "domain": "Research, Innovation and Specialist Engineering",
+        "domain_index": 16,
+        "method_focus": "State hypotheses, success criteria and measurement methods before experiments; distinguish observed results, uncertainty and applicability limits.",
         "frameworks": [
           "HPC scheduling and MPI practice",
           "vendor performance tuning guides",
           "benchmarking standards"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -791,6 +838,17 @@
     "source_fingerprint": "aa84a6bb8ec264a9bec6ac631c1722c7bf2bbca2a6000c29eac8a8138641f59d",
     "source_hash": "a39c6dc2640a581b47dfb2aedd568ba1631b2380b73ad0d27c959e0d368ae807"
   },
+  "delivery_form": {
+    "primary_artifact": "versioned-configuration",
+    "representation": "Typed desired-state configuration with exact targets, versioned values and controlled secret references.",
+    "evidence": [
+      "reproduction/drift observations",
+      "verification and recovery to a known baseline"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "b640395b3116f1f705a59096707515e6dcca9d3e0ab9eac0d82ea03296f59732",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

@@ -9,6 +9,50 @@ An investment has a proposed business case and needs measurable benefits governe
 Benefits are baselined, owned, measured after go-live and used for continue/correct/close decisions.
 
 
+<!-- BEGIN workflow-applicability -->
+## Context and mechanism applicability
+
+Use the actual bounded request, current environment and decision rights to select one applicable mechanism variant. Unknown applicability remains pending; the routing record grants no authority.
+
+**Invariant outcomes:**
+
+- Benefits are baselined, owned, measured after go-live and used for continue/correct/close decisions.
+- Retain source-version traceability, accountable receiving duties and every applicable existing gate.
+
+| Context | Mechanisms | Required evidence |
+| --- | --- | --- |
+| new-investment | Compare feasible options including the baseline before committing benefits | Reconciled costs, benefit owners and sensitivity |
+| continuation-review | Use actual observations and revise forecasts transparently | Preagreed method, variance, disbenefits and continued-investment decision |
+
+Return unsupported benefit assumptions or double-counted value to the financial/benefit owner. Stop an unsupported funding claim or commitment outside actual portfolio authority. Approve/defer/reject investment or close a benefits period with owned corrective actions and a review condition. Mechanism selection is not a waiver of security, legal or acceptance obligations.
+
+**Entry information (selected once per actual context version):**
+
+- Investment decision boundary and sponsor
+- Outcome baseline and measurement sources
+- Cost/benefit horizon and capacity assumptions
+
+Select intake and mechanism variant once per actual context version. Carry the reviewed record by versioned evidence reference. Reuse unchanged evidence; recheck mutable prerequisites only at the action they govern. A new context version requires its own relevant review, not reconstruction of historical work.
+
+**Continuation, rework, stop and exit:**
+
+- **continue** — The current handoff criteria and applicable prerequisites are satisfied. Continue to the registered receiving duty with exact output and evidence references.
+- **rework** — A current criterion fails or required information changes. Return unsupported benefit assumptions or double-counted value to the financial/benefit owner.
+- **stop** — An applicable authority, legal, safety or mandatory-control boundary forbids the effect. Stop an unsupported funding claim or commitment outside actual portfolio authority.
+- **exit** — The bounded outcome is accepted or the entitled owner rejects, cancels or defers the scope. Approve/defer/reject investment or close a benefits period with owned corrective actions and a review condition.
+
+**Bounded paths and scope:**
+
+Investment and continuation share evidenced options, baselines and accountability; future benefits stay forecasts until actually observed.
+
+| Selected path | Applicable stages | Terminal stage |
+| --- | --- | ---: |
+| new-investment | 1, 2, 3, 4, 5, 6, 7 | 7 |
+| continuation-review | 1, 2, 3, 4, 5, 6, 7 | 7 |
+
+A path with a separate mechanism requires that explicit mechanism selection in the versioned intake record. Unknown selection remains pending. Later out-of-scope stages cannot claim acceptance; a terminal exit still needs the registered exact-scope authority.
+<!-- END workflow-applicability -->
+
 <!-- JAI:WORKFLOW-DIAGRAM:START -->
 <div class="ai-workflow-overview">
 <ol class="ai-workflow-steps" role="list" aria-label="Business case to realised benefits workflow steps">

@@ -204,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'pricing and packaging position', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'pricing and packaging position', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,7 +219,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'pricing and packaging position', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'pricing and packaging position', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#chief-product-officer:3",
           "content/types/decision-paper.yaml",
@@ -234,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "pricing and packaging position",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Bounded decision paper with consistent option comparison and a clear authority/decision request.",
+        "acceptance_criterion": "Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option.",
         "role_path": "skills/it-roles-executive-and-leadership/references/chief-product-officer.md"
       }
     },
@@ -732,11 +732,16 @@
     "role_framework_context": [
       {
         "role": "Chief Product Officer",
+        "domain": "Executive and Leadership",
+        "domain_index": 1,
+        "method_focus": "Connect strategic choices, investment options, measurable outcomes, risk appetite and accountable decisions.",
         "frameworks": [
           "Product portfolio management practice",
           "Jobs-to-be-Done",
           "SAFe portfolio guidance where used"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -807,6 +812,17 @@
     "source_fingerprint": "cfbd57eef95cf9bba85ec33f46c4c6b7fe18462733bc59673357b0fcdf216edc",
     "source_hash": "02058c1eecca83d03cc42819bbaecb045021936a4c62c85bd8e09c1787b30535"
   },
+  "delivery_form": {
+    "primary_artifact": "decision-paper",
+    "representation": "Bounded decision paper with consistent option comparison and a clear authority/decision request.",
+    "evidence": [
+      "baseline and feasible alternatives",
+      "cost/benefit/uncertainty and consequences"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "a56a595de0c62674c42579f4b82ac18f6e486893115f28c6c6a9a08b3a63e70c",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

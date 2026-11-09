@@ -1,11 +1,11 @@
 {
   "collection": "jai-expert-reference-documents",
   "intended_baseline": "JAI 26.10.8 and subsequent releases",
-  "version": "2.3.0",
+  "version": "2.4.0",
   "status": "ai-authored-proposed",
   "created_on": "2026-10-20",
   "language": "en",
-  "reference_count": 135,
+  "reference_count": 189,
   "existing_families": [
     "decision-paper",
     "adr",
@@ -53,7 +53,25 @@
     "devsecops-pipeline-design",
     "cicd-pipeline-assurance",
     "appsec-verification-report",
-    "software-supply-chain-assessment"
+    "software-supply-chain-assessment",
+    "software-change",
+    "automated-tests",
+    "catalogue",
+    "configuration-baseline",
+    "control-design",
+    "cutover-plan",
+    "dashboard",
+    "dataset",
+    "deployment-automation",
+    "diagram",
+    "document",
+    "migration-plan",
+    "model",
+    "presentation",
+    "prototype",
+    "register",
+    "release-notes",
+    "analysis-report"
   ],
   "families": [
     "decision-paper",
@@ -100,7 +118,25 @@
     "devsecops-pipeline-design",
     "cicd-pipeline-assurance",
     "appsec-verification-report",
-    "software-supply-chain-assessment"
+    "software-supply-chain-assessment",
+    "analysis-report",
+    "software-change",
+    "automated-tests",
+    "catalogue",
+    "configuration-baseline",
+    "control-design",
+    "cutover-plan",
+    "dashboard",
+    "dataset",
+    "deployment-automation",
+    "diagram",
+    "document",
+    "migration-plan",
+    "model",
+    "presentation",
+    "prototype",
+    "register",
+    "release-notes"
   ],
   "levels": [
     "simple",
@@ -3254,6 +3290,1032 @@
       ],
       "review_version": "2.3.0",
       "review_status": "tri-lens-ai-review-applied-not-human-approved"
+    },
+    {
+      "reference_id": "example:analysis-report:simple",
+      "document_kind": "analysis-report",
+      "complexity": "simple",
+      "path": "analysis-report/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "804e4ee904e7f3f0006f6ebef29f48b48f95f81622a995ea0468bdccc0827473",
+      "bytes": 4563,
+      "anchor_ids": [
+        "proposed-analysis-report.reference_analysis_question",
+        "proposed-analysis-report.reference_analysis_observations",
+        "proposed-analysis-report.reference_analysis_disposition"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:analysis-report:medium",
+      "document_kind": "analysis-report",
+      "complexity": "medium",
+      "path": "analysis-report/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "caac149cae26f906d8d7b43991ee21c501f98f5eac17dd542009cec56977af2f",
+      "bytes": 4647,
+      "anchor_ids": [
+        "proposed-analysis-report.reference_analysis_question",
+        "proposed-analysis-report.reference_analysis_observations",
+        "proposed-analysis-report.reference_analysis_disposition"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:analysis-report:complex",
+      "document_kind": "analysis-report",
+      "complexity": "complex",
+      "path": "analysis-report/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "0189931f0be45c059f6b98224cbb371575d39a1c6bf266c092ed073c0942fdfe",
+      "bytes": 4799,
+      "anchor_ids": [
+        "proposed-analysis-report.reference_analysis_question",
+        "proposed-analysis-report.reference_analysis_observations",
+        "proposed-analysis-report.reference_analysis_disposition"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:software-change:simple",
+      "document_kind": "software-change",
+      "complexity": "simple",
+      "path": "software-change/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "c376bc3cf1d87e45decd3e764b1dc6e9c0e99e9d2f08274ba33355c5e42fde39",
+      "bytes": 4527,
+      "anchor_ids": [
+        "proposed-software-change.reference_change_baseline",
+        "proposed-software-change.reference_change_verification",
+        "proposed-software-change.reference_change_recovery"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:software-change:medium",
+      "document_kind": "software-change",
+      "complexity": "medium",
+      "path": "software-change/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "a9dd9d0728a239552f4208557d57f158b9cf2267c1bfde10f3bd4e52557de7bb",
+      "bytes": 4611,
+      "anchor_ids": [
+        "proposed-software-change.reference_change_baseline",
+        "proposed-software-change.reference_change_verification",
+        "proposed-software-change.reference_change_recovery"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:software-change:complex",
+      "document_kind": "software-change",
+      "complexity": "complex",
+      "path": "software-change/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "6d9520759deb3f196e74b6cfa81ba43e424ee5f9b6ae2c268f3e726cabfe3f46",
+      "bytes": 4763,
+      "anchor_ids": [
+        "proposed-software-change.reference_change_baseline",
+        "proposed-software-change.reference_change_verification",
+        "proposed-software-change.reference_change_recovery"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:automated-tests:simple",
+      "document_kind": "automated-tests",
+      "complexity": "simple",
+      "path": "automated-tests/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "f6da2f9571925c10754e068d5bd401e43999f2c9523e9f40b4cf88c8a58ecb47",
+      "bytes": 4389,
+      "anchor_ids": [
+        "proposed-automated-tests.reference_test_oracles",
+        "proposed-automated-tests.reference_test_execution",
+        "proposed-automated-tests.reference_test_coverage_limits"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:automated-tests:medium",
+      "document_kind": "automated-tests",
+      "complexity": "medium",
+      "path": "automated-tests/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "24aceb7f5b44f7a00d2e94e73826293deb7eb7973ef0c9f7c7ee0bde72c435c2",
+      "bytes": 4473,
+      "anchor_ids": [
+        "proposed-automated-tests.reference_test_oracles",
+        "proposed-automated-tests.reference_test_execution",
+        "proposed-automated-tests.reference_test_coverage_limits"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:automated-tests:complex",
+      "document_kind": "automated-tests",
+      "complexity": "complex",
+      "path": "automated-tests/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "9c7c4408722c6346b20ea7964d64683fa8abe88d29ccf21ca975830f9a483749",
+      "bytes": 4625,
+      "anchor_ids": [
+        "proposed-automated-tests.reference_test_oracles",
+        "proposed-automated-tests.reference_test_execution",
+        "proposed-automated-tests.reference_test_coverage_limits"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:catalogue:simple",
+      "document_kind": "catalogue",
+      "complexity": "simple",
+      "path": "catalogue/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "d648acd813ca4209b0063e400ca038deb05cd2844ee48fcd68b70eb23970c4c6",
+      "bytes": 4340,
+      "anchor_ids": [
+        "proposed-catalogue.reference_catalogue_identity",
+        "proposed-catalogue.reference_catalogue_relations",
+        "proposed-catalogue.reference_catalogue_reconciliation"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:catalogue:medium",
+      "document_kind": "catalogue",
+      "complexity": "medium",
+      "path": "catalogue/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "b5032a1601a478f14adf96874bdf9d685fb17e45644d5ae4a0a304c29fe39731",
+      "bytes": 4424,
+      "anchor_ids": [
+        "proposed-catalogue.reference_catalogue_identity",
+        "proposed-catalogue.reference_catalogue_relations",
+        "proposed-catalogue.reference_catalogue_reconciliation"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:catalogue:complex",
+      "document_kind": "catalogue",
+      "complexity": "complex",
+      "path": "catalogue/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "6bb45180c548570ce7c31eaf35d4b4f9764b76979d1a19337a77c165715cda95",
+      "bytes": 4576,
+      "anchor_ids": [
+        "proposed-catalogue.reference_catalogue_identity",
+        "proposed-catalogue.reference_catalogue_relations",
+        "proposed-catalogue.reference_catalogue_reconciliation"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:configuration-baseline:simple",
+      "document_kind": "configuration-baseline",
+      "complexity": "simple",
+      "path": "configuration-baseline/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "1551e99a82837b315ddeb5b4c8f9e25539d07f418c6e0cc16a0e4cf486d117f0",
+      "bytes": 4378,
+      "anchor_ids": [
+        "proposed-configuration-baseline.reference_baseline_contract",
+        "proposed-configuration-baseline.reference_baseline_observations",
+        "proposed-configuration-baseline.reference_baseline_change_recovery"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:configuration-baseline:medium",
+      "document_kind": "configuration-baseline",
+      "complexity": "medium",
+      "path": "configuration-baseline/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "038152d9d549e43d102690a60e8dc171e4c64c2ac87c99c664576cb956768ae5",
+      "bytes": 4462,
+      "anchor_ids": [
+        "proposed-configuration-baseline.reference_baseline_contract",
+        "proposed-configuration-baseline.reference_baseline_observations",
+        "proposed-configuration-baseline.reference_baseline_change_recovery"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:configuration-baseline:complex",
+      "document_kind": "configuration-baseline",
+      "complexity": "complex",
+      "path": "configuration-baseline/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "c07234ebee484513fd0768eef7ffd686df4c9e5cd9de4d9e00e5503cdd769945",
+      "bytes": 4614,
+      "anchor_ids": [
+        "proposed-configuration-baseline.reference_baseline_contract",
+        "proposed-configuration-baseline.reference_baseline_observations",
+        "proposed-configuration-baseline.reference_baseline_change_recovery"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:control-design:simple",
+      "document_kind": "control-design",
+      "complexity": "simple",
+      "path": "control-design/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "58530a954767d121b3e69a71fc7e9e54d09b455037bec3f9883a8a47960efc61",
+      "bytes": 4314,
+      "anchor_ids": [
+        "proposed-control-design.reference_control_objective",
+        "proposed-control-design.reference_control_mechanics",
+        "proposed-control-design.reference_control_effectiveness_test"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:control-design:medium",
+      "document_kind": "control-design",
+      "complexity": "medium",
+      "path": "control-design/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "4e83f8ba72c51d2702c8f246c0a3b3b50885c29e85a829ae9ede644e1e3833e2",
+      "bytes": 4398,
+      "anchor_ids": [
+        "proposed-control-design.reference_control_objective",
+        "proposed-control-design.reference_control_mechanics",
+        "proposed-control-design.reference_control_effectiveness_test"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:control-design:complex",
+      "document_kind": "control-design",
+      "complexity": "complex",
+      "path": "control-design/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "2fc96677d0d3bc38a719aa4a0a5a599b42e15e03e91b2c7a1d387b3fa4b91a61",
+      "bytes": 4550,
+      "anchor_ids": [
+        "proposed-control-design.reference_control_objective",
+        "proposed-control-design.reference_control_mechanics",
+        "proposed-control-design.reference_control_effectiveness_test"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:cutover-plan:simple",
+      "document_kind": "cutover-plan",
+      "complexity": "simple",
+      "path": "cutover-plan/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "3f9dbe3414123294e058e6c50645bf838b16c743ad2e27cc2fa292941f357c0b",
+      "bytes": 4261,
+      "anchor_ids": [
+        "proposed-cutover-plan.reference_cutover_clock",
+        "proposed-cutover-plan.reference_cutover_oracles",
+        "proposed-cutover-plan.reference_cutover_recovery"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:cutover-plan:medium",
+      "document_kind": "cutover-plan",
+      "complexity": "medium",
+      "path": "cutover-plan/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "1aeccd950bf467905fc48c0e69c67b24614910c032be4e69b2f66d7c54fe42fc",
+      "bytes": 4345,
+      "anchor_ids": [
+        "proposed-cutover-plan.reference_cutover_clock",
+        "proposed-cutover-plan.reference_cutover_oracles",
+        "proposed-cutover-plan.reference_cutover_recovery"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:cutover-plan:complex",
+      "document_kind": "cutover-plan",
+      "complexity": "complex",
+      "path": "cutover-plan/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "a4fe69d97925faa85b36310fb26d065d0885bfe16c2ae50f0e53a6a215fc6c14",
+      "bytes": 4497,
+      "anchor_ids": [
+        "proposed-cutover-plan.reference_cutover_clock",
+        "proposed-cutover-plan.reference_cutover_oracles",
+        "proposed-cutover-plan.reference_cutover_recovery"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:dashboard:simple",
+      "document_kind": "dashboard",
+      "complexity": "simple",
+      "path": "dashboard/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "63eb9b8329caa3458101c5b0ff5257fccc4b9420e7a65b90f5c93f00627bc7a1",
+      "bytes": 4289,
+      "anchor_ids": [
+        "proposed-dashboard.reference_measure_definition",
+        "proposed-dashboard.reference_measurement_lineage",
+        "proposed-dashboard.reference_decision_thresholds"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:dashboard:medium",
+      "document_kind": "dashboard",
+      "complexity": "medium",
+      "path": "dashboard/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "d24f965ace526d38c67d97a79197a08433969cd4accf60e585624a46ff349ef5",
+      "bytes": 4373,
+      "anchor_ids": [
+        "proposed-dashboard.reference_measure_definition",
+        "proposed-dashboard.reference_measurement_lineage",
+        "proposed-dashboard.reference_decision_thresholds"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:dashboard:complex",
+      "document_kind": "dashboard",
+      "complexity": "complex",
+      "path": "dashboard/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "380c4b31cc6a69683a87b3aabc2692ec30ec83c157c0bca0a1e65c628df5d067",
+      "bytes": 4525,
+      "anchor_ids": [
+        "proposed-dashboard.reference_measure_definition",
+        "proposed-dashboard.reference_measurement_lineage",
+        "proposed-dashboard.reference_decision_thresholds"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:dataset:simple",
+      "document_kind": "dataset",
+      "complexity": "simple",
+      "path": "dataset/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "6e619ad990029e676a6b6265bc12a72a9ddf7454dcfda002fff1bc28747c20c3",
+      "bytes": 4296,
+      "anchor_ids": [
+        "proposed-dataset.reference_dataset_contract",
+        "proposed-dataset.reference_dataset_lineage",
+        "proposed-dataset.reference_dataset_quality"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:dataset:medium",
+      "document_kind": "dataset",
+      "complexity": "medium",
+      "path": "dataset/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "64dfdcdabaf529f0a5ee752ace9e2848f349395ff84963f47e0c4dc05b4e36fb",
+      "bytes": 4380,
+      "anchor_ids": [
+        "proposed-dataset.reference_dataset_contract",
+        "proposed-dataset.reference_dataset_lineage",
+        "proposed-dataset.reference_dataset_quality"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:dataset:complex",
+      "document_kind": "dataset",
+      "complexity": "complex",
+      "path": "dataset/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "7b23f07030b89a5ed3bb7d540935bade0304c7d42c756d93b3c2fb26e9bd174b",
+      "bytes": 4532,
+      "anchor_ids": [
+        "proposed-dataset.reference_dataset_contract",
+        "proposed-dataset.reference_dataset_lineage",
+        "proposed-dataset.reference_dataset_quality"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:deployment-automation:simple",
+      "document_kind": "deployment-automation",
+      "complexity": "simple",
+      "path": "deployment-automation/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "1335f3cd5f0f83cd8c17ccb323cffc5afda65bacb7e6148452c955498258913a",
+      "bytes": 4361,
+      "anchor_ids": [
+        "proposed-deployment-automation.reference_automation_inputs",
+        "proposed-deployment-automation.reference_automation_transitions",
+        "proposed-deployment-automation.reference_automation_recovery"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:deployment-automation:medium",
+      "document_kind": "deployment-automation",
+      "complexity": "medium",
+      "path": "deployment-automation/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "b1f6e6e3196f114689844ed30a988162ed1d575418cd363511b8a8e3e1f9c01a",
+      "bytes": 4445,
+      "anchor_ids": [
+        "proposed-deployment-automation.reference_automation_inputs",
+        "proposed-deployment-automation.reference_automation_transitions",
+        "proposed-deployment-automation.reference_automation_recovery"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:deployment-automation:complex",
+      "document_kind": "deployment-automation",
+      "complexity": "complex",
+      "path": "deployment-automation/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "7ce37a45f7c73a30ba5506508ccd5a863eda767f7e7b5c0c0b1669eae8d9937b",
+      "bytes": 4597,
+      "anchor_ids": [
+        "proposed-deployment-automation.reference_automation_inputs",
+        "proposed-deployment-automation.reference_automation_transitions",
+        "proposed-deployment-automation.reference_automation_recovery"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:diagram:simple",
+      "document_kind": "diagram",
+      "complexity": "simple",
+      "path": "diagram/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "746ddbcfb2e61fb688c2cb391c1dfd51edd0f6d96979dfabc6cf7eb443501bdc",
+      "bytes": 4311,
+      "anchor_ids": [
+        "proposed-diagram.reference_diagram_question",
+        "proposed-diagram.reference_diagram_source",
+        "proposed-diagram.reference_diagram_review"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:diagram:medium",
+      "document_kind": "diagram",
+      "complexity": "medium",
+      "path": "diagram/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "5902e2939966f0c57d2da6790f3cb2d530818d87c232722c93867bad791d0ebf",
+      "bytes": 4395,
+      "anchor_ids": [
+        "proposed-diagram.reference_diagram_question",
+        "proposed-diagram.reference_diagram_source",
+        "proposed-diagram.reference_diagram_review"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:diagram:complex",
+      "document_kind": "diagram",
+      "complexity": "complex",
+      "path": "diagram/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "dfca4e568d6f9c4be0c0ea6c5876f6e9c54df235cf937185790aaa0558b13baf",
+      "bytes": 4547,
+      "anchor_ids": [
+        "proposed-diagram.reference_diagram_question",
+        "proposed-diagram.reference_diagram_source",
+        "proposed-diagram.reference_diagram_review"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:document:simple",
+      "document_kind": "document",
+      "complexity": "simple",
+      "path": "document/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "67dfebcdbcee7cb2db3d6fdaa277e37a17f7910aec3b85fb2d3472db2c21e172",
+      "bytes": 4250,
+      "anchor_ids": [
+        "proposed-document.reference_document_question",
+        "proposed-document.reference_document_reasoning",
+        "proposed-document.reference_document_action"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:document:medium",
+      "document_kind": "document",
+      "complexity": "medium",
+      "path": "document/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "10354570b370c0b50187228d2a3c028c7d83f3010f9b2abdf6aef811fcc8bbca",
+      "bytes": 4334,
+      "anchor_ids": [
+        "proposed-document.reference_document_question",
+        "proposed-document.reference_document_reasoning",
+        "proposed-document.reference_document_action"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:document:complex",
+      "document_kind": "document",
+      "complexity": "complex",
+      "path": "document/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "d13224ff520e18799cb4008a291697ea9d1d3e4fef94b69dac6f960915c76e83",
+      "bytes": 4486,
+      "anchor_ids": [
+        "proposed-document.reference_document_question",
+        "proposed-document.reference_document_reasoning",
+        "proposed-document.reference_document_action"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:migration-plan:simple",
+      "document_kind": "migration-plan",
+      "complexity": "simple",
+      "path": "migration-plan/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "c266c1b7d49b2bccb2ab501e4ca8719b48603981a7ee80912365ef7a8124ef7f",
+      "bytes": 4294,
+      "anchor_ids": [
+        "proposed-migration-plan.reference_migration_mapping",
+        "proposed-migration-plan.reference_migration_reconciliation",
+        "proposed-migration-plan.reference_migration_acceptance"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:migration-plan:medium",
+      "document_kind": "migration-plan",
+      "complexity": "medium",
+      "path": "migration-plan/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "91440477712fb4bd666b8478138381d846c9d1d483b5adf9e42c5ea1c6e6a5be",
+      "bytes": 4378,
+      "anchor_ids": [
+        "proposed-migration-plan.reference_migration_mapping",
+        "proposed-migration-plan.reference_migration_reconciliation",
+        "proposed-migration-plan.reference_migration_acceptance"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:migration-plan:complex",
+      "document_kind": "migration-plan",
+      "complexity": "complex",
+      "path": "migration-plan/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "1cb98c4ebc5d376b8640705a079ebe30a42a863df7f94fc01f6d218f30cc05fe",
+      "bytes": 4530,
+      "anchor_ids": [
+        "proposed-migration-plan.reference_migration_mapping",
+        "proposed-migration-plan.reference_migration_reconciliation",
+        "proposed-migration-plan.reference_migration_acceptance"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:model:simple",
+      "document_kind": "model",
+      "complexity": "simple",
+      "path": "model/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "3c5a4ab3bed93511131d3de36e36cc6bc58fadf6501d965c6b5701fd77ab64a6",
+      "bytes": 4233,
+      "anchor_ids": [
+        "proposed-model.reference_model_boundary",
+        "proposed-model.reference_model_facts",
+        "proposed-model.reference_model_consistency"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:model:medium",
+      "document_kind": "model",
+      "complexity": "medium",
+      "path": "model/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "d7f44dfa8e915e6b0fff94dcc5170362d752ca7a568397e374ba1fc3e5240f28",
+      "bytes": 4317,
+      "anchor_ids": [
+        "proposed-model.reference_model_boundary",
+        "proposed-model.reference_model_facts",
+        "proposed-model.reference_model_consistency"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:model:complex",
+      "document_kind": "model",
+      "complexity": "complex",
+      "path": "model/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "2e21450ed9156ac106511d5377226055e8bdf2bb9891349e9cd855175f100ade",
+      "bytes": 4469,
+      "anchor_ids": [
+        "proposed-model.reference_model_boundary",
+        "proposed-model.reference_model_facts",
+        "proposed-model.reference_model_consistency"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:presentation:simple",
+      "document_kind": "presentation",
+      "complexity": "simple",
+      "path": "presentation/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "0e4f4223f3c6d9f718a18a327ce1823d55282181da0450ec8cd896a794eb0149",
+      "bytes": 4289,
+      "anchor_ids": [
+        "proposed-presentation.reference_presentation_ask",
+        "proposed-presentation.reference_presentation_argument",
+        "proposed-presentation.reference_presentation_accessibility"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:presentation:medium",
+      "document_kind": "presentation",
+      "complexity": "medium",
+      "path": "presentation/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "34f0529eb46a5bdb9ea044a850d1a4f83b08069aa57ca1e5552eb0fdfc87bc4a",
+      "bytes": 4373,
+      "anchor_ids": [
+        "proposed-presentation.reference_presentation_ask",
+        "proposed-presentation.reference_presentation_argument",
+        "proposed-presentation.reference_presentation_accessibility"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:presentation:complex",
+      "document_kind": "presentation",
+      "complexity": "complex",
+      "path": "presentation/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "4ae91e9886cf51a6a021a4a7d56f3f0f645a792ac0b4016f9ee0ed16067c376f",
+      "bytes": 4525,
+      "anchor_ids": [
+        "proposed-presentation.reference_presentation_ask",
+        "proposed-presentation.reference_presentation_argument",
+        "proposed-presentation.reference_presentation_accessibility"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:prototype:simple",
+      "document_kind": "prototype",
+      "complexity": "simple",
+      "path": "prototype/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "67aabf5192d9fe20e8ca969285a0d402d557d513a458968b83477d9d0c179ec8",
+      "bytes": 4360,
+      "anchor_ids": [
+        "proposed-prototype.reference_prototype_hypothesis",
+        "proposed-prototype.reference_prototype_reproduction",
+        "proposed-prototype.reference_prototype_disposition"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:prototype:medium",
+      "document_kind": "prototype",
+      "complexity": "medium",
+      "path": "prototype/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "f5426559e741b910aa72d468dac6de7f82e24029a7ac5c13b43929f3c8e29782",
+      "bytes": 4444,
+      "anchor_ids": [
+        "proposed-prototype.reference_prototype_hypothesis",
+        "proposed-prototype.reference_prototype_reproduction",
+        "proposed-prototype.reference_prototype_disposition"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:prototype:complex",
+      "document_kind": "prototype",
+      "complexity": "complex",
+      "path": "prototype/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "da793f530522dd961d1c7580f4819d9e6102057a32420852366bff3d2fe0c7c1",
+      "bytes": 4596,
+      "anchor_ids": [
+        "proposed-prototype.reference_prototype_hypothesis",
+        "proposed-prototype.reference_prototype_reproduction",
+        "proposed-prototype.reference_prototype_disposition"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:register:simple",
+      "document_kind": "register",
+      "complexity": "simple",
+      "path": "register/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "a65b993ad0c3367ea9c7c111bad950a5dbc979ffb283754351692f7514903f53",
+      "bytes": 4198,
+      "anchor_ids": [
+        "proposed-register.reference_register_schema",
+        "proposed-register.reference_register_records",
+        "proposed-register.reference_register_integrity"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:register:medium",
+      "document_kind": "register",
+      "complexity": "medium",
+      "path": "register/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "f89635bccdff37d633a1d629c807806eb8b16218065b985ebe76929a7534c170",
+      "bytes": 4282,
+      "anchor_ids": [
+        "proposed-register.reference_register_schema",
+        "proposed-register.reference_register_records",
+        "proposed-register.reference_register_integrity"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:register:complex",
+      "document_kind": "register",
+      "complexity": "complex",
+      "path": "register/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "0a40434d7c633880ab0db060f88ae789d98cd0b9a471ed3976aecea34619d0ca",
+      "bytes": 4434,
+      "anchor_ids": [
+        "proposed-register.reference_register_schema",
+        "proposed-register.reference_register_records",
+        "proposed-register.reference_register_integrity"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:release-notes:simple",
+      "document_kind": "release-notes",
+      "complexity": "simple",
+      "path": "release-notes/simple.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "3c1cab51abd047be9f0d5ad773ef3f2d121d4daf239cb0144b4fc0cd75fd3ade",
+      "bytes": 4268,
+      "anchor_ids": [
+        "proposed-release-notes.reference_release_identity",
+        "proposed-release-notes.reference_release_impacts",
+        "proposed-release-notes.reference_release_actions"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:release-notes:medium",
+      "document_kind": "release-notes",
+      "complexity": "medium",
+      "path": "release-notes/medium.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "96acca7519f4d860dbc09ab6d0c2117a7dac86f398c3b99c19bfebda5d362e2c",
+      "bytes": 4352,
+      "anchor_ids": [
+        "proposed-release-notes.reference_release_identity",
+        "proposed-release-notes.reference_release_impacts",
+        "proposed-release-notes.reference_release_actions"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
+    },
+    {
+      "reference_id": "example:release-notes:complex",
+      "document_kind": "release-notes",
+      "complexity": "complex",
+      "path": "release-notes/complex.md",
+      "language": "en",
+      "provenance": "ai-authored-proposed",
+      "approval_status": "not-human-approved",
+      "dcs_binding_status": "proposed-mapped",
+      "sha256": "b8cc8ed7366a52e4c67f8a025e415b282342ab5db521fabfd47cf3e4864540c7",
+      "bytes": 4504,
+      "anchor_ids": [
+        "proposed-release-notes.reference_release_identity",
+        "proposed-release-notes.reference_release_impacts",
+        "proposed-release-notes.reference_release_actions"
+      ],
+      "review_status": "independent-review-pending",
+      "review_version": "1.0.0"
     }
   ],
   "proposal_extension": {
@@ -3312,5 +4374,32 @@
     "human_approved": false
   },
   "license": "SPDX-License-Identifier: BSD-4-Clause",
-  "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team"
+  "copyright": "Copyright (c) 2026 Leo Galambos and the Egothor team",
+  "baseline_version": "2.3.0",
+  "coverage_extension": {
+    "families": [
+      "analysis-report",
+      "software-change",
+      "automated-tests",
+      "catalogue",
+      "configuration-baseline",
+      "control-design",
+      "cutover-plan",
+      "dashboard",
+      "dataset",
+      "deployment-automation",
+      "diagram",
+      "document",
+      "migration-plan",
+      "model",
+      "presentation",
+      "prototype",
+      "register",
+      "release-notes"
+    ],
+    "reference_count": 54,
+    "review_status": "independent-review-pending",
+    "human_approved": false,
+    "basis": "Concrete modality cases with reasoned counterexamples; not human-gold calibration."
+  }
 }

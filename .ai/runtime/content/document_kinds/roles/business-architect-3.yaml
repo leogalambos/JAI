@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/roadmap",
-    "domain/delivery"
+    "type/dashboard",
+    "domain/data"
   ],
   "applies_to": {
     "document_kind": "role/business-architect:3",
@@ -62,8 +62,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -102,8 +104,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -142,8 +146,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -182,8 +188,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -203,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'capability heat map against strategy', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'capability heat map against strategy', provide verifiable evidence satisfying: For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Required delivery form: Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'capability heat map against strategy', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'capability heat map against strategy', provide verifiable evidence satisfying: For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Required delivery form: Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -233,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "capability heat map against strategy",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
+        "acceptance_criterion": "For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations.",
         "role_path": "skills/it-roles-architecture/references/business-architect.md"
       }
     },
@@ -273,8 +283,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -320,8 +332,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -365,8 +379,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -410,8 +426,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -455,8 +473,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-architect:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -502,8 +522,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -547,8 +569,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -594,8 +618,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -690,7 +716,7 @@
     }
   ],
   "size_budget": {
-    "metric": "semantic_units",
+    "metric": "rows",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -712,18 +738,34 @@
     ],
     "professional_references": [
       {
-        "id": "it-governance",
-        "title": "COBIT governance and management framework",
-        "url": "https://www.isaca.org/resources/cobit",
-        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       },
       {
-        "id": "business-appraisal",
-        "title": "HM Treasury, The Green Book",
-        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "id": "data-quality",
+        "title": "W3C Data Quality Vocabulary",
+        "url": "https://www.w3.org/TR/vocab-dqv/",
+        "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "architecture-description",
+        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
+        "url": "https://www.iso.org/standard/74393.html",
+        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
@@ -731,11 +773,16 @@
     "role_framework_context": [
       {
         "role": "Business Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "BIZBOK",
           "TOGAF 10 business architecture",
           "value stream mapping"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -789,12 +836,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/dashboard",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "roadmap",
+  "semantic_family": "dashboard",
   "role_overlay": {
     "contract_id": "business-architect:3",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -806,6 +855,17 @@
     "source_fingerprint": "187dd4d6bec3d3d681de8c026593c5d5ad1c3050580820c514d1c676db4a4f54",
     "source_hash": "34f72a227887410fa2ab4346afa329a74e4661be41221246d2517e391654b159"
   },
+  "delivery_form": {
+    "primary_artifact": "measured-dashboard",
+    "representation": "Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
+    "evidence": [
+      "units, denominators and measurement windows",
+      "dated values, thresholds and actionable exceptions"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "71bfeffe2443e7de037f237fae5b89e1943426597b9706fc0b100180a7c261d8",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

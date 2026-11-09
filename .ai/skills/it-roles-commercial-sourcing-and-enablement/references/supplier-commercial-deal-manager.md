@@ -75,9 +75,9 @@ Record source identity, version/date, applicability, access classification and r
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Supplier commercial strategy and negotiation brief | Versioned term positions, trade-off packages, economic effects, mandate and escalation limits | Human negotiator/authority can distinguish delegated positions from reserved decisions. |
-| 2 | Commercial commitments and lifecycle obligation baseline | Linked client commitments, internal economics, subcontract gaps, owners, acceptance and review triggers | Every material obligation has a feasible owner and traceable lifecycle effort/cost treatment. |
-| 3 | Deal performance, change and renewal/exit recommendation | Baseline-to-actual/forecast bridge, contract impact, options and decision request | Material commercial drift is visible before a new commitment, with accountable action and approval route. |
+| 1 | Supplier commercial strategy and negotiation brief | Bounded decision paper with consistent option comparison and a clear authority/decision request. | Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Human negotiator/authority can distinguish delegated positions from reserved decisions. |
+| 2 | Commercial commitments and lifecycle obligation baseline | Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules. | Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every material obligation has a feasible owner and traceable lifecycle effort/cost treatment. |
+| 3 | Deal performance, change and renewal/exit recommendation | Bounded decision paper with consistent option comparison and a clear authority/decision request. | Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Material commercial drift is visible before a new commitment, with accountable action and approval route. |
 
 Canonical Artifact Contract v3 mapping, in table order: `Supplier commercial strategy and negotiation brief` → `decision-paper`; `Commercial commitments and lifecycle obligation baseline` → `register`; `Deal performance, change and renewal/exit recommendation` → `decision-paper`. These mappings classify the semantic artefact; they do not imply that the generic producer validates financial formulas or provides a new specialist spreadsheet engine. Include the commercial case/snapshot, work-package, assumption, estimate, price and decision record IDs relevant to the output. Retain source calculation files as controlled evidence attachments or an explicit external handoff. The advise-tier reviewer returns its report for a separate authorised recorder; it does not invoke a writing renderer.
 
@@ -136,6 +136,10 @@ Author and maintain only this role's artefacts within its tool tier; no technica
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - World Commerce & Contracting contract and commercial management lifecycle practices: lifecycle commercial coherence, obligations, negotiation and change; no certification claim.
 - ISO 44001 collaborative business relationship management concepts where applicable; collaboration does not displace contractual duties.
 - Applicable contract/procurement/competition law and organisation delegated-authority, accounting, pricing and risk policies, interpreted by accountable specialists.
@@ -146,3 +150,30 @@ Frameworks supply methods and questions; applicability, edition and licensed acc
 
 After implementation, the client requests an expanded support window as a clarification. Trace it to the signed service obligation, commission service effort and deal-finance impact, compare a priced change or scope exchange, and obtain authorised agreement before treating it as an absorbed baseline commitment.
 
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
+
+**Synthetic worked case — no project facts or approval.**
+
+**Assigned work product:** Supplier commercial strategy and negotiation brief.
+
+**Illustrative case material:**
+
+**Requested:** approve an architecture direction and conditional mobilisation for cross-channel order ingestion and fulfilment synchronisation. Architecture Review Board is the receiving forum; Digital Commerce Sponsor is the sponsoring authority and must obtain any separate finance, risk and privacy approvals. Requested by **2027-02-01** (illustrative scheduling assumption). Outcomes are approve with conditions, defer for evidence, or reject. Approval cannot be inferred from this example.
+
+The proposal boundary is commerce platform, API gateway, event broker, integration workers, ERP and observability stack. The working performance objective is **move accepted-order visibility from the next batch cycle to 5 minutes at p95, without losing order records** and the service target is 99.9% measured monthly. A different business outcome or change in data classification requires renewed review.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral.
+- List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline.
+- State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `decision-paper` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

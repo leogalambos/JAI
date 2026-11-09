@@ -12,7 +12,7 @@ Own the internal structure of one significant application so it stays changeable
 **At a glance**
 
 - **Purpose:** Produce and govern the role deliverable: Application structure and module boundaries.
-- **Mandatory examples:** Identify decisions or downstream uses, accountable recipients and verifiable next actions. Provide attributable substantive findings, reasoning and limitations for the specific subject. Identify document purpose, audience, subject boundary and authoritative source versions.
+- **Mandatory examples:** Describe bounded component responsibilities and deployment topology. Map measurable quality requirements to design verification and acceptance. Define versioned interface inputs, outputs, trust boundaries and failure handling.
 - **Conditions to resolve:** personal data are processed; an applicable regulatory requirement exists. Unknown applicability remains unresolved.
 - **Optional example:** Include versioned calculations, logs or technical detail only when linked to a specific required claim.
 - **Review:** assess substantive content, evidence and gaps against the full selected contract; acceptance and release remain separate.
@@ -37,10 +37,23 @@ Produce and govern the role deliverable: Application structure and module bounda
 **Also applicable:** all requirements in these linked foundations and overlays form part of this contract, subject to their explicit conditions:
 
 - [`global/invariants`](spec-global-invariants.md)
-- [`type/document`](spec-type-document.md)
-- [`domain/delivery`](spec-domain-delivery.md)
+- [`type/solution-design`](spec-type-solution-design.md)
+- [`domain/architecture`](spec-domain-architecture.md)
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
+
+### Primary work product and evidence
+
+**Primary work product:** `solution-design`.
+
+Versioned solution design with component responsibilities, interfaces and measurable quality responses.
+
+**Evidence accompanying the work product:**
+
+- requirements-to-design traceability
+- independent design review
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
 
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
@@ -49,22 +62,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/application-architect:1.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Application structure and module boundaries.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:1.receiving_acceptance`** — `array`
 
 - For each receiving role (Technical Lead; Software Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:1.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:1.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:1.delivery_verification`** — `array`
 
-- For the specific output 'Application structure and module boundaries', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.
+- For the specific output 'Application structure and module boundaries', provide verifiable evidence satisfying: Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Required delivery form: Versioned solution design with component responsibilities, interfaces and measurable quality responses.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:1.role_gate_observations`** — `array`
 
@@ -74,22 +92,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: The design names its failure modes and its blast radius, not just its happy path.
 - G4: Deviations accepted at build time are recorded as debt with an owner and a repayment trigger.
 - G5: Module boundaries are enforced by automated checks in the build, not only described in a document
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:1.contract_input_1`** — `object`
 
 - Analyse the specific input "Feature roadmap" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:1.contract_input_2`** — `object`
 
 - Analyse the specific input "Current code and dependency analysis" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:1.contract_input_3`** — `object`
 
 - Analyse the specific input "Defect and change hotspots" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:1.contract_input_4`** — `object`
 
 - Analyse the specific input "Runtime behaviour" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -98,18 +121,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:1.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/application-architect:1.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -146,11 +172,16 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 ### Professional sources and their limits
 
-- **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 42010:2022, Architecture description](https://www.iso.org/standard/74393.html)** — Stakeholders, concerns, viewpoints, architecture views and correspondence. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[NIST SP 800-160 Volume 1 Revision 1, Engineering Trustworthy Secure Systems](https://doi.org/10.6028/NIST.SP.800-160v1r1)** — Life-cycle requirements, design rationale, verification and assurance of system security. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Application Architect:** SWEBOK v4; domain-driven design; C4 model; ISO/IEC 25010 maintainability. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-application-architect-2"></a>
@@ -160,7 +191,7 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 **At a glance**
 
 - **Purpose:** Produce and govern the role deliverable: dependency and layering rules.
-- **Mandatory examples:** Identify decisions or downstream uses, accountable recipients and verifiable next actions. Provide attributable substantive findings, reasoning and limitations for the specific subject. Identify document purpose, audience, subject boundary and authoritative source versions.
+- **Mandatory examples:** Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions.
 - **Conditions to resolve:** personal data are processed; an applicable regulatory requirement exists. Unknown applicability remains unresolved.
 - **Optional example:** Include versioned calculations, logs or technical detail only when linked to a specific required claim.
 - **Review:** assess substantive content, evidence and gaps against the full selected contract; acceptance and release remain separate.
@@ -185,10 +216,23 @@ Produce and govern the role deliverable: dependency and layering rules.
 **Also applicable:** all requirements in these linked foundations and overlays form part of this contract, subject to their explicit conditions:
 
 - [`global/invariants`](spec-global-invariants.md)
-- [`type/document`](spec-type-document.md)
+- [`family/requirements-specification`](spec-family-requirements-specification.md)
 - [`domain/delivery`](spec-domain-delivery.md)
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
+
+### Primary work product and evidence
+
+**Primary work product:** `requirements-specification`.
+
+Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.
+
+**Evidence accompanying the work product:**
+
+- forward/backward traceability
+- conflict, interface and change-impact checks
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
 
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
@@ -197,22 +241,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/application-architect:2.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: dependency and layering rules.
+- **Professional basis:** [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/74393.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:2.receiving_acceptance`** — `array`
 
 - For each receiving role (Technical Lead; Software Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/74393.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:2.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/74393.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:2.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/74393.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:2.delivery_verification`** — `array`
 
-- For the specific output 'dependency and layering rules', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.
+- For the specific output 'dependency and layering rules', provide verifiable evidence satisfying: Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Required delivery form: Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.
+- **Professional basis:** [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/74393.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:2.role_gate_observations`** — `array`
 
@@ -222,22 +271,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: The design names its failure modes and its blast radius, not just its happy path.
 - G4: Deviations accepted at build time are recorded as debt with an owner and a repayment trigger.
 - G5: Module boundaries are enforced by automated checks in the build, not only described in a document
+- **Professional basis:** [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/74393.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:2.contract_input_1`** — `object`
 
 - Analyse the specific input "Feature roadmap" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/74393.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:2.contract_input_2`** — `object`
 
 - Analyse the specific input "Current code and dependency analysis" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/74393.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:2.contract_input_3`** — `object`
 
 - Analyse the specific input "Defect and change hotspots" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/74393.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:2.contract_input_4`** — `object`
 
 - Analyse the specific input "Runtime behaviour" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/74393.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -246,18 +300,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/74393.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:2.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/74393.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/application-architect:2.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.iso.org/standard/72089.html); [source](https://www.iso.org/standard/74393.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -294,11 +351,15 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 ### Professional sources and their limits
 
-- **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 42010:2022, Architecture description](https://www.iso.org/standard/74393.html)** — Stakeholders, concerns, viewpoints, architecture views and correspondence. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Application Architect:** SWEBOK v4; domain-driven design; C4 model; ISO/IEC 25010 maintainability. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-application-architect-3"></a>
@@ -338,6 +399,19 @@ Produce and govern the role deliverable: refactoring roadmap.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `outcome-roadmap`.
+
+Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.
+
+**Evidence accompanying the work product:**
+
+- current/target baseline and planning assumptions
+- resource/funding constraints and decision triggers
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -345,27 +419,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/application-architect:3.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: refactoring roadmap.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:3.receiving_acceptance`** — `array`
 
 - For each receiving role (Technical Lead; Software Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:3.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:3.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:3.delivery_verification`** — `array`
 
-- For the specific output 'refactoring roadmap', provide verifiable evidence satisfying: Each item carries a dependency set, a cost band and a decision date. Required delivery form: Time-phased view with named owners per horizon.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- For the specific output 'refactoring roadmap', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Each item carries a dependency set, a cost band and a decision date. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:3.role_gate_observations`** — `array`
 
@@ -375,27 +449,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: The design names its failure modes and its blast radius, not just its happy path.
 - G4: Deviations accepted at build time are recorded as debt with an owner and a repayment trigger.
 - G5: Module boundaries are enforced by automated checks in the build, not only described in a document
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:3.contract_input_1`** — `object`
 
 - Analyse the specific input "Feature roadmap" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:3.contract_input_2`** — `object`
 
 - Analyse the specific input "Current code and dependency analysis" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:3.contract_input_3`** — `object`
 
 - Analyse the specific input "Defect and change hotspots" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:3.contract_input_4`** — `object`
 
 - Analyse the specific input "Runtime behaviour" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -404,21 +478,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:3.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/application-architect:3.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/74393.html); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -457,10 +531,15 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 - **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **[HM Treasury, The Green Book](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government)** — Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 42010:2022, Architecture description](https://www.iso.org/standard/74393.html)** — Stakeholders, concerns, viewpoints, architecture views and correspondence. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Application Architect:** SWEBOK v4; domain-driven design; C4 model; ISO/IEC 25010 maintainability. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-application-architect-4"></a>
@@ -500,6 +579,19 @@ Produce and govern the role deliverable: application architecture decision recor
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `architecture-decision-record`.
+
+Versioned decision record with context, alternatives, consequences, status and supersession.
+
+**Evidence accompanying the work product:**
+
+- comparable option evaluation
+- actual decision status and owner
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -507,27 +599,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/application-architect:4.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: application architecture decision records.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:4.receiving_acceptance`** — `array`
 
 - For each receiving role (Technical Lead; Software Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:4.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:4.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:4.delivery_verification`** — `array`
 
-- For the specific output 'application architecture decision records', provide verifiable evidence satisfying: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Model in the EA tool plus a published view set.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- For the specific output 'application architecture decision records', provide verifiable evidence satisfying: Identify the architecture concern, constraints, scope and decision status. Compare feasible design alternatives and the rejected baseline against drivers. Record the selected design, decision owner and dated rationale. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Versioned decision record with context, alternatives, consequences, status and supersession.
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:4.role_gate_observations`** — `array`
 
@@ -537,27 +629,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: The design names its failure modes and its blast radius, not just its happy path.
 - G4: Deviations accepted at build time are recorded as debt with an owner and a repayment trigger.
 - G5: Module boundaries are enforced by automated checks in the build, not only described in a document
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:4.contract_input_1`** — `object`
 
 - Analyse the specific input "Feature roadmap" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:4.contract_input_2`** — `object`
 
 - Analyse the specific input "Current code and dependency analysis" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:4.contract_input_3`** — `object`
 
 - Analyse the specific input "Defect and change hotspots" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:4.contract_input_4`** — `object`
 
 - Analyse the specific input "Runtime behaviour" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -566,21 +658,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/application-architect:4.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/application-architect:4.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/74393.html); [source](https://doi.org/10.6028/NIST.SP.800-160v1r1); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -619,8 +711,12 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 - **[ISO/IEC/IEEE 42010:2022, Architecture description](https://www.iso.org/standard/74393.html)** — Stakeholders, concerns, viewpoints, architecture views and correspondence. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **[NIST SP 800-160 Volume 1 Revision 1, Engineering Trustworthy Secure Systems](https://doi.org/10.6028/NIST.SP.800-160v1r1)** — Life-cycle requirements, design rationale, verification and assurance of system security. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Application Architect:** SWEBOK v4; domain-driven design; C4 model; ISO/IEC 25010 maintainability. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 <!-- JAI:OUTPUT-CONTRACTS:END -->

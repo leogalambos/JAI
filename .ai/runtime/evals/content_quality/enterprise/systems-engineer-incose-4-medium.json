@@ -82,6 +82,48 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
+    "framework_applicability": [
+      {
+        "record_id": "SYN-PROFESSIONAL-BASIS",
+        "source": {
+          "title": "JAI authored enterprise-delivery practice",
+          "edition": "Synthetic development scenario, revision 1",
+          "authoritative_location": "content/rules/global-invariants.yaml"
+        },
+        "basis": "jai-interpretation",
+        "applicability": "applicable",
+        "rationale": "This fictional recovery case uses JAI evidence and bounded-handoff practice to exercise the DCS contract; no external framework conformity is claimed.",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "jurisdiction": "No real jurisdictional compliance conclusion is established by this synthetic fixture.",
+        "adopted_concepts": [
+          "Attributable evidence",
+          "Bounded receiving-role conclusions"
+        ],
+        "tailoring": "Illustrative recovery-service facts only; peak-load validation is excluded and remains pending.",
+        "precedence": "Applicable real law and organisation policy would prevail; neither is fabricated by this case.",
+        "method_mapping": [
+          {
+            "output_unit_ref": "global.framework_applicability",
+            "method": "Separate fabricated scenario observations from demonstrated production results and map residual gaps to the receiving owner.",
+            "expected_evidence": "Versioned synthetic scenario and its declared limitations.",
+            "evidence_refs": [
+              "SYN-01"
+            ],
+            "reviewer_test": "Reject any inference of real execution, framework conformance or human approval from this fictional example."
+          }
+        ],
+        "review": {
+          "owner": "Synthetic independent domain reviewer",
+          "status": "pending-independent-review",
+          "change_trigger": "Change to scenario scope, source practice or evidence; unchanged history is reused."
+        },
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "human_approval_ref": null
+      }
+    ],
     "contract_input_1": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -214,7 +256,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'trade study and decision records', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "criterion_under_review": "For the specific output 'trade study and decision records', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -260,63 +302,46 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
-    "document_actions": [
-      {
-        "increment_id": "SYN-WAVE1",
-        "start": "2026-11-01",
-        "finish": "2026-11-05",
-        "dependency": "SYN-T1 peak-load retest",
-        "entry": "Backup restore rehearsed and rollback configuration retained",
-        "exit": "Ledger totals reconcile and operations independently accepts support",
-        "go_no_go": "Service owner with independent operations evidence",
-        "fallback_decision_time": "Before enabling transaction traffic",
-        "record_id": "SYN-DOCUMENT-ACTIONS",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Identify decisions or downstream uses, accountable recipients and verifiable next actions.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "document_analysis": [
-      {
-        "source_id": "SYN-LEDGER-1",
-        "source_version": "1",
-        "extracted_at": "2026-10-19T10:00:00Z",
-        "transformation": "Group committed records by event_id and compare counts before/after restore",
-        "input_records": 10,
-        "output_records": 10,
-        "classification": "Synthetic non-customer data",
-        "retention": "Delete rehearsal extracts after regression investigation closes",
-        "permitted_use": "Development regression only",
-        "record_id": "SYN-DOCUMENT-ANALYSIS",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Provide attributable substantive findings, reasoning and limitations for the specific subject.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "document_scope": {
-      "source_id": "SYN-LEDGER-1",
-      "source_version": "1",
-      "extracted_at": "2026-10-19T10:00:00Z",
-      "transformation": "Group committed records by event_id and compare counts before/after restore",
-      "input_records": 10,
-      "output_records": 10,
-      "classification": "Synthetic non-customer data",
-      "retention": "Delete rehearsal extracts after regression investigation closes",
-      "permitted_use": "Development regression only",
-      "record_id": "SYN-DOCUMENT-SCOPE",
+    "decision_authority": {
+      "baseline": {
+        "id": "BASE",
+        "restore_minutes": 48,
+        "transition_eur": 0
+      },
+      "candidate": {
+        "id": "TARGET",
+        "restore_minutes": 27,
+        "transition_eur": 18000
+      },
+      "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
+      "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
+      "record_id": "SYN-DECISION-AUTHORITY",
       "service": "Regional order integration",
       "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify document purpose, audience, subject boundary and authoritative source versions.",
+      "criterion_under_review": "Identify the specific choice, accountable authority and decision deadline.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "decision_impacts": {
+      "baseline": {
+        "id": "BASE",
+        "restore_minutes": 48,
+        "transition_eur": 0
+      },
+      "candidate": {
+        "id": "TARGET",
+        "restore_minutes": 27,
+        "transition_eur": 18000
+      },
+      "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
+      "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
+      "record_id": "SYN-DECISION-IMPACTS",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Explain cost, benefit, dependencies, uncertainty and residual risks of the recommendation.",
       "accountable_role": "Synthetic receiving service owner",
       "evidence_refs": [
         "SYN-01"
@@ -339,7 +364,32 @@
         "SYN-01"
       ],
       "knowledge_status": "synthetic-assumption"
-    }
+    },
+    "option_comparison": [
+      {
+        "baseline": {
+          "id": "BASE",
+          "restore_minutes": 48,
+          "transition_eur": 0
+        },
+        "candidate": {
+          "id": "TARGET",
+          "restore_minutes": 27,
+          "transition_eur": 18000
+        },
+        "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
+        "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
+        "record_id": "SYN-OPTION-COMPARISON",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Compare viable options including the do-nothing baseline against common criteria.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ]
   },
   "evaluation_selection": {
     "overlays": []
@@ -370,6 +420,7 @@
       "expected_rule_ids": [
         "domain/delivery.delivery_accountability",
         "domain/delivery.delivery_dependencies",
+        "global.framework_applicability",
         "role/systems-engineer-incose:4.contract_input_1",
         "role/systems-engineer-incose:4.contract_input_2",
         "role/systems-engineer-incose:4.contract_input_3",
@@ -380,10 +431,10 @@
         "role/systems-engineer-incose:4.delivery_verification",
         "role/systems-engineer-incose:4.receiving_acceptance",
         "role/systems-engineer-incose:4.role_gate_observations",
-        "type/document.document_actions",
-        "type/document.document_analysis",
-        "type/document.document_scope",
-        "type/document.identity"
+        "type/decision-paper.decision_authority",
+        "type/decision-paper.decision_impacts",
+        "type/decision-paper.identity",
+        "type/decision-paper.option_comparison"
       ],
       "expected_category": "critical-content"
     },

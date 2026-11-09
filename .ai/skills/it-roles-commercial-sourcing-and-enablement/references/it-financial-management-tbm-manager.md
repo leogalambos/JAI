@@ -85,10 +85,10 @@ Producing, maintaining and defending the quality of:
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | IT financial and TBM cost model | Versioned dataset/model with cost pools, towers/services/products, allocation rules, drivers and reconciliation controls | Costs reconcile to authoritative finance data and allocation rules are explainable, repeatable and governed. |
-| 2 | Technology TCO and investment business case | Business case with current/target TCO, CAPEX/OPEX, transition cost, scenarios, sensitivities and benefits | The economic comparison uses consistent boundaries, states uncertainty and avoids double-counting costs or benefits. |
-| 3 | Service and portfolio unit-economics dashboard | Dashboard with service/product unit cost, consumption, budget/forecast variance and trend context | Metrics are decision-useful, reconcile to the governed cost model and identify data-quality limitations. |
-| 4 | Financial variance and optimisation decision paper | Decision paper linking variance/root causes to options, trade-offs, owners and approved corrective actions | Material variance has an accountable owner, quantified impact and a decision or explicitly accepted rationale for no action. |
+| 1 | IT financial and TBM cost model | Typed data or calculation model with units, keys/formulas, lineage and quality constraints. | Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations. Existing source requirement: Costs reconcile to authoritative finance data and allocation rules are explainable, repeatable and governed. |
+| 2 | Technology TCO and investment business case | Reconciled investment appraisal with dated financial model and accountable benefits. | State sponsor, financial owner, investment boundary, appraisal period and the precise funding or continuation decision requested. Show source and date of costs/benefits, currency, price basis, cash-flow periods, baseline and incremental treatment; avoid double-counted benefits. Identify key uncertain variables, sensitivity/scenario results, benefit measures, baseline, accountable realisation owner and review trigger. Existing source requirement: The economic comparison uses consistent boundaries, states uncertainty and avoids double-counting costs or benefits. |
+| 3 | Service and portfolio unit-economics dashboard | Dashboard or scorecard with metric definitions, observations, source queries and interpretation. | For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Existing source requirement: Metrics are decision-useful, reconcile to the governed cost model and identify data-quality limitations. |
+| 4 | Financial variance and optimisation decision paper | Bounded decision paper with consistent option comparison and a clear authority/decision request. | Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Material variance has an accountable owner, quantified impact and a decision or explicitly accepted rationale for no action. |
 
 Every Section 6 row is registered in Artifact Contract v3/JAI and must resolve to a typed internal producer/validator/renderer or an explicit external handoff.
 
@@ -154,6 +154,10 @@ This role owns **IT service/project cost model, TCO and allocation methodology**
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - Technology Business Management (TBM) taxonomy
 - FinOps Framework
 - COBIT financial management concepts
@@ -166,3 +170,33 @@ Frameworks orient the role; organisation policy, law, contracts and explicit del
 **Situation.** A cross-domain programme asks for a rapid decision in this role's area, but one critical dependency and one evidence source are unresolved.
 
 **Correct response.** Separate known facts from assumptions, identify the decision that can be made now versus the decision that must wait, compare credible options, record the unresolved dependency with owner/date, produce the relevant Section 6 artefact, and hand it to the named receiving role with an explicit reopen trigger if the missing evidence changes the basis.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
+
+**Synthetic worked case — no project facts or approval.**
+
+**Assigned work product:** IT financial and TBM cost model.
+
+**Illustrative case material:**
+
+Dataset orders-v3 contains order_id as the unique key, amount_minor as integer cents, currency as an ISO currency code and event_time as a UTC timestamp. Null amount is unknown, not zero; mixed currencies cannot be summed without a dated conversion basis.
+
+**Acceptance question:** Specify field meanings, keys, units, nulls and schema version.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values.
+- Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian.
+- Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `dataset` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

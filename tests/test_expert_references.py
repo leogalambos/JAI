@@ -44,12 +44,12 @@ def _put(root, raw, name='simple.md'):
     return path
 
 
-def test_supplied_collection_has_135_unique_verified_slots(library):
-    """Manifest bytes, all 45 family IDs and every mandatory anchor agree."""
+def test_supplied_collection_has_189_unique_verified_slots(library):
+    """All 63 family IDs retain three unique checksum-verified example slots."""
     result = library.validate_all()
     assert result['status'] == 'PASS'
-    assert result['reference_count'] == 135
-    assert len({(entry['document_kind'], entry['complexity']) for entry in result['results']}) == 135
+    assert result['reference_count'] == 189
+    assert len({(entry['document_kind'], entry['complexity']) for entry in result['results']}) == 189
     assert all(entry['professional_acceptance'] == 'NOT_APPROVED' for entry in result['results'])
     assert all(entry['content_adequacy'] == 'NOT_EVALUATED' for entry in result['results'])
     assert all(entry['evidence_and_rationale_quality'] == 'NOT_EVALUATED' for entry in result['results'])
@@ -317,8 +317,8 @@ def test_outline_selects_default_and_override_without_copying_reference_facts(li
         engine.outline(contract, reference_complexity='simple', user_root=private_root)
 
 
-def test_outline_unsupported_family_is_explicit(library, tmp_path):
-    """Families without supplied examples retain usable unfilled outlines."""
+def test_outline_covers_registered_families_and_unknown_selection_is_explicit(library, tmp_path):
+    """Complete catalogue coverage does not turn an unknown family into a guess."""
     from content_spec import ContentSpec
     engine = ContentSpec(ROOT)
     unsupported = []
@@ -328,9 +328,11 @@ def test_outline_unsupported_family_is_explicit(library, tmp_path):
         except ReferenceError as exc:
             if str(exc) == 'REFERENCE_SLOT_UNSUPPORTED':
                 unsupported.append(key)
-    contract = unsupported[0]
-    result = engine.outline(contract, user_root=tmp_path / 'missing')
-    assert result['expert_reference']['status'] == 'NOT_APPLICABLE'
+    assert unsupported == []
+    result = engine.outline('software-engineer:1', user_root=tmp_path / 'missing')
+    assert result['expert_reference']['status'] == 'SELECTED_PROPOSED_REFERENCE'
+    with pytest.raises(ReferenceError, match='REFERENCE_SLOT_UNSUPPORTED'):
+        library.canonical_family('unregistered-professional-family')
 
 
 @pytest.mark.parametrize('alias,family', [('strategy','it-digital-strategy'), ('implementation-specification','implementation-specification-lld'), ('test-strategy','test-strategy-plan'), ('service-design','service-design-sla'), ('benefits-review','benefits-realisation-review'), ('roadmap','transformation-roadmap')])
@@ -347,9 +349,9 @@ def test_registered_kind_alias_resolves_original_reference_family(library, tmp_p
 def test_all135_anchor_bindings_match_registered_required_units(library):
     """Every distributed source anchor maps onto an actual kind-owned MUST unit."""
     result = library.validate_all()
-    assert result['family_count'] == 45
+    assert result['family_count'] == 63
     assert result['proposal_reference_count'] == 30
-    assert len(library.bindings) == 45
+    assert len(library.bindings) == 63
     for report in result['results']:
         assert set(report['present_units']) == set(report['required_units'])
         definition = library.specs.specs[report['spec_ref']]
@@ -482,7 +484,9 @@ def test_engineering_manifest_case_metadata_must_match(library, field):
 
 def test_revised_established_reference_bytes_match_v230_manifest(library):
     """Pin the intentionally revised 96 public examples, including all 30 proposals."""
-    established = [entry for entry in library.entries if entry['document_kind'] not in ENGINEERING_FAMILIES]
+    extension = library.manifest.get('coverage_extension', {}).get('families', [])
+    established = [entry for entry in library.entries if entry['document_kind'] not in ENGINEERING_FAMILIES
+                   and entry['document_kind'] not in extension]
     assert len(established) == 96
     fingerprint = hashlib.sha256(json.dumps(sorted((entry['reference_id'], entry['sha256'])
                                                   for entry in established), separators=(',', ':')).encode()).hexdigest()
@@ -493,21 +497,23 @@ def test_revised_established_reference_bytes_match_v230_manifest(library):
 
 def test_editorial_review_status_never_confers_professional_acceptance(library):
     """The complete revised corpus retains explicitly non-authoritative review metadata."""
-    assert library.manifest['version'] == '2.3.0'
+    assert library.manifest['version'] == '2.4.0'
+    assert library.manifest['baseline_version'] == '2.3.0'
     assert library.manifest['review_summary'] == {
         'type': 'three-ai-review-lenses-not-three-human-reviewers',
         'all_documents_revised': 135,
         'human_approved': False,
     }
     for entry in library.entries:
-        assert entry['review_version'] == '2.3.0'
-        assert entry['review_status'] == 'tri-lens-ai-review-applied-not-human-approved'
+        extended = entry['document_kind'] in library.manifest['coverage_extension']['families']
+        assert entry['review_version'] == ('1.0.0' if extended else '2.3.0')
+        assert entry['review_status'] == ('independent-review-pending' if extended else 'tri-lens-ai-review-applied-not-human-approved')
         assert 'previous_sha256' not in entry
     result = library.validate_all()
-    assert result['editorial_review_status'] == 'AI_EDITORIAL_ONLY'
+    assert result['editorial_review_status'] == 'PARTIAL_AI_EDITORIAL_ONLY'
     assert result['professional_acceptance'] == 'NOT_APPROVED'
-    assert all(item['review_status'] == 'tri-lens-ai-review-applied-not-human-approved'
-               for item in result['results'])
+    assert {item['review_status'] for item in result['results']} == {
+        'tri-lens-ai-review-applied-not-human-approved', 'independent-review-pending'}
 
 
 @pytest.mark.parametrize('field,value', [

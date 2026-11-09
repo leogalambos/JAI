@@ -42,7 +42,8 @@
       },
       "acceptance_criteria": [
         "Link design claims to versioned source elements, stakeholder concerns and measurable requirements.",
-        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations.",
+        "Use architecture-description concepts to trace stakeholder, concern, requirement, viewpoint and view; identify correspondence rules and unresolved inconsistencies without mandating a notation."
       ],
       "evidence_policy": {
         "material_claims": "versioned source reference or explicitly labelled assumption",
@@ -59,7 +60,9 @@
         "reason": "Link design claims to versioned source elements, stakeholder concerns and measurable requirements.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -80,7 +83,8 @@
       },
       "acceptance_criteria": [
         "Identify cross-domain dependencies, affected owners and compatibility constraints.",
-        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations.",
+        "Use measurable requirement and correspondence checks to assess affected elements, cross-view dependencies, change impact and decisions still needing evidence."
       ],
       "evidence_policy": {
         "material_claims": "versioned source reference or explicitly labelled assumption",
@@ -97,7 +101,9 @@
         "reason": "Identify cross-domain dependencies, affected owners and compatibility constraints.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -137,7 +143,9 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -180,7 +188,9 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -225,7 +235,9 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -342,11 +354,19 @@
     ],
     "professional_references": [
       {
-        "id": "jai-practice",
-        "title": "JAI authored enterprise-delivery practice",
-        "url": null,
-        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
-        "basis": "jai-practice",
+        "id": "architecture-description",
+        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
+        "url": "https://www.iso.org/standard/74393.html",
+        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ]

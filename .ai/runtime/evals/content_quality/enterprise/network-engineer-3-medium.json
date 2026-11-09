@@ -23,27 +23,26 @@
     "privacy": true
   },
   "semantic_units": {
-    "data_accountability": {
-      "source_id": "SYN-LEDGER-1",
-      "source_version": "1",
-      "extracted_at": "2026-10-19T10:00:00Z",
-      "transformation": "Group committed records by event_id and compare counts before/after restore",
-      "input_records": 10,
-      "output_records": 10,
-      "classification": "Synthetic non-customer data",
-      "retention": "Delete rehearsal extracts after regression investigation closes",
-      "permitted_use": "Development regression only",
-      "record_id": "SYN-DATA-ACCOUNTABILITY",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify data owner, stewardship, lawful use, classification and lifecycle obligations.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "data_lineage_quality": [
+    "architecture_change_impact": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-ARCHITECTURE-CHANGE-IMPACT",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Identify cross-domain dependencies, affected owners and compatibility constraints.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "architecture_source_trace": [
       {
         "source_id": "SYN-LEDGER-1",
         "source_version": "1",
@@ -54,10 +53,10 @@
         "classification": "Synthetic non-customer data",
         "retention": "Delete rehearsal extracts after regression investigation closes",
         "permitted_use": "Development regression only",
-        "record_id": "SYN-DATA-LINEAGE-QUALITY",
+        "record_id": "SYN-ARCHITECTURE-SOURCE-TRACE",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Trace source-to-output transformations, quality constraints and evidenced reconciliation.",
+        "criterion_under_review": "Link design claims to versioned source elements, stakeholder concerns and measurable requirements.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -82,6 +81,48 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
+    "framework_applicability": [
+      {
+        "record_id": "SYN-PROFESSIONAL-BASIS",
+        "source": {
+          "title": "JAI authored enterprise-delivery practice",
+          "edition": "Synthetic development scenario, revision 1",
+          "authoritative_location": "content/rules/global-invariants.yaml"
+        },
+        "basis": "jai-interpretation",
+        "applicability": "applicable",
+        "rationale": "This fictional recovery case uses JAI evidence and bounded-handoff practice to exercise the DCS contract; no external framework conformity is claimed.",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "jurisdiction": "No real jurisdictional compliance conclusion is established by this synthetic fixture.",
+        "adopted_concepts": [
+          "Attributable evidence",
+          "Bounded receiving-role conclusions"
+        ],
+        "tailoring": "Illustrative recovery-service facts only; peak-load validation is excluded and remains pending.",
+        "precedence": "Applicable real law and organisation policy would prevail; neither is fabricated by this case.",
+        "method_mapping": [
+          {
+            "output_unit_ref": "global.framework_applicability",
+            "method": "Separate fabricated scenario observations from demonstrated production results and map residual gaps to the receiving owner.",
+            "expected_evidence": "Versioned synthetic scenario and its declared limitations.",
+            "evidence_refs": [
+              "SYN-01"
+            ],
+            "reviewer_test": "Reject any inference of real execution, framework conformance or human approval from this fictional example."
+          }
+        ],
+        "review": {
+          "owner": "Synthetic independent domain reviewer",
+          "status": "pending-independent-review",
+          "change_trigger": "Change to scenario scope, source practice or evidence; unchanged history is reused."
+        },
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "human_approval_ref": null
+      }
+    ],
     "contract_input_1": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -214,7 +255,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'topology and addressing documentation', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "criterion_under_review": "For the specific output 'topology and addressing documentation', provide verifiable evidence satisfying: Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Required delivery form: Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -277,7 +318,7 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
-    "register_integrity": [
+    "model_entities": [
       {
         "schema_version": "1.0",
         "entity_id": "SYN-APP-1",
@@ -301,10 +342,10 @@
         },
         "uniqueness_observed": "10 of 10 event IDs unique",
         "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
-        "record_id": "SYN-REGISTER-INTEGRITY",
+        "record_id": "SYN-MODEL-ENTITIES",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Evidence uniqueness, referential integrity, completeness and lifecycle reconciliation checks.",
+        "criterion_under_review": "Provide stable identified entities and typed relationships with ownership and provenance.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -312,42 +353,7 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
-    "register_records": [
-      {
-        "schema_version": "1.0",
-        "entity_id": "SYN-APP-1",
-        "columns": [
-          {
-            "name": "event_id",
-            "datatype": "uuid",
-            "nullable": false
-          },
-          {
-            "name": "amount",
-            "datatype": "decimal(12,2)",
-            "unit": "EUR",
-            "nullable": false
-          }
-        ],
-        "key": "event_id",
-        "record": {
-          "event_id": "SYN-EVENT-1",
-          "amount": 125.5
-        },
-        "uniqueness_observed": "10 of 10 event IDs unique",
-        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
-        "record_id": "SYN-REGISTER-RECORDS",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Provide actual uniquely identified records with source, owner, status and review date.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "register_schema": {
+    "model_metamodel": {
       "schema_version": "1.0",
       "entity_id": "SYN-APP-1",
       "columns": [
@@ -370,16 +376,51 @@
       },
       "uniqueness_observed": "10 of 10 event IDs unique",
       "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
-      "record_id": "SYN-REGISTER-SCHEMA",
+      "record_id": "SYN-MODEL-METAMODEL",
       "service": "Regional order integration",
       "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Define required columns, datatypes, identifiers, allowed states and ownership.",
+      "criterion_under_review": "Define entity/relation types, constraints, model boundary and source baseline.",
       "accountable_role": "Synthetic receiving service owner",
       "evidence_refs": [
         "SYN-01"
       ],
       "knowledge_status": "synthetic-assumption"
-    }
+    },
+    "model_validation": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-MODEL-VALIDATION",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Evidence referential integrity, constraint checks, cross-view consistency and known gaps.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ]
   },
   "evaluation_selection": {
     "overlays": []
@@ -408,8 +449,9 @@
       "id": "headings-only",
       "operation": "headings_only",
       "expected_rule_ids": [
-        "domain/data.data_accountability",
-        "domain/data.data_lineage_quality",
+        "domain/architecture.architecture_change_impact",
+        "domain/architecture.architecture_source_trace",
+        "global.framework_applicability",
         "role/network-engineer:3.contract_input_1",
         "role/network-engineer:3.contract_input_2",
         "role/network-engineer:3.contract_input_3",
@@ -420,10 +462,10 @@
         "role/network-engineer:3.delivery_verification",
         "role/network-engineer:3.receiving_acceptance",
         "role/network-engineer:3.role_gate_observations",
-        "type/register.identity",
-        "type/register.register_integrity",
-        "type/register.register_records",
-        "type/register.register_schema"
+        "type/model.identity",
+        "type/model.model_entities",
+        "type/model.model_metamodel",
+        "type/model.model_validation"
       ],
       "expected_category": "critical-content"
     },

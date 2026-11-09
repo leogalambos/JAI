@@ -9,6 +9,52 @@ Someone needs access, changes role, or leaves.
 Access that is appropriate, evidenced, and removed when no longer needed.
 
 
+<!-- BEGIN workflow-applicability -->
+## Context and mechanism applicability
+
+Use the actual bounded request, current environment and decision rights to select one applicable mechanism variant. Unknown applicability remains pending; the routing record grants no authority.
+
+**Invariant outcomes:**
+
+- Access that is appropriate, evidenced, and removed when no longer needed.
+- Retain source-version traceability, accountable receiving duties and every applicable existing gate.
+
+| Context | Mechanisms | Required evidence |
+| --- | --- | --- |
+| ordinary | Apply least-privilege decisions and integrated provisioning | Specific decision, actual grant/refusal and revocation evidence |
+| privileged | Apply vaulting, session monitoring and reviewed break-glass arrangements | Privileged decision, monitoring and exercised emergency access |
+| leaver-transfer | Revoke or transfer entitlements at the actual lifecycle event | Event, actual revocations, residual access owner and expiry |
+
+Return purpose-free or ambiguous requests to the requester/data owner; failed provisioning returns to IAM with actual observations. Stop granting access without a valid individual decision, required identity proof or current privileged-access scope. Close on evidenced grant/refusal/revocation; retain certification and independent audit findings with owners. Mechanism selection is not a waiver of security, legal or acceptance obligations.
+
+**Entry information (selected once per actual context version):**
+
+- Subject identity and requested entitlement
+- Justified use purpose and asset policy
+- Approval path and identity lifecycle event
+
+Select intake and mechanism variant once per actual context version. Carry the reviewed record by versioned evidence reference. Reuse unchanged evidence; recheck mutable prerequisites only at the action they govern. A new context version requires its own relevant review, not reconstruction of historical work.
+
+**Continuation, rework, stop and exit:**
+
+- **continue** — The current handoff criteria and applicable prerequisites are satisfied. Continue to the registered receiving duty with exact output and evidence references.
+- **rework** — A current criterion fails or required information changes. Return purpose-free or ambiguous requests to the requester/data owner; failed provisioning returns to IAM with actual observations.
+- **stop** — An applicable authority, legal, safety or mandatory-control boundary forbids the effect. Stop granting access without a valid individual decision, required identity proof or current privileged-access scope.
+- **exit** — The bounded outcome is accepted or the entitled owner rejects, cancels or defers the scope. Close on evidenced grant/refusal/revocation; retain certification and independent audit findings with owners.
+
+**Bounded paths and scope:**
+
+Ordinary/privileged/lifecycle requests require the actual decision, identity lifecycle evidence and applicable privileged-control disposition; no access event is inferred.
+
+| Selected path | Applicable stages | Terminal stage |
+| --- | --- | ---: |
+| ordinary | 1, 2, 3, 5, 6 | 6 |
+| privileged | 1, 2, 3, 4, 5, 6 | 6 |
+| leaver-transfer | 1, 2, 3, 5, 6 | 6 |
+
+A path with a separate mechanism requires that explicit mechanism selection in the versioned intake record. Unknown selection remains pending. Later out-of-scope stages cannot claim acceptance; a terminal exit still needs the registered exact-scope authority.
+<!-- END workflow-applicability -->
+
 <!-- JAI:WORKFLOW-DIAGRAM:START -->
 <div class="ai-workflow-overview">
 <ol class="ai-workflow-steps" role="list" aria-label="Access request to periodic review workflow steps">

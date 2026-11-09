@@ -22,3 +22,47 @@ This chain is an enterprise hand-off model, not a rigid project schedule. Run st
 ## Operating this chain
 
 Read the linked role reference before acting as a step and use the operator agent declared for that role's tool tier. A hand-off is complete only when the receiving step applies the stated gate and accepts the evidence. Failed gates remain explicit; they are not converted into assumptions simply to preserve a milestone.
+
+<!-- BEGIN workflow-applicability -->
+## Context and mechanism applicability
+
+Use the actual bounded request, current environment and decision rights to select one applicable mechanism variant. Unknown applicability remains pending; the routing record grants no authority.
+
+**Invariant outcomes:**
+
+- Affected cohorts are ready, adopt the new behaviour and produce evidence that supports the intended business benefit.
+- Retain source-version traceability, accountable receiving duties and every applicable existing gate.
+
+| Context | Mechanisms | Required evidence |
+| --- | --- | --- |
+| single-cohort | Use task-specific readiness and proficiency checks | Cohort impact, training results and observed behaviour |
+| multi-wave | Align each cohort with available stable capability and reinforcement | Wave dependencies, readiness gates and segmented adoption results |
+
+Return low readiness/proficiency or unavailable capability to the adoption/product owner before the next wave. Stop forcing adoption of unavailable/unstable functionality or making unsupported realised-benefit claims. Close the wave with behavioural/outcome observations or reforecast benefits and assign reinforcement. Mechanism selection is not a waiver of security, legal or acceptance obligations.
+
+**Entry information (selected once per actual context version):**
+
+- Business outcome and named sponsor
+- Affected cohorts and changed tasks
+- Release capability/stability and measurement baseline
+
+Select intake and mechanism variant once per actual context version. Carry the reviewed record by versioned evidence reference. Reuse unchanged evidence; recheck mutable prerequisites only at the action they govern. A new context version requires its own relevant review, not reconstruction of historical work.
+
+**Continuation, rework, stop and exit:**
+
+- **continue** — The current handoff criteria and applicable prerequisites are satisfied. Continue to the registered receiving duty with exact output and evidence references.
+- **rework** — A current criterion fails or required information changes. Return low readiness/proficiency or unavailable capability to the adoption/product owner before the next wave.
+- **stop** — An applicable authority, legal, safety or mandatory-control boundary forbids the effect. Stop forcing adoption of unavailable/unstable functionality or making unsupported realised-benefit claims.
+- **exit** — The bounded outcome is accepted or the entitled owner rejects, cancels or defers the scope. Close the wave with behavioural/outcome observations or reforecast benefits and assign reinforcement.
+
+**Bounded paths and scope:**
+
+Single/multi-cohort cases share task readiness and observed behaviour; waves and denominators remain explicit.
+
+| Selected path | Applicable stages | Terminal stage |
+| --- | --- | ---: |
+| single-cohort | 1, 2, 3, 4, 5, 6 | 6 |
+| multi-wave | 1, 2, 3, 4, 5, 6 | 6 |
+
+A path with a separate mechanism requires that explicit mechanism selection in the versioned intake record. Unknown selection remains pending. Later out-of-scope stages cannot claim acceptance; a terminal exit still needs the registered exact-scope authority.
+<!-- END workflow-applicability -->

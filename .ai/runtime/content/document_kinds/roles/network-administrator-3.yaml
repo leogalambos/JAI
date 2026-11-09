@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/document",
-    "domain/delivery"
+    "type/register",
+    "domain/data"
   ],
   "applies_to": {
     "document_kind": "role/network-administrator:3",
@@ -61,7 +61,9 @@
         "reason": "Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: routine maintenance evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#network-administrator:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -99,7 +101,9 @@
         "reason": "For each receiving role (Network Operations Centre Analyst; Service Desk Analyst), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#network-administrator:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -137,7 +141,9 @@
         "reason": "Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#network-administrator:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -175,7 +181,9 @@
         "reason": "Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#network-administrator:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -195,7 +203,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'routine maintenance evidence', provide verifiable evidence satisfying: Chain of custody is unbroken and the set is reproducible from the record. Required delivery form: Immutable evidence set with hashes, timestamps and custody record.",
+        "For the specific output 'routine maintenance evidence', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Chain of custody is unbroken and the set is reproducible from the record. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -210,10 +218,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'routine maintenance evidence', provide verifiable evidence satisfying: Chain of custody is unbroken and the set is reproducible from the record. Required delivery form: Immutable evidence set with hashes, timestamps and custody record.",
+        "reason": "For the specific output 'routine maintenance evidence', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Chain of custody is unbroken and the set is reproducible from the record. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#network-administrator:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -223,8 +233,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "routine maintenance evidence",
-        "format": "Immutable evidence set with hashes, timestamps and custody record",
-        "acceptance_criterion": "Chain of custody is unbroken and the set is reproducible from the record",
+        "format": "Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
+        "acceptance_criterion": "Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Chain of custody is unbroken and the set is reproducible from the record.",
         "role_path": "skills/it-roles-network-and-telecommunications/references/network-administrator.md"
       }
     },
@@ -263,7 +273,9 @@
         "reason": "Evaluate every applicable existing role gate using actual evidence and identified residual gaps; do not infer PASS from headings or DCS advisory status.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#network-administrator:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -309,7 +321,9 @@
         "reason": "Analyse the specific input \"Device inventory\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#network-administrator:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -352,7 +366,9 @@
         "reason": "Analyse the specific input \"Vendor advisories\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#network-administrator:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -395,7 +411,9 @@
         "reason": "Analyse the specific input \"Compliance baseline\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#network-administrator:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -438,7 +456,9 @@
         "reason": "Analyse the specific input \"Incident and request queue\" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#network-administrator:3",
-          "content/types/document.yaml"
+          "content/types/document.yaml",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -483,7 +503,9 @@
         "reason": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -526,7 +548,9 @@
         "reason": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -571,7 +595,9 @@
         "reason": "Include versioned calculations, logs or technical detail only when linked to a specific required claim.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
-          "content/rules/global-invariants.yaml"
+          "content/rules/global-invariants.yaml",
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -666,7 +692,7 @@
     }
   ],
   "size_budget": {
-    "metric": "semantic_units",
+    "metric": "rows",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -694,16 +720,37 @@
         "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
         "basis": "jai-practice",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "internet-standards-process",
+        "title": "IETF RFC 2026, The Internet Standards Process — Revision 3",
+        "url": "https://www.rfc-editor.org/rfc/rfc2026",
+        "scope": "Distinguishing standards-track status and specification maturity; select the actual applicable protocol RFCs and their updates rather than treating the process document as a network design standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "systems-security-engineering",
+        "title": "NIST SP 800-160 Volume 1 Revision 1, Engineering Trustworthy Secure Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+        "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Network Administrator",
+        "domain": "Network and Telecommunications",
+        "domain_index": 9,
+        "method_focus": "Identify applicable protocol/technology editions, topology and trust assumptions, measurable network behaviour and compatibility evidence.",
         "frameworks": [
           "vendor lifecycle policy",
           "CIS Benchmarks for network devices",
           "ITIL 4 operations"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -757,12 +804,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/register",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "document",
+  "semantic_family": "register",
   "role_overlay": {
     "contract_id": "network-administrator:3",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -774,6 +823,17 @@
     "source_fingerprint": "8fb410d656884e977d74d7ed946ff1d68f4a82f8bfc8f3fad63365ab5a151a5e",
     "source_hash": "6082e5e29d4b0988350017ca7979cef4507e456f91eeff576dbabb4cde4c5681"
   },
+  "delivery_form": {
+    "primary_artifact": "governed-register",
+    "representation": "Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
+    "evidence": [
+      "actual source-attributed records",
+      "uniqueness, completeness and relationship reconciliation"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "ca65d61b03ad1fcd3032964efe1c9c095f32cf312011e0ff6186dfa77dcb49f6",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

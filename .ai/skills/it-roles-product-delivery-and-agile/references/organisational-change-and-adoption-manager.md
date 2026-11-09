@@ -86,10 +86,10 @@ Structure every substantive answer in this order:
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Change impact and stakeholder assessment | Versioned assessment with stakeholder/role heatmap | Every material stakeholder group has impact, readiness, owner and evidence. |
-| 2 | Adoption and communications plan | Versioned plan with audience, message, channel, owner and timing | Every intervention traces to an identified impact or adoption barrier. |
-| 3 | Training and readiness plan | Role-based curriculum and readiness checklist | No impacted role enters go-live without a readiness disposition and owner. |
-| 4 | Adoption measurement and reinforcement report | Dashboard-backed report with trend and corrective actions | Measures are defined before rollout and below-target adoption has an owned action. |
+| 1 | Change impact and stakeholder assessment | Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request. | Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Every material stakeholder group has impact, readiness, owner and evidence. |
+| 2 | Adoption and communications plan | Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones. | State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Every intervention traces to an identified impact or adoption barrier. |
+| 3 | Training and readiness plan | Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones. | State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: No impacted role enters go-live without a readiness disposition and owner. |
+| 4 | Adoption measurement and reinforcement report | Dashboard or scorecard with metric definitions, observations, source queries and interpretation. | For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Existing source requirement: Measures are defined before rollout and below-target adoption has an owned action. |
 
 Every Section 6 row is additionally registered in the 3.4 runtime artifact-production registry. The registry must classify it as an internally producible artifact type or an explicit `external_handoff`; free-form unregistered deliverables are a release error.
 
@@ -152,6 +152,10 @@ This role may author and recommend within its scope. It may not self-approve exc
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - ACMP Standard for Change Management
 - Kotter change principles
 - Prosci ADKAR where licensed/adopted
@@ -163,3 +167,33 @@ Framework names orient the role; organisational policy and applicable law remain
 **Situation.** A project asks for this role's approval near a milestone but one mandatory input is incomplete.
 
 **Correct response.** Identify the missing input and its owner, complete the parts supported by evidence, mark the relevant gate fail, state the residual consequence, and route the go/no-go or waiver to the named authority. Do not convert the missing input into an assumption merely to preserve the date.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
+
+**Synthetic worked case — no project facts or approval.**
+
+**Assigned work product:** Change impact and stakeholder assessment.
+
+**Illustrative case material:**
+
+The service owner asks why order acceptance failed during interval T-17. The source set comprises versioned application logs and broker offsets; client-side failures outside that interval are excluded. Correlation IDs link observations without asserting that temporal coincidence proves causation.
+
+**Acceptance question:** Define the bounded question, source baseline and method.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions.
+- Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence.
+- Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `analysis-report` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

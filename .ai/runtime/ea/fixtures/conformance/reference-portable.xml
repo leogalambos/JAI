@@ -1,4 +1,4 @@
-<?xml version='1.0' encoding='utf-8'?>
+<?xml version='1.0' encoding='UTF-8'?>
 <model xmlns="http://www.opengroup.org/xsd/archimate/3.0/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" identifier="fixture-repo" version="3.2">
   <name xml:lang="en">Reference Portable Fixture</name>
   <documentation xml:lang="en">AI IT House 26.10.0 repository exchange; revision 6a0de93976cf59bc1671b9b749e1a1696a92a46672408ea4bc30246522eedbab</documentation>
@@ -125,9 +125,6 @@
     <diagrams>
       <view identifier="v-1" xsi:type="Diagram" viewpoint="Organization">
         <name xml:lang="en">Reference view</name>
-        <node identifier="node-v-1-e-a" elementRef="e-a" xsi:type="Element" x="60" y="80" w="180" h="60" />
-        <node identifier="node-v-1-e-p" elementRef="e-p" xsi:type="Element" x="280" y="80" w="180" h="60" />
-        <connection identifier="conn-v-1-r-1" relationshipRef="r-1" xsi:type="Relationship" source="node-v-1-e-a" target="node-v-1-e-p" />
         <properties>
           <property propertyDefinitionRef="pd-b487ce6f8f2f0035">
             <value xml:lang="en">["Architecture"]</value>
@@ -145,7 +142,10 @@
             <value xml:lang="en">v-1</value>
           </property>
         </properties>
-      </view>
+      <node identifier="node-v-1-e-a" elementRef="e-a" xsi:type="Element" x="60" y="80" w="180" h="60"/>
+        <node identifier="node-v-1-e-p" elementRef="e-p" xsi:type="Element" x="280" y="80" w="180" h="60"/>
+        <connection identifier="conn-v-1-r-1" relationshipRef="r-1" xsi:type="Relationship" source="node-v-1-e-a" target="node-v-1-e-p"/>
+        </view>
     </diagrams>
   </views>
 </model>

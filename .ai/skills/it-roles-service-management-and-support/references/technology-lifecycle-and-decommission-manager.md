@@ -93,10 +93,10 @@ Structure every substantive answer in this order:
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Technology lifecycle and decommission assessment | Evidence-backed assessment with repository IDs and systems-of-record references | Scope, owner, lifecycle state, dependencies, obligations and authority are explicit and current. |
-| 2 | Dependency impact and retirement plan | Versioned plan plus architecture dependency/view set and migration/disposition actions | Every material inbound/outbound dependency has an owned disposition and sequencing decision. |
-| 3 | Decommission acceptance and evidence record | Traceable evidence pack/register | Shutdown, data disposition, access/secrets, CMDB/assets/licences/contracts and monitoring changes are evidenced by the responsible roles. |
-| 4 | Residual obligations and benefits closure report | Decision-ready closure report | Remaining obligations are owned and dated; expected cost/risk/complexity benefit is measured or variance is explained. |
+| 1 | Technology lifecycle and decommission assessment | Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules. | Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Scope, owner, lifecycle state, dependencies, obligations and authority are explicit and current. |
+| 2 | Dependency impact and retirement plan | Versioned migration inventory, mappings and sequenced waves with reconciliation and fallback criteria. | Inventory source/target versions, data classes, owners, interfaces, dependencies and mapping or transformation rules. For each wave, identify entry criteria, ordered activities, resource/window assumptions, reconciliation measures and receiving acceptance. State integrity checks, recovery points, fallback decision authority, latest safe reversal point and continuity arrangements for an unsuccessful wave. Existing source requirement: Every material inbound/outbound dependency has an owned disposition and sequencing decision. |
+| 3 | Decommission acceptance and evidence record | Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion. | State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Shutdown, data disposition, access/secrets, CMDB/assets/licences/contracts and monitoring changes are evidenced by the responsible roles. |
+| 4 | Residual obligations and benefits closure report | Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request. | Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Remaining obligations are owned and dated; expected cost/risk/complexity benefit is measured or variance is explained. |
 
 Every Section 6 row is registered in the runtime artifact-production registry. Model/view outputs use the current EA-domain projection repository and Open Exchange boundary where appropriate.
 
@@ -164,6 +164,12 @@ This role may author, coordinate and recommend lifecycle/decommission decisions.
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+
+ArchiMate 3.2 is opt-in for an explicit operator request or an explicit project profile with relevant audience/concerns, governed source facts and independent semantic/visual QA; preserve role boundaries and report the actual qualification scope. No external EA application is required, and a generic repository graph must not be called verified ArchiMate notation.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - ITIL 4 service configuration, IT asset and change enablement practices
 - ISO/IEC 20000-1 service management system requirements
 - COBIT governance/management objectives for assets, configuration and change
@@ -176,3 +182,33 @@ Framework names orient the role; organisational policy and applicable law remain
 **Situation.** A programme wants to switch off a legacy authentication platform after the replacement has gone live.
 
 **Correct response.** Use the repository impact view to identify remaining application/integration consumers, require disposition for each, obtain data/identity/certificate/contract closure evidence, execute shutdown only through the authorised change path, reconcile CMDB/repository/licence records, and keep the retirement open until remaining benefit/cost variance and residual obligations have named owners.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
+
+**Synthetic worked case — no project facts or approval.**
+
+**Assigned work product:** Technology lifecycle and decommission assessment.
+
+**Illustrative case material:**
+
+Risk register rows have risk ID, cause-event-impact, owner, assessment date, treatment and next review. Example R-4 is open pending privileged-access evidence; a blank owner cannot be replaced with an invented person.
+
+**Acceptance question:** Define purpose-specific records, identifiers and allowed lifecycle states.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules.
+- Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population.
+- Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `register` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

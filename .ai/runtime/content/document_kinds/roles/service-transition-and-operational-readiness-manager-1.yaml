@@ -63,7 +63,8 @@
           "artifacts/contracts/role-deliverables.v3.json#service-transition-and-operational-readiness-manager:1",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -103,7 +104,8 @@
           "artifacts/contracts/role-deliverables.v3.json#service-transition-and-operational-readiness-manager:1",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -143,7 +145,8 @@
           "artifacts/contracts/role-deliverables.v3.json#service-transition-and-operational-readiness-manager:1",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -183,7 +186,8 @@
           "artifacts/contracts/role-deliverables.v3.json#service-transition-and-operational-readiness-manager:1",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -203,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Operational readiness assessment', provide verifiable evidence satisfying: Every operational capability is pass/fail/waived with evidence, owner and due date. Required delivery form: Evidence-backed assessment against defined acceptance criteria.",
+        "For the specific output 'Operational readiness assessment', provide verifiable evidence satisfying: Define service boundary and named receiving operations owner; enumerate support, access, monitoring, capacity, resilience and security readiness criteria. Record evidence and disposition for each applicable criterion, including missing/unexecuted checks, impact and remediation accountability. Separate readiness recommendation from deployment permission; identify unresolved risks, receiving acceptance conditions and early-life support exit criteria. Existing source requirement: Every operational capability is pass/fail/waived with evidence, owner and due date. Required delivery form: Service acceptance criteria and observed readiness evidence with receiving-operations disposition.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Operational readiness assessment', provide verifiable evidence satisfying: Every operational capability is pass/fail/waived with evidence, owner and due date. Required delivery form: Evidence-backed assessment against defined acceptance criteria.",
+        "reason": "For the specific output 'Operational readiness assessment', provide verifiable evidence satisfying: Define service boundary and named receiving operations owner; enumerate support, access, monitoring, capacity, resilience and security readiness criteria. Record evidence and disposition for each applicable criterion, including missing/unexecuted checks, impact and remediation accountability. Separate readiness recommendation from deployment permission; identify unresolved risks, receiving acceptance conditions and early-life support exit criteria. Existing source requirement: Every operational capability is pass/fail/waived with evidence, owner and due date. Required delivery form: Service acceptance criteria and observed readiness evidence with receiving-operations disposition.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-transition-and-operational-readiness-manager:1",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -233,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Operational readiness assessment",
-        "format": "Evidence-backed assessment against defined acceptance criteria",
-        "acceptance_criterion": "Every operational capability is pass/fail/waived with evidence, owner and due date.",
+        "format": "Service acceptance criteria and observed readiness evidence with receiving-operations disposition.",
+        "acceptance_criterion": "Define service boundary and named receiving operations owner; enumerate support, access, monitoring, capacity, resilience and security readiness criteria. Record evidence and disposition for each applicable criterion, including missing/unexecuted checks, impact and remediation accountability. Separate readiness recommendation from deployment permission; identify unresolved risks, receiving acceptance conditions and early-life support exit criteria. Existing source requirement: Every operational capability is pass/fail/waived with evidence, owner and due date.",
         "role_path": "skills/it-roles-service-management-and-support/references/service-transition-and-operational-readiness-manager.md"
       }
     },
@@ -274,7 +279,8 @@
           "artifacts/contracts/role-deliverables.v3.json#service-transition-and-operational-readiness-manager:1",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -321,7 +327,8 @@
           "artifacts/contracts/role-deliverables.v3.json#service-transition-and-operational-readiness-manager:1",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -366,7 +373,8 @@
           "artifacts/contracts/role-deliverables.v3.json#service-transition-and-operational-readiness-manager:1",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -411,7 +419,8 @@
           "artifacts/contracts/role-deliverables.v3.json#service-transition-and-operational-readiness-manager:1",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -456,7 +465,8 @@
           "artifacts/contracts/role-deliverables.v3.json#service-transition-and-operational-readiness-manager:1",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -503,7 +513,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -548,7 +559,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -595,7 +607,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -726,16 +739,29 @@
         "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Service Transition and Operational Readiness Manager",
+        "domain": "Service Management and Support",
+        "domain_index": 10,
+        "method_focus": "Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.",
         "frameworks": [
           "ITIL 4 transition/deployment practices",
           "ISO/IEC 20000-1",
           "SRE production readiness review practices"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -806,6 +832,17 @@
     "source_fingerprint": "ed9c902a7116fa96c5ba816a6d8531c84e820b558ec6e4fb9719b9f15ce9f42c",
     "source_hash": "6c7f4a544224d06d280e322cdcb6929f4ac0cbd0a2c3e6c59dd7285066f08802"
   },
+  "delivery_form": {
+    "primary_artifact": "readiness-assessment",
+    "representation": "Service acceptance criteria and observed readiness evidence with receiving-operations disposition.",
+    "evidence": [
+      "support/security/recovery/capacity evidence",
+      "open actions and receiving acceptance status"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "d791d67b67f12ca5e0e96ed365338fffd3baaca05463a78d3df44fd92449e94a",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

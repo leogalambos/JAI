@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#release-quality-gatekeeper:1",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#release-quality-gatekeeper:1",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#release-quality-gatekeeper:1",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#release-quality-gatekeeper:1",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Release evidence pack', provide verifiable evidence satisfying: Chain of custody is unbroken and the set is reproducible from the record. Required delivery form: Immutable evidence set with hashes, timestamps and custody record.",
+        "For the specific output 'Release evidence pack', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Chain of custody is unbroken and the set is reproducible from the record. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Release evidence pack', provide verifiable evidence satisfying: Chain of custody is unbroken and the set is reproducible from the record. Required delivery form: Immutable evidence set with hashes, timestamps and custody record.",
+        "reason": "For the specific output 'Release evidence pack', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Chain of custody is unbroken and the set is reproducible from the record. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#release-quality-gatekeeper:1",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Release evidence pack",
-        "format": "Immutable evidence set with hashes, timestamps and custody record",
-        "acceptance_criterion": "Chain of custody is unbroken and the set is reproducible from the record",
+        "format": "Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
+        "acceptance_criterion": "State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Chain of custody is unbroken and the set is reproducible from the record.",
         "role_path": "skills/it-roles-quality-and-testing/references/release-quality-gatekeeper.md"
       }
     },
@@ -271,7 +281,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#release-quality-gatekeeper:1",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -320,7 +332,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#release-quality-gatekeeper:1",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -364,7 +378,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#release-quality-gatekeeper:1",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -408,7 +424,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#release-quality-gatekeeper:1",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -452,7 +470,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#release-quality-gatekeeper:1",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -498,7 +518,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -542,7 +564,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -588,7 +612,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/79429.html",
+          "https://www.w3.org/TR/WCAG22/"
         ]
       },
       "provenance": {
@@ -711,16 +737,37 @@
         "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "software-testing",
+        "title": "ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation",
+        "url": "https://www.iso.org/standard/79429.html",
+        "scope": "Test planning, test specifications and reporting information needs.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "accessibility",
+        "title": "W3C Web Content Accessibility Guidelines (WCAG) 2.2",
+        "url": "https://www.w3.org/TR/WCAG22/",
+        "scope": "Perceivable and understandable content, text alternatives and accessible navigation; applicability depends on the delivered medium.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Release Quality Gatekeeper",
+        "domain": "Quality and Testing",
+        "domain_index": 6,
+        "method_focus": "Use risk-based test or assessment methods with expected/actual results, coverage, sampling and bounded conclusions.",
         "frameworks": [
           "GxP computerised systems validation (GAMP 5)",
           "IEC 62304 for medical device software",
           "ISO 13485 where applicable"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -791,6 +838,17 @@
     "source_fingerprint": "02360e82d4146c14b33acf6907f563e56e927f6d7daec7bb9fc176559a46614e",
     "source_hash": "b31d073489530dcff025b07f8da54a0fa4f0e173d819ba9ab1794193eaa07ace"
   },
+  "delivery_form": {
+    "primary_artifact": "assurance-assessment",
+    "representation": "Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
+    "evidence": [
+      "criterion-to-test-to-observation traceability",
+      "independent reviewer and limitations"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "2a4f5cb4234bd69e919fe1eec711c0871b5f8b5db635571fcc6e074ec7fbe2ff",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

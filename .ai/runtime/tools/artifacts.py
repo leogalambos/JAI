@@ -134,6 +134,67 @@ def _record_hash(record: dict) -> str:
     return hashlib.sha256(json.dumps(record, sort_keys=True, separators=(',', ':'), ensure_ascii=False).encode()).hexdigest()
 
 
+def _projection_policies(runtime: Path, contract_ids: set) -> dict:
+    """Read existing selected DCS policies once for an explicit source-check scope."""
+    content = runtime / 'content'
+    registry = json.loads((content / 'registry.json').read_text())
+    relative = Path(registry['binding_map_ref'])
+    if relative.is_absolute() or '..' in relative.parts:
+        raise ValueError('unsafe projection binding path')
+    bindings = json.loads((content / relative).read_text())['bindings']
+    paths_by_id = {row['id']: row['path'] for row in registry['specifications']}
+    result = {}
+    for binding in bindings:
+        cid = binding['artifact_id']
+        if cid not in contract_ids:
+            continue
+        relative = Path(paths_by_id[binding['content_spec_ref']])
+        path = content / relative
+        if relative.is_absolute() or '..' in relative.parts or not path.resolve().is_relative_to(content.resolve()):
+            raise ValueError('unsafe selected projection policy path')
+        policy = json.loads(path.read_text())
+        policy['_binding_family'] = binding['semantic_family']
+        result[cid] = policy
+    return result
+
+
+def guidance_source_matches(raw: dict, live: dict, guidance: dict, selected_policy=None) -> bool:
+    """Check an exact forward role-table projection against its frozen source.
+
+    Args:
+        raw: Immutable authoritative v3 contract with original source fingerprint.
+        live: Parsed current role-deliverable fingerprint.
+        guidance: Exact generated effective-output record, not an approval.
+        selected_policy: Existing selected DCS policy, supplied once per scoped
+            source check. None loads the exact canonical selection for this ID.
+    Returns:
+        True only when contract identity/hash, original fingerprint and the full
+        projected row fingerprint agree with the independently selected DCS
+        family, primary form and generated-record hash. Rehashing a contradictory
+        guidance record cannot select its own professional policy.
+    """
+    if not isinstance(guidance, dict) or not isinstance(live, dict):
+        return False
+    if selected_policy is None:
+        try:
+            selected_policy = _projection_policies(Path(__file__).resolve().parent.parent,
+                {raw.get('id')}).get(raw.get('id'), {})
+        except (OSError, ValueError, KeyError, TypeError):
+            return False
+    delivery = guidance.get('effective_deliverable')
+    if not isinstance(delivery, dict) or any(not isinstance(delivery.get(key), str) or not delivery[key]
+            for key in ('name', 'format', 'acceptance_criterion')):
+        return False
+    return (guidance.get('id') == raw.get('id')
+            and guidance.get('legacy_source_fingerprint') == raw.get('source_fingerprint')
+            and guidance.get('source_contract_hash') == _record_hash(raw)
+            and selected_policy.get('_binding_family') == guidance.get('semantic_family')
+            and selected_policy.get('delivery_form') == guidance.get('delivery_form')
+            and selected_policy.get('source_projection_record_hash') == _record_hash(guidance)
+            and guidance.get('effective_fingerprint') == fingerprint(delivery)
+            and live.get('fingerprint') == guidance.get('effective_fingerprint'))
+
+
 def _origin_problems(raw: dict, legacy_by: dict, live: dict | None, runtime: Path) -> list[str]:
     """Validate origin without treating authored provenance as approval or signature."""
     cid = raw.get('id')
@@ -246,6 +307,24 @@ def validate(root: Path):
         problems.append('taxonomy policy must forbid production inference')
     types=taxonomy.get('artifact_types',{}); acc=profiles.get('acceptance_profiles',{}); evp=profiles.get('evidence_profiles',{})
     live=live_deliverables(p,roles); rows=source.get('contracts',[]); actual={r.get('id'):flatten_v3(r) for r in rows if r.get('id')}
+    guidance = {}
+    projection_policies = {}
+    guidance_path = p['runtime'] / 'content/role-output-guidance.json'
+    if guidance_path.exists():
+        try:
+            document = json.loads(guidance_path.read_text())
+            records = document['outputs']
+            guidance = {row['id']: row for row in records}
+            payload = {key: value for key, value in document.items() if key != 'guidance_hash'}
+            if (document.get('status') != 'proposed'
+                    or document.get('professional_approval') != 'pending'
+                    or document.get('guidance_hash') != _record_hash(payload)
+                    or len(guidance) != len(records) or set(guidance) != set(actual)):
+                problems.append('effective output guidance is incomplete, inconsistent or claims approval')
+            projection_policies = _projection_policies(p['runtime'], set(actual))
+        except (OSError, ValueError, KeyError, TypeError):
+            problems.append('effective output guidance is unreadable or malformed')
+            guidance = {}
     if len(actual)!=len(rows): problems.append('duplicate or empty contract ids in authoritative source')
     if set(actual)!=set(live):
         for x in sorted(set(live)-set(actual)): problems.append(f'missing authoritative contract {x}')
@@ -267,7 +346,11 @@ def validate(root: Path):
         problems.extend(_origin_problems(raw, legacy_by, live.get(cid), p['runtime']))
         if not c.get('retention'): problems.append(f'{cid}: retention obligation lost in v3 lifecycle')
         ld=live.get(cid)
-        if ld and c.get('source_fingerprint')!=ld['fingerprint']: problems.append(f'{cid}: role Section 6 drift; explicit contract review required')
+        if ld:
+            source_matches = (guidance_source_matches(raw, ld, guidance.get(cid), projection_policies.get(cid, {}))
+                              if guidance_path.exists() else c.get('source_fingerprint') == ld['fingerprint'])
+            if not source_matches:
+                problems.append(f'{cid}: role Section 6 drift; explicit contract review required')
         at=c.get('artifact_type'); spec=types.get(at)
         if not spec: problems.append(f'{cid}: unknown artifact_type {at}'); continue
         for fld in ('schema_ref','producer','renderer','production_mode','acceptance_profile','evidence_profile'):
@@ -294,9 +377,20 @@ def validate(root: Path):
 
 
 def generated_registry(root: Path):
+    """Return the compatibility registry with exact effective-output guidance.
+
+    Args:
+        root: Canonical checkout or installed runtime root.
+    Returns:
+        Registry and validation problems; legacy taxonomy/identity stays intact,
+        while effective output form and criteria are explicit when packaged.
+    """
     problems,state=validate(root)
     if problems: return None,problems
     p,taxonomy,source,live=state; types=taxonomy['artifact_types']; rows=[]
+    guidance_path = p['runtime'] / 'content/role-output-guidance.json'
+    guidance = ({row['id']: row for row in json.loads(guidance_path.read_text())['outputs']}
+                if guidance_path.is_file() else {})
     for raw in source['contracts']:
         c=flatten_v3(raw); ld=live[c['id']]; d=ld['deliverable']; role=ld['role']; spec=types[c['artifact_type']]
         row=dict(c)
@@ -306,6 +400,14 @@ def generated_registry(root: Path):
           'validator':spec['validator'],'render_targets':spec.get('render_targets',[]),'owner':c['owner_role'],'review_cycle':c['lifecycle']['review_cycle'],
           'acceptance_gates':[g['id']+': '+g['criterion'] for g in ld['gates']],
         })
+        if c['id'] in guidance:
+            effective = guidance[c['id']]
+            row['effective_output_contract'] = {
+                'semantic_family': effective['semantic_family'],
+                'delivery_form': effective['delivery_form'],
+                'acceptance_criteria': effective['acceptance_criteria'],
+                'source_ref': 'content/role-output-guidance.json#' + c['id'],
+                'status': 'proposed; professional approval remains separate'}
         rows.append(row)
     return {'schema_version':'3.0.0','source':'contracts/role-deliverables.v3.json','role_count':source['role_count'],'deliverable_count':source['deliverable_count'],'contracts':rows},[]
 

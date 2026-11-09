@@ -65,7 +65,8 @@
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:1",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -105,7 +106,8 @@
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:1",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -145,7 +147,8 @@
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:1",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -185,7 +188,8 @@
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:1",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -205,7 +209,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Shared pipeline templates and reusable workflows', provide verifiable evidence satisfying: Reproducible from a clean checkout; no manual step required for a standard run. Required delivery form: Declarative pipeline definition in version control.",
+        "For the specific output 'Shared pipeline templates and reusable workflows', provide verifiable evidence satisfying: Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets. Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths. Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence. Existing source requirement: Reproducible from a clean checkout; no manual step required for a standard run. Required delivery form: Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -220,12 +224,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Shared pipeline templates and reusable workflows', provide verifiable evidence satisfying: Reproducible from a clean checkout; no manual step required for a standard run. Required delivery form: Declarative pipeline definition in version control.",
+        "reason": "For the specific output 'Shared pipeline templates and reusable workflows', provide verifiable evidence satisfying: Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets. Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths. Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence. Existing source requirement: Reproducible from a clean checkout; no manual step required for a standard run. Required delivery form: Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:1",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -235,8 +240,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Shared pipeline templates and reusable workflows",
-        "format": "Declarative pipeline definition in version control",
-        "acceptance_criterion": "Reproducible from a clean checkout; no manual step required for a standard run",
+        "format": "Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.",
+        "acceptance_criterion": "Identify exact deployment targets, versioned build inputs, configuration contracts and authorised execution boundaries without secrets. Define ordered automated stages, verification checkpoints, error handling, stop conditions and rollback or forward recovery paths. Link reproducible automation checks and observed outcomes to controlled environments; do not claim production execution or authorisation without evidence. Existing source requirement: Reproducible from a clean checkout; no manual step required for a standard run.",
         "role_path": "skills/it-roles-software-development-and-engineering/references/ci-cd-platform-engineer.md"
       }
     },
@@ -283,7 +288,8 @@
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:1",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -337,7 +343,8 @@
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:1",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -382,7 +389,8 @@
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:1",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -427,7 +435,8 @@
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:1",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -472,7 +481,8 @@
           "artifacts/contracts/role-deliverables.v3.json#ci-cd-platform-engineer:1",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -519,7 +529,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -564,7 +575,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -611,7 +623,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -742,17 +755,30 @@
         "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "software-testing",
+        "title": "ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation",
+        "url": "https://www.iso.org/standard/79429.html",
+        "scope": "Test planning, test specifications and reporting information needs.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "CI/CD Platform Engineer",
+        "domain": "Software Development and Engineering",
+        "domain_index": 5,
+        "method_focus": "Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.",
         "frameworks": [
           "SLSA supply chain levels",
           "NIST SSDF (SP 800-218)",
           "OIDC workload identity federation",
           "DORA metrics"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -825,6 +851,17 @@
     "source_fingerprint": "9d4ce978efd50252f750df5e0927c8db07ab3cd53232fd8f37d44c593b5059c7",
     "source_hash": "b5144118224f91d1ec49e9c1a321625bf504b590e6455efdfeed86a97e0d04fc"
   },
+  "delivery_form": {
+    "primary_artifact": "executable-deployment-automation",
+    "representation": "Versioned executable build/provision/deploy automation with controlled targets and failure/recovery gates.",
+    "evidence": [
+      "reproducible invocation and target versions",
+      "observed idempotency, health and rollback checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "fee11a1c1a06cb62dfbf7af96ac790a53c6bdf788cb788e4f493777fbb0c2ed3",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

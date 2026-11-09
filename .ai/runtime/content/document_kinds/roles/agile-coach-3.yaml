@@ -63,7 +63,10 @@
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -103,7 +106,10 @@
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -143,7 +149,10 @@
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -183,7 +192,10 @@
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -203,7 +215,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'ways-of-working playbook', provide verifiable evidence satisfying: Each branch names the decision, the decider and the escalation path. Required delivery form: Versioned Markdown with decision tree and authority levels.",
+        "For the specific output 'ways-of-working playbook', provide verifiable evidence satisfying: State when the procedure applies, exact targets, permitted operator capability, prerequisites, access dependencies and conditions forbidding execution. For each step, give the action, parameters, expected observation and a decision on success/failure; do not embed credentials. Define failure/timeout branches, rollback or safe recovery, escalation conditions and evidence of rehearsal against a named version/environment. Existing source requirement: Each branch names the decision, the decider and the escalation path. Required delivery form: Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +230,15 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'ways-of-working playbook', provide verifiable evidence satisfying: Each branch names the decision, the decider and the escalation path. Required delivery form: Versioned Markdown with decision tree and authority levels.",
+        "reason": "For the specific output 'ways-of-working playbook', provide verifiable evidence satisfying: State when the procedure applies, exact targets, permitted operator capability, prerequisites, access dependencies and conditions forbidding execution. For each step, give the action, parameters, expected observation and a decision on success/failure; do not embed credentials. Define failure/timeout branches, rollback or safe recovery, escalation conditions and evidence of rehearsal against a named version/environment. Existing source requirement: Each branch names the decision, the decider and the escalation path. Required delivery form: Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -233,8 +248,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "ways-of-working playbook",
-        "format": "Versioned Markdown with decision tree and authority levels",
-        "acceptance_criterion": "Each branch names the decision, the decider and the escalation path",
+        "format": "Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches.",
+        "acceptance_criterion": "State when the procedure applies, exact targets, permitted operator capability, prerequisites, access dependencies and conditions forbidding execution. For each step, give the action, parameters, expected observation and a decision on success/failure; do not embed credentials. Define failure/timeout branches, rollback or safe recovery, escalation conditions and evidence of rehearsal against a named version/environment. Existing source requirement: Each branch names the decision, the decider and the escalation path.",
         "role_path": "skills/it-roles-product-delivery-and-agile/references/agile-coach.md"
       }
     },
@@ -274,7 +289,10 @@
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -321,7 +339,10 @@
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -366,7 +387,10 @@
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -411,7 +435,10 @@
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -456,7 +483,10 @@
           "artifacts/contracts/role-deliverables.v3.json#agile-coach:3",
           "content/types/runbook.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -503,7 +533,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -548,7 +581,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -595,7 +631,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-34r1",
-          "https://doi.org/10.6028/NIST.SP.800-128"
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -726,16 +765,45 @@
         "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "human-centred-design",
+        "title": "ISO 9241-210:2019, Human-centred design for interactive systems",
+        "url": "https://www.iso.org/standard/77520.html",
+        "scope": "Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Agile Coach",
+        "domain": "Product, Delivery and Agile",
+        "domain_index": 2,
+        "method_focus": "Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.",
         "frameworks": [
           "Team Topologies",
           "Kanban Maturity Model",
           "evidence-based management"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -806,6 +874,17 @@
     "source_fingerprint": "24671e9ef1b3c84706713bcb2a4f0e51da3fb633ce8ecb005ffb1b554749b7ac",
     "source_hash": "f0b31f3f1cd8487e1b7d906e57d6c04d8d664291c0ddbdae545070e70a7295cf"
   },
+  "delivery_form": {
+    "primary_artifact": "operational-procedure",
+    "representation": "Executable-by-operator procedure with prerequisites, exact targets, expected observations and recovery branches.",
+    "evidence": [
+      "versioned verification checkpoints",
+      "rehearsal environment/results or explicit untested scope"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "280f5baa69a25c71d3bd6abedaed36c81173b6af5d507cc7b636b661b5a55dfe",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

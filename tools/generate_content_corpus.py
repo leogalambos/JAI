@@ -123,6 +123,33 @@ def synthetic_value(unit, scenario, field):
     and field identifies the semantic location. Returns JSON-compatible data;
     this tests shape and defect detection, never professional adequacy.
     """
+    if field == 'framework_applicability':
+        return [{
+            'record_id': 'SYN-PROFESSIONAL-BASIS',
+            'source': {'title': 'JAI authored enterprise-delivery practice',
+                       'edition': 'Synthetic development scenario, revision 1',
+                       'authoritative_location': 'content/rules/global-invariants.yaml'},
+            'basis': 'jai-interpretation',
+            'applicability': 'applicable',
+            'rationale': 'This fictional recovery case uses JAI evidence and bounded-handoff practice to exercise the DCS contract; no external framework conformity is claimed.',
+            'scope': scenario['scope'],
+            'jurisdiction': 'No real jurisdictional compliance conclusion is established by this synthetic fixture.',
+            'adopted_concepts': ['Attributable evidence', 'Bounded receiving-role conclusions'],
+            'tailoring': 'Illustrative recovery-service facts only; peak-load validation is excluded and remains pending.',
+            'precedence': 'Applicable real law and organisation policy would prevail; neither is fabricated by this case.',
+            'method_mapping': [{
+                'output_unit_ref': unit['id'],
+                'method': 'Separate fabricated scenario observations from demonstrated production results and map residual gaps to the receiving owner.',
+                'expected_evidence': 'Versioned synthetic scenario and its declared limitations.',
+                'evidence_refs': ['SYN-01'],
+                'reviewer_test': 'Reject any inference of real execution, framework conformance or human approval from this fictional example.'}],
+            'review': {'owner': 'Synthetic independent domain reviewer',
+                       'status': 'pending-independent-review',
+                       'change_trigger': 'Change to scenario scope, source practice or evidence; unchanged history is reused.'},
+            'evidence_refs': ['SYN-01'],
+            'knowledge_status': 'synthetic-assumption',
+            'human_approval_ref': None,
+        }]
     facts = {
         'design': {'element_id': 'SYN-APP-1', 'responsibility': 'Accept transaction IDs and persist each committed event once', 'interface_ref': 'SYN-IF-1', 'deployment': 'Managed Linux service with PostgreSQL standby', 'failure_handling': 'Retry twice using the same event ID, then reject and alert', 'rollback': 'Drain retries and reconcile the ledger before restoring the previous configuration'},
         'options': {'baseline': {'id': 'BASE', 'restore_minutes': 48, 'transition_eur': 0}, 'candidate': {'id': 'TARGET', 'restore_minutes': 27, 'transition_eur': 18000}, 'criterion': 'Restore within 30 minutes with no duplicate committed event IDs', 'recommendation': 'Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target'},

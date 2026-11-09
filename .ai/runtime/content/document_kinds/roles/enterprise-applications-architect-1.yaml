@@ -63,7 +63,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -102,7 +103,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -141,7 +143,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -180,7 +183,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -200,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Enterprise application landscape architecture', provide verifiable evidence satisfying: Strategic applications, capabilities, ownership, lifecycle, dependencies and target-state boundaries are explicit and traceable. Required delivery form: Canonical EA model plus published application/business/integration views.",
+        "For the specific output 'Enterprise application landscape architecture', provide verifiable evidence satisfying: Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Strategic applications, capabilities, ownership, lifecycle, dependencies and target-state boundaries are explicit and traceable. Required delivery form: Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +219,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Enterprise application landscape architecture', provide verifiable evidence satisfying: Strategic applications, capabilities, ownership, lifecycle, dependencies and target-state boundaries are explicit and traceable. Required delivery form: Canonical EA model plus published application/business/integration views.",
+        "reason": "For the specific output 'Enterprise application landscape architecture', provide verifiable evidence satisfying: Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Strategic applications, capabilities, ownership, lifecycle, dependencies and target-state boundaries are explicit and traceable. Required delivery form: Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -229,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Enterprise application landscape architecture",
-        "format": "Canonical EA model plus published application/business/integration views",
-        "acceptance_criterion": "Strategic applications, capabilities, ownership, lifecycle, dependencies and target-state boundaries are explicit and traceable.",
+        "format": "Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
+        "acceptance_criterion": "Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Strategic applications, capabilities, ownership, lifecycle, dependencies and target-state boundaries are explicit and traceable.",
         "role_path": "skills/it-roles-architecture/references/enterprise-applications-architect.md"
       }
     },
@@ -270,7 +275,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -317,7 +323,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -361,7 +368,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -405,7 +413,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -449,7 +458,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -493,7 +503,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-applications-architect:1",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -539,7 +550,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -583,7 +595,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -629,7 +642,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -752,17 +766,30 @@
         "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Enterprise Applications Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "TOGAF Standard, 10th Edition",
           "ArchiMate 3.2",
           "ISO/IEC/IEEE 42010 architecture description concepts",
           "Technology Business Management (TBM) taxonomy where used"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -833,6 +860,17 @@
     "source_fingerprint": "7ec35744c98c9a120638c035fc03e5b2d3295b9888a2922e30158204ac93ffca",
     "source_hash": "55b268a72f6d387b36d9c005c43b431d0f919cad4eb0d7d7f294035cec6d7683"
   },
+  "delivery_form": {
+    "primary_artifact": "typed-semantic-model",
+    "representation": "Versioned typed model with stable entities, relations, constraints, provenance and selected views.",
+    "evidence": [
+      "metamodel/reference/cross-view checks",
+      "source baseline and unresolved semantic gaps"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "1566985e08de8ec7355b92ee7a868fec87bc30394cb457093c2a03476e268903",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

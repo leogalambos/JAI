@@ -63,7 +63,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:4",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -102,7 +104,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:4",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -141,7 +145,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:4",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -180,7 +186,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:4",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -200,7 +208,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Multi-supplier service assurance report', provide verifiable evidence satisfying: The report distinguishes individual supplier performance from end-to-end service performance and assigns systemic remediation owners. Required delivery form: Assurance report covering service performance, handoff defects, supplier interactions, systemic issues and remediation.",
+        "For the specific output 'Multi-supplier service assurance report', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: The report distinguishes individual supplier performance from end-to-end service performance and assigns systemic remediation owners. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +223,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Multi-supplier service assurance report', provide verifiable evidence satisfying: The report distinguishes individual supplier performance from end-to-end service performance and assigns systemic remediation owners. Required delivery form: Assurance report covering service performance, handoff defects, supplier interactions, systemic issues and remediation.",
+        "reason": "For the specific output 'Multi-supplier service assurance report', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: The report distinguishes individual supplier performance from end-to-end service performance and assigns systemic remediation owners. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:4",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -229,8 +239,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Multi-supplier service assurance report",
-        "format": "Assurance report covering service performance, handoff defects, supplier interactions, systemic issues and remediation",
-        "acceptance_criterion": "The report distinguishes individual supplier performance from end-to-end service performance and assigns systemic remediation owners.",
+        "format": "Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
+        "acceptance_criterion": "State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: The report distinguishes individual supplier performance from end-to-end service performance and assigns systemic remediation owners.",
         "role_path": "skills/it-roles-service-management-and-support/references/siam-manager.md"
       }
     },
@@ -270,7 +280,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:4",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -317,7 +329,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:4",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -361,7 +375,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:4",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -405,7 +421,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:4",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -449,7 +467,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:4",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -493,7 +513,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:4",
           "content/types/assurance-report.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -539,7 +561,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -583,7 +607,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -629,7 +655,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -752,17 +780,38 @@
         "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "service-management",
+        "title": "ISO/IEC 20000-1:2018, Service management system requirements",
+        "url": "https://www.iso.org/standard/70636.html",
+        "scope": "Service requirements, agreements, transition, operation and measurement concepts.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "SIAM Manager",
+        "domain": "Service Management and Support",
+        "domain_index": 10,
+        "method_focus": "Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.",
         "frameworks": [
           "ITIL 4",
           "ISO/IEC 20000-1",
           "SIAM professional practice principles",
           "COBIT governance concepts"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -833,6 +882,17 @@
     "source_fingerprint": "8540f6eed1a33f57365e896e10500a280ab03de96e38684be1c77c98d8021ecc",
     "source_hash": "59aaeaa56f02201114556c6b0624a385a9c66e5b08c9a59b7bbddd74f9450d36"
   },
+  "delivery_form": {
+    "primary_artifact": "assurance-assessment",
+    "representation": "Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
+    "evidence": [
+      "criterion-to-test-to-observation traceability",
+      "independent reviewer and limitations"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "ef694d7bfb642019d2db7caafda4e8a00d54d9628d976d43aced745dc1d47d7d",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

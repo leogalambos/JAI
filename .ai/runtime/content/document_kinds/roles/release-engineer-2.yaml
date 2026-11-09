@@ -63,7 +63,8 @@
           "artifacts/contracts/role-deliverables.v3.json#release-engineer:2",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -103,7 +104,8 @@
           "artifacts/contracts/role-deliverables.v3.json#release-engineer:2",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -143,7 +145,8 @@
           "artifacts/contracts/role-deliverables.v3.json#release-engineer:2",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -183,7 +186,8 @@
           "artifacts/contracts/role-deliverables.v3.json#release-engineer:2",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -203,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'release notes and change manifest', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'release notes and change manifest', provide verifiable evidence satisfying: Identify exact release and predecessor versions, affected products and deployment applicability. Link delivered changes, resolved defects, known limitations and compatibility impacts to traceable change records. Specify required upgrade actions, configuration changes, rollback constraints and recipient communication. Required delivery form: Release-specific changes, compatibility impacts, known limitations and recipient upgrade/recovery actions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'release notes and change manifest', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'release notes and change manifest', provide verifiable evidence satisfying: Identify exact release and predecessor versions, affected products and deployment applicability. Link delivered changes, resolved defects, known limitations and compatibility impacts to traceable change records. Specify required upgrade actions, configuration changes, rollback constraints and recipient communication. Required delivery form: Release-specific changes, compatibility impacts, known limitations and recipient upgrade/recovery actions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#release-engineer:2",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -233,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "release notes and change manifest",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Release-specific changes, compatibility impacts, known limitations and recipient upgrade/recovery actions.",
+        "acceptance_criterion": "Identify exact release and predecessor versions, affected products and deployment applicability. Link delivered changes, resolved defects, known limitations and compatibility impacts to traceable change records. Specify required upgrade actions, configuration changes, rollback constraints and recipient communication.",
         "role_path": "skills/it-roles-software-development-and-engineering/references/release-engineer.md"
       }
     },
@@ -277,7 +282,8 @@
           "artifacts/contracts/role-deliverables.v3.json#release-engineer:2",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -327,7 +333,8 @@
           "artifacts/contracts/role-deliverables.v3.json#release-engineer:2",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -372,7 +379,8 @@
           "artifacts/contracts/role-deliverables.v3.json#release-engineer:2",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -417,7 +425,8 @@
           "artifacts/contracts/role-deliverables.v3.json#release-engineer:2",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -462,7 +471,8 @@
           "artifacts/contracts/role-deliverables.v3.json#release-engineer:2",
           "content/types/document.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -509,7 +519,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -554,7 +565,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -601,7 +613,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -732,15 +745,28 @@
         "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "software-testing",
+        "title": "ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation",
+        "url": "https://www.iso.org/standard/79429.html",
+        "scope": "Test planning, test specifications and reporting information needs.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Release Engineer",
+        "domain": "Software Development and Engineering",
+        "domain_index": 5,
+        "method_focus": "Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.",
         "frameworks": [
           "ITIL 4 release management and deployment management",
           "SLSA provenance"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -813,6 +839,17 @@
     "source_fingerprint": "248f9be8f536b725d81f80d68cb32e266ce72076e1e14f73ded61e0595045957",
     "source_hash": "273675edea2e44c061b2e2e7903716905f3be7be4bc476cfb5b821568cc5d4a7"
   },
+  "delivery_form": {
+    "primary_artifact": "release-change-record",
+    "representation": "Release-specific changes, compatibility impacts, known limitations and recipient upgrade/recovery actions.",
+    "evidence": [
+      "exact release/predecessor revisions",
+      "source change and issue references"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "faa6b6c919dc4feb9efc3b5380f178dd8869f9afd1af9a06457cc7d6e55a28c4",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

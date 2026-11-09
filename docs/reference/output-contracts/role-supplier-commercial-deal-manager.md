@@ -42,6 +42,19 @@ Supplier commercial strategy and negotiation brief
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `decision-paper`.
+
+Bounded decision paper with consistent option comparison and a clear authority/decision request.
+
+**Evidence accompanying the work product:**
+
+- baseline and feasible alternatives
+- cost/benefit/uncertainty and consequences
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -68,7 +81,7 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 
 **`role/supplier-commercial-deal-manager:1.delivery_verification`** — `array`
 
-- For the specific output 'Supplier commercial strategy and negotiation brief', provide verifiable evidence satisfying: Human negotiator/authority can distinguish delegated positions from reserved decisions. Required delivery form: Versioned term positions, trade-off packages, economic effects, mandate and escalation limits.
+- For the specific output 'Supplier commercial strategy and negotiation brief', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Human negotiator/authority can distinguish delegated positions from reserved decisions. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.
 - **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/supplier-commercial-deal-manager:1.role_gate_observations`** — `array`
@@ -167,6 +180,9 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Role framework context
 
 - **Supplier Commercial / Deal Manager:** World Commerce & Contracting contract and commercial management lifecycle practices: lifecycle commercial coherence, obligations, negotiation and change; no certification claim; ISO 44001 collaborative business relationship management concepts where applicable; collaboration does not displace contractual duties; Applicable contract/procurement/competition law and organisation delegated-authority, accounting, pricing and risk policies, interpreted by accountable specialists. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-supplier-commercial-deal-manager-2"></a>
@@ -206,6 +222,19 @@ Commercial commitments and lifecycle obligation baseline
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `governed-register`.
+
+Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.
+
+**Evidence accompanying the work product:**
+
+- actual source-attributed records
+- uniqueness, completeness and relationship reconciliation
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -213,22 +242,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/supplier-commercial-deal-manager:2.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Commercial commitments and lifecycle obligation baseline
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/supplier-commercial-deal-manager:2.receiving_acceptance`** — `array`
 
 - For each receiving role (Bid / Proposal Manager; Supplier Commercial / Deal Manager; Delegated human commercial and finance authority), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/supplier-commercial-deal-manager:2.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: business outcome -> scope -> work package -> staffing -> effort -> cost -> price -> observed evidence; material inputs -> source/version/assumption; client commitments -> protected internal commitment baseline; decision -> human approver where required.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/supplier-commercial-deal-manager:2.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/supplier-commercial-deal-manager:2.delivery_verification`** — `array`
 
-- For the specific output 'Commercial commitments and lifecycle obligation baseline', provide verifiable evidence satisfying: Every material obligation has a feasible owner and traceable lifecycle effort/cost treatment. Required delivery form: Linked client commitments, internal economics, subcontract gaps, owners, acceptance and review triggers.
+- For the specific output 'Commercial commitments and lifecycle obligation baseline', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every material obligation has a feasible owner and traceable lifecycle effort/cost treatment. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/supplier-commercial-deal-manager:2.role_gate_observations`** — `array`
 
@@ -240,22 +274,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G5: Critical business-to-economics-to-evidence links and client/internal commitment consistency are complete; unresolved links remain visible and decision-limiting.
 - G6: Lifecycle effort and cost, including recurring service and exit where relevant, are classified without double-counting; missing evidence is never silently zero.
 - G7: Author, independent reviewer and human approval/risk-acceptance boundaries are explicit; superseded versions and review/reopen triggers are retained.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/supplier-commercial-deal-manager:2.contract_input_1`** — `object`
 
 - Analyse the specific input "Client objectives, procurement route and opportunity strategy" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/supplier-commercial-deal-manager:2.contract_input_2`** — `object`
 
 - Analyse the specific input "Negotiation mandate, signing limits, risk appetite and legal constraints" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/supplier-commercial-deal-manager:2.contract_input_3`** — `object`
 
 - Analyse the specific input "Solution, estimate, price options and delivery/service feasibility" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/supplier-commercial-deal-manager:2.contract_input_4`** — `object`
 
 - Analyse the specific input "Draft/signed terms, obligations, changes, invoices, service performance and claims" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -264,18 +303,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/supplier-commercial-deal-manager:2.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/supplier-commercial-deal-manager:2.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -325,10 +367,15 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[HM Treasury, The Green Book](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government)** — Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Supplier Commercial / Deal Manager:** World Commerce & Contracting contract and commercial management lifecycle practices: lifecycle commercial coherence, obligations, negotiation and change; no certification claim; ISO 44001 collaborative business relationship management concepts where applicable; collaboration does not displace contractual duties; Applicable contract/procurement/competition law and organisation delegated-authority, accounting, pricing and risk policies, interpreted by accountable specialists. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-supplier-commercial-deal-manager-3"></a>
@@ -368,6 +415,19 @@ Deal performance, change and renewal/exit recommendation
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `decision-paper`.
+
+Bounded decision paper with consistent option comparison and a clear authority/decision request.
+
+**Evidence accompanying the work product:**
+
+- baseline and feasible alternatives
+- cost/benefit/uncertainty and consequences
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -394,7 +454,7 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 
 **`role/supplier-commercial-deal-manager:3.delivery_verification`** — `array`
 
-- For the specific output 'Deal performance, change and renewal/exit recommendation', provide verifiable evidence satisfying: Material commercial drift is visible before a new commitment, with accountable action and approval route. Required delivery form: Baseline-to-actual/forecast bridge, contract impact, options and decision request.
+- For the specific output 'Deal performance, change and renewal/exit recommendation', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Material commercial drift is visible before a new commitment, with accountable action and approval route. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.
 - **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
 
 **`role/supplier-commercial-deal-manager:3.role_gate_observations`** — `array`
@@ -493,4 +553,7 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Role framework context
 
 - **Supplier Commercial / Deal Manager:** World Commerce & Contracting contract and commercial management lifecycle practices: lifecycle commercial coherence, obligations, negotiation and change; no certification claim; ISO 44001 collaborative business relationship management concepts where applicable; collaboration does not displace contractual duties; Applicable contract/procurement/competition law and organisation delegated-authority, accounting, pricing and risk policies, interpreted by accountable specialists. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 <!-- JAI:OUTPUT-CONTRACTS:END -->

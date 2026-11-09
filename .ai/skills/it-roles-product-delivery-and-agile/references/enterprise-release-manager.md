@@ -82,10 +82,10 @@ Producing, maintaining and defending the quality of:
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Integrated enterprise release calendar and dependency roadmap | Roadmap/calendar with release trains, cross-system dependencies, blackout windows, business events and owners | Material dependencies and collision windows are visible early enough to change sequencing; every dependency has an owner. |
-| 2 | Enterprise release readiness assessment | Operational readiness assessment covering technical, business, cutover, supplier, support, security and rollback readiness | Readiness is evidenced against agreed criteria; failed mandatory gates cannot be hidden by schedule pressure. |
-| 3 | Enterprise release go/no-go decision paper | Decision paper with readiness evidence, unresolved risk, waivers, authority and executable decision | Go/no-go is traceable to evidence and delegated authority, with explicit rollback/abort conditions and no self-approval of failed gates. |
-| 4 | Post-release validation and release performance report | Assurance/test report covering outcomes, incidents, reversals, customer/business impact and improvement actions | The release is closed only when agreed validation signals are met or a named authority accepts residual issues with actions. |
+| 1 | Integrated enterprise release calendar and dependency roadmap | Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones. | State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Material dependencies and collision windows are visible early enough to change sequencing; every dependency has an owner. |
+| 2 | Enterprise release readiness assessment | Service acceptance criteria and observed readiness evidence with receiving-operations disposition. | Define service boundary and named receiving operations owner; enumerate support, access, monitoring, capacity, resilience and security readiness criteria. Record evidence and disposition for each applicable criterion, including missing/unexecuted checks, impact and remediation accountability. Separate readiness recommendation from deployment permission; identify unresolved risks, receiving acceptance conditions and early-life support exit criteria. Existing source requirement: Readiness is evidenced against agreed criteria; failed mandatory gates cannot be hidden by schedule pressure. |
+| 3 | Enterprise release go/no-go decision paper | Bounded decision paper with consistent option comparison and a clear authority/decision request. | Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Go/no-go is traceable to evidence and delegated authority, with explicit rollback/abort conditions and no self-approval of failed gates. |
+| 4 | Post-release validation and release performance report | Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion. | State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: The release is closed only when agreed validation signals are met or a named authority accepts residual issues with actions. |
 
 Every Section 6 row is registered in Artifact Contract v3/JAI and must resolve to a typed internal producer/validator/renderer or an explicit external handoff.
 
@@ -151,6 +151,10 @@ This role owns **integrated enterprise release go/no-go within delegated release
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - ITIL 4 release management and change enablement
 - SAFe release-on-demand concepts where used
 - ISO/IEC 20000-1
@@ -163,3 +167,31 @@ Frameworks orient the role; organisation policy, law, contracts and explicit del
 **Situation.** A cross-domain programme asks for a rapid decision in this role's area, but one critical dependency and one evidence source are unresolved.
 
 **Correct response.** Separate known facts from assumptions, identify the decision that can be made now versus the decision that must wait, compare credible options, record the unresolved dependency with owner/date, produce the relevant Section 6 artefact, and hand it to the named receiving role with an explicit reopen trigger if the missing evidence changes the basis.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
+
+**Synthetic worked case — no project facts or approval.**
+
+**Assigned work product:** Integrated enterprise release calendar and dependency roadmap.
+
+**Illustrative case material:**
+
+Define target business capability, customer value, architecture constraints and measurable outcomes. Identify governance owners, funding boundaries and where each programme contributes to the target. A roadmap is a set of conditional dependencies and decision points, not merely a Gantt chart. Distinguish exploration, committed delivery and aspirational future stages.
+
+**Case application:** The accountable Clinical Digital Owner must confirm whether the objective and boundary are materially complete for `BHN-CRM`. The fact that a sample shows a proposed owner does not delegate any actual organizational authority.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions.
+- For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome.
+- Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `transformation-roadmap` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

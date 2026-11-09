@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#process-analyst:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#process-analyst:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#process-analyst:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#process-analyst:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'As-is and to-be process models', provide verifiable evidence satisfying: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON).",
+        "For the specific output 'As-is and to-be process models', provide verifiable evidence satisfying: Identify diagram purpose, scope, audience, version and notation/legend, including the meaning of every relationship type. Use stable element identifiers and meaningful labels; show relevant boundaries, directions, interfaces and external dependencies without invented facts. Check consistency with source models and related views; distinguish intentional abstraction from omitted or unresolved relationships. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Concern-specific diagram with declared notation, legend, typed relationships and source-element links.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'As-is and to-be process models', provide verifiable evidence satisfying: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON).",
+        "reason": "For the specific output 'As-is and to-be process models', provide verifiable evidence satisfying: Identify diagram purpose, scope, audience, version and notation/legend, including the meaning of every relationship type. Use stable element identifiers and meaningful labels; show relevant boundaries, directions, interfaces and external dependencies without invented facts. Check consistency with source models and related views; distinguish intentional abstraction from omitted or unresolved relationships. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Concern-specific diagram with declared notation, legend, typed relationships and source-element links.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#process-analyst:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "As-is and to-be process models",
-        "format": "Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON)",
-        "acceptance_criterion": "The model is validated against real observed behaviour or data, not only interviews",
+        "format": "Concern-specific diagram with declared notation, legend, typed relationships and source-element links.",
+        "acceptance_criterion": "Identify diagram purpose, scope, audience, version and notation/legend, including the meaning of every relationship type. Use stable element identifiers and meaningful labels; show relevant boundaries, directions, interfaces and external dependencies without invented facts. Check consistency with source models and related views; distinguish intentional abstraction from omitted or unresolved relationships. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews.",
         "role_path": "skills/it-roles-analysis/references/process-analyst.md"
       }
     },
@@ -268,7 +278,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#process-analyst:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -314,7 +326,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#process-analyst:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -358,7 +372,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#process-analyst:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -402,7 +418,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#process-analyst:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -446,7 +464,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#process-analyst:1",
           "content/types/diagram.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -492,7 +512,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -536,7 +558,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -582,7 +606,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.w3.org/TR/vocab-dqv/"
         ]
       },
       "provenance": {
@@ -705,17 +731,38 @@
         "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "data-quality",
+        "title": "W3C Data Quality Vocabulary",
+        "url": "https://www.w3.org/TR/vocab-dqv/",
+        "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Process Analyst",
+        "domain": "Analysis",
+        "domain_index": 3,
+        "method_focus": "Trace source needs, stakeholders and conflicting constraints into verifiable requirements, models and acceptance criteria.",
         "frameworks": [
           "BPMN 2.0",
           "DMN",
           "Lean and value stream mapping",
           "process mining practice"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -786,6 +833,17 @@
     "source_fingerprint": "b071146a04fe7dadfd54dd2abc21f860b0473d5b3ec1a4b250b011e2cdacf9c1",
     "source_hash": "9a3ee9a2b5f48c3b796c06e6efd808ef66d7a8325132ce4b123fa3c14536ba03"
   },
+  "delivery_form": {
+    "primary_artifact": "model-derived-view",
+    "representation": "Concern-specific diagram with declared notation, legend, typed relationships and source-element links.",
+    "evidence": [
+      "endpoint/meaning/coverage checks",
+      "legibility and explicit projection limitations"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "017e4f3f7d36a4bfb5d6fdcc65e4b1b799bf598f2eff790eced4391fd8245dc8",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

@@ -63,7 +63,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-engineer-incose:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current"
         ]
       },
       "provenance": {
@@ -102,7 +103,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-engineer-incose:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current"
         ]
       },
       "provenance": {
@@ -141,7 +143,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-engineer-incose:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current"
         ]
       },
       "provenance": {
@@ -180,7 +183,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-engineer-incose:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current"
         ]
       },
       "provenance": {
@@ -200,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'System requirements specification', provide verifiable evidence satisfying: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Versioned specification with numbered, traceable requirements.",
+        "For the specific output 'System requirements specification', provide verifiable evidence satisfying: Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +219,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'System requirements specification', provide verifiable evidence satisfying: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Versioned specification with numbered, traceable requirements.",
+        "reason": "For the specific output 'System requirements specification', provide verifiable evidence satisfying: Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-engineer-incose:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current"
         ]
       },
       "provenance": {
@@ -229,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "System requirements specification",
-        "format": "Versioned specification with numbered, traceable requirements",
-        "acceptance_criterion": "Every requirement is atomic, testable and traced to a source and a priority",
+        "format": "Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
+        "acceptance_criterion": "Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority.",
         "role_path": "skills/it-roles-research-innovation-and-specialist-engineering/references/systems-engineer-incose.md"
       }
     },
@@ -269,7 +274,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-engineer-incose:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current"
         ]
       },
       "provenance": {
@@ -315,7 +321,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-engineer-incose:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current"
         ]
       },
       "provenance": {
@@ -359,7 +366,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-engineer-incose:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current"
         ]
       },
       "provenance": {
@@ -403,7 +411,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-engineer-incose:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current"
         ]
       },
       "provenance": {
@@ -447,7 +456,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#systems-engineer-incose:1",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current"
         ]
       },
       "provenance": {
@@ -493,7 +503,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current"
         ]
       },
       "provenance": {
@@ -537,7 +548,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current"
         ]
       },
       "provenance": {
@@ -583,7 +595,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.acm.org/publications/policies/artifact-review-and-badging-current"
         ]
       },
       "provenance": {
@@ -706,16 +719,29 @@
         "scope": "Requirements information items, requirement quality and traceability.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "research-reproducibility",
+        "title": "ACM Artifact Review and Badging policy",
+        "url": "https://www.acm.org/publications/policies/artifact-review-and-badging-current",
+        "scope": "Artifact availability, evaluation and reproducibility terminology; informative evidence-pack practice, not proof that an experiment is scientifically sufficient.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Systems Engineer (INCOSE)",
+        "domain": "Research, Innovation and Specialist Engineering",
+        "domain_index": 16,
+        "method_focus": "State hypotheses, success criteria and measurement methods before experiments; distinguish observed results, uncertainty and applicability limits.",
         "frameworks": [
           "INCOSE Systems Engineering Handbook",
           "ISO/IEC/IEEE 15288",
           "ISO/IEC/IEEE 29148"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -788,6 +814,17 @@
     "source_fingerprint": "5f38a9e56c9f2036ea8f68f5b81a6d5e43f981f7e2489a2d97c385f768eec28b",
     "source_hash": "7fb97597586a7399dafc9c80068cbaac66c6ecf2936d485c3ddba83ab6476481"
   },
+  "delivery_form": {
+    "primary_artifact": "requirements-specification",
+    "representation": "Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
+    "evidence": [
+      "forward/backward traceability",
+      "conflict, interface and change-impact checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "f52ff7552c3c2cb91de49a3e0a364fbe83748e24540f590dde66668a607fbfae",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

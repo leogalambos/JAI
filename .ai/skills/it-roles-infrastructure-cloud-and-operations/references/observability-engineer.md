@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Instrumentation standards and libraries | Instrumentation standards and versioned library package | Supplies actual library source/package, supported interfaces and versions, instrumentation conventions, reproducible tests, compatibility and operating constraints |
-| 2 | dashboards and service health views | Live view in the reporting platform with a documented data lineage | Every metric has a definition, a source, a refresh cadence and an owner |
-| 3 | alert rules with defined ownership | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 4 | telemetry cost and retention policy | Controlled document with owner, effective date and review date | Every statement is testable and maps to at least one control |
+| 1 | Instrumentation standards and libraries | Actual version-controlled implementation or analysis code, separate from its explanatory report. | Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. Existing source requirement: Supplies actual library source/package, supported interfaces and versions, instrumentation conventions, reproducible tests, compatibility and operating constraints. |
+| 2 | dashboards and service health views | Dashboard or scorecard with metric definitions, observations, source queries and interpretation. | For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Existing source requirement: Every metric has a definition, a source, a refresh cadence and an owner. |
+| 3 | alert rules with defined ownership | Typed desired-state configuration with exact targets, versioned values and controlled secret references. | Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. |
+| 4 | telemetry cost and retention policy | Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions. | State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Every statement is testable and maps to at least one control. |
 
 ## 7. Output gates (blocking)
 
@@ -193,6 +193,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - OpenTelemetry
 - USE and RED methods
 - Google SRE alerting philosophy
@@ -203,13 +207,32 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “We have 1,400 alerts and on-call ignores most of them — rebuild alerting around symptoms”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver instrumentation standards and libraries in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Instrumentation standards and libraries.
+
+**Illustrative case material:**
+
+Requirement R-17 permits one stock reservation per order key. Revision src-42 replaces a read-then-write check with a unique order-key constraint and transactional insert. A duplicate returns the existing reservation ID, not another decrement.
+
+**Acceptance question:** Identify the exact source revision, changed behaviour and requirement.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision.
+- Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution.
+- Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `software-change` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

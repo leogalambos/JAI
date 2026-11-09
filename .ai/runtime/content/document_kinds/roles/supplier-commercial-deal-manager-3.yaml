@@ -204,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Deal performance, change and renewal/exit recommendation', provide verifiable evidence satisfying: Material commercial drift is visible before a new commitment, with accountable action and approval route. Required delivery form: Baseline-to-actual/forecast bridge, contract impact, options and decision request.",
+        "For the specific output 'Deal performance, change and renewal/exit recommendation', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Material commercial drift is visible before a new commitment, with accountable action and approval route. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,7 +219,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Deal performance, change and renewal/exit recommendation', provide verifiable evidence satisfying: Material commercial drift is visible before a new commitment, with accountable action and approval route. Required delivery form: Baseline-to-actual/forecast bridge, contract impact, options and decision request.",
+        "reason": "For the specific output 'Deal performance, change and renewal/exit recommendation', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Material commercial drift is visible before a new commitment, with accountable action and approval route. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#supplier-commercial-deal-manager:3",
           "content/types/decision-paper.yaml",
@@ -234,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Deal performance, change and renewal/exit recommendation",
-        "format": "Baseline-to-actual/forecast bridge, contract impact, options and decision request",
-        "acceptance_criterion": "Material commercial drift is visible before a new commitment, with accountable action and approval route.",
+        "format": "Bounded decision paper with consistent option comparison and a clear authority/decision request.",
+        "acceptance_criterion": "Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Material commercial drift is visible before a new commitment, with accountable action and approval route.",
         "role_path": "skills/it-roles-commercial-sourcing-and-enablement/references/supplier-commercial-deal-manager.md"
       }
     },
@@ -736,11 +736,16 @@
     "role_framework_context": [
       {
         "role": "Supplier Commercial / Deal Manager",
+        "domain": "Commercial, Sourcing and Enablement",
+        "domain_index": 15,
+        "method_focus": "Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.",
         "frameworks": [
           "World Commerce & Contracting contract and commercial management lifecycle practices: lifecycle commercial coherence, obligations, negotiation and change; no certification claim.",
           "ISO 44001 collaborative business relationship management concepts where applicable; collaboration does not displace contractual duties.",
           "Applicable contract/procurement/competition law and organisation delegated-authority, accounting, pricing and risk policies, interpreted by accountable specialists."
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -811,6 +816,17 @@
     "source_fingerprint": "83db63b880fa4dd369a313249a00cbc2f2ea391499e8f5f28393a9e6f822b651",
     "source_hash": "a9bb77616df39f68d4408a86b4277d6afba378eac5fca803ff98c07ad56a5de4"
   },
+  "delivery_form": {
+    "primary_artifact": "decision-paper",
+    "representation": "Bounded decision paper with consistent option comparison and a clear authority/decision request.",
+    "evidence": [
+      "baseline and feasible alternatives",
+      "cost/benefit/uncertainty and consequences"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "5c7a16d3c08a8a5fe9072e4522bebd803e1700427df5fb6399748e971175a4a7",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

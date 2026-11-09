@@ -63,7 +63,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-product-manager:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -102,7 +104,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-product-manager:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -141,7 +145,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-product-manager:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -180,7 +186,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-product-manager:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -200,7 +208,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'interface contracts and deprecation policy', provide verifiable evidence satisfying: Every statement is testable and maps to at least one control. Required delivery form: Controlled document with owner, effective date and review date.",
+        "For the specific output 'interface contracts and deprecation policy', provide verifiable evidence satisfying: Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Existing source requirement: Every statement is testable and maps to at least one control. Required delivery form: Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +223,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'interface contracts and deprecation policy', provide verifiable evidence satisfying: Every statement is testable and maps to at least one control. Required delivery form: Controlled document with owner, effective date and review date.",
+        "reason": "For the specific output 'interface contracts and deprecation policy', provide verifiable evidence satisfying: Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Existing source requirement: Every statement is testable and maps to at least one control. Required delivery form: Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-product-manager:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -229,8 +239,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "interface contracts and deprecation policy",
-        "format": "Controlled document with owner, effective date and review date",
-        "acceptance_criterion": "Every statement is testable and maps to at least one control",
+        "format": "Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
+        "acceptance_criterion": "Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Existing source requirement: Every statement is testable and maps to at least one control.",
         "role_path": "skills/it-roles-product-delivery-and-agile/references/technical-product-manager.md"
       }
     },
@@ -269,7 +279,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-product-manager:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -315,7 +327,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-product-manager:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -359,7 +373,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-product-manager:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -403,7 +419,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-product-manager:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -447,7 +465,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technical-product-manager:2",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -493,7 +513,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -537,7 +559,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -583,7 +607,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -706,16 +732,37 @@
         "scope": "Requirements information items, requirement quality and traceability.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "human-centred-design",
+        "title": "ISO 9241-210:2019, Human-centred design for interactive systems",
+        "url": "https://www.iso.org/standard/77520.html",
+        "scope": "Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Technical Product Manager",
+        "domain": "Product, Delivery and Agile",
+        "domain_index": 2,
+        "method_focus": "Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.",
         "frameworks": [
           "OpenAPI",
           "semantic versioning",
           "API deprecation practice"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -788,6 +835,17 @@
     "source_fingerprint": "88fa9ad1a87c1df44acc13ad55b65aeaf3ad6fa87cb85ae021d94c1c277f709f",
     "source_hash": "ca91d808d3e97f2aa8e66e67232053c590686e31c07ce256b0c289b3707f98ef"
   },
+  "delivery_form": {
+    "primary_artifact": "requirements-specification",
+    "representation": "Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
+    "evidence": [
+      "forward/backward traceability",
+      "conflict, interface and change-impact checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "1138c8440162abb26d69d178bb30218b75713c4d2c184f762013aab900d37efc",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

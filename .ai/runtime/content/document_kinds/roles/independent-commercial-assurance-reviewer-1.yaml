@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/decision-paper",
-    "domain/delivery"
+    "type/assurance-report",
+    "domain/security"
   ],
   "applies_to": {
     "document_kind": "role/independent-commercial-assurance-reviewer:1",
@@ -63,6 +63,7 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
           "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
           "https://www.isaca.org/resources/cobit"
         ]
@@ -103,6 +104,7 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
           "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
           "https://www.isaca.org/resources/cobit"
         ]
@@ -143,6 +145,7 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
           "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
           "https://www.isaca.org/resources/cobit"
         ]
@@ -183,6 +186,7 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
           "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
           "https://www.isaca.org/resources/cobit"
         ]
@@ -204,7 +208,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Independent commercial assurance plan and findings', provide verifiable evidence satisfying: Independence and coverage are explicit; every finding is evidence-linked and assigned. Required delivery form: Response report or controlled external findings handoff with criteria, scope, sampling, conflict declaration and located findings.",
+        "For the specific output 'Independent commercial assurance plan and findings', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Independence and coverage are explicit; every finding is evidence-linked and assigned. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,10 +223,11 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Independent commercial assurance plan and findings', provide verifiable evidence satisfying: Independence and coverage are explicit; every finding is evidence-linked and assigned. Required delivery form: Response report or controlled external findings handoff with criteria, scope, sampling, conflict declaration and located findings.",
+        "reason": "For the specific output 'Independent commercial assurance plan and findings', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Independence and coverage are explicit; every finding is evidence-linked and assigned. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
           "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
           "https://www.isaca.org/resources/cobit"
         ]
@@ -234,8 +239,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Independent commercial assurance plan and findings",
-        "format": "Response report or controlled external findings handoff with criteria, scope, sampling, conflict declaration and located findings",
-        "acceptance_criterion": "Independence and coverage are explicit; every finding is evidence-linked and assigned.",
+        "format": "Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
+        "acceptance_criterion": "State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Independence and coverage are explicit; every finding is evidence-linked and assigned.",
         "role_path": "skills/it-roles-commercial-sourcing-and-enablement/references/independent-commercial-assurance-reviewer.md"
       }
     },
@@ -276,6 +281,7 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
           "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
           "https://www.isaca.org/resources/cobit"
         ]
@@ -325,6 +331,7 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
           "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
           "https://www.isaca.org/resources/cobit"
         ]
@@ -370,6 +377,7 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
           "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
           "https://www.isaca.org/resources/cobit"
         ]
@@ -415,6 +423,7 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
           "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
           "https://www.isaca.org/resources/cobit"
         ]
@@ -460,6 +469,7 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#independent-commercial-assurance-reviewer:1",
           "content/types/decision-paper.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
           "https://www.isaca.org/resources/cobit"
         ]
@@ -507,6 +517,7 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
           "https://www.isaca.org/resources/cobit"
         ]
@@ -552,6 +563,7 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
           "https://www.isaca.org/resources/cobit"
         ]
@@ -599,6 +611,7 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
           "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
           "https://www.isaca.org/resources/cobit"
         ]
@@ -717,6 +730,14 @@
     ],
     "professional_references": [
       {
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
         "id": "business-appraisal",
         "title": "HM Treasury, The Green Book",
         "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
@@ -736,11 +757,16 @@
     "role_framework_context": [
       {
         "role": "Independent Commercial Assurance Reviewer",
+        "domain": "Commercial, Sourcing and Enablement",
+        "domain_index": 15,
+        "method_focus": "Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.",
         "frameworks": [
           "GAO-20-195G cost-estimate credibility criteria, adapted to the engagement's estimate and price review.",
           "The IIA Three Lines Model and relevant Global Internal Audit Standards independence/objectivity concepts: assurance positioning guidance, not a claim that this commercial review is a statutory/internal-audit engagement.",
           "Organisation bid, finance, risk, evidence and segregation-of-duties policies; professional legal/accounting advice remains separately owned."
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -794,12 +820,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/assurance-report",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "decision-paper",
+  "semantic_family": "assurance-report",
   "role_overlay": {
     "contract_id": "independent-commercial-assurance-reviewer:1",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -811,6 +839,17 @@
     "source_fingerprint": "17ed80ce673a9fa01fdec16deebe6f0cf33a8ce07aa3d7643fa3e485714828a6",
     "source_hash": "ca8bff85aece366015729602dc3b887c543a24d425d6c54e75fc20f31c55b8eb"
   },
+  "delivery_form": {
+    "primary_artifact": "assurance-assessment",
+    "representation": "Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.",
+    "evidence": [
+      "criterion-to-test-to-observation traceability",
+      "independent reviewer and limitations"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "7c9a157d9ac1f499ccc66d221a8a45557639061d6e6f99d86881d2d1f331a2a5",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

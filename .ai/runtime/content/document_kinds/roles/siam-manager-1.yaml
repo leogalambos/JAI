@@ -204,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'SIAM operating model and service integration design', provide verifiable evidence satisfying: End-to-end accountability is explicit; supplier boundaries do not create unowned process, data or service outcomes. Required delivery form: Service design covering governance, process integration, authority, data and tooling boundaries.",
+        "For the specific output 'SIAM operating model and service integration design', provide verifiable evidence satisfying: State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. Existing source requirement: End-to-end accountability is explicit; supplier boundaries do not create unowned process, data or service outcomes. Required delivery form: Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,7 +219,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'SIAM operating model and service integration design', provide verifiable evidence satisfying: End-to-end accountability is explicit; supplier boundaries do not create unowned process, data or service outcomes. Required delivery form: Service design covering governance, process integration, authority, data and tooling boundaries.",
+        "reason": "For the specific output 'SIAM operating model and service integration design', provide verifiable evidence satisfying: State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. Existing source requirement: End-to-end accountability is explicit; supplier boundaries do not create unowned process, data or service outcomes. Required delivery form: Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#siam-manager:1",
           "content/types/service-design.yaml",
@@ -234,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "SIAM operating model and service integration design",
-        "format": "Service design covering governance, process integration, authority, data and tooling boundaries",
-        "acceptance_criterion": "End-to-end accountability is explicit; supplier boundaries do not create unowned process, data or service outcomes.",
+        "format": "Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
+        "acceptance_criterion": "State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. Existing source requirement: End-to-end accountability is explicit; supplier boundaries do not create unowned process, data or service outcomes.",
         "role_path": "skills/it-roles-service-management-and-support/references/siam-manager.md"
       }
     },
@@ -779,12 +779,17 @@
     "role_framework_context": [
       {
         "role": "SIAM Manager",
+        "domain": "Service Management and Support",
+        "domain_index": 10,
+        "method_focus": "Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.",
         "frameworks": [
           "ITIL 4",
           "ISO/IEC 20000-1",
           "SIAM professional practice principles",
           "COBIT governance concepts"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -855,6 +860,17 @@
     "source_fingerprint": "8a08a13fb746d233dfbb846192e6acd48dfc17b350443ff462efb654c2dffab0",
     "source_hash": "17caa883da28dc3af198e7f050cb8399f39d86232aae88bc383f7650d7a907d9"
   },
+  "delivery_form": {
+    "primary_artifact": "service-definition",
+    "representation": "Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
+    "evidence": [
+      "indicator/target/window definitions",
+      "support, dependency and recovery arrangements"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "56f4f2144b0e74570614a4cda496d30b63a73a7dad64727211884d26b0683b6b",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

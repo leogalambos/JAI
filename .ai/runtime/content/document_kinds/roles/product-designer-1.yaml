@@ -63,7 +63,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
           "content/types/prototype.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -102,7 +105,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
           "content/types/prototype.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -141,7 +147,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
           "content/types/prototype.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -180,7 +189,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
           "content/types/prototype.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -200,7 +212,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Design strategy for the product area', provide verifiable evidence satisfying: Traces user/business outcomes to research, design principles, priorities, constraints and measurable evaluation. Required delivery form: Product-area design strategy.",
+        "For the specific output 'Design strategy for the product area', provide verifiable evidence satisfying: Trace target outcomes and measurable success to business direction and baseline constraints. Compare investment and operating choices, dependencies, resource assumptions and rejected alternatives. Assign sequenced initiatives, accountable owners, outcome measures and review triggers. Existing source requirement: Traces user/business outcomes to research, design principles, priorities, constraints and measurable evaluation. Required delivery form: Evidenced strategic choices with target outcomes, alternatives, investment assumptions and execution accountability.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +227,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Design strategy for the product area', provide verifiable evidence satisfying: Traces user/business outcomes to research, design principles, priorities, constraints and measurable evaluation. Required delivery form: Product-area design strategy.",
+        "reason": "For the specific output 'Design strategy for the product area', provide verifiable evidence satisfying: Trace target outcomes and measurable success to business direction and baseline constraints. Compare investment and operating choices, dependencies, resource assumptions and rejected alternatives. Assign sequenced initiatives, accountable owners, outcome measures and review triggers. Existing source requirement: Traces user/business outcomes to research, design principles, priorities, constraints and measurable evaluation. Required delivery form: Evidenced strategic choices with target outcomes, alternatives, investment assumptions and execution accountability.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
           "content/types/prototype.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -229,8 +244,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Design strategy for the product area",
-        "format": "Product-area design strategy",
-        "acceptance_criterion": "Traces user/business outcomes to research, design principles, priorities, constraints and measurable evaluation",
+        "format": "Evidenced strategic choices with target outcomes, alternatives, investment assumptions and execution accountability.",
+        "acceptance_criterion": "Trace target outcomes and measurable success to business direction and baseline constraints. Compare investment and operating choices, dependencies, resource assumptions and rejected alternatives. Assign sequenced initiatives, accountable owners, outcome measures and review triggers. Existing source requirement: Traces user/business outcomes to research, design principles, priorities, constraints and measurable evaluation.",
         "role_path": "skills/it-roles-design-and-user-experience/references/product-designer.md"
       }
     },
@@ -269,7 +284,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
           "content/types/prototype.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -315,7 +333,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
           "content/types/prototype.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -359,7 +380,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
           "content/types/prototype.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -403,7 +427,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
           "content/types/prototype.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -447,7 +474,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#product-designer:1",
           "content/types/prototype.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -493,7 +523,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -537,7 +570,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -583,7 +619,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.isaca.org/resources/cobit"
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/77520.html",
+          "https://www.w3.org/TR/WCAG22/",
+          "https://www.w3.org/TR/wcag-em-2/"
         ]
       },
       "provenance": {
@@ -706,16 +745,45 @@
         "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "human-centred-design",
+        "title": "ISO 9241-210:2019, Human-centred design for interactive systems",
+        "url": "https://www.iso.org/standard/77520.html",
+        "scope": "Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "accessibility",
+        "title": "W3C Web Content Accessibility Guidelines (WCAG) 2.2",
+        "url": "https://www.w3.org/TR/WCAG22/",
+        "scope": "Perceivable and understandable content, text alternatives and accessible navigation; applicability depends on the delivered medium.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "accessibility-evaluation",
+        "title": "W3C WCAG Evaluation Methodology (WCAG-EM) 2.0",
+        "url": "https://www.w3.org/TR/wcag-em-2/",
+        "scope": "Evaluation scope, representative sample, evaluation and reporting; W3C Group Note, informative methodology rather than a conformance standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Product Designer",
+        "domain": "Design and User Experience",
+        "domain_index": 14,
+        "method_focus": "Trace user research and accessibility requirements to findings, design choices and observed usability/accessibility evaluation.",
         "frameworks": [
           "ISO 9241-210",
           "WCAG 2.2 AA",
           "design system governance"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -788,6 +856,17 @@
     "source_fingerprint": "059caa7855ed575f0e47b777dcde290bea67c51b342e564c56503760729e6896",
     "source_hash": "aeec5ca0be7bb885165ad2c60f6feec4101f30ff503ab7c3b0502a142745721a"
   },
+  "delivery_form": {
+    "primary_artifact": "strategy",
+    "representation": "Evidenced strategic choices with target outcomes, alternatives, investment assumptions and execution accountability.",
+    "evidence": [
+      "baseline and rejected options",
+      "outcome measures, dependencies and review triggers"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "4b0ef5d7883f8e5aa37bc1a16379ed919cc4fa94af0e74229127893c1d66d93b",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

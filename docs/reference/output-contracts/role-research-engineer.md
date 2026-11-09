@@ -42,6 +42,19 @@ Produce and govern the role deliverable: Experimental systems and prototypes.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `disposable-prototype`.
+
+Bounded non-production prototype or executable/design experiment with predeclared question and success criteria.
+
+**Evidence accompanying the work product:**
+
+- reproducible inputs and execution/interaction
+- observed outcomes and applicability limits
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -49,27 +62,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/research-engineer:1.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Experimental systems and prototypes.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:1.receiving_acceptance`** — `array`
 
 - For each receiving role (Software Engineer; Innovation Lead), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:1.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:1.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:1.delivery_verification`** — `array`
 
-- For the specific output 'Experimental systems and prototypes', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- For the specific output 'Experimental systems and prototypes', provide verifiable evidence satisfying: State the hypothesis or feasibility question, experiment boundary, success/failure criteria and limitations of representativeness. Identify reproducible prototype source/configuration, dependencies, environment and procedure without claiming production readiness. Record actual observations against criteria, failed/untested conditions and what may or may not be inferred for a production solution. Required delivery form: Bounded non-production prototype or executable/design experiment with predeclared question and success criteria.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:1.role_gate_observations`** — `array`
 
@@ -80,27 +93,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G4: Licensing, export-control, data-protection and ethical constraints are checked before using external data or models.
 - G5: Benchmarks state hardware, dataset, configuration and variance across runs
 - G6: a single-run headline number is not reported as a result
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:1.contract_input_1`** — `object`
 
 - Analyse the specific input "Research question and constraints" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:1.contract_input_2`** — `object`
 
 - Analyse the specific input "Prior art and literature" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:1.contract_input_3`** — `object`
 
 - Analyse the specific input "Compute and data resources" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:1.contract_input_4`** — `object`
 
 - Analyse the specific input "Production constraints" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -109,21 +122,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:1.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/research-engineer:1.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-218); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -174,10 +187,15 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 - **[NIST SP 800-218, Secure Software Development Framework Version 1.1](https://doi.org/10.6028/NIST.SP.800-218)** — Secure development practices, protected source/build inputs, verification and vulnerability response. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ACM Artifact Review and Badging policy](https://www.acm.org/publications/policies/artifact-review-and-badging-current)** — Artifact availability, evaluation and reproducibility terminology; informative evidence-pack practice, not proof that an experiment is scientifically sufficient. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Research Engineer:** scientific method; reproducibility standards; internal research ethics policy. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** State hypotheses, success criteria and measurement methods before experiments; distinguish observed results, uncertainty and applicability limits.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-research-engineer-2"></a>
@@ -187,7 +205,7 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 **At a glance**
 
 - **Purpose:** Produce and govern the role deliverable: evaluation methodology and results.
-- **Mandatory examples:** Evidence uniqueness, referential integrity, completeness and lifecycle reconciliation checks. Provide actual uniquely identified records with source, owner, status and review date. Define required columns, datatypes, identifiers, allowed states and ownership.
+- **Mandatory examples:** Link test cases and requirements to actual outcomes, timestamps and execution evidence. Explain defects, untested scope, achieved exit criteria and residual release risk. Identify build, requirements, environment, reporting period and exclusions.
 - **Conditions to resolve:** personal data are processed; an applicable regulatory requirement exists. Unknown applicability remains unresolved.
 - **Optional example:** Include versioned calculations, logs or technical detail only when linked to a specific required claim.
 - **Review:** assess substantive content, evidence and gaps against the full selected contract; acceptance and release remain separate.
@@ -212,10 +230,23 @@ Produce and govern the role deliverable: evaluation methodology and results.
 **Also applicable:** all requirements in these linked foundations and overlays form part of this contract, subject to their explicit conditions:
 
 - [`global/invariants`](spec-global-invariants.md)
-- [`type/register`](spec-type-register.md)
-- [`domain/data`](spec-domain-data.md)
+- [`type/test-report`](spec-type-test-report.md)
+- [`domain/testing`](spec-domain-testing.md)
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
+
+### Primary work product and evidence
+
+**Primary work product:** `test-results`.
+
+Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.
+
+**Evidence accompanying the work product:**
+
+- expected/actual observations and execution references
+- coverage denominators and residual defects
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
 
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
@@ -224,22 +255,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/research-engineer:2.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: evaluation methodology and results.
+- **Professional basis:** [source](https://www.iso.org/standard/79429.html); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:2.receiving_acceptance`** — `array`
 
 - For each receiving role (Software Engineer; Innovation Lead), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
+- **Professional basis:** [source](https://www.iso.org/standard/79429.html); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:2.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
+- **Professional basis:** [source](https://www.iso.org/standard/79429.html); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:2.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
+- **Professional basis:** [source](https://www.iso.org/standard/79429.html); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:2.delivery_verification`** — `array`
 
-- For the specific output 'evaluation methodology and results', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.
+- For the specific output 'evaluation methodology and results', provide verifiable evidence satisfying: Identify exact tested build, requirements baseline, environment/data versions, test period and deviations from the plan. State passed, failed, blocked and unexecuted cases with evidence references; give denominators and traceability so counts cannot disguise missing coverage. Summarise defects by business impact, unmet exit criteria, untested risks and limitations; separate a release recommendation from release authorisation. Required delivery form: Observed test results against a named baseline with passed, failed, blocked and unexecuted cases.
+- **Professional basis:** [source](https://www.iso.org/standard/79429.html); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:2.role_gate_observations`** — `array`
 
@@ -250,22 +286,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G4: Licensing, export-control, data-protection and ethical constraints are checked before using external data or models.
 - G5: Benchmarks state hardware, dataset, configuration and variance across runs
 - G6: a single-run headline number is not reported as a result
+- **Professional basis:** [source](https://www.iso.org/standard/79429.html); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:2.contract_input_1`** — `object`
 
 - Analyse the specific input "Research question and constraints" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/79429.html); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:2.contract_input_2`** — `object`
 
 - Analyse the specific input "Prior art and literature" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/79429.html); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:2.contract_input_3`** — `object`
 
 - Analyse the specific input "Compute and data resources" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/79429.html); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:2.contract_input_4`** — `object`
 
 - Analyse the specific input "Production constraints" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/79429.html); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -274,18 +315,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
+- **Professional basis:** [source](https://www.iso.org/standard/79429.html); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:2.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
+- **Professional basis:** [source](https://www.iso.org/standard/79429.html); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/research-engineer:2.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
+- **Professional basis:** [source](https://www.iso.org/standard/79429.html); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -316,29 +360,22 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
     "annex_rules": [
       "Reference canonical detail rather than repeat it."
     ]
-  },
-  "rows": {
-    "metric": "rows",
-    "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
-    "minimum_is_quality_gate": false,
-    "calibration_status": "synthetic-only",
-    "allowance_rules": [
-      "Document complexity and audience need; excess requires review, not automatic rejection."
-    ],
-    "annex_rules": [
-      "Reference canonical detail rather than repeat it."
-    ]
   }
 }
 ```
 
 ### Professional sources and their limits
 
-- **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation](https://www.iso.org/standard/79429.html)** — Test planning, test specifications and reporting information needs. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ACM Artifact Review and Badging policy](https://www.acm.org/publications/policies/artifact-review-and-badging-current)** — Artifact availability, evaluation and reproducibility terminology; informative evidence-pack practice, not proof that an experiment is scientifically sufficient. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Research Engineer:** scientific method; reproducibility standards; internal research ethics policy. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** State hypotheses, success criteria and measurement methods before experiments; distinguish observed results, uncertainty and applicability limits.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-research-engineer-3"></a>
@@ -348,7 +385,7 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 **At a glance**
 
 - **Purpose:** Produce and govern the role deliverable: technical feasibility assessments.
-- **Mandatory examples:** Identify the specific choice, accountable authority and decision deadline. Explain cost, benefit, dependencies, uncertainty and residual risks of the recommendation. Compare viable options including the do-nothing baseline against common criteria.
+- **Mandatory examples:** Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence.
 - **Conditions to resolve:** personal data are processed; an applicable regulatory requirement exists. Unknown applicability remains unresolved.
 - **Optional example:** Include versioned calculations, logs or technical detail only when linked to a specific required claim.
 - **Review:** assess substantive content, evidence and gaps against the full selected contract; acceptance and release remain separate.
@@ -373,10 +410,23 @@ Produce and govern the role deliverable: technical feasibility assessments.
 **Also applicable:** all requirements in these linked foundations and overlays form part of this contract, subject to their explicit conditions:
 
 - [`global/invariants`](spec-global-invariants.md)
-- [`type/decision-paper`](spec-type-decision-paper.md)
+- [`family/analysis-report`](spec-family-analysis-report.md)
 - [`domain/delivery`](spec-domain-delivery.md)
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
+
+### Primary work product and evidence
+
+**Primary work product:** `evidence-based-analysis-report`.
+
+Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request.
+
+**Evidence accompanying the work product:**
+
+- versioned source/period/population and reproducible method
+- observations, uncertainty, counterevidence and accountable follow-up
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
 
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
@@ -385,27 +435,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/research-engineer:3.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: technical feasibility assessments.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:3.receiving_acceptance`** — `array`
 
 - For each receiving role (Software Engineer; Innovation Lead), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:3.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:3.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:3.delivery_verification`** — `array`
 
-- For the specific output 'technical feasibility assessments', provide verifiable evidence satisfying: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Structured assessment document with scoring method stated.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- For the specific output 'technical feasibility assessments', provide verifiable evidence satisfying: Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request.
+- **Professional basis:** [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:3.role_gate_observations`** — `array`
 
@@ -416,27 +466,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G4: Licensing, export-control, data-protection and ethical constraints are checked before using external data or models.
 - G5: Benchmarks state hardware, dataset, configuration and variance across runs
 - G6: a single-run headline number is not reported as a result
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:3.contract_input_1`** — `object`
 
 - Analyse the specific input "Research question and constraints" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:3.contract_input_2`** — `object`
 
 - Analyse the specific input "Prior art and literature" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:3.contract_input_3`** — `object`
 
 - Analyse the specific input "Compute and data resources" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:3.contract_input_4`** — `object`
 
 - Analyse the specific input "Production constraints" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -445,21 +495,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:3.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/research-engineer:3.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -496,12 +546,16 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 ### Professional sources and their limits
 
-- **[HM Treasury, The Green Book](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government)** — Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
-- **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **JAI authored enterprise-delivery practice** — Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review. Basis: `jai-practice`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ACM Artifact Review and Badging policy](https://www.acm.org/publications/policies/artifact-review-and-badging-current)** — Artifact availability, evaluation and reproducibility terminology; informative evidence-pack practice, not proof that an experiment is scientifically sufficient. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Research Engineer:** scientific method; reproducibility standards; internal research ethics policy. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** State hypotheses, success criteria and measurement methods before experiments; distinguish observed results, uncertainty and applicability limits.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-research-engineer-4"></a>
@@ -541,6 +595,19 @@ Produce and govern the role deliverable: transfer recommendations.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `decision-paper`.
+
+Bounded decision paper with consistent option comparison and a clear authority/decision request.
+
+**Evidence accompanying the work product:**
+
+- baseline and feasible alternatives
+- cost/benefit/uncertainty and consequences
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -548,27 +615,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/research-engineer:4.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: transfer recommendations.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:4.receiving_acceptance`** — `array`
 
 - For each receiving role (Software Engineer; Innovation Lead), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:4.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:4.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:4.delivery_verification`** — `array`
 
-- For the specific output 'transfer recommendations', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- For the specific output 'transfer recommendations', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:4.role_gate_observations`** — `array`
 
@@ -579,27 +646,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G4: Licensing, export-control, data-protection and ethical constraints are checked before using external data or models.
 - G5: Benchmarks state hardware, dataset, configuration and variance across runs
 - G6: a single-run headline number is not reported as a result
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:4.contract_input_1`** — `object`
 
 - Analyse the specific input "Research question and constraints" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:4.contract_input_2`** — `object`
 
 - Analyse the specific input "Prior art and literature" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:4.contract_input_3`** — `object`
 
 - Analyse the specific input "Compute and data resources" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:4.contract_input_4`** — `object`
 
 - Analyse the specific input "Production constraints" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -608,21 +675,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 **`role/research-engineer:4.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/research-engineer:4.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.isaca.org/resources/cobit); [source](https://www.acm.org/publications/policies/artifact-review-and-badging-current); [source](https://www.iso.org/standard/72089.html) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -661,8 +728,13 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 - **[HM Treasury, The Green Book](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government)** — Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ACM Artifact Review and Badging policy](https://www.acm.org/publications/policies/artifact-review-and-badging-current)** — Artifact availability, evaluation and reproducibility terminology; informative evidence-pack practice, not proof that an experiment is scientifically sufficient. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC/IEEE 29148:2018, Requirements engineering](https://www.iso.org/standard/72089.html)** — Requirements information items, requirement quality and traceability. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Research Engineer:** scientific method; reproducibility standards; internal research ethics policy. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** State hypotheses, success criteria and measurement methods before experiments; distinguish observed results, uncertainty and applicability limits.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 <!-- JAI:OUTPUT-CONTRACTS:END -->

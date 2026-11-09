@@ -82,10 +82,10 @@ Producing, maintaining and defending the quality of:
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Secure delivery and DevSecOps architecture | Architecture definition with trust boundaries, control points, identities, data flows and enforcement ownership | The delivery path from source to production has explicit control objectives, authority boundaries, evidence and failure behaviour. |
-| 2 | Secure SDLC and pipeline control design | Control design mapped to lifecycle stages, threats, policies, tool enforcement and exception paths | Every mandatory secure-delivery control has an owner, machine-enforcement point or justified manual control, evidence and bypass handling. |
-| 3 | Pipeline and software supply-chain assurance report | Independent-ready assurance report covering provenance, dependencies, secrets, signing, attestations and gate effectiveness | Evidence demonstrates that critical controls operate as designed; exceptions and residual risk have named owners and expiry. |
-| 4 | Software supply-chain implementation specification | Implementation specification for policy-as-code, signing, SBOM, provenance, scanning and deployment gates | Engineering teams can implement the controls deterministically without inventing authority or weakening required segregation of duties. |
+| 1 | Secure delivery and DevSecOps architecture | Concern-driven description with a versioned model and views selected for stakeholder questions. | Name the system of interest, boundary exclusions, stakeholder groups, each concern and the versioned current/target baseline. Identify each viewpoint and its conventions; trace each view to the concerns it addresses and identify cross-view correspondences and unresolved inconsistencies. For each material gap, identify current and target elements, business impact, owner, proposed response and the decision or evidence needed to close it. Existing source requirement: The delivery path from source to production has explicit control objectives, authority boundaries, evidence and failure behaviour. |
+| 2 | Secure SDLC and pipeline control design | Control specification with objectives, trigger, actor, actions, failure paths and effectiveness measures. | Trace each control objective to a risk or obligation and identify accountable owner, protected outcome and operating scope. Specify trigger, actor/system, required inputs, action, expected observable result, exceptions and response when the control fails. Define design/operating-effectiveness checks, population or sampling, expected evidence, acceptance threshold and disposition of exceptions. Existing source requirement: Every mandatory secure-delivery control has an owner, machine-enforcement point or justified manual control, evidence and bypass handling. |
+| 3 | Pipeline and software supply-chain assurance report | Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion. | State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Evidence demonstrates that critical controls operate as designed; exceptions and residual risk have named owners and expiry. |
+| 4 | Software supply-chain implementation specification | Typed implementation specification with exact target versions, interfaces and verification/recovery conditions. | Identify exact component/environment versions and each required parameter with type, unit, permitted range, default and secret-reference handling. State interface schemas, input/output semantics, error responses, concurrency/idempotency expectations and external dependency constraints. Give reproducible build/deploy/verification steps, expected results, stop conditions and recovery path; identify evidence still required before execution. Existing source requirement: Engineering teams can implement the controls deterministically without inventing authority or weakening required segregation of duties. |
 
 Every Section 6 row is registered in Artifact Contract v3/JAI and must resolve to a typed internal producer/validator/renderer or an explicit external handoff.
 
@@ -151,6 +151,10 @@ This role owns **Secure SDLC and pipeline control architecture, including enforc
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - NIST SSDF SP 800-218
 - SLSA
 - OWASP SAMM
@@ -163,3 +167,31 @@ Frameworks orient the role; organisation policy, law, contracts and explicit del
 **Situation.** A cross-domain programme asks for a rapid decision in this role's area, but one critical dependency and one evidence source are unresolved.
 
 **Correct response.** Separate known facts from assumptions, identify the decision that can be made now versus the decision that must wait, compare credible options, record the unresolved dependency with owner/date, produce the relevant Section 6 artefact, and hand it to the named receiving role with an explicit reopen trigger if the missing evidence changes the basis.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
+
+**Synthetic worked case — no project facts or approval.**
+
+**Assigned work product:** Secure delivery and DevSecOps architecture.
+
+**Illustrative case material:**
+
+The entity of interest is cross-channel order ingestion and fulfilment synchronisation at Meridian Retail Group; scope covers commerce platform, API gateway, event broker, integration workers, ERP and observability stack. Stakeholders: e-commerce product owner, ERP owner, regional fulfilment teams and support. Current baseline: nightly ERP batch exports with fragile point-to-point integrations; planned target: managed event backbone and decoupled ERP adapters.
+
+Explicit exclusions: downstream third-party system internal designs and obligations not yet determined by competent legal/sector authorities. Context `MRG-OEI-CTX-01` binds business outcome `move accepted-order visibility from the next batch cycle to 5 minutes at p95, without losing order records` to architectural concerns rather than treating a product selection as an architecture description.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Name the system of interest, boundary exclusions, stakeholder groups, each concern and the versioned current/target baseline.
+- Identify each viewpoint and its conventions; trace each view to the concerns it addresses and identify cross-view correspondences and unresolved inconsistencies.
+- For each material gap, identify current and target elements, business impact, owner, proposed response and the decision or evidence needed to close it.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `architecture-definition` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

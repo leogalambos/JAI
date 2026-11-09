@@ -47,6 +47,95 @@ DOMAIN_REQUIREMENTS = {
  'data': [('data_accountability','object','Identify data owner, stewardship, lawful use, classification and lifecycle obligations.'),('data_lineage_quality','array','Trace source-to-output transformations, quality constraints and evidenced reconciliation.')],
  'delivery': [('delivery_accountability','array','Assign outcomes, milestones, resource assumptions and acceptance responsibility.'),('delivery_dependencies','array','Link delivery risks, cross-team dependencies and change decisions to accountable owners.')],
 }
+
+# These sources are candidate professional methods for the six shared overlays,
+# not an assertion that every cited standard applies to every domain task.
+DOMAIN_PROFESSIONAL_REFERENCES = {
+    'security': ['systems-security-engineering', 'risk-assessment', 'control-assessment'],
+    'architecture': ['architecture-description', 'requirements-engineering'],
+    'testing': ['software-testing', 'control-assessment'],
+    'operations': ['service-management', 'sre-practice', 'contingency-planning'],
+    'data': ['data-catalogue', 'data-quality'],
+    'delivery': ['it-governance', 'business-appraisal'],
+}
+
+# Candidate professional bases for every catalogue domain. The shared
+# applicability record selects the actually relevant edition/method per task.
+# Candidates are not automatic requirements or assertions of conformance.
+ROLE_DOMAIN_PROFESSIONAL_REFERENCES = {
+    1: ['it-governance', 'business-appraisal'],
+    2: ['it-governance', 'requirements-engineering', 'human-centred-design'],
+    3: ['requirements-engineering', 'data-quality'],
+    4: ['architecture-description', 'requirements-engineering'],
+    5: ['secure-software', 'software-testing'],
+    6: ['software-testing', 'control-assessment', 'accessibility'],
+    7: ['data-catalogue', 'data-quality', 'ai-risk-management'],
+    8: ['sre-practice', 'configuration-management', 'contingency-planning'],
+    9: ['internet-standards-process', 'systems-security-engineering'],
+    10: ['service-management', 'sre-practice'],
+    11: ['systems-security-engineering', 'control-assessment', 'contingency-planning'],
+    12: ['control-assessment', 'risk-assessment'],
+    13: ['it-governance', 'control-assessment', 'risk-assessment'],
+    14: ['human-centred-design', 'accessibility', 'accessibility-evaluation'],
+    15: ['business-appraisal', 'it-governance'],
+    16: ['research-reproducibility', 'requirements-engineering'],
+    17: ['sabsa-overview', 'architecture-description', 'systems-security-engineering'],
+}
+
+DOMAIN_ACCEPTANCE_DETAILS = {
+    'security': [
+        'Use the applicable secure-systems life-cycle method to identify protected outcomes, trust assumptions and threats; distinguish design evidence from operating-effectiveness evidence.',
+        'For each selected risk/control method, link scenario, objective, control, assessment procedure, observed result, uncertainty and residual acceptance owner.'],
+    'architecture': [
+        'Use architecture-description concepts to trace stakeholder, concern, requirement, viewpoint and view; identify correspondence rules and unresolved inconsistencies without mandating a notation.',
+        'Use measurable requirement and correspondence checks to assess affected elements, cross-view dependencies, change impact and decisions still needing evidence.'],
+    'testing': [
+        'Apply a stated test or assessment technique to each scoped requirement/risk; identify expected versus observed outcomes, tested baseline and exact evidence.',
+        'Bound conclusions by the evaluated population, sample rationale, exclusions, environment and unresolved defects; absence of execution is not a passing result.'],
+    'operations': [
+        'Use the adopted service-management and service-objective method to define receiving responsibilities, service indicators, objectives, measurement windows and escalation thresholds.',
+        'Compare observed recovery and failure-handling results to agreed objectives, dependency assumptions and rehearsal conditions; an untested recovery procedure remains an open evidence gap.'],
+    'data': [
+        'Distinguish catalogue identity, access and provenance metadata from lawful-use decisions; identify accountable owners, permitted purposes and restrictions.',
+        'Apply explicit quality dimensions, metrics and measurements to lineage transformations; specify population, thresholds, observed results and reconciliation limitations.'],
+    'delivery': [
+        'Use the applicable governance/appraisal method to separate outcomes, decision rights, funding assumptions, acceptance responsibility and benefit ownership.',
+        'Compare credible delivery options and dependencies against a common baseline; identify sensitivity to cost, benefit, timing and residual risk without treating public-sector guidance as universally binding.'],
+}
+
+# Catalogue category IDs retain local specialty selection. These method prompts
+# sharpen output reasoning; they do not whitelist professions or frameworks.
+ROLE_DOMAIN_METHOD_FOCUS = {
+    1: 'Connect strategic choices, investment options, measurable outcomes, risk appetite and accountable decisions.',
+    2: 'Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.',
+    3: 'Trace source needs, stakeholders and conflicting constraints into verifiable requirements, models and acceptance criteria.',
+    4: 'Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.',
+    5: 'Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.',
+    6: 'Use risk-based test or assessment methods with expected/actual results, coverage, sampling and bounded conclusions.',
+    7: 'Trace data provenance, quality, meaning and permitted use; define model evaluation, uncertainty and operational monitoring where applicable.',
+    8: 'Define measurable service objectives, capacity and dependency assumptions, failure behaviour, recovery and observed operational evidence.',
+    9: 'Identify applicable protocol/technology editions, topology and trust assumptions, measurable network behaviour and compatibility evidence.',
+    10: 'Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.',
+    11: 'Separate observed events, detection coverage, analytic hypotheses, confidence and containment/recovery evidence.',
+    12: 'Bind authorised scope and methodology to reproducible observations, impact, evidence limitations and retest results.',
+    13: 'Separate binding obligation, interpretation, control, evidence, independent test and bounded assurance/risk conclusion.',
+    14: 'Trace user research and accessibility requirements to findings, design choices and observed usability/accessibility evaluation.',
+    15: 'Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.',
+    16: 'State hypotheses, success criteria and measurement methods before experiments; distinguish observed results, uncertainty and applicability limits.',
+    17: 'Trace business drivers and measurable attributes through risks, control objectives, services, mechanisms and operational measures.',
+}
+
+FRAMEWORK_APPLICABILITY_CRITERIA = [
+    'Identify only professional sources invoked by the conclusion or materially applicable obligations; a bibliography or a list of framework names is insufficient. Do not require every candidate framework for every task.',
+    'For each record, identify source title, exact edition or dated revision and authoritative location; unavailable authoritative text remains pending and cannot support invented clause identifiers or clause-level conformance.',
+    'State the basis as a normative legal/contractual requirement, organisational adoption, informative guidance or JAI interpretation; identify jurisdiction, scope and the authority/evidence establishing a binding duty.',
+    'Record applicability as applicable, not applicable or pending, with a concrete rationale and context evidence. A record of no applicable external framework must explain the bounded task and its actual professional basis.',
+    'Identify adopted concepts or verifiable requirement identifiers, tailoring, exclusions and precedence against law, customer obligations and organisation policy; tailoring cannot silently weaken an applicable mandatory obligation.',
+    'Map each adopted concept or requirement to stable output information-unit references, the chosen method or practical procedure, required evidence and a concrete independent reviewer test. Cross-reference shared source records rather than duplicate them.',
+    'Distinguish planned evidence from observed evidence and bounded guidance alignment from demonstrated conformance; unsupported conclusions and unavailable evidence remain pending.',
+    'Name the accountable owner and change trigger for reassessing applicability, including relevant changes to scope, source edition, organisation policy or evidence. Reuse unchanged verified source records rather than rechecking immutable history at every workflow step.',
+]
+
 TYPE_DOMAINS = {
  **dict.fromkeys(['risk-assessment','assurance-report','control-design'],'security'),
  **dict.fromkeys(['architecture-definition','architecture-decision','solution-design','implementation-specification','diagram','model'],'architecture'),
@@ -130,6 +219,10 @@ SEMANTIC_REFINEMENTS = {
 }
 
 ADDITIONAL_FAMILIES = {
+    'analysis-report': [
+        ('analysis_baseline', 'object', 'Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions.'),
+        ('analysis_observations', 'array', 'Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence.'),
+        ('analysis_conclusion', 'object', 'Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request.')],
     'strategy': [
         ('strategic_outcomes', 'array', 'Trace target outcomes and measurable success to business direction and baseline constraints.'),
         ('strategic_choices', 'array', 'Compare investment and operating choices, dependencies, resource assumptions and rejected alternatives.'),
@@ -306,6 +399,7 @@ TYPE_PROFESSIONAL_REFERENCES = {
 }
 
 FAMILY_PROFESSIONAL_REFERENCES = {
+    'analysis-report': ['jai-practice'],
     'adr': ['architecture-description', 'systems-security-engineering'],
     'hld': ['architecture-description', 'systems-security-engineering'],
     'operational-handover': ['service-management', 'contingency-planning'],
@@ -435,6 +529,10 @@ TYPE_ACCEPTANCE_DETAILS = {
 }
 
 FAMILY_ACCEPTANCE_DETAILS = {
+    'analysis-report': [
+        'State scope, precise question, method, period and source/population boundaries; disclose missing data, selection bias and the limits of the measurement or investigative method.',
+        'For each finding, link source and exact observation or calculation, distinguish event chronology from causal inference, and expose counterevidence, uncertainty and unsupported hypotheses.',
+        'Bound conclusions by the observations, specify recipient actions and unresolved questions, and distinguish recommendations from actual decisions. Do not invent a do-nothing baseline or two alternatives merely to package an operational, research or investigative report.'],
     'strategy': [
         'State measurable target outcomes, their baselines, planning horizon, business drivers and the constraints that rule options in or out.',
         'Compare coherent strategic options and no-change consequences with resource, dependency and uncertainty assumptions visible.',
@@ -787,4 +885,38 @@ SEMANTIC_REFINEMENTS.update({
     'mobile-engineer:4': 'document',
     'security-engineer:1': 'configuration-baseline',
     'service-designer:4': 'document',
+})
+
+# Exact professional corrections preserve the frozen storage contract while
+# choosing the substantive output family used by authors and reviewers.
+from professional_output_refinements import (
+    OUTPUT_REFINEMENTS, OUTPUT_REQUIREMENTS, OUTPUT_REFERENCES,
+    ADDITIONAL_REFERENCES,
+)
+
+SEMANTIC_REFINEMENTS.update(OUTPUT_REFINEMENTS)
+CONTRACT_CONTENT_REQUIREMENTS.update(OUTPUT_REQUIREMENTS)
+CONTRACT_PROFESSIONAL_REFERENCES.update(OUTPUT_REFERENCES)
+PROFESSIONAL_REFERENCES.update(ADDITIONAL_REFERENCES)
+PROFESSIONAL_REFERENCES.update({
+    'human-centred-design': {
+        'title': 'ISO 9241-210:2019, Human-centred design for interactive systems',
+        'url': 'https://www.iso.org/standard/77520.html',
+        'scope': 'Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment.'},
+    'ai-risk-management': {
+        'title': 'NIST AI 100-1, Artificial Intelligence Risk Management Framework (AI RMF 1.0)',
+        'url': 'https://doi.org/10.6028/NIST.AI.100-1',
+        'scope': 'Voluntary GOVERN, MAP, MEASURE and MANAGE functions for AI risks; applicability and adopted practices require explicit contextual selection.'},
+    'internet-standards-process': {
+        'title': 'IETF RFC 2026, The Internet Standards Process — Revision 3',
+        'url': 'https://www.rfc-editor.org/rfc/rfc2026',
+        'scope': 'Distinguishing standards-track status and specification maturity; select the actual applicable protocol RFCs and their updates rather than treating the process document as a network design standard.'},
+    'research-reproducibility': {
+        'title': 'ACM Artifact Review and Badging policy',
+        'url': 'https://www.acm.org/publications/policies/artifact-review-and-badging-current',
+        'scope': 'Artifact availability, evaluation and reproducibility terminology; informative evidence-pack practice, not proof that an experiment is scientifically sufficient.'},
+    'sabsa-overview': {
+        'title': 'SABSA Institute, SABSA Executive Summary',
+        'url': 'https://sabsa.org/sabsa-executive-summary/',
+        'scope': 'Business-driven security architecture and traceability overview; actual SABSA deliveries must select the accessible authoritative method/version and their detailed obligations.'},
 })

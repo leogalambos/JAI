@@ -62,7 +62,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-security-architect-sabsa-contextual-layer:2",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -101,7 +104,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-security-architect-sabsa-contextual-layer:2",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -140,7 +146,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-security-architect-sabsa-contextual-layer:2",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -179,7 +188,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-security-architect-sabsa-contextual-layer:2",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -199,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'business driver and requirement catalogue', provide verifiable evidence satisfying: Each entry has an owner, a lifecycle status and a last-verified date. Required delivery form: Structured entries in the service or asset management tool.",
+        "For the specific output 'business driver and requirement catalogue', provide verifiable evidence satisfying: Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Each entry has an owner, a lifecycle status and a last-verified date. Required delivery form: Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'business driver and requirement catalogue', provide verifiable evidence satisfying: Each entry has an owner, a lifecycle status and a last-verified date. Required delivery form: Structured entries in the service or asset management tool.",
+        "reason": "For the specific output 'business driver and requirement catalogue', provide verifiable evidence satisfying: Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Each entry has an owner, a lifecycle status and a last-verified date. Required delivery form: Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-security-architect-sabsa-contextual-layer:2",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -228,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "business driver and requirement catalogue",
-        "format": "Structured entries in the service or asset management tool",
-        "acceptance_criterion": "Each entry has an owner, a lifecycle status and a last-verified date",
+        "format": "Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
+        "acceptance_criterion": "Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Each entry has an owner, a lifecycle status and a last-verified date.",
         "role_path": "skills/it-roles-sabsa-security-architecture/references/business-security-architect-sabsa-contextual-layer.md"
       }
     },
@@ -269,7 +284,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-security-architect-sabsa-contextual-layer:2",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -316,7 +334,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-security-architect-sabsa-contextual-layer:2",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -360,7 +381,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-security-architect-sabsa-contextual-layer:2",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -404,7 +428,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-security-architect-sabsa-contextual-layer:2",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -448,7 +475,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-security-architect-sabsa-contextual-layer:2",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -494,7 +524,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -538,7 +571,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -584,7 +620,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sabsa.org/sabsa-executive-summary/",
+          "https://www.iso.org/standard/74393.html",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -707,16 +746,45 @@
         "scope": "Dataset/catalogue identity, distributions, provenance, access and descriptive metadata.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sabsa-overview",
+        "title": "SABSA Institute, SABSA Executive Summary",
+        "url": "https://sabsa.org/sabsa-executive-summary/",
+        "scope": "Business-driven security architecture and traceability overview; actual SABSA deliveries must select the accessible authoritative method/version and their detailed obligations.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "architecture-description",
+        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
+        "url": "https://www.iso.org/standard/74393.html",
+        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "systems-security-engineering",
+        "title": "NIST SP 800-160 Volume 1 Revision 1, Engineering Trustworthy Secure Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+        "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Business Security Architect (SABSA Contextual Layer)",
+        "domain": "SABSA Security Architecture",
+        "domain_index": 17,
+        "method_focus": "Trace business drivers and measurable attributes through risks, control objectives, services, mechanisms and operational measures.",
         "frameworks": [
           "SABSA contextual layer and the What-Why-How-Who-Where-When matrix",
           "ISO/IEC 27001 context of the organisation",
           "BIZBOK"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -787,6 +855,17 @@
     "source_fingerprint": "90eb23ecd62ec82032ca504d5002f9bb55563ffc0f331ea2a107323d78a495f6",
     "source_hash": "66ef041ec61ece20a52b3ea37ee9d8cf51bfb70d48b7087776408949d7728200"
   },
+  "delivery_form": {
+    "primary_artifact": "governed-catalogue",
+    "representation": "Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
+    "evidence": [
+      "source reconciliation and lifecycle state",
+      "duplicate/reference integrity checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "eb1848f6bd0a860c7d69ef6012e6e61ec82b006fbb90a408ca22d208a157d8af",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

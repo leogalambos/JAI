@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/roadmap",
-    "domain/delivery"
+    "type/register",
+    "domain/data"
   ],
   "applies_to": {
     "document_kind": "role/dns-dhcp-and-ipam-specialist:3",
@@ -62,8 +62,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#dns-dhcp-and-ipam-specialist:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -102,8 +102,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#dns-dhcp-and-ipam-specialist:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -142,8 +142,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#dns-dhcp-and-ipam-specialist:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -182,8 +182,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#dns-dhcp-and-ipam-specialist:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -203,7 +203,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'IP address plan and allocations', provide verifiable evidence satisfying: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Document with milestones, owners, dependencies and assumptions.",
+        "For the specific output 'IP address plan and allocations', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +218,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'IP address plan and allocations', provide verifiable evidence satisfying: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Document with milestones, owners, dependencies and assumptions.",
+        "reason": "For the specific output 'IP address plan and allocations', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every milestone has an acceptance test and a named accountable owner. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#dns-dhcp-and-ipam-specialist:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -233,8 +233,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "IP address plan and allocations",
-        "format": "Document with milestones, owners, dependencies and assumptions",
-        "acceptance_criterion": "Every milestone has an acceptance test and a named accountable owner",
+        "format": "Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
+        "acceptance_criterion": "Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every milestone has an acceptance test and a named accountable owner.",
         "role_path": "skills/it-roles-network-and-telecommunications/references/dns-dhcp-and-ipam-specialist.md"
       }
     },
@@ -275,8 +275,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#dns-dhcp-and-ipam-specialist:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -324,8 +324,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#dns-dhcp-and-ipam-specialist:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -369,8 +369,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#dns-dhcp-and-ipam-specialist:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -414,8 +414,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#dns-dhcp-and-ipam-specialist:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -459,8 +459,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#dns-dhcp-and-ipam-specialist:3",
           "content/types/roadmap.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -506,8 +506,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -551,8 +551,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -598,8 +598,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.isaca.org/resources/cobit",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.rfc-editor.org/rfc/rfc2026",
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
         ]
       },
       "provenance": {
@@ -694,7 +694,7 @@
     }
   ],
   "size_budget": {
-    "metric": "semantic_units",
+    "metric": "rows",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -716,18 +716,26 @@
     ],
     "professional_references": [
       {
-        "id": "it-governance",
-        "title": "COBIT governance and management framework",
-        "url": "https://www.isaca.org/resources/cobit",
-        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "internet-standards-process",
+        "title": "IETF RFC 2026, The Internet Standards Process — Revision 3",
+        "url": "https://www.rfc-editor.org/rfc/rfc2026",
+        "scope": "Distinguishing standards-track status and specification maturity; select the actual applicable protocol RFCs and their updates rather than treating the process document as a network design standard.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       },
       {
-        "id": "business-appraisal",
-        "title": "HM Treasury, The Green Book",
-        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
-        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "id": "systems-security-engineering",
+        "title": "NIST SP 800-160 Volume 1 Revision 1, Engineering Trustworthy Secure Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+        "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
@@ -735,11 +743,16 @@
     "role_framework_context": [
       {
         "role": "DNS DHCP and IPAM Specialist",
+        "domain": "Network and Telecommunications",
+        "domain_index": 9,
+        "method_focus": "Identify applicable protocol/technology editions, topology and trust assumptions, measurable network behaviour and compatibility evidence.",
         "frameworks": [
           "IETF DNS standards",
           "DNSSEC guidance",
           "RFC 1918 and internal addressing policy"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -793,12 +806,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/register",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "roadmap",
+  "semantic_family": "register",
   "role_overlay": {
     "contract_id": "dns-dhcp-and-ipam-specialist:3",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -810,6 +825,17 @@
     "source_fingerprint": "f96608cf9bece726572140f1ba03c7b2f6611e5e67963a20e213d67cc864dcfb",
     "source_hash": "48f0086212203005e74fc4ce9be1a54bfb99af297ae2949407b14bc783ed7d99"
   },
+  "delivery_form": {
+    "primary_artifact": "governed-register",
+    "representation": "Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
+    "evidence": [
+      "actual source-attributed records",
+      "uniqueness, completeness and relationship reconciliation"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "c91d1ad62d6582ffe0e849788feb71801fd325cc8c58173cb4d9784201cb738d",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

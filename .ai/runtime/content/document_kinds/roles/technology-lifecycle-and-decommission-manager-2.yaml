@@ -63,7 +63,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technology-lifecycle-and-decommission-manager:2",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -103,7 +105,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technology-lifecycle-and-decommission-manager:2",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -143,7 +147,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technology-lifecycle-and-decommission-manager:2",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -183,7 +189,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technology-lifecycle-and-decommission-manager:2",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -203,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Dependency impact and retirement plan', provide verifiable evidence satisfying: Every material inbound/outbound dependency has an owned disposition and sequencing decision. Required delivery form: Versioned plan plus architecture dependency/view set and migration/disposition actions.",
+        "For the specific output 'Dependency impact and retirement plan', provide verifiable evidence satisfying: Inventory source/target versions, data classes, owners, interfaces, dependencies and mapping or transformation rules. For each wave, identify entry criteria, ordered activities, resource/window assumptions, reconciliation measures and receiving acceptance. State integrity checks, recovery points, fallback decision authority, latest safe reversal point and continuity arrangements for an unsuccessful wave. Existing source requirement: Every material inbound/outbound dependency has an owned disposition and sequencing decision. Required delivery form: Versioned migration inventory, mappings and sequenced waves with reconciliation and fallback criteria.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Dependency impact and retirement plan', provide verifiable evidence satisfying: Every material inbound/outbound dependency has an owned disposition and sequencing decision. Required delivery form: Versioned plan plus architecture dependency/view set and migration/disposition actions.",
+        "reason": "For the specific output 'Dependency impact and retirement plan', provide verifiable evidence satisfying: Inventory source/target versions, data classes, owners, interfaces, dependencies and mapping or transformation rules. For each wave, identify entry criteria, ordered activities, resource/window assumptions, reconciliation measures and receiving acceptance. State integrity checks, recovery points, fallback decision authority, latest safe reversal point and continuity arrangements for an unsuccessful wave. Existing source requirement: Every material inbound/outbound dependency has an owned disposition and sequencing decision. Required delivery form: Versioned migration inventory, mappings and sequenced waves with reconciliation and fallback criteria.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#technology-lifecycle-and-decommission-manager:2",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -233,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Dependency impact and retirement plan",
-        "format": "Versioned plan plus architecture dependency/view set and migration/disposition actions",
-        "acceptance_criterion": "Every material inbound/outbound dependency has an owned disposition and sequencing decision.",
+        "format": "Versioned migration inventory, mappings and sequenced waves with reconciliation and fallback criteria.",
+        "acceptance_criterion": "Inventory source/target versions, data classes, owners, interfaces, dependencies and mapping or transformation rules. For each wave, identify entry criteria, ordered activities, resource/window assumptions, reconciliation measures and receiving acceptance. State integrity checks, recovery points, fallback decision authority, latest safe reversal point and continuity arrangements for an unsuccessful wave. Existing source requirement: Every material inbound/outbound dependency has an owned disposition and sequencing decision.",
         "role_path": "skills/it-roles-service-management-and-support/references/technology-lifecycle-and-decommission-manager.md"
       }
     },
@@ -275,7 +285,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technology-lifecycle-and-decommission-manager:2",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -323,7 +335,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technology-lifecycle-and-decommission-manager:2",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -368,7 +382,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technology-lifecycle-and-decommission-manager:2",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -413,7 +429,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technology-lifecycle-and-decommission-manager:2",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -458,7 +476,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technology-lifecycle-and-decommission-manager:2",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -503,7 +523,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technology-lifecycle-and-decommission-manager:2",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -548,7 +570,9 @@
           "artifacts/contracts/role-deliverables.v3.json#technology-lifecycle-and-decommission-manager:2",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -595,7 +619,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -640,7 +666,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -687,7 +715,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -818,17 +848,38 @@
         "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "service-management",
+        "title": "ISO/IEC 20000-1:2018, Service management system requirements",
+        "url": "https://www.iso.org/standard/70636.html",
+        "scope": "Service requirements, agreements, transition, operation and measurement concepts.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Technology Lifecycle and Decommission Manager",
+        "domain": "Service Management and Support",
+        "domain_index": 10,
+        "method_focus": "Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.",
         "frameworks": [
           "ITIL 4 service configuration, IT asset and change enablement practices",
           "ISO/IEC 20000-1",
           "COBIT governance and management objectives",
           "ArchiMate 3.2 implementation/migration and technology concepts"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -899,6 +950,17 @@
     "source_fingerprint": "7113243dddf84ff276a94b3c1046d85dcc425f492d24c33f938de42f4d62709a",
     "source_hash": "216318eb03a1464e3245d671538f852264aa6f8e8e0d65012b61e5f976592ab0"
   },
+  "delivery_form": {
+    "primary_artifact": "migration-plan",
+    "representation": "Versioned migration inventory, mappings and sequenced waves with reconciliation and fallback criteria.",
+    "evidence": [
+      "source/target and ownership inventory",
+      "integrity/reconciliation and recovery checkpoints"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "0f2c8c9a30ef75d8b97391fbb944c2536a5a07f6abfb4b316ea334fe69a3a5d6",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

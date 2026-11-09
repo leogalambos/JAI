@@ -25,3 +25,47 @@
 Use `repository.py impact` before retirement and `repository.py decommission` for the canonical lifecycle transition. A blocking active dependency is not converted into a harmless warning; it must be resolved or explicitly waived by the correct authority.
 
 Preparatory work is limited to its explicitly permitted scope. Named human approval must precede every effect it authorises; neither a role title nor a later review supplies authority retrospectively. All policy-required pre-approval evidence remains mandatory. Collect candidate evidence only within explicitly permitted pre-production scope. If policy requires operational proof, obtain a separate prior named human approval for the bounded pilot needed to collect it, then seek the wider approval; no pilot permission is implied. If no governing route permits the required evidence collection, stop and consult the accountable authority before proceeding. Any policy-permitted waiver must already be issued by the competent named human authority for the exact gate, scope and validity period before the gated action; non-waivable controls remain blocking.
+
+<!-- BEGIN workflow-applicability -->
+## Context and mechanism applicability
+
+Use the actual bounded request, current environment and decision rights to select one applicable mechanism variant. Unknown applicability remains pending; the routing record grants no authority.
+
+**Invariant outcomes:**
+
+- The component is retired without hidden dependencies, unmanaged data/access, stale records or unowned residual obligations, and the retirement benefit is measured.
+- Retain source-version traceability, accountable receiving duties and every applicable existing gate.
+
+| Context | Mechanisms | Required evidence |
+| --- | --- | --- |
+| reversible-preparation | Prepare archives, dependency changes and bounded shutdown access without premature retirement | Plan/rehearsal evidence and scope-specific access ownership |
+| authorised-retirement | Execute exact approved shutdown/data/credential effects and reconcile state | Prior decisions, actual execution, final access revocation and records reconciliation |
+
+Return unresolved dependencies, archive failures or unowned retained access to their owners before destructive action. Stop irreversible effects outside exact authority or on failed dependency, data, credential or recovery criteria. Complete final credential/asset/model reconciliation and benefit closure, or use the authorised recovery/deferral route. Mechanism selection is not a waiver of security, legal or acceptance obligations.
+
+**Entry information (selected once per actual context version):**
+
+- Actual retirement mandate and exact service/assets
+- Owned dependency and data-disposition plans
+- Rehearsal and prior production-change authority
+
+Select intake and mechanism variant once per actual context version. Carry the reviewed record by versioned evidence reference. Reuse unchanged evidence; recheck mutable prerequisites only at the action they govern. A new context version requires its own relevant review, not reconstruction of historical work.
+
+**Continuation, rework, stop and exit:**
+
+- **continue** — The current handoff criteria and applicable prerequisites are satisfied. Continue to the registered receiving duty with exact output and evidence references.
+- **rework** — A current criterion fails or required information changes. Return unresolved dependencies, archive failures or unowned retained access to their owners before destructive action.
+- **stop** — An applicable authority, legal, safety or mandatory-control boundary forbids the effect. Stop irreversible effects outside exact authority or on failed dependency, data, credential or recovery criteria.
+- **exit** — The bounded outcome is accepted or the entitled owner rejects, cancels or defers the scope. Complete final credential/asset/model reconciliation and benefit closure, or use the authorised recovery/deferral route.
+
+**Bounded paths and scope:**
+
+Reversible preparation terminates before authorisation for destructive execution; retirement retains actual credential/data/asset reconciliation.
+
+| Selected path | Applicable stages | Terminal stage |
+| --- | --- | ---: |
+| reversible-preparation | 1, 2, 3 | 3 |
+| authorised-retirement | 1, 2, 3, 4, 5, 6, 7, 8, 9 | 9 |
+
+A path with a separate mechanism requires that explicit mechanism selection in the versioned intake record. Unknown selection remains pending. Later out-of-scope stages cannot claim acceptance; a terminal exit still needs the registered exact-scope authority.
+<!-- END workflow-applicability -->

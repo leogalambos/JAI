@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Service level objectives and error budget policy | Controlled document with owner, effective date and review date | Every statement is testable and maps to at least one control |
-| 2 | reliability improvement backlog | Ordered list in the delivery tool | Every item has acceptance criteria, a priority rationale and an estimate or an explicit 'unsized' |
-| 3 | incident response and postmortem records | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 4 | toil reduction automation | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
+| 1 | Service level objectives and error budget policy | Service definition with consumers, outcomes, responsibilities and measurable service commitments. | State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. Existing source requirement: Every statement is testable and maps to at least one control. |
+| 2 | reliability improvement backlog | Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules. | Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every item has acceptance criteria, a priority rationale and an estimate or an explicit 'unsized'. |
+| 3 | incident response and postmortem records | Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules. | Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. |
+| 4 | toil reduction automation | Actual version-controlled implementation or analysis code, separate from its explanatory report. | Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. |
 
 ## 7. Output gates (blocking)
 
@@ -189,6 +189,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - Google SRE practice
 - ITIL 4 incident and problem management
 - USE and RED methods
@@ -199,13 +203,30 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Define SLOs and an error budget policy for a service with no agreed reliability target”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver service level objectives and error budget policy in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Service level objectives and error budget policy.
+
+**Illustrative case material:**
+
+Define service consumers, business capability enabled, catalog boundary, eligibility and explicit exclusions. Separate internal technology components from the outcome experienced by the consumer. Establish supported locations, hours, priority classes, cost model and retained responsibilities across suppliers. The service design must not imply a contract commitment until the authorized parties have agreed to it.
+
+**Case application:** The accountable Clinical Digital Owner must confirm whether the objective and boundary are materially complete for `BHN-CRM`. The fact that a sample shows a proposed owner does not delegate any actual organizational authority.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions.
+- For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals.
+- Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `service-design-sla` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

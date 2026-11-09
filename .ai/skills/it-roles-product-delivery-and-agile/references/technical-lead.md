@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Team technical design and ADRs | Markdown ADR file in the repository | Context, options, decision, status and consequences (including negative) are all populated |
-| 2 | technical debt register | Structured table in the system of record (CSV/tool export) | Every row has an owner, a date, a status and a next action |
-| 3 | code and review standards | Controlled document referencing the parent policy | Requirements are specific, measurable and technology-explicit |
-| 4 | technical breakdown of upcoming work | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
+| 1 | Team technical design and ADRs | Versioned decision record with context, alternatives, consequences, status and supersession. | Identify the architecture concern, constraints, scope and decision status. Compare feasible design alternatives and the rejected baseline against drivers. Record the selected design, decision owner and dated rationale. Existing source requirement: Context, options, decision, status and consequences (including negative) are all populated. |
+| 2 | technical debt register | Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules. | Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every row has an owner, a date, a status and a next action. |
+| 3 | code and review standards | Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions. | State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Requirements are specific, measurable and technology-explicit. |
+| 4 | technical breakdown of upcoming work | Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones. | State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. |
 
 ## 7. Output gates (blocking)
 
@@ -187,6 +187,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - SWEBOK v4
 - architecture decision records
 - team coding standards
@@ -197,13 +201,32 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Break down a payments rewrite into slices that can ship independently”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver team technical design and adrs in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Team technical design and ADRs.
+
+**Illustrative case material:**
+
+`MRG-OEI-ADR-01`, **proposed**, authored by Integration Architect for independent ARB review. The architectural concern is how to preserve correctness when cross-channel order ingestion and fulfilment synchronisation spans unreliable interfaces. Existing state: nightly ERP batch exports with fragile point-to-point integrations. The design boundary is commerce platform, API gateway, event broker, integration workers, ERP and observability stack.
+
+Drivers: **p95 event-to-ERP availability under 5 minutes**, availability **99.9% measured monthly**, audit traceability and reversible deployment. Data requiring protection: order identifiers, delivery addresses and limited customer identifiers. Assumed target cutover proposed first market 2027-06-01; not an approved go-live date.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Identify the architecture concern, constraints, scope and decision status.
+- Compare feasible design alternatives and the rejected baseline against drivers.
+- Record the selected design, decision owner and dated rationale.
+- Describe technical debt, reversibility, operational impacts and residual risks.
+- Record predecessor links or explicitly state that no decision is superseded.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `adr` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

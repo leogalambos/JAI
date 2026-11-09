@@ -10,6 +10,8 @@ an interchange boundary, not the authoritative architecture-domain projection st
 Commands:
   repository.py init PATH --id REPO-ID --name NAME
   repository.py validate PATH [--strict]
+  repository.py validate-archimate PATH [--edition 3.2]
+  repository.py render-archimate PATH --view VIEW-ID --out FILE
   repository.py project-set PATH PROJECT-ID --name NAME --owner OWNER [--status STATE]
   repository.py element-set PATH ELEMENT-ID --type TYPE --name NAME --project PROJECT-ID --owner OWNER [--state STATE] [--horizon HORIZON]
   repository.py relationship-set PATH REL-ID --type TYPE --source ELEMENT-ID --target ELEMENT-ID [--project PROJECT-ID] [--owner OWNER]
@@ -303,6 +305,12 @@ def archi_properties_for_relationship(r: dict) -> dict[str, Any]:
 
 
 def archi_properties_for_view(v: dict) -> dict[str, Any]:
+    """Return view properties including explicit notation/selection qualification.
+
+    ``v`` is a canonical view. Empty values are omitted; false boolean values
+    remain present. The returned map preserves generated-graph status across
+    the exchange boundary without asserting standard notation or acceptance.
+    """
     p = dict(v.get("properties") or {})
     p.update({
         "AIITHouse.RepositoryId": v.get("id"),
@@ -310,14 +318,29 @@ def archi_properties_for_view(v: dict) -> dict[str, Any]:
         "AIITHouse.Purpose": v.get("purpose"),
         "AIITHouse.Audience": v.get("audience"),
         "AIITHouse.IncludeRetired": bool(v.get("include_retired", False)),
+        "AIITHouse.Notation": v.get("notation"),
+        "AIITHouse.SelectionProfile": v.get("selection_profile"),
+        "AIITHouse.SelectionStatus": v.get("selection_status"),
+        "AIITHouse.ViewpointContract": v.get("viewpoint_contract"),
     })
     return {k: v for k, v in p.items() if v not in (None, "", [], {})}
 
 
 def parse_maybe_json(value: str) -> Any:
+    """Decode structured property text and legacy Python boolean spellings.
+
+    Args:
+        value: Serialized property text, possibly empty.
+    Returns:
+        Parsed JSON object/array/null/boolean or the stripped original string.
+        Legacy ``False`` and ``True`` emitted by earlier exporters retain boolean
+        meaning rather than becoming truthy strings on reimport.
+    """
     value = (value or "").strip()
     if not value:
         return value
+    if value in ("True", "False"):
+        return value == "True"
     if value[:1] in "[{" or value in ("true", "false", "null"):
         try:
             return json.loads(value)
@@ -335,6 +358,12 @@ def non_ai_properties(props: dict[str, str]) -> dict[str, Any]:
 
 
 def validate_repository(repo: dict, strict: bool = False, policy: dict | None = None) -> tuple[list[str], list[str]]:
+    """Return structural errors and warnings for repo without mutating it.
+
+    strict promotes warnings to errors; policy optionally supplies lifecycle
+    consistency rules. Association endpoints may be model relationships. Full
+    ArchiMate metamodel checks use the explicit archimate_profile validator.
+    """
     policy = policy or (load_json(POLICY_FILE) if POLICY_FILE.is_file() else {})
     errors: list[str] = []
     warnings: list[str] = []
@@ -411,8 +440,9 @@ def validate_repository(repo: dict, strict: bool = False, policy: dict | None = 
         ident=r.get("id")
         for k in ("type", "source", "target"):
             if not r.get(k): errors.append(f"relationship {ident} missing {k}")
-        if r.get("source") not in es: errors.append(f"relationship {ident} source missing: {r.get('source')}")
-        if r.get("target") not in es: errors.append(f"relationship {ident} target missing: {r.get('target')}")
+        endpoints = es.keys() | rs.keys() if r.get("type") == "Association" else es.keys()
+        if r.get("source") not in endpoints: errors.append(f"relationship {ident} source missing: {r.get('source')}")
+        if r.get("target") not in endpoints: errors.append(f"relationship {ident} target missing: {r.get('target')}")
         if r.get("type") not in ARCHIMATE_RELATIONSHIP_TYPES:
             warnings.append(f"relationship {ident} uses non-core/unknown ArchiMate type {r.get('type')}")
         if r.get("project_id") and r.get("project_id") not in ps: errors.append(f"relationship {ident} unknown project {r.get('project_id')}")
@@ -473,13 +503,31 @@ def validate_repository(repo: dict, strict: bool = False, policy: dict | None = 
 
 
 def export_open_exchange(repo: dict, out: Path, project: str | None = None, lang: str = "en", include_views: bool = True) -> None:
+    """Write canonical repository objects in the pinned 3.1 exchange syntax.
+
+    Args:
+        repo: Canonical repository; structural validation must pass.
+        out: Destination XML path; missing parents are created.
+        project: Optional project identifier limiting exported elements.
+        lang: XML language tag for textual content.
+        include_views: Whether selected diagram records are included.
+    Returns:
+        None. Model version is preserved independently of namespaced language and
+        exchange-edition metadata. View properties precede diagram nodes as
+        required by the XSD.
+    Raises:
+        ValueError: If repository structural validation fails.
+        OSError: If output cannot be written.
+    """
     errors, warnings = validate_repository(repo)
     if errors:
         raise ValueError("repository invalid: " + "; ".join(errors[:8]))
     projects=index_by(repo.get("projects") or [])
     elements=[e for e in repo.get("elements",[]) if not project or e.get("project_id")==project]
     eids={e["id"] for e in elements}
-    relationships=[r for r in repo.get("relationships",[]) if r.get("source") in eids and r.get("target") in eids]
+    candidate_ids={r['id'] for r in repo.get('relationships',[]) if not project or r.get('project_id')==project}
+    endpoint_ids=eids | candidate_ids
+    relationships=[r for r in repo.get("relationships",[]) if r.get("source") in endpoint_ids and r.get("target") in endpoint_ids]
     rids={r["id"] for r in relationships}
     views=[]
     if include_views:
@@ -492,19 +540,28 @@ def export_open_exchange(repo: dict, out: Path, project: str | None = None, lang
     model_id = repo["repository"]["id"] if not project else f"{repo['repository']['id']}-{project}"
     if not XML_ID.match(model_id):
         model_id="id-"+hashlib.sha1(model_id.encode()).hexdigest()[:20]
-    root=ET.Element(q("model"), {"identifier":model_id,"version":"3.2"})
+    model_version=projects.get(project,{}).get('source_model_version',repo['repository'].get('version','1.0')) if project else repo['repository'].get('version','1.0')
+    root=ET.Element(q("model"), {"identifier":model_id,"version":str(model_version)})
     name=repo["repository"]["name"] + (f" — {projects.get(project,{}).get('name',project)}" if project else "")
     add_text(root,"name",name,lang)
     add_text(root,"documentation",f"AI IT House {RELEASE} repository exchange; revision {repo['repository'].get('revision_hash','')}",lang)
 
     # Build property definitions from all exported object properties.
-    prop_names=set()
+    target_profile=repo['repository'].get('archimate_profile',{'language_edition':'3.2','exchange_schema_version':'3.1','profile':'archimate-3.2-portable'})
+    if target_profile.get('language_edition')!='3.2' or target_profile.get('exchange_schema_version')!='3.1':
+        raise ValueError('unsupported ArchiMate language/exchange profile')
+    model_properties=dict(repo['repository'].get('exchange_properties',{}))
+    model_properties.update({'JAI.ArchiMateEdition':target_profile['language_edition'],
+                             'JAI.ExchangeSchemaVersion':target_profile['exchange_schema_version'],
+                             'JAI.ImplementationProfile':target_profile['profile']})
+    prop_names=set(model_properties)
     eprops={e["id"]:archi_properties_for_element(e) for e in elements}
     rprops={r["id"]:archi_properties_for_relationship(r) for r in relationships}
     vprops={v["id"]:archi_properties_for_view(v) for v in views}
     for coll in (eprops,rprops,vprops):
         for p in coll.values(): prop_names.update(p.keys())
     prop_ids={name:f"pd-{hashlib.sha1(name.encode()).hexdigest()[:16]}" for name in sorted(prop_names)}
+    add_properties(root,model_properties,prop_ids,lang)
 
     if elements:
         ec=ET.SubElement(root,q("elements"))
@@ -538,6 +595,8 @@ def export_open_exchange(repo: dict, out: Path, project: str | None = None, lang
             if v.get("viewpoint"): attrs["viewpoint"]=str(v["viewpoint"])
             ve=ET.SubElement(dc,q("view"),attrs); add_text(ve,"name",v["name"],lang)
             if v.get("description"): add_text(ve,"documentation",v["description"],lang)
+            # ViewType properties precede Diagram's node/connection extension.
+            add_properties(ve,vprops[v["id"]],prop_ids,lang)
             refs=v.get("element_refs") or []
             cols=max(1,math.ceil(math.sqrt(len(refs) or 1))); node_map={}
             for i,ref in enumerate(refs):
@@ -550,7 +609,6 @@ def export_open_exchange(repo: dict, out: Path, project: str | None = None, lang
                 r=rel_idx.get(rid)
                 if not r or r["source"] not in node_map or r["target"] not in node_map: continue
                 ET.SubElement(ve,q("connection"),{"identifier":f"conn-{v['id']}-{rid}","relationshipRef":rid,xsi_type():"Relationship","source":node_map[r["source"]],"target":node_map[r["target"]]})
-            add_properties(ve,vprops[v["id"]],prop_ids,lang)
 
     ET.indent(root, space="  ")
     out.parent.mkdir(parents=True,exist_ok=True)
@@ -558,6 +616,25 @@ def export_open_exchange(repo: dict, out: Path, project: str | None = None, lang
 
 
 def import_open_exchange(xml_path: Path, repo: dict, project_id: str | None = None, project_name: str | None = None, merge: bool = False) -> dict:
+    """Import portable model content and mutate the given repository.
+
+    Args:
+        xml_path: Source Open Exchange XML file.
+        repo: Canonical target repository, updated in place.
+        project_id: Optional destination project identifier.
+        project_name: Optional human-readable destination project name.
+        merge: Whether a target containing model objects may be updated.
+    Returns:
+        The mutated repository, including namespaced view notation and selection
+        qualification when supplied. A nonmerge import preserves the model version
+        on the repository; merges retain it on the source-project boundary.
+        Call the separate conformance checker to
+        detect information outside this importer's portable representation.
+    Raises:
+        ValueError: If the root is not a model or a nonempty target forbids merge.
+        OSError: If the source file cannot be read.
+        ET.ParseError: If the source XML is malformed.
+    """
     root=ET.parse(xml_path).getroot()
     if local_name(root.tag)!="model": raise ValueError("Open Exchange root must be model")
     model_name=child_text(root,"name",xml_path.stem)
@@ -575,6 +652,17 @@ def import_open_exchange(xml_path: Path, repo: dict, project_id: str | None = No
         for pd in children(pds,"propertyDefinition"):
             prop_defs[pd.attrib.get("identifier","")]=child_text(pd,"name",pd.attrib.get("identifier",""))
 
+    model_properties=prop_map_from_xml(root,prop_defs)
+    if not merge:
+        repo['repository']['version']=root.attrib.get('version','1.0')
+        repo['repository']['exchange_properties']=model_properties
+        if any(key in model_properties for key in ('JAI.ArchiMateEdition','JAI.ExchangeSchemaVersion','JAI.ImplementationProfile')):
+            repo['repository']['archimate_profile']={'language_edition':model_properties.get('JAI.ArchiMateEdition'),
+                                                    'exchange_schema_version':model_properties.get('JAI.ExchangeSchemaVersion'),
+                                                    'profile':model_properties.get('JAI.ImplementationProfile')}
+    imported_project=index_by(repo.get('projects',[]))[project_id]
+    imported_project['source_model_version']=root.attrib.get('version','1.0')
+
     ec=first_child(root,"elements")
     if ec is not None:
         for x in children(ec,"element"):
@@ -591,6 +679,7 @@ def import_open_exchange(xml_path: Path, repo: dict, project_id: str | None = No
             }
             if obj["project_id"] not in index_by(repo["projects"]):
                 repo["projects"].append({"id":obj["project_id"],"name":obj["project_id"],"owner":"import owner required","status":"proposed","benefits":[],"artifacts":[]})
+            index_by(repo['projects'])[obj['project_id']]['source_model_version']=root.attrib.get('version','1.0')
             upsert(repo.setdefault("elements",[]),obj)
 
     # Map exchange identifiers to canonical identifiers where AIITHouse.RepositoryId was used.
@@ -602,6 +691,9 @@ def import_open_exchange(xml_path: Path, repo: dict, project_id: str | None = No
 
     rc=first_child(root,"relationships")
     if rc is not None:
+        for x in children(rc,"relationship"):
+            ai=pop_ai_properties(prop_map_from_xml(x,prop_defs))
+            exchange_to_repo[x.attrib.get('identifier','')]=str(ai.get('AIITHouse.RepositoryId') or x.attrib.get('identifier'))
         for x in children(rc,"relationship"):
             props=prop_map_from_xml(x,prop_defs); ai=pop_ai_properties(props)
             ident=str(ai.get("AIITHouse.RepositoryId") or x.attrib.get("identifier"))
@@ -634,6 +726,9 @@ def import_open_exchange(xml_path: Path, repo: dict, project_id: str | None = No
                 pids=ai.get("AIITHouse.Projects") or sorted({index_by(repo.get("elements") or []).get(e,{}).get("project_id") for e in erefs if index_by(repo.get("elements") or []).get(e,{})})
                 pids=[p for p in pids if p]
                 obj={"id":ident,"name":child_text(x,"name",ident),"description":child_text(x,"documentation",""),"viewpoint":x.attrib.get("viewpoint","Custom"),"purpose":ai.get("AIITHouse.Purpose") or "Imported view","audience":ai.get("AIITHouse.Audience") or ["Architecture stakeholders"],"project_ids":pids or [project_id],"element_refs":erefs,"relationship_refs":rrefs,"include_retired":bool(ai.get("AIITHouse.IncludeRetired",False)),"properties":non_ai_properties(props)}
+                for key,prop in (("notation","AIITHouse.Notation"),("selection_profile","AIITHouse.SelectionProfile"),("selection_status","AIITHouse.SelectionStatus"),("viewpoint_contract","AIITHouse.ViewpointContract")):
+                    if prop in ai:
+                        obj[key]=ai[prop]
                 upsert(repo.setdefault("views",[]),obj)
     touch(repo)
     return repo
@@ -651,6 +746,16 @@ def type_group(t: str) -> str:
 
 
 def generated_view(repo: dict, preset: str, project: str | None = None) -> dict:
+    """Return an unreviewed repository-graph selection without adding model facts.
+
+    Args:
+        repo: Canonical repository dictionary.
+        preset: Existing heuristic selection name such as business or portfolio.
+        project: Optional project identifier limiting selected elements.
+    Returns:
+        Custom view dictionary; its heuristic selection does not establish a
+        standard ArchiMate viewpoint or graphical-notation conformance.
+    """
     elements=repo.get("elements") or []; relationships=repo.get("relationships") or []
     if project: elements=[e for e in elements if e.get("project_id")==project]
     if preset == "portfolio":
@@ -665,11 +770,24 @@ def generated_view(repo: dict, preset: str, project: str | None = None) -> dict:
     ids={e["id"] for e in chosen}; rels=[r for r in relationships if r.get("source") in ids and r.get("target") in ids]
     title_map={"business":"Business architecture","application":"Application architecture","technology":"Technology architecture","data":"Information & data architecture","security":"Security-relevant architecture","motivation":"Motivation & requirements","migration":"Implementation & migration","portfolio":"Portfolio dependency view","lifecycle":"Lifecycle / decommission impact"}
     pid=project or "portfolio"
-    return {"id":f"view-{preset}-{pid}","name":title_map.get(preset,preset.title()),"viewpoint":{"business":"Organization","application":"Application Cooperation","technology":"Technology","data":"Information Structure","motivation":"Motivation","migration":"Implementation and Migration"}.get(preset,"Custom"),"purpose":"Generated from the canonical 26.10 repository without adding model facts.","audience":["Architecture stakeholders"],"project_ids":[project] if project else sorted({e.get("project_id") for e in chosen if e.get("project_id")}),"element_refs":[e["id"] for e in chosen],"relationship_refs":[r["id"] for r in rels],"include_retired":preset=="lifecycle","generated":True}
+    contract=copy.deepcopy(load_json(VIEWPOINT_FILE)['presets'].get(preset,{}).get('contract',{}))
+    if contract:
+        contract.update(included_types=sorted({e.get('type') for e in chosen}),review_status='pending')
+    return {"id":f"view-{preset}-{pid}","name":title_map.get(preset,preset.title()),"viewpoint":"Custom","notation":"repository-graph","selection_profile":preset,"selection_status":"heuristic-unreviewed","viewpoint_contract":contract,"purpose":"Generated from the canonical repository without adding model facts. Stakeholder concerns and viewpoint completeness require independent review.","audience":["Architecture stakeholders"],"project_ids":[project] if project else sorted({e.get("project_id") for e in chosen if e.get("project_id")}),"element_refs":[e["id"] for e in chosen],"relationship_refs":[r["id"] for r in rels],"include_retired":preset=="lifecycle","generated":True}
 
 
 def render_view_svg(repo: dict, view: dict, out: Path) -> None:
-    # Self-contained deterministic renderer; layout is presentation-only, not semantic.
+    """Write a labelled generic repository graph to an SVG file.
+
+    Args:
+        repo: Canonical source of element and relationship facts.
+        view: View containing selected model identifiers.
+        out: Writable SVG destination; its parent must already exist.
+    Returns:
+        None. The drawing explicitly does not assert ArchiMate graphical notation.
+    Raises:
+        OSError: If the destination cannot be written.
+    """
     eidx=index_by(repo.get("elements") or []); ridx=index_by(repo.get("relationships") or [])
     refs=[x for x in view.get("element_refs",[]) if x in eidx]
     cols=max(1,math.ceil(math.sqrt(len(refs) or 1))); W,H,hg,vg=190,70,60,60
@@ -686,6 +804,7 @@ def render_view_svg(repo: dict, view: dict, out: Path) -> None:
     for ref in refs:
         e=eidx[ref]; x,y=pos[ref]
         parts.append(f'<rect class="node" x="{x}" y="{y}" width="{W}" height="{H}" rx="8"/><text x="{x+10}" y="{y+24}" font-size="13" font-weight="bold">{esc(e.get("name"))}</text><text x="{x+10}" y="{y+43}" font-size="10">{esc(e.get("type"))} · {esc(e.get("project_id"))}</text><text x="{x+10}" y="{y+58}" font-size="9">{esc(e.get("lifecycle_state","active"))}</text>')
+    parts.append(f'<text x="50" y="{height-20}" font-size="12">Repository graph · ArchiMate notation is not asserted; viewpoint and semantic review required.</text>')
     parts.append('</svg>'); out.write_text(''.join(parts),encoding='utf-8')
 
 
@@ -774,6 +893,12 @@ def decommission(repo: dict, element_id: str, owner: str, when: str, waiver: str
 
 
 def self_test() -> int:
+    """Return zero when repository and temporary exchange integrations all pass.
+
+    XML checks use expanded names and actual object counts. Equivalent namespace
+    prefixes selected by another producer in the same process do not change the
+    exchange contract. Temporary generated files are removed before returning.
+    """
     tests=[]
     def ok(name,cond): tests.append((name,bool(cond)))
     repo=empty_repository("repo-test","26.10 Test Repository")
@@ -808,7 +933,12 @@ def self_test() -> int:
     repo["elements"][0]["lifecycle_state"]="active"; repo["elements"][0].pop("valid_to",None); touch(repo)
     with tempfile.TemporaryDirectory() as td:
         td=Path(td); xmlp=td/"model.xml"; export_open_exchange(repo,xmlp,lang="en",include_views=True)
-        text=xmlp.read_text(encoding="utf-8"); ok("exchange-created",xmlp.stat().st_size>500); ok("exchange-namespace",ARCHI_NS in text); ok("exchange-elements","<elements>" in text); ok("exchange-relationships","<relationships>" in text); ok("exchange-views","<views>" in text and 'xsi:type="Diagram"' in text)
+        text=xmlp.read_text(encoding="utf-8"); document=ET.fromstring(text)
+        ok("exchange-created",xmlp.stat().st_size>500); ok("exchange-namespace",document.tag==q('model'))
+        ok("exchange-elements",len(document.findall(q('elements')+'/'+q('element')))==len(repo['elements']))
+        ok("exchange-relationships",len(document.findall(q('relationships')+'/'+q('relationship')))==len(repo['relationships']))
+        diagrams=document.findall(q('views')+'/'+q('diagrams')+'/'+q('view'))
+        ok("exchange-views",len(diagrams)==len(repo['views']) and all(view.get(xsi_type())=='Diagram' for view in diagrams))
         repo2=empty_repository("repo-import","Imported"); import_open_exchange(xmlp,repo2,project_id="P-IMP",project_name="Imported",merge=False)
         e2,w2=validate_repository(repo2); ok("exchange-import-valid",not e2); ok("roundtrip-element-count",len(repo2["elements"])==len(repo["elements"])); ok("roundtrip-relationship-count",len(repo2["relationships"])==len(repo["relationships"])); ok("roundtrip-view-count",len(repo2["views"])==len(repo["views"])); ok("roundtrip-repository-id",{e['id'] for e in repo2['elements']}=={e['id'] for e in repo['elements']})
         vd=td/"views"; views=generate_views(repo,vd,None,"all"); ok("generated-multiview",len(views)>=3 and (vd/"view-set.json").is_file()); ok("generated-svg",any(vd.glob("*.svg")))
@@ -819,9 +949,16 @@ def self_test() -> int:
 
 
 def main() -> None:
+    """Execute a repository command from process arguments, raising SystemExit on failure.
+
+    Explicit validate-archimate and render-archimate select the bounded 3.2
+    profile; normal repository graphs and maintenance retain their own contracts.
+    """
     ap=argparse.ArgumentParser(); sp=ap.add_subparsers(dest="cmd",required=True)
     p=sp.add_parser("init"); p.add_argument("path"); p.add_argument("--id",required=True); p.add_argument("--name",required=True)
     p=sp.add_parser("validate"); p.add_argument("path"); p.add_argument("--strict",action="store_true")
+    p=sp.add_parser('validate-archimate'); p.add_argument('path'); p.add_argument('--edition',default='3.2',choices=['3.2'])
+    p=sp.add_parser('render-archimate'); p.add_argument('path'); p.add_argument('--view',required=True); p.add_argument('--out',required=True)
     p=sp.add_parser("project-set"); p.add_argument("path"); p.add_argument("project_id"); p.add_argument("--name",required=True); p.add_argument("--owner",required=True); p.add_argument("--status",default="proposed",choices=sorted(PROJECT_STATES))
     p=sp.add_parser("element-set"); p.add_argument("path"); p.add_argument("element_id"); p.add_argument("--type",required=True); p.add_argument("--name",required=True); p.add_argument("--project",required=True); p.add_argument("--owner",required=True); p.add_argument("--state",default="active",choices=sorted(LIFECYCLE_STATES)); p.add_argument("--horizon",default="unspecified",choices=sorted(HORIZONS)); p.add_argument("--description",default="")
     p=sp.add_parser("relationship-set"); p.add_argument("path"); p.add_argument("relationship_id"); p.add_argument("--type",required=True); p.add_argument("--source",required=True); p.add_argument("--target",required=True); p.add_argument("--project"); p.add_argument("--owner",default=""); p.add_argument("--name",default="")
@@ -842,6 +979,15 @@ def main() -> None:
         if p.exists(): raise SystemExit(f"error: repository already exists: {p}")
         repo=empty_repository(a.id,a.name); write_json(p,repo); print(p); return
     p,repo=load_repo(a.path) if a.cmd not in ("import-open-exchange",) else (resolve_repo(a.repo), load_json(resolve_repo(a.repo)) if resolve_repo(a.repo).is_file() else empty_repository("repo-import",a.project_name or "Imported repository"))
+    if a.cmd in ('validate-archimate','render-archimate'):
+        import importlib.util
+        loader=importlib.util.spec_from_file_location('repository_archimate_profile',Path(__file__).with_name('archimate_profile.py'))
+        profile=importlib.util.module_from_spec(loader); loader.loader.exec_module(profile)
+        if a.cmd=='validate-archimate':
+            result=profile.validate(repo,a.edition); print(json.dumps(result,indent=2)); raise SystemExit(0 if result['valid'] else 1)
+        view=next((view for view in repo.get('views',[]) if view['id']==a.view),None)
+        if view is None: raise SystemExit('unknown view: '+a.view)
+        print(json.dumps(profile.render(repo,view,a.out),indent=2)); return
     if a.cmd=="validate":
         errs,warns=validate_repository(repo,a.strict); [print("WARN",x) for x in warns]; [print("FAIL",x) for x in errs]; print(f"{'PASS' if not errs else 'FAIL'} errors={len(errs)} warnings={len(warns)} revision={repository_hash(repo)}"); raise SystemExit(1 if errs else 0)
     if a.cmd=="project-set": upsert(repo.setdefault("projects",[]),{"id":a.project_id,"name":a.name,"owner":a.owner,"status":a.status,"benefits":[],"artifacts":[]}); save_repo(p,repo); print("OK",a.project_id); return

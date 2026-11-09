@@ -36,7 +36,9 @@ def canonical(x: Any)->bytes: return json.dumps(x,sort_keys=True,separators=(','
 def sha(x: Any)->str: return hashlib.sha256(canonical(x)).hexdigest()
 
 
-def mapping(): return load_json(MAPPING_FILE)
+def mapping():
+    """Return the versioned local mapping and exact language/exchange/source editions."""
+    return load_json(MAPPING_FILE)
 
 
 def mapping_hash(doc=None): return sha(doc or mapping())
@@ -65,6 +67,12 @@ def projected_snapshot(entries: dict) -> str:
 
 
 def element_from(eid: str, m: dict, rule: dict, project_id: str, mapping_version: str) -> dict:
+    """Return a projected element for eid using m, rule and project_id.
+
+    mapping_version identifies the JAI mapping revision. Edition metadata is
+    carried in properties so the frozen canonical projection schema stays valid.
+    Semantic source facts and source hashes are retained without approval claims.
+    """
     owner=m.get('owner') or m.get('authority') or 'SABSA owner required'
     state=m.get('lifecycle_state') or 'active'
     if state not in repo_tool.LIFECYCLE_STATES: state='active'
@@ -76,6 +84,11 @@ def element_from(eid: str, m: dict, rule: dict, project_id: str, mapping_version
     }
     projection={'ea_type':rule['ea_type'],'archimate_type':rule['archimate_type'],'specialization':rule['specialization'],'mapping_version':mapping_version,'source_hash':semantic_hash(m),'bridge':BRIDGE}
     props={'SABSA.Layer':rule['sabsa_layer'],'SABSA.Question':rule['sabsa_question'],'SABSA.ElementType':m.get('_dirtype'),'SABSA.Specialization':rule['specialization']}
+    mp=mapping()
+    props.update({'JAI.ArchiMateEdition':mp['target_language_edition'],
+                  'JAI.ExchangeSchemaVersion':mp['exchange_schema_version'],
+                  'JAI.MappingSourceEdition':mp['reference_mapping']['target_edition'],
+                  'JAI.MappingQualification':'JAI-local; independent semantic review required'})
     for k,v in semantic_payload(m).items():
         if k not in ('id','title','owner','lifecycle_state','horizon','valid_from','valid_until') and v not in ('',None): props[f'SABSA.{k}']=v
     return {
@@ -90,6 +103,13 @@ def element_from(eid: str, m: dict, rule: dict, project_id: str, mapping_version
 
 
 def project_entries(entries: dict, repository: dict, project_id: str, project_name: str, owner: str, source_library: str='') -> dict:
+    """Project entries into repository and return an edition-explicit manifest.
+
+    project_id/project_name select the destination; owner is its accountable role.
+    source_library records existing private provenance where authorised. Prior
+    projections for this bridge/project are replaced deterministically. Unknown
+    source types raise ValueError. No new source facts or authority are created.
+    """
     mp=mapping(); rules=mp['rules']; missing=sorted({m.get('_dirtype') for m in entries.values()}-set(rules))
     if missing: raise ValueError('unmapped SABSA types: '+', '.join(missing))
     # deterministic replacement of prior projections for this target project/bridge
@@ -120,6 +140,9 @@ def project_entries(entries: dict, repository: dict, project_id: str, project_na
     repository.setdefault('views',[]).append(view)
     manifest={'id':f'sabsa-projection-{project_id}','profile':'sabsa-to-jai-ea-profile','source_model':'SABSA','source_library':source_library,'project_id':project_id,
               'source_snapshot_hash':projected_snapshot(entries),'mapping_registry_hash':mapping_hash(mp),'mapping_version':mp['mapping_version'],'object_count':len(elems),'relationship_count':len(rels),'status':'current'}
+    manifest['target_profile']={'language_edition':mp['target_language_edition'],
+                                'exchange_schema_version':mp['exchange_schema_version'],
+                                'mapping_reference':copy.deepcopy(mp['reference_mapping'])}
     manifests=[x for x in repository.get('projection_manifests',[]) if x.get('id')!=manifest['id']]; manifests.append(manifest); repository['projection_manifests']=manifests
     repo_tool.touch(repository); return manifest
 
@@ -138,7 +161,16 @@ def check_projection(entries: dict, repository: dict, project_id: str) -> dict:
 
 
 def validate_mapping() -> list[str]:
+    """Return missing types, invalid relationships or unsupported edition metadata.
+
+    Reads the pinned mapping; passing structural checks does not approve its
+    professional interpretation or qualify a source-3.0 mapping as 3.2 conformance.
+    """
     mp=mapping(); et=sabsa.TYPES; rules=mp.get('rules',{}); problems=[]
+    if mp.get('target_language_edition')!='3.2' or mp.get('exchange_schema_version')!='3.1':
+        problems.append('unsupported language/exchange edition')
+    if mp.get('reference_mapping',{}).get('target_edition')!='3.0':
+        problems.append('mapping source edition must preserve its actual 3.0 scope')
     if set(rules)!=set(et):
         problems += [f'missing mapping {x}' for x in sorted(set(et)-set(rules))]+[f'unknown mapping {x}' for x in sorted(set(rules)-set(et))]
     cells={(r.get('sabsa_layer'),r.get('sabsa_question')) for r in rules.values()}

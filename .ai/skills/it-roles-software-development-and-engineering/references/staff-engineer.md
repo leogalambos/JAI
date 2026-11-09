@@ -101,10 +101,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Cross-team technical strategy | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 2 | architecture decision records | Model in the EA tool plus a published view set | Every element traces to a driver or a quality-attribute target; no orphan elements |
-| 3 | prototypes that settle contested questions | Reproducible prototype and evaluation report | Defines contested hypothesis, bounded non-production scope, reproducible inputs/execution and observed results with limitations |
-| 4 | technical standards adopted across teams | Controlled document referencing the parent policy | Requirements are specific, measurable and technology-explicit |
+| 1 | Cross-team technical strategy | Evidenced strategic choices with target outcomes, alternatives, investment assumptions and execution accountability. | Trace target outcomes and measurable success to business direction and baseline constraints. Compare investment and operating choices, dependencies, resource assumptions and rejected alternatives. Assign sequenced initiatives, accountable owners, outcome measures and review triggers. |
+| 2 | architecture decision records | Versioned decision record with context, alternatives, consequences, status and supersession. | Identify the architecture concern, constraints, scope and decision status. Compare feasible design alternatives and the rejected baseline against drivers. Record the selected design, decision owner and dated rationale. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. |
+| 3 | prototypes that settle contested questions | Bounded non-production prototype or executable/design experiment with predeclared question and success criteria. | State the hypothesis or feasibility question, experiment boundary, success/failure criteria and limitations of representativeness. Identify reproducible prototype source/configuration, dependencies, environment and procedure without claiming production readiness. Record actual observations against criteria, failed/untested conditions and what may or may not be inferred for a production solution. Existing source requirement: Defines contested hypothesis, bounded non-production scope, reproducible inputs/execution and observed results with limitations. |
+| 4 | technical standards adopted across teams | Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions. | State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Requirements are specific, measurable and technology-explicit. |
 
 ## 7. Output gates (blocking)
 
@@ -189,6 +189,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - SWEBOK v4
 - ISO/IEC 25010
 - Team Topologies
@@ -199,13 +203,30 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Three teams have built three different retry libraries — settle it”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver cross-team technical strategy in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Cross-team technical strategy.
+
+**Illustrative case material:**
+
+The strategic ambition is to improve the enterprise capability to serve users reliably while retaining technology choice and financial control. Define horizon, sponsor, organizational boundary and the business capabilities that need to change. Separate outcomes such as reduced process lead time from delivery outputs such as a new cloud platform. Describe constraints inherited from procurement, privacy, budget and service continuity. A strategy is not a shopping list of technologies: a proposed architecture or platform is a hypothesis explaining how the capability target could be reached.
+
+**Case application:** The accountable Digital Commerce Sponsor must confirm whether the objective and boundary are materially complete for `MRG-OEI`. The fact that a sample shows a proposed owner does not delegate any actual organizational authority.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Trace target outcomes and measurable success to business direction and baseline constraints.
+- Compare investment and operating choices, dependencies, resource assumptions and rejected alternatives.
+- Assign sequenced initiatives, accountable owners, outcome measures and review triggers.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `it-digital-strategy` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

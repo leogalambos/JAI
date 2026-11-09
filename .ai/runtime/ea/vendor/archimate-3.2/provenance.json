@@ -1,0 +1,42 @@
+{
+  "profile": "archimate-3.2-portable",
+  "language_edition": "3.2",
+  "exchange_schema_version": "3.1",
+  "source_repository": "https://github.com/archimatetool/archi",
+  "source_revision": "9ec17ca84b2ba9e27512172f7ce97cb7de62e53c",
+  "licence": "MIT",
+  "files": {
+    "License.txt": {
+      "source_path": "License.txt",
+      "sha256": "e4b62b898fd8bb9d43baf10cc3cee161d5ba74a6a6477e4d576e1b74f4485c60"
+    },
+    "relationships.xml": {
+      "source_path": "com.archimatetool.model/model/relationships.xml",
+      "sha256": "82cc8d11b174f3edf700fc8d6e3e061d4d9d8e65e5ec0f3c323d94f98a2681e7"
+    },
+    "archimate3_Model.xsd": {
+      "source_path": "org.opengroup.archimate.xmlexchange/xsd/archimate3_Model.xsd",
+      "sha256": "dd451abe3e3193f91dd9544b279af9bbbf17e75ff1ef86f65ad52b3f8cd29794"
+    },
+    "archimate3_View.xsd": {
+      "source_path": "org.opengroup.archimate.xmlexchange/xsd/archimate3_View.xsd",
+      "sha256": "d708ce176403034b1229b892712cfd69660aefe17da4cc54acea1ac35e4a9854"
+    },
+    "archimate3_Diagram.xsd": {
+      "source_path": "org.opengroup.archimate.xmlexchange/xsd/archimate3_Diagram.xsd",
+      "sha256": "6419080f4c4bc43b4a7b8acf870146a7bae6c3487a3ce08d3c521c028ea6056e"
+    },
+    "dc.xsd": {
+      "source_path": "org.opengroup.archimate.xmlexchange/xsd/dc.xsd",
+      "sha256": "9285c1b57d8920b72101b4ba93416f32aa376087481f2b5b0c5d6c95f8def7cf"
+    },
+    "xml.xsd": {
+      "source_path": "org.opengroup.archimate.xmlexchange/xsd/xml.xsd",
+      "sha256": "f0fa306f2951fb1a477220eb7bdeaa35959c8d0224258f2104d3c4724ba746f7"
+    }
+  },
+  "limits": [
+    "Implementation-data validation is not Open Group certification.",
+    "Relationship data does not distinguish direct from derived relationships."
+  ]
+}

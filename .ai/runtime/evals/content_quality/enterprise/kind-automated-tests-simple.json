@@ -1,0 +1,291 @@
+{
+  "artifact_id": "synthetic/enterprise/kind-automated-tests-simple",
+  "contract_id": "kind/automated-tests",
+  "document_kind": "automated-tests",
+  "author": {
+    "principal_id": "synthetic-author"
+  },
+  "title": "Inventory service recovery: kind-automated-tests-simple",
+  "context": {
+    "processes_personal_data": false,
+    "regulatory_requirement": false
+  },
+  "summary": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+  "scenario": {
+    "name": "Inventory service recovery",
+    "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+    "drivers": "Restore warehouse inventory updates within 30 minutes; data loss must remain below five minutes.",
+    "design": "One application instance and a standby database in the existing managed platform.",
+    "cost": "EUR 18000 implementation and EUR 6000 annual operation; one-year benefit EUR 32000, with a 25 percent adoption uncertainty.",
+    "risk": "Database replication delay can lose updates; lag alert at 60 seconds and hourly recovery-point checks reduce likelihood.",
+    "operations": "Warehouse operations owns support from 06:00 to 22:00; the platform duty engineer handles recovery escalation.",
+    "regulatory": false,
+    "privacy": false
+  },
+  "semantic_units": {
+    "reference_test_coverage_limits": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-REFERENCE-TEST-COVERAGE-LIMITS",
+      "service": "Inventory service recovery",
+      "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+      "criterion_under_review": "Identify excluded risks and prevent unsupported confidence claims.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "reference_test_execution": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-REFERENCE-TEST-EXECUTION",
+      "service": "Inventory service recovery",
+      "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+      "criterion_under_review": "Specify reproducible environment, revision and observed-result evidence.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "reference_test_oracles": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-REFERENCE-TEST-ORACLES",
+      "service": "Inventory service recovery",
+      "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+      "criterion_under_review": "Trace executable cases to behaviour and meaningful expected outcomes.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "automated_test_execution": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-AUTOMATED-TEST-EXECUTION",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Give reproducible invocation, assertions, expected outcomes and failure diagnostics; distinguish test definitions from evidence of executed runs.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "automated_test_maintenance": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-AUTOMATED-TEST-MAINTENANCE",
+      "service": "Inventory service recovery",
+      "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+      "criterion_under_review": "Define isolation, dependency handling, flakiness investigation, coverage limitations and maintenance ownership.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "automated_test_scope": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-AUTOMATED-TEST-SCOPE",
+        "service": "Inventory service recovery",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "criterion_under_review": "Trace executable cases and reusable test abstractions to requirements, risk coverage, deterministic data and environment assumptions.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "framework_applicability": [
+      {
+        "record_id": "SYN-PROFESSIONAL-BASIS",
+        "source": {
+          "title": "JAI authored enterprise-delivery practice",
+          "edition": "Synthetic development scenario, revision 1",
+          "authoritative_location": "content/rules/global-invariants.yaml"
+        },
+        "basis": "jai-interpretation",
+        "applicability": "applicable",
+        "rationale": "This fictional recovery case uses JAI evidence and bounded-handoff practice to exercise the DCS contract; no external framework conformity is claimed.",
+        "scope": "One internal inventory service, a PostgreSQL database and twelve authorised warehouse operators.",
+        "jurisdiction": "No real jurisdictional compliance conclusion is established by this synthetic fixture.",
+        "adopted_concepts": [
+          "Attributable evidence",
+          "Bounded receiving-role conclusions"
+        ],
+        "tailoring": "Illustrative recovery-service facts only; peak-load validation is excluded and remains pending.",
+        "precedence": "Applicable real law and organisation policy would prevail; neither is fabricated by this case.",
+        "method_mapping": [
+          {
+            "output_unit_ref": "global.framework_applicability",
+            "method": "Separate fabricated scenario observations from demonstrated production results and map residual gaps to the receiving owner.",
+            "expected_evidence": "Versioned synthetic scenario and its declared limitations.",
+            "evidence_refs": [
+              "SYN-01"
+            ],
+            "reviewer_test": "Reject any inference of real execution, framework conformance or human approval from this fictional example."
+          }
+        ],
+        "review": {
+          "owner": "Synthetic independent domain reviewer",
+          "status": "pending-independent-review",
+          "change_trigger": "Change to scenario scope, source practice or evidence; unchanged history is reused."
+        },
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "human_approval_ref": null
+      }
+    ]
+  },
+  "evaluation_selection": {
+    "overlays": []
+  },
+  "structural_probe": true,
+  "evaluation_scope": "Typed contract/overlay detector probe; professional semantic adequacy is not established by these generated records.",
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Fabricated recovery service records; no real customer evidence or human approval."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "automated-tests.reference_test_coverage_limits",
+        "automated-tests.reference_test_execution",
+        "automated-tests.reference_test_oracles",
+        "family/automated-tests.automated_test_execution",
+        "family/automated-tests.automated_test_maintenance",
+        "family/automated-tests.automated_test_scope",
+        "global.framework_applicability"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "reference_test_coverage_limits",
+      "expected_rule_ids": [
+        "automated-tests.reference_test_coverage_limits"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "reference_test_coverage_limits",
+      "reason": "Author omitted a required obligation without authority.",
+      "expected_rule_ids": [
+        "automated-tests.reference_test_coverage_limits"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "The recovery design guarantees permanent zero incidents without evidence.",
+      "expected_rule_ids": [
+        "automated-tests.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "The history of office furniture procurement does not support service recovery or the receiving decision.",
+      "expected_rule_ids": [
+        "automated-tests.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "automated-tests.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "Schedule pressure is claimed to waive the applicable legal restriction without authority.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope excludes personal identifiers; SYN-NA records anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "reference_test_coverage_limits",
+      "count": 5,
+      "expected_rule_ids": [
+        "automated-tests.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    }
+  ]
+}

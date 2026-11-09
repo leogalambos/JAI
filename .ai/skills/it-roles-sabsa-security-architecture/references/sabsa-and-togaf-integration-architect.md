@@ -25,7 +25,7 @@ Producing, maintaining and defending the quality of:
 
 Also in scope:
 
-- Working within SABSA, TOGAF 10 ADM, ArchiMate 3.2, ISO/IEC 42010 and the organisation's own policy set.
+- Working with the applicable selected methods in SABSA, TOGAF 10 ADM, ArchiMate 3.2, ISO/IEC 42010 and the organisation's own policy set.
 - Naming, escalating and tracking the risks, assumptions, issues and dependencies arising from that work.
 
 ### Out of scope — route elsewhere
@@ -75,7 +75,7 @@ Taking on out-of-scope work is not helpfulness; it removes the second pair of ey
 
 **Step 5 — Produce Integrated architecture method and governance plus decision records.** Record every significant choice as an ADR: context, options, decision, consequences, status. The consequences section is the one that earns its keep two years later.
 
-**Step 6 — Review with peers and affected parties.** Put the design through architecture review under SABSA, TOGAF 10 ADM, ArchiMate 3.2, ISO/IEC 42010. Reviewers must include at least one person who will implement it and one who will run it.
+**Step 6 — Review with peers and affected parties.** Put the design through architecture review against the selected applicable methods in SABSA, TOGAF 10 ADM, ArchiMate 3.2, ISO/IEC 42010. Reviewers must include at least one person who will implement it and one who will run it.
 
 **Step 7 — Govern through implementation.** Check conformance at build time, not only at design time. Track accepted deviations as technical debt with an owner and a repayment trigger.
 
@@ -99,10 +99,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Integrated architecture method and governance | Model in the EA tool plus a published view set | Every element traces to a driver or a quality-attribute target; no orphan elements |
-| 2 | mapping between SABSA layers and TOGAF ADM phases | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 3 | shared repository and artefact model | Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON) | The model is validated against real observed behaviour or data, not only interviews |
-| 4 | joint review and gate design | Joint governance and gate model with mapped decision rights | Every gate has an accountable authority, required SABSA/TOGAF inputs, evidence, entry/exit criteria and escalation path |
+| 1 | Integrated architecture method and governance | Versioned typed model with stable entities, relations, constraints, provenance and selected views. | Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. |
+| 2 | mapping between SABSA layers and TOGAF ADM phases | Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules. | Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. |
+| 3 | shared repository and artefact model | Concern-specific diagram with declared notation, legend, typed relationships and source-element links. | Identify diagram purpose, scope, audience, version and notation/legend, including the meaning of every relationship type. Use stable element identifiers and meaningful labels; show relevant boundaries, directions, interfaces and external dependencies without invented facts. Check consistency with source models and related views; distinguish intentional abstraction from omitted or unresolved relationships. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. |
+| 4 | joint review and gate design | Versioned solution design with component responsibilities, interfaces and measurable quality responses. | Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Every gate has an accountable authority, required SABSA/TOGAF inputs, evidence, entry/exit criteria and escalation path. |
 
 ## 7. Output gates (blocking)
 
@@ -188,6 +188,12 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+
+ArchiMate 3.2 is opt-in for an explicit operator request or an explicit project profile with relevant audience/concerns, governed source facts and independent semantic/visual QA; preserve role boundaries and report the actual qualification scope. No external EA application is required, and a generic repository graph must not be called verified ArchiMate notation.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - SABSA
 - TOGAF 10 ADM
 - ArchiMate 3.2
@@ -199,17 +205,32 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Merge our separate TOGAF and SABSA practices into one method teams can actually follow”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver integrated architecture method and governance in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Integrated architecture method and governance.
 
-## 3.2 current/target/transition integration
+**Illustrative case material:**
 
-Map TOGAF baseline/target/transition concepts to the 3.2 SABSA `horizon` axis without collapsing SABSA lifecycle state into architecture time. Use same-type `predecessors` and RM `transition_items` to make the transformation path inspectable. Where enterprise architecture artefacts are maintained in another SABSA library, consume them through namespaced reuse rather than duplicating them into the solution library.
+Repository ea-12 models Order API as an application component and Reserve Stock as an application service in the explicitly selected 3.2 profile. A process and a component are not interchangeable merely because their labels match.
+
+**Acceptance question:** Define metamodel, edition, concern and source baseline.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions.
+- Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question.
+- Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `model` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

@@ -204,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Bid qualification and response plan', provide verifiable evidence satisfying: Decision owner can approve or decline with costs, constraints and evidence visible. Required delivery form: Qualification rationale, responsibilities, milestones, review strategy and authority map.",
+        "For the specific output 'Bid qualification and response plan', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Decision owner can approve or decline with costs, constraints and evidence visible. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,7 +219,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Bid qualification and response plan', provide verifiable evidence satisfying: Decision owner can approve or decline with costs, constraints and evidence visible. Required delivery form: Qualification rationale, responsibilities, milestones, review strategy and authority map.",
+        "reason": "For the specific output 'Bid qualification and response plan', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Decision owner can approve or decline with costs, constraints and evidence visible. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#bid-proposal-manager:1",
           "content/types/roadmap.yaml",
@@ -234,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Bid qualification and response plan",
-        "format": "Qualification rationale, responsibilities, milestones, review strategy and authority map",
-        "acceptance_criterion": "Decision owner can approve or decline with costs, constraints and evidence visible.",
+        "format": "Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
+        "acceptance_criterion": "State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Decision owner can approve or decline with costs, constraints and evidence visible.",
         "role_path": "skills/it-roles-commercial-sourcing-and-enablement/references/bid-proposal-manager.md"
       }
     },
@@ -736,10 +736,15 @@
     "role_framework_context": [
       {
         "role": "Bid / Proposal Manager",
+        "domain": "Commercial, Sourcing and Enablement",
+        "domain_index": 15,
+        "method_focus": "Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.",
         "frameworks": [
           "APMP Body of Knowledge and APMP professional practices: bid qualification, proposal development, compliance and review. Consult the current licensed/public materials; no APMP certification is implied.",
           "Client procurement procedure and applicable procurement/competition law are authoritative; legal interpretation belongs to qualified counsel."
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -810,6 +815,17 @@
     "source_fingerprint": "0763fb1fe5011504f21865b12609bbb076dc50d370b9f6a0d0cd04362d517983",
     "source_hash": "13139be6ae863cfd07365a31a820fdf78a47f3ea8ed50bd8ab698c79f06ecbbf"
   },
+  "delivery_form": {
+    "primary_artifact": "outcome-roadmap",
+    "representation": "Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.",
+    "evidence": [
+      "current/target baseline and planning assumptions",
+      "resource/funding constraints and decision triggers"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "d2dee1ec4336fb026170598096898b4f782853f5cea4f189d363700bd0693d65",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

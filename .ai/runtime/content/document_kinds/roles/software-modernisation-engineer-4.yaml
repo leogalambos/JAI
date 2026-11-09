@@ -63,7 +63,9 @@
           "artifacts/contracts/role-deliverables.v3.json#software-modernisation-engineer:4",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -103,7 +105,9 @@
           "artifacts/contracts/role-deliverables.v3.json#software-modernisation-engineer:4",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -143,7 +147,9 @@
           "artifacts/contracts/role-deliverables.v3.json#software-modernisation-engineer:4",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -183,7 +189,9 @@
           "artifacts/contracts/role-deliverables.v3.json#software-modernisation-engineer:4",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -203,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'migration and cutover runbooks', provide verifiable evidence satisfying: A competent on-call engineer who has never seen the service can execute it unaided. Required delivery form: Versioned Markdown in the service repository.",
+        "For the specific output 'migration and cutover runbooks', provide verifiable evidence satisfying: For every activity, identify sequence/dependencies, operator, target, window, expected result and completion criterion. State go/no-go criteria and authority, communications, evidence needed at each checkpoint and any point of no return. Define reversal or forward-recovery branches, decision deadlines, data reconciliation and observable safe-state criteria; distinguish rehearsed from untested actions. Existing source requirement: A competent on-call engineer who has never seen the service can execute it unaided. Required delivery form: Timed operational cutover procedure with decision points, operators, rollback and safe-state checks.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'migration and cutover runbooks', provide verifiable evidence satisfying: A competent on-call engineer who has never seen the service can execute it unaided. Required delivery form: Versioned Markdown in the service repository.",
+        "reason": "For the specific output 'migration and cutover runbooks', provide verifiable evidence satisfying: For every activity, identify sequence/dependencies, operator, target, window, expected result and completion criterion. State go/no-go criteria and authority, communications, evidence needed at each checkpoint and any point of no return. Define reversal or forward-recovery branches, decision deadlines, data reconciliation and observable safe-state criteria; distinguish rehearsed from untested actions. Existing source requirement: A competent on-call engineer who has never seen the service can execute it unaided. Required delivery form: Timed operational cutover procedure with decision points, operators, rollback and safe-state checks.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-modernisation-engineer:4",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -233,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "migration and cutover runbooks",
-        "format": "Versioned Markdown in the service repository",
-        "acceptance_criterion": "A competent on-call engineer who has never seen the service can execute it unaided",
+        "format": "Timed operational cutover procedure with decision points, operators, rollback and safe-state checks.",
+        "acceptance_criterion": "For every activity, identify sequence/dependencies, operator, target, window, expected result and completion criterion. State go/no-go criteria and authority, communications, evidence needed at each checkpoint and any point of no return. Define reversal or forward-recovery branches, decision deadlines, data reconciliation and observable safe-state criteria; distinguish rehearsed from untested actions. Existing source requirement: A competent on-call engineer who has never seen the service can execute it unaided.",
         "role_path": "skills/it-roles-software-development-and-engineering/references/software-modernisation-engineer.md"
       }
     },
@@ -278,7 +288,9 @@
           "artifacts/contracts/role-deliverables.v3.json#software-modernisation-engineer:4",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -329,7 +341,9 @@
           "artifacts/contracts/role-deliverables.v3.json#software-modernisation-engineer:4",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -374,7 +388,9 @@
           "artifacts/contracts/role-deliverables.v3.json#software-modernisation-engineer:4",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -419,7 +435,9 @@
           "artifacts/contracts/role-deliverables.v3.json#software-modernisation-engineer:4",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -464,7 +482,9 @@
           "artifacts/contracts/role-deliverables.v3.json#software-modernisation-engineer:4",
           "content/types/cutover-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -511,7 +531,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -556,7 +578,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -603,7 +627,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -734,16 +760,37 @@
         "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "secure-software",
+        "title": "NIST SP 800-218, Secure Software Development Framework Version 1.1",
+        "url": "https://doi.org/10.6028/NIST.SP.800-218",
+        "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "software-testing",
+        "title": "ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation",
+        "url": "https://www.iso.org/standard/79429.html",
+        "scope": "Test planning, test specifications and reporting information needs.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Software Modernisation Engineer",
+        "domain": "Software Development and Engineering",
+        "domain_index": 5,
+        "method_focus": "Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.",
         "frameworks": [
           "strangler fig pattern",
           "legacy code working practice",
           "branch-by-abstraction"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -814,6 +861,17 @@
     "source_fingerprint": "fe66ce6cc19fd47b36f8f191142139e7f08407992b37b2ce9dc0451971694cc1",
     "source_hash": "962bb6e9551859daba7f3a830ca36a3abd3a4d06d78b5e90813c862adba54d3a"
   },
+  "delivery_form": {
+    "primary_artifact": "cutover-runbook",
+    "representation": "Timed operational cutover procedure with decision points, operators, rollback and safe-state checks.",
+    "evidence": [
+      "go/no-go evidence and latest safe reversal point",
+      "actual rehearsal or explicit untested status"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "e2dff63ca7f8c8235258e01c1a16234540580986ba5aee521b84f48c62d05f33",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

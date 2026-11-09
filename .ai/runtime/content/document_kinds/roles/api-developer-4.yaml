@@ -203,7 +203,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'contract tests', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "For the specific output 'contract tests', provide verifiable evidence satisfying: Trace executable cases and reusable test abstractions to requirements, risk coverage, deterministic data and environment assumptions. Give reproducible invocation, assertions, expected outcomes and failure diagnostics; distinguish test definitions from evidence of executed runs. Define isolation, dependency handling, flakiness investigation, coverage limitations and maintenance ownership. Existing source requirement: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable automated checks with deterministic setup, expected assertions and reproducible invocation.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,7 +218,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'contract tests', provide verifiable evidence satisfying: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable suite in version control plus a coverage statement.",
+        "reason": "For the specific output 'contract tests', provide verifiable evidence satisfying: Trace executable cases and reusable test abstractions to requirements, risk coverage, deterministic data and environment assumptions. Give reproducible invocation, assertions, expected outcomes and failure diagnostics; distinguish test definitions from evidence of executed runs. Define isolation, dependency handling, flakiness investigation, coverage limitations and maintenance ownership. Existing source requirement: States what is covered, what is not, and what the suite cannot detect. Required delivery form: Executable automated checks with deterministic setup, expected assertions and reproducible invocation.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#api-developer:4",
           "content/types/document.yaml",
@@ -233,8 +233,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "contract tests",
-        "format": "Executable suite in version control plus a coverage statement",
-        "acceptance_criterion": "States what is covered, what is not, and what the suite cannot detect",
+        "format": "Executable automated checks with deterministic setup, expected assertions and reproducible invocation.",
+        "acceptance_criterion": "Trace executable cases and reusable test abstractions to requirements, risk coverage, deterministic data and environment assumptions. Give reproducible invocation, assertions, expected outcomes and failure diagnostics; distinguish test definitions from evidence of executed runs. Define isolation, dependency handling, flakiness investigation, coverage limitations and maintenance ownership. Existing source requirement: States what is covered, what is not, and what the suite cannot detect.",
         "role_path": "skills/it-roles-software-development-and-engineering/references/api-developer.md"
       }
     },
@@ -739,12 +739,17 @@
     "role_framework_context": [
       {
         "role": "API Developer",
+        "domain": "Software Development and Engineering",
+        "domain_index": 5,
+        "method_focus": "Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.",
         "frameworks": [
           "OpenAPI",
           "AsyncAPI",
           "OWASP API Security Top 10",
           "semantic versioning"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -817,6 +822,17 @@
     "source_fingerprint": "409410c13494883358c033ecfbc05358f12fa41c38e2ebfea939df3e79e6a417",
     "source_hash": "f74aafc6ddba9ef0211fdb557c7fbe823d85aab0cc2bf12cdfdf52652dcd27f7"
   },
+  "delivery_form": {
+    "primary_artifact": "executable-test-suite",
+    "representation": "Executable automated checks with deterministic setup, expected assertions and reproducible invocation.",
+    "evidence": [
+      "exact suite and tested revision",
+      "risk/requirement coverage and actual run results"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "bef5d3d0c3811c00af5954609e2937403b276c514acceff852063f0fde542ab9",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

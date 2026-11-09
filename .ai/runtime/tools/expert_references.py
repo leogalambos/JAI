@@ -229,7 +229,10 @@ class ExpertReferences:
                     or not all(isinstance(unit, str) for unit in entry['anchor_ids'])
                     for entry in self.entries):
                 raise ReferenceError('MANIFEST_ENTRIES_INVALID')
-            if len(self.families) != 45 or len(set(self.families)) != 45 or set(self.manifest['levels']) != set(LEVELS):
+            if (not self.families or len(set(self.families)) != len(self.families)
+                    or not all(isinstance(family, str) and re.fullmatch(r'[a-z][a-z0-9-]*', family)
+                               for family in self.families)
+                    or set(self.manifest['levels']) != set(LEVELS)):
                 raise ReferenceError('MANIFEST_FAMILIES_INVALID')
             self.bindings = self._load_bindings()
         except (OSError, ValueError, KeyError, TypeError, AttributeError):
@@ -353,10 +356,13 @@ class ExpertReferences:
             if len(expected) != 1:
                 raise ReferenceError('MANIFEST_SLOT_AMBIGUOUS')
             entry = expected[0]
-            if self.manifest.get('version') == '2.3.0' and (
-                    entry.get('review_version') != '2.3.0'
+            extension = family in self.manifest.get('coverage_extension', {}).get('families', [])
+            expected_version = '1.0.0' if extension else '2.3.0'
+            expected_status = 'independent-review-pending' if extension else 'tri-lens-ai-review-applied-not-human-approved'
+            if self.manifest.get('version') in ('2.3.0', '2.4.0') and (
+                    entry.get('review_version') != expected_version
                     or meta.get('content_revision') != entry.get('review_version')
-                    or entry.get('review_status') != 'tri-lens-ai-review-applied-not-human-approved'):
+                    or entry.get('review_status') != expected_status):
                 raise ReferenceError('BUNDLED_REVIEW_METADATA_INVALID')
             if (meta['classification'] != 'public-synthetic' or meta['provenance'] != 'ai-authored-proposed'
                     or meta['fictional_context'] is not True or entry['sha256'] != hashlib.sha256(raw).hexdigest()
@@ -401,23 +407,24 @@ class ExpertReferences:
                 'findings': size_findings}
 
     def validate_all(self):
-        """Validate all 135 bundled manifest slots and their raw checksums.
+        """Validate every registered family/complexity slot and raw checksum.
 
         Returns:
             Sanitized collection count and results; contains only public metadata.
         Raises:
             ReferenceError: If slots, paths, checksums, metadata or anchors differ.
         """
-        if self.manifest.get('version') == '2.3.0' and (self.manifest.get('review_summary') != {
+        if self.manifest.get('version') in ('2.3.0', '2.4.0') and (self.manifest.get('review_summary') != {
                 'type': 'three-ai-review-lenses-not-three-human-reviewers',
                 'all_documents_revised': 135, 'human_approved': False}
                 or self.manifest['review_summary'].get('human_approved') is not False):
             raise ReferenceError('BUNDLED_REVIEW_METADATA_INVALID')
         expected = {(kind, level) for kind in self.families for level in LEVELS}
+        count = len(expected)
         try:
             slots = [(item['document_kind'], item['complexity']) for item in self.entries]
-            if (len(slots) != 135 or set(slots) != expected or self.manifest['reference_count'] != 135
-                    or len({item['reference_id'] for item in self.entries}) != 135):
+            if (len(slots) != count or set(slots) != expected or self.manifest['reference_count'] != count
+                    or len({item['reference_id'] for item in self.entries}) != count):
                 raise ReferenceError('MANIFEST_COVERAGE_INVALID')
             results = []
             for entry in self.entries:
@@ -430,7 +437,9 @@ class ExpertReferences:
                 raise ReferenceError('BUNDLED_UNINDEXED_REFERENCE')
             return {'status': 'PASS', 'reference_count': len(results), 'family_count': len(self.families),
                     'proposal_reference_count': sum('proposal_pack_id' in entry for entry in self.entries),
-                    'editorial_review_status': 'AI_EDITORIAL_ONLY' if self.manifest.get('version') == '2.3.0' else 'NOT_EVALUATED',
+                    'editorial_review_status': ('PARTIAL_AI_EDITORIAL_ONLY' if self.manifest.get('version') == '2.4.0'
+                                                else 'AI_EDITORIAL_ONLY' if self.manifest.get('version') == '2.3.0'
+                                                else 'NOT_EVALUATED'),
                     'professional_acceptance': 'NOT_APPROVED', 'results': results}
         except (KeyError, TypeError, OSError):
             raise ReferenceError('MANIFEST_INVALID') from None

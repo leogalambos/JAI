@@ -62,7 +62,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#staff-engineer:3",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -101,7 +102,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#staff-engineer:3",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -140,7 +142,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#staff-engineer:3",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -179,7 +182,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#staff-engineer:3",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -199,7 +203,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'prototypes that settle contested questions', provide verifiable evidence satisfying: Defines contested hypothesis, bounded non-production scope, reproducible inputs/execution and observed results with limitations. Required delivery form: Reproducible prototype and evaluation report.",
+        "For the specific output 'prototypes that settle contested questions', provide verifiable evidence satisfying: State the hypothesis or feasibility question, experiment boundary, success/failure criteria and limitations of representativeness. Identify reproducible prototype source/configuration, dependencies, environment and procedure without claiming production readiness. Record actual observations against criteria, failed/untested conditions and what may or may not be inferred for a production solution. Existing source requirement: Defines contested hypothesis, bounded non-production scope, reproducible inputs/execution and observed results with limitations. Required delivery form: Bounded non-production prototype or executable/design experiment with predeclared question and success criteria.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +218,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'prototypes that settle contested questions', provide verifiable evidence satisfying: Defines contested hypothesis, bounded non-production scope, reproducible inputs/execution and observed results with limitations. Required delivery form: Reproducible prototype and evaluation report.",
+        "reason": "For the specific output 'prototypes that settle contested questions', provide verifiable evidence satisfying: State the hypothesis or feasibility question, experiment boundary, success/failure criteria and limitations of representativeness. Identify reproducible prototype source/configuration, dependencies, environment and procedure without claiming production readiness. Record actual observations against criteria, failed/untested conditions and what may or may not be inferred for a production solution. Existing source requirement: Defines contested hypothesis, bounded non-production scope, reproducible inputs/execution and observed results with limitations. Required delivery form: Bounded non-production prototype or executable/design experiment with predeclared question and success criteria.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#staff-engineer:3",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -228,8 +233,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "prototypes that settle contested questions",
-        "format": "Reproducible prototype and evaluation report",
-        "acceptance_criterion": "Defines contested hypothesis, bounded non-production scope, reproducible inputs/execution and observed results with limitations",
+        "format": "Bounded non-production prototype or executable/design experiment with predeclared question and success criteria.",
+        "acceptance_criterion": "State the hypothesis or feasibility question, experiment boundary, success/failure criteria and limitations of representativeness. Identify reproducible prototype source/configuration, dependencies, environment and procedure without claiming production readiness. Record actual observations against criteria, failed/untested conditions and what may or may not be inferred for a production solution. Existing source requirement: Defines contested hypothesis, bounded non-production scope, reproducible inputs/execution and observed results with limitations.",
         "role_path": "skills/it-roles-software-development-and-engineering/references/staff-engineer.md"
       }
     },
@@ -268,7 +273,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#staff-engineer:3",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -314,7 +320,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#staff-engineer:3",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -358,7 +365,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#staff-engineer:3",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -402,7 +410,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#staff-engineer:3",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -446,7 +455,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#staff-engineer:3",
           "content/types/prototype.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -492,7 +502,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -536,7 +547,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -582,7 +594,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-218"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://www.iso.org/standard/79429.html"
         ]
       },
       "provenance": {
@@ -713,16 +726,29 @@
         "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
         "basis": "jai-practice",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "software-testing",
+        "title": "ISO/IEC/IEEE 29119-3:2021, Software testing — Test documentation",
+        "url": "https://www.iso.org/standard/79429.html",
+        "scope": "Test planning, test specifications and reporting information needs.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Staff Engineer",
+        "domain": "Software Development and Engineering",
+        "domain_index": 5,
+        "method_focus": "Trace required behaviour and security constraints to exact source changes, reproducible checks and independently reviewed results.",
         "frameworks": [
           "SWEBOK v4",
           "ISO/IEC 25010",
           "Team Topologies"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -795,6 +821,17 @@
     "source_fingerprint": "826ba8b1e1549a633ace0c596f111bc4dd56cd3cbb068d89922e891d0eb9dc91",
     "source_hash": "ab413791a58dae0dabeb72427625f2a5a55c91c8e5a2701d3fff565097dd66fc"
   },
+  "delivery_form": {
+    "primary_artifact": "disposable-prototype",
+    "representation": "Bounded non-production prototype or executable/design experiment with predeclared question and success criteria.",
+    "evidence": [
+      "reproducible inputs and execution/interaction",
+      "observed outcomes and applicability limits"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "4ae0f8843ecfb169523b8563912f132141029fdd7ec0d27ae6de4466d782a36f",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

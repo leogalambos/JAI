@@ -427,5 +427,15 @@
         "operations": "Serving"
       }
     }
+  },
+  "target_language_edition": "3.2",
+  "exchange_schema_version": "3.1",
+  "reference_mapping": {
+    "source": "TSI-T100",
+    "title": "Modelling SABSA with ArchiMate",
+    "release": "1.0, October 2019",
+    "target_edition": "3.0",
+    "adoption": "JAI local explicit mapping; a 3.0 reference does not establish 3.2 conformance",
+    "independent_semantic_review": "required"
   }
 }

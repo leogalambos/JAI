@@ -3,6 +3,59 @@
 
 [Catalogue](index.md)
 
+<a id="output-handoff-semantic-to-enterprise-publication-1"></a>
+
+## semantic publication model
+
+**Handoff content contract:** `handoff/semantic-to-enterprise-publication:1`.
+
+**Basis:** JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.
+
+These requirements supplement the linked role output contracts. A related policy or published view does not replace the specific decision or repository/interchange records required here.
+
+### Required information (MUST)
+
+- **`handoff_semantic_publication_source`**: For semantic publication model, supply the actual versioned semantic publication source record, including semantic_revision, purpose, audience, claims, evidence, decisions, unresolved_items. Independently assess the evidence against this exact criterion: Semantic source is complete enough to review; unresolved items are explicit. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `semantic_revision`, `purpose`, `audience`, `claims`, `evidence`, `decisions`, `unresolved_items`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+The existing authenticated receiver reviews each required unit against this exact handoff. A content record alone does not grant acceptance or release.
+
+### Context-selected alternatives
+
+Alternative bindings replace the base obligations for the selected path. Select the path from the reviewed intake context and the workflow operating profile; requirements from other paths are not cumulative.
+
+**Selected path:** `draft`.
+
+**Producer:** `engagement:owning-specialist`; **receiver:** `agent:evidence-rationale-reviewer`.
+
+**Receiving condition:** Semantic source is complete enough to review; unresolved items are explicit
+
+**Next:** Step 2.
+
+**Role output contracts:** Source-owned handoff only.
+
+- **`handoff_semantic_publication_source`**: For semantic publication model, supply the actual versioned semantic publication source record, including semantic_revision, purpose, audience, claims, evidence, decisions, unresolved_items. Independently assess the evidence against this exact criterion: Semantic source is complete enough to review; unresolved items are explicit. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `semantic_revision`, `purpose`, `audience`, `claims`, `evidence`, `decisions`, `unresolved_items`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `release-candidate`.
+
+**Producer:** `engagement:owning-specialist`; **receiver:** `agent:evidence-rationale-reviewer`.
+
+**Receiving condition:** Semantic source is complete enough to review; unresolved items are explicit
+
+**Next:** Step 2.
+
+**Role output contracts:** Source-owned handoff only.
+
+- **`handoff_semantic_publication_source`**: For semantic publication model, supply the actual versioned semantic publication source record, including semantic_revision, purpose, audience, claims, evidence, decisions, unresolved_items. Independently assess the evidence against this exact criterion: Semantic source is complete enough to review; unresolved items are explicit. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `semantic_revision`, `purpose`, `audience`, `claims`, `evidence`, `decisions`, `unresolved_items`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
 <a id="output-semantic-to-enterprise-publication-1"></a>
 
 ## semantic publication model
@@ -28,6 +81,59 @@
 **Receiving condition:** Semantic source is complete enough to review; unresolved items are explicit
 
 Unknown applicability and missing evidence remain explicit gaps. A proposed contract, a drafted decision or a successful rendition grants no acceptance or release permission.
+
+<a id="output-handoff-semantic-to-enterprise-publication-2"></a>
+
+## semantic gate result and located findings
+
+**Handoff content contract:** `handoff/semantic-to-enterprise-publication:2`.
+
+**Basis:** JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.
+
+These requirements supplement the linked role output contracts. A related policy or published view does not replace the specific decision or repository/interchange records required here.
+
+### Required information (MUST)
+
+- **`handoff_semantic_review`**: For semantic gate result and located findings, supply the actual versioned semantic review record, including reviewed_revision, criteria, reviewer_independence, located_findings, verdict, required_source_approval. Independently assess the evidence against this exact criterion: Semantic Gate PASS and the exact stable semantic snapshot has its required source approval under the governing profile, including verified external human proof where required, before the editor acts; only an existing expressly permitted prior scoped waiver applies, and mandatory controls remain blocking. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `reviewed_revision`, `criteria`, `reviewer_independence`, `located_findings`, `verdict`, `required_source_approval`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+The existing authenticated receiver reviews each required unit against this exact handoff. A content record alone does not grant acceptance or release.
+
+### Context-selected alternatives
+
+Alternative bindings replace the base obligations for the selected path. Select the path from the reviewed intake context and the workflow operating profile; requirements from other paths are not cumulative.
+
+**Selected path:** `draft`.
+
+**Producer:** `agent:evidence-rationale-reviewer`; **receiver:** `agent:enterprise-publication-editor`.
+
+**Receiving condition:** Semantic Gate PASS and the exact stable semantic snapshot has its required source approval under the governing profile, including verified external human proof where required, before the editor acts; only an existing expressly permitted prior scoped waiver applies, and mandatory controls remain blocking
+
+**Next:** Step 3.
+
+**Role output contracts:** Source-owned handoff only.
+
+- **`handoff_semantic_review`**: For semantic gate result and located findings, supply the actual versioned semantic review record, including reviewed_revision, criteria, reviewer_independence, located_findings, verdict, required_source_approval. Independently assess the evidence against this exact criterion: Semantic Gate PASS and the exact stable semantic snapshot has its required source approval under the governing profile, including verified external human proof where required, before the editor acts; only an existing expressly permitted prior scoped waiver applies, and mandatory controls remain blocking. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `reviewed_revision`, `criteria`, `reviewer_independence`, `located_findings`, `verdict`, `required_source_approval`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `release-candidate`.
+
+**Producer:** `agent:evidence-rationale-reviewer`; **receiver:** `agent:enterprise-publication-editor`.
+
+**Receiving condition:** Semantic Gate PASS and the exact stable semantic snapshot has its required source approval under the governing profile, including verified external human proof where required, before the editor acts; only an existing expressly permitted prior scoped waiver applies, and mandatory controls remain blocking
+
+**Next:** Step 3.
+
+**Role output contracts:** Source-owned handoff only.
+
+- **`handoff_semantic_review`**: For semantic gate result and located findings, supply the actual versioned semantic review record, including reviewed_revision, criteria, reviewer_independence, located_findings, verdict, required_source_approval. Independently assess the evidence against this exact criterion: Semantic Gate PASS and the exact stable semantic snapshot has its required source approval under the governing profile, including verified external human proof where required, before the editor acts; only an existing expressly permitted prior scoped waiver applies, and mandatory controls remain blocking. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `reviewed_revision`, `criteria`, `reviewer_independence`, `located_findings`, `verdict`, `required_source_approval`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 
 <a id="output-semantic-to-enterprise-publication-2"></a>
 
@@ -55,6 +161,59 @@ Unknown applicability and missing evidence remain explicit gaps. A proposed cont
 
 Unknown applicability and missing evidence remain explicit gaps. A proposed contract, a drafted decision or a successful rendition grants no acceptance or release permission.
 
+<a id="output-handoff-semantic-to-enterprise-publication-3"></a>
+
+## rendered publication set with semantic hash
+
+**Handoff content contract:** `handoff/semantic-to-enterprise-publication:3`.
+
+**Basis:** JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.
+
+These requirements supplement the linked role output contracts. A related policy or published view does not replace the specific decision or repository/interchange records required here.
+
+### Required information (MUST)
+
+- **`handoff_rendered_publication`**: For rendered publication set with semantic hash, supply the actual versioned rendered publication record, including semantic_hash, rendered_files, manifest, document_control, projection_limits. Independently assess the evidence against this exact criterion: All outputs carry the same semantic SHA-256 and required document control; draft rendering grants no acceptance or release. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `semantic_hash`, `rendered_files`, `manifest`, `document_control`, `projection_limits`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+The existing authenticated receiver reviews each required unit against this exact handoff. A content record alone does not grant acceptance or release.
+
+### Context-selected alternatives
+
+Alternative bindings replace the base obligations for the selected path. Select the path from the reviewed intake context and the workflow operating profile; requirements from other paths are not cumulative.
+
+**Selected path:** `draft`.
+
+**Producer:** `agent:enterprise-publication-editor`; **receiver:** `engagement:named-authority`.
+
+**Receiving condition:** All outputs carry the same semantic SHA-256 and required document control; draft rendering grants no acceptance or release
+
+**Next:** Terminal disposition; no downstream step.
+
+**Role output contracts:** Source-owned handoff only.
+
+- **`handoff_rendered_publication`**: For rendered publication set with semantic hash, supply the actual versioned rendered publication record, including semantic_hash, rendered_files, manifest, document_control, projection_limits. Independently assess the evidence against this exact criterion: All outputs carry the same semantic SHA-256 and required document control; draft rendering grants no acceptance or release. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `semantic_hash`, `rendered_files`, `manifest`, `document_control`, `projection_limits`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+**Selected path:** `release-candidate`.
+
+**Producer:** `agent:enterprise-publication-editor`; **receiver:** `agent:visual-quality-reviewer`.
+
+**Receiving condition:** All outputs carry the same semantic SHA-256 and required document control; draft rendering grants no acceptance or release
+
+**Next:** Step 4.
+
+**Role output contracts:** Source-owned handoff only.
+
+- **`handoff_rendered_publication`**: For rendered publication set with semantic hash, supply the actual versioned rendered publication record, including semantic_hash, rendered_files, manifest, document_control, projection_limits. Independently assess the evidence against this exact criterion: All outputs carry the same semantic SHA-256 and required document control; draft rendering grants no acceptance or release. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `semantic_hash`, `rendered_files`, `manifest`, `document_control`, `projection_limits`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
 <a id="output-semantic-to-enterprise-publication-3"></a>
 
 ## rendered publication set with semantic hash
@@ -81,6 +240,44 @@ Unknown applicability and missing evidence remain explicit gaps. A proposed cont
 
 Unknown applicability and missing evidence remain explicit gaps. A proposed contract, a drafted decision or a successful rendition grants no acceptance or release permission.
 
+<a id="output-handoff-semantic-to-enterprise-publication-4"></a>
+
+## publication gate result and findings
+
+**Handoff content contract:** `handoff/semantic-to-enterprise-publication:4`.
+
+**Basis:** JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.
+
+These requirements supplement the linked role output contracts. A related policy or published view does not replace the specific decision or repository/interchange records required here.
+
+### Required information (MUST)
+
+- **`handoff_publication_review`**: For publication gate result and findings, supply the actual versioned publication review record, including inspected_files, methods, reviewer_independence, located_findings, blocking_disposition, verdict. Independently assess the evidence against this exact criterion: Publication Gate PASS with blocking defects resolved; any policy-permitted waiver requires prior named human authority for its exact scope before release or other gated effects; mandatory controls remain blocking. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `inspected_files`, `methods`, `reviewer_independence`, `located_findings`, `blocking_disposition`, `verdict`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+The existing authenticated receiver reviews each required unit against this exact handoff. A content record alone does not grant acceptance or release.
+
+### Context-selected alternatives
+
+Alternative bindings replace the base obligations for the selected path. Select the path from the reviewed intake context and the workflow operating profile; requirements from other paths are not cumulative.
+
+**Selected path:** `release-candidate`.
+
+**Producer:** `agent:visual-quality-reviewer`; **receiver:** `engagement:named-authority`.
+
+**Receiving condition:** Publication Gate PASS with blocking defects resolved; any policy-permitted waiver requires prior named human authority for its exact scope before release or other gated effects; mandatory controls remain blocking
+
+**Next:** Step 5.
+
+**Role output contracts:** Source-owned handoff only.
+
+- **`handoff_publication_review`**: For publication gate result and findings, supply the actual versioned publication review record, including inspected_files, methods, reviewer_independence, located_findings, blocking_disposition, verdict. Independently assess the evidence against this exact criterion: Publication Gate PASS with blocking defects resolved; any policy-permitted waiver requires prior named human authority for its exact scope before release or other gated effects; mandatory controls remain blocking. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `inspected_files`, `methods`, `reviewer_independence`, `located_findings`, `blocking_disposition`, `verdict`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
 <a id="output-semantic-to-enterprise-publication-4"></a>
 
 ## publication gate result and findings
@@ -106,6 +303,44 @@ Unknown applicability and missing evidence remain explicit gaps. A proposed cont
 **Receiving condition:** Publication Gate PASS with blocking defects resolved; any policy-permitted waiver requires prior named human authority for its exact scope before release or other gated effects; mandatory controls remain blocking
 
 Unknown applicability and missing evidence remain explicit gaps. A proposed contract, a drafted decision or a successful rendition grants no acceptance or release permission.
+
+<a id="output-handoff-semantic-to-enterprise-publication-5"></a>
+
+## release approval
+
+**Handoff content contract:** `handoff/semantic-to-enterprise-publication:5`.
+
+**Basis:** JAI-authored exact handoff information; complements the source gate and role obligations without granting authority.
+
+These requirements supplement the linked role output contracts. A related policy or published view does not replace the specific decision or repository/interchange records required here.
+
+### Required information (MUST)
+
+- **`handoff_publication_release_decision`**: For release approval, supply the actual versioned publication release decision record, including exact_version, files, audience, release_scope, prior_reviews, authority, actual_decision. Independently assess the evidence against this exact criterion: Explicit exact human approval precedes release; required independence is preserved; agents cannot approve or issue waivers. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `exact_version`, `files`, `audience`, `release_scope`, `prior_reviews`, `authority`, `actual_decision`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
+
+The existing authenticated receiver reviews each required unit against this exact handoff. A content record alone does not grant acceptance or release.
+
+### Context-selected alternatives
+
+Alternative bindings replace the base obligations for the selected path. Select the path from the reviewed intake context and the workflow operating profile; requirements from other paths are not cumulative.
+
+**Selected path:** `release-candidate`.
+
+**Producer:** `engagement:named-authority`; **receiver:** `engagement:named-authority`.
+
+**Receiving condition:** Explicit exact human approval precedes release; required independence is preserved; agents cannot approve or issue waivers
+
+**Next:** Terminal disposition; no downstream step.
+
+**Role output contracts:** Source-owned handoff only.
+
+- **`handoff_publication_release_decision`**: For release approval, supply the actual versioned publication release decision record, including exact_version, files, audience, release_scope, prior_reviews, authority, actual_decision. Independently assess the evidence against this exact criterion: Explicit exact human approval precedes release; required independence is preserved; agents cannot approve or issue waivers. Do not substitute a related policy, plan or claimed execution for the required work product and observations.
+  Required fields: `exact_version`, `files`, `audience`, `release_scope`, `prior_reviews`, `authority`, `actual_decision`.
+- **`workflow_context`**: Reference the already-reviewed versioned intake context and selected mechanism variant; identify actual input versions and current continue/rework/stop/exit disposition with evidence. Do not reconstruct unchanged intake or historical decisions. Recheck only mutable prerequisites governing this action; a context reference cannot grant approval.
+  Required fields: `context_ref`, `route`, `input_refs`, `route_evidence`.
 
 <a id="output-semantic-to-enterprise-publication-5"></a>
 

@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-catalogue-manager:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-catalogue-manager:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-catalogue-manager:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-catalogue-manager:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Service catalogue entries with owners and terms', provide verifiable evidence satisfying: Each entry has an owner, a lifecycle status and a last-verified date. Required delivery form: Structured entries in the service or asset management tool.",
+        "For the specific output 'Service catalogue entries with owners and terms', provide verifiable evidence satisfying: Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Each entry has an owner, a lifecycle status and a last-verified date. Required delivery form: Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Service catalogue entries with owners and terms', provide verifiable evidence satisfying: Each entry has an owner, a lifecycle status and a last-verified date. Required delivery form: Structured entries in the service or asset management tool.",
+        "reason": "For the specific output 'Service catalogue entries with owners and terms', provide verifiable evidence satisfying: Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Each entry has an owner, a lifecycle status and a last-verified date. Required delivery form: Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-catalogue-manager:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Service catalogue entries with owners and terms",
-        "format": "Structured entries in the service or asset management tool",
-        "acceptance_criterion": "Each entry has an owner, a lifecycle status and a last-verified date",
+        "format": "Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
+        "acceptance_criterion": "Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Each entry has an owner, a lifecycle status and a last-verified date.",
         "role_path": "skills/it-roles-service-management-and-support/references/service-catalogue-manager.md"
       }
     },
@@ -269,7 +279,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-catalogue-manager:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -316,7 +328,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-catalogue-manager:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -360,7 +374,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-catalogue-manager:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -404,7 +420,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-catalogue-manager:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -448,7 +466,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#service-catalogue-manager:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -494,7 +514,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -538,7 +560,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -584,7 +608,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -707,15 +733,36 @@
         "scope": "Dataset/catalogue identity, distributions, provenance, access and descriptive metadata.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "service-management",
+        "title": "ISO/IEC 20000-1:2018, Service management system requirements",
+        "url": "https://www.iso.org/standard/70636.html",
+        "scope": "Service requirements, agreements, transition, operation and measurement concepts.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Service Catalogue Manager",
+        "domain": "Service Management and Support",
+        "domain_index": 10,
+        "method_focus": "Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.",
         "frameworks": [
           "ITIL 4 service catalogue management",
           "ISO/IEC 20000-1"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -786,6 +833,17 @@
     "source_fingerprint": "c0bbcec1a8eaf9a1038a39dacea7fa3efab3e14acf0490f2dc6d663f2ed3d969",
     "source_hash": "58500db0d5f55d7090991be1fb65284f74e779af327bc33e50e8037d187115e9"
   },
+  "delivery_form": {
+    "primary_artifact": "governed-catalogue",
+    "representation": "Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
+    "evidence": [
+      "source reconciliation and lifecycle state",
+      "duplicate/reference integrity checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "8a4c81c6c42fdb2e8dbdd3c8a8776bd38694c66ee5e7125ef5e2db951a83290a",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

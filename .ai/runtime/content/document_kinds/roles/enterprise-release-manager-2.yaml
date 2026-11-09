@@ -64,7 +64,10 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-release-manager:2",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -104,7 +107,10 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-release-manager:2",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -144,7 +150,10 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-release-manager:2",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -184,7 +193,10 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-release-manager:2",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -204,7 +216,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Enterprise release readiness assessment', provide verifiable evidence satisfying: Readiness is evidenced against agreed criteria; failed mandatory gates cannot be hidden by schedule pressure. Required delivery form: Operational readiness assessment covering technical, business, cutover, supplier, support, security and rollback readiness.",
+        "For the specific output 'Enterprise release readiness assessment', provide verifiable evidence satisfying: Define service boundary and named receiving operations owner; enumerate support, access, monitoring, capacity, resilience and security readiness criteria. Record evidence and disposition for each applicable criterion, including missing/unexecuted checks, impact and remediation accountability. Separate readiness recommendation from deployment permission; identify unresolved risks, receiving acceptance conditions and early-life support exit criteria. Existing source requirement: Readiness is evidenced against agreed criteria; failed mandatory gates cannot be hidden by schedule pressure. Required delivery form: Service acceptance criteria and observed readiness evidence with receiving-operations disposition.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,12 +231,15 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Enterprise release readiness assessment', provide verifiable evidence satisfying: Readiness is evidenced against agreed criteria; failed mandatory gates cannot be hidden by schedule pressure. Required delivery form: Operational readiness assessment covering technical, business, cutover, supplier, support, security and rollback readiness.",
+        "reason": "For the specific output 'Enterprise release readiness assessment', provide verifiable evidence satisfying: Define service boundary and named receiving operations owner; enumerate support, access, monitoring, capacity, resilience and security readiness criteria. Record evidence and disposition for each applicable criterion, including missing/unexecuted checks, impact and remediation accountability. Separate readiness recommendation from deployment permission; identify unresolved risks, receiving acceptance conditions and early-life support exit criteria. Existing source requirement: Readiness is evidenced against agreed criteria; failed mandatory gates cannot be hidden by schedule pressure. Required delivery form: Service acceptance criteria and observed readiness evidence with receiving-operations disposition.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-release-manager:2",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -234,8 +249,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Enterprise release readiness assessment",
-        "format": "Operational readiness assessment covering technical, business, cutover, supplier, support, security and rollback readiness",
-        "acceptance_criterion": "Readiness is evidenced against agreed criteria; failed mandatory gates cannot be hidden by schedule pressure.",
+        "format": "Service acceptance criteria and observed readiness evidence with receiving-operations disposition.",
+        "acceptance_criterion": "Define service boundary and named receiving operations owner; enumerate support, access, monitoring, capacity, resilience and security readiness criteria. Record evidence and disposition for each applicable criterion, including missing/unexecuted checks, impact and remediation accountability. Separate readiness recommendation from deployment permission; identify unresolved risks, receiving acceptance conditions and early-life support exit criteria. Existing source requirement: Readiness is evidenced against agreed criteria; failed mandatory gates cannot be hidden by schedule pressure.",
         "role_path": "skills/it-roles-product-delivery-and-agile/references/enterprise-release-manager.md"
       }
     },
@@ -276,7 +291,10 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-release-manager:2",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -324,7 +342,10 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-release-manager:2",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -369,7 +390,10 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-release-manager:2",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -414,7 +438,10 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-release-manager:2",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -459,7 +486,10 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-release-manager:2",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -504,7 +534,10 @@
           "artifacts/contracts/role-deliverables.v3.json#enterprise-release-manager:2",
           "content/types/operational-readiness-assessment.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -551,7 +584,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -596,7 +632,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -643,7 +682,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -774,17 +816,46 @@
         "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "human-centred-design",
+        "title": "ISO 9241-210:2019, Human-centred design for interactive systems",
+        "url": "https://www.iso.org/standard/77520.html",
+        "scope": "Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Enterprise Release Manager",
+        "domain": "Product, Delivery and Agile",
+        "domain_index": 2,
+        "method_focus": "Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.",
         "frameworks": [
           "ITIL 4 release management and change enablement",
           "SAFe release-on-demand concepts where used",
           "ISO/IEC 20000-1",
           "DORA delivery-performance concepts"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -855,6 +926,17 @@
     "source_fingerprint": "e0e9238e5f1efb568d1c5f54496f628b26cc82805f110cf413a4fed7eea23cb2",
     "source_hash": "0956faa839ebb4561c003824ea79d5a6c15c512525621e5b0cb062663b866d5d"
   },
+  "delivery_form": {
+    "primary_artifact": "readiness-assessment",
+    "representation": "Service acceptance criteria and observed readiness evidence with receiving-operations disposition.",
+    "evidence": [
+      "support/security/recovery/capacity evidence",
+      "open actions and receiving acceptance status"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "6e48c97a381c7af424a0d336577a00611aa8101b45a17d1bf83a15de7de9b3ff",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

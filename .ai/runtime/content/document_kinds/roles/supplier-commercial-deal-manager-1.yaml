@@ -204,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Supplier commercial strategy and negotiation brief', provide verifiable evidence satisfying: Human negotiator/authority can distinguish delegated positions from reserved decisions. Required delivery form: Versioned term positions, trade-off packages, economic effects, mandate and escalation limits.",
+        "For the specific output 'Supplier commercial strategy and negotiation brief', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Human negotiator/authority can distinguish delegated positions from reserved decisions. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,7 +219,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Supplier commercial strategy and negotiation brief', provide verifiable evidence satisfying: Human negotiator/authority can distinguish delegated positions from reserved decisions. Required delivery form: Versioned term positions, trade-off packages, economic effects, mandate and escalation limits.",
+        "reason": "For the specific output 'Supplier commercial strategy and negotiation brief', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Human negotiator/authority can distinguish delegated positions from reserved decisions. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#supplier-commercial-deal-manager:1",
           "content/types/decision-paper.yaml",
@@ -234,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Supplier commercial strategy and negotiation brief",
-        "format": "Versioned term positions, trade-off packages, economic effects, mandate and escalation limits",
-        "acceptance_criterion": "Human negotiator/authority can distinguish delegated positions from reserved decisions.",
+        "format": "Bounded decision paper with consistent option comparison and a clear authority/decision request.",
+        "acceptance_criterion": "Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Human negotiator/authority can distinguish delegated positions from reserved decisions.",
         "role_path": "skills/it-roles-commercial-sourcing-and-enablement/references/supplier-commercial-deal-manager.md"
       }
     },
@@ -736,11 +736,16 @@
     "role_framework_context": [
       {
         "role": "Supplier Commercial / Deal Manager",
+        "domain": "Commercial, Sourcing and Enablement",
+        "domain_index": 15,
+        "method_focus": "Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.",
         "frameworks": [
           "World Commerce & Contracting contract and commercial management lifecycle practices: lifecycle commercial coherence, obligations, negotiation and change; no certification claim.",
           "ISO 44001 collaborative business relationship management concepts where applicable; collaboration does not displace contractual duties.",
           "Applicable contract/procurement/competition law and organisation delegated-authority, accounting, pricing and risk policies, interpreted by accountable specialists."
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -811,6 +816,17 @@
     "source_fingerprint": "2c0b9f99e0c6305fcd8a279a8d7490182333dbbf75130364ba3f9cc4fbfa09a4",
     "source_hash": "87bbc8c7b228cf2d7a25bbc02443de71508fcdfe63dba982395eae72a7c9a5a8"
   },
+  "delivery_form": {
+    "primary_artifact": "decision-paper",
+    "representation": "Bounded decision paper with consistent option comparison and a clear authority/decision request.",
+    "evidence": [
+      "baseline and feasible alternatives",
+      "cost/benefit/uncertainty and consequences"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "afd855df66dd46162ca1fdcd57462f19513a1c9d21f93d0dece3c16ce12574e6",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

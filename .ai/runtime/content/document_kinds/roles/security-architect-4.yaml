@@ -63,7 +63,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-architect:4",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -102,7 +103,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-architect:4",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -141,7 +143,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-architect:4",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -180,7 +183,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-architect:4",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -200,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'security requirements for projects', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'security requirements for projects', provide verifiable evidence satisfying: Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Required delivery form: Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +219,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'security requirements for projects', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'security requirements for projects', provide verifiable evidence satisfying: Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility. Required delivery form: Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-architect:4",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -229,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "security requirements for projects",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
+        "acceptance_criterion": "Trace stakeholder needs, authoritative sources, scope and assumptions to requirement identifiers. State uniquely identified testable requirements, priority, rationale, interfaces and measurable acceptance conditions. Identify conflicting requirements, dependencies, traceability gaps and change approval responsibility.",
         "role_path": "skills/it-roles-architecture/references/security-architect.md"
       }
     },
@@ -270,7 +275,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-architect:4",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -317,7 +323,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-architect:4",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -361,7 +368,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-architect:4",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -405,7 +413,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-architect:4",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -449,7 +458,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#security-architect:4",
           "content/types/implementation-specification.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -495,7 +505,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -539,7 +550,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -585,7 +597,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/72089.html"
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/74393.html"
         ]
       },
       "provenance": {
@@ -708,17 +721,30 @@
         "scope": "Requirements information items, requirement quality and traceability.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "architecture-description",
+        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
+        "url": "https://www.iso.org/standard/74393.html",
+        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Security Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "SABSA",
           "NIST SP 800-53",
           "ISO/IEC 27001 Annex A",
           "STRIDE threat modelling"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -791,6 +817,17 @@
     "source_fingerprint": "797606437f854b7ac34ad72b1627c7fe282b2709126a99698422b3aa92f1acc6",
     "source_hash": "432a10a7850b8c22894e904239a6566728733d931a8a652eea8f91991082f8a5"
   },
+  "delivery_form": {
+    "primary_artifact": "requirements-specification",
+    "representation": "Uniquely identified verifiable requirements with rationale, priority, sources and acceptance conditions.",
+    "evidence": [
+      "forward/backward traceability",
+      "conflict, interface and change-impact checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "5b82f2c7e3e1ee05113750f227f3f7cd4c403e0f87d1a55f5dd77b2e139a7b35",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

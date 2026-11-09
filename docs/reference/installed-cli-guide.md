@@ -1133,6 +1133,17 @@ portfolio links, view coverage and cross-project dependencies.
 5. Decommission is blocked while active dependencies remain unless an
 explicit governed waiver is recorded.
 
+**Optional ArchiMate representation.** Ask explicitly for ArchiMate 3.2 in
+the repository request, or use an explicit project profile with suitable
+audience/concerns, governed source facts and independent semantic/visual QA.
+The portable profile uses language 3.2 and exchange schema 3.1; it does not
+require an external EA application. `repository.py validate-archimate` and
+`render-archimate` are installed Python helpers, not extra native command
+verbs. The latter produces `DRAFT_NOTATION`; generic repository graphs are
+not verified ArchiMate notation. Read installed `ea/README.md` for helper
+syntax and limits, or the public manual's `docs/capabilities/sabsa-ea.md`
+section "Portable ArchiMate 3.2" for the complete operator procedure.
+
 **Try it.**
 
 === "Claude Code"

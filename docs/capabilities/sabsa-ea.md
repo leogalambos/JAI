@@ -104,6 +104,92 @@ That means the repository is authoritative for architecture-domain projection st
 
 Legacy repository versions `26.10`, `26.10.1`, `26.10.2` and `26.10.3` are accepted for read/migrate; current writes use the JAI-scoped profile-native model.
 
+## Portable ArchiMate 3.2
+
+Owner: architecture repository maintainers. Reviewed for current source
+behavior on 2026-11-09. The procedure below describes the portable
+implementation; professional acceptance remains a separate assessment.
+
+### Request the representation
+
+ArchiMate is opt-in. Ask for it in ordinary language through the existing
+repository workflow; the request selects a representation and its checks,
+not approval. For example:
+
+=== "Claude Code"
+
+    ```text
+    /repository Prepare an ArchiMate 3.2 application view from the governed model in working/ for the service owner. Use the portable profile, preserve source IDs and report semantic, visual and exchange limitations. Keep unreviewed notation draft.
+    ```
+
+=== "Codex CLI"
+
+    ```text
+    $workflow-repository Prepare an ArchiMate 3.2 application view from the governed model in working/ for the service owner. Use the portable profile, preserve source IDs and report semantic, visual and exchange limitations. Keep unreviewed notation draft.
+    ```
+
+A project may make ArchiMate its default only through an explicit profile
+whose recipients understand the notation, whose views answer named
+stakeholder concerns, and whose governed source model has stable facts
+and identities. Record the exact edition, mapping and renderer scope;
+require independent semantic and visual review of the delivered revision.
+Qualify a receiving tool separately when one is used. Without these
+conditions, choose suitable text, tables or other views. See the
+[representation policy](../reference/sabsa-delivery-profile.md#5-optional-archimate-representation).
+
+### Run the portable checks
+
+The supported profile uses ArchiMate language **3.2** and Model Exchange
+schema **3.1**. The exchange namespace ends in `/3.0/`; that URI does not
+select a different language edition. A model's own revision is also
+distinct from either edition. This profile does not claim version 4
+support or external-tool interoperability. No Archi application,
+graphical display or virtual-display package is required.
+
+For an installed runtime, a maintainer or the provider can invoke the
+following helpers against an existing repository and view. Substitute its
+actual path and view ID; these Python operations are not additional
+slash-command verbs:
+
+```bash
+python3 ~/.ai/it-role-house/tools/repository.py validate-archimate ./ea-repo --edition 3.2
+python3 ~/.ai/it-role-house/tools/repository.py render-archimate ./ea-repo --view VIEW-ID --out architecture.svg
+python3 ~/.ai/it-role-house/tools/ea_conformance.py check enterprise.xml --report conformance.json
+```
+
+Create `enterprise.xml` using the existing Open Exchange export operation
+before its conformance check. In a source checkout, use the corresponding
+tools under `.ai/runtime/tools/`. Keep these checks distinct:
+
+- Metamodel validation checks permitted concept/relation triples and
+  profile constraints. The pinned permission matrix combines direct and
+  derived relationships; permission alone proves no derivation or
+  business rationale.
+- Offline exchange validation checks the pinned XSD schema and nested
+  model/diagram content. It is not Open Group certification.
+- Preservation checks compare source and export content, including
+  properties, relationships, views and layout. A stable second round
+  trip cannot hide a loss on first import; unresolved loss remains an
+  explicit limitation.
+- Independent semantic and visual review assesses the actual stakeholder
+  concern, source fidelity, completeness and rendered notation. Neither
+  schema validation nor a successful render establishes that review.
+- External-tool qualification, when requested, identifies the actual
+  application, version and observed import/export results. Internal
+  checks cannot establish that evidence.
+
+The explicit renderer produces **DRAFT_NOTATION**: typed boxes, concept
+labels and relationship-specific lines/markers. It does not claim every
+specialist concept icon is qualified. Generic `generate-views` output
+remains a **repository graph**, not verified ArchiMate graphical notation.
+Retain draft/heuristic status and viewpoint exclusions until the exact
+revision has its required reviews; a populated local status field grants
+no acceptance or release permission.
+
+The pinned matrix and exchange-schema resources retain their upstream
+MIT notices; see [licensing](../about/license-attribution.md). Their availability
+does not certify the model or authorize a restricted standard publication.
+
 ## SABSA → EA projection
 
 The intended direction is:

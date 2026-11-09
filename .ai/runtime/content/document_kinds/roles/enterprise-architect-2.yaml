@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/model",
-    "domain/architecture"
+    "type/register",
+    "domain/data"
   ],
   "applies_to": {
     "document_kind": "role/enterprise-architect:2",
@@ -63,7 +63,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-architect:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -102,7 +104,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-architect:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -141,7 +145,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-architect:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -180,7 +186,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-architect:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -200,7 +208,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'architecture principles and standards', provide verifiable evidence satisfying: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Model in the EA tool plus a published view set.",
+        "For the specific output 'architecture principles and standards', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Governed principle records with rationale, implications and exceptions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +223,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'architecture principles and standards', provide verifiable evidence satisfying: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Model in the EA tool plus a published view set.",
+        "reason": "For the specific output 'architecture principles and standards', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements. Required delivery form: Governed principle records with rationale, implications and exceptions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-architect:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -229,8 +239,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "architecture principles and standards",
-        "format": "Model in the EA tool plus a published view set",
-        "acceptance_criterion": "Every element traces to a driver or a quality-attribute target; no orphan elements",
+        "format": "Governed principle records with rationale, implications and exceptions.",
+        "acceptance_criterion": "Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every element traces to a driver or a quality-attribute target; no orphan elements.",
         "role_path": "skills/it-roles-architecture/references/enterprise-architect.md"
       }
     },
@@ -270,7 +280,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-architect:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -317,7 +329,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-architect:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -361,7 +375,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-architect:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -405,7 +421,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-architect:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -449,7 +467,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#enterprise-architect:2",
           "content/types/model.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -462,6 +482,129 @@
         "json_pointer": "/jai/semantics/required_inputs/3",
         "value": "Technology lifecycle data"
       }
+    },
+    {
+      "id": "role/enterprise-architect:2.principle_records",
+      "semantic_fields": [
+        "principle_records"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "For each principle, record stable ID, normative statement, scope, business driver, rationale, practical implications, accountable owner, adoption status and source version; distinguish a proposed principle from an adopted obligation.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "For each principle, record stable ID, normative statement, scope, business driver, rationale, practical implications, accountable owner, adoption status and source version; distinguish a proposed principle from an adopted obligation.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#enterprise-architect:2",
+          "content/types/model.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/enterprise-architect:2.principle_conflicts",
+      "semantic_fields": [
+        "principle_conflicts"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "Record conflicts, precedence and justified tradeoffs between principles and existing policies. Define exception authority, required justification, expiry and review; explicitly record when no conflicts or exceptions are known.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "Record conflicts, precedence and justified tradeoffs between principles and existing policies. Define exception authority, required justification, expiry and review; explicitly record when no conflicts or exceptions are known.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#enterprise-architect:2",
+          "content/types/model.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
+    },
+    {
+      "id": "role/enterprise-architect:2.principle_verification",
+      "semantic_fields": [
+        "principle_verification"
+      ],
+      "datatype": "array",
+      "obligation": "MUST",
+      "acceptance_predicate": {
+        "op": "review"
+      },
+      "acceptance_criteria": [
+        "For each principle, define observable architecture/design checks, evidence, responsible reviewer and change trigger. Carry principle records in a governed register or document; an EA diagram is optional and cannot replace the rationale.",
+        "A title alone is insufficient; values must identify concrete entities, relations and limitations."
+      ],
+      "evidence_policy": {
+        "material_claims": "versioned source reference or explicitly labelled assumption",
+        "unknown": "retain pending status and identify owner; never fabricate",
+        "knowledge_statuses": [
+          "known",
+          "assumption",
+          "unknown",
+          "pending"
+        ]
+      },
+      "rationale": {
+        "basis": "professional-proposal",
+        "reason": "For each principle, define observable architecture/design checks, evidence, responsible reviewer and change trigger. Carry principle records in a governed register or document; an EA diagram is optional and cannot replace the rationale.",
+        "source_refs": [
+          "artifacts/contracts/role-deliverables.v3.json#enterprise-architect:2",
+          "content/types/model.yaml",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html"
+        ]
+      },
+      "provenance": {
+        "origin": "AI-derived professional proposal",
+        "normative_claim": false
+      },
+      "jai_layer": "L2"
     }
   ],
   "conditional_information": [
@@ -495,7 +638,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -539,7 +684,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -585,7 +732,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -680,7 +829,7 @@
     }
   ],
   "size_budget": {
-    "metric": "elements",
+    "metric": "rows",
     "calibration_basis": "Modality-specific information coverage; numerical envelopes require approved enterprise calibration.",
     "minimum_is_quality_gate": false,
     "calibration_status": "synthetic-only",
@@ -702,10 +851,34 @@
     ],
     "professional_references": [
       {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
         "id": "architecture-description",
         "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
         "url": "https://www.iso.org/standard/74393.html",
         "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
@@ -713,11 +886,16 @@
     "role_framework_context": [
       {
         "role": "Enterprise Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "TOGAF 10 ADM",
           "ArchiMate 3.2",
           "ISO/IEC 42010"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -771,12 +949,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "type/register",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "model",
+  "semantic_family": "register",
   "role_overlay": {
     "contract_id": "enterprise-architect:2",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -788,6 +968,17 @@
     "source_fingerprint": "6e94ac2814daa7fb94ca70fa17725bf0f390b31b3de6d014a5d9b552f783625b",
     "source_hash": "51e0cd53e658160be1241388dd0142d42120c281f68a94837ca476452e16ac7a"
   },
+  "delivery_form": {
+    "primary_artifact": "principle-register",
+    "representation": "Governed principle records with rationale, implications and exceptions.",
+    "evidence": [
+      "principle-to-driver traceability",
+      "independent principle review"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "ea2f8713ace781a762d4eea968a614d1ead44652bc11692f7a7a154f72eb7eef",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

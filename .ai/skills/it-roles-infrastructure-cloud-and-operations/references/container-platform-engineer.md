@@ -103,10 +103,10 @@ Never present an estimate, a status or a risk rating without the evidence or the
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Base image catalogue and lifecycle policy | Controlled document with owner, effective date and review date | Every statement is testable and maps to at least one control |
-| 2 | container build standards and multi-stage patterns | Controlled document referencing the parent policy | Requirements are specific, measurable and technology-explicit |
-| 3 | Compose stack definitions for development and integration | Versioned artefact in the agreed system of record | Reviewed by a competent second party; complete, dated and attributable |
-| 4 | image signing, SBOM and registry promotion policy | Controlled document with owner, effective date and review date | Every statement is testable and maps to at least one control |
+| 1 | Base image catalogue and lifecycle policy | Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships. | Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Every statement is testable and maps to at least one control. |
+| 2 | container build standards and multi-stage patterns | Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions. | State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Requirements are specific, measurable and technology-explicit. |
+| 3 | Compose stack definitions for development and integration | Typed desired-state configuration with exact targets, versioned values and controlled secret references. | Identify managed components, exact versions, environments, approved parameter values, exceptions and configuration owner without exposing secrets. Describe how the baseline is created/applied, validated and changed, including dependencies and recovery from an unsuccessful change. Compare observed configuration with the declared baseline, classify drift, identify material impact and record authorised remediation or unresolved exceptions. |
+| 4 | image signing, SBOM and registry promotion policy | Purpose-specific professional document with source analysis, reasoning, conclusions and recipient actions. | State the exact subject, intended recipient/use, boundary, source versions and the concrete question the document answers. Provide subject-specific findings or instructions with supporting facts, assumptions, reasoning, limitations and traceable references; generic background alone is insufficient. State conclusions, decisions requested or actionable instructions, accountable recipients and completion/acceptance conditions; identify open issues explicitly. Existing source requirement: Every statement is testable and maps to at least one control. |
 
 ## 7. Output gates (blocking)
 
@@ -200,6 +200,10 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - OCI image and distribution specifications
 - Docker and Podman build practice
 - NIST SP 800-190 container security
@@ -212,13 +216,32 @@ Use these to evaluate the *role*, not to rank individuals against each other. An
 
 **Request.** “Our images are 1.4GB, run as root and nobody knows what is inside them — fix the build chain”
 
-**Expected shape of a good response:**
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
 
-1. Restate the request and the scope boundary being applied (section 1).
-2. List which of the section 3 inputs are present and name an owner for each gap.
-3. Work through the section 4 procedure, showing the reasoning rather than only the conclusion.
-4. Deliver base image catalogue and lifecycle policy in the format specified in section 6.
-5. Show the section 7 gate checklist with an explicit pass, fail or waiver against each item.
-6. Close with residual risk and owned next actions with dates.
+**Synthetic worked case — no project facts or approval.**
 
-**What would make the response bad:** a plausible-sounding narrative with no input status, no gate check, no named owners and no stated residual risk. That output cannot be acted on, audited or challenged.
+**Assigned work product:** Base image catalogue and lifecycle policy.
+
+**Illustrative case material:**
+
+The service catalogue uses stable IDs svc-orders and svc-stock. Display name Order API may change without a new service identity. Each record has a service owner, lifecycle state and versioned source; supplier product names are attributes, not primary keys.
+
+**Acceptance question:** Specify entity classes, stable identifiers, ownership and lifecycle.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules.
+- Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships.
+- Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `catalogue` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

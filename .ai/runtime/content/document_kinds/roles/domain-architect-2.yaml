@@ -63,7 +63,9 @@
           "artifacts/contracts/role-deliverables.v3.json#domain-architect:2",
           "content/types/service-design.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -103,7 +105,9 @@
           "artifacts/contracts/role-deliverables.v3.json#domain-architect:2",
           "content/types/service-design.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -143,7 +147,9 @@
           "artifacts/contracts/role-deliverables.v3.json#domain-architect:2",
           "content/types/service-design.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -183,7 +189,9 @@
           "artifacts/contracts/role-deliverables.v3.json#domain-architect:2",
           "content/types/service-design.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -203,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'domain data and service model', provide verifiable evidence satisfying: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON).",
+        "For the specific output 'domain data and service model', provide verifiable evidence satisfying: State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'domain data and service model', provide verifiable evidence satisfying: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON).",
+        "reason": "For the specific output 'domain data and service model', provide verifiable evidence satisfying: State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews. Required delivery form: Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#domain-architect:2",
           "content/types/service-design.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -233,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "domain data and service model",
-        "format": "Diagram plus machine-readable source (e.g. BPMN/UML/DDL/JSON)",
-        "acceptance_criterion": "The model is validated against real observed behaviour or data, not only interviews",
+        "format": "Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
+        "acceptance_criterion": "State service consumers, business outcomes, eligibility, service boundary, exclusions, accountable owner and demand assumptions. For every service level, define indicator, unit, measurement source/window, target, exclusions and breach response; label unagreed targets as proposals. Define support tiers, ownership, supplier/interface dependencies, change/incident escalation, recovery objectives and cost assumptions. Existing source requirement: The model is validated against real observed behaviour or data, not only interviews.",
         "role_path": "skills/it-roles-architecture/references/domain-architect.md"
       }
     },
@@ -274,7 +284,9 @@
           "artifacts/contracts/role-deliverables.v3.json#domain-architect:2",
           "content/types/service-design.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -321,7 +333,9 @@
           "artifacts/contracts/role-deliverables.v3.json#domain-architect:2",
           "content/types/service-design.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -366,7 +380,9 @@
           "artifacts/contracts/role-deliverables.v3.json#domain-architect:2",
           "content/types/service-design.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -411,7 +427,9 @@
           "artifacts/contracts/role-deliverables.v3.json#domain-architect:2",
           "content/types/service-design.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -456,7 +474,9 @@
           "artifacts/contracts/role-deliverables.v3.json#domain-architect:2",
           "content/types/service-design.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -503,7 +523,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -548,7 +570,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -595,7 +619,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/70636.html",
-          "https://sre.google/sre-book/service-level-objectives/"
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -726,16 +752,37 @@
         "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "architecture-description",
+        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
+        "url": "https://www.iso.org/standard/74393.html",
+        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Domain Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "TOGAF 10",
           "domain-driven design",
           "relevant sector reference models (e.g. TM Forum, BIAN, FHIR)"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -806,6 +853,17 @@
     "source_fingerprint": "bf74e362e7418e495af4ef54d0687bb1f06efca13378130f10ab11bf578142d4",
     "source_hash": "ceb5a5212e43fe010e1377dc27ee5211f00c07082694cdb68623a74d925b8653"
   },
+  "delivery_form": {
+    "primary_artifact": "service-definition",
+    "representation": "Service definition with consumers, outcomes, responsibilities and measurable service commitments.",
+    "evidence": [
+      "indicator/target/window definitions",
+      "support, dependency and recovery arrangements"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "ca8b680f2150ea6ad29ed2941fbaa22c266ea04849c2e1f1a392344065ef2976",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

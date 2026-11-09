@@ -54,6 +54,9 @@ jobs:
           python3 .ai/runtime/tools/offline_guard.py scan --root .
           python3 .ai/runtime/tools/license_check.py .
           python3 tools/generate_output_contract_docs.py --root . --check
+          python3 tools/generate_role_output_guidance.py --root . --check
+          python3 tools/generate_content_catalog.py --check
+          python3 tools/generate_reference_completion.py --root . --role-examples --check
           python3 tools/generate_workflow_diagrams.py --root . --check
           python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/runtime/scripts/check_agent_policy.py --fast .
           python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/runtime/tools/docs_contract.py --root .

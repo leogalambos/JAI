@@ -77,9 +77,9 @@ Record source identity, version/date, applicability, access classification and r
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Basis of estimate and work/cost breakdown | Source-linked quantities, methods, effort, rates, assumptions, ranges and exclusions | Another qualified estimator can reconstruct the material figures and distinguish fact from assumption. |
-| 2 | Estimate uncertainty and discovery plan | Sensitivity/scenario analysis, non-estimable items, evidence acquisition and commitment options | Each material unknown has a decision consequence, owner and route to reduce or explicitly retain exposure. |
-| 3 | Estimate calibration and forecast-at-completion report | Baseline-to-actual bridge, remaining-work estimate, bias analysis and revised forecast | Changes are attributable, scope-normalised where justified, and feed the next controlled decision. |
+| 1 | Basis of estimate and work/cost breakdown | Actual work/cost breakdown and estimate model with estimation method, quantities, units, rates, assumptions and uncertainty; narrative accompanies the reproducible model. | Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations. Existing source requirement: Another qualified estimator can reconstruct the material figures and distinguish fact from assumption. |
+| 2 | Estimate uncertainty and discovery plan | Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones. | State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Each material unknown has a decision consequence, owner and route to reduce or explicitly retain exposure. |
+| 3 | Estimate calibration and forecast-at-completion report | Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request. | Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Changes are attributable, scope-normalised where justified, and feed the next controlled decision. |
 
 Canonical Artifact Contract v3 mapping, in table order: `Basis of estimate and work/cost breakdown` → `business-case`; `Estimate uncertainty and discovery plan` → `roadmap`; `Estimate calibration and forecast-at-completion report` → `decision-paper`. These mappings classify the semantic artefact; they do not imply that the generic producer validates financial formulas or provides a new specialist spreadsheet engine. Include the commercial case/snapshot, work-package, assumption, estimate, price and decision record IDs relevant to the output. Retain source calculation files as controlled evidence attachments or an explicit external handoff. The advise-tier reviewer returns its report for a separate authorised recorder; it does not invoke a writing renderer.
 
@@ -138,6 +138,10 @@ Author and maintain only this role's artefacts within its tool tier; no technica
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - GAO Cost Estimating and Assessment Guide, GAO-20-195G (2020), https://www.gao.gov/products/gao-20-195g: technical baseline, WBS, assumptions, data, methods, sensitivity/risk analysis, documentation and updates.
 - AACE International Total Cost Management Framework and relevant estimate-classification recommended practices: use only industry-appropriate versions. AACE 18R-97 is process-industry oriented and does not establish universal IS/IT accuracy percentages.
 - ISO/IEC/IEEE 15939 measurement-process concepts and organisation-approved software/service estimation practices; use only validated local parametric calibrations.
@@ -148,3 +152,32 @@ Frameworks supply methods and questions; applicability, edition and licensed acc
 
 Only a public migration benchmark and a rough specialist guess exist. Mark the result as a provisional range, document population differences and excluded application remediation, propose a representative pilot, and use measured throughput and defect work to revise the remaining phases before committing their fixed prices.
 
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
+
+**Synthetic worked case — no project facts or approval.**
+
+**Assigned work product:** Basis of estimate and work/cost breakdown.
+
+**Illustrative case material:**
+
+Dataset orders-v3 contains order_id as the unique key, amount_minor as integer cents, currency as an ISO currency code and event_time as a UTC timestamp. Null amount is unknown, not zero; mixed currencies cannot be summed without a dated conversion basis.
+
+**Acceptance question:** Specify field meanings, keys, units, nulls and schema version.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values.
+- Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian.
+- Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `dataset` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

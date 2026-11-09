@@ -75,8 +75,8 @@ Record source identity, version/date, applicability, access classification and r
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Independent commercial assurance plan and findings | Response report or controlled external findings handoff with criteria, scope, sampling, conflict declaration and located findings | Independence and coverage are explicit; every finding is evidence-linked and assigned. |
-| 2 | Rework verification and commercial assurance opinion | Response report or external review record with disposition, residual exposure and version bounds | Closure is supported by evidence; the opinion makes no human approval or unreviewed-scope claim. |
+| 1 | Independent commercial assurance plan and findings | Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion. | State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Independence and coverage are explicit; every finding is evidence-linked and assigned. |
+| 2 | Rework verification and commercial assurance opinion | Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion. | State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Closure is supported by evidence; the opinion makes no human approval or unreviewed-scope claim. |
 
 Canonical Artifact Contract v3 mapping, in table order: `Independent commercial assurance plan and findings` → `decision-paper`; `Rework verification and commercial assurance opinion` → `decision-paper`. These mappings classify the semantic artefact; they do not imply that the generic producer validates financial formulas or provides a new specialist spreadsheet engine. Include the commercial case/snapshot, work-package, assumption, estimate, price and decision record IDs relevant to the output. Retain source calculation files as controlled evidence attachments or an explicit external handoff. The advise-tier reviewer returns its report for a separate authorised recorder; it does not invoke a writing renderer.
 
@@ -135,6 +135,10 @@ Read and analyse only; no file edits, formula repairs, operational changes or au
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - GAO-20-195G cost-estimate credibility criteria, adapted to the engagement's estimate and price review.
 - The IIA Three Lines Model and relevant Global Internal Audit Standards independence/objectivity concepts: assurance positioning guidance, not a claim that this commercial review is a statutory/internal-audit engagement.
 - Organisation bid, finance, risk, evidence and segregation-of-duties policies; professional legal/accounting advice remains separately owned.
@@ -145,3 +149,30 @@ Frameworks supply methods and questions; applicability, edition and licensed acc
 
 A bid author asks the reviewer to fix a hidden margin formula and mark the review passed. Record the located defect and its price exposure, return it to the pricing author, verify the corrected version independently, and keep the commercial gate open until the material issue is resolved or the proper authority explicitly decides its treatment.
 
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
+
+**Synthetic worked case — no project facts or approval.**
+
+**Assigned work product:** Independent commercial assurance plan and findings.
+
+**Illustrative case material:**
+
+This example sets out an independent evaluation approach for cross-channel order ingestion and fulfilment synchronisation in the period **2027-01-01 to 2027-01-31** (illustrative). Criteria: traceable requirements, scoped privileged identities, recoverability **2 hours/15 minutes**, accurate business records and locally applicable data controls. Excludes customer commercial compliance matters and any unprovided regulator-specific obligations.
+
+The engagement is not a statutory audit, external certification or formal assurance opinion. No real testing occurred. Criteria must be confirmed from authoritative organisational policy and applicable obligations before use.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions.
+- For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure.
+- Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `assurance-report` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

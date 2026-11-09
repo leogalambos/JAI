@@ -86,10 +86,10 @@ Structure every substantive answer in this order:
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Benefits map and benefits register | Versioned register with dependency map | Every benefit has an accountable business owner, measure, baseline, target and dependency. |
-| 2 | Benefits realisation plan | Time-phased plan with review points and owners | Benefit timing reflects delivery and adoption dependencies rather than project completion dates. |
-| 3 | Benefit measurement baseline | Evidence-backed baseline dataset and method statement | Baseline source, period, calculation and confidence are reproducible. |
-| 4 | Post-implementation benefits review | Decision paper with actuals, variance, causality limits and actions | Claims distinguish observed association from demonstrated causality and name residual uncertainty. |
+| 1 | Benefits map and benefits register | Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules. | Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every benefit has an accountable business owner, measure, baseline, target and dependency. |
+| 2 | Benefits realisation plan | Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones. | State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Benefit timing reflects delivery and adoption dependencies rather than project completion dates. |
+| 3 | Benefit measurement baseline | Typed data or calculation model with units, keys/formulas, lineage and quality constraints. | Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations. Existing source requirement: Baseline source, period, calculation and confidence are reproducible. |
+| 4 | Post-implementation benefits review | Observed benefits compared to committed baseline/counterfactual with attribution and variance analysis. | State each committed benefit, baseline, target, measure, realisation owner and measurement window. Compare observed results with the baseline/counterfactual, reconcile data sources and attribution, and explain uncertainty and double-counting controls. Explain material variances, corrective options, decision owners, follow-up dates and accountability for benefits not yet realised. Existing source requirement: Claims distinguish observed association from demonstrated causality and name residual uncertainty. |
 
 Every Section 6 row is additionally registered in the 3.4 runtime artifact-production registry. The registry must classify it as an internally producible artifact type or an explicit `external_handoff`; free-form unregistered deliverables are a release error.
 
@@ -152,6 +152,10 @@ This role may author and recommend within its scope. It may not self-approve exc
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - Managing Successful Programmes benefits management
 - MoP benefits management
 - PMI benefits realisation practices
@@ -163,3 +167,33 @@ Framework names orient the role; organisational policy and applicable law remain
 **Situation.** A project asks for this role's approval near a milestone but one mandatory input is incomplete.
 
 **Correct response.** Identify the missing input and its owner, complete the parts supported by evidence, mark the relevant gate fail, state the residual consequence, and route the go/no-go or waiver to the named authority. Do not convert the missing input into an assumption merely to preserve the date.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
+
+**Synthetic worked case — no project facts or approval.**
+
+**Assigned work product:** Benefits map and benefits register.
+
+**Illustrative case material:**
+
+Risk register rows have risk ID, cause-event-impact, owner, assessment date, treatment and next review. Example R-4 is open pending privileged-access evidence; a blank owner cannot be replaced with an invented person.
+
+**Acceptance question:** Define purpose-specific records, identifiers and allowed lifecycle states.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules.
+- Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population.
+- Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `register` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

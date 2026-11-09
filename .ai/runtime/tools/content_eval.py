@@ -315,13 +315,52 @@ def main(argv=None):
         SystemExit: For invalid command-line syntax.
     """
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('command', choices=['run'])
+    parser.add_argument('command', choices=['run', 'prepare-adjudication', 'assess-adjudication'])
     parser.add_argument('--root', type=Path, default=Path(__file__).resolve().parents[1])
     parser.add_argument('--output', type=Path)
     parser.add_argument('--profile', choices=('core', 'full-source'), default='full-source')
     parser.add_argument('--extended-root', type=Path)
+    parser.add_argument('--contract', action='append')
+    parser.add_argument('--complexity', action='append', choices=('simple', 'medium', 'complex'))
+    parser.add_argument('--coordinator-output', type=Path)
+    parser.add_argument('--packet', type=Path)
+    parser.add_argument('--coordinator', type=Path)
+    parser.add_argument('--reviews', type=Path)
     args = parser.parse_args(argv)
     try:
+        if args.command == 'prepare-adjudication':
+            from content_adjudication import prepare_adjudication
+            if (not args.output or not args.coordinator_output
+                    or args.output.resolve() == args.coordinator_output.resolve()):
+                raise ValueError('Separate reviewer and coordinator output paths required')
+            if args.output.exists() or args.coordinator_output.exists():
+                raise ValueError('Adjudication output already exists')
+            bundle = prepare_adjudication(args.root, args.contract, args.complexity)
+            for path, value in ((args.output, bundle['reviewer_packet']),
+                                (args.coordinator_output, bundle['coordinator'])):
+                path.parent.mkdir(parents=True, exist_ok=True)
+                with path.open('x', encoding='utf-8') as output:
+                    output.write(json.dumps(value, indent=2) + '\n')
+            print(json.dumps({'status': 'PREPARED_NOT_ADJUDICATED',
+                              'case_count': len(bundle['reviewer_packet']['cases']),
+                              'professional_approval': False}))
+            return 0
+        if args.command == 'assess-adjudication':
+            from content_adjudication import assess_adjudication
+            if not args.packet or not args.coordinator or not args.reviews:
+                raise ValueError('Packet, coordinator and review files required')
+            bundle = {'reviewer_packet': json.loads(args.packet.read_text()),
+                      'coordinator': json.loads(args.coordinator.read_text())}
+            reviews = json.loads(args.reviews.read_text())
+            # JSON cannot supply a trusted execution verifier or assign reviewer
+            # competence. The existing host calls the API with those capabilities.
+            result = assess_adjudication(bundle, reviews)
+            if args.output:
+                args.output.parent.mkdir(parents=True, exist_ok=True)
+                with args.output.open('x', encoding='utf-8') as output:
+                    output.write(json.dumps(result, indent=2) + '\n')
+            print(json.dumps(result, indent=2))
+            return 1
         result = evaluate_corpus(args.root, include_enterprise=args.profile == 'full-source', extended_root=args.extended_root)
         if args.output:
             args.output.parent.mkdir(parents=True, exist_ok=True)

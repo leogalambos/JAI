@@ -13,6 +13,7 @@ import hashlib
 import json
 import argparse
 import importlib.util
+from professional_output_refinements import DELIVERY_FORMS, delivery_form_for
 from content_reference_definitions import REFERENCE_KINDS, REFERENCE_ROLE_LINKS, ENGINEERING_REFERENCE_KINDS
 from content_catalog_definitions import (TYPE_REQUIREMENTS, DOMAIN_REQUIREMENTS,
     TYPE_DOMAINS, SABSA_REQUIREMENTS, ARCHETYPE_REQUIREMENTS,
@@ -21,7 +22,9 @@ from content_catalog_definitions import (TYPE_REQUIREMENTS, DOMAIN_REQUIREMENTS,
     PROFESSIONAL_REFERENCES, TYPE_PROFESSIONAL_REFERENCES,
     FAMILY_PROFESSIONAL_REFERENCES, TYPE_ACCEPTANCE_DETAILS,
     FAMILY_ACCEPTANCE_DETAILS, CONTRACT_CONTENT_REQUIREMENTS,
-    CONTRACT_PROFESSIONAL_REFERENCES)
+    CONTRACT_PROFESSIONAL_REFERENCES, DOMAIN_PROFESSIONAL_REFERENCES,
+    DOMAIN_ACCEPTANCE_DETAILS, ROLE_DOMAIN_METHOD_FOCUS,
+    FRAMEWORK_APPLICABILITY_CRITERIA, ROLE_DOMAIN_PROFESSIONAL_REFERENCES)
 
 ROOT = Path(__file__).resolve().parents[1]
 RUNTIME = ROOT / '.ai/runtime'
@@ -323,7 +326,9 @@ def enrich_professional_guidance(files, roles, bindings):
         bindings: Explicit role-contract to specification mappings.
     Returns:
         None; updates only the supplied proposed specifications, preserving IDs,
-        approval status, semantic fields and executable validation boundaries.
+        approval status and executable validation boundaries. The shared global
+        applicability unit is reviewed using the existing independent-review
+        path; source candidates never grant automatic framework applicability.
     Raises:
         KeyError: An authored family/source assignment names an unknown record.
         ValueError: A type/family acceptance list does not match its existing units.
@@ -346,6 +351,9 @@ def enrich_professional_guidance(files, roles, bindings):
         elif namespace == 'family':
             reference_ids = FAMILY_PROFESSIONAL_REFERENCES[name]
             details = FAMILY_ACCEPTANCE_DETAILS[name]
+        elif namespace == 'domain':
+            reference_ids = DOMAIN_PROFESSIONAL_REFERENCES[name]
+            details = DOMAIN_ACCEPTANCE_DETAILS[name]
         else:
             role_bindings = by_spec.get(identifier, [])
             family = value.get('semantic_family', name)
@@ -355,8 +363,10 @@ def enrich_professional_guidance(files, roles, bindings):
                 family, TYPE_PROFESSIONAL_REFERENCES.get(family, ['jai-practice']))
         exact_ids = [binding['artifact_id'] for binding in by_spec.get(identifier, [])]
         for contract_id in exact_ids:
+            role = role_index[contract_id.rsplit(':', 1)[0]]
             reference_ids = list(dict.fromkeys(reference_ids +
-                CONTRACT_PROFESSIONAL_REFERENCES.get(contract_id, [])))
+                CONTRACT_PROFESSIONAL_REFERENCES.get(contract_id, []) +
+                ROLE_DOMAIN_PROFESSIONAL_REFERENCES[role['category_index']]))
         references = []
         for reference_id in reference_ids:
             source = PROFESSIONAL_REFERENCES[reference_id]
@@ -368,7 +378,12 @@ def enrich_professional_guidance(files, roles, bindings):
         if role_bindings:
             value['sources']['role_framework_context'] = [
                 {'role': role_index[binding['artifact_id'].rsplit(':', 1)[0]]['name'],
+                 'domain': role_index[binding['artifact_id'].rsplit(':', 1)[0]]['category'],
+                 'domain_index': role_index[binding['artifact_id'].rsplit(':', 1)[0]]['category_index'],
+                 'method_focus': ROLE_DOMAIN_METHOD_FOCUS[role_index[binding['artifact_id'].rsplit(':', 1)[0]]['category_index']],
                  'frameworks': role_index[binding['artifact_id'].rsplit(':', 1)[0]]['reference_frameworks'],
+                 'framework_selection': 'Relevant candidates only; this is not a mandatory framework list.',
+                 'applicability_rule': 'global.framework_applicability',
                  'basis': 'Canonical role context; not proof that every listed framework applies to this output.'}
                 for binding in role_bindings]
         if details is not None:
@@ -388,6 +403,8 @@ def enrich_professional_guidance(files, roles, bindings):
 
 def build():
     """Return every reproducible catalogue file without mutating canonical contracts."""
+    from generate_role_output_guidance import build_guidance
+    guidance = {row['id']: row for row in build_guidance(ROOT)['outputs']}
     files={}
     registry={'schema_version':'1.0.0','version':'26.11.0','status':'proposed','calibration_status':'synthetic-only','specifications':[],
       'document_kinds':[],'mappings':{'artifact_types':{},'archetypes':{},'sabsa_views':{},'domains':{}},
@@ -397,6 +414,10 @@ def build():
         files[CONTENT/path]=value
         registry['specifications'].append({k:value[k] for k in ['id','version','category','status','completeness']}|{'path':path})
     glob=spec('global/invariants','global','Preserve evidence, privacy, authority and explicit uncertainty.')
+    applicability=unit('global','framework_applicability','array',
+        'Resolve the professional basis, applicable framework/standard edition and practical method for the actual output; retain bounded claims and reviewable evidence.')
+    applicability['acceptance_criteria'] += FRAMEWORK_APPLICABILITY_CRITERIA
+    glob['required_information']=[applicability]
     glob['forbidden_information']=[unit('global',name,'object',reason,'MUST NOT')|{'category':'security-policy' if name=='secret_disclosure' else 'existing-mandatory-gate','severity':'critical'} for name,reason in [
       ('secret_disclosure','Never disclose credentials, restricted personal information or information outside the authorised classification boundary.'),
       ('fabricated_evidence','Do not invent observations, claim unsupported certainty or present synthetic examples as human-approved gold.'),
@@ -440,6 +461,13 @@ def build():
         value['size_budget'].update(metric='pages',target=[lower,upper],soft_max=soft,basis='Indicative pilot intervals from approved implementation direction; assurance and handover use proposed evidence-pack intervals requiring calibration.',exclude=['controlled_annexes','source_register'],target_is_informational=True)
         value['lifecycle']['golden_case_refs']=[f'evals/content_quality/{family}-{c}.json' for c in ['simple','medium','complex']]
         value['completion_scope']='Authored information contract and synthetic fixtures only; proposed and not production-qualified.'
+        delivery_forms=[delivery_form_for(family,cid) for cid,assigned in BINDINGS.items()
+                        if assigned==family]
+        if delivery_forms:
+            value['delivery_form']=delivery_forms[0]
+        source_ids = [cid for cid, assigned in BINDINGS.items() if assigned == family]
+        if len(source_ids) == 1:
+            value['source_projection_record_hash'] = hashlib.sha256(canonical(guidance[source_ids[0]])).hexdigest()
         registry['document_kinds'].append({'id':family,'artifact_types':legacy,'spec_ref':value['id'],'completeness':'complete','status':'proposed'})
         add(value,f'document_kinds/{family}.yaml')
     for family, obligations in ADDITIONAL_FAMILIES.items():
@@ -478,6 +506,8 @@ def build():
             value['role_overlay']={'contract_id':cid,'scope':'Exact source deliverable, input analysis and existing role gates only','adds_authority':False}
             value['coverage_note']='Bounded source-attributed role overlay on a shared semantic family; mapped purpose remains proposed pending competent independent review.'
             value['source_contract']={'id':cid,'source_fingerprint':c['source_fingerprint'],'source_hash':hashlib.sha256(canonical(c)).hexdigest()}
+            value['delivery_form']=delivery_form_for(family,cid)
+            value['source_projection_record_hash'] = hashlib.sha256(canonical(guidance[cid])).hexdigest()
             value['derivation_limits']=['Source inputs identify the subject boundary but do not prove professional sufficiency.','Independent semantic assessment and human L0 approval remain pending.']
             registry['document_kinds'].append({'id':kind,'artifact_types':[legacy],'spec_ref':value['id'],'completeness':'complete','status':'proposed'})
             add(value,f'document_kinds/roles/{cid.replace(":","-")}.yaml')

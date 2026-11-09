@@ -14,6 +14,7 @@ sys.path.insert(0,str(ROOT/'.ai/runtime/tools'))
 from generate_content_catalog import BINDINGS, FAMILIES, validate_reference_bindings
 from content_reference_definitions import REFERENCE_KINDS, REFERENCE_ROLE_LINKS
 from content_spec import ContentSpec
+from extended_reference_definitions import REFERENCE_CASES
 
 
 # Literal wording is an editorial publication contract, not semantic review evidence.
@@ -80,9 +81,25 @@ class ReferenceBindingTests(unittest.TestCase):
             path=ROOT/'.ai/runtime/content/expert_references'/entry['path']
             text=path.read_text()
             with self.subTest(reference_id=entry['reference_id']):
-                supplement=_publication_supplement(text)
-                for phrase in STANDARD_DISCLOSURE_PHRASES:
-                    self.assertIn(phrase,supplement)
+                if entry['document_kind'] in REFERENCE_CASES:
+                    # New cases use a distinct authored publication format;
+                    # require its explicit execution and authority boundaries.
+                    for phrase in (
+                        'fictional_context: true', 'approval_status: not-human-approved',
+                        'PUBLIC SYNTHETIC TEACHING CASE', 'Tests are not executed',
+                        'no professional or human approval is established',
+                        'status **NOT_EXECUTED**', 'not a completed review',
+                        'Human approval and release remain separate existing authority acts',
+                        'not a quotation from or certification against an external standard',
+                    ):
+                        self.assertIn(phrase,text)
+                else:
+                    supplement=_publication_supplement(text)
+                    for phrase in STANDARD_DISCLOSURE_PHRASES:
+                        self.assertIn(phrase,supplement)
+        legacy=[entry for entry in manifest['entries']
+                if entry['document_kind'] not in REFERENCE_CASES]
+        self.assertEqual(len(legacy),135)
 
 
     def test_security_supplements_include_standard_negative_test_disclosures(self):
@@ -98,11 +115,16 @@ class ReferenceBindingTests(unittest.TestCase):
                         self.assertIn(phrase,supplement)
 
 
-    def test_all_135_manifest_documents_have_exact_one_to_one_registered_anchor_mappings(self):
+    def test_all_manifest_documents_have_exact_one_to_one_registered_anchor_mappings(self):
         manifest=json.loads((ROOT/'.ai/runtime/content/expert_references/index.json').read_text())
         by_family={row['reference_family']:row for row in self.document['families']}
-        self.assertEqual(len(by_family),45)
-        self.assertEqual(len(manifest['entries']),135)
+        expected_families=set(FAMILIES)|set(REFERENCE_KINDS)
+        self.assertEqual(set(by_family),expected_families)
+        self.assertEqual(len(self.document['families']),len(expected_families))
+        slots=[(entry['document_kind'],entry['complexity']) for entry in manifest['entries']]
+        self.assertEqual(len(slots),len(set(slots)))
+        self.assertEqual(set(slots),{(family,level) for family in expected_families
+                                    for level in ('simple','medium','complex')})
         validate_reference_bindings(self.document,self.engine.specs,self.contract_ids)
         for entry in manifest['entries']:
             mapping=by_family[entry['document_kind']]
@@ -235,7 +257,7 @@ class ReferenceBindingTests(unittest.TestCase):
         standalone={record['spec_ref'] for record in self.document['families'] if record['registration']!='reused-priority-kind'}
         cases={ref:json.loads((ROOT/'.ai/runtime'/ref).read_text()) for ref in manifest['enterprise_cases']}
         selected=[case for case in cases.values() if case['contract_id'] in standalone]
-        self.assertEqual(len(selected),105)
+        self.assertEqual(len(selected),3*len(standalone))
         for ref in standalone:
             matching=[case for case in selected if case['contract_id']==ref]
             self.assertEqual(len(matching),3,ref)

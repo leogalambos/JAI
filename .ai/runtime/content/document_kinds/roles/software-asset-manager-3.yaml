@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-asset-manager:3",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-asset-manager:3",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-asset-manager:3",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-asset-manager:3",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'compliance risk assessment', provide verifiable evidence satisfying: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Structured assessment document with scoring method stated.",
+        "For the specific output 'compliance risk assessment', provide verifiable evidence satisfying: Define assessment scope, likelihood/impact scales, time horizon, risk criteria and appetite; explain how qualitative or quantitative ratings are assigned. For each scenario, record cause, event, affected asset/outcome, consequences, existing controls, evidence, uncertainty and a justified current/residual rating. For each treatment, record the scenario ID, chosen response, action owner, target date, expected risk change and authority required for residual acceptance. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'compliance risk assessment', provide verifiable evidence satisfying: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Structured assessment document with scoring method stated.",
+        "reason": "For the specific output 'compliance risk assessment', provide verifiable evidence satisfying: Define assessment scope, likelihood/impact scales, time horizon, risk criteria and appetite; explain how qualitative or quantitative ratings are assigned. For each scenario, record cause, event, affected asset/outcome, consequences, existing controls, evidence, uncertainty and a justified current/residual rating. For each treatment, record the scenario ID, chosen response, action owner, target date, expected risk change and authority required for residual acceptance. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-asset-manager:3",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "compliance risk assessment",
-        "format": "Structured assessment document with scoring method stated",
-        "acceptance_criterion": "Criteria were fixed before evidence collection and the method is reproducible",
+        "format": "Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.",
+        "acceptance_criterion": "Define assessment scope, likelihood/impact scales, time horizon, risk criteria and appetite; explain how qualitative or quantitative ratings are assigned. For each scenario, record cause, event, affected asset/outcome, consequences, existing controls, evidence, uncertainty and a justified current/residual rating. For each treatment, record the scenario ID, chosen response, action owner, target date, expected risk change and authority required for residual acceptance. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible.",
         "role_path": "skills/it-roles-service-management-and-support/references/software-asset-manager.md"
       }
     },
@@ -269,7 +279,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-asset-manager:3",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -316,7 +328,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-asset-manager:3",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -360,7 +374,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-asset-manager:3",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -404,7 +420,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-asset-manager:3",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -448,7 +466,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#software-asset-manager:3",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -494,7 +514,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -538,7 +560,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -584,7 +608,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.iso.org/standard/70636.html",
+          "https://sre.google/sre-book/service-level-objectives/"
         ]
       },
       "provenance": {
@@ -707,16 +733,37 @@
         "scope": "Assessment scope, threat events, vulnerabilities, likelihood, impact and uncertainty.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "service-management",
+        "title": "ISO/IEC 20000-1:2018, Service management system requirements",
+        "url": "https://www.iso.org/standard/70636.html",
+        "scope": "Service requirements, agreements, transition, operation and measurement concepts.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Software Asset Manager",
+        "domain": "Service Management and Support",
+        "domain_index": 10,
+        "method_focus": "Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.",
         "frameworks": [
           "ISO/IEC 19770-1",
           "vendor licensing terms",
           "ITIL 4 asset management"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -787,6 +834,17 @@
     "source_fingerprint": "8a8958830977987a3c194603a28e96b3a573fa95b420963d190a0943fa8aadb7",
     "source_hash": "e795dc5c5352a5aa15fbd3e5cd32e8fe81e84dda3ef785b84e8714edcb054cdc"
   },
+  "delivery_form": {
+    "primary_artifact": "risk-assessment",
+    "representation": "Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.",
+    "evidence": [
+      "likelihood/impact rationale and uncertainty",
+      "current/residual exposure and treatment evidence"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "5b6d568ecdcdb60de0d2895857f49a5e8861f45a6c5e99b529088607ac60205f",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

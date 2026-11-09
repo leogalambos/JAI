@@ -63,7 +63,8 @@
           "artifacts/contracts/role-deliverables.v3.json#data-analyst:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -103,7 +104,8 @@
           "artifacts/contracts/role-deliverables.v3.json#data-analyst:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -143,7 +145,8 @@
           "artifacts/contracts/role-deliverables.v3.json#data-analyst:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -183,7 +186,8 @@
           "artifacts/contracts/role-deliverables.v3.json#data-analyst:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -203,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'reusable dataset or metric definition', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'reusable dataset or metric definition', provide verifiable evidence satisfying: Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations. Required delivery form: Typed data or calculation model with units, keys/formulas, lineage and quality constraints.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'reusable dataset or metric definition', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'reusable dataset or metric definition', provide verifiable evidence satisfying: Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations. Required delivery form: Typed data or calculation model with units, keys/formulas, lineage and quality constraints.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#data-analyst:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -233,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "reusable dataset or metric definition",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Typed data or calculation model with units, keys/formulas, lineage and quality constraints.",
+        "acceptance_criterion": "Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations.",
         "role_path": "skills/it-roles-analysis/references/data-analyst.md"
       }
     },
@@ -274,7 +279,8 @@
           "artifacts/contracts/role-deliverables.v3.json#data-analyst:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -321,7 +327,8 @@
           "artifacts/contracts/role-deliverables.v3.json#data-analyst:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -366,7 +373,8 @@
           "artifacts/contracts/role-deliverables.v3.json#data-analyst:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -411,7 +419,8 @@
           "artifacts/contracts/role-deliverables.v3.json#data-analyst:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -456,7 +465,8 @@
           "artifacts/contracts/role-deliverables.v3.json#data-analyst:3",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -503,7 +513,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -548,7 +559,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -595,7 +607,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -726,16 +739,29 @@
         "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Data Analyst",
+        "domain": "Analysis",
+        "domain_index": 3,
+        "method_focus": "Trace source needs, stakeholders and conflicting constraints into verifiable requirements, models and acceptance criteria.",
         "frameworks": [
           "DAMA-DMBOK 2",
           "statistical practice",
           "SQL and analysis standards"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -806,6 +832,17 @@
     "source_fingerprint": "3aa662f9d46ac517f764f40f109088fb717a67e0aa20e83a50f6e9cfe847c1b2",
     "source_hash": "02505589ab6548ada67a002d458b933994443295ee7054874c66bd27fd6b5b5a"
   },
+  "delivery_form": {
+    "primary_artifact": "typed-dataset-or-calculation-model",
+    "representation": "Typed data or calculation model with units, keys/formulas, lineage and quality constraints.",
+    "evidence": [
+      "versioned inputs and reproducible transformations",
+      "reconciliation, quality measures and permitted use"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "5539939458bcf32d6613fb913f5421f34f1f12a2b93cd3955105d16d74d78a52",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

@@ -1,0 +1,365 @@
+{
+  "artifact_id": "synthetic/enterprise/kind-prototype-complex",
+  "contract_id": "kind/prototype",
+  "document_kind": "prototype",
+  "author": {
+    "principal_id": "synthetic-author"
+  },
+  "title": "Regulated payment platform transition: kind-prototype-complex",
+  "context": {
+    "processes_personal_data": true,
+    "regulatory_requirement": true
+  },
+  "summary": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+  "scenario": {
+    "name": "Regulated payment platform transition",
+    "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+    "drivers": "Preserve reconciled balances and a 15-minute recovery objective while retaining auditable transaction evidence within approved jurisdictions.",
+    "design": "A staged migration uses immutable event IDs, dual reconciliation and approved regional failover; outbound settlement remains gated by ledger equality.",
+    "cost": "EUR 8400000 transition and EUR 1900000 annual operation; five-year benefits EUR 16000000, sensitive to delay and compliance cost by 35 percent.",
+    "risk": "Cross-border failover can violate approved data-location constraints; regional routing and policy checks reduce exposure, with legal interpretation remaining reviewable.",
+    "operations": "The payment service owner authorises cutover; independent control assurance and round-the-clock operations review reconciliation before traffic migration.",
+    "regulatory": true,
+    "privacy": true
+  },
+  "semantic_units": {
+    "framework_applicability": [
+      {
+        "record_id": "SYN-PROFESSIONAL-BASIS",
+        "source": {
+          "title": "JAI authored enterprise-delivery practice",
+          "edition": "Synthetic development scenario, revision 1",
+          "authoritative_location": "content/rules/global-invariants.yaml"
+        },
+        "basis": "jai-interpretation",
+        "applicability": "applicable",
+        "rationale": "This fictional recovery case uses JAI evidence and bounded-handoff practice to exercise the DCS contract; no external framework conformity is claimed.",
+        "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+        "jurisdiction": "No real jurisdictional compliance conclusion is established by this synthetic fixture.",
+        "adopted_concepts": [
+          "Attributable evidence",
+          "Bounded receiving-role conclusions"
+        ],
+        "tailoring": "Illustrative recovery-service facts only; peak-load validation is excluded and remains pending.",
+        "precedence": "Applicable real law and organisation policy would prevail; neither is fabricated by this case.",
+        "method_mapping": [
+          {
+            "output_unit_ref": "global.framework_applicability",
+            "method": "Separate fabricated scenario observations from demonstrated production results and map residual gaps to the receiving owner.",
+            "expected_evidence": "Versioned synthetic scenario and its declared limitations.",
+            "evidence_refs": [
+              "SYN-01"
+            ],
+            "reviewer_test": "Reject any inference of real execution, framework conformance or human approval from this fictional example."
+          }
+        ],
+        "review": {
+          "owner": "Synthetic independent domain reviewer",
+          "status": "pending-independent-review",
+          "change_trigger": "Change to scenario scope, source practice or evidence; unchanged history is reused."
+        },
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "human_approval_ref": null
+      }
+    ],
+    "privacy_analysis": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-PRIVACY-ANALYSIS",
+      "service": "Regulated payment platform transition",
+      "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+      "criterion_under_review": "Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "reference_prototype_disposition": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-REFERENCE-PROTOTYPE-DISPOSITION",
+      "service": "Regulated payment platform transition",
+      "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+      "criterion_under_review": "Compare observations to criteria and bound the adoption decision.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "reference_prototype_hypothesis": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-REFERENCE-PROTOTYPE-HYPOTHESIS",
+      "service": "Regulated payment platform transition",
+      "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+      "criterion_under_review": "Predeclare a bounded feasibility hypothesis and success oracle.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "reference_prototype_reproduction": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-REFERENCE-PROTOTYPE-REPRODUCTION",
+      "service": "Regulated payment platform transition",
+      "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+      "criterion_under_review": "Identify disposable code, dependencies and reproducible workload.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "regulatory_analysis": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-REGULATORY-ANALYSIS",
+      "service": "Regulated payment platform transition",
+      "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+      "criterion_under_review": "Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "identity": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-IDENTITY",
+      "service": "Regulated payment platform transition",
+      "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+      "criterion_under_review": "Identify stable artifact ID, owner, source version and intended usage.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "prototype_hypothesis": {
+      "test_id": "SYN-T1",
+      "requirement_ref": "SYN-REC1",
+      "build": "candidate-1.0",
+      "environment": "Isolated recovery rehearsal",
+      "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
+      "expected_max_minutes": 30,
+      "observed_minutes": 27,
+      "expected_duplicate_count": 0,
+      "observed_duplicate_count": 0,
+      "sample_size": 10,
+      "exclusions": [
+        "Peak-load recovery"
+      ],
+      "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
+      "record_id": "SYN-PROTOTYPE-HYPOTHESIS",
+      "service": "Regulated payment platform transition",
+      "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+      "criterion_under_review": "Define the feasibility question, explicit non-production boundary and success criteria.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "prototype_reproduction": {
+      "test_id": "SYN-T1",
+      "requirement_ref": "SYN-REC1",
+      "build": "candidate-1.0",
+      "environment": "Isolated recovery rehearsal",
+      "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
+      "expected_max_minutes": 30,
+      "observed_minutes": 27,
+      "expected_duplicate_count": 0,
+      "observed_duplicate_count": 0,
+      "sample_size": 10,
+      "exclusions": [
+        "Peak-load recovery"
+      ],
+      "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
+      "record_id": "SYN-PROTOTYPE-REPRODUCTION",
+      "service": "Regulated payment platform transition",
+      "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+      "criterion_under_review": "Identify versioned code, dependencies, representative inputs and reproducible execution.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "prototype_results": [
+      {
+        "test_id": "SYN-T1",
+        "requirement_ref": "SYN-REC1",
+        "build": "candidate-1.0",
+        "environment": "Isolated recovery rehearsal",
+        "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
+        "expected_max_minutes": 30,
+        "observed_minutes": 27,
+        "expected_duplicate_count": 0,
+        "observed_duplicate_count": 0,
+        "sample_size": 10,
+        "exclusions": [
+          "Peak-load recovery"
+        ],
+        "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
+        "record_id": "SYN-PROTOTYPE-RESULTS",
+        "service": "Regulated payment platform transition",
+        "scope": "A payment platform across two jurisdictions, legacy ledger migration, external settlement and 24-hour incident response.",
+        "criterion_under_review": "Record observed results, limitations, risks and disposition against predeclared criteria.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ]
+  },
+  "evaluation_selection": {
+    "overlays": []
+  },
+  "structural_probe": true,
+  "evaluation_scope": "Typed contract/overlay detector probe; professional semantic adequacy is not established by these generated records.",
+  "evidence": [
+    {
+      "id": "SYN-01",
+      "version": "1",
+      "classification": "synthetic",
+      "description": "Fabricated recovery service records; no real customer evidence or human approval."
+    }
+  ],
+  "provenance": {
+    "corpus_level": "synthetic-reference",
+    "calibration_status": "synthetic-only",
+    "human_approval_ref": null
+  },
+  "reference_expectation": {
+    "independent_semantic_review_required": true,
+    "production_pass_claim": false
+  },
+  "variants": [
+    {
+      "id": "headings-only",
+      "operation": "headings_only",
+      "expected_rule_ids": [
+        "global.framework_applicability",
+        "prototype.reference_prototype_disposition",
+        "prototype.reference_prototype_hypothesis",
+        "prototype.reference_prototype_reproduction",
+        "type/prototype.identity",
+        "type/prototype.prototype_hypothesis",
+        "type/prototype.prototype_reproduction",
+        "type/prototype.prototype_results"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "missing-core",
+      "operation": "remove",
+      "field": "reference_prototype_disposition",
+      "expected_rule_ids": [
+        "prototype.reference_prototype_disposition"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "invalid-na",
+      "operation": "mark_na",
+      "field": "reference_prototype_disposition",
+      "reason": "Author omitted a required obligation without authority.",
+      "expected_rule_ids": [
+        "prototype.reference_prototype_disposition"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "unsupported",
+      "operation": "unsupported_claim",
+      "text": "The recovery design guarantees permanent zero incidents without evidence.",
+      "expected_rule_ids": [
+        "prototype.unsupported_material_claim"
+      ],
+      "expected_category": "critical-content"
+    },
+    {
+      "id": "irrelevant",
+      "operation": "append_irrelevant",
+      "text": "The history of office furniture procurement does not support service recovery or the receiving decision.",
+      "expected_rule_ids": [
+        "prototype.irrelevant_detail"
+      ],
+      "expected_category": "editorial"
+    },
+    {
+      "id": "unknown-applicability",
+      "operation": "unknown_context",
+      "field": "processes_personal_data",
+      "expected_rule_ids": [
+        "prototype.privacy_analysis"
+      ],
+      "expected_category": "pending-applicability"
+    },
+    {
+      "id": "regulatory-exception",
+      "operation": "unauthorised_exception",
+      "field": "regulatory_analysis",
+      "text": "Schedule pressure is claimed to waive the applicable legal restriction without authority.",
+      "expected_rule_ids": [
+        "global.authority_bypass"
+      ],
+      "expected_category": "existing-mandatory-gate"
+    },
+    {
+      "id": "valid-conditional-na",
+      "operation": "justified_conditional_na",
+      "field": "privacy_analysis",
+      "context": {
+        "processes_personal_data": false
+      },
+      "justification": "Alternative synthetic scope excludes personal identifiers; SYN-NA records anonymous stock counts only.",
+      "expected_rule_ids": [],
+      "expected_category": "borderline-review"
+    },
+    {
+      "id": "excessive",
+      "operation": "repeat",
+      "field": "reference_prototype_disposition",
+      "count": 5,
+      "expected_rule_ids": [
+        "prototype.duplicate_claim"
+      ],
+      "expected_category": "editorial",
+      "must_not_automatically_block": true
+    }
+  ]
+}

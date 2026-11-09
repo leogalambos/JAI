@@ -82,6 +82,101 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
+    "analysis_baseline": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-ANALYSIS-BASELINE",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "analysis_conclusion": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-ANALYSIS-CONCLUSION",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "analysis_observations": [
+      {
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-ANALYSIS-OBSERVATIONS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "framework_applicability": [
+      {
+        "record_id": "SYN-PROFESSIONAL-BASIS",
+        "source": {
+          "title": "JAI authored enterprise-delivery practice",
+          "edition": "Synthetic development scenario, revision 1",
+          "authoritative_location": "content/rules/global-invariants.yaml"
+        },
+        "basis": "jai-interpretation",
+        "applicability": "applicable",
+        "rationale": "This fictional recovery case uses JAI evidence and bounded-handoff practice to exercise the DCS contract; no external framework conformity is claimed.",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "jurisdiction": "No real jurisdictional compliance conclusion is established by this synthetic fixture.",
+        "adopted_concepts": [
+          "Attributable evidence",
+          "Bounded receiving-role conclusions"
+        ],
+        "tailoring": "Illustrative recovery-service facts only; peak-load validation is excluded and remains pending.",
+        "precedence": "Applicable real law and organisation policy would prevail; neither is fabricated by this case.",
+        "method_mapping": [
+          {
+            "output_unit_ref": "global.framework_applicability",
+            "method": "Separate fabricated scenario observations from demonstrated production results and map residual gaps to the receiving owner.",
+            "expected_evidence": "Versioned synthetic scenario and its declared limitations.",
+            "evidence_refs": [
+              "SYN-01"
+            ],
+            "reviewer_test": "Reject any inference of real execution, framework conformance or human approval from this fictional example."
+          }
+        ],
+        "review": {
+          "owner": "Synthetic independent domain reviewer",
+          "status": "pending-independent-review",
+          "change_trigger": "Change to scenario scope, source practice or evidence; unchanged history is reused."
+        },
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "human_approval_ref": null
+      }
+    ],
     "contract_input_1": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -214,7 +309,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'scoping assessment', provide verifiable evidence satisfying: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Structured assessment document with scoring method stated.",
+        "criterion_under_review": "For the specific output 'scoping assessment', provide verifiable evidence satisfying: Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -259,94 +354,6 @@
         ],
         "knowledge_status": "synthetic-assumption"
       }
-    ],
-    "decision_authority": {
-      "baseline": {
-        "id": "BASE",
-        "restore_minutes": 48,
-        "transition_eur": 0
-      },
-      "candidate": {
-        "id": "TARGET",
-        "restore_minutes": 27,
-        "transition_eur": 18000
-      },
-      "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
-      "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
-      "record_id": "SYN-DECISION-AUTHORITY",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify the specific choice, accountable authority and decision deadline.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "decision_impacts": {
-      "baseline": {
-        "id": "BASE",
-        "restore_minutes": 48,
-        "transition_eur": 0
-      },
-      "candidate": {
-        "id": "TARGET",
-        "restore_minutes": 27,
-        "transition_eur": 18000
-      },
-      "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
-      "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
-      "record_id": "SYN-DECISION-IMPACTS",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Explain cost, benefit, dependencies, uncertainty and residual risks of the recommendation.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "identity": {
-      "element_id": "SYN-APP-1",
-      "responsibility": "Accept transaction IDs and persist each committed event once",
-      "interface_ref": "SYN-IF-1",
-      "deployment": "Managed Linux service with PostgreSQL standby",
-      "failure_handling": "Retry twice using the same event ID, then reject and alert",
-      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
-      "record_id": "SYN-IDENTITY",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify stable artifact ID, owner, source version and intended usage.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "option_comparison": [
-      {
-        "baseline": {
-          "id": "BASE",
-          "restore_minutes": 48,
-          "transition_eur": 0
-        },
-        "candidate": {
-          "id": "TARGET",
-          "restore_minutes": 27,
-          "transition_eur": 18000
-        },
-        "criterion": "Restore within 30 minutes with no duplicate committed event IDs",
-        "recommendation": "Propose TARGET subject to peak-load rehearsal; BASE misses the recovery target",
-        "record_id": "SYN-OPTION-COMPARISON",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Compare viable options including the do-nothing baseline against common criteria.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
     ]
   },
   "evaluation_selection": {
@@ -378,6 +385,10 @@
       "expected_rule_ids": [
         "domain/delivery.delivery_accountability",
         "domain/delivery.delivery_dependencies",
+        "family/analysis-report.analysis_baseline",
+        "family/analysis-report.analysis_conclusion",
+        "family/analysis-report.analysis_observations",
+        "global.framework_applicability",
         "role/security-analyst-tier-2:2.contract_input_1",
         "role/security-analyst-tier-2:2.contract_input_2",
         "role/security-analyst-tier-2:2.contract_input_3",
@@ -387,11 +398,7 @@
         "role/security-analyst-tier-2:2.delivery_scope",
         "role/security-analyst-tier-2:2.delivery_verification",
         "role/security-analyst-tier-2:2.receiving_acceptance",
-        "role/security-analyst-tier-2:2.role_gate_observations",
-        "type/decision-paper.decision_authority",
-        "type/decision-paper.decision_impacts",
-        "type/decision-paper.identity",
-        "type/decision-paper.option_comparison"
+        "role/security-analyst-tier-2:2.role_gate_observations"
       ],
       "expected_category": "critical-content"
     },

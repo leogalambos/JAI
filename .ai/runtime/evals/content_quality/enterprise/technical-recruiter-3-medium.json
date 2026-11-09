@@ -82,6 +82,48 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
+    "framework_applicability": [
+      {
+        "record_id": "SYN-PROFESSIONAL-BASIS",
+        "source": {
+          "title": "JAI authored enterprise-delivery practice",
+          "edition": "Synthetic development scenario, revision 1",
+          "authoritative_location": "content/rules/global-invariants.yaml"
+        },
+        "basis": "jai-interpretation",
+        "applicability": "applicable",
+        "rationale": "This fictional recovery case uses JAI evidence and bounded-handoff practice to exercise the DCS contract; no external framework conformity is claimed.",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "jurisdiction": "No real jurisdictional compliance conclusion is established by this synthetic fixture.",
+        "adopted_concepts": [
+          "Attributable evidence",
+          "Bounded receiving-role conclusions"
+        ],
+        "tailoring": "Illustrative recovery-service facts only; peak-load validation is excluded and remains pending.",
+        "precedence": "Applicable real law and organisation policy would prevail; neither is fabricated by this case.",
+        "method_mapping": [
+          {
+            "output_unit_ref": "global.framework_applicability",
+            "method": "Separate fabricated scenario observations from demonstrated production results and map residual gaps to the receiving owner.",
+            "expected_evidence": "Versioned synthetic scenario and its declared limitations.",
+            "evidence_refs": [
+              "SYN-01"
+            ],
+            "reviewer_test": "Reject any inference of real execution, framework conformance or human approval from this fictional example."
+          }
+        ],
+        "review": {
+          "owner": "Synthetic independent domain reviewer",
+          "status": "pending-independent-review",
+          "change_trigger": "Change to scenario scope, source practice or evidence; unchanged history is reused."
+        },
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "human_approval_ref": null
+      }
+    ],
     "contract_input_1": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -214,7 +256,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'structured interview scorecards', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "criterion_under_review": "For the specific output 'structured interview scorecards', provide verifiable evidence satisfying: Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Required delivery form: Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -260,76 +302,6 @@
         "knowledge_status": "synthetic-assumption"
       }
     ],
-    "dashboard_interpretation": {
-      "metric_id": "SYN-M1",
-      "metric": "recovery_minutes",
-      "unit": "minutes",
-      "observed": 27,
-      "target_max": 30,
-      "sample_numerator": 1,
-      "sample_denominator": 1,
-      "period": "2026-10-19",
-      "source_query": "rehearsal_end minus rehearsal_start, version 1",
-      "refresh": "After each deployment and quarterly",
-      "interpretation": "One synthetic rehearsal meets the target; peak-load confidence remains unknown",
-      "record_id": "SYN-DASHBOARD-INTERPRETATION",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Explain thresholds, uncertainty, missing data and actions supported by the view.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    },
-    "dashboard_measures": [
-      {
-        "metric_id": "SYN-M1",
-        "metric": "recovery_minutes",
-        "unit": "minutes",
-        "observed": 27,
-        "target_max": 30,
-        "sample_numerator": 1,
-        "sample_denominator": 1,
-        "period": "2026-10-19",
-        "source_query": "rehearsal_end minus rehearsal_start, version 1",
-        "refresh": "After each deployment and quarterly",
-        "interpretation": "One synthetic rehearsal meets the target; peak-load confidence remains unknown",
-        "record_id": "SYN-DASHBOARD-MEASURES",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Define metrics, units, denominators, targets, refresh cadence and accountable owners.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "dashboard_values": [
-      {
-        "metric_id": "SYN-M1",
-        "metric": "recovery_minutes",
-        "unit": "minutes",
-        "observed": 27,
-        "target_max": 30,
-        "sample_numerator": 1,
-        "sample_denominator": 1,
-        "period": "2026-10-19",
-        "source_query": "rehearsal_end minus rehearsal_start, version 1",
-        "refresh": "After each deployment and quarterly",
-        "interpretation": "One synthetic rehearsal meets the target; peak-load confidence remains unknown",
-        "record_id": "SYN-DASHBOARD-VALUES",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Provide dated observations linked to versioned source queries and population scope.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
     "identity": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -341,6 +313,109 @@
       "service": "Regional order integration",
       "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
       "criterion_under_review": "Identify stable artifact ID, owner, source version and intended usage.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "register_integrity": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-REGISTER-INTEGRITY",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Evidence uniqueness, referential integrity, completeness and lifecycle reconciliation checks.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "register_records": [
+      {
+        "schema_version": "1.0",
+        "entity_id": "SYN-APP-1",
+        "columns": [
+          {
+            "name": "event_id",
+            "datatype": "uuid",
+            "nullable": false
+          },
+          {
+            "name": "amount",
+            "datatype": "decimal(12,2)",
+            "unit": "EUR",
+            "nullable": false
+          }
+        ],
+        "key": "event_id",
+        "record": {
+          "event_id": "SYN-EVENT-1",
+          "amount": 125.5
+        },
+        "uniqueness_observed": "10 of 10 event IDs unique",
+        "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+        "record_id": "SYN-REGISTER-RECORDS",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Provide actual uniquely identified records with source, owner, status and review date.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "register_schema": {
+      "schema_version": "1.0",
+      "entity_id": "SYN-APP-1",
+      "columns": [
+        {
+          "name": "event_id",
+          "datatype": "uuid",
+          "nullable": false
+        },
+        {
+          "name": "amount",
+          "datatype": "decimal(12,2)",
+          "unit": "EUR",
+          "nullable": false
+        }
+      ],
+      "key": "event_id",
+      "record": {
+        "event_id": "SYN-EVENT-1",
+        "amount": 125.5
+      },
+      "uniqueness_observed": "10 of 10 event IDs unique",
+      "constraint": "Every event references one existing service; no orphan event IDs observed in the fabricated sample",
+      "record_id": "SYN-REGISTER-SCHEMA",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Define required columns, datatypes, identifiers, allowed states and ownership.",
       "accountable_role": "Synthetic receiving service owner",
       "evidence_refs": [
         "SYN-01"
@@ -377,6 +452,7 @@
       "expected_rule_ids": [
         "domain/data.data_accountability",
         "domain/data.data_lineage_quality",
+        "global.framework_applicability",
         "role/technical-recruiter:3.contract_input_1",
         "role/technical-recruiter:3.contract_input_2",
         "role/technical-recruiter:3.contract_input_3",
@@ -387,10 +463,10 @@
         "role/technical-recruiter:3.delivery_verification",
         "role/technical-recruiter:3.receiving_acceptance",
         "role/technical-recruiter:3.role_gate_observations",
-        "type/dashboard.dashboard_interpretation",
-        "type/dashboard.dashboard_measures",
-        "type/dashboard.dashboard_values",
-        "type/dashboard.identity"
+        "type/register.identity",
+        "type/register.register_integrity",
+        "type/register.register_records",
+        "type/register.register_schema"
       ],
       "expected_category": "critical-content"
     },

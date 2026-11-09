@@ -7,10 +7,49 @@ from pathlib import Path
 import sys
 
 import pytest
+import jsonschema
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / '.ai/runtime/tools'))
 import schema_check
+
+
+def _workflow_schema_and_sample():
+    runtime = schema_check.runtime(ROOT)
+    registry = schema_check.load(runtime / 'schema/schema-registry.json')
+    path = next(row['path'] for row in registry['schemas'] if row['name'] == 'Workflow')
+    schema = schema_check.load(runtime / path)
+    workflow = next(row for row in schema_check.load(runtime / 'workflows.json')['workflows']
+                    if row['key'] == 'new-service-onboarding')
+    return jsonschema.Draft202012Validator(schema), workflow
+
+
+def test_workflow_applicability_is_supported_without_loosening_the_workflow_schema():
+    validator, workflow = _workflow_schema_and_sample()
+    assert validator.is_valid(workflow)
+    without = copy.deepcopy(workflow)
+    without.pop('applicability')
+    assert validator.is_valid(without)
+
+
+@pytest.mark.parametrize('mutation', ['extra-field', 'missing-invariants', 'empty-invariants', 'bad-variant', 'extra-variant-field', 'empty-disposition'])
+def test_malformed_workflow_applicability_is_rejected(mutation):
+    validator, workflow = _workflow_schema_and_sample()
+    profile = workflow['applicability']
+    if mutation == 'extra-field':
+        profile['allow_gate_bypass'] = True
+    elif mutation == 'missing-invariants':
+        profile.pop('invariant_outcomes')
+    elif mutation == 'empty-invariants':
+        profile['invariant_outcomes'] = []
+    elif mutation == 'bad-variant':
+        profile['variants'][0].pop('evidence')
+    elif mutation == 'extra-variant-field':
+        profile['variants'][0]['automatically_approved'] = True
+    else:
+        profile['disposition_rule'] = ''
+    with pytest.raises(jsonschema.ValidationError):
+        validator.validate(workflow)
 
 
 def test_current_registry_validates_without_retired_migration_contracts(capsys):

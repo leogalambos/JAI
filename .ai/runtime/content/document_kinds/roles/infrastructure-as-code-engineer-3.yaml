@@ -9,8 +9,8 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/control-design",
-    "domain/security"
+    "family/software-change",
+    "domain/delivery"
   ],
   "applies_to": {
     "document_kind": "role/infrastructure-as-code-engineer:3",
@@ -64,8 +64,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:3",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -104,8 +106,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:3",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -144,8 +148,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:3",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -184,8 +190,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:3",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -205,7 +213,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'policy-as-code guardrails', provide verifiable evidence satisfying: Every statement is testable and maps to at least one control. Required delivery form: Controlled document with owner, effective date and review date.",
+        "For the specific output 'policy-as-code guardrails', provide verifiable evidence satisfying: Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. Existing source requirement: Every statement is testable and maps to at least one control. Required delivery form: Actual executable policy rules and rule-engine configuration in version control; the control-design rationale accompanies the rules.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -220,12 +228,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'policy-as-code guardrails', provide verifiable evidence satisfying: Every statement is testable and maps to at least one control. Required delivery form: Controlled document with owner, effective date and review date.",
+        "reason": "For the specific output 'policy-as-code guardrails', provide verifiable evidence satisfying: Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. Existing source requirement: Every statement is testable and maps to at least one control. Required delivery form: Actual executable policy rules and rule-engine configuration in version control; the control-design rationale accompanies the rules.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:3",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -235,8 +245,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "policy-as-code guardrails",
-        "format": "Controlled document with owner, effective date and review date",
-        "acceptance_criterion": "Every statement is testable and maps to at least one control",
+        "format": "Actual executable policy rules and rule-engine configuration in version control; the control-design rationale accompanies the rules.",
+        "acceptance_criterion": "Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. Existing source requirement: Every statement is testable and maps to at least one control.",
         "role_path": "skills/it-roles-infrastructure-cloud-and-operations/references/infrastructure-as-code-engineer.md"
       }
     },
@@ -281,8 +291,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:3",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -334,8 +346,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:3",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -379,8 +393,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:3",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -424,8 +440,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:3",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -469,8 +487,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#infrastructure-as-code-engineer:3",
           "content/types/implementation-specification.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -516,8 +536,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -561,8 +583,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -608,8 +632,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-218",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -726,18 +752,34 @@
     ],
     "professional_references": [
       {
-        "id": "systems-security-engineering",
-        "title": "NIST SP 800-160 Volume 1 Revision 1, Engineering Trustworthy Secure Systems",
-        "url": "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-        "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
+        "id": "secure-software",
+        "title": "NIST SP 800-218, Secure Software Development Framework Version 1.1",
+        "url": "https://doi.org/10.6028/NIST.SP.800-218",
+        "scope": "Secure development practices, protected source/build inputs, verification and vulnerability response.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       },
       {
-        "id": "control-assessment",
-        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
-        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
-        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "configuration-management",
+        "title": "NIST SP 800-128, Guide for Security-Focused Configuration Management of Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-128",
+        "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "contingency-planning",
+        "title": "NIST SP 800-34 Revision 1, Contingency Planning Guide for Federal Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-34r1",
+        "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
@@ -745,12 +787,17 @@
     "role_framework_context": [
       {
         "role": "Infrastructure as Code Engineer",
+        "domain": "Infrastructure, Cloud and Operations",
+        "domain_index": 8,
+        "method_focus": "Define measurable service objectives, capacity and dependency assumptions, failure behaviour, recovery and observed operational evidence.",
         "frameworks": [
           "Terraform and OpenTofu module conventions with semantic versioning",
           "policy-as-code with Open Policy Agent or equivalent",
           "CIS Benchmarks",
           "provider well-architected frameworks"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -804,14 +851,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
-  "semantic_foundation_ref": "type/control-design",
+  "semantic_foundation_ref": "family/software-change",
   "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "control-design",
+  "semantic_family": "software-change",
   "role_overlay": {
     "contract_id": "infrastructure-as-code-engineer:3",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -823,6 +870,17 @@
     "source_fingerprint": "31d19f1e9912ebcac6665814c1a4a24530f4bb0981254a90375fd891a0ca81c8",
     "source_hash": "3a90dc383e61c09cc7d46f7caccd99adc61e4a6efc4b4b07a76a43a4a9c58b9f"
   },
+  "delivery_form": {
+    "primary_artifact": "versioned-policy-as-code",
+    "representation": "Actual executable policy rules and rule-engine configuration in version control; the control-design rationale accompanies the rules.",
+    "evidence": [
+      "exact rule/engine revision and enforcement scope",
+      "observed allow/deny and exception-path tests"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "920775ac970dcb38e53c225586b7287eea579db6e10c4dff452591f123f0ce01",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

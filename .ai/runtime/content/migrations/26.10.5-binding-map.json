@@ -84,7 +84,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/chief-information-officer:2",
         "design.content_profile_ref": "kind/role/chief-information-officer:2",
@@ -520,7 +520,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/chief-information-security-officer:4",
         "design.content_profile_ref": "kind/role/chief-information-security-officer:4",
@@ -692,7 +692,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "business-case",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/chief-data-officer:4",
         "design.content_profile_ref": "kind/role/chief-data-officer:4",
@@ -950,7 +950,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/chief-product-officer:2",
         "design.content_profile_ref": "kind/role/chief-product-officer:2",
@@ -1208,7 +1208,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "diagram",
+      "semantic_family": "document",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/chief-ai-officer:4",
         "design.content_profile_ref": "kind/role/chief-ai-officer:4",
@@ -1548,7 +1548,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "hld",
+      "semantic_family": "roadmap",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/vp-of-engineering:4",
         "design.content_profile_ref": "kind/role/vp-of-engineering:4",
@@ -1677,7 +1677,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "service-design",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/head-of-platform:3",
         "design.content_profile_ref": "kind/role/head-of-platform:3",
@@ -1720,7 +1720,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/head-of-platform:4",
         "design.content_profile_ref": "kind/role/head-of-platform:4",
@@ -1806,7 +1806,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "diagram",
+      "semantic_family": "dataset",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/it-service-owner:2",
         "design.content_profile_ref": "kind/role/it-service-owner:2",
@@ -2168,7 +2168,7 @@
       "decision_supported_copy_detected": true,
       "decision_supported": {
         "status": "mapped-proposed",
-        "value": "Use \"acceptance criteria\" to communicate the attributable findings and required follow-up actions from Product strategy and roadmap; Stakeholder requests; Team velocity and capacity; Technical constraints to Development team; Test Analyst.",
+        "value": "Agree testable requirements, resolve stakeholder conflicts and trace acceptance conditions to implementation and verification for \"acceptance criteria\", using Product strategy and roadmap; Stakeholder requests; Team velocity and capacity; Technical constraints.",
         "action_class": "decision-or-operational-action",
         "subject": "acceptance criteria",
         "accountable_owner": "Product Owner",
@@ -2177,7 +2177,7 @@
           "Test Analyst"
         ],
         "reason": "Source-derived operational-use proposal from the exact deliverable and required inputs; broad historical modality does not establish professional meaning. Competent domain confirmation and existing JAI L0 authority remain separate.",
-        "derivation_basis": "source-deliverable operational-use proposal; no modality-specific action inferred",
+        "derivation_basis": "authored semantic-family action",
         "derivation_limits": [
           "The source-deliverable scope is retained; operational meaning remains a proposal requiring competent domain confirmation.",
           "Frozen modality is preserved for compatibility, not treated as proof of professional purpose."
@@ -2190,7 +2190,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "requirements-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/product-owner:3",
         "design.content_profile_ref": "kind/role/product-owner:3",
@@ -2361,7 +2361,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "dashboard",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/technical-product-manager:3",
         "design.content_profile_ref": "kind/role/technical-product-manager:3",
@@ -2527,7 +2527,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "dashboard",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/scrum-master:3",
         "design.content_profile_ref": "kind/role/scrum-master:3",
@@ -2568,7 +2568,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/scrum-master:4",
         "design.content_profile_ref": "kind/role/scrum-master:4",
@@ -2610,7 +2610,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/agile-coach:1",
         "design.content_profile_ref": "kind/role/agile-coach:1",
@@ -2736,7 +2736,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/agile-coach:4",
         "design.content_profile_ref": "kind/role/agile-coach:4",
@@ -2865,7 +2865,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/delivery-manager:3",
         "design.content_profile_ref": "kind/role/delivery-manager:3",
@@ -3244,7 +3244,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/epic-owner:4",
         "design.content_profile_ref": "kind/role/epic-owner:4",
@@ -3348,7 +3348,7 @@
       "decision_supported_copy_detected": true,
       "decision_supported": {
         "status": "mapped-proposed",
-        "value": "Use \"non-functional requirement set\" to communicate the attributable findings and required follow-up actions from Programme backlog; Current system constraints; Non-functional targets; Technical debt position to Technical Lead; Platform Engineer.",
+        "value": "Agree testable requirements, resolve stakeholder conflicts and trace acceptance conditions to implementation and verification for \"non-functional requirement set\", using Programme backlog; Current system constraints; Non-functional targets; Technical debt position.",
         "action_class": "decision-or-operational-action",
         "subject": "non-functional requirement set",
         "accountable_owner": "SAFe System Architect",
@@ -3357,7 +3357,7 @@
           "Platform Engineer"
         ],
         "reason": "Source-derived operational-use proposal from the exact deliverable and required inputs; broad historical modality does not establish professional meaning. Competent domain confirmation and existing JAI L0 authority remain separate.",
-        "derivation_basis": "source-deliverable operational-use proposal; no modality-specific action inferred",
+        "derivation_basis": "authored semantic-family action",
         "derivation_limits": [
           "The source-deliverable scope is retained; operational meaning remains a proposal requiring competent domain confirmation.",
           "Frozen modality is preserved for compatibility, not treated as proof of professional purpose."
@@ -3370,7 +3370,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "requirements-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/safe-system-architect:3",
         "design.content_profile_ref": "kind/role/safe-system-architect:3",
@@ -3390,7 +3390,7 @@
       "decision_supported_copy_detected": true,
       "decision_supported": {
         "status": "mapped-proposed",
-        "value": "Use \"system-level interface definitions\" to communicate the attributable findings and required follow-up actions from Programme backlog; Current system constraints; Non-functional targets; Technical debt position to Technical Lead; Platform Engineer.",
+        "value": "Agree testable requirements, resolve stakeholder conflicts and trace acceptance conditions to implementation and verification for \"system-level interface definitions\", using Programme backlog; Current system constraints; Non-functional targets; Technical debt position.",
         "action_class": "decision-or-operational-action",
         "subject": "system-level interface definitions",
         "accountable_owner": "SAFe System Architect",
@@ -3399,7 +3399,7 @@
           "Platform Engineer"
         ],
         "reason": "Source-derived operational-use proposal from the exact deliverable and required inputs; broad historical modality does not establish professional meaning. Competent domain confirmation and existing JAI L0 authority remain separate.",
-        "derivation_basis": "source-deliverable operational-use proposal; no modality-specific action inferred",
+        "derivation_basis": "authored semantic-family action",
         "derivation_limits": [
           "The source-deliverable scope is retained; operational meaning remains a proposal requiring competent domain confirmation.",
           "Frozen modality is preserved for compatibility, not treated as proof of professional purpose."
@@ -3412,7 +3412,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "requirements-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/safe-system-architect:4",
         "design.content_profile_ref": "kind/role/safe-system-architect:4",
@@ -3580,7 +3580,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/project-manager:4",
         "design.content_profile_ref": "kind/role/project-manager:4",
@@ -3791,7 +3791,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "diagram",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/portfolio-manager:1",
         "design.content_profile_ref": "kind/role/portfolio-manager:1",
@@ -3834,7 +3834,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "dataset",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/portfolio-manager:2",
         "design.content_profile_ref": "kind/role/portfolio-manager:2",
@@ -3877,7 +3877,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/portfolio-manager:3",
         "design.content_profile_ref": "kind/role/portfolio-manager:3",
@@ -3920,7 +3920,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "decision-paper",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/portfolio-manager:4",
         "design.content_profile_ref": "kind/role/portfolio-manager:4",
@@ -3962,7 +3962,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/pmo-analyst:1",
         "design.content_profile_ref": "kind/role/pmo-analyst:1",
@@ -4046,7 +4046,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/pmo-analyst:3",
         "design.content_profile_ref": "kind/role/pmo-analyst:3",
@@ -4088,7 +4088,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/pmo-analyst:4",
         "design.content_profile_ref": "kind/role/pmo-analyst:4",
@@ -4214,7 +4214,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/pmo-lead:3",
         "design.content_profile_ref": "kind/role/pmo-lead:3",
@@ -4342,7 +4342,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/engineering-manager:2",
         "design.content_profile_ref": "kind/role/engineering-manager:2",
@@ -4428,7 +4428,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/engineering-manager:4",
         "design.content_profile_ref": "kind/role/engineering-manager:4",
@@ -4596,7 +4596,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "roadmap",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/technical-lead:4",
         "design.content_profile_ref": "kind/role/technical-lead:4",
@@ -4638,7 +4638,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/transformation-manager:1",
         "design.content_profile_ref": "kind/role/transformation-manager:1",
@@ -4722,7 +4722,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "dashboard",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/transformation-manager:3",
         "design.content_profile_ref": "kind/role/transformation-manager:3",
@@ -4893,7 +4893,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/business-analyst:3",
         "design.content_profile_ref": "kind/role/business-analyst:3",
@@ -4936,7 +4936,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/business-analyst:4",
         "design.content_profile_ref": "kind/role/business-analyst:4",
@@ -5020,7 +5020,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/systems-analyst:2",
         "design.content_profile_ref": "kind/role/systems-analyst:2",
@@ -5062,7 +5062,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/systems-analyst:3",
         "design.content_profile_ref": "kind/role/systems-analyst:3",
@@ -5104,7 +5104,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "implementation-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/systems-analyst:4",
         "design.content_profile_ref": "kind/role/systems-analyst:4",
@@ -5188,7 +5188,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/requirements-engineer:2",
         "design.content_profile_ref": "kind/role/requirements-engineer:2",
@@ -5230,7 +5230,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/requirements-engineer:3",
         "design.content_profile_ref": "kind/role/requirements-engineer:3",
@@ -5272,7 +5272,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/requirements-engineer:4",
         "design.content_profile_ref": "kind/role/requirements-engineer:4",
@@ -5356,7 +5356,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/process-analyst:2",
         "design.content_profile_ref": "kind/role/process-analyst:2",
@@ -5398,7 +5398,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/process-analyst:3",
         "design.content_profile_ref": "kind/role/process-analyst:3",
@@ -5440,7 +5440,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "business-case",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/process-analyst:4",
         "design.content_profile_ref": "kind/role/process-analyst:4",
@@ -5482,7 +5482,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/enterprise-business-analyst:1",
         "design.content_profile_ref": "kind/role/enterprise-business-analyst:1",
@@ -5524,7 +5524,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/enterprise-business-analyst:2",
         "design.content_profile_ref": "kind/role/enterprise-business-analyst:2",
@@ -5566,7 +5566,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/enterprise-business-analyst:3",
         "design.content_profile_ref": "kind/role/enterprise-business-analyst:3",
@@ -5650,7 +5650,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "software-change",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-analyst:1",
         "design.content_profile_ref": "kind/role/data-analyst:1",
@@ -5692,7 +5692,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-analyst:2",
         "design.content_profile_ref": "kind/role/data-analyst:2",
@@ -5776,7 +5776,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-analyst:4",
         "design.content_profile_ref": "kind/role/data-analyst:4",
@@ -5944,7 +5944,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/business-intelligence-analyst:4",
         "design.content_profile_ref": "kind/role/business-intelligence-analyst:4",
@@ -5986,7 +5986,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "diagram",
+      "semantic_family": "dataset",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/finops-analyst:1",
         "design.content_profile_ref": "kind/role/finops-analyst:1",
@@ -6028,7 +6028,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/finops-analyst:2",
         "design.content_profile_ref": "kind/role/finops-analyst:2",
@@ -6196,7 +6196,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/product-analyst:2",
         "design.content_profile_ref": "kind/role/product-analyst:2",
@@ -6238,7 +6238,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/product-analyst:3",
         "design.content_profile_ref": "kind/role/product-analyst:3",
@@ -6280,7 +6280,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/product-analyst:4",
         "design.content_profile_ref": "kind/role/product-analyst:4",
@@ -6322,7 +6322,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/service-level-analyst:1",
         "design.content_profile_ref": "kind/role/service-level-analyst:1",
@@ -6364,7 +6364,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "service-design",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/service-level-analyst:2",
         "design.content_profile_ref": "kind/role/service-level-analyst:2",
@@ -6406,7 +6406,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/service-level-analyst:3",
         "design.content_profile_ref": "kind/role/service-level-analyst:3",
@@ -6448,7 +6448,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/service-level-analyst:4",
         "design.content_profile_ref": "kind/role/service-level-analyst:4",
@@ -6491,7 +6491,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "diagram",
+      "semantic_family": "catalogue",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/configuration-analyst:1",
         "design.content_profile_ref": "kind/role/configuration-analyst:1",
@@ -6534,7 +6534,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/configuration-analyst:2",
         "design.content_profile_ref": "kind/role/configuration-analyst:2",
@@ -6577,7 +6577,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/configuration-analyst:3",
         "design.content_profile_ref": "kind/role/configuration-analyst:3",
@@ -6706,7 +6706,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "model",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/enterprise-architect:2",
         "design.content_profile_ref": "kind/role/enterprise-architect:2",
@@ -6834,7 +6834,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "diagram",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/business-architect:1",
         "design.content_profile_ref": "kind/role/business-architect:1",
@@ -6876,7 +6876,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/business-architect:2",
         "design.content_profile_ref": "kind/role/business-architect:2",
@@ -6918,7 +6918,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "roadmap",
+      "semantic_family": "dashboard",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/business-architect:3",
         "design.content_profile_ref": "kind/role/business-architect:3",
@@ -6960,7 +6960,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "model",
+      "semantic_family": "roadmap",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/business-architect:4",
         "design.content_profile_ref": "kind/role/business-architect:4",
@@ -7174,7 +7174,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "hld",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/application-architect:1",
         "design.content_profile_ref": "kind/role/application-architect:1",
@@ -7194,7 +7194,7 @@
       "decision_supported_copy_detected": true,
       "decision_supported": {
         "status": "mapped-proposed",
-        "value": "Use \"dependency and layering rules\" to communicate the attributable findings and required follow-up actions from Feature roadmap; Current code and dependency analysis; Defect and change hotspots; Runtime behaviour to Technical Lead; Software Engineer.",
+        "value": "Agree testable requirements, resolve stakeholder conflicts and trace acceptance conditions to implementation and verification for \"dependency and layering rules\", using Feature roadmap; Current code and dependency analysis; Defect and change hotspots; Runtime behaviour.",
         "action_class": "decision-or-operational-action",
         "subject": "dependency and layering rules",
         "accountable_owner": "Application Architect",
@@ -7203,7 +7203,7 @@
           "Software Engineer"
         ],
         "reason": "Source-derived operational-use proposal from the exact deliverable and required inputs; broad historical modality does not establish professional meaning. Competent domain confirmation and existing JAI L0 authority remain separate.",
-        "derivation_basis": "source-deliverable operational-use proposal; no modality-specific action inferred",
+        "derivation_basis": "authored semantic-family action",
         "derivation_limits": [
           "The source-deliverable scope is retained; operational meaning remains a proposal requiring competent domain confirmation.",
           "Frozen modality is preserved for compatibility, not treated as proof of professional purpose."
@@ -7216,7 +7216,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "requirements-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/application-architect:2",
         "design.content_profile_ref": "kind/role/application-architect:2",
@@ -7511,7 +7511,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "diagram",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-architect:1",
         "design.content_profile_ref": "kind/role/data-architect:1",
@@ -7937,7 +7937,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "diagram",
+      "semantic_family": "dataset",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/cloud-architect:3",
         "design.content_profile_ref": "kind/role/cloud-architect:3",
@@ -7980,7 +7980,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "register",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/cloud-architect:4",
         "design.content_profile_ref": "kind/role/cloud-architect:4",
@@ -8618,7 +8618,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "model",
+      "semantic_family": "adr",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/technical-design-authority-member:3",
         "design.content_profile_ref": "kind/role/technical-design-authority-member:3",
@@ -8660,7 +8660,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "test-strategy",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/technical-design-authority-member:4",
         "design.content_profile_ref": "kind/role/technical-design-authority-member:4",
@@ -8958,7 +8958,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/senior-software-engineer:3",
         "design.content_profile_ref": "kind/role/senior-software-engineer:3",
@@ -9000,7 +9000,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/senior-software-engineer:4",
         "design.content_profile_ref": "kind/role/senior-software-engineer:4",
@@ -9630,7 +9630,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "software-change",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/full-stack-engineer:3",
         "design.content_profile_ref": "kind/role/full-stack-engineer:3",
@@ -9672,7 +9672,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/full-stack-engineer:4",
         "design.content_profile_ref": "kind/role/full-stack-engineer:4",
@@ -9756,7 +9756,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "software-change",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/mobile-engineer:2",
         "design.content_profile_ref": "kind/role/mobile-engineer:2",
@@ -9840,7 +9840,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "hld",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/mobile-engineer:4",
         "design.content_profile_ref": "kind/role/mobile-engineer:4",
@@ -9966,7 +9966,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/embedded-firmware-engineer:3",
         "design.content_profile_ref": "kind/role/embedded-firmware-engineer:3",
@@ -10092,7 +10092,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/real-time-systems-engineer:2",
         "design.content_profile_ref": "kind/role/real-time-systems-engineer:2",
@@ -10260,7 +10260,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/systems-programmer:2",
         "design.content_profile_ref": "kind/role/systems-programmer:2",
@@ -10344,7 +10344,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/systems-programmer:4",
         "design.content_profile_ref": "kind/role/systems-programmer:4",
@@ -10848,7 +10848,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/integration-developer:4",
         "design.content_profile_ref": "kind/role/integration-developer:4",
@@ -10974,7 +10974,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/erp-and-crm-consultant-developer:3",
         "design.content_profile_ref": "kind/role/erp-and-crm-consultant-developer:3",
@@ -11100,7 +11100,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "implementation-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/low-code-and-rpa-developer:2",
         "design.content_profile_ref": "kind/role/low-code-and-rpa-developer:2",
@@ -11184,7 +11184,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/low-code-and-rpa-developer:4",
         "design.content_profile_ref": "kind/role/low-code-and-rpa-developer:4",
@@ -11310,7 +11310,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/game-developer:3",
         "design.content_profile_ref": "kind/role/game-developer:3",
@@ -11436,7 +11436,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/graphics-and-engine-engineer:2",
         "design.content_profile_ref": "kind/role/graphics-and-engine-engineer:2",
@@ -11856,7 +11856,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "diagram",
+      "semantic_family": "document",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/quantitative-developer:4",
         "design.content_profile_ref": "kind/role/quantitative-developer:4",
@@ -12108,7 +12108,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/build-engineer:2",
         "design.content_profile_ref": "kind/role/build-engineer:2",
@@ -12448,7 +12448,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "register",
+      "semantic_family": "hld",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/ci-cd-platform-engineer:2",
         "design.content_profile_ref": "kind/role/ci-cd-platform-engineer:2",
@@ -12579,7 +12579,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "diagram",
+      "semantic_family": "deployment-automation",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/gitops-and-continuous-delivery-engineer:1",
         "design.content_profile_ref": "kind/role/gitops-and-continuous-delivery-engineer:1",
@@ -12792,7 +12792,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "dashboard",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/developer-experience-engineer:2",
         "design.content_profile_ref": "kind/role/developer-experience-engineer:2",
@@ -13044,7 +13044,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/open-source-program-office-engineer:4",
         "design.content_profile_ref": "kind/role/open-source-program-office-engineer:4",
@@ -13254,7 +13254,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-strategy",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/test-analyst:1",
         "design.content_profile_ref": "kind/role/test-analyst:1",
@@ -13338,7 +13338,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/test-analyst:3",
         "design.content_profile_ref": "kind/role/test-analyst:3",
@@ -13674,7 +13674,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/performance-test-engineer:3",
         "design.content_profile_ref": "kind/role/performance-test-engineer:3",
@@ -13800,7 +13800,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/test-manager:2",
         "design.content_profile_ref": "kind/role/test-manager:2",
@@ -13842,7 +13842,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "risk-assessment",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/test-manager:3",
         "design.content_profile_ref": "kind/role/test-manager:3",
@@ -14052,7 +14052,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "dashboard",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/test-architect:4",
         "design.content_profile_ref": "kind/role/test-architect:4",
@@ -14136,7 +14136,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-strategy",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/user-acceptance-test-coordinator:2",
         "design.content_profile_ref": "kind/role/user-acceptance-test-coordinator:2",
@@ -14262,7 +14262,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/accessibility-tester:1",
         "design.content_profile_ref": "kind/role/accessibility-tester:1",
@@ -14304,7 +14304,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/accessibility-tester:2",
         "design.content_profile_ref": "kind/role/accessibility-tester:2",
@@ -14346,7 +14346,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/accessibility-tester:3",
         "design.content_profile_ref": "kind/role/accessibility-tester:3",
@@ -14472,7 +14472,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/localisation-qa-analyst:2",
         "design.content_profile_ref": "kind/role/localisation-qa-analyst:2",
@@ -14514,7 +14514,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/localisation-qa-analyst:3",
         "design.content_profile_ref": "kind/role/localisation-qa-analyst:3",
@@ -14556,7 +14556,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/localisation-qa-analyst:4",
         "design.content_profile_ref": "kind/role/localisation-qa-analyst:4",
@@ -14598,7 +14598,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-strategy",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/chaos-and-resilience-engineer:1",
         "design.content_profile_ref": "kind/role/chaos-and-resilience-engineer:1",
@@ -14640,7 +14640,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "roadmap",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/chaos-and-resilience-engineer:2",
         "design.content_profile_ref": "kind/role/chaos-and-resilience-engineer:2",
@@ -14682,7 +14682,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/chaos-and-resilience-engineer:3",
         "design.content_profile_ref": "kind/role/chaos-and-resilience-engineer:3",
@@ -14724,7 +14724,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-strategy",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/chaos-and-resilience-engineer:4",
         "design.content_profile_ref": "kind/role/chaos-and-resilience-engineer:4",
@@ -14767,7 +14767,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/codebase-reviewer:1",
         "design.content_profile_ref": "kind/role/codebase-reviewer:1",
@@ -14810,7 +14810,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "model",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/codebase-reviewer:2",
         "design.content_profile_ref": "kind/role/codebase-reviewer:2",
@@ -14853,7 +14853,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/codebase-reviewer:3",
         "design.content_profile_ref": "kind/role/codebase-reviewer:3",
@@ -14980,7 +14980,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/release-quality-gatekeeper:2",
         "design.content_profile_ref": "kind/role/release-quality-gatekeeper:2",
@@ -15064,7 +15064,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/release-quality-gatekeeper:4",
         "design.content_profile_ref": "kind/role/release-quality-gatekeeper:4",
@@ -15150,7 +15150,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-engineer:2",
         "design.content_profile_ref": "kind/role/data-engineer:2",
@@ -15278,7 +15278,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "diagram",
+      "semantic_family": "software-change",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/analytics-engineer:1",
         "design.content_profile_ref": "kind/role/analytics-engineer:1",
@@ -15320,7 +15320,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/analytics-engineer:2",
         "design.content_profile_ref": "kind/role/analytics-engineer:2",
@@ -15362,7 +15362,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "dataset",
+      "semantic_family": "catalogue",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/analytics-engineer:3",
         "design.content_profile_ref": "kind/role/analytics-engineer:3",
@@ -15530,7 +15530,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/database-administrator:3",
         "design.content_profile_ref": "kind/role/database-administrator:3",
@@ -15572,7 +15572,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "roadmap",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/database-administrator:4",
         "design.content_profile_ref": "kind/role/database-administrator:4",
@@ -15782,7 +15782,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "diagram",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-modeller:1",
         "design.content_profile_ref": "kind/role/data-modeller:1",
@@ -15824,7 +15824,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "catalogue",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-modeller:2",
         "design.content_profile_ref": "kind/role/data-modeller:2",
@@ -15866,7 +15866,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "diagram",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-modeller:3",
         "design.content_profile_ref": "kind/role/data-modeller:3",
@@ -15950,7 +15950,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "catalogue",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-steward:1",
         "design.content_profile_ref": "kind/role/data-steward:1",
@@ -15970,7 +15970,7 @@
       "decision_supported_copy_detected": true,
       "decision_supported": {
         "status": "mapped-proposed",
-        "value": "Use \"data quality rules and thresholds\" to communicate the attributable findings and required follow-up actions from Business definitions and rules; Quality measurement results; Access requests; Privacy constraints to Data Quality Analyst; Data Engineer.",
+        "value": "Agree testable requirements, resolve stakeholder conflicts and trace acceptance conditions to implementation and verification for \"data quality rules and thresholds\", using Business definitions and rules; Quality measurement results; Access requests; Privacy constraints.",
         "action_class": "decision-or-operational-action",
         "subject": "data quality rules and thresholds",
         "accountable_owner": "Data Steward",
@@ -15979,7 +15979,7 @@
           "Data Engineer"
         ],
         "reason": "Source-derived operational-use proposal from the exact deliverable and required inputs; broad historical modality does not establish professional meaning. Competent domain confirmation and existing JAI L0 authority remain separate.",
-        "derivation_basis": "source-deliverable operational-use proposal; no modality-specific action inferred",
+        "derivation_basis": "authored semantic-family action",
         "derivation_limits": [
           "The source-deliverable scope is retained; operational meaning remains a proposal requiring competent domain confirmation.",
           "Frozen modality is preserved for compatibility, not treated as proof of professional purpose."
@@ -15992,7 +15992,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "requirements-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-steward:2",
         "design.content_profile_ref": "kind/role/data-steward:2",
@@ -16180,7 +16180,7 @@
       "decision_supported_copy_detected": true,
       "decision_supported": {
         "status": "mapped-proposed",
-        "value": "Use \"accepted quality tolerances\" to communicate the attributable findings and required follow-up actions from Asset inventory; Quality performance; Access requests and use cases; Legal basis assessment to Data Steward; Data Custodian.",
+        "value": "Agree testable requirements, resolve stakeholder conflicts and trace acceptance conditions to implementation and verification for \"accepted quality tolerances\", using Asset inventory; Quality performance; Access requests and use cases; Legal basis assessment.",
         "action_class": "decision-or-operational-action",
         "subject": "accepted quality tolerances",
         "accountable_owner": "Data Owner",
@@ -16189,7 +16189,7 @@
           "Data Custodian"
         ],
         "reason": "Source-derived operational-use proposal from the exact deliverable and required inputs; broad historical modality does not establish professional meaning. Competent domain confirmation and existing JAI L0 authority remain separate.",
-        "derivation_basis": "source-deliverable operational-use proposal; no modality-specific action inferred",
+        "derivation_basis": "authored semantic-family action",
         "derivation_limits": [
           "The source-deliverable scope is retained; operational meaning remains a proposal requiring competent domain confirmation.",
           "Frozen modality is preserved for compatibility, not treated as proof of professional purpose."
@@ -16202,7 +16202,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "requirements-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-owner:3",
         "design.content_profile_ref": "kind/role/data-owner:3",
@@ -16328,7 +16328,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-custodian:2",
         "design.content_profile_ref": "kind/role/data-custodian:2",
@@ -16710,7 +16710,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-quality-analyst:3",
         "design.content_profile_ref": "kind/role/data-quality-analyst:3",
@@ -16752,7 +16752,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-quality-analyst:4",
         "design.content_profile_ref": "kind/role/data-quality-analyst:4",
@@ -16794,7 +16794,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "implementation-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/master-data-management-specialist:1",
         "design.content_profile_ref": "kind/role/master-data-management-specialist:1",
@@ -16920,7 +16920,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "dashboard",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/master-data-management-specialist:4",
         "design.content_profile_ref": "kind/role/master-data-management-specialist:4",
@@ -17004,7 +17004,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-scientist:2",
         "design.content_profile_ref": "kind/role/data-scientist:2",
@@ -17088,7 +17088,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-scientist:4",
         "design.content_profile_ref": "kind/role/data-scientist:4",
@@ -17130,7 +17130,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-strategy",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/research-scientist:1",
         "design.content_profile_ref": "kind/role/research-scientist:1",
@@ -17172,7 +17172,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/research-scientist:2",
         "design.content_profile_ref": "kind/role/research-scientist:2",
@@ -17214,7 +17214,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/research-scientist:3",
         "design.content_profile_ref": "kind/role/research-scientist:3",
@@ -17256,7 +17256,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "register",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/research-scientist:4",
         "design.content_profile_ref": "kind/role/research-scientist:4",
@@ -17508,7 +17508,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/mlops-engineer:2",
         "design.content_profile_ref": "kind/role/mlops-engineer:2",
@@ -17760,7 +17760,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/llmops-and-ai-platform-engineer:4",
         "design.content_profile_ref": "kind/role/llmops-and-ai-platform-engineer:4",
@@ -17844,7 +17844,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "roadmap",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/ai-solutions-engineer:2",
         "design.content_profile_ref": "kind/role/ai-solutions-engineer:2",
@@ -17970,7 +17970,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "automated-tests",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/ai-safety-and-model-red-team-specialist:1",
         "design.content_profile_ref": "kind/role/ai-safety-and-model-red-team-specialist:1",
@@ -18054,7 +18054,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/ai-safety-and-model-red-team-specialist:3",
         "design.content_profile_ref": "kind/role/ai-safety-and-model-red-team-specialist:3",
@@ -18182,7 +18182,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/ai-governance-officer:2",
         "design.content_profile_ref": "kind/role/ai-governance-officer:2",
@@ -18225,7 +18225,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/ai-governance-officer:3",
         "design.content_profile_ref": "kind/role/ai-governance-officer:3",
@@ -18520,7 +18520,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/metadata-manager:2",
         "design.content_profile_ref": "kind/role/metadata-manager:2",
@@ -18562,7 +18562,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "catalogue",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/metadata-manager:3",
         "design.content_profile_ref": "kind/role/metadata-manager:3",
@@ -18604,7 +18604,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "catalogue",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/metadata-manager:4",
         "design.content_profile_ref": "kind/role/metadata-manager:4",
@@ -19234,7 +19234,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "deployment-automation",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/cloud-operations-engineer:3",
         "design.content_profile_ref": "kind/role/cloud-operations-engineer:3",
@@ -19276,7 +19276,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/cloud-operations-engineer:4",
         "design.content_profile_ref": "kind/role/cloud-operations-engineer:4",
@@ -19318,7 +19318,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "software-change",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/platform-engineer:1",
         "design.content_profile_ref": "kind/role/platform-engineer:1",
@@ -19402,7 +19402,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "service-design",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/platform-engineer:3",
         "design.content_profile_ref": "kind/role/platform-engineer:3",
@@ -19822,7 +19822,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "model",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/kubernetes-platform-engineer:1",
         "design.content_profile_ref": "kind/role/kubernetes-platform-engineer:1",
@@ -20080,7 +20080,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "control-design",
+      "semantic_family": "software-change",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/infrastructure-as-code-engineer:3",
         "design.content_profile_ref": "kind/role/infrastructure-as-code-engineer:3",
@@ -20552,7 +20552,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/virtualisation-engineer:2",
         "design.content_profile_ref": "kind/role/virtualisation-engineer:2",
@@ -20636,7 +20636,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/virtualisation-engineer:4",
         "design.content_profile_ref": "kind/role/virtualisation-engineer:4",
@@ -20720,7 +20720,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/storage-engineer:2",
         "design.content_profile_ref": "kind/role/storage-engineer:2",
@@ -20804,7 +20804,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/storage-engineer:4",
         "design.content_profile_ref": "kind/role/storage-engineer:4",
@@ -20846,7 +20846,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "roadmap",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/backup-and-recovery-engineer:1",
         "design.content_profile_ref": "kind/role/backup-and-recovery-engineer:1",
@@ -20930,7 +20930,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/backup-and-recovery-engineer:3",
         "design.content_profile_ref": "kind/role/backup-and-recovery-engineer:3",
@@ -21056,7 +21056,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/datacentre-technician:2",
         "design.content_profile_ref": "kind/role/datacentre-technician:2",
@@ -21098,7 +21098,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "dataset",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/datacentre-technician:3",
         "design.content_profile_ref": "kind/role/datacentre-technician:3",
@@ -21226,7 +21226,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "adr",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/capacity-manager:2",
         "design.content_profile_ref": "kind/role/capacity-manager:2",
@@ -21312,7 +21312,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "diagram",
+      "semantic_family": "dataset",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/capacity-manager:4",
         "design.content_profile_ref": "kind/role/capacity-manager:4",
@@ -21396,7 +21396,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/availability-manager:2",
         "design.content_profile_ref": "kind/role/availability-manager:2",
@@ -21438,7 +21438,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/availability-manager:3",
         "design.content_profile_ref": "kind/role/availability-manager:3",
@@ -21480,7 +21480,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/availability-manager:4",
         "design.content_profile_ref": "kind/role/availability-manager:4",
@@ -21606,7 +21606,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/observability-engineer:3",
         "design.content_profile_ref": "kind/role/observability-engineer:3",
@@ -21732,7 +21732,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/middleware-administrator:2",
         "design.content_profile_ref": "kind/role/middleware-administrator:2",
@@ -21942,7 +21942,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/finops-engineer:3",
         "design.content_profile_ref": "kind/role/finops-engineer:3",
@@ -21984,7 +21984,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/finops-engineer:4",
         "design.content_profile_ref": "kind/role/finops-engineer:4",
@@ -22110,7 +22110,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/sustainable-it-engineer:3",
         "design.content_profile_ref": "kind/role/sustainable-it-engineer:3",
@@ -22278,7 +22278,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "register",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/network-engineer:3",
         "design.content_profile_ref": "kind/role/network-engineer:3",
@@ -22320,7 +22320,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/network-engineer:4",
         "design.content_profile_ref": "kind/role/network-engineer:4",
@@ -22446,7 +22446,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/network-administrator:3",
         "design.content_profile_ref": "kind/role/network-administrator:3",
@@ -22572,7 +22572,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/network-operations-centre-analyst:2",
         "design.content_profile_ref": "kind/role/network-operations-centre-analyst:2",
@@ -22614,7 +22614,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/network-operations-centre-analyst:3",
         "design.content_profile_ref": "kind/role/network-operations-centre-analyst:3",
@@ -22656,7 +22656,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/network-operations-centre-analyst:4",
         "design.content_profile_ref": "kind/role/network-operations-centre-analyst:4",
@@ -22698,7 +22698,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/wireless-and-rf-engineer:1",
         "design.content_profile_ref": "kind/role/wireless-and-rf-engineer:1",
@@ -22740,7 +22740,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "roadmap",
+      "semantic_family": "implementation-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/wireless-and-rf-engineer:2",
         "design.content_profile_ref": "kind/role/wireless-and-rf-engineer:2",
@@ -22950,7 +22950,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/unified-communications-engineer:3",
         "design.content_profile_ref": "kind/role/unified-communications-engineer:3",
@@ -22992,7 +22992,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/unified-communications-engineer:4",
         "design.content_profile_ref": "kind/role/unified-communications-engineer:4",
@@ -23160,7 +23160,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/sd-wan-and-edge-engineer:4",
         "design.content_profile_ref": "kind/role/sd-wan-and-edge-engineer:4",
@@ -23202,7 +23202,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "register",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/firewall-and-perimeter-engineer:1",
         "design.content_profile_ref": "kind/role/firewall-and-perimeter-engineer:1",
@@ -23244,7 +23244,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/firewall-and-perimeter-engineer:2",
         "design.content_profile_ref": "kind/role/firewall-and-perimeter-engineer:2",
@@ -23454,7 +23454,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "roadmap",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/dns-dhcp-and-ipam-specialist:3",
         "design.content_profile_ref": "kind/role/dns-dhcp-and-ipam-specialist:3",
@@ -23622,7 +23622,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/network-field-technician:3",
         "design.content_profile_ref": "kind/role/network-field-technician:3",
@@ -23664,7 +23664,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/network-field-technician:4",
         "design.content_profile_ref": "kind/role/network-field-technician:4",
@@ -23748,7 +23748,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/service-desk-analyst:2",
         "design.content_profile_ref": "kind/role/service-desk-analyst:2",
@@ -23832,7 +23832,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/service-desk-analyst:4",
         "design.content_profile_ref": "kind/role/service-desk-analyst:4",
@@ -23916,7 +23916,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/desktop-support-engineer:2",
         "design.content_profile_ref": "kind/role/desktop-support-engineer:2",
@@ -24000,7 +24000,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/desktop-support-engineer:4",
         "design.content_profile_ref": "kind/role/desktop-support-engineer:4",
@@ -24126,7 +24126,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/application-support-analyst:3",
         "design.content_profile_ref": "kind/role/application-support-analyst:3",
@@ -24168,7 +24168,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/application-support-analyst:4",
         "design.content_profile_ref": "kind/role/application-support-analyst:4",
@@ -24294,7 +24294,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/incident-manager:3",
         "design.content_profile_ref": "kind/role/incident-manager:3",
@@ -24336,7 +24336,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/incident-manager:4",
         "design.content_profile_ref": "kind/role/incident-manager:4",
@@ -24462,7 +24462,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/major-incident-manager:3",
         "design.content_profile_ref": "kind/role/major-incident-manager:3",
@@ -24504,7 +24504,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/major-incident-manager:4",
         "design.content_profile_ref": "kind/role/major-incident-manager:4",
@@ -24588,7 +24588,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/problem-manager:2",
         "design.content_profile_ref": "kind/role/problem-manager:2",
@@ -24672,7 +24672,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/problem-manager:4",
         "design.content_profile_ref": "kind/role/problem-manager:4",
@@ -24798,7 +24798,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/change-manager:3",
         "design.content_profile_ref": "kind/role/change-manager:3",
@@ -24966,7 +24966,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/request-fulfilment-manager:3",
         "design.content_profile_ref": "kind/role/request-fulfilment-manager:3",
@@ -25050,7 +25050,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "service-design",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/service-level-manager:1",
         "design.content_profile_ref": "kind/role/service-level-manager:1",
@@ -25092,7 +25092,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/service-level-manager:2",
         "design.content_profile_ref": "kind/role/service-level-manager:2",
@@ -25176,7 +25176,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "service-design",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/service-level-manager:4",
         "design.content_profile_ref": "kind/role/service-level-manager:4",
@@ -25386,7 +25386,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "business-case",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/continual-improvement-manager:1",
         "design.content_profile_ref": "kind/role/continual-improvement-manager:1",
@@ -25428,7 +25428,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/continual-improvement-manager:2",
         "design.content_profile_ref": "kind/role/continual-improvement-manager:2",
@@ -25470,7 +25470,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/continual-improvement-manager:3",
         "design.content_profile_ref": "kind/role/continual-improvement-manager:3",
@@ -25596,7 +25596,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/knowledge-manager:2",
         "design.content_profile_ref": "kind/role/knowledge-manager:2",
@@ -25638,7 +25638,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "runbook",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/knowledge-manager:3",
         "design.content_profile_ref": "kind/role/knowledge-manager:3",
@@ -25764,7 +25764,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/configuration-manager:2",
         "design.content_profile_ref": "kind/role/configuration-manager:2",
@@ -25806,7 +25806,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/configuration-manager:3",
         "design.content_profile_ref": "kind/role/configuration-manager:3",
@@ -25932,7 +25932,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/it-asset-manager:2",
         "design.content_profile_ref": "kind/role/it-asset-manager:2",
@@ -26016,7 +26016,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/it-asset-manager:4",
         "design.content_profile_ref": "kind/role/it-asset-manager:4",
@@ -26058,7 +26058,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/software-asset-manager:1",
         "design.content_profile_ref": "kind/role/software-asset-manager:1",
@@ -26184,7 +26184,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/software-asset-manager:4",
         "design.content_profile_ref": "kind/role/software-asset-manager:4",
@@ -26268,7 +26268,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/end-user-computing-engineer:2",
         "design.content_profile_ref": "kind/role/end-user-computing-engineer:2",
@@ -26352,7 +26352,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/end-user-computing-engineer:4",
         "design.content_profile_ref": "kind/role/end-user-computing-engineer:4",
@@ -26478,7 +26478,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/business-relationship-manager:3",
         "design.content_profile_ref": "kind/role/business-relationship-manager:3",
@@ -26604,7 +26604,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-analyst-tier-1:2",
         "design.content_profile_ref": "kind/role/security-analyst-tier-1:2",
@@ -26646,7 +26646,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-analyst-tier-1:3",
         "design.content_profile_ref": "kind/role/security-analyst-tier-1:3",
@@ -26688,7 +26688,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-analyst-tier-1:4",
         "design.content_profile_ref": "kind/role/security-analyst-tier-1:4",
@@ -26772,7 +26772,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-analyst-tier-2:2",
         "design.content_profile_ref": "kind/role/security-analyst-tier-2:2",
@@ -26814,7 +26814,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-analyst-tier-2:3",
         "design.content_profile_ref": "kind/role/security-analyst-tier-2:3",
@@ -26856,7 +26856,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-analyst-tier-2:4",
         "design.content_profile_ref": "kind/role/security-analyst-tier-2:4",
@@ -26898,7 +26898,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-analyst-tier-3:1",
         "design.content_profile_ref": "kind/role/security-analyst-tier-3:1",
@@ -26940,7 +26940,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-strategy",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-analyst-tier-3:2",
         "design.content_profile_ref": "kind/role/security-analyst-tier-3:2",
@@ -27024,7 +27024,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-analyst-tier-3:4",
         "design.content_profile_ref": "kind/role/security-analyst-tier-3:4",
@@ -27110,7 +27110,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/soc-manager:2",
         "design.content_profile_ref": "kind/role/soc-manager:2",
@@ -27153,7 +27153,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/soc-manager:3",
         "design.content_profile_ref": "kind/role/soc-manager:3",
@@ -27238,7 +27238,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "register",
+      "semantic_family": "test-strategy",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/threat-hunter:1",
         "design.content_profile_ref": "kind/role/threat-hunter:1",
@@ -27280,7 +27280,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/threat-hunter:2",
         "design.content_profile_ref": "kind/role/threat-hunter:2",
@@ -27322,7 +27322,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "software-change",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/threat-hunter:3",
         "design.content_profile_ref": "kind/role/threat-hunter:3",
@@ -27364,7 +27364,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/threat-hunter:4",
         "design.content_profile_ref": "kind/role/threat-hunter:4",
@@ -27448,7 +27448,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/incident-responder:2",
         "design.content_profile_ref": "kind/role/incident-responder:2",
@@ -27490,7 +27490,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/incident-responder:3",
         "design.content_profile_ref": "kind/role/incident-responder:3",
@@ -27532,7 +27532,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/incident-responder:4",
         "design.content_profile_ref": "kind/role/incident-responder:4",
@@ -27616,7 +27616,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/digital-forensics-examiner:2",
         "design.content_profile_ref": "kind/role/digital-forensics-examiner:2",
@@ -27658,7 +27658,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/digital-forensics-examiner:3",
         "design.content_profile_ref": "kind/role/digital-forensics-examiner:3",
@@ -27742,7 +27742,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/malware-analyst:1",
         "design.content_profile_ref": "kind/role/malware-analyst:1",
@@ -27784,7 +27784,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "dataset",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/malware-analyst:2",
         "design.content_profile_ref": "kind/role/malware-analyst:2",
@@ -27826,7 +27826,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/malware-analyst:3",
         "design.content_profile_ref": "kind/role/malware-analyst:3",
@@ -27868,7 +27868,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "software-change",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/malware-analyst:4",
         "design.content_profile_ref": "kind/role/malware-analyst:4",
@@ -27888,7 +27888,7 @@
       "decision_supported_copy_detected": true,
       "decision_supported": {
         "status": "mapped-proposed",
-        "value": "Use \"Prioritised intelligence requirements\" to communicate the attributable findings and required follow-up actions from Intelligence requirements from stakeholders; Internal incident and telemetry data; External feeds and sharing communities; Business and sector context to Threat Hunter; Detection Engineer; SOC Manager.",
+        "value": "Agree testable requirements, resolve stakeholder conflicts and trace acceptance conditions to implementation and verification for \"Prioritised intelligence requirements\", using Intelligence requirements from stakeholders; Internal incident and telemetry data; External feeds and sharing communities; Business and sector context.",
         "action_class": "decision-or-operational-action",
         "subject": "Prioritised intelligence requirements",
         "accountable_owner": "Threat Intelligence Analyst",
@@ -27898,7 +27898,7 @@
           "SOC Manager"
         ],
         "reason": "Source-derived operational-use proposal from the exact deliverable and required inputs; broad historical modality does not establish professional meaning. Competent domain confirmation and existing JAI L0 authority remain separate.",
-        "derivation_basis": "source-deliverable operational-use proposal; no modality-specific action inferred",
+        "derivation_basis": "authored semantic-family action",
         "derivation_limits": [
           "The source-deliverable scope is retained; operational meaning remains a proposal requiring competent domain confirmation.",
           "Frozen modality is preserved for compatibility, not treated as proof of professional purpose."
@@ -27911,7 +27911,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "requirements-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/threat-intelligence-analyst:1",
         "design.content_profile_ref": "kind/role/threat-intelligence-analyst:1",
@@ -27997,7 +27997,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "dataset",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/threat-intelligence-analyst:3",
         "design.content_profile_ref": "kind/role/threat-intelligence-analyst:3",
@@ -28040,7 +28040,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/threat-intelligence-analyst:4",
         "design.content_profile_ref": "kind/role/threat-intelligence-analyst:4",
@@ -28082,7 +28082,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "software-change",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/detection-engineer:1",
         "design.content_profile_ref": "kind/role/detection-engineer:1",
@@ -28124,7 +28124,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "automated-tests",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/detection-engineer:2",
         "design.content_profile_ref": "kind/role/detection-engineer:2",
@@ -28166,7 +28166,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/detection-engineer:3",
         "design.content_profile_ref": "kind/role/detection-engineer:3",
@@ -28208,7 +28208,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/detection-engineer:4",
         "design.content_profile_ref": "kind/role/detection-engineer:4",
@@ -28292,7 +28292,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-engineer:2",
         "design.content_profile_ref": "kind/role/security-engineer:2",
@@ -28376,7 +28376,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "software-change",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-engineer:4",
         "design.content_profile_ref": "kind/role/security-engineer:4",
@@ -28418,7 +28418,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/vulnerability-management-analyst:1",
         "design.content_profile_ref": "kind/role/vulnerability-management-analyst:1",
@@ -28460,7 +28460,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/vulnerability-management-analyst:2",
         "design.content_profile_ref": "kind/role/vulnerability-management-analyst:2",
@@ -28544,7 +28544,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/vulnerability-management-analyst:4",
         "design.content_profile_ref": "kind/role/vulnerability-management-analyst:4",
@@ -28884,7 +28884,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "register",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/secrets-and-configuration-management-engineer:4",
         "design.content_profile_ref": "kind/role/secrets-and-configuration-management-engineer:4",
@@ -28968,7 +28968,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "software-change",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/identity-and-access-management-engineer:2",
         "design.content_profile_ref": "kind/role/identity-and-access-management-engineer:2",
@@ -29094,7 +29094,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/identity-governance-specialist:1",
         "design.content_profile_ref": "kind/role/identity-governance-specialist:1",
@@ -29178,7 +29178,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/identity-governance-specialist:3",
         "design.content_profile_ref": "kind/role/identity-governance-specialist:3",
@@ -29220,7 +29220,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/identity-governance-specialist:4",
         "design.content_profile_ref": "kind/role/identity-governance-specialist:4",
@@ -29304,7 +29304,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "register",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/privileged-access-management-administrator:2",
         "design.content_profile_ref": "kind/role/privileged-access-management-administrator:2",
@@ -29346,7 +29346,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/privileged-access-management-administrator:3",
         "design.content_profile_ref": "kind/role/privileged-access-management-administrator:3",
@@ -29472,7 +29472,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/cloud-security-engineer:2",
         "design.content_profile_ref": "kind/role/cloud-security-engineer:2",
@@ -29556,7 +29556,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/cloud-security-engineer:4",
         "design.content_profile_ref": "kind/role/cloud-security-engineer:4",
@@ -29682,7 +29682,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/application-security-engineer:3",
         "design.content_profile_ref": "kind/role/application-security-engineer:3",
@@ -29847,7 +29847,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-champion:3",
         "design.content_profile_ref": "kind/role/security-champion:3",
@@ -30014,7 +30014,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/operational-technology-security-engineer:3",
         "design.content_profile_ref": "kind/role/operational-technology-security-engineer:3",
@@ -30056,7 +30056,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "control-design",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/operational-technology-security-engineer:4",
         "design.content_profile_ref": "kind/role/operational-technology-security-engineer:4",
@@ -30140,7 +30140,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-awareness-and-training-manager:2",
         "design.content_profile_ref": "kind/role/security-awareness-and-training-manager:2",
@@ -30224,7 +30224,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-awareness-and-training-manager:4",
         "design.content_profile_ref": "kind/role/security-awareness-and-training-manager:4",
@@ -30267,7 +30267,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "register",
+      "semantic_family": "control-design",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/insider-threat-analyst:1",
         "design.content_profile_ref": "kind/role/insider-threat-analyst:1",
@@ -30310,7 +30310,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/insider-threat-analyst:2",
         "design.content_profile_ref": "kind/role/insider-threat-analyst:2",
@@ -30353,7 +30353,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/insider-threat-analyst:3",
         "design.content_profile_ref": "kind/role/insider-threat-analyst:3",
@@ -30480,7 +30480,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/purple-team-lead:2",
         "design.content_profile_ref": "kind/role/purple-team-lead:2",
@@ -30522,7 +30522,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/purple-team-lead:3",
         "design.content_profile_ref": "kind/role/purple-team-lead:3",
@@ -30564,7 +30564,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-strategy",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/purple-team-lead:4",
         "design.content_profile_ref": "kind/role/purple-team-lead:4",
@@ -30690,7 +30690,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/penetration-tester-network-and-infrastructure:3",
         "design.content_profile_ref": "kind/role/penetration-tester-network-and-infrastructure:3",
@@ -30816,7 +30816,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/penetration-tester-web-application:2",
         "design.content_profile_ref": "kind/role/penetration-tester-web-application:2",
@@ -30984,7 +30984,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/penetration-tester-mobile:2",
         "design.content_profile_ref": "kind/role/penetration-tester-mobile:2",
@@ -31026,7 +31026,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/penetration-tester-mobile:3",
         "design.content_profile_ref": "kind/role/penetration-tester-mobile:3",
@@ -31152,7 +31152,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/penetration-tester-api:2",
         "design.content_profile_ref": "kind/role/penetration-tester-api:2",
@@ -31194,7 +31194,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/penetration-tester-api:3",
         "design.content_profile_ref": "kind/role/penetration-tester-api:3",
@@ -31320,7 +31320,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/penetration-tester-cloud:2",
         "design.content_profile_ref": "kind/role/penetration-tester-cloud:2",
@@ -31362,7 +31362,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/penetration-tester-cloud:3",
         "design.content_profile_ref": "kind/role/penetration-tester-cloud:3",
@@ -31488,7 +31488,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/penetration-tester-wireless:2",
         "design.content_profile_ref": "kind/role/penetration-tester-wireless:2",
@@ -31530,7 +31530,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/penetration-tester-wireless:3",
         "design.content_profile_ref": "kind/role/penetration-tester-wireless:3",
@@ -31572,7 +31572,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/penetration-tester-wireless:4",
         "design.content_profile_ref": "kind/role/penetration-tester-wireless:4",
@@ -31656,7 +31656,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/penetration-tester-thick-client:2",
         "design.content_profile_ref": "kind/role/penetration-tester-thick-client:2",
@@ -31698,7 +31698,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/penetration-tester-thick-client:3",
         "design.content_profile_ref": "kind/role/penetration-tester-thick-client:3",
@@ -31866,7 +31866,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/red-team-operator:3",
         "design.content_profile_ref": "kind/role/red-team-operator:3",
@@ -31908,7 +31908,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/red-team-operator:4",
         "design.content_profile_ref": "kind/role/red-team-operator:4",
@@ -31992,7 +31992,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "register",
+      "semantic_family": "test-strategy",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/red-team-lead:2",
         "design.content_profile_ref": "kind/role/red-team-lead:2",
@@ -32034,7 +32034,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/red-team-lead:3",
         "design.content_profile_ref": "kind/role/red-team-lead:3",
@@ -32118,7 +32118,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "prototype",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/exploit-developer:1",
         "design.content_profile_ref": "kind/role/exploit-developer:1",
@@ -32160,7 +32160,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/exploit-developer:2",
         "design.content_profile_ref": "kind/role/exploit-developer:2",
@@ -32286,7 +32286,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "register",
+      "semantic_family": "test-strategy",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/vulnerability-researcher:1",
         "design.content_profile_ref": "kind/role/vulnerability-researcher:1",
@@ -32328,7 +32328,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/vulnerability-researcher:2",
         "design.content_profile_ref": "kind/role/vulnerability-researcher:2",
@@ -32454,7 +32454,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/binary-reverse-engineer:1",
         "design.content_profile_ref": "kind/role/binary-reverse-engineer:1",
@@ -32538,7 +32538,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/binary-reverse-engineer:3",
         "design.content_profile_ref": "kind/role/binary-reverse-engineer:3",
@@ -32706,7 +32706,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/social-engineering-specialist:3",
         "design.content_profile_ref": "kind/role/social-engineering-specialist:3",
@@ -32748,7 +32748,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/social-engineering-specialist:4",
         "design.content_profile_ref": "kind/role/social-engineering-specialist:4",
@@ -32874,7 +32874,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/physical-intrusion-specialist:3",
         "design.content_profile_ref": "kind/role/physical-intrusion-specialist:3",
@@ -32916,7 +32916,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/physical-intrusion-specialist:4",
         "design.content_profile_ref": "kind/role/physical-intrusion-specialist:4",
@@ -33000,7 +33000,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/open-source-intelligence-investigator:2",
         "design.content_profile_ref": "kind/role/open-source-intelligence-investigator:2",
@@ -33042,7 +33042,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/open-source-intelligence-investigator:3",
         "design.content_profile_ref": "kind/role/open-source-intelligence-investigator:3",
@@ -33210,7 +33210,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/adversary-emulation-engineer:3",
         "design.content_profile_ref": "kind/role/adversary-emulation-engineer:3",
@@ -33336,7 +33336,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/breach-and-attack-simulation-engineer:2",
         "design.content_profile_ref": "kind/role/breach-and-attack-simulation-engineer:2",
@@ -33378,7 +33378,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/breach-and-attack-simulation-engineer:3",
         "design.content_profile_ref": "kind/role/breach-and-attack-simulation-engineer:3",
@@ -33504,7 +33504,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/bug-bounty-programme-manager:2",
         "design.content_profile_ref": "kind/role/bug-bounty-programme-manager:2",
@@ -33588,7 +33588,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "roadmap",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/bug-bounty-programme-manager:4",
         "design.content_profile_ref": "kind/role/bug-bounty-programme-manager:4",
@@ -33672,7 +33672,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/bug-bounty-triage-analyst:2",
         "design.content_profile_ref": "kind/role/bug-bounty-triage-analyst:2",
@@ -33714,7 +33714,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/bug-bounty-triage-analyst:3",
         "design.content_profile_ref": "kind/role/bug-bounty-triage-analyst:3",
@@ -33756,7 +33756,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/bug-bounty-triage-analyst:4",
         "design.content_profile_ref": "kind/role/bug-bounty-triage-analyst:4",
@@ -33840,7 +33840,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/vulnerability-disclosure-coordinator:2",
         "design.content_profile_ref": "kind/role/vulnerability-disclosure-coordinator:2",
@@ -33924,7 +33924,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/vulnerability-disclosure-coordinator:4",
         "design.content_profile_ref": "kind/role/vulnerability-disclosure-coordinator:4",
@@ -34008,7 +34008,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/hardware-and-iot-security-researcher:2",
         "design.content_profile_ref": "kind/role/hardware-and-iot-security-researcher:2",
@@ -34050,7 +34050,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/hardware-and-iot-security-researcher:3",
         "design.content_profile_ref": "kind/role/hardware-and-iot-security-researcher:3",
@@ -34092,7 +34092,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/hardware-and-iot-security-researcher:4",
         "design.content_profile_ref": "kind/role/hardware-and-iot-security-researcher:4",
@@ -34264,7 +34264,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/it-governance-manager:4",
         "design.content_profile_ref": "kind/role/it-governance-manager:4",
@@ -34390,7 +34390,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/grc-analyst:3",
         "design.content_profile_ref": "kind/role/grc-analyst:3",
@@ -34432,7 +34432,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/grc-analyst:4",
         "design.content_profile_ref": "kind/role/grc-analyst:4",
@@ -34558,7 +34558,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "dashboard",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/it-risk-manager:3",
         "design.content_profile_ref": "kind/role/it-risk-manager:3",
@@ -34642,7 +34642,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/information-security-officer-local:1",
         "design.content_profile_ref": "kind/role/information-security-officer-local:1",
@@ -34684,7 +34684,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/information-security-officer-local:2",
         "design.content_profile_ref": "kind/role/information-security-officer-local:2",
@@ -34768,7 +34768,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/information-security-officer-local:4",
         "design.content_profile_ref": "kind/role/information-security-officer-local:4",
@@ -34852,7 +34852,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/compliance-officer-technology:2",
         "design.content_profile_ref": "kind/role/compliance-officer-technology:2",
@@ -35020,7 +35020,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/internal-it-auditor:2",
         "design.content_profile_ref": "kind/role/internal-it-auditor:2",
@@ -35104,7 +35104,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/internal-it-auditor:4",
         "design.content_profile_ref": "kind/role/internal-it-auditor:4",
@@ -35230,7 +35230,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/external-auditor-and-assessor:3",
         "design.content_profile_ref": "kind/role/external-auditor-and-assessor:3",
@@ -35356,7 +35356,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/control-owner:2",
         "design.content_profile_ref": "kind/role/control-owner:2",
@@ -35398,7 +35398,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/control-owner:3",
         "design.content_profile_ref": "kind/role/control-owner:3",
@@ -35440,7 +35440,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/control-owner:4",
         "design.content_profile_ref": "kind/role/control-owner:4",
@@ -35481,7 +35481,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-strategy",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/control-tester:1",
         "design.content_profile_ref": "kind/role/control-tester:1",
@@ -35563,7 +35563,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/control-tester:3",
         "design.content_profile_ref": "kind/role/control-tester:3",
@@ -35690,7 +35690,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-protection-officer:2",
         "design.content_profile_ref": "kind/role/data-protection-officer:2",
@@ -35733,7 +35733,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-protection-officer:3",
         "design.content_profile_ref": "kind/role/data-protection-officer:3",
@@ -35776,7 +35776,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/data-protection-officer:4",
         "design.content_profile_ref": "kind/role/data-protection-officer:4",
@@ -35902,7 +35902,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/privacy-analyst:3",
         "design.content_profile_ref": "kind/role/privacy-analyst:3",
@@ -35986,7 +35986,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "roadmap",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/records-manager:1",
         "design.content_profile_ref": "kind/role/records-manager:1",
@@ -36070,7 +36070,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/records-manager:3",
         "design.content_profile_ref": "kind/role/records-manager:3",
@@ -36154,7 +36154,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/business-continuity-manager:1",
         "design.content_profile_ref": "kind/role/business-continuity-manager:1",
@@ -36238,7 +36238,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "roadmap",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/business-continuity-manager:3",
         "design.content_profile_ref": "kind/role/business-continuity-manager:3",
@@ -36258,7 +36258,7 @@
       "decision_supported_copy_detected": true,
       "decision_supported": {
         "status": "mapped-proposed",
-        "value": "Use \"recovery objectives per process\" to communicate the attributable findings and required follow-up actions from Critical business processes; Dependency and supplier mapping; Technical recovery capability; Threat and scenario analysis to Disaster Recovery Coordinator; IT Service Owner.",
+        "value": "Agree testable requirements, resolve stakeholder conflicts and trace acceptance conditions to implementation and verification for \"recovery objectives per process\", using Critical business processes; Dependency and supplier mapping; Technical recovery capability; Threat and scenario analysis.",
         "action_class": "decision-or-operational-action",
         "subject": "recovery objectives per process",
         "accountable_owner": "Business Continuity Manager",
@@ -36267,7 +36267,7 @@
           "IT Service Owner"
         ],
         "reason": "Source-derived operational-use proposal from the exact deliverable and required inputs; broad historical modality does not establish professional meaning. Competent domain confirmation and existing JAI L0 authority remain separate.",
-        "derivation_basis": "source-deliverable operational-use proposal; no modality-specific action inferred",
+        "derivation_basis": "authored semantic-family action",
         "derivation_limits": [
           "The source-deliverable scope is retained; operational meaning remains a proposal requiring competent domain confirmation.",
           "Frozen modality is preserved for compatibility, not treated as proof of professional purpose."
@@ -36280,7 +36280,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "requirements-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/business-continuity-manager:4",
         "design.content_profile_ref": "kind/role/business-continuity-manager:4",
@@ -36406,7 +36406,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/disaster-recovery-coordinator:3",
         "design.content_profile_ref": "kind/role/disaster-recovery-coordinator:3",
@@ -36952,7 +36952,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/crisis-manager:4",
         "design.content_profile_ref": "kind/role/crisis-manager:4",
@@ -37036,7 +37036,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/ux-designer:2",
         "design.content_profile_ref": "kind/role/ux-designer:2",
@@ -37120,7 +37120,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/ux-designer:4",
         "design.content_profile_ref": "kind/role/ux-designer:4",
@@ -37204,7 +37204,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/ui-designer:2",
         "design.content_profile_ref": "kind/role/ui-designer:2",
@@ -37246,7 +37246,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "implementation-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/ui-designer:3",
         "design.content_profile_ref": "kind/role/ui-designer:3",
@@ -37288,7 +37288,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "catalogue",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/ui-designer:4",
         "design.content_profile_ref": "kind/role/ui-designer:4",
@@ -37417,7 +37417,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/product-designer:3",
         "design.content_profile_ref": "kind/role/product-designer:3",
@@ -37460,7 +37460,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/product-designer:4",
         "design.content_profile_ref": "kind/role/product-designer:4",
@@ -37544,7 +37544,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/ux-researcher:2",
         "design.content_profile_ref": "kind/role/ux-researcher:2",
@@ -37628,7 +37628,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/ux-researcher:4",
         "design.content_profile_ref": "kind/role/ux-researcher:4",
@@ -37754,7 +37754,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/usability-tester:3",
         "design.content_profile_ref": "kind/role/usability-tester:3",
@@ -37796,7 +37796,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/usability-tester:4",
         "design.content_profile_ref": "kind/role/usability-tester:4",
@@ -37880,7 +37880,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "implementation-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/interaction-designer:2",
         "design.content_profile_ref": "kind/role/interaction-designer:2",
@@ -37900,7 +37900,7 @@
       "decision_supported_copy_detected": true,
       "decision_supported": {
         "status": "mapped-proposed",
-        "value": "Use \"input and error handling behaviour\" to communicate the attributable findings and required follow-up actions from User flows; Technical capabilities and constraints; Accessibility requirements; Design system behaviour to Frontend Engineer; Design System Engineer.",
+        "value": "Agree testable requirements, resolve stakeholder conflicts and trace acceptance conditions to implementation and verification for \"input and error handling behaviour\", using User flows; Technical capabilities and constraints; Accessibility requirements; Design system behaviour.",
         "action_class": "decision-or-operational-action",
         "subject": "input and error handling behaviour",
         "accountable_owner": "Interaction Designer",
@@ -37909,7 +37909,7 @@
           "Design System Engineer"
         ],
         "reason": "Source-derived operational-use proposal from the exact deliverable and required inputs; broad historical modality does not establish professional meaning. Competent domain confirmation and existing JAI L0 authority remain separate.",
-        "derivation_basis": "source-deliverable operational-use proposal; no modality-specific action inferred",
+        "derivation_basis": "authored semantic-family action",
         "derivation_limits": [
           "The source-deliverable scope is retained; operational meaning remains a proposal requiring competent domain confirmation.",
           "Frozen modality is preserved for compatibility, not treated as proof of professional purpose."
@@ -37922,7 +37922,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "requirements-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/interaction-designer:3",
         "design.content_profile_ref": "kind/role/interaction-designer:3",
@@ -38006,7 +38006,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/service-designer:1",
         "design.content_profile_ref": "kind/role/service-designer:1",
@@ -38090,7 +38090,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/service-designer:3",
         "design.content_profile_ref": "kind/role/service-designer:3",
@@ -38132,7 +38132,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/service-designer:4",
         "design.content_profile_ref": "kind/role/service-designer:4",
@@ -38174,7 +38174,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/information-architect:1",
         "design.content_profile_ref": "kind/role/information-architect:1",
@@ -38258,7 +38258,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "catalogue",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/information-architect:3",
         "design.content_profile_ref": "kind/role/information-architect:3",
@@ -38300,7 +38300,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/information-architect:4",
         "design.content_profile_ref": "kind/role/information-architect:4",
@@ -38468,7 +38468,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/design-system-engineer:4",
         "design.content_profile_ref": "kind/role/design-system-engineer:4",
@@ -38766,7 +38766,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "catalogue",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/content-designer:3",
         "design.content_profile_ref": "kind/role/content-designer:3",
@@ -38808,7 +38808,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/content-designer:4",
         "design.content_profile_ref": "kind/role/content-designer:4",
@@ -39270,7 +39270,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/contract-manager:3",
         "design.content_profile_ref": "kind/role/contract-manager:3",
@@ -39396,7 +39396,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/software-licence-compliance-specialist:2",
         "design.content_profile_ref": "kind/role/software-licence-compliance-specialist:2",
@@ -39606,7 +39606,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "roadmap",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/pre-sales-solution-consultant:3",
         "design.content_profile_ref": "kind/role/pre-sales-solution-consultant:3",
@@ -39648,7 +39648,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/pre-sales-solution-consultant:4",
         "design.content_profile_ref": "kind/role/pre-sales-solution-consultant:4",
@@ -39690,7 +39690,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/sales-engineer:1",
         "design.content_profile_ref": "kind/role/sales-engineer:1",
@@ -39774,7 +39774,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "configuration-baseline",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/sales-engineer:3",
         "design.content_profile_ref": "kind/role/sales-engineer:3",
@@ -39858,7 +39858,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/customer-success-engineer:1",
         "design.content_profile_ref": "kind/role/customer-success-engineer:1",
@@ -39984,7 +39984,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/customer-success-engineer:4",
         "design.content_profile_ref": "kind/role/customer-success-engineer:4",
@@ -40152,7 +40152,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/implementation-consultant:4",
         "design.content_profile_ref": "kind/role/implementation-consultant:4",
@@ -40320,7 +40320,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/technical-account-manager:4",
         "design.content_profile_ref": "kind/role/technical-account-manager:4",
@@ -40614,7 +40614,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/developer-advocate:3",
         "design.content_profile_ref": "kind/role/developer-advocate:3",
@@ -40698,7 +40698,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/it-trainer:1",
         "design.content_profile_ref": "kind/role/it-trainer:1",
@@ -40824,7 +40824,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/it-trainer:4",
         "design.content_profile_ref": "kind/role/it-trainer:4",
@@ -40950,7 +40950,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "dashboard",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/technical-recruiter:3",
         "design.content_profile_ref": "kind/role/technical-recruiter:3",
@@ -40992,7 +40992,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/technical-recruiter:4",
         "design.content_profile_ref": "kind/role/technical-recruiter:4",
@@ -41076,7 +41076,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/resource-manager:2",
         "design.content_profile_ref": "kind/role/resource-manager:2",
@@ -41244,7 +41244,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "register",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/research-engineer:2",
         "design.content_profile_ref": "kind/role/research-engineer:2",
@@ -41286,7 +41286,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/research-engineer:3",
         "design.content_profile_ref": "kind/role/research-engineer:3",
@@ -41370,7 +41370,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/innovation-lead:1",
         "design.content_profile_ref": "kind/role/innovation-lead:1",
@@ -41412,7 +41412,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/innovation-lead:2",
         "design.content_profile_ref": "kind/role/innovation-lead:2",
@@ -41454,7 +41454,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "decision-paper",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/innovation-lead:3",
         "design.content_profile_ref": "kind/role/innovation-lead:3",
@@ -41580,7 +41580,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/technology-scout:2",
         "design.content_profile_ref": "kind/role/technology-scout:2",
@@ -41622,7 +41622,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "register",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/technology-scout:3",
         "design.content_profile_ref": "kind/role/technology-scout:3",
@@ -41664,7 +41664,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/technology-scout:4",
         "design.content_profile_ref": "kind/role/technology-scout:4",
@@ -41706,7 +41706,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "document",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/standards-body-representative:1",
         "design.content_profile_ref": "kind/role/standards-body-representative:1",
@@ -41790,7 +41790,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/standards-body-representative:3",
         "design.content_profile_ref": "kind/role/standards-body-representative:3",
@@ -41874,7 +41874,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "test-strategy",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/ethics-and-responsible-technology-lead:1",
         "design.content_profile_ref": "kind/role/ethics-and-responsible-technology-lead:1",
@@ -41916,7 +41916,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/ethics-and-responsible-technology-lead:2",
         "design.content_profile_ref": "kind/role/ethics-and-responsible-technology-lead:2",
@@ -42129,7 +42129,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "roadmap",
+      "semantic_family": "test-strategy",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/systems-engineer-incose:3",
         "design.content_profile_ref": "kind/role/systems-engineer-incose:3",
@@ -42172,7 +42172,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "decision-paper",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/systems-engineer-incose:4",
         "design.content_profile_ref": "kind/role/systems-engineer-incose:4",
@@ -42214,7 +42214,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "diagram",
+      "semantic_family": "model",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/simulation-engineer:1",
         "design.content_profile_ref": "kind/role/simulation-engineer:1",
@@ -42256,7 +42256,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/simulation-engineer:2",
         "design.content_profile_ref": "kind/role/simulation-engineer:2",
@@ -42298,7 +42298,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/simulation-engineer:3",
         "design.content_profile_ref": "kind/role/simulation-engineer:3",
@@ -42340,7 +42340,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "diagram",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/simulation-engineer:4",
         "design.content_profile_ref": "kind/role/simulation-engineer:4",
@@ -42424,7 +42424,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/high-performance-computing-engineer:2",
         "design.content_profile_ref": "kind/role/high-performance-computing-engineer:2",
@@ -42508,7 +42508,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/high-performance-computing-engineer:4",
         "design.content_profile_ref": "kind/role/high-performance-computing-engineer:4",
@@ -42592,7 +42592,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/quantum-computing-engineer:2",
         "design.content_profile_ref": "kind/role/quantum-computing-engineer:2",
@@ -42676,7 +42676,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/quantum-computing-engineer:4",
         "design.content_profile_ref": "kind/role/quantum-computing-engineer:4",
@@ -42848,7 +42848,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "model",
+      "semantic_family": "roadmap",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/chief-security-architect-sabsa-practice-lead:4",
         "design.content_profile_ref": "kind/role/chief-security-architect-sabsa-practice-lead:4",
@@ -42974,7 +42974,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/business-security-architect-sabsa-contextual-layer:3",
         "design.content_profile_ref": "kind/role/business-security-architect-sabsa-contextual-layer:3",
@@ -43058,7 +43058,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/business-attribute-profiler:1",
         "design.content_profile_ref": "kind/role/business-attribute-profiler:1",
@@ -43078,7 +43078,7 @@
       "decision_supported_copy_detected": true,
       "decision_supported": {
         "status": "mapped-proposed",
-        "value": "Use \"attribute definitions with measurement approach\" to communicate the attributable findings and required follow-up actions from Business drivers and objectives; Stakeholder expectations; Regulatory constraints; Existing performance data to Conceptual Security Architect (SABSA Architect's View); Security Assurance and Measurement Architect.",
+        "value": "Agree testable requirements, resolve stakeholder conflicts and trace acceptance conditions to implementation and verification for \"attribute definitions with measurement approach\", using Business drivers and objectives; Stakeholder expectations; Regulatory constraints; Existing performance data.",
         "action_class": "decision-or-operational-action",
         "subject": "attribute definitions with measurement approach",
         "accountable_owner": "Business Attribute Profiler",
@@ -43087,7 +43087,7 @@
           "Security Assurance and Measurement Architect"
         ],
         "reason": "Source-derived operational-use proposal from the exact deliverable and required inputs; broad historical modality does not establish professional meaning. Competent domain confirmation and existing JAI L0 authority remain separate.",
-        "derivation_basis": "source-deliverable operational-use proposal; no modality-specific action inferred",
+        "derivation_basis": "authored semantic-family action",
         "derivation_limits": [
           "The source-deliverable scope is retained; operational meaning remains a proposal requiring competent domain confirmation.",
           "Frozen modality is preserved for compatibility, not treated as proof of professional purpose."
@@ -43100,7 +43100,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "requirements-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/business-attribute-profiler:2",
         "design.content_profile_ref": "kind/role/business-attribute-profiler:2",
@@ -43120,7 +43120,7 @@
       "decision_supported_copy_detected": true,
       "decision_supported": {
         "status": "mapped-proposed",
-        "value": "Use \"performance targets and thresholds per attribute\" to communicate the attributable findings and required follow-up actions from Business drivers and objectives; Stakeholder expectations; Regulatory constraints; Existing performance data to Conceptual Security Architect (SABSA Architect's View); Security Assurance and Measurement Architect.",
+        "value": "Agree testable requirements, resolve stakeholder conflicts and trace acceptance conditions to implementation and verification for \"performance targets and thresholds per attribute\", using Business drivers and objectives; Stakeholder expectations; Regulatory constraints; Existing performance data.",
         "action_class": "decision-or-operational-action",
         "subject": "performance targets and thresholds per attribute",
         "accountable_owner": "Business Attribute Profiler",
@@ -43129,7 +43129,7 @@
           "Security Assurance and Measurement Architect"
         ],
         "reason": "Source-derived operational-use proposal from the exact deliverable and required inputs; broad historical modality does not establish professional meaning. Competent domain confirmation and existing JAI L0 authority remain separate.",
-        "derivation_basis": "source-deliverable operational-use proposal; no modality-specific action inferred",
+        "derivation_basis": "authored semantic-family action",
         "derivation_limits": [
           "The source-deliverable scope is retained; operational meaning remains a proposal requiring competent domain confirmation.",
           "Frozen modality is preserved for compatibility, not treated as proof of professional purpose."
@@ -43142,7 +43142,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "requirements-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/business-attribute-profiler:3",
         "design.content_profile_ref": "kind/role/business-attribute-profiler:3",
@@ -43184,7 +43184,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/business-attribute-profiler:4",
         "design.content_profile_ref": "kind/role/business-attribute-profiler:4",
@@ -43310,7 +43310,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/conceptual-security-architect-sabsa-architect-s-view:3",
         "design.content_profile_ref": "kind/role/conceptual-security-architect-sabsa-architect-s-view:3",
@@ -43856,7 +43856,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "test-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-component-specialist-sabsa-tradesman-s-view:4",
         "design.content_profile_ref": "kind/role/security-component-specialist-sabsa-tradesman-s-view:4",
@@ -43940,7 +43940,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "service-design",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-service-manager-sabsa-service-management-view:2",
         "design.content_profile_ref": "kind/role/security-service-manager-sabsa-service-management-view:2",
@@ -43982,7 +43982,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "model",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-service-manager-sabsa-service-management-view:3",
         "design.content_profile_ref": "kind/role/security-service-manager-sabsa-service-management-view:3",
@@ -44150,7 +44150,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-domain-authority:3",
         "design.content_profile_ref": "kind/role/security-domain-authority:3",
@@ -44192,7 +44192,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-domain-authority:4",
         "design.content_profile_ref": "kind/role/security-domain-authority:4",
@@ -44234,7 +44234,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "risk-assessment",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-risk-and-opportunity-architect:1",
         "design.content_profile_ref": "kind/role/security-risk-and-opportunity-architect:1",
@@ -44276,7 +44276,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "risk-assessment",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-risk-and-opportunity-architect:2",
         "design.content_profile_ref": "kind/role/security-risk-and-opportunity-architect:2",
@@ -44318,7 +44318,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "risk-assessment",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-risk-and-opportunity-architect:3",
         "design.content_profile_ref": "kind/role/security-risk-and-opportunity-architect:3",
@@ -44380,7 +44380,7 @@
       "decision_supported_copy_detected": true,
       "decision_supported": {
         "status": "mapped-proposed",
-        "value": "Use \"Security measurement framework and metric definitions\" to communicate the attributable findings and required follow-up actions from Business attributes and targets; Control objectives; Operational measurement data; Assurance requirements to Security Service Manager (SABSA Service Management View); GRC Analyst.",
+        "value": "Agree testable requirements, resolve stakeholder conflicts and trace acceptance conditions to implementation and verification for \"Security measurement framework and metric definitions\", using Business attributes and targets; Control objectives; Operational measurement data; Assurance requirements.",
         "action_class": "decision-or-operational-action",
         "subject": "Security measurement framework and metric definitions",
         "accountable_owner": "Security Assurance and Measurement Architect",
@@ -44389,7 +44389,7 @@
           "GRC Analyst"
         ],
         "reason": "Source-derived operational-use proposal from the exact deliverable and required inputs; broad historical modality does not establish professional meaning. Competent domain confirmation and existing JAI L0 authority remain separate.",
-        "derivation_basis": "source-deliverable operational-use proposal; no modality-specific action inferred",
+        "derivation_basis": "authored semantic-family action",
         "derivation_limits": [
           "The source-deliverable scope is retained; operational meaning remains a proposal requiring competent domain confirmation.",
           "Frozen modality is preserved for compatibility, not treated as proof of professional purpose."
@@ -44402,7 +44402,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "requirements-specification",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-assurance-and-measurement-architect:1",
         "design.content_profile_ref": "kind/role/security-assurance-and-measurement-architect:1",
@@ -44486,7 +44486,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/security-assurance-and-measurement-architect:3",
         "design.content_profile_ref": "kind/role/security-assurance-and-measurement-architect:3",
@@ -44612,7 +44612,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "document",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/sabsa-and-togaf-integration-architect:2",
         "design.content_profile_ref": "kind/role/sabsa-and-togaf-integration-architect:2",
@@ -44738,7 +44738,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/organisational-change-and-adoption-manager:1",
         "design.content_profile_ref": "kind/role/organisational-change-and-adoption-manager:1",
@@ -45536,7 +45536,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "model",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/architecture-repository-and-modelling-lead:4",
         "design.content_profile_ref": "kind/role/architecture-repository-and-modelling-lead:4",
@@ -46208,7 +46208,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/technology-lifecycle-and-decommission-manager:4",
         "design.content_profile_ref": "kind/role/technology-lifecycle-and-decommission-manager:4",
@@ -47154,7 +47154,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/demand-and-intake-manager:2",
         "design.content_profile_ref": "kind/role/demand-and-intake-manager:2",
@@ -47584,7 +47584,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "register",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/bid-proposal-manager:4",
         "design.content_profile_ref": "kind/role/bid-proposal-manager:4",
@@ -47627,7 +47627,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "business-case",
+      "semantic_family": "dataset",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/commercial-pricing-deal-finance-specialist:1",
         "design.content_profile_ref": "kind/role/commercial-pricing-deal-finance-specialist:1",
@@ -47713,7 +47713,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/commercial-pricing-deal-finance-specialist:3",
         "design.content_profile_ref": "kind/role/commercial-pricing-deal-finance-specialist:3",
@@ -47756,7 +47756,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "business-case",
+      "semantic_family": "dataset",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/estimation-cost-engineering-specialist:1",
         "design.content_profile_ref": "kind/role/estimation-cost-engineering-specialist:1",
@@ -47842,7 +47842,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "analysis-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/estimation-cost-engineering-specialist:3",
         "design.content_profile_ref": "kind/role/estimation-cost-engineering-specialist:3",
@@ -47885,7 +47885,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/independent-commercial-assurance-reviewer:1",
         "design.content_profile_ref": "kind/role/independent-commercial-assurance-reviewer:1",
@@ -47928,7 +47928,7 @@
         "professional_acceptance": "pending-independent-review",
         "human_approval": false
       },
-      "semantic_family": "decision-paper",
+      "semantic_family": "assurance-report",
       "jai_extension": {
         "semantics.content_spec_ref": "kind/role/independent-commercial-assurance-reviewer:2",
         "design.content_profile_ref": "kind/role/independent-commercial-assurance-reviewer:2",

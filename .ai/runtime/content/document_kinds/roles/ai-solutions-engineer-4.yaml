@@ -63,7 +63,10 @@
           "artifacts/contracts/role-deliverables.v3.json#ai-solutions-engineer:4",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -103,7 +106,10 @@
           "artifacts/contracts/role-deliverables.v3.json#ai-solutions-engineer:4",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -143,7 +149,10 @@
           "artifacts/contracts/role-deliverables.v3.json#ai-solutions-engineer:4",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -183,7 +192,10 @@
           "artifacts/contracts/role-deliverables.v3.json#ai-solutions-engineer:4",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -203,7 +215,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'failure handling and human-in-the-loop design', provide verifiable evidence satisfying: Defines failure signals, bounded recovery, escalation, human decision points and tests for unsafe or uncertain outcomes. Required delivery form: Failure-handling and human-oversight design.",
+        "For the specific output 'failure handling and human-in-the-loop design', provide verifiable evidence satisfying: Trace each control objective to a risk or obligation and identify accountable owner, protected outcome and operating scope. Specify trigger, actor/system, required inputs, action, expected observable result, exceptions and response when the control fails. Define design/operating-effectiveness checks, population or sampling, expected evidence, acceptance threshold and disposition of exceptions. Existing source requirement: Defines failure signals, bounded recovery, escalation, human decision points and tests for unsafe or uncertain outcomes. Required delivery form: Control specification with objectives, trigger, actor, actions, failure paths and effectiveness measures.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +230,15 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'failure handling and human-in-the-loop design', provide verifiable evidence satisfying: Defines failure signals, bounded recovery, escalation, human decision points and tests for unsafe or uncertain outcomes. Required delivery form: Failure-handling and human-oversight design.",
+        "reason": "For the specific output 'failure handling and human-in-the-loop design', provide verifiable evidence satisfying: Trace each control objective to a risk or obligation and identify accountable owner, protected outcome and operating scope. Specify trigger, actor/system, required inputs, action, expected observable result, exceptions and response when the control fails. Define design/operating-effectiveness checks, population or sampling, expected evidence, acceptance threshold and disposition of exceptions. Existing source requirement: Defines failure signals, bounded recovery, escalation, human decision points and tests for unsafe or uncertain outcomes. Required delivery form: Control specification with objectives, trigger, actor, actions, failure paths and effectiveness measures.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#ai-solutions-engineer:4",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -233,8 +248,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "failure handling and human-in-the-loop design",
-        "format": "Failure-handling and human-oversight design",
-        "acceptance_criterion": "Defines failure signals, bounded recovery, escalation, human decision points and tests for unsafe or uncertain outcomes",
+        "format": "Control specification with objectives, trigger, actor, actions, failure paths and effectiveness measures.",
+        "acceptance_criterion": "Trace each control objective to a risk or obligation and identify accountable owner, protected outcome and operating scope. Specify trigger, actor/system, required inputs, action, expected observable result, exceptions and response when the control fails. Define design/operating-effectiveness checks, population or sampling, expected evidence, acceptance threshold and disposition of exceptions. Existing source requirement: Defines failure signals, bounded recovery, escalation, human decision points and tests for unsafe or uncertain outcomes.",
         "role_path": "skills/it-roles-data-analytics-and-ai/references/ai-solutions-engineer.md"
       }
     },
@@ -277,7 +292,10 @@
           "artifacts/contracts/role-deliverables.v3.json#ai-solutions-engineer:4",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -327,7 +345,10 @@
           "artifacts/contracts/role-deliverables.v3.json#ai-solutions-engineer:4",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -372,7 +393,10 @@
           "artifacts/contracts/role-deliverables.v3.json#ai-solutions-engineer:4",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -417,7 +441,10 @@
           "artifacts/contracts/role-deliverables.v3.json#ai-solutions-engineer:4",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -462,7 +489,10 @@
           "artifacts/contracts/role-deliverables.v3.json#ai-solutions-engineer:4",
           "content/types/prototype.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -509,7 +539,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -554,7 +587,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -601,7 +637,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-160v1r1",
-          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://doi.org/10.6028/NIST.AI.100-1"
         ]
       },
       "provenance": {
@@ -732,16 +771,45 @@
         "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "data-catalogue",
+        "title": "W3C Data Catalog Vocabulary Version 3 (DCAT 3)",
+        "url": "https://www.w3.org/TR/vocab-dcat-3/",
+        "scope": "Dataset/catalogue identity, distributions, provenance, access and descriptive metadata.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "data-quality",
+        "title": "W3C Data Quality Vocabulary",
+        "url": "https://www.w3.org/TR/vocab-dqv/",
+        "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "ai-risk-management",
+        "title": "NIST AI 100-1, Artificial Intelligence Risk Management Framework (AI RMF 1.0)",
+        "url": "https://doi.org/10.6028/NIST.AI.100-1",
+        "scope": "Voluntary GOVERN, MAP, MEASURE and MANAGE functions for AI risks; applicability and adopted practices require explicit contextual selection.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "AI Solutions Engineer",
+        "domain": "Data, Analytics and AI",
+        "domain_index": 7,
+        "method_focus": "Trace data provenance, quality, meaning and permitted use; define model evaluation, uncertainty and operational monitoring where applicable.",
         "frameworks": [
           "NIST AI RMF 1.0",
           "evaluation-driven development practice",
           "OWASP Top 10 for LLM applications"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -814,6 +882,17 @@
     "source_fingerprint": "49a534e63676e10ee590af56f80fa4adb33caa22baedd8b6d16b467b94f425fd",
     "source_hash": "3a2f6806d59cc79b810b1f54e1df6061b2eea6b97e9d6bceb911967d3adc8350"
   },
+  "delivery_form": {
+    "primary_artifact": "control-specification",
+    "representation": "Control specification with objectives, trigger, actor, actions, failure paths and effectiveness measures.",
+    "evidence": [
+      "risk/obligation traceability",
+      "measurable operating effectiveness checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "06eb53b38d13ff18c7a7e71fcf4ca7bad56caa029c7ac97a11fbb0d3cf88f423",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

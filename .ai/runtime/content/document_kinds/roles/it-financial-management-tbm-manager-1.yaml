@@ -65,7 +65,8 @@
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -106,7 +107,8 @@
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -147,7 +149,8 @@
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -188,7 +191,8 @@
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -208,7 +212,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'IT financial and TBM cost model', provide verifiable evidence satisfying: Costs reconcile to authoritative finance data and allocation rules are explainable, repeatable and governed. Required delivery form: Versioned dataset/model with cost pools, towers/services/products, allocation rules, drivers and reconciliation controls.",
+        "For the specific output 'IT financial and TBM cost model', provide verifiable evidence satisfying: Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations. Existing source requirement: Costs reconcile to authoritative finance data and allocation rules are explainable, repeatable and governed. Required delivery form: Typed data or calculation model with units, keys/formulas, lineage and quality constraints.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -223,13 +227,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'IT financial and TBM cost model', provide verifiable evidence satisfying: Costs reconcile to authoritative finance data and allocation rules are explainable, repeatable and governed. Required delivery form: Versioned dataset/model with cost pools, towers/services/products, allocation rules, drivers and reconciliation controls.",
+        "reason": "For the specific output 'IT financial and TBM cost model', provide verifiable evidence satisfying: Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations. Existing source requirement: Costs reconcile to authoritative finance data and allocation rules are explainable, repeatable and governed. Required delivery form: Typed data or calculation model with units, keys/formulas, lineage and quality constraints.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-financial-management-tbm-manager:1",
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -239,8 +244,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "IT financial and TBM cost model",
-        "format": "Versioned dataset/model with cost pools, towers/services/products, allocation rules, drivers and reconciliation controls",
-        "acceptance_criterion": "Costs reconcile to authoritative finance data and allocation rules are explainable, repeatable and governed.",
+        "format": "Typed data or calculation model with units, keys/formulas, lineage and quality constraints.",
+        "acceptance_criterion": "Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations. Existing source requirement: Costs reconcile to authoritative finance data and allocation rules are explainable, repeatable and governed.",
         "role_path": "skills/it-roles-commercial-sourcing-and-enablement/references/it-financial-management-tbm-manager.md"
       }
     },
@@ -282,7 +287,8 @@
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -331,7 +337,8 @@
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -377,7 +384,8 @@
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -423,7 +431,8 @@
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -469,7 +478,8 @@
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -515,7 +525,8 @@
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -561,7 +572,8 @@
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -602,7 +614,8 @@
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -643,7 +656,8 @@
           "content/types/dataset.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -686,7 +700,8 @@
           "content/rules/global-invariants.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -732,7 +747,8 @@
           "content/rules/global-invariants.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -780,7 +796,8 @@
           "content/rules/global-invariants.yaml",
           "https://www.w3.org/TR/vocab-dcat-3/",
           "https://www.w3.org/TR/vocab-dqv/",
-          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+          "https://www.isaca.org/resources/cobit"
         ]
       },
       "provenance": {
@@ -927,17 +944,30 @@
         "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
         "basis": "jai-practice",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "IT Financial Management / TBM Manager",
+        "domain": "Commercial, Sourcing and Enablement",
+        "domain_index": 15,
+        "method_focus": "Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.",
         "frameworks": [
           "Technology Business Management (TBM) taxonomy",
           "FinOps Framework",
           "COBIT financial management concepts",
           "IAS/IFRS or local accounting policy as applicable"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -1008,6 +1038,17 @@
     "source_fingerprint": "da19710ae3d072d65a0af58a3ee84e8d17ba3143c22bac23df8e681da04be061",
     "source_hash": "ed22645e794cd1e37296b93b0703d7502c0545bf60bec6525509fd97244f5d6d"
   },
+  "delivery_form": {
+    "primary_artifact": "typed-dataset-or-calculation-model",
+    "representation": "Typed data or calculation model with units, keys/formulas, lineage and quality constraints.",
+    "evidence": [
+      "versioned inputs and reproducible transformations",
+      "reconciliation, quality measures and permitted use"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "1ebf0d393ac95d8664beecae45f222240ad47556e10e85ade689ec3209b2984e",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

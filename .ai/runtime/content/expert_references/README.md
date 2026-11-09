@@ -1,10 +1,12 @@
 # Bundled expert reference examples
 
-The complete version 2.3.0 library contains 135 English Markdown examples:
-45 document families at simple, medium and complex levels. All 135 documents
-are intentionally revised; reference IDs, paths, family/complexity and stable
-DCS anchors remain unchanged, including the 30 proposal references. All
-Markdown bytes match the supplied version 2.3.0 documents.
+Version 2.4.0 contains 189 English Markdown examples: 63 professional
+families at simple, medium and complex levels. The 135 version-2.3.0
+baseline documents remain byte-identical, including the 30 proposal references.
+The 54 additional modality and analysis cases provide concrete reasoning,
+counterexamples and bounded conclusions for previously uncovered families.
+Their independent professional review remains pending; authoring and checksum
+validation do not establish professional approval.
 
 Technical, management and presentation lenses were applied by the same AI
 reviewer system. These are editorial improvements, not three independent

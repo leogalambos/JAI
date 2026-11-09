@@ -63,7 +63,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -102,7 +105,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -141,7 +147,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -180,7 +189,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -200,7 +212,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Base image catalogue and lifecycle policy', provide verifiable evidence satisfying: Every statement is testable and maps to at least one control. Required delivery form: Controlled document with owner, effective date and review date.",
+        "For the specific output 'Base image catalogue and lifecycle policy', provide verifiable evidence satisfying: Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Every statement is testable and maps to at least one control. Required delivery form: Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +227,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Base image catalogue and lifecycle policy', provide verifiable evidence satisfying: Every statement is testable and maps to at least one control. Required delivery form: Controlled document with owner, effective date and review date.",
+        "reason": "For the specific output 'Base image catalogue and lifecycle policy', provide verifiable evidence satisfying: Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Every statement is testable and maps to at least one control. Required delivery form: Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -229,8 +244,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Base image catalogue and lifecycle policy",
-        "format": "Controlled document with owner, effective date and review date",
-        "acceptance_criterion": "Every statement is testable and maps to at least one control",
+        "format": "Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
+        "acceptance_criterion": "Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Every statement is testable and maps to at least one control.",
         "role_path": "skills/it-roles-infrastructure-cloud-and-operations/references/container-platform-engineer.md"
       }
     },
@@ -276,7 +291,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -329,7 +347,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -373,7 +394,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -417,7 +441,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -461,7 +488,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#container-platform-engineer:1",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -507,7 +537,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -551,7 +584,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -597,7 +633,10 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://sre.google/sre-book/service-level-objectives/",
+          "https://doi.org/10.6028/NIST.SP.800-128",
+          "https://doi.org/10.6028/NIST.SP.800-34r1"
         ]
       },
       "provenance": {
@@ -720,11 +759,38 @@
         "scope": "Dataset/catalogue identity, distributions, provenance, access and descriptive metadata.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sre-practice",
+        "title": "Google Site Reliability Engineering, Service Level Objectives",
+        "url": "https://sre.google/sre-book/service-level-objectives/",
+        "scope": "Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "configuration-management",
+        "title": "NIST SP 800-128, Guide for Security-Focused Configuration Management of Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-128",
+        "scope": "Configuration baselines, controlled changes, impact analysis and monitoring.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "contingency-planning",
+        "title": "NIST SP 800-34 Revision 1, Contingency Planning Guide for Federal Information Systems",
+        "url": "https://doi.org/10.6028/NIST.SP.800-34r1",
+        "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Container Platform Engineer",
+        "domain": "Infrastructure, Cloud and Operations",
+        "domain_index": 8,
+        "method_focus": "Define measurable service objectives, capacity and dependency assumptions, failure behaviour, recovery and observed operational evidence.",
         "frameworks": [
           "OCI image and distribution specifications",
           "Docker and Podman build practice",
@@ -732,6 +798,8 @@
           "SLSA provenance",
           "CIS Docker Benchmark"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -802,6 +870,17 @@
     "source_fingerprint": "a32fd398a49120aa754eba0a824decdb74ac04fe274d9ccc8e45d20c4558a22c",
     "source_hash": "22e19b04eac06353ed5191011231f568f7a272be4c55e77c34fc9bca451381ca"
   },
+  "delivery_form": {
+    "primary_artifact": "governed-catalogue",
+    "representation": "Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
+    "evidence": [
+      "source reconciliation and lifecycle state",
+      "duplicate/reference integrity checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "f5f3de6efe284a54e890f2423782b2afffb481ff9669f924fb987e3f0fafd1ac",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

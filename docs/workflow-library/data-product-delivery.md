@@ -9,6 +9,54 @@ A business area needs a trusted dataset, metric or report.
 A governed, documented, monitored data product with an owner.
 
 
+<!-- BEGIN workflow-applicability -->
+## Context and mechanism applicability
+
+Use the actual bounded request, current environment and decision rights to select one applicable mechanism variant. Unknown applicability remains pending; the routing record grants no authority.
+
+**Invariant outcomes:**
+
+- A governed, documented, monitored data product with an owner.
+- Retain source-version traceability, accountable receiving duties and every applicable existing gate.
+
+| Context | Mechanisms | Required evidence |
+| --- | --- | --- |
+| nonpersonal | Apply governed definitions, lineage and fit-for-purpose quality measurement | Source access, tested transforms and agreed metric definitions |
+| personal-regulated | Resolve privacy/jurisdiction obligations before processing and test controls | Competent impact/applicability position and permitted processing scope |
+
+Return definition conflicts to the data owner/steward and failed quality checks to the producing transform owner. Stop processing outside authorised purpose or when mandatory privacy/control prerequisites are unresolved. Accept the product for its bounded use or withdraw it with consumer notification and owned correction/retention actions. Mechanism selection is not a waiver of security, legal or acceptance obligations.
+
+**Entry information (selected once per actual context version):**
+
+- Intended data use and accountable data owner
+- Source definitions and access/processing permissions
+- Quality tolerances and receiving consumer needs
+
+Select intake and mechanism variant once per actual context version. Carry the reviewed record by versioned evidence reference. Reuse unchanged evidence; recheck mutable prerequisites only at the action they govern. A new context version requires its own relevant review, not reconstruction of historical work.
+
+**Continuation, rework, stop and exit:**
+
+- **continue** — The current handoff criteria and applicable prerequisites are satisfied. Continue to the registered receiving duty with exact output and evidence references.
+- **rework** — A current criterion fails or required information changes. Return definition conflicts to the data owner/steward and failed quality checks to the producing transform owner.
+- **stop** — An applicable authority, legal, safety or mandatory-control boundary forbids the effect. Stop processing outside authorised purpose or when mandatory privacy/control prerequisites are unresolved.
+- **exit** — The bounded outcome is accepted or the entitled owner rejects, cancels or defers the scope. Accept the product for its bounded use or withdraw it with consumer notification and owned correction/retention actions.
+
+**Bounded paths and scope:**
+
+Nonpersonal use replaces privacy/DPIA work with evidenced classification and bounded permitted-use decision; personal/regulated use retains competent impact review.
+
+| Selected path | Applicable stages | Terminal stage |
+| --- | --- | ---: |
+| nonpersonal | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
+| personal-regulated | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
+
+A path with a separate mechanism requires that explicit mechanism selection in the versioned intake record. Unknown selection remains pending. Later out-of-scope stages cannot claim acceptance; a terminal exit still needs the registered exact-scope authority.
+
+**Context guards:**
+
+- **nonpersonal** requires evidence that the statement "personal data are processed" is false; unknown applicability remains pending.
+<!-- END workflow-applicability -->
+
 <!-- JAI:WORKFLOW-DIAGRAM:START -->
 <div class="ai-workflow-overview">
 <ol class="ai-workflow-steps" role="list" aria-label="Data product delivery workflow steps">

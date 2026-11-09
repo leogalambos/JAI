@@ -23,6 +23,48 @@
     "privacy": true
   },
   "semantic_units": {
+    "delivery_accountability": [
+      {
+        "increment_id": "SYN-WAVE1",
+        "start": "2026-11-01",
+        "finish": "2026-11-05",
+        "dependency": "SYN-T1 peak-load retest",
+        "entry": "Backup restore rehearsed and rollback configuration retained",
+        "exit": "Ledger totals reconcile and operations independently accepts support",
+        "go_no_go": "Service owner with independent operations evidence",
+        "fallback_decision_time": "Before enabling transaction traffic",
+        "record_id": "SYN-DELIVERY-ACCOUNTABILITY",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Assign outcomes, milestones, resource assumptions and acceptance responsibility.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "delivery_dependencies": [
+      {
+        "increment_id": "SYN-WAVE1",
+        "start": "2026-11-01",
+        "finish": "2026-11-05",
+        "dependency": "SYN-T1 peak-load retest",
+        "entry": "Backup restore rehearsed and rollback configuration retained",
+        "exit": "Ledger totals reconcile and operations independently accepts support",
+        "go_no_go": "Service owner with independent operations evidence",
+        "fallback_decision_time": "Before enabling transaction traffic",
+        "record_id": "SYN-DELIVERY-DEPENDENCIES",
+        "service": "Regional order integration",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "criterion_under_review": "Link delivery risks, cross-team dependencies and change decisions to accountable owners.",
+        "accountable_role": "Synthetic receiving service owner",
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption"
+      }
+    ],
     "privacy_analysis": {
       "element_id": "SYN-APP-1",
       "responsibility": "Accept transaction IDs and persist each committed event once",
@@ -40,48 +82,99 @@
       ],
       "knowledge_status": "synthetic-assumption"
     },
-    "security_boundary": {
-      "risk_id": "SYN-R1",
-      "cause": "Recovery checkpoint lags active transaction state",
-      "event": "Replay duplicates a committed transaction",
-      "business_consequence": "Ledger imbalance delays warehouse updates",
-      "inherent_score": 12,
-      "residual_score": 8,
-      "control_ref": "SYN-C1",
-      "treatment": "Enforce unique event IDs and rehearse ledger reconciliation",
-      "due": "2026-11-05",
-      "residual_authority": "Independent service risk owner; approval pending",
-      "record_id": "SYN-SECURITY-BOUNDARY",
+    "change_behaviour": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-CHANGE-BEHAVIOUR",
       "service": "Regional order integration",
       "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify protected business outcomes, trust boundaries and authorised information handling.",
+      "criterion_under_review": "Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision.",
       "accountable_role": "Synthetic receiving service owner",
       "evidence_refs": [
         "SYN-01"
       ],
       "knowledge_status": "synthetic-assumption"
     },
-    "security_control_trace": [
+    "change_recovery": {
+      "element_id": "SYN-APP-1",
+      "responsibility": "Accept transaction IDs and persist each committed event once",
+      "interface_ref": "SYN-IF-1",
+      "deployment": "Managed Linux service with PostgreSQL standby",
+      "failure_handling": "Retry twice using the same event ID, then reject and alert",
+      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+      "record_id": "SYN-CHANGE-RECOVERY",
+      "service": "Regional order integration",
+      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+      "criterion_under_review": "Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints.",
+      "accountable_role": "Synthetic receiving service owner",
+      "evidence_refs": [
+        "SYN-01"
+      ],
+      "knowledge_status": "synthetic-assumption"
+    },
+    "change_verification": [
       {
-        "risk_id": "SYN-R1",
-        "cause": "Recovery checkpoint lags active transaction state",
-        "event": "Replay duplicates a committed transaction",
-        "business_consequence": "Ledger imbalance delays warehouse updates",
-        "inherent_score": 12,
-        "residual_score": 8,
-        "control_ref": "SYN-C1",
-        "treatment": "Enforce unique event IDs and rehearse ledger reconciliation",
-        "due": "2026-11-05",
-        "residual_authority": "Independent service risk owner; approval pending",
-        "record_id": "SYN-SECURITY-CONTROL-TRACE",
+        "element_id": "SYN-APP-1",
+        "responsibility": "Accept transaction IDs and persist each committed event once",
+        "interface_ref": "SYN-IF-1",
+        "deployment": "Managed Linux service with PostgreSQL standby",
+        "failure_handling": "Retry twice using the same event ID, then reject and alert",
+        "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
+        "record_id": "SYN-CHANGE-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Trace threat/risk scenarios through control objectives to effectiveness evidence and residual owners.",
+        "criterion_under_review": "Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
         ],
         "knowledge_status": "synthetic-assumption"
+      }
+    ],
+    "framework_applicability": [
+      {
+        "record_id": "SYN-PROFESSIONAL-BASIS",
+        "source": {
+          "title": "JAI authored enterprise-delivery practice",
+          "edition": "Synthetic development scenario, revision 1",
+          "authoritative_location": "content/rules/global-invariants.yaml"
+        },
+        "basis": "jai-interpretation",
+        "applicability": "applicable",
+        "rationale": "This fictional recovery case uses JAI evidence and bounded-handoff practice to exercise the DCS contract; no external framework conformity is claimed.",
+        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
+        "jurisdiction": "No real jurisdictional compliance conclusion is established by this synthetic fixture.",
+        "adopted_concepts": [
+          "Attributable evidence",
+          "Bounded receiving-role conclusions"
+        ],
+        "tailoring": "Illustrative recovery-service facts only; peak-load validation is excluded and remains pending.",
+        "precedence": "Applicable real law and organisation policy would prevail; neither is fabricated by this case.",
+        "method_mapping": [
+          {
+            "output_unit_ref": "global.framework_applicability",
+            "method": "Separate fabricated scenario observations from demonstrated production results and map residual gaps to the receiving owner.",
+            "expected_evidence": "Versioned synthetic scenario and its declared limitations.",
+            "evidence_refs": [
+              "SYN-01"
+            ],
+            "reviewer_test": "Reject any inference of real execution, framework conformance or human approval from this fictional example."
+          }
+        ],
+        "review": {
+          "owner": "Synthetic independent domain reviewer",
+          "status": "pending-independent-review",
+          "change_trigger": "Change to scenario scope, source practice or evidence; unchanged history is reused."
+        },
+        "evidence_refs": [
+          "SYN-01"
+        ],
+        "knowledge_status": "synthetic-assumption",
+        "human_approval_ref": null
       }
     ],
     "contract_input_1": {
@@ -216,7 +309,7 @@
         "record_id": "SYN-DELIVERY-VERIFICATION",
         "service": "Regional order integration",
         "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "For the specific output 'policy-as-code guardrails', provide verifiable evidence satisfying: Every statement is testable and maps to at least one control. Required delivery form: Controlled document with owner, effective date and review date.",
+        "criterion_under_review": "For the specific output 'policy-as-code guardrails', provide verifiable evidence satisfying: Trace implemented behaviour and changed interfaces to requirements, design constraints and the exact reviewed source revision. Identify reproducible automated checks, observed results, untested risks and independent review findings without inventing execution. Define deployment compatibility, telemetry, failure detection and rollback or forward recovery constraints. Existing source requirement: Every statement is testable and maps to at least one control. Required delivery form: Actual executable policy rules and rule-engine configuration in version control; the control-design rationale accompanies the rules.",
         "accountable_role": "Synthetic receiving service owner",
         "evidence_refs": [
           "SYN-01"
@@ -261,97 +354,7 @@
         ],
         "knowledge_status": "synthetic-assumption"
       }
-    ],
-    "control_effectiveness": [
-      {
-        "test_id": "SYN-T1",
-        "requirement_ref": "SYN-REC1",
-        "build": "candidate-1.0",
-        "environment": "Isolated recovery rehearsal",
-        "procedure": "Restore service and submit the same event ID twice; compare durable ledger totals",
-        "expected_max_minutes": 30,
-        "observed_minutes": 27,
-        "expected_duplicate_count": 0,
-        "observed_duplicate_count": 0,
-        "sample_size": 10,
-        "exclusions": [
-          "Peak-load recovery"
-        ],
-        "disposition": "Bounded synthetic result only; peak-load retest required before acceptance",
-        "record_id": "SYN-CONTROL-EFFECTIVENESS",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Define measurable effectiveness tests, evidence collection and exception handling.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "control_mechanisms": [
-      {
-        "risk_id": "SYN-R1",
-        "cause": "Recovery checkpoint lags active transaction state",
-        "event": "Replay duplicates a committed transaction",
-        "business_consequence": "Ledger imbalance delays warehouse updates",
-        "inherent_score": 12,
-        "residual_score": 8,
-        "control_ref": "SYN-C1",
-        "treatment": "Enforce unique event IDs and rehearse ledger reconciliation",
-        "due": "2026-11-05",
-        "residual_authority": "Independent service risk owner; approval pending",
-        "record_id": "SYN-CONTROL-MECHANISMS",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Define preventive/detective/corrective actions, triggers, inputs and failure behaviour.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "control_objectives": [
-      {
-        "risk_id": "SYN-R1",
-        "cause": "Recovery checkpoint lags active transaction state",
-        "event": "Replay duplicates a committed transaction",
-        "business_consequence": "Ledger imbalance delays warehouse updates",
-        "inherent_score": 12,
-        "residual_score": 8,
-        "control_ref": "SYN-C1",
-        "treatment": "Enforce unique event IDs and rehearse ledger reconciliation",
-        "due": "2026-11-05",
-        "residual_authority": "Independent service risk owner; approval pending",
-        "record_id": "SYN-CONTROL-OBJECTIVES",
-        "service": "Regional order integration",
-        "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-        "criterion_under_review": "Link control objectives to risks, business requirements and accountable owners.",
-        "accountable_role": "Synthetic receiving service owner",
-        "evidence_refs": [
-          "SYN-01"
-        ],
-        "knowledge_status": "synthetic-assumption"
-      }
-    ],
-    "identity": {
-      "element_id": "SYN-APP-1",
-      "responsibility": "Accept transaction IDs and persist each committed event once",
-      "interface_ref": "SYN-IF-1",
-      "deployment": "Managed Linux service with PostgreSQL standby",
-      "failure_handling": "Retry twice using the same event ID, then reject and alert",
-      "rollback": "Drain retries and reconcile the ledger before restoring the previous configuration",
-      "record_id": "SYN-IDENTITY",
-      "service": "Regional order integration",
-      "scope": "Three regional order services, ERP integration, identity management and two operations teams.",
-      "criterion_under_review": "Identify stable artifact ID, owner, source version and intended usage.",
-      "accountable_role": "Synthetic receiving service owner",
-      "evidence_refs": [
-        "SYN-01"
-      ],
-      "knowledge_status": "synthetic-assumption"
-    }
+    ]
   },
   "evaluation_selection": {
     "overlays": []
@@ -380,8 +383,12 @@
       "id": "headings-only",
       "operation": "headings_only",
       "expected_rule_ids": [
-        "domain/security.security_boundary",
-        "domain/security.security_control_trace",
+        "domain/delivery.delivery_accountability",
+        "domain/delivery.delivery_dependencies",
+        "family/software-change.change_behaviour",
+        "family/software-change.change_recovery",
+        "family/software-change.change_verification",
+        "global.framework_applicability",
         "role/infrastructure-as-code-engineer:3.contract_input_1",
         "role/infrastructure-as-code-engineer:3.contract_input_2",
         "role/infrastructure-as-code-engineer:3.contract_input_3",
@@ -391,11 +398,7 @@
         "role/infrastructure-as-code-engineer:3.delivery_scope",
         "role/infrastructure-as-code-engineer:3.delivery_verification",
         "role/infrastructure-as-code-engineer:3.receiving_acceptance",
-        "role/infrastructure-as-code-engineer:3.role_gate_observations",
-        "type/control-design.control_effectiveness",
-        "type/control-design.control_mechanisms",
-        "type/control-design.control_objectives",
-        "type/control-design.identity"
+        "role/infrastructure-as-code-engineer:3.role_gate_observations"
       ],
       "expected_category": "critical-content"
     },

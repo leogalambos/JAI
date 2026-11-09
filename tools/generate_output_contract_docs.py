@@ -148,6 +148,15 @@ class Projection:
             rows += [f"- [`{ident}`]({self.spec_paths[ident]})" for ident in inherited]
             rows.append('')
         rows += ['Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.', '']
+        form = compiled.get('delivery_form')
+        if form:
+            rows += ['### Primary work product and evidence', '',
+                     '**Primary work product:** `' + form['primary_artifact'] + '`.', '',
+                     form['representation'], '', '**Evidence accompanying the work product:**', '']
+            rows += ['- ' + item for item in form['evidence']]
+            rows += ['', 'The historical artifact-type field is retained for compatibility; '
+                     'it does not require replacing this work product with a report or an EA diagram. '
+                     + form['authority'], '']
         all_units = [unit for group in GROUPS for unit in spec.get(group, [])]
         policies = {json.dumps(unit.get('evidence_policy', {}), sort_keys=True) for unit in all_units}
         shared_policy = json.loads(next(iter(policies))) if len(policies) == 1 else {}
@@ -190,6 +199,12 @@ class Projection:
             for context in frameworks:
                 frameworks_text = '; '.join(value.rstrip().rstrip('.;') for value in context['frameworks'])
                 rows += ['- **' + context['role'] + ':** ' + frameworks_text + '. ' + context['basis']]
+                if context.get('method_focus'):
+                    rows += ['  **Practical method:** ' + context['method_focus']]
+                if context.get('framework_selection'):
+                    rows += ['  **Selection:** ' + context['framework_selection']]
+                if context.get('applicability_rule'):
+                    rows += ['  **Applicability assessment:** `' + context['applicability_rule'] + '`.']
             rows.append('')
         return '\n'.join(rows)
 
@@ -304,7 +319,54 @@ class Projection:
                 for cid in handoff['contract_ids']:
                     contract = self.contracts[cid]
                     links.append(f'[`{cid}`](output-contracts/role-{contract["role_slug"]}.md#{self.anchor(cid)})')
-                if not links:
+                supplement = handoff.get('handoff_content_contract')
+                if supplement:
+                    filename = 'workflow-' + workflow['key'] + '.md'
+                    anchor = self.anchor(supplement['id'])
+                    page = workflow_specific.setdefault(filename, [
+                        '# ' + workflow['title'] + ': source-owned handoff contracts', '',
+                        '[Catalogue](index.md)', ''])
+                    page += [f'<a id="{anchor}"></a>', '', '## ' + step['hands_over'], '',
+                             '**Handoff content contract:** `' + supplement['id'] + '`.', '',
+                             '**Basis:** ' + supplement['basis'], '',
+                             'These requirements supplement the linked role output contracts. '
+                             'A related policy or published view does not replace the specific '
+                             'decision or repository/interchange records required here.', '',
+                             '### Required information (MUST)', '']
+                    for unit in supplement['units']:
+                        page += ['- **`' + unit['semantic_field'] + '`**: '
+                                 + unit['acceptance_criterion'],
+                                 '  Required fields: ' + ', '.join(
+                                     '`' + field + '`' for field in unit['required_fields']) + '.']
+                    page += ['', 'The existing authenticated receiver reviews each required '
+                             'unit against this exact handoff. A content record alone does '
+                             'not grant acceptance or release.', '']
+                    if handoff.get('variant_bindings'):
+                        page += ['### Context-selected alternatives', '',
+                                 'Alternative bindings replace the base obligations for the '
+                                 'selected path. Select the path from the reviewed intake '
+                                 'context and the workflow operating profile; requirements '
+                                 'from other paths are not cumulative.', '']
+                        for path_id, binding in handoff['variant_bindings'].items():
+                            next_step = binding['next_step']
+                            destination = ('Terminal disposition; no downstream step'
+                                           if next_step is None else 'Step ' + str(next_step))
+                            page += ['**Selected path:** `' + path_id + '`.', '',
+                                     '**Producer:** `' + binding['producer_role'] + '`; '
+                                     '**receiver:** `' + binding['receiving_role'] + '`.', '',
+                                     '**Receiving condition:** ' + binding['acceptance_criterion'], '',
+                                     '**Next:** ' + destination + '.', '',
+                                     '**Role output contracts:** ' + (', '.join(
+                                         '`' + cid + '`' for cid in binding['contract_ids'])
+                                         or 'Source-owned handoff only') + '.', '']
+                            for unit in binding['handoff_content_contract']['units']:
+                                page += ['- **`' + unit['semantic_field'] + '`**: '
+                                         + unit['acceptance_criterion'],
+                                         '  Required fields: ' + ', '.join(
+                                             '`' + field + '`' for field in unit['required_fields']) + '.']
+                            page.append('')
+                    links.append(f'[{supplement["id"]}](output-contracts/{filename}#{anchor})')
+                if handoff.get('source_content_contract'):
                     source = handoff['source_content_contract']
                     filename = 'workflow-' + workflow['key'] + '.md'
                     anchor = self.anchor(source['id'])

@@ -9,6 +9,54 @@ A new or changed law, regulation, supervisory expectation or contractual complia
 Applicability and obligations are translated into traceable requirements/controls, architecture and remediation changes are implemented, evidence is independently assured, and closure is authorised.
 
 
+<!-- BEGIN workflow-applicability -->
+## Context and mechanism applicability
+
+Use the actual bounded request, current environment and decision rights to select one applicable mechanism variant. Unknown applicability remains pending; the routing record grants no authority.
+
+**Invariant outcomes:**
+
+- Applicability and obligations are translated into traceable requirements/controls, architecture and remediation changes are implemented, evidence is independently assured, and closure is authorised.
+- Retain source-version traceability, accountable receiving duties and every applicable existing gate.
+
+| Context | Mechanisms | Required evidence |
+| --- | --- | --- |
+| applicable | Trace obligations to testable requirements, implemented controls and independent assurance | Source-context mapping, actual control evidence and exceptions |
+| not-applicable | Record a competent bounded exclusion with its source/context rationale | Actual applicability decision and change/review trigger |
+
+Return ambiguous interpretation to the competent obligation owner and ineffective controls to control/design owners. Stop unsupported compliance claims or closure with unresolved mandatory obligations and absent authorised disposition. Close only the assessed scope with explicit exceptions, actual authority and future review triggers. Mechanism selection is not a waiver of security, legal or acceptance obligations.
+
+**Entry information (selected once per actual context version):**
+
+- Attributable source/version/jurisdiction and dates
+- Competent applicability authority
+- Affected services, controls and obligation owners
+
+Select intake and mechanism variant once per actual context version. Carry the reviewed record by versioned evidence reference. Reuse unchanged evidence; recheck mutable prerequisites only at the action they govern. A new context version requires its own relevant review, not reconstruction of historical work.
+
+**Continuation, rework, stop and exit:**
+
+- **continue** — The current handoff criteria and applicable prerequisites are satisfied. Continue to the registered receiving duty with exact output and evidence references.
+- **rework** — A current criterion fails or required information changes. Return ambiguous interpretation to the competent obligation owner and ineffective controls to control/design owners.
+- **stop** — An applicable authority, legal, safety or mandatory-control boundary forbids the effect. Stop unsupported compliance claims or closure with unresolved mandatory obligations and absent authorised disposition.
+- **exit** — The bounded outcome is accepted or the entitled owner rejects, cancels or defers the scope. Close only the assessed scope with explicit exceptions, actual authority and future review triggers.
+
+**Bounded paths and scope:**
+
+Verified non-applicability closes at step2 under exact authority; it cannot require fabricated control implementation or compliance evidence.
+
+| Selected path | Applicable stages | Terminal stage |
+| --- | --- | ---: |
+| applicable | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 | 10 |
+| not-applicable | 1, 2 | 2 |
+
+A path with a separate mechanism requires that explicit mechanism selection in the versioned intake record. Unknown selection remains pending. Later out-of-scope stages cannot claim acceptance; a terminal exit still needs the registered exact-scope authority.
+
+**Context guards:**
+
+- **not-applicable** requires evidence that the statement "a regulatory requirement applies" is false; unknown applicability remains pending.
+<!-- END workflow-applicability -->
+
 <!-- JAI:WORKFLOW-DIAGRAM:START -->
 <div class="ai-workflow-overview">
 <ol class="ai-workflow-steps" role="list" aria-label="Regulatory change to assurance workflow steps">

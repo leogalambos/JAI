@@ -9,6 +9,52 @@ A service degrades or fails.
 Service restored, cause removed, and a control changed so the class of failure does not recur.
 
 
+<!-- BEGIN workflow-applicability -->
+## Context and mechanism applicability
+
+Use the actual bounded request, current environment and decision rights to select one applicable mechanism variant. Unknown applicability remains pending; the routing record grants no authority.
+
+**Invariant outcomes:**
+
+- Service restored, cause removed, and a control changed so the class of failure does not recur.
+- Retain source-version traceability, accountable receiving duties and every applicable existing gate.
+
+| Context | Mechanisms | Required evidence |
+| --- | --- | --- |
+| ordinary | Coordinate proportionate restoration and later causal work | Incident observations, authorised restoration and service validation |
+| major | Use declared command and stakeholder cadence | Command log, business-impact priority and notification-clock assessment |
+| suspected-security | Hand security handling to the incident response scope while preserving service coordination | Preserved evidence, scoped security handoff and authorised restoration |
+
+Return disproved hypotheses to the problem owner with their evidence; new fix revisions follow readiness and change review. Stop destructive recovery without evidence preservation and the required scope authority; stop deployment at failed health criteria. Close restoration separately from causal resolution; permanent closure needs independent fix validation and recurrence measures. Mechanism selection is not a waiver of security, legal or acceptance obligations.
+
+**Entry information (selected once per actual context version):**
+
+- Affected service and observed business impact
+- Current incident/restoration authority
+- Evidence preservation and communication needs
+
+Select intake and mechanism variant once per actual context version. Carry the reviewed record by versioned evidence reference. Reuse unchanged evidence; recheck mutable prerequisites only at the action they govern. A new context version requires its own relevant review, not reconstruction of historical work.
+
+**Continuation, rework, stop and exit:**
+
+- **continue** — The current handoff criteria and applicable prerequisites are satisfied. Continue to the registered receiving duty with exact output and evidence references.
+- **rework** — A current criterion fails or required information changes. Return disproved hypotheses to the problem owner with their evidence; new fix revisions follow readiness and change review.
+- **stop** — An applicable authority, legal, safety or mandatory-control boundary forbids the effect. Stop destructive recovery without evidence preservation and the required scope authority; stop deployment at failed health criteria.
+- **exit** — The bounded outcome is accepted or the entitled owner rejects, cancels or defers the scope. Close restoration separately from causal resolution; permanent closure needs independent fix validation and recurrence measures.
+
+**Bounded paths and scope:**
+
+Ordinary, major and suspected-security contexts retain actual observations, authority and evidence preservation; command intensity and the referenced response scope differ.
+
+| Selected path | Applicable stages | Terminal stage |
+| --- | --- | ---: |
+| ordinary | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 | 12 |
+| major | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 | 12 |
+| suspected-security | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 | 12 |
+
+A path with a separate mechanism requires that explicit mechanism selection in the versioned intake record. Unknown selection remains pending. Later out-of-scope stages cannot claim acceptance; a terminal exit still needs the registered exact-scope authority.
+<!-- END workflow-applicability -->
+
 <!-- JAI:WORKFLOW-DIAGRAM:START -->
 <div class="ai-workflow-overview">
 <ol class="ai-workflow-steps" role="list" aria-label="Incident to permanent fix workflow steps">

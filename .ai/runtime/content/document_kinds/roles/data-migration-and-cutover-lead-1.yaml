@@ -63,7 +63,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:1",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -103,7 +106,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:1",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -143,7 +149,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:1",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -183,7 +192,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:1",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -203,7 +215,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Migration strategy and data migration plan', provide verifiable evidence satisfying: Every migrated object has source, target, owner, transformation rule and acceptance check. Required delivery form: Versioned specification with scope, waves, mapping and reconciliation rules.",
+        "For the specific output 'Migration strategy and data migration plan', provide verifiable evidence satisfying: Inventory source/target versions, data classes, owners, interfaces, dependencies and mapping or transformation rules. For each wave, identify entry criteria, ordered activities, resource/window assumptions, reconciliation measures and receiving acceptance. State integrity checks, recovery points, fallback decision authority, latest safe reversal point and continuity arrangements for an unsuccessful wave. Existing source requirement: Every migrated object has source, target, owner, transformation rule and acceptance check. Required delivery form: Versioned migration inventory, mappings and sequenced waves with reconciliation and fallback criteria.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +230,15 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Migration strategy and data migration plan', provide verifiable evidence satisfying: Every migrated object has source, target, owner, transformation rule and acceptance check. Required delivery form: Versioned specification with scope, waves, mapping and reconciliation rules.",
+        "reason": "For the specific output 'Migration strategy and data migration plan', provide verifiable evidence satisfying: Inventory source/target versions, data classes, owners, interfaces, dependencies and mapping or transformation rules. For each wave, identify entry criteria, ordered activities, resource/window assumptions, reconciliation measures and receiving acceptance. State integrity checks, recovery points, fallback decision authority, latest safe reversal point and continuity arrangements for an unsuccessful wave. Existing source requirement: Every migrated object has source, target, owner, transformation rule and acceptance check. Required delivery form: Versioned migration inventory, mappings and sequenced waves with reconciliation and fallback criteria.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:1",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -233,8 +248,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Migration strategy and data migration plan",
-        "format": "Versioned specification with scope, waves, mapping and reconciliation rules",
-        "acceptance_criterion": "Every migrated object has source, target, owner, transformation rule and acceptance check.",
+        "format": "Versioned migration inventory, mappings and sequenced waves with reconciliation and fallback criteria.",
+        "acceptance_criterion": "Inventory source/target versions, data classes, owners, interfaces, dependencies and mapping or transformation rules. For each wave, identify entry criteria, ordered activities, resource/window assumptions, reconciliation measures and receiving acceptance. State integrity checks, recovery points, fallback decision authority, latest safe reversal point and continuity arrangements for an unsuccessful wave. Existing source requirement: Every migrated object has source, target, owner, transformation rule and acceptance check.",
         "role_path": "skills/it-roles-product-delivery-and-agile/references/data-migration-and-cutover-lead.md"
       }
     },
@@ -274,7 +289,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:1",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -321,7 +339,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:1",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -366,7 +387,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:1",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -411,7 +435,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:1",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -456,7 +483,10 @@
           "artifacts/contracts/role-deliverables.v3.json#data-migration-and-cutover-lead:1",
           "content/types/migration-plan.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -503,7 +533,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -548,7 +581,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -595,7 +631,10 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-128",
-          "https://doi.org/10.6028/NIST.SP.800-34r1"
+          "https://doi.org/10.6028/NIST.SP.800-34r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.iso.org/standard/72089.html",
+          "https://www.iso.org/standard/77520.html"
         ]
       },
       "provenance": {
@@ -726,16 +765,45 @@
         "scope": "Recovery priorities, dependencies, recovery procedures, exercises and maintenance.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "human-centred-design",
+        "title": "ISO 9241-210:2019, Human-centred design for interactive systems",
+        "url": "https://www.iso.org/standard/77520.html",
+        "scope": "Human-centred design principles and life-cycle activities; public abstract is a basis for candidate selection, not clause-level assessment.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Data Migration and Cutover Lead",
+        "domain": "Product, Delivery and Agile",
+        "domain_index": 2,
+        "method_focus": "Trace the evidenced problem through product hypotheses, delivery choices, acceptance and observed benefits.",
         "frameworks": [
           "PMI/PRINCE2 transition controls",
           "DAMA data migration practices",
           "ITIL 4 deployment management"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -806,6 +874,17 @@
     "source_fingerprint": "1c49af6680f2d3c5c4247bf2e4ae1ba9de799cbdd003dd225ae330496ce4fa91",
     "source_hash": "37ded80e5137ad623f34d1b5e78b1d88cae64806879bda8ab9a934a7e4e4f8fc"
   },
+  "delivery_form": {
+    "primary_artifact": "migration-plan",
+    "representation": "Versioned migration inventory, mappings and sequenced waves with reconciliation and fallback criteria.",
+    "evidence": [
+      "source/target and ownership inventory",
+      "integrity/reconciliation and recovery checkpoints"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "e40b16feb0d962d01dcc8b6d32550cf430844a504181667d50cd64ba70114672",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

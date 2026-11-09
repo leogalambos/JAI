@@ -9,6 +9,50 @@ A suspected or confirmed cyber incident may affect systems, data, customers, reg
 The incident is contained and eradicated, evidence is preserved, recovery is accepted by the business, notification decisions are traceable, and control remediation is closed or owned.
 
 
+<!-- BEGIN workflow-applicability -->
+## Context and mechanism applicability
+
+Use the actual bounded request, current environment and decision rights to select one applicable mechanism variant. Unknown applicability remains pending; the routing record grants no authority.
+
+**Invariant outcomes:**
+
+- The incident is contained and eradicated, evidence is preserved, recovery is accepted by the business, notification decisions are traceable, and control remediation is closed or owned.
+- Retain source-version traceability, accountable receiving duties and every applicable existing gate.
+
+| Context | Mechanisms | Required evidence |
+| --- | --- | --- |
+| suspected | Triage hypotheses and preserve evidence before drawing conclusions | Observed event, reliability, scope confidence and lead |
+| confirmed-breach | Coordinate containment, notification and trusted recovery under exact authority | Custody/timeline, impact, clock assessment and actual decisions |
+
+Return disproved hypotheses, incomplete impact evidence or failed recovery to the responsible response/forensic/service owner. Stop unauthorised destructive handling, unsupported notification claims or recovery from untrusted state. Close on independent assurance of actual recovery and owned control remediation; retain justified false-positive disposition separately. Mechanism selection is not a waiver of security, legal or acceptance obligations.
+
+**Entry information (selected once per actual context version):**
+
+- Observed event, time and affected scope
+- Current response authority and evidence handling
+- Business priorities and notification obligations
+
+Select intake and mechanism variant once per actual context version. Carry the reviewed record by versioned evidence reference. Reuse unchanged evidence; recheck mutable prerequisites only at the action they govern. A new context version requires its own relevant review, not reconstruction of historical work.
+
+**Continuation, rework, stop and exit:**
+
+- **continue** — The current handoff criteria and applicable prerequisites are satisfied. Continue to the registered receiving duty with exact output and evidence references.
+- **rework** — A current criterion fails or required information changes. Return disproved hypotheses, incomplete impact evidence or failed recovery to the responsible response/forensic/service owner.
+- **stop** — An applicable authority, legal, safety or mandatory-control boundary forbids the effect. Stop unauthorised destructive handling, unsupported notification claims or recovery from untrusted state.
+- **exit** — The bounded outcome is accepted or the entitled owner rejects, cancels or defers the scope. Close on independent assurance of actual recovery and owned control remediation; retain justified false-positive disposition separately.
+
+**Bounded paths and scope:**
+
+Suspected and confirmed events retain evidence confidence and authority; unobserved breach/notification actions cannot be inferred from suspicion.
+
+| Selected path | Applicable stages | Terminal stage |
+| --- | --- | ---: |
+| suspected | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 | 13 |
+| confirmed-breach | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13 | 13 |
+
+A path with a separate mechanism requires that explicit mechanism selection in the versioned intake record. Unknown selection remains pending. Later out-of-scope stages cannot claim acceptance; a terminal exit still needs the registered exact-scope authority.
+<!-- END workflow-applicability -->
+
 <!-- JAI:WORKFLOW-DIAGRAM:START -->
 <div class="ai-workflow-overview">
 <ol class="ai-workflow-steps" role="list" aria-label="Cyber incident / breach to recovery workflow steps">

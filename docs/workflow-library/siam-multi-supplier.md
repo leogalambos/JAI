@@ -9,6 +9,50 @@ A service depends on multiple suppliers/teams and end-to-end accountability, OLA
 One governed service-integration model joins supplier responsibilities into end-to-end service outcomes with measurable SLAs/OLAs, clear process ownership and cross-supplier escalation.
 
 
+<!-- BEGIN workflow-applicability -->
+## Context and mechanism applicability
+
+Use the actual bounded request, current environment and decision rights to select one applicable mechanism variant. Unknown applicability remains pending; the routing record grants no authority.
+
+**Invariant outcomes:**
+
+- One governed service-integration model joins supplier responsibilities into end-to-end service outcomes with measurable SLAs/OLAs, clear process ownership and cross-supplier escalation.
+- Retain source-version traceability, accountable receiving duties and every applicable existing gate.
+
+| Context | Mechanisms | Required evidence |
+| --- | --- | --- |
+| steady-state | Govern end-to-end measures and shared responsibilities | Underpinning levels, ownership and service results |
+| cross-supplier-disruption | Use one incident/problem/escalation owner across contractual boundaries | Command/restoration ownership, supplier actions and customer impact |
+
+Return ownership gaps, level mismatches or collisions to the integration/service owner rather than bouncing between suppliers. Stop unsupported end-to-end acceptance or cross-supplier effects outside actual authority. Accept the integrated outcome with owned residual issues, or escalate unresolved contract boundaries to the entitled authority. Mechanism selection is not a waiver of security, legal or acceptance obligations.
+
+**Entry information (selected once per actual context version):**
+
+- Customer outcomes and service boundary
+- Supplier contracts, SLAs/OLAs and dependency owners
+- Integration decision and escalation rights
+
+Select intake and mechanism variant once per actual context version. Carry the reviewed record by versioned evidence reference. Reuse unchanged evidence; recheck mutable prerequisites only at the action they govern. A new context version requires its own relevant review, not reconstruction of historical work.
+
+**Continuation, rework, stop and exit:**
+
+- **continue** — The current handoff criteria and applicable prerequisites are satisfied. Continue to the registered receiving duty with exact output and evidence references.
+- **rework** — A current criterion fails or required information changes. Return ownership gaps, level mismatches or collisions to the integration/service owner rather than bouncing between suppliers.
+- **stop** — An applicable authority, legal, safety or mandatory-control boundary forbids the effect. Stop unsupported end-to-end acceptance or cross-supplier effects outside actual authority.
+- **exit** — The bounded outcome is accepted or the entitled owner rejects, cancels or defers the scope. Accept the integrated outcome with owned residual issues, or escalate unresolved contract boundaries to the entitled authority.
+
+**Bounded paths and scope:**
+
+Steady-state/disruption share accountable service outcomes, dependencies and escalation; incident actions require actual scope.
+
+| Selected path | Applicable stages | Terminal stage |
+| --- | --- | ---: |
+| steady-state | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
+| cross-supplier-disruption | 1, 2, 3, 4, 5, 6, 7, 8 | 8 |
+
+A path with a separate mechanism requires that explicit mechanism selection in the versioned intake record. Unknown selection remains pending. Later out-of-scope stages cannot claim acceptance; a terminal exit still needs the registered exact-scope authority.
+<!-- END workflow-applicability -->
+
 <!-- JAI:WORKFLOW-DIAGRAM:START -->
 <div class="ai-workflow-overview">
 <ol class="ai-workflow-steps" role="list" aria-label="SIAM / multi-supplier service integration workflow steps">

@@ -204,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Financial variance and optimisation decision paper', provide verifiable evidence satisfying: Material variance has an accountable owner, quantified impact and a decision or explicitly accepted rationale for no action. Required delivery form: Decision paper linking variance/root causes to options, trade-offs, owners and approved corrective actions.",
+        "For the specific output 'Financial variance and optimisation decision paper', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Material variance has an accountable owner, quantified impact and a decision or explicitly accepted rationale for no action. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,7 +219,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Financial variance and optimisation decision paper', provide verifiable evidence satisfying: Material variance has an accountable owner, quantified impact and a decision or explicitly accepted rationale for no action. Required delivery form: Decision paper linking variance/root causes to options, trade-offs, owners and approved corrective actions.",
+        "reason": "For the specific output 'Financial variance and optimisation decision paper', provide verifiable evidence satisfying: Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Material variance has an accountable owner, quantified impact and a decision or explicitly accepted rationale for no action. Required delivery form: Bounded decision paper with consistent option comparison and a clear authority/decision request.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-financial-management-tbm-manager:4",
           "content/types/decision-paper.yaml",
@@ -234,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Financial variance and optimisation decision paper",
-        "format": "Decision paper linking variance/root causes to options, trade-offs, owners and approved corrective actions",
-        "acceptance_criterion": "Material variance has an accountable owner, quantified impact and a decision or explicitly accepted rationale for no action.",
+        "format": "Bounded decision paper with consistent option comparison and a clear authority/decision request.",
+        "acceptance_criterion": "Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Material variance has an accountable owner, quantified impact and a decision or explicitly accepted rationale for no action.",
         "role_path": "skills/it-roles-commercial-sourcing-and-enablement/references/it-financial-management-tbm-manager.md"
       }
     },
@@ -779,12 +779,17 @@
     "role_framework_context": [
       {
         "role": "IT Financial Management / TBM Manager",
+        "domain": "Commercial, Sourcing and Enablement",
+        "domain_index": 15,
+        "method_focus": "Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.",
         "frameworks": [
           "Technology Business Management (TBM) taxonomy",
           "FinOps Framework",
           "COBIT financial management concepts",
           "IAS/IFRS or local accounting policy as applicable"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -855,6 +860,17 @@
     "source_fingerprint": "e10862047161bb9a136c9c5f6b2932dbca8b048703103dc695098b983aad0acb",
     "source_hash": "af0f4a90708493ce5990177dabd87a09b3d4f9a58d9eb78dc30e174ea0822b62"
   },
+  "delivery_form": {
+    "primary_artifact": "decision-paper",
+    "representation": "Bounded decision paper with consistent option comparison and a clear authority/decision request.",
+    "evidence": [
+      "baseline and feasible alternatives",
+      "cost/benefit/uncertainty and consequences"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "a090a3df4ae3cc7bd43144308805442aac420423285a88fdf8cb5a55d0c8dbec",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

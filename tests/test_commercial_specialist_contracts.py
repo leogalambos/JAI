@@ -62,6 +62,24 @@ class CommercialSpecialistContractsTests(unittest.TestCase):
         self.save_source()
         self.write('artifacts/contracts/role-deliverables.v2.json', {'contracts': []})
         self.write('artifacts/contracts/golden-classification.json', {'cases': []})
+        guidance_path = canonical / 'content/role-output-guidance.json'
+        if guidance_path.is_file():
+            guidance = json.loads(guidance_path.read_text())
+            guidance['outputs'] = [row for row in guidance['outputs'] if row['role_slug'] in SLUGS]
+            guidance.update(role_count=5, domain_count=1, output_count=15)
+            guidance['guidance_hash'] = artifacts._record_hash({key: value for key, value in guidance.items() if key != 'guidance_hash'})
+            self.write('content/role-output-guidance.json', guidance)
+            registry = json.loads((canonical / 'content/registry.json').read_text())
+            mapping = json.loads((canonical / 'content' / registry['binding_map_ref']).read_text())
+            ids = {row['id'] for row in guidance['outputs']}
+            refs = {row['content_spec_ref'] for row in mapping['bindings'] if row['artifact_id'] in ids}
+            self.write('content/registry.json', registry)
+            self.write('content/' + registry['binding_map_ref'], mapping)
+            for entry in registry['specifications']:
+                if entry['id'] in refs:
+                    destination = self.runtime / 'content' / entry['path']
+                    destination.parent.mkdir(parents=True, exist_ok=True)
+                    shutil.copyfile(canonical / 'content' / entry['path'], destination)
         taxonomy = json.loads((canonical / 'artifacts/schema/artifact-types.json').read_text())
         # Full validation checks path presence, not implementation execution. Copy only
         # the declared schema/producer/renderer dependencies of the selected contracts.
@@ -94,6 +112,16 @@ class CommercialSpecialistContractsTests(unittest.TestCase):
         expected = [c for c in canonical['contracts'] if c['role_slug'] in SLUGS]
         self.assertEqual(expected, projected['contracts'])
         self.assertEqual((5, 15), (projected['role_count'], projected['deliverable_count']))
+
+    def test_effective_source_projection_rejects_missing_or_relabelled_guidance(self):
+        path = self.runtime / 'content/role-output-guidance.json'
+        guidance = json.loads(path.read_text())
+        guidance['professional_approval'] = 'approved'
+        guidance['guidance_hash'] = artifacts._record_hash({key: value for key, value in guidance.items() if key != 'guidance_hash'})
+        self.write('content/role-output-guidance.json', guidance)
+        self.assertTrue(any('claims approval' in item for item in self.problems()))
+        path.unlink()
+        self.assertTrue(any('Section 6 drift' in item for item in self.problems()))
 
     def test_missing_origin_is_rejected_by_runtime_and_schema(self):
         row = self.source['contracts'][0]

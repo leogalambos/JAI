@@ -63,7 +63,9 @@
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
           "content/types/decision-paper.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -103,7 +105,9 @@
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
           "content/types/decision-paper.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -143,7 +147,9 @@
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
           "content/types/decision-paper.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -183,7 +189,9 @@
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
           "content/types/decision-paper.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -203,7 +211,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Data protection impact assessments', provide verifiable evidence satisfying: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Structured assessment document with scoring method stated.",
+        "For the specific output 'Data protection impact assessments', provide verifiable evidence satisfying: Define assessment scope, likelihood/impact scales, time horizon, risk criteria and appetite; explain how qualitative or quantitative ratings are assigned. For each scenario, record cause, event, affected asset/outcome, consequences, existing controls, evidence, uncertainty and a justified current/residual rating. For each treatment, record the scenario ID, chosen response, action owner, target date, expected risk change and authority required for residual acceptance. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +226,14 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Data protection impact assessments', provide verifiable evidence satisfying: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Structured assessment document with scoring method stated.",
+        "reason": "For the specific output 'Data protection impact assessments', provide verifiable evidence satisfying: Define assessment scope, likelihood/impact scales, time horizon, risk criteria and appetite; explain how qualitative or quantitative ratings are assigned. For each scenario, record cause, event, affected asset/outcome, consequences, existing controls, evidence, uncertainty and a justified current/residual rating. For each treatment, record the scenario ID, chosen response, action owner, target date, expected risk change and authority required for residual acceptance. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible. Required delivery form: Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
           "content/types/decision-paper.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -233,8 +243,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Data protection impact assessments",
-        "format": "Structured assessment document with scoring method stated",
-        "acceptance_criterion": "Criteria were fixed before evidence collection and the method is reproducible",
+        "format": "Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.",
+        "acceptance_criterion": "Define assessment scope, likelihood/impact scales, time horizon, risk criteria and appetite; explain how qualitative or quantitative ratings are assigned. For each scenario, record cause, event, affected asset/outcome, consequences, existing controls, evidence, uncertainty and a justified current/residual rating. For each treatment, record the scenario ID, chosen response, action owner, target date, expected risk change and authority required for residual acceptance. Existing source requirement: Criteria were fixed before evidence collection and the method is reproducible.",
         "role_path": "skills/it-roles-governance-risk-compliance-audit-and-privacy/references/privacy-analyst.md"
       }
     },
@@ -275,7 +285,9 @@
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
           "content/types/decision-paper.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -323,7 +335,9 @@
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
           "content/types/decision-paper.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -368,7 +382,9 @@
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
           "content/types/decision-paper.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -413,7 +429,9 @@
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
           "content/types/decision-paper.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -458,7 +476,9 @@
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
           "content/types/decision-paper.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -503,7 +523,9 @@
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
           "content/types/decision-paper.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -543,7 +565,9 @@
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
           "content/types/decision-paper.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -583,7 +607,9 @@
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
           "content/types/decision-paper.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -623,7 +649,9 @@
           "artifacts/contracts/role-deliverables.v3.json#privacy-analyst:1",
           "content/types/decision-paper.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -665,7 +693,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -710,7 +740,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -757,7 +789,9 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://doi.org/10.6028/NIST.SP.800-30r1",
-          "https://eur-lex.europa.eu/eli/reg/2016/679/oj"
+          "https://eur-lex.europa.eu/eli/reg/2016/679/oj",
+          "https://www.isaca.org/resources/cobit",
+          "https://doi.org/10.6028/NIST.SP.800-53Ar5"
         ]
       },
       "provenance": {
@@ -888,17 +922,38 @@
         "scope": "Article 35 assessment content and accountability where EU GDPR applies; engagement-specific legal applicability and competent interpretation must be established.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "control-assessment",
+        "title": "NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls",
+        "url": "https://doi.org/10.6028/NIST.SP.800-53Ar5",
+        "scope": "Assessment objectives, methods, evidence, findings and bounded assessment conclusions.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Privacy Analyst",
+        "domain": "Governance, Risk, Compliance, Audit and Privacy",
+        "domain_index": 13,
+        "method_focus": "Separate binding obligation, interpretation, control, evidence, independent test and bounded assurance/risk conclusion.",
         "frameworks": [
           "GDPR",
           "ISO/IEC 27701",
           "EDPB guidance",
           "NIST Privacy Framework"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -971,6 +1026,17 @@
     "source_fingerprint": "1c5bae1817f3fc4f447282a0baa52dfdfcc0ad134fc87ad246bcd1f2fd2078f2",
     "source_hash": "6488786f2c3f0062288e22ce98163c7e4984e960d70f40c495870f1754402a0e"
   },
+  "delivery_form": {
+    "primary_artifact": "risk-assessment",
+    "representation": "Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.",
+    "evidence": [
+      "likelihood/impact rationale and uncertainty",
+      "current/residual exposure and treatment evidence"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "83760f3cc7ba15b719a660e406cd9f5967719e8db2cb6e5a03136fbc50c79402",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

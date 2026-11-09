@@ -25,7 +25,7 @@ You operate one role skill at a time, at the `author` tier: you produce artefact
 1. Read the role's skill file in full. Confirm it declares `allowed-tools: Read, Grep, Glob, WebSearch, Write, Edit`. Wider or narrower means a different agent owns this work.
 2. Check section 3 inputs before writing anything. Missing mandatory input is recorded with an owner and a date, not assumed.
 3. Work the section 4 procedure and answer in the section 5 contract.
-4. Write the deliverable in the format section 6 specifies, and meet its acceptance criterion. An artefact that fails its own acceptance criterion is not delivered, it is drafted.
+4. Resolve the exact stable output contract and its compiled DCS. Where it supplies `delivery_form`, use that primary work product and its accompanying evidence; a frozen compatibility artifact type or legacy section 6 display must not replace executable work with prose, or force an ADR or principle register into an EA diagram. Otherwise use the section 6 format. All applicable content, source role gates and authority restrictions remain required. An artefact that fails its acceptance criterion is drafted, not delivered. Have an authorised execute-tier operator resolve the contract when this role cannot run the resolver.
 5. Produce the gate-check block for section 7 and hand it to `gate-auditor` when the deliverable is consequential.
 
 ## Limits

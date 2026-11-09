@@ -62,7 +62,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -101,7 +103,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -140,7 +144,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -179,7 +185,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -199,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'integration pattern catalogue', provide verifiable evidence satisfying: Each entry has an owner, a lifecycle status and a last-verified date. Required delivery form: Structured entries in the service or asset management tool.",
+        "For the specific output 'integration pattern catalogue', provide verifiable evidence satisfying: Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Each entry has an owner, a lifecycle status and a last-verified date. Required delivery form: Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -214,11 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'integration pattern catalogue', provide verifiable evidence satisfying: Each entry has an owner, a lifecycle status and a last-verified date. Required delivery form: Structured entries in the service or asset management tool.",
+        "reason": "For the specific output 'integration pattern catalogue', provide verifiable evidence satisfying: Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Each entry has an owner, a lifecycle status and a last-verified date. Required delivery form: Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -228,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "integration pattern catalogue",
-        "format": "Structured entries in the service or asset management tool",
-        "acceptance_criterion": "Each entry has an owner, a lifecycle status and a last-verified date",
+        "format": "Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
+        "acceptance_criterion": "Define the catalogued entity type, unique identifier, classification, required descriptive fields and inclusion/exclusion rules. Provide usable entries with owner, state, source/version, discovery/access reference and relevant service or dependency relationships. Check identifiers, required metadata, broken references, duplicates and lifecycle status; name unresolved gaps and responsible maintainers. Existing source requirement: Each entry has an owner, a lifecycle status and a last-verified date.",
         "role_path": "skills/it-roles-architecture/references/integration-architect.md"
       }
     },
@@ -269,7 +279,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -316,7 +328,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -360,7 +374,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -404,7 +420,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -448,7 +466,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#integration-architect:3",
           "content/types/catalogue.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -494,7 +514,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -538,7 +560,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -584,7 +608,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.w3.org/TR/vocab-dcat-3/"
+          "https://www.w3.org/TR/vocab-dcat-3/",
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -707,16 +733,37 @@
         "scope": "Dataset/catalogue identity, distributions, provenance, access and descriptive metadata.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "architecture-description",
+        "title": "ISO/IEC/IEEE 42010:2022, Architecture description",
+        "url": "https://www.iso.org/standard/74393.html",
+        "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Integration Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "Enterprise Integration Patterns",
           "OpenAPI and AsyncAPI",
           "ISO 20022 or sector equivalents"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -787,6 +834,17 @@
     "source_fingerprint": "20b7db205b6982f318b8383b69c0c98ce68bccc38ad59c353775eb0931398192",
     "source_hash": "36aed9ae1a96b91926edadcde67a2539ec72219fc7008b6cc194ee774c48d03f"
   },
+  "delivery_form": {
+    "primary_artifact": "governed-catalogue",
+    "representation": "Structured entity definitions/entries with stable identifiers, metadata, ownership and relationships.",
+    "evidence": [
+      "source reconciliation and lifecycle state",
+      "duplicate/reference integrity checks"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "760ac871d0eed43c1693028e77f08ed32a891e30949c91c3c8e1dc4160cabdfa",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

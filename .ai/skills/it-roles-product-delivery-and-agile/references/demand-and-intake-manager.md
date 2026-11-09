@@ -82,10 +82,10 @@ Producing, maintaining and defending the quality of:
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Demand and intake register | Governed register with requester, outcome, capability, owner, evidence status, stage and disposition | Every demand item has a business owner, outcome, current state and auditable disposition; duplicates and redirected items remain traceable. |
-| 2 | Demand qualification and impact assessment | Decision-ready assessment covering problem evidence, capability fit, architecture/security/data impact, urgency, dependencies and uncertainty | Items advance only when the minimum evidence for their decision class is present or an explicit exception is owned. |
-| 3 | Prioritisation and routing decision paper | Decision paper comparing value, risk, obligation, capacity, dependencies and strategic fit | The recommendation is reproducible from declared criteria and records conflicts, assumptions and authority. |
-| 4 | Intake-to-portfolio commitment roadmap | Roadmap showing qualified demand, discovery/estimate gates, capacity/funding dependencies and target commitment windows | Portfolio handoff is explicit; no item is presented as committed before funding/capacity authority has acted. |
+| 1 | Demand and intake register | Purpose-specific structured records with stable IDs, schema, owner, status and lifecycle rules. | Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules. Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population. Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness. Existing source requirement: Every demand item has a business owner, outcome, current state and auditable disposition; duplicates and redirected items remain traceable. |
+| 2 | Demand qualification and impact assessment | Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request. | Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Items advance only when the minimum evidence for their decision class is present or an explicit exception is owned. |
+| 3 | Prioritisation and routing decision paper | Bounded decision paper with consistent option comparison and a clear authority/decision request. | Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: The recommendation is reproducible from declared criteria and records conflicts, assumptions and authority. |
+| 4 | Intake-to-portfolio commitment roadmap | Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones. | State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Portfolio handoff is explicit; no item is presented as committed before funding/capacity authority has acted. |
 
 Every Section 6 row is registered in Artifact Contract v3/JAI and must resolve to a typed internal producer/validator/renderer or an explicit external handoff.
 
@@ -150,6 +150,10 @@ This role owns **qualification and routing of demand into portfolio prioritisati
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - COBIT portfolio/demand concepts
 - ITIL 4 relationship and portfolio practices
 - Lean portfolio management concepts
@@ -162,3 +166,33 @@ Frameworks orient the role; organisation policy, law, contracts and explicit del
 **Situation.** A cross-domain programme asks for a rapid decision in this role's area, but one critical dependency and one evidence source are unresolved.
 
 **Correct response.** Separate known facts from assumptions, identify the decision that can be made now versus the decision that must wait, compare credible options, record the unresolved dependency with owner/date, produce the relevant Section 6 artefact, and hand it to the named receiving role with an explicit reopen trigger if the missing evidence changes the basis.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
+
+**Synthetic worked case — no project facts or approval.**
+
+**Assigned work product:** Demand and intake register.
+
+**Illustrative case material:**
+
+Risk register rows have risk ID, cause-event-impact, owner, assessment date, treatment and next review. Example R-4 is open pending privileged-access evidence; a blank owner cannot be replaced with an invented person.
+
+**Acceptance question:** Define purpose-specific records, identifiers and allowed lifecycle states.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Define the purpose-specific record type, required fields, datatypes, unique key, allowed states, owner and lifecycle rules.
+- Populate records with actual subject-specific values, source references, state, accountable owner and relevant review/change trigger; explain an empty population.
+- Identify duplicate, missing, stale or inconsistent records and unresolved references; report checks and remediation without claiming unsupported completeness.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `register` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

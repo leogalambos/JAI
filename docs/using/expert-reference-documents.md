@@ -1,8 +1,8 @@
 # Expert reference documents
 
 
-JAI includes 135 complete English Markdown examples: three complexity levels
-for each of 45 document families. Installation supplies these files; using the
+JAI includes 189 English Markdown examples: three complexity levels
+for each of 63 professional output families. Installation supplies these files; using the
 expert-reference tools requires the task-specific Python dependencies below.
 Customer documents and provider accounts are optional.
 
@@ -32,7 +32,13 @@ presentation. Establish project facts separately, resolve the registered DCS
 contract and retain independent review and existing JAI human authority.
 Replacing a reference never changes DCS MUST, MAY or MUST NOT obligations.
 
-Library v2.3.0 revises all 135 examples, including the 30 proposal examples.
+Library v2.4.0 preserves the 135 v2.3.0 examples, including the 30 proposal
+examples, and adds 54 modality and analysis cases. Every effective role-output
+family has a reference at each complexity level. The added cases include
+concrete observations, alternatives, incorrect conclusions and reasoned
+dispositions. They remain synthetic and independently unqualified.
+
+The v2.3.0 baseline revised all 135 examples.
 Identifiers, complexity slots, stable DCS anchors and existing DCS
 relationships remain unchanged; document integrity hashes change with the
 revised bytes. The complete library works without an earlier reference

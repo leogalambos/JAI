@@ -42,6 +42,19 @@ Produce and govern the role deliverable: Operational readiness assessment.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `readiness-assessment`.
+
+Service acceptance criteria and observed readiness evidence with receiving-operations disposition.
+
+**Evidence accompanying the work product:**
+
+- support/security/recovery/capacity evidence
+- open actions and receiving acceptance status
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -49,27 +62,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/service-transition-and-operational-readiness-manager:1.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Operational readiness assessment.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:1.receiving_acceptance`** — `array`
 
 - For each receiving role (Application Support Analyst; Site Reliability Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:1.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:1.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:1.delivery_verification`** — `array`
 
-- For the specific output 'Operational readiness assessment', provide verifiable evidence satisfying: Every operational capability is pass/fail/waived with evidence, owner and due date. Required delivery form: Evidence-backed assessment against defined acceptance criteria.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- For the specific output 'Operational readiness assessment', provide verifiable evidence satisfying: Define service boundary and named receiving operations owner; enumerate support, access, monitoring, capacity, resilience and security readiness criteria. Record evidence and disposition for each applicable criterion, including missing/unexecuted checks, impact and remediation accountability. Separate readiness recommendation from deployment permission; identify unresolved risks, receiving acceptance conditions and early-life support exit criteria. Existing source requirement: Every operational capability is pass/fail/waived with evidence, owner and due date. Required delivery form: Service acceptance criteria and observed readiness evidence with receiving-operations disposition.
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:1.role_gate_observations`** — `array`
 
@@ -79,27 +92,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: Backup/restore or recovery claims have test evidence appropriate to criticality.
 - G4: Support ownership, escalation and supplier dependencies are explicit.
 - G5: No critical readiness gap is hidden inside a generic project risk; it is pass/fail/waived with authority.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:1.contract_input_1`** — `object`
 
 - Analyse the specific input "Solution architecture and NFRs" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:1.contract_input_2`** — `object`
 
 - Analyse the specific input "Support and ownership model" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:1.contract_input_3`** — `object`
 
 - Analyse the specific input "Monitoring/SLO design" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:1.contract_input_4`** — `object`
 
 - Analyse the specific input "Cutover plan" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -108,21 +121,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:1.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/service-transition-and-operational-readiness-manager:1.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -161,10 +174,14 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 - **[ISO/IEC 20000-1:2018, Service management system requirements](https://www.iso.org/standard/70636.html)** — Service requirements, agreements, transition, operation and measurement concepts. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **[NIST SP 800-34 Revision 1, Contingency Planning Guide for Federal Information Systems](https://doi.org/10.6028/NIST.SP.800-34r1)** — Recovery priorities, dependencies, recovery procedures, exercises and maintenance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[Google Site Reliability Engineering, Service Level Objectives](https://sre.google/sre-book/service-level-objectives/)** — Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Service Transition and Operational Readiness Manager:** ITIL 4 transition/deployment practices; ISO/IEC 20000-1; SRE production readiness review practices. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-service-transition-and-operational-readiness-manager-2"></a>
@@ -204,6 +221,19 @@ Produce and govern the role deliverable: Service transition and handover plan.
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `outcome-roadmap`.
+
+Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.
+
+**Evidence accompanying the work product:**
+
+- current/target baseline and planning assumptions
+- resource/funding constraints and decision triggers
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -211,27 +241,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/service-transition-and-operational-readiness-manager:2.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Service transition and handover plan.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:2.receiving_acceptance`** — `array`
 
 - For each receiving role (Application Support Analyst; Site Reliability Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:2.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:2.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:2.delivery_verification`** — `array`
 
-- For the specific output 'Service transition and handover plan', provide verifiable evidence satisfying: Receiving operations roles explicitly accept the handover and its open risks. Required delivery form: Versioned plan with RACI, support model, knowledge and transition milestones.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- For the specific output 'Service transition and handover plan', provide verifiable evidence satisfying: State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: Receiving operations roles explicitly accept the handover and its open risks. Required delivery form: Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones.
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:2.role_gate_observations`** — `array`
 
@@ -241,27 +271,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: Backup/restore or recovery claims have test evidence appropriate to criticality.
 - G4: Support ownership, escalation and supplier dependencies are explicit.
 - G5: No critical readiness gap is hidden inside a generic project risk; it is pass/fail/waived with authority.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:2.contract_input_1`** — `object`
 
 - Analyse the specific input "Solution architecture and NFRs" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:2.contract_input_2`** — `object`
 
 - Analyse the specific input "Support and ownership model" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:2.contract_input_3`** — `object`
 
 - Analyse the specific input "Monitoring/SLO design" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:2.contract_input_4`** — `object`
 
 - Analyse the specific input "Cutover plan" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -270,21 +300,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:2.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/service-transition-and-operational-readiness-manager:2.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.isaca.org/resources/cobit); [source](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -323,10 +353,15 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 - **[COBIT governance and management framework](https://www.isaca.org/resources/cobit)** — Enterprise information and technology objectives, accountability, performance and governance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **[HM Treasury, The Green Book](https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government)** — Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC 20000-1:2018, Service management system requirements](https://www.iso.org/standard/70636.html)** — Service requirements, agreements, transition, operation and measurement concepts. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[Google Site Reliability Engineering, Service Level Objectives](https://sre.google/sre-book/service-level-objectives/)** — Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Service Transition and Operational Readiness Manager:** ITIL 4 transition/deployment practices; ISO/IEC 20000-1; SRE production readiness review practices. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-service-transition-and-operational-readiness-manager-3"></a>
@@ -366,6 +401,19 @@ Produce and govern the role deliverable: Operational acceptance criteria and evi
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `assurance-assessment`.
+
+Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.
+
+**Evidence accompanying the work product:**
+
+- criterion-to-test-to-observation traceability
+- independent reviewer and limitations
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -373,27 +421,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/service-transition-and-operational-readiness-manager:3.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Operational acceptance criteria and evidence pack.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:3.receiving_acceptance`** — `array`
 
 - For each receiving role (Application Support Analyst; Site Reliability Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:3.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:3.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:3.delivery_verification`** — `array`
 
-- For the specific output 'Operational acceptance criteria and evidence pack', provide verifiable evidence satisfying: Monitoring, recovery, security, support, supplier and configuration criteria are evidenced, not self-attested. Required delivery form: Traceable checklist plus evidence references.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- For the specific output 'Operational acceptance criteria and evidence pack', provide verifiable evidence satisfying: State assessment objectives, criteria versions, scope, period, population, sample rationale and exclusions before drawing conclusions. For each criterion, identify procedure, sample, observed result, supporting material and located deviations; distinguish absent evidence from demonstrated failure. Bound the conclusion by coverage and limitations; list findings, severity rationale, management response, remediation owner and verification needed for closure. Existing source requirement: Monitoring, recovery, security, support, supplier and configuration criteria are evidenced, not self-attested. Required delivery form: Evidence-linked assessment with criteria, population/sample, observed findings and bounded conclusion.
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:3.role_gate_observations`** — `array`
 
@@ -403,27 +451,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: Backup/restore or recovery claims have test evidence appropriate to criticality.
 - G4: Support ownership, escalation and supplier dependencies are explicit.
 - G5: No critical readiness gap is hidden inside a generic project risk; it is pass/fail/waived with authority.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:3.contract_input_1`** — `object`
 
 - Analyse the specific input "Solution architecture and NFRs" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:3.contract_input_2`** — `object`
 
 - Analyse the specific input "Support and ownership model" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:3.contract_input_3`** — `object`
 
 - Analyse the specific input "Monitoring/SLO design" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:3.contract_input_4`** — `object`
 
 - Analyse the specific input "Cutover plan" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -432,21 +480,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:3.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/service-transition-and-operational-readiness-manager:3.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://doi.org/10.6028/NIST.SP.800-53Ar5); [source](https://www.iso.org/standard/70636.html); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -484,10 +532,15 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 ### Professional sources and their limits
 
 - **[NIST SP 800-53A Revision 5, Assessing Security and Privacy Controls](https://doi.org/10.6028/NIST.SP.800-53Ar5)** — Assessment objectives, methods, evidence, findings and bounded assessment conclusions. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[ISO/IEC 20000-1:2018, Service management system requirements](https://www.iso.org/standard/70636.html)** — Service requirements, agreements, transition, operation and measurement concepts. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[Google Site Reliability Engineering, Service Level Objectives](https://sre.google/sre-book/service-level-objectives/)** — Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Service Transition and Operational Readiness Manager:** ITIL 4 transition/deployment practices; ISO/IEC 20000-1; SRE production readiness review practices. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 
 
 <a id="output-service-transition-and-operational-readiness-manager-4"></a>
@@ -527,6 +580,19 @@ Produce and govern the role deliverable: Early-life support and service acceptan
 
 Conditions below are not evaluated for a hypothetical engagement. Unknown applicability stays unresolved; it does not mean that the requirement may be omitted. Required information can be carried in prose, structured records or referenced material; matching a heading alone does not demonstrate quality.
 
+### Primary work product and evidence
+
+**Primary work product:** `readiness-assessment`.
+
+Service acceptance criteria and observed readiness evidence with receiving-operations disposition.
+
+**Evidence accompanying the work product:**
+
+- support/security/recovery/capacity evidence
+- open actions and receiving acceptance status
+
+The historical artifact-type field is retained for compatibility; it does not require replacing this work product with a report or an EA diagram. Content guidance only; existing execution and human authority boundaries remain.
+
 **Evidence policy for the following units:** versioned source reference or explicitly labelled assumption; retain pending status and identify owner; never fabricate.
 
 ### Required information (MUST)
@@ -534,27 +600,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 **`role/service-transition-and-operational-readiness-manager:4.delivery_scope`** — `object`
 
 - Identify the subject entities, boundaries, outcomes and versioned sources for: Produce and govern the role deliverable: Early-life support and service acceptance report.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:4.receiving_acceptance`** — `array`
 
 - For each receiving role (Application Support Analyst; Site Reliability Engineer), identify the concrete downstream use, requested action, acceptance measure and accountable recipient.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:4.contract_relations`** — `array`
 
 - Identify actual entity IDs and relationship instances for: owner_role -> receiving_roles; material claims -> evidence; decision -> approver where approval is required.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:4.decision_purpose_correction`** — `object`
 
 - Identify the specific downstream operational action or choice, its accountable recipient and competent authority; confirm or correct the source-derived proposed action without inventing approval.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:4.delivery_verification`** — `array`
 
-- For the specific output 'Early-life support and service acceptance report', provide verifiable evidence satisfying: The service exits early-life support only when stability and ownership thresholds are met. Required delivery form: Time-bound report with exit criteria and trend evidence.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- For the specific output 'Early-life support and service acceptance report', provide verifiable evidence satisfying: Define service boundary and named receiving operations owner; enumerate support, access, monitoring, capacity, resilience and security readiness criteria. Record evidence and disposition for each applicable criterion, including missing/unexecuted checks, impact and remediation accountability. Separate readiness recommendation from deployment permission; identify unresolved risks, receiving acceptance conditions and early-life support exit criteria. Existing source requirement: The service exits early-life support only when stability and ownership thresholds are met. Required delivery form: Service acceptance criteria and observed readiness evidence with receiving-operations disposition.
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:4.role_gate_observations`** — `array`
 
@@ -564,27 +630,27 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 - G3: Backup/restore or recovery claims have test evidence appropriate to criticality.
 - G4: Support ownership, escalation and supplier dependencies are explicit.
 - G5: No critical readiness gap is hidden inside a generic project risk; it is pass/fail/waived with authority.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:4.contract_input_1`** — `object`
 
 - Analyse the specific input "Solution architecture and NFRs" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:4.contract_input_2`** — `object`
 
 - Analyse the specific input "Support and ownership model" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:4.contract_input_3`** — `object`
 
 - Analyse the specific input "Monitoring/SLO design" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:4.contract_input_4`** — `object`
 
 - Analyse the specific input "Cutover plan" for this deliverable: identify its version, relevant entities/values, constraints, implications and unresolved evidence gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 ### Conditionally required information
 
@@ -593,21 +659,21 @@ Conditions below are not evaluated for a hypothetical engagement. Unknown applic
 Applies when: `{"field": "processes_personal_data", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify in-scope personal-data flows, minimisation, authorised handling and competent review evidence.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 **`role/service-transition-and-operational-readiness-manager:4.regulatory_analysis`** — `object`
 
 Applies when: `{"field": "regulatory_requirement", "op": "eq", "value": true}`. If the needed context is unknown, resolve it before claiming completeness.
 
 - Identify applicable obligation IDs, interpretation authority, compliance evidence and unresolved gaps.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 ### Optional information (MAY)
 
 **`role/service-transition-and-operational-readiness-manager:4.supporting_annex`** — `object`
 
 - Include versioned calculations, logs or technical detail only when linked to a specific required claim.
-- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1) (informed-by; not a verbatim standard requirement).
+- **Professional basis:** [source](https://www.iso.org/standard/70636.html); [source](https://doi.org/10.6028/NIST.SP.800-34r1); [source](https://sre.google/sre-book/service-level-objectives/) (informed-by; not a verbatim standard requirement).
 
 ### Prohibited content (MUST NOT)
 
@@ -646,8 +712,12 @@ Inherited size guidance is reproduced below. It is not evidence of substantive c
 
 - **[ISO/IEC 20000-1:2018, Service management system requirements](https://www.iso.org/standard/70636.html)** — Service requirements, agreements, transition, operation and measurement concepts. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 - **[NIST SP 800-34 Revision 1, Contingency Planning Guide for Federal Information Systems](https://doi.org/10.6028/NIST.SP.800-34r1)** — Recovery priorities, dependencies, recovery procedures, exercises and maintenance. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
+- **[Google Site Reliability Engineering, Service Level Objectives](https://sre.google/sre-book/service-level-objectives/)** — Service indicators, objectives, measurement and error-budget interpretation; practitioner guidance, not a formal standard. Basis: `informed-by`. JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted.
 
 ### Role framework context
 
 - **Service Transition and Operational Readiness Manager:** ITIL 4 transition/deployment practices; ISO/IEC 20000-1; SRE production readiness review practices. Canonical role context; not proof that every listed framework applies to this output.
+  **Practical method:** Distinguish service restoration, problem resolution, authorised change and receiving service acceptance with measured outcomes.
+  **Selection:** Relevant candidates only; this is not a mandatory framework list.
+  **Applicability assessment:** `global.framework_applicability`.
 <!-- JAI:OUTPUT-CONTRACTS:END -->

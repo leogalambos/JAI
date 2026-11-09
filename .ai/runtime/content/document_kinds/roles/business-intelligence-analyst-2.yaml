@@ -63,7 +63,8 @@
           "artifacts/contracts/role-deliverables.v3.json#business-intelligence-analyst:2",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -103,7 +104,8 @@
           "artifacts/contracts/role-deliverables.v3.json#business-intelligence-analyst:2",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -143,7 +145,8 @@
           "artifacts/contracts/role-deliverables.v3.json#business-intelligence-analyst:2",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -183,7 +186,8 @@
           "artifacts/contracts/role-deliverables.v3.json#business-intelligence-analyst:2",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -203,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'production dashboards', provide verifiable evidence satisfying: Every metric has a definition, a source, a refresh cadence and an owner. Required delivery form: Live view in the reporting platform with a documented data lineage.",
+        "For the specific output 'production dashboards', provide verifiable evidence satisfying: For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Existing source requirement: Every metric has a definition, a source, a refresh cadence and an owner. Required delivery form: Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'production dashboards', provide verifiable evidence satisfying: Every metric has a definition, a source, a refresh cadence and an owner. Required delivery form: Live view in the reporting platform with a documented data lineage.",
+        "reason": "For the specific output 'production dashboards', provide verifiable evidence satisfying: For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Existing source requirement: Every metric has a definition, a source, a refresh cadence and an owner. Required delivery form: Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#business-intelligence-analyst:2",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -233,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "production dashboards",
-        "format": "Live view in the reporting platform with a documented data lineage",
-        "acceptance_criterion": "Every metric has a definition, a source, a refresh cadence and an owner",
+        "format": "Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
+        "acceptance_criterion": "For each metric, define question, formula, unit, population/denominator, time window, target/threshold and accountable owner. Show observation timestamp, source/query version, aggregation, missing-data handling and measurement limitations. Explain threshold crossings and trends, uncertainty and the action or decision supported; distinguish operational signals from causal explanations. Existing source requirement: Every metric has a definition, a source, a refresh cadence and an owner.",
         "role_path": "skills/it-roles-analysis/references/business-intelligence-analyst.md"
       }
     },
@@ -275,7 +280,8 @@
           "artifacts/contracts/role-deliverables.v3.json#business-intelligence-analyst:2",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -323,7 +329,8 @@
           "artifacts/contracts/role-deliverables.v3.json#business-intelligence-analyst:2",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -368,7 +375,8 @@
           "artifacts/contracts/role-deliverables.v3.json#business-intelligence-analyst:2",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -413,7 +421,8 @@
           "artifacts/contracts/role-deliverables.v3.json#business-intelligence-analyst:2",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -458,7 +467,8 @@
           "artifacts/contracts/role-deliverables.v3.json#business-intelligence-analyst:2",
           "content/types/dashboard.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -505,7 +515,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -550,7 +561,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -597,7 +609,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://sre.google/sre-book/service-level-objectives/",
-          "https://www.w3.org/TR/vocab-dqv/"
+          "https://www.w3.org/TR/vocab-dqv/",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -728,16 +741,29 @@
         "scope": "Quality dimensions, metrics, measurements and quality annotations; this source is a Working Group Note.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Business Intelligence Analyst",
+        "domain": "Analysis",
+        "domain_index": 3,
+        "method_focus": "Trace source needs, stakeholders and conflicting constraints into verifiable requirements, models and acceptance criteria.",
         "frameworks": [
           "DAMA-DMBOK 2",
           "Kimball dimensional modelling",
           "accessibility standards for reporting"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -808,6 +834,17 @@
     "source_fingerprint": "57706dca0079c55058b8cfd1e08921fa58ae479493030e13370671292ec6a13c",
     "source_hash": "e456d399cde10316535e902f864f5d20ec3e03600bb044bd2c1eae8405f07132"
   },
+  "delivery_form": {
+    "primary_artifact": "measured-dashboard",
+    "representation": "Dashboard or scorecard with metric definitions, observations, source queries and interpretation.",
+    "evidence": [
+      "units, denominators and measurement windows",
+      "dated values, thresholds and actionable exceptions"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "f4123550e566a1714a27590cb7de0c1137c8884c2e8145f223c61be57953274a",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

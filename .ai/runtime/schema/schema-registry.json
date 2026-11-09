@@ -112,14 +112,14 @@
     },
     {
       "name": "Workflow",
-      "version": "1.0.0",
-      "path": "schema/26.10.4/workflow.schema.json",
+      "version": "1.2.0",
+      "path": "schema/26.11.1/workflow-professional.schema.json",
       "critical": true
     },
     {
       "name": "WorkflowStep",
-      "version": "1.0.0",
-      "path": "schema/26.10.4/workflow-step.schema.json",
+      "version": "1.1.0",
+      "path": "schema/26.11.1/workflow-step-professional.schema.json",
       "critical": true
     },
     {

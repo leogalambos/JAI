@@ -23,3 +23,47 @@ This chain is an enterprise hand-off model, not a rigid project schedule. Run st
 ## Operating this chain
 
 Read the linked role reference before acting as a step and use the operator agent declared for that role's tool tier. A hand-off is complete only when the receiving step applies the stated gate and accepts the evidence. Failed gates remain explicit; they are not converted into assumptions simply to preserve a milestone.
+
+<!-- BEGIN workflow-applicability -->
+## Context and mechanism applicability
+
+Use the actual bounded request, current environment and decision rights to select one applicable mechanism variant. Unknown applicability remains pending; the routing record grants no authority.
+
+**Invariant outcomes:**
+
+- The receiving service organisation explicitly accepts an evidenced, supportable and recoverable service.
+- Retain source-version traceability, accountable receiving duties and every applicable existing gate.
+
+| Context | Mechanisms | Required evidence |
+| --- | --- | --- |
+| new-service | Establish complete receiving operations evidence | Runbooks, monitoring, access, recovery and support rehearsal |
+| existing-service-delta | Assess affected readiness and dependencies while reusing unchanged approved evidence | Exact design delta, impact and current evidence references |
+
+Return failed readiness criteria to the accountable design/platform/support owner before the change decision. Stop go-live for unowned critical readiness gaps or absent required change authority. Accept operational responsibility with explicit residual risks or defer activation with owned remediation. Mechanism selection is not a waiver of security, legal or acceptance obligations.
+
+**Entry information (selected once per actual context version):**
+
+- Versioned solution and measurable quality requirements
+- Receiving service owner and support model
+- Risk, resilience and readiness criteria
+
+Select intake and mechanism variant once per actual context version. Carry the reviewed record by versioned evidence reference. Reuse unchanged evidence; recheck mutable prerequisites only at the action they govern. A new context version requires its own relevant review, not reconstruction of historical work.
+
+**Continuation, rework, stop and exit:**
+
+- **continue** — The current handoff criteria and applicable prerequisites are satisfied. Continue to the registered receiving duty with exact output and evidence references.
+- **rework** — A current criterion fails or required information changes. Return failed readiness criteria to the accountable design/platform/support owner before the change decision.
+- **stop** — An applicable authority, legal, safety or mandatory-control boundary forbids the effect. Stop go-live for unowned critical readiness gaps or absent required change authority.
+- **exit** — The bounded outcome is accepted or the entitled owner rejects, cancels or defers the scope. Accept operational responsibility with explicit residual risks or defer activation with owned remediation.
+
+**Bounded paths and scope:**
+
+New-service and changed-service readiness share evidence types; unchanged valid platform evidence is referenced rather than re-executed.
+
+| Selected path | Applicable stages | Terminal stage |
+| --- | --- | ---: |
+| new-service | 1, 2, 3, 4, 5, 6, 7 | 7 |
+| existing-service-delta | 1, 2, 3, 4, 5, 6, 7 | 7 |
+
+A path with a separate mechanism requires that explicit mechanism selection in the versioned intake record. Unknown selection remains pending. Later out-of-scope stages cannot claim acceptance; a terminal exit still needs the registered exact-scope authority.
+<!-- END workflow-applicability -->

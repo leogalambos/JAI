@@ -372,6 +372,10 @@ class ContentSpec:
             family = alias.get('family')
         if family is not None:
             body['semantic_family'] = family
+        # The primary work product is distinct from its historical storage type
+        # and evidence wrapper. Bind this instruction to the reviewed digest.
+        if 'delivery_form' in selected:
+            body['delivery_form'] = copy.deepcopy(selected['delivery_form'])
         body['compiled_spec_hash'] = canonical_hash(body)
         return body
 

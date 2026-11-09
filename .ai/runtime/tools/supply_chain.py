@@ -26,6 +26,10 @@ EXCLUDE = {
     "COMPATIBILITY.json",
     "QUALIFICATION-A-H.json",
 }
+MIT_ARCHIMATE_RESOURCES = frozenset({
+    '.ai/runtime/ea/vendor/archimate-3.2/' + name for name in (
+        'License.txt', 'relationships.xml', 'archimate3_Model.xsd',
+        'archimate3_View.xsd', 'archimate3_Diagram.xsd', 'dc.xsd', 'xml.xsd')})
 
 
 def sha(data: bytes) -> str:
@@ -114,12 +118,14 @@ def sbom(root, out):
     root = Path(root)
     files = []
     for index, path in enumerate(tree_files(root), 1):
+        relative = path.relative_to(root).as_posix()
+        license_id = 'MIT' if relative in MIT_ARCHIMATE_RESOURCES else 'BSD-4-Clause'
         files.append({
             "SPDXID": f"SPDXRef-File-{index}",
-            "fileName": "./" + path.relative_to(root).as_posix(),
+            "fileName": "./" + relative,
             "checksums": [{"algorithm": "SHA256", "checksumValue": sha(path.read_bytes())}],
-            "licenseConcluded": "BSD-4-Clause",
-            "licenseInfoInFiles": ["BSD-4-Clause"],
+            "licenseConcluded": license_id,
+            "licenseInfoInFiles": [license_id],
         })
     version = (root / "VERSION").read_text().strip()
     dependencies, declaration_sources = _declared_dependencies(root)
@@ -138,7 +144,7 @@ def sbom(root, out):
             "downloadLocation": "NOASSERTION",
             "filesAnalyzed": True,
             "licenseDeclared": "BSD-4-Clause",
-            "licenseConcluded": "BSD-4-Clause",
+            "licenseConcluded": ' AND '.join(sorted({item['licenseConcluded'] for item in files})),
         }, *dependencies],
         "files": files,
         "relationships": [

@@ -48,7 +48,7 @@ class ContentCatalogueTests(unittest.TestCase):
         registry=read(CONTENT/'registry.json')
         self.assertEqual([len(registry['mappings'][key]) for key in ['artifact_types','archetypes','sabsa_views']],[28,13,19])
         complete=[s for s in registry['specifications'] if s['completeness']=='complete']
-        self.assertEqual(len(complete),1246)
+        self.assertEqual(len(complete),1265)
         self.assertEqual(len(registry['mappings']['domains']),6)
         fieldsets=[]
         for entry in complete:
@@ -72,7 +72,7 @@ class ContentCatalogueTests(unittest.TestCase):
         sys.path.insert(0,str(ROOT/'.ai/runtime/tools'))
         from content_spec import ContentSpec
         report=ContentSpec(ROOT).coverage()
-        expected={'type':28,'archetype':13,'sabsa':19,'domain':12,'document_kind':1174}
+        expected={'type':28,'archetype':13,'sabsa':19,'domain':13,'document_kind':1192}
         for category,count in expected.items():
             dimension=report['coverage_dimensions'][category]
             self.assertEqual(dimension['registered'],count)
@@ -239,9 +239,19 @@ class SemanticTaxonomyTests(unittest.TestCase):
         return ContentSpec(ROOT)
 
     def test_every_historical_kind_alias_has_one_shared_family(self):
+        import sys
+        sys.path.insert(0, str(ROOT / 'tools'))
+        from content_catalog_definitions import SEMANTIC_FAMILIES, ADDITIONAL_FAMILIES
+        from generate_content_catalog import FAMILIES
+        from content_reference_definitions import REFERENCE_KINDS
         engine=self.engine()
         self.assertEqual(len(engine.registry['kind_aliases']),1139)
-        self.assertEqual(len(engine.registry['semantic_families']),62)
+        expected_families = (set(SEMANTIC_FAMILIES.values()) | set(ADDITIONAL_FAMILIES)
+                             | set(FAMILIES) | {record[0] for record in REFERENCE_KINDS.values()})
+        actual_families = [record['id'] for record in engine.registry['semantic_families']]
+        self.assertEqual(set(actual_families), expected_families)
+        self.assertEqual(len(actual_families), len(expected_families))
+        self.assertIn('analysis-report', actual_families)
         self.assertEqual(engine._taxonomy_errors(),[])
         for binding in engine.bindings.values():
             family=binding['semantic_family']
@@ -475,9 +485,9 @@ class CatalogGeneratorBehaviorTests(unittest.TestCase):
         generated=generator.build()
         bindings=generated[CONTENT/'migrations/26.10.5-binding-map.json']['bindings']
         self.assertEqual(len(bindings),1139)
-        self.assertEqual(len(generated[CONTENT/'expert-reference-bindings.json']['families']),45)
+        self.assertEqual(len(generated[CONTENT/'expert-reference-bindings.json']['families']),63)
         registry=generated[CONTENT/'registry.json']
-        self.assertEqual(len(registry['document_kinds']),1174)
+        self.assertEqual(len(registry['document_kinds']),1192)
         self.assertTrue(all(row['status']=='proposed' for row in registry['document_kinds']))
 
     def test_source_sentences_have_one_separator_without_changing_source_values(self):
@@ -577,9 +587,29 @@ class CorpusGeneratorBehaviorTests(unittest.TestCase):
 
     def test_enterprise_cases_include_all_standalone_complexities_and_real_binding_selection(self):
         cases=self.generator.enterprise_cases(self.resolver)
-        self.assertEqual(len(cases),1330)
         standalone=[case for case in cases.values() if case['contract_id'].startswith('kind/')]
-        self.assertEqual(len(standalone),105)
+        bound_kinds = {record['document_kind'] for record in self.resolver.bindings.values()}
+        expected_standalone = {('kind/' + kind, scenario['name'])
+            for kind in set(self.resolver.kinds) - bound_kinds
+            for scenario in self.generator.SCENARIOS.values()}
+        self.assertEqual({(case['contract_id'], case['scenario']['name']) for case in standalone}, expected_standalone)
+        self.assertEqual(len(standalone), len(expected_standalone))
+        plain_roles = [case for case in cases.values()
+            if not case['contract_id'].startswith('kind/') and not case['evaluation_selection']['overlays']]
+        expected_roles = set(self.resolver.bindings) - set(self.generator.BINDINGS)
+        self.assertEqual({case['contract_id'] for case in plain_roles}, expected_roles)
+        self.assertEqual(len(plain_roles), len(expected_roles))
+        overlay_refs = []
+        for category in ('archetypes', 'sabsa_views'):
+            overlay_refs.extend(ref['spec_ref'] if isinstance(ref, dict) else ref
+                for ref in self.resolver.registry['mappings'][category].values())
+        expected_overlays = {(ref, scenario['name']) for ref in overlay_refs
+                             for scenario in self.generator.SCENARIOS.values()}
+        overlays = [case for case in cases.values() if case['evaluation_selection']['overlays']]
+        self.assertEqual({(case['evaluation_selection']['overlays'][0], case['scenario']['name'])
+                          for case in overlays}, expected_overlays)
+        self.assertEqual(len(overlays), len(expected_overlays))
+        self.assertEqual(len(cases), len(expected_roles) + len(expected_standalone) + len(expected_overlays))
         for case in standalone:
             resolved=self.resolver.resolve(case['contract_id'],case['context'])
             self.assertEqual(case['document_kind'],resolved['document_kind'])

@@ -82,10 +82,10 @@ Producing, maintaining and defending the quality of:
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Enterprise application landscape architecture | Canonical EA model plus published application/business/integration views | Strategic applications, capabilities, ownership, lifecycle, dependencies and target-state boundaries are explicit and traceable. |
-| 2 | Application rationalisation and platform decision paper | Decision paper with options, evidence, TCO/risk/fit trade-offs and named decision authority | Invest/tolerate/migrate/retire or strategic-platform choices are evidence-backed, non-duplicative and aligned to enterprise capabilities. |
-| 3 | Enterprise applications roadmap | Prioritised roadmap with transition states, dependencies, sequencing, owners and decision gates | The roadmap shows a feasible current-to-target path including migrations, coexistence, decommissioning and business change dependencies. |
-| 4 | Enterprise SaaS/ERP capability-fit and integration design | Solution design/HLD with capability mapping, integration/data/identity boundaries and non-functional constraints | Fit/gap, extension/customisation boundaries, integration contracts and operating ownership are decision-ready and testable. |
+| 1 | Enterprise application landscape architecture | Versioned typed model with stable entities, relations, constraints, provenance and selected views. | Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions. Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question. Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity. Existing source requirement: Strategic applications, capabilities, ownership, lifecycle, dependencies and target-state boundaries are explicit and traceable. |
+| 2 | Application rationalisation and platform decision paper | Bounded decision paper with consistent option comparison and a clear authority/decision request. | Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Invest/tolerate/migrate/retire or strategic-platform choices are evidence-backed, non-duplicative and aligned to enterprise capabilities. |
+| 3 | Enterprise applications roadmap | Sequenced outcomes/work packages with accountable owners, dependencies, dates and measurable milestones. | State business outcomes, current/target baseline, planning horizons, sponsors and material planning assumptions. For each increment, identify deliverables, owner, indicative resource/funding requirement, milestone and measurable completion outcome. Identify dependencies and critical sequence, decision dates, constraints and alternative paths; distinguish committed work from tentative options. Existing source requirement: The roadmap shows a feasible current-to-target path including migrations, coexistence, decommissioning and business change dependencies. |
+| 4 | Enterprise SaaS/ERP capability-fit and integration design | Versioned solution design with component responsibilities, interfaces and measurable quality responses. | Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Fit/gap, extension/customisation boundaries, integration contracts and operating ownership are decision-ready and testable. |
 
 Every Section 6 row is registered in Artifact Contract v3/JAI and must resolve to a typed internal producer/validator/renderer or an explicit external handoff.
 
@@ -151,6 +151,12 @@ This role owns **target enterprise application landscape and strategic applicati
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+
+ArchiMate 3.2 is opt-in for an explicit operator request or an explicit project profile with relevant audience/concerns, governed source facts and independent semantic/visual QA; preserve role boundaries and report the actual qualification scope. No external EA application is required, and a generic repository graph must not be called verified ArchiMate notation.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - TOGAF Standard, 10th Edition
 - ArchiMate 3.2
 - ISO/IEC/IEEE 42010 architecture description concepts
@@ -163,3 +169,33 @@ Frameworks orient the role; organisation policy, law, contracts and explicit del
 **Situation.** A cross-domain programme asks for a rapid decision in this role's area, but one critical dependency and one evidence source are unresolved.
 
 **Correct response.** Separate known facts from assumptions, identify the decision that can be made now versus the decision that must wait, compare credible options, record the unresolved dependency with owner/date, produce the relevant Section 6 artefact, and hand it to the named receiving role with an explicit reopen trigger if the missing evidence changes the basis.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
+
+**Synthetic worked case — no project facts or approval.**
+
+**Assigned work product:** Enterprise application landscape architecture.
+
+**Illustrative case material:**
+
+Repository ea-12 models Order API as an application component and Reserve Stock as an application service in the explicitly selected 3.2 profile. A process and a component are not interchangeable merely because their labels match.
+
+**Acceptance question:** Define metamodel, edition, concern and source baseline.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Define model purpose, boundary, entity/relation types, semantics, constraints and authoritative source versions.
+- Populate stable identified entities and typed relationships with ownership/provenance; relate each model view to its intended question.
+- Report referential and constraint checks, cross-view consistency and unresolved modelling assumptions; an attractive diagram alone does not establish validity.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `model` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

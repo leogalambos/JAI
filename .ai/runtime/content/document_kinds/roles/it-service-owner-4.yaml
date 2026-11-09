@@ -63,7 +63,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-service-owner:4",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -102,7 +104,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-service-owner:4",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -141,7 +145,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-service-owner:4",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -180,7 +186,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-service-owner:4",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -200,7 +208,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'service risk profile', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "For the specific output 'service risk profile', provide verifiable evidence satisfying: Define assessment scope, likelihood/impact scales, time horizon, risk criteria and appetite; explain how qualitative or quantitative ratings are assigned. For each scenario, record cause, event, affected asset/outcome, consequences, existing controls, evidence, uncertainty and a justified current/residual rating. For each treatment, record the scenario ID, chosen response, action owner, target date, expected risk change and authority required for residual acceptance. Required delivery form: Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +223,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'service risk profile', provide verifiable evidence satisfying: Reviewed by a competent second party; complete, dated and attributable. Required delivery form: Versioned artefact in the agreed system of record.",
+        "reason": "For the specific output 'service risk profile', provide verifiable evidence satisfying: Define assessment scope, likelihood/impact scales, time horizon, risk criteria and appetite; explain how qualitative or quantitative ratings are assigned. For each scenario, record cause, event, affected asset/outcome, consequences, existing controls, evidence, uncertainty and a justified current/residual rating. For each treatment, record the scenario ID, chosen response, action owner, target date, expected risk change and authority required for residual acceptance. Required delivery form: Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-service-owner:4",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -229,8 +239,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "service risk profile",
-        "format": "Versioned artefact in the agreed system of record",
-        "acceptance_criterion": "Reviewed by a competent second party; complete, dated and attributable",
+        "format": "Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.",
+        "acceptance_criterion": "Define assessment scope, likelihood/impact scales, time horizon, risk criteria and appetite; explain how qualitative or quantitative ratings are assigned. For each scenario, record cause, event, affected asset/outcome, consequences, existing controls, evidence, uncertainty and a justified current/residual rating. For each treatment, record the scenario ID, chosen response, action owner, target date, expected risk change and authority required for residual acceptance.",
         "role_path": "skills/it-roles-executive-and-leadership/references/it-service-owner.md"
       }
     },
@@ -270,7 +280,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-service-owner:4",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -317,7 +329,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-service-owner:4",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -361,7 +375,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-service-owner:4",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -405,7 +421,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-service-owner:4",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -449,7 +467,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#it-service-owner:4",
           "content/types/risk-assessment.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -495,7 +515,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -539,7 +561,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -585,7 +609,9 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://doi.org/10.6028/NIST.SP.800-30r1"
+          "https://doi.org/10.6028/NIST.SP.800-30r1",
+          "https://www.isaca.org/resources/cobit",
+          "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government"
         ]
       },
       "provenance": {
@@ -708,15 +734,36 @@
         "scope": "Assessment scope, threat events, vulnerabilities, likelihood, impact and uncertainty.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "it-governance",
+        "title": "COBIT governance and management framework",
+        "url": "https://www.isaca.org/resources/cobit",
+        "scope": "Enterprise information and technology objectives, accountability, performance and governance.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "business-appraisal",
+        "title": "HM Treasury, The Green Book",
+        "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
+        "scope": "Options, appraisal, costs, benefits, risk, uncertainty and evaluation; used as a practice reference outside its own jurisdiction.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "IT Service Owner",
+        "domain": "Executive and Leadership",
+        "domain_index": 1,
+        "method_focus": "Connect strategic choices, investment options, measurable outcomes, risk appetite and accountable decisions.",
         "frameworks": [
           "ITIL 4 service value system",
           "ISO/IEC 20000-1"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -787,6 +834,17 @@
     "source_fingerprint": "14fc958be25c2b5c15130f9247f2ccc27d4bfb3dde31e28d21db7f8d4353cf1c",
     "source_hash": "a9bd531096bedead401f45d2387c531ac34d6a1669305ea50f3ef8dd60273e06"
   },
+  "delivery_form": {
+    "primary_artifact": "risk-assessment",
+    "representation": "Scenario-based risk assessment using explicit evaluation criteria and treatment accountability.",
+    "evidence": [
+      "likelihood/impact rationale and uncertainty",
+      "current/residual exposure and treatment evidence"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "46dc2a75e93ade0f30c18171f3fa8c63f8e34754d57dfddca08dd0e6fca7b3d7",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

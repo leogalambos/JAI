@@ -26,7 +26,22 @@ executable.
 
 JSON and other machine formats that do not support comments receive no
 synthetic header. Their licensing is inherited from the package-level
-`LICENSE` file.
+`LICENSE` file, except explicitly attributed third-party resources below.
+
+## Third-party ArchiMate implementation resources
+
+The pinned relationship-permission data and exchange schemas under
+`.ai/runtime/ea/vendor/archimate-3.2/` retain their MIT licence and
+upstream notices. Copyright holders are Phillip Beauvoir,
+Jean-Baptiste Sarrodie and The Open Group. The accompanying `License.txt`
+contains the complete permission and warranty notice; `provenance.json`
+identifies the upstream revision, source paths and integrity digests.
+
+These resources were obtained from the MIT-licensed Archi source
+distribution. JAI does not require the Archi application. Bundling these
+implementation resources does not imply Open Group certification, a
+licence to redistribute restricted standard publications, or validation
+against an unsupported language edition.
 
 ## AI context policy
 

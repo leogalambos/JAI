@@ -9,6 +9,50 @@ A project must move data/services from a current state to a target state through
 Migration completes with reconciled data, controlled rollback boundaries, operational acceptance and owned residual defects.
 
 
+<!-- BEGIN workflow-applicability -->
+## Context and mechanism applicability
+
+Use the actual bounded request, current environment and decision rights to select one applicable mechanism variant. Unknown applicability remains pending; the routing record grants no authority.
+
+**Invariant outcomes:**
+
+- Migration completes with reconciled data, controlled rollback boundaries, operational acceptance and owned residual defects.
+- Retain source-version traceability, accountable receiving duties and every applicable existing gate.
+
+| Context | Mechanisms | Required evidence |
+| --- | --- | --- |
+| rehearsal | Exercise permitted data and environments without production cutover effects | Throughput, error handling, repeatability and rollback observations |
+| cutover | Execute only the exact prior authorised production plan/window | Authority, actual actions, reconciliation and independent validation |
+
+Return failed rehearsal/reconciliation to migration or data/design owners; preserve valid unchanged evidence. Stop at failed predeclared criteria, changed scope or missing exact production/data authority. Accept migrated service/data/ownership or execute the previously authorised restore/forward-recovery branch before legacy retirement. Mechanism selection is not a waiver of security, legal or acceptance obligations.
+
+**Entry information (selected once per actual context version):**
+
+- Source/target inventory and data owners
+- Mapping, reconciliation and recovery semantics
+- Permitted rehearsal and production cutover boundaries
+
+Select intake and mechanism variant once per actual context version. Carry the reviewed record by versioned evidence reference. Reuse unchanged evidence; recheck mutable prerequisites only at the action they govern. A new context version requires its own relevant review, not reconstruction of historical work.
+
+**Continuation, rework, stop and exit:**
+
+- **continue** — The current handoff criteria and applicable prerequisites are satisfied. Continue to the registered receiving duty with exact output and evidence references.
+- **rework** — A current criterion fails or required information changes. Return failed rehearsal/reconciliation to migration or data/design owners; preserve valid unchanged evidence.
+- **stop** — An applicable authority, legal, safety or mandatory-control boundary forbids the effect. Stop at failed predeclared criteria, changed scope or missing exact production/data authority.
+- **exit** — The bounded outcome is accepted or the entitled owner rejects, cancels or defers the scope. Accept migrated service/data/ownership or execute the previously authorised restore/forward-recovery branch before legacy retirement.
+
+**Bounded paths and scope:**
+
+Rehearsal cannot satisfy actual production execution gates; a rehearsal-only scope stops before production authorisation and cutover.
+
+| Selected path | Applicable stages | Terminal stage |
+| --- | --- | ---: |
+| rehearsal | 1, 2, 3, 4, 5, 6 | 6 |
+| cutover | 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11 | 11 |
+
+A path with a separate mechanism requires that explicit mechanism selection in the versioned intake record. Unknown selection remains pending. Later out-of-scope stages cannot claim acceptance; a terminal exit still needs the registered exact-scope authority.
+<!-- END workflow-applicability -->
+
 <!-- JAI:WORKFLOW-DIAGRAM:START -->
 <div class="ai-workflow-overview">
 <ol class="ai-workflow-steps" role="list" aria-label="Migration and cutover workflow steps">

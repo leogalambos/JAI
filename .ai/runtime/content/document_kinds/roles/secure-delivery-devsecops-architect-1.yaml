@@ -63,7 +63,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:1",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -102,7 +103,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:1",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -141,7 +143,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:1",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -180,7 +183,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:1",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -200,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Secure delivery and DevSecOps architecture', provide verifiable evidence satisfying: The delivery path from source to production has explicit control objectives, authority boundaries, evidence and failure behaviour. Required delivery form: Architecture definition with trust boundaries, control points, identities, data flows and enforcement ownership.",
+        "For the specific output 'Secure delivery and DevSecOps architecture', provide verifiable evidence satisfying: Name the system of interest, boundary exclusions, stakeholder groups, each concern and the versioned current/target baseline. Identify each viewpoint and its conventions; trace each view to the concerns it addresses and identify cross-view correspondences and unresolved inconsistencies. For each material gap, identify current and target elements, business impact, owner, proposed response and the decision or evidence needed to close it. Existing source requirement: The delivery path from source to production has explicit control objectives, authority boundaries, evidence and failure behaviour. Required delivery form: Concern-driven description with a versioned model and views selected for stakeholder questions.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -215,11 +219,12 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Secure delivery and DevSecOps architecture', provide verifiable evidence satisfying: The delivery path from source to production has explicit control objectives, authority boundaries, evidence and failure behaviour. Required delivery form: Architecture definition with trust boundaries, control points, identities, data flows and enforcement ownership.",
+        "reason": "For the specific output 'Secure delivery and DevSecOps architecture', provide verifiable evidence satisfying: Name the system of interest, boundary exclusions, stakeholder groups, each concern and the versioned current/target baseline. Identify each viewpoint and its conventions; trace each view to the concerns it addresses and identify cross-view correspondences and unresolved inconsistencies. For each material gap, identify current and target elements, business impact, owner, proposed response and the decision or evidence needed to close it. Existing source requirement: The delivery path from source to production has explicit control objectives, authority boundaries, evidence and failure behaviour. Required delivery form: Concern-driven description with a versioned model and views selected for stakeholder questions.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:1",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -229,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Secure delivery and DevSecOps architecture",
-        "format": "Architecture definition with trust boundaries, control points, identities, data flows and enforcement ownership",
-        "acceptance_criterion": "The delivery path from source to production has explicit control objectives, authority boundaries, evidence and failure behaviour.",
+        "format": "Concern-driven description with a versioned model and views selected for stakeholder questions.",
+        "acceptance_criterion": "Name the system of interest, boundary exclusions, stakeholder groups, each concern and the versioned current/target baseline. Identify each viewpoint and its conventions; trace each view to the concerns it addresses and identify cross-view correspondences and unresolved inconsistencies. For each material gap, identify current and target elements, business impact, owner, proposed response and the decision or evidence needed to close it. Existing source requirement: The delivery path from source to production has explicit control objectives, authority boundaries, evidence and failure behaviour.",
         "role_path": "skills/it-roles-architecture/references/secure-delivery-devsecops-architect.md"
       }
     },
@@ -270,7 +275,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:1",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -317,7 +323,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:1",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -361,7 +368,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:1",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -405,7 +413,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:1",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -449,7 +458,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:1",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -493,7 +503,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#secure-delivery-devsecops-architect:1",
           "content/types/architecture-definition.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -539,7 +550,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -583,7 +595,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -629,7 +642,8 @@
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
-          "https://www.iso.org/standard/74393.html"
+          "https://www.iso.org/standard/74393.html",
+          "https://www.iso.org/standard/72089.html"
         ]
       },
       "provenance": {
@@ -752,17 +766,30 @@
         "scope": "Stakeholders, concerns, viewpoints, architecture views and correspondence.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "requirements-engineering",
+        "title": "ISO/IEC/IEEE 29148:2018, Requirements engineering",
+        "url": "https://www.iso.org/standard/72089.html",
+        "scope": "Requirements information items, requirement quality and traceability.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Secure Delivery / DevSecOps Architect",
+        "domain": "Architecture",
+        "domain_index": 4,
+        "method_focus": "Trace stakeholder concerns through viewpoints, design alternatives, correspondence rules and evidenced architecture decisions.",
         "frameworks": [
           "NIST SSDF SP 800-218",
           "SLSA",
           "OWASP SAMM",
           "ISO/IEC 27001:2022 secure development controls"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -833,6 +860,17 @@
     "source_fingerprint": "8fee2855769b802c12119966b6523d6c8ca9bd57b23bfb30ec51ad4f1e36d191",
     "source_hash": "7f1683bdd98004e47d539f675f442462793187c1408e899aa49436583752e163"
   },
+  "delivery_form": {
+    "primary_artifact": "architecture-description",
+    "representation": "Concern-driven description with a versioned model and views selected for stakeholder questions.",
+    "evidence": [
+      "stakeholder/concern coverage",
+      "cross-view consistency and known gaps"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "66a820c9cbcfb70a06f05d6a6825150f2812ad2d5a45ce82063b0c940d13719b",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

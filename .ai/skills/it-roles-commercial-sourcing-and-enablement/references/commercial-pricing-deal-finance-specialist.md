@@ -75,9 +75,9 @@ Record source identity, version/date, applicability, access classification and r
 
 | # | Artefact | Format | Acceptance criterion |
 | --- | --- | --- | --- |
-| 1 | Deal financial and cash-flow model | Versioned, reproducible calculations with cost bridge, price options, margin, cash and sensitivities | Inputs, units, formulas, dependencies and policy treatment reconcile; no unsupported precision. |
-| 2 | Pricing and commercial trade-off recommendation | Option paper covering price, terms, discount, reserves, return and downside exposure | Human decision owner can see trade-offs, limits and residual risk for the complete lifecycle. |
-| 3 | Deal baseline and variance review | Signed-scope financial baseline, actuals, forecast at completion and change effects | Material adverse variance has an owner, threshold, corrective option and decision date. |
+| 1 | Deal financial and cash-flow model | Actual versioned financial/cash-flow model with formulas, dated rate/cost assumptions and scenario results; a funding approval paper is not the model. | Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values. Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian. Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations. Existing source requirement: Inputs, units, formulas, dependencies and policy treatment reconcile; no unsupported precision. |
+| 2 | Pricing and commercial trade-off recommendation | Bounded decision paper with consistent option comparison and a clear authority/decision request. | Separate the requested decision from information for noting; state decision scope, eligible authority, deadline and consequences of deferral. List feasible options with consistent evaluation criteria, evidence, costs, benefits and constraints; justify any unavailable baseline. State recommendation, implementation dependencies, uncertainty and residual exposure; show which assumptions would change the preferred option. Existing source requirement: Human decision owner can see trade-offs, limits and residual risk for the complete lifecycle. |
+| 3 | Deal baseline and variance review | Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request. | Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Material adverse variance has an owner, threshold, corrective option and decision date. |
 
 Canonical Artifact Contract v3 mapping, in table order: `Deal financial and cash-flow model` → `business-case`; `Pricing and commercial trade-off recommendation` → `decision-paper`; `Deal baseline and variance review` → `decision-paper`. These mappings classify the semantic artefact; they do not imply that the generic producer validates financial formulas or provides a new specialist spreadsheet engine. Include the commercial case/snapshot, work-package, assumption, estimate, price and decision record IDs relevant to the output. Retain source calculation files as controlled evidence attachments or an explicit external handoff. The advise-tier reviewer returns its report for a separate authorised recorder; it does not invoke a writing renderer.
 
@@ -136,6 +136,10 @@ Author and maintain only this role's artefacts within its tool tier; no technica
 
 ## 14. Reference frameworks
 
+<!-- JAI:FRAMEWORK-APPLICABILITY:START -->
+Treat the reference list as professional source candidates: resolve the exact source/edition, applicability, adopted method and evidence against the selected DCS output contract. Applicable law, binding contracts and adopted organisational policies remain mandatory; a candidate reference alone does not establish conformance.
+<!-- JAI:FRAMEWORK-APPLICABILITY:END -->
+
 - GAO Cost Estimating and Assessment Guide, GAO-20-195G (2020): credible cost baselines, risk/sensitivity analysis and updates with actuals; adapted to supplier deals, not a claim of GAO certification.
 - IFRS 15 Revenue from Contracts with Customers, where applicable: route identification of performance obligations and revenue recognition to authorised accounting specialists.
 - Organisation treasury, tax, pricing, credit and accounting policies; IAS 21 for applicable currency accounting questions, with qualified finance review.
@@ -146,3 +150,32 @@ Frameworks supply methods and questions; applicability, edition and licensed acc
 
 A profitable-looking fixed price has a long acceptance holdback and unindexed multi-year support. Show the margin and working-capital effects separately, stress delayed acceptance and wage growth, compare milestone payments and indexation, and seek authorised approval of the chosen return/risk trade-off.
 
+<!-- JAI:PROFESSIONAL-EXAMPLE:START -->
+
+**Synthetic worked case — no project facts or approval.**
+
+**Assigned work product:** Deal financial and cash-flow model.
+
+**Illustrative case material:**
+
+Dataset orders-v3 contains order_id as the unique key, amount_minor as integer cents, currency as an ISO currency code and event_time as a UTC timestamp. Null amount is unknown, not zero; mixed currencies cannot be summed without a dated conversion basis.
+
+**Acceptance question:** Specify field meanings, keys, units, nulls and schema version.
+
+**Context application:** Separate producer and consumer revisions. Test cross-service failure and reconciliation; one team's success does not establish the next team's acceptance.
+
+**Apply the role boundary:** resolve the actual section 3 inputs and section 7 gates for this assignment. The shared case demonstrates professional depth; replace its fictional subject and measurements with permitted evidence for the actual request.
+
+**Professional acceptance questions:**
+
+- Specify field names, meaning, type, units, code lists, keys, relationships, null semantics and permitted values.
+- Identify source systems/extract versions, transformations, time coverage, access/licensing conditions and accountable custodian.
+- Report completeness, validity, consistency and other relevant quality measures with method, population, results and known limitations.
+
+**Reasoned decision:** distinguish the native work product from its evidence wrapper. A described procedure, policy or successful render cannot establish that an operation ran, a business invariant held or an accountable owner accepted it.
+
+**Counterexample:** a polished response that declares this output complete while its required source version, observation or independent review is missing must remain incomplete. Name the missing evidence and responsible owner instead of filling the gap with an invented result.
+
+**Full worked reference:** select `dataset` at `simple`, `medium` or `complex` through the existing expert-reference resolver. Its cases include alternatives, practical mechanics, evidence limits and downstream actions; the reference supplies no execution rights or human approval.
+
+<!-- JAI:PROFESSIONAL-EXAMPLE:END -->

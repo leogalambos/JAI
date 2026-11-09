@@ -26,6 +26,18 @@ class SupplyChainTests(unittest.TestCase):
         (self.root / 'VERSION').write_text('26.10.5\n')
         (self.root / 'public.md').write_text('Public documentation\n')
 
+    def test_vendored_archimate_resources_keep_mit_file_licensing(self):
+        vendor = self.root / '.ai/runtime/ea/vendor/archimate-3.2'
+        vendor.mkdir(parents=True)
+        (vendor / 'relationships.xml').write_text('<relationships version="3.2"/>')
+        (vendor / 'provenance.json').write_text('{}')
+        document = supply_chain.sbom(self.root, self.root / 'SBOM.spdx.json')
+        records = {row['fileName']: row for row in document['files']}
+        self.assertEqual(records['./.ai/runtime/ea/vendor/archimate-3.2/relationships.xml']['licenseConcluded'], 'MIT')
+        self.assertEqual(records['./.ai/runtime/ea/vendor/archimate-3.2/provenance.json']['licenseConcluded'], 'BSD-4-Clause')
+        self.assertEqual(records['./public.md']['licenseConcluded'], 'BSD-4-Clause')
+        self.assertEqual(document['packages'][0]['licenseConcluded'], 'BSD-4-Clause AND MIT')
+
     def test_private_trees_are_pruned_before_descent(self):
         private = self.root / 'INBOX'
         private.mkdir()

@@ -2,40 +2,204 @@
   "schema_version": "26.10",
   "presets": {
     "business": {
-      "viewpoint": "Organization",
-      "purpose": "Business structure and behaviour"
+      "viewpoint": "Custom",
+      "purpose": "Business structure and behaviour",
+      "suggested_standard_viewpoint": "Organization",
+      "contract": {
+        "stakeholders": [
+          "Service owner and business architect"
+        ],
+        "concerns": [
+          "Who performs each in-scope business behaviour and what business information is used?"
+        ],
+        "decision": "Assign ownership and assess business change",
+        "boundary": "Business service and its performers",
+        "completeness_criteria": [
+          "Every in-scope process performer and material information dependency is represented or explicitly excluded"
+        ],
+        "exclusions": [
+          "Heuristic selection is not proof of complete stakeholder scope."
+        ],
+        "review_status": "pending"
+      }
     },
     "application": {
-      "viewpoint": "Application Cooperation",
-      "purpose": "Application cooperation and service relationships"
+      "viewpoint": "Custom",
+      "purpose": "Application cooperation and service relationships",
+      "suggested_standard_viewpoint": "Application Cooperation",
+      "contract": {
+        "stakeholders": [
+          "Application owner and solution architect"
+        ],
+        "concerns": [
+          "Which applications expose or consume each in-scope service and interface?"
+        ],
+        "decision": "Assess integration and application change",
+        "boundary": "Application services and interfaces",
+        "completeness_criteria": [
+          "Every material producer/consumer interface and affected service is represented or explicitly excluded"
+        ],
+        "exclusions": [
+          "Heuristic selection is not proof of complete stakeholder scope."
+        ],
+        "review_status": "pending"
+      }
     },
     "technology": {
-      "viewpoint": "Technology",
-      "purpose": "Technology platform, infrastructure and deployment"
+      "viewpoint": "Custom",
+      "purpose": "Technology platform, infrastructure and deployment",
+      "suggested_standard_viewpoint": "Technology",
+      "contract": {
+        "stakeholders": [
+          "Platform owner and operations architect"
+        ],
+        "concerns": [
+          "Which infrastructure supports the service and where are failure dependencies?"
+        ],
+        "decision": "Assess deployment and platform resilience",
+        "boundary": "In-scope deployment dependencies",
+        "completeness_criteria": [
+          "Required hosting, communication and service dependencies are represented or explicitly excluded"
+        ],
+        "exclusions": [
+          "Heuristic selection is not proof of complete stakeholder scope."
+        ],
+        "review_status": "pending"
+      }
     },
     "data": {
-      "viewpoint": "Information Structure",
-      "purpose": "Information and data structure"
+      "viewpoint": "Custom",
+      "purpose": "Information and data structure",
+      "suggested_standard_viewpoint": "Information Structure",
+      "contract": {
+        "stakeholders": [
+          "Data owner and data architect"
+        ],
+        "concerns": [
+          "Which information structures are accessed, produced or realised?"
+        ],
+        "decision": "Assess information ownership and dependency change",
+        "boundary": "In-scope information and realisations",
+        "completeness_criteria": [
+          "Each material information object and access/realisation dependency is represented or explicitly excluded"
+        ],
+        "exclusions": [
+          "Heuristic selection is not proof of complete stakeholder scope."
+        ],
+        "review_status": "pending"
+      }
     },
     "security": {
       "viewpoint": "Custom",
-      "purpose": "Security-relevant architecture selected from governed model facts"
+      "purpose": "Security-relevant architecture selected from governed model facts",
+      "suggested_standard_viewpoint": "Custom",
+      "contract": {
+        "stakeholders": [
+          "Security architect and risk owner"
+        ],
+        "concerns": [
+          "Which selected facts expose trust, control or risk dependencies?"
+        ],
+        "decision": "Assess a bounded security concern",
+        "boundary": "Explicitly selected security-relevant source objects",
+        "completeness_criteria": [
+          "Concern-specific boundaries, dependencies and omitted security facts are reviewed; keyword matching cannot establish completeness"
+        ],
+        "exclusions": [
+          "Heuristic selection is not proof of complete stakeholder scope."
+        ],
+        "review_status": "pending"
+      }
     },
     "motivation": {
-      "viewpoint": "Motivation",
-      "purpose": "Stakeholders, drivers, outcomes, principles and requirements"
+      "viewpoint": "Custom",
+      "purpose": "Stakeholders, drivers, outcomes, principles and requirements",
+      "suggested_standard_viewpoint": "Motivation",
+      "contract": {
+        "stakeholders": [
+          "Business sponsor and enterprise architect"
+        ],
+        "concerns": [
+          "Which drivers and requirements justify the selected architecture outcomes?"
+        ],
+        "decision": "Assess rationale and requirement coverage",
+        "boundary": "Drivers, requirements and intended outcomes",
+        "completeness_criteria": [
+          "Selected requirements have traceable rationale and realisation gaps are recorded"
+        ],
+        "exclusions": [
+          "Heuristic selection is not proof of complete stakeholder scope."
+        ],
+        "review_status": "pending"
+      }
     },
     "migration": {
-      "viewpoint": "Implementation and Migration",
-      "purpose": "Work packages, plateaus, gaps and migration events"
+      "viewpoint": "Custom",
+      "purpose": "Work packages, plateaus, gaps and migration events",
+      "suggested_standard_viewpoint": "Implementation and Migration",
+      "contract": {
+        "stakeholders": [
+          "Delivery owner and transition architect"
+        ],
+        "concerns": [
+          "Which work packages and target states deliver the planned transition?"
+        ],
+        "decision": "Assess sequencing and transition gaps",
+        "boundary": "In-scope migration states and work",
+        "completeness_criteria": [
+          "Work packages, deliverables and affected states are represented with missing dependencies explicit"
+        ],
+        "exclusions": [
+          "Heuristic selection is not proof of complete stakeholder scope."
+        ],
+        "review_status": "pending"
+      }
     },
     "portfolio": {
       "viewpoint": "Custom",
-      "purpose": "Cross-project dependencies and shared architecture"
+      "purpose": "Cross-project dependencies and shared architecture",
+      "suggested_standard_viewpoint": "Custom",
+      "contract": {
+        "stakeholders": [
+          "Portfolio owner and enterprise architect"
+        ],
+        "concerns": [
+          "Which projects depend on shared architecture objects?"
+        ],
+        "decision": "Assess cross-project impact and ownership",
+        "boundary": "Selected cross-project dependencies",
+        "completeness_criteria": [
+          "Material shared objects, affected projects and their ownership are represented or explicitly excluded"
+        ],
+        "exclusions": [
+          "Heuristic selection is not proof of complete stakeholder scope."
+        ],
+        "review_status": "pending"
+      }
     },
     "lifecycle": {
       "viewpoint": "Custom",
-      "purpose": "Transition, retirement and decommission impact"
+      "purpose": "Transition, retirement and decommission impact",
+      "suggested_standard_viewpoint": "Custom",
+      "contract": {
+        "stakeholders": [
+          "Service owner and retirement authority"
+        ],
+        "concerns": [
+          "Which active dependants block a proposed lifecycle transition?"
+        ],
+        "decision": "Assess retirement and transition impact",
+        "boundary": "Selected lifecycle transition and dependants",
+        "completeness_criteria": [
+          "All active dependants and decommission blockers are represented or explicitly excluded"
+        ],
+        "exclusions": [
+          "Heuristic selection is not proof of complete stakeholder scope."
+        ],
+        "review_status": "pending"
+      }
     }
-  }
+  },
+  "profile": "archimate-3.2-portable",
+  "qualification": "JAI-authored viewpoint contracts; explicit independent review required"
 }

@@ -27,7 +27,7 @@ execution observations cannot supply that independent verdict.
 1. Read the role's skill file in full and confirm it declares Bash in its allowed-tools. If it does not, you are the wrong agent — say which one applies and stop.
 2. Run the section 3 readiness check. Starting on an unready item converts analysis debt into rework at the highest possible cost.
 3. Work the section 4 procedure. Before making any change, state the rollback path. If the change cannot be rolled back, say so explicitly and get that accepted before proceeding.
-4. Answer in the section 5 contract and produce the section 7 gate check.
+4. Resolve the exact stable output contract and compiled DCS before producing the work product. An explicit `delivery_form` distinguishes the native artifact from its evidence wrapper and supersedes a frozen compatibility type or legacy section 6 display form; it does not widen execution rights or remove source role gates. Deliver actual source, executable tests or performed operations where required, with observed evidence. Answer in the section 5 contract and produce the section 7 gate check.
 
 ## Rework from a findings ledger
 

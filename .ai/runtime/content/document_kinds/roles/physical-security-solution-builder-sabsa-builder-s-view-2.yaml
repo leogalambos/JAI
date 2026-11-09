@@ -63,7 +63,8 @@
           "artifacts/contracts/role-deliverables.v3.json#physical-security-solution-builder-sabsa-builder-s-view:2",
           "content/types/implementation-specification.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -103,7 +104,8 @@
           "artifacts/contracts/role-deliverables.v3.json#physical-security-solution-builder-sabsa-builder-s-view:2",
           "content/types/implementation-specification.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -143,7 +145,8 @@
           "artifacts/contracts/role-deliverables.v3.json#physical-security-solution-builder-sabsa-builder-s-view:2",
           "content/types/implementation-specification.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -183,7 +186,8 @@
           "artifacts/contracts/role-deliverables.v3.json#physical-security-solution-builder-sabsa-builder-s-view:2",
           "content/types/implementation-specification.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -203,7 +207,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'solution specification and platform selection rationale', provide verifiable evidence satisfying: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Versioned specification with numbered, traceable requirements.",
+        "For the specific output 'solution specification and platform selection rationale', provide verifiable evidence satisfying: Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -218,12 +222,13 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'solution specification and platform selection rationale', provide verifiable evidence satisfying: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Versioned specification with numbered, traceable requirements.",
+        "reason": "For the specific output 'solution specification and platform selection rationale', provide verifiable evidence satisfying: Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority. Required delivery form: Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#physical-security-solution-builder-sabsa-builder-s-view:2",
           "content/types/implementation-specification.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -233,8 +238,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "solution specification and platform selection rationale",
-        "format": "Versioned specification with numbered, traceable requirements",
-        "acceptance_criterion": "Every requirement is atomic, testable and traced to a source and a priority",
+        "format": "Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
+        "acceptance_criterion": "Define the proposed implementation boundary, use cases and external dependencies. State measurable availability, performance, security and operational acceptance targets. Describe component responsibilities, deployment topology and design rationale. Existing source requirement: Every requirement is atomic, testable and traced to a source and a priority.",
         "role_path": "skills/it-roles-sabsa-security-architecture/references/physical-security-solution-builder-sabsa-builder-s-view.md"
       }
     },
@@ -278,7 +283,8 @@
           "artifacts/contracts/role-deliverables.v3.json#physical-security-solution-builder-sabsa-builder-s-view:2",
           "content/types/implementation-specification.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -329,7 +335,8 @@
           "artifacts/contracts/role-deliverables.v3.json#physical-security-solution-builder-sabsa-builder-s-view:2",
           "content/types/implementation-specification.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -374,7 +381,8 @@
           "artifacts/contracts/role-deliverables.v3.json#physical-security-solution-builder-sabsa-builder-s-view:2",
           "content/types/implementation-specification.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -419,7 +427,8 @@
           "artifacts/contracts/role-deliverables.v3.json#physical-security-solution-builder-sabsa-builder-s-view:2",
           "content/types/implementation-specification.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -464,7 +473,8 @@
           "artifacts/contracts/role-deliverables.v3.json#physical-security-solution-builder-sabsa-builder-s-view:2",
           "content/types/implementation-specification.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -511,7 +521,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -556,7 +567,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -603,7 +615,8 @@
           "artifacts/contracts/role-deliverables.v3.json",
           "content/rules/global-invariants.yaml",
           "https://www.iso.org/standard/74393.html",
-          "https://doi.org/10.6028/NIST.SP.800-160v1r1"
+          "https://doi.org/10.6028/NIST.SP.800-160v1r1",
+          "https://sabsa.org/sabsa-executive-summary/"
         ]
       },
       "provenance": {
@@ -734,16 +747,29 @@
         "scope": "Life-cycle requirements, design rationale, verification and assurance of system security.",
         "basis": "informed-by",
         "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
+        "id": "sabsa-overview",
+        "title": "SABSA Institute, SABSA Executive Summary",
+        "url": "https://sabsa.org/sabsa-executive-summary/",
+        "scope": "Business-driven security architecture and traceability overview; actual SABSA deliveries must select the accessible authoritative method/version and their detailed obligations.",
+        "basis": "informed-by",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
       }
     ],
     "role_framework_context": [
       {
         "role": "Physical Security Solution Builder (SABSA Builder's View)",
+        "domain": "SABSA Security Architecture",
+        "domain_index": 17,
+        "method_focus": "Trace business drivers and measurable attributes through risks, control objectives, services, mechanisms and operational measures.",
         "frameworks": [
           "SABSA physical layer",
           "CIS Benchmarks",
           "vendor security reference architectures"
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -816,6 +842,17 @@
     "source_fingerprint": "1c521402341de7105062cb67d5f2eedfc7070501710c078ea221cf7034326d4b",
     "source_hash": "5e901864a6e72d0df7e70ae6e53a6af99a67bafd6a16d8da8c94d01f084a84ff"
   },
+  "delivery_form": {
+    "primary_artifact": "solution-design",
+    "representation": "Versioned solution design with component responsibilities, interfaces and measurable quality responses.",
+    "evidence": [
+      "requirements-to-design traceability",
+      "independent design review"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "d04078ee04171246ca9d1f4562bc3d07044ff536d3eec063a27716aecd8a6e2a",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."

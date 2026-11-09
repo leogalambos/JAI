@@ -9,7 +9,7 @@
   "category": "document_kind",
   "completeness": "complete",
   "inherits": [
-    "type/decision-paper",
+    "family/analysis-report",
     "domain/delivery"
   ],
   "applies_to": {
@@ -204,7 +204,7 @@
         "op": "review"
       },
       "acceptance_criteria": [
-        "For the specific output 'Deal baseline and variance review', provide verifiable evidence satisfying: Material adverse variance has an owner, threshold, corrective option and decision date. Required delivery form: Signed-scope financial baseline, actuals, forecast at completion and change effects.",
+        "For the specific output 'Deal baseline and variance review', provide verifiable evidence satisfying: Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Material adverse variance has an owner, threshold, corrective option and decision date. Required delivery form: Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request.",
         "A title alone is insufficient; values must identify concrete entities, relations and limitations."
       ],
       "evidence_policy": {
@@ -219,7 +219,7 @@
       },
       "rationale": {
         "basis": "professional-proposal",
-        "reason": "For the specific output 'Deal baseline and variance review', provide verifiable evidence satisfying: Material adverse variance has an owner, threshold, corrective option and decision date. Required delivery form: Signed-scope financial baseline, actuals, forecast at completion and change effects.",
+        "reason": "For the specific output 'Deal baseline and variance review', provide verifiable evidence satisfying: Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Material adverse variance has an owner, threshold, corrective option and decision date. Required delivery form: Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request.",
         "source_refs": [
           "artifacts/contracts/role-deliverables.v3.json#commercial-pricing-deal-finance-specialist:3",
           "content/types/decision-paper.yaml",
@@ -234,8 +234,8 @@
       "jai_layer": "L2",
       "source_deliverable": {
         "name": "Deal baseline and variance review",
-        "format": "Signed-scope financial baseline, actuals, forecast at completion and change effects",
-        "acceptance_criterion": "Material adverse variance has an owner, threshold, corrective option and decision date.",
+        "format": "Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request.",
+        "acceptance_criterion": "Define the actual analytical question, reporting period, population, source versions, method, measurement/reconciliation rules and exclusions. Separate observed facts from hypotheses and assumptions; trace each material finding to reproducible evidence, calculations, chronology or source records with uncertainty and counterevidence. Explain what the evidence supports, alternative explanations, limits, impacts and accountable follow-up actions. A factual or status report does not require a fabricated option appraisal or approval request. Existing source requirement: Material adverse variance has an owner, threshold, corrective option and decision date.",
         "role_path": "skills/it-roles-commercial-sourcing-and-enablement/references/commercial-pricing-deal-finance-specialist.md"
       }
     },
@@ -717,6 +717,14 @@
     ],
     "professional_references": [
       {
+        "id": "jai-practice",
+        "title": "JAI authored enterprise-delivery practice",
+        "url": null,
+        "scope": "Explicit scope, accountable recipients, evidence limits, usable handoffs and independent review.",
+        "basis": "jai-practice",
+        "limits": "JAI-authored interpretation of the named subject. No clause-level conformance, certification or automatic applicability is asserted."
+      },
+      {
         "id": "business-appraisal",
         "title": "HM Treasury, The Green Book",
         "url": "https://www.gov.uk/government/publications/the-green-book-appraisal-and-evaluation-in-central-government",
@@ -736,11 +744,16 @@
     "role_framework_context": [
       {
         "role": "Commercial Pricing / Deal Finance Specialist",
+        "domain": "Commercial, Sourcing and Enablement",
+        "domain_index": 15,
+        "method_focus": "Expose sourcing/pricing assumptions, obligations, economic sensitivities, acceptance responsibilities and exit conditions.",
         "frameworks": [
           "GAO Cost Estimating and Assessment Guide, GAO-20-195G (2020): credible cost baselines, risk/sensitivity analysis and updates with actuals; adapted to supplier deals, not a claim of GAO certification.",
           "IFRS 15 Revenue from Contracts with Customers, where applicable: route identification of performance obligations and revenue recognition to authorised accounting specialists.",
           "Organisation treasury, tax, pricing, credit and accounting policies; IAS 21 for applicable currency accounting questions, with qualified finance review."
         ],
+        "framework_selection": "Relevant candidates only; this is not a mandatory framework list.",
+        "applicability_rule": "global.framework_applicability",
         "basis": "Canonical role context; not proof that every listed framework applies to this output."
       }
     ]
@@ -794,12 +807,14 @@
     "mechanism": "Existing JAI L0 / fabric authority process"
   },
   "calibration_status": "synthetic-only",
+  "semantic_foundation_ref": "family/analysis-report",
+  "semantic_foundation_basis": "Authored exact contract-ID correction; frozen artifact type remains an identity/compatibility field, not a semantic mandate.",
   "applicability_policy": {
     "unconditional_units": "N/A prohibited",
     "conditional_units": "N/A requires evidenced false applicability and review; unknown remains pending"
   },
   "completion_scope": "Authored proposed contract only; evaluated and human-approved coverage must be reported separately.",
-  "semantic_family": "decision-paper",
+  "semantic_family": "analysis-report",
   "role_overlay": {
     "contract_id": "commercial-pricing-deal-finance-specialist:3",
     "scope": "Exact source deliverable, input analysis and existing role gates only",
@@ -811,6 +826,17 @@
     "source_fingerprint": "e5964b76fc5c76a377173f60d4abf7f38c95878aaa6995d48917024cc4ab67af",
     "source_hash": "6d8bde949d2921413e3c95a7a06f6383a55621f9772428395df1d51641d66e0b"
   },
+  "delivery_form": {
+    "primary_artifact": "evidence-based-analysis-report",
+    "representation": "Source-linked analytical, operational or investigative report with an explicit question, method, observed findings and bounded conclusions; no fabricated decision request.",
+    "evidence": [
+      "versioned source/period/population and reproducible method",
+      "observations, uncertainty, counterevidence and accountable follow-up"
+    ],
+    "legacy_type_is_compatibility_only": true,
+    "authority": "Content guidance only; existing execution and human authority boundaries remain."
+  },
+  "source_projection_record_hash": "b4c1da8efb76a090c5589e2541c2317cd0e31825f92e06e0a248039216ebf393",
   "derivation_limits": [
     "Source inputs identify the subject boundary but do not prove professional sufficiency.",
     "Independent semantic assessment and human L0 approval remain pending."
