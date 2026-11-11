@@ -1,0 +1,46 @@
+{
+  "name": "@jai/fabric-explorer-contracts",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Renderer-independent read-only Fabric Explorer semantic and transport contracts",
+  "license": "BSD-4-Clause",
+  "type": "module",
+  "engines": {
+    "node": "24.22.2",
+    "npm": "11.21.2"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "import": "./dist/src/index.js"
+    },
+    "./schema": "./schema/contracts.schema.json",
+    "./internal/identity-codec": {
+      "types": "./dist/src/identity-codec.d.ts",
+      "import": "./dist/src/identity-codec.js"
+    }
+  },
+  "files": [
+    "dist",
+    "schema"
+  ],
+  "scripts": {
+    "generate": "node tools/generate-validators.mjs",
+    "prebuild": "npm run generate",
+    "build": "tsc -p tsconfig.json",
+    "precheck": "npm run generate",
+    "check": "tsc -p tsconfig.json --noEmit",
+    "pretest": "npm run generate",
+    "test": "vitest run",
+    "test:built": "node tools/check-built-contracts.mjs"
+  },
+  "dependencies": {
+    "ajv": "8.20.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "typescript": "7.0.2",
+    "vite": "8.3.7",
+    "vitest": "5.1.0"
+  }
+}

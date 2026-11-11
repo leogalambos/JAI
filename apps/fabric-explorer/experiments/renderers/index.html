@@ -1,0 +1,34 @@
+<!doctype html>
+<!-- SPDX-License-Identifier: BSD-4-Clause -->
+<!-- Copyright (c) 2026 Leo Galambos and the Egothor team -->
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Guided renderer comparison</title></head>
+<body>
+<main>
+  <header>
+    <div><h1>Guided renderer comparison</h1><p>Compare the configured graph renderers and display scales. Automatic load measurements are followed by a small manual check.</p></div>
+    <button id="probe-stop" type="button">Stop entire test <kbd>Esc</kbd></button>
+  </header>
+  <section id="probe-progress" aria-label="Test progress" aria-live="polite" data-mode="automatic">
+    <div class="progress-counters"><strong id="probe-case">Preparing the configured cases</strong><span id="probe-overall">Eight steps per case; the configured plan determines the total</span></div>
+    <div class="progress-phase"><strong id="probe-stage">Opening the comparison</strong><strong id="probe-countdown"></strong></div>
+    <p id="probe-instructions">Automatic load test: a dense graph is expected. Wait during measurement; readability is reviewed later on a two-vertex scene. Stop or Escape ends the entire run.</p>
+  </section>
+  <div id="status" role="status">Preparing synthetic graph.</div>
+  <section id="graph" aria-label="Synthetic graph under test"></section>
+  <aside>
+    <section class="selected-element" aria-label="Selected graph element"><h2>Selected element</h2><strong id="selected-identity">No selected element</strong><p id="selected-label" aria-label="Complete selected label"></p><pre id="details">Automatic stages require no clicks. Manual instructions appear below when it is your turn.</pre></section>
+    <form id="probe-review" hidden>
+      <h2 id="probe-review-title" tabindex="-1">Your turn: inspect two vertices and four relations</h2>
+      <p>Use the small graph, then record each observation. Nothing is marked Pass automatically.</p>
+      <div id="probe-questions"></div>
+      <label for="probe-note">Optional note</label><textarea id="probe-note" maxlength="2000" rows="2"></textarea>
+      <p id="probe-review-error" role="alert"></p>
+      <div class="review-actions"><button id="probe-save" type="submit">Save observations and continue</button><button id="probe-skip" type="button">Skip checks and continue</button></div>
+    </form>
+  </aside>
+  <footer>The configured renderer/scale plan determines the number of cases. Stop, Escape or closing this window ends the run.</footer>
+</main>
+<script type="module" src="/src/main.ts"></script>
+</body>
+</html>

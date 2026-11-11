@@ -92,10 +92,18 @@ remain possible. See the [operating guide](../operations/normal-layered-workflow
 
 ## Storage and recovery
 
-The Fabric CLI defaults to `~/.ai/fabric/<engagement>.jsonl`; `FABRIC_HOME` changes
-that locator. A host adapter using an explicit Store path must use the same
+The layered host adapter defaults to the project's `.fabric/` directory; an
+explicit host home can select another location. Direct Fabric CLI commands
+instead default to `~/.ai/fabric/<engagement>.jsonl`; `FABRIC_HOME` changes that
+CLI locator. A host adapter using an explicit Store path must use the same
 engagement location consistently. Referenced immutable files live beside the
 journal in its `<journal-name>.blobs/` directory. Preserve both together.
+
+Fabric records arise when an operation actually writes through the runtime.
+Using a role or ordinary workflow does not automatically record a Fabric
+engagement; a review may instead create a separate `.findings/` ledger.
+[Viewer import prerequisites](../fabric-explorer/importing.md#before-you-open-a-project-are-there-records-to-display)
+explain which recorded data can be inspected and how to select it.
 
 Normal processing reuses the verified journal prefix. Cold reconstruction,
 explicit audit and an actual loss of trust are separate verification boundaries.

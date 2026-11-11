@@ -1,0 +1,45 @@
+{
+  "name": "jai-fabric-explorer-renderer-probe",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Disposable synthetic projection comparison; not product code",
+  "engines": {
+    "node": "24.22.2",
+    "npm": "11.21.2"
+  },
+  "scripts": {
+    "build": "tsc --noEmit && vite build && vite build --config vite.phase.config.ts",
+    "check:corpus": "node --experimental-strip-types src/corpus-check.ts",
+    "probe": "node run-probe.mjs",
+    "check:output": "node output-path-check.mjs",
+    "check:manual": "node manual-observation-check.mjs",
+    "check:runner": "node runner-control-check.mjs",
+    "check:controls": "node --experimental-strip-types probe-controls-check.mjs",
+    "check:animation": "node --experimental-strip-types animation-check.mjs",
+    "check:geometry": "node --experimental-strip-types geometry-check.mjs",
+    "check:sigma-style": "node --experimental-strip-types sigma-style-check.mjs",
+    "check:projection": "node --experimental-strip-types projection-check.mjs",
+    "check:worker": "node --experimental-strip-types worker-boundary-check.mjs",
+    "check:phases": "node --experimental-strip-types phase-ledger-check.mjs",
+    "check:memory": "node memory-accounting-check.mjs",
+    "check:lifecycle": "node --experimental-strip-types lifecycle-check.mjs",
+    "check:active-path": "node --experimental-strip-types active-path-check.mjs",
+    "check:label-observation": "node label-observation-check.mjs",
+    "check:label-runner": "node --experimental-strip-types label-runner-check.mjs",
+    "probe:labels": "node run-label-check.mjs",
+    "check:gpu-diagnostic": "node --experimental-strip-types gpu-diagnostic-check.mjs"
+  },
+  "dependencies": {
+    "cytoscape": "3.34.4",
+    "graphology": "0.26.0",
+    "sigma": "4.0.5"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.0",
+    "@types/cytoscape": "3.31.0",
+    "@types/node": "24.19.2",
+    "typescript": "7.0.2",
+    "vite": "8.3.7"
+  }
+}

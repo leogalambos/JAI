@@ -1,0 +1,89 @@
+{
+  "name": "sigma",
+  "version": "4.0.5-jai.1",
+  "description": "A JavaScript library aimed at visualizing graphs of thousands of nodes and edges.",
+  "homepage": "https://www.sigmajs.org",
+  "bugs": "http://github.com/jacomyal/sigma.js/issues",
+  "main": "./.cache/dist/index.cjs",
+  "module": "./.cache/dist/index.js",
+  "types": "./.cache/dist/types/index.d.ts",
+  "files": [
+    ".cache/dist",
+    "LICENSE.txt",
+    "README.md"
+  ],
+  "sideEffects": false,
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/jacomyal/sigma.js.git"
+  },
+  "contributors": [
+    {
+      "name": "Alexis Jacomy",
+      "url": "http://github.com/jacomyal"
+    },
+    {
+      "name": "Guillaume Plique",
+      "url": "http://github.com/Yomguithereal"
+    },
+    {
+      "name": "Beno\u00eet Simard",
+      "url": "http://github.com/sim51"
+    }
+  ],
+  "license": "MIT",
+  "dependencies": {
+    "events": "^3.3.0",
+    "graphology-utils": "^2.5.2"
+  },
+  "keywords": [
+    "graph",
+    "graphology",
+    "renderer",
+    "sigma",
+    "canvas",
+    "webgl"
+  ],
+  "exports": {
+    ".": {
+      "types": "./.cache/dist/types/index.d.ts",
+      "import": "./.cache/dist/index.js",
+      "default": "./.cache/dist/index.cjs",
+      "require": "./.cache/dist/index.cjs"
+    },
+    "./types": {
+      "types": "./.cache/dist/types/types.d.ts",
+      "import": "./.cache/dist/types.js",
+      "default": "./.cache/dist/types.cjs",
+      "require": "./.cache/dist/types.cjs"
+    },
+    "./settings": {
+      "types": "./.cache/dist/types/settings.d.ts",
+      "import": "./.cache/dist/settings.js",
+      "default": "./.cache/dist/settings.cjs",
+      "require": "./.cache/dist/settings.cjs"
+    },
+    "./rendering": {
+      "types": "./.cache/dist/types/rendering/index.d.ts",
+      "import": "./.cache/dist/rendering.js",
+      "default": "./.cache/dist/rendering.cjs",
+      "require": "./.cache/dist/rendering.cjs"
+    },
+    "./primitives": {
+      "types": "./.cache/dist/types/primitives/index.d.ts",
+      "import": "./.cache/dist/primitives.js",
+      "default": "./.cache/dist/primitives.cjs",
+      "require": "./.cache/dist/primitives.cjs"
+    },
+    "./utils": {
+      "types": "./.cache/dist/types/utils/index.d.ts",
+      "import": "./.cache/dist/utils.js",
+      "default": "./.cache/dist/utils.cjs",
+      "require": "./.cache/dist/utils.cjs"
+    },
+    "./package.json": "./package.json"
+  },
+  "private": true,
+  "type": "module"
+}

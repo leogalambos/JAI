@@ -1,0 +1,980 @@
+{
+  "format": "jai.fabric-explorer.projection/1",
+  "snapshot": {
+    "format": "jai.fabric-explorer.snapshot/1",
+    "sessionId": "synthetic-session",
+    "generation": "1",
+    "sources": [
+      {
+        "revisionId": "synthetic-fabric-revision",
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-fabric",
+        "family": "fabric",
+        "relativePath": "fabric.jsonl",
+        "adapterVersion": "1",
+        "byteLength": "1024",
+        "digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "head": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "sequence": "20",
+        "observedAt": "2030-01-01T00:00:00.000Z",
+        "verification": {
+          "mode": "canonical",
+          "decoded": "decoded",
+          "chain": "verified",
+          "replay": "verified",
+          "publicTrust": "not-required",
+          "material": "not-observed",
+          "recordedApplicability": null,
+          "authorityGranted": false,
+          "freshAssessment": false
+        }
+      },
+      {
+        "revisionId": "synthetic-findings-revision",
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-findings",
+        "family": "findings",
+        "relativePath": "findings.jsonl",
+        "adapterVersion": "1",
+        "byteLength": "1024",
+        "digest": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+        "head": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+        "sequence": "20",
+        "observedAt": "2030-01-01T00:00:00.000Z",
+        "verification": {
+          "mode": "canonical",
+          "decoded": "decoded",
+          "chain": "verified",
+          "replay": "unknown",
+          "publicTrust": "not-required",
+          "material": "not-observed",
+          "recordedApplicability": null,
+          "authorityGranted": false,
+          "freshAssessment": false
+        }
+      }
+    ],
+    "counts": {
+      "vertices": "14",
+      "edges": "3",
+      "findings": "6"
+    },
+    "authorityGranted": false,
+    "freshAssessment": false
+  },
+  "vertices": [
+    {
+      "kind": "version",
+      "identity": {
+        "kind": "version",
+        "projectId": "synthetic-project-A",
+        "ref": {
+          "engagement": "synthetic-engagement",
+          "scope": "scope:synthetic",
+          "logical_id": "synthetic-source",
+          "version_id": "1111111111111111111111111111111111111111111111111111111111111111"
+        }
+      },
+      "id": "[\"jai.fabric-explorer.element/1\",\"version\",\"synthetic-project-A\",\"synthetic-engagement\",\"scope:synthetic\",\"synthetic-source\",\"1111111111111111111111111111111111111111111111111111111111111111\"]",
+      "label": "Shared display label",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-fabric",
+        "family": "fabric",
+        "relativePath": "fabric.jsonl",
+        "pointer": "/synthetic/source",
+        "sequence": "1",
+        "revisionId": "synthetic-fabric-revision",
+        "adapterVersion": "1"
+      },
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "object",
+          "entries": [
+            {
+              "key": "synthetic",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            {
+              "key": "exampleFamily",
+              "value": {
+                "type": "string",
+                "value": "source"
+              }
+            },
+            {
+              "key": "notice",
+              "value": {
+                "type": "string",
+                "value": "Projection DTO only; not admitted source history."
+              }
+            }
+          ]
+        }
+      },
+      "family": "source"
+    },
+    {
+      "kind": "version",
+      "identity": {
+        "kind": "version",
+        "projectId": "synthetic-project-A",
+        "ref": {
+          "engagement": "synthetic-engagement",
+          "scope": "scope:synthetic",
+          "logical_id": "synthetic-profile",
+          "version_id": "2222222222222222222222222222222222222222222222222222222222222222"
+        }
+      },
+      "id": "[\"jai.fabric-explorer.element/1\",\"version\",\"synthetic-project-A\",\"synthetic-engagement\",\"scope:synthetic\",\"synthetic-profile\",\"2222222222222222222222222222222222222222222222222222222222222222\"]",
+      "label": "Shared display label",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-fabric",
+        "family": "fabric",
+        "relativePath": "fabric.jsonl",
+        "pointer": "/synthetic/profile",
+        "sequence": "2",
+        "revisionId": "synthetic-fabric-revision",
+        "adapterVersion": "1"
+      },
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "object",
+          "entries": [
+            {
+              "key": "synthetic",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            {
+              "key": "exampleFamily",
+              "value": {
+                "type": "string",
+                "value": "profile"
+              }
+            },
+            {
+              "key": "notice",
+              "value": {
+                "type": "string",
+                "value": "Projection DTO only; not admitted source history."
+              }
+            }
+          ]
+        }
+      },
+      "family": "profile"
+    },
+    {
+      "kind": "version",
+      "identity": {
+        "kind": "version",
+        "projectId": "synthetic-project-A",
+        "ref": {
+          "engagement": "synthetic-engagement",
+          "scope": "scope:synthetic",
+          "logical_id": "synthetic-assignment",
+          "version_id": "3333333333333333333333333333333333333333333333333333333333333333"
+        }
+      },
+      "id": "[\"jai.fabric-explorer.element/1\",\"version\",\"synthetic-project-A\",\"synthetic-engagement\",\"scope:synthetic\",\"synthetic-assignment\",\"3333333333333333333333333333333333333333333333333333333333333333\"]",
+      "label": "Shared display label",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-fabric",
+        "family": "fabric",
+        "relativePath": "fabric.jsonl",
+        "pointer": "/synthetic/assignment",
+        "sequence": "3",
+        "revisionId": "synthetic-fabric-revision",
+        "adapterVersion": "1"
+      },
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "object",
+          "entries": [
+            {
+              "key": "synthetic",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            {
+              "key": "exampleFamily",
+              "value": {
+                "type": "string",
+                "value": "assignment"
+              }
+            },
+            {
+              "key": "notice",
+              "value": {
+                "type": "string",
+                "value": "Projection DTO only; not admitted source history."
+              }
+            }
+          ]
+        }
+      },
+      "family": "assignment"
+    },
+    {
+      "kind": "version",
+      "identity": {
+        "kind": "version",
+        "projectId": "synthetic-project-A",
+        "ref": {
+          "engagement": "synthetic-engagement",
+          "scope": "scope:synthetic",
+          "logical_id": "synthetic-context",
+          "version_id": "4444444444444444444444444444444444444444444444444444444444444444"
+        }
+      },
+      "id": "[\"jai.fabric-explorer.element/1\",\"version\",\"synthetic-project-A\",\"synthetic-engagement\",\"scope:synthetic\",\"synthetic-context\",\"4444444444444444444444444444444444444444444444444444444444444444\"]",
+      "label": "Shared display label",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-fabric",
+        "family": "fabric",
+        "relativePath": "fabric.jsonl",
+        "pointer": "/synthetic/context",
+        "sequence": "4",
+        "revisionId": "synthetic-fabric-revision",
+        "adapterVersion": "1"
+      },
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "object",
+          "entries": [
+            {
+              "key": "synthetic",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            {
+              "key": "exampleFamily",
+              "value": {
+                "type": "string",
+                "value": "context"
+              }
+            },
+            {
+              "key": "notice",
+              "value": {
+                "type": "string",
+                "value": "Projection DTO only; not admitted source history."
+              }
+            }
+          ]
+        }
+      },
+      "family": "context"
+    },
+    {
+      "kind": "version",
+      "identity": {
+        "kind": "version",
+        "projectId": "synthetic-project-A",
+        "ref": {
+          "engagement": "synthetic-engagement",
+          "scope": "scope:synthetic",
+          "logical_id": "synthetic-product",
+          "version_id": "5555555555555555555555555555555555555555555555555555555555555555"
+        }
+      },
+      "id": "[\"jai.fabric-explorer.element/1\",\"version\",\"synthetic-project-A\",\"synthetic-engagement\",\"scope:synthetic\",\"synthetic-product\",\"5555555555555555555555555555555555555555555555555555555555555555\"]",
+      "label": "Shared display label",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-fabric",
+        "family": "fabric",
+        "relativePath": "fabric.jsonl",
+        "pointer": "/synthetic/product",
+        "sequence": "5",
+        "revisionId": "synthetic-fabric-revision",
+        "adapterVersion": "1"
+      },
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "object",
+          "entries": [
+            {
+              "key": "synthetic",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            {
+              "key": "exampleFamily",
+              "value": {
+                "type": "string",
+                "value": "product"
+              }
+            },
+            {
+              "key": "notice",
+              "value": {
+                "type": "string",
+                "value": "Projection DTO only; not admitted source history."
+              }
+            }
+          ]
+        }
+      },
+      "family": "product"
+    },
+    {
+      "kind": "version",
+      "identity": {
+        "kind": "version",
+        "projectId": "synthetic-project-A",
+        "ref": {
+          "engagement": "synthetic-engagement",
+          "scope": "scope:synthetic",
+          "logical_id": "synthetic-assessment",
+          "version_id": "6666666666666666666666666666666666666666666666666666666666666666"
+        }
+      },
+      "id": "[\"jai.fabric-explorer.element/1\",\"version\",\"synthetic-project-A\",\"synthetic-engagement\",\"scope:synthetic\",\"synthetic-assessment\",\"6666666666666666666666666666666666666666666666666666666666666666\"]",
+      "label": "Shared display label",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-fabric",
+        "family": "fabric",
+        "relativePath": "fabric.jsonl",
+        "pointer": "/synthetic/assessment",
+        "sequence": "6",
+        "revisionId": "synthetic-fabric-revision",
+        "adapterVersion": "1"
+      },
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "object",
+          "entries": [
+            {
+              "key": "synthetic",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            {
+              "key": "exampleFamily",
+              "value": {
+                "type": "string",
+                "value": "assessment"
+              }
+            },
+            {
+              "key": "notice",
+              "value": {
+                "type": "string",
+                "value": "Projection DTO only; not admitted source history."
+              }
+            }
+          ]
+        }
+      },
+      "family": "assessment"
+    },
+    {
+      "kind": "version",
+      "identity": {
+        "kind": "version",
+        "projectId": "synthetic-project-A",
+        "ref": {
+          "engagement": "synthetic-engagement",
+          "scope": "scope:synthetic",
+          "logical_id": "synthetic-decision",
+          "version_id": "7777777777777777777777777777777777777777777777777777777777777777"
+        }
+      },
+      "id": "[\"jai.fabric-explorer.element/1\",\"version\",\"synthetic-project-A\",\"synthetic-engagement\",\"scope:synthetic\",\"synthetic-decision\",\"7777777777777777777777777777777777777777777777777777777777777777\"]",
+      "label": "Shared display label",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-fabric",
+        "family": "fabric",
+        "relativePath": "fabric.jsonl",
+        "pointer": "/synthetic/decision",
+        "sequence": "7",
+        "revisionId": "synthetic-fabric-revision",
+        "adapterVersion": "1"
+      },
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "object",
+          "entries": [
+            {
+              "key": "synthetic",
+              "value": {
+                "type": "boolean",
+                "value": true
+              }
+            },
+            {
+              "key": "exampleFamily",
+              "value": {
+                "type": "string",
+                "value": "decision"
+              }
+            },
+            {
+              "key": "notice",
+              "value": {
+                "type": "string",
+                "value": "Projection DTO only; not admitted source history."
+              }
+            }
+          ]
+        }
+      },
+      "family": "decision"
+    },
+    {
+      "kind": "unresolved",
+      "identity": {
+        "kind": "version",
+        "projectId": "synthetic-project-A",
+        "ref": {
+          "engagement": "synthetic-engagement",
+          "scope": "scope:synthetic",
+          "logical_id": "synthetic-missing",
+          "version_id": "8888888888888888888888888888888888888888888888888888888888888888"
+        }
+      },
+      "id": "[\"jai.fabric-explorer.element/1\",\"version\",\"synthetic-project-A\",\"synthetic-engagement\",\"scope:synthetic\",\"synthetic-missing\",\"8888888888888888888888888888888888888888888888888888888888888888\"]",
+      "label": "Unresolved exact reference",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-fabric",
+        "family": "fabric",
+        "relativePath": "fabric.jsonl",
+        "pointer": "/synthetic/refs/2",
+        "sequence": "1",
+        "revisionId": "synthetic-fabric-revision",
+        "adapterVersion": "1"
+      },
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "null"
+        }
+      },
+      "reason": "missing-reference"
+    },
+    {
+      "kind": "finding",
+      "identity": {
+        "kind": "finding",
+        "projectId": "synthetic-project-A",
+        "ledgerId": "synthetic-review",
+        "findingId": "F-0001"
+      },
+      "id": "[\"jai.fabric-explorer.element/1\",\"finding\",\"synthetic-project-A\",\"synthetic-review\",\"F-0001\"]",
+      "label": "Synthetic finding 1",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-findings",
+        "family": "findings",
+        "relativePath": "findings.jsonl",
+        "pointer": "/data/findings/0",
+        "sequence": "1",
+        "revisionId": "synthetic-findings-revision",
+        "adapterVersion": "1"
+      },
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "object",
+          "entries": [
+            {
+              "key": "target",
+              "value": {
+                "type": "string",
+                "value": "synthetic-document.md"
+              }
+            },
+            {
+              "key": "historyNotice",
+              "value": {
+                "type": "string",
+                "value": "Synthetic transport example, not command acceptance."
+              }
+            }
+          ]
+        }
+      },
+      "state": "open",
+      "severity": "low",
+      "findingKind": "defect",
+      "rounds": "0",
+      "recordedExpiry": null
+    },
+    {
+      "kind": "finding",
+      "identity": {
+        "kind": "finding",
+        "projectId": "synthetic-project-A",
+        "ledgerId": "synthetic-review",
+        "findingId": "F-0002"
+      },
+      "id": "[\"jai.fabric-explorer.element/1\",\"finding\",\"synthetic-project-A\",\"synthetic-review\",\"F-0002\"]",
+      "label": "Synthetic finding 2",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-findings",
+        "family": "findings",
+        "relativePath": "findings.jsonl",
+        "pointer": "/data/findings/1",
+        "sequence": "2",
+        "revisionId": "synthetic-findings-revision",
+        "adapterVersion": "1"
+      },
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "object",
+          "entries": [
+            {
+              "key": "target",
+              "value": {
+                "type": "string",
+                "value": "synthetic-document.md"
+              }
+            },
+            {
+              "key": "historyNotice",
+              "value": {
+                "type": "string",
+                "value": "Synthetic transport example, not command acceptance."
+              }
+            }
+          ]
+        }
+      },
+      "state": "resolved",
+      "severity": "low",
+      "findingKind": "defect",
+      "rounds": "0",
+      "recordedExpiry": null
+    },
+    {
+      "kind": "finding",
+      "identity": {
+        "kind": "finding",
+        "projectId": "synthetic-project-A",
+        "ledgerId": "synthetic-review",
+        "findingId": "F-0003"
+      },
+      "id": "[\"jai.fabric-explorer.element/1\",\"finding\",\"synthetic-project-A\",\"synthetic-review\",\"F-0003\"]",
+      "label": "Synthetic finding 3",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-findings",
+        "family": "findings",
+        "relativePath": "findings.jsonl",
+        "pointer": "/data/findings/2",
+        "sequence": "3",
+        "revisionId": "synthetic-findings-revision",
+        "adapterVersion": "1"
+      },
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "object",
+          "entries": [
+            {
+              "key": "target",
+              "value": {
+                "type": "string",
+                "value": "synthetic-document.md"
+              }
+            },
+            {
+              "key": "historyNotice",
+              "value": {
+                "type": "string",
+                "value": "Synthetic transport example, not command acceptance."
+              }
+            }
+          ]
+        }
+      },
+      "state": "verified",
+      "severity": "low",
+      "findingKind": "defect",
+      "rounds": "0",
+      "recordedExpiry": null
+    },
+    {
+      "kind": "finding",
+      "identity": {
+        "kind": "finding",
+        "projectId": "synthetic-project-A",
+        "ledgerId": "synthetic-review",
+        "findingId": "F-0004"
+      },
+      "id": "[\"jai.fabric-explorer.element/1\",\"finding\",\"synthetic-project-A\",\"synthetic-review\",\"F-0004\"]",
+      "label": "Synthetic finding 4",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-findings",
+        "family": "findings",
+        "relativePath": "findings.jsonl",
+        "pointer": "/data/findings/3",
+        "sequence": "4",
+        "revisionId": "synthetic-findings-revision",
+        "adapterVersion": "1"
+      },
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "object",
+          "entries": [
+            {
+              "key": "target",
+              "value": {
+                "type": "string",
+                "value": "synthetic-document.md"
+              }
+            },
+            {
+              "key": "historyNotice",
+              "value": {
+                "type": "string",
+                "value": "Synthetic transport example, not command acceptance."
+              }
+            }
+          ]
+        }
+      },
+      "state": "stuck",
+      "severity": "low",
+      "findingKind": "defect",
+      "rounds": "3",
+      "recordedExpiry": null
+    },
+    {
+      "kind": "finding",
+      "identity": {
+        "kind": "finding",
+        "projectId": "synthetic-project-A",
+        "ledgerId": "synthetic-review",
+        "findingId": "F-0005"
+      },
+      "id": "[\"jai.fabric-explorer.element/1\",\"finding\",\"synthetic-project-A\",\"synthetic-review\",\"F-0005\"]",
+      "label": "Synthetic finding 5",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-findings",
+        "family": "findings",
+        "relativePath": "findings.jsonl",
+        "pointer": "/data/findings/4",
+        "sequence": "5",
+        "revisionId": "synthetic-findings-revision",
+        "adapterVersion": "1"
+      },
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "object",
+          "entries": [
+            {
+              "key": "target",
+              "value": {
+                "type": "string",
+                "value": "synthetic-document.md"
+              }
+            },
+            {
+              "key": "historyNotice",
+              "value": {
+                "type": "string",
+                "value": "Synthetic transport example, not command acceptance."
+              }
+            }
+          ]
+        }
+      },
+      "state": "withdrawn",
+      "severity": "low",
+      "findingKind": "defect",
+      "rounds": "0",
+      "recordedExpiry": null
+    },
+    {
+      "kind": "finding",
+      "identity": {
+        "kind": "finding",
+        "projectId": "synthetic-project-A",
+        "ledgerId": "synthetic-review",
+        "findingId": "F-0006"
+      },
+      "id": "[\"jai.fabric-explorer.element/1\",\"finding\",\"synthetic-project-A\",\"synthetic-review\",\"F-0006\"]",
+      "label": "Synthetic finding 6",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-findings",
+        "family": "findings",
+        "relativePath": "findings.jsonl",
+        "pointer": "/data/findings/5",
+        "sequence": "6",
+        "revisionId": "synthetic-findings-revision",
+        "adapterVersion": "1"
+      },
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "object",
+          "entries": [
+            {
+              "key": "target",
+              "value": {
+                "type": "string",
+                "value": "synthetic-document.md"
+              }
+            },
+            {
+              "key": "historyNotice",
+              "value": {
+                "type": "string",
+                "value": "Synthetic transport example, not command acceptance."
+              }
+            }
+          ]
+        }
+      },
+      "state": "accepted",
+      "severity": "low",
+      "findingKind": "defect",
+      "rounds": "0",
+      "recordedExpiry": "2030-02-01"
+    }
+  ],
+  "edges": [
+    {
+      "id": "[\"jai.fabric-explorer.edge/1\",\"occurrence\",\"synthetic-project-A\",\"[\\\"jai.fabric-explorer.element/1\\\",\\\"version\\\",\\\"synthetic-project-A\\\",\\\"synthetic-engagement\\\",\\\"scope:synthetic\\\",\\\"synthetic-source\\\",\\\"1111111111111111111111111111111111111111111111111111111111111111\\\"]\",\"/synthetic/refs\",\"0\",\"[\\\"jai.fabric-explorer.element/1\\\",\\\"version\\\",\\\"synthetic-project-A\\\",\\\"synthetic-engagement\\\",\\\"scope:synthetic\\\",\\\"synthetic-source\\\",\\\"1111111111111111111111111111111111111111111111111111111111111111\\\"]\",\"[\\\"jai.fabric-explorer.element/1\\\",\\\"version\\\",\\\"synthetic-project-A\\\",\\\"synthetic-engagement\\\",\\\"scope:synthetic\\\",\\\"synthetic-profile\\\",\\\"2222222222222222222222222222222222222222222222222222222222222222\\\"]\"]",
+      "identity": {
+        "kind": "occurrence",
+        "projectId": "synthetic-project-A",
+        "origin": {
+          "kind": "version",
+          "projectId": "synthetic-project-A",
+          "ref": {
+            "engagement": "synthetic-engagement",
+            "scope": "scope:synthetic",
+            "logical_id": "synthetic-source",
+            "version_id": "1111111111111111111111111111111111111111111111111111111111111111"
+          }
+        },
+        "pointer": "/synthetic/refs",
+        "occurrence": 0,
+        "from": {
+          "kind": "version",
+          "projectId": "synthetic-project-A",
+          "ref": {
+            "engagement": "synthetic-engagement",
+            "scope": "scope:synthetic",
+            "logical_id": "synthetic-source",
+            "version_id": "1111111111111111111111111111111111111111111111111111111111111111"
+          }
+        },
+        "to": {
+          "kind": "version",
+          "projectId": "synthetic-project-A",
+          "ref": {
+            "engagement": "synthetic-engagement",
+            "scope": "scope:synthetic",
+            "logical_id": "synthetic-profile",
+            "version_id": "2222222222222222222222222222222222222222222222222222222222222222"
+          }
+        }
+      },
+      "from": "[\"jai.fabric-explorer.element/1\",\"version\",\"synthetic-project-A\",\"synthetic-engagement\",\"scope:synthetic\",\"synthetic-source\",\"1111111111111111111111111111111111111111111111111111111111111111\"]",
+      "to": "[\"jai.fabric-explorer.element/1\",\"version\",\"synthetic-project-A\",\"synthetic-engagement\",\"scope:synthetic\",\"synthetic-profile\",\"2222222222222222222222222222222222222222222222222222222222222222\"]",
+      "relation": "other-reference",
+      "label": "Synthetic association",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-fabric",
+        "family": "fabric",
+        "relativePath": "fabric.jsonl",
+        "pointer": "/synthetic/refs/0",
+        "sequence": "1",
+        "revisionId": "synthetic-fabric-revision",
+        "adapterVersion": "1"
+      },
+      "basis": "exact-reference",
+      "causal": false,
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "null"
+        }
+      }
+    },
+    {
+      "id": "[\"jai.fabric-explorer.edge/1\",\"occurrence\",\"synthetic-project-A\",\"[\\\"jai.fabric-explorer.element/1\\\",\\\"version\\\",\\\"synthetic-project-A\\\",\\\"synthetic-engagement\\\",\\\"scope:synthetic\\\",\\\"synthetic-source\\\",\\\"1111111111111111111111111111111111111111111111111111111111111111\\\"]\",\"/synthetic/refs\",\"1\",\"[\\\"jai.fabric-explorer.element/1\\\",\\\"version\\\",\\\"synthetic-project-A\\\",\\\"synthetic-engagement\\\",\\\"scope:synthetic\\\",\\\"synthetic-source\\\",\\\"1111111111111111111111111111111111111111111111111111111111111111\\\"]\",\"[\\\"jai.fabric-explorer.element/1\\\",\\\"version\\\",\\\"synthetic-project-A\\\",\\\"synthetic-engagement\\\",\\\"scope:synthetic\\\",\\\"synthetic-profile\\\",\\\"2222222222222222222222222222222222222222222222222222222222222222\\\"]\"]",
+      "identity": {
+        "kind": "occurrence",
+        "projectId": "synthetic-project-A",
+        "origin": {
+          "kind": "version",
+          "projectId": "synthetic-project-A",
+          "ref": {
+            "engagement": "synthetic-engagement",
+            "scope": "scope:synthetic",
+            "logical_id": "synthetic-source",
+            "version_id": "1111111111111111111111111111111111111111111111111111111111111111"
+          }
+        },
+        "pointer": "/synthetic/refs",
+        "occurrence": 1,
+        "from": {
+          "kind": "version",
+          "projectId": "synthetic-project-A",
+          "ref": {
+            "engagement": "synthetic-engagement",
+            "scope": "scope:synthetic",
+            "logical_id": "synthetic-source",
+            "version_id": "1111111111111111111111111111111111111111111111111111111111111111"
+          }
+        },
+        "to": {
+          "kind": "version",
+          "projectId": "synthetic-project-A",
+          "ref": {
+            "engagement": "synthetic-engagement",
+            "scope": "scope:synthetic",
+            "logical_id": "synthetic-profile",
+            "version_id": "2222222222222222222222222222222222222222222222222222222222222222"
+          }
+        }
+      },
+      "from": "[\"jai.fabric-explorer.element/1\",\"version\",\"synthetic-project-A\",\"synthetic-engagement\",\"scope:synthetic\",\"synthetic-source\",\"1111111111111111111111111111111111111111111111111111111111111111\"]",
+      "to": "[\"jai.fabric-explorer.element/1\",\"version\",\"synthetic-project-A\",\"synthetic-engagement\",\"scope:synthetic\",\"synthetic-profile\",\"2222222222222222222222222222222222222222222222222222222222222222\"]",
+      "relation": "other-reference",
+      "label": "Synthetic association",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-fabric",
+        "family": "fabric",
+        "relativePath": "fabric.jsonl",
+        "pointer": "/synthetic/refs/1",
+        "sequence": "1",
+        "revisionId": "synthetic-fabric-revision",
+        "adapterVersion": "1"
+      },
+      "basis": "exact-reference",
+      "causal": false,
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "null"
+        }
+      }
+    },
+    {
+      "id": "[\"jai.fabric-explorer.edge/1\",\"occurrence\",\"synthetic-project-A\",\"[\\\"jai.fabric-explorer.element/1\\\",\\\"version\\\",\\\"synthetic-project-A\\\",\\\"synthetic-engagement\\\",\\\"scope:synthetic\\\",\\\"synthetic-source\\\",\\\"1111111111111111111111111111111111111111111111111111111111111111\\\"]\",\"/synthetic/refs\",\"2\",\"[\\\"jai.fabric-explorer.element/1\\\",\\\"version\\\",\\\"synthetic-project-A\\\",\\\"synthetic-engagement\\\",\\\"scope:synthetic\\\",\\\"synthetic-source\\\",\\\"1111111111111111111111111111111111111111111111111111111111111111\\\"]\",\"[\\\"jai.fabric-explorer.element/1\\\",\\\"version\\\",\\\"synthetic-project-A\\\",\\\"synthetic-engagement\\\",\\\"scope:synthetic\\\",\\\"synthetic-missing\\\",\\\"8888888888888888888888888888888888888888888888888888888888888888\\\"]\"]",
+      "identity": {
+        "kind": "occurrence",
+        "projectId": "synthetic-project-A",
+        "origin": {
+          "kind": "version",
+          "projectId": "synthetic-project-A",
+          "ref": {
+            "engagement": "synthetic-engagement",
+            "scope": "scope:synthetic",
+            "logical_id": "synthetic-source",
+            "version_id": "1111111111111111111111111111111111111111111111111111111111111111"
+          }
+        },
+        "pointer": "/synthetic/refs",
+        "occurrence": 2,
+        "from": {
+          "kind": "version",
+          "projectId": "synthetic-project-A",
+          "ref": {
+            "engagement": "synthetic-engagement",
+            "scope": "scope:synthetic",
+            "logical_id": "synthetic-source",
+            "version_id": "1111111111111111111111111111111111111111111111111111111111111111"
+          }
+        },
+        "to": {
+          "kind": "version",
+          "projectId": "synthetic-project-A",
+          "ref": {
+            "engagement": "synthetic-engagement",
+            "scope": "scope:synthetic",
+            "logical_id": "synthetic-missing",
+            "version_id": "8888888888888888888888888888888888888888888888888888888888888888"
+          }
+        }
+      },
+      "from": "[\"jai.fabric-explorer.element/1\",\"version\",\"synthetic-project-A\",\"synthetic-engagement\",\"scope:synthetic\",\"synthetic-source\",\"1111111111111111111111111111111111111111111111111111111111111111\"]",
+      "to": "[\"jai.fabric-explorer.element/1\",\"version\",\"synthetic-project-A\",\"synthetic-engagement\",\"scope:synthetic\",\"synthetic-missing\",\"8888888888888888888888888888888888888888888888888888888888888888\"]",
+      "relation": "other-reference",
+      "label": "Synthetic association",
+      "source": {
+        "projectId": "synthetic-project-A",
+        "rootId": "synthetic-root",
+        "sourceId": "synthetic-fabric",
+        "family": "fabric",
+        "relativePath": "fabric.jsonl",
+        "pointer": "/synthetic/refs/2",
+        "sequence": "1",
+        "revisionId": "synthetic-fabric-revision",
+        "adapterVersion": "1"
+      },
+      "basis": "exact-reference",
+      "causal": false,
+      "attributes": {
+        "kind": "inline",
+        "value": {
+          "type": "null"
+        }
+      }
+    }
+  ],
+  "hiddenVertices": "0",
+  "hiddenEdges": "0",
+  "complete": true,
+  "omissions": []
+}

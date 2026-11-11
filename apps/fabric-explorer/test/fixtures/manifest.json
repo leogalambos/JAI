@@ -1,0 +1,239 @@
+{
+  "format": "jai.fabric-explorer.source-fixtures/1",
+  "synthetic": true,
+  "record_examples_are_committed_history": false,
+  "records": [
+    {
+      "id": "source-input",
+      "family": "source",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/source-input.json",
+      "pointer": "",
+      "discriminator": "source_role",
+      "value": "input"
+    },
+    {
+      "id": "source-criteria",
+      "family": "source",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/source-criteria.json",
+      "pointer": "",
+      "discriminator": "source_role",
+      "value": "criteria"
+    },
+    {
+      "id": "source-policy",
+      "family": "source",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/source-policy.json",
+      "pointer": "",
+      "discriminator": "source_role",
+      "value": "policy"
+    },
+    {
+      "id": "source-assumption",
+      "family": "source",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/source-assumption.json",
+      "pointer": "",
+      "discriminator": "source_role",
+      "value": "assumption"
+    },
+    {
+      "id": "product-answer",
+      "family": "product",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/product-answer.json",
+      "pointer": "",
+      "discriminator": "product_kind",
+      "value": "answer"
+    },
+    {
+      "id": "product-observation",
+      "family": "product",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/product-observation.json",
+      "pointer": "",
+      "discriminator": "product_kind",
+      "value": "observation"
+    },
+    {
+      "id": "product-bundle",
+      "family": "product",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/product-bundle.json",
+      "pointer": "",
+      "discriminator": "product_kind",
+      "value": "bundle"
+    },
+    {
+      "id": "product-handoff",
+      "family": "product",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/product-handoff.json",
+      "pointer": "",
+      "discriminator": "product_kind",
+      "value": "handoff"
+    },
+    {
+      "id": "product-escalation",
+      "family": "product",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/product-escalation.json",
+      "pointer": "",
+      "discriminator": "product_kind",
+      "value": "escalation"
+    },
+    {
+      "id": "product-final_result",
+      "family": "product",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/product-final_result.json",
+      "pointer": "",
+      "discriminator": "product_kind",
+      "value": "final_result"
+    },
+    {
+      "id": "product-finding",
+      "family": "product",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/product-finding.json",
+      "pointer": "",
+      "discriminator": "product_kind",
+      "value": "finding"
+    },
+    {
+      "id": "assessment-professional",
+      "family": "assessment",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/assessment-professional.json",
+      "pointer": "",
+      "discriminator": "assessment_kind",
+      "value": "professional"
+    },
+    {
+      "id": "assessment-integration",
+      "family": "assessment",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/assessment-integration.json",
+      "pointer": "",
+      "discriminator": "assessment_kind",
+      "value": "integration"
+    },
+    {
+      "id": "assessment-receiving",
+      "family": "assessment",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/assessment-receiving.json",
+      "pointer": "",
+      "discriminator": "assessment_kind",
+      "value": "receiving"
+    },
+    {
+      "id": "profile",
+      "family": "profile",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/record-profile.json",
+      "pointer": "/payload/record"
+    },
+    {
+      "id": "assignment",
+      "family": "assignment",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/record-assignment.json",
+      "pointer": "/payload/record"
+    },
+    {
+      "id": "context",
+      "family": "context",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/record-context.json",
+      "pointer": "/payload/record"
+    }
+  ],
+  "decisions": [
+    {
+      "id": "decision-accept",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/decision-accept.json",
+      "action": "accept"
+    },
+    {
+      "id": "decision-continue",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/decision-continue.json",
+      "action": "continue"
+    },
+    {
+      "id": "decision-invalidate",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/decision-invalidate.json",
+      "action": "invalidate"
+    },
+    {
+      "id": "decision-reformulate",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/decision-reformulate.json",
+      "action": "reformulate"
+    },
+    {
+      "id": "decision-reinstate",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/decision-reinstate.json",
+      "action": "reinstate"
+    },
+    {
+      "id": "decision-release",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/decision-release.json",
+      "action": "release"
+    },
+    {
+      "id": "decision-resolve-escalation",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/decision-resolve-escalation.json",
+      "action": "resolve_escalation"
+    },
+    {
+      "id": "decision-resume",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/decision-resume.json",
+      "action": "resume"
+    },
+    {
+      "id": "decision-rework",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/decision-rework.json",
+      "action": "rework"
+    },
+    {
+      "id": "decision-select",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/decision-select.json",
+      "action": "select"
+    },
+    {
+      "id": "decision-speculate",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/decision-speculate.json",
+      "action": "speculate"
+    },
+    {
+      "id": "decision-terminate",
+      "path": ".ai/runtime/protocol/governed-delivery/v1/examples/decision-terminate.json",
+      "action": "terminate"
+    }
+  ],
+  "findings": {
+    "file": "findings-review.jsonl",
+    "max_rounds": 3,
+    "timestamp": "2030-01-01T00:00:00+0000",
+    "description": "Entirely fabricated review history; accepted is a recorded state, never a permission."
+  },
+  "scenarios": [
+    {
+      "id": "admitted-history",
+      "test": "tests/test_fabric_lifecycle_runtime.py::test_committed_history_cannot_be_rehashed_to_hide_substituted_effects"
+    },
+    {
+      "id": "material",
+      "test": "tests/test_fabric_lifecycle_runtime.py::test_store_blob_identity_and_nofollow_protect_supporting_material"
+    },
+    {
+      "id": "snapshot-races",
+      "test": "tests/test_operator_journal_snapshot.py::test_journal_snapshot_rejects_in_place_changes_but_keeps_a_coherent_replaced_descriptor"
+    },
+    {
+      "id": "prefix-reuse",
+      "test": "tests/test_governed_incremental_store.py::test_warm_reads_and_new_writes_do_not_replay_accepted_transactions"
+    },
+    {
+      "id": "prefix-invalidation",
+      "test": "tests/test_governed_incremental_store.py::test_changed_or_truncated_prefix_loses_trust_without_rewriting_history"
+    },
+    {
+      "id": "scope",
+      "test": "tests/test_governed_audit.py::test_scope_cancellations_do_not_cross_to_independently_justified_use"
+    },
+    {
+      "id": "ambiguity",
+      "test": "tests/test_governed_audit.py::test_no_selection_and_ambiguous_versions_never_infer_a_current_subject"
+    },
+    {
+      "id": "material-gap",
+      "test": "tests/test_governed_audit.py::test_required_material_gap_does_not_confuse_history_integrity_or_unrelated_inventory"
+    }
+  ]
+}

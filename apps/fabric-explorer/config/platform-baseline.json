@@ -1,0 +1,302 @@
+{
+  "format": "jai.fabric-explorer.platforms/1",
+  "status": "frozen-design-targets-not-qualified-support",
+  "observedAt": "2026-11-09",
+  "targets": [
+    {
+      "id": "linux-x64",
+      "os": "linux",
+      "architecture": "x64",
+      "minimumOs": "Ubuntu 24.04 LTS",
+      "buildRunner": "ubuntu-24.04",
+      "nativeFunctionalRunner": "ubuntu-24.04",
+      "cleanMachine": "Ubuntu 24.04 LTS Desktop x64",
+      "formats": [
+        "tar.gz"
+      ],
+      "performanceReference": "linux-desktop-x64",
+      "desktopSessions": [
+        "X11",
+        "Wayland"
+      ],
+      "requirements": [
+        "glibc >= 2.39",
+        "GTK 3",
+        "NSS",
+        "ALSA",
+        "libgbm",
+        "X11/Wayland desktop libraries"
+      ],
+      "signing": "Detached Ed25519 release-manifest signature; do not imply OS code-signature support",
+      "qualificationStatus": "not-run",
+      "artifactStatus": "not-built",
+      "nativeDependencies": "Bundled target-native Electron runtime and compiled TypeScript application; no Python or external OpenSSL runtime. Native execution qualification remains separate.",
+      "installer": "Separate per-user installer with integrity verification, upgrade and rollback"
+    },
+    {
+      "id": "linux-arm64",
+      "os": "linux",
+      "architecture": "arm64",
+      "minimumOs": "Ubuntu 24.04 LTS",
+      "buildRunner": "ubuntu-24.04-arm",
+      "nativeFunctionalRunner": "ubuntu-24.04-arm",
+      "cleanMachine": "Ubuntu 24.04 LTS Desktop arm64",
+      "formats": [
+        "tar.gz"
+      ],
+      "performanceReference": "linux-desktop-arm64",
+      "desktopSessions": [
+        "X11",
+        "Wayland"
+      ],
+      "requirements": [
+        "glibc >= 2.39",
+        "GTK 3",
+        "NSS",
+        "ALSA",
+        "libgbm",
+        "X11/Wayland desktop libraries"
+      ],
+      "signing": "Detached Ed25519 release-manifest signature",
+      "qualificationStatus": "not-run",
+      "artifactStatus": "not-built",
+      "nativeDependencies": "Bundled target-native Electron runtime and compiled TypeScript application; no Python or external OpenSSL runtime. Native execution qualification remains separate.",
+      "installer": "Separate per-user installer with integrity verification, upgrade and rollback"
+    },
+    {
+      "id": "win32-x64",
+      "os": "win32",
+      "architecture": "x64",
+      "minimumOs": "Windows 11 24H2 (build 26100)",
+      "buildRunner": "windows-2025",
+      "nativeFunctionalRunner": "windows-2025",
+      "cleanMachine": "Windows 11 24H2 x64 Desktop",
+      "formats": [
+        "zip"
+      ],
+      "performanceReference": "windows-desktop-x64",
+      "desktopSessions": [
+        "native-desktop"
+      ],
+      "requirements": [
+        "Supported Windows desktop and GPU driver",
+        "Selected-file read-only handles and captured identity checks; native Windows qualification remains deferred"
+      ],
+      "signing": "Authenticode and RFC 3161 timestamp, plus signed release manifest",
+      "qualificationStatus": "not-run",
+      "artifactStatus": "not-built",
+      "nativeDependencies": "Bundled target-native Electron runtime and compiled TypeScript application; no Python or external OpenSSL runtime. Native execution qualification remains separate.",
+      "installer": "Separate per-user installer with integrity verification, upgrade and rollback"
+    },
+    {
+      "id": "darwin-arm64",
+      "os": "darwin",
+      "architecture": "arm64",
+      "minimumOs": "macOS 15",
+      "buildRunner": "macos-15",
+      "nativeFunctionalRunner": "macos-15",
+      "cleanMachine": "macOS 15 arm64 Desktop",
+      "formats": [
+        "tar.gz"
+      ],
+      "performanceReference": "macos-desktop-arm64",
+      "desktopSessions": [
+        "native-desktop"
+      ],
+      "requirements": [
+        "Metal-capable supported GPU"
+      ],
+      "signing": "Developer ID Application nested signing, hardened runtime, notarization and stapling, plus signed release manifest",
+      "qualificationStatus": "not-run",
+      "artifactStatus": "not-built",
+      "nativeDependencies": "Bundled target-native Electron runtime and compiled TypeScript application; no Python or external OpenSSL runtime. Native execution qualification remains separate.",
+      "installer": "Separate per-user installer with integrity verification, upgrade and rollback"
+    },
+    {
+      "id": "darwin-x64",
+      "os": "darwin",
+      "architecture": "x64",
+      "minimumOs": "macOS 15",
+      "buildRunner": "macos-15-intel",
+      "nativeFunctionalRunner": "macos-15-intel",
+      "cleanMachine": "macOS 15 x64 Desktop",
+      "formats": [
+        "tar.gz"
+      ],
+      "performanceReference": "macos-desktop-x64",
+      "desktopSessions": [
+        "native-desktop"
+      ],
+      "requirements": [
+        "Metal-capable supported GPU"
+      ],
+      "signing": "Developer ID Application nested signing, hardened runtime, notarization and stapling, plus signed release manifest",
+      "qualificationStatus": "not-run",
+      "artifactStatus": "not-built",
+      "nativeDependencies": "Bundled target-native Electron runtime and compiled TypeScript application; no Python or external OpenSSL runtime. Native execution qualification remains separate.",
+      "installer": "Separate per-user installer with integrity verification, upgrade and rollback"
+    }
+  ],
+  "referenceProfiles": [
+    {
+      "id": "linux-desktop-x64",
+      "osTarget": "linux-x64",
+      "hardwareAdmission": {
+        "minimumPhysicalCores": 4,
+        "minimumRamGiB": 16,
+        "storage": "local SSD",
+        "graphics": "Hardware-accelerated integrated GPU or Apple integrated GPU; exact model and driver recorded",
+        "display": "1920x1080 logical viewport, 100% scale, 60 Hz; separate 150/200% accessibility cases",
+        "power": "AC power, balanced/default OS profile, no concurrent build load"
+      },
+      "enrollmentStatus": "required-before-performance-qualification",
+      "observationRequired": [
+        "CPU model",
+        "RAM",
+        "GPU model and driver",
+        "OS build",
+        "desktop session",
+        "storage type",
+        "display scale",
+        "power mode",
+        "artifact digest",
+        "corpus digest"
+      ]
+    },
+    {
+      "id": "linux-desktop-arm64",
+      "osTarget": "linux-arm64",
+      "hardwareAdmission": {
+        "minimumPhysicalCores": 4,
+        "minimumRamGiB": 16,
+        "storage": "local SSD",
+        "graphics": "Hardware-accelerated integrated GPU or Apple integrated GPU; exact model and driver recorded",
+        "display": "1920x1080 logical viewport, 100% scale, 60 Hz; separate 150/200% accessibility cases",
+        "power": "AC power, balanced/default OS profile, no concurrent build load"
+      },
+      "enrollmentStatus": "required-before-performance-qualification",
+      "observationRequired": [
+        "CPU model",
+        "RAM",
+        "GPU model and driver",
+        "OS build",
+        "desktop session",
+        "storage type",
+        "display scale",
+        "power mode",
+        "artifact digest",
+        "corpus digest"
+      ]
+    },
+    {
+      "id": "windows-desktop-x64",
+      "osTarget": "win32-x64",
+      "hardwareAdmission": {
+        "minimumPhysicalCores": 4,
+        "minimumRamGiB": 16,
+        "storage": "local SSD",
+        "graphics": "Hardware-accelerated integrated GPU or Apple integrated GPU; exact model and driver recorded",
+        "display": "1920x1080 logical viewport, 100% scale, 60 Hz; separate 150/200% accessibility cases",
+        "power": "AC power, balanced/default OS profile, no concurrent build load"
+      },
+      "enrollmentStatus": "required-before-performance-qualification",
+      "observationRequired": [
+        "CPU model",
+        "RAM",
+        "GPU model and driver",
+        "OS build",
+        "desktop session",
+        "storage type",
+        "display scale",
+        "power mode",
+        "artifact digest",
+        "corpus digest"
+      ]
+    },
+    {
+      "id": "macos-desktop-arm64",
+      "osTarget": "darwin-arm64",
+      "hardwareAdmission": {
+        "minimumPhysicalCores": 4,
+        "minimumRamGiB": 16,
+        "storage": "local SSD",
+        "graphics": "Hardware-accelerated integrated GPU or Apple integrated GPU; exact model and driver recorded",
+        "display": "1920x1080 logical viewport, 100% scale, 60 Hz; separate 150/200% accessibility cases",
+        "power": "AC power, balanced/default OS profile, no concurrent build load"
+      },
+      "enrollmentStatus": "required-before-performance-qualification",
+      "observationRequired": [
+        "CPU model",
+        "RAM",
+        "GPU model and driver",
+        "OS build",
+        "desktop session",
+        "storage type",
+        "display scale",
+        "power mode",
+        "artifact digest",
+        "corpus digest"
+      ]
+    },
+    {
+      "id": "macos-desktop-x64",
+      "osTarget": "darwin-x64",
+      "hardwareAdmission": {
+        "minimumPhysicalCores": 4,
+        "minimumRamGiB": 16,
+        "storage": "local SSD",
+        "graphics": "Hardware-accelerated integrated GPU or Apple integrated GPU; exact model and driver recorded",
+        "display": "1920x1080 logical viewport, 100% scale, 60 Hz; separate 150/200% accessibility cases",
+        "power": "AC power, balanced/default OS profile, no concurrent build load"
+      },
+      "enrollmentStatus": "required-before-performance-qualification",
+      "observationRequired": [
+        "CPU model",
+        "RAM",
+        "GPU model and driver",
+        "OS build",
+        "desktop session",
+        "storage type",
+        "display scale",
+        "power mode",
+        "artifact digest",
+        "corpus digest"
+      ]
+    }
+  ],
+  "runnerPolicy": {
+    "source": "https://docs.github.com/en/actions/reference/runners/github-hosted-runners",
+    "labelsAre": "Native build/functional-test candidates, not an attestation that repository access has been provisioned.",
+    "windowsServerIsNotWindowsDesktop": true,
+    "virtualGpuIsNotPerformanceEvidence": true,
+    "architectureAdmission": "Assert runner.os/arch and capture image version; reject mismatch. No latest aliases.",
+    "availabilityOwner": "Release engineer; unavailable jobs block affected target qualification, never silently skip it."
+  },
+  "releaseTrust": {
+    "manifestSchema": "jai.fabric-explorer.asset/1",
+    "manifestFields": [
+      "productVersion",
+      "target",
+      "asset",
+      "inventory",
+      "sourceRevision",
+      "notices",
+      "sbom",
+      "runtime",
+      "signatureKeyId",
+      "status"
+    ],
+    "signature": "Ed25519 detached signature over exact UTF-8 manifest bytes; external release signer, pinned distributor public key.",
+    "keyBootstrap": "Public distributor key ships through the reviewed source/release channel; never trust a replacement key from an asset or input project.",
+    "missingSignature": "Reject release installation; unsigned local test assets must remain visibly development-only.",
+    "credentialStatus": "No signing credentials provisioned or inspected by this baseline; release remains blocked until external operator supplies trusted signing."
+  },
+  "unsupportedTargets": [
+    "Windows ARM64",
+    "Windows 32-bit",
+    "Linux musl/Alpine",
+    "Linux ARMv7",
+    "macOS earlier than 15"
+  ],
+  "unsupportedMeaning": "Not desktop release targets; no retained professional JAI catalogue or workflow is removed."
+}

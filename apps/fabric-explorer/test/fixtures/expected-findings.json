@@ -1,0 +1,33 @@
+{
+  "F-0001": {
+    "state": "open",
+    "rounds": 0,
+    "target": "docs/synthetic-example.md"
+  },
+  "F-0002": {
+    "state": "resolved",
+    "rounds": 0,
+    "target": "docs/synthetic-example.md"
+  },
+  "F-0003": {
+    "state": "verified",
+    "rounds": 0,
+    "target": "docs/synthetic-example.md"
+  },
+  "F-0004": {
+    "state": "stuck",
+    "rounds": 3,
+    "target": "docs/synthetic-example.md"
+  },
+  "F-0005": {
+    "state": "withdrawn",
+    "rounds": 0,
+    "target": "docs/synthetic-example.md"
+  },
+  "F-0006": {
+    "state": "accepted",
+    "rounds": 0,
+    "target": "docs/synthetic-example.md",
+    "expires": "2030-02-01"
+  }
+}

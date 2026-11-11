@@ -8,6 +8,8 @@ from pathlib import Path
 import shlex
 import sys
 
+import yaml
+
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / '.ai/runtime/tools'))
@@ -39,9 +41,12 @@ def test_all_commands_preserve_provider_bodies_and_complete_role_resources():
     for role in roles['roles']:
         assert (ROOT / '.ai/skills' / role['skill'] / 'SKILL.md').is_file()
         assert (ROOT / '.ai' / role['path']).is_file()
-    workflow = (ROOT / '.github/workflows/validate-library.yml').read_text()
-    runtime_step = next(line.split('run:', 1)[1] for line in workflow.splitlines()
-                        if 'run:' in line and ' -m pytest ' in line)
+    workflow = yaml.safe_load((ROOT / '.github/workflows/validate-library.yml').read_text())
+    runtime_steps = [step for step in workflow['jobs']['policy']['steps']
+                     if step.get('name') == 'P0 runtime security application regression (host coverage reported separately)']
+    assert len(runtime_steps) == 1, 'The named runtime security group must exist exactly once'
+    runtime_step = runtime_steps[0]['run']
+    assert isinstance(runtime_step, str)
     test_paths = {token for token in shlex.split(runtime_step)
                   if token.startswith('tests/') and token.endswith('.py')}
     assert test_paths == {

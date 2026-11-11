@@ -1,0 +1,328 @@
+{
+  "format": "jai.fabric-explorer.dependencies/1",
+  "status": "application-design-baseline-not-product-qualified",
+  "observedAt": "2026-11-09",
+  "toolchain": {
+    "node": {
+      "version": "24.22.2",
+      "license": "MIT AND bundled third-party notices",
+      "source": "https://nodejs.org/en/blog/release/v24.22.2"
+    },
+    "npm": {
+      "version": "11.21.2",
+      "license": "Artistic-2.0",
+      "source": "https://registry.npmjs.org/npm/11.21.2"
+    },
+    "python": {
+      "version": "3.14.10",
+      "license": "PSF-2.0 AND bundled third-party notices",
+      "source": "https://www.python.org/downloads/release/python-31410/",
+      "role": "development-fixtures-and-historical-probes-only"
+    },
+    "openssl": {
+      "version": "3.5.9",
+      "license": "Apache-2.0",
+      "ltsUntil": "2030-04-08",
+      "source": "https://openssl-library.org/source/",
+      "role": "canonical-fixture-and-historical-probe-tool-only"
+    }
+  },
+  "npm": [
+    {
+      "name": "electron",
+      "version": "45.2.3",
+      "role": "desktop-runtime",
+      "license": "MIT",
+      "engines": {
+        "node": ">= 22.12.0"
+      },
+      "peerDependencies": {},
+      "npmIntegrity": "sha512-Vurzu5UOA5nTGT4LqIwXD16QFGrOZdiXxF+1UP4KNsAOo/YtDcT3/u0jhP4WSwNJ0iLrLDi85hzBJ0arnGDhyw==",
+      "source": "https://registry.npmjs.org/electron/45.2.3"
+    },
+    {
+      "name": "typescript",
+      "version": "7.0.2",
+      "role": "build",
+      "license": "Apache-2.0",
+      "engines": {
+        "node": ">=16.20.0"
+      },
+      "peerDependencies": {},
+      "npmIntegrity": "sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA==",
+      "source": "https://registry.npmjs.org/typescript/7.0.2"
+    },
+    {
+      "name": "react",
+      "version": "19.3.1",
+      "role": "ui-runtime",
+      "license": "MIT",
+      "engines": {
+        "node": ">=0.10.0"
+      },
+      "peerDependencies": {},
+      "npmIntegrity": "sha512-QNhWdt7nrgVWWQG58QuGsAR3jv3Hbe4mb4vz7w2csnHavciZJgda1CPNaldF6eVxv90ud3jUXpKlHL69gO38yw==",
+      "source": "https://registry.npmjs.org/react/19.3.1"
+    },
+    {
+      "name": "react-dom",
+      "version": "19.3.1",
+      "role": "ui-runtime",
+      "license": "MIT",
+      "engines": {},
+      "peerDependencies": {
+        "react": "^19.3.1"
+      },
+      "npmIntegrity": "sha512-Y0bARz53lhEC1NMCASs0/j+faB/zqt3R8hpvg1e8+61ZVJ4UL0UdC4cBbXfZMcIuhrfgeILTLe+ZeBCavQPtKQ==",
+      "source": "https://registry.npmjs.org/react-dom/19.3.1"
+    },
+    {
+      "name": "vite",
+      "version": "8.3.7",
+      "role": "build",
+      "license": "MIT",
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      },
+      "peerDependencies": {
+        "tsx": "^4.8.1",
+        "jiti": ">=1.21.0",
+        "less": "^4.0.0",
+        "sass": "^1.70.0",
+        "yaml": "^2.4.2",
+        "stylus": ">=0.54.8",
+        "terser": "^5.16.0",
+        "esbuild": "^0.27.0 || ^0.28.0",
+        "sugarss": "^5.0.0",
+        "@types/node": "^20.19.0 || >=22.12.0",
+        "sass-embedded": "^1.70.0",
+        "@vitejs/devtools": "^0.7.1 || ^0.8.0"
+      },
+      "npmIntegrity": "sha512-oxh0dMxrayBr33ScJvvBJ2HBQ2jc1TBrXKR2NyL/MJ9WPuX19mN2DXWUmywKdyw5RFVQBo8hmtb2FMC0LHrnng==",
+      "source": "https://registry.npmjs.org/vite/8.3.7"
+    },
+    {
+      "name": "@vitejs/plugin-react",
+      "version": "6.3.0",
+      "role": "build",
+      "license": "MIT",
+      "engines": {
+        "node": "^20.19.0 || >=22.12.0"
+      },
+      "peerDependencies": {
+        "vite": "^8.0.0",
+        "oxc-transform-react": ">=0.152.0 <0.157.0",
+        "@rolldown/plugin-babel": "^0.1.7 || ^0.2.0 || ^0.3.0",
+        "babel-plugin-react-compiler": "^1.0.0"
+      },
+      "npmIntegrity": "sha512-H9E955aVvD2F4zNHCw4eIZbIfF6xKldlh7MNu+hSU7xwQzh65lI/N+CJWqmfhi0PEjDXIt/H7T7J/4wU63KJiw==",
+      "source": "https://registry.npmjs.org/@vitejs%2fplugin-react/6.3.0"
+    },
+    {
+      "name": "electron-builder",
+      "version": "26.18.0",
+      "role": "packaging",
+      "license": "MIT",
+      "engines": {
+        "node": ">=14.0.0"
+      },
+      "peerDependencies": {},
+      "npmIntegrity": "sha512-ASgIuQnOq4RuD8jMhS9hI0LS3EMRT1I/M5R6utqifB/BHN80IcCjBdt+DED+NmNPvmBgEtrlExXZitNdA7kXOg==",
+      "source": "https://registry.npmjs.org/electron-builder/26.18.0"
+    },
+    {
+      "name": "vitest",
+      "version": "5.1.0",
+      "role": "test",
+      "license": "MIT",
+      "engines": {
+        "node": "^22.12.0 || ^24.0.0 || >=26.0.0"
+      },
+      "peerDependencies": {
+        "vite": "^6.4.0 || ^7.0.0 || ^8.0.0",
+        "jsdom": "*",
+        "happy-dom": "*",
+        "@vitest/ui": "5.1.0",
+        "@types/node": "^22.0.0 || >=24.0.0",
+        "@edge-runtime/vm": "*",
+        "@opentelemetry/api": "^1.9.0",
+        "@vitest/coverage-v8": "5.1.0",
+        "@vitest/browser-preview": "5.1.0",
+        "@vitest/coverage-istanbul": "5.1.0",
+        "@vitest/browser-playwright": "5.1.0",
+        "@vitest/browser-webdriverio": "^5.0.0-beta.5 || >=5.0.0"
+      },
+      "npmIntegrity": "sha512-MzmNFnrwa8v8lF1bLxw3UJ4EREwVOVb75VqJZmUDRjJ6EluK/x9th7qTbaeDk41WxE1GxWqmTXcdsfobfH5sOA==",
+      "source": "https://registry.npmjs.org/vitest/5.1.0"
+    },
+    {
+      "name": "@vitest/coverage-v8",
+      "version": "5.1.0",
+      "role": "test",
+      "license": "MIT",
+      "engines": {},
+      "peerDependencies": {
+        "vitest": "5.1.0",
+        "@vitest/browser": "5.1.0"
+      },
+      "npmIntegrity": "sha512-OY9aShBQG5KOIw2zCo9fDoCHI9RHliNHJ//nM7m6jGg41Hyke9JOGWmeMlK74xYErsxMoK8mIB3gAeEyFVA7LA==",
+      "source": "https://registry.npmjs.org/@vitest%2fcoverage-v8/5.1.0"
+    },
+    {
+      "name": "@playwright/test",
+      "version": "1.65.0",
+      "role": "test",
+      "license": "Apache-2.0",
+      "engines": {
+        "node": ">=20"
+      },
+      "peerDependencies": {},
+      "npmIntegrity": "sha512-iGURLGuKDLakSEl7Pgfv8h7f+XLT+V861Wfhz0zlEl5nyFuKUopdkFBPKqTllTUp06aOwPuH8iuUEb3yp3MpbQ==",
+      "source": "https://registry.npmjs.org/@playwright%2ftest/1.65.0"
+    },
+    {
+      "name": "ajv",
+      "version": "8.20.0",
+      "role": "ipc-validation",
+      "license": "MIT",
+      "engines": {},
+      "peerDependencies": {},
+      "npmIntegrity": "sha512-Thbli+OlOj+iMPYFBVBfJ3OmCAnaSyNn4M1vz9T6Gka5Jt9ba/HIR56joy65tY6kx/FCF5VXNB819Y7/GUrBGA==",
+      "source": "https://registry.npmjs.org/ajv/8.20.0"
+    },
+    {
+      "name": "@types/react",
+      "version": "19.3.0",
+      "role": "build",
+      "license": "MIT",
+      "engines": {},
+      "peerDependencies": {},
+      "npmIntegrity": "sha512-N0rFCuH9YoxG9/m61l9MfpJKfmLOVU0em7ipIz6TRgSSkvReLB9vL85GB+yr8Bs5leqpvg96JSwF4ZS1s4viQg==",
+      "source": "https://registry.npmjs.org/@types%2freact/19.3.0"
+    },
+    {
+      "name": "@types/react-dom",
+      "version": "19.3.0",
+      "role": "build",
+      "license": "MIT",
+      "engines": {},
+      "peerDependencies": {
+        "@types/react": "^19.3.0"
+      },
+      "npmIntegrity": "sha512-ZI7bU42mZXXKHn/qNLEw2IrbiINU7X5+vfgdixBHkCNpYWXjKgfQ/P+uyGb5CjOLB9UcnTeg3rylQtV2hym44Q==",
+      "source": "https://registry.npmjs.org/@types%2freact-dom/19.3.0"
+    },
+    {
+      "name": "@types/node",
+      "version": "24.19.2",
+      "role": "build",
+      "license": "MIT",
+      "engines": {},
+      "peerDependencies": {},
+      "npmIntegrity": "sha512-93d49wCWJkCyN87MxLpNN6KXPCwFw7bVUg79mGUV1OS40JGWwVCr8n61DXCSqz7CV6/VfPkb7xec7uP2M+QHWQ==",
+      "source": "https://registry.npmjs.org/@types%2fnode/24.19.2"
+    },
+    {
+      "name": "sigma",
+      "version": "4.0.5",
+      "role": "renderer-selected-for-integration",
+      "license": "MIT",
+      "engines": {},
+      "peerDependencies": {},
+      "npmIntegrity": "sha512-Hf8SwOq9ykMsOV46kiR4HiCxBoQWjZR5/WgRqcwVXO7pYXDjrxKugaEaBA4a8YA0/y7j/z3u1Q6wk1SjVKn/7Q==",
+      "source": "https://registry.npmjs.org/sigma/4.0.5"
+    },
+    {
+      "name": "graphology",
+      "version": "0.26.0",
+      "role": "graph-model-selected-for-integration",
+      "license": "MIT",
+      "engines": {},
+      "peerDependencies": {
+        "graphology-types": ">=0.24.0"
+      },
+      "npmIntegrity": "sha512-8SSImzgUUYC89Z042s+0r/vMibY7GX/Emz4LDO5e7jYXhuoWfHISPFJYjpRLUSJGq6UQ6xlenvX1p/hJdfXuXg==",
+      "source": "https://registry.npmjs.org/graphology/0.26.0"
+    },
+    {
+      "name": "cytoscape",
+      "version": "3.34.4",
+      "role": "renderer-candidate",
+      "license": "MIT",
+      "engines": {
+        "node": ">=0.10"
+      },
+      "peerDependencies": {},
+      "npmIntegrity": "sha512-msY99tMY8iWTg+sIPGfSqDcPNOt4xcj+v/K/7qUFaCUxxlqnMkUYLBjRUzn9W5CU/R2hrmtJa5+UtovrEM2ctg==",
+      "source": "https://registry.npmjs.org/cytoscape/3.34.4"
+    }
+  ],
+  "python": [
+    {
+      "name": "pyinstaller",
+      "version": "6.22.3",
+      "license": "GPLv2-or-later with a special exception which allows to use PyInstaller to build and distribute non-free programs (including commercial ones)",
+      "requiresPython": "<3.16,>=3.8",
+      "role": "historical-probe-packaging-only",
+      "source": "https://pypi.org/pypi/pyinstaller/6.22.3/json"
+    },
+    {
+      "name": "pyinstaller-hooks-contrib",
+      "version": "2026.9",
+      "license": "GPL-2.0-or-later with PyInstaller exception; selected files Apache-2.0 (verify file notices)",
+      "requiresPython": ">=3.8",
+      "role": "historical-probe-packaging-only",
+      "source": "https://pypi.org/pypi/pyinstaller-hooks-contrib/2026.9/json"
+    },
+    {
+      "name": "jsonschema",
+      "version": "4.26.0",
+      "license": "MIT",
+      "requiresPython": ">=3.10",
+      "role": "development-canonical-fixture-dependency-only",
+      "source": "https://pypi.org/pypi/jsonschema/4.26.0/json"
+    },
+    {
+      "name": "referencing",
+      "version": "0.37.0",
+      "license": "MIT",
+      "requiresPython": ">=3.10",
+      "role": "development-canonical-fixture-dependency-only",
+      "source": "https://pypi.org/pypi/referencing/0.37.0/json"
+    },
+    {
+      "name": "attrs",
+      "version": "26.1.0",
+      "license": "MIT",
+      "requiresPython": ">=3.9",
+      "role": "development-canonical-fixture-dependency-only",
+      "source": "https://pypi.org/pypi/attrs/26.1.0/json"
+    },
+    {
+      "name": "rpds-py",
+      "version": "2026.9.1",
+      "license": "MIT",
+      "requiresPython": ">=3.11",
+      "role": "development-canonical-fixture-dependency-only",
+      "source": "https://pypi.org/pypi/rpds-py/2026.9.1/json"
+    },
+    {
+      "name": "jsonschema-specifications",
+      "version": "2025.9.1",
+      "license": "MIT",
+      "requiresPython": ">=3.9",
+      "role": "development-canonical-fixture-dependency-only",
+      "source": "https://pypi.org/pypi/jsonschema-specifications/2025.9.1/json"
+    }
+  ],
+  "rendererSelection": "sigma-4.0.5-with-graphology-0.26.0-for-integration-product-qualification-pending",
+  "resolutionPolicy": {
+    "directVersions": "exact",
+    "transitiveResolution": "Per-platform hash-locked resolutions required before executable builds are qualified. This baseline is not a transitive lockfile.",
+    "candidateDistribution": "Only the selected renderer and required graph libraries enter production artifacts.",
+    "pythonExtras": "Python pins are retained for development fixture builders and historical probes; no Python package is part of the direct TypeScript application runtime.",
+    "runtimeDownloads": false,
+    "licenseReview": "Registry metadata is initial evidence, not a transitive SBOM or legal clearance. Preserve runtime third-party resources/notices; inspect file-level exceptions."
+  },
+  "runtimeComposition": "Electron with bundled TypeScript import/query worker; no Python reader or OpenSSL verifier."
+}

@@ -225,10 +225,13 @@ def test_doctor_reports_underlying_html_error_and_optional_setup():
 
 
 def test_inventory_real_executable_preserves_both_output_streams(tmp_path):
-    executable = tmp_path / 'claude'
+    # The offline runner rejects provider executable names even for local fakes;
+    # map discovery to a harmless fixture while retaining the real subprocess.
+    executable = tmp_path / 'inventory-version-fixture'
     executable.write_text('#!/bin/sh\nprintf "fixture version\\n"\nprintf "fixture warning\\n" >&2\nexit 4\n')
     executable.chmod(0o755)
-    with patch.dict(op.os.environ, {'PATH': str(tmp_path)}):
+    with patch.dict(op.os.environ, {'PATH': str(tmp_path)}), patch(
+            'shutil.which', side_effect=lambda name: str(executable) if name == 'claude' else None):
         report = op.tool_inventory()
     item = report['claude']
     assert item['executable'] == str(executable)

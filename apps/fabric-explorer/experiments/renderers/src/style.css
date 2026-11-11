@@ -1,0 +1,51 @@
+/* SPDX-License-Identifier: BSD-4-Clause
+ * Copyright (c) 2026 Leo Galambos and the Egothor team
+ */
+/* Disposable guided probe styling; no production UI or visual qualification claim. */
+:root { font-family: system-ui, sans-serif; color: #172b40; background: #f6f8fb; }
+* { box-sizing: border-box; }
+body { margin: 0; }
+main { height: 100vh; display: grid; grid-template-columns: minmax(0, 1fr) 380px; grid-template-rows: auto auto auto minmax(0, 1fr) auto; }
+header { grid-column: 1 / 3; display: flex; gap: 16px; align-items: center; justify-content: space-between; padding: 10px 16px; background: #172b40; color: white; }
+h1 { font-size: 20px; margin: 0 0 4px; }
+header p { font-size: 13px; margin: 0; }
+button, select, textarea { font: inherit; }
+button { cursor: pointer; border: 1px solid #64758a; background: #fff; color: #172b40; border-radius: 4px; padding: 8px 12px; }
+button:disabled, select:disabled { cursor: default; opacity: .65; }
+button:focus-visible, select:focus-visible, textarea:focus-visible { outline: 3px solid #0084bd; outline-offset: 3px; }
+#probe-stop { flex-shrink: 0; background: #aa2131; border-color: #ffb7bf; color: white; font-weight: 700; }
+kbd { margin-left: 6px; padding: 1px 4px; border: 1px solid currentColor; border-radius: 3px; }
+#probe-progress { grid-column: 1 / 3; padding: 10px 16px; border-bottom: 1px solid #bccbdc; background: #edf4fc; }
+#probe-progress[data-mode="manual"] { background: #fff5d8; border-color: #a57817; }
+#probe-progress[data-mode="stopping"], #probe-progress[data-mode="failed"] { background: #ffe9eb; border-color: #aa2131; }
+.progress-counters, .progress-phase { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 20px; }
+.progress-counters { margin-bottom: 6px; }
+#probe-overall { font-size: 14px; font-variant-numeric: tabular-nums; }
+#probe-countdown { color: #144d75; font-variant-numeric: tabular-nums; }
+#probe-instructions { margin: 6px 0 0; font-size: 14px; line-height: 1.4; }
+#status { grid-column: 1 / 3; padding: 5px 16px; font-size: 12px; }
+#graph { min-width: 0; min-height: 0; background: white; border-top: 1px solid #d5dfeb; }
+aside { min-height: 0; padding: 10px 12px; border: 1px solid #d5dfeb; overflow: auto; }
+.selected-element { position: sticky; top: -10px; z-index: 1; background: #f6f8fb; padding: 8px 0; border-bottom: 1px solid #bccbdc; margin-bottom: 10px; }
+#selected-identity { display: block; font-size: 13px; }
+#selected-label { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 14px; line-height: 1.45; margin: 6px 0 10px; }
+.selected-element pre { max-height: 20vh; overflow: auto; margin: 0; }
+h2 { font-size: 16px; margin: 0 0 8px; }
+aside p { font-size: 13px; line-height: 1.4; margin: 4px 0 8px; }
+fieldset { border: 1px solid #bccbdc; padding: 7px 8px; margin: 8px 0; border-radius: 4px; }
+legend { font-weight: 700; font-size: 13px; padding: 0 4px; }
+select { width: 100%; padding: 5px; background: white; color: #172b40; border: 1px solid #64758a; border-radius: 3px; }
+textarea { width: 100%; resize: vertical; border: 1px solid #64758a; padding: 5px; }
+label { font-size: 13px; font-weight: 600; }
+.review-actions { display: flex; flex-direction: column; gap: 7px; margin: 8px 0 14px; }
+#probe-save { background: #145e86; border-color: #145e86; color: white; font-weight: 700; }
+#probe-review-error { color: #aa2131; }
+pre { white-space: pre-wrap; word-break: break-word; font-size: 12px; }
+footer { grid-column: 1 / 3; padding: 6px 16px; font-size: 11px; border-top: 1px solid #d5dfeb; }
+[hidden] { display: none !important; }
+@media (max-width: 900px) {
+  main { grid-template-columns: minmax(0, 1fr) minmax(260px, 38%); }
+  header { align-items: flex-start; }
+  header p { max-width: 48ch; }
+  #probe-stop { font-size: 13px; }
+}

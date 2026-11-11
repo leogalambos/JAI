@@ -16,6 +16,7 @@ on:
       - 'hooks/**'
       - 'scripts/**'
       - 'tests/**'
+      - 'apps/fabric-explorer/**'
       - 'mkdocs.yml'
       - 'requirements.txt'
       - 'requirements-ci.txt'
@@ -37,6 +38,76 @@ permissions:
   pull-requests: read
 
 jobs:
+  fabric-explorer-contracts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: apps/fabric-explorer/packages/contracts
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+      - name: Select contract checks by changed inputs
+        id: contract-impact
+        working-directory: .
+        env:
+          CONTRACT_EVENT: ${{ github.event_name }}
+          CONTRACT_PUSH_BASE: ${{ github.event.before }}
+        run: |
+          if [ "$CONTRACT_EVENT" = pull_request ]; then
+            contract_base=HEAD^
+          else
+            contract_base="$CONTRACT_PUSH_BASE"
+          fi
+          if [ "$CONTRACT_EVENT" = workflow_dispatch ] || ! git cat-file -e "${contract_base}^{commit}" 2>/dev/null; then
+            echo 'run=true' >> "$GITHUB_OUTPUT"
+            echo 'Contract checks selected: explicit run or unavailable change baseline.'
+          elif git diff --quiet "$contract_base" HEAD -- \
+            apps/fabric-explorer/packages/contracts \
+            docs/fabric-explorer/contracts.md docs/fabric-explorer/source-contract.md \
+            docs/fabric-explorer/architecture.md docs/fabric-explorer/qualification.md \
+            apps/fabric-explorer/test/fixtures apps/fabric-explorer/config \
+            apps/fabric-explorer/.node-version .github/workflows/validate-library.yml \
+            .ai/runtime/protocol/governed-delivery \
+            .ai/runtime/tools/lifecycle.py .ai/runtime/tools/findings.py \
+            .ai/runtime/tools/governed_records.py .ai/runtime/tools/governed_audit.py \
+            .ai/runtime/tools/governed_delivery.py; then
+            echo 'run=false' >> "$GITHUB_OUTPUT"
+            echo 'Contract inputs unchanged; preserve existing package evidence.'
+          else
+            echo 'run=true' >> "$GITHUB_OUTPUT"
+            echo 'Contract checks selected: affected inputs or unknown diff status.'
+          fi
+      - uses: actions/setup-node@v4
+        if: steps.contract-impact.outputs.run == 'true'
+        with:
+          node-version: '24.22.2'
+          cache: npm
+          cache-dependency-path: apps/fabric-explorer/packages/contracts/package-lock.json
+      - uses: actions/setup-python@v5
+        if: steps.contract-impact.outputs.run == 'true'
+        with:
+          python-version: '3.12'
+      - name: Select admitted npm build version
+        if: steps.contract-impact.outputs.run == 'true'
+        run: |
+          npm install --prefix "$RUNNER_TEMP/fabric-explorer-toolchain" --ignore-scripts --no-audit --no-fund npm@11.21.2
+          echo "$RUNNER_TEMP/fabric-explorer-toolchain/node_modules/.bin" >> "$GITHUB_PATH"
+      - name: Install locked contract dependencies without lifecycle scripts
+        if: steps.contract-impact.outputs.run == 'true'
+        run: |
+          test "$(node --version)" = v24.22.2
+          test "$(npm --version)" = 11.21.2
+          npm ci --ignore-scripts --no-audit --no-fund
+      - name: Build and test read-only semantic and IPC contracts
+        if: steps.contract-impact.outputs.run == 'true'
+        working-directory: .
+        run: |
+          python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- npm --prefix apps/fabric-explorer/packages/contracts run build
+          python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- npm --prefix apps/fabric-explorer/packages/contracts test
+          python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- npm --prefix apps/fabric-explorer/packages/contracts run test:built
+
   policy:
     runs-on: ubuntu-24.04
     timeout-minutes: 10
@@ -69,6 +140,8 @@ jobs:
           python3 tools/generate_reference_completion.py --root . --role-examples --check
           python3 tools/generate_workflow_diagrams.py --root . --check
           python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/runtime/tools/expert_references.py validate --root . --all
+      - name: Fabric Explorer source and read-only feasibility checks
+        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 -u -m pytest -q tests/test_fabric_explorer_sources.py apps/fabric-explorer/reader/test/test_windows_readonly.py tests/test_fabric_explorer_helper.py apps/fabric-explorer/reader/test/test_readonly_files.py apps/fabric-explorer/reader/test/test_read_broker.py tests/test_operator_journal_snapshot.py
       - name: P0 runtime security application regression (host coverage reported separately)
         run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . --timeout 300 -- python3 -u -m pytest -vv -rs tests/test_agent_runtime.py tests/test_integration_adapters.py tests/test_guard_library_write.py tests/test_fabric_authority_boundary.py tests/test_governed_domain.py tests/test_gen2_command_integrations.py
 

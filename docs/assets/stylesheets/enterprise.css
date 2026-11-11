@@ -323,6 +323,18 @@ body:has(.ai-home-shell-v31) .md-content__inner::before,body:has(.ai-home-shell-
 .ai-home-coverage svg{width:34px;height:34px;flex:0 0 34px;fill:none;stroke:#dcebf2;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .ai-home-coverage strong{font-size:.79rem;line-height:1.3;color:#f0c657;font-weight:750}
 .ai-home-coverage strong>span{display:block;font-size:.61rem;font-weight:500;line-height:1.4;color:#d7e5ed;margin-top:3px}
+.ai-home-viewer{display:grid;grid-template-columns:240px minmax(0,1fr) auto;align-items:center;gap:24px;padding:24px 30px;background:#f0f5f8;border-top:1px solid #d6e2ea;color:#12354a}
+.ai-home-viewer-copy{min-width:0}
+.md-typeset .ai-home-viewer-eyebrow{margin:0 0 6px!important;color:#426b81;font-size:.55rem;font-weight:750;letter-spacing:.12em}
+.md-typeset .ai-home-viewer h2{margin:0 0 8px!important;color:#102d43;font-size:1.18rem;font-weight:750;line-height:1.22;letter-spacing:-.025em}
+.md-typeset .ai-home-viewer-copy>p:not(.ai-home-viewer-eyebrow){margin:0!important;color:#405d70;font-size:.73rem;line-height:1.5}
+.ai-home-viewer-preview{display:block;min-width:0;overflow:hidden;border:1px solid #c5d6e1;border-radius:5px;background:#fff;box-shadow:0 3px 10px rgba(10,35,55,.07);text-decoration:none!important}
+.md-typeset .ai-home-viewer-preview img{display:block;width:100%;height:auto;margin:0}
+.ai-home-viewer-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#145776!important;font-size:.72rem;font-weight:700;line-height:1.35;text-decoration:underline!important;text-underline-offset:.2em}
+.ai-home-viewer-preview:hover{border-color:#178fc8}
+.ai-home-viewer a:focus-visible{outline:3px solid #178fc8;outline-offset:4px}
+@media(max-width:1000px){.ai-home-viewer{grid-template-columns:180px minmax(0,1fr);gap:8px 20px}.ai-home-viewer-preview{grid-row:span 2}.ai-home-viewer-link{grid-column:2;justify-self:start}}
+@media(max-width:650px){.ai-home-viewer{grid-template-columns:132px minmax(0,1fr);gap:14px 20px;padding:22px 21px}.ai-home-viewer-copy{grid-column:1/-1;grid-row:1}.ai-home-viewer-preview{grid-column:1;grid-row:2}.ai-home-viewer-link{grid-column:2;grid-row:2;align-self:center}.md-typeset .ai-home-viewer h2{font-size:1.1rem}}
 .ai-home-workbench{display:grid;grid-template-columns:minmax(0,3fr) minmax(255px,1fr);gap:24px;padding:24px 30px;background:#fff;color:#102d43}
 .ai-home-pathways{min-width:0}
 .md-typeset .ai-home-section-heading{text-align:center;margin-bottom:16px}

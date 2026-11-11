@@ -1,0 +1,263 @@
+--- a/src/core/label-renderer.ts
++++ b/src/core/label-renderer.ts
+@@ -94,6 +94,7 @@
+    * Actual label rendering happens per-frame in renderWebGLLabels.
+    */
+   processWebGLLabels(nodes: string[]): void {
++    if (!this.internals.labelProgram) return;
+     const { labelProgram, primitives, nodeDataCache } = this.internals;
+ 
+     const defaultLabelFont = primitives?.nodes?.label?.font?.family || "sans-serif";
+@@ -129,6 +130,7 @@
+     if (!data.label) return { width: 0, height: 0, textHeight: 0 };
+ 
+     const { labelProgram, primitives } = this.internals;
++    if (!labelProgram) throw new Error("Sigma: node label measurement requires labelPrograms");
+     const labelSize = data.labelSize ?? 14;
+     const fontString = data.labelFont || primitives?.nodes?.label?.font?.family || "sans-serif";
+     const cacheKey = `${data.label}|${labelSize}|${fontString}`;
+@@ -316,6 +318,7 @@
+ 
+   /** Render node labels for the given depth layer. */
+   renderWebGLLabels(params: RenderParams, depth?: string): void {
++    if (!this.internals.labelProgram) return;
+     const { nodeDataCache, labelProgram, primitives, nodeDataTexture } = this.internals;
+     const visibleNodes: string[] = [];
+     for (const node of this.displayedNodeLabels) {
+@@ -392,6 +395,7 @@
+ 
+   /** Render backdrops (background + shadow) behind nodes with labels. */
+   renderBackdrops(params: RenderParams, depth?: string): void {
++    if (!this.internals.backdropProgram) return;
+     const { backdropProgram, nodeDataCache, nodesWithBackdrop, attachmentManager, pixelRatio, nodeDataTexture } =
+       this.internals;
+ 
+@@ -485,6 +489,7 @@
+ 
+   /** Render label background rectangles (picking + optional visual) for displayed node labels. */
+   renderLabelBackgrounds(params: RenderParams, depth?: string): void {
++    if (!this.internals.labelBackgroundProgram) return;
+     const { labelBackgroundProgram, nodeDataCache, nodeDataTexture } = this.internals;
+ 
+     const eventsEnabled = KIND_REGISTRY.nodeLabel.writesPickingThisFrame(this.internals);
+--- /dev/null
++++ b/src/core/node-label-programs.ts
+@@ -0,0 +1,8 @@
++import type { Settings } from "../settings";
++import { hasAnyEnabled } from "./label-events";
++/** Reject label dependencies before allocation or settings publication when companions are omitted. */
++export function assertNodeLabelPrograms(enabled: boolean, settings: Settings, attachments: object | undefined): void {
++  if (!enabled && (settings.renderLabels || hasAnyEnabled(settings.nodeLabelEvents) || Object.keys(attachments ?? {}).length)) {
++    throw new Error("Sigma: labelPrograms:false requires renderLabels:false, disabled nodeLabelEvents and no labelAttachments");
++  }
++}
+--- a/src/core/sigma-internals.ts
++++ b/src/core/sigma-internals.ts
+@@ -66,12 +66,12 @@
+   // Picking state (rebuilt after each indexation)
+   pickingState: PickingState;
+   // WebGL programs
+-  labelProgram: LabelProgram<string, N, E, G>;
++  labelProgram: LabelProgram<string, N, E, G> | null;
+   // Null until the first frame rendering edge labels
+   edgeLabelProgram: EdgeLabelProgram<N, E, G> | null;
+   edgeLabelBackgroundProgram: EdgeLabelBackgroundProgram<N, E, G> | null;
+-  backdropProgram: BackdropProgram<N, E, G>;
+-  labelBackgroundProgram: LabelBackgroundProgram<N, E, G>;
++  backdropProgram: BackdropProgram<N, E, G> | null;
++  labelBackgroundProgram: LabelBackgroundProgram<N, E, G> | null;
+   attachmentManager: AttachmentManager | null;
+   attachmentProgram: AttachmentProgram<N, E, G> | null;
+   nodeDataTexture: NodeDataTexture | null;
+--- a/src/primitives/parser.ts
++++ b/src/primitives/parser.ts
+@@ -330,6 +330,7 @@
+     {
+       shapes,
+       layers,
++      labelPrograms: nodePrimitives?.labelPrograms,
+       label: nodePrimitives?.label,
+       backdrop: nodePrimitives?.backdrop,
+       labelAttachments: nodePrimitives?.labelAttachments,
+--- a/src/primitives/types.ts
++++ b/src/primitives/types.ts
+@@ -147,6 +147,8 @@
+ ) => LabelAttachmentContent | null | Promise<LabelAttachmentContent | null>;
+ 
+ export interface NodePrimitives {
++  /** Immutable construction capability; false omits node label/backdrop/background programs. Defaults to true. */
++  labelPrograms?: boolean;
+   shapes?: readonly NodeShapeSpec[] | NodeShapeSpec[];
+   variables?: VariablesDefinition;
+   layers?: readonly NodeLayerSpec[] | NodeLayerSpec[];
+@@ -210,6 +212,7 @@
+ // =============================================================================
+ 
+ export const DEFAULT_NODE_PRIMITIVES: Required<NodePrimitives> = {
++  labelPrograms: true,
+   shapes: [sdfCircle()],
+   variables: {},
+   layers: [layerFill()],
+--- a/src/rendering/nodes/factory.ts
++++ b/src/rendering/nodes/factory.ts
+@@ -60,6 +60,9 @@
+   antialias: boolean,
+ ): NodeProgramBundle<N, E, G> {
+   const { label: labelOptions = {}, shapes } = options;
++  if (options.labelPrograms === false && Object.keys(options.labelAttachments ?? {}).length) {
++    throw new Error("Sigma: labelPrograms:false cannot construct label attachments");
++  }
+ 
+   if (shapes.length === 0) {
+     throw new Error("createNodeProgram: at least one shape must be provided in 'shapes'");
+@@ -95,17 +98,17 @@
+   // Companion programs (instances). LabelBackgroundProgram gets the
+   // picking framebuffer so label events can be wired onto the label
+   // rect; the other companions don't write picking IDs and get null.
+-  const labelProgram = createLabelProgram(gl, null, renderer, {
++  const labelProgram = options.labelPrograms === false ? null : createLabelProgram(gl, null, renderer, {
+     label: labelOptions,
+   });
+-  const backdropProgram = createBackdropProgram(gl, null, renderer, {
++  const backdropProgram = options.labelPrograms === false ? null : createBackdropProgram(gl, null, renderer, {
+     shapes,
+     layers,
+     getAttributeTexture: () => nodeProgram.getAttributeTexture(),
+     label: labelOptions,
+     shapeGlobalIds: shapes.length > 1 ? shapeGlobalIds : undefined,
+   });
+-  const labelBackgroundProgram = createLabelBackgroundProgram(gl, pickingBuffer, renderer, {
++  const labelBackgroundProgram = options.labelPrograms === false ? null : createLabelBackgroundProgram(gl, pickingBuffer, renderer, {
+     label: labelOptions,
+   });
+   // Attachments anchor to the label box, whose shape-aware placement now comes
+@@ -474,9 +477,9 @@
+   G extends Attributes = Attributes,
+ > {
+   nodeProgram: NodeProgram<N, E, G>;
+-  labelProgram: LabelProgram<string, N, E, G, LabelDisplayData>;
+-  backdropProgram: BackdropProgram<N, E, G>;
+-  labelBackgroundProgram: LabelBackgroundProgram<N, E, G>;
++  labelProgram: LabelProgram<string, N, E, G, LabelDisplayData> | null;
++  backdropProgram: BackdropProgram<N, E, G> | null;
++  labelBackgroundProgram: LabelBackgroundProgram<N, E, G> | null;
+   attachmentProgram: AttachmentProgram<N, E, G> | null;
+   framePass: NodeLabelFramePass;
+   shapeSlug: string | undefined;
+--- a/src/rendering/nodes/types.ts
++++ b/src/rendering/nodes/types.ts
+@@ -430,6 +430,8 @@
+  * the `shape` attribute in its display data (e.g., "circle", "square").
+  */
+ export interface NodeProgramOptions {
++  /** Omit node label companions only when the renderer has disabled their dependencies. */
++  labelPrograms?: boolean;
+   /**
+    * Array of SDF shape definitions.
+    * Nodes can select their shape via the `shape` attribute in display data.
+--- a/src/sigma.ts
++++ b/src/sigma.ts
+@@ -64,6 +64,7 @@
+   getShapeId,
+ } from "./rendering";
+ import { Settings, resolveSettings, validateSettings } from "./settings";
++import { assertNodeLabelPrograms } from "./core/node-label-programs";
+ import {
+   CameraState,
+   CoordinateConversionOverride,
+@@ -267,6 +268,8 @@
+   private nodeBaseDepth: Record<string, string> = {};
+   private edgeBaseDepth: Record<string, string> = {};
+ 
++  /** Fixed for this renderer lifetime, including context restoration. */
++  private readonly nodeLabelProgramsEnabled: boolean;
+   private camera: Camera;
+ 
+   constructor(graph: Graph<N, E, G>, container: HTMLElement, options: SigmaOptions<N, E, G, NS, ES, GS, P> = {}) {
+@@ -295,6 +298,7 @@
+     // Store primitives and styles declarations for v4 API
+     // Use DEFAULT_STYLES when styles not provided, merging at nodes/edges level
+     const resolvedPrimitives = primitives ?? DEFAULT_PRIMITIVES;
++    this.nodeLabelProgramsEnabled = resolvedPrimitives.nodes?.labelPrograms !== false;
+     this.stylesDeclaration = styles
+       ? ({
+           nodes: styles.nodes ?? DEFAULT_STYLES.nodes,
+@@ -327,6 +331,7 @@
+ 
+     // Validating
+     validateSettings(resolvedSettings);
++    assertNodeLabelPrograms(this.nodeLabelProgramsEnabled, resolvedSettings, resolvedPrimitives.nodes?.labelAttachments);
+     if (resolvedSettings.enableNodeDrag) {
+       const { xAttribute, yAttribute } = nodeStyleAnalysis;
+       if ((!xAttribute || !yAttribute) && !resolvedSettings.dragPositionToAttributes) {
+@@ -1925,6 +1930,7 @@
+    * after a context restore. Returns the internals-bound programs.
+    */
+   private initPrograms(primitives: PrimitivesDeclaration | null, settings: Settings) {
++    assertNodeLabelPrograms(this.nodeLabelProgramsEnabled, settings, primitives?.nodes?.labelAttachments);
+     const sigma = this as unknown as Sigma<N, E, G>;
+     const gl = this.webGLContext!;
+ 
+@@ -1939,7 +1945,7 @@
+       shapeNameToIndex: nodeShapeMap,
+       shapeGlobalIds: nodeGlobalShapeIds,
+       variables: nodeVariables,
+-    } = generateNodeProgram<N, E, G>(gl, this.pickingFrameBuffer, sigma, primitives?.nodes, settings.antialiasNodes);
++    } = generateNodeProgram<N, E, G>(gl, this.pickingFrameBuffer, sigma, { ...primitives?.nodes, labelPrograms: this.nodeLabelProgramsEnabled }, settings.antialiasNodes);
+     this.nodeProgram = nodeProgram;
+     this.nodeFramePass = framePass;
+     this.nodeVariableEntries = Object.entries(nodeVariables) as [string, { type: string; default: unknown }][];
+@@ -2560,6 +2566,11 @@
+    * @return {Sigma}
+    */
+   setSetting<K extends keyof Settings>(key: K, value: Settings[K]): this {
++    if (!this.nodeLabelProgramsEnabled) {
++      const next = { ...this.internals.settings, [key]: value };
++      assertNodeLabelPrograms(false, next, this.internals.primitives?.nodes?.labelAttachments);
++      validateSettings(next);
++    }
+     this.internals.settings[key] = value;
+     validateSettings(this.internals.settings);
+     this.handleSettingsUpdate();
+@@ -2576,7 +2587,13 @@
+    * @return {Sigma}
+    */
+   updateSetting<K extends keyof Settings>(key: K, updater: (value: Settings[K]) => Settings[K]): this {
+-    this.setSetting(key, updater(this.internals.settings[key]));
++    const current = this.internals.settings[key];
++    // Label event settings are a flat map. In reduced mode an updater must not
++    // mutate the live map before the capability guard can reject its result.
++    const input = !this.nodeLabelProgramsEnabled && key === "nodeLabelEvents" && typeof current === "object" && current !== null
++      ? { ...current } as Settings[K]
++      : current;
++    this.setSetting(key, updater(input));
+     return this;
+   }
+ 
+@@ -2587,6 +2604,11 @@
+    * @return {Sigma}
+    */
+   setSettings(settings: Partial<Settings>): this {
++    if (!this.nodeLabelProgramsEnabled) {
++      const next = { ...this.internals.settings, ...settings };
++      assertNodeLabelPrograms(false, next, this.internals.primitives?.nodes?.labelAttachments);
++      validateSettings(next);
++    }
+     this.internals.settings = { ...this.internals.settings, ...settings };
+     validateSettings(this.internals.settings);
+     this.handleSettingsUpdate();
+@@ -3362,11 +3384,11 @@
+     this.nodeFramePass.kill();
+     this.edgeProgram.kill();
+     this.edgeFramePass.kill();
+-    this.internals.labelProgram.kill();
++    this.internals.labelProgram?.kill();
+     this.internals.edgeLabelProgram?.kill();
+     this.internals.edgeLabelBackgroundProgram?.kill();
+-    this.internals.backdropProgram.kill();
+-    this.internals.labelBackgroundProgram.kill();
++    this.internals.backdropProgram?.kill();
++    this.internals.labelBackgroundProgram?.kill();
+     this.internals.attachmentProgram?.kill();
+     this.internals.attachmentManager?.kill();
+     this.internals.attachmentProgram = null;

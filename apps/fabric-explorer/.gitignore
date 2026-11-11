@@ -1,0 +1,15 @@
+# Dependencies in any viewer workspace
+node_modules/
+
+# Compiled applications, contracts and test instrumentation
+dist/
+coverage/
+*.tsbuildinfo
+
+# Prepared third-party source and SDK output
+.cache/
+/desktop/vendor/*.tgz
+
+# Generated contract validators and renderer experiment output
+/packages/contracts/generated/
+/experiments/renderers/out/

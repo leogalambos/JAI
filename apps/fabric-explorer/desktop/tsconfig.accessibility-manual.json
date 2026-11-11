@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "include": [
+    "src/**/*.ts",
+    "src/**/*.tsx",
+    "test/accessibility-manual.ts",
+    "test/accessibility-host.ts",
+    "test/native-exit.ts"
+  ]
+}

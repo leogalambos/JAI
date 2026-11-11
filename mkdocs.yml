@@ -164,6 +164,31 @@ nav:
       - Enterprise workflows: using/workflows.md
       - Learning with the demo estate: using/demo-estate.md
       - Concepts and demonstration tour: using/concepts-and-tour.md
+  - Fabric Explorer:
+      - Overview: fabric-explorer/index.md
+      - Using the viewer:
+          - Install and update: fabric-explorer/installation.md
+          - Explore data: fabric-explorer/exploring.md
+          - Import and refresh: fabric-explorer/importing.md
+          - Semantic tables: fabric-explorer/semantic-tables.md
+          - Graph canvas: fabric-explorer/canvas.md
+          - Graph layouts: fabric-explorer/layouts.md
+          - Exploration reference: fabric-explorer/exploration-reference.md
+      - Architecture and interfaces:
+          - Architecture: fabric-explorer/architecture.md
+          - Architecture decisions: fabric-explorer/decisions.md
+          - Source contracts: fabric-explorer/source-contract.md
+          - Consumer contracts: fabric-explorer/contracts.md
+          - Indexed graph queries: fabric-explorer/graph-queries.md
+          - Query transport: fabric-explorer/query-transport.md
+          - Presentation contracts: fabric-explorer/presentation-contracts.md
+          - Desktop shell: fabric-explorer/desktop-shell.md
+      - Build and support:
+          - Build packages: fabric-explorer/building-packages.md
+          - Package integrity and recovery: fabric-explorer/package-installation.md
+          - Support and compatibility: fabric-explorer/support.md
+          - Qualification envelope: fabric-explorer/qualification.md
+          - Security boundaries: fabric-explorer/security-qualification.md
   - Workflow library:
       - Plan, fund and source:
           - Demand to portfolio to funding: workflow-library/demand-to-portfolio-to-funding.md

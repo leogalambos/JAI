@@ -165,6 +165,18 @@ title: AI IT House Universal
       </aside>
     </section>
 
+    <section class="ai-home-viewer" aria-labelledby="ai-home-viewer-title">
+      <a class="ai-home-viewer-preview" href="fabric-explorer/exploring/#inspect-a-recorded-relationship" aria-label="See the viewer and its illustrated relationship example">
+        <img src="assets/images/fabric-explorer/workflow-relation.png" alt="Desktop viewer displaying recorded relationships and their source evidence." loading="lazy" decoding="async" width="1920" height="1043">
+      </a>
+      <div class="ai-home-viewer-copy">
+        <p class="ai-home-viewer-eyebrow">VISUAL EXPLORATION</p>
+        <h2 id="ai-home-viewer-title">A window into the logic behind AI-assisted work.</h2>
+        <p>See what stands behind the result. Trace recorded decisions to their evidence, expose dependencies and investigate findings in context. Keep your data local and your source records untouched.</p>
+      </div>
+      <a class="ai-home-viewer-link" href="fabric-explorer/">Explore the viewer <span aria-hidden="true">→</span></a>
+    </section>
+
     <section class="ai-home-benefits" aria-labelledby="ai-home-benefits-title">
       <div class="ai-home-benefits-intro"><h2 id="ai-home-benefits-title">What you can achieve</h2><p>From business intent to operational assurance: reviewed work, traceable reasoning and professional outputs.</p><a href="operations/human-authority/">Understand human authority <span aria-hidden="true">→</span></a></div>
       <a href="capabilities/sabsa-ea/"><svg viewBox="0 0 40 40" aria-hidden="true" focusable="false"><path d="m20 3 16 8-16 8-16-8zM4 20l16 8 16-8M4 29l16 8 16-8"/></svg><h3>Architect &amp; secure</h3><p>Business-aligned architectures, SABSA models, risk assessments and control designs.</p></a>

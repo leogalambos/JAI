@@ -1,0 +1,67 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# Build/integration checks only; this job does not claim a native desktop result.
+name: fabric-explorer-desktop
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - 'apps/fabric-explorer/desktop/**'
+      - 'apps/fabric-explorer/reader/**'
+      - 'apps/fabric-explorer/packages/contracts/**'
+      - 'apps/fabric-explorer/reader/readonly_files.py'
+      - 'apps/fabric-explorer/reader/windows_readonly.py'
+      - '.ai/runtime/tools/operator_actions.py'
+      - '.ai/runtime/tools/offline_guard.py'
+      - 'apps/fabric-explorer/reader/test/test_readonly_files.py'
+      - 'apps/fabric-explorer/reader/test/test_read_broker.py'
+      - 'tests/test_operator_journal_snapshot.py'
+      - 'apps/fabric-explorer/reader/test/test_windows_readonly.py'
+      - '.github/workflows/fabric-explorer-desktop.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'apps/fabric-explorer/**'
+      - '.ai/runtime/tools/**'
+      - 'tests/**'
+      - '.github/workflows/fabric-explorer-desktop.yml'
+permissions:
+  contents: read
+jobs:
+  linux-build-and-read-boundaries:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24.22.2'
+          cache: npm
+          cache-dependency-path: |
+            apps/fabric-explorer/packages/contracts/package-lock.json
+            apps/fabric-explorer/desktop/package-lock.json
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Prepare fixed development helper and pinned build tools
+        run: |
+          python3 -m venv build/fabric-explorer/helper-venv
+          build/fabric-explorer/helper-venv/bin/python -m pip install -r apps/fabric-explorer/reader/requirements-test.txt
+          npm install --prefix "$RUNNER_TEMP/fabric-explorer-toolchain" --ignore-scripts --no-audit --no-fund npm@11.21.2
+          echo "$RUNNER_TEMP/fabric-explorer-toolchain/node_modules/.bin" >> "$GITHUB_PATH"
+      - name: Install locked dependencies without executing lifecycle scripts
+        run: |
+          test "$(node --version)" = v24.22.2
+          test "$(npm --version)" = 11.21.2
+          npm --prefix apps/fabric-explorer/packages/contracts ci --ignore-scripts --no-audit --no-fund
+          npm --prefix apps/fabric-explorer/desktop ci --ignore-scripts --no-audit --no-fund
+      - name: Prepare the pinned downloaded SDK source before offline checks
+        run: npm --prefix apps/fabric-explorer/desktop run prepare:sdk
+      - name: Build actual local assets and prepared native smoke offline
+        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- npm --prefix apps/fabric-explorer/desktop run build:native-smoke
+      - name: Test desktop lifecycle and real helper integration offline
+        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- npm --prefix apps/fabric-explorer/desktop test
+      - name: Measure bounded synthetic graph engine offline
+        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- npm --prefix apps/fabric-explorer/desktop run test:graph-smoke
+      - name: Test viewer canonical adapters offline
+        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- build/fabric-explorer/helper-venv/bin/python -m pytest -q apps/fabric-explorer/reader/test

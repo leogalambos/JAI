@@ -1,0 +1,61 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# Manually invoked native reader checks; not desktop, package or GPU qualification.
+name: Fabric Explorer native reader checks
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: fabric-explorer-native-readers-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  native-readers:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            architecture: x64
+          - runner: ubuntu-24.04-arm
+            architecture: arm64
+          - runner: windows-2025
+            architecture: x64
+          - runner: macos-15
+            architecture: arm64
+          - runner: macos-15-intel
+            architecture: x64
+    runs-on: ${{ matrix.runner }}
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v5
+        with:
+          python-version-file: apps/fabric-explorer/.python-version
+          architecture: ${{ matrix.architecture }}
+      - name: Admit the native runner architecture
+        shell: python
+        env:
+          EXPECTED_ARCHITECTURE: ${{ matrix.architecture }}
+        run: |
+          import os, platform
+          actual = {'AMD64': 'x64', 'x86_64': 'x64', 'aarch64': 'arm64', 'arm64': 'arm64'}.get(platform.machine())
+          assert actual == os.environ['EXPECTED_ARCHITECTURE'], 'Native architecture mismatch'
+      - name: Install the declared experiment test environment
+        run: python -m pip install -r apps/fabric-explorer/experiments/helper/requirements-test.txt
+      - name: Native Windows handle tests and portable acquisition contracts
+        run: python -m pytest -q -rs apps/fabric-explorer/reader/test/test_windows_readonly.py
+      - name: POSIX snapshot and retained-root contracts
+        if: runner.os != 'Windows'
+        run: python -m pytest -q tests/test_operator_journal_snapshot.py apps/fabric-explorer/reader/test/test_readonly_files.py apps/fabric-explorer/reader/test/test_read_broker.py
+      - name: State the evidence boundary
+        shell: python
+        run: |
+          print('Reader checks only. Skipped Windows cases on POSIX are not native Windows evidence.')
+          print('No packaged helper, minimum desktop, physical GPU or release qualification is established by this job.')

@@ -23,6 +23,13 @@ JAI captures the task and criteria, selects relevant professional resources and
 advances through the normal runtime. You do not write bootstrap JSON, invent
 worker IDs or supply transport envelopes.
 
+The layered runtime normally records the engagement under the project's
+`.fabric/`, including the journal and its referenced immutable materials. This
+is not an automatic side effect of every JAI role or workflow. To inspect the
+records graphically, follow the
+[Fabric Explorer data prerequisites](../fabric-explorer/importing.md#before-you-open-a-project-are-there-records-to-display);
+findings can also be viewed independently of a Fabric engagement.
+
 Ask JAI to show its current checkpoint, outstanding questions, review findings
 and escalation dossier. Work can pause at a durable boundary and resume using
 the same session locator. A partially completed stage remains partial; it does

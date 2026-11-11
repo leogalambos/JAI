@@ -1,5 +1,10 @@
 # Installation
 
+The optional [Fabric Explorer desktop viewer](../fabric-explorer/index.md) is
+installed separately from a prebuilt, platform-specific package. `./install.sh`
+does not build, download or install the viewer. See the
+[viewer installation guide](../fabric-explorer/installation.md).
+
 ## Install and start your first session
 
 Use an extracted JAI release package and Python 3.10 or newer. Run the following

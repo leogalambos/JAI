@@ -1,0 +1,42 @@
+{
+  "name": "@jai/fabric-explorer-desktop",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local read-only Fabric Explorer desktop shell",
+  "license": "BSD-4-Clause",
+  "type": "module",
+  "main": "dist/main.cjs",
+  "engines": {
+    "node": "24.22.2",
+    "npm": "11.21.2"
+  },
+  "scripts": {
+    "build:contracts": "npm --prefix ../packages/contracts run build",
+    "build": "npm run build:contracts && node tools/build.mjs",
+    "build:native-smoke": "npm run build:contracts && node tools/build.mjs --with-native-smoke",
+    "configure:reader": "node tools/configure-reader.mjs",
+    "test": "npm run build:sdk && vitest run",
+    "test:graph-smoke": "node dist/graph-smoke.cjs",
+    "build:sdk": "node tools/build-sigma.mjs",
+    "test:sdk": "npm run build:sdk && vitest run --config vitest.sdk.config.ts",
+    "prepare:sdk": "node tools/prepare-sigma.mjs",
+    "test:build": "node --test --test-concurrency=1 test/prepare-sigma.test.mjs test/build-sigma.test.mjs",
+    "test:build:integration": "node --test test/integration/prepare-sigma.test.mjs"
+  },
+  "dependencies": {
+    "@jai/fabric-explorer-contracts": "file:../packages/contracts",
+    "graphology": "0.26.0",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "sigma": "file:vendor/sigma"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "electron": "45.2.3",
+    "typescript": "7.0.2",
+    "vite": "8.3.7",
+    "vitest": "5.1.0"
+  }
+}

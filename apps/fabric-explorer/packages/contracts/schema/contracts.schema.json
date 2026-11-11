@@ -1,0 +1,3919 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://jai.local/fabric-explorer/contracts/1",
+  "title": "Fabric Explorer read-only model and consumer contract v1",
+  "description": "Structural contracts only; canonical source replay and authority remain outside this schema.",
+  "oneOf": [
+    {
+      "$ref": "#/$defs/request"
+    },
+    {
+      "$ref": "#/$defs/response"
+    },
+    {
+      "$ref": "#/$defs/rejection"
+    },
+    {
+      "$ref": "#/$defs/snapshot"
+    },
+    {
+      "$ref": "#/$defs/projection"
+    },
+    {
+      "$ref": "#/$defs/vertex"
+    },
+    {
+      "$ref": "#/$defs/edge"
+    },
+    {
+      "$ref": "#/$defs/overlayTarget"
+    },
+    {
+      "$ref": "#/$defs/adapterInput"
+    },
+    {
+      "$ref": "#/$defs/adapterChunk"
+    },
+    {
+      "$ref": "#/$defs/elementIdentity"
+    },
+    {
+      "$ref": "#/$defs/edgeIdentity"
+    },
+    {
+      "$ref": "#/$defs/responseChunk"
+    }
+  ],
+  "$defs": {
+    "unsigned": {
+      "type": "string",
+      "pattern": "^(0|[1-9][0-9]*)$"
+    },
+    "digest": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{64}$"
+    },
+    "pointer": {
+      "type": "string",
+      "pattern": "^(?:/(?:[^~]|~[01])*)*$"
+    },
+    "relativePath": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?!.*(?:^|/)\\.\\.?(?:/|$))(?!.*//)(?!.*[\\\\:\\u0000])(?!.*\\/$).+$"
+    },
+    "family": {
+      "enum": [
+        "fabric",
+        "findings",
+        "audit"
+      ]
+    },
+    "recordFamily": {
+      "enum": [
+        "source",
+        "profile",
+        "assignment",
+        "context",
+        "product",
+        "assessment",
+        "decision"
+      ]
+    },
+    "findingState": {
+      "enum": [
+        "open",
+        "resolved",
+        "verified",
+        "stuck",
+        "withdrawn",
+        "accepted"
+      ]
+    },
+    "relation": {
+      "enum": [
+        "causal-dependency",
+        "input-binding",
+        "profile",
+        "criteria",
+        "inheritance",
+        "assignment",
+        "assessed-subject",
+        "material-attachment",
+        "participant",
+        "ownership",
+        "decision-effect",
+        "finding-subject",
+        "location-association",
+        "other-reference"
+      ]
+    },
+    "semantic": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "null"
+            }
+          },
+          "required": [
+            "type"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "boolean"
+            },
+            "value": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "string"
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "integer"
+            },
+            "value": {
+              "type": "string",
+              "pattern": "^(?:0|-?[1-9][0-9]*)$"
+            }
+          },
+          "required": [
+            "type",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "array"
+            },
+            "items": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/semantic"
+              }
+            }
+          },
+          "required": [
+            "type",
+            "items"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "object"
+            },
+            "entries": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "key": {
+                    "type": "string"
+                  },
+                  "value": {
+                    "$ref": "#/$defs/semantic"
+                  }
+                },
+                "required": [
+                  "key",
+                  "value"
+                ],
+                "additionalProperties": false
+              }
+            }
+          },
+          "required": [
+            "type",
+            "entries"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "type": {
+              "const": "float64"
+            },
+            "bits": {
+              "type": "string",
+              "pattern": "^[0-9a-f]{16}$"
+            }
+          },
+          "required": [
+            "type",
+            "bits"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "extensions": {
+      "type": "object",
+      "propertyNames": {
+        "pattern": "^[a-z][a-z0-9]*(?:[.-][a-z0-9]+)+$"
+      },
+      "additionalProperties": {
+        "$ref": "#/$defs/semantic"
+      }
+    },
+    "reference": {
+      "type": "object",
+      "properties": {
+        "engagement": {
+          "type": "string",
+          "minLength": 1
+        },
+        "scope": {
+          "type": "string",
+          "minLength": 1
+        },
+        "logical_id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version_id": {
+          "$ref": "#/$defs/digest"
+        }
+      },
+      "required": [
+        "engagement",
+        "scope",
+        "logical_id",
+        "version_id"
+      ],
+      "additionalProperties": false
+    },
+    "participant": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "assignment"
+            },
+            "ref": {
+              "$ref": "#/$defs/reference"
+            }
+          },
+          "required": [
+            "kind",
+            "ref"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "authority",
+                "controller"
+              ]
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "id"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "ownership": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "layer": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 6
+            },
+            "work_kind": {
+              "const": "question"
+            },
+            "question": {
+              "enum": [
+                "what",
+                "why",
+                "how",
+                "who",
+                "where",
+                "when"
+              ]
+            },
+            "work_item": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "layer",
+            "work_kind",
+            "question",
+            "work_item"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "layer": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 6
+            },
+            "work_kind": {
+              "enum": [
+                "integration",
+                "handoff",
+                "measurement"
+              ]
+            },
+            "question": {
+              "type": "null"
+            },
+            "work_item": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "layer",
+            "work_kind",
+            "question",
+            "work_item"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "stableLocator": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rootId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "family": {
+          "$ref": "#/$defs/family"
+        },
+        "relativePath": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "pointer": {
+          "$ref": "#/$defs/pointer"
+        },
+        "sequence": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/unsigned"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "projectId",
+        "rootId",
+        "sourceId",
+        "family",
+        "relativePath",
+        "pointer",
+        "sequence"
+      ],
+      "additionalProperties": false
+    },
+    "sourceLocator": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rootId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "family": {
+          "$ref": "#/$defs/family"
+        },
+        "relativePath": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "pointer": {
+          "$ref": "#/$defs/pointer"
+        },
+        "sequence": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/unsigned"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "revisionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "adapterVersion": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "projectId",
+        "rootId",
+        "sourceId",
+        "family",
+        "relativePath",
+        "pointer",
+        "sequence",
+        "revisionId",
+        "adapterVersion"
+      ],
+      "additionalProperties": false
+    },
+    "versionIdentity": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "version"
+        },
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ref": {
+          "$ref": "#/$defs/reference"
+        }
+      },
+      "required": [
+        "kind",
+        "projectId",
+        "ref"
+      ],
+      "additionalProperties": false
+    },
+    "useIdentity": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "use"
+        },
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ref": {
+          "$ref": "#/$defs/reference"
+        },
+        "useScope": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        }
+      },
+      "required": [
+        "kind",
+        "projectId",
+        "ref",
+        "useScope"
+      ],
+      "additionalProperties": false
+    },
+    "findingIdentity": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "finding"
+        },
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ledgerId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "findingId": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "projectId",
+        "ledgerId",
+        "findingId"
+      ],
+      "additionalProperties": false
+    },
+    "blobIdentity": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "blob"
+        },
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rootId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "blobId": {
+          "$ref": "#/$defs/digest"
+        }
+      },
+      "required": [
+        "kind",
+        "projectId",
+        "rootId",
+        "blobId"
+      ],
+      "additionalProperties": false
+    },
+    "participantIdentity": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "participant"
+        },
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "participant": {
+          "$ref": "#/$defs/participant"
+        }
+      },
+      "required": [
+        "kind",
+        "projectId",
+        "participant"
+      ],
+      "additionalProperties": false
+    },
+    "ownershipIdentity": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "ownership"
+        },
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "owner": {
+          "$ref": "#/$defs/ownership"
+        }
+      },
+      "required": [
+        "kind",
+        "projectId",
+        "owner"
+      ],
+      "additionalProperties": false
+    },
+    "locationIdentity": {
+      "type": "object",
+      "properties": {
+        "kind": {
+          "const": "location"
+        },
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "origin": {
+          "$ref": "#/$defs/stableLocator"
+        },
+        "text": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "kind",
+        "projectId",
+        "origin",
+        "text"
+      ],
+      "additionalProperties": false
+    },
+    "elementIdentity": {
+      "oneOf": [
+        {
+          "$ref": "#/$defs/versionIdentity"
+        },
+        {
+          "$ref": "#/$defs/useIdentity"
+        },
+        {
+          "$ref": "#/$defs/findingIdentity"
+        },
+        {
+          "$ref": "#/$defs/blobIdentity"
+        },
+        {
+          "$ref": "#/$defs/participantIdentity"
+        },
+        {
+          "$ref": "#/$defs/ownershipIdentity"
+        },
+        {
+          "$ref": "#/$defs/locationIdentity"
+        }
+      ]
+    },
+    "edgeIdentity": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "explicit"
+            },
+            "projectId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "origin": {
+              "$ref": "#/$defs/elementIdentity"
+            },
+            "from": {
+              "$ref": "#/$defs/elementIdentity"
+            },
+            "to": {
+              "$ref": "#/$defs/elementIdentity"
+            },
+            "sourceEdgeId": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "projectId",
+            "origin",
+            "from",
+            "to",
+            "sourceEdgeId"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "occurrence"
+            },
+            "projectId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "origin": {
+              "$ref": "#/$defs/elementIdentity"
+            },
+            "from": {
+              "$ref": "#/$defs/elementIdentity"
+            },
+            "to": {
+              "$ref": "#/$defs/elementIdentity"
+            },
+            "pointer": {
+              "$ref": "#/$defs/pointer"
+            },
+            "occurrence": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 9007199254740991
+            }
+          },
+          "required": [
+            "kind",
+            "projectId",
+            "origin",
+            "from",
+            "to",
+            "pointer",
+            "occurrence"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "overlayTarget": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "const": "jai.fabric-explorer.overlay-target/1"
+        },
+        "target": {
+          "oneOf": [
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "element"
+                },
+                "identity": {
+                  "$ref": "#/$defs/elementIdentity"
+                }
+              },
+              "required": [
+                "kind",
+                "identity"
+              ],
+              "additionalProperties": false
+            },
+            {
+              "type": "object",
+              "properties": {
+                "kind": {
+                  "const": "edge"
+                },
+                "identity": {
+                  "$ref": "#/$defs/edgeIdentity"
+                }
+              },
+              "required": [
+                "kind",
+                "identity"
+              ],
+              "additionalProperties": false
+            }
+          ]
+        }
+      },
+      "required": [
+        "format",
+        "target"
+      ],
+      "additionalProperties": false
+    },
+    "attributes": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "inline"
+            },
+            "value": {
+              "$ref": "#/$defs/semantic"
+            }
+          },
+          "required": [
+            "kind",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "paged"
+            },
+            "source": {
+              "$ref": "#/$defs/sourceLocator"
+            },
+            "byteLength": {
+              "$ref": "#/$defs/unsigned"
+            },
+            "mediaType": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "required": [
+            "kind",
+            "source",
+            "byteLength",
+            "mediaType"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "verification": {
+      "type": "object",
+      "properties": {
+        "mode": {
+          "enum": [
+            "canonical",
+            "diagnostic",
+            "recorded"
+          ]
+        },
+        "decoded": {
+          "enum": [
+            "decoded",
+            "unknown",
+            "failed"
+          ]
+        },
+        "chain": {
+          "enum": [
+            "verified",
+            "unknown",
+            "failed"
+          ]
+        },
+        "replay": {
+          "enum": [
+            "verified",
+            "unknown",
+            "failed",
+            "recorded"
+          ]
+        },
+        "publicTrust": {
+          "enum": [
+            "available",
+            "missing",
+            "not-required",
+            "unknown"
+          ]
+        },
+        "material": {
+          "enum": [
+            "available",
+            "missing",
+            "not-observed"
+          ]
+        },
+        "recordedApplicability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/semantic"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "authorityGranted": {
+          "const": false
+        },
+        "freshAssessment": {
+          "const": false
+        }
+      },
+      "required": [
+        "mode",
+        "decoded",
+        "chain",
+        "replay",
+        "publicTrust",
+        "material",
+        "recordedApplicability",
+        "authorityGranted",
+        "freshAssessment"
+      ],
+      "additionalProperties": false
+    },
+    "sourceRevision": {
+      "type": "object",
+      "properties": {
+        "revisionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rootId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "family": {
+          "$ref": "#/$defs/family"
+        },
+        "relativePath": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "adapterVersion": {
+          "type": "string",
+          "minLength": 1
+        },
+        "byteLength": {
+          "$ref": "#/$defs/unsigned"
+        },
+        "digest": {
+          "$ref": "#/$defs/digest"
+        },
+        "head": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/digest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "sequence": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/unsigned"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "observedAt": {
+          "type": "string",
+          "minLength": 1
+        },
+        "verification": {
+          "$ref": "#/$defs/verification"
+        }
+      },
+      "required": [
+        "revisionId",
+        "projectId",
+        "rootId",
+        "sourceId",
+        "family",
+        "relativePath",
+        "adapterVersion",
+        "byteLength",
+        "digest",
+        "head",
+        "sequence",
+        "observedAt",
+        "verification"
+      ],
+      "additionalProperties": false
+    },
+    "vertex": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "version"
+            },
+            "identity": {
+              "$ref": "#/$defs/versionIdentity"
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label": {
+              "type": "string"
+            },
+            "source": {
+              "$ref": "#/$defs/sourceLocator"
+            },
+            "attributes": {
+              "$ref": "#/$defs/attributes"
+            },
+            "extensions": {
+              "$ref": "#/$defs/extensions"
+            },
+            "family": {
+              "$ref": "#/$defs/recordFamily"
+            }
+          },
+          "required": [
+            "kind",
+            "identity",
+            "id",
+            "label",
+            "source",
+            "attributes",
+            "family"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "use"
+            },
+            "identity": {
+              "$ref": "#/$defs/useIdentity"
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label": {
+              "type": "string"
+            },
+            "source": {
+              "$ref": "#/$defs/sourceLocator"
+            },
+            "attributes": {
+              "$ref": "#/$defs/attributes"
+            },
+            "extensions": {
+              "$ref": "#/$defs/extensions"
+            }
+          },
+          "required": [
+            "kind",
+            "identity",
+            "id",
+            "label",
+            "source",
+            "attributes"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "finding"
+            },
+            "identity": {
+              "$ref": "#/$defs/findingIdentity"
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label": {
+              "type": "string"
+            },
+            "source": {
+              "$ref": "#/$defs/sourceLocator"
+            },
+            "attributes": {
+              "$ref": "#/$defs/attributes"
+            },
+            "extensions": {
+              "$ref": "#/$defs/extensions"
+            },
+            "state": {
+              "$ref": "#/$defs/findingState"
+            },
+            "severity": {
+              "enum": [
+                "critical",
+                "high",
+                "medium",
+                "low"
+              ]
+            },
+            "findingKind": {
+              "enum": [
+                "defect",
+                "gap",
+                "risk",
+                "inconsistency",
+                "suggestion"
+              ]
+            },
+            "rounds": {
+              "$ref": "#/$defs/unsigned"
+            },
+            "recordedExpiry": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "identity",
+            "id",
+            "label",
+            "source",
+            "attributes",
+            "state",
+            "severity",
+            "findingKind",
+            "rounds",
+            "recordedExpiry"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "blob"
+            },
+            "identity": {
+              "$ref": "#/$defs/blobIdentity"
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label": {
+              "type": "string"
+            },
+            "source": {
+              "$ref": "#/$defs/sourceLocator"
+            },
+            "attributes": {
+              "$ref": "#/$defs/attributes"
+            },
+            "extensions": {
+              "$ref": "#/$defs/extensions"
+            },
+            "availability": {
+              "enum": [
+                "available",
+                "missing",
+                "unknown"
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "identity",
+            "id",
+            "label",
+            "source",
+            "attributes",
+            "availability"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "participant"
+            },
+            "identity": {
+              "$ref": "#/$defs/participantIdentity"
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label": {
+              "type": "string"
+            },
+            "source": {
+              "$ref": "#/$defs/sourceLocator"
+            },
+            "attributes": {
+              "$ref": "#/$defs/attributes"
+            },
+            "extensions": {
+              "$ref": "#/$defs/extensions"
+            }
+          },
+          "required": [
+            "kind",
+            "identity",
+            "id",
+            "label",
+            "source",
+            "attributes"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "ownership"
+            },
+            "identity": {
+              "$ref": "#/$defs/ownershipIdentity"
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label": {
+              "type": "string"
+            },
+            "source": {
+              "$ref": "#/$defs/sourceLocator"
+            },
+            "attributes": {
+              "$ref": "#/$defs/attributes"
+            },
+            "extensions": {
+              "$ref": "#/$defs/extensions"
+            }
+          },
+          "required": [
+            "kind",
+            "identity",
+            "id",
+            "label",
+            "source",
+            "attributes"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "unresolved"
+            },
+            "identity": {
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/versionIdentity"
+                },
+                {
+                  "$ref": "#/$defs/useIdentity"
+                },
+                {
+                  "$ref": "#/$defs/locationIdentity"
+                }
+              ]
+            },
+            "id": {
+              "type": "string",
+              "minLength": 1
+            },
+            "label": {
+              "type": "string"
+            },
+            "source": {
+              "$ref": "#/$defs/sourceLocator"
+            },
+            "attributes": {
+              "$ref": "#/$defs/attributes"
+            },
+            "extensions": {
+              "$ref": "#/$defs/extensions"
+            },
+            "reason": {
+              "enum": [
+                "missing-reference",
+                "textual-location",
+                "unavailable-source"
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "identity",
+            "id",
+            "label",
+            "source",
+            "attributes",
+            "reason"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "edge": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "identity": {
+          "$ref": "#/$defs/edgeIdentity"
+        },
+        "from": {
+          "type": "string",
+          "minLength": 1
+        },
+        "to": {
+          "type": "string",
+          "minLength": 1
+        },
+        "relation": {
+          "$ref": "#/$defs/relation"
+        },
+        "label": {
+          "type": "string"
+        },
+        "source": {
+          "$ref": "#/$defs/sourceLocator"
+        },
+        "basis": {
+          "enum": [
+            "canonical-dependency",
+            "exact-reference",
+            "recorded-effect",
+            "textual-location"
+          ]
+        },
+        "causal": {
+          "type": "boolean"
+        },
+        "attributes": {
+          "$ref": "#/$defs/attributes"
+        },
+        "extensions": {
+          "$ref": "#/$defs/extensions"
+        }
+      },
+      "required": [
+        "id",
+        "identity",
+        "from",
+        "to",
+        "relation",
+        "label",
+        "source",
+        "basis",
+        "causal",
+        "attributes"
+      ],
+      "additionalProperties": false
+    },
+    "counts": {
+      "type": "object",
+      "properties": {
+        "vertices": {
+          "$ref": "#/$defs/unsigned"
+        },
+        "edges": {
+          "$ref": "#/$defs/unsigned"
+        },
+        "findings": {
+          "$ref": "#/$defs/unsigned"
+        }
+      },
+      "required": [
+        "vertices",
+        "edges",
+        "findings"
+      ],
+      "additionalProperties": false
+    },
+    "snapshot": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "const": "jai.fabric-explorer.snapshot/1"
+        },
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "generation": {
+          "type": "string",
+          "pattern": "^[1-9][0-9]*$"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/sourceRevision"
+          }
+        },
+        "counts": {
+          "$ref": "#/$defs/counts"
+        },
+        "authorityGranted": {
+          "const": false
+        },
+        "freshAssessment": {
+          "const": false
+        }
+      },
+      "required": [
+        "format",
+        "sessionId",
+        "generation",
+        "sources",
+        "counts",
+        "authorityGranted",
+        "freshAssessment"
+      ],
+      "additionalProperties": false
+    },
+    "projection": {
+      "type": "object",
+      "properties": {
+        "format": {
+          "const": "jai.fabric-explorer.projection/1"
+        },
+        "snapshot": {
+          "$ref": "#/$defs/snapshot"
+        },
+        "vertices": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/vertex"
+          },
+          "maxItems": 5000
+        },
+        "edges": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/edge"
+          },
+          "maxItems": 20000
+        },
+        "hiddenVertices": {
+          "$ref": "#/$defs/unsigned"
+        },
+        "hiddenEdges": {
+          "$ref": "#/$defs/unsigned"
+        },
+        "complete": {
+          "type": "boolean"
+        },
+        "omissions": {
+          "type": "array",
+          "items": {
+            "enum": [
+              "filter",
+              "visible-limit",
+              "work-limit",
+              "unresolved",
+              "unavailable"
+            ]
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "format",
+        "snapshot",
+        "vertices",
+        "edges",
+        "hiddenVertices",
+        "hiddenEdges",
+        "complete",
+        "omissions"
+      ],
+      "additionalProperties": false
+    },
+    "binding": {
+      "type": "object",
+      "properties": {
+        "sessionId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "capability": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "generation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/unsigned"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "sessionId",
+        "capability",
+        "generation"
+      ],
+      "additionalProperties": false
+    },
+    "admittedSource": {
+      "type": "object",
+      "properties": {
+        "projectId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "rootId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "sourceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "family": {
+          "$ref": "#/$defs/family"
+        },
+        "relativePath": {
+          "$ref": "#/$defs/relativePath"
+        },
+        "readHandle": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "projectId",
+        "rootId",
+        "sourceId",
+        "family",
+        "relativePath",
+        "readHandle"
+      ],
+      "additionalProperties": false
+    },
+    "filter": {
+      "type": "object",
+      "properties": {
+        "projectIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "minLength": 1
+          },
+          "uniqueItems": true
+        },
+        "families": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/recordFamily"
+          },
+          "uniqueItems": true
+        },
+        "findingStates": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/findingState"
+          },
+          "uniqueItems": true
+        },
+        "relations": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/relation"
+          },
+          "uniqueItems": true
+        }
+      },
+      "required": [
+        "projectIds",
+        "families",
+        "findingStates",
+        "relations"
+      ],
+      "additionalProperties": false
+    },
+    "cursor": {
+      "type": "object",
+      "properties": {
+        "binding": {
+          "$ref": "#/$defs/binding"
+        },
+        "operation": {
+          "const": "search.page"
+        },
+        "queryKey": {
+          "type": "string",
+          "minLength": 1
+        },
+        "offset": {
+          "$ref": "#/$defs/unsigned"
+        },
+        "token": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "binding",
+        "operation",
+        "queryKey",
+        "offset",
+        "token"
+      ],
+      "additionalProperties": false
+    },
+    "queryLimits": {
+      "type": "object",
+      "properties": {
+        "maxVertices": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 5000
+        },
+        "maxEdges": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 20000
+        },
+        "maxVisitedVertices": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10000
+        },
+        "maxScannedEdges": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 50000
+        },
+        "maxHops": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 32
+        }
+      },
+      "required": [
+        "maxVertices",
+        "maxEdges",
+        "maxVisitedVertices",
+        "maxScannedEdges",
+        "maxHops"
+      ],
+      "additionalProperties": false
+    },
+    "diagnostic": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "enum": [
+            "invalid-message",
+            "resource-limit",
+            "unsupported-protocol",
+            "unknown-operation",
+            "session-mismatch",
+            "capability-mismatch",
+            "stale-generation",
+            "cursor-mismatch",
+            "invalid-model",
+            "not-found",
+            "cancelled",
+            "incompatible-source",
+            "read-failed",
+            "worker-failed"
+          ]
+        },
+        "message": {
+          "type": "string",
+          "maxLength": 4096
+        },
+        "source": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/sourceLocator"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "severity": {
+          "enum": [
+            "error",
+            "warning",
+            "info"
+          ]
+        }
+      },
+      "required": [
+        "code",
+        "message",
+        "source",
+        "severity"
+      ],
+      "additionalProperties": false
+    },
+    "bytePage": {
+      "type": "object",
+      "properties": {
+        "sourceId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "pointer": {
+          "$ref": "#/$defs/pointer"
+        },
+        "sequence": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/unsigned"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "offset": {
+          "$ref": "#/$defs/unsigned"
+        },
+        "byteLength": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 262144
+        },
+        "bytesBase64": {
+          "type": "string",
+          "maxLength": 349528
+        },
+        "eof": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "sourceId",
+        "pointer",
+        "sequence",
+        "offset",
+        "byteLength",
+        "bytesBase64",
+        "eof"
+      ],
+      "additionalProperties": false
+    },
+    "request": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "roots.pick"
+            },
+            "kind": {
+              "const": "request"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "families": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/family"
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "families"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "roots.close"
+            },
+            "kind": {
+              "const": "request"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {},
+              "required": [],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "snapshot.import"
+            },
+            "kind": {
+              "const": "request"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "sourceIds": {
+                  "type": "array",
+                  "items": {
+                    "type": "string",
+                    "minLength": 1
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true
+                }
+              },
+              "required": [
+                "sourceIds"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "snapshot.refresh"
+            },
+            "kind": {
+              "const": "request"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {},
+              "required": [],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "request.cancel"
+            },
+            "kind": {
+              "const": "request"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "targetRequestId": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "targetRequestId"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "element.lookup"
+            },
+            "kind": {
+              "const": "request"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "identity": {
+                  "$ref": "#/$defs/elementIdentity"
+                }
+              },
+              "required": [
+                "identity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "search.page"
+            },
+            "kind": {
+              "const": "request"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "text": {
+                  "type": "string"
+                },
+                "filter": {
+                  "$ref": "#/$defs/filter"
+                },
+                "order": {
+                  "enum": [
+                    "identity",
+                    "label"
+                  ]
+                },
+                "limit": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 5000
+                },
+                "cursor": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/cursor"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "text",
+                "filter",
+                "order",
+                "limit",
+                "cursor"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "graph.counts"
+            },
+            "kind": {
+              "const": "request"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "filter": {
+                  "$ref": "#/$defs/filter"
+                }
+              },
+              "required": [
+                "filter"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "graph.neighbours"
+            },
+            "kind": {
+              "const": "request"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "identity": {
+                  "$ref": "#/$defs/elementIdentity"
+                },
+                "direction": {
+                  "enum": [
+                    "forward",
+                    "reverse",
+                    "both"
+                  ]
+                },
+                "relations": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/relation"
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true
+                },
+                "causalOnly": {
+                  "type": "boolean"
+                },
+                "limits": {
+                  "$ref": "#/$defs/queryLimits"
+                }
+              },
+              "required": [
+                "identity",
+                "direction",
+                "relations",
+                "causalOnly",
+                "limits"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "graph.path"
+            },
+            "kind": {
+              "const": "request"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "from": {
+                  "$ref": "#/$defs/elementIdentity"
+                },
+                "to": {
+                  "$ref": "#/$defs/elementIdentity"
+                },
+                "direction": {
+                  "enum": [
+                    "forward",
+                    "reverse",
+                    "both"
+                  ]
+                },
+                "relations": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/relation"
+                  },
+                  "minItems": 1,
+                  "uniqueItems": true
+                },
+                "causalOnly": {
+                  "type": "boolean"
+                },
+                "limits": {
+                  "$ref": "#/$defs/queryLimits"
+                }
+              },
+              "required": [
+                "from",
+                "to",
+                "direction",
+                "relations",
+                "causalOnly",
+                "limits"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "element.details"
+            },
+            "kind": {
+              "const": "request"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "identity": {
+                  "$ref": "#/$defs/elementIdentity"
+                }
+              },
+              "required": [
+                "identity"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "source.page"
+            },
+            "kind": {
+              "const": "request"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "sourceId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "pointer": {
+                  "$ref": "#/$defs/pointer"
+                },
+                "sequence": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/unsigned"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "offset": {
+                  "$ref": "#/$defs/unsigned"
+                },
+                "length": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 262144
+                }
+              },
+              "required": [
+                "sourceId",
+                "pointer",
+                "sequence",
+                "offset",
+                "length"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "payload"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "response": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "roots.pick"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "ok"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "capability": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sources": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/admittedSource"
+                  },
+                  "minItems": 1
+                }
+              },
+              "required": [
+                "capability",
+                "sources"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "roots.pick"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "error"
+            },
+            "error": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "roots.close"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "ok"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "closed": {
+                  "const": true
+                }
+              },
+              "required": [
+                "closed"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "roots.close"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "error"
+            },
+            "error": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "snapshot.import"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "ok"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "snapshot": {
+                  "$ref": "#/$defs/snapshot"
+                }
+              },
+              "required": [
+                "snapshot"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "snapshot.import"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "error"
+            },
+            "error": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "snapshot.refresh"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "ok"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "snapshot": {
+                  "$ref": "#/$defs/snapshot"
+                }
+              },
+              "required": [
+                "snapshot"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "snapshot.refresh"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "error"
+            },
+            "error": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "request.cancel"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "ok"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "targetRequestId": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "acknowledgement": {
+                  "enum": [
+                    "accepted",
+                    "not-active"
+                  ]
+                }
+              },
+              "required": [
+                "targetRequestId",
+                "acknowledgement"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "request.cancel"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "error"
+            },
+            "error": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "element.lookup"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "ok"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "vertex": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/vertex"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "vertex"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "element.lookup"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "error"
+            },
+            "error": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "search.page"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "ok"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "items": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/$defs/vertex"
+                  },
+                  "maxItems": 5000
+                },
+                "hidden": {
+                  "$ref": "#/$defs/unsigned"
+                },
+                "complete": {
+                  "type": "boolean"
+                },
+                "nextCursor": {
+                  "anyOf": [
+                    {
+                      "$ref": "#/$defs/cursor"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                }
+              },
+              "required": [
+                "items",
+                "hidden",
+                "complete",
+                "nextCursor"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "search.page"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "error"
+            },
+            "error": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "graph.counts"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "ok"
+            },
+            "payload": {
+              "$ref": "#/$defs/counts"
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "graph.counts"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "error"
+            },
+            "error": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "graph.neighbours"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "ok"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "projection": {
+                  "$ref": "#/$defs/projection"
+                }
+              },
+              "required": [
+                "projection"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "graph.neighbours"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "error"
+            },
+            "error": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "graph.path"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "ok"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "projection": {
+                  "$ref": "#/$defs/projection"
+                },
+                "found": {
+                  "anyOf": [
+                    {
+                      "type": "boolean"
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ]
+                },
+                "complete": {
+                  "type": "boolean"
+                }
+              },
+              "required": [
+                "projection",
+                "found",
+                "complete"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "graph.path"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "error"
+            },
+            "error": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "element.details"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "ok"
+            },
+            "payload": {
+              "type": "object",
+              "properties": {
+                "identity": {
+                  "$ref": "#/$defs/elementIdentity"
+                },
+                "attributes": {
+                  "$ref": "#/$defs/attributes"
+                }
+              },
+              "required": [
+                "identity",
+                "attributes"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "element.details"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "error"
+            },
+            "error": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "error"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "source.page"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "ok"
+            },
+            "payload": {
+              "$ref": "#/$defs/bytePage"
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "payload"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "source.page"
+            },
+            "kind": {
+              "const": "response"
+            },
+            "status": {
+              "const": "error"
+            },
+            "error": {
+              "$ref": "#/$defs/diagnostic"
+            }
+          },
+          "required": [
+            "protocol",
+            "requestId",
+            "binding",
+            "operation",
+            "kind",
+            "status",
+            "error"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "rejection": {
+      "type": "object",
+      "properties": {
+        "protocol": {
+          "const": "jai.fabric-explorer.consumer/1"
+        },
+        "kind": {
+          "const": "rejection"
+        },
+        "requestId": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "error": {
+          "$ref": "#/$defs/diagnostic"
+        }
+      },
+      "required": [
+        "protocol",
+        "kind",
+        "requestId",
+        "error"
+      ],
+      "additionalProperties": false
+    },
+    "adapterInput": {
+      "type": "object",
+      "properties": {
+        "binding": {
+          "$ref": "#/$defs/binding"
+        },
+        "sources": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/admittedSource"
+          },
+          "minItems": 1
+        },
+        "previous": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/snapshot"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "checkpointToken": {
+          "anyOf": [
+            {
+              "type": "string",
+              "minLength": 1
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "binding",
+        "sources",
+        "previous",
+        "checkpointToken"
+      ],
+      "additionalProperties": false
+    },
+    "adapterChunk": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "records"
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "vertices": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/vertex"
+              },
+              "maxItems": 5000
+            },
+            "edges": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/edge"
+              },
+              "maxItems": 20000
+            }
+          },
+          "required": [
+            "kind",
+            "binding",
+            "vertices",
+            "edges"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "diagnostics"
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "diagnostics": {
+              "type": "array",
+              "items": {
+                "$ref": "#/$defs/diagnostic"
+              },
+              "maxItems": 1000
+            },
+            "total": {
+              "$ref": "#/$defs/unsigned"
+            }
+          },
+          "required": [
+            "kind",
+            "binding",
+            "diagnostics",
+            "total"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "complete"
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "snapshot": {
+              "$ref": "#/$defs/snapshot"
+            },
+            "checkpointToken": {
+              "anyOf": [
+                {
+                  "type": "string",
+                  "minLength": 1
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "binding",
+            "snapshot",
+            "checkpointToken"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "responseChunk": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "kind": {
+              "const": "response-chunk"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "search.page"
+            },
+            "sequence": {
+              "$ref": "#/$defs/unsigned"
+            },
+            "vertices": {
+              "type": "array",
+              "maxItems": 5000,
+              "items": {
+                "$ref": "#/$defs/vertex"
+              }
+            },
+            "edges": {
+              "type": "array",
+              "maxItems": 20000,
+              "items": {
+                "$ref": "#/$defs/edge"
+              }
+            },
+            "terminal": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "hidden": {
+                      "$ref": "#/$defs/unsigned"
+                    },
+                    "complete": {
+                      "type": "boolean"
+                    },
+                    "nextCursor": {
+                      "anyOf": [
+                        {
+                          "$ref": "#/$defs/cursor"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "hidden",
+                    "complete",
+                    "nextCursor"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "protocol",
+            "kind",
+            "requestId",
+            "binding",
+            "operation",
+            "sequence",
+            "vertices",
+            "edges",
+            "terminal"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "kind": {
+              "const": "response-chunk"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "graph.neighbours"
+            },
+            "sequence": {
+              "$ref": "#/$defs/unsigned"
+            },
+            "vertices": {
+              "type": "array",
+              "maxItems": 5000,
+              "items": {
+                "$ref": "#/$defs/vertex"
+              }
+            },
+            "edges": {
+              "type": "array",
+              "maxItems": 20000,
+              "items": {
+                "$ref": "#/$defs/edge"
+              }
+            },
+            "terminal": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "snapshot": {
+                      "$ref": "#/$defs/snapshot"
+                    },
+                    "hiddenVertices": {
+                      "$ref": "#/$defs/unsigned"
+                    },
+                    "hiddenEdges": {
+                      "$ref": "#/$defs/unsigned"
+                    },
+                    "complete": {
+                      "type": "boolean"
+                    },
+                    "omissions": {
+                      "type": "array",
+                      "items": {
+                        "enum": [
+                          "filter",
+                          "visible-limit",
+                          "work-limit",
+                          "unresolved",
+                          "unavailable"
+                        ]
+                      },
+                      "uniqueItems": true
+                    }
+                  },
+                  "required": [
+                    "snapshot",
+                    "hiddenVertices",
+                    "hiddenEdges",
+                    "complete",
+                    "omissions"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "protocol",
+            "kind",
+            "requestId",
+            "binding",
+            "operation",
+            "sequence",
+            "vertices",
+            "edges",
+            "terminal"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "protocol": {
+              "const": "jai.fabric-explorer.consumer/1"
+            },
+            "kind": {
+              "const": "response-chunk"
+            },
+            "requestId": {
+              "type": "string",
+              "minLength": 1
+            },
+            "binding": {
+              "$ref": "#/$defs/binding"
+            },
+            "operation": {
+              "const": "graph.path"
+            },
+            "sequence": {
+              "$ref": "#/$defs/unsigned"
+            },
+            "vertices": {
+              "type": "array",
+              "maxItems": 5000,
+              "items": {
+                "$ref": "#/$defs/vertex"
+              }
+            },
+            "edges": {
+              "type": "array",
+              "maxItems": 20000,
+              "items": {
+                "$ref": "#/$defs/edge"
+              }
+            },
+            "terminal": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "snapshot": {
+                      "$ref": "#/$defs/snapshot"
+                    },
+                    "hiddenVertices": {
+                      "$ref": "#/$defs/unsigned"
+                    },
+                    "hiddenEdges": {
+                      "$ref": "#/$defs/unsigned"
+                    },
+                    "complete": {
+                      "type": "boolean"
+                    },
+                    "omissions": {
+                      "type": "array",
+                      "items": {
+                        "enum": [
+                          "filter",
+                          "visible-limit",
+                          "work-limit",
+                          "unresolved",
+                          "unavailable"
+                        ]
+                      },
+                      "uniqueItems": true
+                    },
+                    "found": {
+                      "anyOf": [
+                        {
+                          "type": "boolean"
+                        },
+                        {
+                          "type": "null"
+                        }
+                      ]
+                    }
+                  },
+                  "required": [
+                    "snapshot",
+                    "hiddenVertices",
+                    "hiddenEdges",
+                    "complete",
+                    "omissions",
+                    "found"
+                  ],
+                  "additionalProperties": false
+                },
+                {
+                  "type": "null"
+                }
+              ]
+            }
+          },
+          "required": [
+            "protocol",
+            "kind",
+            "requestId",
+            "binding",
+            "operation",
+            "sequence",
+            "vertices",
+            "edges",
+            "terminal"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    }
+  }
+}

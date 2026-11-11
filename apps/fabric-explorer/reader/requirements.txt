@@ -1,0 +1,7 @@
+# Runtime dependencies of the existing canonical read-only APIs consumed by the viewer.
+# Match the helper versions already exercised by the standalone feasibility probe.
+jsonschema==4.26.0
+referencing==0.37.0
+attrs==26.1.0
+rpds-py==2026.9.1
+jsonschema-specifications==2025.9.1

@@ -1,0 +1,3 @@
+# Viewer-specific synthetic fixture generation and adapter tests; not an installation payload.
+-r requirements.txt
+pytest==8.4.2

@@ -63,6 +63,22 @@ key location or an explicit alternative. Ordinary work records are unsigned.
 
 ## Install and begin
 
+The optional [Fabric Explorer](docs/fabric-explorer/index.md) provides local,
+read-only visual exploration of Fabric and findings. It is distributed and
+installed separately as a prebuilt desktop package; the JAI installer below
+does not build or install it.
+
+From a repository clone, the separate viewer installer can explicitly build
+and install the current platform's development package:
+
+```sh
+./install-viewer.sh --build --allow-development
+```
+
+Windows uses `install-viewer.cmd` with the same flags. See the
+[viewer installation guide](docs/fabric-explorer/installation.md) for build
+prerequisites and installation from an existing package without Node.js.
+
 From the reviewed source checkout, inspect the installation plan and apply it
 in your host terminal:
 

@@ -1,0 +1,17 @@
+# Semantic graph tables
+
+The visible-elements table provides a keyboard-native alternative to precise canvas picking. Choose Vertices or Relations, then use the inspect button in the desired row. Selection passes the complete canonical key to the application's inspector; the table does not infer an identity from its label or endpoint pair.
+
+The table uses a paged render window with at most 25 data rows mounted at once. Previous elements and Next elements appear before the rows so changing page does not require tabbing through the entire table. All rows of the current bounded projection remain reachable. This is bounded page virtualization, not continuous scrolling or whole-snapshot rendering. Search and graph exploration determine which records enter that projection.
+
+The caption names the displayed record category. A polite status reports the visible range, total and page. Row totals and indices include the native header row; data indices reflect the record's position across all pages, rather than restarting at the first row of each page. A changed projection or category resets to the first page. Page positions are clamped if the projected row count shrinks.
+
+Labels and identities remain separate. The inspect button's accessible name includes the global row ordinal, vertex or relation category and readable display label. Duplicate labels therefore have distinct names. The table shares the canvas/inspector's exact-key display aliases without changing semantic records. Compact source-defined entity, scope, finding or source context appears with the label. Full exact canonical keys and the original source label are available in native Identity details; relation details also contain the original From and To keys. Keys are not automatically appended as a lengthy description. They remain inert text, including when source labels contain markup-like characters.
+
+The table occupies the Elements tab in the navigation panel beside the graph. Its horizontal scrollbar exposes all columns when the panel is narrower than the table's readable minimum width. The Elements command selects and focuses that tab; selecting another tab does not remove the current graph or source snapshot.
+
+The State column shows a finding's recorded state, an unresolved reference's reason or a material vertex's availability where applicable. Other row kinds show Not applicable. The selected row has visible Selected text and an `aria-current` inspect button, so selection does not depend on colour alone. Rows outside the current page are not silently selected or substituted by matching label.
+
+Paging controls remain native focusable buttons at page boundaries, expose `aria-disabled` and ignore unavailable actions. Paging does not move selection or programmatically redirect focus. After inspection, the enclosing application owns inspector focus. Exact focus behavior, screen-reader announcements, contrast and high-DPI rendering require the application's native accessibility and visual checks; static markup tests do not establish assistive-technology conformance.
+
+`ElementTable` accepts a trusted immutable `GraphProjection` or null, a selected canonical ID or null, and `onSelect(id)`. It does not fetch data, change query filters, write source files or introduce a custom grid keyboard interaction. Stable `element-kind` and `data-element-id` selectors support the maintained desktop journey checks.
