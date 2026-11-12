@@ -14,7 +14,10 @@ application. See [architecture](architecture.md), [decisions](decisions.md),
 
 ## Toolchain and dependency admission
 
-Use Node.js 24.22.2 and npm 11.21.2 for application builds. Electron 45.2.3
+Node.js 24.22.2 and npm 11.21.2 are the recorded qualification toolchain
+baseline. Source installation accepts stable Node.js >=24.0.0 and npm >=11.0.0,
+subject to the locked dependencies' engine constraints; distribution toolchains
+do not need to match the baseline patch versions. Electron 45.2.3
 supplies the packaged Node/Chromium runtime; the viewer does not require an
 end-user Node, npm, Python or JAI installation. The import implementation is
 bundled TypeScript running in a fixed Node worker, with no external reader or

@@ -25,8 +25,26 @@ test('dry run writes nothing and invokes neither build commands nor prerequisite
   const result = installFromSource(['--build','--allow-development','--dry-run'], host);
   assert.equal(result.dryRun, true); assert.equal(called, 0); assert.equal(existsSync(host.output), false);
 });
+test('source builds accept the minimum, Fedora tools and newer stable toolchains', () => {
+  for (const [nodeVersion, npmVersion] of [['24.0.0','11.0.0'], ['24.18.0','11.16.0'], ['24.22.2','11.21.2'], ['24.22.3','11.21.3'], ['26.0.0','12.0.0'], ['24.100.0','11.100.0']]) {
+    let ran = 0;
+    const result = installFromSource(['--build','--allow-development'], ports({ nodeVersion, npmVersion, probe: () => 'GNU tar available', run() { ran++; } }));
+    assert.equal(result.development, true); assert.equal(ran, result.commands.length);
+  }
+});
+test('unsupported, malformed and prerelease toolchains reject before probes or build writes', () => {
+  for (const versions of [{ nodeVersion: '23.99.99' }, { npmVersion: '10.99.99' }, { nodeVersion: '24.0' }, { npmVersion: '11.invalid.0' }, { nodeVersion: '26.0.0-rc.1' }, { npmVersion: '12.0.0-beta.1' }]) {
+    let calls = 0;
+    assert.throws(() => installFromSource(['--build','--allow-development'], ports({ ...versions, probe() { calls++; }, run() { calls++; } })), /requires/);
+    assert.equal(calls, 0);
+  }
+});
+test('clone source dry-run accepts the actual host Node and npm without installing', { skip: process.platform === 'win32' }, () => {
+  const result = spawnSync('/bin/sh', [join(root, 'install-viewer.sh'), '--build', '--allow-development', '--dry-run'], { encoding: 'utf8', env: { ...process.env, JAI_VIEWER_NODE: process.execPath } });
+  assert.equal(result.status, 0, result.stderr); assert.equal(JSON.parse(result.stdout).dryRun, true);
+});
 test('wrong host versions and missing prerequisites reject before the first build write', () => {
-  for (const versions of [{ nodeVersion: '24.18.0' }, { npmVersion: '11.16.0' }]) assert.throws(() => installFromSource(['--build','--allow-development'], ports(versions)), /requires/);
+  for (const versions of [{ nodeVersion: '23.99.99' }, { npmVersion: '10.99.99' }]) assert.throws(() => installFromSource(['--build','--allow-development'], ports(versions)), /requires/);
   let ran = 0; assert.throws(() => installFromSource(['--build','--allow-development'], ports({ platform: 'darwin', architecture: 'arm64', probe: program => program === 'tar' ? 'bsdtar' : 'available', run() { ran++; } })), /GNU tar/); assert.equal(ran, 0);
   assert.throws(() => installFromSource(['--build','--allow-development'], ports({ probe() { throw new Error('missing tool'); }, run() { ran++; } })), /missing tool/); assert.equal(ran, 0);
 });

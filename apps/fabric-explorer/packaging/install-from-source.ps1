@@ -3,7 +3,7 @@ $ErrorActionPreference = 'Stop'
 $build = $false; $allow = $false; $dry = $false; $operation = 'install'; $directory = $null
 for ($at = 0; $at -lt $args.Count; $at++) {
   switch ($args[$at]) {
-    '--help' { Write-Output 'Usage: install-viewer.cmd --package-dir DIRECTORY [--allow-development] [--dry-run]'; Write-Output 'Source: install-viewer.cmd --build --allow-development [--dry-run]'; Write-Output 'Management: --rollback, --uninstall or --purge-preferences with --package-dir.'; Write-Output 'Source prerequisites: Node 24.22.2/npm 11.21.2, git, tar, unzip, zip; JAI_VIEWER_NODE/JAI_VIEWER_NPM_CLI select explicit host tools. No implicit downloads.'; exit 0 }
+    '--help' { Write-Output 'Usage: install-viewer.cmd --package-dir DIRECTORY [--allow-development] [--dry-run]'; Write-Output 'Source: install-viewer.cmd --build --allow-development [--dry-run]'; Write-Output 'Management: --rollback, --uninstall or --purge-preferences with --package-dir.'; Write-Output 'Source prerequisites: stable Node >=24.0.0/npm >=11.0.0, git, tar, unzip, zip; JAI_VIEWER_NODE/JAI_VIEWER_NPM_CLI select explicit host tools. No implicit downloads.'; exit 0 }
     '--build' { $build = $true }
     '--allow-development' { $allow = $true }
     '--dry-run' { $dry = $true }

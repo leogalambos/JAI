@@ -4,7 +4,16 @@ import { dirname, delimiter, isAbsolute, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 import { spawnSync } from 'node:child_process';
 const repository = resolve(dirname(fileURLToPath(import.meta.url)), '../../..');
-const NODE_VERSION = '24.22.2'; const NPM_VERSION = '11.21.2';
+const MIN_NODE_VERSION = '24.0.0'; const MIN_NPM_VERSION = '11.0.0';
+// Qualification pins describe reproducibility; host admission uses stable minimum versions.
+function meetsMinimum(version, minimum) {
+  if (!/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(version)) return false;
+  const actual = version.split('.').map(Number); const required = minimum.split('.').map(Number);
+  for (let index = 0; index < required.length; index++) {
+    if (actual[index] !== required[index]) return actual[index] > required[index];
+  }
+  return true;
+}
 /**
  * Select the current supported package target before any mutation or dependency operation.
  * @param {string} platform Node platform identifier.
@@ -41,7 +50,7 @@ export function npmCli({ env = process.env, node = process.execPath } = {}) {
   for (const candidate of candidates) {
     try { const path = realpathSync(candidate); if (path.endsWith('/npm-cli.js') || path.endsWith('\\npm-cli.js')) return path; } catch { /* Try only other existing host candidates; never fetch a replacement. */ }
   }
-  throw new Error(`npm ${NPM_VERSION} CLI missing. Install the documented host toolchain or set JAI_VIEWER_NPM_CLI to its absolute npm-cli.js.`);
+  throw new Error(`npm >=${MIN_NPM_VERSION} CLI missing. Install the documented host toolchain or set JAI_VIEWER_NPM_CLI to its absolute npm-cli.js.`);
 }
 /**
  * Describe only the current target's bounded build and verified bootstrap commands.
@@ -58,7 +67,8 @@ export function sourcePlan({ root, target, node, npm, output }) {
   return plan;
 }
 /**
- * Execute an explicit source build after checking versions and all external tools before writes.
+ * Execute an explicit source build with stable Node >=24.0.0 and npm >=11.0.0, checking external tools before writes.
+ * Package dependencies retain their own engine constraints when npm installs the locked build inputs.
  * @param {string[]} args Exact source-build command arguments.
  * @param {object} ports Injectable host facts/runner/output for deterministic plan and failure tests.
  * @returns {object} Planned commands and dry-run status.
@@ -67,9 +77,9 @@ export function sourcePlan({ root, target, node, npm, output }) {
 export function installFromSource(args, ports = {}) {
   const target = currentTarget(ports.platform ?? process.platform, ports.architecture ?? process.arch); const options = sourceOptions(args);
   const root = ports.root ?? repository; const node = ports.node ?? process.execPath; const env = ports.env ?? process.env;
-  const nodeVersion = ports.nodeVersion ?? process.versions.node; if (nodeVersion !== NODE_VERSION) throw new Error(`Source build requires Node.js ${NODE_VERSION}; found ${nodeVersion}. Set JAI_VIEWER_NODE in the entry script to an explicitly installed matching executable.`);
+  const nodeVersion = ports.nodeVersion ?? process.versions.node; if (!meetsMinimum(nodeVersion, MIN_NODE_VERSION)) throw new Error(`Source build requires stable Node.js >=${MIN_NODE_VERSION}; found ${nodeVersion}. Set JAI_VIEWER_NODE in the entry script to a supported executable if needed.`);
   const npm = ports.npm ?? npmCli({ env, node }); const npmVersion = ports.npmVersion ?? JSON.parse(readFileSync(resolve(dirname(npm), '../package.json'), 'utf8')).version;
-  if (npmVersion !== NPM_VERSION) throw new Error(`Source build requires npm ${NPM_VERSION}; found ${npmVersion}. Set JAI_VIEWER_NPM_CLI to the matching npm-cli.js.`);
+  if (!meetsMinimum(npmVersion, MIN_NPM_VERSION)) throw new Error(`Source build requires stable npm >=${MIN_NPM_VERSION}; found ${npmVersion}. Set JAI_VIEWER_NPM_CLI to a supported npm-cli.js if needed.`);
   const output = ports.output ?? join(root, 'build/fabric-explorer/source-installer', `${target}-${Date.now()}`);
   if (existsSync(output)) throw new Error('Source package output already exists; choose a fresh run instead of overwriting it.');
   const commands = sourcePlan({ root, target, node, npm, output }); const result = { target, development: true, output, dryRun: options.dryRun, requiredTools: target.startsWith('win32') ? ['git', 'tar', 'unzip', 'zip', 'powershell.exe'] : ['git', 'GNU tar', 'unzip'], commands };

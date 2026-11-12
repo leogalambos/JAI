@@ -34,15 +34,19 @@ the current platform and installs it. Network access is needed when those
 inputs are not already available locally. A previously prepared build cache is
 not a prerequisite for using a fresh clone.
 
-Source builds require Node.js **24.22.2**, npm **11.21.2**, Git and unzip. Archive
+Source builds require stable Node.js **24.0.0 or newer**, npm **11.0.0 or newer**, Git and unzip. Archive
 creation on Linux/macOS requires GNU tar on `PATH`; macOS's default BSD tar is
 not sufficient for that build path. Windows source packaging additionally
 requires tar, zip and PowerShell. The entrypoint does not install this toolchain for
 you. Unsupported hosts fail rather than silently selecting another target.
 
-Use `JAI_VIEWER_NODE` to select an absolute path to the pinned Node executable
-and `JAI_VIEWER_NPM_CLI` to select an absolute path to the matching
+Use `JAI_VIEWER_NODE` to select an absolute path to a supported Node executable
+and `JAI_VIEWER_NPM_CLI` to select an absolute path to its
 `npm-cli.js` when the intended toolchain is not selected through `PATH`.
+The system toolchain can be used directly; Fedora 44's Node.js 24.18.0 and
+npm 11.16.0 meet these minimums. Locked dependencies retain their own engine
+constraints; the qualification toolchain recorded in the dependency baseline
+is a reproducibility reference, not an exact-version installation requirement.
 The local source-build output is an unsigned development package, so the
 explicit `--allow-development` option is required. Building it does not create
 a signed release or establish native qualification for another platform.

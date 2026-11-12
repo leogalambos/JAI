@@ -16,9 +16,9 @@ Usage: ./install-viewer.sh --package-dir DIRECTORY [--allow-development] [--dry-
        ./install-viewer.sh --build --allow-development [--dry-run]
        ./install-viewer.sh --package-dir DIRECTORY --rollback|--uninstall|--purge-preferences [--allow-development] [--dry-run]
 No implicit build or download. --dry-run prints a plan without build/install subprocesses or writes.
-Source build requires Node.js 24.22.2, npm 11.21.2, git, tar, unzip (and zip on Windows).
+Source build requires stable Node.js >=24.0.0, npm >=11.0.0, git, tar, unzip (and zip on Windows).
 Non-Windows source packaging requires GNU tar on PATH; macOS BSD tar is insufficient.
-JAI_VIEWER_NODE and JAI_VIEWER_NPM_CLI can select explicitly installed matching host tools.
+JAI_VIEWER_NODE and JAI_VIEWER_NPM_CLI can select explicitly installed supported host tools.
 HELP
       exit 0;;
     --build) build=yes;;
