@@ -137,8 +137,6 @@ does not embed Prolog. See the research basis in
 
 See [LICENSE](LICENSE) and [licensing and attribution](docs/about/license-attribution.md).
 
-## Current generated inventory
-
 <!-- GENERATED-INVENTORY:START -->
 ## Current generated release inventory
 
