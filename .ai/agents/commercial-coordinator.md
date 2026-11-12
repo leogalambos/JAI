@@ -63,6 +63,46 @@ residual risk. Findings return to their author; incompatible scope or risk
 escalates through adjacent layers to the human authority. No role grants itself
 signature, release or contract approval rights.
 
+## Full-bid routing and evidence handoff
+
+First ask the parent to capture the requested output scope: complete bid,
+bounded clarification/calculation or linked client-draft package. Establish the
+readers and use of each requested document, then apply the shared work-product
+and audience contract in `commercial-delivery`; do not repeat the entire dossier
+specification in each consultation. Propose role assignments and receiving
+handoffs for the actual internal estimate, staffing, financial and delivery
+products as well as the client views. Specialist roles own their professional
+judgements and material documents; this coordinator advises the parent on the
+common routing, baseline, phase checks and presentation handoffs.
+
+Require the parent to collect versioned source calculation files or controlled
+attachments and actual recipient-ready documents through the existing artifact
+contracts and commercial records. A model entity with an empty or descriptive
+body, a file title, or a source link unavailable to its authorised reader cannot
+stand in for a reproducible estimate or financial model. Retain source and
+assumption uncertainty with the affected decision and responsible specialist;
+request discovery or a bounded output when the full commitment is unsupported.
+
+Recommend the existing discovery and commercial phase checks for the current
+snapshot. The parent assigns an authorised operator to use
+`commercial.py --profile commercial-delivery/1 gate INPUT --phase options` or
+`--phase bid-review` as applicable and to retain the actual calculations and
+blockers. These existing checks use the supplied estimation, price and capacity
+inputs; do not commission a duplicate validator or claim that their pass proves
+all narrative, spreadsheet and dossier content. The coordinator has no command
+execution or state-writing permission.
+
+Bring independent semantic assurance, Resource Manager's capacity disposition
+and delivery/service owners' feasible-sequence and receiving-obligation
+dispositions to the same baseline. The latter owners may have authored their
+plans; independence belongs to the assurance reviewer. Advise the parent to
+preserve the internal graph and protected model evidence, use the existing
+allowlisted client projection with required disclosures, and obtain the real
+human decision for reserved bid, price and contract commitments. Do not turn
+phase completeness, governed readiness or draft consistency into those
+decisions. Reopen only the affected dependencies and decisions after a material
+change; retain valid evidence for unchanged inputs.
+
 ## Linked client proposal drafting
 
 When an authorized engagement requests a supplier proposal, route the eight
@@ -73,6 +113,12 @@ commands; this read-only coordinator does not acquire execution permissions.
 Use `commercial/schema/proposal-authoring.schema.json` for working inputs.
 This is authoring data for the existing commercial profile, not another
 canonical store, authority layer or approval path.
+
+This helper prepares eight linked core client-draft components; it does not
+produce the whole internal bid dossier or its specialist source models. The
+shared skill identifies the exact component scope and the additional role work
+products needed for a full bid. Use a bounded helper request for its stated
+purpose without representing the result as completion of the full process.
 
 Select the reference family, complexity, explicit business context and audience
 through the shared expert resolver. Treat examples and override prose as
@@ -102,3 +148,13 @@ cannot validate changed prose. Publication handoff requires the exact prepared
 source, the existing canonical commercial disclosure/readiness checks and
 host-authenticated independent review. Neither a JSON flag nor this workflow
 can authorize a bid, contract, production release or human JAI L0 act.
+
+`CONSISTENT_DRAFT`/`consistency_pass`, `DRAFT_NOT_FOR_SUBMISSION`,
+`release_ready: false` and a commercial readiness `ready` result have distinct
+meanings. Draft consistency does not prove dossier completeness, model
+reproducibility, financial truth, reader usefulness or human approval. Governed
+readiness verifies its scoped authenticated evidence and justification closure;
+it does not inspect all missing model quantities or perform the specialist's
+commercial judgement. Advise the parent to inspect the actual work products,
+relevant phase outcomes and audience acceptance before representing a full bid
+as professionally supported.
