@@ -6,6 +6,12 @@ Work modes distinguish advice and assessment, artefact authoring, implementation
 
 Use roles directly as described in [usage modes](../using/usage-modes.md), or combine them through the [workflow catalogue](workflows.md). In a layered engagement, the local entity selects suitable roles for its question.
 
+The role references also provide profession-specific decision methods and
+synthetic application examples while retaining their existing output contracts.
+See [Roles and disciplines](../using/roles.md#why-the-role-model-matters) for how
+to apply them and [external research safeguards](../using/roles.md#external-research-and-confidentiality)
+for protecting public lookup queries without anonymising the deliverable itself.
+
 <!-- JAI:OUTPUT-CONTRACTS:START -->
 ## Analysis
 

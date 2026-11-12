@@ -19,7 +19,7 @@ Use an installation that includes the commercial extension and start a new provi
 | Claude Code | `/commercial <scope and source locations>` |
 | Codex CLI | `$workflow-commercial <scope and source locations>` |
 
-Identify the human commercial owner, the existing engagement if applicable, input locations and intended internal and client audiences. Explicitly request profile activation. Keep confidential sources in a protected workspace.
+Identify the human commercial owner, the existing engagement if applicable, input locations and intended internal and client audiences. Specify whether you need a complete bid, a bounded clarification/calculation or linked client drafts, and identify the readers and intended use of each document. Explicitly request profile activation. Keep confidential sources in a protected workspace.
 
 For example, choose your provider:
 
@@ -43,10 +43,74 @@ The expected sequence is:
 2. Qualify the opportunity; expose missing or conflicting information.
 3. Develop discovery questions and measurable business outcomes across the domain matrix.
 4. Obtain bounded specialist contributions and develop solution options, effort, staffing, cost, price, terms and uncertainty models.
-5. Obtain independent review of exact output versions and prepare client and internal projections.
+5. Run the applicable existing phase checks; obtain independent commercial review and same-version resource capacity, delivery/service feasibility and receiving-owner dispositions. Prepare client and internal projections.
 6. Present unresolved risks and decisions to the human owner. Monitor subsequent delivery and operations against the accepted baseline.
 
 These are orchestration instructions supported by validators, not a guarantee that a command alone executes every step. Request actual engagement, contract, output, review and evidence identifiers. Blocked gates and unknown estimates must remain visible.
+
+## Complete bid documents and readers
+
+Bid / Proposal Manager owns the dossier index, response integration and version
+alignment. Specialist authors own their supporting models and evidence. A full
+bid contains both a usable client offer and a protected internal basis for
+deciding whether, and how, to deliver it.
+
+| Work product | Readers and intended use | Required substance |
+| --- | --- | --- |
+| Client proposal and contractual scope | Client sponsor, evaluators, procurement, legal and receiving owners evaluating and commissioning the offer | Outcomes, solution and service boundaries, deliverables, acceptance, phases, responsibilities, price/payment terms, assumptions, exclusions and required disclosures. |
+| Internal bid dossier and decision view | Delegated bid authority, commercial owner and independent assurance assessing exposure and conditions | An indexed version set, options and rationale, technical baseline, specialist models, uncertainty, departures, review dispositions and actual decision status. A summary links to the detailed basis. |
+| Technical baseline and phase/work-package plan | Technical reviewers, project/delivery leads and service owners planning execution | Requirement-to-deliverable and acceptance links, activities and quantities, dependencies, transition/service/exit obligations and phase decision points. |
+| Basis of estimate and work/cost breakdown | Technical work owners, estimators, delivery planners and finance reconstructing the estimate | Attributable inputs, methods, units, productivity assumptions, effort ranges, allocation bases and accessible calculation sources. |
+| Time-phased resource pyramid and capacity plan | Resource/line managers and delivery/service owners arranging feasible staffing | Skills and seniority by period and work package, sourcing, calendars, onboarding, supervision, shared commitments, headroom and unresolved conflicts. |
+| Financial/cash-flow model and recommendation | Pricing/finance specialists, commercial decision owner and independent assurance testing economics | Reproducible cost and sell-rate bases, non-labour/lifecycle costs, reserve treatment, margin versus markup, discounts, price adjustments, payment timing and downside scenarios. |
+| Assurance and bid-to-delivery handover | Commissioning authority, responsible authors and receiving delivery/service owners acting on findings and commitments | Exact inspected versions, limitations, required rework, actual capacity/feasibility dispositions, accepted obligations and unresolved conditions. Human approvals remain separate records. |
+
+Every document or controlled view identifies its readers, task, owner,
+version/status, access boundary, supporting evidence and next action. Adapt its
+structure and detail to those readers. Preserve complete models and contractual
+annexes; a short executive view is not a substitute for them. No universal page
+limit, phase count or staffing ratio defines adequacy.
+
+### Reconcile estimates, capacity and commitments
+
+Maintain a reconstructable chain from source requirement and evidence through
+deliverable/acceptance, phase/work package, activities/quantities, skill/seniority
+and effort, calendar capacity and duration, cost, reserve/adjustment, price and
+cash terms. Shared costs and teams need explicit allocation bases and reconciled
+totals. Effort divided by nominal headcount is not evidence of a feasible
+schedule or service coverage.
+
+Count funded project work, including assigned onboarding and supervision, once
+in demand. Distinguish other commitments and true unavailability. If using a net
+capacity view, remove the same activity from both demand and supply. State
+whether rates use paid, available or productive hours and recover support costs
+once; do not deduct an activity from capacity while also charging it as full
+project demand or recover it again through a loaded rate.
+
+Estimate maturity and commitment status are separate. Distinguish supported
+estimates, provisional ranges, discovery-dependent and not-yet-estimable work
+from proposed and actually authorised price/date commitments. A discovery or
+pilot phase defines the observation, acceptance, owner and criterion for
+recalculating the next phase. Unknown later work must not acquire unsupported
+precision merely to fill an offer.
+
+Use existing `options` and `bid-review` checks on the current snapshot through
+an authorised execute-tier operator. They calculate from supplied inputs and
+report blockers; they do not establish completeness or the truth of assumptions.
+Independent commercial assurance challenges the exact models and obligations.
+Resource Manager confirms period-specific capacity, while delivery and relevant
+service owners assess feasibility and accept their receiving obligations on the
+same version set. These dispositions do not authorise submission or contracts.
+Material scope, staffing, schedule, rate or term changes reopen the affected
+models, acceptances, review and human decisions; unchanged evidence is reused.
+
+The [eight-component proposal helper](../using/proposal-production.md) produces
+linked client drafts, not this entire internal dossier. `CONSISTENT_DRAFT`,
+`consistency_pass` or governed readiness `ready` alone cannot establish complete
+models, financial truth or submission authority. Preserve the full protected
+internal basis and all required client disclosures, including open-book detail
+when policy or contract requires it. Internal/client projections are controlled
+views of the same baseline, not a reason to conceal a material limitation.
 
 ## Choose the assurance scope
 

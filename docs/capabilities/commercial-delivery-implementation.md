@@ -25,3 +25,13 @@ Calculations support decisions but do not certify accounting, legal suitability
 or contractual acceptance. A capability description is not evidence that a
 specific deployment or client deliverable has been accepted. Continue with the
 [commercial guide](commercial-delivery.md).
+
+The [complete-bid contract](commercial-delivery.md#complete-bid-documents-and-readers)
+connects these capabilities through `/commercial`, the read-only coordinator and
+specialist role work products. It requires reader-specific documents, accessible
+internal models and same-version review and receiving-owner dispositions. The
+existing phase calculations, governed readiness and internal/client projections
+support that process; none alone certifies a complete or financially sound bid.
+The [proposal helper](../using/proposal-production.md) covers linked client drafts
+and retains its provisional status, rather than producing the entire internal
+decision dossier or granting submission authority.

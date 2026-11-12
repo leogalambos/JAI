@@ -7,9 +7,14 @@ resolver, DCS registry, specialist roles and enterprise publication controls.
 Preparing a draft does not authorize an offer, contractual commitment or
 production deployment.
 
-## Choose the components
+## Choose the scope and readers
 
-The core package has eight related document kinds:
+First distinguish a complete supplier bid, a bounded clarification/calculation
+and a linked client-draft package. A complete bid follows the
+[commercial work-product and review process](../capabilities/commercial-delivery.md#complete-bid-documents-and-readers),
+including its protected internal dossier and reproducible estimate, resource and
+financial models. The proposal helper prepares eight related client-draft
+document kinds; those views alone do not constitute that complete bid:
 
 | Kind | Main audience and purpose |
 | --- | --- |
@@ -21,6 +26,13 @@ The core package has eight related document kinds:
 | `statement-of-work` | Delivery and legal reviewers: scope, acceptance and responsibilities. |
 | `rfp-response` | Evaluators: explicit, qualified answers to customer requirements. |
 | `proposal-compliance-matrix` | Bid reviewers: coverage, exceptions and evidence status. |
+
+Identify the actual readers and their decision or operational task for every
+selected document. The helper's shared audience input does not establish that
+each component suits its own readers. Use the dedicated role contracts to
+provide the necessary recipient-specific detail and keep all views on the same
+baseline. A decision summary links to its detailed evidence; it does not replace
+source calculations, an executable delivery plan or required contractual detail.
 
 Two optional offerings have their own boundaries and pricing:
 `cybersecurity-transformation-proposal` and
@@ -100,6 +112,23 @@ Use dedicated bid/proposal, estimation, commercial pricing and supplier deal
 specialists. The independent commercial assurance reviewer challenges exact
 versions and never edits or approves its own assessed proposal. Keep executive,
 technical, commercial, legal/scope and presentation review results distinct.
+
+For a complete bid, reconcile the actual internal models and client documents
+against the same version set. The existing `options` and `bid-review` phase
+checks use supplied estimate, price and capacity inputs; an authorised
+execute-tier operator runs them against the current commercial snapshot.
+Resource Manager supplies the period-specific capacity disposition, and
+delivery/service owners assess feasibility and accept receiving obligations.
+These accountable owners may have authored their plans; independent commercial
+assurance remains separate from the assessed authors. Reopen affected evidence,
+acceptances and decisions when material inputs change, retaining valid
+unaffected work.
+
+`CONSISTENT_DRAFT` and `consistency_pass` describe only the helper's checked
+consistency. Prepared content remains `DRAFT_NOT_FOR_SUBMISSION` with
+`release_ready: false`. Likewise, governed readiness `ready` does not inspect
+every model formula or establish a complete dossier. Actual work products,
+professional assessment and reserved human decisions remain necessary.
 
 ## Publication and colleague pilot
 
