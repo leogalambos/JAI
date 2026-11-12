@@ -240,6 +240,7 @@ nav:
           - Deployment notes: getting-started/deployment-notes.md
       - Operate and govern:
           - Validation and release controls: operations/validation.md
+          - Test categories and execution: operations/testing.md
           - Supported product and operator workflows: security/product-operations.md
           - Governed process dispatch: operations/governed-dispatch.md
           - Human authority and escalation: operations/human-authority.md

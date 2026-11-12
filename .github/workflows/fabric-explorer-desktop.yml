@@ -18,6 +18,11 @@ on:
       - 'tests/test_operator_journal_snapshot.py'
       - 'apps/fabric-explorer/reader/test/test_windows_readonly.py'
       - '.github/workflows/fabric-explorer-desktop.yml'
+      - 'apps/fabric-explorer/tools/**'
+      - 'apps/fabric-explorer/test-categories.json'
+      - 'ci/test-catalog.json'
+      - 'conftest.py'
+      - 'pytest.ini'
   push:
     branches: [main]
     paths:
@@ -25,6 +30,11 @@ on:
       - '.ai/runtime/tools/**'
       - 'tests/**'
       - '.github/workflows/fabric-explorer-desktop.yml'
+      - 'apps/fabric-explorer/tools/**'
+      - 'apps/fabric-explorer/test-categories.json'
+      - 'ci/test-catalog.json'
+      - 'conftest.py'
+      - 'pytest.ini'
 permissions:
   contents: read
 jobs:
@@ -59,9 +69,11 @@ jobs:
         run: npm --prefix apps/fabric-explorer/desktop run prepare:sdk
       - name: Build actual local assets and prepared native smoke offline
         run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- npm --prefix apps/fabric-explorer/desktop run build:native-smoke
-      - name: Test desktop lifecycle and real helper integration offline
-        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- npm --prefix apps/fabric-explorer/desktop test
+      - name: Test desktop semantic and helper control contracts offline
+        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- npm --prefix apps/fabric-explorer/desktop run test:control
+      - name: Test native selection contracts offline
+        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- node --test apps/fabric-explorer/tools/test-selection.test.mjs
       - name: Measure bounded synthetic graph engine offline
         run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- npm --prefix apps/fabric-explorer/desktop run test:graph-smoke
       - name: Test viewer canonical adapters offline
-        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- build/fabric-explorer/helper-venv/bin/python -m pytest -q apps/fabric-explorer/reader/test
+        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- build/fabric-explorer/helper-venv/bin/python -m pytest -q -m control apps/fabric-explorer/reader/test

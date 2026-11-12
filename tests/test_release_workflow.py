@@ -25,6 +25,9 @@ def test_publication_requires_release_tag_and_successful_validation_job():
     assert 'validate_release_tag.py --tag "$RELEASE_TAG"' in commands
     assert 'versioning.py check --tag "$RELEASE_TAG"' in commands
     assert 'git merge-base --is-ancestor HEAD refs/remotes/origin/main' in commands
+    assert 'git fetch' not in commands
+    checkout = next(step for step in validation['steps'] if step.get('uses') == 'actions/checkout@v4')
+    assert checkout['with']['fetch-depth'] == '0'
     assert commands.count('license_check.py .') == 1
     assert commands.count('generate_output_contract_docs.py --root . --check') == 1
     assert '-m pytest' not in commands
@@ -102,3 +105,30 @@ def test_pages_build_checks_generated_catalogues_and_runs_on_their_source_change
     setup = next(step for step in steps if step.get('uses') == 'actions/setup-python@v5')
     assert 'cache' not in setup['with']
     assert workflow['jobs']['deploy']['needs'] == 'build'
+
+
+def test_release_ancestry_uses_checkout_history_without_network_or_remote_credentials(tmp_path):
+    import subprocess
+    root = tmp_path / 'ancestry-checkout'
+    subprocess.run(['git', 'init', '-q', '-b', 'main', str(root)], check=True)
+    def git(*args, check=True):
+        return subprocess.run(['git', *args], cwd=root, check=check, capture_output=True, text=True)
+    (root / 'source').write_text('baseline')
+    git('add', 'source')
+    git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '-qm', 'main baseline')
+    git('remote', 'add', 'origin', 'ssh://unusable.invalid/never-contact-this-repository')
+    git('update-ref', 'refs/remotes/origin/main', 'HEAD')
+    workflow = yaml.load((ROOT / '.github/workflows/release.yml').read_text(), Loader=yaml.BaseLoader)
+    guard = next(step['run'] for step in workflow['jobs']['validate']['steps']
+                 if step.get('name') == 'Require the tagged source on main')
+    assert guard.strip().splitlines() == [
+        'set -eu', 'git merge-base --is-ancestor HEAD refs/remotes/origin/main']
+    def check_guard():
+        return subprocess.run(['bash', '-c', guard], cwd=root, capture_output=True, text=True).returncode
+    assert check_guard() == 0
+    (root / 'source').write_text('unmerged candidate')
+    git('add', 'source')
+    git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid', 'commit', '-qm', 'unmerged candidate')
+    assert check_guard() == 1
+    git('update-ref', '-d', 'refs/remotes/origin/main')
+    assert check_guard() != 0

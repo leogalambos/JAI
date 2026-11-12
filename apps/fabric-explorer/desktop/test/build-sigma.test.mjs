@@ -25,3 +25,20 @@ test('a real compiler error rejects a disposable build instead of leaving a succ
     assert.notEqual(result.status, 0); assert.match(result.stdout, /TS2322/); assert.match(result.stderr, /declaration\/type build failed/);
   } finally { await rm(fixture, { recursive: true, force: true }); }
 });
+test('test asset modes replace stale workers and preserve unrelated qualification assets', async () => {
+  const marker = join(desktop, 'dist/test-selection-preserve.fixture');
+  await mkdir(join(desktop, 'dist'), { recursive: true });
+  await writeFile(marker, 'preserve unrelated native qualification asset');
+  try {
+    for (const mode of ['--test-assets', '--test-performance-assets']) {
+      await writeFile(join(desktop, 'dist/import-worker.cjs'), 'stale worker fixture');
+      const result = spawnSync(process.execPath, [join(desktop, 'tools/build.mjs'), mode], { cwd: desktop, encoding: 'utf8' });
+      assert.equal(result.status, 0, result.stdout + result.stderr);
+      assert.notEqual(await readFile(join(desktop, 'dist/import-worker.cjs'), 'utf8'), 'stale worker fixture');
+      assert.equal(await readFile(marker, 'utf8'), 'preserve unrelated native qualification asset');
+      if (mode === '--test-performance-assets') assert.match(await readFile(join(desktop, 'dist/performance-native.cjs'), 'utf8'), /^\/\* JAI_PERF_ENTRY_BEGIN \*\//);
+    }
+    const rejected = spawnSync(process.execPath, [join(desktop, 'tools/build.mjs'), '--unknown-test-assets'], { encoding: 'utf8' });
+    assert.notEqual(rejected.status, 0); assert.match(rejected.stderr, /fixed development helper profile/);
+  } finally { await rm(marker, { force: true }); }
+});

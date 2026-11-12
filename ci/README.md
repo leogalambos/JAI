@@ -1,8 +1,43 @@
 # JAI continuous integration
 
 The source validation workflow runs offline product identity, provider policy,
-documentation and registry checks, plus selected regression modules. The Pages
+documentation and registry checks, plus curated semantic control tests. The Pages
 workflow validates and builds the public documentation independently of release.
+
+## Routine and development test selection
+
+The maintained [test categories and commands](../docs/operations/testing.md)
+cover Python, Vitest and Node tests. Routine CI runs the `control` profile:
+
+```sh
+python3 scripts/run_tests.py --profile control
+```
+
+Source validation runs its Python scope; contract and desktop jobs use their
+native `test:control` scripts. Build and built-contract checks remain in those
+jobs. Complete layered histories and download qualification are explicit full
+or environment-specific runs, rather than routine control tests.
+
+During development select affected consumers and interfaces:
+
+```sh
+python3 scripts/run_tests.py --profile development --base HEAD --list
+python3 scripts/run_tests.py --profile development --changed scripts/prepublish.py
+```
+
+Unknown impact widens verification and reports the reason. Update the maintained
+catalogue and resource impacts with new dependencies. Use `--category contract`
+to filter a profile, or `--scope python` / `--scope native` to choose a runtime.
+
+Complete maintained cross-runtime verification is explicit:
+
+```sh
+python3 scripts/run_tests.py --profile full
+```
+
+Run the complete profile once on stable sources after a broad change or before
+release; preserve valid unaffected evidence during subsequent targeted work.
+It requires all selected environments, including native download integrations.
 
 The release workflow is triggered only by a pushed `release@YY.MM.VV` tag. It
 requires that the tagged commit is on `main` and that the tag matches committed
@@ -41,7 +76,7 @@ python3 scripts/prepublish.py --root .
 ```
 
 This runs `python -u -m pytest -vv -x --tb=short --durations=20 tests` with the
-selected interpreter. The complete maintained suite is selected, output is live,
+selected interpreter. The complete root Python suite is selected, output is live,
 and the first failure stops execution without being reported as success. There
 is no mandatory aggregate runtime limit or a remote passed-receipt service.
 Use a local environment with the declared test dependencies and required tools.

@@ -5,10 +5,15 @@
 """Validate licensing of release-owned sources, excluding private workspace inputs.
 
 The release packager owns the traversal policy: INBOX and generated/private trees
-are pruned before descent. This gate does not license or inspect private inputs.
+are pruned before descent. In a Git checkout, only indexed source paths intersecting
+that release inventory are checked; untracked and ignored workspace output is
+never a header-policy input. Git-less artifacts retain filesystem inventory.
+This gate does not license or inspect private inputs.
 """
 import importlib.util
 from pathlib import Path
+import os
+import subprocess
 import sys
 ROOT=Path(__file__).resolve().parents[3]
 SPDX='SPDX-License-Identifier: BSD-4-Clause'
@@ -20,18 +25,49 @@ def _distribution_files(root):
         '_jai_license_release_bundle', Path(__file__).with_name('release_bundle.py'))
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
-    return module.files(root)
+    root = Path(root)
+    marker = root / '.git'
+    if not marker.exists() and not marker.is_symlink():
+        return module.files(root)
+    if marker.is_symlink() or not (marker.is_dir() or marker.is_file()):
+        raise ValueError('source checkout Git marker must be a regular file or directory')
+    location = subprocess.run(['git', '-C', str(root), 'rev-parse', '--show-toplevel'],
+                              capture_output=True)
+    if (location.returncode or not location.stdout
+            or Path(os.fsdecode(location.stdout).rstrip('\n')).resolve() != root.resolve()):
+        raise ValueError('source checkout Git root could not be verified')
+    inventory = subprocess.run(['git', '-C', str(root), 'ls-files', '--cached', '-z'],
+                               capture_output=True)
+    if inventory.returncode or (inventory.stdout and not inventory.stdout.endswith(b'\0')):
+        raise ValueError('source checkout tracked inventory could not be read')
+    tracked = set()
+    for raw in inventory.stdout.split(b'\0'):
+        if not raw:
+            continue
+        name = os.fsdecode(raw)
+        relative = Path(name)
+        if relative.is_absolute() or '..' in relative.parts:
+            raise ValueError('source checkout tracked inventory contains an unsafe path')
+        tracked.add(relative.as_posix())
+    return (path for path in module.files(root)
+            if path.relative_to(root).as_posix() in tracked)
 
 def check(root=ROOT):
     """Return policy violations for the root licence and packaged source files.
 
     Args:
-        root: Existing release source directory; private inputs are not traversed.
+        root: Existing release source directory. A root-owned .git directory or
+            worktree marker selects tracked checkout sources; a Git-less root
+            selects artifact files without consulting an enclosing repository.
+            Private inputs are not traversed; untracked source contents are not
+            read in checkout mode. Root LICENSE remains mandatory in both modes.
     Returns:
         A list of diagnostics, empty when every applicable policy passes.
     Raises:
         OSError: If maintained input cannot be enumerated or read.
-        ValueError: If the root is not a real distribution directory.
+        ValueError: If the root is not a real distribution directory or its Git
+            checkout marker, root identity or tracked inventory is invalid.
+            A Git failure never falls back to archive scanning or success.
     """
     root = Path(root)
     if root.is_symlink():

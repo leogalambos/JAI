@@ -32,7 +32,11 @@
     "check": "tsc -p tsconfig.json --noEmit",
     "pretest": "npm run generate",
     "test": "vitest run",
-    "test:built": "node tools/check-built-contracts.mjs"
+    "test:built": "node tools/check-built-contracts.mjs",
+    "test:control": "node ../../tools/test-selection.mjs --package contracts --profile control",
+    "test:development": "node ../../tools/test-selection.mjs --package contracts --profile development",
+    "test:full": "node ../../tools/test-selection.mjs --package contracts --profile full",
+    "test:category": "node ../../tools/test-selection.mjs --package contracts"
   },
   "dependencies": {
     "ajv": "8.20.0"

@@ -33,7 +33,6 @@ jobs:
       - name: Require the tagged source on main
         run: |
           set -eu
-          git fetch --no-tags origin main
           git merge-base --is-ancestor HEAD refs/remotes/origin/main
       - name: Validate exact release tag and committed version
         id: version

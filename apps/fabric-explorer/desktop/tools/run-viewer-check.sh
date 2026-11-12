@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
 # Run finite Linux production-DOM journeys using synthetic sources only.
 # Usage: bash apps/fabric-explorer/desktop/tools/run-viewer-check.sh [--focused]
 # Inputs: pinned installed local toolchain/Electron; no download or real project input.

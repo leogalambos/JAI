@@ -20,6 +20,8 @@ on:
       - 'mkdocs.yml'
       - 'requirements.txt'
       - 'requirements-ci.txt'
+      - 'pytest.ini'
+      - 'conftest.py'
       - 'ci/**'
       - 'README.md'
       - 'CHANGELOG.md'
@@ -65,6 +67,7 @@ jobs:
             echo 'Contract checks selected: explicit run or unavailable change baseline.'
           elif git diff --quiet "$contract_base" HEAD -- \
             apps/fabric-explorer/packages/contracts \
+            apps/fabric-explorer/tools apps/fabric-explorer/test-categories.json \
             docs/fabric-explorer/contracts.md docs/fabric-explorer/source-contract.md \
             docs/fabric-explorer/architecture.md docs/fabric-explorer/qualification.md \
             apps/fabric-explorer/test/fixtures apps/fabric-explorer/config \
@@ -105,7 +108,7 @@ jobs:
         working-directory: .
         run: |
           python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- npm --prefix apps/fabric-explorer/packages/contracts run build
-          python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- npm --prefix apps/fabric-explorer/packages/contracts test
+          python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- npm --prefix apps/fabric-explorer/packages/contracts run test:control
           python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- npm --prefix apps/fabric-explorer/packages/contracts run test:built
 
   policy:
@@ -140,13 +143,8 @@ jobs:
           python3 tools/generate_reference_completion.py --root . --role-examples --check
           python3 tools/generate_workflow_diagrams.py --root . --check
           python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 .ai/runtime/tools/expert_references.py validate --root . --all
-      - name: Fabric Explorer source and read-only feasibility checks
-        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . -- python3 -u -m pytest -q tests/test_fabric_explorer_sources.py apps/fabric-explorer/reader/test/test_windows_readonly.py tests/test_fabric_explorer_helper.py apps/fabric-explorer/reader/test/test_readonly_files.py apps/fabric-explorer/reader/test/test_read_broker.py tests/test_operator_journal_snapshot.py
-      - name: P0 runtime security application regression (host coverage reported separately)
-        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . --timeout 300 -- python3 -u -m pytest -vv -rs tests/test_agent_runtime.py tests/test_integration_adapters.py tests/test_guard_library_write.py tests/test_fabric_authority_boundary.py tests/test_governed_domain.py tests/test_gen2_command_integrations.py
-
-      - name: Execution profiles and efficiency regressions
-        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . --timeout 300 -- python3 -u -m pytest -vv -rs tests/test_execution_profiles.py tests/test_execution_stats.py tests/test_execution_profile_runtime.py tests/test_workload_routing.py tests/test_workload_routing_runtime.py tests/test_session_routing_context.py tests/test_model_execution_kind.py tests/test_professional_review.py tests/test_professional_review_cli.py
+      - name: Component and semantic interface control tests (host coverage reported separately)
+        run: python3 .ai/runtime/tools/offline_guard.py run --stream --root . --timeout 300 -- python3 scripts/run_tests.py --profile control --scope python
 
       - name: Gate checker positive and negative regression
         run: |

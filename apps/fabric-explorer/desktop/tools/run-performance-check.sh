@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
 # Run finite Linux development-composition performance observations over prepared synthetic corpora.
 # Usage: bash tools/run-performance-check.sh --smoke|--qualification|--endurance|--activity|--animation|--imports|--all ABS_HOST_INPUT_JSON
 # Inputs: reviewed manifest paths in the host-input JSON, pinned local runtimes and application sources.

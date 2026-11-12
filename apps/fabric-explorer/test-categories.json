@@ -1,0 +1,999 @@
+{
+  "version": 1,
+  "tests": [
+    {
+      "path": "apps/fabric-explorer/desktop/test/accessibility-outcome.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/app-layout.test.tsx",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/app-state.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/app.test.tsx",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/application-menu.test.tsx",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/bridge-import.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "contract",
+        "control"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/build-sigma.test.mjs",
+      "package": "desktop",
+      "runner": "node",
+      "tags": [
+        "integration"
+      ],
+      "assets": [
+        "import-worker",
+        "performance-native"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/canvas-active-size.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/canvas-density.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/canvas-input.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/canvas-labels.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/canvas-layout-visibility.test.tsx",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/canvas-loop.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/canvas-model.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/canvas-palette.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/canvas-phases.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/canvas-preparation.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/canvas-report.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/canvas-resize.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/canvas-sdk.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/canvas-size-race.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/canvas-view.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/commands.test.tsx",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/compact-store.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/controller-import.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/controller.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/direct-import.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/electron-shell.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/element-table-model.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/element-table.test.tsx",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/ergonomics-key-counter.test.tsx",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/explore-integration.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration",
+        "control"
+      ],
+      "assets": [
+        "import-worker"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/explore-lifetime.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/explore.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/finding-label.test.tsx",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/focus.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/graph-index.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/import-helper.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ],
+      "assets": [
+        "import-worker"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/import-model.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/import-native-worker.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ],
+      "assets": [
+        "import-worker"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/import-progress-poll.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/import-progress.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/import-report.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/import-session.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/import-worker-ownership.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ],
+      "assets": [
+        "import-worker"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/import-worker-validation.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "contract",
+        "control"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/inspector.test.tsx",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/integration/prepare-sigma.test.mjs",
+      "package": "desktop",
+      "runner": "node",
+      "tags": [
+        "e2e",
+        "slow"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/keyboard.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/layout-wire.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "contract",
+        "control"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/layout.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/native-exit.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/native-input.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/native-key.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/native-preload.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/node-label.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/operator-review.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/paths.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/performance-activity.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/performance-cap-evidence.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/performance-corpus.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ],
+      "assets": [
+        "import-worker"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/performance-drain.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/performance-entry.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ],
+      "assets": [
+        "performance-native"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/performance-failure.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/performance-host-support.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/performance-metrics.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/performance-plan.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/performance-process.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/performance-resident-window.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/performance-seeds.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/performance-topology.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/preferences-dialog.test.tsx",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/preferences.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/prepare-sigma.test.mjs",
+      "package": "desktop",
+      "runner": "node",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/presentation.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/public-showcase.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ],
+      "assets": [
+        "import-worker"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/read-broker.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/recorded-import.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/recorded-json.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit",
+        "control"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/recorded-projection.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/refresh-helper.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ],
+      "assets": [
+        "import-worker"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/renderer-cpu-profile.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/result-pager.test.tsx",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/security-readonly.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration",
+        "security"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/security.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit",
+        "control",
+        "security"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/semantic-broker.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/sigma-companion-factory.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/sigma-label-lifecycle.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/sigma-label-programs.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/sigma-package.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/source-flow.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/source-health.test.tsx",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/source-picker.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/theme.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/visual-pixels.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/desktop/test/workspace-layout.test.tsx",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packages/contracts/test/chunks.test.ts",
+      "package": "contracts",
+      "runner": "vitest",
+      "tags": [
+        "contract"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packages/contracts/test/consumer.test.ts",
+      "package": "contracts",
+      "runner": "vitest",
+      "tags": [
+        "contract",
+        "control"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packages/contracts/test/identity-codec.test.ts",
+      "package": "contracts",
+      "runner": "vitest",
+      "tags": [
+        "contract"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packages/contracts/test/identity.test.ts",
+      "package": "contracts",
+      "runner": "vitest",
+      "tags": [
+        "contract"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packages/contracts/test/model.test.ts",
+      "package": "contracts",
+      "runner": "vitest",
+      "tags": [
+        "contract"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packages/contracts/test/schema-validation.test.ts",
+      "package": "contracts",
+      "runner": "vitest",
+      "tags": [
+        "contract",
+        "control"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packages/contracts/test/semantic.test.ts",
+      "package": "contracts",
+      "runner": "vitest",
+      "tags": [
+        "contract",
+        "control"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packages/contracts/test/validation.test.ts",
+      "package": "contracts",
+      "runner": "vitest",
+      "tags": [
+        "contract"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packages/contracts/test/wire.test.ts",
+      "package": "contracts",
+      "runner": "vitest",
+      "tags": [
+        "contract",
+        "control"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packaging/test/bootstrap.test.ts",
+      "package": "packaging",
+      "runner": "node",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packaging/test/install-from-source.test.mjs",
+      "package": "packaging",
+      "runner": "node",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packaging/test/installer-cli.test.ts",
+      "package": "packaging",
+      "runner": "node",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packaging/test/installer-files.test.ts",
+      "package": "packaging",
+      "runner": "node",
+      "tags": [
+        "integration",
+        "control",
+        "security"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packaging/test/installer.test.ts",
+      "package": "packaging",
+      "runner": "node",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packaging/test/integration/package-runtime.test.mjs",
+      "package": "packaging",
+      "runner": "node",
+      "tags": [
+        "e2e",
+        "slow"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packaging/test/integration/source-entry.test.mjs",
+      "package": "packaging",
+      "runner": "node",
+      "tags": [
+        "e2e",
+        "slow"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packaging/test/manifest.test.ts",
+      "package": "packaging",
+      "runner": "node",
+      "tags": [
+        "contract",
+        "control",
+        "security"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packaging/test/package-inspect.test.mjs",
+      "package": "packaging",
+      "runner": "node",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packaging/test/package-sidecars.test.mjs",
+      "package": "packaging",
+      "runner": "node",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/packaging/test/package.test.mjs",
+      "package": "packaging",
+      "runner": "node",
+      "tags": [
+        "integration"
+      ]
+    },
+    {
+      "path": "apps/fabric-explorer/tools/test-selection.test.mjs",
+      "package": "selection",
+      "runner": "node",
+      "tags": [
+        "integration",
+        "control"
+      ]
+    }
+  ],
+  "assets": {
+    "import-worker": {
+      "source": "apps/fabric-explorer/desktop/src/import/worker.ts",
+      "output": "dist/import-worker.cjs"
+    },
+    "performance-native": {
+      "source": "apps/fabric-explorer/desktop/test/performance-native.ts",
+      "output": "dist/performance-native.cjs"
+    }
+  }
+}

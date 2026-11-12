@@ -1,3 +1,5 @@
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
 """Public-source extraction and real canonical-writer coverage; no example authority decisions."""
 import json
 from pathlib import Path

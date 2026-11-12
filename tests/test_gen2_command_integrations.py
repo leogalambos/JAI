@@ -43,18 +43,12 @@ def test_all_commands_preserve_provider_bodies_and_complete_role_resources():
         assert (ROOT / '.ai' / role['path']).is_file()
     workflow = yaml.safe_load((ROOT / '.github/workflows/validate-library.yml').read_text())
     runtime_steps = [step for step in workflow['jobs']['policy']['steps']
-                     if step.get('name') == 'P0 runtime security application regression (host coverage reported separately)']
-    assert len(runtime_steps) == 1, 'The named runtime security group must exist exactly once'
-    runtime_step = runtime_steps[0]['run']
-    assert isinstance(runtime_step, str)
-    test_paths = {token for token in shlex.split(runtime_step)
-                  if token.startswith('tests/') and token.endswith('.py')}
-    assert test_paths == {
-        'tests/test_agent_runtime.py', 'tests/test_integration_adapters.py',
-        'tests/test_guard_library_write.py', 'tests/test_fabric_authority_boundary.py',
-        'tests/test_governed_domain.py', 'tests/test_gen2_command_integrations.py',
-    }
-    assert all((ROOT / path).is_file() for path in test_paths)
+                     if step.get('name') == 'Component and semantic interface control tests (host coverage reported separately)']
+    assert len(runtime_steps) == 1, 'The semantic control group must exist exactly once'
+    command = shlex.split(runtime_steps[0]['run'])
+    assert command[-5:] == ['scripts/run_tests.py', '--profile', 'control', '--scope', 'python']
+    assert 'offline_guard.py' in ' '.join(command)
+    assert '--timeout' in command
 
 
 def test_consequential_branches_reach_one_native_handoff_and_preserve_ordinary_scope():

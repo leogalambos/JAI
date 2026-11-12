@@ -11,6 +11,11 @@ independent from the author. After a repair, verify the affected boundary.
 Reuse still-applicable evidence for unchanged mechanisms rather than repeating
 the entire history or every workflow combination.
 
+Use the [test categories and execution profiles](testing.md) to choose bounded
+semantic controls for workflow checks and affected tests during development.
+Complete regression verification remains a separate stable-change or
+prepublication activity.
+
 Evidence must describe what actually happened. A controlled example, simulated
 response, rendered page, declared capability and live professional execution
 are different observations. None should be presented as another.

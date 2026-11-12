@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
 # Qualify viewer accessibility using fixed synthetic sources and explicit visual/keyboard observations.
 # Usage: bash apps/fabric-explorer/desktop/tools/run-accessibility-check.sh [--automatic|--manual|--visual-details]
 # Default: build once, run finite automation, then open the four-step Czech visual/keyboard session.

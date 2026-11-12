@@ -1,4 +1,7 @@
-/** Build fixed local application assets; sandboxed preload may depend externally only on Electron. */
+/** Build fixed local application assets; sandboxed preload may depend externally only on Electron.
+ * --test-assets and --test-performance-assets rebuild test-consumed bundles without deleting
+ * unrelated qualification assets. Other supported flags build the corresponding native helper.
+ */
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { builtinModules } from 'node:module';
@@ -9,7 +12,7 @@ import { build } from 'vite';
 
 const directory = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const native = process.argv.slice(2);
-if (native.some(value => !['--with-native-smoke', '--with-accessibility-manual', '--with-security-check', '--with-performance-check'].includes(value)) || native.length > 1) throw new Error('Choose one fixed development helper profile');
+if (native.some(value => !['--with-native-smoke', '--with-accessibility-manual', '--with-security-check', '--with-performance-check', '--test-assets', '--test-performance-assets'].includes(value)) || native.length > 1) throw new Error('Choose one fixed development helper profile');
 // A fresh script-disabled directory-link install has no generated SDK assets.
 const { buildSigma } = await import('./build-sigma.mjs');
 await buildSigma({ offline: native.length > 0 });
@@ -39,6 +42,11 @@ console.log('JAI_PERF_EVENT ' + JSON.stringify({ name: 'native-entry', monotonic
   });
 }
 
+const testAssets = native[0] === '--test-assets' || native[0] === '--test-performance-assets';
+if (testAssets) {
+  await bundle('src/import/worker.ts', 'import-worker.cjs');
+  if (native[0] === '--test-performance-assets') await bundle('test/performance-native.ts', 'performance-native.cjs');
+} else {
 await bundle('src/main.ts', 'main.cjs', false, true);
 await bundle('src/import/worker.ts', 'import-worker.cjs');
 const preload = await bundle('src/preload.ts', 'preload.cjs', true);
@@ -99,3 +107,5 @@ if (native[0] === '--with-native-smoke') {
   }
 }
 console.log(`Built fixed main/preload/renderer assets${native.length ? ' and development-only qualification helpers' : ''}.`);
+
+}

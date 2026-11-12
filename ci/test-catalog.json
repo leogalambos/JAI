@@ -1,0 +1,1046 @@
+{
+  "version": 1,
+  "modules": {
+    "apps/fabric-explorer/benchmarks/test/test_corpus.py": {
+      "category": "integration",
+      "rationale": "Canonical generator pilot boundaries; no performance thresholds are measured here. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "apps/fabric-explorer/examples/test_public_workflows.py": {
+      "category": "integration",
+      "rationale": "Public-source extraction and real canonical-writer coverage; no example authority decisions. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "apps/fabric-explorer/qualification/test/test_fixtures.py": {
+      "category": "integration",
+      "rationale": "Actual owned filesystem/ACL fixture tests; no product or GUI qualification is inferred. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "apps/fabric-explorer/qualification/test/test_trace.py": {
+      "category": "integration",
+      "rationale": "Synthetic syscall counterexamples and actual isolated CLI checks; no invented product trace. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "apps/fabric-explorer/reader/test/test_cap_diagnostic.py": {
+      "category": "integration",
+      "rationale": "Actual isolated helper checks for the development-only cap observer. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "apps/fabric-explorer/reader/test/test_facts_memory_pilot.py": {
+      "category": "integration",
+      "rationale": "Diagnostic accounting boundaries; actual matched canonical conditions run separately once. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "apps/fabric-explorer/reader/test/test_facts_spool.py": {
+      "category": "integration",
+      "rationale": "Private fact storage retention and real-filesystem lifecycle integration tests. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "apps/fabric-explorer/reader/test/test_read_broker.py": {
+      "category": "integration",
+      "rationale": "Real retained-root broker admission and fixed-helper byte transport integration. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "apps/fabric-explorer/reader/test/test_reader_ownership.py": {
+      "category": "integration",
+      "rationale": "The viewer owns its filesystem adapters without installing them into canonical tools. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "apps/fabric-explorer/reader/test/test_readonly_files.py": {
+      "category": "integration",
+      "rationale": "Real-filesystem retained-root snapshot boundaries; no source ledger mutation. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "apps/fabric-explorer/reader/test/test_semantic_reader.py": {
+      "category": "integration",
+      "rationale": "Viewer-owned real-reader parity and retained-capture negative integration cases. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "apps/fabric-explorer/reader/test/test_windows_readonly.py": {
+      "category": "integration",
+      "rationale": "Portable handle-contract checks and separately marked native Windows tests. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "apps/fabric-explorer/reader/test/test_wire_json.py": {
+      "category": "integration",
+      "rationale": "Lossless bounded UTF-8 JSON transport across Python accounting and Node decoding. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_agent_runtime.py": {
+      "category": "integration",
+      "rationale": "Legacy compatibility diagnostics never confer execution authority. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_archimate_profile.py": {
+      "category": "integration",
+      "rationale": "Exercise versioned metamodel, notation and offline exchange-schema boundaries. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_check_agent_policy.py": {
+      "category": "integration",
+      "rationale": "Policy-validator text parsing must preserve safely quoted role metadata. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_ci_environment_contract.py": {
+      "category": "integration",
+      "rationale": "Keep shared qualification dependencies separate from documentation publishing. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_commercial.py": {
+      "category": "integration",
+      "rationale": "CLI integration tests; no provider or protected source reads. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_commercial_core.py": {
+      "category": "integration",
+      "rationale": "Public contract and real-filesystem tests for the additive commercial core. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_commercial_economics.py": {
+      "category": "integration",
+      "rationale": "Commercial calculator acceptance and boundary tests; run by independent verifier. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_commercial_lifecycle.py": {
+      "category": "integration",
+      "rationale": "Local deterministic host-verifier simulations; no live authority is issued. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_commercial_plan.py": {
+      "category": "integration",
+      "rationale": "Executable approved task-DAG regression fixtures. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_commercial_policy.py": {
+      "category": "integration",
+      "rationale": "Regression coverage for the commercial coordinator's least-privilege contract. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_commercial_proposal.py": {
+      "category": "integration",
+      "rationale": "Offline practical proposal authoring and independent-component consistency. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_commercial_router.py": {
+      "category": "integration",
+      "rationale": "Routing discovery, consultation and fail-closed adapter regression tests. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_commercial_scheduler.py": {
+      "category": "integration",
+      "rationale": "Dependency/calendar scheduling and service roster acceptance tests. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_commercial_snapshot_schema.py": {
+      "category": "integration",
+      "rationale": "Commercial snapshot schema closure and compatibility at public boundaries. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_commercial_specialist_contracts.py": {
+      "category": "integration",
+      "rationale": "Native commercial contract provenance, migration preservation and projection regressions. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_content_adjudication.py": {
+      "category": "integration",
+      "rationale": "Measure independent professional review without converting scores to authority. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_content_calibration.py": {
+      "category": "integration",
+      "rationale": "Verify generated observations never imply approved numerical quality gates. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_content_catalog.py": {
+      "category": "integration",
+      "rationale": "Foundation catalogue traceability and reproducible synthetic mutation checks. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_content_eval.py": {
+      "category": "integration",
+      "rationale": "Regression tests for actual-detector pilot metrics and mutation isolation. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_content_integration.py": {
+      "category": "integration",
+      "rationale": "Integration coverage for optional DCS packaging and provider parity. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_content_lint.py": {
+      "category": "integration",
+      "rationale": "Exercise deterministic DCS rules and explicit synthetic host trust boundaries. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_content_metrics.py": {
+      "category": "integration",
+      "rationale": "Check observed modality counts, soft budgets and located semantic repetition. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_content_provider_parity.py": {
+      "category": "integration",
+      "rationale": "Behavioral provider parity across the shared deterministic content CLI. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_content_publication.py": {
+      "category": "integration",
+      "rationale": "DCS projection source fidelity and publication boundary regressions. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_content_scenarios.py": {
+      "category": "integration",
+      "rationale": "Exercise deterministic multistep delivery and rejection without providers. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_content_spec.py": {
+      "category": "integration",
+      "rationale": "DCS foundation contract and adversarial filesystem integration tests. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_content_workflow.py": {
+      "category": "integration",
+      "rationale": "Exercise all explicit workflow handoffs and the existing host identity boundary. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_demo_scenarios.py": {
+      "category": "integration",
+      "rationale": "Filesystem regressions for offline scenario exercises. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_deployment_rehearsal.py": {
+      "category": "e2e",
+      "rationale": "Full transport/progression or deployed-system rehearsal; retain for complete verification, exclude from routine control.",
+      "tags": [
+        "slow"
+      ]
+    },
+    "tests/test_docs_contract.py": {
+      "category": "integration",
+      "rationale": "Exercise documentation scenario contracts against real temporary files. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_documentation_navigation.py": {
+      "category": "integration",
+      "rationale": "Regression tests for one canonical navigation tree and homepage rendering. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_documentation_review_regressions.py": {
+      "category": "integration",
+      "rationale": "Guard corrected public authority, schema and onboarding contracts. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_ea_conformance.py": {
+      "category": "integration",
+      "rationale": "Exercise loss reporting at the actual exchange-file boundary. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_evaluation_package.py": {
+      "category": "integration",
+      "rationale": "Local evaluation packaging, missing-data and digest isolation regressions. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_execution_profile_runtime.py": {
+      "category": "integration",
+      "rationale": "Profiles cross real bootstrap, selection, provider and analytics boundaries. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_execution_profiles.py": {
+      "category": "integration",
+      "rationale": "Execution preferences are explicit, pinned and independent of authority. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_execution_record.py": {
+      "category": "integration",
+      "rationale": "ExecutionRecord compatibility and tamper detection do not imply immutable storage. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_execution_stats.py": {
+      "category": "integration",
+      "rationale": "Honest incremental model-time analytics and private project history. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_expert_references.py": {
+      "category": "integration",
+      "rationale": "Exercise real offline references and adversarial scoped filesystem inputs. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_fabric.py": {
+      "category": "integration",
+      "rationale": "The canonical CLI parses proposals; the sole trusted runtime recorder writes. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_fabric_authority_boundary.py": {
+      "category": "integration",
+      "rationale": "Local operator access does not substitute for explicit signed L0 decisions. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_fabric_explorer_helper.py": {
+      "category": "integration",
+      "rationale": "Read-only source probe checks before native experimental packaging. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_fabric_explorer_sources.py": {
+      "category": "integration",
+      "rationale": "Keep the explorer's synthetic input inventory aligned with canonical readers. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_fabric_lifecycle_runtime.py": {
+      "category": "integration",
+      "rationale": "Real ledger/material integrity boundaries, beyond message-level signature tests. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_findings.py": {
+      "category": "integration",
+      "rationale": "Findings archive preserves event bytes and refuses unsafe or active inputs. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_framework_applicability.py": {
+      "category": "integration",
+      "rationale": "Operational source applicability remains a reviewed, proposed DCS obligation. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_gen2_command_integrations.py": {
+      "category": "contract",
+      "rationale": "Checks maintained producer/consumer schemas, projection or published interface semantics against real repository resources."
+    },
+    "tests/test_generate_commercial_catalog.py": {
+      "category": "integration",
+      "rationale": "Canonical discovery projection and drift detection regression tests. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_generate_content_workflows.py": {
+      "category": "integration",
+      "rationale": "Protect exact canonical workflow coverage without pinning a stale step total. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_generate_reference_completion.py": {
+      "category": "integration",
+      "rationale": "Exercise generated cases, immutable baseline preservation and path ownership. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_accepted_use.py": {
+      "category": "integration",
+      "rationale": "Accepted scoped facts advance work; explicit changes withdraw their use. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_assessment_memo.py": {
+      "category": "integration",
+      "rationale": "Completed checks are reused only inside one stable recursive assessment. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_assessment_walk.py": {
+      "category": "integration",
+      "rationale": "A recursive assessment shares work, never current permission across operations. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_atomic_applicability.py": {
+      "category": "integration",
+      "rationale": "A replacement cannot consume support that its own transition withdraws. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_audit.py": {
+      "category": "integration",
+      "rationale": "Audit observes exact Gen2 facts without granting or rewriting anything. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_cross_scope_pause.py": {
+      "category": "integration",
+      "rationale": "Pause follows actual scoped dependencies, not blob equality or scope names. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_delivery.py": {
+      "category": "integration",
+      "rationale": "Closed-schema freshness and real external-proof boundary regressions. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_delivery_protocol.py": {
+      "category": "contract",
+      "rationale": "Checks maintained producer/consumer schemas, projection or published interface semantics against real repository resources."
+    },
+    "tests/test_governed_delivery_runtime.py": {
+      "category": "integration",
+      "rationale": "Actual signed governed transitions, separate from structural P02 examples. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_dispatch.py": {
+      "category": "integration",
+      "rationale": "Real process containment and exact captured governed completion contracts. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_dispatch_material.py": {
+      "category": "integration",
+      "rationale": "Packet assembly preserves the exact material availability/error boundary. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_dispatch_returns.py": {
+      "category": "integration",
+      "rationale": "Isolated return projection; this collaborator proves no journal authority. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_domain.py": {
+      "category": "integration",
+      "rationale": "Actual Store/native-capture fixtures qualify mechanics, not professional truth. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_effect_graph_work.py": {
+      "category": "integration",
+      "rationale": "Bound graph work to changed edges, using actual in-memory State primitives. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_escalation_relay.py": {
+      "category": "integration",
+      "rationale": "One genuine transport entry precedes an L2\u2013L1\u2013L0 escalation relay. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_escalation_scheduling.py": {
+      "category": "integration",
+      "rationale": "Three real signed histories for pause, bounded risk, and productive readiness. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_exclusion_support.py": {
+      "category": "integration",
+      "rationale": "Only a necessary explicit content exception governs a qualified output. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_execution_phases.py": {
+      "category": "integration",
+      "rationale": "A real local chooser produces the intrinsic choice consumed by fresh work. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_final_acceptance.py": {
+      "category": "integration",
+      "rationale": "Reviewed final reports require separate exact human acceptance and release. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_incremental_store.py": {
+      "category": "integration",
+      "rationale": "Ordinary recording advances a verified prefix without internal credentials. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_invocations.py": {
+      "category": "integration",
+      "rationale": "Offline physical-call reservation, replay and exact member grant boundaries. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_layered.py": {
+      "category": "integration",
+      "rationale": "Layered front-door ingress and resume preserve the existing governed facts. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_local_budget.py": {
+      "category": "integration",
+      "rationale": "Local operational windows preserve accepted work and exact operator decisions. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_local_budget_frontend.py": {
+      "category": "integration",
+      "rationale": "Native front-door local budgets without a fabricated aggregate task deadline. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_local_layer.py": {
+      "category": "e2e",
+      "rationale": "One genuine local six-question full history, roughly 107 native phases; preserve shared fixture in complete suite.",
+      "tags": [
+        "slow"
+      ]
+    },
+    "tests/test_governed_local_returns.py": {
+      "category": "integration",
+      "rationale": "A coordinator consumes profile-governed local outputs, including observations. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_native_batches.py": {
+      "category": "integration",
+      "rationale": "Physical invocation contracts through the real Store and semantic codec. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_native_provider.py": {
+      "category": "integration",
+      "rationale": "Real production bootstrap and existing projection/native packaging contracts. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_native_session.py": {
+      "category": "integration",
+      "rationale": "Actual shared Store, native-origin and durable physical-effect boundaries. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_neighbor_delivery.py": {
+      "category": "integration",
+      "rationale": "One actual acyclic adjacent-layer receiving and assignment transfer. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_pending_assessment.py": {
+      "category": "integration",
+      "rationale": "Pending root qualification must not establish governing use or permissions. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_probe.py": {
+      "category": "integration",
+      "rationale": "Native probes must observe real denial, rather than declare confinement. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_productivity.py": {
+      "category": "integration",
+      "rationale": "Standing local plans retain history without granting future stale work. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_recording_guards.py": {
+      "category": "integration",
+      "rationale": "One validated runtime transition must survive exact serialized persistence. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_records.py": {
+      "category": "integration",
+      "rationale": "Pure producer record encoding contracts, without a Store or authority grant. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_review_generation.py": {
+      "category": "integration",
+      "rationale": "Pure cohort identity ignores aliases without admitting any professional work. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_routing.py": {
+      "category": "integration",
+      "rationale": "Global professional availability does not dictate any layer's local staff. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_routing_artifacts.py": {
+      "category": "integration",
+      "rationale": "Committed routing bytes remain exact and cannot be added or replayed twice. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_routing_cache.py": {
+      "category": "integration",
+      "rationale": "Accepted routing views stay detached; material access checks exact current bytes. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_routing_evolution.py": {
+      "category": "integration",
+      "rationale": "Signed routing-policy evolution preserves exact historical control bytes. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_routing_runtime.py": {
+      "category": "integration",
+      "rationale": "Real local-writer journal admission and immutable routing-artifact replay. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_runtime_recording.py": {
+      "category": "integration",
+      "rationale": "Local runtime recording is keyless; explicit L0 decisions remain signed. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_sabsa_content.py": {
+      "category": "integration",
+      "rationale": "Pure structural contracts; these examples are not reviewed engagement results. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_sabsa_integrated.py": {
+      "category": "integration",
+      "rationale": "One recorded Store engagement covers the semantic six-layer delivery closure. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_sabsa_runtime.py": {
+      "category": "integration",
+      "rationale": "Signed L1 semantic qualification, exact reviews, and audience projections. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_scheduling_dispatch.py": {
+      "category": "integration",
+      "rationale": "One actual quiet cancellation and signed speculative continuation history. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_selection_index.py": {
+      "category": "integration",
+      "rationale": "Indexed selectors preserve the historical scan's precise applicability rules. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_semantic.py": {
+      "category": "integration",
+      "rationale": "Semantic return encoding contracts, without native calls or Store admission. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_setter_batch.py": {
+      "category": "integration",
+      "rationale": "Lawful same-setter decisions batch atomically under the shared interpreter. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_stage_checkpoint.py": {
+      "category": "integration",
+      "rationale": "A retained genuine fixture resumes one stage without fabricating prior work. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_state_fork.py": {
+      "category": "integration",
+      "rationale": "State owns mutable data, not the external material-reader capability. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_store_lock.py": {
+      "category": "integration",
+      "rationale": "A killed writer releases native ownership without deleting lock sentinels. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_governed_transport_layers.py": {
+      "category": "e2e",
+      "rationale": "Full transport/progression or deployed-system rehearsal; retain for complete verification, exclude from routine control.",
+      "tags": [
+        "slow"
+      ]
+    },
+    "tests/test_governed_workflow.py": {
+      "category": "integration",
+      "rationale": "One-step host workflow preserves actual entity choice and captured returns. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_guard_authority.py": {
+      "category": "integration",
+      "rationale": "Synthetic subprocess regressions for signing-directory recognition; no keys are accessed. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_guard_library_write.py": {
+      "category": "integration",
+      "rationale": "Defense-in-depth hook never treats agent-written JSON as external approval. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_guide_alias.py": {
+      "category": "integration",
+      "rationale": "One Git guide alias becomes regular canonical help in installations and ZIPs. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_hint.py": {
+      "category": "integration",
+      "rationale": "Deterministic advisory selection, failure boundaries and installed CLI tests. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_hint_integration.py": {
+      "category": "integration",
+      "rationale": "Verify experimental hint provider projection and real installed tool boundaries. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_hint_metadata.py": {
+      "category": "integration",
+      "rationale": "Discovery metadata validation and installed-runtime compatibility. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_hint_readiness.py": {
+      "category": "integration",
+      "rationale": "Versioned offline advisory cases; no live translation or model quality claim. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_installer.py": {
+      "category": "integration",
+      "rationale": "Install-time provider projections preserve canonical runtime bindings. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_integration_adapters.py": {
+      "category": "integration",
+      "rationale": "Reference adapters retain dry-run workflows and reject forged local authority. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_jai_pages_and_release.py": {
+      "category": "integration",
+      "rationale": "Small, offline regressions for homepage source URLs and release tag rules. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_knowledge.py": {
+      "category": "integration",
+      "rationale": "Explicit local knowledge authoring and immutable filesystem boundary regressions. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_knowledge_capacity.py": {
+      "category": "integration",
+      "rationale": "Public persistence admission preserves bounded reader usability at capacity. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_knowledge_capture.py": {
+      "category": "integration",
+      "rationale": "Conversational capture coordination against real temporary libraries. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_knowledge_retrieval.py": {
+      "category": "integration",
+      "rationale": "Opt-in knowledge retrieval and recoverable lifecycle integration tests. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_license_policy_regression.py": {
+      "category": "integration",
+      "rationale": "Verify the same licensing policy during unit tests as during Gate H. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_lifecycle.py": {
+      "category": "integration",
+      "rationale": "Pure immutable identity contracts; signed runtime cases live in governed tests. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_model_execution_kind.py": {
+      "category": "integration",
+      "rationale": "Captured process capability declarations do not relabel native AI execution. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_model_router.py": {
+      "category": "integration",
+      "rationale": "Explicit captured model resolution remains separate from ambient preparation. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_native_enforcement_26104.py": {
+      "category": "integration",
+      "rationale": "Regression coverage for the active catalogue and signed governed recording. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_office_renderer.py": {
+      "category": "integration",
+      "rationale": "Strict renderer prerequisites and isolated conversion, not host qualification. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_offline_guard.py": {
+      "category": "integration",
+      "rationale": "Prove process-tree network denial and explicit provider-call rejection. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_operator_actions.py": {
+      "category": "integration",
+      "rationale": "Application protocol/crypto checks; these do not prove host key separation. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_operator_journal_snapshot.py": {
+      "category": "integration",
+      "rationale": "Journal resource snapshots retain input-file safety without a history-size cap. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_operator_keys.py": {
+      "category": "integration",
+      "rationale": "Confirmed installer key provisioning uses disposable local crypto material. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_optional_provider_eval.py": {
+      "category": "integration",
+      "rationale": "Provider harness boundary tests use only disposable fake executables. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_output_contract_docs.py": {
+      "category": "contract",
+      "rationale": "Checks maintained producer/consumer schemas, projection or published interface semantics against real repository resources."
+    },
+    "tests/test_prepublish.py": {
+      "category": "integration",
+      "rationale": "Local prepublication entry preserves the complete pytest selection and result. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_professional_output_refinements.py": {
+      "category": "integration",
+      "rationale": "Keep professional conclusions reconstructible from their selected contracts. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_professional_review.py": {
+      "category": "integration",
+      "rationale": "Retained professional review prerequisites bind exact executed producer pairs. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_professional_review_cli.py": {
+      "category": "integration",
+      "rationale": "Read-only SABSA pair diagnostics and immutable professional review prerequisites. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_projection.py": {
+      "category": "integration",
+      "rationale": "Retained projection utility contracts, including negative coverage decisions. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_provider_projection.py": {
+      "category": "integration",
+      "rationale": "The installer and installed native bridge share one projection renderer. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_publication.py": {
+      "category": "integration",
+      "rationale": "PDF publication routes through strict native conversion, never stale output. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_reference_bindings.py": {
+      "category": "integration",
+      "rationale": "Explicit reference mapping, proposed semantics and historical compatibility. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_reference_completion.py": {
+      "category": "integration",
+      "rationale": "Every selected professional family has usable illustrative references. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_release_bundle.py": {
+      "category": "integration",
+      "rationale": "Distribution privacy and deterministic packaging, using disposable sources only. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_release_workflow.py": {
+      "category": "integration",
+      "rationale": "Offline release orchestration checks; no tag or publication is executed. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_repository.py": {
+      "category": "integration",
+      "rationale": "Check repository identities, typed properties and real exchange/view operations. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_role_deliverable_fitness.py": {
+      "category": "integration",
+      "rationale": "Regression checks for professional meaning in canonical role deliverables. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_role_output_guidance.py": {
+      "category": "contract",
+      "rationale": "Checks maintained producer/consumer schemas, projection or published interface semantics against real repository resources."
+    },
+    "tests/test_runtime_dependencies.py": {
+      "category": "unit",
+      "rationale": "Dependency metadata collaborators are patched; outcomes are pure compatibility/status values."
+    },
+    "tests/test_runtime_resources.py": {
+      "category": "integration",
+      "rationale": "Exercise runtime file ownership in isolated interpreters and temporary fixtures. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_sabsa_ea_profile.py": {
+      "category": "integration",
+      "rationale": "Check edition-bound SABSA projection through actual local files and CLI routes. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_sabsa_exchange.py": {
+      "category": "integration",
+      "rationale": "CSV exchange and real document integration coverage. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_sabsa_narrative.py": {
+      "category": "integration",
+      "rationale": "Source fidelity, typed narrative publication and example integration contracts. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_sabsa_resources.py": {
+      "category": "integration",
+      "rationale": "Regression coverage for SABSA-owned file resource lifetimes. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_schema_check.py": {
+      "category": "contract",
+      "rationale": "Checks maintained producer/consumer schemas, projection or published interface semantics against real repository resources."
+    },
+    "tests/test_schema_resolver.py": {
+      "category": "integration",
+      "rationale": "Release-scope stdlib validation agrees with the maintained JSON Schema. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_session_routing_context.py": {
+      "category": "integration",
+      "rationale": "Session profile/context transport reaches real new-run capture and cold resume. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_supply_chain.py": {
+      "category": "integration",
+      "rationale": "Distribution-scoped supply-chain provenance and private input regressions. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_version_decoupling.py": {
+      "category": "integration",
+      "rationale": "Protect product-version/material contract independence across future releases. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_visual_qa.py": {
+      "category": "integration",
+      "rationale": "Transparent SVGs are judged as visible paper pixels without relaxed thresholds. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_workflow_diagrams.py": {
+      "category": "integration",
+      "rationale": "Protect complete workflow labels, figure ownership and readable SVG geometry. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_workload_routing.py": {
+      "category": "integration",
+      "rationale": "Explicit workload routing is reversible, scoped and independently captured. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_workload_routing_runtime.py": {
+      "category": "integration",
+      "rationale": "Real native selection/dispatch and telemetry obey explicit routing semantics. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
+    },
+    "tests/test_test_selection.py": {
+      "category": "integration",
+      "rationale": "Selection framework real filesystem/CLI checks; pure helper cases override explicitly."
+    },
+    "tests/test_test_workflow_selection.py": {
+      "category": "contract",
+      "rationale": "Selection framework real filesystem/CLI checks; pure helper cases override explicitly."
+    }
+  },
+  "control": {
+    "tests/test_governed_delivery_protocol.py::test_published_positive_shapes_are_accepted_offline": "Published wire positive shapes accepted by offline schema consumer.",
+    "tests/test_governed_delivery_protocol.py::test_closed_contract_rejects_each_invalid_shape": "Closed wire contracts reject invalid producer shapes.",
+    "tests/test_governed_delivery_protocol.py::test_message_identities_bind_context_payload_recipient_and_order": "Wire identity binds context, payload, intended recipient and ordering.",
+    "tests/test_governed_delivery_runtime.py::test_stale_head_rejects_without_partial_application": "Real signed runtime rejects stale head atomically.",
+    "tests/test_governed_delivery_runtime.py::test_expired_new_request_is_not_a_historical_retry": "Expired permission rejected at real runtime transition boundary.",
+    "tests/test_governed_delivery_runtime.py::test_author_cannot_return_its_own_independent_assessment": "Author/reviewer separation enforced across signed runtime message handoff.",
+    "tests/test_execution_profiles.py::test_integration_selection_is_atomic_preserves_fields_and_pins_snapshot": "Configuration/selection snapshot interface is atomic and preserves unrelated fields.",
+    "tests/test_execution_profiles.py::test_integration_malformed_config_is_not_silently_ignored": "Malformed configuration fails at resolution boundary.",
+    "tests/test_operator_journal_snapshot.py::test_journal_snapshot_reads_exact_known_bytes_above_the_material_file_limit": "Reader receives exact journal bytes independent of material limits.",
+    "tests/test_operator_journal_snapshot.py::test_journal_snapshot_rejects_final_parent_and_hard_links": "Read-only journal consumer rejects link aliasing.",
+    "tests/test_content_integration.py::ContentPackagingIntegrationTests::test_packaged_profile_fails_closed_without_resolver": "Packaged content profile cannot bypass its resolver dependency.",
+    "tests/test_content_integration.py::ContentPackagingIntegrationTests::test_provider_bindings_use_one_profile_without_permission_changes": "Provider projections preserve one content profile and permission parity.",
+    "tests/test_gen2_command_integrations.py::test_consequential_branches_reach_one_native_handoff_and_preserve_ordinary_scope": "Provider/workflow native handoff and full catalogue contracts preserved.",
+    "tests/test_schema_check.py::test_malformed_workflow_applicability_is_rejected": "Workflow schema rejects invalid applicability values.",
+    "tests/test_agent_runtime.py::AgentRuntimeTests::test_loader_and_generated_native_restrictions": "Native provider generated policies preserve author/read-only restrictions.",
+    "tests/test_integration_adapters.py::IntegrationAdapterBoundaryTests::test_reference_read_draft_query_validate_propose_workflows": "Reference adapter read/draft/query/validate/propose interface remains functional.",
+    "tests/test_guard_library_write.py::LibraryGuardTests::test_local_approval_files_never_authorize": "Local approval files cannot grant authority.",
+    "tests/test_fabric_authority_boundary.py::test_environment_tty_and_declared_approval_cannot_authorize_l0_acceptance": "Environment and declared approval cannot fabricate human authority.",
+    "tests/test_governed_domain.py::test_missing_material_and_unbound_commercial_mapping_fail_without_authority": "Domain binding rejects missing material and unbound mappings.",
+    "tests/test_professional_review.py::test_same_model_sabsa_review_is_blocked_before_work_even_when_effort_differs": "Professional reviewer model diversity enforced before work.",
+    "tests/test_professional_review_cli.py::test_pair_comparison_uses_provider_and_selector_not_effort_or_class": "Model identity comparison preserves provider and selector semantics.",
+    "tests/test_workload_routing_runtime.py::test_actual_alternative_workload_is_visible_as_profile_deviation": "Actual routed workload deviation visible across providers.",
+    "apps/fabric-explorer/reader/test/test_wire_json.py::test_fact_budget_counts_exact_utf8_bytes_at_boundary": "Cross-language wire budget counts UTF-8 bytes exactly.",
+    "apps/fabric-explorer/reader/test/test_read_broker.py::test_replaced_leaf_denied_without_bytes": "Read broker denies replaced source without leaking bytes.",
+    "apps/fabric-explorer/reader/test/test_read_broker.py::test_native_namespace_identity_transport_preserves_integers_above_53_bits": "Wire/native identity preserves full integer range.",
+    "tests/test_test_selection.py::test_catalog_covers_maintained_modules_and_retains_single_full_transport_history": "Selection catalog remains complete and bounded controls preserve full expensive transport history.",
+    "tests/test_test_selection.py::test_runtime_impact_includes_app_example_corpus_and_qualification_consumers": "Shared runtime changes select transitive app example, corpus and qualification consumers.",
+    "tests/test_test_selection.py::test_native_pytest_marker_selection_and_explicit_decorator_override": "Real pytest marker filtering applies catalog control tags and explicit level overrides."
+  },
+  "node_tags": {
+    "tests/test_governed_delivery_protocol.py::test_published_positive_shapes_are_accepted_offline": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_governed_delivery_protocol.py::test_closed_contract_rejects_each_invalid_shape": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_governed_delivery_protocol.py::test_message_identities_bind_context_payload_recipient_and_order": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_governed_delivery_runtime.py::test_stale_head_rejects_without_partial_application": {
+      "category": "contract",
+      "tags": [
+        "control",
+        "security"
+      ]
+    },
+    "tests/test_governed_delivery_runtime.py::test_expired_new_request_is_not_a_historical_retry": {
+      "category": "contract",
+      "tags": [
+        "control",
+        "security"
+      ]
+    },
+    "tests/test_governed_delivery_runtime.py::test_author_cannot_return_its_own_independent_assessment": {
+      "category": "contract",
+      "tags": [
+        "control",
+        "security"
+      ]
+    },
+    "tests/test_execution_profiles.py::test_integration_selection_is_atomic_preserves_fields_and_pins_snapshot": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_execution_profiles.py::test_integration_malformed_config_is_not_silently_ignored": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_operator_journal_snapshot.py::test_journal_snapshot_reads_exact_known_bytes_above_the_material_file_limit": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_operator_journal_snapshot.py::test_journal_snapshot_rejects_final_parent_and_hard_links": {
+      "category": "contract",
+      "tags": [
+        "control",
+        "security"
+      ]
+    },
+    "tests/test_content_integration.py::ContentPackagingIntegrationTests::test_packaged_profile_fails_closed_without_resolver": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_content_integration.py::ContentPackagingIntegrationTests::test_provider_bindings_use_one_profile_without_permission_changes": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_gen2_command_integrations.py::test_consequential_branches_reach_one_native_handoff_and_preserve_ordinary_scope": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_schema_check.py::test_malformed_workflow_applicability_is_rejected": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_agent_runtime.py::AgentRuntimeTests::test_loader_and_generated_native_restrictions": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_integration_adapters.py::IntegrationAdapterBoundaryTests::test_reference_read_draft_query_validate_propose_workflows": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_guard_library_write.py::LibraryGuardTests::test_local_approval_files_never_authorize": {
+      "category": "contract",
+      "tags": [
+        "control",
+        "security"
+      ]
+    },
+    "tests/test_fabric_authority_boundary.py::test_environment_tty_and_declared_approval_cannot_authorize_l0_acceptance": {
+      "category": "contract",
+      "tags": [
+        "control",
+        "security"
+      ]
+    },
+    "tests/test_governed_domain.py::test_missing_material_and_unbound_commercial_mapping_fail_without_authority": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_professional_review.py::test_same_model_sabsa_review_is_blocked_before_work_even_when_effort_differs": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_professional_review_cli.py::test_pair_comparison_uses_provider_and_selector_not_effort_or_class": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_workload_routing_runtime.py::test_actual_alternative_workload_is_visible_as_profile_deviation": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "apps/fabric-explorer/reader/test/test_wire_json.py::test_fact_budget_counts_exact_utf8_bytes_at_boundary": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "apps/fabric-explorer/reader/test/test_read_broker.py::test_replaced_leaf_denied_without_bytes": {
+      "category": "contract",
+      "tags": [
+        "control",
+        "security"
+      ]
+    },
+    "apps/fabric-explorer/reader/test/test_read_broker.py::test_native_namespace_identity_transport_preserves_integers_above_53_bits": {
+      "category": "contract",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_test_selection.py::test_catalog_covers_maintained_modules_and_retains_single_full_transport_history": {
+      "category": "integration",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_test_selection.py::test_runtime_impact_includes_app_example_corpus_and_qualification_consumers": {
+      "category": "integration",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_test_selection.py::test_native_pytest_marker_selection_and_explicit_decorator_override": {
+      "category": "integration",
+      "tags": [
+        "control"
+      ]
+    },
+    "tests/test_governed_native_batches.py::test_layered_complete_local_triads_and_adjacent_receiving_without_bookkeeping_models": {
+      "category": "e2e",
+      "tags": [
+        "slow"
+      ],
+      "rationale": "One complete six-layer progression runs real native local author/reviewer triads, integration and adjacent receiving. Tagged slow following observed maintained-suite execution."
+    },
+    "tests/test_governed_sabsa_integrated.py::test_one_governed_sabsa_engagement_traces_all_six_layers_and_renders_its_exact_current_output": {
+      "category": "e2e",
+      "tags": [
+        "slow"
+      ],
+      "rationale": "Complete six-layer SABSA engagement executes all questions, native handoffs and rendering of its exact current output. Tagged slow following observed maintained-suite execution."
+    },
+    "tests/test_content_eval.py::ContentEvalTests::test_every_registered_dimension_has_actual_three_way_evaluation": {
+      "category": "integration",
+      "tags": [
+        "slow"
+      ],
+      "rationale": "Comprehensive corpus evaluation runs actual validators across all registered development dimensions. Tagged slow following observed maintained-suite execution."
+    },
+    "tests/test_content_workflow.py::test_every_handoff_executes_positive_and_missing_receiver_or_authority_checks": {
+      "category": "contract",
+      "tags": [
+        "slow"
+      ],
+      "rationale": "Exhaustive real handoff receiver and authority contracts execute positive and negative cases across the maintained catalogue. Tagged slow following observed maintained-suite execution."
+    },
+    "tests/test_governed_local_layer.py::test_same_local_layer_completes_six_questions_independent_integration_and_receiving": {
+      "category": "e2e",
+      "tags": [
+        "slow"
+      ],
+      "rationale": "One real full local six-question history includes independent integration and receiving. Tagged slow following observed maintained-suite execution."
+    },
+    "tests/test_governed_transport_layers.py::test_same_history_continues_through_all_six_layer_boundaries": {
+      "category": "e2e",
+      "tags": [
+        "slow"
+      ],
+      "rationale": "One shared real transport history progresses through all six layer boundaries. Tagged slow following observed maintained-suite execution."
+    },
+    "tests/test_governed_domain.py::test_prepared_proposal_handoff_uses_actual_component_provenance_and_current_gates": {
+      "category": "contract",
+      "tags": [
+        "slow"
+      ],
+      "rationale": "Prepared proposal receiving checks actual component provenance and current gates, including expiry boundaries. Tagged slow following observed maintained-suite execution."
+    },
+    "tests/test_content_calibration.py::test_candidates_derive_three_complexities_per_priority_family": {
+      "category": "integration",
+      "tags": [
+        "slow"
+      ],
+      "rationale": "Actual corpus candidates and validation cover every priority family at three complexities. Tagged slow following observed maintained-suite execution."
+    },
+    "tests/test_governed_dispatch.py::test_real_blocked_or_excessive_process_is_terminated_without_result": {
+      "category": "integration",
+      "tags": [
+        "slow",
+        "security"
+      ],
+      "rationale": "Real isolated worker termination and empty-result boundary includes a deliberately blocked process. Tagged slow following observed maintained-suite execution."
+    },
+    "tests/test_commercial_proposal.py::test_existing_trusted_host_can_project_exact_draft_without_granting_authority": {
+      "category": "contract",
+      "tags": [
+        "slow"
+      ],
+      "rationale": "Actual trusted host projects exact prepared draft bytes without deriving authority from publication. Tagged slow following observed maintained-suite execution."
+    }
+  },
+  "impact_rules": [
+    {
+      "paths": [
+        ".ai/runtime/protocol/governed-delivery/**"
+      ],
+      "tests": [
+        "tests/test_governed_delivery_protocol.py",
+        "tests/test_governed_delivery_runtime.py",
+        "tests/test_governed_transport_layers.py"
+      ],
+      "reason": "Wire schema and semantic/runtime and six-layer transport consumers."
+    },
+    {
+      "paths": [
+        ".ai/runtime/models/**",
+        ".ai/runtime/execution-profiles/**"
+      ],
+      "tests": [
+        "tests/test_execution_profiles.py",
+        "tests/test_execution_profile_runtime.py",
+        "tests/test_execution_stats.py",
+        "tests/test_workload_routing.py",
+        "tests/test_workload_routing_runtime.py",
+        "tests/test_session_routing_context.py",
+        "tests/test_model_execution_kind.py"
+      ],
+      "reason": "Execution preference, routing and profile integration consumers."
+    },
+    {
+      "paths": [
+        "scripts/run_tests.py",
+        "scripts/test_selection.py",
+        "conftest.py",
+        "pytest.ini",
+        "ci/test-catalog.json"
+      ],
+      "tests": [
+        "tests/test_test_selection.py",
+        "tests/test_prepublish.py",
+        "tests/test_test_workflow_selection.py"
+      ],
+      "reason": "Selection infrastructure contract tests; control separately protects product interfaces."
+    },
+    {
+      "paths": [
+        "apps/fabric-explorer/desktop/**",
+        "apps/fabric-explorer/packages/contracts/**",
+        "apps/fabric-explorer/packaging/**",
+        "apps/fabric-explorer/tools/**",
+        "apps/fabric-explorer/test-categories.json"
+      ],
+      "tests": [
+        "tests/test_fabric_explorer_sources.py",
+        "tests/test_fabric_explorer_helper.py"
+      ],
+      "reason": "Native package changes have Python source/packaging boundary consumers; native runner selects package suites separately."
+    }
+  ]
+}

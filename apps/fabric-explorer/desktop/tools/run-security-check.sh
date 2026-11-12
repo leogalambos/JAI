@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
 # Qualify the viewer's actual Linux process tree against owned write-denied synthetic sources.
 # Usage: bash apps/fabric-explorer/desktop/tools/run-security-check.sh
 # No downloads, installations, real project inputs or sandbox-disabling options are used.

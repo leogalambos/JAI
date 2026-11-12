@@ -1,4 +1,6 @@
 #!/bin/sh
+# SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
 # POSIX routing: existing package installation needs no Node.js, npm or source build tools.
 set -eu
 HERE=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)

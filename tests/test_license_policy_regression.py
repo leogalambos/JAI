@@ -7,8 +7,10 @@ from __future__ import annotations
 
 import importlib.util
 import tempfile
+import subprocess
 import sys
 import unittest
+from unittest.mock import patch
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -54,7 +56,7 @@ class LicensePolicyFixtures(unittest.TestCase):
         self.assertTrue(all(problem.startswith('INBOX-extra/') for problem in problems))
 
     def test_generated_output_is_excluded_using_release_packaging_policy(self):
-        for directory in ('build', 'out', 'dist', 'site', '.git', '.venv'):
+        for directory in ('build', 'out', 'dist', 'site', '.venv'):
             self._write(f'{directory}/generated.py', 'unlicensed generated output\n')
         self.assertEqual(self.policy.check(self.root), [])
 
@@ -90,6 +92,97 @@ class LicensePolicyFixtures(unittest.TestCase):
     def test_missing_root_license_fails(self):
         (self.root / 'LICENSE').unlink()
         self.assertEqual(self.policy.check(self.root), ['root LICENSE missing'])
+
+
+class GitSourceLicensePolicy(unittest.TestCase):
+    _write = LicensePolicyFixtures._write
+
+    def setUp(self):
+        LicensePolicyFixtures.setUp(self)
+        self._git('init', '-q')
+        self._git('add', 'LICENSE')
+
+    def _git(self, *arguments):
+        return subprocess.run(['git', *arguments], cwd=self.root, check=True,
+                              capture_output=True, text=True)
+
+    def test_untracked_ignored_generated_and_foreign_sources_are_not_read_or_checked(self):
+        self._write('.gitignore', 'ignored/\n')
+        unowned = ['untracked.py', 'untracked.js', 'ignored/draft.py',
+                   'apps/demo/dist/assets/generated.js', 'vendor/foreign.js']
+        for name in unowned:
+            self._write(name, 'Foreign or generated source without project licensing.\n')
+        read_text = Path.read_text
+        def read(path, *args, **kwargs):
+            self.assertNotIn(path.relative_to(self.root).as_posix(), unowned)
+            return read_text(path, *args, **kwargs)
+        with patch.object(Path, 'read_text', read):
+            self.assertEqual(self.policy.check(self.root), [])
+        self.assertEqual((self.root / 'vendor/foreign.js').read_text(),
+                         'Foreign or generated source without project licensing.\n')
+
+    def test_newly_tracked_unlicensed_source_and_edited_tracked_source_fail(self):
+        self._write('tools/new.py', 'print("new")\n')
+        self.assertEqual(self.policy.check(self.root), [])
+        self._git('add', 'tools/new.py')
+        self.assertEqual(self.policy.check(self.root), [
+            'tools/new.py: compact SPDX header missing',
+            'tools/new.py: compact copyright header missing'])
+        self._write('tools/new.py', self.header)
+        self._git('add', 'tools/new.py')
+        self.assertEqual(self.policy.check(self.root), [])
+        self._write('tools/new.py', 'edited without required header\n')
+        self.assertEqual(len(self.policy.check(self.root)), 2)
+
+    def test_tracked_private_generated_and_symlink_paths_remain_excluded(self):
+        for name in ('INBOX/private.py', 'build/generated.py', 'config/.env', '.git/not-a-source.py'):
+            self._write(name, 'Not a public release source.\n')
+        (self.root / 'linked.py').symlink_to(self.root / 'INBOX/private.py')
+        self._git('add', '-f', 'INBOX/private.py', 'build/generated.py', 'config/.env', 'linked.py')
+        self.assertEqual(self.policy.check(self.root), [])
+
+    def test_gitless_subdirectory_uses_its_own_archive_inventory_not_parent_git(self):
+        self._write('archive/LICENSE', (self.root / 'LICENSE').read_text())
+        self._write('archive/source.py', 'archive source without header\n')
+        self.assertEqual(self.policy.check(self.root / 'archive'), [
+            'source.py: compact SPDX header missing',
+            'source.py: compact copyright header missing'])
+
+    def test_git_inventory_failure_cannot_be_reported_as_pass_or_archive_fallback(self):
+        self._write('untracked.py', 'would fail if silently scanned as an archive\n')
+        with patch('subprocess.run', return_value=subprocess.CompletedProcess(['git'], 128, b'', b'broken index')):
+            with self.assertRaises((OSError, ValueError)):
+                self.policy.check(self.root)
+
+    def test_git_index_failure_and_unsafe_inventory_fail_after_root_verification(self):
+        location = subprocess.CompletedProcess(['git'], 0, (str(self.root) + '\n').encode(), b'')
+        for inventory in (subprocess.CompletedProcess(['git'], 128, b'', b'broken index'),
+                          subprocess.CompletedProcess(['git'], 0, b'../outside.py\0', b''),
+                          subprocess.CompletedProcess(['git'], 0, b'incomplete.py', b'')):
+            with self.subTest(inventory=inventory):
+                with patch('subprocess.run', side_effect=[location, inventory]):
+                    with self.assertRaises(ValueError):
+                        self.policy.check(self.root)
+
+    def test_enclosing_repository_identity_cannot_substitute_for_root_marker(self):
+        location = subprocess.CompletedProcess(['git'], 0, (str(self.root.parent) + '\n').encode(), b'')
+        with patch('subprocess.run', return_value=location):
+            with self.assertRaisesRegex(ValueError, 'root could not be verified'):
+                self.policy.check(self.root)
+
+    def test_git_file_worktree_uses_its_own_tracked_inventory(self):
+        self._git('-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
+                  'commit', '-qm', 'Source fixture')
+        worktree = self.root.parent / (self.root.name + '-worktree')
+        self._git('worktree', 'add', '--detach', str(worktree), 'HEAD')
+        self.addCleanup(subprocess.run, ['git', 'worktree', 'remove', '--force', str(worktree)],
+                        cwd=self.root, check=True, capture_output=True)
+        self.assertTrue((worktree / '.git').is_file())
+        (worktree / 'scratch.js').write_text('Untracked scratch source.\n')
+        self.assertEqual(self.policy.check(worktree), [])
+        (worktree / 'tracked.js').write_text('New project source without header.\n')
+        subprocess.run(['git', 'add', 'tracked.js'], cwd=worktree, check=True, capture_output=True)
+        self.assertEqual(len(self.policy.check(worktree)), 2)
 
 
 class SourceLicensePolicy(unittest.TestCase):

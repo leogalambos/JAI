@@ -21,7 +21,11 @@
     "test:sdk": "npm run build:sdk && vitest run --config vitest.sdk.config.ts",
     "prepare:sdk": "node tools/prepare-sigma.mjs",
     "test:build": "node --test --test-concurrency=1 test/prepare-sigma.test.mjs test/build-sigma.test.mjs",
-    "test:build:integration": "node --test test/integration/prepare-sigma.test.mjs"
+    "test:build:integration": "node --test test/integration/prepare-sigma.test.mjs",
+    "test:control": "node ../tools/test-selection.mjs --package desktop --profile control",
+    "test:development": "node ../tools/test-selection.mjs --package desktop --profile development",
+    "test:full": "node ../tools/test-selection.mjs --package desktop --profile full",
+    "test:category": "node ../tools/test-selection.mjs --package desktop"
   },
   "dependencies": {
     "@jai/fabric-explorer-contracts": "file:../packages/contracts",

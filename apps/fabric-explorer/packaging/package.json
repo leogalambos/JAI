@@ -1,5 +1,12 @@
 {
   "name": "jai-fabric-explorer-packaging",
   "private": true,
-  "type": "module"
+  "type": "module",
+  "scripts": {
+    "test:control": "node ../tools/test-selection.mjs --package packaging --profile control",
+    "test:development": "node ../tools/test-selection.mjs --package packaging --profile development",
+    "test:full": "node ../tools/test-selection.mjs --package packaging --profile full",
+    "test:category": "node ../tools/test-selection.mjs --package packaging",
+    "test": "node ../tools/test-selection.mjs --package packaging --profile full"
+  }
 }
