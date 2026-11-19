@@ -436,6 +436,7 @@ class NativeSession:
                 raise ValueError('Semantic envelope has duplicate or unissued members')
         except (ValueError, TypeError, UnicodeError) as error:
             unattributable = str(error)
+        codec = governed_semantic.capture_codec(value if not unattributable else None)
         encoded = []
         for member in physical['members']:
             entry = {'member_key': member['member_key'], 'return_blob_id': None, 'error': None}
@@ -445,14 +446,14 @@ class NativeSession:
                 run = self._run(member['context'])
                 if len(raw) > run.total_limit:
                     raise dispatch.DispatchError('P_BUDGET', 'Semantic capture exceeds the member transport bound')
-                result = governed_semantic.compile_semantic(run.packet, value, self.store.put_blob)
+                result = governed_semantic.compile_semantic(run.packet, value, self.store.put_blob, codec=codec)
                 entry['return_blob_id'] = self.store.put_blob(lc.canonical(result))
             except (ValueError, KeyError, TypeError) as error:
                 entry['error'] = {'code': getattr(error, 'code', 'P_SCHEMA'), 'message': str(error)}
             encoded.append(entry)
         result = self.workflow.invocation_event(invocation, 'invocation_finished',
             observed_at_ms=int(time.time() * 1000), capture_blob_id=capture_id,
-            raw_return_blob_id=raw_id, encoded_returns=encoded, codec=governed_semantic.CODEC)
+            raw_return_blob_id=raw_id, encoded_returns=encoded, codec=codec)
         return {'status': self.store.read().invocations[invocation]['state'], 'completion': result}
 
     def stop(self, invocation, capture):

@@ -73,6 +73,45 @@ def test_compile_semantic_requires_unique_exact_member_and_complete_semantics():
         semantic.compile_semantic(packet, conflicting, writer)
 
 
+@pytest.mark.parametrize('kind', ['author', 'integrator'])
+def test_display_summary_is_bounded_verbatim_product_text(kind):
+    """Changing a summary changes the product identity without changing evidence."""
+    packet, envelope = _packet(), _answer()
+    packet['manifest'][0]['record']['responsibility'] = kind
+    result = envelope['results'][0]
+    if kind == 'integrator':
+        del result['evidence']
+        result.update(kind=kind, answers=[{'alias': 'assignment'}], related=[])
+    old = semantic.compile_semantic(packet, envelope, lc.blob)
+    assert 'display_summary' not in old['records'][0]['record']
+    summary = '<b>' + '🛠' * 156 + '\n'
+    assert len(summary) == 160
+    result['display_summary'] = summary
+    assert semantic.capture_codec(envelope) == semantic.SUMMARY_CODEC
+    with pytest.raises(ValueError, match='Complete closed role-specific semantic return required'):
+        semantic.compile_semantic(packet, envelope, lc.blob, codec=semantic.CODEC)
+    new = semantic.compile_semantic(packet, envelope, lc.blob)
+    product = new['records'][0]['record']
+    assert product['display_summary'] == summary
+    assert {key: value for key, value in product.items() if key != 'display_summary'} == old['records'][0]['record']
+    assert new['intents'][0]['payload']['candidate'] != old['intents'][0]['payload']['candidate']
+    assert (new['intents'][0]['payload']['evidence'], new['intents'][0]['payload']['limitations']) == (
+        old['intents'][0]['payload']['evidence'], old['intents'][0]['payload']['limitations'])
+    for invalid in ('', summary + 'x', None, {'alias': 'assignment'}):
+        result['display_summary'] = invalid
+        with pytest.raises(ValueError, match='semantic'):
+            semantic.compile_semantic(packet, envelope, lc.blob)
+
+
+def test_capture_codec_preserves_legacy_ordinary_and_unattributed_results():
+    """Select the new codec only for attributable author or integrator summaries."""
+    assert semantic.capture_codec(None) == semantic.CODEC
+    assert semantic.capture_codec(_answer()) == semantic.CODEC
+    envelope = _answer()
+    envelope['results'][0].update(kind=['invalid'], display_summary='Unattributable kind.')
+    assert semantic.capture_codec(envelope) == semantic.CODEC
+
+
 def test_compile_semantic_rejects_unknown_alias_and_material_identity_forgery():
     value = _answer()
     value['results'][0]['evidence'] = [{'alias': 'unissued'}]

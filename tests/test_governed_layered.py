@@ -71,6 +71,74 @@ def test_cold_resume_retains_exact_context_and_head_without_new_input_or_executi
         _start(tmp_path)
 
 
+def test_cold_resume_waits_on_bound_call_and_admits_retained_terminal_once(tmp_path):
+    """Recover the exact physical call without issuing another grant."""
+    session, created = _start(tmp_path)
+    issued = session.next()
+    invocation = issued['invocation_id']
+    packet = issued['prepared']['members'][0]['packet']
+    choice = next(item for item in packet['execution']['availability']
+                  if item['provider'] == 'codex' and item['workload_class'] == 'standard')
+    observed_handle = 'controlled-retained-handle'
+    head = session.store.read().head
+    session = layered.LayeredSession.open(created['locator'])
+    unbound = session.next()
+    assert unbound['status'] == 'reconcile'
+    assert unbound['next_action'] == 'inspect-native-platform-record'
+    assert unbound['invocation_id'] == invocation
+    assert unbound['handle'] is None
+    assert session.prepare(invocation)['invocation'] == issued['prepared']['invocation']
+    assert session.store.read().head == head
+
+    session.start(invocation, 'codex', observed_handle, {'fixture': 'Observed native start.'})
+    raw = json.dumps({'format': 'jai.semantic-return/1', 'results': [{
+        'member': packet['member_key'], 'kind': 'selection',
+        'specialties': ['software-engineer'], 'provider': 'codex',
+        'workload_class': 'standard', 'model_selector': choice['model_selector'],
+        'reason': 'Controlled terminal capture retained before admission.'}]})
+    capture = {'fixture': 'Observed native completion.'}
+    head = session.store.read().head
+
+    resumed = layered.LayeredSession.open(created['locator'])
+    pending = resumed.next()
+    assert pending['status'] == 'reconcile'
+    assert pending['reason'] == 'native-invocation-running'
+    assert pending['handle'] == observed_handle
+    assert pending['next_action'] == 'observe-bound-invocation'
+    assert pending['invocation_id'] == invocation
+    assert resumed.store.read().head == head
+
+    receipt = resumed.complete(invocation, raw, capture)['completion']['receipt']
+    resumed = layered.LayeredSession.open(created['locator'])
+    replay = resumed.complete(invocation, raw, capture)['completion']
+    assert replay['status'] == 'already_committed'
+    assert replay['receipt'] == receipt
+    assert resumed.store.read().head == receipt['after_head']
+
+
+def test_elapsed_bound_call_requires_platform_disposition(tmp_path, monkeypatch):
+    """An elapsed grant changes the recovery action without proving termination."""
+    clock = [time.time()]
+    monkeypatch.setattr(layered.time, 'time', lambda: clock[0])
+    session, _ = _start(tmp_path)
+    issued = session.next()
+    invocation = issued['invocation_id']
+    session.start(invocation, 'codex', 'controlled-running', {'fixture': 'Observed native start.'})
+    waiting = session.next()
+    clock[0] = (waiting['deadline_ms'] + 1) / 1000
+
+    elapsed = session.next()
+    assert elapsed['status'] == 'reconcile'
+    assert elapsed['reason'] == 'native-invocation-deadline-elapsed'
+    assert elapsed['next_action'] == 'inspect-native-platform-record'
+    assert elapsed['handle'] == 'controlled-running'
+    assert session.status(invocation)['state'] == 'running'
+    assert set(session.store.read().invocations) == {invocation}
+    integration = next(row for row in session.checkpoint()['progress'] if row['dimension'] is None)
+    assert integration['wait_reason'] in {'native-grant-expired', 'local-budget-unavailable'}
+    assert integration['result_ref'] is None
+
+
 def test_pinned_enrollment_drift_denies_but_explicit_new_input_gets_distinct_locator(tmp_path):
     session, created = _start(tmp_path)
     locator = json.loads(Path(created['locator']).read_bytes())
@@ -498,11 +566,14 @@ def test_actual_owner_input_change_reenters_current_basis_without_old_pass_fallb
     _, candidate, proof = host.qualified_answer(text='Explicit controlled fixture answer over version A.')
     assert session.output_status({'ref': candidate, 'use_scope': 'default'})['qualified']
     before = session.checkpoint()
+    assert any(row['result_ref'] == candidate and row['disposition'] == 'selected'
+               for row in before['progress'])
     _, previous, replacement = host.transition_inputs('Owner-approved version B requires new verification.')
     changed = session.checkpoint()
     assert changed['head'] != before['head']
     assert replacement in [item['ref'] for item in changed['inputs']]
     assert previous not in [item['ref'] for item in changed['inputs']]
+    assert all(row['result_ref'] != candidate for row in changed['progress'])
     assert not session.output_status({'ref': candidate, 'use_scope': 'default'})['qualified']
     entry = session.entry('default', 'service-controls',
         [{'metric': 'elapsed_ms', 'unit': 'ms', 'ceiling': 10000}],

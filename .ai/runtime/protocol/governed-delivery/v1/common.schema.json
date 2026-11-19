@@ -6,6 +6,12 @@
       "type": "string",
       "minLength": 1
     },
+    "display_summary": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 160,
+      "description": "Author-written plain text for display. It has no bearing on authority, evidence or acceptance."
+    },
     "key": {
       "type": "string",
       "minLength": 1,

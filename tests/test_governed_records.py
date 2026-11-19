@@ -68,3 +68,20 @@ def test_build_proposal_rejects_missing_semantics_conflicts_and_ambiguous_uses()
     with pytest.raises(ValueError, match='work responsibility'):
         governed_records.build_proposal({**packet, 'execution': {'phase': 'selection'}},
                                        'source', 'criteria', _criteria(packet))
+
+
+def test_escalation_proposal_preserves_authored_display_summary():
+    """The ordinary escalation producer binds summary text to the exact product."""
+    packet = _packet()
+    fields = {'product_kind': 'escalation', 'inputs': [], 'material': ['b' * 64],
+              'evidence': [], 'related': [], 'limitations': [],
+              'episode': {'root': None, 'previous': None, 'collection_head': 'c' * 64,
+                          'unfinished': [], 'decisive': True},
+              'display_summary': 'Deletion and retention requirements conflict.'}
+    record = governed_records.build_proposal(packet, 'product', 'conflict', fields)['record']
+    assert record['display_summary'] == fields['display_summary']
+    assert record['assignment'] == packet['assignment']
+    observation = {key: value for key, value in fields.items() if key != 'episode'}
+    observation['product_kind'] = 'observation'
+    with pytest.raises(ValueError, match='semantic fields'):
+        governed_records.build_proposal(packet, 'product', 'observation', observation)

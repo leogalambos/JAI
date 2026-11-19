@@ -40,6 +40,11 @@ def test_reviewed_layer_one_handoff_receives_layer_two_acceptance_before_next_se
         inputs=standard + [{'slot_id': 'question-answers', 'refs': answers}])
     bundle, body = host.product('integrated-bundle', integrator, kind='bundle',
                                related=[{'slot_id': 'answers', 'refs': answers}])
+    incomplete = copy.deepcopy(body)
+    next(binding for binding in incomplete['related'] if binding['slot_id'] == 'answers')['refs'].pop()
+    with pytest.raises(lc.ERROR, match='exactly six distinct question answers') as missing_answer:
+        host.store.read()._complete_bundle(incomplete, live=True)
+    assert missing_answer.value.code == 'P_PROOF'
     host.commit(host.submission(integrator, bundle, body))
     integration_review, _ = host.review(integrator, bundle, suffix='independent-integration',
                                         assessment_kind='integration')
@@ -152,4 +157,10 @@ def test_reviewed_layer_one_handoff_receives_layer_two_acceptance_before_next_se
     assert {'ref': independent_output, 'use_scope': 'default'} not in receipt['affected_uses']
     assert not host.store.evaluate(dependent_output, scope='receiving')['release_eligible']
     assert host.store.evaluate(independent_output, scope='default')['release_eligible']
-    assert host.store.read().resolve(shared_input, 'source')['source_role'] == 'input'
+    state = host.store.read()
+    assert state.resolve(shared_input, 'source')['source_role'] == 'input'
+    assert not state._governing_input(state._point(bundle, 'receiving'), live=True)
+    for phase in ('receiver', 'setter'):
+        with pytest.raises(lc.ERROR) as stale_interface:
+            state.local_entry(offered, phase, acceptance if phase == 'setter' else None)
+        assert stale_interface.value.code in {'P_CONTEXT', 'P_SCOPE'}

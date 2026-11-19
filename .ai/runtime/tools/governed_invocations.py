@@ -250,7 +250,9 @@ def _parse_semantic(raw):
 def _finish(state, message, origin, invocation, at, live):
     import governed_semantic
     payload = message['payload']
-    if invocation['state'] not in {'running', 'uncertain', 'cancelled'} or 'started_at_ms' not in invocation or payload['codec'] != governed_semantic.CODEC:
+    codec = payload['codec']
+    if (invocation['state'] not in {'running', 'uncertain', 'cancelled'} or 'started_at_ms' not in invocation
+            or codec not in governed_semantic.SUPPORTED_CODECS):
         raise lc.ERROR('P_STATE', 'Semantic completion requires the actual running invocation and codec')
     state._validation_bytes(payload['capture_blob_id'], live)
     raw = state._validation_bytes(payload['raw_return_blob_id'], live)
@@ -270,6 +272,8 @@ def _finish(state, message, origin, invocation, at, live):
     except (ValueError, TypeError, KeyError):
         attribution_error = True
         value = None
+    if (live or codec == governed_semantic.SUMMARY_CODEC) and codec != governed_semantic.capture_codec(value):
+        raise lc.ERROR('P_STATE', 'Semantic completion codec differs from the attributed capture')
     terminal_at = invocation['finished_at_ms'] if invocation['state'] == 'cancelled' else payload['observed_at_ms']
     elapsed = max(0, terminal_at - invocation['started_at_ms'])
     effects = []
@@ -288,7 +292,7 @@ def _finish(state, message, origin, invocation, at, live):
                     identity = lc.blob(raw_bytes)
                     inline_material.add(identity)
                     return identity
-                compiled = governed_semantic.compile_semantic(packet, value, captured_material)
+                compiled = governed_semantic.compile_semantic(packet, value, captured_material, codec=codec)
                 permitted = set(state._native_packet_facts[context['run_id']]['allowed_blobs'])
                 permitted.update(details.get('broker_allowed_blobs', []))
                 permitted.update(inline_material)

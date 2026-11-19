@@ -40,6 +40,132 @@ def _digest(raw):
     return hashlib.sha256(raw).hexdigest()
 
 
+def _progress(state, scope, budgets, readiness):
+    """Project operator progress from current Store facts without reassessment."""
+    units = {}
+    for unit in budgets:
+        if unit['applicable']:
+            owner = unit['owner']
+            units.setdefault((owner['work_item'], owner['layer'], owner['question']), []).append(unit)
+    selected = {}
+    for (use, _), reference in state.selections.items():
+        if use != scope or state.versions[reference['version_id']]['kind'] != 'delivery.product':
+            continue
+        product = state.resolve(reference, 'product')
+        owner = product['owner']
+        if product['product_kind'] == 'answer' and state._governing_input(state._point(reference, scope), live=True):
+            selected.setdefault((owner['work_item'], owner['layer'], owner['question']), {})[
+                reference['version_id']] = reference
+    integration = {}
+    for (_, use), reference in state.procedures.items():
+        if use != scope or state._status(reference, scope) != {'validity': 'valid', 'applicable': True}:
+            continue
+        plan = state.resolve(reference)['message']['payload']
+        if plan['kind'] == 'layer':
+            owner = state.resolve(plan['assignment'], 'assignment')['owner']
+            steps = state.procedure_steps.get(reference['version_id'], {})
+            integration[(owner['work_item'], owner['layer'], None)] = steps
+    open_episodes = [episode for episode in state.episodes.values()
+                     if state.escalations.get(episode['root']['version_id']) == 'open']
+    blocked_layers = {episode['layer'] for episode in open_episodes if episode['scope'] == scope}
+    blocked_rows = set()
+    if open_episodes:
+        for item in readiness:
+            reference = item['assignment']
+            if state.assignment_states.get(reference['version_id']) not in {'open', 'paused'}:
+                continue
+            assignment = state.resolve(reference, 'assignment')
+            if state._blocking_episodes(reference, assignment):
+                owner = assignment['owner']
+                blocked_rows.add((owner['work_item'], owner['layer'], owner['question']))
+    now = int(time.time() * 1000)
+    rows = []
+    reached = units.keys() | selected.keys() | integration.keys() | blocked_rows
+    for work_item, layer in sorted({key[:2] for key in reached}):
+        for question in (*provider.QUESTIONS, None):
+            key = work_item, layer, question
+            result = list(selected.get(key, {}).values())
+            steps = integration.get(key, {})
+            bundle = None
+            if 'integrate' in steps:
+                reference, = steps['integrate']['resolved']
+                if state._governing_input(state._point(reference, scope), live=True):
+                    bundle = reference
+            if 'handoff' in steps:
+                handoff, = steps['handoff']['resolved']
+                if state._status(handoff, scope)['validity'] in {'invalid', 'revoked'}:
+                    steps = {name: step for name, step in steps.items() if name not in {'handoff', 'next_layer'}}
+                elif 'next_layer' in steps and not state._governing_input(state._point(handoff, scope), live=True):
+                    steps = {name: step for name, step in steps.items() if name != 'next_layer'}
+            row = _progress_row(units.get(key, []), len(result) == 1, steps if bundle else {},
+                                layer in blocked_layers or key in blocked_rows, state.invocations, now)
+            row.update(work_item=work_item, layer=layer, dimension=question)
+            if len(result) == 1:
+                row['result_ref'] = result[0]
+                summary = state.resolve(result[0], 'product').get('display_summary')
+                if summary:
+                    row['display_summary'] = summary
+            elif bundle:
+                row['result_ref'] = bundle
+            rows.append(row)
+    return rows
+
+
+def _progress_row(units, selected, steps, conflict, invocations, now):
+    """Describe the latest operational stage and independently tracked work states."""
+    progress = [run for unit in units for run in unit['progress']]
+    runs = {(run['responsibility'], run['phase']): run for run in progress}
+    candidate = runs.get(('author', 'work'), runs.get(('integrator', 'work'), {}))
+    review = runs.get(('reviewer', 'work'), runs.get(('integration_reviewer', 'work'), {}))
+    pending = next((item for unit in units for item in unit['pending']), None)
+    stage = units[-1]['stage'] if units else 'planning'
+    row = {'stage': stage, 'disposition': 'pending', 'wait_reason': None,
+           'next_action': 'advance-owner-procedure', 'result_ref': None,
+           'candidate_state': candidate.get('state'), 'review_state': review.get('state')}
+    if pending:
+        run = next(run for run in progress if run['run_id'] == pending['run_id'])
+        invocation = invocations.get(pending['invocation_id'])
+        expired = invocation is not None and invocation['deadline_ms'] <= now
+        row.update(stage=run['responsibility'] + ':' + run['phase'],
+                   disposition=pending['physical_state'] or run['state'],
+                   wait_reason='native-grant-expired' if expired else 'native-observation-pending',
+                   next_action='inspect-invocation', invocation_id=pending['invocation_id'])
+    elif selected:
+        row.update(stage='answer-selection', disposition='selected', next_action='continue-layer')
+    elif conflict:
+        row.update(stage='escalation', disposition='paused', wait_reason='open-escalation',
+                   next_action='inspect-escalation')
+    elif any(unit['due'] or unit['state'] in {'paused', 'terminated'} for unit in units):
+        row.update(disposition='paused', wait_reason='local-budget-unavailable',
+                   next_action='inspect-local-budget')
+    elif 'next_layer' in steps:
+        row.update(stage='handoff', disposition='accepted', next_action='continue-receiving-layer')
+    elif 'handoff' in steps:
+        row.update(stage='handoff', disposition='pending', wait_reason='receiving-acceptance-required')
+    elif 'integrate' in steps:
+        row.update(stage='integration', disposition='reviewed')
+    elif any(run['state'] == 'quarantined' for run in runs.values()):
+        row.update(disposition='quarantined', wait_reason='no-admissible-return',
+                   next_action='inspect-owner-readiness')
+    elif any(unit['reworks_used'] for unit in units):
+        row.update(stage='rework')
+    elif review.get('state') == 'returned':
+        row.update(stage='review', wait_reason='owner-disposition-required')
+    elif candidate.get('state') == 'returned':
+        row.update(stage='candidate', wait_reason='independent-review-required')
+    return row
+
+
+def _inflight(state, scope):
+    """Return unresolved member bindings without projecting checkpoint progress."""
+    return [{'run_id': run_id, 'context': details['context'], 'state': state.run_states[run_id],
+             'native': copy.deepcopy(details.get('native')),
+             'pending_effects': [identifier for identifier, request in details.get('broker_requests', {}).items()
+                                 if request['status'] == 'pending']}
+            for run_id, details in state.run_details.items()
+            if details['context']['scope'] == scope and state.run_states[run_id] in {'issued', 'running'}]
+
+
 def _write_once(path, raw):
     path.parent.mkdir(parents=True, exist_ok=True)
     try:
@@ -189,58 +315,73 @@ class LayeredSession(native.NativeSession):
                 profile['scheduling']['control_limits'], profile['scheduling']['initial_deadline_ms'])
 
     def next(self, scope='default', speculation=None):
-        """Advance actual owner procedures, then offer one compatible physical call.
+        """Reconcile exposed calls before advancing an owner procedure or issuing work.
 
         Args:
             scope: Existing approved engagement use scope.
             speculation: Exact existing grant, or None for pessimistic escalation pause.
         Returns:
             One issued/prepared invocation, honest reconciliation for an already
-            exposed uncertain call, or waiting facts. Logical author/reviewer phases
+            exposed or running call, or waiting facts. Logical author/reviewer phases
             never share a physical context and ordinary progress never replays history.
         Raises:
             ProtocolError, ValueError: Current owner procedure, grant or issuance fails.
         """
-        notices = self.pause_due(scope)['notices']
-        while True:
-            state = self.store.read()
-            pending = next((reference for (assignment_id, use), reference in sorted(state.procedures.items())
-                            if use == scope
-                            and state._status(reference, use) == {'validity': 'valid', 'applicable': True}
-                            and state._status(state._reference(assignment_id), use) == {'validity': 'valid', 'applicable': True}
-                            and 'step' in state.procedure_next(reference)), None)
-            if pending is None:
-                break
-            before = state.head
-            self.workflow.advance(pending)
-            if self.store.read().head == before:
-                raise lc.ERROR('P_CONTEXT', 'Ordinary procedure progress did not establish its declared step')
-        state = self.store.read()
+        state, due = self.workflow._pause_due(self.store.read(), scope)
+        notices = due['notices']
+        pending_issue = None
         for invocation, physical in state.invocations.items():
             if physical['scope'] != scope:
                 continue
-            if physical['state'] == 'issued':
-                if physical['deadline_ms'] <= int(time.time() * 1000):
-                    return {'status': 'reconcile', 'reason': 'issued-grant-expired-before-dispatch',
-                            'invocation_id': invocation, 'members': copy.deepcopy(physical['members']),
-                            'operator_notices': notices, 'authority_granted': False}
-                return {'status': 'invoke', 'invocation_id': invocation,
-                        'members': copy.deepcopy(physical['members']), 'prepared': self.prepare(invocation),
-                        'operator_notices': notices}
-            if physical['state'] in {'prepared', 'uncertain'}:
-                return {'status': 'reconcile', 'reason': 'native-invocation-outcome-unconfirmed',
-                        'invocation_id': invocation, 'members': copy.deepcopy(physical['members']),
-                        'task_name': provider._task_name(invocation), 'operator_notices': notices, 'authority_granted': False}
-        facts = self.workflow.ready(scope, speculation)
+            physical_state = physical['state']
+            if physical_state in {'prepared', 'uncertain', 'running'}:
+                running = physical_state == 'running'
+                expired = running and physical['deadline_ms'] <= int(time.time() * 1000)
+                return {'status': 'reconcile',
+                        'reason': ('native-invocation-deadline-elapsed' if expired
+                                   else 'native-invocation-running' if running
+                                   else 'native-invocation-outcome-unconfirmed'),
+                        'next_action': ('observe-bound-invocation' if running and not expired
+                                        else 'inspect-native-platform-record'),
+                        'invocation_id': invocation, 'physical_state': physical_state,
+                        'handle': physical.get('handle'), 'deadline_ms': physical['deadline_ms'],
+                        'members': copy.deepcopy(physical['members']),
+                        'task_name': provider._task_name(invocation), 'operator_notices': notices,
+                        'authority_granted': False}
+            if physical_state == 'issued' and pending_issue is None:
+                pending_issue = invocation, physical
+        if pending_issue is not None:
+            invocation, physical = pending_issue
+            members = copy.deepcopy(physical['members'])
+            if physical['deadline_ms'] <= int(time.time() * 1000):
+                return {'status': 'reconcile', 'reason': 'issued-grant-expired-before-dispatch',
+                        'next_action': 'confirm-not-dispatched', 'invocation_id': invocation,
+                        'members': members, 'operator_notices': notices, 'authority_granted': False}
+            return {'status': 'invoke', 'invocation_id': invocation, 'members': members,
+                    'prepared': self.prepare(invocation), 'operator_notices': notices}
+        while True:
+            pending = next(((reference, step) for (assignment_id, use), reference in sorted(state.procedures.items())
+                            if use == scope
+                            and state._status(reference, use) == {'validity': 'valid', 'applicable': True}
+                            and state._status(state._reference(assignment_id), use) == {'validity': 'valid', 'applicable': True}
+                            and 'step' in (step := state.procedure_next(reference))), None)
+            if pending is None:
+                break
+            before = state.head
+            self.workflow._commit_procedure_step(state, *pending)
+            state = self.store.read()
+            if state.head == before:
+                raise lc.ERROR('P_CONTEXT', 'Ordinary procedure progress did not establish its declared step')
+        facts = state.readiness(scope, speculation)
         selected = next((item for item in facts if item['ready']), None)
         if selected is None:
             return {'status': 'paused' if notices else 'waiting', 'readiness': facts,
-                    'inflight': self.checkpoint(scope)['inflight'], 'operator_notices': notices}
+                    'inflight': _inflight(state, scope), 'operator_notices': notices}
         traits = state.invocation_traits(selected['assignment'], selected['phase'], selected['selection'])
         jobs = [{'assignment': item['assignment'], 'phase': item['phase'],
                  'selection': item['selection'], 'speculation': speculation}
-                for item in facts if item['ready'] and state.invocation_traits(
-                    item['assignment'], item['phase'], item['selection']) == traits]
+                for item in facts if item['ready'] and (item is selected or state.invocation_traits(
+                    item['assignment'], item['phase'], item['selection']) == traits)]
         issued = self.issue_batch(jobs)
         return {'status': 'invoke', **issued, 'prepared': self.prepare(issued['invocation_id']),
                 'operator_notices': notices}
@@ -265,25 +406,20 @@ class LayeredSession(native.NativeSession):
             scope: Existing engagement use scope.
         Returns:
             Current journal head, exact governing input locators, ready phases,
-            inflight bindings, unresolved effect ACKs, episode refs and root refs.
+            inflight bindings, unresolved effect ACKs, bounded progress, episode
+            refs and root refs.
         Raises:
             ProtocolError: Required state or scope is unavailable.
         """
         state = self.store.read()
-        inflight = []
-        for run_id, details in state.run_details.items():
-            if details['context']['scope'] != scope or state.run_states[run_id] not in {'issued', 'running'}:
-                continue
-            inflight.append({'run_id': run_id, 'context': details['context'],
-                'state': state.run_states[run_id], 'native': copy.deepcopy(details.get('native')),
-                'pending_effects': [identifier for identifier, request in details.get('broker_requests', {}).items()
-                                    if request['status'] == 'pending']})
+        budgets = [state.local_budget_status(identifier) for identifier, unit in state.local_budget['units'].items()
+                   if unit['scope'] == scope]
+        readiness = self.workflow.ready(scope)
         return {'locator': str(self.locator), 'engagement': state.engagement,
             'journal': str(self.store.path), 'head': state.head,
             'inputs': [{'ref': ref, 'use_scope': use} for (use, _), ref in state.sources.items() if use == scope],
-            'roots': self._roots(), 'readiness': self.workflow.ready(scope), 'inflight': inflight,
-            'local_budgets': [state.local_budget_status(identifier) for identifier, unit in state.local_budget['units'].items()
-                              if unit['scope'] == scope],
+            'roots': self._roots(), 'readiness': readiness, 'inflight': _inflight(state, scope),
+            'local_budgets': budgets, 'progress': _progress(state, scope, budgets, readiness),
             'invocations': [self.status(identifier) for identifier, value in state.invocations.items()
                             if value['scope'] == scope and value['state'] in {'issued', 'prepared', 'running', 'uncertain'}],
             'episodes': [{'root': value['root'], 'current': value['current']}

@@ -19,6 +19,24 @@ import lifecycle as lc
 
 FORMAT = 'jai.semantic-return/1'
 CODEC = 'jai.semantic-encoder/2'
+SUMMARY_CODEC = 'jai.semantic-encoder/3'
+SUPPORTED_CODECS = (CODEC, SUMMARY_CODEC)
+_SUMMARY_KINDS = ('author', 'integrator')
+
+
+def capture_codec(envelope):
+    """Return the encoder compatible with an attributed semantic envelope.
+
+    Args:
+        envelope: Already attributed envelope, or None if attribution failed.
+    Returns:
+        The display-summary encoder for a summary-bearing producer result,
+        or the existing encoder for every ordinary capture.
+    """
+    if envelope is not None and any(result.get('kind') in _SUMMARY_KINDS
+                                    and 'display_summary' in result for result in envelope['results']):
+        return SUMMARY_CODEC
+    return CODEC
 
 
 def _exact(packet, reference):
@@ -113,7 +131,7 @@ def _declared_references(value, schema, reference, documents, document='decision
     return copy.deepcopy(value)
 
 
-def compile_semantic(packet, value, material_writer):
+def compile_semantic(packet, value, material_writer, *, codec=None):
     """Compile one exact member's actual semantic result into an existing RunReturn.
 
     Args:
@@ -123,9 +141,12 @@ def compile_semantic(packet, value, material_writer):
             The host separately enforces the complete issued batch member set.
         material_writer: Callable accepting exact bytes and returning their existing
             lifecycle CAS identity. Staging is not semantic admission or acceptance.
+        codec: Exact recorded encoder when replaying a capture. None selects the
+            current encoder for the supplied fields.
     Returns:
         Deterministic schema-valid singleton RunReturn for this member. Inputs are
-        unchanged. Professional IDs, materials, criteria and verdicts remain explicit.
+        unchanged. Professional IDs, materials, display text, criteria and verdicts
+        remain explicit.
     Raises:
         ValueError, ProtocolError: Missing semantics, duplicate or unknown member,
             responsibility mismatch, unknown reference alias, nonfinite material,
@@ -142,7 +163,9 @@ def compile_semantic(packet, value, material_writer):
         raise ValueError('No unique semantic result for the exact issued member')
     result = matches[0]
     kind = result.get('kind')
-    if kind not in {'selection', 'setter', 'owner_action', 'author', 'integrator', 'measurement',
+    codec = capture_codec(value) if codec is None else codec
+    legacy_summary = codec == CODEC and kind in _SUMMARY_KINDS and 'display_summary' in result
+    if legacy_summary or kind not in {'selection', 'setter', 'owner_action', 'author', 'integrator', 'measurement',
                     'reviewer', 'integration_reviewer', 'receiver'} or not wire.validator(
                         'semantic-return.schema.json', kind).is_valid(result):
         raise ValueError('Complete closed role-specific semantic return required')
@@ -254,7 +277,8 @@ def compile_semantic(packet, value, material_writer):
         product, product_ref = _proposal(packet, 'product', result['logical_id'], {
             'product_kind': {'author': 'answer', 'integrator': 'bundle', 'measurement': 'observation'}[kind],
             'inputs': copy.deepcopy(assignment['inputs']), 'material': material,
-            'evidence': evidence, 'related': related, 'limitations': copy.deepcopy(result['limitations'])})
+            'evidence': evidence, 'related': related, 'limitations': copy.deepcopy(result['limitations']),
+            **({'display_summary': result['display_summary']} if 'display_summary' in result else {})})
         records.append(product)
         if kind == 'measurement':
             intent('observation', {'assignment': packet['assignment'], 'observation': product_ref,

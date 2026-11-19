@@ -16,9 +16,8 @@ relevant current material and authority. Historical captures are not a fallback
 for unavailable current evidence. Older journal formats remain unsupported
 archives; no acceptance or permission is imported into a new engagement.
 Recovery requires the journal and its referenced blob closure, not the journal
-alone. Semantic wire format `jai.semantic-return/1`, host encoder
-`jai.semantic-encoder/2` and the authority boundary are unchanged by this storage
-representation.
+alone. The storage representation retains semantic wire format
+`jai.semantic-return/1` and the same authority boundary.
 
 The profile's required `content_profile` field is `{logical_id, use_scope}`,
 identifying an existing authoritative source-selection slot, or is `null` for
@@ -126,12 +125,31 @@ manifest. Archived records do not transfer acceptance, verification, or release
 permission. There is no migration or compatibility execution route.
 
 Native semantic envelopes retain wire format `jai.semantic-return/1`. Their
-raw-to-encoded linkage records exact host encoder `jai.semantic-encoder/2` in
-`capture.codec`. An older or absent native encoder identity is rejected clearly
-as an unsupported historical version before recompilation or validation-asset
-comparison. Preserve that archive and start a separately verified engagement;
-there is no migration, historical re-encoding or inherited acceptance. Journal
-format is 9. Ordinary process JSON returns have no semantic encoder.
+raw-to-encoded linkage records the exact host encoder in `capture.codec`.
+`jai.semantic-encoder/2` retains its historical validation and encoding rules.
+New attributable captures with an author or integrator `display_summary` use
+`jai.semantic-encoder/3`. Other native captures continue to use encoder 2.
+Replay uses the recorded encoder and preserves historical quarantine decisions.
+An unsupported or absent native encoder identity is rejected before recompilation.
+Journal format is 9. Ordinary process JSON returns have no semantic encoder.
+
+The `jai.semantic-return/1` author and integrator result definitions support
+an optional `display_summary` string of 1–160 Unicode code points. The encoder
+records it verbatim on the answer or bundle product. An escalation producer
+can supply the same field on its product through ordinary proposal and
+escalation admission. Keep the exact question or criterion, finding
+observation and escalation sources for their existing provenance.
+The summary participates in the immutable product identity. Proof,
+admissibility and authority still follow the product's governing material
+and existing rules. Qualified runs supply the requested summary. Historical
+results without the field continue to validate and replay byte for byte.
+
+Previous closed schemas reject the new field. Before rolling a writer back,
+retain the journal and its blob closure with a compatible reader that
+supports `display_summary`. Use the previous writer with journals from its
+supported record shapes. Reopening a journal containing the new field
+requires the compatible reader. Preserve both the original record and its
+hash when retaining recovery copies.
 
 The confined `json-process/1` dispatcher and explicit one-step workflow are
 described in the [operator guide](../operations/normal-layered-workflow.md).

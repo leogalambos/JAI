@@ -495,7 +495,7 @@
           "$ref": "common.schema.json#/$defs/digest"
         },
         "codec": {
-          "const": "jai.semantic-encoder/2"
+          "enum": ["jai.semantic-encoder/2", "jai.semantic-encoder/3"]
         },
         "encoded_returns": {
           "type": "array",

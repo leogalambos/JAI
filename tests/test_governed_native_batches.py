@@ -1,6 +1,7 @@
 # SPDX-License-Identifier: BSD-4-Clause
 # Copyright (c) 2026 Leo Galambos and the Egothor team
 """Physical invocation contracts through the real Store and semantic codec."""
+import base64
 import json
 import io
 import re
@@ -12,6 +13,7 @@ import pytest
 import jsonschema
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / '.ai/runtime/tools'))
+from governed_dispatch import DispatchError
 import governed_native as native
 import governed_native_provider as provider
 import governed_layered as layered
@@ -163,9 +165,11 @@ def test_native_business_inputs_preserve_optional_machine_records_and_exact_owne
     session = _layer_session(tmp_path)
     offered = session.next()
     member = offered['prepared']['members'][0]
-    view = offered['prepared']['model_view']['members'][0]
-    inputs = _projected_json(session, view['resources']['inputs'])
-    machine = _projected_json(session, view['resources']['optional_machine_index'])
+    view = offered['prepared']['model_view']
+    bindings = view['members'][0]['resources']
+    resources = view['resource_descriptors']
+    inputs = _projected_json(session, resources[bindings['inputs']])
+    machine = _projected_json(session, resources[bindings['optional_machine_index']])
     packet = member['packet']
     state = session.store.read()
     assignment = state.resolve(packet['assignment'], 'assignment')
@@ -252,6 +256,12 @@ def test_layered_batches_compatible_jobs_and_admits_independent_members_once(tmp
     invocation = offered['invocation_id']
     descriptor = offered['prepared']
     assert len(descriptor['members']) == 6
+    progress = session.checkpoint()['progress']
+    assert len(progress) == 7
+    questions = [row for row in progress if row['dimension'] in provider.QUESTIONS]
+    assert all(row['stage'] == 'setter:selection' and row['disposition'] == 'prepared'
+               and row['result_ref'] is None for row in questions)
+    assert session.checkpoint()['progress'] == progress
     assert session.next()['status'] == 'reconcile'
     assert len([item for item in session.store.read().invocations.values() if item['state'] == 'prepared']) == 1
     session.start(invocation, 'codex', 'controlled-six-setters', {'observed': 'Controlled single physical call.'})
@@ -271,6 +281,10 @@ def test_layered_batches_compatible_jobs_and_admits_independent_members_once(tmp
     assert sum((item['assignment']['version_id'], 'default') in state.execution_plans
                for item in descriptor['members']) == 5
     assert state.run_states[state.resolve(descriptor['members'][-1]['context'], 'context')['run_id']] == 'quarantined'
+    progress = session.checkpoint()['progress']
+    [quarantined] = [row for row in progress if row['disposition'] == 'quarantined']
+    assert quarantined['dimension'] in provider.QUESTIONS
+    assert quarantined['wait_reason'] == 'no-admissible-return' and quarantined['result_ref'] is None
     physical = state.invocations[invocation]
     elapsed = physical['finished_at_ms'] - physical['started_at_ms']
     assert physical['usage']['elapsed_ms:ms'] == elapsed
@@ -289,6 +303,46 @@ def test_layered_batches_compatible_jobs_and_admits_independent_members_once(tmp
     replayed = lc.Store(session.store.path, session.store.engagement).read()
     assert replayed.invocations[invocation]['usage'] == physical['usage']
     assert replayed.execution_plans == state.execution_plans
+
+
+def test_batch_prompt_interns_resources_without_widening_member_reads(tmp_path):
+    """Share descriptors in the actual prompt and exercise each member's unchanged broker."""
+    session = _layer_session(tmp_path, aggregate_limit_ms=None)
+    offered = session.next()
+    descriptor = offered['prepared']
+    invocation = offered['invocation_id']
+    prompt = descriptor['invocation']['arguments']['message'].encode('utf-8')
+    view = json.loads(prompt)
+    resources = view['resource_descriptors']
+    assert len(view['members']) == 6
+    assert len({lc.canonical(item) for item in resources}) == len(resources)
+    assert len({member['resources']['catalogue'] for member in view['members']}) == 1
+    assert sum(item['handle'] == resources[view['members'][0]['resources']['catalogue']]['handle']
+               for item in resources) == 1
+    reopened = layered.LayeredSession.open(session.locator)
+    assert reopened.prepare(invocation)['invocation'] == descriptor['invocation']
+    reopened.start(invocation, 'codex', 'controlled-compact-batch', {'fixture': 'Observed start.'})
+    entitled = {}
+    for member, projected in zip(descriptor['members'], view['members'], strict=True):
+        original = lc.loads(session.store._blob(member['host_delivery']['prompt_blob_id']))
+        assert {name: resources[index] for name, index in projected['resources'].items()} == original['resources']
+        assert set(view['mandatory'] + projected['mandatory']) == set(original['mandatory'])
+        assert 'Read candidate professional instructions' in ' '.join(projected['mandatory'])
+        for key in ('owner', 'phase', 'bounds', 'tool_ceiling', 'governed_operations'):
+            assert projected[key] == original[key]
+        member_key = member['member_key']
+        entitled[member_key] = set()
+        for name, resource in original['resources'].items():
+            handle = resource['handle']
+            response = reopened.request(invocation, member_key, {
+                'id': 'same-resource-' + name, 'operation': 'read', 'handle': handle})
+            assert base64.b64decode(response['result']['data']) == Path(resource['path']).read_bytes()
+            entitled[member_key].add(handle)
+    first, second = [member['member_key'] for member in descriptor['members'][:2]]
+    foreign = next(iter(entitled[second] - entitled[first]))
+    with pytest.raises(DispatchError, match='Read handle is outside the exact input manifest') as denied:
+        reopened.request(invocation, first, {'id': 'foreign-resource', 'operation': 'read', 'handle': foreign})
+    assert denied.value.code == 'P_SCOPE'
 
 
 def test_native_forged_encoding_cannot_replace_actual_semantic_capture(tmp_path):
@@ -387,16 +441,128 @@ def _role_result(session, packet, conditional_question=None):
             'evidence': [], 'limitations': ['Synthetic transport fixture only.']}
 
 
-def _finish_offered(session, offered, conditional_question=None):
+def _finish_offered(session, offered, conditional_question=None, display_summary=None):
     invocation = offered['invocation_id']
     packets = [member['packet'] for member in offered['prepared']['members']]
     session.start(invocation, 'codex', invocation, {'observed': 'Controlled offline native-tool fixture.'})
     results = [_role_result(session, packet, conditional_question) for packet in packets]
+    if display_summary is not None:
+        for result in results:
+            if result['kind'] in {'author', 'integrator'}:
+                assert 'Include display_summary' in offered['prepared']['model_view']['return']['rule']
+                result['display_summary'] = display_summary
     completed = session.complete(invocation, json.dumps({'format': 'jai.semantic-return/1', 'results': results}),
                                 {'observed': 'Controlled offline terminal native-tool fixture.'})
     assert completed['status'] == 'returned'
     assert all(session.store.read().run_states[packet['run_id']] == 'returned' for packet in packets)
     return packets
+
+
+def test_replay_preserves_legacy_quarantine_for_summary_field(tmp_path, monkeypatch):
+    """Replay an encoder-2 batch whose old writer rejected the unknown field."""
+    session = _layer_session(tmp_path, aggregate_limit_ms=None)
+    for _ in range(12):
+        offered = session.next()
+        first = offered['prepared']['model_view']['members'][0]
+        if (first['responsibility'], first['phase']) == ('author', 'work'):
+            break
+        _finish_offered(session, offered)
+    else:
+        pytest.fail('The controlled engagement did not reach author work.')
+    invocation = offered['invocation_id']
+    packets = [member['packet'] for member in offered['prepared']['members']]
+    results = [_role_result(session, packet) for packet in packets]
+    results[-1]['display_summary'] = 'Previously unknown field.'
+    raw = json.dumps({'format': 'jai.semantic-return/1', 'results': results})
+    session.start(invocation, 'codex', invocation, {'fixture': 'Controlled legacy start.'})
+    with monkeypatch.context() as legacy:
+        legacy.setattr(semantic, 'capture_codec', lambda envelope: semantic.CODEC)
+        completed = session.complete(invocation, raw, {'fixture': 'Controlled legacy terminal capture.'})
+    assert completed['status'] == 'returned'
+
+    state = layered.LayeredSession.open(session.locator).store.read()
+    assert state.head == completed['completion']['receipt']['after_head']
+    assert [state.run_states[packet['run_id']] for packet in packets] == ['returned'] * 5 + ['quarantined']
+    capture = state.run_details[packets[-1]['run_id']]['semantic_capture']
+    assert capture['codec'] == semantic.CODEC
+    assert capture['error'] == 'Complete closed role-specific semantic return required'
+
+
+def test_invalid_review_member_leaves_sibling_answers_selected_and_integration_waiting(tmp_path):
+    """Admit valid reviews independently and keep recovery on the exact owner mandate."""
+    session = _layer_session(tmp_path, aggregate_limit_ms=None)
+    for _ in range(16):
+        offered = session.next()
+        assert offered['status'] == 'invoke'
+        packets = [member['packet'] for member in offered['prepared']['members']]
+        state = session.store.read()
+        if (packets[0]['execution']['phase'] == 'work'
+                and state.resolve(packets[0]['assignment'], 'assignment')['responsibility'] == 'reviewer'):
+            break
+        _finish_offered(session, offered)
+    else:
+        pytest.fail('Did not reach the physical reviewer work batch.')
+    assert len(packets) == 6
+    invalid = packets[-1]
+    assignment = state.resolve(invalid['assignment'], 'assignment')
+    question = assignment['owner']['question']
+    invocation = offered['invocation_id']
+    session.start(invocation, 'codex', invocation, {'fixture': 'Controlled review batch start.'})
+    results = [_role_result(session, packet) for packet in packets]
+    del results[-1]['verdict']
+    raw = json.dumps({'format': 'jai.semantic-return/1', 'results': results})
+    assert session.complete(invocation, raw, {'fixture': 'Controlled review batch return.'})['status'] == 'returned'
+    state = session.store.read()
+    assert [state.run_states[packet['run_id']] for packet in packets] == ['returned'] * 5 + ['quarantined']
+
+    retry = session.next()
+    checkpoint = session.checkpoint()
+    progress = {row['dimension']: row for row in checkpoint['progress']}
+    assert progress[question]['result_ref'] is None
+    assert progress[None]['result_ref'] is None
+    siblings = {name: progress[name]['result_ref'] for name in set(provider.QUESTIONS) - {question}}
+    assert all(progress[name]['disposition'] == 'selected' and reference
+               for name, reference in siblings.items())
+    state = session.store.read()
+    assert not any(value['content']['record']['product_kind'] in {'bundle', 'handoff'}
+                   for value in state.versions.values() if value['kind'] == 'delivery.product')
+    assert not any(state.resolve(item['assignment'])['owner']['layer'] == 2
+                   for item in checkpoint['readiness'])
+    [member] = retry['prepared']['members']
+    packet = member['packet']
+    assert packet['assignment'] == invalid['assignment']
+    assert packet['execution'] == invalid['execution']
+    assert packet['assessment_basis'] == invalid['assessment_basis']
+    assert packet['context'] != invalid['context']
+    _finish_offered(session, retry)
+    integration = session.next()
+    [member] = integration['prepared']['members']
+    state = session.store.read()
+    assert state.resolve(member['assignment'], 'assignment')['responsibility'] == 'integrator'
+    final_rows = {row['dimension']: row for row in session.checkpoint()['progress']}
+    assert all(final_rows[name]['result_ref'] == reference for name, reference in siblings.items())
+    assert final_rows[question]['disposition'] == 'selected'
+
+
+def test_procedure_proposal_cannot_commit_after_another_writer_advances(tmp_path):
+    """Reject a stale scheduling snapshot at the current journal boundary."""
+    session = _layer_session(tmp_path, aggregate_limit_ms=None)
+    _finish_offered(session, session.next())
+    _finish_offered(session, session.next())
+    snapshot = session.store.read()
+    procedures = [reference for reference in snapshot.procedures.values()
+                  if snapshot.resolve(reference)['message']['payload']['kind'] == 'question']
+    first, other = procedures[:2]
+    expected = snapshot.procedure_next(first)
+    assert expected['step'] == 'author'
+    writer = layered.LayeredSession.open(session.locator)
+    current = writer.workflow.advance(other)['completion']['receipt']['after_head']
+
+    with pytest.raises(DispatchError) as stale:
+        session.workflow._commit_procedure_step(snapshot, first, expected)
+    assert stale.value.code == 'P_HEAD'
+    assert session.store.read().head == current
+    assert session.workflow.advance(first)['completion']['status'] == 'committed'
 
 
 def test_layered_complete_local_triads_and_adjacent_receiving_without_bookkeeping_models(tmp_path, monkeypatch):
@@ -417,13 +583,22 @@ def test_layered_complete_local_triads_and_adjacent_receiving_without_bookkeepin
     monkeypatch.setattr(provider, 'ROOT', fixture_root)
     session = _layer_session(tmp_path, aggregate_limit_ms=None)
     seen = []
+    summary = 'The office service boundary covers individual files.'
     for ordinal in range(96):
         offered = session.next()
         if offered['status'] == 'waiting':
             break
         assert offered['status'] == 'invoke', (ordinal, offered)
-        packets = _finish_offered(session, offered)
+        owner = offered['prepared']['model_view']['members'][0]['owner']
+        packets = _finish_offered(session, offered, display_summary=summary if owner['layer'] == 1 else None)
         state = session.store.read()
+        assignment = state.resolve(packets[0]['assignment'], 'assignment')
+        if assignment['responsibility'] == 'receiver' and packets[0]['execution']['phase'] == 'work':
+            sending_layer = assignment['owner']['layer'] - 1
+            sender = next(row for row in session.checkpoint()['progress']
+                          if row['dimension'] is None and row['layer'] == sending_layer)
+            assert sender['stage'] == 'handoff' and sender['disposition'] == 'pending'
+            assert sender['wait_reason'] == 'receiving-acceptance-required'
         seen.extend((packet['execution']['phase'],
                      state.resolve(packet['assignment'], 'assignment')['responsibility'])
                     for packet in packets)
@@ -446,6 +621,20 @@ def test_layered_complete_local_triads_and_adjacent_receiving_without_bookkeepin
         (layer, question) for layer in range(1, 7) for question in provider.QUESTIONS}
     bundles = {body['owner']['layer']: ref for ref, body in products if body['product_kind'] == 'bundle'}
     assert set(bundles) == set(range(1, 7))
+    assert all((body.get('display_summary') == summary) == (body['owner']['layer'] == 1)
+               for _, body in answers)
+    assert state.resolve(bundles[1], 'product')['display_summary'] == summary
+    assert 'display_summary' not in state.resolve(bundles[2], 'product')
+    for physical in state.invocations.values():
+        if physical['phase'] == 'work' and physical['responsibility'] in {'author', 'integrator'}:
+            assert physical['codec'] == (semantic.SUMMARY_CODEC if physical['layer'] == 1 else semantic.CODEC)
+    progress = session.checkpoint()['progress']
+    assert len(progress) == 42
+    assert all(row['display_summary'] == summary for row in progress
+               if row['layer'] == 1 and row['dimension'] is not None)
+    integration = {row['layer']: row for row in progress if row['dimension'] is None}
+    assert all(integration[layer]['disposition'] == 'accepted' for layer in range(1, 6))
+    assert integration[6]['disposition'] == 'reviewed'
     for reference in [ref for ref, _ in answers] + list(bundles.values()):
         assert state._governing_input(state._point(reference), live=False)
         proofs = [proof for proof in state.proofs.values() if proof['subject'] == reference]
@@ -513,6 +702,16 @@ def test_layered_conditional_review_routes_actual_owner_without_positive_transfe
     assert packet['execution']['phase'] == 'work'
     procedure = session.store.read().procedures[(packet['assignment']['version_id'], 'default')]
     assert session.store.read().procedure_next(procedure)['waiting'] == 'owner_required'
+    progress = {row['dimension']: row for row in session.checkpoint()['progress']}
+    assert progress[conditional]['review_state'] == 'returned'
+    assert progress[conditional]['result_ref'] is None
+    assert progress[conditional]['disposition'] == 'prepared'
+    for question in set(provider.QUESTIONS) - {conditional}:
+        selected = progress[question]
+        assert selected['disposition'] == 'selected'
+        assert selected['candidate_state'] == selected['review_state'] == 'returned'
+        assert session.store.read().resolve(selected['result_ref'], 'product')['owner']['question'] == question
+        assert 'display_summary' not in selected
     session.stop(owner_work['invocation_id'], {'state': 'not-dispatched', 'observed': 'Actual owner discretion is required.'})
 
 

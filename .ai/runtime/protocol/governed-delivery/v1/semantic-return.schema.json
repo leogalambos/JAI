@@ -145,6 +145,9 @@
     "author": {
       "type": "object",
       "properties": {
+        "display_summary": {
+          "$ref": "common.schema.json#/$defs/display_summary"
+        },
         "member": {
           "type": "string",
           "minLength": 1
@@ -184,6 +187,9 @@
     "integrator": {
       "type": "object",
       "properties": {
+        "display_summary": {
+          "$ref": "common.schema.json#/$defs/display_summary"
+        },
         "member": {
           "type": "string",
           "minLength": 1

@@ -106,6 +106,7 @@ class _Scenario:
         reviewed = self._run(reviewer)
         assessment, assessment_body = self._created(reviewed, 'assessment')[0]
         if question in {'what', 'why'}:
+            original_candidate = candidate
             assert assessment_body['verdict'] == 'rework_required'
             assert assessment_body['findings']
             revised = self._run(setter)
@@ -137,6 +138,25 @@ class _Scenario:
             reviewer, second_reviewer = self._child(issuance, 'reviewer')
             assert second_reviewer['assigned_actor'] == reviewer_body['assigned_actor']
             if question == 'what':
+                state = self.host.store.read()
+                assert assessment_body['subject'] == original_candidate
+                assert [item['refs'] for item in reviewer_body['inputs']
+                        if item['slot_id'] == 'assessed-subject'] == [[original_candidate]]
+                assert [item['refs'] for item in second_reviewer['inputs']
+                        if item['slot_id'] == 'assessed-subject'] == [[candidate]]
+                profile = state.resolve(second_reviewer['profile'], 'profile')
+                obligation, = (item for item in profile['obligations']
+                               if item['owner'] == second_reviewer['owner']
+                               and item['role'] == 'professional_review' and item['subject_kind'] == 'answer')
+                slot = {'kind': 'proof', 'subject': candidate, 'role': 'professional_review',
+                        'slot_id': obligation['slot_id']}
+                stale = {'message_type': 'decision', 'scope': 'default', 'context': None,
+                         'profile': second_reviewer['profile'],
+                         'payload': {'action': 'select', 'candidate': assessment, 'slot': slot, 'previous': None}}
+                with pytest.raises(lc.ERROR, match='Proof role or subject does not qualify this slot') as denied:
+                    state._decision(stale, {'kind': 'assignment', 'ref': setter},
+                                    state.resolve(setter, 'assignment'), None, live=True)
+                assert denied.value.code == 'P_PROOF'
                 unapproved = next(ref for ref, body in self._created(issuance, 'assignment')
                                   if body['assigned_actor'] == 'what:unapproved-reviewer')
                 selected = self.workflow.run(unapproved, 'selection')

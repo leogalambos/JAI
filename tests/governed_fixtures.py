@@ -564,7 +564,7 @@ class GovernedHarness:
                 'principal': {'kind': 'assignment', 'ref': author}}
 
     def product(self, logical_id, actor, *, kind='answer', material=None, evidence=None,
-                inputs=None, related=None, episode=None, outcome=None):
+                inputs=None, related=None, episode=None, outcome=None, display_summary=None):
         """Record an actual author-owned pending result and return its exact body/ref."""
         record = {'owner': actor['owner'], 'product_kind': kind,
                   'assignment': actor['author'], 'profile': self.profile,
@@ -577,6 +577,8 @@ class GovernedHarness:
                 'collection_head': self._proposal_head(), 'unfinished': [], 'decisive': True})
         if outcome is not None:
             record['outcome'] = copy.deepcopy(outcome)
+        if display_summary is not None:
+            record['display_summary'] = display_summary
         ref = self.record(logical_id, 'product', record, sender=actor['principal'],
                           context=actor['author_context'])
         return ref, record

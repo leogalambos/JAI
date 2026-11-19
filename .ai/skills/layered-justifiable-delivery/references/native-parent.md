@@ -84,6 +84,11 @@ after each broker read. Do not reconstruct the journal between turns.
    exposes every category, page, complete role record and instruction; it is not
    a role whitelist. Neighboring input parts remain available across questions;
    local producers choose their actual dependencies without an automatic Q filter.
+   A compact batch prompt gives shared instructions once and maps each member's
+   resource names to zero-based indexes in `resource_descriptors`. Relay the
+   descriptor's original handle with that member's exact key. The Store's
+   per-member delivery manifest governs every read. Previously prepared prompts
+   and singleton prompts can carry inline descriptors.
    `bounds.local_budget` identifies the actual incoming local unit, phase,
    revision and remaining iteration. Planning and ready integration have separate
    windows; a question's local entities share its allowance and common rework
@@ -122,6 +127,12 @@ after each broker read. Do not reconstruct the journal between turns.
    setters supply actual questions, criteria and owner procedures; authors supply
    actual materials and evidence; reviewers supply actual verdicts, findings and
    conditions. Exceptional owner actions retain their explicit decision semantics.
+   Authors and integrators include their conclusion as plain-text
+   `display_summary` of 1–160 Unicode code points for qualified runs. Preserve
+   this field from the actual return. When publishing an escalation through the
+   existing proposal path, prefer its exact structured reason or linked finding.
+   Supply an authored `display_summary` on the escalation product when those
+   sources lack a short conflict statement.
    Do not ask the model to construct wire records, wire envelopes, hashes or structural
    metadata through stencil/reference/propose round trips. The host codec stages
    inline materials and derives exact mechanical identities from each issued packet.
@@ -150,15 +161,25 @@ after each broker read. Do not reconstruct the journal between turns.
    gateways carry the reviewed interface to its receiving layer. No response or timestamp substitutes for current
    justification, governing selection, independent review or required L0 authority.
 
-For an exposed prepared invocation without a confirmed handle, `next` returns
-`reconcile`, its exact invocation/member identities and deterministic task name;
-it does not spawn individual members or prepare another call.
-Inspect the actual native platform record. If invocation is confirmed, use its
-actual handle through normal `start` or existing bound continuation. If it is
-unknown or cannot be continued, record the actual observation through the same
-`stop` operation. An actual `not-dispatched` observation can close an unstarted
-call; an actual `terminated` observation can close a started call. Unknown outcomes
-retain uncertainty and the physical reservation; never fabricate termination.
+On resume, resolve the current physical call before advancing owner procedures or
+issuing more work. Use the invocation identity and the actual host observation.
+
+| Recorded state or host observation | Parent action |
+| --- | --- |
+| Issued and unexpired | Use the prepared intent for that invocation when the host can dispatch it. |
+| Prepared without confirmed dispatch, or uncertain | Follow `next`'s `reconcile` result and inspect the native platform record using the invocation identity, task name and handle when present. Bind a confirmed start with `start` if the handle is still unbound. |
+| Confirmed running | Follow `reconcile` with `observe-bound-invocation` and wait on the recorded handle for a new observation. |
+| Confirmed running with an elapsed deadline | Inspect the native platform record for a terminal result or a supported stop observation. The elapsed deadline alone cannot establish termination. |
+| Terminal body retained by the host before admission | Bind the observed start if needed, then submit the exact terminal body and capture through `complete`. |
+| Returned | Continue with `next`. If delivery is retried, submit the identical body and capture to retrieve the original receipt and its head. |
+
+Record an actual `not-dispatched` or `terminated` observation through `stop` to
+close the corresponding unstarted or started call. Unknown outcomes retain
+uncertainty and the existing reservation. Do not dispatch another call while
+waiting for a new observation or disposition.
+
+The retained body and capture preserve the host observation. Current Store
+admission rules still apply at recovery, including grant expiry.
 Late cancelled output remains history without semantic admission or a renewed
 grant. Each member consumes its actual whole physical duration locally, while
 the shared root is charged only once per physical invocation.
@@ -197,6 +218,17 @@ offer eligible unrelated work; an exhausted unit remains paused. Without eligibl
 work, `paused` requests the operator's operational choice, not a signed business
 decision or an automatic negative review. The checkpoint includes local unit IDs,
 revisions, remaining time, stage and actual pending observations.
+
+Before the next blocking native dispatch, read the checkpoint's `progress`.
+It has one row per reached work item, layer and question, plus one integration
+row per reached layer. Present stage and disposition with any wait reason and
+next action. Keep candidate and review state separate from `result_ref`.
+Only an owner-selected, currently governing answer appears as a question result.
+Present its `display_summary` when present. Otherwise show the exact reference
+and selection status. Use a literal excerpt only if the exact admitted text is
+already available to the parent. Key notices by row identity and displayed facts.
+Repeat a notice only when those facts change, even when the journal head has
+advanced for another row. Keep the budget countdown separate from that comparison.
 
 The operator may inspect or act through the existing layered CLI:
 

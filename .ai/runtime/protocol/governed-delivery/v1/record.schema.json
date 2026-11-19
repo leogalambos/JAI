@@ -583,6 +583,9 @@
     "product": {
       "type": "object",
       "properties": {
+        "display_summary": {
+          "$ref": "common.schema.json#/$defs/display_summary"
+        },
         "owner": {
           "$ref": "common.schema.json#/$defs/ownership"
         },
@@ -733,6 +736,18 @@
       ],
       "additionalProperties": false,
       "allOf": [
+        {
+          "if": {
+            "required": ["display_summary"]
+          },
+          "then": {
+            "properties": {
+              "product_kind": {
+                "enum": ["answer", "bundle", "escalation"]
+              }
+            }
+          }
+        },
         {
           "if": {
             "properties": {

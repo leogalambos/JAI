@@ -26,6 +26,18 @@ import provider_projection
 
 ROOT = Path(__file__).resolve().parents[1]
 QUESTIONS = ('what', 'why', 'how', 'who', 'where', 'when')
+_COMMON_INSTRUCTIONS = (
+    'Use only exact delivered references and their use scopes.',
+    'Preserve inherited L0 requirements; request changes from their owner.',
+    'Local entities choose their own specialties and models; reviewers never fix or self-approve.',
+    'Return actual work; do not invent evidence, verdicts, native handles or human authority.',
+    'Request resources with existing read(handle); the parent relays actual bytes when native Read is absent.',
+    'When Codex exposes no dedicated Read tool, semantic Read may use its read-only execution wrapper '
+    'solely to retrieve exact delivered paths. This grants no general shell, mutation, model or '
+    'client subprocess, network, or unrelated files authority.',
+    'Return the actual semantic envelope or an entitled member broker request; the host encodes structural metadata.',
+    'Only the actual tool ceiling and L0 sandbox apply; no Bash or Write permission is inferred.',
+)
 
 
 def _task_name(invocation):
@@ -471,20 +483,12 @@ def _delivery_resources(session, run, assignment, profile, response_contract, op
                    'expires_at_ms': context['expires_at_ms'], **budget,
                    'meaning': 'limits are original ceilings, not a fresh allowance; remaining_ms is shared-budget time as of preparation. Finish before effective_deadline_ms.'},
         'tool_ceiling': tools, 'governed_operations': operations,
-        'mandatory': ['Use only exact delivered references and their use scopes.',
-            'Preserve inherited L0 requirements; request changes from their owner.',
-            'Local entities choose their own specialties and models; reviewers never fix or self-approve.',
-            'Return actual work; do not invent evidence, verdicts, native handles or human authority.',
+        'mandatory': [*_COMMON_INSTRUCTIONS[:4],
             'Read actual business material through inputs.material resource paths and any exact local mandate. '
                 'The optional_machine_index contains host controls, not required business reading.',
             ('Read candidate professional instructions before choosing exact catalogue slugs.' if kind == 'selection'
                 else 'Read the selected professional instructions and the actual role semantic contract before work.'),
-            'Request resources with existing read(handle); the parent relays actual bytes when native Read is absent.',
-            'When Codex exposes no dedicated Read tool, semantic Read may use its read-only execution wrapper '
-                'solely to retrieve exact delivered paths. This grants no general shell, mutation, model or '
-                'client subprocess, network, or unrelated files authority.',
-            'Return the actual semantic envelope or an entitled member broker request; the host encodes structural metadata.',
-            'Only the actual tool ceiling and L0 sandbox apply; no Bash or Write permission is inferred.'],
+            *_COMMON_INSTRUCTIONS[4:]],
         'resources': {'procedure': procedure, 'inputs': inputs, 'constraints': constraints,
                       'catalogue': catalogue, 'workforce': workforce, 'optional_machine_index': optional_machine},
         'delivery_manifest': 'resource:' + manifest_blob}
@@ -492,6 +496,32 @@ def _delivery_resources(session, run, assignment, profile, response_contract, op
     prompt_blob = store.put_blob(prompt_raw)
     return base, prompt_raw.decode('utf-8'), {
         'manifest_blob_id': manifest_blob, 'prompt_blob_id': prompt_blob}
+
+
+def _compact_batch(view):
+    """Intern exact presentation descriptors while preserving member-local bindings."""
+    if len(view['members']) == 1:
+        return
+    descriptors = []
+    indexes = {}
+    for member in view['members']:
+        bindings = {}
+        for label, descriptor in member['resources'].items():
+            identity = lc.canonical(descriptor)
+            index = indexes.setdefault(identity, len(descriptors))
+            if index == len(descriptors):
+                descriptors.append(descriptor)
+            bindings[label] = index
+        member['resources'] = bindings
+        member['mandatory'] = [rule for rule in member['mandatory'] if rule not in _COMMON_INSTRUCTIONS]
+    view['resource_descriptors'] = descriptors
+    view['mandatory'] = list(_COMMON_INSTRUCTIONS)
+    view['resource_rule'] = (
+        'Apply the shared mandatory instructions and the current member’s mandatory reads. '
+        'Each member resource value is a zero-based index into resource_descriptors. '
+        'Use only descriptors bound to that member. Send their original handles with the exact member key. '
+        'Tool ceilings and governed operations are member-local.'
+    )
 
 
 def prepare(session, invocation):
@@ -559,13 +589,16 @@ def prepare(session, invocation):
                 'rule': 'Complete this deliberately incomplete skeleton with your actual required semantic fields. '
                     'Return exactly the top-level keys format and results; never add invocation or invocation_id. '
                     + ('Use specialties from exact catalogue row.slug values, never display labels; use the matching actual model availability entry. '
-                       if kind == 'selection' else '') +
+                       if kind == 'selection' else '')
+                    + ('Include display_summary with your conclusion in 1–160 Unicode characters. '
+                       if kind in {'author', 'integrator'} else '') +
                     'Return one actual closed role result per preissued member. '
                     'A batch is one physical context; no member may depend on a future result of another member. '
                     'Member aliases and broker rights remain local. Never invent missing work or PASS.'},
             'requests': {
                 'member_key': 'The exact requesting member key',
                 'request': 'Existing closed broker request; read(handle), propose, tools and effect ACKs remain governed.'}}
+        _compact_batch(view)
         prompt_raw = lc.canonical(view)
         prompt_blob = session.store.put_blob(prompt_raw)
         delivery_blob = session.store.put_blob(lc.canonical({'invocation_id': invocation, 'members': deliveries}))

@@ -988,6 +988,17 @@
   "impact_rules": [
     {
       "paths": [
+        ".ai/skills/layered-justifiable-delivery/references/native-parent.md"
+      ],
+      "tests": [
+        "tests/test_gen2_command_integrations.py",
+        "tests/test_governed_layered.py",
+        "tests/test_provider_projection.py"
+      ],
+      "reason": "The layered native parent reference defines the projected command's resume and dispatch contract."
+    },
+    {
+      "paths": [
         ".ai/runtime/protocol/governed-delivery/**"
       ],
       "tests": [

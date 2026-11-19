@@ -176,19 +176,25 @@ class Workflow:
         Raises:
             ProtocolError: Concurrent unit revision or controller scope changed.
         """
-        state = self.store.read()
+        _, result = self._pause_due(self.store.read(), scope)
+        return result
+
+    def _pause_due(self, state, scope):
+        """Sweep active windows and return the last verified snapshot and notices."""
         now = int(time.time() * 1000)
         paused = []
-        for key, unit in state.local_budget['units'].items():
-            if unit['scope'] != scope or not state.local_budget_status(key, now)['due']:
+        for key in tuple(state.local_budget['units']):
+            unit = state.local_budget['units'][key]
+            if (unit['scope'] != scope or unit['state'] != 'active'
+                    or not state.local_budget_status(key, now)['due']):
                 continue
             self._local_event(key, 'local_budget_pause', expected_revision=unit['revision'], observed_at_ms=now)
             paused.append(key)
-        state = self.store.read()
-        notices = [state.local_budget_status(unit['unit_id'], now) for unit in state.local_budget['units'].values()
-                   if unit['scope'] == scope and state.local_budget_status(unit['unit_id'], now)['applicable']
-                   and unit['state'] in {'paused', 'terminated'}]
-        return {'paused': [state.local_budget_status(key, now) for key in paused], 'notices': notices}
+            state = self.store.read()
+        statuses = [state.local_budget_status(unit['unit_id'], now) for unit in state.local_budget['units'].values()
+                    if unit['scope'] == scope and unit['state'] in {'paused', 'terminated'}]
+        return state, {'paused': [state.local_budget_status(key, now) for key in paused],
+                       'notices': [status for status in statuses if status['applicable']]}
 
     def extend_local_budget(self, unit_id, expected_revision, additional_ms, operator_instruction_ref):
         """Record an actual operator extension of one exact paused local window.
@@ -237,6 +243,10 @@ class Workflow:
         expected = state.procedure_next(procedure_ref)
         if 'step' not in expected:
             return expected
+        return self._commit_procedure_step(state, procedure_ref, expected)
+
+    def _commit_procedure_step(self, state, procedure_ref, expected):
+        """Submit a proposal tied to the snapshot that derived the step."""
         plan = state.resolve(procedure_ref)['message']['payload']
         assignment = state.resolve(plan['assignment'], 'assignment')
         controller, context = self.dispatcher._controller(state, assignment['use_scope'])

@@ -6,6 +6,7 @@ import time
 import pytest
 
 from governed_scheduling_fixtures import SchedulingHarness, workflow, local_conflict
+from governed_layered import _progress
 import lifecycle as lc
 from governed_dispatch import DispatchError
 
@@ -15,6 +16,7 @@ def _episode_affecting(host, affected, suffix):
     actor = host.setup_author(suffix=suffix, responsibility='integrator', work_kind='integration')
     reference, _ = host.product(suffix + '-package', actor, kind='escalation',
         related=[{'slot_id': 'conflicts', 'refs': [conflict]}],
+        display_summary='A governing requirement conflicts with the current service scope.',
         episode={'root': None, 'previous': None, 'collection_head': host._proposal_head(),
                  'unfinished': [], 'decisive': True})
     host.commit(host.message('escalation', {'assignment': actor['author'], 'package': reference,
@@ -48,7 +50,18 @@ def test_shared_policy_dependency_pauses_existing_other_scope_and_blocks_its_fut
     episode = _episode_affecting(host, [host.routing_policy], 'shared-capability-episode')
     state = host.store.read()
     assert state.assignment_states[existing['version_id']] == 'paused'
+    assert state.resolve(episode, 'product')['display_summary'] == (
+        'A governing requirement conflicts with the current service scope.')
     assert {'ref': existing, 'use_scope': 'branch-b'} in state._episode(episode)['members']
+    scope = 'branch-b'
+    budgets = [state.local_budget_status(identifier) for identifier, unit in state.local_budget['units'].items()
+               if unit['scope'] == scope]
+    owner = state.resolve(existing, 'assignment')['owner']
+    row = next(row for row in _progress(state, scope, budgets, state.readiness(scope))
+               if (row['work_item'], row['layer'], row['dimension'])
+               == (owner['work_item'], owner['layer'], owner['question']))
+    assert row['disposition'] == 'paused' and row['wait_reason'] == 'open-escalation'
+    assert row['next_action'] == 'inspect-escalation' and row['result_ref'] is None
     host.enter_scope('branch-b')
     before = host.path.read_bytes()
     with pytest.raises(DispatchError) as blocked:

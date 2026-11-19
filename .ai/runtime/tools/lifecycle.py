@@ -4644,8 +4644,8 @@ def _transaction_shape(state, transaction):
     payload = raw_message.get('payload', {}) if isinstance(raw_message, dict) else {}
     if (isinstance(payload, dict) and payload.get('event') == 'invocation_finished'):
         import governed_semantic
-        if payload.get('codec') != governed_semantic.CODEC:
-            raise ERROR('P_SCHEMA', 'Unsupported historical semantic encoder version; preserve this archive and create a fresh governed engagement')
+        if payload.get('codec') not in governed_semantic.SUPPORTED_CODECS:
+            raise ERROR('P_SCHEMA', 'Unsupported historical semantic encoder version; preserve this archive for a compatible reader')
     return _parse_message(raw_message)
 
 
