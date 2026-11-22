@@ -11,7 +11,7 @@ export type ExploreLane = 'overview' | 'search' | 'findings' | 'selection' | 'gr
 /** A finite server page; append combines only explicitly requested pages. */
 export type ExplorePage = ResponsePayloads['search.page'] & { readonly text: string; readonly order: 'identity' | 'label' };
 /** Exact selected records; unresolved or ambiguous finding subjects remain explicit candidates. */
-export interface ExploreSelection { readonly element: Vertex | Edge; readonly attributes: Attributes; readonly endpoints: readonly Vertex[]; readonly subjectCandidates: readonly Vertex[]; readonly subjectComplete: boolean }
+export interface ExploreSelection { readonly element: Vertex | Edge; readonly attributes: Attributes; readonly endpoints: readonly Vertex[]; readonly recordedLinks?: readonly { readonly label: string; readonly edgeId: string; readonly target: Vertex }[]; readonly subjectCandidates: readonly Vertex[]; readonly subjectComplete: boolean }
 /** Original raw bytes with a display-only UTF-8 interpretation; offsets always count bytes. */
 export interface ExploreSourcePage { readonly page: BytePage; readonly text: string }
 /** One stable publication consumed through subscribe/getSnapshot, including by useSyncExternalStore. */

@@ -272,7 +272,7 @@ def _finish(state, message, origin, invocation, at, live):
     except (ValueError, TypeError, KeyError):
         attribution_error = True
         value = None
-    if (live or codec == governed_semantic.SUMMARY_CODEC) and codec != governed_semantic.capture_codec(value):
+    if (live or codec != governed_semantic.CODEC) and codec != governed_semantic.capture_codec(value):
         raise lc.ERROR('P_STATE', 'Semantic completion codec differs from the attributed capture')
     terminal_at = invocation['finished_at_ms'] if invocation['state'] == 'cancelled' else payload['observed_at_ms']
     elapsed = max(0, terminal_at - invocation['started_at_ms'])

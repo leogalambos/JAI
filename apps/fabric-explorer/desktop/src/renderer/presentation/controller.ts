@@ -7,7 +7,7 @@ import type { QueryView } from '../../explore/types.js';
 import type { GroupAxis } from '../../graph/types.js';
 import type { DesktopBridge } from '../../shell/bridge.js';
 import type { ShellState } from '../../shell/controller.js';
-import type { ExploreLane, ExplorePage, ExploreState, NeighbourOptions, PathOptions } from './types.js';
+import type { ExploreLane, ExplorePage, ExploreSelection, ExploreState, NeighbourOptions, PathOptions } from './types.js';
 
 const empty: Filter = { projectIds: [], families: [], findingStates: [], relations: [] };
 const limits = { maxVertices: LIMITS.defaultVertices, maxEdges: LIMITS.defaultEdges, maxVisitedVertices: LIMITS.visitedVertices, maxScannedEdges: LIMITS.scannedEdges, maxHops: LIMITS.hops };
@@ -208,6 +208,7 @@ export class ExploreController {
   }
   private async inspect(job: Job, record: Vertex | Edge): Promise<void> {
     const endpoints: Vertex[] = []; const subjects: Vertex[] = []; let subjectComplete = true;
+    const recordedLinks: NonNullable<ExploreSelection['recordedLinks']>[number][] = [];
     if (!('kind' in record)) {
       for (const identity of [record.identity.from, record.identity.to]) { const endpoint = payload(await this.call(job, id => this.bridge.lookup(job.binding, id, { identity })), 'element.lookup').vertex; if (endpoint) endpoints.push(endpoint); }
     } else if (record.kind === 'finding') {
@@ -216,9 +217,29 @@ export class ExploreController {
       const ids = new Set(graph.edges.filter(edge => edge.from === record.id && (edge.relation === 'finding-subject' || edge.relation === 'location-association')).map(edge => edge.to));
       subjects.push(...graph.vertices.filter(vertex => ids.has(vertex.id)));
       if (result.projectionToken) await this.release(this.tokens.get(result.projectionToken) ?? null);
+    } else if (record.kind === 'version' && (record.family === 'assessment' || record.family === 'product')) {
+      const result = await this.call(job, id => this.bridge.neighbours(job.binding, id, {
+        identity: record.identity, direction: 'both',
+        relations: record.family === 'assessment' ? ['criteria', 'assessed-subject'] : ['other-reference'],
+        causalOnly: false, limits: { ...limits, maxHops: 1 }
+      }));
+      const graph = payload(result, 'graph.neighbours').projection;
+      const vertices = new Map(graph.vertices.map(vertex => [vertex.id, vertex]));
+      for (const edge of graph.edges) {
+        if (edge.identity.kind !== 'occurrence') continue;
+        const own = edge.identity.origin.kind === 'version' && edge.identity.origin.ref.version_id === record.identity.ref.version_id;
+        const pointer = edge.identity.pointer;
+        const label = record.family === 'assessment' && own
+          ? ({ '/criteria': 'Governing criteria', '/subject': 'Reviewed subject' } as Record<string, string>)[pointer]
+          : record.family === 'product' && edge.relation === 'other-reference' && /^\/related\/\d+\/refs\/\d+$/.test(pointer)
+            ? own ? 'Related record' : 'Referenced by' : undefined;
+        const target = vertices.get(edge.from === record.id ? edge.to : edge.from);
+        if (label && target) recordedLinks.push({ label, edgeId: edge.id, target });
+      }
+      if (result.projectionToken) await this.release(this.tokens.get(result.projectionToken) ?? null);
     }
     this.guard(job); const sourceJob = this.jobs.get('source'); if (sourceJob) { this.jobs.delete('source'); void this.abort(sourceJob); this.busy(); }
-    this.publish({ selection: { element: record, attributes: record.attributes, endpoints, subjectCandidates: subjects, subjectComplete }, sourcePage: null, message: 'kind' in record && record.kind === 'finding' && subjects.length !== 1 ? 'The finding has no single unambiguous displayed subject. Inspect the explicit candidates.' : null });
+    this.publish({ selection: { element: record, attributes: record.attributes, endpoints, recordedLinks, subjectCandidates: subjects, subjectComplete }, sourcePage: null, message: 'kind' in record && record.kind === 'finding' && subjects.length !== 1 ? 'The finding has no single unambiguous displayed subject. Inspect the explicit candidates.' : null });
   }
   /**
    * Replace the bounded graph with a directed neighbourhood of the selected or explicit identity.

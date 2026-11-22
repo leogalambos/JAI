@@ -164,6 +164,9 @@ interface Registration { readonly manifest: Data; readonly provenance: Data; rea
 
 /** One source's necessary recorded indexes; release it after draining directly to the model. */
 export class RecordedProjection {
+  private readonly escalationStates = new Map<string, string>();
+  private readonly escalationRoots = new Map<string, string>();
+  private readonly escalationRequests = new Map<string, string[]>();
   private readonly versions = new Map<string, Registration>();
   private readonly states = new Map<string, { point: CanonicalPoint; state: Data }>();
   private readonly reliance = new Map<string, CanonicalPoint[]>();
@@ -281,6 +284,23 @@ export class RecordedProjection {
         this.states.set(keyOf(point), { point, state: { validity: 'valid', applicable: Object.hasOwn(effect, 'applicable') ? effect.applicable : true } }); if ('requirements' in effect) this.requirements.set(keyOf(point), array(effect.requirements));
       } else if (operation === 'cancel' || operation === 'withdraw') for (const raw of array(effect.subjects)) { const point = pointOf(raw); const key = keyOf(point); if (operation === 'cancel') this.states.set(key, { point, state: { validity: 'invalid', applicable: false } }); else if (this.states.has(key)) this.states.set(key, { point, state: { ...this.states.get(key)!.state, applicable: false } }); }
       else if (operation === 'bootstrap-use') this.ensureUse(pointOf(effect.point));
+      else if (operation === 'episode') {
+        const root = reference(effect.root).version_id;
+        if (!this.escalationStates.has(root)) this.escalationStates.set(root, 'open');
+        this.escalationRoots.set(reference(effect.revision).version_id, root);
+      } else if (operation === 'event' && effect.kind === 'escalation') {
+        // Native control events wrap the semantic escalation, including its requested decisions.
+        const payload = object(effect.payload);
+        const decisions = array(payload.requested_decisions);
+        const preview = decisions.slice(0, 16).map(item => {
+          const value = text(item);
+          if (value.length <= 512) return value;
+          // Avoid splitting UTF-16 surrogate pairs at the presentation boundary.
+          return value.slice(0, 512).replace(/[\uD800-\uDBFF]$/u, '') + '…';
+        });
+        if (decisions.length > preview.length) preview.push('Additional requested decisions are recorded in the source.');
+        this.escalationRequests.set(reference(payload.package).version_id, preview);
+      } else if (operation === 'escalation') this.escalationStates.set(text(effect.subject), text(effect.state));
       else if (operation === 'initialize') this.initialized = true;
       else if (operation === 'initial-source') this.sources.set(JSON.stringify([text(effect.use_scope), text(effect.source.logical_id)]), { scope: text(effect.use_scope), ref: reference(effect.source) });
       else if (operation === 'source-select') for (const [key, source] of this.sources) if (source.scope === this.scope && equal(source.ref, effect.previous)) this.sources.set(key, { scope: source.scope, ref: reference(effect.replacement) });
@@ -363,8 +383,10 @@ export class RecordedProjection {
       const presentation = control.recordedLabels ? await recordedLabel({ ...labelInput(id, registration),
         ...(exactSubject ? { subject: exactSubject } : {}) }, readExcerpt) : undefined;
       this.check(control);
+      const request = record.product_kind === 'escalation' ? this.escalationRequests.get(id) : undefined;
+      const state = record.product_kind === 'escalation' ? this.escalationStates.get(this.escalationRoots.get(id) ?? id) : undefined;
       yield { ...base, kind: 'version', ref, family, label: presentation?.text ?? manifest.logical_id,
-        ...(presentation ? { presentation } : {}), attributes: attributes({ manifest, provenance: registration.provenance }, registration.origin) };
+        ...(presentation ? { presentation } : {}), ...(state ? { escalation: { state, decisions: request ?? [] } } : {}), attributes: attributes({ manifest, provenance: registration.provenance }, registration.origin) };
       const owner = record.owner;
       if (owner && typeof owner === 'object' && !Array.isArray(owner) && Object.keys(owner).sort().join() === 'layer,question,work_item,work_kind') {
         const layer = integer(owner.layer); if (layer < 0n || layer > BigInt(Number.MAX_SAFE_INTEGER)) return bad();

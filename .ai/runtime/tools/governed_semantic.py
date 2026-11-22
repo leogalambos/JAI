@@ -20,8 +20,16 @@ import lifecycle as lc
 FORMAT = 'jai.semantic-return/1'
 CODEC = 'jai.semantic-encoder/2'
 SUMMARY_CODEC = 'jai.semantic-encoder/3'
-SUPPORTED_CODECS = (CODEC, SUMMARY_CODEC)
+FINDING_SUMMARY_CODEC = 'jai.semantic-encoder/4'
+SUPPORTED_CODECS = (CODEC, SUMMARY_CODEC, FINDING_SUMMARY_CODEC)
 _SUMMARY_KINDS = ('author', 'integrator')
+
+
+def _has_finding_summary(result):
+    findings = result.get('findings')
+    return (result.get('kind') in ('reviewer', 'integration_reviewer', 'receiver')
+            and isinstance(findings, list)
+            and any(isinstance(finding, dict) and 'display_summary' in finding for finding in findings))
 
 
 def capture_codec(envelope):
@@ -30,9 +38,10 @@ def capture_codec(envelope):
     Args:
         envelope: Already attributed envelope, or None if attribution failed.
     Returns:
-        The display-summary encoder for a summary-bearing producer result,
-        or the existing encoder for every ordinary capture.
+        The encoder supporting the summaries present in the capture.
     """
+    if envelope is not None and any(_has_finding_summary(result) for result in envelope['results']):
+        return FINDING_SUMMARY_CODEC
     if envelope is not None and any(result.get('kind') in _SUMMARY_KINDS
                                     and 'display_summary' in result for result in envelope['results']):
         return SUMMARY_CODEC
@@ -165,7 +174,8 @@ def compile_semantic(packet, value, material_writer, *, codec=None):
     kind = result.get('kind')
     codec = capture_codec(value) if codec is None else codec
     legacy_summary = codec == CODEC and kind in _SUMMARY_KINDS and 'display_summary' in result
-    if legacy_summary or kind not in {'selection', 'setter', 'owner_action', 'author', 'integrator', 'measurement',
+    legacy_finding = codec != FINDING_SUMMARY_CODEC and _has_finding_summary(result)
+    if legacy_summary or legacy_finding or kind not in {'selection', 'setter', 'owner_action', 'author', 'integrator', 'measurement',
                     'reviewer', 'integration_reviewer', 'receiver'} or not wire.validator(
                         'semantic-return.schema.json', kind).is_valid(result):
         raise ValueError('Complete closed role-specific semantic return required')
@@ -249,7 +259,8 @@ def compile_semantic(packet, value, material_writer, *, codec=None):
                 'product_kind': 'finding', 'inputs': copy.deepcopy(assignment['inputs']),
                 'material': _materials([*finding['materials'], {'text': finding['observation']}], material_writer),
                 'evidence': references(finding['evidence']), 'related': related,
-                'limitations': copy.deepcopy(finding['limitations'])})
+                'limitations': copy.deepcopy(finding['limitations']),
+                **({'display_summary': finding['display_summary']} if 'display_summary' in finding else {})})
             records.append(product)
             findings.append(product_ref)
         conditions = references(result['conditions'])

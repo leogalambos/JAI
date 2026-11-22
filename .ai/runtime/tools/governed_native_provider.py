@@ -635,6 +635,8 @@ def prepare(session, invocation):
                        if kind == 'selection' else '')
                     + ('Include display_summary with your conclusion in 1–160 Unicode characters. '
                        if kind in {'author', 'integrator'} else '') +
+                    ('For each new finding, include display_summary with the observed gap in 1–160 Unicode characters. '
+                     if kind in {'reviewer', 'integration_reviewer', 'receiver'} else '') +
                     'Return one actual closed role result per preissued member. '
                     'A batch is one physical context; no member may depend on a future result of another member. '
                     'Member aliases and broker rights remain local. Never invent missing work or PASS.'},

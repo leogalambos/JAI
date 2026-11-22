@@ -143,6 +143,16 @@ def test_compile_semantic_keeps_positive_finding_and_requires_actual_verdict():
     assert encoded['records'][1]['record']['verdict'] == 'supported'
     assert len(encoded['records'][1]['record']['findings']) == 1
     assert encoded['intents'][0]['payload']['findings'] == encoded['records'][1]['record']['findings']
+    assert 'display_summary' not in encoded['records'][0]['record']
+    with_summary = copy.deepcopy(envelope)
+    with_summary['results'][0]['findings'][0]['display_summary'] = finding['observation']
+    assert semantic.capture_codec(with_summary) == semantic.FINDING_SUMMARY_CODEC
+    for legacy in (semantic.CODEC, semantic.SUMMARY_CODEC):
+        with pytest.raises(ValueError, match='semantic'):
+            semantic.compile_semantic(packet, with_summary, lc.blob, codec=legacy)
+    summarized = semantic.compile_semantic(packet, with_summary, lc.blob)
+    assert summarized['records'][0]['record']['display_summary'] == finding['observation']
+    assert summarized['records'][0]['record']['material'] == encoded['records'][0]['record']['material']
     missing = copy.deepcopy(envelope)
     del missing['results'][0]['verdict']
     with pytest.raises(ValueError, match='semantic'):

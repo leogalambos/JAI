@@ -14,6 +14,7 @@ export interface InspectorProps {
   readonly element: Vertex | Edge | null;
   readonly attributes: Attributes | null;
   readonly endpoints: readonly Vertex[];
+  readonly recordedLinks?: readonly { readonly label: string; readonly edgeId: string; readonly target: Vertex }[];
   readonly subjects: readonly Vertex[];
   readonly onSelect: (identity: ElementIdentity) => void;
   readonly onSource: (source: SourceLocator) => void;
@@ -41,6 +42,8 @@ export function Inspector(props: InspectorProps) {
   const edge = 'relation' in record ? record : null;
   const vertex = 'kind' in record ? record : null;
   const presentation = vertex ? nodePresentation(vertex) : null;
+  const state = vertex?.extensions?.['jai.escalation-state'];
+  const decisions = vertex?.extensions?.['jai.escalation-decisions'];
   const endpoint = (id: string) => props.endpoints.find(item => item.id === id);
   return <section aria-labelledby="inspector-heading" className="inspector-content">
     <h2 id="inspector-heading" tabIndex={-1}>{edge ? 'Relation' : 'Vertex'} inspector</h2>
@@ -53,6 +56,8 @@ export function Inspector(props: InspectorProps) {
     <div id="inspector-overview" role="tabpanel" aria-labelledby="inspector-tab-overview" hidden={tab !== 'overview'}><dl>
       {vertex && <><Field label="Kind" icon="elements"/><dd>{vertex.kind}</dd></>}
       {vertex?.kind === 'version' && <><Field label="Family" icon="elements"/><dd>{vertex.family}</dd></>}
+      {state?.type === 'string' && <><Field label="Recorded escalation state" icon="relations"/><dd>{state.value}</dd></>}
+      {decisions?.type === 'array' && decisions.items.length > 0 && <><Field label="Requested decisions" icon="relations"/><dd><ul>{decisions.items.map((decision, index) => decision.type === 'string' && <li key={index}>{decision.value}</li>)}</ul></dd></>}
       {vertex?.kind === 'use' && <><Field label="Use scope" icon="elements"/><dd>{vertex.identity.useScope}</dd></>}
       {vertex?.kind === 'finding' && <><Field label="Finding ID" icon="findings"/><dd>{vertex.identity.findingId}</dd><Field label="Ledger" icon="source"/><dd>{vertex.identity.ledgerId}</dd><Field label="Finding state" icon="findings"/><dd>{vertex.state}</dd><Field label="Severity" icon="findings"/><dd>{vertex.severity}</dd><Field label="Finding kind" icon="findings"/><dd>{vertex.findingKind}</dd><Field label="Recorded rounds" icon="findings"/><dd>{vertex.rounds}</dd></>}
       {vertex?.kind === 'unresolved' && <><Field label="Unresolved reference" icon="relations"/><dd>{vertex.reason}. This placeholder does not establish that its target exists.</dd></>}
@@ -72,7 +77,8 @@ export function Inspector(props: InspectorProps) {
       </>}
     </section>}
     {props.subjectIncomplete && <p className="warning">Subject resolution is incomplete. Unresolved references do not establish that their targets exist.</p>}
-    {!edge && vertex?.kind !== 'finding' && <p>No relation endpoints or finding subjects apply to this selection.</p>}</div>
+    {!!props.recordedLinks?.length && <dl>{props.recordedLinks.map(link => <div key={link.edgeId}><Field label={link.label} icon="relations"/><dd><Endpoint item={link.target} id={link.target.id} select={props.onSelect} labels={props.labels}/></dd></div>)}</dl>}
+    {!edge && !props.recordedLinks?.length && vertex?.kind !== 'finding' && <p>No relation endpoints or finding subjects apply to this selection.</p>}</div>
     <div id="inspector-evidence" role="tabpanel" aria-labelledby="inspector-tab-evidence" hidden={tab !== 'evidence'}>
     <section aria-label="Source provenance"><h3>Source evidence</h3><dl>
       <Field label="Source family" icon="source"/><dd>{record.source.family}</dd><Field label="File" icon="source"/><dd>{record.source.relativePath}</dd>

@@ -716,6 +716,9 @@
           "type": "string",
           "minLength": 1
         },
+        "display_summary": {
+          "$ref": "common.schema.json#/$defs/display_summary"
+        },
         "materials": {
           "$ref": "#/$defs/materials"
         },

@@ -156,7 +156,11 @@ export class ImportModel {
       case 'version': {
         const identity = { kind: 'version' as const, projectId: source.projectId, ref: fact.ref };
         this.node({ kind: 'version', identity, id: this.key(identity), label: fact.label, family: fact.family, source, attributes: fields(fact.attributes),
-          ...(fact.presentation ? { extensions: { 'jai.recorded-label': encodeSemantic(fact.presentation) } } : {}) }, true); break;
+          ...(fact.presentation || fact.escalation ? { extensions: {
+            ...(fact.presentation ? { 'jai.recorded-label': encodeSemantic(fact.presentation) } : {}),
+            ...(fact.escalation ? { 'jai.escalation-state': encodeSemantic(fact.escalation.state),
+              'jai.escalation-decisions': encodeSemantic(fact.escalation.decisions) } : {})
+          } } : {}) }, true); break;
       }
       case 'use': {
         const identity = { kind: 'use' as const, projectId: source.projectId, ref: fact.point.ref, useScope: fact.point.use_scope };

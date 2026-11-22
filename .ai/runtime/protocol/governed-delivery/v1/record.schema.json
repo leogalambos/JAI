@@ -743,7 +743,7 @@
           "then": {
             "properties": {
               "product_kind": {
-                "enum": ["answer", "bundle", "escalation"]
+                "enum": ["answer", "bundle", "finding", "escalation"]
               }
             }
           }
