@@ -27,6 +27,7 @@ export interface SealedGraphStore {
   /** Read complete source label. */ vertexLabel(handle: number): string;
   /** Read cached lowercase label. */ vertexLabelFolded(handle: number): string;
   /** Read cached lowercase identity. */ vertexIdFolded(handle: number): string;
+  /** Match a lowercase exact logical or version identifier. */ matchesVersionIdentifier(handle: number, folded: string): boolean;
   /** Read exact project identity. */ vertexProject(handle: number): string;
   /** Read exact version/use family, or null. */ vertexFamily(handle: number): RecordFamily | null;
   /** Distinguish nonapplicable family from an unresolved applicable family. */ vertexFamilyApplicable(handle: number): boolean;
@@ -276,6 +277,23 @@ export class CompactGraphStore implements SealedGraphStore {
     this.sourceBlob = this.blobs.put(sources);
   }
 
+  private bindUseLabel(use: number, version: number): void {
+    const extensions = this.vertices.get(version, 6);
+    if (!extensions || this.vertices.get(use, 6)) return;
+    const presentation = this.blobs.get(extensions)['jai.recorded-label'];
+    if (presentation === undefined) return;
+    const label = this.vertices.get(version, 3);
+    const oldLabel = this.vertices.get(use, 3);
+    const extra = { 'jai.recorded-label': presentation };
+    const bytes = Buffer.byteLength(JSON.stringify(this.strings.get(label))) -
+      Buffer.byteLength(JSON.stringify(this.strings.get(oldLabel))) +
+      Buffer.byteLength(',"extensions":' + JSON.stringify(extra));
+    this.vertices.set(use, 3, label);
+    this.vertices.set(use, 6, this.blobs.put(extra));
+    this.vertices.set(use, 9, this.vertices.get(version, 9));
+    this.vertices.set(use, 11, this.vertices.get(use, 11) + bytes);
+  }
+
   seal(expected?: SnapshotDescriptor): SealedGraphStore {
     this.active(); if (this.ready) return fail('Compact graph is already sealed.');
     try {
@@ -309,14 +327,22 @@ export class CompactGraphStore implements SealedGraphStore {
         return quoteRanks[this.edges.get(a, 6) - 1]! - quoteRanks[this.edges.get(b, 6) - 1]!;
       });
       for (let id = 1; id <= E; id++) for (const column of [5, 6]) { const vertex = this.identityVertices.get(this.edges.get(id, column)); if (vertex === undefined) fail('Indexed relation endpoint is absent.'); this.edges.set(id, column, vertex!); }
-      this.labelOrder = this.vertexOrder.slice(); this.sort(this.labelOrder, temporary, (a, b) => cmp(this.strings.get(this.vertices.get(a, 9)), this.strings.get(this.vertices.get(b, 9))) || this.vertexRank[a - 1]! - this.vertexRank[b - 1]!);
-      for (let n = 0; n < V; n++) this.labelOrder[n] = this.vertexRank[this.labelOrder[n]! - 1]!;
       this.families = new Uint8Array(V); this.applicable = new Uint8Array(V); this.states = new Uint8Array(V);
       for (let handle = 0; handle < V; handle++) {
         const row = this.vertexOrder[handle]!; const kind = this.vertices.get(row, 0); const identity = this.vertices.get(row, 1); const identityKind = this.identities.get(identity, 0);
-        if (kind === 1 || kind === 2 || kind === 7 && (identityKind === 1 || identityKind === 2)) { this.applicable[handle] = 1; const key = elementKey({ kind: 'version', projectId: this.strings.get(this.identities.get(identity, 1)), ref: this.getRef(this.identities.get(identity, 2)) }); const version = this.vertexIds.get(key); this.families[handle] = version && this.vertices.get(version, 0) === 1 ? FAMILIES.indexOf(this.blobs.get(this.vertices.get(version, 7)).family) + 1 : 0; }
+        if (kind === 1 || kind === 2 || kind === 7 && (identityKind === 1 || identityKind === 2)) {
+          this.applicable[handle] = 1;
+          const key = elementKey({ kind: 'version', projectId: this.strings.get(this.identities.get(identity, 1)), ref: this.getRef(this.identities.get(identity, 2)) });
+          const version = this.vertexIds.get(key);
+          if (version && this.vertices.get(version, 0) === 1) {
+            this.families[handle] = FAMILIES.indexOf(this.blobs.get(this.vertices.get(version, 7)).family) + 1;
+            if (kind === 2) this.bindUseLabel(row, version);
+          }
+        }
         if (kind === 6) this.states[handle] = STATES.indexOf(this.blobs.get(this.vertices.get(row, 7)).state) + 1;
       }
+      this.labelOrder = this.vertexOrder.slice(); this.sort(this.labelOrder, temporary, (a, b) => cmp(this.strings.get(this.vertices.get(a, 9)), this.strings.get(this.vertices.get(b, 9))) || this.vertexRank[a - 1]! - this.vertexRank[b - 1]!);
+      for (let n = 0; n < V; n++) this.labelOrder[n] = this.vertexRank[this.labelOrder[n]! - 1]!;
       this.outgoing = new Uint32Array(V + 1); this.incoming = new Uint32Array(V + 1); this.outgoingEdges = new Uint32Array(E); this.incomingEdges = new Uint32Array(E);
       for (let id = 1; id <= E; id++) { this.outgoing[this.vertexRank[this.edges.get(id, 5) - 1]! + 1]!++; this.incoming[this.vertexRank[this.edges.get(id, 6) - 1]! + 1]!++; }
       for (let n = 1; n <= V; n++) { this.outgoing[n]! += this.outgoing[n - 1]!; this.incoming[n]! += this.incoming[n - 1]!; }
@@ -356,6 +382,13 @@ export class CompactGraphStore implements SealedGraphStore {
   /** @inheritdoc */ vertexLabel(handle: number): string { return this.strings.get(this.vertices.get(this.v(handle), 3)); }
   /** @inheritdoc */ vertexLabelFolded(handle: number): string { return this.strings.get(this.vertices.get(this.v(handle), 9)); }
   /** @inheritdoc */ vertexIdFolded(handle: number): string { return this.strings.get(this.vertices.get(this.v(handle), 10)); }
+  /** @inheritdoc */ matchesVersionIdentifier(handle: number, folded: string): boolean {
+    const identity = this.vertices.get(this.v(handle), 1);
+    const kind = this.identities.get(identity, 0);
+    if (kind !== 1 && kind !== 2) return false;
+    const ref = this.identities.get(identity, 2);
+    return this.strings.get(this.refs.get(ref, 3)) === folded || this.strings.get(this.refs.get(ref, 2)).toLowerCase() === folded;
+  }
   /** @inheritdoc */ vertexProject(handle: number): string { return this.strings.get(this.identities.get(this.vertices.get(this.v(handle), 1), 1)); }
   /** @inheritdoc */ vertexFamily(handle: number): RecordFamily | null { this.v(handle); return this.families[handle] ? FAMILIES[this.families[handle]! - 1]! : null; }
   /** @inheritdoc */ vertexFamilyApplicable(handle: number): boolean { this.v(handle); return this.applicable[handle] !== 0; }

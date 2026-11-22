@@ -43,6 +43,19 @@ const neighbours = (identity: ElementIdentity, limits = DEFAULT_QUERY_LIMITS, di
 const path = (from: ElementIdentity, to: ElementIdentity, limits = DEFAULT_QUERY_LIMITS, direction: 'forward' | 'reverse' | 'both' = 'forward') => request('graph.path', { from, to, direction, relations: DEFAULT_RELATIONS, causalOnly: false, limits });
 
 describe('worker-local immutable graph query index', () => {
+  it('searches normalized semantic text and original exact identifiers', () => {
+    const logicalId = 'opaque\t"identifier"';
+    const record = version(logicalId, 'L1 WHAT · Restore an individual file.');
+    const used = use(record);
+    const index = new QueryIndex(graph([record, used, version('other', 'Restore a directory.')], []), binding);
+    for (const text of [' Restore\u00a0an\nindividual ', logicalId, ref(logicalId).version_id]) {
+      const result = run(index, request('search.page', { text, filter: empty, order: 'label', limit: 10, cursor: null }));
+      if (result.operation !== 'search.page') throw new Error('Unexpected operation.');
+      expect(result.value.items.map(item => item.id)).toEqual([record.id, used.id]);
+    }
+    const whitespace = run(index, request('search.page', { text: '\u00a0', filter: empty, order: 'label', limit: 10, cursor: null }));
+    if (whitespace.operation === 'search.page') expect(whitespace.value.items).toHaveLength(0);
+  });
   it('keeps finding-only cursor membership and authentication separate from ordinary search', () => {
     const a = finding('F-1', 'open'); const b = finding('F-2', 'verified'); const other = version('not-a-finding'); const index = new QueryIndex(graph([a, b, other], []), binding);
     const input = request('search.page', { text: '', filter: empty, order: 'identity', limit: 1, cursor: null });

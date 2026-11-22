@@ -5,7 +5,10 @@ import { createHash, randomUUID } from 'node:crypto';
 import { basename, dirname, isAbsolute, parse, relative, resolve, sep } from 'node:path';
 import type { AdmittedSource, BytePage } from '@jai/fabric-explorer-contracts';
 import type { NamespaceRegistry, OpenedSources, PageBrokerPort, SourceSelection } from './types.js';
-import type { DirectCapture, DirectSourceFile, NativeFileStamp } from './direct-types.js';
+import { EXCERPT_LIMIT, IMPORT_EXCERPT_LIMIT, type CompanionObservation, type DirectCapture, type ExcerptRequest, type ExcerptResult, type DirectSourceFile, type NativeFileStamp } from './direct-types.js';
+import { parseRecordedJSON } from '../import/recorded-json.js';
+import { recordedVersionId } from '../import/recorded-projection.js';
+
 /** Fixed application storage and stable namespace owner. Legacy launcher fields are ignored. */
 export interface ReadBrokerOptions {
   readonly writeRoots: readonly string[]; readonly registry: NamespaceRegistry;
@@ -35,6 +38,44 @@ export function sameFileStamp(a: NativeFileStamp, b: NativeFileStamp): boolean {
 const sameIdentity = (a: NativeFileStamp, b: NativeFileStamp) => a.device === b.device && a.inode === b.inode;
 const within = (child: string, parent: string) => { const value = relative(parent, child); return value === '' || value !== '..' && !value.startsWith('..' + sep) && !isAbsolute(value); };
 const cancelled = (signal?: AbortSignal) => { if (signal?.aborted) throw new BrokerError('cancelled', 'Source request cancelled.'); };
+async function matchesRecordedCompanion(file: FileHandle, stamp: NativeFileStamp, request: ExcerptRequest): Promise<boolean> {
+  const { rowOffset, rowLength, effectIndex } = request;
+  const prefix = rowOffset > 0 ? 1 : 0;
+  const bytes = Buffer.alloc(rowLength + prefix);
+  let offset = 0;
+  while (offset < bytes.length) {
+    const { bytesRead } = await file.read(bytes, offset, bytes.length - offset, rowOffset - prefix + offset);
+    if (!bytesRead) return false;
+    offset += bytesRead;
+  }
+  if (!sameFileStamp(nativeFileStamp(await file.stat({ bigint: true })), stamp)) return false;
+  if (prefix && bytes[0] !== 10 && bytes[0] !== 13) return false;
+  const body = new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(bytes.subarray(prefix));
+  if (BigInt(rowOffset + rowLength) < BigInt(stamp.size) && !/[\r\n]$/.test(body)) return false;
+  const line = body.replace(/(?:\r\n|\r|\n)$/, '');
+  if (/[\r\n]/.test(line)) return false;
+  const row = parseRecordedJSON(line, 'fabric') as Record<string, any>;
+  const operation = row?.operations?.[0];
+  if (row?.format !== 9n || row.protocol !== 'jai.governed-delivery/1'
+      || !Array.isArray(row.operations) || row.operations.length !== 1 || operation?.op !== 'governed') return false;
+  const { effects, message } = operation.data ?? {};
+  const effect = Array.isArray(effects) ? effects[effectIndex] : undefined;
+  if (!effect || !['register', 'decision-record'].includes(effect.op)
+      || effect.manifest?.schema !== 'jai.lifecycle.manifest/2'
+      || recordedVersionId(effect.manifest) !== request.versionId) return false;
+  const material = effect.manifest.content?.record?.material;
+  if (!Array.isArray(material) || material.filter(id => id === request.blobId).length !== 1
+      || !Array.isArray(message?.attachments)) return false;
+  const declarations = message.attachments.filter((item: Record<string, unknown> | null) => item?.blob_id === request.blobId);
+  const eligible = message.attachments.filter((item: Record<string, unknown> | null) => item && material.includes(item.blob_id)
+    && ['text/plain', 'text/markdown'].some(media => media === item.media_type));
+  const declaration = declarations[0];
+  return !!declaration && declarations.length === 1 && eligible.length === 1 && declaration === eligible[0]
+    && declaration.media_type === request.media && declaration.byte_length === BigInt(request.byteLength)
+    && ['public', 'internal', 'confidential', 'restricted'].some(kind => kind === declaration.classification)
+    && typeof declaration.access_handle === 'string' && declaration.access_handle.length > 0;
+}
+
 interface Entry { readonly path: string; readonly projectPath: string; readonly file: FileHandle; readonly admitted: AdmittedSource; readonly initial: NativeFileStamp }
 interface Group { readonly owner: string; readonly entries: readonly Entry[] }
 /** Source handles establish authority after explicit selection; pathname observations grant no recursive read access. */
@@ -102,7 +143,9 @@ export class ReadBroker implements PageBrokerPort {
   async captureDirect(owner: string, capability: string, sourceIds: readonly string[], signal?: AbortSignal): Promise<DirectCapture> {
     return this.work(signal, async () => {
       const group = this.owned(owner, capability); if (!sourceIds.length || sourceIds.length > 128 || new Set(sourceIds).size !== sourceIds.length) throw failure();
-      const files: DirectSourceFile[] = []; let total = 0n;
+      const files: DirectSourceFile[] = []; let total = 0n; let excerptRemaining = IMPORT_EXCERPT_LIMIT;
+      const companions = new Map<string, CompanionObservation>();
+      let companionChanged = false;
       const dispose = async () => { await Promise.all(files.map(file => file.handle.close().catch(() => undefined))); };
       try {
         for (const sourceId of sourceIds) {
@@ -114,14 +157,115 @@ export class ReadBroker implements PageBrokerPort {
           files.push({ admitted: { ...entry.admitted }, revisionId: randomUUID(), observedAt: new Date().toISOString(), stamp: acquired.stamp, handle: acquired.file });
         }
         this.owned(owner, capability); cancelled(signal);
-        return { files, dispose, validate: async () => {
+        const companionKey = (sourceId: string, blobId: string) => JSON.stringify([sourceId, blobId]);
+        const companionFailure = (error: unknown) => (error as NodeJS.ErrnoException)?.code === 'ENOENT' ? 'missing' as const : 'read-denied' as const;
+        const sameCompanion = (a: CompanionObservation['state'], b: CompanionObservation['state']) =>
+          typeof a === 'string' || typeof b === 'string' ? a === b : sameFileStamp(a, b);
+        const observeCompanion = (sourceId: string, blobId: string, state: CompanionObservation['state']) => {
+          const key = companionKey(sourceId, blobId);
+          const prior = companions.get(key)?.state;
+          if (prior !== undefined && !sameCompanion(prior, state)) companionChanged = true;
+          companions.set(key, { sourceId, blobId, state });
+        };
+        const companionsUnchanged = async (previous: readonly CompanionObservation[]): Promise<boolean> => {
+          this.owned(owner, capability); cancelled(signal);
+          if (companionChanged) return false;
+          for (const { sourceId, blobId, state } of previous) {
+            const entry = group.entries.find(item => item.admitted.sourceId === sourceId);
+            if (!entry || !sourceIds.includes(sourceId) || !/^[0-9a-f]{64}$/.test(blobId)) return false;
+            let current: CompanionObservation['state'];
+            try {
+              const material = await this.acquire(entry.path + '.blobs/' + blobId, undefined, signal);
+              try { current = material.stamp; } finally { await material.file.close(); }
+            } catch (error) {
+              cancelled(signal);
+              current = companionFailure(error);
+            }
+            if (!sameCompanion(state, current)) return false;
+          }
+          this.owned(owner, capability); cancelled(signal);
+          return true;
+        };
+        return { files, dispose, companionsUnchanged, companionObservations: () => [...companions.values()], validate: async () => {
           this.owned(owner, capability); cancelled(signal);
           for (const captured of files) { const entry = group.entries.find(item => item.admitted.sourceId === captured.admitted.sourceId)!; const current = await this.acquire(entry.path, entry.initial, signal); try { if (!sameFileStamp(current.stamp, captured.stamp)) throw changed(); } finally { await current.file.close(); } }
           this.owned(owner, capability); cancelled(signal);
+        }, materialExcerpt: async request => {
+          this.owned(owner, capability); cancelled(signal);
+          const entry = group.entries.find(item => item.admitted.sourceId === request.sourceId && item.admitted.family === 'fabric');
+          const captured = files.find(file => file.admitted.sourceId === request.sourceId);
+          if (!entry || !captured || typeof request.blobId !== 'string' || !/^[0-9a-f]{64}$/.test(request.blobId)
+              || typeof request.versionId !== 'string' || !/^[0-9a-f]{64}$/.test(request.versionId) || !Number.isSafeInteger(request.byteLength)
+              || request.byteLength < 0 || !['text/plain', 'text/markdown'].includes(request.media)
+              || !Number.isSafeInteger(request.rowOffset) || request.rowOffset < 0
+              || !Number.isSafeInteger(request.rowLength) || request.rowLength < 1
+              || !Number.isSafeInteger(request.effectIndex) || request.effectIndex < 0
+              || BigInt(request.rowOffset) + BigInt(request.rowLength) > BigInt(captured.stamp.size)) return { kind: 'read-denied' };
+          if (request.byteLength > EXCERPT_LIMIT) return { kind: 'oversized' };
+          const proofBytes = request.rowLength + Number(request.rowOffset > 0);
+          if (proofBytes + request.byteLength > excerptRemaining) return { kind: 'import-budget-exhausted' };
+          excerptRemaining -= proofBytes;
+          return this.work<ExcerptResult>(signal, async () => {
+            let companionOpened = false;
+            try {
+              if (!await matchesRecordedCompanion(entry.file, captured.stamp, request)) return { kind: 'read-denied' };
+              this.owned(owner, capability); cancelled(signal);
+              if (request.byteLength > excerptRemaining) return { kind: 'import-budget-exhausted' };
+              let material;
+              try { material = await this.acquire(entry.path + '.blobs/' + request.blobId, undefined, signal); }
+              catch (error) {
+                cancelled(signal);
+                const state = companionFailure(error);
+                observeCompanion(request.sourceId, request.blobId, state);
+                return { kind: state };
+              }
+              companionOpened = true;
+              try {
+                observeCompanion(request.sourceId, request.blobId, material.stamp);
+                const size = BigInt(material.stamp.size);
+                if (size > BigInt(EXCERPT_LIMIT)) return { kind: 'oversized' };
+                if (size !== BigInt(request.byteLength)) return { kind: 'digest-mismatch' };
+                if (request.byteLength > excerptRemaining) return { kind: 'import-budget-exhausted' };
+                excerptRemaining -= request.byteLength;
+                const bytes = Buffer.alloc(request.byteLength);
+                let offset = 0;
+                while (offset < bytes.length) {
+                  cancelled(signal);
+                  const { bytesRead } = await material.file.read(bytes, offset, bytes.length - offset, offset);
+                  if (!bytesRead) return { kind: 'digest-mismatch' };
+                  offset += bytesRead;
+                }
+                this.owned(owner, capability); cancelled(signal);
+                if (!sameFileStamp(nativeFileStamp(await material.file.stat({ bigint: true })), material.stamp)
+                    || createHash('sha256').update('jai.lifecycle.blob.v2\0').update(bytes).digest('hex') !== request.blobId) return { kind: 'digest-mismatch' };
+                try { return { kind: 'text', text: new TextDecoder('utf-8', { fatal: true, ignoreBOM: true }).decode(bytes) }; }
+                catch { return { kind: 'invalid-utf8' }; }
+              } finally { await material.file.close(); }
+            } catch (error) {
+              if (companionOpened) companionChanged = true;
+              if (signal?.aborted) throw error;
+              return { kind: 'read-denied' };
+            }
+          }).catch(error => {
+            companionChanged = true;
+            throw error;
+          });
         }, materialAvailable: async (sourceId, blobId) => {
           this.owned(owner, capability); cancelled(signal);
-          const entry = group.entries.find(item => item.admitted.sourceId === sourceId); if (!entry || !/^[0-9a-f]{64}$/.test(blobId)) throw failure();
-          try { const material = await this.acquire(entry.path + '.blobs/' + blobId, undefined, signal); try { return BigInt(material.stamp.size) <= 32n * 1024n * 1024n ? 'available' : 'missing'; } finally { await material.file.close(); } } catch (error) { if (signal?.aborted) throw error; return 'missing'; }
+          const entry = group.entries.find(item => item.admitted.sourceId === sourceId);
+          if (!entry || !sourceIds.includes(sourceId) || !/^[0-9a-f]{64}$/.test(blobId)) throw failure();
+          let state = companions.get(companionKey(sourceId, blobId))?.state;
+          if (state === undefined) {
+            try {
+              const material = await this.acquire(entry.path + '.blobs/' + blobId, undefined, signal);
+              try { state = material.stamp; } finally { await material.file.close(); }
+            } catch (error) {
+              cancelled(signal);
+              state = companionFailure(error);
+            }
+            observeCompanion(sourceId, blobId, state);
+          }
+          return typeof state !== 'string' && BigInt(state.size) <= 32n * 1024n * 1024n ? 'available' : 'missing';
         } };
       } catch (error) { await dispose(); throw error; }
     });

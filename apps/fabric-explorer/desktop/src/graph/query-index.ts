@@ -6,6 +6,7 @@ import { isDeepStrictEqual } from 'node:util';
 import { assertBinding, assertRequest, assertSnapshot, ContractError, elementKey, LIMITS, PROTOCOL, queryKey, RELATION_DIRECTIONS } from '@jai/fabric-explorer-contracts';
 import type { Attributes, Binding, Counts, Edge, Filter, GraphProjection, OmissionReason, QueryLimits, RelationClass, RequestPayloads, SnapshotDescriptor, Vertex } from '@jai/fabric-explorer-contracts';
 import { CompactGraphStore } from '../import/compact-store.js';
+import { normalizeLabelWhitespace } from '../import/recorded-label.js';
 import type { SealedGraphStore } from '../import/compact-store.js';
 import { EXPLORE_LIMITS } from '../explore/types.js';
 import type { GraphSelection, ProjectionSelection, FilteredHandles, GraphBinding, GraphData, GraphGroup, GraphGroups, GraphReply, GraphRequest, GroupAxis, HandleProjection, QueryControl } from './types.js';
@@ -132,10 +133,13 @@ export class QueryIndex {
       if (!/^[0-9a-f]{64}$/.test(token) || !timingSafeEqual(Buffer.from(token, 'hex'), Buffer.from(expected, 'hex')) || BigInt(payload.cursor.offset) > BigInt(this.graph.vertexCount)) throw new ContractError('cursor-mismatch', 'Search cursor is not authentic for this work generation.');
       offset = Number(payload.cursor.offset);
     }
-    const view = this.filter(payload.filter, control); const text = payload.text.toLowerCase(); const vertices: number[] = []; let matched = 0;
+    const view = this.filter(payload.filter, control); const original = payload.text.toLowerCase(); const text = normalizeLabelWhitespace(original); const vertices: number[] = []; let matched = 0;
     const scan = (handle: number): void => {
       check(control);
-      if (view.vertices[handle] && (domain === 'all' || this.graph.vertexKind(handle) === 'finding') && (this.graph.vertexLabelFolded(handle).includes(text) || this.graph.vertexIdFolded(handle).includes(text))) {
+      if (!view.vertices[handle] || (domain === 'findings' && this.graph.vertexKind(handle) !== 'finding')) return;
+      const label = this.graph.vertexLabelFolded(handle);
+      if ((text.length > 0 && label.includes(text)) || label.includes(original) || this.graph.vertexIdFolded(handle).includes(original)
+          || this.graph.matchesVersionIdentifier(handle, original)) {
         if (matched >= offset && vertices.length < payload.limit) vertices.push(handle); matched++;
       }
     };

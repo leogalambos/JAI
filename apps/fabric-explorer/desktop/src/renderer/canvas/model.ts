@@ -1,7 +1,7 @@
 // SPDX-License-Identifier: BSD-4-Clause
 // Copyright (c) 2026 Leo Galambos and the Egothor team
 /** Compact display projection staging; source attributes and verification never become renderer-owned state. */
-import { projectionLabelMap, displayNodeLabel } from '../node-label.js';
+import { projectionLabelMap, compactNodeLabel } from '../node-label.js';
 import { MultiDirectedGraph } from 'graphology';
 import type { GraphProjection } from '@jai/fabric-explorer-contracts';
 import type { LayoutResult } from '../../layout/types.js';
@@ -28,7 +28,7 @@ export function canvasProjection(projection: GraphProjection, layout: LayoutResu
   const nodes = projection.vertices.map((vertex, index): CanvasNode => {
     const position = positions.get(handles[index]!);
     if (!position || ![position.x, position.y].every(value => Number.isFinite(value) && Math.abs(value) <= 1e9) || ids.has(vertex.id) || typeof vertex.id !== 'string' || !vertex.id || typeof vertex.label !== 'string') throw new Error('Canvas node rejected'); ids.add(vertex.id);
-    return { id: vertex.id, label: displayNodeLabel(vertex, labels), x: position.x, y: position.y, kind: vertex.kind, color: vertex.kind === 'finding' ? '#9b2c65' : vertex.kind === 'unresolved' ? '#8a5815' : '#235d91', size: vertex.kind === 'finding' ? 9 : 7, shape: vertex.kind === 'finding' ? 'diamond' : vertex.kind === 'unresolved' ? 'triangle' : 'circle' };
+    return { id: vertex.id, label: compactNodeLabel(vertex, labels), x: position.x, y: position.y, kind: vertex.kind, color: vertex.kind === 'finding' ? '#9b2c65' : vertex.kind === 'unresolved' ? '#8a5815' : '#235d91', size: vertex.kind === 'finding' ? 9 : 7, shape: vertex.kind === 'finding' ? 'diamond' : vertex.kind === 'unresolved' ? 'triangle' : 'circle' };
   });
   const edgeIds = new Set<string>();
   const edges = projection.edges.map((edge): CanvasEdge => { if (typeof edge.id !== 'string' || !edge.id || !ids.has(edge.from) || !ids.has(edge.to) || edgeIds.has(edge.id) || ids.has(edge.id) || typeof edge.label !== 'string') throw new Error('Canvas edge rejected'); edgeIds.add(edge.id); return { id: edge.id, from: edge.from, to: edge.to, label: edge.label, color: '#65768a', size: 1.5 }; });

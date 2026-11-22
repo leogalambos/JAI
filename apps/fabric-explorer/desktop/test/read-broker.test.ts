@@ -1,9 +1,12 @@
 /** Real native selected-file/filesystem integration; namespace persistence is an owned application port. */
 import { afterEach, beforeEach, describe, expect, it } from 'vitest';
+import type { ExcerptRequest } from '../src/broker/direct-types.js';
+import { recordedVersionId } from '../src/import/recorded-projection.js';
 import { mkdtemp, mkdir, readFile, writeFile, rename, rm, symlink, link } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { createHash } from 'node:crypto';
 import { nativeFileStamp, sameFileStamp, ReadBroker } from '../src/broker/read-broker.js';
 import type { NamespaceRegistry, SourceSelection } from '../src/broker/types.js';
 
@@ -41,6 +44,57 @@ afterEach(async () => {
 });
 
 describe('fixed retained-root read broker', () => {
+  it('reads only bounded exact companion bytes for the captured source', async () => {
+    const directory = selection.path + '.blobs';
+    await mkdir(directory);
+    const identity = (raw: Buffer) => createHash('sha256').update('jai.lifecycle.blob.v2\0').update(raw).digest('hex');
+    const raw = Buffer.from('Exact Ω companion.');
+    const blobId = identity(raw);
+    const invalid = Buffer.from([255]);
+    const full = Buffer.alloc(16384, 65);
+    const makeRow = (bytes: Buffer) => {
+      const manifest = { schema: 'jai.lifecycle.manifest/2', content: { record: { material: [identity(bytes)] } } };
+      const versionId = recordedVersionId(manifest);
+      const attachment = { blob_id: identity(bytes), byte_length: bytes.length, media_type: 'text/plain',
+        classification: 'internal', access_handle: 'admitted' };
+      const row = JSON.stringify({ format: 9, protocol: 'jai.governed-delivery/1', operations: [{ op: 'governed',
+        data: { message: { attachments: [attachment] }, effects: [{ op: 'register', manifest }] } }] }) + '\n';
+      return { versionId, row, blobId: identity(bytes), byteLength: bytes.length };
+    };
+    const rows = [raw, invalid, full].map(makeRow);
+    await writeFile(selection.path, rows.map(item => item.row).join(''));
+    const reader = broker();
+    const opened = await reader.open('owner', [selection]);
+    const sourceId = opened.sources[0]!.sourceId;
+    const capture = await reader.captureDirect('owner', opened.capability, [sourceId]);
+    let rowOffset = 0;
+    const [request, invalidRequest, fullRequest] = rows.map(({ row, ...item }) => {
+      const location = { rowOffset, rowLength: Buffer.byteLength(row), effectIndex: 0 };
+      rowOffset += location.rowLength;
+      return { ...item, sourceId, media: 'text/plain' as const, ...location };
+    }) as [ExcerptRequest, ExcerptRequest, ExcerptRequest];
+    const read = capture.materialExcerpt!;
+    try {
+      expect(await read(request)).toEqual({ kind: 'missing' });
+      await writeFile(join(directory, blobId), raw);
+      expect(await read(request)).toEqual({ kind: 'text', text: raw.toString() });
+      expect(await read({ ...request, sourceId: 'foreign' })).toEqual({ kind: 'read-denied' });
+      expect(await read({ ...request, byteLength: 16385 })).toEqual({ kind: 'oversized' });
+      await writeFile(join(directory, blobId), Buffer.alloc(raw.length, 65));
+      expect(await read(request)).toEqual({ kind: 'digest-mismatch' });
+      await writeFile(join(directory, identity(invalid)), invalid);
+      expect(await read(invalidRequest)).toEqual({ kind: 'invalid-utf8' });
+      await writeFile(join(directory, fullRequest.blobId), full);
+      expect(await read({ ...request, versionId: 'b'.repeat(64) })).toEqual({ kind: 'read-denied' });
+      expect(await read({ ...fullRequest, rowOffset: request.rowOffset, rowLength: request.rowLength })).toEqual({ kind: 'read-denied' });
+      const charged = 5 * request.rowLength + 2 * raw.length + invalidRequest.rowLength + 2;
+      const count = Math.floor((1048576 - charged) / (full.length + fullRequest.rowLength + 1));
+      for (let index = 0; index < count; index++) expect((await read(fullRequest)).kind).toBe('text');
+      expect(await read(fullRequest)).toEqual({ kind: 'import-budget-exhausted' });
+    } finally {
+      await capture.dispose();
+    }
+  });
   it('does not launch legacy executables or invoke obsolete helper observers', async () => {
     const observations: unknown[] = [];
     const reader = new ReadBroker({ executable: '/not-an-executable', script: '/not-a-script', coreTools: '/not-an-import-root', cwd: app, writeRoots: [app], registry: registry(), onHelperClose: value => observations.push(value) }); brokers.push(reader);

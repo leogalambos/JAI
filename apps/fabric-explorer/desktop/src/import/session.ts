@@ -7,7 +7,7 @@ import type { CapturedSources, SemanticBrokerPort, SemanticLease } from '../brok
 import { unsigned } from './facts.js';
 import { CacheUnavailableError, CaptureArchiveStore } from '../broker/capture-archive.js';
 import { ReadBroker, BrokerError, sameFileStamp } from '../broker/read-broker.js';
-import type { NativeFileStamp, DirectCapture, DirectArchiveStage } from '../broker/direct-types.js';
+import type { CompanionObservation, NativeFileStamp, DirectCapture, DirectArchiveStage } from '../broker/direct-types.js';
 import { draftDirectRevision } from '../broker/direct-types.js';
 import { SemanticError } from '../broker/semantic-broker.js';
 import { captureReport, failedReport, readerFailureReport } from './report.js';
@@ -48,7 +48,7 @@ export interface ImportSessionPort {
 }
 /** Trusted immutable session authority and fixed worker construction. */
 export interface ImportSessionOptions { readonly sessionId: string; readonly capability: string; readonly sources: readonly AdmittedSource[]; readonly broker: SemanticBrokerPort | ReadBroker; readonly archiveDirectory?: string; readonly workerFactory: ImportWorkerFactory; readonly limits?: ImportLimits }
-interface Published { readonly worker: ImportWorkerPort; readonly archive: CapturedSources; readonly descriptor: SnapshotDescriptor; readonly selected: readonly string[]; readonly report: ImportReport; readonly stamps?: ReadonlyMap<string, NativeFileStamp> }
+interface Published { readonly worker: ImportWorkerPort; readonly archive: CapturedSources; readonly descriptor: SnapshotDescriptor; readonly selected: readonly string[]; readonly report: ImportReport; readonly stamps?: ReadonlyMap<string, NativeFileStamp>; readonly companions?: readonly CompanionObservation[] }
 /** One root session; failure of a candidate never destroys its separate accepted worker/archive. */
 export class ImportSession implements ImportSessionPort {
   private readonly limits: ImportLimits;
@@ -144,18 +144,22 @@ export class ImportSession implements ImportSessionPort {
     try {
       check(); capture = await broker.captureDirect(this.options.sessionId, this.options.capability, selected, abort.signal); check();
       const old = this.published;
-      if (reuseUnchanged && old?.stamps && JSON.stringify(old.selected) === JSON.stringify(selected) && capture.files.every(file => { const prior = old.stamps!.get(file.admitted.sourceId); return prior && sameFileStamp(prior, file.stamp); })) {
+      if (reuseUnchanged && old?.stamps && JSON.stringify(old.selected) === JSON.stringify(selected) && capture.files.every(file => { const prior = old.stamps!.get(file.admitted.sourceId); return prior && sameFileStamp(prior, file.stamp); })
+          && await capture.companionsUnchanged(old.companions ?? [])) {
         await capture.validate(); check(); this.report = structuredClone(old.report); this.stale = false; return structuredClone(old.descriptor);
       }
       if (!this.options.archiveDirectory) throw new ImportError('read-failed', 'Private capture archive is not configured.');
       stage = await new CaptureArchiveStore(this.options.archiveDirectory).stageDirect(capture.files, abort.signal); check();
       worker = this.options.workerFactory(); this.candidateWorker = worker; if (!worker.importDirect) throw new ImportError('worker-failed', 'Direct import worker is unavailable.');
-      const ready = await worker.importDirect({ binding: { sessionId: this.options.sessionId, capability: this.options.capability, generation: expected }, generation: String(BigInt(expected ?? '0') + 1n), limits: this.limits, files: capture.files.map(file => ({ revision: draftDirectRevision(file), stamp: file.stamp, sourceHandle: file.handle, archiveHandle: stage!.outputs.get(file.admitted.sourceId)! })) }, capture.materialAvailable, abort.signal, value => { if (!this.disposed && this.epoch === epoch && this.active === abort && worker !== null && this.candidateWorker === worker && !abort.signal.aborted) this.progress = { ...value }; });
+      const ready = await worker.importDirect({ binding: { sessionId: this.options.sessionId, capability: this.options.capability, generation: expected }, generation: String(BigInt(expected ?? '0') + 1n), limits: this.limits, files: capture.files.map(file => ({ revision: draftDirectRevision(file), stamp: file.stamp, sourceHandle: file.handle, archiveHandle: stage!.outputs.get(file.admitted.sourceId)! })) }, capture.materialAvailable, abort.signal, value => { if (!this.disposed && this.epoch === epoch && this.active === abort && worker !== null && this.candidateWorker === worker && !abort.signal.aborted) this.progress = { ...value }; }, capture.materialExcerpt);
       check(); assertSnapshot(ready.descriptor);
       if (ready.descriptor.sessionId !== this.options.sessionId || ready.descriptor.generation !== String(BigInt(expected ?? '0') + 1n) || ready.report.status !== 'ready' || ready.descriptor.sources.length !== selected.length || selected.some(sourceId => !ready.descriptor.sources.some(source => source.sourceId === sourceId))) throw new ImportError('invalid-model', 'Direct candidate metadata differs from selection.');
       for (const source of ready.descriptor.sources) { const original = capture.files.find(file => file.admitted.sourceId === source.sourceId); if (!original || source.revisionId !== original.revisionId || source.byteLength !== original.stamp.size || (['projectId', 'rootId', 'relativePath', 'family'] as const).some(key => source[key] !== original.admitted[key])) throw new ImportError('invalid-model', 'Direct candidate source binding changed.'); }
-      await capture.validate(); check(); archive = await stage.adopt(ready.descriptor.sources); check();
-      this.published = { worker, archive, descriptor: structuredClone(ready.descriptor), selected: [...selected], report: structuredClone(ready.report), stamps: new Map(capture.files.map(file => [file.admitted.sourceId, file.stamp])) };
+      archive = await stage.adopt(ready.descriptor.sources); check();
+      const companions = capture.companionObservations();
+      if (!await capture.companionsUnchanged(companions)) throw new ImportError('read-failed', 'A recorded companion changed during import.');
+      await capture.validate(); check();
+      this.published = { worker, archive, descriptor: structuredClone(ready.descriptor), selected: [...selected], report: structuredClone(ready.report), companions, stamps: new Map(capture.files.map(file => [file.admitted.sourceId, file.stamp])) };
       this.report = structuredClone(ready.report); this.stale = false; this.candidateWorker = null; worker = null; archive = null; stage = null;
       if (old) { const cleanup = await Promise.allSettled([old.worker.terminate(), old.archive.dispose()]); if (cleanup.some(result => result.status === 'rejected')) this.report = { ...this.report, limitation: 'Previous snapshot resource cleanup failed; close the session before reopening sources.' }; }
       return structuredClone(this.published.descriptor);

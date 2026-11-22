@@ -5,11 +5,11 @@ import { createElement, isValidElement, useState } from 'react';
 import type { ReactElement } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 import { renderToStaticMarkup } from 'react-dom/server';
-import { edgeKey, elementKey } from '@jai/fabric-explorer-contracts';
+import { edgeKey, elementKey, encodeSemantic } from '@jai/fabric-explorer-contracts';
 import type { Edge, Vertex } from '@jai/fabric-explorer-contracts';
 import type { InspectorProps } from '../src/renderer/inspector.js';
 import { Inspector } from '../src/renderer/inspector.js';
-import { revision } from './import-fixtures.js';
+import { ref, revision } from './import-fixtures.js';
 const metadata = revision();
 const source = { projectId: metadata.projectId, rootId: metadata.rootId, sourceId: metadata.sourceId, family: metadata.family, relativePath: metadata.relativePath, pointer: '/record', sequence: '1', revisionId: metadata.revisionId, adapterVersion: metadata.adapterVersion };
 const identity = { kind: 'participant' as const, projectId: 'project', participant: { kind: 'controller' as const, id: 'controller' } };
@@ -27,6 +27,19 @@ describe('literal source-backed inspector', () => {
     const html = renderInspector({ ...props, element: vertex });
     expect(html).toContain('&lt;script&gt;hostile()&lt;/script&gt;'); expect(html).not.toContain('<script>');
     expect(html).toContain('9007199254740993'); expect(html).toContain(metadata.revisionId); expect(html).toContain('/record');
+  });
+  it('presents the full admitted use label and its companion provenance', () => {
+    const identity = { kind: 'use' as const, projectId: source.projectId, ref, useScope: 'reviewed' };
+    const label = 'L1 WHAT · ' + 'Exact wording '.repeat(9) + '<tag>';
+    const blobId = 'b'.repeat(64);
+    const element: Vertex = { ...vertex, id: elementKey(identity), identity, label, kind: 'use',
+      extensions: { 'jai.recorded-label': encodeSemantic({ text: label,
+        source: { kind: 'companion-excerpt', versionId: ref.version_id, pointer: '/content/record/material/0', blobId } }) } };
+    const html = renderInspector({ ...props, element });
+    expect(html).toContain(label.replace('<tag>', '&lt;tag&gt;'));
+    expect(html).toContain('reviewed');
+    expect(html).toContain('/content/record/material/0');
+    expect(html).toContain(blobId);
   });
   it('explains original direction, endpoints and association basis for an addressable self-relation', () => {
     const html = renderInspector({ ...props, element: edge, endpoints: [vertex] });

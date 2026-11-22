@@ -220,12 +220,12 @@ def _controlled_result(session, assignment, phase, produce, selection=None):
     return packet
 
 
-def _layer_session(tmp_path, local_budget=None, aggregate_limit_ms=60000):
+def _layer_session(tmp_path, local_budget=None, aggregate_limit_ms=60000, *, single_member=False):
     session, created = layered.LayeredSession.create(tmp_path, 'layer-batch',
         b'Define a bounded backup service.', 'codex', 'backup',
         None if aggregate_limit_ms is None else int(time.time() * 1000) + 180000,
         aggregate_limit_ms, b'Identify the business boundary, restore requirements and uncertainty.',
-        local_budget=local_budget)
+        local_budget=local_budget, single_member=single_member)
     root = created['entry']['assignment']
     _controlled_result(session, root, 'selection', _choice)
     state = session.store.read()
@@ -303,6 +303,89 @@ def test_layered_batches_compatible_jobs_and_admits_independent_members_once(tmp
     replayed = lc.Store(session.store.path, session.store.engagement).read()
     assert replayed.invocations[invocation]['usage'] == physical['usage']
     assert replayed.execution_plans == state.execution_plans
+
+
+def test_single_member_carrier_pins_scheduling_across_resume(tmp_path):
+    """Separate the six actual ready setters and reject direct multi-member issuance."""
+    session = _layer_session(tmp_path, aggregate_limit_ms=None, single_member=True)
+    first = session.next()
+    assert len(first['members']) == 1
+    assert sum(row['dimension'] in provider.QUESTIONS for row in session.checkpoint()['progress']) == 6
+    resumed = layered.LayeredSession.open(session.locator)
+    assert resumed.single_member
+    assert resumed.next()['invocation_id'] == first['invocation_id']
+    assert resumed.next()['status'] == 'reconcile'
+    member = first['members'][0]
+    job = {'assignment': member['assignment'], 'phase': 'selection'}
+    before = resumed.store.read().head
+    with pytest.raises(lc.ERROR) as denied:
+        resumed.issue_batch([job, job])
+    assert denied.value.code == 'P_SCOPE'
+    assert resumed.store.read().head == before
+    seen = set()
+    offered = first
+    for _ in range(12):
+        assert offered['status'] == 'invoke'
+        assert len(offered['members']) == 1
+        packet = offered['prepared']['members'][0]['packet']
+        if packet['execution']['phase'] == 'selection':
+            seen.add(offered['members'][0]['assignment']['version_id'])
+        _finish_offered(resumed, offered)
+        if len(seen) == 6:
+            break
+        offered = resumed.next()
+    assert len(seen) == 6
+    assert all(len(call['members']) == 1 for call in resumed.store.read().invocations.values())
+
+
+def test_singleton_parallel_readiness_requires_each_actual_active_handle(tmp_path):
+    """Issue exact independent grants up to the cap and retain uncertain work."""
+    session = _layer_session(tmp_path, aggregate_limit_ms=None, single_member=True)
+    first = session.next()
+    first_id = first['invocation_id']
+    session.start(first_id, 'codex', 'observed-first', {'observed': 'Controlled first start'})
+    assert session.next(max_parallel=6)['invocation_id'] == first_id
+    assert session.next(observed_running={first_id: 'wrong'}, max_parallel=6)['status'] == 'reconcile'
+    active = {first_id: 'observed-first'}
+    assert session.next(observed_running=active)['reason'] == 'parallel-capacity'
+    assignments = {first['members'][0]['assignment']['version_id']}
+    for index in range(1, 6):
+        offered = session.next(observed_running=active, max_parallel=6)
+        assert offered['status'] == 'invoke' and len(offered['members']) == 1
+        invocation = offered['invocation_id']
+        ref = offered['members'][0]['assignment']['version_id']
+        assert ref not in assignments
+        assignments.add(ref)
+        assert session.next(observed_running=active, max_parallel=6)['invocation_id'] == invocation
+        handle = f'observed-{index}'
+        session.start(invocation, 'codex', handle, {'observed': 'Controlled sibling start'})
+        active[invocation] = handle
+    assert len(assignments) == 6
+    assert session.next(observed_running=active, max_parallel=6)['reason'] == 'parallel-capacity'
+    reopened = layered.LayeredSession.open(session.locator)
+    assert reopened.next(max_parallel=6)['status'] == 'reconcile'
+    packet = offered['prepared']['members'][0]['packet']
+    raw = json.dumps({'format': 'jai.semantic-return/1', 'results': [_choice(packet)]})
+    assert session.complete(invocation, raw, {'observed': 'Last dispatched completed first'})['status'] == 'returned'
+    del active[invocation]
+    assert session.status(first_id)['state'] == 'running'
+    followup = session.next(observed_running=active, max_parallel=6)
+    assert followup['status'] == 'invoke'
+    assert followup['members'][0]['assignment']['version_id'] == ref
+    assert followup['prepared']['model_view']['members'][0]['phase'] == 'work'
+
+
+def test_single_member_carrier_rejects_unresolved_legacy_batch(tmp_path):
+    """An App Server enrollment cannot attach to already prepared shared grants."""
+    session = _layer_session(tmp_path)
+    locator = layered._save_locator(tmp_path, session.store.engagement,
+                                   session.workflow.dispatcher.config, versioned=True, single_member=True)
+    attached = layered.LayeredSession.open(locator)
+    assert len(session.next()['members']) == 6
+    with pytest.raises(lc.ERROR, match='unresolved multi-member work'):
+        attached.next()
+    with pytest.raises(ValueError, match='unresolved multi-member work'):
+        layered.LayeredSession.open(locator)
 
 
 def test_batch_prompt_interns_resources_without_widening_member_reads(tmp_path):

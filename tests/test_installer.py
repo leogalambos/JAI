@@ -21,6 +21,18 @@ spec.loader.exec_module(installer)
 
 
 class InstallerProjectionTests(unittest.TestCase):
+    def test_codex_layered_launcher_and_runtime_are_installed_together(self):
+        registry = json.loads((ROOT / '.ai/runtime/models/model-registry.json').read_text())
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            house, claude, codex = (base / name for name in ('house', 'claude', 'codex'))
+            outputs, modes = installer.desired_outputs(ROOT, ['codex'], house, claude, codex, registry)
+            entry = str(house / 'tools/governed_codex_carrier.py')
+            skill = str(codex / 'skills/workflow-layered/SKILL.md')
+            self.assertEqual(outputs[entry], (ROOT / '.ai/runtime/tools/governed_codex_carrier.py').read_bytes())
+            self.assertEqual(modes[entry], 0o755)
+            self.assertIn(b'tools/governed_codex_carrier.py --codex', outputs[skill])
+
     def test_content_profile_bindings_preserved_without_permission_expansion(self):
         registry = json.loads((ROOT / '.ai/runtime/models/model-registry.json').read_text())
         for name, shell in (('role-engineer', True), ('codebase-reviewer', False)):

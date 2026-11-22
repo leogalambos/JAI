@@ -1,6 +1,7 @@
 // SPDX-License-Identifier: BSD-4-Clause
 // Copyright (c) 2026 Leo Galambos and the Egothor team
 /** Presentation names preserve exact identities while avoiding raw digest primary labels. */
+import { encodeSemantic } from '@jai/fabric-explorer-contracts';
 import { expect, it } from 'vitest';
 import type { GraphProjection, Vertex } from '@jai/fabric-explorer-contracts';
 import golden from '../../packages/contracts/test/fixtures/projection.json' with { type: 'json' };
@@ -15,7 +16,7 @@ it('uses a recorded material association and field pointer while preserving the 
   expect(displayed.nodes[1]!.id).toBe('material'); expect(JSON.stringify(projection)).toBe(before);
 });
 
-import { displayNodeLabel, projectionLabelMap } from '../src/renderer/node-label.js';
+import { compactNodeLabel, displayNodeLabel, projectionLabelMap } from '../src/renderer/node-label.js';
 it('prefers actual authored shallow names, bounds Unicode labels and never guesses a paged title', () => {
   const source = structuredClone(golden) as GraphProjection; const vertex = source.vertices[0]!;
   const named: Vertex = { ...vertex, label: 'b'.repeat(64), attributes: { kind: 'inline', value: { type: 'object', entries: [{ key: 'title', value: { type: 'string', value: 'Résumé review' } }] } } };
@@ -33,4 +34,17 @@ it('resolves material associations deterministically, distinguishes short-digest
   expect(projectionLabelMap({ ...projection, vertices: [{ ...a, label: 'Provided material name' }, b, owner, other] }).get('a')).toBe('Provided material name');
   const fallback = projectionLabelMap({ ...projection, edges: [] }); expect(fallback.get('a')).not.toBe(fallback.get('b')); expect(fallback.get('a')).toContain('Material');
   expect(() => projectionLabelMap({ ...projection, vertices: Array.from({ length: 5001 }, () => raw) })).toThrow('limit');
+});
+
+it('keeps the canonical text in details while compacting only the canvas label', () => {
+  const original = (golden as GraphProjection).vertices.find(vertex => vertex.kind === 'version')!;
+  if (original.kind !== 'version') throw new Error('Version fixture required.');
+  const label = 'L1 WHAT · ' + '🛠'.repeat(99);
+  const vertex: Vertex = { ...original, label,
+    attributes: { kind: 'inline', value: encodeSemantic({ title: 'Legacy alias' }) },
+    extensions: { 'jai.recorded-label': encodeSemantic({ text: label,
+      source: { kind: 'record-field', versionId: original.identity.ref.version_id, pointer: '/content/record/display_summary' } }) } };
+  const aliases = new Map([[vertex.id, 'Projection alias']]);
+  expect(displayNodeLabel(vertex, aliases)).toBe(label);
+  expect(compactNodeLabel(vertex, aliases)).toBe(Array.from(label).slice(0, 95).join('') + '…');
 });

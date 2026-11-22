@@ -5,7 +5,7 @@ import { useId, useState } from 'react';
 import type { Edge, GraphProjection, Vertex } from '@jai/fabric-explorer-contracts';
 import { elementTableWindow } from './element-table-model.js';
 import type { ElementTableKind, ElementTableWindow } from './element-table-model.js';
-import { displayNodeLabel } from './node-label.js';
+import { displayNodeLabel, hasRecordedLabel } from './node-label.js';
 
 /** Parent-owned exact selection and optional display aliases; records and source labels remain immutable. */
 export interface ElementTableProps {
@@ -66,7 +66,7 @@ export function ElementTableView(props: ElementTableViewProps) {
           <td><button type="button" title={item.id} data-element-id={item.id} aria-label={`Inspect ${category} ${ordinal}: ${label}`} aria-current={selected ? 'true' : undefined} onClick={() => props.onSelect(item.id)}>{label}</button><span className="element-table-context">{context(item)}</span></td>
           <td>{'kind' in item ? item.kind === 'version' ? `version · ${item.family}` : item.kind : item.relation}</td>
           <td>{state(item)}</td>
-          <td><details><summary>Identity for {category} {ordinal}</summary><dl><dt>Canonical key</dt><dd><code>{item.id}</code></dd><dt>Original source label</dt><dd>{item.label}</dd>{!('kind' in item) && <><dt>From</dt><dd><code>{item.from}</code></dd><dt>To</dt><dd><code>{item.to}</code></dd></>}</dl></details></td>
+          <td><details><summary>Identity for {category} {ordinal}</summary><dl><dt>Canonical key</dt><dd><code>{item.id}</code></dd><dt>{'kind' in item && hasRecordedLabel(item) ? 'Admitted display label' : 'Original source label'}</dt><dd>{item.label}</dd>{!('kind' in item) && <><dt>From</dt><dd><code>{item.from}</code></dd><dt>To</dt><dd><code>{item.to}</code></dd></>}</dl></details></td>
           <td className="element-table-selection">{selected ? 'Selected' : 'Not selected'}</td>
         </tr>;
       })}</tbody>

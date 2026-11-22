@@ -5,6 +5,34 @@ Owner: JAI runtime maintainers. Contract revision: 2026-11-01.
 This reference is for the trusted orchestrating parent. It is not the user
 interface, a network API, another evaluation engine, or permission to sign L0 acts.
 
+## Codex App Server carrier
+
+For the installed Codex entry, use `tools/governed_codex_carrier.py` and the
+provider-specific projection. The launcher keeps one foreground Store session
+and dispatches exactly one issued member in each fresh App Server thread. Its
+trusted thread and turn mapping selects the member's broker grant. The host
+must report no selected worker environments, read-only sandboxing, network
+access disabled and no ambient MCP inventory before task dispatch. The
+launcher disables shell execution, delegation, connector discovery and web
+search for these workers. It captures the exact final message and uses the
+ordinary Store admission path. On ambiguous dispatch, it consults the original
+thread history and preserves reconciliation when evidence is missing.
+
+The role instruction operation lists all roles from the enrolled catalogue
+during selection. During work it lists the admitted specialties. The parent
+resolves the chosen role to the exact instruction for the bound member.
+Category and role details remain available through catalogue navigation.
+
+For bounded parallel dispatch, pass `--parallel 6` before `start` or `resume`.
+The default is one turn. The launcher starts its own App Server over stdio in
+the same invocation. One parent queues ready assignments in FIFO order and
+admits completed turns as they arrive. The Store still determines eligibility
+and layer transitions. If a turn needs reconciliation, the parent stops issuing
+new turns and drains the other observed turns while the connection is usable.
+
+The following native collaboration procedure applies when the active host
+supports that carrier. Keep its existing journal and tool contracts intact.
+
 ## Foreground runtime
 
 Use `tools/governed_layered.py` from the installed common runtime, or

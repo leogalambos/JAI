@@ -1,5 +1,6 @@
 /** App-owned canonical helper wire and immutable capture ports; not renderer authority. */
 import type { BytePage, Digest, FindingKind, FindingState, Ownership, Participant, RecordFamily, SemanticValue, Severity, SourceFamily, SourceReference, SourceRevision } from '@jai/fabric-explorer-contracts';
+import type { RecordedLabel } from '../import/recorded-label.js';
 
 /** Exact originating row span and record pointer in one immutable captured source. */
 export interface FactOrigin { readonly pointer: string; readonly sequence: string | null; readonly byteOffset: string; readonly byteLength: string }
@@ -11,7 +12,7 @@ export interface CanonicalPoint { readonly ref: SourceReference; readonly use_sc
 export interface FactBase { readonly sourceId: string; readonly origin: FactOrigin }
 /** Versioned semantic facts from canonical replay, with no JavaScript replay or scope inference. */
 export type CanonicalFact = FactBase & (
-  | { readonly kind: 'version'; readonly ref: SourceReference; readonly family: RecordFamily; readonly label: string; readonly attributes: FactAttributes }
+  | { readonly kind: 'version'; readonly ref: SourceReference; readonly family: RecordFamily; readonly label: string; readonly presentation?: RecordedLabel; readonly attributes: FactAttributes }
   | { readonly kind: 'use'; readonly point: CanonicalPoint; readonly state: SemanticValue }
   | { readonly kind: 'reference'; readonly originRef: SourceReference; readonly originUseScope: string | null; readonly fieldPointer: string; readonly occurrence: number; readonly targetRef: SourceReference; readonly targetUseScope: string | null; readonly historicalCausal: boolean; readonly governing: boolean; readonly dependencyBasis: 'historical' | 'association' }
   | { readonly kind: 'governing-dependency'; readonly originPoint: CanonicalPoint; readonly prerequisitePoint: CanonicalPoint; readonly occurrence: number; readonly dependencyBasis: 'governing' }

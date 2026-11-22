@@ -25,6 +25,7 @@ import lifecycle as lc
 import operator_actions as operator
 
 LOCATOR = 'jai.layered-session/1'
+UNRESOLVED_INVOCATION_STATES = frozenset({'issued', 'prepared', 'running', 'uncertain'})
 OPERATIONS = {
     'next': ('scope', 'speculation'), 'checkpoint': ('scope',),
     'entry': ('scope', 'work_item', 'limits', 'deadline_ms'),
@@ -176,7 +177,7 @@ def _write_once(path, raw):
             raise ValueError('Existing session enrollment differs; use an explicit new enrollment') from None
 
 
-def _save_locator(home, engagement, config, *, versioned=False):
+def _save_locator(home, engagement, config, *, versioned=False, single_member=False):
     raw = lc.canonical(config)
     digest = _digest(raw)
     suffix = '.' + digest if versioned else ''
@@ -186,6 +187,8 @@ def _save_locator(home, engagement, config, *, versioned=False):
     value = {'schema_version': LOCATOR, 'engagement': engagement,
              'journal': str(home / (engagement + '.jsonl')),
              'host_config': str(host), 'host_config_digest': digest}
+    if single_member:
+        value['single_member'] = True
     _write_once(locator, lc.canonical(value))
     return locator
 
@@ -193,22 +196,25 @@ def _save_locator(home, engagement, config, *, versioned=False):
 class LayeredSession(native.NativeSession):
     """Drive native phases without replacing the governed workflow or its state."""
 
-    def __init__(self, store, config, locator):
+    def __init__(self, store, config, locator, *, single_member=False):
         """Keep one warm Store and a nonauthoritative enrollment locator.
 
         Args:
             store: Existing sole engagement Store.
             config: Explicit current host enrollment, validated by Dispatcher.
             locator: Machine-generated locator path for a later cold resume.
+            single_member: Require one exact Store grant per physical invocation.
         Raises:
             ValueError, OSError: Enrollment or journal is unavailable or invalid.
         """
         super().__init__(store, config)
         self.locator = Path(locator).resolve()
+        self.single_member = single_member
 
     @classmethod
     def create(cls, home, engagement, task, provider_name, work_item, deadline_ms=None,
-               limit_ms=None, criteria=None, config=None, model_config=None, local_budget=None, execution_profile=None, execution_context_policy=None):
+               limit_ms=None, criteria=None, config=None, model_config=None, local_budget=None, execution_profile=None, execution_context_policy=None,
+               *, single_member=False):
         """Capture an actual request and create the initial L1 structural gateway.
 
         Args:
@@ -225,6 +231,7 @@ class LayeredSession(native.NativeSession):
             execution_profile: Explicit operational profile for this new run only.
             execution_context_policy: Validated context from the session selection;
                 captured at new entry and preserved by cold resume.
+            single_member: Require singleton physical issuance for the selected carrier.
             local_budget: Optional iteration_ms/max_reworks configuration, defaulting
                 to ten minutes per local iteration and three actual reworks.
         Returns:
@@ -248,14 +255,14 @@ class LayeredSession(native.NativeSession):
         # leave a committed engagement requiring a handwritten resume config.
         import governed_dispatch
         governed_dispatch.Dispatcher(store, supplied)
-        locator = _save_locator(home, engagement, supplied, versioned=config is not None)
+        locator = _save_locator(home, engagement, supplied, versioned=config is not None, single_member=single_member)
         initialized = provider.bootstrap(store, task, task if criteria is None else criteria,
             provider_name, work_item, limits, deadline_ms, model_config,
             destinations=supplied['destinations'], tools=supplied['tools'],
             packet_bytes=supplied['limits']['packet_bytes'], total_bytes=supplied['limits']['total_bytes'],
             local_budget=local_budget, project=home.parent, execution_profile=execution_profile,
             execution_context_policy=execution_context_policy)
-        session = cls(store, supplied, locator)
+        session = cls(store, supplied, locator, single_member=single_member)
         entry = session.workflow.entry('default', work_item, limits, deadline_ms)
         return session, {'locator': str(locator), 'inputs': initialized['sources'],
             'entry': entry, 'criteria_basis': 'same-verbatim-request' if criteria is None else 'explicit-criteria'}
@@ -276,6 +283,8 @@ class LayeredSession(native.NativeSession):
         path = Path(locator).resolve()
         value = lc.loads(operator.regular(path))
         expected = {'schema_version', 'engagement', 'journal', 'host_config', 'host_config_digest'}
+        if 'single_member' in value and value['single_member'] is True:
+            expected.add('single_member')
         if set(value) != expected or value['schema_version'] != LOCATOR:
             raise ValueError('Current layered session locator required')
         raw = None
@@ -287,10 +296,14 @@ class LayeredSession(native.NativeSession):
         if Path(value['journal']).resolve() != path.parent / (value['engagement'] + '.jsonl'):
             raise ValueError('Locator must name the same engagement journal used by the fabric CLI')
         enrollment = lc.loads(raw) if config is None else copy.deepcopy(config)
-        session = cls(store, enrollment, path)
-        session.store.read()
+        session = cls(store, enrollment, path, single_member=value.get('single_member', False))
+        state = session.store.read()
+        if session.single_member and any(len(call['members']) != 1 and call['state'] in UNRESOLVED_INVOCATION_STATES
+                                         for call in state.invocations.values()):
+            raise ValueError('Single-member carrier cannot resume unresolved multi-member work')
         if config is not None:
-            session.locator = _save_locator(path.parent, value['engagement'], enrollment, versioned=True)
+            session.locator = _save_locator(path.parent, value['engagement'], enrollment, versioned=True,
+                                             single_member=session.single_member)
         session._initial_entry()
         return session
 
@@ -314,12 +327,16 @@ class LayeredSession(native.NativeSession):
             self.workflow.entry(message['scope'], message['correlation_id'],
                 profile['scheduling']['control_limits'], profile['scheduling']['initial_deadline_ms'])
 
-    def next(self, scope='default', speculation=None):
+    def next(self, scope='default', speculation=None, *, observed_running=None, max_parallel=1, ready_queue=None):
         """Reconcile exposed calls before advancing an owner procedure or issuing work.
 
         Args:
             scope: Existing approved engagement use scope.
             speculation: Exact existing grant, or None for pessimistic escalation pause.
+            observed_running: Trusted parent mapping of invocation IDs to their actual active handles.
+                An absent, mismatched or expired binding still requires reconciliation.
+            max_parallel: Maximum concurrently observed singleton invocations for this parent.
+            ready_queue: Optional parent-owned FIFO of still-ready assignment version IDs.
         Returns:
             One issued/prepared invocation, honest reconciliation for an already
             exposed or running call, or waiting facts. Logical author/reviewer phases
@@ -327,16 +344,31 @@ class LayeredSession(native.NativeSession):
         Raises:
             ProtocolError, ValueError: Current owner procedure, grant or issuance fails.
         """
+        observed = {} if observed_running is None else observed_running
+        if (type(max_parallel) is not int or not 1 <= max_parallel <= 6
+                or not isinstance(observed, dict)
+                or any(not isinstance(key, str) or not isinstance(value, str) or not value
+                       for key, value in observed.items())
+                or ready_queue is not None and not isinstance(ready_queue, list)
+                or not self.single_member and (observed or max_parallel != 1 or ready_queue is not None)):
+            raise ValueError('Parallel readiness requires a bounded singleton carrier observation')
         state, due = self.workflow._pause_due(self.store.read(), scope)
         notices = due['notices']
         pending_issue = None
+        active = 0
+        now = int(time.time() * 1000)
         for invocation, physical in state.invocations.items():
             if physical['scope'] != scope:
                 continue
             physical_state = physical['state']
+            if self.single_member and physical_state in UNRESOLVED_INVOCATION_STATES and len(physical['members']) != 1:
+                raise lc.ERROR('P_SCOPE', 'Single-member carrier cannot advance unresolved multi-member work')
             if physical_state in {'prepared', 'uncertain', 'running'}:
                 running = physical_state == 'running'
-                expired = running and physical['deadline_ms'] <= int(time.time() * 1000)
+                expired = running and physical['deadline_ms'] <= now
+                if running and not expired and observed.get(invocation) == physical.get('handle') and invocation in observed:
+                    active += 1
+                    continue
                 return {'status': 'reconcile',
                         'reason': ('native-invocation-deadline-elapsed' if expired
                                    else 'native-invocation-running' if running
@@ -350,6 +382,9 @@ class LayeredSession(native.NativeSession):
                         'authority_granted': False}
             if physical_state == 'issued' and pending_issue is None:
                 pending_issue = invocation, physical
+        if active >= max_parallel:
+            return {'status': 'waiting', 'reason': 'parallel-capacity',
+                    'inflight': _inflight(state, scope), 'operator_notices': notices}
         if pending_issue is not None:
             invocation, physical = pending_issue
             members = copy.deepcopy(physical['members'])
@@ -373,18 +408,43 @@ class LayeredSession(native.NativeSession):
             if state.head == before:
                 raise lc.ERROR('P_CONTEXT', 'Ordinary procedure progress did not establish its declared step')
         facts = state.readiness(scope, speculation)
-        selected = next((item for item in facts if item['ready']), None)
+        ready = [item for item in facts if item['ready']]
+        if ready_queue is not None:
+            by_id = {item['assignment']['version_id']: item for item in ready}
+            retained = {identifier: None for identifier in ready_queue if identifier in by_id}
+            retained.update(dict.fromkeys(by_id))
+            ready_queue[:] = retained
+            ready = [by_id[identifier] for identifier in ready_queue]
+        selected = ready[0] if ready else None
         if selected is None:
             return {'status': 'paused' if notices else 'waiting', 'readiness': facts,
                     'inflight': _inflight(state, scope), 'operator_notices': notices}
-        traits = state.invocation_traits(selected['assignment'], selected['phase'], selected['selection'])
+        members = [selected]
+        if not self.single_member:
+            traits = state.invocation_traits(selected['assignment'], selected['phase'], selected['selection'])
+            members = [item for item in facts if item['ready'] and (item is selected or state.invocation_traits(
+                item['assignment'], item['phase'], item['selection']) == traits)]
         jobs = [{'assignment': item['assignment'], 'phase': item['phase'],
-                 'selection': item['selection'], 'speculation': speculation}
-                for item in facts if item['ready'] and (item is selected or state.invocation_traits(
-                    item['assignment'], item['phase'], item['selection']) == traits)]
+                 'selection': item['selection'], 'speculation': speculation} for item in members]
         issued = self.issue_batch(jobs)
         return {'status': 'invoke', **issued, 'prepared': self.prepare(issued['invocation_id']),
                 'operator_notices': notices}
+
+    def issue_batch(self, jobs, bound_ms=None, invocation_id=None):
+        """Apply the enrolled carrier constraint before issuing native grants.
+
+        Args:
+            jobs: Ready logical jobs with exact assignments, phases and selections.
+            bound_ms: Optional finite physical invocation bound.
+            invocation_id: Optional exact identity for issuance replay.
+        Returns:
+            Issued physical invocation and its exact member grants.
+        Raises:
+            ProtocolError: The carrier or the ordinary workflow denies the batch.
+        """
+        if self.single_member and (not isinstance(jobs, list) or len(jobs) != 1):
+            raise lc.ERROR('P_SCOPE', 'Single-member carrier requires exactly one grant per invocation')
+        return super().issue_batch(jobs, bound_ms, invocation_id)
 
     def prepare(self, invocation):
         """Expose the common durable physical preparation for layered processing.

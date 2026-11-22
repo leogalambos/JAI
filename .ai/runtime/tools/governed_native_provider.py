@@ -12,6 +12,7 @@ from __future__ import annotations
 import base64
 import copy
 import hashlib
+import json
 import time
 import uuid
 from pathlib import Path
@@ -461,6 +462,33 @@ def _delivery_resources(session, run, assignment, profile, response_contract, op
         workforce_body.update(selected_specialties=packet['execution']['specialties'],
             selected_instructions=[{'slug': slug, **instructions[slug]} for slug in packet['execution']['specialties']])
     workforce = add('Exact staffing/model availability', workforce_body, ['catalogue'])
+    selection_context = None
+    if kind == 'selection' and getattr(session, 'single_member', False):
+        # Group the small, exact selection essentials under the same inputs. The
+        # ordinary handles remain available for full detail and binary material.
+        sources = [*actual_sources, 'catalogue']
+        summary = {'workforce': workforce_body, 'purpose': response_contract['purpose'],
+                   'mandate': response_contract['mandate'], 'inputs': inputs, 'procedure': procedure,
+                   'role_choices': sorted(instructions), 'material_text': []}
+        remaining = 16 * 1024
+        selected_resources = [entry['resource'] for entry in material_index]
+        if mandate is not None:
+            selected_resources.insert(0, mandate)
+        for descriptor in selected_resources:
+            if descriptor['byte_length'] > remaining:
+                continue
+            raw = store._blob(descriptor['handle'].removeprefix('resource:'))
+            try:
+                text = raw.decode('utf-8', errors='strict')
+            except UnicodeDecodeError:
+                continue
+            summary['material_text'].append({'handle': descriptor['handle'],
+                'label': resources[descriptor['handle']]['label'], 'text': text})
+            sources.extend(resources[descriptor['handle']]['source_handles'])
+            remaining -= len(raw)
+        raw_context = json.dumps(summary, ensure_ascii=False, sort_keys=True, separators=(',', ':')).encode('utf-8')
+        selection_context = add('Selection essentials from exact entitled material', raw_context, sorted(set(sources)))
+
     manifest = {'context': packet['context'], 'manifest_hash': packet['manifest_hash'],
                 'resources': list(resources.values())}
     manifest_blob = store.put_blob(lc.canonical(manifest))
@@ -490,7 +518,8 @@ def _delivery_resources(session, run, assignment, profile, response_contract, op
                 else 'Read the selected professional instructions and the actual role semantic contract before work.'),
             *_COMMON_INSTRUCTIONS[4:]],
         'resources': {'procedure': procedure, 'inputs': inputs, 'constraints': constraints,
-                      'catalogue': catalogue, 'workforce': workforce, 'optional_machine_index': optional_machine},
+                      'catalogue': catalogue, 'workforce': workforce, 'optional_machine_index': optional_machine,
+                      **({'selection_context': selection_context} if selection_context else {})},
         'delivery_manifest': 'resource:' + manifest_blob}
     prompt_raw = lc.canonical(base)
     prompt_blob = store.put_blob(prompt_raw)

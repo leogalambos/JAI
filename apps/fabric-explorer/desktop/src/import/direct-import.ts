@@ -1,6 +1,6 @@
 /** Worker-local streaming import; source bytes and facts never pass through a helper process. */
 import { assertSnapshot, type SourceRevision } from '@jai/fabric-explorer-contracts';
-import type { DirectSourceFile, DirectWorkerInput, MaterialAvailability } from '../broker/direct-types.js';
+import type { DirectSourceFile, DirectWorkerInput, MaterialAvailability, MaterialExcerpt } from '../broker/direct-types.js';
 import { nativeFileStamp, sameFileStamp } from '../broker/read-broker.js';
 import { importRecordedSources, RecordedReadError } from './recorded-import.js';
 export { draftDirectRevision } from '../broker/direct-types.js';
@@ -8,7 +8,7 @@ import { ImportModel, type ModelReady } from './model.js';
 import { ImportError, type ImportReport } from './types.js';
 import { captureReport, readerFailureReport } from './report.js';
 /** Cancellation/material boundary supplied by the actual candidate worker owner. */
-export interface DirectImportControl { progress?(value: import('./progress.js').ImportProgress): void; cancelled(): boolean; materialAvailable?: MaterialAvailability }
+export interface DirectImportControl { progress?(value: import('./progress.js').ImportProgress): void; cancelled(): boolean; materialAvailable?: MaterialAvailability; materialExcerpt?: MaterialExcerpt }
 /**
  * Build one candidate from owned descriptors and leave only a sealed compact model.
  * @param input Main-bound identities, private output handles and unchanged logical limits.
@@ -29,7 +29,7 @@ export async function buildDirectModel(input: DirectWorkerInput, control: Direct
     const model = new ImportModel({ binding: input.binding, generation: input.generation, sources: input.files.map(file => file.revision), report, limits: input.limits });
     let projectedFacts = 0;
     const materials = new Map<string, Promise<'available' | 'missing' | 'unknown'>>();
-    const observations = await importRecordedSources(input.files.map(file => ({ sourceId: file.revision.sourceId, family: file.revision.family, byteLength: Number(file.stamp.size), sourceHandle: file.sourceHandle, archiveHandle: file.archiveHandle })), fact => { check(); model.consumeDirect(fact); projectedFacts++; }, { cancelled: control.cancelled, ...(control.progress ? { progress: control.progress } : {}), materialAvailability: async (sourceId, blobId) => {
+    const observations = await importRecordedSources(input.files.map(file => ({ sourceId: file.revision.sourceId, family: file.revision.family, byteLength: Number(file.stamp.size), sourceHandle: file.sourceHandle, archiveHandle: file.archiveHandle })), fact => { check(); model.consumeDirect(fact); projectedFacts++; }, { cancelled: control.cancelled, recordedLabels: true, ...(control.progress ? { progress: control.progress } : {}), ...(control.materialExcerpt ? { materialExcerpt: control.materialExcerpt } : {}), materialAvailability: async (sourceId, blobId) => {
       check(); if (!input.files.some(file => file.revision.sourceId === sourceId) || !/^[0-9a-f]{64}$/.test(blobId)) throw new ImportError('invalid-model', 'Invalid companion capability.');
       const key = JSON.stringify([sourceId, blobId]); let value = materials.get(key);
       if (!value) { value = control.materialAvailable?.(sourceId, blobId) ?? Promise.resolve('unknown' as const); materials.set(key, value); }

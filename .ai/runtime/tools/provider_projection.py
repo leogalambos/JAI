@@ -115,5 +115,11 @@ def render_codex_skill(src,kind,name,registry,*,workload_class=None,tool_ceiling
         return skill_doc(nm,desc,body+extra,'agent',name,fm.get('tools',''))
     nm='workflow-'+name; desc=fm.get('description',f"Provider-neutral workflow /{name}.")
     body=body.replace('$ARGUMENTS','the user-provided workflow arguments')
+    if name == 'layered':
+        body = ("""## Installed Codex entry
+
+The Codex App Server carrier is the maintained launcher for this workflow. Resolve the installed Codex executable and use the installed common runtime. Capture the exact task text in a private file, then run `tools/governed_codex_carrier.py --codex ABSOLUTE_EXECUTABLE start --home JOURNAL_DIRECTORY --engagement ID --work-item ID --task FILE` through Python. For a continuation use `--codex ABSOLUTE_EXECUTABLE resume --session LOCATOR`. Carry the machine-generated locator forward internally. The operator supplies ordinary task text or asks to resume. Preserve the role boundaries and let the launcher own the App Server processes and relay. If local authentication or the installed worker controls are unavailable, report that observed boundary and retain any accepted journal.
+
+""" + body)
     return skill_doc(nm,desc,body,'command',name,fm.get('allowed-tools',''))
 

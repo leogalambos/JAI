@@ -155,7 +155,8 @@ export class ImportModel {
     switch (fact.kind) {
       case 'version': {
         const identity = { kind: 'version' as const, projectId: source.projectId, ref: fact.ref };
-        this.node({ kind: 'version', identity, id: this.key(identity), label: fact.label, family: fact.family, source, attributes: fields(fact.attributes) }, true); break;
+        this.node({ kind: 'version', identity, id: this.key(identity), label: fact.label, family: fact.family, source, attributes: fields(fact.attributes),
+          ...(fact.presentation ? { extensions: { 'jai.recorded-label': encodeSemantic(fact.presentation) } } : {}) }, true); break;
       }
       case 'use': {
         const identity = { kind: 'use' as const, projectId: source.projectId, ref: fact.point.ref, useScope: fact.point.use_scope };

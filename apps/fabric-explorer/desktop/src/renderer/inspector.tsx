@@ -6,7 +6,8 @@ import type { ReactNode } from 'react';
 import type { Attributes, Edge, ElementIdentity, SourceLocator, Vertex } from '@jai/fabric-explorer-contracts';
 import { CommandIcon } from './commands.js';
 import type { IconName } from './commands.js';
-import { displayNodeLabel } from './node-label.js';
+import type { RecordedLabelSource } from '../import/recorded-label.js';
+import { displayNodeLabel, nodePresentation } from './node-label.js';
 
 /** Original records plus optional exact-key display aliases; callbacks are read-only navigation. */
 export interface InspectorProps {
@@ -39,6 +40,7 @@ export function Inspector(props: InspectorProps) {
   if (!record) return <section className="inspector-empty"><h2 id="inspector-heading" tabIndex={-1}>Inspector</h2><p>Select a vertex or relation to see its identity and evidence.</p>{props.evidencePage && <section aria-label="Captured source evidence">{props.evidencePage}</section>}</section>;
   const edge = 'relation' in record ? record : null;
   const vertex = 'kind' in record ? record : null;
+  const presentation = vertex ? nodePresentation(vertex) : null;
   const endpoint = (id: string) => props.endpoints.find(item => item.id === id);
   return <section aria-labelledby="inspector-heading" className="inspector-content">
     <h2 id="inspector-heading" tabIndex={-1}>{edge ? 'Relation' : 'Vertex'} inspector</h2>
@@ -51,6 +53,7 @@ export function Inspector(props: InspectorProps) {
     <div id="inspector-overview" role="tabpanel" aria-labelledby="inspector-tab-overview" hidden={tab !== 'overview'}><dl>
       {vertex && <><Field label="Kind" icon="elements"/><dd>{vertex.kind}</dd></>}
       {vertex?.kind === 'version' && <><Field label="Family" icon="elements"/><dd>{vertex.family}</dd></>}
+      {vertex?.kind === 'use' && <><Field label="Use scope" icon="elements"/><dd>{vertex.identity.useScope}</dd></>}
       {vertex?.kind === 'finding' && <><Field label="Finding ID" icon="findings"/><dd>{vertex.identity.findingId}</dd><Field label="Ledger" icon="source"/><dd>{vertex.identity.ledgerId}</dd><Field label="Finding state" icon="findings"/><dd>{vertex.state}</dd><Field label="Severity" icon="findings"/><dd>{vertex.severity}</dd><Field label="Finding kind" icon="findings"/><dd>{vertex.findingKind}</dd><Field label="Recorded rounds" icon="findings"/><dd>{vertex.rounds}</dd></>}
       {vertex?.kind === 'unresolved' && <><Field label="Unresolved reference" icon="relations"/><dd>{vertex.reason}. This placeholder does not establish that its target exists.</dd></>}
 
@@ -75,11 +78,24 @@ export function Inspector(props: InspectorProps) {
       <Field label="Source family" icon="source"/><dd>{record.source.family}</dd><Field label="File" icon="source"/><dd>{record.source.relativePath}</dd>
       <Field label="Revision" icon="source"/><dd><code>{record.source.revisionId}</code></dd><Field label="Record pointer" icon="source"/><dd><code>{record.source.pointer || '(root)'}</code></dd>
       <Field label="Sequence" icon="source"/><dd>{record.source.sequence ?? 'Not recorded'}</dd><Field label="Adapter" icon="source"/><dd>{record.source.adapterVersion}</dd>
-    </dl><button id="read-source" onClick={() => { setTab('evidence'); props.onSource(record.source); }}>Read captured source</button></section>{props.evidencePage}</div>
-    <div id="inspector-raw" role="tabpanel" aria-labelledby="inspector-tab-raw" hidden={tab !== 'raw'}><details><summary>Exact identity and original fields</summary><dl><Field label="Stable identity" icon="raw"/><dd><code data-testid="selected-id">{record.id}</code></dd><Field label="Original source label" icon="raw"/><dd>{record.label}</dd>{edge && <><Field label="Original relation basis" icon="relations"/><dd>{edge.basis}</dd><Field label="Exact From key" icon="relations"/><dd><code>{edge.from}</code></dd><Field label="Exact To key" icon="relations"/><dd><code>{edge.to}</code></dd></>}</dl><pre tabIndex={0} role="region" aria-label="Original identity fields">{identityText}</pre></details>
+    </dl>{presentation && <details><summary>Label provenance</summary>
+      <LabelSource source={presentation.source}/>
+      {presentation.additionalSources?.map((source, index) => <LabelSource key={index} source={source}/>)}
+    </details>}<button id="read-source" onClick={() => { setTab('evidence'); props.onSource(record.source); }}>Read captured source</button></section>{props.evidencePage}</div>
+    <div id="inspector-raw" role="tabpanel" aria-labelledby="inspector-tab-raw" hidden={tab !== 'raw'}><details><summary>Exact identity and original fields</summary><dl><Field label="Stable identity" icon="raw"/><dd><code data-testid="selected-id">{record.id}</code></dd><Field label={presentation ? "Admitted display label" : "Original source label"} icon="raw"/><dd>{record.label}</dd>{edge && <><Field label="Original relation basis" icon="relations"/><dd>{edge.basis}</dd><Field label="Exact From key" icon="relations"/><dd><code>{edge.from}</code></dd><Field label="Exact To key" icon="relations"/><dd><code>{edge.to}</code></dd></>}</dl><pre tabIndex={0} role="region" aria-label="Original identity fields">{identityText}</pre></details>
     <details><summary>Attributes · {attributes!.kind}</summary><pre data-testid="attributes" tabIndex={0} role="region" aria-label="Selected attributes">{attributesText}</pre></details></div>
     <p className="muted">Recorded evidence is displayed read-only. Viewing it grants no approval or authority.</p>
   </section>;
+}
+
+function LabelSource({ source }: { source: RecordedLabelSource }) {
+  return <dl>
+    <Field label="Label source version" icon="source"/><dd><code>{source.versionId}</code></dd>
+    {source.kind === 'unavailable'
+      ? <><Field label="Unavailable reason" icon="source"/><dd>{source.reason}</dd></>
+      : <><Field label="Label source field" icon="source"/><dd><code>{source.pointer}</code></dd>
+        {source.kind === 'companion-excerpt' && <><Field label="Companion digest" icon="source"/><dd><code>{source.blobId}</code></dd></>}</>}
+  </dl>;
 }
 
 function Endpoint({ item, id, select, labels }: { item: Vertex | undefined; id: string; select: (identity: ElementIdentity) => void; labels: ReadonlyMap<string, string> | undefined }) {

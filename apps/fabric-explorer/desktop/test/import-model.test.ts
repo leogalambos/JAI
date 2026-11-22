@@ -25,6 +25,40 @@ describe('canonical fact model', () => {
     model.consume(complete([{ kind: 'reference', sourceId: 'fabric', origin: fact.origin, originRef: ref, originUseScope: null, fieldPointer: '/related/0/refs/0', occurrence: 0, targetRef: ref, targetUseScope: null, historicalCausal: false, governing: false, dependencyBasis: 'association' }, fact]));
     expect(model.finish().report.unresolvedVertices).toBe('0'); expect([...model.records()].filter(item => 'relation' in item)[0]).toMatchObject({ causal: false, relation: 'other-reference' });
   });
+  it('binds scoped uses to the exact later version before indexing labels', () => {
+    const input = modelInput();
+    const model = new ImportModel(input);
+    const version = versionFact();
+    if (version.kind !== 'version') throw new Error('Expected a version.');
+    const other = { ...ref, version_id: 'd'.repeat(64) };
+    const state = { type: 'string' as const, value: 'recorded-state' };
+    for (const point of [{ ref, use_scope: 'first' }, { ref: other, use_scope: 'first' }, { ref, use_scope: 'second' }]) {
+      model.consumeDirect({ kind: 'use', sourceId: version.sourceId, origin: version.origin, point, state });
+    }
+    const label = 'L1 WHAT · Restore a single file.';
+    model.consumeDirect({ ...version, label, presentation: { text: label,
+      source: { kind: 'record-field', versionId: ref.version_id, pointer: '/content/record/display_summary' } } });
+    model.finalizeSources(input.sources, input.report);
+    model.finish();
+    const graph = model.graph();
+    const indexed = Array.from({ length: graph.vertexCount }, (_, position) => graph.labelHandle(position));
+    expect(indexed.map(handle => graph.vertexLabelFolded(handle))).toEqual([
+      label.toLowerCase(), label.toLowerCase(), label.toLowerCase(), (other.logical_id + ' @ first').toLowerCase(),
+    ]);
+    for (const handle of indexed) expect(graph.vertexWireBytes(handle)).toBe(Buffer.byteLength(JSON.stringify(graph.vertex(handle))));
+    const uses = [...model.records()].filter(item => 'kind' in item && item.kind === 'use');
+    expect(uses).toHaveLength(3);
+    for (const use of uses) {
+      if (!('kind' in use) || use.kind !== 'use') throw new Error('Expected a use.');
+      expect(use.attributes).toEqual({ kind: 'inline', value: state });
+      if (use.identity.ref.version_id === ref.version_id) {
+        expect(use.label).toBe(label);
+        expect(use.extensions?.['jai.recorded-label']).toBeDefined();
+      } else {
+        expect(use.label).toBe(other.logical_id + ' @ first');
+      }
+    }
+  });
   it('maps finding text to unresolved locations and retains reducer uncertainty', () => {
     const input = modelInput(); const model = new ImportModel({ ...input, sources: [revision('findings')] }); const origin = versionFact().origin;
     model.consume(complete([{ kind: 'finding', sourceId: 'findings', origin, findingId: 'F-0001', state: 'accepted', severity: 'high', findingKind: 'defect', rounds: '2', recordedExpiry: '2026-12-01', label: 'Finding', target: 'record', location: 'record', attributes: { kind: 'inline', value: { type: 'float64', bits: '8000000000000000' } }, effectiveMaxRounds: 3, historicalMaxRoundsKnown: false }]));

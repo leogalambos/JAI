@@ -14,8 +14,7 @@ the user to construct JSON or invoke workflow runtime functions. Preserve the
 request verbatim as the attributable initial input. Local setters formulate
 measurable criteria; the orchestrating parent supplies no professional verdict.
 
-Use the current Gen2 Store and the active provider's existing native subagents.
-Do not execute archived Gen1 evaluation logic or start additional model clients.
+Use the current Gen2 Store and the active provider's maintained layered transport. Follow the installed provider-specific entry when supplied. Do not execute archived Gen1 evaluation logic or start unrelated model clients.
 Keep work within each functional owner and pass only scoped adjacent interfaces.
 Escalation pauses the affected layer by default. A completed attempt is distinct
 from professional review, human acceptance and release permission.

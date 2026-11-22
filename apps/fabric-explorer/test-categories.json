@@ -665,6 +665,15 @@
       ]
     },
     {
+      "path": "apps/fabric-explorer/desktop/test/recorded-label.test.ts",
+      "package": "desktop",
+      "runner": "vitest",
+      "tags": [
+        "unit",
+        "control"
+      ]
+    },
+    {
       "path": "apps/fabric-explorer/desktop/test/recorded-projection.test.ts",
       "package": "desktop",
       "runner": "vitest",

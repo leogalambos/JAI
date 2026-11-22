@@ -7,13 +7,14 @@ import { fileURLToPath } from 'node:url';
 import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 import { createHash } from 'node:crypto';
+import { PROTOCOL } from '@jai/fabric-explorer-contracts';
 import { ReadBroker } from '../src/broker/read-broker.js';
 import { CaptureArchiveStore } from '../src/broker/capture-archive.js';
 import { draftDirectRevision, type DirectWorkerInput, type MaterialAvailability } from '../src/broker/direct-types.js';
 import { buildDirectModel } from '../src/import/direct-import.js';
 import { ImportSession } from '../src/import/session.js';
 import { importLimits } from '../src/import/types.js';
-import type { ImportWorkerPort } from '../src/import/worker-client.js';
+import { NativeImportWorker, type ImportWorkerPort } from '../src/import/worker-client.js';
 const repository = resolve(dirname(fileURLToPath(import.meta.url)), '../../../..');
 let base: string, app: string, data: string, path: string, broker: ReadBroker;
 const cleanup: (() => Promise<unknown>)[] = [];
@@ -54,6 +55,91 @@ it('refreshes unchanged sources without another worker and uses explicit Import 
   const second = await session.import(ids, first.generation); expect(second.generation).toBe('2'); expect(counter).toMatchObject({ created: 2, imports: 2, stopped: 1 });
   const original = await readFile(path); await appendFile(path, '{malformed}\n'); await expect(session.refresh(second.generation)).rejects.toThrow(); expect(session.state().snapshot?.generation).toBe('2');
   const page = await session.sourcePage({ sourceId: ids[0]!, pointer: '', sequence: null, offset: '0', length: 262144 }, second.generation); expect(Buffer.from(page.bytesBase64, 'base64')).toEqual(original);
+});
+it('refreshes exact version and use labels and material observations through the actual import worker', async () => {
+  const fixture = JSON.parse(await readFile(join(repository,
+    'apps/fabric-explorer/packages/contracts/test/fixtures/recorded-labels.json'), 'utf8'));
+  const testCase = fixture.cases.find((item: any) => item.case === 'legacy-companion');
+  const blobId = testCase.expected.source.blobId;
+  const companion = fixture.companions[blobId];
+  const structuredMaterial = Buffer.from('Supporting notes that do not supply the label.');
+  const structuredBlobId = createHash('sha256').update('jai.lifecycle.blob.v2\0').update(structuredMaterial).digest('hex');
+  const structuredManifest = structuredClone(testCase.manifest);
+  structuredManifest.content.record.display_summary = 'A structured label.';
+  structuredManifest.content.record.material = [structuredBlobId];
+  const sourcePath = join(data, 'label-source.jsonl');
+  const row = { format: 9, protocol: 'jai.governed-delivery/1', sequence: 1, hash: 'a'.repeat(64),
+    operations: [{ op: 'governed', data: { message: { scope: 'default',
+      attachments: [{ blob_id: blobId, byte_length: companion.byteLength, media_type: companion.media,
+        classification: 'internal', access_handle: 'synthetic-admitted-companion' }] },
+      effects: [{ op: 'register', manifest: testCase.manifest,
+        origin: { kind: 'controller', id: 'fixture' }, context: null, dependencies: [] },
+      { op: 'register', manifest: structuredManifest,
+        origin: { kind: 'controller', id: 'fixture' }, context: null, dependencies: [] }] } }] };
+  await writeFile(sourcePath, JSON.stringify(row) + '\n');
+  await mkdir(sourcePath + '.blobs');
+  await writeFile(join(sourcePath + '.blobs', blobId), Buffer.from(companion.contentBase64, 'base64'));
+  const selected = await broker.open('owner', [{ projectPath: data, path: sourcePath, family: 'fabric' }]);
+  const source = selected.sources[0]!;
+  const workerEntry = join(repository, 'apps/fabric-explorer/desktop/dist/import-worker.cjs');
+  const session = new ImportSession({ sessionId: 'owner', capability: selected.capability, sources: selected.sources,
+    broker, archiveDirectory: join(app, 'captures'), workerFactory: () => new NativeImportWorker(workerEntry) });
+  cleanup.push(() => session.dispose());
+  const snapshot = await session.import([source.sourceId], null);
+  const ref = { engagement: testCase.manifest.content.engagement, scope: testCase.manifest.content.scope,
+    logical_id: testCase.manifest.logical_id, version_id: testCase.versionId };
+  const lookup = (generation: string, kind: 'version' | 'use') => session.queryStart({
+    protocol: PROTOCOL, kind: 'request', requestId: 'lookup-' + kind,
+    binding: { sessionId: 'owner', capability: selected.capability, generation },
+    operation: 'element.lookup', payload: { identity: kind === 'version' ? { kind, projectId: source.projectId, ref }
+      : { kind, projectId: source.projectId, ref, useScope: 'default' } },
+  });
+  for (const kind of ['version', 'use'] as const) {
+    const page = await lookup(snapshot.generation, kind);
+    expect(page.frame).toContain(testCase.expected.text);
+    expect(page.frame).toContain('jai.recorded-label');
+    expect(page.frame).toContain(blobId);
+    expect(page.frame).not.toContain(sourcePath);
+  }
+  expect((await session.refresh(snapshot.generation)).generation).toBe(snapshot.generation);
+  const companionPath = join(sourcePath + '.blobs', blobId);
+  const original = Buffer.from(companion.contentBase64, 'base64');
+  await writeFile(companionPath, Buffer.alloc(original.length, 65));
+  const changed = await session.refresh(snapshot.generation);
+  expect(changed.generation).toBe('2');
+  expect(changed.sources[0]?.digest).toBe(snapshot.sources[0]?.digest);
+  expect((await lookup(changed.generation, 'use')).frame).toContain('digest-mismatch');
+  await rm(companionPath);
+  const missing = await session.refresh(changed.generation);
+  expect(missing.generation).toBe('3');
+  expect((await lookup(missing.generation, 'version')).frame).toContain('missing');
+  expect((await session.refresh(missing.generation)).generation).toBe(missing.generation);
+  await writeFile(companionPath, original);
+  const restored = await session.refresh(missing.generation);
+  expect(restored.generation).toBe('4');
+  expect((await lookup(restored.generation, 'use')).frame).toContain(testCase.expected.text);
+  const lookupMaterial = (generation: string) => session.queryStart({
+    protocol: PROTOCOL, kind: 'request', requestId: 'lookup-material',
+    binding: { sessionId: 'owner', capability: selected.capability, generation },
+    operation: 'element.lookup', payload: { identity: { kind: 'blob', projectId: source.projectId, rootId: source.rootId, blobId: structuredBlobId } },
+  });
+  expect((await lookupMaterial(restored.generation)).frame).toContain('"availability":"missing"');
+  await writeFile(join(sourcePath + '.blobs', structuredBlobId), structuredMaterial);
+  const materialAdded = await session.refresh(restored.generation);
+  expect(materialAdded.generation).toBe('5');
+  expect((await lookupMaterial(materialAdded.generation)).frame).toContain('"availability":"available"');
+
+  const originalCapture = broker.captureDirect.bind(broker);
+  broker.captureDirect = async (...args) => {
+    const capture = await originalCapture(...args);
+    return { ...capture, companionsUnchanged: async observations => {
+      const unchanged = await capture.companionsUnchanged(observations);
+      await appendFile(sourcePath, '\n');
+      return unchanged;
+    } };
+  };
+  await expect(session.import([source.sourceId], materialAdded.generation)).rejects.toMatchObject({ code: 'read-failed' });
+  expect((await lookup(materialAdded.generation, 'use')).frame).toContain(testCase.expected.text);
 });
 it('does not publish a candidate changed after capture and cleans private output descriptors', async () => {
   const selected = await opened(); const capture = await broker.captureDirect('owner', selected.capability, selected.sources.map(source => source.sourceId)); cleanup.push(() => capture.dispose());

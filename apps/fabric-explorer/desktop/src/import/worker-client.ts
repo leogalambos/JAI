@@ -2,7 +2,7 @@
 // Copyright (c) 2026 Leo Galambos and the Egothor team
 /** Main-owned fixed worker facade with bounded concurrent requests and accepted-worker exploration. */
 import { Worker, type TransferListItem } from 'node:worker_threads';
-import type { DirectWorkerInput, MaterialAvailability } from '../broker/direct-types.js';
+import type { DirectWorkerInput, ExcerptRequest, ExcerptResult, MaterialAvailability, MaterialExcerpt } from '../broker/direct-types.js';
 import { isAbsolute } from 'node:path';
 import { assertSnapshot, encodeWire } from '@jai/fabric-explorer-contracts';
 import type { ModelInput, ModelReady, SourceSpan } from './model.js';
@@ -15,7 +15,7 @@ import type { LayoutWireResult } from '../explore/layout-wire.js';
 /** Owned worker API; graph records never return to the main process. */
 export interface ImportWorkerPort {
   /** Stream admitted native descriptors directly; no facts or source paths return to main. */
-  importDirect?(input: DirectWorkerInput, materialAvailable: MaterialAvailability, signal?: AbortSignal, progress?: (value: ImportProgress) => void): Promise<ModelReady>;
+  importDirect?(input: DirectWorkerInput, materialAvailable: MaterialAvailability, signal?: AbortSignal, progress?: (value: ImportProgress) => void, materialExcerpt?: MaterialExcerpt): Promise<ModelReady>;
   /** Initialize one candidate with fixed captured revisions and resource limits. */
   initialize(input: ModelInput): Promise<void>;
   /** Consume one bounded chunk and acknowledge it before the next pull. */
@@ -51,6 +51,7 @@ export class NativeImportWorker implements ImportWorkerPort {
   private nextId = 0;
   private stopped = false;
   private material: MaterialAvailability | null = null;
+  private excerpt: MaterialExcerpt | null = null;
   private materialSources = new Set<string>();
   private materialPending = 0;
   private progress: ((value: ImportProgress) => void) | null = null;
@@ -75,6 +76,26 @@ export class NativeImportWorker implements ImportWorkerPort {
         if (!this.material || Object.keys(message).sort().join() !== 'blobId,id,kind,sourceId' || !Number.isSafeInteger(message.id) || Number(message.id) < 1 || typeof message.sourceId !== 'string' || !this.materialSources.has(message.sourceId) || typeof message.blobId !== 'string' || !/^[0-9a-f]{64}$/.test(message.blobId) || this.materialPending >= 2) { this.fail(new ImportError('worker-failed', 'Invalid companion capability request.')); return; }
         this.materialPending++;
         void this.material(message.sourceId, message.blobId).then(availability => { if (!this.stopped) this.worker.postMessage({ kind: 'materialResult', id: message.id, availability }); }, () => { if (!this.stopped) this.worker.postMessage({ kind: 'materialResult', id: message.id, availability: 'unknown' }); }).finally(() => { this.materialPending--; });
+        return;
+      }
+      if (message.kind === 'materialExcerpt') {
+        const request = message.request as ExcerptRequest;
+        if (Object.keys(message).sort().join() !== 'id,kind,request' || !Number.isSafeInteger(message.id) || Number(message.id) < 1
+            || this.directRequestId === null || !this.pending.has(this.directRequestId) || this.materialPending >= 2
+            || !request || typeof request !== 'object' || Object.keys(request).sort().join() !== 'blobId,byteLength,effectIndex,media,rowLength,rowOffset,sourceId,versionId'
+            || !this.materialSources.has(request.sourceId) || typeof request.blobId !== 'string' || !/^[0-9a-f]{64}$/.test(request.blobId)
+            || typeof request.versionId !== 'string' || !/^[0-9a-f]{64}$/.test(request.versionId)
+            || !Number.isSafeInteger(request.rowOffset) || request.rowOffset < 0
+            || !Number.isSafeInteger(request.rowLength) || request.rowLength < 1
+            || !Number.isSafeInteger(request.effectIndex) || request.effectIndex < 0
+            || !Number.isSafeInteger(request.byteLength) || request.byteLength < 0
+            || !['text/plain', 'text/markdown'].includes(request.media)) {
+          this.fail(new ImportError('worker-failed', 'Invalid companion text request.')); return;
+        }
+        const reply = (value: ExcerptResult) => { if (!this.stopped) this.worker.postMessage({ kind: 'materialExcerptResult', id: message.id, value }); };
+        this.materialPending++;
+        void (this.excerpt?.(request) ?? Promise.resolve({ kind: 'read-denied' } as const))
+          .then(reply, () => reply({ kind: 'read-denied' })).finally(() => { this.materialPending--; });
         return;
       }
       const pending = typeof message.id === 'number' ? this.pending.get(message.id) : undefined;
@@ -119,14 +140,15 @@ export class NativeImportWorker implements ImportWorkerPort {
    * Transfer the selected source and archive descriptors once into this candidate.
    * @param input Main-bound source revisions, file stamps and owned native handles.
    * @param materialAvailable Named read-only companion capability, not a path operation.
+   * @param materialExcerpt Fixed-purpose companion read for admitted label sources.
    * @param signal Optional candidate cancellation.
    * @param progress Bounded candidate progress observer.
    * @returns Sealed metadata only; graph and parsing data remain worker-local.
    */
-  async importDirect(input: DirectWorkerInput, materialAvailable: MaterialAvailability, signal?: AbortSignal, progress?: (value: ImportProgress) => void): Promise<ModelReady> {
-    this.progress = progress ? value => { if (!signal?.aborted) progress(value); } : null; this.material = materialAvailable; this.materialSources = new Set(input.files.map(file => file.revision.sourceId));
+  async importDirect(input: DirectWorkerInput, materialAvailable: MaterialAvailability, signal?: AbortSignal, progress?: (value: ImportProgress) => void, materialExcerpt?: MaterialExcerpt): Promise<ModelReady> {
+    this.progress = progress ? value => { if (!signal?.aborted) progress(value); } : null; this.material = materialAvailable; this.excerpt = materialExcerpt ?? null; this.materialSources = new Set(input.files.map(file => file.revision.sourceId));
     try { return await this.request('directImport', input, signal, input.files.flatMap(file => [file.sourceHandle, file.archiveHandle])) as ModelReady; }
-    finally { this.material = null; this.materialSources.clear(); this.progress = null; this.directRequestId = null; }
+    finally { this.material = null; this.excerpt = null; this.materialSources.clear(); this.progress = null; this.directRequestId = null; }
   }
   /** Initialize the candidate; @param input Exact bound captured metadata. */
   async initialize(input: ModelInput): Promise<void> { await this.request('initialize', input); }

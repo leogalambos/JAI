@@ -6,7 +6,7 @@ import { encodeWire } from '@jai/fabric-explorer-contracts';
 import { ImportProgressReporter } from './progress.js';
 import { ImportModel } from './model.js';
 import { buildDirectModel } from './direct-import.js';
-import type { DirectWorkerInput } from '../broker/direct-types.js';
+import { EXCERPT_LIMIT, type DirectWorkerInput, type ExcerptResult } from '../broker/direct-types.js';
 import type { ModelInput } from './model.js';
 import { ImportError } from './types.js';
 import { encodeLayout } from '../explore/layout-wire.js';
@@ -22,11 +22,23 @@ let explore: ExploreService | null = null;
 let binding: ModelInput['binding'] | null = null;
 let materialId = 0;
 const materialCalls = new Map<number, (value: 'available' | 'missing' | 'unknown') => void>();
+const excerptCalls = new Map<number, (value: ExcerptResult) => void>();
 port.on('message', async (input: unknown) => {
   let id = 0;
   try {
     if (!input || typeof input !== 'object' || Array.isArray(input)) throw new ImportError('invalid-model', 'Invalid worker request.');
     const material = input as { kind?: string; id?: number; availability?: string };
+    if (material.kind === 'materialExcerptResult') {
+      const value = (input as { value?: ExcerptResult }).value;
+      const done = excerptCalls.get(material.id!);
+      if (Object.keys(input).sort().join() !== 'id,kind,value' || !done || !value || typeof value !== 'object'
+          || (value.kind === 'text'
+            ? Object.keys(value).sort().join() !== 'kind,text' || typeof value.text !== 'string' || Buffer.byteLength(value.text) > EXCERPT_LIMIT
+            : Object.keys(value).join() !== 'kind' || !['missing', 'read-denied', 'oversized', 'digest-mismatch', 'invalid-utf8', 'import-budget-exhausted'].includes(value.kind))) {
+        throw new ImportError('invalid-model', 'Invalid companion text observation.');
+      }
+      excerptCalls.delete(material.id!); done(value); return;
+    }
     if (material.kind === 'materialResult') {
       if (Object.keys(input).sort().join() !== 'availability,id,kind' || !Number.isSafeInteger(material.id) || !['available', 'missing', 'unknown'].includes(material.availability ?? '')) throw new ImportError('invalid-model', 'Invalid companion observation.');
       const done = materialCalls.get(material.id!); if (!done) throw new ImportError('invalid-model', 'Unknown companion observation.'); materialCalls.delete(material.id!); done(material.availability as 'available' | 'missing' | 'unknown'); return;
@@ -45,7 +57,8 @@ port.on('message', async (input: unknown) => {
       if (model) throw new ImportError('invalid-model', 'Worker is already initialized.');
       const direct = message.value as DirectWorkerInput; binding = direct.binding;
       const progress = new ImportProgressReporter(direct.files.reduce((sum, file) => sum + Number(file.revision.byteLength), 0), direct.files.length, value => { if (!control.cancelled()) port.postMessage({ kind: 'importProgress', id, value }); });
-      const result = await buildDirectModel(direct, { ...control, progress: value => progress.update(value), materialAvailable: (sourceId, blobId) => new Promise(resolve => { const id = ++materialId; materialCalls.set(id, resolve); port.postMessage({ kind: 'materialAvailability', id, sourceId, blobId }); }) });
+      const result = await buildDirectModel(direct, { ...control, progress: value => progress.update(value), materialAvailable: (sourceId, blobId) => new Promise(resolve => { const id = ++materialId; materialCalls.set(id, resolve); port.postMessage({ kind: 'materialAvailability', id, sourceId, blobId }); }),
+        materialExcerpt: request => new Promise(resolve => { const id = ++materialId; excerptCalls.set(id, resolve); port.postMessage({ kind: 'materialExcerpt', id, request }); }) });
       model = result.model; explore = new ExploreService(new QueryIndex({ snapshot: result.ready.descriptor, store: model.graph() }, { ...binding!, generation: result.ready.descriptor.generation }), { ...binding!, generation: result.ready.descriptor.generation }); value = result.ready; progress.complete();
     } else if (message.operation === 'initialize') { if (model) throw new ImportError('invalid-model', 'Worker is already initialized.'); model = new ImportModel(message.value as ModelInput); binding = (message.value as ModelInput).binding; }
     else {

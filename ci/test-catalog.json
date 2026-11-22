@@ -276,6 +276,10 @@
       "category": "integration",
       "rationale": "Audit observes exact Gen2 facts without granting or rewriting anything. Conservative integration classification: filesystem, process, runtime or repository resources may participate."
     },
+    "tests/test_governed_codex_carrier.py": {
+      "category": "integration",
+      "rationale": "Controlled App Server frames exercise exact singleton Store admission, broker binding, and restart recovery."
+    },
     "tests/test_governed_cross_scope_pause.py": {
       "category": "integration",
       "rationale": "Pause follows actual scoped dependencies, not blob equality or scope names. Conservative integration classification: filesystem, process, runtime or repository resources may participate."

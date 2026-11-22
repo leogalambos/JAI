@@ -8,6 +8,7 @@ import { expect, it } from 'vitest';
 import { parseRecordedJSON } from '../src/import/recorded-json.js';
 import { RecordedProjection, recordedSemantic, recordedVersionId, identityJSON, compareCodepoints } from '../src/import/recorded-projection.js';
 const fixture = fileURLToPath(new URL('../../reader/test/fixtures/recorded-projection.json', import.meta.url));
+const labelFixture = fileURLToPath(new URL('../../packages/contracts/test/fixtures/recorded-labels.json', import.meta.url));
 const normalize = (value: any): any => {
   if (Array.isArray(value)) return value.map(normalize);
   if (value && typeof value === 'object') { const result = Object.fromEntries(Object.entries(value).map(([key, item]) => [key, normalize(item)])); if (result.type === 'object' && Array.isArray(result.entries)) result.entries.sort((a: any, b: any) => compareCodepoints(a.key, b.key)); return result; }
@@ -27,6 +28,53 @@ it('preserves the entire ordered693fact genuine valid oracle without Python runt
     const encoded = Buffer.from(sortedJSON(normalize(fact))); const prefix = Buffer.alloc(4); prefix.writeUInt32BE(encoded.length); digest.update(prefix); digest.update(encoded); count++;
   }
   expect(count).toBe(oracle.factCount); expect(digest.digest('hex')).toBe(oracle.factDigest);
+});
+it('projects the frozen exact version labels and requests only designated companions', async () => {
+  const fixture = JSON.parse(await readFile(labelFixture, 'utf8'));
+  const projection = new RecordedProjection('synthetic-labels', 'fabric');
+  let offset = 0;
+  fixture.cases.forEach((item: any, index: number) => {
+    const attachments = Object.entries(item.materialDesignations).map(([pointer, designation]: any) => {
+      const blobId = item.manifest.content.record.material[Number(pointer.split('/').at(-1))];
+      return { blob_id: blobId, byte_length: fixture.companions[blobId].byteLength, media_type: designation.media,
+        classification: 'internal', access_handle: 'synthetic-admitted-companion' };
+    });
+    const row = { format: 9, protocol: 'jai.governed-delivery/1', sequence: index + 1, hash: 'a'.repeat(64),
+      operations: [{ op: 'governed', data: { message: { scope: 'default', attachments },
+        effects: [{ op: 'register', manifest: item.manifest, origin: { kind: 'controller', id: 'fixture' }, context: null, dependencies: [] }] } }] };
+    const line = JSON.stringify(row) + '\n';
+    projection.consume(parseRecordedJSON(line, 'fabric'), offset, Buffer.byteLength(line));
+    offset += Buffer.byteLength(line);
+  });
+  const legacy = fixture.cases.find((item: any) => item.case === 'legacy-companion');
+  const assessment = structuredClone(fixture.cases.find((item: any) => item.manifest.kind === 'delivery.assessment').manifest);
+  const { engagement, scope } = legacy.manifest.content;
+  assessment.content.record.subject = { engagement, scope, logical_id: legacy.manifest.logical_id, version_id: legacy.versionId };
+  const reviewRow = JSON.stringify({ format: 9, protocol: 'jai.governed-delivery/1', sequence: fixture.cases.length + 1,
+    hash: 'a'.repeat(64), operations: [{ op: 'governed', data: { message: { scope: 'default' },
+      effects: [{ op: 'register', manifest: assessment, origin: { kind: 'controller', id: 'fixture' }, context: null, dependencies: [] }] } }] }) + '\n';
+  const parsedReview = parseRecordedJSON(reviewRow, 'fabric') as any;
+  projection.consume(parsedReview, offset, Buffer.byteLength(reviewRow));
+  const assessmentId = recordedVersionId(parsedReview.operations[0].data.effects[0].manifest);
+  const requested: string[] = [];
+  const labels = new Map();
+  for await (const fact of projection.facts({ cancelled: () => false, recordedLabels: true,
+    materialExcerpt: async request => {
+      expect(request.sourceId).toBe('synthetic-labels');
+      requested.push(request.versionId);
+      const companion = fixture.companions[request.blobId];
+      if (companion.availability !== 'available') return { kind: companion.availability };
+      if (request.byteLength > 16 * 1024) return { kind: 'oversized' };
+      try { return { kind: 'text', text: new TextDecoder('utf-8', { fatal: true }).decode(Buffer.from(companion.contentBase64, 'base64')) }; }
+      catch { return { kind: 'invalid-utf8' }; }
+    } })) if (fact.kind === 'version') labels.set(fact.ref.version_id, fact.presentation);
+  expect(labels.get(assessmentId).additionalSources).toContainEqual(legacy.expected.source);
+  expect(requested.filter(id => id === legacy.versionId)).toHaveLength(1);
+  for (const item of fixture.cases) expect(labels.get(item.versionId), item.case).toEqual(item.expected);
+  for (const item of fixture.cases.filter((item: any) =>
+    ['binary', 'ambiguous', 'unknown-text-designation', 'superseded-answer', 'supported-replacement'].includes(item.case))) {
+    expect(requested).not.toContain(item.versionId);
+  }
 });
 it('counts exact finite/tagged and surrogate wire bytes inclusively', () => {
   for (const source of ['null', 'true', 'false', '"Ω東京"', '"\\ud800"', '0', '9007199254740993', '-0.0', 'NaN', '[1,2.0,"x"]', '{"1":1,"0":"\\udfff"}']) {

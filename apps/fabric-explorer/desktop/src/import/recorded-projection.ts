@@ -7,6 +7,8 @@ import type { CanonicalFact, CanonicalPoint, FactAttributes, FactOrigin, SourceC
 import { recordedEntries } from './recorded-json.js';
 import type { RecordedValue } from './recorded-json.js';
 import { ImportError } from './types.js';
+import { recordedLabel } from './recorded-label.js';
+import type { MaterialExcerpt } from '../broker/direct-types.js';
 
 type Data = Record<string, any>;
 const PROTOCOL = 'jai.governed-delivery/1';
@@ -155,10 +157,10 @@ function attributes(value: any, origin: FactOrigin): FactAttributes {
 function origin(offset: number, length: number, sequence: bigint | null, path: string): FactOrigin { return { pointer: path, sequence: sequence === null ? null : sequence.toString(), byteOffset: String(offset), byteLength: String(length) }; }
 
 /** Material lookup stays at the main capability boundary, never a worker pathname read. */
-export interface RecordedControl { progress?(value: import('./progress.js').ImportProgress): void; cancelled(): boolean; materialAvailability?(sourceId: string, blobId: string): Promise<'available' | 'missing' | 'unknown'> }
+export interface RecordedControl { progress?(value: import('./progress.js').ImportProgress): void; cancelled(): boolean; materialAvailability?(sourceId: string, blobId: string): Promise<'available' | 'missing' | 'unknown'>; recordedLabels?: boolean; materialExcerpt?: MaterialExcerpt }
 /** Parsed source summary before namespace/revision metadata is finalized by the owner. */
 export interface ProjectionSummary { readonly head: string | null; readonly sequence: string; readonly compatibility: SourceCompatibility }
-interface Registration { readonly manifest: Data; readonly provenance: Data; readonly origin: FactOrigin; readonly effects: readonly Data[]; readonly scope: string }
+interface Registration { readonly manifest: Data; readonly provenance: Data; readonly origin: FactOrigin; readonly effects: readonly Data[]; readonly scope: string; readonly attachments: readonly Data[]; readonly effectIndex: number }
 
 /** One source's necessary recorded indexes; release it after draining directly to the model. */
 export class RecordedProjection {
@@ -268,7 +270,8 @@ export class RecordedProjection {
         if (operation === 'decision-record' && typeof row.authority_proof === 'string') {
           try { const proof = JSON.parse(Buffer.from(row.authority_proof, 'base64').toString('utf8')); if (typeof proof.request?.kind === 'string' && typeof proof.receipt?.key_id === 'string') provenance.authority = { purpose: proof.request.kind, key_id: proof.receipt.key_id }; } catch { /* Malformed recorded proof claims do not authenticate or block viewing. */ }
         }
-        this.versions.set(id, { manifest, provenance, origin: origin(offset, length, BigInt(this.rows + 1), '/operations/0/data/effects/' + effectIndex + '/manifest'), effects: manifest.kind === 'delivery.decision' ? effects : [], scope: this.scope });
+        this.versions.set(id, { manifest, provenance, origin: origin(offset, length, BigInt(this.rows + 1), '/operations/0/data/effects/' + effectIndex + '/manifest'), effects: manifest.kind === 'delivery.decision' ? effects : [], scope: this.scope,
+          effectIndex, attachments: !this.versions.has(id) && Array.isArray(message.attachments) ? message.attachments : [] });
         const point = this.point(this.ref(id), typeof effect.use_scope === 'string' ? effect.use_scope : this.scope);
         for (const dependency of dependencies) this.ensureUse(dependency);
         this.reliance.set(keyOf(point), dependencies); this.states.set(keyOf(point), { point, state: { validity: operation === 'decision-record' ? 'valid' : 'pending', applicable: operation === 'decision-record' } });
@@ -334,9 +337,34 @@ export class RecordedProjection {
     }
     const uses = new Map<string, { point: CanonicalPoint; state: Data }[]>();
     for (const use of this.states.values()) { const rows = uses.get(use.point.ref.version_id) ?? []; rows.push(use); uses.set(use.point.ref.version_id, rows); }
+    // A version and any assessment of it must use the same companion observation.
+    const observations = new Map<string, ReturnType<MaterialExcerpt>>();
+    const readExcerpt: MaterialExcerpt | undefined = control.materialExcerpt && (request => {
+      const existing = observations.get(request.versionId);
+      if (existing) return existing;
+      const observation = control.materialExcerpt!(request);
+      observations.set(request.versionId, observation);
+      return observation;
+    });
+    const labelInput = (versionId: string, registration: Registration) => ({
+      sourceId: this.sourceId, versionId, family: registration.manifest.kind.slice('delivery.'.length) as string,
+      record: registration.manifest.content.record as Data, attachments: registration.attachments,
+      locator: { rowOffset: Number(registration.origin.byteOffset), rowLength: Number(registration.origin.byteLength), effectIndex: registration.effectIndex },
+    });
     for (const [id, registration] of this.versions) {
       this.check(control); const manifest = registration.manifest; const record = manifest.content.record; const ref = this.ref(id); const base = { sourceId: this.sourceId, origin: registration.origin };
-      yield { ...base, kind: 'version', ref, family: manifest.kind.slice('delivery.'.length), label: manifest.logical_id, attributes: attributes({ manifest, provenance: registration.provenance }, registration.origin) };
+      const family = manifest.kind.slice('delivery.'.length);
+      const payload = record.message?.payload;
+      const subject = record.subject ?? payload?.slot?.subject ?? payload?.subject ?? payload?.candidate ?? payload?.assignment;
+      const target = subject && typeof subject.version_id === 'string' ? this.versions.get(subject.version_id) : undefined;
+      const exactSubject = target && equal(this.ref(subject.version_id), subject)
+        ? { versionId: subject.version_id, record: target.manifest.content.record,
+          resolve: () => recordedLabel(labelInput(subject.version_id, target), readExcerpt) } : undefined;
+      const presentation = control.recordedLabels ? await recordedLabel({ ...labelInput(id, registration),
+        ...(exactSubject ? { subject: exactSubject } : {}) }, readExcerpt) : undefined;
+      this.check(control);
+      yield { ...base, kind: 'version', ref, family, label: presentation?.text ?? manifest.logical_id,
+        ...(presentation ? { presentation } : {}), attributes: attributes({ manifest, provenance: registration.provenance }, registration.origin) };
       const owner = record.owner;
       if (owner && typeof owner === 'object' && !Array.isArray(owner) && Object.keys(owner).sort().join() === 'layer,question,work_item,work_kind') {
         const layer = integer(owner.layer); if (layer < 0n || layer > BigInt(Number.MAX_SAFE_INTEGER)) return bad();

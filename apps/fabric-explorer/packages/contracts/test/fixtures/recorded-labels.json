@@ -1,0 +1,1480 @@
+{
+  "format": "jai.fabric-explorer.recorded-label-fixtures/1",
+  "fixtureScope": "Synthetic nested manifest inputs and presentation expectations; supporting references may point into the existing recorded projection oracle.",
+  "cases": [
+    {
+      "case": "structured-criterion",
+      "manifest": {
+        "schema": "jai.lifecycle.manifest/2",
+        "logical_id": "x09q",
+        "kind": "delivery.source",
+        "content": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "record": {
+            "criteria": [
+              {
+                "evidence_slots": [],
+                "id": "C1",
+                "requirement": {
+                  "engagement": "synthetic-recorded-projection",
+                  "logical_id": "input-A",
+                  "scope": "default",
+                  "version_id": "9da4b7f1262dd305ac5e4327d9537d34066b8f396c1647d52b026360c0cd1818"
+                },
+                "statement": "Which catalogue records can the service restore?"
+              }
+            ],
+            "inherited": [
+              {
+                "engagement": "synthetic-recorded-projection",
+                "logical_id": "input-A",
+                "scope": "default",
+                "version_id": "9da4b7f1262dd305ac5e4327d9537d34066b8f396c1647d52b026360c0cd1818"
+              }
+            ],
+            "material": [
+              "6fea4810fef16d72906705d415d3c02709a5014dd25540260c4b7b93b8ff0a2d"
+            ],
+            "origin": {
+              "id": "human-owner",
+              "kind": "authority"
+            },
+            "owner": {
+              "layer": 1,
+              "question": "how",
+              "work_item": "service-controls",
+              "work_kind": "question"
+            },
+            "source_role": "criteria"
+          }
+        },
+        "bindings": {},
+        "members": []
+      },
+      "versionId": "eec9f864c15a023ed725c9dfcbe85216775bae933649677d215dd98894ca2263",
+      "expected": {
+        "text": "L1 HOW · Which catalogue records can the service restore?",
+        "source": {
+          "kind": "record-field",
+          "versionId": "eec9f864c15a023ed725c9dfcbe85216775bae933649677d215dd98894ca2263",
+          "pointer": "/content/record/criteria/0/statement"
+        }
+      },
+      "materialDesignations": {}
+    },
+    {
+      "case": "superseded-answer",
+      "manifest": {
+        "schema": "jai.lifecycle.manifest/2",
+        "logical_id": "8d2fd078-770a-403d-96a9-72fa2807a154",
+        "kind": "delivery.product",
+        "content": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "record": {
+            "assignment": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "author-A",
+              "scope": "default",
+              "version_id": "cd55b301e701c82f96e536265727135e0ba423fb318e7f4b5fecbd362fa8d0fd"
+            },
+            "evidence": [],
+            "inputs": [
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "input-A",
+                    "scope": "default",
+                    "version_id": "9da4b7f1262dd305ac5e4327d9537d34066b8f396c1647d52b026360c0cd1818"
+                  }
+                ],
+                "slot_id": "L1:service-controls:how-input"
+              },
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "criteria",
+                    "scope": "default",
+                    "version_id": "e2e72017a226fec4cf5f6fa2f408972549451dec36d3c01f4315520717b30de9"
+                  },
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "role-routing",
+                    "scope": "default",
+                    "version_id": "521688550ca6ac1e54e53889b5ea0950995f1995e90a15b8e27dfb678386f73a"
+                  }
+                ],
+                "slot_id": "l0-additional"
+              }
+            ],
+            "limitations": [],
+            "material": [
+              "e5976f5926837bb9e9f3359dd24179cc4bb9470f5ace99c8d85c5a8e2c74af18"
+            ],
+            "owner": {
+              "layer": 1,
+              "question": "how",
+              "work_item": "service-controls",
+              "work_kind": "question"
+            },
+            "product_kind": "answer",
+            "profile": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "profile",
+              "scope": "default",
+              "version_id": "6b445e5972a1a546e65e7a1e17225ee1da2e1b6cdf3cf1d141cb23e3c43f61aa"
+            },
+            "related": [],
+            "display_summary": "Restore shared catalogue records."
+          }
+        },
+        "bindings": {},
+        "members": []
+      },
+      "versionId": "c063254fd4d3a7e07d3d656088dd7e2eef607b68cc7909f0e6d12a808615c05c",
+      "use": {
+        "ref": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "logical_id": "8d2fd078-770a-403d-96a9-72fa2807a154",
+          "version_id": "c063254fd4d3a7e07d3d656088dd7e2eef607b68cc7909f0e6d12a808615c05c"
+        },
+        "useScope": "default",
+        "status": "superseded"
+      },
+      "expected": {
+        "text": "L1 HOW · Restore shared catalogue records.",
+        "source": {
+          "kind": "record-field",
+          "versionId": "c063254fd4d3a7e07d3d656088dd7e2eef607b68cc7909f0e6d12a808615c05c",
+          "pointer": "/content/record/display_summary"
+        }
+      },
+      "materialDesignations": {}
+    },
+    {
+      "case": "supported-replacement",
+      "manifest": {
+        "schema": "jai.lifecycle.manifest/2",
+        "logical_id": "8d2fd078-770a-403d-96a9-72fa2807a154",
+        "kind": "delivery.product",
+        "content": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "record": {
+            "assignment": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "author-A",
+              "scope": "default",
+              "version_id": "cd55b301e701c82f96e536265727135e0ba423fb318e7f4b5fecbd362fa8d0fd"
+            },
+            "evidence": [],
+            "inputs": [
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "input-A",
+                    "scope": "default",
+                    "version_id": "9da4b7f1262dd305ac5e4327d9537d34066b8f396c1647d52b026360c0cd1818"
+                  }
+                ],
+                "slot_id": "L1:service-controls:how-input"
+              },
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "criteria",
+                    "scope": "default",
+                    "version_id": "e2e72017a226fec4cf5f6fa2f408972549451dec36d3c01f4315520717b30de9"
+                  },
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "role-routing",
+                    "scope": "default",
+                    "version_id": "521688550ca6ac1e54e53889b5ea0950995f1995e90a15b8e27dfb678386f73a"
+                  }
+                ],
+                "slot_id": "l0-additional"
+              }
+            ],
+            "limitations": [
+              "Personal copies are excluded."
+            ],
+            "material": [
+              "e5976f5926837bb9e9f3359dd24179cc4bb9470f5ace99c8d85c5a8e2c74af18"
+            ],
+            "owner": {
+              "layer": 1,
+              "question": "how",
+              "work_item": "service-controls",
+              "work_kind": "question"
+            },
+            "product_kind": "answer",
+            "profile": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "profile",
+              "scope": "default",
+              "version_id": "6b445e5972a1a546e65e7a1e17225ee1da2e1b6cdf3cf1d141cb23e3c43f61aa"
+            },
+            "related": [],
+            "display_summary": "  Restore shared\n catalogue records.  "
+          }
+        },
+        "bindings": {},
+        "members": []
+      },
+      "versionId": "7c8a5168090f026e6883f60420ebbc031e2e75e39b23a2949985dfc3e36c44d5",
+      "use": {
+        "ref": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "logical_id": "8d2fd078-770a-403d-96a9-72fa2807a154",
+          "version_id": "7c8a5168090f026e6883f60420ebbc031e2e75e39b23a2949985dfc3e36c44d5"
+        },
+        "useScope": "default",
+        "status": "supported"
+      },
+      "expected": {
+        "text": "L1 HOW · Restore shared catalogue records.",
+        "source": {
+          "kind": "record-field",
+          "versionId": "7c8a5168090f026e6883f60420ebbc031e2e75e39b23a2949985dfc3e36c44d5",
+          "pointer": "/content/record/display_summary"
+        }
+      },
+      "expectedUseLabel": {
+        "text": "L1 HOW · Restore shared catalogue records.",
+        "source": {
+          "kind": "record-field",
+          "versionId": "7c8a5168090f026e6883f60420ebbc031e2e75e39b23a2949985dfc3e36c44d5",
+          "pointer": "/content/record/display_summary"
+        }
+      },
+      "materialDesignations": {}
+    },
+    {
+      "case": "legacy-companion",
+      "manifest": {
+        "schema": "jai.lifecycle.manifest/2",
+        "logical_id": "x23m",
+        "kind": "delivery.product",
+        "content": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "record": {
+            "assignment": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "author-A",
+              "scope": "default",
+              "version_id": "cd55b301e701c82f96e536265727135e0ba423fb318e7f4b5fecbd362fa8d0fd"
+            },
+            "evidence": [],
+            "inputs": [
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "input-A",
+                    "scope": "default",
+                    "version_id": "9da4b7f1262dd305ac5e4327d9537d34066b8f396c1647d52b026360c0cd1818"
+                  }
+                ],
+                "slot_id": "L1:service-controls:how-input"
+              },
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "criteria",
+                    "scope": "default",
+                    "version_id": "e2e72017a226fec4cf5f6fa2f408972549451dec36d3c01f4315520717b30de9"
+                  },
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "role-routing",
+                    "scope": "default",
+                    "version_id": "521688550ca6ac1e54e53889b5ea0950995f1995e90a15b8e27dfb678386f73a"
+                  }
+                ],
+                "slot_id": "l0-additional"
+              }
+            ],
+            "limitations": [],
+            "material": [
+              "d7bfe052527c71a13363b122005523caa6ab22df636e9c0d091d8370eb5572a6"
+            ],
+            "owner": {
+              "layer": 1,
+              "question": "how",
+              "work_item": "service-controls",
+              "work_kind": "question"
+            },
+            "product_kind": "answer",
+            "profile": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "profile",
+              "scope": "default",
+              "version_id": "6b445e5972a1a546e65e7a1e17225ee1da2e1b6cdf3cf1d141cb23e3c43f61aa"
+            },
+            "related": []
+          }
+        },
+        "bindings": {},
+        "members": []
+      },
+      "versionId": "d4ebbb0aeeb901ff13669b2b7f058b60b0490bc09dd312690000155c36e86378",
+      "expected": {
+        "text": "L1 HOW · Restore the last verified catalogue snapshot.",
+        "source": {
+          "kind": "companion-excerpt",
+          "versionId": "d4ebbb0aeeb901ff13669b2b7f058b60b0490bc09dd312690000155c36e86378",
+          "pointer": "/content/record/material/0",
+          "blobId": "d7bfe052527c71a13363b122005523caa6ab22df636e9c0d091d8370eb5572a6"
+        }
+      },
+      "materialDesignations": {
+        "/content/record/material/0": {
+          "media": "text/markdown",
+          "role": "answer-material"
+        }
+      }
+    },
+    {
+      "case": "missing",
+      "manifest": {
+        "schema": "jai.lifecycle.manifest/2",
+        "logical_id": "x-fallback-missing",
+        "kind": "delivery.product",
+        "content": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "record": {
+            "assignment": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "author-A",
+              "scope": "default",
+              "version_id": "cd55b301e701c82f96e536265727135e0ba423fb318e7f4b5fecbd362fa8d0fd"
+            },
+            "evidence": [],
+            "inputs": [
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "input-A",
+                    "scope": "default",
+                    "version_id": "9da4b7f1262dd305ac5e4327d9537d34066b8f396c1647d52b026360c0cd1818"
+                  }
+                ],
+                "slot_id": "L1:service-controls:how-input"
+              },
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "criteria",
+                    "scope": "default",
+                    "version_id": "e2e72017a226fec4cf5f6fa2f408972549451dec36d3c01f4315520717b30de9"
+                  },
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "role-routing",
+                    "scope": "default",
+                    "version_id": "521688550ca6ac1e54e53889b5ea0950995f1995e90a15b8e27dfb678386f73a"
+                  }
+                ],
+                "slot_id": "l0-additional"
+              }
+            ],
+            "limitations": [],
+            "material": [
+              "fbb3667169b629e250b32ae33cf2c49a1318afe74d76659d04863c2a56b7414f"
+            ],
+            "owner": {
+              "layer": 1,
+              "question": "how",
+              "work_item": "service-controls",
+              "work_kind": "question"
+            },
+            "product_kind": "answer",
+            "profile": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "profile",
+              "scope": "default",
+              "version_id": "6b445e5972a1a546e65e7a1e17225ee1da2e1b6cdf3cf1d141cb23e3c43f61aa"
+            },
+            "related": []
+          }
+        },
+        "bindings": {},
+        "members": []
+      },
+      "versionId": "48c8728904ebf0a1038511ddda0950ffa71d5b4e6e45e37ed77d7776665e1cca",
+      "expected": {
+        "text": "L1 HOW · answer summary unavailable",
+        "source": {
+          "kind": "unavailable",
+          "versionId": "48c8728904ebf0a1038511ddda0950ffa71d5b4e6e45e37ed77d7776665e1cca",
+          "reason": "missing"
+        }
+      },
+      "materialDesignations": {
+        "/content/record/material/0": {
+          "media": "text/plain",
+          "role": "answer-material"
+        }
+      }
+    },
+    {
+      "case": "denied",
+      "manifest": {
+        "schema": "jai.lifecycle.manifest/2",
+        "logical_id": "x-fallback-denied",
+        "kind": "delivery.product",
+        "content": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "record": {
+            "assignment": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "author-A",
+              "scope": "default",
+              "version_id": "cd55b301e701c82f96e536265727135e0ba423fb318e7f4b5fecbd362fa8d0fd"
+            },
+            "evidence": [],
+            "inputs": [
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "input-A",
+                    "scope": "default",
+                    "version_id": "9da4b7f1262dd305ac5e4327d9537d34066b8f396c1647d52b026360c0cd1818"
+                  }
+                ],
+                "slot_id": "L1:service-controls:how-input"
+              },
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "criteria",
+                    "scope": "default",
+                    "version_id": "e2e72017a226fec4cf5f6fa2f408972549451dec36d3c01f4315520717b30de9"
+                  },
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "role-routing",
+                    "scope": "default",
+                    "version_id": "521688550ca6ac1e54e53889b5ea0950995f1995e90a15b8e27dfb678386f73a"
+                  }
+                ],
+                "slot_id": "l0-additional"
+              }
+            ],
+            "limitations": [],
+            "material": [
+              "bcbf8a559ecf2bb2266cf332bb62cb8c6e9b33e1707c8b119266e3f86b99c2b0"
+            ],
+            "owner": {
+              "layer": 1,
+              "question": "how",
+              "work_item": "service-controls",
+              "work_kind": "question"
+            },
+            "product_kind": "answer",
+            "profile": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "profile",
+              "scope": "default",
+              "version_id": "6b445e5972a1a546e65e7a1e17225ee1da2e1b6cdf3cf1d141cb23e3c43f61aa"
+            },
+            "related": []
+          }
+        },
+        "bindings": {},
+        "members": []
+      },
+      "versionId": "c075ccb3e6b40670e696cc2e74d367f27cbcea1ca430ecef99c6d53cdf088507",
+      "expected": {
+        "text": "L1 HOW · answer summary unavailable",
+        "source": {
+          "kind": "unavailable",
+          "versionId": "c075ccb3e6b40670e696cc2e74d367f27cbcea1ca430ecef99c6d53cdf088507",
+          "reason": "read-denied"
+        }
+      },
+      "materialDesignations": {
+        "/content/record/material/0": {
+          "media": "text/plain",
+          "role": "answer-material"
+        }
+      }
+    },
+    {
+      "case": "binary",
+      "manifest": {
+        "schema": "jai.lifecycle.manifest/2",
+        "logical_id": "x-fallback-binary",
+        "kind": "delivery.product",
+        "content": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "record": {
+            "assignment": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "author-A",
+              "scope": "default",
+              "version_id": "cd55b301e701c82f96e536265727135e0ba423fb318e7f4b5fecbd362fa8d0fd"
+            },
+            "evidence": [],
+            "inputs": [
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "input-A",
+                    "scope": "default",
+                    "version_id": "9da4b7f1262dd305ac5e4327d9537d34066b8f396c1647d52b026360c0cd1818"
+                  }
+                ],
+                "slot_id": "L1:service-controls:how-input"
+              },
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "criteria",
+                    "scope": "default",
+                    "version_id": "e2e72017a226fec4cf5f6fa2f408972549451dec36d3c01f4315520717b30de9"
+                  },
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "role-routing",
+                    "scope": "default",
+                    "version_id": "521688550ca6ac1e54e53889b5ea0950995f1995e90a15b8e27dfb678386f73a"
+                  }
+                ],
+                "slot_id": "l0-additional"
+              }
+            ],
+            "limitations": [],
+            "material": [
+              "ad678e53e6a027509050e15f8e6baffbcf12b983da7c95c2976f941ebda1b7a2"
+            ],
+            "owner": {
+              "layer": 1,
+              "question": "how",
+              "work_item": "service-controls",
+              "work_kind": "question"
+            },
+            "product_kind": "answer",
+            "profile": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "profile",
+              "scope": "default",
+              "version_id": "6b445e5972a1a546e65e7a1e17225ee1da2e1b6cdf3cf1d141cb23e3c43f61aa"
+            },
+            "related": []
+          }
+        },
+        "bindings": {},
+        "members": []
+      },
+      "versionId": "4ec82bfe68bb642884d85b2590f37393e30548fedd30368cfe2d73015a8ddffc",
+      "expected": {
+        "text": "L1 HOW · answer summary unavailable",
+        "source": {
+          "kind": "unavailable",
+          "versionId": "4ec82bfe68bb642884d85b2590f37393e30548fedd30368cfe2d73015a8ddffc",
+          "reason": "binary"
+        }
+      },
+      "materialDesignations": {
+        "/content/record/material/0": {
+          "media": "application/octet-stream",
+          "role": "answer-material"
+        }
+      }
+    },
+    {
+      "case": "invalid-utf8",
+      "manifest": {
+        "schema": "jai.lifecycle.manifest/2",
+        "logical_id": "x-fallback-invalid-utf8",
+        "kind": "delivery.product",
+        "content": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "record": {
+            "assignment": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "author-A",
+              "scope": "default",
+              "version_id": "cd55b301e701c82f96e536265727135e0ba423fb318e7f4b5fecbd362fa8d0fd"
+            },
+            "evidence": [],
+            "inputs": [
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "input-A",
+                    "scope": "default",
+                    "version_id": "9da4b7f1262dd305ac5e4327d9537d34066b8f396c1647d52b026360c0cd1818"
+                  }
+                ],
+                "slot_id": "L1:service-controls:how-input"
+              },
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "criteria",
+                    "scope": "default",
+                    "version_id": "e2e72017a226fec4cf5f6fa2f408972549451dec36d3c01f4315520717b30de9"
+                  },
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "role-routing",
+                    "scope": "default",
+                    "version_id": "521688550ca6ac1e54e53889b5ea0950995f1995e90a15b8e27dfb678386f73a"
+                  }
+                ],
+                "slot_id": "l0-additional"
+              }
+            ],
+            "limitations": [],
+            "material": [
+              "771201c44aea9e8c017641acdcd54b90aac7b9ebe502086d36860a3ee677fc99"
+            ],
+            "owner": {
+              "layer": 1,
+              "question": "how",
+              "work_item": "service-controls",
+              "work_kind": "question"
+            },
+            "product_kind": "answer",
+            "profile": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "profile",
+              "scope": "default",
+              "version_id": "6b445e5972a1a546e65e7a1e17225ee1da2e1b6cdf3cf1d141cb23e3c43f61aa"
+            },
+            "related": []
+          }
+        },
+        "bindings": {},
+        "members": []
+      },
+      "versionId": "56c9f24e18e94215b9d01ac20eee21748c51931e641a7b3f0b30e1accf2e95a1",
+      "expected": {
+        "text": "L1 HOW · answer summary unavailable",
+        "source": {
+          "kind": "unavailable",
+          "versionId": "56c9f24e18e94215b9d01ac20eee21748c51931e641a7b3f0b30e1accf2e95a1",
+          "reason": "invalid-utf8"
+        }
+      },
+      "materialDesignations": {
+        "/content/record/material/0": {
+          "media": "text/plain",
+          "role": "answer-material"
+        }
+      }
+    },
+    {
+      "case": "oversized",
+      "manifest": {
+        "schema": "jai.lifecycle.manifest/2",
+        "logical_id": "x-fallback-oversized",
+        "kind": "delivery.product",
+        "content": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "record": {
+            "assignment": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "author-A",
+              "scope": "default",
+              "version_id": "cd55b301e701c82f96e536265727135e0ba423fb318e7f4b5fecbd362fa8d0fd"
+            },
+            "evidence": [],
+            "inputs": [
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "input-A",
+                    "scope": "default",
+                    "version_id": "9da4b7f1262dd305ac5e4327d9537d34066b8f396c1647d52b026360c0cd1818"
+                  }
+                ],
+                "slot_id": "L1:service-controls:how-input"
+              },
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "criteria",
+                    "scope": "default",
+                    "version_id": "e2e72017a226fec4cf5f6fa2f408972549451dec36d3c01f4315520717b30de9"
+                  },
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "role-routing",
+                    "scope": "default",
+                    "version_id": "521688550ca6ac1e54e53889b5ea0950995f1995e90a15b8e27dfb678386f73a"
+                  }
+                ],
+                "slot_id": "l0-additional"
+              }
+            ],
+            "limitations": [],
+            "material": [
+              "3d7458264ae945caef563790c92a3e687d03ab7c12bb0e1ea18f88d48e50b047"
+            ],
+            "owner": {
+              "layer": 1,
+              "question": "how",
+              "work_item": "service-controls",
+              "work_kind": "question"
+            },
+            "product_kind": "answer",
+            "profile": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "profile",
+              "scope": "default",
+              "version_id": "6b445e5972a1a546e65e7a1e17225ee1da2e1b6cdf3cf1d141cb23e3c43f61aa"
+            },
+            "related": []
+          }
+        },
+        "bindings": {},
+        "members": []
+      },
+      "versionId": "77883a9677c32e2dbeb0db6de3c67cb1360af1d56b0d3456fc6d073f4a8c7633",
+      "expected": {
+        "text": "L1 HOW · answer summary unavailable",
+        "source": {
+          "kind": "unavailable",
+          "versionId": "77883a9677c32e2dbeb0db6de3c67cb1360af1d56b0d3456fc6d073f4a8c7633",
+          "reason": "oversized"
+        }
+      },
+      "materialDesignations": {
+        "/content/record/material/0": {
+          "media": "text/plain",
+          "role": "answer-material"
+        }
+      }
+    },
+    {
+      "case": "ambiguous",
+      "manifest": {
+        "schema": "jai.lifecycle.manifest/2",
+        "logical_id": "x74m",
+        "kind": "delivery.product",
+        "content": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "record": {
+            "assignment": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "author-A",
+              "scope": "default",
+              "version_id": "cd55b301e701c82f96e536265727135e0ba423fb318e7f4b5fecbd362fa8d0fd"
+            },
+            "evidence": [],
+            "inputs": [
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "input-A",
+                    "scope": "default",
+                    "version_id": "9da4b7f1262dd305ac5e4327d9537d34066b8f396c1647d52b026360c0cd1818"
+                  }
+                ],
+                "slot_id": "L1:service-controls:how-input"
+              },
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "criteria",
+                    "scope": "default",
+                    "version_id": "e2e72017a226fec4cf5f6fa2f408972549451dec36d3c01f4315520717b30de9"
+                  },
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "role-routing",
+                    "scope": "default",
+                    "version_id": "521688550ca6ac1e54e53889b5ea0950995f1995e90a15b8e27dfb678386f73a"
+                  }
+                ],
+                "slot_id": "l0-additional"
+              }
+            ],
+            "limitations": [],
+            "material": [
+              "d7bfe052527c71a13363b122005523caa6ab22df636e9c0d091d8370eb5572a6",
+              "185f4a15c9ea78f7c3378044fe810970c9490173a7ace16ddf1efc3ae05be14f"
+            ],
+            "owner": {
+              "layer": 1,
+              "question": "how",
+              "work_item": "service-controls",
+              "work_kind": "question"
+            },
+            "product_kind": "answer",
+            "profile": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "profile",
+              "scope": "default",
+              "version_id": "6b445e5972a1a546e65e7a1e17225ee1da2e1b6cdf3cf1d141cb23e3c43f61aa"
+            },
+            "related": []
+          }
+        },
+        "bindings": {},
+        "members": []
+      },
+      "versionId": "cda77b5cf04f8ba40fb413845215c61058d5b5983737482e5b46dad80943efc8",
+      "expected": {
+        "text": "L1 HOW · answer summary unavailable",
+        "source": {
+          "kind": "unavailable",
+          "versionId": "cda77b5cf04f8ba40fb413845215c61058d5b5983737482e5b46dad80943efc8",
+          "reason": "ambiguous-source"
+        }
+      },
+      "materialDesignations": {
+        "/content/record/material/0": {
+          "media": "text/markdown",
+          "role": "answer-material"
+        },
+        "/content/record/material/1": {
+          "media": "text/plain",
+          "role": "answer-material"
+        }
+      }
+    },
+    {
+      "case": "literal-markup",
+      "manifest": {
+        "schema": "jai.lifecycle.manifest/2",
+        "logical_id": "x85u",
+        "kind": "delivery.product",
+        "content": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "record": {
+            "assignment": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "author-A",
+              "scope": "default",
+              "version_id": "cd55b301e701c82f96e536265727135e0ba423fb318e7f4b5fecbd362fa8d0fd"
+            },
+            "evidence": [],
+            "inputs": [
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "input-A",
+                    "scope": "default",
+                    "version_id": "9da4b7f1262dd305ac5e4327d9537d34066b8f396c1647d52b026360c0cd1818"
+                  }
+                ],
+                "slot_id": "L1:service-controls:how-input"
+              },
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "criteria",
+                    "scope": "default",
+                    "version_id": "e2e72017a226fec4cf5f6fa2f408972549451dec36d3c01f4315520717b30de9"
+                  },
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "role-routing",
+                    "scope": "default",
+                    "version_id": "521688550ca6ac1e54e53889b5ea0950995f1995e90a15b8e27dfb678386f73a"
+                  }
+                ],
+                "slot_id": "l0-additional"
+              }
+            ],
+            "limitations": [],
+            "material": [
+              "e5976f5926837bb9e9f3359dd24179cc4bb9470f5ace99c8d85c5a8e2c74af18"
+            ],
+            "owner": {
+              "layer": 1,
+              "question": "how",
+              "work_item": "service-controls",
+              "work_kind": "question"
+            },
+            "product_kind": "answer",
+            "profile": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "profile",
+              "scope": "default",
+              "version_id": "6b445e5972a1a546e65e7a1e17225ee1da2e1b6cdf3cf1d141cb23e3c43f61aa"
+            },
+            "related": [],
+            "display_summary": " <em>Ω</em>\r\n🛠\tfiles "
+          }
+        },
+        "bindings": {},
+        "members": []
+      },
+      "versionId": "8fcbb35d8fccf04d2f456636def99cdcadc8daf7f867604b465a15cb89eecb9c",
+      "expected": {
+        "text": "L1 HOW · <em>Ω</em> 🛠 files",
+        "source": {
+          "kind": "record-field",
+          "versionId": "8fcbb35d8fccf04d2f456636def99cdcadc8daf7f867604b465a15cb89eecb9c",
+          "pointer": "/content/record/display_summary"
+        }
+      },
+      "materialDesignations": {}
+    },
+    {
+      "case": "unicode-truncation",
+      "manifest": {
+        "schema": "jai.lifecycle.manifest/2",
+        "logical_id": "x99u",
+        "kind": "delivery.product",
+        "content": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "record": {
+            "assignment": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "author-A",
+              "scope": "default",
+              "version_id": "cd55b301e701c82f96e536265727135e0ba423fb318e7f4b5fecbd362fa8d0fd"
+            },
+            "evidence": [],
+            "inputs": [
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "input-A",
+                    "scope": "default",
+                    "version_id": "9da4b7f1262dd305ac5e4327d9537d34066b8f396c1647d52b026360c0cd1818"
+                  }
+                ],
+                "slot_id": "L1:service-controls:how-input"
+              },
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "criteria",
+                    "scope": "default",
+                    "version_id": "e2e72017a226fec4cf5f6fa2f408972549451dec36d3c01f4315520717b30de9"
+                  },
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "role-routing",
+                    "scope": "default",
+                    "version_id": "521688550ca6ac1e54e53889b5ea0950995f1995e90a15b8e27dfb678386f73a"
+                  }
+                ],
+                "slot_id": "l0-additional"
+              }
+            ],
+            "limitations": [],
+            "material": [
+              "be87033c71a68b4f3984a5eb17cb4b20dceaf321e905540ca12daf7e4c17c712"
+            ],
+            "owner": {
+              "layer": 1,
+              "question": "how",
+              "work_item": "service-controls",
+              "work_kind": "question"
+            },
+            "product_kind": "answer",
+            "profile": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "profile",
+              "scope": "default",
+              "version_id": "6b445e5972a1a546e65e7a1e17225ee1da2e1b6cdf3cf1d141cb23e3c43f61aa"
+            },
+            "related": []
+          }
+        },
+        "bindings": {},
+        "members": []
+      },
+      "versionId": "26e19bd9db8c2c8d990726804e0c1be4105841e71d6699c4ec6a5aa50e95a027",
+      "expected": {
+        "text": "L1 HOW · 🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠🛠…",
+        "source": {
+          "kind": "companion-excerpt",
+          "versionId": "26e19bd9db8c2c8d990726804e0c1be4105841e71d6699c4ec6a5aa50e95a027",
+          "pointer": "/content/record/material/0",
+          "blobId": "be87033c71a68b4f3984a5eb17cb4b20dceaf321e905540ca12daf7e4c17c712"
+        }
+      },
+      "materialDesignations": {
+        "/content/record/material/0": {
+          "media": "text/plain",
+          "role": "answer-material"
+        }
+      }
+    },
+    {
+      "case": "conflict-finding",
+      "manifest": {
+        "schema": "jai.lifecycle.manifest/2",
+        "logical_id": "x0cf",
+        "kind": "delivery.product",
+        "content": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "record": {
+            "assignment": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "author-A",
+              "scope": "default",
+              "version_id": "cd55b301e701c82f96e536265727135e0ba423fb318e7f4b5fecbd362fa8d0fd"
+            },
+            "evidence": [],
+            "inputs": [
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "input-A",
+                    "scope": "default",
+                    "version_id": "9da4b7f1262dd305ac5e4327d9537d34066b8f396c1647d52b026360c0cd1818"
+                  }
+                ],
+                "slot_id": "L1:service-controls:how-input"
+              },
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "criteria",
+                    "scope": "default",
+                    "version_id": "e2e72017a226fec4cf5f6fa2f408972549451dec36d3c01f4315520717b30de9"
+                  },
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "role-routing",
+                    "scope": "default",
+                    "version_id": "521688550ca6ac1e54e53889b5ea0950995f1995e90a15b8e27dfb678386f73a"
+                  }
+                ],
+                "slot_id": "l0-additional"
+              }
+            ],
+            "limitations": [],
+            "material": [
+              "061acabd8b0c1920ff32e8f681fcafb248cca3e6ad789357b11784373b28f1fa"
+            ],
+            "owner": {
+              "layer": 1,
+              "question": "how",
+              "work_item": "service-controls",
+              "work_kind": "question"
+            },
+            "product_kind": "finding",
+            "profile": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "profile",
+              "scope": "default",
+              "version_id": "6b445e5972a1a546e65e7a1e17225ee1da2e1b6cdf3cf1d141cb23e3c43f61aa"
+            },
+            "related": [
+              {
+                "slot_id": "subject",
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "scope": "default",
+                    "logical_id": "8d2fd078-770a-403d-96a9-72fa2807a154",
+                    "version_id": "c063254fd4d3a7e07d3d656088dd7e2eef607b68cc7909f0e6d12a808615c05c"
+                  }
+                ]
+              },
+              {
+                "slot_id": "criterion:C1",
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "scope": "default",
+                    "logical_id": "x09q",
+                    "version_id": "eec9f864c15a023ed725c9dfcbe85216775bae933649677d215dd98894ca2263"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        "bindings": {},
+        "members": []
+      },
+      "versionId": "1ffc997ad67ec8e8477cef6babda78976360dd24c443078543812ae1c143b3b3",
+      "expected": {
+        "text": "L1 HOW · Retention and deletion deadlines conflict.",
+        "source": {
+          "kind": "companion-excerpt",
+          "versionId": "1ffc997ad67ec8e8477cef6babda78976360dd24c443078543812ae1c143b3b3",
+          "pointer": "/content/record/material/0",
+          "blobId": "061acabd8b0c1920ff32e8f681fcafb248cca3e6ad789357b11784373b28f1fa"
+        }
+      },
+      "materialDesignations": {
+        "/content/record/material/0": {
+          "media": "text/plain",
+          "role": "observation"
+        }
+      }
+    },
+    {
+      "case": "open-escalation",
+      "manifest": {
+        "schema": "jai.lifecycle.manifest/2",
+        "logical_id": "x1es",
+        "kind": "delivery.product",
+        "content": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "record": {
+            "assignment": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "author-A",
+              "scope": "default",
+              "version_id": "cd55b301e701c82f96e536265727135e0ba423fb318e7f4b5fecbd362fa8d0fd"
+            },
+            "evidence": [],
+            "inputs": [
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "input-A",
+                    "scope": "default",
+                    "version_id": "9da4b7f1262dd305ac5e4327d9537d34066b8f396c1647d52b026360c0cd1818"
+                  }
+                ],
+                "slot_id": "L1:service-controls:how-input"
+              },
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "criteria",
+                    "scope": "default",
+                    "version_id": "e2e72017a226fec4cf5f6fa2f408972549451dec36d3c01f4315520717b30de9"
+                  },
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "role-routing",
+                    "scope": "default",
+                    "version_id": "521688550ca6ac1e54e53889b5ea0950995f1995e90a15b8e27dfb678386f73a"
+                  }
+                ],
+                "slot_id": "l0-additional"
+              }
+            ],
+            "limitations": [],
+            "material": [
+              "061acabd8b0c1920ff32e8f681fcafb248cca3e6ad789357b11784373b28f1fa"
+            ],
+            "owner": {
+              "layer": 1,
+              "question": "how",
+              "work_item": "service-controls",
+              "work_kind": "question"
+            },
+            "product_kind": "escalation",
+            "profile": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "profile",
+              "scope": "default",
+              "version_id": "6b445e5972a1a546e65e7a1e17225ee1da2e1b6cdf3cf1d141cb23e3c43f61aa"
+            },
+            "related": [
+              {
+                "slot_id": "conflicts",
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "scope": "default",
+                    "logical_id": "x0cf",
+                    "version_id": "1ffc997ad67ec8e8477cef6babda78976360dd24c443078543812ae1c143b3b3"
+                  }
+                ]
+              }
+            ],
+            "display_summary": "Retention and deletion deadlines conflict.",
+            "episode": {
+              "root": null,
+              "previous": null,
+              "collection_head": "6666666666666666666666666666666666666666666666666666666666666666",
+              "unfinished": [],
+              "decisive": true
+            }
+          }
+        },
+        "bindings": {},
+        "members": []
+      },
+      "versionId": "f31b1b58eff6941bc18dfe4b829fd221cd561f726f433d92ff4b3b4a74a83d03",
+      "use": {
+        "ref": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "logical_id": "x1es",
+          "version_id": "f31b1b58eff6941bc18dfe4b829fd221cd561f726f433d92ff4b3b4a74a83d03"
+        },
+        "useScope": "default",
+        "status": "open"
+      },
+      "expected": {
+        "text": "L1 HOW · Retention and deletion deadlines conflict.",
+        "source": {
+          "kind": "record-field",
+          "versionId": "f31b1b58eff6941bc18dfe4b829fd221cd561f726f433d92ff4b3b4a74a83d03",
+          "pointer": "/content/record/display_summary"
+        }
+      },
+      "materialDesignations": {
+        "/content/record/material/0": {
+          "media": "text/plain",
+          "role": "observation"
+        }
+      }
+    },
+    {
+      "case": "supporting-review",
+      "manifest": {
+        "schema": "jai.lifecycle.manifest/2",
+        "logical_id": "x2rv",
+        "kind": "delivery.assessment",
+        "content": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "record": {
+            "assessed_closure": [
+              {
+                "ref": {
+                  "engagement": "synthetic-recorded-projection",
+                  "scope": "default",
+                  "logical_id": "8d2fd078-770a-403d-96a9-72fa2807a154",
+                  "version_id": "7c8a5168090f026e6883f60420ebbc031e2e75e39b23a2949985dfc3e36c44d5"
+                },
+                "use_scope": "default"
+              }
+            ],
+            "assessed_hash": "1798d054ebd3bfdf134a27870ab536c243882a37e0a9c46973b155b804a7e676",
+            "assessment_kind": "professional",
+            "assignment": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "review-assignment",
+              "scope": "default",
+              "version_id": "ff4bd6ed29dc51dcaa91c455c63e086f2b72bb268730e08bab752ef452111ee9"
+            },
+            "conditions": [],
+            "criteria": {
+              "engagement": "synthetic-recorded-projection",
+              "scope": "default",
+              "logical_id": "x09q",
+              "version_id": "eec9f864c15a023ed725c9dfcbe85216775bae933649677d215dd98894ca2263"
+            },
+            "findings": [],
+            "owner": {
+              "layer": 1,
+              "question": "how",
+              "work_item": "service-controls",
+              "work_kind": "question"
+            },
+            "profile": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "profile",
+              "scope": "default",
+              "version_id": "6b445e5972a1a546e65e7a1e17225ee1da2e1b6cdf3cf1d141cb23e3c43f61aa"
+            },
+            "subject": {
+              "engagement": "synthetic-recorded-projection",
+              "scope": "default",
+              "logical_id": "8d2fd078-770a-403d-96a9-72fa2807a154",
+              "version_id": "7c8a5168090f026e6883f60420ebbc031e2e75e39b23a2949985dfc3e36c44d5"
+            },
+            "verdict": "supported"
+          }
+        },
+        "bindings": {},
+        "members": []
+      },
+      "versionId": "4542e803dcf7fc91be2683cffc7bcf30bd471fe9dd427b45d0dbd02018673877",
+      "expected": {
+        "text": "L1 HOW · supported · Restore shared catalogue records.",
+        "source": {
+          "kind": "record-field",
+          "versionId": "4542e803dcf7fc91be2683cffc7bcf30bd471fe9dd427b45d0dbd02018673877",
+          "pointer": "/content/record/verdict"
+        },
+        "additionalSources": [
+          {
+            "kind": "record-field",
+            "versionId": "7c8a5168090f026e6883f60420ebbc031e2e75e39b23a2949985dfc3e36c44d5",
+            "pointer": "/content/record/display_summary"
+          }
+        ]
+      },
+      "materialDesignations": {}
+    },
+    {
+      "case": "unknown-text-designation",
+      "manifest": {
+        "schema": "jai.lifecycle.manifest/2",
+        "logical_id": "x-t0",
+        "kind": "delivery.product",
+        "content": {
+          "engagement": "synthetic-recorded-projection",
+          "scope": "default",
+          "record": {
+            "assignment": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "author-A",
+              "scope": "default",
+              "version_id": "cd55b301e701c82f96e536265727135e0ba423fb318e7f4b5fecbd362fa8d0fd"
+            },
+            "evidence": [],
+            "inputs": [
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "input-A",
+                    "scope": "default",
+                    "version_id": "9da4b7f1262dd305ac5e4327d9537d34066b8f396c1647d52b026360c0cd1818"
+                  }
+                ],
+                "slot_id": "L1:service-controls:how-input"
+              },
+              {
+                "refs": [
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "criteria",
+                    "scope": "default",
+                    "version_id": "e2e72017a226fec4cf5f6fa2f408972549451dec36d3c01f4315520717b30de9"
+                  },
+                  {
+                    "engagement": "synthetic-recorded-projection",
+                    "logical_id": "role-routing",
+                    "scope": "default",
+                    "version_id": "521688550ca6ac1e54e53889b5ea0950995f1995e90a15b8e27dfb678386f73a"
+                  }
+                ],
+                "slot_id": "l0-additional"
+              }
+            ],
+            "limitations": [],
+            "material": [
+              "e5976f5926837bb9e9f3359dd24179cc4bb9470f5ace99c8d85c5a8e2c74af18"
+            ],
+            "owner": {
+              "layer": 1,
+              "question": "how",
+              "work_item": "service-controls",
+              "work_kind": "question"
+            },
+            "product_kind": "answer",
+            "profile": {
+              "engagement": "synthetic-recorded-projection",
+              "logical_id": "profile",
+              "scope": "default",
+              "version_id": "6b445e5972a1a546e65e7a1e17225ee1da2e1b6cdf3cf1d141cb23e3c43f61aa"
+            },
+            "related": []
+          }
+        },
+        "bindings": {},
+        "members": []
+      },
+      "versionId": "4ac5d611a69fc97f6410e07e5b7df900e75fabd076204b1e031b5f8afab6e13c",
+      "expected": {
+        "text": "L1 HOW · answer summary unavailable",
+        "source": {
+          "kind": "unavailable",
+          "versionId": "4ac5d611a69fc97f6410e07e5b7df900e75fabd076204b1e031b5f8afab6e13c",
+          "reason": "no-text-source"
+        }
+      },
+      "materialDesignations": {}
+    }
+  ],
+  "companions": {
+    "d7bfe052527c71a13363b122005523caa6ab22df636e9c0d091d8370eb5572a6": {
+      "media": "text/markdown",
+      "availability": "available",
+      "byteLength": 64,
+      "contentBase64": "IyBSZWNvdmVyeSBub3RlcwoKUmVzdG9yZSB0aGUgbGFzdCB2ZXJpZmllZCBjYXRhbG9ndWUgc25hcHNob3QuCg=="
+    },
+    "fbb3667169b629e250b32ae33cf2c49a1318afe74d76659d04863c2a56b7414f": {
+      "media": "text/plain",
+      "availability": "missing",
+      "byteLength": 24,
+      "contentBase64": "TWlzc2luZyBiYWNrZWQtdXAgbm90ZXMu"
+    },
+    "bcbf8a559ecf2bb2266cf332bb62cb8c6e9b33e1707c8b119266e3f86b99c2b0": {
+      "media": "text/plain",
+      "availability": "read-denied",
+      "byteLength": 23,
+      "contentBase64": "RGVuaWVkIGJhY2tlZC11cCBub3Rlcy4="
+    },
+    "ad678e53e6a027509050e15f8e6baffbcf12b983da7c95c2976f941ebda1b7a2": {
+      "media": "application/octet-stream",
+      "availability": "available",
+      "byteLength": 2,
+      "contentBase64": "AP8="
+    },
+    "771201c44aea9e8c017641acdcd54b90aac7b9ebe502086d36860a3ee677fc99": {
+      "media": "text/plain",
+      "availability": "available",
+      "byteLength": 1,
+      "contentBase64": "/g=="
+    },
+    "3d7458264ae945caef563790c92a3e687d03ab7c12bb0e1ea18f88d48e50b047": {
+      "media": "text/plain",
+      "availability": "available",
+      "byteLength": 16385,
+      "contentBase64": "YWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWFhYWE="
+    },
+    "185f4a15c9ea78f7c3378044fe810970c9490173a7ace16ddf1efc3ae05be14f": {
+      "media": "text/plain",
+      "availability": "available",
+      "byteLength": 31,
+      "contentBase64": "UmVzdG9yZSBvbmx5IHZhbGlkYXRlZCByZWNvcmRzLg=="
+    },
+    "be87033c71a68b4f3984a5eb17cb4b20dceaf321e905540ca12daf7e4c17c712": {
+      "media": "text/plain",
+      "availability": "available",
+      "byteLength": 645,
+      "contentBase64": "8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6Dwn5ug8J+boPCfm6AK"
+    },
+    "061acabd8b0c1920ff32e8f681fcafb248cca3e6ad789357b11784373b28f1fa": {
+      "media": "text/plain",
+      "availability": "available",
+      "byteLength": 42,
+      "contentBase64": "UmV0ZW50aW9uIGFuZCBkZWxldGlvbiBkZWFkbGluZXMgY29uZmxpY3Qu"
+    }
+  }
+}
