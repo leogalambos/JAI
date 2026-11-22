@@ -686,6 +686,34 @@
         "operator_instruction_ref"
       ],
       "additionalProperties": false
+    },
+    {
+      "type": "object",
+      "properties": {
+        "event": {
+          "const": "row_order_intervention"
+        },
+        "procedure": {
+          "$ref": "common.schema.json#/$defs/reference"
+        },
+        "mode": {
+          "enum": [
+            "deterministic",
+            "llm-assisted",
+            "left-to-right"
+          ]
+        },
+        "operator_instruction_ref": {
+          "$ref": "common.schema.json#/$defs/digest"
+        }
+      },
+      "required": [
+        "event",
+        "procedure",
+        "mode",
+        "operator_instruction_ref"
+      ],
+      "additionalProperties": false
     }
   ]
 }

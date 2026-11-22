@@ -726,6 +726,21 @@
           ],
           "additionalProperties": false
         },
+        "question_dependencies": {
+          "type": "object",
+          "description": "Complete same-row blocking prerequisite map. An empty list explicitly declares no peer prerequisite.",
+          "propertyNames": {
+            "enum": ["what", "why", "how", "who", "where", "when"]
+          },
+          "required": ["what", "why", "how", "who", "where", "when"],
+          "additionalProperties": {
+            "type": "array",
+            "uniqueItems": true,
+            "items": {
+              "enum": ["what", "why", "how", "who", "where", "when"]
+            }
+          }
+        },
         "integration_task": {
           "type": "string",
           "minLength": 1

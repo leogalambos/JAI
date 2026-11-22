@@ -220,12 +220,16 @@ def _controlled_result(session, assignment, phase, produce, selection=None):
     return packet
 
 
-def _layer_session(tmp_path, local_budget=None, aggregate_limit_ms=60000, *, single_member=False):
+def _layer_session(tmp_path, local_budget=None, aggregate_limit_ms=60000, *, single_member=False,
+                   question_dependencies=None, sabsa_row_mode=None, operator_dependencies=None):
     session, created = layered.LayeredSession.create(tmp_path, 'layer-batch',
         b'Define a bounded backup service.', 'codex', 'backup',
         None if aggregate_limit_ms is None else int(time.time() * 1000) + 180000,
         aggregate_limit_ms, b'Identify the business boundary, restore requirements and uncertainty.',
-        local_budget=local_budget, single_member=single_member)
+        local_budget=local_budget, single_member=single_member, sabsa_row_mode=sabsa_row_mode,
+        question_dependencies=operator_dependencies)
+    if question_dependencies is None and single_member and sabsa_row_mode is None:
+        question_dependencies = {question: [] for question in provider.QUESTIONS}
     root = created['entry']['assignment']
     _controlled_result(session, root, 'selection', _choice)
     state = session.store.read()
@@ -243,10 +247,268 @@ def _layer_session(tmp_path, local_budget=None, aggregate_limit_ms=60000, *, sin
                 'specification': {'framing': 'Describe the bounded backup service.',
                     'question_tasks': {question: 'Resolve ' + question + ' for the backup service.'
                                        for question in provider.QUESTIONS},
+                    **({'question_dependencies': question_dependencies} if question_dependencies is not None else {}),
                     'integration_task': 'Integrate the six actual answers.',
                     'review_task': 'Review their actual integration.', 'interface_criterion': 'boundary'}}}
     _controlled_result(session, root, 'work', procedure, choice)
     return session
+
+
+
+def test_layer_procedure_issues_only_questions_with_selected_prerequisites(tmp_path, monkeypatch):
+    """Bind both selected predecessor versions and leave independent cells ready."""
+    dependencies = dict.fromkeys(provider.QUESTIONS, ())
+    dependencies.update(how=['why', 'who'], where=['when'])
+    dependencies = {question: list(required) for question, required in dependencies.items()}
+    session = _layer_session(tmp_path, aggregate_limit_ms=None, question_dependencies=dependencies)
+
+    for _ in range(40):
+        offered = session.next()
+        assert offered['status'] == 'invoke'
+        state = session.store.read()
+        assignments = [state.resolve(member['assignment']) for member in offered['members']]
+        if all(assignment['responsibility'] == 'setter' for assignment in assignments):
+            initial = {assignment['owner']['question'] for assignment in assignments}
+            if 'how' in initial:
+                how = next(assignment for assignment in assignments if assignment['owner']['question'] == 'how')
+                bindings = {item['slot_id']: item['refs'] for item in how['inputs']}
+                for question in ('why', 'who'):
+                    ref, = bindings['prerequisite-' + question]
+                    answer = state.resolve(ref, 'product')
+                    assert answer['owner']['question'] == question and answer['product_kind'] == 'answer'
+                    assert state._governing_input(state._point(ref, 'default'), True)
+                prior, = [member['assignment'] for member, assignment in zip(offered['members'], assignments)
+                          if assignment['owner']['question'] == 'how']
+                old_why, = bindings['prerequisite-why']
+                changed = state._fork()
+                accepted = dict(state.resolve(old_why, 'product'), limitations=['Controlled replacement evidence.'])
+                manifest = lc.record_manifest(session.store.engagement, 'default', old_why['logical_id'],
+                                              'product', accepted)
+                version = lc.version_id(manifest)
+                changed._index_version(version, manifest)
+                changed.provenance[version] = state.provenance[old_why['version_id']]
+                replacement = changed._reference(version)
+                changed.states[changed._key(changed._point(replacement, 'default'))] = {
+                    'validity': 'valid', 'applicable': True}
+                for key, ref in state.selections.items():
+                    if ref == old_why:
+                        changed.selections[key] = replacement
+                procedure, = [ref for ref in changed.procedures.values()
+                              if changed.resolve(ref)['message']['payload']['kind'] == 'layer']
+                rebound = changed.procedure_next(procedure)
+                assert rebound['step'].startswith('question:how:')
+                assert rebound['superseded_assignments'] == [prior]
+                assert replacement in rebound['triggers'] and old_why not in rebound['triggers']
+                controller, _ = session.workflow.dispatcher._controller(changed, 'default')
+                with monkeypatch.context() as isolated:
+                    isolated.setattr(session.workflow.dispatcher, '_submit', lambda message: message)
+                    message = session.workflow._commit_procedure_step(changed, procedure, rebound)['completion']
+                effects = changed._control(message, controller, message['issued_at_ms'], True)
+                cancelled = next(effect['subjects'] for effect in effects if effect['op'] == 'cancel')
+                assert changed._point(prior, 'default') in cancelled
+                assert all(changed.resolve(point['ref'])['owner'].get('question') != 'what'
+                           for point in cancelled if changed.versions[point['ref']['version_id']]['kind'] == 'delivery.assignment')
+                assert not changed._current_inputs(how, True)
+                changed._apply(effects, message, {}, None)
+                assert changed.assignment_states[prior['version_id']] == 'cancelled'
+                issued_step = changed.procedure_steps[procedure['version_id']][rebound['step']]
+                new_setter, = issued_step['resolved']
+                new_assignment = changed.resolve(new_setter, 'assignment')
+                assert new_setter != prior and changed._current_inputs(new_assignment, True)
+                assert changed.procedure_next(procedure).get('step') != rebound['step']
+                break
+            if not state.selections:
+                assert initial == {'what', 'why', 'who', 'when'}
+        _finish_offered(session, offered)
+    else:
+        pytest.fail('Dependent question never became eligible')
+
+
+def test_serial_reverse_display_edge_uses_the_same_prerequisite(tmp_path):
+    """Serial capacity preserves the reverse displayed prerequisite."""
+    graph = {question: [] for question in provider.QUESTIONS}
+    graph.update(how=['why', 'who'], where=['when'])
+    session = _layer_session(tmp_path, aggregate_limit_ms=None, single_member=True,
+                             question_dependencies=graph)
+    for _ in range(65):
+        offered = session.next()
+        assert offered['status'] == 'invoke', offered
+        member, = offered['prepared']['members']
+        state = session.store.read()
+        body = state.resolve(member['assignment'], 'assignment')
+        if body['owner']['question'] == 'where':
+            predecessor, = next(item['refs'] for item in body['inputs'] if item['slot_id'] == 'prerequisite-when')
+            assert state.resolve(predecessor, 'product')['owner']['question'] == 'when'
+            assert state._governing_input(state._point(predecessor, 'default'), True)
+            break
+        _finish_offered(session, offered)
+    else:
+        pytest.fail('Serial scheduler did not advance Where after When')
+
+
+def test_parallel_reverse_display_edge_waits_without_delaying_independent_work(tmp_path):
+    """Where waits for When even with another question still in flight."""
+    graph = {question: [] for question in provider.QUESTIONS}
+    graph.update(how=['why', 'who'], where=['when'])
+    session = _layer_session(tmp_path, aggregate_limit_ms=None, single_member=True,
+                             question_dependencies=graph)
+    active = {}
+    initial = {}
+    for _ in range(4):
+        offered = session.next(observed_running=active, max_parallel=6)
+        member, = offered['prepared']['members']
+        body = session.store.read().resolve(member['assignment'], 'assignment')
+        question = body['owner']['question']
+        invocation = offered['invocation_id']
+        session.start(invocation, 'codex', invocation, {'observed': 'Controlled initial wave'})
+        active[invocation] = invocation
+        initial[question] = offered
+    assert set(initial) == {'what', 'why', 'who', 'when'}
+    assert session.next(observed_running=active, max_parallel=6)['status'] == 'waiting'
+
+    when = initial['when']
+    member, = when['prepared']['members']
+    invocation = when['invocation_id']
+    session.complete(invocation, json.dumps({
+        'format': 'jai.semantic-return/1', 'results': [_choice(member['packet'])]}),
+        {'observed': 'Controlled When selection completed first'})
+    active.pop(invocation)
+    for _ in range(8):
+        offered = session.next(observed_running=active, max_parallel=6)
+        assert offered['status'] == 'invoke', offered
+        member, = offered['prepared']['members']
+        state = session.store.read()
+        body = state.resolve(member['assignment'], 'assignment')
+        if body['owner']['question'] == 'where':
+            predecessor, = next(item['refs'] for item in body['inputs'] if item['slot_id'] == 'prerequisite-when')
+            assert state.resolve(predecessor, 'product')['owner']['question'] == 'when'
+            assert state._governing_input(state._point(predecessor, 'default'), True)
+            assert all(session.status(item)['state'] == 'running' for item in active)
+            break
+        assert body['owner']['question'] == 'when'
+        _finish_offered(session, offered)
+    else:
+        pytest.fail('Where did not become ready after When')
+
+
+def test_replaced_question_input_rebinds_after_cold_journal_replay(tmp_path):
+    """Replan Why through its actual setter while its first dependent turn is running."""
+    dependencies = {question: [] for question in provider.QUESTIONS}
+    dependencies['how'] = ['why']
+    session = _layer_session(tmp_path, aggregate_limit_ms=None, single_member=True,
+                             question_dependencies=dependencies)
+
+    def find_how():
+        for _ in range(65):
+            offered = session.next()
+            assert offered['status'] == 'invoke', offered
+            member, = offered['prepared']['members']
+            body = session.store.read().resolve(member['assignment'], 'assignment')
+            if body['owner']['question'] == 'how' and body['responsibility'] == 'setter':
+                return offered, member, body
+            _finish_offered(session, offered)
+        pytest.fail('How did not become ready')
+
+    original, member, body = find_how()
+    old_input, = next(binding['refs'] for binding in body['inputs']
+                      if binding['slot_id'] == 'prerequisite-why')
+    original_id = original['invocation_id']
+    state = session.store.read()
+    what_owner = {**body['owner'], 'question': 'what'}
+    independent, = [state._reference(version) for version, record in state.versions.items()
+                    if record['kind'] == 'delivery.assignment'
+                    and record['content']['record']['owner'] == what_owner
+                    and record['content']['record']['responsibility'] == 'setter']
+    independent_answers = state._procedure_question_answers(what_owner, 'default', True)
+    prefix = session.store.path.read_bytes()
+    session.start(original_id, 'codex', 'controlled-old-dependent', {'observed': 'Controlled running dependent'})
+    late_result = json.dumps({'format': 'jai.semantic-return/1', 'results': [_choice(member['packet'])]})
+    state = session.store.read()
+    old_author = state.resolve(state.resolve(old_input, 'product')['assignment'], 'assignment')
+    setter = old_author['issued_under']
+    choice = state.execution_plans[(setter['version_id'], 'default')]
+
+    def revise(packet):
+        result = _role_result(session, packet)
+        result['logical_id'] += '-replacement'
+        result['materials'] = [{'text': 'Controlled revised recovery rationale.'}]
+        return result
+
+    packet = _controlled_result(session, setter, 'work', revise, choice)
+    assert session.store.read().run_states[packet['run_id']] == 'returned'
+    session.complete(original_id, late_result, {'observed': 'Controlled late completion'})
+    assert session.status(original_id)['members'][0]['state'] == 'quarantined'
+    session = layered.LayeredSession.open(session.locator)
+    _, new_member, new_body = find_how()
+    new_input, = next(binding['refs'] for binding in new_body['inputs']
+                      if binding['slot_id'] == 'prerequisite-why')
+    assert new_input != old_input
+    assert new_member['assignment'] != member['assignment']
+    resumed = layered.LayeredSession.open(session.locator)
+    reopened = resumed.store.read()
+    assert resumed.store.path.read_bytes().startswith(prefix)
+    assert resumed.status(original_id)['members'][0]['state'] == 'quarantined'
+    assert [key for key, invocation in reopened.invocations.items()
+            if any(item['assignment'] == member['assignment'] for item in invocation['members'])] == [original_id]
+    assert reopened.assignment_states[member['assignment']['version_id']] == 'cancelled'
+    assert reopened._status(independent, 'default') == {'validity': 'valid', 'applicable': True}
+    assert reopened.assignment_states[independent['version_id']] != 'cancelled'
+    if independent_answers:
+        assert reopened._procedure_question_answers(what_owner, 'default', True) == independent_answers
+    else:
+        assert reopened._current_inputs(reopened.resolve(independent, 'assignment'), True)
+    assert reopened._current_inputs(new_body, True)
+
+
+def test_layer_question_dependency_cycle_is_rejected(tmp_path):
+    """A cyclic blocking declaration cannot produce any ordinary work order."""
+    dependencies = {question: [] for question in provider.QUESTIONS}
+    dependencies.update(how=['why'], why=['how'])
+    session = _layer_session(tmp_path, aggregate_limit_ms=None, question_dependencies=dependencies)
+    state = session.store.read()
+    assert not state.procedures
+    assert not any(value['kind'] == 'delivery.assignment'
+                   and value['content']['record']['owner']['work_kind'] == 'question'
+                   for value in state.versions.values())
+    assert 'quarantined' in state.run_states.values()
+
+
+@pytest.mark.parametrize(('mode', 'proposal', 'expected'), [
+    ('deterministic', None, {'what', 'who', 'where'}),
+    ('left-to-right', None, {'what'}),
+    ('llm-assisted', {'what': [], 'why': [], 'how': [], 'who': ['where'], 'where': [], 'when': []},
+     {'what', 'where'}),
+])
+def test_enrolled_sabsa_modes_control_issuance(tmp_path, mode, proposal, expected):
+    """Cold resume preserves mode and combines model proposals with mandatory SABSA edges."""
+    session = _layer_session(tmp_path, aggregate_limit_ms=None, sabsa_row_mode=mode,
+                             question_dependencies=proposal)
+    session = layered.LayeredSession.open(session.locator)
+    offered = session.next()
+    assert offered['status'] == 'invoke'
+    state = session.store.read()
+    assert {state.resolve(member['assignment'])['owner']['question'] for member in offered['members']} == expected
+
+
+def test_left_to_right_reports_a_required_backwards_edge(tmp_path):
+    """Serial display order cannot override a hard requirement."""
+    session = _layer_session(tmp_path, sabsa_row_mode='left-to-right',
+                             operator_dependencies={'1': {'what': ['where']}})
+    state = session.store.read()
+    procedure, = state.procedures.values()
+    assert state.procedure_next(procedure) == {
+        'waiting': 'question_order_conflict', 'questions': ['what'], 'procedure': procedure}
+    waiting = session.next()
+    assert waiting['status'] == 'waiting'
+    assert waiting['procedure_waits'][0]['questions'] == ['what']
+    instruction = session.store.put_blob(b'Use dependency order for this blocked row.')
+    assert session.workflow.change_blocked_row_order(procedure, instruction)['status'] == 'committed'
+    reopened = layered.LayeredSession.open(session.locator)
+    offered = reopened.next()
+    state = reopened.store.read()
+    assert {state.resolve(member['assignment'])['owner']['question'] for member in offered['members']} == {'who', 'where'}
+    with pytest.raises(lc.ERROR, match='Cyclic'):
+        lc._row_policy('deterministic', {'1': {'what': ['how']}})
 
 
 def test_layered_batches_compatible_jobs_and_admits_independent_members_once(tmp_path):
@@ -336,6 +598,20 @@ def test_single_member_carrier_pins_scheduling_across_resume(tmp_path):
         offered = resumed.next()
     assert len(seen) == 6
     assert all(len(call['members']) == 1 for call in resumed.store.read().invocations.values())
+
+
+def test_parallel_scheduler_waits_for_legacy_dependency_classification(tmp_path):
+    """Historical unclassified layer procedures replay without parallel issuance."""
+    session = _layer_session(tmp_path, aggregate_limit_ms=None)
+    locator = layered._save_locator(tmp_path, session.store.engagement,
+                                   session.workflow.dispatcher.config, versioned=True, single_member=True)
+    reopened = layered.LayeredSession.open(locator)
+    head = reopened.store.read().head
+    offered = reopened.next(max_parallel=6)
+    assert offered['reason'] == 'unclassified-question-dependencies'
+    assert len(offered['procedures']) == 1
+    assert reopened.store.read().head == head
+    assert reopened.next()['status'] == 'invoke'
 
 
 def test_singleton_parallel_readiness_requires_each_actual_active_handle(tmp_path):

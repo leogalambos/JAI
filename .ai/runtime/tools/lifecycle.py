@@ -362,6 +362,92 @@ def _within_assessment(method):
     return assessed
 
 
+ROW_QUESTIONS = ('what', 'why', 'how', 'who', 'where', 'when')
+ROW_MODES = ('deterministic', 'llm-assisted', 'left-to-right')
+
+# Local profile prerequisites for actual outputs, excluding trace-only and
+# iterative design relationships. Pin the expanded rules in host routing.
+SABSA_ROW_RULES = {
+    1: {'why': ('what',), 'how': ('what',), 'when': ('where',)},
+    2: {'why': ('what',), 'where': ('what', 'why', 'who'), 'when': ('what',)},
+    3: {'who': ('why',), 'where': ('what', 'why', 'who'), 'when': ('why',),
+        'how': ('what', 'why', 'who', 'where', 'when')},
+    4: {'how': ('what',), 'where': ('what', 'how')},
+    5: {'how': ('what', 'who'), 'where': ('what', 'who')},
+    6: {'what': ('how',), 'why': ('how',), 'when': ('how',)},
+}
+
+
+def _row_policy(mode, overrides, row_modes=None):
+    """Compile the operator's complete, immutable SABSA row ordering policy."""
+    if mode is None and overrides is None and row_modes is None:
+        return None
+    mode = 'deterministic' if mode is None else mode
+    row_modes = {} if row_modes is None else row_modes
+    if (not isinstance(row_modes, dict) or set(row_modes) - {str(layer) for layer in SABSA_ROW_RULES}
+            or any(value not in ROW_MODES for value in row_modes.values())):
+        raise ValueError('Expected exact SABSA ordering modes keyed by layer')
+    if mode not in ROW_MODES or (overrides is not None and not isinstance(overrides, dict)):
+        raise ValueError('Expected SABSA row mode and optional layer dependency object')
+    overrides = {} if overrides is None else overrides
+    if set(overrides) - {str(layer) for layer in SABSA_ROW_RULES}:
+        raise ValueError('Row dependency layer must be 1 through 6')
+    rows = {}
+    for layer, defaults in SABSA_ROW_RULES.items():
+        extra = overrides.get(str(layer), {})
+        if not isinstance(extra, dict) or set(extra) - set(ROW_QUESTIONS):
+            raise ValueError('Row dependency overrides must name existing questions')
+        for question, dependencies in extra.items():
+            if (not isinstance(dependencies, list) or any(not isinstance(dep, str) or dep not in ROW_QUESTIONS
+                                                         for dep in dependencies)):
+                raise ValueError('Prerequisites must be lists of exact question names')
+        rows[str(layer)] = {question: sorted(set(defaults.get(question, ())) | set(extra.get(question, ())))
+                            for question in ROW_QUESTIONS}
+        _validate_question_dependencies(rows[str(layer)])
+    return {'mode': mode, 'row_modes': row_modes, 'rows': rows}
+
+
+def _validate_row_policy(policy):
+    """Check the captured policy independently of the active profile defaults."""
+    layers = {str(layer) for layer in range(1, 7)}
+    if (not isinstance(policy, dict) or set(policy) != {'mode', 'row_modes', 'rows'}
+            or policy['mode'] not in ROW_MODES or not isinstance(policy['row_modes'], dict)
+            or set(policy['row_modes']) - layers or any(mode not in ROW_MODES for mode in policy['row_modes'].values())
+            or not isinstance(policy['rows'], dict) or set(policy['rows']) != layers):
+        raise ERROR('P_PROOF', 'Malformed captured SABSA row policy')
+    for dependencies in policy['rows'].values():
+        if (not isinstance(dependencies, dict) or set(dependencies) != set(ROW_QUESTIONS)
+                or any(not isinstance(required, list) or any(dep not in ROW_QUESTIONS for dep in required)
+                       or len(required) != len(set(required)) for required in dependencies.values())):
+            raise ERROR('P_PROOF', 'Malformed captured SABSA row dependencies')
+        _validate_question_dependencies(dependencies)
+
+
+def _row_mode(policy, layer):
+    return policy.get('row_modes', {}).get(str(layer), policy['mode'])
+
+
+def _effective_row_dependencies(policy, layer, proposed):
+    """Combine pinned hard edges with an optional governed model proposal."""
+    if policy is None:
+        return proposed
+    required = policy['rows'][str(layer)]
+    if _row_mode(policy, layer) == 'llm-assisted' and proposed is not None:
+        return {question: sorted(set(required[question]) | set(proposed[question]))
+                for question in ROW_QUESTIONS}
+    return required
+
+
+def _validate_question_dependencies(dependencies):
+    """Reject a cyclic same-row blocking graph before any child is issued."""
+    remaining = {question: set(required) for question, required in dependencies.items()}
+    while remaining:
+        ready = {question for question, required in remaining.items() if not required}
+        if not ready:
+            raise ERROR('P_PROOF', 'Cyclic question prerequisites: ' + ', '.join(sorted(remaining)))
+        remaining = {question: required - ready for question, required in remaining.items() if question not in ready}
+
+
 class State:
     """Replay-derived indexes of the one governed store; never a caller trust input."""
 
@@ -387,6 +473,7 @@ class State:
         self.execution_plans = {}
         self.procedures = {}
         self.procedure_steps = {}
+        self.row_order_interventions = {}
         self.invocations = {}
         self.local_budget = {'units': {}, 'bindings': {}, 'task_stops': {}}
         self.search_steps = {}
@@ -667,13 +754,17 @@ class State:
                            and self.run_states.get(run_id) in {'issued', 'running'} for run_id, details in self.run_details.items())
             if inflight:
                 allowed, item['reason'] = False, 'inflight'
+            if (allowed and record.get('procedure_task')
+                    and any(binding['slot_id'].startswith('prerequisite-') for binding in record['inputs'])
+                    and not self._current_inputs(record, live=True)):
+                allowed, item['reason'] = False, 'question_prerequisite_no_longer_current'
             if allowed and record['responsibility'] == 'setter':
                 procedure = self.procedures.get((identifier, scope))
                 if procedure is not None:
                     progress = self.procedure_next(procedure, live=True)
                     new_intents = set(basis) - set(self.consumed_basis.get(identifier, []))
-                    discretionary = progress.get('waiting') == 'owner_required' or any(
-                        token.startswith('intent:') for token in new_intents)
+                    replan = progress.get('waiting') == 'owner_required' and progress.get('reason') != 'integrated_question_basis_changed'
+                    discretionary = replan or any(token.startswith('intent:') for token in new_intents)
                     if not discretionary:
                         allowed, item['reason'] = False, 'owner_procedure_advances_or_waits'
             if allowed:
@@ -2462,6 +2553,9 @@ class State:
         """Append detached immutable history and update only its selection indexes."""
         event = _freeze(value)
         self.events.append(event)
+        if event['kind'] == 'row-order-intervention':
+            payload = event['payload']
+            self.row_order_interventions[payload['procedure']['version_id']] = payload['mode']
         if event['kind'] != 'selection':
             return
         key = (event['category'], event['scope'], _typed_key(event['slot']), _typed_key(event['subject']))
@@ -3163,15 +3257,55 @@ class State:
                     and value['content']['record'].get('procedure_task', {}).get('procedure') == procedure_ref]
         specification = plan['specification']
         if plan['kind'] == 'layer':
-            missing = [question for question in ('what', 'why', 'how', 'who', 'where', 'when')
-                       if not any(record['responsibility'] == 'setter' and record['owner']['question'] == question
-                                  for _, record in children)]
-            if missing:
-                question = missing[0]
-                return {'step': 'question:' + question, 'triggers': [procedure_ref],
-                        'assignment': self._procedure_child(procedure_ref, 'setter', '/question_tasks/' + question,
-                            owner={**parent['owner'], 'work_kind': 'question', 'question': question})}
-            return self._procedure_layer(procedure_ref, parent, children, steps, live)
+            policy = self._assignment_routing(parent, live)['snapshot']['models'].get('sabsa_row_policy')
+            dependencies = _effective_row_dependencies(
+                policy, parent['owner']['layer'], specification.get('question_dependencies'))
+            mode = _row_mode(policy, parent['owner']['layer']) if policy is not None else None
+            serial = self.row_order_interventions.get(procedure_ref['version_id'], mode) == 'left-to-right'
+            blocked = []
+            for index, question in enumerate(ROW_QUESTIONS):
+                owner = {**parent['owner'], 'work_kind': 'question', 'question': question}
+                prior = [ref for ref, record in children
+                         if record['responsibility'] == 'setter' and record['owner'] == owner]
+                if prior and (dependencies is None or any(
+                        self._status(ref, scope) == {'validity': 'valid', 'applicable': True}
+                        and self._current_inputs(self.resolve(ref, 'assignment'), live) for ref in prior)):
+                    continue
+                required = dependencies[question] if dependencies is not None else ()
+                if serial and any(ROW_QUESTIONS.index(dep) >= index for dep in required):
+                    return {'waiting': 'question_order_conflict', 'questions': [question], 'procedure': procedure_ref}
+                if serial:
+                    required = sorted(set(required) | set(ROW_QUESTIONS[:index]))
+                bindings = []
+                for prerequisite in required:
+                    predecessor = {**owner, 'question': prerequisite}
+                    selected = [ref for ref in self._procedure_question_answers(predecessor, scope, live)
+                                if self._produced_under(ref, plan['assignment'], parent['owner'])]
+                    if len(selected) != 1:
+                        blocked.append(question)
+                        break
+                    bindings.append({'slot_id': 'prerequisite-' + prerequisite, 'refs': selected})
+                else:
+                    triggers = [procedure_ref, *(item['refs'][0] for item in bindings)]
+                    step = 'question:' + question
+                    assignment = self._procedure_child(procedure_ref, 'setter', '/question_tasks/' + question,
+                                                       owner=owner, bindings=bindings)
+                    if prior:
+                        step += ':' + hashlib.sha256(canonical(triggers)).hexdigest()
+                        if step in steps or any(
+                                [binding for binding in self.resolve(ref, 'assignment')['inputs']
+                                 if binding['slot_id'].startswith('prerequisite-')] == bindings for ref in prior):
+                            blocked.append(question)
+                            if serial:
+                                break
+                            continue
+                    return {'step': step, 'triggers': triggers, 'assignment': assignment,
+                            **({'superseded_assignments': prior} if prior else {})}
+                if serial:
+                    break
+            if blocked:
+                return {'waiting': 'question_prerequisites', 'questions': blocked, 'procedure': procedure_ref}
+            return self._procedure_layer(procedure_ref, parent, children, steps, live, dependencies is not None)
         authors = [(ref, record) for ref, record in children if record['responsibility'] == 'author']
         if not authors:
             return {'step': 'author', 'triggers': [procedure_ref],
@@ -3217,18 +3351,21 @@ class State:
         pending.sort(key=lambda item: item['decision']['slot']['kind'] == 'basis')
         return pending[0] if pending else {'complete': True, 'procedure': procedure_ref}
 
-    def _procedure_layer(self, procedure_ref, parent, children, steps, live):
+    def _procedure_question_answers(self, owner, scope, live):
+        selected = {ref['version_id']: ref for (use, _), ref in self.selections.items() if use == scope
+                    and self.versions[ref['version_id']]['kind'] == 'delivery.product'
+                    and self.resolve(ref)['product_kind'] == 'answer' and self.resolve(ref)['owner'] == owner
+                    and self._governing_input(self._point(ref, scope), live)}
+        return list(selected.values())
+
+    def _procedure_layer(self, procedure_ref, parent, children, steps, live, dependency_aware):
         plan = self.resolve(procedure_ref)['message']['payload']
         scope = parent['use_scope']
         profile = self.resolve(parent['profile'], 'profile')
         answers = []
         for question in ('what', 'why', 'how', 'who', 'where', 'when'):
             owner = {**parent['owner'], 'work_kind': 'question', 'question': question}
-            selected = [ref for (use, _), ref in self.selections.items() if use == scope
-                        and self.versions[ref['version_id']]['kind'] == 'delivery.product'
-                        and self.resolve(ref)['product_kind'] == 'answer' and self.resolve(ref)['owner'] == owner
-                        and self._governing_input(self._point(ref, scope), live)]
-            selected = list({ref['version_id']: ref for ref in selected}.values())
+            selected = self._procedure_question_answers(owner, scope, live)
             if len(selected) != 1:
                 return {'waiting': 'question_results' if not selected else 'owner_required', 'procedure': procedure_ref}
             answers.extend(selected)
@@ -3237,6 +3374,9 @@ class State:
             return {'step': 'integrator', 'triggers': [procedure_ref, *answers],
                 'assignment': self._procedure_child(procedure_ref, 'integrator', '/integration_task',
                     bindings=[{'slot_id': 'reviewed_answers', 'refs': answers}])}
+        if dependency_aware and not self._current_inputs(self.resolve(integrators[0], 'assignment'), live):
+            return {'waiting': 'owner_required', 'reason': 'integrated_question_basis_changed',
+                    'procedure': procedure_ref}
         bundles = [event['payload']['candidate'] for event in self.events if event['kind'] == 'submission'
                    and self.resolve(event['payload']['candidate'])['assignment'] == integrators[0]]
         if len(bundles) != 1:
@@ -3371,6 +3511,10 @@ class State:
             effects, reference = self._registration(message, origin, parent, 'assignment',
                 proposal['logical_id'], proposal['record'], live, procedure=plan)
             resolved = [reference]
+            if expected.get('superseded_assignments'):
+                effects.insert(0, {'op': 'cancel', 'subjects': self._affected([
+                    self._point(ref, parent['use_scope']) for ref in expected['superseded_assignments']]),
+                    'decision': message_id(message), 'decision_ref': payload['procedure']})
         else:
             nested = {**message, 'message_type': 'decision', 'payload': expected['decision']}
             nested['message_id'] = message_id(nested)
@@ -3398,6 +3542,20 @@ class State:
             return governed_invocations.derive(self, message, origin, at, live)
         if event == 'procedure_step':
             return self._procedure_step(message, origin, live)
+        if event == 'row_order_intervention':
+            procedure = payload['procedure']
+            plan = self.resolve(procedure, 'decision')['message']['payload']
+            if plan.get('kind') != 'layer':
+                raise ERROR('P_SCOPE', 'An ordering intervention requires an exact current layer procedure')
+            assignment = self.resolve(plan['assignment'], 'assignment')
+            if assignment['use_scope'] != message['scope']:
+                raise ERROR('P_SCOPE', 'An ordering intervention cannot change scope')
+            progress = self.procedure_next(procedure, live)
+            if progress.get('waiting') != 'question_order_conflict' or payload['mode'] != 'deterministic':
+                raise ERROR('P_STATE', 'Only a blocked display order can change to dependency order at runtime')
+            if not self._validation_bytes(payload['operator_instruction_ref'], live).strip():
+                raise ERROR('P_PROOF', 'Ordering intervention requires the actual operator instruction')
+            return [{'op': 'event', 'kind': 'row-order-intervention', 'payload': payload}]
         if event == 'renew_control':
             profile = self.resolve(message['profile'], 'profile')
             inputs = []
@@ -3683,6 +3841,14 @@ class State:
                 raise ERROR('P_SCOPE', 'Procedure requires actual locally authored criteria and its exact owner kind')
             if not wire.validator('decision.schema.json', expected_kind + '_procedure').is_valid(payload['specification']):
                 raise ERROR('P_SCHEMA', 'Procedure specification must match its exact owner kind')
+            if expected_kind == 'layer':
+                proposed = payload['specification'].get('question_dependencies')
+                policy = self._assignment_routing(assignment, live)['snapshot']['models'].get('sabsa_row_policy')
+                if policy is not None and (_row_mode(policy, assignment['owner']['layer']) == 'llm-assisted') != (proposed is not None):
+                    raise ERROR('P_SCHEMA', 'The selected row mode determines whether a model dependency map is required')
+                dependencies = _effective_row_dependencies(policy, assignment['owner']['layer'], proposed)
+                if dependencies is not None:
+                    _validate_question_dependencies(dependencies)
             if payload['previous'] != self.procedures.get((payload['assignment']['version_id'], scope)):
                 raise ERROR('P_CONFLICT', 'Procedure must replace its exact current predecessor')
             if payload['previous'] is not None:

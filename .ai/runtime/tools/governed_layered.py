@@ -214,7 +214,7 @@ class LayeredSession(native.NativeSession):
     @classmethod
     def create(cls, home, engagement, task, provider_name, work_item, deadline_ms=None,
                limit_ms=None, criteria=None, config=None, model_config=None, local_budget=None, execution_profile=None, execution_context_policy=None,
-               *, single_member=False):
+               *, single_member=False, sabsa_row_mode=None, question_dependencies=None, sabsa_row_modes=None):
         """Capture an actual request and create the initial L1 structural gateway.
 
         Args:
@@ -232,6 +232,9 @@ class LayeredSession(native.NativeSession):
             execution_context_policy: Validated context from the session selection;
                 captured at new entry and preserved by cold resume.
             single_member: Require singleton physical issuance for the selected carrier.
+            sabsa_row_mode: Optional operator-selected ordering mode for SABSA rows.
+            question_dependencies: Explicit additional hard prerequisites keyed by layer and question.
+            sabsa_row_modes: Optional ordering mode overrides keyed by layer.
             local_budget: Optional iteration_ms/max_reworks configuration, defaulting
                 to ten minutes per local iteration and three actual reworks.
         Returns:
@@ -243,6 +246,7 @@ class LayeredSession(native.NativeSession):
         if (not isinstance(engagement, str) or not engagement or len(engagement) > 128
                 or engagement in {'.', '..'} or any(char in engagement for char in '/\\')):
             raise ValueError('Bounded nontraversing engagement identity required')
+        row_policy = lc._row_policy(sabsa_row_mode, question_dependencies, sabsa_row_modes)
         home = Path(home).resolve()
         store = lc.Store(home / (engagement + '.jsonl'), engagement)
         if store.read().initialized:
@@ -261,7 +265,7 @@ class LayeredSession(native.NativeSession):
             destinations=supplied['destinations'], tools=supplied['tools'],
             packet_bytes=supplied['limits']['packet_bytes'], total_bytes=supplied['limits']['total_bytes'],
             local_budget=local_budget, project=home.parent, execution_profile=execution_profile,
-            execution_context_policy=execution_context_policy)
+            execution_context_policy=execution_context_policy, sabsa_row_policy=row_policy)
         session = cls(store, supplied, locator, single_member=single_member)
         entry = session.workflow.entry('default', work_item, limits, deadline_ms)
         return session, {'locator': str(locator), 'inputs': initialized['sources'],
@@ -385,6 +389,20 @@ class LayeredSession(native.NativeSession):
         if active >= max_parallel:
             return {'status': 'waiting', 'reason': 'parallel-capacity',
                     'inflight': _inflight(state, scope), 'operator_notices': notices}
+        if max_parallel > 1:
+            unclassified = [reference for (assignment_id, use), reference in state.procedures.items()
+                            if use == scope
+                            and state._status(reference, use) == {'validity': 'valid', 'applicable': True}
+                            and state._status(state._reference(assignment_id), use) == {'validity': 'valid', 'applicable': True}
+                            and state.resolve(reference)['message']['payload']['kind'] == 'layer'
+                            and 'question_dependencies' not in state.resolve(reference)['message']['payload']['specification']
+                            and state._assignment_routing(state.resolve(state._reference(assignment_id), 'assignment'),
+                                                          live=True)['snapshot']['models'].get('sabsa_row_policy') is None
+                            and 'integrate' not in state.procedure_steps.get(reference['version_id'], {})]
+            if unclassified:
+                return {'status': 'waiting', 'reason': 'unclassified-question-dependencies',
+                        'procedures': unclassified, 'inflight': _inflight(state, scope),
+                        'operator_notices': notices}
         if pending_issue is not None:
             invocation, physical = pending_issue
             members = copy.deepcopy(physical['members'])
@@ -395,11 +413,19 @@ class LayeredSession(native.NativeSession):
             return {'status': 'invoke', 'invocation_id': invocation, 'members': members,
                     'prepared': self.prepare(invocation), 'operator_notices': notices}
         while True:
-            pending = next(((reference, step) for (assignment_id, use), reference in sorted(state.procedures.items())
-                            if use == scope
-                            and state._status(reference, use) == {'validity': 'valid', 'applicable': True}
-                            and state._status(state._reference(assignment_id), use) == {'validity': 'valid', 'applicable': True}
-                            and 'step' in (step := state.procedure_next(reference))), None)
+            pending = None
+            procedure_waits = []
+            for (assignment_id, use), reference in sorted(state.procedures.items()):
+                if (use != scope or state._status(reference, use) != {'validity': 'valid', 'applicable': True}
+                        or state._status(state._reference(assignment_id), use) != {'validity': 'valid', 'applicable': True}):
+                    continue
+                step = state.procedure_next(reference)
+                if 'step' in step:
+                    pending = reference, step
+                    break
+                if (step.get('waiting') in {'question_order_conflict', 'question_prerequisites'}
+                        or step.get('reason') == 'integrated_question_basis_changed'):
+                    procedure_waits.append(step)
             if pending is None:
                 break
             before = state.head
@@ -418,7 +444,8 @@ class LayeredSession(native.NativeSession):
         selected = ready[0] if ready else None
         if selected is None:
             return {'status': 'paused' if notices else 'waiting', 'readiness': facts,
-                    'inflight': _inflight(state, scope), 'operator_notices': notices}
+                    'inflight': _inflight(state, scope), 'operator_notices': notices,
+                    **({'procedure_waits': procedure_waits} if procedure_waits else {})}
         members = [selected]
         if not self.single_member:
             traits = state.invocation_traits(selected['assignment'], selected['phase'], selected['selection'])
@@ -738,10 +765,17 @@ def main(argv=None):
     start.add_argument('--config')
     start.add_argument('--model-config')
     start.add_argument('--execution-profile')
+    start.add_argument('--sabsa-row-mode', choices=lc.ROW_MODES)
+    start.add_argument('--sabsa-row-modes', help='JSON object of per-layer ordering modes')
+    start.add_argument('--question-dependencies', help='JSON file with additional hard prerequisites by layer')
     start.add_argument('--execution-context-policy', choices=sorted(provider.execution_profiles.CONTEXT_POLICIES))
     resume = commands.add_parser('resume')
     resume.add_argument('--session', required=True)
     resume.add_argument('--config')
+    row_order = commands.add_parser('change-blocked-row-order')
+    row_order.add_argument('--session', required=True)
+    row_order.add_argument('--procedure', required=True, help='JSON file containing the reported procedure reference')
+    row_order.add_argument('--operator-instruction', required=True)
     binding = commands.add_parser('bind-human')
     binding.add_argument('--package', required=True)
     binding.add_argument('--receipt', required=True)
@@ -758,6 +792,13 @@ def main(argv=None):
             operation.add_argument('--target', choices=('unit', 'task'), required=True)
             operation.add_argument('--reason', required=True)
     args = parser.parse_args(argv)
+    if args.command == 'change-blocked-row-order':
+        session = LayeredSession.open(args.session)
+        procedure = lc.loads(operator.regular(args.procedure))
+        instruction = session.store.put_blob(operator.regular(args.operator_instruction))
+        result = session.workflow.change_blocked_row_order(procedure, instruction)
+        print(json.dumps(result, ensure_ascii=False))
+        return 0
     if args.command == 'bind-human':
         print(json.dumps(bind_human(args.package, args.receipt), ensure_ascii=False))
         return 0
@@ -779,7 +820,10 @@ def main(argv=None):
             operator.regular(args.task), args.provider, args.work_item, args.deadline_ms,
             args.limit_ms, operator.regular(args.criteria) if args.criteria else None,
             config, args.model_config, local_budget={'iteration_ms': args.iteration_ms, 'max_reworks': args.max_reworks},
-            execution_profile=args.execution_profile, execution_context_policy=args.execution_context_policy)
+            execution_profile=args.execution_profile, execution_context_policy=args.execution_context_policy,
+            sabsa_row_mode=args.sabsa_row_mode,
+            sabsa_row_modes=lc.loads(operator.regular(args.sabsa_row_modes)) if args.sabsa_row_modes else None,
+            question_dependencies=lc.loads(operator.regular(args.question_dependencies)) if args.question_dependencies else None)
         result = {'created': created, 'next': session.next(), 'checkpoint': session.checkpoint()}
     else:
         session = LayeredSession.open(args.session, config)

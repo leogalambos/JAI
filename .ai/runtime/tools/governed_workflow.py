@@ -229,6 +229,36 @@ class Workflow:
         return self._local_event(unit_id, 'local_budget_stop', expected_revision=expected_revision,
             target=target, reason=reason, operator_instruction_ref=operator_instruction_ref)
 
+    def change_blocked_row_order(self, procedure, operator_instruction_ref):
+        """Record the operator's switch from conflicting display order to dependency order.
+
+        Args:
+            procedure: Exact current row procedure reported as blocked.
+            operator_instruction_ref: CAS digest of the actual operator instruction.
+        Returns:
+            Store receipt at the observed journal head.
+        Raises:
+            ProtocolError: Stale procedure, conflict absent or invalid instruction.
+        """
+        state = self.store.read()
+        plan = state.resolve(procedure, 'decision')['message']['payload']
+        assignment = state.resolve(plan['assignment'], 'assignment')
+        scope = assignment['use_scope']
+        controller, context = self.dispatcher._controller(state, scope)
+        now = int(time.time() * 1000)
+        profile = state.resolve(assignment['profile'], 'profile')
+        payload = {'event': 'row_order_intervention', 'procedure': procedure, 'mode': 'deterministic',
+                   'operator_instruction_ref': operator_instruction_ref}
+        message = {'protocol': wire.PROTOCOL, 'message_type': 'control_event', 'message_id': '0' * 64,
+            'request_id': 'row-order:' + hashlib.sha256(lc.canonical(payload)).hexdigest(),
+            'correlation_id': plan['assignment']['logical_id'], 'engagement': self.store.engagement,
+            'scope': scope, 'sender': controller, 'recipient': controller, 'context': context,
+            'profile': assignment['profile'], 'expected_head': state.head, 'issued_at_ms': now,
+            'expires_at_ms': now + profile['max_request_duration_ms'], 'causes': [], 'attachments': [],
+            'payload': payload}
+        message['message_id'] = wire.message_id(message)
+        return self.dispatcher._submit(message)
+
     def advance(self, procedure_ref):
         """Apply one deterministic ordinary step under an actual owner procedure.
 

@@ -83,7 +83,7 @@ def _profile(controller, work_item, request_ttl_ms, limits, deadline_ms, local_b
 def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
               deadline_ms, model_config=None, *, human_id='L0-operator',
               destinations=(), tools=(), packet_bytes=2097152, total_bytes=8388608, local_budget=None,
-              project=None, execution_profile=None, execution_context_policy=None):
+              project=None, execution_profile=None, execution_context_policy=None, sabsa_row_policy=None):
     """Start a new-format engagement from the actual operator's explicit inputs.
 
     Args:
@@ -97,6 +97,7 @@ def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
         model_config: Optional existing model-registry override path, captured once.
         project: Project root for optional execution preferences, otherwise cwd.
         execution_profile: Explicit new-run profile selection, never a resume override.
+        sabsa_row_policy: Validated immutable scheduling mode and exact row prerequisite maps.
         execution_context_policy: Explicit context from a current session selection;
             captured once at new-run entry, never applied on resume.
         human_id: Attribution of the current input supplier, not a verified signer.
@@ -143,6 +144,9 @@ def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
     models['execution_profile'] = execution_profiles.resolve(
         Path.cwd() if project is None else project, models, provider, execution_profile,
         context_policy=execution_context_policy)
+    models.pop('sabsa_row_policy', None)
+    if sabsa_row_policy is not None:
+        models['sabsa_row_policy'] = sabsa_row_policy
     selector, _ = model_router.resolve_snapshot(models, provider, 'light')
     catalogue = (ROOT / 'roles.json').read_bytes()
     rows = lc.loads(catalogue)['roles']
@@ -449,6 +453,16 @@ def _delivery_resources(session, run, assignment, profile, response_contract, op
                 'result_contract': _project_schema(semantic['$defs']['owner_action'], documents),
                 'ordinary_decisions': [_project_schema(body, documents, 'decision.schema.json') for body in owner_actions],
                 'rule': 'Use only for an actual permitted owner decision. The same exact member may use kind owner_action; core authority checks remain decisive.'}, procedure=True)
+    row_policy = run.execution['snapshot']['models'].get('sabsa_row_policy')
+    if kind == 'setter' and assignment['owner']['work_kind'] != 'question':
+        row_mode = 'llm-assisted' if row_policy is None else lc._row_mode(row_policy, assignment['owner']['layer'])
+        procedure_body['row_ordering'] = {
+            'mode': row_mode,
+            'rule': ('Supply a complete question_dependencies map. Add task-specific hard prerequisites '
+                     'without converting trace or feedback links into execution blockers.'
+                     if row_mode == 'llm-assisted'
+                     else 'Omit question_dependencies. JAI derives execution prerequisites from the enrolled rules.'),
+        }
     procedure = add('Actual local responsibility and semantic return', procedure_body, procedure=True)
     workforce_body = {'phase': packet['execution']['phase']}
     if kind == 'selection':

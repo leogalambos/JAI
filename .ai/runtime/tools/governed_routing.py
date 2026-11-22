@@ -115,6 +115,9 @@ def load_policy(source, blob_reader):
     problems = model_router.validate_registry(models)
     if problems:
         raise lc.ERROR('P_PROOF', 'Captured model registry is invalid: ' + '; '.join(problems))
+    row_policy = models.get('sabsa_row_policy')
+    if 'sabsa_row_policy' in models:
+        lc._validate_row_policy(row_policy)
     _closed(descriptor['bootstrap'], ('provider', 'workload_class', 'model_selector'))
     _execution(models, descriptor['bootstrap'])
     capabilities = descriptor['capabilities']

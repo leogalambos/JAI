@@ -25,7 +25,8 @@ FACTS = {
         'The fictional payment-status service holds transaction identifiers and status records.',
         'The sponsor needs dependable payment-status access to avoid customer support disruption.',
         'Customers query status; service operators reconcile failed lookups.',
-        'The fictional service sponsor owns availability and the support manager owns recovery.',
+        'The sponsor owns availability. Before access design, the support manager defines the '
+        'recovery owner, escalation trigger and monitoring obligation for the service.',
         'The fictional service operates only inside its designated internal service boundary.',
         'The planning horizon is one month, with five-minute sampling and monthly evaluation.'),
     'conceptual': (
@@ -118,6 +119,8 @@ class _SemanticEngagement(GovernedHarness):
                 'from_obligation': key, 'to_obligation': basis})
         measure_key = next(item['key'] for item in result['required_units'] if item['group'] == 'management.measure')
         result['required_relations'].extend([
+            {'key': 'early-management-design-basis', 'type': 'refines',
+             'from_obligation': self.key(1, 'how'), 'to_obligation': self.key(1, 'who')},
             {'key': 'observed-subject', 'type': 'observes', 'from_obligation': observation['key'],
              'to_obligation': self.key(5, 'what')},
             {'key': 'measured-result', 'type': 'measures', 'from_obligation': measure_key,
@@ -182,6 +185,8 @@ class _SemanticEngagement(GovernedHarness):
     def _local(self, layer, question):
         owner = self.owner(question=question, layer=layer)
         references = [] if layer > 1 or question == 'why' else [self.units[self.key(1, 'why')]['product']]
+        if layer == 1 and question == 'how':
+            references.append(self.answers[1, 'who'])
         inputs = self._inputs(references)
         slot = f'L{layer}:service-controls:{question}-input'
         if not any(binding['slot_id'] == slot for binding in inputs):
@@ -260,6 +265,12 @@ class _SemanticEngagement(GovernedHarness):
         review, _ = self.review(actor, subject, suffix=f'L{layer}-{question}-professional',
                                 actor_id=f'L{layer}-{question}-independent')
         self.select_proof(subject, review)
+        if (layer, question) == (1, 'who'):
+            # A reviewed contextual service-management design must be selected
+            # before the next author may rely on it as governing input.
+            state = self.store.read()
+            assert not state._governing_input(state._point(subject, self.scope), True)
+            assert not state._produced_under(subject, self.coordinator[0], self.coordinator[1]['owner'])
         self.select_basis(actor, subject)
         self._remember_content(subject, payload)
         self.answers[layer, question] = subject
@@ -362,7 +373,7 @@ def test_one_governed_sabsa_engagement_traces_all_six_layers_and_renders_its_exa
     host.coordinator = host.assignment('semantic-L1-coordinator', 'setter', owner=owner)
     host._cache_setter(*host.coordinator)
     for layer in range(1, 7):
-        for question in ('why', 'what', 'how', 'who', 'where', 'when'):
+        for question in ('why', 'what', 'who', 'how', 'where', 'when'):
             host.answer(layer, question)
         observation = host.observation() if layer == 6 else None
         bundle = host.integrate(layer, observation)
@@ -389,6 +400,24 @@ def test_one_governed_sabsa_engagement_traces_all_six_layers_and_renders_its_exa
     assert len(host.handoffs) == 5
     assert all(row['status'] == 'satisfied' for row in report['obligations'] + report['relations'] + report['views'])
     assert len(report['traces']['backward']) == 40 and len(report['traces']['forward']) == 40
+    state = host.store.read()
+    contextual_process = state.resolve(host.answers[1, 'how'], 'product')
+    upstream = lc._input_locators(contextual_process['inputs'])
+    assert host.input_a in upstream and host.answers[1, 'who'] in upstream
+    assert state.resolve(host.answers[1, 'who'], 'product')['product_kind'] == 'answer'
+    assert state.resolve(observation, 'product')['product_kind'] == 'observation'
+    feedback = host.relations['operational-feedback']
+    assert feedback['product'] == observation
+    content_bytes, _ = state.resolve(observation, 'product')['material']
+    semantic = lc.loads(host.store._blob(content_bytes))
+    relation, = [item for item in semantic['relations'] if item['key'] == feedback['relation']]
+    assert relation['type'] == 'feedback_for'
+    assert relation['from']['product'] is None
+    assert relation['from']['unit'] == host.units[relation['from']['unit']]['unit']
+    assert host.units[relation['from']['unit']]['product'] == observation
+    assert relation['to']['product'] == host.answers[3, 'how']
+    assert relation['to']['unit'] == host.key(3, 'how')
+    assert state.resolve(relation['to']['product'], 'product')['owner']['layer'] == 3
     assert not host.store.evaluate(output)['accepted']
     host.accept(output)
     assert not host.store.evaluate(output)['release_eligible']
@@ -425,9 +454,15 @@ def test_one_governed_sabsa_engagement_traces_all_six_layers_and_renders_its_exa
     preserved = {reference['version_id']: copy.deepcopy(state.resolve(reference))
                  for reference in integrated + selected_proofs}
     accepted_prefix = host.path.read_bytes()
-    _, input_a, input_b = host.transition_inputs(
-        'Explicit fictional sponsor revision B requires a different availability target.\n',
+    feedback_revision = host.stage_input_transition(
+        'Fictional sponsor revision B requires a revised availability target after the '
+        f'independently reviewed observation {observation["version_id"]} and its operational-feedback link.\n',
         remove_old_material=True)
+    message = feedback_revision[0]
+    message['payload']['reason'] = f'Owner considers operational feedback from {observation["version_id"]}.'
+    message['message_id'] = delivery.message_id(message)
+    decision, input_a, input_b = host.apply_input_transition(feedback_revision)
+    assert decision['after_head'] != decision['before_head']
     state = host.store.read()
     assert host.path.read_bytes().startswith(accepted_prefix)
     assert input_a['version_id'] != input_b['version_id']

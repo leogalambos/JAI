@@ -634,6 +634,9 @@ def main(argv=None):
     start.add_argument('--work-item', required=True)
     start.add_argument('--task', required=True, type=Path)
     start.add_argument('--limit-ms', type=int)
+    start.add_argument('--sabsa-row-mode', choices=lc.ROW_MODES)
+    start.add_argument('--sabsa-row-modes', type=Path)
+    start.add_argument('--question-dependencies', type=Path)
     resume = actions.add_parser('resume')
     resume.add_argument('--session', required=True, type=Path)
     args = parser.parse_args(argv)
@@ -641,7 +644,9 @@ def main(argv=None):
     if args.action == 'start':
         session, _ = layered.LayeredSession.create(
             args.home, args.engagement, operator.regular(args.task), 'codex', args.work_item,
-            limit_ms=args.limit_ms, single_member=True)
+            limit_ms=args.limit_ms, single_member=True, sabsa_row_mode=args.sabsa_row_mode,
+            sabsa_row_modes=lc.loads(operator.regular(args.sabsa_row_modes)) if args.sabsa_row_modes else None,
+            question_dependencies=lc.loads(operator.regular(args.question_dependencies)) if args.question_dependencies else None)
     else:
         session = layered.LayeredSession.open(args.session)
     if not session.single_member:

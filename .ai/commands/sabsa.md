@@ -18,6 +18,14 @@ content with typed cross-layer traceability, owner and evidence. Governed work
 uses the current Gen2 SABSA layer registry; library cell identifiers and runtime
 owner coordinates remain distinct identities, not an old fixed author/reviewer
 layer scheme. Use the `sabsa-library` skill's native Gen2 handoff when required.
+For a governed SABSA launch select `--sabsa-row-mode deterministic` by default.
+Use `llm-assisted` or `left-to-right` only for the operator's requested mode.
+The operator may provide per-layer modes and additional hard prerequisites via
+`--sabsa-row-modes FILE` and `--question-dependencies FILE`. Report any
+ordering conflict with the affected row and wait for the operator. The operator
+may use the foreground runtime's `change-blocked-row-order` command with the
+exact reported procedure reference and their instruction. The switch preserves
+mandatory prerequisites and resumes in dependency order.
 
 **Acceptance and escalation.** Treat incomplete typed semantics, orphan relations or unsupported ArchiMate mappings as findings, not as a complete architecture.
 
