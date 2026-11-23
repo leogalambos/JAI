@@ -457,6 +457,22 @@ def stage_siem_pilot(root, deployment_path):
                                {row['id']: row for row in contracts})
 
 
+def stage_specialist_profiles(root, source_path):
+    """Compile a reviewed profile source against canonical workflows and composed roles."""
+    from compose_role_library import compose
+    from content_spec import load_json
+    from lifecycle import blob
+    from workflow_specialist_profiles import stage_policy
+
+    composition = compose(root)
+    roles = {row['slug']: row for row in composition.registry['roles']}
+    instructions = {slug: blob(raw) for slug, raw in composition.instructions.items()}
+    ancestry = {slug: entry['ancestry'] for slug, entry in composition.manifest['roles'].items()}
+    contracts = load_json(root / '.ai/runtime/artifacts/contracts/role-deliverables.v3.json')['contracts']
+    return stage_policy(build(root), load_json(source_path), roles, instructions,
+                        {row['id']: row for row in contracts}, ancestry)
+
+
 def main(argv=None):
     """Write/check the generated catalogue; return one on drift or invalid source.
 
@@ -469,7 +485,17 @@ def main(argv=None):
     parser.add_argument('--check',action='store_true')
     parser.add_argument('--stage-siem-pilot', type=Path)
     parser.add_argument('--product-scopes', type=Path)
+    parser.add_argument('--specialist-profiles', type=Path)
+    parser.add_argument('--stage-specialist-policy', type=Path)
     args=parser.parse_args(argv)
+    if args.specialist_profiles is not None or args.stage_specialist_policy is not None:
+        if not args.specialist_profiles or not args.stage_specialist_policy or args.check or args.stage_siem_pilot or args.product_scopes:
+            parser.error('specialist policy staging requires --specialist-profiles and --stage-specialist-policy')
+        result = stage_specialist_profiles(ROOT, args.specialist_profiles)
+        with args.stage_specialist_policy.open('x', encoding='utf-8') as output:
+            json.dump(result, output, indent=2, ensure_ascii=False)
+            output.write('\n')
+        return 0
     if args.stage_siem_pilot is not None:
         if args.check or args.product_scopes is None:
             parser.error('--stage-siem-pilot requires --product-scopes and a new output path')

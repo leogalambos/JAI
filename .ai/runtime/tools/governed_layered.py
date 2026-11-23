@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: BSD-4-Clause
 # Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
 """Native layered front door over the existing Store, scheduler and effect broker.
 
 Session files locate an exact host enrollment. They contain no workflow state,
@@ -214,7 +215,8 @@ class LayeredSession(native.NativeSession):
     @classmethod
     def create(cls, home, engagement, task, provider_name, work_item, deadline_ms=None,
                limit_ms=None, criteria=None, config=None, model_config=None, local_budget=None, execution_profile=None, execution_context_policy=None,
-               *, single_member=False, sabsa_row_mode=None, question_dependencies=None, sabsa_row_modes=None):
+               *, single_member=False, sabsa_row_mode=None, question_dependencies=None, sabsa_row_modes=None,
+               workflow_policy=None, workflow_scopes=()):
         """Capture an actual request and create the initial L1 structural gateway.
 
         Args:
@@ -235,6 +237,8 @@ class LayeredSession(native.NativeSession):
             sabsa_row_mode: Optional operator-selected ordering mode for SABSA rows.
             question_dependencies: Explicit additional hard prerequisites keyed by layer and question.
             sabsa_row_modes: Optional ordering mode overrides keyed by layer.
+            workflow_policy: Exact reviewed workflow policy bytes for initial enrollment only.
+            workflow_scopes: Explicitly supplied exact question-scope bytes for initial enrollment.
             local_budget: Optional iteration_ms/max_reworks configuration, defaulting
                 to ten minutes per local iteration and three actual reworks.
         Returns:
@@ -265,7 +269,8 @@ class LayeredSession(native.NativeSession):
             destinations=supplied['destinations'], tools=supplied['tools'],
             packet_bytes=supplied['limits']['packet_bytes'], total_bytes=supplied['limits']['total_bytes'],
             local_budget=local_budget, project=home.parent, execution_profile=execution_profile,
-            execution_context_policy=execution_context_policy, sabsa_row_policy=row_policy)
+            execution_context_policy=execution_context_policy, sabsa_row_policy=row_policy,
+            workflow_policy=workflow_policy, workflow_scopes=workflow_scopes)
         session = cls(store, supplied, locator, single_member=single_member)
         entry = session.workflow.entry('default', work_item, limits, deadline_ms)
         return session, {'locator': str(locator), 'inputs': initialized['sources'],
@@ -764,6 +769,8 @@ def main(argv=None):
     start.add_argument('--max-reworks', type=int, default=3)
     start.add_argument('--config')
     start.add_argument('--model-config')
+    start.add_argument('--workflow-policy', help='Explicit reviewed workflow policy for the new enrollment')
+    start.add_argument('--workflow-scope', action='append', default=[], help='Host-enrolled question scope input')
     start.add_argument('--execution-profile')
     start.add_argument('--sabsa-row-mode', choices=lc.ROW_MODES)
     start.add_argument('--sabsa-row-modes', help='JSON object of per-layer ordering modes')
@@ -823,7 +830,9 @@ def main(argv=None):
             execution_profile=args.execution_profile, execution_context_policy=args.execution_context_policy,
             sabsa_row_mode=args.sabsa_row_mode,
             sabsa_row_modes=lc.loads(operator.regular(args.sabsa_row_modes)) if args.sabsa_row_modes else None,
-            question_dependencies=lc.loads(operator.regular(args.question_dependencies)) if args.question_dependencies else None)
+            question_dependencies=lc.loads(operator.regular(args.question_dependencies)) if args.question_dependencies else None,
+            workflow_policy=operator.regular(args.workflow_policy) if args.workflow_policy else None,
+            workflow_scopes=tuple(operator.regular(path) for path in args.workflow_scope))
         result = {'created': created, 'next': session.next(), 'checkpoint': session.checkpoint()}
     else:
         session = LayeredSession.open(args.session, config)

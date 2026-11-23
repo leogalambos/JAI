@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: BSD-4-Clause
 # Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
 """Prepare existing native agents over the sole governed Store, never invoke LLMs.
 
 The trusted active-session parent executes returned native invocation intent and
@@ -117,7 +118,8 @@ def _packaged_references(runtime, skills, rows, instructions):
 def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
               deadline_ms, model_config=None, *, human_id='L0-operator',
               destinations=(), tools=(), packet_bytes=2097152, total_bytes=8388608, local_budget=None,
-              project=None, execution_profile=None, execution_context_policy=None, sabsa_row_policy=None):
+              project=None, execution_profile=None, execution_context_policy=None, sabsa_row_policy=None,
+              workflow_policy=None, workflow_scopes=()):
     """Start a new-format engagement from the actual operator's explicit inputs.
 
     Args:
@@ -132,6 +134,8 @@ def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
         project: Project root for optional execution preferences, otherwise cwd.
         execution_profile: Explicit new-run profile selection, never a resume override.
         sabsa_row_policy: Validated immutable scheduling mode and exact row prerequisite maps.
+        workflow_policy: Exact reviewed policy bytes explicitly supplied for this new enrollment.
+        workflow_scopes: Exact attributable question-scope input bytes supplied by the host.
         execution_context_policy: Explicit context from a current session selection;
             captured once at new-run entry, never applied on resume.
         human_id: Attribution of the current input supplier, not a verified signer.
@@ -198,8 +202,39 @@ def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
         'material': routing.capture_policy('host-routing', catalogue, lc.canonical(models),
             instructions, {'provider': provider, 'workload_class': 'light',
                            'model_selector': selector}, capabilities, store.put_blob,
-            references=_packaged_references(ROOT, skills, rows, instructions)),
+            workflow_policy=workflow_policy, references=_packaged_references(ROOT, skills, rows, instructions)),
         'criteria': [], 'inherited': []}
+    inputs = [('request', task), ('criteria', criteria), ('role-routing', policy)]
+    if workflow_scopes and workflow_policy is None:
+        raise ValueError('Question workflow scopes require an explicitly enrolled workflow policy')
+    if workflow_policy is not None:
+        checked = {}
+        decoded = lc.loads(workflow_policy)
+        profiled = isinstance(decoded, dict) and 'specialist_profiles' in decoded
+        if workflow_scopes and not profiled:
+            raise ValueError('New native question scopes require a checked specialist profile policy')
+        if profiled:
+            import content_workflow
+
+            contracts = lc.loads((ROOT / 'artifacts/contracts/role-deliverables.v3.json').read_bytes())['contracts']
+            ancestry = lc.loads((ROOT / 'role-composition.json').read_bytes())['roles']
+            checked = {'current_workflows': content_workflow.load_bindings(ROOT),
+                       'current_contracts': {item['id']: item for item in contracts},
+                       'current_ancestry': {slug: item['ancestry'] for slug, item in ancestry.items()}}
+        snapshot = routing.load_policy(policy, store._blob, **checked)
+        for raw in workflow_scopes:
+            scope = lc.loads(raw)
+            owner = scope.get('procedure_owner') if isinstance(scope, dict) else None
+            if (not wire.validator('common.schema.json', 'ownership').is_valid(owner)
+                    or owner['work_kind'] != 'question' or owner['work_item'] != work_item):
+                raise ValueError('Workflow scope must identify an exact question in this work item')
+            logical_id = routing.procedure_scope_id(owner)
+            record = {'owner': human, 'source_role': 'input', 'origin': human,
+                      'material': [store.put_blob(raw)], 'criteria': [], 'inherited': []}
+            reference = _reference(store, logical_id, 'source', record)
+            routing.workflow_eligibility({'owner': owner, 'responsibility': 'author',
+                'procedure_task': True, 'routing': {'workflow_scope': reference}}, snapshot, scope, reference)
+            inputs.append((logical_id, record))
     request_ttl_ms = local_budget['iteration_ms']
     profile = _profile(controller, work_item, request_ttl_ms, limits, deadline_ms, local_budget)
     bootstrap_expiry = now + request_ttl_ms
@@ -212,8 +247,7 @@ def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
         'expected_head': lc.ZERO, 'issued_at_ms': now, 'expires_at_ms': bootstrap_expiry,
         'causes': [], 'attachments': [], 'payload': {'controller_id': controller['id'],
             'use_scopes': ['default'], 'profile': {'logical_id': 'profile', 'record': profile},
-            'l0_inputs': [{'logical_id': name, 'record': record} for name, record in
-                          (('request', task), ('criteria', criteria), ('role-routing', policy))]}}
+            'l0_inputs': [{'logical_id': name, 'record': record} for name, record in inputs]}}
     message['message_id'] = wire.message_id(message)
     config = {'protocol': 'jai.host-dispatch/1', 'workers': [],
               'destinations': list(destinations), 'tools': list(tools),
@@ -225,8 +259,7 @@ def bootstrap(store, task_bytes, criteria_bytes, provider, work_item, limits,
     if response['status'] != 'committed':
         raise lc.ERROR(response['error']['code'], response['error']['message'])
     return {'receipt': response['receipt'], 'profile': _reference(store, 'profile', 'profile', profile),
-            'sources': {name: _reference(store, name, 'source', record) for name, record in
-                        (('request', task), ('criteria', criteria), ('role-routing', policy))},
+            'sources': {name: _reference(store, name, 'source', record) for name, record in inputs},
             'config': config}
 
 

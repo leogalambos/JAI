@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: BSD-4-Clause
 # Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
 """Physical invocation contracts through the real Store and semantic codec."""
 import base64
 from concurrent.futures import ThreadPoolExecutor
@@ -1375,3 +1376,115 @@ def test_named_specialist_reference_is_deferred_and_scoped(tmp_path, monkeypatch
     with pytest.raises((lc.ERROR, DispatchError), match='expired|current|allowance') as denied:
         cold.request(invocation, member['member_key'], dict(request, id='expired-reference'))
     assert denied.value.code == 'P_STATE'
+
+
+@pytest.mark.parametrize('carrier', ['claude', 'codex'])
+def test_profiled_workflow_native_entry_preserves_carrier_and_exact_work(tmp_path, monkeypatch, carrier):
+    """Use ordinary entry, exact policy and scope inputs, then exercise the existing chooser."""
+    import shutil
+
+    import content_workflow
+    from tools.compose_role_library import compose
+    from tools.generate_content_workflows import stage_specialist_profiles
+    from workflow_specialist_profiles import (PROFILE_PROTOCOL, effective_obligations,
+        profile_for, role_revision)
+
+    root = Path(__file__).resolve().parents[1]
+    composition = compose(root)
+    roles = {row['slug']: row for row in composition.registry['roles']}
+    catalog = content_workflow.load_bindings(root)
+    row = next(item for item in catalog['bindings'] if item['handoff_id'] == 'service-retirement-and-decommission:5')
+    path = 'authorised-retirement'
+    binding = row['variant_bindings'][path]
+    contract_id, = binding['contract_ids']
+    contract = next(item for item in lc.loads((root / '.ai/runtime/artifacts/contracts/role-deliverables.v3.json')
+        .read_bytes())['contracts'] if item['id'] == contract_id)
+    specialist = 'keycloak-workforce-identity-specialist'
+    profile = {'id': 'identity-retirement', 'version': '1',
+               'definition': profile_for(row, binding, roles[binding['producer_role']], contract)}
+    _, units = effective_obligations(row, binding)
+    deployment = {'edition': 'fixture', 'version': 'fixture-1', 'deployment': 'offline'}
+    mapping = {'profile': profile['id'], 'version': profile['version'], 'profile_digest': lc._hash(profile),
+               'slug': specialist, 'role_revision': role_revision(roles[specialist], lc.blob(composition.instructions[specialist])),
+               'author': 'fixture-author', 'product': 'keycloak', 'deployments': [deployment],
+               'covered_units': list(units.values())}
+    review = {'reviewer': 'fixture-independent-reviewer', 'decision': 'approved', 'mapping_digest': lc._hash(mapping)}
+    source = {'protocol': PROFILE_PROTOCOL, 'profiles': [profile], 'receipts': [review],
+              'mappings': [{**mapping, 'review_receipt': lc._hash(review)}],
+              'endpoints': [{'handoff': row['handoff_id'], 'path': path, 'endpoint': 'producer',
+                             'profile': profile['id'], 'version': profile['version'], 'mode': 'required-specialist'}]}
+    source_path = tmp_path / 'profile-source.json'
+    source_path.write_bytes(lc.canonical(source))
+    policy = stage_specialist_profiles(root, source_path)
+    policy_path = tmp_path / 'policy.json'
+    policy_path.write_bytes(lc.canonical(policy))
+    package = tmp_path / 'package'
+    runtime = package / '.ai/runtime'
+    shutil.copytree(root / '.ai/runtime', runtime, ignore=shutil.ignore_patterns('__pycache__'))
+    for name, raw in composition.files.items():
+        target = package / name
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_bytes(raw)
+    assert content_workflow.load_bindings(package, specialist_policy=policy_path) == policy['catalogue']
+    monkeypatch.setattr(provider, 'ROOT', runtime)
+    now = time.time()
+    monkeypatch.setattr(lc.time, 'time', lambda: now)
+    owner = {'layer': 1, 'work_kind': 'question', 'question': 'what', 'work_item': 'retirement'}
+    scope = {'workflow_catalogue': policy['catalogue']['catalog_hash'], 'work_item': 'retirement',
+             'handoff': row['handoff_id'], 'path': path, 'endpoint': 'producer',
+             'mode': 'compatible-specialization', 'product_scope': {'product': 'keycloak', **deployment},
+             'procedure_owner': owner}
+
+    def follow(scoped):
+        profile_options = {'workflow_policy': lc.canonical(policy),
+                           'workflow_scopes': (lc.canonical(scope),)} if scoped else {}
+        session, _ = layered.LayeredSession.create(tmp_path / ('profile' if scoped else 'exact'),
+            'run', b'Prepare retirement evidence.', carrier, 'retirement', single_member=True,
+            sabsa_row_mode='left-to-right', **profile_options)
+        measurements = []
+        for _ in range(24):
+            offered = session.next()
+            invocation = offered['invocation_id']
+            descriptor = offered['prepared']
+            member, = descriptor['members']
+            packet = member['packet']
+            state = session.store.read()
+            assignment = state.resolve(member['assignment'], 'assignment')
+            phase = packet['execution']['phase']
+            measurements.append(len(lc.canonical(descriptor['invocation'])))
+            if assignment['owner'] == owner and assignment['responsibility'] == 'author' and phase == 'work':
+                assert packet['execution']['specialties'] == [specialist if scoped else binding['producer_role']]
+                if scoped:
+                    session.start(invocation, carrier, invocation, {'fixture': 'Offline profiled work'})
+                    handle, = packet['execution']['deferred_references']
+                    reopened = layered.LayeredSession.open(session.locator)
+                    data = reopened.request(invocation, member['member_key'],
+                        {'id': 'approved-reference', 'operation': 'read', 'handle': handle})
+                    assert lc.blob(base64.b64decode(data['result']['data'])) == packet['execution']['deferred_references'][handle]
+                    cold = lc.Store(session.store.path, session.store.engagement).read()
+                    execution = cold.context_execution(cold.resolve(member['context'], 'context'), live=False)
+                    assert execution['specialties'] == [specialist]
+                    assert execution['workflow_selection']['binding']['profile']['profile_digest'] == lc._hash(profile)
+                    assert len(execution['snapshot']['catalogue']['roles']) == composition.registry['count']
+                    assert execution['allowed_operations'] == ['materialize', 'measure', 'propose', 'read']
+                return measurements
+            if phase == 'selection':
+                response = _choice(packet, carrier)
+                if packet['execution'].get('workflow_selection'):
+                    assert assignment['owner'] == owner
+                    assert assignment['responsibility'] == 'author'
+                    response['specialties'] = packet['execution']['workflow_selection']['eligible']
+                    assert response['specialties'] == [specialist]
+                elif assignment['owner'] == owner and assignment['responsibility'] == 'author':
+                    response['specialties'] = [binding['producer_role']]
+            else:
+                response = _role_result(session, packet)
+            session.start(invocation, carrier, invocation, {'fixture': 'Offline progression'})
+            completed = session.complete(invocation, json.dumps({'format': 'jai.semantic-return/1',
+                'results': [response]}), {'fixture': 'Offline return'})
+            assert completed['status'] == 'returned'
+        pytest.fail('The normal author work was not issued.')
+
+    baseline, candidate = follow(False), follow(True)
+    assert len(baseline) == len(candidate)
+    print(f'{carrier}: {len(candidate)} prepared intents; baseline bytes {baseline}; profile bytes {candidate}')

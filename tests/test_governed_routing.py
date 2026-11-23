@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: BSD-4-Clause
 # Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
 """Global professional availability does not dictate any layer's local staff."""
 import copy
 
@@ -89,7 +90,7 @@ def test_global_bounds_and_unknown_capabilities_fail_without_staffing_whitelists
     assert failure.value.code == 'P_PROOF'
 
 
-def _pilot_policy(host, snapshot, work_item, *, exact=False, row_policy=None, procedural=False):
+def _pilot_policy(host, snapshot, work_item, *, exact=False, row_policy=None, procedural=False, deferred=False):
     from pathlib import Path
 
     import content_workflow
@@ -131,9 +132,13 @@ def _pilot_policy(host, snapshot, work_item, *, exact=False, row_policy=None, pr
     models = host.store._blob(descriptor['models_blob_id'])
     if row_policy is not None:
         models = lc.canonical({**snapshot['models'], 'sabsa_row_policy': row_policy})
+    references = None
+    if deferred:
+        reference_path = next(name for name in composition.files if name.endswith('/qradar-source-evidence.md'))
+        references = {'qradar-siem-specialist': {reference_path.split('/references/', 1)[1]: composition.files[reference_path]}}
     material = routing.capture_policy(descriptor['policy_id'], lc.canonical(registry),
         models, bodies, descriptor['bootstrap'],
-        descriptor['capabilities'], host.store.put_blob, workflow_policy=lc.canonical(policy))
+        descriptor['capabilities'], host.store.put_blob, workflow_policy=lc.canonical(policy), references=references)
     scope = {'workflow_catalogue': catalogue['catalog_hash'], 'work_item': work_item, 'handoff': handoff,
              'path': path, 'endpoint': 'producer', 'mode': 'exact' if exact else 'compatible-specialization',
              'product_scope': deployment}
@@ -152,7 +157,7 @@ def test_versioned_workflow_scope_uses_actual_role_selection(captured, product_i
     assignment['routing']['workflow_scope'] = scope_ref
     versioned_source = {**source, 'material': material}
     versioned = routing.load_policy(versioned_source, host.store._blob)
-    with pytest.raises(lc.ERROR, match='version-two policy'):
+    with pytest.raises(lc.ERROR, match='captured workflow policy'):
         routing.validate_assignment(assignment, snapshot, 'host-routing')
     routing.validate_assignment(assignment, versioned, 'host-routing')
     evidence = routing.workflow_eligibility(assignment, versioned, scope, scope_ref)
@@ -176,14 +181,69 @@ def test_versioned_workflow_scope_uses_actual_role_selection(captured, product_i
         routing.load_policy(missing, host.store._blob)
 
 
-def _enroll_fixture_scope(host, message, work_item, product_index, *, exact=False, owner=None, row_policy=None, product_version=None):
+def test_native_entry_captures_explicit_workflow_policy_and_references(captured, tmp_path, monkeypatch):
+    from pathlib import Path
+
+    import governed_layered
+    import governed_native_provider
+    from tools.compose_role_library import compose
+
+    host, _, snapshot, _ = captured
+    material, scope, mappings = _pilot_policy(host, snapshot, 'backup', deferred=True, procedural=True)
+    owner = {'layer': 1, 'work_kind': 'question', 'question': 'how', 'work_item': 'backup'}
+    scope['procedure_owner'] = owner
+    scope['product_scope']['product'] = mappings[1]['product']
+    descriptor = lc.loads(host.store._blob(material[0]))
+    policy = host.store._blob(descriptor['workflow_policy_blob_id'])
+    root = Path(__file__).resolve().parents[1]
+    package = tmp_path / 'package'
+    for name, raw in compose(root).files.items():
+        output = package / name
+        output.parent.mkdir(parents=True, exist_ok=True)
+        output.write_bytes(raw)
+    monkeypatch.setattr(governed_native_provider, 'ROOT', package / '.ai/runtime')
+
+    with pytest.raises(lc.ERROR):
+        governed_layered.LayeredSession.create(tmp_path / 'invalid', 'invalid', b'Backup evidence.',
+            'codex', 'backup', workflow_policy=b'{}')
+    assert not (tmp_path / 'invalid/invalid.jsonl').exists()
+    with pytest.raises(ValueError, match='checked specialist profile policy'):
+        governed_layered.LayeredSession.create(tmp_path / 'unchecked', 'unchecked',
+            b'Backup evidence.', 'codex', 'backup', workflow_policy=policy,
+            workflow_scopes=[lc.canonical(scope)])
+    assert not (tmp_path / 'unchecked/unchecked.jsonl').exists()
+    session, created = governed_layered.LayeredSession.create(tmp_path / 'valid', 'valid',
+        b'Backup evidence.', 'codex', 'backup', workflow_policy=policy)
+    cold = lc.Store(session.store.path, session.store.engagement)
+    state = cold.read()
+    source = state.resolve(created['inputs']['role-routing'], 'source')
+    combined = routing.load_policy(source, cold._blob)
+    descriptor = combined['descriptor']
+    assert descriptor['protocol'] == routing.REFERENCE_PROTOCOL
+    assert cold._blob(descriptor['workflow_policy_blob_id']) == policy
+    assert descriptor['reference_blobs']['qradar-siem-specialist']
+
+    references = {slug: {name: cold._blob(identifier) for name, identifier in items.items()}
+                  for slug, items in descriptor['reference_blobs'].items()}
+    without_workflow = routing.capture_policy(descriptor['policy_id'],
+        cold._blob(descriptor['catalogue_blob_id']), cold._blob(descriptor['models_blob_id']),
+        {slug: cold._blob(item['blob_id']) for slug, item in combined['instructions'].items()},
+        descriptor['bootstrap'], descriptor['capabilities'], cold.put_blob, references=references)
+    reference_only = routing.load_policy({**source, 'material': without_workflow}, cold._blob)
+    assignment = _assignment(host, host.routing_policy)
+    assignment['routing']['workflow_scope'] = created['inputs']['request']
+    with pytest.raises(lc.ERROR, match='captured workflow policy'):
+        routing.validate_assignment(assignment, reference_only, 'host-routing')
+
+
+def _enroll_fixture_scope(host, message, work_item, product_index, *, exact=False, owner=None, row_policy=None, product_version=None, deferred=False):
     from governed_fixtures import delivery
 
     source = next(item['record'] for item in message['payload']['l0_inputs']
                   if item['logical_id'] == 'role-routing')
     old_policy = host.routing_policy
     snapshot = routing.load_policy(source, host.store._blob)
-    material, scope, mappings = _pilot_policy(host, snapshot, work_item, exact=exact, row_policy=row_policy, procedural=owner is not None)
+    material, scope, mappings = _pilot_policy(host, snapshot, work_item, exact=exact, row_policy=row_policy, procedural=owner is not None, deferred=deferred)
     source['material'] = material
     mapping = mappings[product_index]
     scope['product_scope']['product'] = mapping['product']

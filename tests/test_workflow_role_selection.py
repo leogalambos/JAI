@@ -1,4 +1,6 @@
 # SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
 """Check exact endpoint, contract, scope and authority boundaries for role eligibility."""
 from copy import deepcopy
 from pathlib import Path
@@ -127,3 +129,99 @@ def test_no_policy_preserves_exact_default(policy):
     roles, evidence = _evaluate(policy)
     assert roles == ["security-engineer"]
     assert evidence["mode"] == "exact"
+
+
+def test_reviewed_profile_applies_to_equivalent_endpoints_without_workflow_edits(policy):
+    from workflow_specialist_profiles import (PROFILE_PROTOCOL, compile_profiles, profile_for,
+        role_revision, stage_policy, verify_policy)
+
+    catalogue = policy["catalogue"]
+    roles = policy["roles"]
+    row = catalogue["bindings"][0]
+    binding = row["variant_bindings"]["trial"]
+    row.update(handover="Versioned source evidence", receiver_checks=["independent-receiver-attestation"])
+    binding["acceptance_criterion"] = "Review the exact source evidence."
+    binding["handoff_content_contract"]["units"][0]["id"] = "handoff/pilot:1.source"
+    second = deepcopy(row)
+    second["handoff_id"] = "second:1"
+    second_binding = second["variant_bindings"]["trial"]
+    second_binding["handoff_content_contract"]["id"] = "handoff/second:1"
+    second_binding["handoff_content_contract"]["units"][0]["id"] = "handoff/second:1.source"
+    catalogue["bindings"].append(second)
+    contract = policy["reviewed"]["requirements"][0]["contract"]
+    contracts = {contract["id"]: contract}
+    instructions = {slug: "a" * 64 for slug in roles}
+    profile = {"id": "siem-ingestion", "version": "1",
+               "definition": profile_for(row, binding, roles["security-engineer"], contract)}
+    endpoints = [{"handoff": key, "path": "trial", "endpoint": "producer",
+                  "profile": profile["id"], "version": profile["version"], "mode": "required-specialist"}
+                 for key in ("pilot:1", "second:1")]
+    source = {"protocol": PROFILE_PROTOCOL, "profiles": [profile], "endpoints": endpoints, "mappings": [], "receipts": []}
+    for slug in ("qradar-siem", "splunk-es"):
+        mapping = {"profile": profile["id"], "version": profile["version"],
+            "profile_digest": canonical_hash(profile), "slug": slug, "author": "fixture-author",
+            "role_revision": role_revision(roles[slug], instructions[slug]),
+            "product": slug, "deployments": [{"edition": "test", "version": "1", "deployment": "offline"}],
+            "covered_units": ["source"]}
+        receipt = {"reviewer": "fixture-reviewer", "decision": "approved", "mapping_digest": canonical_hash(mapping)}
+        source["receipts"].append(receipt)
+        source["mappings"].append({**mapping, "review_receipt": canonical_hash(receipt)})
+
+    previous = deepcopy(source)
+    previous["mappings"].pop()
+    before, _ = compile_profiles(catalogue, previous, roles, instructions, contracts)
+    compiled, pins = compile_profiles(catalogue, source, roles, instructions, contracts)
+    assert len(pins) == 2
+    assert source["endpoints"] == previous["endpoints"]
+    assert [len(row["mappings"]) for row in before["requirements"]] == [1, 1]
+    assert [len(row["mappings"]) for row in compiled["requirements"]] == [2, 2]
+    compile_requirements(catalogue, compiled, roles, policy["ancestry"], policy["contract_versions"])
+    assert compiled["requirements"][1]["mappings"][0]["covered_units"] == ["handoff/second:1.source"]
+    assert compiled == compile_profiles(catalogue, source, roles, instructions, contracts)[0]
+    source["endpoints"][0]["mode"] = "preferred-specialist"
+    staged = stage_policy(catalogue, source, roles, instructions, contracts, policy["ancestry"])
+    verify_policy(staged, roles, instructions, catalogue=catalogue, contracts=contracts)
+    compiled_scope = compile_requirements(staged["catalogue"], staged["reviewed"], roles,
+                                          policy["ancestry"], policy["contract_versions"])
+    selection = {key: policy[key] for key in ("handoff", "path", "endpoint", "responsibility",
+                                             "scope", "available", "independent")}
+    def choose(**overrides):
+        return eligible_roles(staged["catalogue"], compiled_scope, **{**selection, **overrides})
+
+    selected, evidence = choose()
+    assert selected == ["qradar-siem"]
+    assert evidence["profile"]["mappings"]["qradar-siem"]["review_receipt"] == source["mappings"][0]["review_receipt"]
+    fallback, reason = choose(scope=None, generic_applicable=True)
+    assert fallback == ["security-engineer"]
+    assert reason["fallback"] == "ADMITTED_PRODUCT_NEUTRAL_SCOPE"
+    assert choose(scope=None)[0] == []
+    assert choose(scope=None, generic_applicable=True, handoff="second:1")[0] == []
+    assert choose(generic_applicable=True)[1]["blocker"] == "PRODUCT_SCOPE_CONFLICT"
+    assert choose(scope={**selection["scope"], "version": "unsupported"})[0] == []
+    assert choose(scope=None, generic_applicable=True, independent=False)[0] == []
+    assert choose(endpoint="receiver")[0] == ["assessor"]
+    overlapping = deepcopy(source)
+    other = overlapping["mappings"][1]
+    other["product"] = selection["scope"]["product"]
+    reviewed_mapping = {key: value for key, value in other.items() if key != "review_receipt"}
+    overlapping["receipts"][1]["mapping_digest"] = canonical_hash(reviewed_mapping)
+    other["review_receipt"] = canonical_hash(overlapping["receipts"][1])
+    multiple = stage_policy(catalogue, overlapping, roles, instructions, contracts, policy["ancestry"])
+    assert eligible_roles(multiple["catalogue"], verify_policy(multiple, roles, instructions),
+                          **selection)[0] == ["qradar-siem", "splunk-es"]
+    unattested = deepcopy(source)
+    unattested["mappings"][0]["deployments"][0]["edition"] = "different"
+    with pytest.raises(ValueError, match="WORKFLOW_PROFILE_REVIEW_RECEIPT"):
+        compile_profiles(catalogue, unattested, roles, instructions, contracts)
+    corrupted = deepcopy(staged)
+    corrupted["catalogue"]["bindings"][0]["variant_bindings"]["trial"]["workflow_role_requirement"]["profile"]["version"] = "tampered"
+    with pytest.raises(ValueError, match="WORKFLOW_PROFILE_POLICY_DRIFT"):
+        verify_policy(corrupted, roles, instructions, catalogue=catalogue, contracts=contracts)
+
+    second_binding["acceptance_criterion"] = "Also verify a separate accountable owner."
+    with pytest.raises(ValueError, match="WORKFLOW_PROFILE_OBLIGATIONS"):
+        compile_profiles(catalogue, source, roles, instructions, contracts)
+    second_binding["acceptance_criterion"] = binding["acceptance_criterion"]
+    instructions["qradar-siem"] = "c" * 64
+    with pytest.raises(ValueError, match="WORKFLOW_PROFILE_UNREVIEWED_REVISION"):
+        compile_profiles(catalogue, source, roles, instructions, contracts)

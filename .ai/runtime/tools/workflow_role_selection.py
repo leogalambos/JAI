@@ -1,4 +1,6 @@
 # SPDX-License-Identifier: BSD-4-Clause
+# Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
 """Evaluate compatible producer roles against a pinned workflow handoff.
 
 The caller supplies the validated workflow catalogue, immutable role snapshot,
@@ -106,12 +108,21 @@ def _compile_requirement(catalogue, key, requirement, roles, ancestry, contract_
             seen_deployments.add(identity)
         mappings[slug] = {"product": mapping["product"], "deployments": sorted(seen_deployments),
                           "digest": canonical_hash(mapping)}
-    return {"contract": dict(contract), "responsibility": requirement["responsibility"],
-            "digest": canonical_hash(requirement), "mappings": mappings}
+    result = {"contract": dict(contract), "responsibility": requirement["responsibility"],
+              "digest": canonical_hash(requirement), "mappings": mappings}
+    profile = effective.get("workflow_role_requirement", {}).get("profile")
+    if profile is not None:
+        deployed = {}
+        for slug, mapping in mappings.items():
+            for deployment in mapping["deployments"]:
+                deployed.setdefault((mapping["product"], deployment), {})[slug] = mapping["digest"]
+        result.update(profile=profile, deployed=deployed, effective=effective)
+    return result
 
 
 def eligible_roles(catalogue, compiled, *,
-                   handoff, path, endpoint, responsibility, scope, available, independent):
+                   handoff, path, endpoint, responsibility, scope, available, independent,
+                   generic_applicable=False):
     """Return deterministic eligible slugs and pin data for one workflow endpoint.
 
     Args:
@@ -126,12 +137,16 @@ def eligible_roles(catalogue, compiled, *,
             None if their governed evidence is unavailable.
         available: Exact role slugs currently available to the assignment.
         independent: True only when the host's independence prerequisites hold.
+        generic_applicable: Exact admitted evidence that the context is product-neutral.
     Returns:
         Sorted eligible role slugs and evidence identifying the exact binding.
     Raises:
         ValueError: An unknown binding or inconsistent reviewed policy.
     """
-    _, effective = _binding(catalogue, handoff, path, endpoint)
+    key = (handoff, path, endpoint)
+    requirement = compiled["requirements"].get(key) if compiled is not None else None
+    profile = requirement.get("profile") if requirement is not None else None
+    effective = requirement["effective"] if profile is not None else _binding(catalogue, *key)[1]
     bound_role = effective[_ENDPOINTS[endpoint]]
     evidence = {"workflow_catalogue": catalogue["catalog_hash"], "handoff": handoff,
                 "path": path, "endpoint": endpoint, "mode": "exact",
@@ -139,12 +154,12 @@ def eligible_roles(catalogue, compiled, *,
                     canonical_hash(effective["handoff_content_contract"])}
     if compiled is not None and compiled["workflow_catalogue"] != catalogue["catalog_hash"]:
         raise ValueError("WORKFLOW_ROLE_CATALOGUE")
-    key = (handoff, path, endpoint)
-    requirement = compiled["requirements"].get(key) if compiled is not None else None
     if requirement is None:
         return ([bound_role] if bound_role in available and independent else []), evidence
     evidence.update(mode="compatible-specialization", contract=requirement["contract"],
                     requirement_hash=requirement["digest"], scope=scope, mapping_hashes={})
+    if profile is not None:
+        evidence["profile"] = profile
     if not independent:
         evidence["blocker"] = "INDEPENDENT_ASSIGNMENT_REQUIRED"
         return [], evidence
@@ -152,16 +167,30 @@ def eligible_roles(catalogue, compiled, *,
         evidence["blocker"] = "RESPONSIBILITY_MISMATCH"
         return [], evidence
     if scope is None:
+        if (profile is not None and profile["mode"] == "preferred-specialist"
+                and generic_applicable is True and bound_role in available):
+            reason = "ADMITTED_PRODUCT_NEUTRAL_SCOPE"
+            evidence["fallback"] = reason
+            evidence["mapping_hashes"] = {bound_role: canonical_hash({
+                "requirement": requirement["digest"], "profile": profile["profile_digest"],
+                "reason": reason, "base": bound_role})}
+            return [bound_role], evidence
         evidence["blocker"] = "PRODUCT_SCOPE_REQUIRED"
+        return [], evidence
+    if generic_applicable:
+        evidence["blocker"] = "PRODUCT_SCOPE_CONFLICT"
         return [], evidence
     _fields(scope, "product edition version deployment")
     if not all(isinstance(value, str) and value for value in scope.values()):
         raise ValueError("WORKFLOW_ROLE_APPLICABILITY")
     deployment = canonical_hash({name: scope[name] for name in ("edition", "version", "deployment")})
-    applicable = {slug: mapping for slug, mapping in requirement["mappings"].items()
-                  if scope["product"] == mapping["product"] and deployment in mapping["deployments"]}
-    eligible = sorted(set(applicable).intersection(available))
-    evidence["mapping_hashes"] = {slug: applicable[slug]["digest"] for slug in eligible}
+    if profile is not None:
+        applicable = requirement["deployed"].get((scope["product"], deployment), {})
+    else:
+        applicable = {slug: mapping["digest"] for slug, mapping in requirement["mappings"].items()
+                      if scope["product"] == mapping["product"] and deployment in mapping["deployments"]}
+    eligible = sorted(slug for slug in applicable if slug in available)
+    evidence["mapping_hashes"] = {slug: applicable[slug] for slug in eligible}
     if not eligible:
         evidence["blocker"] = "SPECIALTY_UNAVAILABLE" if applicable else "PRODUCT_SCOPE_MISMATCH"
     return eligible, evidence

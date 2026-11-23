@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 # SPDX-License-Identifier: BSD-4-Clause
 # Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
 """Validate immutable routing snapshots without ambient catalogues or overrides."""
 from __future__ import annotations
 
@@ -77,12 +78,15 @@ def capture_policy(policy_id, catalogue_bytes, models_bytes, instructions, boots
     return list(dict.fromkeys(material))
 
 
-def load_policy(source, blob_reader):
+def load_policy(source, blob_reader, *, current_workflows=None, current_contracts=None, current_ancestry=None):
     """Resolve and validate a complete immutable captured routing snapshot.
 
     Args:
         source: Existing L0-owned policy source record with descriptor-first material.
         blob_reader: Exact immutable-byte reader for the journal's captured inputs.
+        current_workflows: Canonical bindings for explicit new profile enrollment.
+        current_contracts: Canonical artifact contracts for that enrollment.
+        current_ancestry: Current composition ancestry for that enrollment.
     Returns:
         Parsed descriptor, catalogue, models and selected instruction byte identities.
     Raises:
@@ -188,7 +192,9 @@ def load_policy(source, blob_reader):
         policy = lc.loads(read(descriptor['workflow_policy_blob_id']))
         fields = ('catalogue', 'reviewed', 'ancestry', 'contract_versions')
         scoped_procedures = isinstance(policy, dict) and 'procedure_scope_protocol' in policy
-        _closed(policy, fields + (('procedure_scope_protocol',) if scoped_procedures else ()))
+        profiles = isinstance(policy, dict) and 'specialist_profiles' in policy
+        _closed(policy, fields + (('procedure_scope_protocol',) if scoped_procedures else ())
+                + (('specialist_profiles',) if profiles else ()))
         if scoped_procedures:
             if policy['procedure_scope_protocol'] != PROCEDURE_SCOPE_PROTOCOL:
                 raise lc.ERROR('P_SCHEMA', 'Unsupported layered specialty scope protocol')
@@ -199,9 +205,17 @@ def load_policy(source, blob_reader):
             from content_spec import canonical_hash
             if canonical_hash(body) != digest:
                 raise ValueError('Workflow catalogue digest mismatch')
-            snapshot['workflow_roles'] = selection.compile_requirements(
-                policy['catalogue'], policy['reviewed'], by_slug, policy['ancestry'],
-                policy['contract_versions'])
+            if profiles:
+                from workflow_specialist_profiles import verify_policy
+                if current_ancestry is not None and any(current_ancestry.get(slug) != ancestors
+                        for slug, ancestors in policy['ancestry'].items()):
+                    raise ValueError('WORKFLOW_PROFILE_ANCESTRY_DRIFT')
+                snapshot['workflow_roles'] = verify_policy(policy, by_slug, mapping,
+                    catalogue=current_workflows, contracts=current_contracts)
+            else:
+                snapshot['workflow_roles'] = selection.compile_requirements(
+                    policy['catalogue'], policy['reviewed'], by_slug, policy['ancestry'],
+                    policy['contract_versions'])
         except (ValueError, TypeError, KeyError) as error:
             raise lc.ERROR('P_PROOF', 'Captured workflow role policy is invalid') from error
         snapshot['workflow_catalogue'] = policy['catalogue']
@@ -257,8 +271,8 @@ def validate_assignment(assignment, snapshot, policy_id):
     descriptor = snapshot['descriptor']
     workflow_scope = 'workflow_scope' in assignment['routing']
     _closed(assignment['routing'], ('policy', 'workflow_scope') if workflow_scope else ('policy',))
-    if workflow_scope and descriptor['protocol'] != WORKFLOW_PROTOCOL:
-        raise lc.ERROR('P_SCOPE', 'Workflow role selection requires a version-two policy')
+    if workflow_scope and 'workflow_roles' not in snapshot:
+        raise lc.ERROR('P_SCOPE', 'Workflow role selection requires a captured workflow policy')
     if descriptor['policy_id'] != policy_id:
         raise lc.ERROR('P_SCOPE', 'Global capability policy differs from the governing profile')
     capabilities = descriptor['capabilities']
@@ -294,7 +308,7 @@ def workflow_eligibility(assignment, snapshot, scope, scope_ref):
 
     Args:
         assignment: Exact current functional assignment.
-        snapshot: Validated immutable version-two routing snapshot.
+        snapshot: Validated immutable workflow-capable routing snapshot.
         scope: Typed facts resolved from a current attributable host input.
         scope_ref: Exact reference to that source in the assignment.
     Returns:
@@ -306,7 +320,11 @@ def workflow_eligibility(assignment, snapshot, scope, scope_ref):
 
     fields = ('workflow_catalogue', 'work_item', 'handoff', 'path', 'endpoint', 'mode', 'product_scope')
     procedure_task = assignment.get('procedure_task')
-    _closed(scope, fields + (('procedure_owner',) if procedure_task is not None else ()))
+    generic = 'generic_applicable' in scope
+    _closed(scope, fields + (('procedure_owner',) if procedure_task is not None else ())
+            + (('generic_applicable',) if generic else ()))
+    if generic and type(scope['generic_applicable']) is not bool:
+        raise lc.ERROR('P_SCOPE', 'Generic applicability must be an exact admitted fact')
     if procedure_task is not None and (snapshot.get('procedure_scope_protocol') != PROCEDURE_SCOPE_PROTOCOL
             or scope['procedure_owner'] != assignment['owner']
             or scope_ref['logical_id'] != procedure_scope_id(assignment['owner'])):
@@ -322,9 +340,12 @@ def workflow_eligibility(assignment, snapshot, scope, scope_ref):
             handoff=scope['handoff'], path=scope['path'], endpoint=scope['endpoint'],
             responsibility=assignment['responsibility'], scope=scope['product_scope'],
             available=snapshot['instructions'],
-            independent=scope['endpoint'] == 'producer' and assignment['responsibility'] == 'author')
+            independent=scope['endpoint'] == 'producer' and assignment['responsibility'] == 'author',
+            generic_applicable=scope.get('generic_applicable', False))
     except (ValueError, TypeError, KeyError) as error:
         raise lc.ERROR('P_SCOPE', 'Workflow scope does not resolve to an exact policy binding') from error
+    if generic and 'profile' not in evidence:
+        raise lc.ERROR('P_SCOPE', 'Generic applicability requires an exact compatibility profile')
     if scope['mode'] != evidence['mode']:
         raise lc.ERROR('P_SCOPE', 'Workflow scope requirements cannot fall back to an exact role')
     return {'eligible': eligible, 'scope_ref': copy.deepcopy(scope_ref), 'binding': evidence}

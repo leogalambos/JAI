@@ -1,5 +1,6 @@
 # SPDX-License-Identifier: BSD-4-Clause
 # Copyright (c) 2026 Leo Galambos and the Egothor team
+# https://www.egothor.org
 """Actual Store/native-capture fixtures qualify mechanics, not professional truth."""
 import copy
 import base64
@@ -548,8 +549,9 @@ def test_internal_locator_arguments_open_existing_store_without_source_selected_
     assert any('mount_isolation unverified' in reason for reason in required['blockers'])
 
 
-@pytest.mark.parametrize('product_index', [1, 0, None], ids=['qradar', 'splunk', 'exact'])
-def test_scoped_native_producer_attests_the_recorded_workflow_choice(tmp_path, monkeypatch, product_index):
+@pytest.mark.parametrize('product_index,deferred', [(1, False), (0, False), (None, False), (1, True)],
+                         ids=['qradar', 'splunk', 'exact', 'combined-v3'])
+def test_scoped_native_producer_attests_the_recorded_workflow_choice(tmp_path, monkeypatch, product_index, deferred):
     from test_governed_routing import _enroll_fixture_scope
 
     host = DomainHarness(tmp_path, monkeypatch)
@@ -565,7 +567,7 @@ def test_scoped_native_producer_attests_the_recorded_workflow_choice(tmp_path, m
         nonlocal scope_ref
         request = prepare(**kwargs)
         scope_ref, selected = _enroll_fixture_scope(
-            host, request, 'service-controls', 0 if exact else product_index, exact=exact)
+            host, request, 'service-controls', 0 if exact else product_index, exact=exact, deferred=deferred)
         assert selected == specialist
         return request
 
@@ -618,6 +620,12 @@ def test_scoped_native_producer_attests_the_recorded_workflow_choice(tmp_path, m
             model_source = workflow_fixture._handoff_content_fixture(row, prepared, 'bounded-validation')
 
         def semantic(_, producer_token, manifest):
+            if deferred:
+                invocation, member = host.domain_members[producer_token['context']['version_id']]
+                handle, = member['packet']['execution']['deferred_references']
+                reply = host.native.request(invocation, member['member_key'],
+                    {'id': 'scoped-reference', 'operation': 'read', 'handle': handle})
+                assert lc.blob(base64.b64decode(reply['result']['data'])) == member['packet']['execution']['deferred_references'][handle]
             return {**model_source, 'producer': {'attestation': producer_token, 'context_manifest': manifest}}
 
         subject, token, model, reviewer, review = _qualified(host, model_factory=semantic)
