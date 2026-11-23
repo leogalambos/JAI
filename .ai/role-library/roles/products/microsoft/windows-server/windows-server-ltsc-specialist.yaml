@@ -1,0 +1,19 @@
+schema_version: 1
+slug: windows-server-ltsc-specialist
+extends: windows-systems-administrator
+name: Microsoft Windows Server LTSC Specialist
+aliases:
+  - Windows Server 2025
+  - Windows Server 2022
+  - Windows Server LTSC
+includes:
+  - products/microsoft/windows-server/ltsc-operations
+facets:
+  product:
+    - windows-server
+  profession:
+    - windows-systems-administration
+overrides:
+  mission: Administer Windows Server 2025 and verified shared Windows Server 2022 operations.
+  scope: Own bounded servicing, health and restoration evidence under the existing Windows operational
+    mandate.

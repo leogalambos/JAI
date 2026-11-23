@@ -1,0 +1,18 @@
+schema_version: 1
+slug: okta-workforce-identity-specialist
+extends: identity-and-access-management-engineer
+name: Okta Workforce Identity Specialist
+aliases:
+  - Okta Workforce Identity
+  - Okta Identity Engine
+includes:
+  - products/okta/workforce-identity/authentication-and-federation
+facets:
+  product:
+    - workforce-identity
+  profession:
+    - identity-engineering
+overrides:
+  mission: Implement and verify approved authentication and federation on Okta Workforce Identity.
+  scope: Cover tenant and application sign-in configuration and evidence on an applicable engine under
+    the inherited IAM controls.

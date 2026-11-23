@@ -1,0 +1,54 @@
+schema_version: 1
+id: products/okta/workforce-identity/authentication-and-federation
+title: Okta Workforce Identity authentication and federation
+version: 1.0.0
+includes: []
+applicability: Okta Workforce Identity on Identity Engine. Qualify the actual tenant and entitled capabilities.
+sections:
+  - id: product-controls
+    delivery: required
+    text: Identify the tenant engine and target application before applying sign-in configuration. Check
+      application and global session policy ownership, group assignments, federation metadata and recovery
+      paths against the approved design.
+    source: operational-guidance
+    applicability: Okta Workforce Identity on Identity Engine. Qualify the actual tenant and entitled
+      capabilities.
+    exclusions: Classic Engine behavior, customer identity products, and unverified tenant features.
+    owner: JAI identity engineering maintainers
+    reviewed: '2026-11-23'
+  - id: verification-reference
+    delivery: optional
+    reference: authentication-and-federation-evidence.md
+    read_when: Verify the actual engine, tenant release, SKU and region when relying on a feature. Consult
+      the engine-specific guidance before transferring a Classic configuration.
+    source: product-source
+    applicability: Okta Workforce Identity on Identity Engine. Qualify the actual tenant and entitled
+      capabilities.
+    exclusions: Classic Engine behavior, customer identity products, and unverified tenant features.
+    owner: JAI identity engineering maintainers
+    reviewed: '2026-11-23'
+sources:
+  product-source:
+    publisher: Okta
+    authority: public maintainer documentation
+    title: Okta Workforce Identity authentication and federation source
+    url: https://help.okta.com/oie/en-us/content/topics/releasenotes/production.htm
+    applicability: Okta Workforce Identity on Identity Engine. Qualify the actual tenant and entitled
+      capabilities.
+    reviewed: '2026-11-23'
+    owner: JAI identity engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Verify the actual engine, tenant release, SKU and region when relying on a feature.
+      Consult the engine-specific guidance before transferring a Classic configuration.
+  operational-guidance:
+    publisher: Okta
+    authority: public maintainer documentation
+    title: Okta policies and rules
+    url: https://help.okta.com/oie/en-us/Content/topics/identity-engine/policies/about-policies.htm
+    applicability: Okta Workforce Identity on Identity Engine. Qualify the actual tenant and entitled
+      capabilities.
+    reviewed: '2026-11-23'
+    owner: JAI identity engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Verify the actual engine, tenant release, SKU and region when relying on a feature.
+      Consult the engine-specific guidance before transferring a Classic configuration.

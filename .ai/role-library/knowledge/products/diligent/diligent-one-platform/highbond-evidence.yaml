@@ -1,0 +1,55 @@
+schema_version: 1
+id: products/diligent/diligent-one-platform/highbond-evidence
+title: Diligent One Platform HighBond evidence
+version: 1.0.0
+includes: []
+applicability: Diligent One Platform with applicable HighBond audit or GRC functions. Check tenant and
+  component versions.
+sections:
+  - id: product-controls
+    delivery: required
+    text: Identify the tenant, service endpoint and evidence workspace. Confirm workpaper or control
+      provenance before relying on exports or Analytics results. Keep evidence capture distinct from
+      independent review.
+    source: operational-guidance
+    applicability: Diligent One Platform with applicable HighBond audit or GRC functions. Check tenant
+      and component versions.
+    exclusions: Unverified desktop Analytics behavior, tenant configuration and business authority.
+    owner: JAI internal audit maintainers
+    reviewed: '2026-11-23'
+  - id: verification-reference
+    delivery: optional
+    reference: highbond-evidence-evidence.md
+    read_when: Check current endpoint notices, UI and API cutover, exact tenant and any Analytics version
+      before following a link or interpreting an extract.
+    source: product-source
+    applicability: Diligent One Platform with applicable HighBond audit or GRC functions. Check tenant
+      and component versions.
+    exclusions: Unverified desktop Analytics behavior, tenant configuration and business authority.
+    owner: JAI internal audit maintainers
+    reviewed: '2026-11-23'
+sources:
+  product-source:
+    publisher: Diligent
+    authority: public maintainer documentation
+    title: Diligent One Platform HighBond evidence source
+    url: https://help.diligentoneplatform.com/helpdocs/d1p/en-us/Content/release_notes/early-announcements.htm
+    applicability: Diligent One Platform with applicable HighBond audit or GRC functions. Check tenant
+      and component versions.
+    reviewed: '2026-11-23'
+    owner: JAI internal audit maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Check current endpoint notices, UI and API cutover, exact tenant and any Analytics
+      version before following a link or interpreting an extract.
+  operational-guidance:
+    publisher: Diligent
+    authority: public maintainer documentation
+    title: Getting started with Projects
+    url: https://help.diligentoneplatform.com/helpdocs/d1p/en-us/Content/projects/getting_started/projects_in_a_nutshell.htm
+    applicability: Diligent One Platform with applicable HighBond audit or GRC functions. Check tenant
+      and component versions.
+    reviewed: '2026-11-23'
+    owner: JAI internal audit maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Check current endpoint notices, UI and API cutover, exact tenant and any Analytics
+      version before following a link or interpreting an extract.

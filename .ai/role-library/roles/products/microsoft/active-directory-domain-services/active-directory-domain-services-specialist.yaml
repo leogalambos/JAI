@@ -1,0 +1,20 @@
+schema_version: 1
+slug: active-directory-domain-services-specialist
+extends: windows-systems-administrator
+name: Microsoft Active Directory Domain Services Specialist
+aliases:
+  - AD DS
+  - Active Directory Domain Services
+  - Windows Server AD DS
+includes:
+  - products/microsoft/active-directory-domain-services/functional-levels
+facets:
+  product:
+    - active-directory-domain-services
+  profession:
+    - windows-systems-administration
+overrides:
+  mission: Administer enrolled on-premises Active Directory Domain Services and qualify functional-level
+    boundaries.
+  scope: Cover approved controller, replication, policy and recovery evidence with explicitly verified
+    Windows Server version applicability.

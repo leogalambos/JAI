@@ -1,0 +1,45 @@
+schema_version: 1
+id: products/red-hat/red-hat-enterprise-linux/enterprise-lifecycle
+title: Red Hat Enterprise Linux enterprise lifecycle
+version: 1.0.0
+includes: []
+applicability: RHEL 8, 9 and 10 enterprise lifecycle guidance, subject to the enrolled product, minor
+  stream and subscriptions.
+sections:
+  - id: product-controls
+    delivery: required
+    text: Pin the subscribed product, major and minor stream, architecture and enabled repositories.
+      Verify the lifecycle phase and applicable errata stream before maintenance or an end-of-support
+      decision.
+    source: product-source
+    applicability: RHEL 8, 9 and 10 enterprise lifecycle guidance, subject to the enrolled product, minor
+      stream and subscriptions.
+    exclusions: Assuming content access, maintenance phase or extended support from the major release
+      alone.
+    owner: JAI linux systems administration maintainers
+    reviewed: '2026-11-23'
+  - id: verification-reference
+    delivery: optional
+    reference: enterprise-lifecycle-evidence.md
+    read_when: Recheck product and minor release support, extended stream entitlement, supported upgrade
+      path and affected errata classes when deciding to retain or migrate a deployment.
+    source: product-source
+    applicability: RHEL 8, 9 and 10 enterprise lifecycle guidance, subject to the enrolled product, minor
+      stream and subscriptions.
+    exclusions: Assuming content access, maintenance phase or extended support from the major release
+      alone.
+    owner: JAI linux systems administration maintainers
+    reviewed: '2026-11-23'
+sources:
+  product-source:
+    publisher: Red Hat
+    authority: public maintainer documentation
+    title: Red Hat Enterprise Linux enterprise lifecycle source
+    url: https://access.redhat.com/support/policy/updates/errata
+    applicability: RHEL 8, 9 and 10 enterprise lifecycle guidance, subject to the enrolled product, minor
+      stream and subscriptions.
+    reviewed: '2026-11-23'
+    owner: JAI linux systems administration maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Recheck product and minor release support, extended stream entitlement, supported
+      upgrade path and affected errata classes when deciding to retain or migrate a deployment.

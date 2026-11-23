@@ -1,0 +1,56 @@
+schema_version: 1
+id: products/palo-alto-networks/pan-os/policy-operations
+title: Palo Alto Networks NGFW and PAN-OS operations
+version: 1.0.0
+includes: []
+applicability: PAN-OS NGFW managed locally or by supported centralized management. Verify the exact release,
+  model and content compatibility.
+sections:
+  - id: product-controls
+    delivery: required
+    text: Identify target device or device group, intended zones and applicable security policy ownership.
+      Validate observable outcomes, log coverage, commit scope and rollback against the approved change.
+    source: operational-guidance
+    applicability: PAN-OS NGFW managed locally or by supported centralized management. Verify the exact
+      release, model and content compatibility.
+    exclusions: Unapproved traffic policy, unverified subscription capabilities and unrelated cloud security
+      products.
+    owner: JAI firewall engineering maintainers
+    reviewed: '2026-11-23'
+  - id: verification-reference
+    delivery: optional
+    reference: policy-operations-evidence.md
+    read_when: Check supported PAN-OS and Panorama versions, associated content, model and subscription
+      before planning rollout or upgrade.
+    source: product-source
+    applicability: PAN-OS NGFW managed locally or by supported centralized management. Verify the exact
+      release, model and content compatibility.
+    exclusions: Unapproved traffic policy, unverified subscription capabilities and unrelated cloud security
+      products.
+    owner: JAI firewall engineering maintainers
+    reviewed: '2026-11-23'
+sources:
+  product-source:
+    publisher: Palo Alto Networks
+    authority: public maintainer documentation
+    title: Palo Alto Networks NGFW and PAN-OS operations source
+    url: https://www.paloaltonetworks.com/services/support/end-of-life-announcements/end-of-life-summary
+    applicability: PAN-OS NGFW managed locally or by supported centralized management. Verify the exact
+      release, model and content compatibility.
+    reviewed: '2026-11-23'
+    owner: JAI firewall engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Check supported PAN-OS and Panorama versions, associated content, model and subscription
+      before planning rollout or upgrade.
+  operational-guidance:
+    publisher: Palo Alto Networks
+    authority: public maintainer documentation
+    title: Security Policy
+    url: https://docs.paloaltonetworks.com/pan-os/11-1/pan-os-admin/policy/security-policy
+    applicability: PAN-OS NGFW managed locally or by supported centralized management. Verify the exact
+      release, model and content compatibility.
+    reviewed: '2026-11-23'
+    owner: JAI firewall engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Check supported PAN-OS and Panorama versions, associated content, model and subscription
+      before planning rollout or upgrade.

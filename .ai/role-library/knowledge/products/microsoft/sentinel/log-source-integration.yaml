@@ -1,0 +1,49 @@
+schema_version: 1
+id: products/microsoft/sentinel/log-source-integration
+title: Microsoft Sentinel log-source integration
+version: 1.0.0
+includes: []
+applicability: Microsoft Sentinel cloud SIEM. Qualify tenant, region, workspace and portal experience.
+sections:
+  - id: product-controls
+    delivery: required
+    text: Map the source to its connector, target workspace and tables or parser. Verify received events,
+      required fields, latency and integration-health visibility against the approved source integration.
+    source: operational-guidance
+    applicability: Microsoft Sentinel cloud SIEM. Qualify tenant, region, workspace and portal experience.
+    exclusions: Unverified connector, content pack or regional support and independent acceptance authority.
+    owner: JAI security engineering maintainers
+    reviewed: '2026-11-23'
+  - id: verification-reference
+    delivery: optional
+    reference: log-source-integration-evidence.md
+    read_when: Recheck connector requirements, access, workspace and data tier, region, and Azure or
+      Defender portal availability before relying on deployment behavior.
+    source: product-source
+    applicability: Microsoft Sentinel cloud SIEM. Qualify tenant, region, workspace and portal experience.
+    exclusions: Unverified connector, content pack or regional support and independent acceptance authority.
+    owner: JAI security engineering maintainers
+    reviewed: '2026-11-23'
+sources:
+  product-source:
+    publisher: Microsoft
+    authority: public maintainer documentation
+    title: Microsoft Sentinel log-source integration source
+    url: https://learn.microsoft.com/en-us/azure/sentinel/microsoft-sentinel-defender-portal
+    applicability: Microsoft Sentinel cloud SIEM. Qualify tenant, region, workspace and portal experience.
+    reviewed: '2026-11-23'
+    owner: JAI security engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Recheck connector requirements, access, workspace and data tier, region, and Azure
+      or Defender portal availability before relying on deployment behavior.
+  operational-guidance:
+    publisher: Microsoft
+    authority: public maintainer documentation
+    title: Microsoft Sentinel data connectors
+    url: https://learn.microsoft.com/en-us/azure/sentinel/connect-data-sources
+    applicability: Microsoft Sentinel cloud SIEM. Qualify tenant, region, workspace and portal experience.
+    reviewed: '2026-11-23'
+    owner: JAI security engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Recheck connector requirements, access, workspace and data tier, region, and Azure
+      or Defender portal availability before relying on deployment behavior.

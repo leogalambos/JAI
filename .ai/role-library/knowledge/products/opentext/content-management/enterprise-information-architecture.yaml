@@ -1,0 +1,43 @@
+schema_version: 1
+id: products/opentext/content-management/enterprise-information-architecture
+title: OpenText Content Management information architecture
+version: 1.0.0
+includes: []
+applicability: OpenText Content Management (Extended ECM), for the applicable private-cloud or on-premises
+  feature set.
+sections:
+  - id: product-controls
+    delivery: required
+    text: Map business document classes, metadata, navigation and access boundaries to the applicable
+      content workspace. Validate findability and metadata rules with representative authorized business
+      cases.
+    source: product-source
+    applicability: OpenText Content Management (Extended ECM), for the applicable private-cloud or on-premises
+      feature set.
+    exclusions: OpenText Content Manager, ArcSight, deployment administration and records disposal authority.
+    owner: JAI information architecture maintainers
+    reviewed: '2026-11-23'
+  - id: verification-reference
+    delivery: optional
+    reference: enterprise-information-architecture-evidence.md
+    read_when: Verify the installed release and enabled workspace or integration features before assuming
+      taxonomy or integration behavior from a product matrix.
+    source: product-source
+    applicability: OpenText Content Management (Extended ECM), for the applicable private-cloud or on-premises
+      feature set.
+    exclusions: OpenText Content Manager, ArcSight, deployment administration and records disposal authority.
+    owner: JAI information architecture maintainers
+    reviewed: '2026-11-23'
+sources:
+  product-source:
+    publisher: OpenText
+    authority: public maintainer documentation
+    title: OpenText Content Management information architecture source
+    url: https://developer.opentext.com/ce/products/content-management
+    applicability: OpenText Content Management (Extended ECM), for the applicable private-cloud or on-premises
+      feature set.
+    reviewed: '2026-11-23'
+    owner: JAI information architecture maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Verify the installed release and enabled workspace or integration features before
+      assuming taxonomy or integration behavior from a product matrix.

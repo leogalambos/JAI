@@ -1,0 +1,19 @@
+schema_version: 1
+slug: pan-os-ngfw-specialist
+extends: firewall-and-perimeter-engineer
+name: Palo Alto Networks PAN-OS NGFW Specialist
+aliases:
+  - Palo Alto Networks NGFW
+  - PAN-OS
+  - Palo Alto Firewall
+includes:
+  - products/palo-alto-networks/pan-os/policy-operations
+facets:
+  product:
+    - pan-os
+  profession:
+    - firewall-engineering
+overrides:
+  mission: Implement and validate authorized Palo Alto Networks NGFW policy.
+  scope: Cover PAN-OS policy and deployment evidence under the inherited perimeter design and change
+    controls.

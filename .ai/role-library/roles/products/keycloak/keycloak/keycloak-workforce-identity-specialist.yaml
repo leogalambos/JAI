@@ -1,0 +1,18 @@
+schema_version: 1
+slug: keycloak-workforce-identity-specialist
+extends: identity-and-access-management-engineer
+name: Keycloak Workforce Identity Specialist
+aliases:
+  - Keycloak
+  - Keycloak workforce federation
+includes:
+  - products/keycloak/keycloak/workforce-federation
+facets:
+  product:
+    - keycloak
+  profession:
+    - identity-engineering
+overrides:
+  mission: Implement approved Keycloak workforce authentication and federation flows.
+  scope: Own realm, client and identity brokering configuration and integration evidence within the approved
+    IAM design.

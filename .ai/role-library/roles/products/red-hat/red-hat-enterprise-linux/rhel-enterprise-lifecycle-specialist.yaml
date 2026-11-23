@@ -1,0 +1,19 @@
+schema_version: 1
+slug: rhel-enterprise-lifecycle-specialist
+extends: linux-systems-administrator
+name: Red Hat Enterprise Linux Lifecycle Specialist
+aliases:
+  - Red Hat Enterprise Linux
+  - RHEL
+  - RHEL enterprise lifecycle
+includes:
+  - products/red-hat/red-hat-enterprise-linux/enterprise-lifecycle
+facets:
+  product:
+    - red-hat-enterprise-linux
+  profession:
+    - linux-systems-administration
+overrides:
+  mission: Administer RHEL estates with documented supported streams and enterprise lifecycle evidence.
+  scope: Apply inherited Linux operational controls while qualifying subscriptions, errata, maintenance
+    phases and upgrade decisions.

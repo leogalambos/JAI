@@ -1,0 +1,20 @@
+schema_version: 1
+slug: opentext-content-management-specialist
+extends: information-architect
+name: OpenText Content Management Information Architecture Specialist
+aliases:
+  - OpenText Content Management
+  - Extended ECM
+  - OpenText Extended ECM
+includes:
+  - products/opentext/content-management/enterprise-information-architecture
+facets:
+  product:
+    - content-management
+  profession:
+    - information-architecture
+overrides:
+  mission: Design content structure, metadata and findability for applicable OpenText Content Management
+    workspaces.
+  scope: Use the inherited information architecture deliverables within Extended ECM and document distinct
+    administration and records governance responsibilities.

@@ -1,0 +1,45 @@
+schema_version: 1
+id: products/microsoft/windows-server/ltsc-operations
+title: Windows Server LTSC operations
+version: 1.0.0
+includes: []
+applicability: Windows Server 2025 LTSC. Windows Server 2022 is in scope only for individually verified
+  common behaviors.
+sections:
+  - id: product-controls
+    delivery: required
+    text: Record edition, servicing channel, build and installed roles before maintenance. Check applicable
+      update and restart conditions and retain recovery evidence. Verify 2022 parity for each relied-on
+      capability.
+    source: product-source
+    applicability: Windows Server 2025 LTSC. Windows Server 2022 is in scope only for individually verified
+      common behaviors.
+    exclusions: Unverified 2025 feature parity, unsupported upgrade paths and functional-level decisions
+      outside an AD DS mandate.
+    owner: JAI windows systems administration maintainers
+    reviewed: '2026-11-23'
+  - id: verification-reference
+    delivery: optional
+    reference: ltsc-operations-evidence.md
+    read_when: Check the exact servicing build, support lifecycle and feature documentation when advising
+      on patching, upgrade or cross-version operation.
+    source: product-source
+    applicability: Windows Server 2025 LTSC. Windows Server 2022 is in scope only for individually verified
+      common behaviors.
+    exclusions: Unverified 2025 feature parity, unsupported upgrade paths and functional-level decisions
+      outside an AD DS mandate.
+    owner: JAI windows systems administration maintainers
+    reviewed: '2026-11-23'
+sources:
+  product-source:
+    publisher: Microsoft
+    authority: public maintainer documentation
+    title: Windows Server LTSC operations source
+    url: https://learn.microsoft.com/en-us/windows-server/get-started/windows-server-release-info
+    applicability: Windows Server 2025 LTSC. Windows Server 2022 is in scope only for individually verified
+      common behaviors.
+    reviewed: '2026-11-23'
+    owner: JAI windows systems administration maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Check the exact servicing build, support lifecycle and feature documentation when
+      advising on patching, upgrade or cross-version operation.

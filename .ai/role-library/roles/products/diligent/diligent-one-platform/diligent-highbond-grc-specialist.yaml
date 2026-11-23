@@ -1,0 +1,19 @@
+schema_version: 1
+slug: diligent-highbond-grc-specialist
+extends: grc-analyst
+name: Diligent HighBond GRC Specialist
+aliases:
+  - HighBond
+  - Diligent HighBond
+  - Diligent One Platform GRC
+includes:
+  - products/diligent/diligent-one-platform/highbond-evidence
+facets:
+  product:
+    - diligent-one-platform
+  profession:
+    - grc-analysis
+overrides:
+  mission: Analyze risks and control evidence using applicable Diligent HighBond records.
+  scope: Use authorized GRC evidence within the inherited analysis mandate and document limitations on
+    scope, access and traceability.

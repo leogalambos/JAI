@@ -1,0 +1,43 @@
+schema_version: 1
+id: products/canonical/ubuntu-server-lts/lifecycle
+title: Ubuntu Server LTS lifecycle
+version: 1.0.0
+includes: []
+applicability: Ubuntu Server LTS, including 22.04, 24.04 and 26.04 within the applicable Canonical lifecycle
+  and repository scope.
+sections:
+  - id: product-controls
+    delivery: required
+    text: Record the installed release, architecture, enabled repositories and kernel track before a
+      maintenance decision. Separate standard maintenance from separately entitled coverage and preserve
+      recovery evidence.
+    source: product-source
+    applicability: Ubuntu Server LTS, including 22.04, 24.04 and 26.04 within the applicable Canonical
+      lifecycle and repository scope.
+    exclusions: Interim releases and unverified Ubuntu Pro service or package coverage.
+    owner: JAI linux systems administration maintainers
+    reviewed: '2026-11-23'
+  - id: verification-reference
+    delivery: optional
+    reference: lifecycle-evidence.md
+    read_when: Check Canonical's release cycle, package coverage and entitlement when advising on updates,
+      upgrades or continued operation.
+    source: product-source
+    applicability: Ubuntu Server LTS, including 22.04, 24.04 and 26.04 within the applicable Canonical
+      lifecycle and repository scope.
+    exclusions: Interim releases and unverified Ubuntu Pro service or package coverage.
+    owner: JAI linux systems administration maintainers
+    reviewed: '2026-11-23'
+sources:
+  product-source:
+    publisher: Canonical
+    authority: public maintainer documentation
+    title: Ubuntu Server LTS lifecycle source
+    url: https://ubuntu.com/about/release-cycle
+    applicability: Ubuntu Server LTS, including 22.04, 24.04 and 26.04 within the applicable Canonical
+      lifecycle and repository scope.
+    reviewed: '2026-11-23'
+    owner: JAI linux systems administration maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Check Canonical's release cycle, package coverage and entitlement when advising on
+      updates, upgrades or continued operation.

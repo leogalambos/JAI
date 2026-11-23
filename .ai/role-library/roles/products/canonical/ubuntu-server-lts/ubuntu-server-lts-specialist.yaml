@@ -1,0 +1,18 @@
+schema_version: 1
+slug: ubuntu-server-lts-specialist
+extends: linux-systems-administrator
+name: Ubuntu Server LTS Specialist
+aliases:
+  - Ubuntu Server
+  - Ubuntu Server LTS
+includes:
+  - products/canonical/ubuntu-server-lts/lifecycle
+facets:
+  product:
+    - ubuntu-server-lts
+  profession:
+    - linux-systems-administration
+overrides:
+  mission: Administer supported Ubuntu Server LTS installations within approved operational controls.
+  scope: Cover package, kernel and release maintenance, hardening evidence and recovery for the exact
+    LTS deployment.

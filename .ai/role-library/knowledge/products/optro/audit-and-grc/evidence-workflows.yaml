@@ -1,0 +1,42 @@
+schema_version: 1
+id: products/optro/audit-and-grc/evidence-workflows
+title: Optro audit and GRC evidence workflows
+version: 1.0.0
+includes: []
+applicability: Optro, formerly AuditBoard. Confirm the enabled tenant module and contractual evidence
+  controls.
+sections:
+  - id: product-controls
+    delivery: required
+    text: Bind the engagement or control identifier to its evidence and period. Preserve evidence origin,
+      access restrictions and independent review when retrieving workpapers or control records.
+    source: product-source
+    applicability: Optro, formerly AuditBoard. Confirm the enabled tenant module and contractual evidence
+      controls.
+    exclusions: Unverified APIs, retention defaults, tenant administration and authority to accept risk.
+    owner: JAI internal audit maintainers
+    reviewed: '2026-11-23'
+  - id: verification-reference
+    delivery: optional
+    reference: evidence-workflows-evidence.md
+    read_when: Confirm tenant module, entitlements, evidence access, export and retention with the product
+      owner before relying on service behavior.
+    source: product-source
+    applicability: Optro, formerly AuditBoard. Confirm the enabled tenant module and contractual evidence
+      controls.
+    exclusions: Unverified APIs, retention defaults, tenant administration and authority to accept risk.
+    owner: JAI internal audit maintainers
+    reviewed: '2026-11-23'
+sources:
+  product-source:
+    publisher: Optro
+    authority: public maintainer documentation
+    title: Optro audit and GRC evidence workflows source
+    url: https://optro.ai/auditboard-to-optro
+    applicability: Optro, formerly AuditBoard. Confirm the enabled tenant module and contractual evidence
+      controls.
+    reviewed: '2026-11-23'
+    owner: JAI internal audit maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Confirm tenant module, entitlements, evidence access, export and retention with the
+      product owner before relying on service behavior.

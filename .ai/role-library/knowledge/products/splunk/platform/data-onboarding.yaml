@@ -1,0 +1,43 @@
+schema_version: 1
+id: products/splunk/platform/data-onboarding
+title: Splunk platform data onboarding
+version: 1.0.0
+includes:
+  - products/splunk/platform/data-normalization
+applicability: Splunk Enterprise and Splunk Cloud Platform. Qualify the exact deployment and ingestion
+  components.
+sections:
+  - id: product-controls
+    delivery: required
+    text: Pin the approved ingestion route, index, source type, time parsing and data ownership. Verify
+      record arrival, field extraction and retention responsibility against the applicable platform model.
+    source: product-source
+    applicability: Splunk Enterprise and Splunk Cloud Platform. Qualify the exact deployment and ingestion
+      components.
+    exclusions: Enterprise Security-specific correlation, risk and security operations outputs.
+    owner: JAI data engineering maintainers
+    reviewed: '2026-11-23'
+  - id: verification-reference
+    delivery: optional
+    reference: data-onboarding-evidence.md
+    read_when: Check platform, forwarder, app and add-on compatibility and cloud tenancy restrictions
+      when changing an input or upgrading.
+    source: product-source
+    applicability: Splunk Enterprise and Splunk Cloud Platform. Qualify the exact deployment and ingestion
+      components.
+    exclusions: Enterprise Security-specific correlation, risk and security operations outputs.
+    owner: JAI data engineering maintainers
+    reviewed: '2026-11-23'
+sources:
+  product-source:
+    publisher: Splunk
+    authority: public maintainer documentation
+    title: Splunk platform data onboarding source
+    url: https://help.splunk.com/en/splunk-enterprise/release-notes-and-updates/compatibility-matrix/splunk-products-version-compatibility/splunk-products-version-compatibility-matrix
+    applicability: Splunk Enterprise and Splunk Cloud Platform. Qualify the exact deployment and ingestion
+      components.
+    reviewed: '2026-11-23'
+    owner: JAI data engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Check platform, forwarder, app and add-on compatibility and cloud tenancy restrictions
+      when changing an input or upgrading.

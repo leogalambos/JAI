@@ -1,0 +1,19 @@
+schema_version: 1
+slug: arcsight-esm-specialist
+extends: security-engineer
+name: OpenText ArcSight ESM Integration Specialist
+aliases:
+  - ArcSight
+  - ArcSight ESM
+  - OpenText Enterprise Security Manager
+includes:
+  - products/opentext/arcsight-enterprise-security-manager/log-source-integration
+facets:
+  product:
+    - arcsight-enterprise-security-manager
+  profession:
+    - security-engineering
+overrides:
+  mission: Integrate and validate approved event sources in OpenText Enterprise Security Manager.
+  scope: Cover connector routing, normalization and health evidence under the inherited security tooling
+    integration contract.

@@ -1,0 +1,45 @@
+schema_version: 1
+id: products/microsoft/active-directory-domain-services/functional-levels
+title: Active Directory Domain Services functional levels
+version: 1.0.0
+includes: []
+applicability: Windows Server 2025 AD DS and verified common Windows Server 2022 AD DS operation at compatible
+  functional levels.
+sections:
+  - id: product-controls
+    delivery: required
+    text: Pin controller operating systems, replication and domain and forest functional levels. Both
+      Windows Server 2022 and 2025 controllers can operate at the 2016 functional level. The 2025 level
+      requires Windows Server 2025 controllers.
+    source: product-source
+    applicability: Windows Server 2025 AD DS and verified common Windows Server 2022 AD DS operation
+      at compatible functional levels.
+    exclusions: Microsoft Entra ID, unverified functional-level raises and forest recovery execution
+      without approval.
+    owner: JAI windows systems administration maintainers
+    reviewed: '2026-11-23'
+  - id: verification-reference
+    delivery: optional
+    reference: functional-levels-evidence.md
+    read_when: Recheck the supported matrix, controller inventory and recovery prerequisites before planning
+      a controller upgrade or functional-level change.
+    source: product-source
+    applicability: Windows Server 2025 AD DS and verified common Windows Server 2022 AD DS operation
+      at compatible functional levels.
+    exclusions: Microsoft Entra ID, unverified functional-level raises and forest recovery execution
+      without approval.
+    owner: JAI windows systems administration maintainers
+    reviewed: '2026-11-23'
+sources:
+  product-source:
+    publisher: Microsoft
+    authority: public maintainer documentation
+    title: Active Directory Domain Services functional levels source
+    url: https://learn.microsoft.com/en-us/windows-server/identity/ad-ds/active-directory-functional-levels
+    applicability: Windows Server 2025 AD DS and verified common Windows Server 2022 AD DS operation
+      at compatible functional levels.
+    reviewed: '2026-11-23'
+    owner: JAI windows systems administration maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Recheck the supported matrix, controller inventory and recovery prerequisites before
+      planning a controller upgrade or functional-level change.

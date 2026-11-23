@@ -1,0 +1,19 @@
+schema_version: 1
+slug: splunk-platform-telemetry-specialist
+extends: data-engineer
+name: Splunk Platform Telemetry Specialist
+aliases:
+  - Splunk Enterprise
+  - Splunk Cloud Platform
+  - Splunk telemetry
+includes:
+  - products/splunk/platform/data-onboarding
+facets:
+  product:
+    - splunk-platform
+  profession:
+    - data-engineering
+overrides:
+  mission: Engineer and validate approved telemetry ingestion pipelines on the applicable Splunk platform.
+  scope: Cover source-to-target mapping, data arrival quality, retention handoff and pipeline support
+    under the inherited data engineering mandate.

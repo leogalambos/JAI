@@ -1,0 +1,41 @@
+schema_version: 1
+id: products/keycloak/keycloak/workforce-federation
+title: Keycloak workforce federation
+version: 1.0.0
+includes: []
+applicability: Upstream Keycloak 26.8 administration. Verify the selected distribution and server version.
+sections:
+  - id: product-controls
+    delivery: required
+    text: Identify the realm, clients and identity providers before modifying trust. Pin issuer and redirect
+      constraints; verify broker account linking, claims and recovery against the approved identity flow.
+    source: product-source
+    applicability: Upstream Keycloak 26.8 administration. Verify the selected distribution and server
+      version.
+    exclusions: Downstream support terms, user-store redesign, and custom extension compatibility.
+    owner: JAI identity engineering maintainers
+    reviewed: '2026-11-23'
+  - id: verification-reference
+    delivery: optional
+    reference: workforce-federation-evidence.md
+    read_when: Confirm the exact server and client versions, deployment topology, identity provider metadata
+      and migration guidance when changing a realm, federation or runtime.
+    source: product-source
+    applicability: Upstream Keycloak 26.8 administration. Verify the selected distribution and server
+      version.
+    exclusions: Downstream support terms, user-store redesign, and custom extension compatibility.
+    owner: JAI identity engineering maintainers
+    reviewed: '2026-11-23'
+sources:
+  product-source:
+    publisher: Keycloak maintainers
+    authority: public maintainer documentation
+    title: Keycloak workforce federation source
+    url: https://www.keycloak.org/docs/latest/server_admin/
+    applicability: Upstream Keycloak 26.8 administration. Verify the selected distribution and server
+      version.
+    reviewed: '2026-11-23'
+    owner: JAI identity engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Confirm the exact server and client versions, deployment topology, identity provider
+      metadata and migration guidance when changing a realm, federation or runtime.

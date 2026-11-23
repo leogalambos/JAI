@@ -1,0 +1,19 @@
+schema_version: 1
+slug: debian-stable-server-specialist
+extends: linux-systems-administrator
+name: Debian Stable Server Specialist
+aliases:
+  - Debian Stable
+  - Debian Server
+  - Debian Trixie
+includes:
+  - products/debian/debian-stable/lifecycle
+facets:
+  product:
+    - debian-stable
+  profession:
+    - linux-systems-administration
+overrides:
+  mission: Administer Debian Stable servers and qualify their maintenance phase.
+  scope: Cover released APT and kernel lifecycle, service health and recovery evidence for the applicable
+    Debian estate.

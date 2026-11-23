@@ -1,0 +1,20 @@
+schema_version: 1
+slug: diligent-highbond-internal-audit-specialist
+extends: internal-it-auditor
+name: Diligent HighBond Internal Audit Specialist
+aliases:
+  - HighBond internal audit
+  - Diligent One audit
+  - HighBond
+  - Diligent HighBond
+includes:
+  - products/diligent/diligent-one-platform/highbond-evidence
+facets:
+  product:
+    - diligent-one-platform
+  profession:
+    - internal-audit
+overrides:
+  mission: Perform independent internal IT audit using applicable Diligent HighBond evidence.
+  scope: Review assigned workpapers and authorized evidence with the inherited audit assessment and independence
+    controls.

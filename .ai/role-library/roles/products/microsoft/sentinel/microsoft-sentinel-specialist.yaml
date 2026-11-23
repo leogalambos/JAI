@@ -1,0 +1,18 @@
+schema_version: 1
+slug: microsoft-sentinel-specialist
+extends: security-engineer
+name: Microsoft Sentinel Integration Specialist
+aliases:
+  - Microsoft Sentinel
+  - Azure Sentinel
+includes:
+  - products/microsoft/sentinel/log-source-integration
+facets:
+  product:
+    - sentinel
+  profession:
+    - security-engineering
+overrides:
+  mission: Integrate and validate approved security log sources in Microsoft Sentinel.
+  scope: Cover source onboarding, normalization evidence and health visibility under the existing security
+    tooling integration contract.

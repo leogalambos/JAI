@@ -1,0 +1,42 @@
+schema_version: 1
+id: products/debian/debian-stable/lifecycle
+title: Debian Stable lifecycle
+version: 1.0.0
+includes: []
+applicability: Debian 13 Trixie stable at review. Assess older releases by their actual stable, oldstable
+  or LTS phase.
+sections:
+  - id: product-controls
+    delivery: required
+    text: Pin the release codename, architecture and enabled APT sources before maintenance. Check security
+      and LTS coverage separately and record update, reboot and recovery evidence.
+    source: product-source
+    applicability: Debian 13 Trixie stable at review. Assess older releases by their actual stable, oldstable
+      or LTS phase.
+    exclusions: Testing and unstable branches, downstream distributions and unverified LTS package coverage.
+    owner: JAI linux systems administration maintainers
+    reviewed: '2026-11-23'
+  - id: verification-reference
+    delivery: optional
+    reference: lifecycle-evidence.md
+    read_when: Consult Debian release and security guidance when a suite changes phase, a package coverage
+      claim changes, or a release upgrade is planned.
+    source: product-source
+    applicability: Debian 13 Trixie stable at review. Assess older releases by their actual stable, oldstable
+      or LTS phase.
+    exclusions: Testing and unstable branches, downstream distributions and unverified LTS package coverage.
+    owner: JAI linux systems administration maintainers
+    reviewed: '2026-11-23'
+sources:
+  product-source:
+    publisher: Debian Project
+    authority: public maintainer documentation
+    title: Debian Stable lifecycle source
+    url: https://www.debian.org/releases/index.html
+    applicability: Debian 13 Trixie stable at review. Assess older releases by their actual stable, oldstable
+      or LTS phase.
+    reviewed: '2026-11-23'
+    owner: JAI linux systems administration maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Consult Debian release and security guidance when a suite changes phase, a package
+      coverage claim changes, or a release upgrade is planned.

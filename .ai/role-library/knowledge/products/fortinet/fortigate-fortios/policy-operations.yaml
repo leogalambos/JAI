@@ -1,0 +1,55 @@
+schema_version: 1
+id: products/fortinet/fortigate-fortios/policy-operations
+title: Fortinet FortiGate and FortiOS policy operations
+version: 1.0.0
+includes: []
+applicability: FortiGate and FortiOS, reviewed against the public 7.6 documentation branch. Verify the
+  model, firmware build and management mode.
+sections:
+  - id: product-controls
+    delivery: required
+    text: Identify policy scope, VDOM or device context where applicable, the approved traffic intent
+      and logging. Validate expected allowed and denied paths in the approved change window and capture
+      a usable rollback.
+    source: product-source
+    applicability: FortiGate and FortiOS, reviewed against the public 7.6 documentation branch. Verify
+      the model, firmware build and management mode.
+    exclusions: Unapproved traffic policy, unverified hardware and firmware combinations, and unverified
+      FortiCare or FortiGuard entitlement.
+    owner: JAI firewall engineering maintainers
+    reviewed: '2026-11-23'
+  - id: verification-reference
+    delivery: optional
+    reference: policy-operations-evidence.md
+    read_when: Verify the exact model, FortiOS release and upgrade path, managed status and licensed
+      inspection capability before giving release-dependent instructions.
+    source: fortios-766-release-notes
+    applicability: FortiGate and FortiOS, reviewed against the public 7.6 documentation branch. Verify
+      the model, firmware build and management mode.
+    exclusions: Unapproved traffic policy, unverified hardware and firmware combinations, and unverified
+      FortiCare or FortiGuard entitlement.
+    owner: JAI firewall engineering maintainers
+    reviewed: '2026-11-23'
+sources:
+  product-source:
+    publisher: Fortinet
+    authority: public maintainer documentation
+    title: Fortinet FortiGate and FortiOS policy operations source
+    url: https://docs.fortinet.com/document/fortigate/7.6.0/administration-guide
+    applicability: FortiGate and FortiOS, reviewed against the public 7.6 documentation branch. Verify
+      the model, firmware build and management mode.
+    reviewed: '2026-11-23'
+    owner: JAI firewall engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Verify the exact model, FortiOS release and upgrade path, managed status and licensed
+      inspection capability before giving release-dependent instructions.
+  fortios-766-release-notes:
+    publisher: Fortinet
+    authority: vendor release documentation
+    title: FortiOS 7.6.6 Release Notes
+    url: https://fortinetweb.s3.amazonaws.com/docs.fortinet.com/v2/attachments/55b9f238-fafc-11f0-8b43-d2943efe5b2f/fortios-v7.6.6-release-notes.pdf
+    applicability: FortiOS 7.6.6 supported models and special builds as published for this release.
+    reviewed: '2026-11-23'
+    owner: JAI firewall engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Check release-specific model, upgrade path and support entitlement before implementation.

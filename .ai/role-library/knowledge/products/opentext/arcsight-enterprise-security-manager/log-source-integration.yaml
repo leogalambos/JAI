@@ -1,0 +1,42 @@
+schema_version: 1
+id: products/opentext/arcsight-enterprise-security-manager/log-source-integration
+title: OpenText Enterprise Security Manager log-source integration
+version: 1.0.0
+includes: []
+applicability: OpenText Enterprise Security Manager (ArcSight ESM), reviewed against public 7.9 documentation.
+  Verify exact ESM and connector releases.
+sections:
+  - id: product-controls
+    delivery: required
+    text: Trace each source through its SmartConnector and event destination to ESM. Confirm event identity
+      and mapped fields using authorized sample evidence and check the integration health signal.
+    source: product-source
+    applicability: OpenText Enterprise Security Manager (ArcSight ESM), reviewed against public 7.9 documentation.
+      Verify exact ESM and connector releases.
+    exclusions: OpenText Content Management, unsupported connectors and unverified lifecycle status.
+    owner: JAI security engineering maintainers
+    reviewed: '2026-11-23'
+  - id: verification-reference
+    delivery: optional
+    reference: log-source-integration-evidence.md
+    read_when: Verify connector and ESM compatibility, deployment requirements and the current support
+      lifecycle before onboarding or upgrading.
+    source: product-source
+    applicability: OpenText Enterprise Security Manager (ArcSight ESM), reviewed against public 7.9 documentation.
+      Verify exact ESM and connector releases.
+    exclusions: OpenText Content Management, unsupported connectors and unverified lifecycle status.
+    owner: JAI security engineering maintainers
+    reviewed: '2026-11-23'
+sources:
+  product-source:
+    publisher: OpenText
+    authority: public maintainer documentation
+    title: OpenText Enterprise Security Manager log-source integration source
+    url: https://www.microfocus.com/documentation/arcsight/arcsight-esm-7.9/
+    applicability: OpenText Enterprise Security Manager (ArcSight ESM), reviewed against public 7.9 documentation.
+      Verify exact ESM and connector releases.
+    reviewed: '2026-11-23'
+    owner: JAI security engineering maintainers
+    use_restrictions: Use the public locator and original paraphrases.
+    review_trigger: Verify connector and ESM compatibility, deployment requirements and the current support
+      lifecycle before onboarding or upgrading.
