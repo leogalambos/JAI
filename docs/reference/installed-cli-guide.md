@@ -907,6 +907,9 @@ documents it. The architecture is a library of small files — elements
 and the 36 cells of the SABSA matrix — from which the document is
 generated.
 
+For governed SABSA, see [row algorithm selection and blocked-row recovery](../operations/gen2-deployment-recovery.md#select-a-sabsa-row-algorithm)
+for the three modes, per-layer overrides and additional prerequisites.
+
 **Syntax.**
 
 === "Claude Code"

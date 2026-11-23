@@ -18,7 +18,11 @@ content with typed cross-layer traceability, owner and evidence. Governed work
 uses the current Gen2 SABSA layer registry; library cell identifiers and runtime
 owner coordinates remain distinct identities, not an old fixed author/reviewer
 layer scheme. Use the `sabsa-library` skill's native Gen2 handoff when required.
-For a governed SABSA launch select `--sabsa-row-mode deterministic` by default.
+The native parent uses `governed_layered.py start --provider claude` in
+Claude Code and the installed Codex App Server carrier in Codex. Follow
+the canonical `layered-justifiable-delivery` skill's native parent procedure
+for the complete commands. For either governed SABSA launch select
+`--sabsa-row-mode deterministic` by default.
 Use `llm-assisted` or `left-to-right` only for the operator's requested mode.
 The operator may provide per-layer modes and additional hard prerequisites via
 `--sabsa-row-modes FILE` and `--question-dependencies FILE`. Report any

@@ -19,6 +19,11 @@ prepare bootstrap JSON or workers. Preserve the complete catalogue and local
 staffing autonomy. Source availability does not prove installed activation or
 unobserved live-provider qualification.
 
+For governed Layered or SABSA work in Claude Code, use the shared foreground
+`governed_layered.py` with `start --provider claude` or `resume --session FILE`.
+Follow the canonical skill's `references/native-parent.md` for the full
+command, native collaboration and the shared SABSA row options.
+
 Source code written by the agent follows `~/.ai/it-role-house/standards/code-documentation.md` and `~/.ai/it-role-house/standards/testing.md`; installed hooks enforce documentation, tests and a passing test run after the last production-code change.
 
 Names explicitly described as agents are Claude subagents and must be delegated through the Agent tool, not invoked as skills. Preserve separation of duties: reviewers never fix, authors never verify, and role operators must stay within their tool tier. Never edit `.fabric/` or `.findings/` directly. Authority acts — accepting risk, granting an exception, accepting a product, approving a protected library change — belong to the human and must never be pre-approved or routed around.

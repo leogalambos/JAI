@@ -44,13 +44,33 @@ uses a private PTY, configure that private PTY for noncanonical, no-echo input
 before starting the runtime so complete JSON frames are not truncated. Do not
 reconfigure the operator's own interactive terminal.
 
-Internal start arguments are `start --home .fabric --engagement ID --task FILE
---provider codex|claude --work-item ID`. Optional `--deadline-ms ABSOLUTE_MS`
-and `--limit-ms MS` impose explicit global caps; omission means no aggregate cap.
+For Claude Code native collaboration, start the foreground runtime with:
+
+```sh
+python3 "$HOME/.ai/it-role-house/tools/governed_layered.py" \
+  start --provider claude --home .fabric --engagement "$ENGAGEMENT_ID" \
+  --task "$TASK_FILE" --work-item "$WORK_ITEM_ID"
+```
+
+For governed SABSA, append the row options described below to this start
+command. The shared CLI also accepts `--provider codex` for hosts using the
+native collaboration procedure. The installed Codex App Server path uses
+the carrier above. Optional `--deadline-ms ABSOLUTE_MS` and `--limit-ms MS`
+impose explicit global caps; omission means no aggregate cap.
 Local defaults are `--iteration-ms 600000 --max-reworks 3`. Local selection/work
 shares its incoming unit's iteration; preparation does not start its clock.
 Optional `--criteria FILE`, `--config FILE` and `--model-config FILE` preserve
 actual explicit input/enrollment. Omitted criteria reuse task bytes verbatim.
+For governed SABSA, pass `--sabsa-row-mode deterministic` unless the operator
+selects `llm-assisted` or `left-to-right`. Pass any operator-provided per-layer
+mode and prerequisite files as `--sabsa-row-modes FILE` and
+`--question-dependencies FILE`. Both foreground transports use the same captured
+policy, including the Claude native collaboration path with `--provider claude`.
+For a reported `question_order_conflict`, retain the exact procedure reference.
+With the operator's instruction, use the common runtime's
+`change-blocked-row-order --session FILE --procedure REF_FILE --operator-instruction FILE`
+and resume with the original transport.
+
 The generated `.fabric/ID.session.json` locates the journal and pinned enrollment;
 it contains no governing workflow state. Cold resume uses `resume --session FILE`.
 An explicit changed `--config` creates a distinct pinned locator; no old hash is

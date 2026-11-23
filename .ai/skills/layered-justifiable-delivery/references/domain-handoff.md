@@ -13,7 +13,12 @@ through six layers or label a consequential result ordinary to bypass its gates.
 2. Invoke the canonical `layered-justifiable-delivery` skill through the active
    provider's existing native mechanism. The user-facing entry is `/layered` in
    Claude and `$workflow-layered` in Codex. The parent captures the actual task
-   and handles `governed_layered.py` transport internally. Never require the user
+   and uses the active provider's transport internally. For Claude Code use the
+   common foreground `governed_layered.py` runtime with `--provider claude`.
+   For Codex App Server use the Codex carrier. When the engagement requests
+   governed SABSA, pass through the selected row mode, per-layer overrides
+   and additional prerequisites using the
+   [native parent procedure](native-parent.md). Never require the user
    to author bootstrap JSON, implement a worker or start another model client.
 3. If this is continuation, name the existing engagement and its exact current
    references. Resume its unfinished work and preserve bounds; do not replace it

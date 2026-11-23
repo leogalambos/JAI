@@ -20,6 +20,10 @@ users do not prepare bootstrap JSON or workers. Preserve the complete catalogue
 and local staffing autonomy. Source availability does not prove installed
 activation or unobserved live-provider qualification.
 
+For governed Layered or SABSA work in Codex, use the installed Codex App
+Server carrier described in the canonical skill's `references/native-parent.md`.
+It accepts the shared SABSA row options on start.
+
 Source code written by the agent follows `~/.ai/it-role-house/standards/code-documentation.md` and `~/.ai/it-role-house/standards/testing.md`; installed hooks enforce documentation, tests and a passing test run after the last production-code change.
 
 Preserve separation of duties: reviewers never fix, authors never verify, and role operators stay within their source tool tier. Never edit `.fabric/` or `.findings/` directly. Authority acts belong to the human. Codex PreToolUse hooks cannot manufacture an interactive approval request, so an authority command attempted by Codex is intentionally denied and the human must run that command explicitly. Do not bypass that fail-closed boundary.

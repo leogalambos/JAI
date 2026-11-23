@@ -72,6 +72,25 @@ Before substantive work, the entitled setter records a versioned engagement prof
 
 A general JAI engagement may select a proportionate subset. An engagement requesting SABSA deliverables must satisfy its selected method requirements and agreed scope; it cannot silently use a lighter generic profile. All six questions remain accounted for, even where a justified exclusion is permitted. The word "complete" always names the profile, source scope, and output versions against which it was assessed.
 
+### Row scheduling
+
+JAI evaluates hard prerequisites within each row before issuing dependent
+work. A question becomes eligible when its prerequisites have exact current
+selected answers. Ready questions may overlap if the carrier has capacity.
+If a predecessor is replaced, dependent work must bind to the replacement
+before it can advance. Trace links can span layers and support later revisions.
+
+| Mode | Scheduling rule |
+| --- | --- |
+| `deterministic` | Uses the maintained JAI row rules plus operator-supplied hard prerequisites. Dependency classification requires no model response. The ordinary setter, author and reviewer work still runs. |
+| `llm-assisted` | The layer setter proposes task-specific prerequisites during its governed response. The runtime adds them to the pinned hard rules and validates the combined graph. |
+| `left-to-right` | Processes What, Why, How, Who, Where, When in display order while enforcing all hard prerequisites. A hard dependency on a later question blocks that order and requires operator intervention. |
+
+For example, the default contextual row allows What, Who and Where to start
+independently. Why and How wait for What, and When waits for Where. These are
+local scheduling rules. The required artefacts and evidence remain governed by
+the selected SABSA scope. See [configuration and blocked-row recovery](../operations/gen2-deployment-recovery.md#select-a-sabsa-row-algorithm).
+
 ## 3. Required information-unit baseline
 
 The following is the **JAI minimum** for this profile. It does not attribute this

@@ -81,7 +81,7 @@ The inspector has four discoverable tabs:
 | Tab | Contents |
 | --- | --- |
 | Overview | The selected record's identifying fields, kind and finding state where applicable. |
-| Relations | Recorded direction, endpoints, relationship basis and finding subjects. |
+| Relations | Recorded direction, endpoints, relationship basis and finding subjects. For an assessment, open the exact governing criteria and reviewed subject. For a finding product, follow recorded related links to its escalation when present. |
 | Evidence | Source provenance and bounded captured-source pages. |
 | Raw | Complete stable identity, original fields and tagged attributes. |
 
@@ -91,6 +91,10 @@ match. A relationship's direction and basis must be read from its recorded
 evidence, not inferred from its visual position.
 
 ### Inspect a recorded relationship
+
+An escalation's Overview shows its recorded state and any recorded requested
+decisions. Reviewer summaries and unavailable historical text retain their
+label provenance in Evidence.
 
 [![The Relations inspector showing inheritance from Delivery 04, Solution Architect, to Delivery 05, Security Architect.](../assets/images/fabric-explorer/workflow-relation.png)](../assets/images/fabric-explorer/workflow-relation.png)
 

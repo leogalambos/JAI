@@ -54,6 +54,13 @@ The entities select suitable specialties from the
 [complete role catalogue](../reference/roles.md), without a neighbour imposing
 their internal staffing or method.
 
+Within a layer, a declared hard prerequisite is bound to the exact current
+selected answer. Ready independent questions can progress concurrently within
+the carrier's capacity. A revised predecessor can invalidate dependent work
+and require rebinding. A dependent question cannot proceed on a withdrawn
+answer. See [SABSA row scheduling](../reference/sabsa-delivery-profile.md#row-scheduling)
+for the three selectable algorithms used by governed SABSA engagements.
+
 Reviewed answers form a versioned layer bundle. Integration review checks their
 interactions before the receiving neighbour accepts the exact handoff for use.
 That receiving decision is not a substitute for the producing layer's professional
@@ -64,6 +71,13 @@ The native parent assembles compact task-specific contexts. An author and
 reviewer use separate contexts; each receives relevant input sections and
 references to supporting material rather than the entire conversational history.
 Missing information is requested through the declared interface.
+
+On the Codex path, JAI starts and manages a local App Server as a child
+process. Each physical turn uses a fresh worker thread and one assigned
+member. A bounded broker serves that member's authorised resources. The
+launcher can schedule up to six ready turns concurrently when configured.
+The default is one turn at a time. An ambiguous dispatch is reconciled using
+the recorded thread and turn before any further dispatch for that invocation.
 
 ## Revisions and escalation
 

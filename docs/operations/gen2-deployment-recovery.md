@@ -67,13 +67,90 @@ foreground runtime use that environment. A shell-profile edit is unnecessary.
 Installing both projections requires no client launch or account credentials.
 Projections do not prove separate operating-system confinement for each child.
 
-## Restart and recovery
+## Select a SABSA row algorithm
 
-The parent resumes current-format work through the actual installed CLI:
+For a new governed SABSA engagement, tell `/sabsa` in Claude Code or
+`$workflow-sabsa` in Codex which row mode to use. The workflow selects
+`deterministic` by default. The foreground runtime and the Codex carrier
+accept these options on `start`:
+
+| Option | Input |
+| --- | --- |
+| `--sabsa-row-mode MODE` | Default for all rows. Choose `deterministic`, `llm-assisted` or `left-to-right`. |
+| `--sabsa-row-modes FILE` | JSON object with layer numbers as string keys and mode names as values, for example `{"3":"llm-assisted"}`. |
+| `--question-dependencies FILE` | JSON object keyed by layer number, then by dependent question. For example, `{"1":{"who":["what"]}}` makes L1 Who wait for What. |
+
+Use keys `"1"` through `"6"` and exact lowercase question names. Additional
+prerequisites are merged with the maintained rules. Invalid names, self
+dependencies and cycles are rejected. The runtime captures the policy at launch,
+and resume reuses it. The [SABSA delivery profile](../reference/sabsa-delivery-profile.md#row-scheduling)
+explains how each algorithm evaluates dependencies.
+
+The same row policy is available through both clients. The orchestrating
+parent uses the start command for its transport and supplies the local task
+file and engagement identifiers.
+
+=== "Claude Code"
+
+    ```sh
+    "$JAI_RUNTIME_PYTHON" "$HOME/.ai/it-role-house/tools/governed_layered.py" \
+      start --provider claude --engagement "$ENGAGEMENT_ID" \
+      --work-item "$WORK_ITEM_ID" --task "$TASK_FILE" --sabsa-row-mode deterministic
+    ```
+
+    The Claude parent keeps the foreground runtime open and handles native
+    collaboration and admission through that session.
+
+=== "Codex CLI"
+
+    ```sh
+    "$JAI_RUNTIME_PYTHON" "$HOME/.ai/it-role-house/tools/governed_codex_carrier.py" \
+      --codex "$CODEX_EXECUTABLE" start --engagement "$ENGAGEMENT_ID" \
+      --work-item "$WORK_ITEM_ID" --task "$TASK_FILE" --sabsa-row-mode deterministic
+    ```
+
+    JAI starts the Codex App Server child process and handles dispatch and admission.
+
+### Recover a blocked row
+
+When the runtime reports `question_order_conflict`, retain the exact
+`procedure` reference from the response as JSON. Pause the foreground carrier,
+save the operator's instruction to switch that row to dependency order in a
+local text file, and run:
 
 ```sh
-"$JAI_RUNTIME_PYTHON" "$HOME/.ai/it-role-house/tools/governed_layered.py" resume --session /private/engagement/example.session.json
+"$JAI_RUNTIME_PYTHON" "$HOME/.ai/it-role-house/tools/governed_layered.py" \
+  change-blocked-row-order --session "$SESSION_LOCATOR" \
+  --procedure "$PROCEDURE_REF_FILE" --operator-instruction "$INSTRUCTION_FILE"
 ```
+
+Use the complete reference object, including the engagement, scope, logical ID
+and version ID. The runtime accepts the switch only for the reported blocked
+layer procedure in the current scope. It records the instruction and switches
+that procedure to deterministic dependency order with its mandatory
+prerequisites intact. Resume the same engagement using its original carrier.
+
+## Restart and recovery
+
+The parent resumes current-format work using its original carrier and the
+existing session locator.
+
+=== "Claude Code"
+
+    ```sh
+    "$JAI_RUNTIME_PYTHON" "$HOME/.ai/it-role-house/tools/governed_layered.py" \
+      resume --session "$SESSION_LOCATOR"
+    ```
+
+=== "Codex CLI"
+
+    ```sh
+    "$JAI_RUNTIME_PYTHON" "$HOME/.ai/it-role-house/tools/governed_codex_carrier.py" \
+      --codex "$CODEX_EXECUTABLE" resume --session "$SESSION_LOCATOR"
+    ```
+
+    Use the absolute path of the Codex executable used at launch. The optional
+    `--parallel N` goes before `start` or `resume` and accepts 1 through 6.
 
 Reconcile the exact prepared intent or bound handle before continuing. Do not
 repeat completed/uncertain work, reset local budgets, or replay the whole prefix

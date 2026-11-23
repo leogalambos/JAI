@@ -15,6 +15,10 @@ First-time readers should follow [How to use JAI](../examples/how-to-use-JAI/ind
 
 In Codex, `/commercial` maps to `$workflow-commercial` in an installation generated from the commercial command source. Continuation instructions such as “Continue engagement <ID>” are natural-language requests, not implemented `resume` subcommands. Preserve and inspect existing engagement state before proceeding.
 
+For governed SABSA, use the [row algorithm options and recovery command](../operations/gen2-deployment-recovery.md#select-a-sabsa-row-algorithm)
+to choose the default and per-layer mode, declare additional prerequisites
+or change a blocked display order.
+
 ## High-level workflow commands
 
 `/layered` uses the Gen2 native bridge and the current SABSA layer model. Each
